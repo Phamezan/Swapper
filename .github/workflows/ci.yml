@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify bundled Deceive release
+        shell: pwsh
+        run: |
+          $actual = (Get-FileHash 'src-tauri/resources/Deceive.exe' -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne '25dc5427affed66aa38ec1d9103ffa1a47256dab4e698bef32543fbf0cf3d2e5') {
+            throw "Bundled Deceive.exe does not match the official v1.18.0 release"
+          }
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Cache Rust build
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri -> target
+          shared-key: windows-msvc
+
+      - run: npm ci
+      - run: npm run build
+      - run: cargo test --manifest-path src-tauri/Cargo.toml --target x86_64-pc-windows-msvc

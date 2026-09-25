@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/Outfit-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  font-family: "Outfit", "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  --surface-base: #0e0e10;
+  --surface-header: #121214;
+  --surface-panel: #1b1b1e;
+  --surface-raised: #252528;
+  --surface-hover: #303034;
+  --surface-avatar: #34343a;
+  --line-subtle: #323236;
+  --line-strong: #505056;
+  --text-primary: #f5f5f6;
+  --text-secondary: #b9b9bf;
+  --text-muted: #93939c;
+  --action-fill: #f0f1f3;
+  --action-hover: #ffffff;
+  --action-text: #18181b;
+  --positive: #5bc8b3;
+  --danger: #ec918d;
+  --focus: #ffffff;
+}

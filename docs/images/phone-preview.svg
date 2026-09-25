@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="720" viewBox="0 0 390 720" role="img" aria-labelledby="title description">
+  <title id="title">Swapper phone remote preview</title>
+  <desc id="description">Illustration of the phone champion selection screen with connection status and controls.</desc>
+  <style>
+    text { font-family: "Segoe UI", Arial, sans-serif; fill: #f5f5f6; }
+    .muted { fill: #93939c; }
+    .small { font-size: 12px; }
+    .dark-text { fill: #18181b; }
+  </style>
+  <rect width="390" height="720" fill="#0e0e10"/>
+  <rect width="390" height="110" fill="#121214"/>
+  <path d="M0 110h390" stroke="#323236"/>
+  <rect x="16" y="19" width="34" height="34" rx="9" fill="#252528" stroke="#505056"/>
+  <path d="M23 36h20m-6-6 6 6-6 6" fill="none" stroke="#f5f5f6" stroke-width="1.7"/>
+  <text x="62" y="34" font-size="15" font-weight="700">Swapper</text>
+  <text x="62" y="48" font-size="9" letter-spacing="1.4" class="muted">REMOTE</text>
+  <rect x="290" y="22" width="84" height="29" rx="9" fill="#183329" stroke="#3c7865"/>
+  <circle cx="306" cy="36" r="4" fill="#5bc8b3"/>
+  <text x="318" y="40" font-size="12" fill="#9ee5d1">Ready</text>
+  <circle cx="23" cy="82" r="4" fill="#5bc8b3"/>
+  <text x="34" y="86" font-size="11" fill="#b9b9bf">Tailscale connected</text>
+  <circle cx="209" cy="82" r="4" fill="#5bc8b3"/>
+  <text x="220" y="86" font-size="11" fill="#b9b9bf">League connected</text>
+  <text x="19" y="144" font-size="10" letter-spacing="1.4" fill="#5bc8b3">CHAMPION SELECT</text>
+  <text x="19" y="177" font-size="25" font-weight="700">Choose your champion</text>
+  <text x="19" y="201" font-size="12" fill="#b9b9bf">Select a champion, then lock in.</text>
+  <rect x="18" y="223" width="354" height="43" rx="9" fill="#1b1b1e" stroke="#505056"/>
+  <text x="33" y="250" font-size="13" class="muted">⌕  Search champions</text>
+  <g font-size="11" font-weight="600">
+    <rect x="18" y="280" width="49" height="31" rx="7" fill="#f0f1f3"/><text x="30" y="300" class="dark-text">ALL</text>
+    <rect x="73" y="280" width="49" height="31" rx="7" fill="#252528"/><text x="86" y="300">TOP</text>
+    <rect x="128" y="280" width="64" height="31" rx="7" fill="#252528"/><text x="141" y="300">JUNGLE</text>
+    <rect x="198" y="280" width="49" height="31" rx="7" fill="#252528"/><text x="211" y="300">MID</text>
+    <rect x="253" y="280" width="49" height="31" rx="7" fill="#252528"/><text x="266" y="300">BOT</text>
+    <rect x="308" y="280" width="64" height="31" rx="7" fill="#252528"/><text x="318" y="300">SUPPORT</text>
+  </g>
+  <text x="19" y="339" font-size="11" fill="#b9b9bf">Available champions</text>
+  <text x="271" y="339" font-size="11" fill="#5bc8b3">Show all champions</text>
+  <g fill="#1b1b1e" stroke="#323236">
+    <rect x="18" y="354" width="108" height="120" rx="10"/>
+    <rect x="141" y="354" width="108" height="120" rx="10"/>
+    <rect x="264" y="354" width="108" height="120" rx="10"/>
+    <rect x="18" y="487" width="108" height="120" rx="10"/>
+    <rect x="141" y="487" width="108" height="120" rx="10"/>
+    <rect x="264" y="487" width="108" height="120" rx="10"/>
+  </g>
+  <g>
+    <circle cx="72" cy="401" r="29" fill="#49586b"/><circle cx="195" cy="401" r="29" fill="#6b4c67"/><circle cx="318" cy="401" r="29" fill="#686347"/>
+    <circle cx="72" cy="534" r="29" fill="#467067"/><circle cx="195" cy="534" r="29" fill="#614f79"/><circle cx="318" cy="534" r="29" fill="#665349"/>
+  </g>
+  <g font-size="11" text-anchor="middle">
+    <text x="72" y="455">Champion A</text><text x="195" y="455">Champion B</text><text x="318" y="455">Champion C</text>
+    <text x="72" y="588">Champion D</text><text x="195" y="588">Champion E</text><text x="318" y="588">Champion F</text>
+  </g>
+  <rect x="0" y="640" width="390" height="80" fill="#121214"/>
+  <path d="M0 640h390" stroke="#323236"/>
+  <text x="18" y="671" font-size="12" fill="#b9b9bf">Select a champion</text>
+  <rect x="255" y="653" width="117" height="46" rx="9" fill="#f0f1f3"/>
+  <text x="289" y="681" font-size="13" font-weight="700" class="dark-text">LOCK IN</text>
+</svg>
