@@ -77,17 +77,16 @@ struct CurrentSummoner {
     profile_icon_id: Option<i64>,
 }
 
-/// Reads the signed-in Riot account from Riot Client. League Client is optional
-/// and supplies a profile image only when it belongs to the same PUUID.
-pub async fn detect() -> Detection {
-    let riot = match riot_client::detect().await {
+/// Maps a Riot Client probe onto a `Detection`, without League enrichment.
+fn probe_detection(probe: RiotProbe) -> Detection {
+    let riot = match probe {
         RiotProbe::Identified(identity) => identity,
         RiotProbe::NotRunning => return Detection::NotRunning,
         RiotProbe::NotReady => return Detection::NotReady,
         RiotProbe::Unavailable => return Detection::Unavailable,
     };
     let platform = riot.platform.as_deref().and_then(normalize_platform);
-    let mut identity = DetectedIdentity {
+    Detection::Identified(DetectedIdentity {
         puuid: riot.puuid,
         game_name: riot.game_name,
         tag_line: riot.tag_line,
@@ -95,6 +94,22 @@ pub async fn detect() -> Detection {
         platform,
         profile_icon_id: riot.profile_icon_id.filter(|id| *id >= 0),
         icon_data_url: None,
+    })
+}
+
+/// Reads the signed-in Riot account from Riot Client, skipping League/LCU
+/// profile-icon enrichment. Used for low-latency account switching.
+#[allow(dead_code)]
+pub async fn detect_account() -> Detection {
+    probe_detection(riot_client::detect().await)
+}
+
+/// Reads the signed-in Riot account from Riot Client. League Client is optional
+/// and supplies a profile image only when it belongs to the same PUUID.
+pub async fn detect() -> Detection {
+    let mut identity = match probe_detection(riot_client::detect().await) {
+        Detection::Identified(identity) => identity,
+        other => return other,
     };
     // Profile icon enrichment is cosmetic: an unreadable process table just
     // skips it instead of changing what identity is reported.
@@ -590,5 +605,32 @@ mod tests {
             value.get("savedAccountId").and_then(|id| id.as_str()),
             Some(saved_id.to_string().as_str())
         );
+    }
+
+    #[test]
+    fn probe_detection_normalizes_the_riot_identity() {
+        let riot = crate::riot_client::RiotIdentity {
+            puuid: "PUUID-123".into(),
+            game_name: "Example".into(),
+            tag_line: "TAG".into(),
+            platform: Some("EUW1".into()),
+            profile_icon_id: Some(50),
+        };
+        let Detection::Identified(identity) = probe_detection(RiotProbe::Identified(riot)) else {
+            panic!("expected an identified account");
+        };
+        assert_eq!(identity.puuid, "PUUID-123");
+        assert_eq!(identity.riot_id(), "Example#TAG");
+        assert_eq!(identity.platform.as_deref(), Some("EUW1"));
+        assert_eq!(identity.region.as_deref(), Some("EUW"));
+        assert_eq!(identity.profile_icon_id, Some(50));
+        assert!(identity.icon_data_url.is_none());
+    }
+
+    #[test]
+    fn probe_detection_passes_through_non_identified_states() {
+        assert!(matches!(probe_detection(RiotProbe::NotRunning), Detection::NotRunning));
+        assert!(matches!(probe_detection(RiotProbe::NotReady), Detection::NotReady));
+        assert!(matches!(probe_detection(RiotProbe::Unavailable), Detection::Unavailable));
     }
 }
