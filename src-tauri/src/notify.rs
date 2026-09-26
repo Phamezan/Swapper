@@ -37,7 +37,7 @@ pub fn switch_failed(app: &AppHandle, account: &str, use_deceive: bool, failure:
         .show();
 }
 
-fn human_reason(kind: SwitchFailureKind, account: &str, use_deceive: bool) -> Option<String> {
+pub(crate) fn human_reason(kind: SwitchFailureKind, account: &str, use_deceive: bool) -> Option<String> {
     let text = match kind {
         SwitchFailureKind::GameRunning => "Close the running Riot game before switching accounts.".to_string(),
         SwitchFailureKind::ClientBusy => "Riot Client is still running. Close it from the tray and try again.".to_string(),

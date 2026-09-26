@@ -62,6 +62,7 @@ type RemoteStatus = {
 type AppState = {
   accounts: Account[];
   activeId: string | null;
+  isSwitching?: boolean;
   useDeceive: boolean;
   riotExe: string | null;
   riotDetected: boolean;
@@ -77,7 +78,7 @@ const emptyRemote: RemoteStatus = {
 };
 
 const empty: AppState = {
-  accounts: [], activeId: null, useDeceive: false,
+  accounts: [], activeId: null, isSwitching: false, useDeceive: false,
   riotExe: null, riotDetected: false, deceiveDetected: false,
   remote: emptyRemote,
 };
@@ -109,6 +110,7 @@ function App() {
   const [data, setData] = useState<AppState>(empty);
   const [view, setView] = useState<View>("accounts");
   const [busy, setBusy] = useState<string | null>(null);
+  const [switchingAccountId, setSwitchingAccountId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [editing, setEditing] = useState<string | null>(null);
@@ -121,6 +123,7 @@ function App() {
   const [detectRound, setDetectRound] = useState(0);
   const [detectedPrompt, setDetectedPrompt] = useState<DetectedIdentity | null>(null);
   const detectionEpoch = useRef(0);
+  const previousActiveId = useRef<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [showRemoteQr, setShowRemoteQr] = useState(false);
   const [openInfo, setOpenInfo] = useState<string | null>(null);
@@ -130,24 +133,45 @@ function App() {
   useEffect(() => {
     if (!native) return;
     invoke<AppState>("get_state").then(sync).catch(showError);
-    const listener = listen<string>("navigate", ({ payload }) => {
-      if (["accounts", "add", "edit", "remove", "settings"].includes(payload)) {
-        setView(payload as View);
-        setAccountMenu(null);
-        setError(null);
-        if (payload === "add") {
-          setName("");
-          setAddStage("signIn");
-          setDetect({ phase: "idle" });
+    const unlisteners = Promise.all([
+      listen<string>("navigate", ({ payload }) => {
+        if (["accounts", "add", "edit", "remove", "settings"].includes(payload)) {
+          setView(payload as View);
+          setAccountMenu(null);
+          setError(null);
+          if (payload === "add") {
+            setName("");
+            setAddStage("signIn");
+            setDetect({ phase: "idle" });
+          }
         }
-      }
-      invoke<AppState>("get_state").then(sync).catch(showError);
-    });
-    return () => { listener.then((unlisten) => unlisten()); };
+        invoke<AppState>("get_state").then(sync).catch(showError);
+      }),
+      listen<{ id: string; name: string }>("switch_started", ({ payload }) => {
+        setSwitchingAccountId(payload.id);
+        setError(null);
+      }),
+      listen<{ id: string; view: AppState }>("switch_done", ({ payload }) => {
+        setSwitchingAccountId(null);
+        sync(payload.view);
+      }),
+      listen<{ id: string; error: string }>("switch_failed", ({ payload }) => {
+        setSwitchingAccountId(null);
+        setData((prev) => ({ ...prev, activeId: previousActiveId.current }));
+        showError(payload.error);
+        invoke<AppState>("get_state").then(sync).catch(() => {});
+      }),
+    ]);
+    return () => {
+      unlisteners.then((fns) => fns.forEach((unlisten) => unlisten()));
+    };
   }, [native]);
 
   function sync(next: AppState) {
     setData(next);
+    if (!next.isSwitching) {
+      setSwitchingAccountId(null);
+    }
     setUseDeceive(next.useDeceive);
     setRiotExe(next.riotExe ?? "");
   }
@@ -333,8 +357,11 @@ function App() {
       document.removeEventListener("keydown", escape);
     };
   }, [accountMenu]);
+  const isSwitching = Boolean(switchingAccountId || data.isSwitching);
+  const isBusy = busy !== null || isSwitching;
+
   const openAccountMenu = (id: string, x: number, y: number) => {
-    if (busy) return;
+    if (isBusy) return;
     setAccountMenu({
       id,
       x: Math.max(8, Math.min(x, window.innerWidth - 192)),
@@ -342,11 +369,28 @@ function App() {
     });
   };
   const menuAccount = data.accounts.find((account) => account.id === accountMenu?.id);
-  const switchToAccount = (id: string) => action(`switch-${id}`, () => invoke<AppState>("switch_account", { id }), () => {
+  const switchToAccount = async (id: string) => {
+    if (!native) {
+      setError("Account actions are available in the Windows tray app. Start it with npm run tauri dev.");
+      return;
+    }
+    if (isSwitching) return;
+    setError(null);
+    setAccountMenu(null);
     detectionEpoch.current += 1;
     setDetectedPrompt(null);
-    void invoke("hide_flyout");
-  });
+    previousActiveId.current = data.activeId;
+    setSwitchingAccountId(id);
+    setData((prev) => ({ ...prev, activeId: id }));
+    void invoke("hide_flyout").catch(() => {});
+    try {
+      await invoke("switch_account", { id });
+    } catch (reason) {
+      setSwitchingAccountId(null);
+      setData((prev) => ({ ...prev, activeId: previousActiveId.current }));
+      showError(reason);
+    }
+  };
   const active = data.accounts.find((account) => account.id === data.activeId);
   const savedWithRiotId = (identity: DetectedIdentity) => data.accounts.find((account) =>
     account.riotId?.toLowerCase() === riotIdOf(identity).toLowerCase());
@@ -412,13 +456,13 @@ function App() {
           <>
             <div className="panel-heading">
               <div><p className="eyebrow">{data.accounts.length === 0 ? "GET STARTED" : "READY TO PLAY"}</p><h1>Your accounts</h1></div>
-              <button className="icon-button" aria-label="Settings" onClick={() => navigate("settings")}><Settings2 size={19} /></button>
+              <button className="icon-button" aria-label="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings2 size={19} /></button>
             </div>
             {visibleDetectedPrompt && (
               <section className="detected-prompt">
                 <strong className="detected-title">Signed-in account detected</strong>
                 <IdentityCard identity={visibleDetectedPrompt} />
-                <Button className="primary-action" disabled={busy !== null} onClick={() => saveDetected(visibleDetectedPrompt, "save-detected", () => setDetectedPrompt(null))}>
+                <Button className="primary-action" disabled={isBusy} onClick={() => saveDetected(visibleDetectedPrompt, "save-detected", () => setDetectedPrompt(null))}>
                   {busy === "save-detected" ? <LoaderCircle className="spin" size={16} /> : <Check size={16} />} Save Account
                 </Button>
               </section>
@@ -429,15 +473,16 @@ function App() {
                   <div className="empty-symbol"><Plus size={22} /></div>
                   <h2>No accounts yet</h2>
                   <p>Sign in through Riot Client once, then save that session here.</p>
-                  <Button onClick={() => navigate("add")}>Add first account <ArrowRight size={15} /></Button>
+                  <Button disabled={isBusy} onClick={() => navigate("add")}>Add first account <ArrowRight size={15} /></Button>
                 </div>
               ) : data.accounts.map((account, index) => {
                 const isActive = displayedActiveId === account.id;
+                const isThisSwitching = switchingAccountId === account.id;
                 return (
                   <button
                     key={account.id}
                     className={`account-row ${isActive ? "is-active" : ""}`}
-                    disabled={busy !== null}
+                    disabled={isBusy}
                     onClick={() => switchToAccount(account.id)}
                     onContextMenu={(event) => { event.preventDefault(); openAccountMenu(account.id, event.clientX, event.clientY); }}
                     onKeyDown={(event) => {
@@ -453,14 +498,27 @@ function App() {
                       : <span className="account-avatar">{account.name.slice(0, 1).toUpperCase() || index + 1}</span>}
                     <span className="account-copy">
                       <strong>{account.name}</strong>
-                      <small>{isActive ? "Current session" : "Click to switch"}{account.region ? ` · ${account.region}` : ""}</small>
+                      <small>
+                        {isThisSwitching
+                          ? "Switching…"
+                          : isActive
+                            ? "Current session"
+                            : "Click to switch"}
+                        {account.region ? ` · ${account.region}` : ""}
+                      </small>
                     </span>
-                    {busy === `switch-${account.id}` ? <LoaderCircle className="spin" size={20} /> : isActive ? <span className="active-indicator"><Check size={14} /></span> : <ChevronRight size={20} className="row-chevron" />}
+                    {isThisSwitching || busy === `switch-${account.id}` ? (
+                      <LoaderCircle className="spin" size={20} />
+                    ) : isActive ? (
+                      <span className="active-indicator"><Check size={14} /></span>
+                    ) : (
+                      <ChevronRight size={20} className="row-chevron" />
+                    )}
                   </button>
                 );
               })}
             </div>
-            {data.accounts.length > 0 && <Button className="add-inline" onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
+            {data.accounts.length > 0 && <Button className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
           </>
         ) : (
           <>
