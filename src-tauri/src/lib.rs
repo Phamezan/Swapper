@@ -266,7 +266,7 @@ fn switch_account(
 
     tauri::async_runtime::spawn(async move {
         let _lease = lease;
-        let detection = identity::detect().await;
+        let detection = identity::detect_account().await;
 
         let name_for_switch = name.clone();
         let result = tauri::async_runtime::spawn_blocking(move || {

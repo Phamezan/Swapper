@@ -99,7 +99,6 @@ fn probe_detection(probe: RiotProbe) -> Detection {
 
 /// Reads the signed-in Riot account from Riot Client, skipping League/LCU
 /// profile-icon enrichment. Used for low-latency account switching.
-#[allow(dead_code)]
 pub async fn detect_account() -> Detection {
     probe_detection(riot_client::detect().await)
 }
