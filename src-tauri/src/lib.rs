@@ -412,6 +412,21 @@ fn show_flyout(app: &tauri::AppHandle, destination: &str) {
     }
 }
 
+// Exits without blocking the event loop thread. The tray icon is removed first
+// so Windows does not keep a ghost icon while the Tailscale Serve route is torn
+// down; that teardown is bounded (see RemoteCore::shutdown) and runs on a
+// background thread, which then asks the event loop to exit.
+fn exit_app(app: &tauri::AppHandle) {
+    let _ = app.remove_tray_by_id(TRAY_ID);
+    let app = app.clone();
+    std::thread::spawn(move || {
+        if let Some(state) = app.try_state::<AppState>() {
+            state.remote.clone().shutdown();
+        }
+        app.exit(0);
+    });
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let config = vault::load().expect("Swapper settings could not be loaded");
@@ -451,12 +466,7 @@ pub fn run() {
                     "edit" => show_flyout(app, "edit"),
                     "remove" => show_flyout(app, "remove"),
                     "settings" => show_flyout(app, "settings"),
-                    "exit" => {
-                        if let Some(state) = app.try_state::<AppState>() {
-                            state.remote.clone().set_enabled(false);
-                        }
-                        app.exit(0);
-                    }
+                    "exit" => exit_app(app),
                     _ => {}
                 })
                 .on_tray_icon_event(|tray, event| {

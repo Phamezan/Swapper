@@ -1,9 +1,16 @@
 use serde::Deserialize;
+use std::io::Read;
 use std::os::windows::process::CommandExt;
 use std::path::{Path, PathBuf};
-use std::process::{Command, Output};
+use std::process::{Command, Output, Stdio};
+use std::thread;
+use std::time::{Duration, Instant};
 
 const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+
+// Tailscale answers local IPC calls in well under a second; this cap keeps a
+// hung or unresponsive `tailscale.exe` from blocking the caller forever.
+const PROCESS_TIMEOUT: Duration = Duration::from_secs(2);
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct TailscaleStatus {
@@ -167,9 +174,59 @@ pub fn parse_status(body: &str) -> Result<TailscaleStatus, String> {
 fn capture(cli: &Path, args: &[&str]) -> Result<Output, String> {
     let mut command = Command::new(cli);
     command.args(args).creation_flags(CREATE_NO_WINDOW);
-    command
-        .output()
-        .map_err(|e| format!("Could not run Tailscale: {e}"))
+    run_bounded(command, PROCESS_TIMEOUT)
+}
+
+// Runs a command and returns its output, killing it and failing if it does not
+// exit within `timeout`. Output is drained on helper threads, because a child
+// that writes more than the OS pipe buffer would otherwise block before it
+// exits and look like a hang (for example a large `tailscale status --json`).
+fn run_bounded(mut command: Command, timeout: Duration) -> Result<Output, String> {
+    command.stdout(Stdio::piped()).stderr(Stdio::piped());
+    let mut child = command
+        .spawn()
+        .map_err(|e| format!("Could not run Tailscale: {e}"))?;
+    let stdout = drain(child.stdout.take());
+    let stderr = drain(child.stderr.take());
+    let deadline = Instant::now() + timeout;
+    let status = loop {
+        match child.try_wait() {
+            Ok(Some(status)) => break status,
+            Ok(None) => {}
+            Err(e) => {
+                let _ = child.kill();
+                let _ = child.wait();
+                return Err(format!("Could not run Tailscale: {e}"));
+            }
+        }
+        if Instant::now() >= deadline {
+            let _ = child.kill();
+            let _ = child.wait();
+            return Err("Tailscale did not respond in time.".into());
+        }
+        thread::sleep(Duration::from_millis(20));
+    };
+    Ok(Output {
+        status,
+        stdout: collected(stdout),
+        stderr: collected(stderr),
+    })
+}
+
+// Reads a child pipe to EOF on its own thread so the child never blocks on a
+// full pipe buffer while `run_bounded` waits for it to exit.
+fn drain(pipe: Option<impl Read + Send + 'static>) -> thread::JoinHandle<Vec<u8>> {
+    thread::spawn(move || {
+        let mut buffer = Vec::new();
+        if let Some(mut pipe) = pipe {
+            let _ = pipe.read_to_end(&mut buffer);
+        }
+        buffer
+    })
+}
+
+fn collected(reader: thread::JoinHandle<Vec<u8>>) -> Vec<u8> {
+    reader.join().unwrap_or_default()
 }
 
 fn describe(output: &Output) -> String {
@@ -228,5 +285,49 @@ mod tests {
         assert_eq!(parse_root_route(body, "pc.tail.ts.net").unwrap(), RootRoute::Other);
         assert!(parse_root_route("not json", "pc.tail.ts.net").is_err());
         assert_eq!(parse_root_route("{}", "pc.tail.ts.net").unwrap(), RootRoute::Vacant);
+    }
+
+    #[test]
+    fn captures_output_from_a_command_that_finishes() {
+        let mut command = Command::new("cmd");
+        command.args(["/C", "echo", "swapper-ok"]);
+        let output = run_bounded(command, Duration::from_secs(2)).unwrap();
+        assert!(output.status.success());
+        assert!(String::from_utf8_lossy(&output.stdout).contains("swapper-ok"));
+    }
+
+    #[test]
+    fn captures_output_larger_than_the_pipe_buffer() {
+        // ~360 KB, well beyond the OS pipe buffer. If the runner does not drain
+        // the pipes while the child is running, the child blocks on write, never
+        // exits, and this fails as a timeout.
+        let mut command = Command::new("cmd");
+        command.args([
+            "/C",
+            "for /L %i in (1,1,20000) do @echo 0123456789abcdef",
+        ]);
+        let output = run_bounded(command, Duration::from_secs(5)).expect("large output must not time out");
+        assert!(output.status.success());
+        assert!(
+            output.stdout.len() > 300_000,
+            "expected the full output, got {} bytes",
+            output.stdout.len()
+        );
+    }
+
+    #[test]
+    fn a_command_that_hangs_is_killed_within_the_timeout() {
+        // `ping -n 6` keeps the process alive for roughly five seconds; the
+        // bounded runner must give up long before that.
+        let mut command = Command::new("cmd");
+        command.args(["/C", "ping", "-n", "6", "127.0.0.1"]);
+        let started = Instant::now();
+        let result = run_bounded(command, Duration::from_millis(300));
+        assert!(result.is_err(), "A hung command must time out");
+        assert!(
+            started.elapsed() < Duration::from_secs(3),
+            "Timing out must be bounded, took {:?}",
+            started.elapsed()
+        );
     }
 }

@@ -8,7 +8,7 @@ use std::path::{Path, PathBuf};
 use std::sync::mpsc;
 use std::sync::{Arc, Mutex, MutexGuard, Weak};
 use std::thread;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 
 use serde::Serialize;
 use tauri::AppHandle;
@@ -17,6 +17,10 @@ use tokio::sync::{broadcast, oneshot};
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
     mutex.lock().unwrap_or_else(|e| e.into_inner())
 }
+
+// How long shutdown waits for the axum service thread to stop before letting
+// the process exit without it.
+const SERVICE_STOP_TIMEOUT: Duration = Duration::from_secs(2);
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -164,21 +168,7 @@ impl RemoteCore {
         let _ops = lock(&self.ops);
         if !enabled {
             self.apply_disabled();
-            let recorded = route_claim_path()
-                .and_then(|path| load_route_claim_at(&path))
-                .ok()
-                .flatten();
-            if let Some(owned) = lock(&self.owned_route).clone().or(recorded) {
-                if let Some(cli) = tailscale::find_cli() {
-                    if matches!(tailscale::root_route(&cli, &owned.dns_name), Ok(tailscale::RootRoute::Proxy(ref target)) if target == &tailscale::proxy_target(owned.port))
-                        && tailscale::serve_off(&cli).is_ok() {
-                            *lock(&self.owned_route) = None;
-                            if let Ok(path) = route_claim_path() {
-                                let _ = fs::remove_file(path);
-                            }
-                    }
-                }
-            }
+            self.remove_owned_route();
             self.stop_service();
             self.probe_tailscale_without_remote();
             return;
@@ -196,6 +186,41 @@ impl RemoteCore {
             return;
         }
         self.reconcile();
+    }
+
+    /// Tear down the remote service and its Tailscale Serve route when the app
+    /// is exiting. Unlike [`Self::set_enabled`] this skips the Tailscale status
+    /// probe that would only matter if Swapper kept running. Every step is
+    /// bounded (Tailscale calls by their process timeout, the service by a join
+    /// timeout), so a stuck shutdown cannot hang the caller.
+    pub fn shutdown(&self) {
+        let _ops = lock(&self.ops);
+        self.apply_disabled();
+        self.remove_owned_route();
+        self.stop_service();
+    }
+
+    // Turns off the root Serve route only when Swapper is the one serving it,
+    // so a route another tool owns is never removed.
+    fn remove_owned_route(&self) {
+        let recorded = route_claim_path()
+            .and_then(|path| load_route_claim_at(&path))
+            .ok()
+            .flatten();
+        let Some(owned) = lock(&self.owned_route).clone().or(recorded) else {
+            return;
+        };
+        let Some(cli) = tailscale::find_cli() else {
+            return;
+        };
+        if matches!(tailscale::root_route(&cli, &owned.dns_name), Ok(tailscale::RootRoute::Proxy(ref target)) if target == &tailscale::proxy_target(owned.port))
+            && tailscale::serve_off(&cli).is_ok()
+        {
+            *lock(&self.owned_route) = None;
+            if let Ok(path) = route_claim_path() {
+                let _ = fs::remove_file(path);
+            }
+        }
     }
 
     pub fn probe(self: Arc<Self>) -> RemoteStatus {
@@ -288,7 +313,13 @@ impl RemoteCore {
             let _ = shutdown.send(());
         }
         if let Some(join) = service.join.take() {
-            let _ = join.join();
+            let deadline = Instant::now() + SERVICE_STOP_TIMEOUT;
+            while !join.is_finished() && Instant::now() < deadline {
+                thread::sleep(Duration::from_millis(10));
+            }
+            if join.is_finished() {
+                let _ = join.join();
+            }
         }
     }
 
