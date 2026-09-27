@@ -100,8 +100,9 @@ pub struct ItemPathEntry {
     /// Milliseconds since the game started.
     #[serde(default)]
     pub timestamp: i64,
+    /// The API's event code: 1 for a purchase, 2 for a sale.
     #[serde(default, rename = "type")]
-    pub kind: String,
+    pub kind: i64,
 }
 
 /// One pro solo-queue game, as the API reports it.
@@ -281,14 +282,21 @@ pub fn parse(body: &str) -> Result<Vec<ProMatch>, RuneError> {
         .and_then(Value::as_array)
         .ok_or_else(|| RuneError::unavailable("The pro build response was missing its matches."))?;
     let mut matches = Vec::with_capacity(list.len());
+    let mut unreadable = 0;
     for entry in list {
         let Ok(parsed) = serde_json::from_value::<ProMatch>(entry.clone()) else {
+            unreadable += 1;
             continue;
         };
         if parsed.match_id <= 0 || parsed.selection().is_none() {
             continue;
         }
         matches.push(parsed);
+    }
+    // Every entry failing to deserialize means the response shape changed, not
+    // that there are no games; report it instead of showing an empty list.
+    if !list.is_empty() && unreadable == list.len() {
+        return Err(RuneError::unavailable("The pro build response format was not recognised."));
     }
     Ok(matches)
 }
@@ -483,6 +491,22 @@ mod tests {
         let matches = parse(body).unwrap();
         assert_eq!(matches.len(), 1);
         assert_eq!(matches[0].match_id, 1);
+    }
+
+    #[test]
+    fn parses_a_live_match_with_numeric_item_path_types() {
+        // Captured from the live API: `itemPath[].type` is a number there.
+        let body = include_str!("../../tests/fixtures/probuilds-live-match.json");
+        let matches = parse(body).expect("a live response should parse");
+        assert_eq!(matches.len(), 1);
+        assert_eq!(matches[0].item_path[0].kind, 1);
+        assert!(!matches[0].final_build.is_empty());
+    }
+
+    #[test]
+    fn an_unrecognised_response_shape_is_an_error_not_an_empty_list() {
+        let body = r#"{"data":{"getProChampionMatchList":{"matchList":[{"matchId":"not a number"}]}}}"#;
+        assert!(parse(body).is_err());
     }
 
     #[test]
