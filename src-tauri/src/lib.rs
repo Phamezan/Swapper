@@ -455,11 +455,19 @@ fn probe_remote(state: State<'_, AppState>) -> remote::RemoteStatus {
 
 #[tauri::command]
 fn set_auto_apply_top_preset(
+    app: tauri::AppHandle,
     state: State<'_, AppState>,
     enabled: bool,
 ) -> Result<AppView, String> {
     let _lease = state.switch_guard.acquire()?;
     state.set_auto_apply_top_preset(enabled)?;
+    // Turning the setting on with the champion already locked applies now,
+    // instead of waiting for the watcher's next poll.
+    if enabled {
+        tauri::async_runtime::spawn(async move {
+            let _ = runes::auto_apply_current(&app).await;
+        });
+    }
     let config = state.config.lock().map_err(|e| e.to_string())?;
     Ok(view(
         &config,

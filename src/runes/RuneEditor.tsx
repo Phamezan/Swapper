@@ -23,35 +23,54 @@ type Props = {
   onChange: (selection: Selection) => void;
 };
 
-function RuneTile({
+/** The tooltip over a rune: the name plus whatever statistics exist. Pick% and
+ *  games stay out of the grid so the runes read like the League client. */
+function statTitle(rune: Rune): string {
+  const parts = [rune.name];
+  if (rune.winPct !== null && rune.play > 0) parts.push(`Win ${fmtPct(rune.winPct)}`);
+  if (rune.pickPct !== null && rune.play > 0) parts.push(`Pick ${fmtPct(rune.pickPct)}`);
+  if (rune.play > 0) parts.push(`${fmtGames(rune.play)} games`);
+  if (parts.length > 1) parts.push("approx., from op.gg");
+  return parts.join(" · ");
+}
+
+/** One round rune icon: full colour with a gold ring when selected, dimmed and
+ *  desaturated otherwise, like the League client. */
+function RuneOrb({
   rune,
   mode,
   selected,
   disabled,
+  showStats,
+  keystone,
   onClick,
 }: {
   rune: Rune;
   mode: Mode;
   selected: boolean;
   disabled: boolean;
+  showStats: boolean;
+  keystone?: boolean;
   onClick: () => void;
 }) {
-  const hasStats = rune.winPct !== null || rune.pickPct !== null || rune.play > 0;
+  const hasWin = rune.winPct !== null && rune.play > 0;
+  const hasDetail = showStats && rune.pickPct !== null && rune.play > 0;
   return (
     <button
       type="button"
-      className={`rune-tile ${selected ? "is-on" : ""}`}
+      className={`rune-orb ${selected ? "is-on" : ""} ${keystone ? "rune-orb-keystone" : ""}`}
       disabled={disabled}
       onClick={onClick}
-      title={rune.name}
+      title={statTitle(rune)}
       aria-pressed={selected}
       aria-label={`${rune.name}, ${selected ? "selected" : "not selected"}`}
     >
-      <RuneIcon id={rune.id} mode={mode} className="rune-tile-icon" />
-      <span className="rune-tile-name">{rune.name}</span>
-      {hasStats && rune.winPct !== null && <span className="rune-tile-win">{fmtPct(rune.winPct)}</span>}
-      {hasStats && rune.pickPct !== null && rune.play > 0 && (
-        <span className="rune-tile-meta">
+      <span className="rune-orb-art">
+        <RuneIcon id={rune.id} mode={mode} className="rune-orb-icon" />
+      </span>
+      {hasWin && <span className="rune-orb-win">{fmtPct(rune.winPct)}</span>}
+      {hasDetail && (
+        <span className="rune-orb-meta">
           {fmtPct(rune.pickPct)} · {fmtGames(rune.play)}
         </span>
       )}
@@ -59,209 +78,135 @@ function RuneTile({
   );
 }
 
-function TreePicker({
+/** A column header: the selected tree as a larger icon, then the other trees to
+ *  switch to. Matches the two icon rows in the League client. */
+function TreeHeader({
+  label,
+  tree,
   trees,
   mode,
-  ariaLabel,
-  activeId,
   disabledId,
   busy,
   onPick,
 }: {
+  label: string;
+  tree: RuneTree;
   trees: RuneTree[];
   mode: Mode;
-  ariaLabel: string;
-  activeId: number;
   disabledId?: number;
   busy: boolean;
   onPick: (tree: RuneTree) => void;
 }) {
+  const options = trees.filter((entry) => entry.id !== tree.id && entry.id !== disabledId);
   return (
-    <div className="rune-tree-picker" role="group" aria-label={ariaLabel}>
-      {trees.map((tree) => (
-        <button
-          type="button"
-          key={tree.id}
-          className={tree.id === activeId ? "is-on" : ""}
-          title={tree.name}
-          disabled={busy || tree.id === disabledId}
-          onClick={() => onPick(tree)}
-        >
+    <div className="rune-head">
+      <div className="rune-head-label">
+        <small>{label}</small>
+        <strong>{tree.name}</strong>
+      </div>
+      <div className="rune-head-trees" role="group" aria-label={`Switch ${label.toLowerCase()} tree`}>
+        <span className="rune-head-big" title={tree.name}>
           <RuneIcon id={tree.id} mode={mode} />
-          {mode === "remote" && <span className="rune-tree-option-name">{tree.name}</span>}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function Keystones({
-  tree,
-  mode,
-  selection,
-  busy,
-  onChange,
-}: {
-  tree: RuneTree;
-  mode: Mode;
-  selection: Selection;
-  busy: boolean;
-  onChange: (selection: Selection) => void;
-}) {
-  return (
-    <div className="rune-row rune-row-keystones">
-      {tree.keystones.map((rune) => (
-        <RuneTile
-          key={rune.id}
-          rune={rune}
-          mode={mode}
-          disabled={busy}
-          selected={selection.keystone === rune.id}
-          onClick={() => onChange({ ...selection, keystone: rune.id })}
-        />
-      ))}
-    </div>
-  );
-}
-
-function PrimaryRows({
-  tree,
-  mode,
-  selection,
-  busy,
-  onChange,
-}: {
-  tree: RuneTree;
-  mode: Mode;
-  selection: Selection;
-  busy: boolean;
-  onChange: (selection: Selection) => void;
-}) {
-  return (
-    <>
-      {tree.rows.map((row, index) => (
-        <div className="rune-row" key={`pr-${index}`}>
-          {row.runes.map((rune) => (
-            <RuneTile
-              key={rune.id}
-              rune={rune}
-              mode={mode}
-              disabled={busy}
-              selected={selection.primaryRunes.includes(rune.id)}
-              onClick={() => onChange(togglePrimary(selection, tree, rune.id))}
-            />
-          ))}
-        </div>
-      ))}
-    </>
-  );
-}
-
-function SecondaryRows({
-  tree,
-  mode,
-  selection,
-  busy,
-  onChange,
-}: {
-  tree: RuneTree;
-  mode: Mode;
-  selection: Selection;
-  busy: boolean;
-  onChange: (selection: Selection) => void;
-}) {
-  return (
-    <>
-      {tree.rows.map((row, index) => (
-        <div className="rune-row" key={`sr-${index}`}>
-          {row.runes.map((rune) => (
-            <RuneTile
-              key={rune.id}
-              rune={rune}
-              mode={mode}
-              disabled={busy}
-              selected={selection.secondaryRunes.includes(rune.id)}
-              onClick={() => onChange(toggleSecondary(selection, tree, rune.id))}
-            />
-          ))}
-        </div>
-      ))}
-    </>
-  );
-}
-
-function ShardOptions({
-  row,
-  index,
-  mode,
-  selection,
-  busy,
-  onChange,
-}: {
-  row: RuneRow;
-  index: number;
-  mode: Mode;
-  selection: Selection;
-  busy: boolean;
-  onChange: (selection: Selection) => void;
-}) {
-  return (
-    <div className="rune-row">
-      {row.runes.map((rune) => (
-        <RuneTile
-          key={rune.id}
-          rune={rune}
-          mode={mode}
-          disabled={busy}
-          selected={selection.shards[index] === rune.id}
-          onClick={() => onChange(selectShard(selection, index, rune.id))}
-        />
-      ))}
-    </div>
-  );
-}
-
-function SelectionSummary({
-  view,
-  mode,
-  selection,
-}: {
-  view: RunesView;
-  mode: Mode;
-  selection: Selection;
-}) {
-  const keystone = view.trees
-    .flatMap((tree) => tree.keystones)
-    .find((rune) => rune.id === selection.keystone);
-  const secondaryTree = view.trees.find((tree) => tree.id === selection.secondaryPageId);
-  return (
-    <div className="rune-summary" aria-label="Current selection">
-      <span className="rune-summary-item">
-        {keystone && <RuneIcon id={keystone.id} mode={mode} className="rune-summary-icon" />}
-        <span className="rune-summary-copy">
-          <small>{keystone?.name ?? "Keystone"}</small>
-          <small>{secondaryTree?.name ?? "Secondary"}</small>
         </span>
-      </span>
-      <span className="rune-summary-shards">
-        {selection.shards.map(
-          (id, index) => id > 0 && <RuneIcon key={index} id={id} mode={mode} className="rune-summary-shard" />,
-        )}
-      </span>
+        {options.map((entry) => (
+          <button
+            type="button"
+            key={entry.id}
+            className="rune-head-option"
+            title={entry.name}
+            disabled={busy}
+            onClick={() => onPick(entry)}
+          >
+            <RuneIcon id={entry.id} mode={mode} />
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
 
-type Step = "primary" | "secondary" | "shards";
+function RuneRows({
+  tree,
+  mode,
+  selection,
+  busy,
+  showStats,
+  variant,
+  onChange,
+}: {
+  tree: RuneTree;
+  mode: Mode;
+  selection: Selection;
+  busy: boolean;
+  showStats: boolean;
+  variant: "primary" | "secondary";
+  onChange: (selection: Selection) => void;
+}) {
+  const selectedIds =
+    variant === "primary" ? selection.primaryRunes : selection.secondaryRunes;
+  return (
+    <div className="rune-rows">
+      {tree.rows.map((row, index) => (
+        <div className="rune-row" key={`${variant}-${index}`}>
+          {row.runes.map((rune) => (
+            <RuneOrb
+              key={rune.id}
+              rune={rune}
+              mode={mode}
+              disabled={busy}
+              showStats={showStats}
+              selected={selectedIds.includes(rune.id)}
+              onClick={() =>
+                onChange(
+                  variant === "primary"
+                    ? togglePrimary(selection, tree, rune.id)
+                    : toggleSecondary(selection, tree, rune.id),
+                )
+              }
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
 
-const STEPS: { id: Step; label: string }[] = [
-  { id: "primary", label: "Primary" },
-  { id: "secondary", label: "Secondary" },
-  { id: "shards", label: "Shards" },
-];
+function ShardRows({
+  rows,
+  mode,
+  selection,
+  busy,
+  onChange,
+}: {
+  rows: RuneRow[];
+  mode: Mode;
+  selection: Selection;
+  busy: boolean;
+  onChange: (selection: Selection) => void;
+}) {
+  return (
+    <div className="rune-shards">
+      {rows.map((row, index) => (
+        <div className="rune-row rune-row-shard" key={`sh-${index}`}>
+          {row.runes.map((rune) => (
+            <RuneOrb
+              key={rune.id}
+              rune={rune}
+              mode={mode}
+              disabled={busy}
+              showStats={false}
+              selected={selection.shards[index] === rune.id}
+              onClick={() => onChange(selectShard(selection, index, rune.id))}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function RuneEditor({ mode, view, selection, busy, onChange }: Props) {
-  const [step, setStep] = useState<Step>("primary");
+  const [showStats, setShowStats] = useState(false);
 
   const primaryTree =
     view.trees.find((tree) => tree.id === selection.primaryPageId) ?? view.trees[0];
@@ -302,135 +247,83 @@ export function RuneEditor({ mode, view, selection, busy, onChange }: Props) {
     onChange({ ...selection, secondaryPageId: tree.id, secondaryRunes });
   }
 
-  if (mode === "desktop") {
-    return (
-      <div className="runes-editor">
-        <div className="rune-trees">
-          <TreePicker
+  return (
+    <div className="runes-editor">
+      <div className="rune-editor-tools">
+        <label className="rune-stats-toggle">
+          <input
+            type="checkbox"
+            checked={showStats}
+            onChange={(event) => setShowStats(event.target.checked)}
+          />
+          <span>Show stats</span>
+        </label>
+      </div>
+
+      <div className="rune-board">
+        <div className="rune-board-col rune-board-primary">
+          <TreeHeader
+            label="Primary"
+            tree={primaryTree}
             trees={view.trees}
             mode={mode}
-            ariaLabel="Primary tree"
-            activeId={primaryTree.id}
             busy={busy}
             onPick={choosePrimaryTree}
           />
-          <TreePicker
+          <p className="rune-keystones-label">Keystones</p>
+          <div className="rune-keystones">
+            {primaryTree.keystones.map((rune) => (
+              <RuneOrb
+                key={rune.id}
+                rune={rune}
+                mode={mode}
+                keystone
+                disabled={busy}
+                showStats={showStats}
+                selected={selection.keystone === rune.id}
+                onClick={() => onChange({ ...selection, keystone: rune.id })}
+              />
+            ))}
+          </div>
+          <RuneRows
+            tree={primaryTree}
+            mode={mode}
+            selection={selection}
+            busy={busy}
+            showStats={showStats}
+            variant="primary"
+            onChange={onChange}
+          />
+        </div>
+
+        <div className="rune-board-col rune-board-secondary">
+          <TreeHeader
+            label="Secondary"
+            tree={secondaryTree}
             trees={view.trees}
             mode={mode}
-            ariaLabel="Secondary tree"
-            activeId={secondaryTree.id}
             disabledId={primaryTree.id}
             busy={busy}
             onPick={chooseSecondaryTree}
           />
-        </div>
-
-        <div className="rune-grid">
-          <div className="rune-col">
-            <p className="rune-col-label">{primaryTree.name}</p>
-            <Keystones tree={primaryTree} mode={mode} selection={selection} busy={busy} onChange={onChange} />
-            <PrimaryRows tree={primaryTree} mode={mode} selection={selection} busy={busy} onChange={onChange} />
-          </div>
-
-          <div className="rune-col">
-            <p className="rune-col-label">{secondaryTree.name}</p>
-            <SecondaryRows tree={secondaryTree} mode={mode} selection={selection} busy={busy} onChange={onChange} />
-          </div>
-
-          <div className="rune-col rune-col-shards">
-            <p className="rune-col-label">Shards</p>
-            {view.shards.map((row, index) => (
-              <ShardOptions
-                key={`sh-${index}`}
-                row={row}
-                index={index}
-                mode={mode}
-                selection={selection}
-                busy={busy}
-                onChange={onChange}
-              />
-            ))}
-          </div>
+          <RuneRows
+            tree={secondaryTree}
+            mode={mode}
+            selection={selection}
+            busy={busy}
+            showStats={showStats}
+            variant="secondary"
+            onChange={onChange}
+          />
+          <ShardRows
+            rows={view.shards}
+            mode={mode}
+            selection={selection}
+            busy={busy}
+            onChange={onChange}
+          />
         </div>
       </div>
-    );
-  }
-
-  return (
-    <div className="runes-editor runes-editor-remote">
-      <SelectionSummary view={view} mode={mode} selection={selection} />
-
-      <div className="rune-steps" role="tablist" aria-label="Rune editor step">
-        {STEPS.map((entry) => (
-          <button
-            type="button"
-            role="tab"
-            key={entry.id}
-            aria-selected={step === entry.id}
-            className={step === entry.id ? "is-active" : ""}
-            onClick={() => setStep(entry.id)}
-          >
-            {entry.label}
-          </button>
-        ))}
-      </div>
-
-      {step === "primary" && (
-        <div className="rune-step">
-          <p className="rune-step-title">Primary tree</p>
-          <TreePicker
-            trees={view.trees}
-            mode={mode}
-            ariaLabel="Primary tree"
-            activeId={primaryTree.id}
-            busy={busy}
-            onPick={choosePrimaryTree}
-          />
-          <div className="rune-col">
-            <p className="rune-col-label">{primaryTree.name}</p>
-            <Keystones tree={primaryTree} mode={mode} selection={selection} busy={busy} onChange={onChange} />
-            <PrimaryRows tree={primaryTree} mode={mode} selection={selection} busy={busy} onChange={onChange} />
-          </div>
-        </div>
-      )}
-
-      {step === "secondary" && (
-        <div className="rune-step">
-          <p className="rune-step-title">Secondary tree</p>
-          <TreePicker
-            trees={view.trees.filter((tree) => tree.id !== primaryTree.id)}
-            mode={mode}
-            ariaLabel="Secondary tree"
-            activeId={secondaryTree.id}
-            busy={busy}
-            onPick={chooseSecondaryTree}
-          />
-          <p className="rune-step-hint">Pick 2 runes from different rows.</p>
-          <div className="rune-col">
-            <p className="rune-col-label">{secondaryTree.name}</p>
-            <SecondaryRows tree={secondaryTree} mode={mode} selection={selection} busy={busy} onChange={onChange} />
-          </div>
-        </div>
-      )}
-
-      {step === "shards" && (
-        <div className="rune-step">
-          <p className="rune-step-title">Stat shards</p>
-          {view.shards.map((row, index) => (
-            <div className="rune-shard-row" key={`sh-${index}`}>
-              <p className="rune-col-label">{row.label || "Shard"}</p>
-              <ShardOptions
-                row={row}
-                index={index}
-                mode={mode}
-                selection={selection}
-                busy={busy}
-                onChange={onChange}
-              />
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

@@ -57,6 +57,8 @@ pub struct ProBuildView {
     pub pro_name: String,
     pub team: String,
     pub league: String,
+    /// The API role slug (`top`, `jungle`, `mid`, `adc`, `supp`), for the icon.
+    pub role: String,
     pub role_label: String,
     pub win: bool,
     pub played_ago: String,
@@ -411,6 +413,7 @@ fn pro_build_view(matched: &probuilds::ProMatch, now: i64) -> Option<ProBuildVie
         pro_name: matched.display_name().to_string(),
         team: team.to_string(),
         league: matched.pro_league.clone(),
+        role: matched.calculated_role.clone(),
         role_label: probuilds::role_label(&matched.calculated_role).to_string(),
         win: matched.win,
         played_ago: played_ago(now, matched.match_timestamp),

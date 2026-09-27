@@ -5,16 +5,53 @@
 //! lobby, matchmaking, or League not running at all — it backs off so the idle
 //! app is not doing work every few seconds.
 
+use std::sync::Mutex;
 use std::time::Duration;
 
 use serde::Serialize;
+use tauri::Emitter;
 
 use super::apply_top;
+use super::session::ChampSelectContext;
+use super::AppliedView;
 
 /// Champion select is short and reactive, so poll often there.
 const ACTIVE_INTERVAL: Duration = Duration::from_secs(3);
 /// Away from champion select there is nothing to auto-apply, so back off.
 const IDLE_INTERVAL: Duration = Duration::from_secs(10);
+
+/// `champion|map` of the last auto-applied page, shared between the watcher and
+/// the enable path so turning the setting on while already locked applies once
+/// and the next poll does not apply again.
+static APPLIED_KEY: Mutex<Option<String>> = Mutex::new(None);
+
+fn applied_key() -> Option<String> {
+    APPLIED_KEY
+        .lock()
+        .unwrap_or_else(|error| error.into_inner())
+        .clone()
+}
+
+fn set_applied_key(key: Option<String>) {
+    *APPLIED_KEY
+        .lock()
+        .unwrap_or_else(|error| error.into_inner()) = key;
+}
+
+fn apply_key(context: &ChampSelectContext) -> String {
+    format!("{}|{}", context.champion_id, context.map_id)
+}
+
+/// Whether an auto-apply should run for this state. Split out so the "enable
+/// while already locked applies once" rule is testable without League.
+fn auto_apply_target(
+    enabled: bool,
+    ready: bool,
+    key: &str,
+    last: Option<&str>,
+) -> bool {
+    enabled && ready && last != Some(key)
+}
 
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -30,9 +67,7 @@ pub struct ChampSelectEvent {
 /// preset once per champion when the auto-apply setting is on.
 pub fn spawn_watch(app: tauri::AppHandle) {
     tauri::async_runtime::spawn(async move {
-        use tauri::Emitter;
         let mut last: Option<ChampSelectEvent> = None;
-        let mut applied_key: Option<String> = None;
         let mut interval = IDLE_INTERVAL;
         loop {
             tokio::time::sleep(interval).await;
@@ -69,35 +104,74 @@ pub fn spawn_watch(app: tauri::AppHandle) {
             let ready = context.as_ref().is_some_and(|c| c.auto_apply_ready());
             if phase == "ChampSelect" && ready {
                 if let Some(context) = context.as_ref() {
-                    if auto_apply_enabled(&app) {
-                        // One apply per champion. ARAM rerolls and bench swaps
-                        // change the champion, so the key changes and the page
-                        // is re-applied on the next poll (the poll is the
-                        // debounce).
-                        let key = format!("{}|{}", context.champion_id, context.map_id);
-                        if applied_key.as_deref() != Some(key.as_str()) {
-                            let owned = owned_page_id(&app);
-                            if let Ok(Some(applied)) =
-                                apply_top(context, owned, &configured_tier(&app)).await
-                            {
-                                if let Some(id) = applied.page_id {
-                                    persist_page_id(&app, id).await;
-                                }
-                                applied_key = Some(key);
-                                let _ = app.emit("runes_changed", applied.clone());
-                                use tauri::Manager;
-                                if let Some(state) = app.try_state::<crate::AppState>() {
-                                    state.publish_runes(applied);
-                                }
-                            }
-                        }
+                    // One apply per champion. ARAM rerolls and bench swaps
+                    // change the champion, so the key changes and the page is
+                    // re-applied on the next poll (the poll is the debounce).
+                    let key = apply_key(context);
+                    if auto_apply_target(
+                        auto_apply_enabled(&app),
+                        true,
+                        &key,
+                        applied_key().as_deref(),
+                    ) {
+                        let _ = apply_and_track(&app, context, key).await;
                     }
                 }
             } else if phase != "ChampSelect" {
-                applied_key = None;
+                set_applied_key(None);
             }
         }
     });
+}
+
+/// Applies the top preset for the current champion select when auto-apply is on
+/// and the champion is ready, so turning the setting on while already locked
+/// does not leave the user waiting for the next watcher poll. Returns the
+/// applied page when an apply happened.
+pub async fn auto_apply_current(app: &tauri::AppHandle) -> Option<AppliedView> {
+    let super::RuneContext { phase, context } = super::rune_context().await.ok()?;
+    if phase != "ChampSelect" {
+        return None;
+    }
+    let context = context?;
+    let key = apply_key(&context);
+    if !auto_apply_target(
+        auto_apply_enabled(app),
+        context.auto_apply_ready(),
+        &key,
+        applied_key().as_deref(),
+    ) {
+        return None;
+    }
+    apply_and_track(app, &context, key).await
+}
+
+/// Applies and records the result on every surface: the shared applied page
+/// (flagged as an auto-apply), the persisted page id, the `runes_changed` event
+/// and the phone websocket.
+async fn apply_and_track(
+    app: &tauri::AppHandle,
+    context: &ChampSelectContext,
+    key: String,
+) -> Option<AppliedView> {
+    let owned = owned_page_id(app);
+    let applied = apply_top(context, owned, &configured_tier(app))
+        .await
+        .ok()
+        .flatten()?;
+    if let Some(id) = applied.page_id {
+        persist_page_id(app, id).await;
+    }
+    let mut applied = applied;
+    applied.auto_applied = true;
+    super::shared().applied = Some(applied.clone());
+    set_applied_key(Some(key));
+    let _ = app.emit("runes_changed", applied.clone());
+    use tauri::Manager;
+    if let Some(state) = app.try_state::<crate::AppState>() {
+        state.publish_runes(applied.clone());
+    }
+    Some(applied)
 }
 
 pub fn auto_apply_enabled(app: &tauri::AppHandle) -> bool {
@@ -167,5 +241,29 @@ pub async fn current_status() -> ChampSelectEvent {
             position: String::new(),
             locked: false,
         },
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn enabling_while_already_locked_applies_once() {
+        let key = "103|11";
+        // Turning the setting on with the champion already locked applies now.
+        assert!(auto_apply_target(true, true, key, None));
+        // The applied key is remembered, so the watcher's next poll is a no-op.
+        assert!(!auto_apply_target(true, true, key, Some(key)));
+        // A different champion or map is a fresh apply (the poll is the debounce).
+        assert!(auto_apply_target(true, true, "266|11", Some(key)));
+    }
+
+    #[test]
+    fn auto_apply_needs_the_setting_and_a_ready_champion() {
+        // Off never applies, even when locked.
+        assert!(!auto_apply_target(false, true, "103|11", None));
+        // A hovered champion that is not locked never applies.
+        assert!(!auto_apply_target(true, false, "103|11", None));
     }
 }

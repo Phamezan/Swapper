@@ -1,4 +1,5 @@
 import { RuneIcon } from "./RuneIcon";
+import { RoleIcon } from "./RoleIcon";
 import {
   ProBuild,
   ProBuildsView,
@@ -66,7 +67,10 @@ function ProBuildCard({
         <span className="pro-card-dot" />
         <span>Patch {build.patch}</span>
         <span className="pro-card-dot" />
-        <span>{build.roleLabel}</span>
+        <span className="pro-card-role">
+          <RoleIcon role={build.role || build.roleLabel} size={13} />
+          {build.roleLabel}
+        </span>
       </span>
       <span className="pro-card-stats">
         <span className="pro-card-kda">{kda(build)}</span>

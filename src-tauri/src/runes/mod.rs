@@ -39,7 +39,10 @@ pub use data::icon;
 pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
 pub use view::{pro_builds_view, view, ProBuildsView, RunesView};
-pub use watch::{auto_apply_enabled, configured_tier, current_status, spawn_watch, ChampSelectEvent};
+pub use watch::{
+    auto_apply_current, auto_apply_enabled, configured_tier, current_status, spawn_watch,
+    ChampSelectEvent,
+};
 
 const PHASE_PATH: &str = "/lol-gameflow/v1/gameflow-phase";
 const GAMEFLOW_PATH: &str = "/lol-gameflow/v1/session";
@@ -320,6 +323,10 @@ pub struct AppliedView {
     pub preset_index: Option<usize>,
     /// The League page id Swapper owns, so callers can persist ownership.
     pub page_id: Option<i64>,
+    /// Whether this page came from the auto-apply setting, so the UI can label
+    /// the notice and keep manual applies unlabelled.
+    #[serde(default)]
+    pub auto_applied: bool,
 }
 
 struct Shared {

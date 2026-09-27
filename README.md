@@ -68,6 +68,8 @@ npm run tauri dev
 
 `npm run build` checks and bundles the frontend. `cargo test --manifest-path src-tauri/Cargo.toml --locked` runs native tests. To make a Windows installer locally, run `npm run tauri -- build`; a release also needs a manual test with Riot Client and multiple accounts.
 
+During `npm run tauri dev`, the phone page is proxied to the Vite dev server instead of being served from the bundled `dist/` assets, so it stays in step with the desktop UI on every reload. Release builds serve the bundled assets as usual.
+
 ## Contributing
 
 Bug reports, documentation fixes, and code contributions are welcome. For a bug, open a GitHub issue with the Swapper version, Windows version, steps to reproduce, and what happened. Remove Riot account identifiers, session files, access tokens, and other private data from screenshots and logs before sharing them.

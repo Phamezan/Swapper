@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
+import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
 import type { RunesView, ProBuildsView, Selection } from "../runes/types";
 import "./remote.css";
@@ -303,8 +304,9 @@ export default function RemoteApp() {
   const ready = live && status?.state === "available" && status.tailscaleRunning && status.lcuConnected;
   const phase = game?.phase;
   const select = game?.championSelect;
-  const showCatalog = Boolean(status?.lcuConnected && phase === "ChampSelect" && select);
-  const showRunes = Boolean(status?.lcuConnected && phase === "ChampSelect");
+  const inChampSelect = Boolean(status?.lcuConnected && phase === "ChampSelect");
+  const showCatalog = Boolean(inChampSelect && select);
+  const showRunes = inChampSelect;
   const available = new Set(select?.availableChampionIds ?? []);
   const selected = select?.actionKind ? select.selectedChampionId : prepickId ?? select?.prepickChampionId;
   const filtered = champions.filter((champion) =>
@@ -316,20 +318,32 @@ export default function RemoteApp() {
 
   return (
     <div className="remote-shell">
-      <header className="remote-topbar">
+      <header className={`remote-topbar ${inChampSelect ? "is-compact" : ""}`}>
         <div className="remote-topline">
           <div className="remote-brand">
             <span className="remote-mark"><ArrowRight size={15} /><ArrowRight size={15} className="remote-mark-flip" /></span>
-            <div className="remote-brand-copy"><strong>Swapper</strong><span>REMOTE</span></div>
+            <div className="remote-brand-copy"><strong>Swapper</strong>{!inChampSelect && <span>REMOTE</span>}</div>
           </div>
-          <span className={`remote-ready ${ready ? "is-ready" : "is-bad"}`}>
-            <span className="remote-ready-dot" />{ready ? "Ready" : "Check connection"}
-          </span>
+          {inChampSelect ? (
+            <div className="remote-mini-status">
+              <span className={status?.tailscaleRunning && live ? "is-good" : "is-bad"} title={`Tailscale ${status?.tailscaleRunning && live ? "connected" : "offline"}`}><i /></span>
+              <span className={status?.lcuConnected ? "is-good" : "is-bad"} title={`League ${status?.lcuConnected ? "connected" : "offline"}`}><i /></span>
+              <span className={`remote-ready ${ready ? "is-ready" : "is-bad"}`}>
+                <span className="remote-ready-dot" />{ready ? "Ready" : "Check"}
+              </span>
+            </div>
+          ) : (
+            <span className={`remote-ready ${ready ? "is-ready" : "is-bad"}`}>
+              <span className="remote-ready-dot" />{ready ? "Ready" : "Check connection"}
+            </span>
+          )}
         </div>
-        <div className="remote-status-line">
-          <span className={status?.tailscaleRunning && live ? "is-good" : "is-bad"}><i />Tailscale {status?.tailscaleRunning && live ? "connected" : "offline"}</span>
-          <span className={status?.lcuConnected ? "is-good" : "is-bad"}><i />League {status?.lcuConnected ? "connected" : "offline"}</span>
-        </div>
+        {!inChampSelect && (
+          <div className="remote-status-line">
+            <span className={status?.tailscaleRunning && live ? "is-good" : "is-bad"}><i />Tailscale {status?.tailscaleRunning && live ? "connected" : "offline"}</span>
+            <span className={status?.lcuConnected ? "is-good" : "is-bad"}><i />League {status?.lcuConnected ? "connected" : "offline"}</span>
+          </div>
+        )}
       </header>
 
       <main className={`remote-main ${showCatalog || showRunes ? "has-catalog" : ""}`}>
@@ -339,10 +353,43 @@ export default function RemoteApp() {
 
         {showCatalog || showRunes ? (
           <section className="remote-picker" aria-label="Champion select">
-            <div className="remote-select-tabs" role="tablist">
-              <button type="button" role="tab" aria-selected={tab === "pick"} className={tab === "pick" ? "is-active" : ""} onClick={() => setTab("pick")}>Pick</button>
-              <button type="button" role="tab" aria-selected={tab === "runes"} className={tab === "runes" ? "is-active" : ""} onClick={() => setTab("runes")}>Runes</button>
+            {tab === "pick" && (
+              <div className="remote-picker-head compact">
+                <h1>{title}</h1>
+              </div>
+            )}
+            <div className="remote-draft-bar">
+              <div className="remote-select-tabs" role="tablist">
+                <button type="button" role="tab" aria-selected={tab === "pick"} className={tab === "pick" ? "is-active" : ""} onClick={() => setTab("pick")}>Pick</button>
+                <button type="button" role="tab" aria-selected={tab === "runes"} className={tab === "runes" ? "is-active" : ""} onClick={() => setTab("runes")}>Runes</button>
+              </div>
+              {tab === "pick" && (
+                <div className="remote-picker-tools">
+                  <label className="remote-search"><Search size={16} /><input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search champions" aria-label="Search champions" /></label>
+                  <div className="remote-role-row">
+                    <div className="remote-roles" role="group" aria-label="Filter champions by position">
+                      {positions.map((entry) => (
+                        <button
+                          key={entry.value}
+                          className={position === entry.value ? "is-active" : ""}
+                          title={entry.label}
+                          aria-label={entry.label}
+                          aria-pressed={position === entry.value}
+                          onClick={() => setPosition(entry.value)}
+                        >
+                          <RoleIcon role={entry.value === "ALL" ? "all" : entry.value} size={18} />
+                        </button>
+                      ))}
+                    </div>
+                    <div className="remote-availability">
+                      <span>{available.size} available</span>
+                      <button onClick={() => setShowUnavailable((value) => !value)}>{showUnavailable ? "Hide locked" : "Show locked"}</button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
+
             {tab === "runes" ? (
               <RunesPanel
                 mode="remote"
@@ -356,52 +403,35 @@ export default function RemoteApp() {
                 onTierChange={(tier) => void setTier(tier)}
               />
             ) : (
-            <>
-            <div className="remote-picker-head">
-              <p className="remote-eyebrow">CHAMPION SELECT</p>
-              <h1>{title}</h1>
-              <p>{select?.actionKind === "ban" ? "Choose a champion to ban, then confirm." : select?.actionKind === "pick" ? "Select a champion, then lock in." : select?.canPrepick ? "Choose a champion to show your pick intent in League." : "The champion list is ready for your next turn."}</p>
-            </div>
+              <>
+                <div className="remote-grid-wrap">
+                  {catalogError && champions.length === 0 && <p className="remote-empty">Champion data is unavailable. Waiting for League to reconnect.</p>}
+                  {!catalogError && champions.length === 0 && <p className="remote-empty">Loading champions…</p>}
+                  {champions.length > 0 && filtered.length === 0 && <p className="remote-empty">No available champions match this filter.</p>}
+                  <div className="remote-champion-grid">
+                    {filtered.map((champion) => {
+                      const disabled = !select || (!select.actionKind && !select.canPrepick) || !available.has(champion.id);
+                      return <button
+                        key={champion.id}
+                        className={`remote-champion ${selected === champion.id ? "is-selected" : ""}`}
+                        disabled={actionBusy || disabled}
+                        onClick={() => chooseChampion(champion)}
+                        aria-label={`${champion.name}${disabled ? ", unavailable" : ""}`}
+                      >
+                        <img src={`/api/champion/icon/${champion.id}`} alt="" loading="lazy" />
+                        <span>{champion.name}</span>
+                      </button>;
+                    })}
+                  </div>
+                </div>
 
-            <div className="remote-picker-tools">
-              <label className="remote-search"><Search size={17} /><input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search champions" aria-label="Search champions" /></label>
-              <div className="remote-roles" role="group" aria-label="Filter champions by position">
-                {positions.map((entry) => <button key={entry.value} className={position === entry.value ? "is-active" : ""} onClick={() => setPosition(entry.value)}>{entry.label}</button>)}
-              </div>
-              <div className="remote-availability">
-                <span>{available.size} available for {select?.actionKind === "ban" ? "banning" : "picking"}</span>
-                <button onClick={() => setShowUnavailable((value) => !value)}>{showUnavailable ? "Hide unavailable" : "Show all champions"}</button>
-              </div>
-            </div>
-
-            <div className="remote-grid-wrap">
-              {catalogError && champions.length === 0 && <p className="remote-empty">Champion data is unavailable. Waiting for League to reconnect.</p>}
-              {!catalogError && champions.length === 0 && <p className="remote-empty">Loading champions…</p>}
-              {champions.length > 0 && filtered.length === 0 && <p className="remote-empty">No available champions match this filter.</p>}
-              <div className="remote-champion-grid">
-                {filtered.map((champion) => {
-                  const disabled = !select || (!select.actionKind && !select.canPrepick) || !available.has(champion.id);
-                  return <button
-                    key={champion.id}
-                    className={`remote-champion ${selected === champion.id ? "is-selected" : ""}`}
-                    disabled={actionBusy || disabled}
-                    onClick={() => chooseChampion(champion)}
-                    aria-label={`${champion.name}${disabled ? ", unavailable" : ""}`}
-                  >
-                    <img src={`/api/champion/icon/${champion.id}`} alt="" loading="lazy" />
-                    <span>{champion.name}</span>
-                  </button>;
-                })}
-              </div>
-            </div>
-
-            {select?.actionKind && (
-              <div className="remote-picker-footer">
-                <span>{select.selectedChampionId ? champions.find((champion) => champion.id === select.selectedChampionId)?.name ?? "Selected" : "Select a champion"}</span>
-                <button disabled={actionBusy || !select.canComplete} onClick={() => void sendAction("/api/champion/lock")}>{select.actionKind === "ban" ? "Confirm ban" : "Lock in"}</button>
-              </div>
-            )}
-            </>
+                {select?.actionKind && (
+                  <div className="remote-picker-footer">
+                    <span>{select.selectedChampionId ? champions.find((champion) => champion.id === select.selectedChampionId)?.name ?? "Selected" : "Select a champion"}</span>
+                    <button disabled={actionBusy || !select.canComplete} onClick={() => void sendAction("/api/champion/lock")}>{select.actionKind === "ban" ? "Confirm ban" : "Lock in"}</button>
+                  </div>
+                )}
+              </>
             )}
           </section>
         ) : (

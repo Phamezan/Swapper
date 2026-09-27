@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
+import { RoleIcon } from "./RoleIcon";
 import { ProBuilds } from "./ProBuilds";
 import { RuneEditor } from "./RuneEditor";
 import {
@@ -216,12 +217,22 @@ export function RunesPanel({
 
   const sourceClass = view.source === "opgg" ? "is-live" : view.source === "lcu" ? "is-fallback" : "is-none";
   const roleLabel = view.position && view.position !== "none" ? positionLabels[view.position] : modeLabels[view.mode] ?? view.mode;
+  const appliedKeystone = view.applied
+    ? view.trees.flatMap((tree) => tree.keystones).find((rune) => rune.id === view.applied?.keystone)
+    : undefined;
+  const autoAppliedLabel = view.applied?.autoApplied
+    ? `${appliedKeystone?.name ?? "Recommended runes"} · ${view.applied.name}`
+    : null;
+  const showLockHint = screen !== "pro" && view.autoApply && !view.applied && view.phase === "ChampSelect" && !view.locked;
 
   return (
     <div className={`runes-panel runes-${mode}`}>
       <div className="runes-head">
         <div className="runes-title">
-          <p>{view.championName || "Champion"} · {roleLabel}</p>
+          <p className="runes-champ">
+            <RoleIcon role={view.position || view.mode} size={13} />
+            {view.championName || "Champion"} · {roleLabel}
+          </p>
           <h2>Runes</h2>
         </div>
         {onExit && mode === "desktop" && (
@@ -238,28 +249,46 @@ export function RunesPanel({
         {screen !== "pro" && <span className={`runes-source ${sourceClass}`}>{view.sourceLabel}</span>}
       </div>
 
-      {screen !== "pro" && view.tierSupported && (
-        <div className="runes-filter">
-          <label className="runes-filter-label">
-            <span>Rank</span>
-            <select
-              className="rune-tier-select"
-              value={view.tier}
+      {screen !== "pro" && (
+        <div className="runes-settings">
+          {view.tierSupported && (
+            <label className="runes-filter-label">
+              <span>Rank</span>
+              <select
+                className="rune-tier-select"
+                value={view.tier}
+                disabled={busy}
+                aria-label="Rank bracket for rune statistics"
+                onChange={(event) => onTierChange(event.target.value)}
+              >
+                {view.tiers.map((option) => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </label>
+          )}
+          <label className="runes-auto" title="Apply the recommended runes when your champion locks in">
+            <input
+              type="checkbox"
+              role="switch"
+              checked={view.autoApply}
               disabled={busy}
-              aria-label="Rank bracket for rune statistics"
-              onChange={(event) => onTierChange(event.target.value)}
-            >
-              {view.tiers.map((option) => (
-                <option key={option.value} value={option.value}>{option.label}</option>
-              ))}
-            </select>
+              onChange={(event) => onToggleAutoApply(event.target.checked)}
+            />
+            <span>Auto-apply recommended runes</span>
           </label>
-          {view.games > 0 && <span className="runes-filter-games">{fmtGames(view.games)} games</span>}
+          {view.tierSupported && view.games > 0 && (
+            <span className="runes-filter-games">{fmtGames(view.games)} games</span>
+          )}
         </div>
       )}
 
       <div className="runes-body">
         {error && <p className="runes-alert" role="alert">{error}</p>}
+        {screen !== "pro" && autoAppliedLabel && (
+          <p className="runes-note runes-auto-note">Auto-applied {autoAppliedLabel}</p>
+        )}
+        {showLockHint && <p className="runes-note runes-auto-note">Applies when you lock in.</p>}
         {screen !== "pro" && view.message && !error && !view.tierEmpty && <p className="runes-note">{view.message}</p>}
         {screen !== "pro" && view.source === "opgg" && <p className="runes-note runes-approx">Win%, pick% and games are approximate, aggregated from op.gg builds.</p>}
 
@@ -343,10 +372,6 @@ export function RunesPanel({
       </div>
 
       <div className="runes-foot">
-        <label className="runes-auto">
-          <input type="checkbox" checked={view.autoApply} disabled={busy} onChange={(event) => onToggleAutoApply(event.target.checked)} />
-          <span>Auto-apply recommended runes</span>
-        </label>
         <div className="runes-actions">
           <button type="button" className="runes-reset" disabled={busy || !dirty || !selection} onClick={() => setSelection(active ?? defaultSelection(data))}>
             <ResetIcon size={14} /> Reset

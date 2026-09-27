@@ -144,6 +144,7 @@ pub async fn apply(
         shards: selection.shards,
         preset_index,
         page_id,
+        auto_applied: false,
     };
     super::shared().applied = Some(applied.clone());
     Ok(applied)

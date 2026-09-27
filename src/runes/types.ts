@@ -42,6 +42,9 @@ export type Applied = {
   secondaryRunes: number[];
   shards: number[];
   presetIndex: number | null;
+  /** Set when the page came from the auto-apply setting, so the notice reads
+   *  "Auto-applied …" rather than a manual apply. */
+  autoApplied?: boolean;
 };
 
 export type TierOption = {
@@ -78,6 +81,8 @@ export type ProBuild = {
   proName: string;
   team: string;
   league: string;
+  /** API role slug (`top`, `jungle`, `mid`, `adc`, `supp`). */
+  role: string;
   roleLabel: string;
   win: boolean;
   playedAgo: string;
