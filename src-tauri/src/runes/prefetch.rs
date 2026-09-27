@@ -13,13 +13,15 @@ use std::sync::Mutex;
 
 use futures_util::stream::{self, StreamExt};
 
-use super::opgg;
 use super::session::ChampSelectContext;
 use super::{data, RuneSelection};
 
 /// How many icon fetches may run at once while warming. Keeps the warm-up
 /// polite without making it serial.
 const ICON_CONCURRENCY: usize = 8;
+/// How many lolalytics build pages a prefetch may fetch at once. Each page is a
+/// few hundred KB, so this is deliberately small.
+const BUILD_CONCURRENCY: usize = 3;
 
 static GENERATION: AtomicU64 = AtomicU64::new(0);
 /// `champion|position|tier` of the prefetch already started, so the watcher's
@@ -71,6 +73,7 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
     let mut runes: Vec<i64> = Vec::new();
     let mut items: Vec<i64> = Vec::new();
     let mut spells: Vec<i64> = Vec::new();
+    let mut keystones: Vec<i64> = Vec::new();
 
     // Presets for the current champion and role.
     if let Ok(lcu) = super::lcu().await {
@@ -80,17 +83,36 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
             }
             for preset in &loaded.selections {
                 collect_selection(&preset.selection, &mut runes);
+                keystones.push(preset.selection.keystone);
             }
             if let Some(pair) = loaded.spell_pair {
                 spells.extend(pair);
-            }
-            if let Some(build) = loaded.item_build.as_ref() {
-                collect_build(build, &mut items);
             }
         }
     }
     if stale(generation) {
         return;
+    }
+    // Each preset's keystone build from lolalytics, bounded and single-flighted.
+    // The item ids are collected so their icons are warm too.
+    unique(&mut keystones);
+    let builds: Vec<Option<super::KeystoneBuildView>> = stream::iter(keystones)
+        .map(|keystone| {
+            let position = position.clone();
+            let tier = tier.clone();
+            async move {
+                super::view::preset_build_view(context.champion_id, &position, &tier, keystone)
+                    .await
+            }
+        })
+        .buffer_unordered(BUILD_CONCURRENCY)
+        .collect()
+        .await;
+    if stale(generation) {
+        return;
+    }
+    for build in builds.into_iter().flatten() {
+        items.extend(build.items.iter().map(|item| item.id));
     }
     // Pro builds page 1: the slow u.gg call this prefetch exists to hide.
     if let Ok(matches) = data::pro_builds(context.champion_id, &position, 1).await {
@@ -127,19 +149,6 @@ fn collect_selection(selection: &RuneSelection, runes: &mut Vec<i64>) {
     runes.extend(selection.primary_runes.iter().copied());
     runes.extend(selection.secondary_runes.iter().copied());
     runes.extend(selection.shards.iter().copied());
-}
-
-fn collect_build(build: &opgg::ItemBuild, items: &mut Vec<i64>) {
-    let groups = build
-        .starter
-        .iter()
-        .chain(build.boots.iter())
-        .chain(build.core.iter())
-        .chain(build.core_alternatives.iter())
-        .chain(build.late.iter());
-    for group in groups {
-        items.extend(group.ids.iter().copied());
-    }
 }
 
 /// The icon fetches themselves, bounded by [`ICON_CONCURRENCY`]. The backend's
@@ -215,23 +224,5 @@ mod tests {
             runes,
             vec![8100, 8200, 8112, 8139, 8140, 8106, 8237, 8226, 5005, 5008, 5011]
         );
-    }
-
-    #[test]
-    fn collect_build_gathers_every_group() {
-        let stats = |ids: &[i64]| opgg::ItemStats {
-            ids: ids.to_vec(),
-            ..Default::default()
-        };
-        let build = opgg::ItemBuild {
-            starter: Some(stats(&[1056])),
-            boots: Some(stats(&[3020])),
-            core: Some(stats(&[6653])),
-            core_alternatives: vec![stats(&[4645])],
-            late: vec![stats(&[3089]), stats(&[3157])],
-        };
-        let mut items = Vec::new();
-        collect_build(&build, &mut items);
-        assert_eq!(items, vec![1056, 3020, 6653, 4645, 3089, 3157]);
     }
 }

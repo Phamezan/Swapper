@@ -5,7 +5,7 @@ use std::collections::HashMap;
 
 use super::data;
 use super::items;
-use super::opgg;
+use super::lolalytics;
 use super::perks;
 use super::probuilds;
 use super::session;
@@ -72,26 +72,14 @@ pub struct ItemView {
     pub name: String,
 }
 
-/// One group of the item build: its label, its items, and its popularity.
+/// The 6-item build people build with one preset's keystone, from lolalytics.
 #[derive(Debug, Clone, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
-pub struct BuildGroupView {
-    pub label: String,
+pub struct KeystoneBuildView {
+    /// The build in order: core (3, often including boots) then slots 4-6.
     pub items: Vec<ItemView>,
-    pub win_pct: Option<f64>,
-    pub play: u64,
-}
-
-/// The compact item build for the Presets tab, from op.gg.
-#[derive(Debug, Clone, serde::Serialize)]
-#[serde(rename_all = "camelCase")]
-pub struct ItemBuildView {
-    pub starter: Option<BuildGroupView>,
-    pub boots: Option<BuildGroupView>,
-    pub core: Option<BuildGroupView>,
-    /// The next most popular cores, revealed by the "more" toggle.
-    pub core_alternatives: Vec<BuildGroupView>,
-    pub late: Vec<BuildGroupView>,
+    /// The keystone's sample size, shown only when it is small.
+    pub games: u64,
 }
 
 /// One recorded purchase in a pro's game, for the item order.
@@ -222,8 +210,6 @@ pub struct RunesView {
     pub source_label: String,
     pub message: Option<String>,
     pub presets: Vec<PresetView>,
-    /// The recommended item build for the current champion, role and bracket.
-    pub build: Option<ItemBuildView>,
     pub trees: Vec<RuneTreeView>,
     pub shards: Vec<RuneRowView>,
     pub applied: Option<AppliedView>,
@@ -263,7 +249,6 @@ impl RunesView {
             source_label: "Unavailable".into(),
             message: Some(message.into()),
             presets: Vec::new(),
-            build: None,
             trees: Vec::new(),
             shards: Vec::new(),
             applied: None,
@@ -374,51 +359,6 @@ fn item_views(ids: &[i64], names: &HashMap<i64, String>) -> Vec<ItemView> {
         .collect()
 }
 
-fn build_group_view(
-    label: &str,
-    stats: &opgg::ItemStats,
-    names: &HashMap<i64, String>,
-) -> BuildGroupView {
-    BuildGroupView {
-        label: label.to_string(),
-        items: item_views(&stats.ids, names),
-        win_pct: stats.win_pct(),
-        play: stats.play,
-    }
-}
-
-/// Turns op.gg's compact item build into its view, or `None` when there is no
-/// item data at all.
-fn build_view(build: &opgg::ItemBuild, names: &HashMap<i64, String>) -> Option<ItemBuildView> {
-    if build.is_empty() {
-        return None;
-    }
-    Some(ItemBuildView {
-        starter: build
-            .starter
-            .as_ref()
-            .map(|stats| build_group_view("Starter", stats, names)),
-        boots: build
-            .boots
-            .as_ref()
-            .map(|stats| build_group_view("Boots", stats, names)),
-        core: build
-            .core
-            .as_ref()
-            .map(|stats| build_group_view("Core", stats, names)),
-        core_alternatives: build
-            .core_alternatives
-            .iter()
-            .map(|stats| build_group_view("Core", stats, names))
-            .collect(),
-        late: build
-            .late
-            .iter()
-            .map(|stats| build_group_view("Late", stats, names))
-            .collect(),
-    })
-}
-
 /// Structural index used to validate selections from either surface.
 pub fn catalog_index(catalog: &perks::PerkCatalog) -> super::CatalogIndex {
     let mut index = super::CatalogIndex::default();
@@ -504,17 +444,8 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
             groups: Vec::new(),
             selections: Vec::new(),
             spell_pair: None,
-            item_build: None,
             tier_empty: false,
         });
-    // Only op.gg carries item builds, and only when the client can name them.
-    let build = match loaded.item_build.as_ref() {
-        Some(build) => {
-            let names = items::names().await;
-            build_view(build, &names)
-        }
-        None => None,
-    };
     let preset_spells = loaded
         .spell_pair
         .map(|pair| pair.to_vec())
@@ -566,7 +497,6 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
         source_label: source_label(loaded.source).to_string(),
         message,
         presets,
-        build,
         trees: build_trees(&catalog, &aggregates),
         shards: build_shards(&catalog, &aggregates),
         applied,
@@ -581,6 +511,36 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
         tier_empty,
         games,
     }
+}
+
+// ---------------------------------------------------------------------------
+// Per-keystone builds
+// ---------------------------------------------------------------------------
+
+/// The 6-item build people build with one preset's keystone, for a champion,
+/// role and bracket. Returns `None` (so the card shows nothing) when the
+/// champion cannot be mapped, the mode has no lane, or lolalytics has no
+/// build; a network problem is treated the same way.
+pub async fn preset_build_view(
+    champion_id: i64,
+    position: &str,
+    tier: &str,
+    keystone: i64,
+) -> Option<KeystoneBuildView> {
+    if champion_id <= 0 || keystone <= 0 {
+        return None;
+    }
+    let lane = lolalytics::lane(position)?;
+    let names = data::champion_names().await.ok()?;
+    let slug = lolalytics::champion_slug(names.get(&champion_id)?)?;
+    let build = data::keystone_build(&slug, lane, tier, keystone)
+        .await
+        .ok()??;
+    let item_names = items::names().await;
+    Some(KeystoneBuildView {
+        items: item_views(&build.items, &item_names),
+        games: build.games,
+    })
 }
 
 // ---------------------------------------------------------------------------

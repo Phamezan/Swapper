@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Network, Search, Swords } from "lucide-react";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
-import type { RunesView, ProBuildsView, Selection } from "../runes/types";
+import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "../runes/types";
 import "./remote.css";
 
 type RemoteState = "disabled" | "starting" | "notInstalled" | "disconnected" | "available" | "failed";
@@ -302,6 +302,23 @@ export default function RemoteApp() {
     return await response.json() as ProBuildsView;
   }
 
+  async function loadKeystoneBuild(
+    championId: number,
+    position: string,
+    tier: string,
+    keystone: number,
+  ): Promise<KeystoneBuildView | null> {
+    const params = new URLSearchParams({
+      championId: String(championId),
+      position,
+      tier,
+      keystone: String(keystone),
+    });
+    const response = await fetch(`/api/runes/keystone-build?${params.toString()}`, { cache: "no-store" });
+    if (!response.ok) return null;
+    return await response.json() as KeystoneBuildView | null;
+  }
+
   async function toggleAutoApply(enabled: boolean) {
     setRunesBusy(true);
     setRunesError(null);
@@ -455,6 +472,7 @@ export default function RemoteApp() {
                 onToggleSpellsWithRunes={(enabled) => void toggleSpellsWithRunes(enabled)}
                 onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
                 onLoadProBuilds={loadProBuilds}
+                onLoadBuild={loadKeystoneBuild}
                 onTierChange={(tier) => void setTier(tier)}
               />
             ) : (

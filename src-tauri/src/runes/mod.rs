@@ -15,6 +15,7 @@
 pub mod apply;
 pub mod data;
 pub mod items;
+pub mod lolalytics;
 pub mod opgg;
 pub mod page;
 pub mod perks;
@@ -44,7 +45,9 @@ pub use apply::{apply_selection, apply_top};
 pub use data::icon;
 pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
-pub use view::{pro_builds_view, view, ProBuildsView, RunesView};
+pub use view::{
+    preset_build_view, pro_builds_view, view, KeystoneBuildView, ProBuildsView, RunesView,
+};
 pub use watch::{
     apply_spells_enabled, auto_apply_current, auto_apply_enabled, configured_tier, current_status,
     spawn_watch, ChampSelectEvent,
@@ -485,6 +488,8 @@ struct Shared {
     applied: Option<AppliedView>,
     /// pros' solo-queue games from probuildstats, cached per champion/role/page.
     pro_builds: probuilds::MatchCache,
+    /// Per-keystone item builds from lolalytics, cached per filter.
+    lolalytics: lolalytics::BuildCache,
 }
 
 fn shared() -> MutexGuard<'static, Shared> {
@@ -506,6 +511,7 @@ fn shared() -> MutexGuard<'static, Shared> {
                 spell_icons: HashMap::new(),
                 applied: None,
                 pro_builds: probuilds::MatchCache::default(),
+                lolalytics: lolalytics::BuildCache::default(),
             })
         })
         .lock()

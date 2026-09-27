@@ -28,6 +28,7 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
         .route("/api/champion/lock", axum::routing::post(lock_champion))
         .route("/api/runes", get(runes))
         .route("/api/runes/pro-builds", get(pro_builds))
+        .route("/api/runes/keystone-build", get(keystone_build))
         .route("/api/runes/apply", axum::routing::post(apply_runes))
         .route(
             "/api/runes/auto-apply",
@@ -159,6 +160,25 @@ async fn pro_builds(Query(query): Query<ProBuildsQuery>) -> Response {
     )
     .await)
         .into_response()
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct KeystoneBuildQuery {
+    champion_id: i64,
+    #[serde(default)]
+    position: String,
+    #[serde(default)]
+    tier: String,
+    keystone: i64,
+}
+
+async fn keystone_build(Query(query): Query<KeystoneBuildQuery>) -> Response {
+    Json(
+        crate::runes::preset_build_view(query.champion_id, &query.position, &query.tier, query.keystone)
+            .await,
+    )
+    .into_response()
 }
 
 fn rune_status(error: &crate::runes::RuneError) -> StatusCode {

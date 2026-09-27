@@ -125,14 +125,6 @@ struct Data {
     rune_pages: Vec<RunePageGroup>,
     #[serde(default)]
     summoner_spells: Vec<SpellStats>,
-    #[serde(default)]
-    starter_items: Vec<ItemStats>,
-    #[serde(default)]
-    boots: Vec<ItemStats>,
-    #[serde(default)]
-    core_items: Vec<ItemStats>,
-    #[serde(default)]
-    last_items: Vec<ItemStats>,
 }
 
 /// One recommended summoner-spell pair, with its population.
@@ -148,42 +140,11 @@ pub struct SpellStats {
     pub pick_rate: f64,
 }
 
-/// One recommended item set (a starter, a pair of boots, a core, a single late
-/// item), with its population.
-#[derive(Debug, Clone, Default, Deserialize, Serialize, PartialEq)]
-pub struct ItemStats {
-    #[serde(default)]
-    pub ids: Vec<i64>,
-    #[serde(default)]
-    pub play: u64,
-    #[serde(default)]
-    pub win: u64,
-    #[serde(default)]
-    pub pick_rate: f64,
-}
-
-impl ItemStats {
-    pub fn win_pct(&self) -> Option<f64> {
-        (self.play > 0).then(|| (self.win as f64 / self.play as f64) * 100.0)
-    }
-}
-
-/// The item build groups behind the Presets tab: starters, boots, cores, and
-/// late items.
-#[derive(Debug, Clone, Default)]
-pub struct ItemGroups {
-    pub starter_items: Vec<ItemStats>,
-    pub boots: Vec<ItemStats>,
-    pub core_items: Vec<ItemStats>,
-    pub last_items: Vec<ItemStats>,
-}
-
 /// The parts of an op.gg champion response Swapper reads.
 #[derive(Debug, Clone, Default)]
 pub struct ChampionData {
     pub rune_pages: Vec<RunePageGroup>,
     pub summoner_spells: Vec<SpellStats>,
-    pub items: ItemGroups,
 }
 
 impl ChampionData {
@@ -206,12 +167,6 @@ pub fn parse_data(body: &str) -> Result<ChampionData, RuneError> {
     Ok(ChampionData {
         rune_pages: response.data.rune_pages,
         summoner_spells: response.data.summoner_spells,
-        items: ItemGroups {
-            starter_items: response.data.starter_items,
-            boots: response.data.boots,
-            core_items: response.data.core_items,
-            last_items: response.data.last_items,
-        },
     })
 }
 
@@ -282,61 +237,6 @@ pub fn presets(groups: &[RunePageGroup]) -> Vec<Preset> {
             Preset::from_build(index, build)
         })
         .collect()
-}
-
-/// How many alternative cores the "more" toggle may reveal.
-pub const MAX_CORE_ALTERNATIVES: usize = 2;
-/// How many popular late items to show.
-pub const MAX_LATE_ITEMS: usize = 4;
-
-/// The compact item build shown on the Presets tab: only the top option for
-/// each group, plus a couple of core alternatives.
-#[derive(Debug, Clone, Default, PartialEq)]
-pub struct ItemBuild {
-    pub starter: Option<ItemStats>,
-    pub boots: Option<ItemStats>,
-    pub core: Option<ItemStats>,
-    /// The next most popular cores, so the UI can offer a small "more" toggle.
-    pub core_alternatives: Vec<ItemStats>,
-    /// The most popular single late items, at most [`MAX_LATE_ITEMS`].
-    pub late: Vec<ItemStats>,
-}
-
-impl ItemBuild {
-    pub fn is_empty(&self) -> bool {
-        self.starter.is_none()
-            && self.boots.is_none()
-            && self.core.is_none()
-            && self.late.is_empty()
-    }
-}
-
-/// The popular options of a group, most-played first. op.gg already orders by
-/// popularity, but the sort keeps the choice independent of that.
-fn by_popularity(list: &[ItemStats]) -> Vec<ItemStats> {
-    let mut ranked: Vec<ItemStats> = list
-        .iter()
-        .filter(|entry| !entry.ids.is_empty() && entry.play > 0)
-        .cloned()
-        .collect();
-    ranked.sort_by(|a, b| b.play.cmp(&a.play));
-    ranked
-}
-
-/// Picks the compact item build from op.gg's item groups: the top starter,
-/// boots and core, the next cores as alternatives, and a few late items.
-pub fn item_build(items: &ItemGroups) -> ItemBuild {
-    let starters = by_popularity(&items.starter_items);
-    let boots = by_popularity(&items.boots);
-    let cores = by_popularity(&items.core_items);
-    let late = by_popularity(&items.last_items);
-    ItemBuild {
-        starter: starters.into_iter().next(),
-        boots: boots.into_iter().next(),
-        core: cores.first().cloned(),
-        core_alternatives: cores.into_iter().skip(1).take(MAX_CORE_ALTERNATIVES).collect(),
-        late: late.into_iter().take(MAX_LATE_ITEMS).collect(),
-    }
 }
 
 pub struct OpggClient {
@@ -471,44 +371,6 @@ mod tests {
             path("euw", MODE_RANKED, 103, "mid", "iron_plus"),
             "/api/euw/champions/ranked/103/mid?tier=emerald_plus"
         );
-    }
-
-    #[test]
-    fn parses_item_groups_and_picks_the_top_option_per_group() {
-        let data = parse_data(FIXTURE).unwrap();
-        assert_eq!(data.items.starter_items.len(), 2);
-        assert_eq!(data.items.boots.len(), 2);
-        assert_eq!(data.items.core_items.len(), 4);
-        assert_eq!(data.items.last_items.len(), 5);
-        let build = item_build(&data.items);
-        assert_eq!(build.starter.as_ref().unwrap().ids, vec![1056, 2003, 2003]);
-        assert_eq!(build.boots.as_ref().unwrap().ids, vec![3020]);
-        assert_eq!(build.core.as_ref().unwrap().ids, vec![6653, 4645, 3157]);
-        // The next two cores become alternatives; the fourth is dropped.
-        let alternatives: Vec<Vec<i64>> = build
-            .core_alternatives
-            .iter()
-            .map(|core| core.ids.clone())
-            .collect();
-        assert_eq!(
-            alternatives,
-            vec![vec![6653, 3157, 3089], vec![6653, 4645, 3135]]
-        );
-        // The five late items are trimmed to four, most played first.
-        let late: Vec<Vec<i64>> = build.late.iter().map(|item| item.ids.clone()).collect();
-        assert_eq!(late, vec![vec![3089], vec![3135], vec![3116], vec![3157]]);
-        let win = build.core.as_ref().unwrap().win_pct().unwrap();
-        assert!((win - 52.5).abs() < 0.1, "win pct was {win}");
-        assert!(!build.is_empty());
-    }
-
-    #[test]
-    fn an_empty_or_zero_play_item_group_yields_no_build() {
-        let data = parse_data(r#"{"data":{"rune_pages":[]}}"#).unwrap();
-        assert!(item_build(&data.items).is_empty());
-        let data =
-            parse_data(r#"{"data":{"core_items":[{"ids":[6653],"play":0,"win":0}]}}"#).unwrap();
-        assert!(item_build(&data.items).is_empty());
     }
 
     #[test]

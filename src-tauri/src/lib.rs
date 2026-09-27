@@ -635,6 +635,18 @@ async fn get_pro_builds(champion_id: i64, position: String, page: Option<u32>) -
     runes::pro_builds_view(champion_id, &position, page.unwrap_or(1)).await
 }
 
+/// The 6-item build people build with one preset's keystone, from lolalytics.
+/// `None` means there is no build to show for that card.
+#[tauri::command]
+async fn get_keystone_build(
+    champion_id: i64,
+    position: String,
+    tier: String,
+    keystone: i64,
+) -> Option<runes::KeystoneBuildView> {
+    runes::preset_build_view(champion_id, &position, &tier, keystone).await
+}
+
 #[tauri::command]
 async fn apply_rune_page(
     app: tauri::AppHandle,
@@ -818,6 +830,7 @@ pub fn run() {
             rank_icon,
             apply_spell,
             get_pro_builds,
+            get_keystone_build,
             apply_rune_page
         ])
         .run(tauri::generate_context!())

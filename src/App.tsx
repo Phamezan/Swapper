@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { RunesPanel } from "./runes/RunesPanel";
 import { TIER_OPTIONS } from "./runes/types";
-import type { RunesView, ProBuildsView, Selection } from "./runes/types";
+import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
 import "./App.css";
 
 type Account = {
@@ -368,6 +368,20 @@ function App() {
     return invoke<ProBuildsView>("get_pro_builds", { championId, position, page });
   }
 
+  function loadKeystoneBuild(
+    championId: number,
+    position: string,
+    tier: string,
+    keystone: number,
+  ): Promise<KeystoneBuildView | null> {
+    return invoke<KeystoneBuildView | null>("get_keystone_build", {
+      championId,
+      position,
+      tier,
+      keystone,
+    });
+  }
+
   async function setAutoApply(enabled: boolean) {
     setRunesBusy(true);
     setRunesError(null);
@@ -674,6 +688,7 @@ function App() {
             onToggleSpellsWithRunes={(enabled) => void setApplySpellsWithRunes(enabled)}
             onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
             onLoadProBuilds={loadProBuilds}
+            onLoadBuild={loadKeystoneBuild}
             onTierChange={(tier) => void setRuneTier(tier)}
             onExit={() => { runesDismissed.current = true; navigate("accounts"); }}
           />

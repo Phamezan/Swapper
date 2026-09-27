@@ -1,0 +1,643 @@
+//! lolalytics champion build pages, filtered by keystone.
+//!
+//! For a champion, lane, rank bracket and keystone, lolalytics renders the
+//! items players build together with that keystone. The page is server-side
+//! rendered and needs no auth, cookies or special headers, but it is HTML
+//! (~0.5 MB) rather than JSON, so it is parsed defensively and cached.
+//!
+//! The Qwik page embeds its serialized state in a `<script type="qwik/json">`
+//! block that holds both the "Highest Win Build" and "Most Common Build"
+//! summaries. That structured copy is preferred: it yields the *most common,
+//! actually built* 6-item build. When the payload is missing or changed, the
+//! visible markup (the `Core Build` / `Item 4` / `Item 5` / `Item 6` anchors
+//! with `cdn5.lolalytics.com/item64/{id}.webp` icons) is parsed instead.
+//!
+//! lolalytics is third-party aggregate data and is not affiliated with Swapper.
+//! The endpoint is undocumented and can change.
+
+use std::time::{Duration, Instant};
+
+use serde::Deserialize;
+use serde_json::Value;
+
+use super::RuneError;
+
+/// The build page. `lane` and `tier` are slugs; `keystone` is a Riot perk id.
+const BASE_URL: &str = "https://lolalytics.com/lol";
+/// A normal browser user agent; lolalytics does not require one, but it is
+/// polite and matches what a person's browser sends.
+const USER_AGENT: &str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+/// A build page is a few hundred KB; allow a little more than the tiny op.gg
+/// and u.gg calls.
+const REQUEST_TIMEOUT: Duration = Duration::from_secs(8);
+/// A parsed build is reused for this long, matching lolalytics' own cache.
+pub const SUCCESS_TTL: Duration = Duration::from_secs(30 * 60);
+/// A failed or empty lookup is remembered this long before retrying.
+pub const FAILURE_TTL: Duration = Duration::from_secs(5 * 60);
+/// Default rank bracket, the same slug lolalytics uses when none is sent.
+pub const DEFAULT_TIER: &str = "emerald_plus";
+
+/// One keystone's 6-item build.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct KeystoneBuild {
+    /// Item ids in build order: core (3, often including boots), then the top
+    /// item of slots 4, 5 and 6.
+    pub items: Vec<i64>,
+    /// The keystone's sample size on lolalytics.
+    pub games: u64,
+}
+
+/// The champion slug lolalytics uses: lower-case, no spaces or punctuation.
+///
+/// Most names slugify directly (`Kai'Sa` -> `kaisa`, `Dr. Mundo` -> `drmundo`).
+/// A few use a shorter site slug, so they are overridden explicitly.
+pub fn champion_slug(name: &str) -> Option<String> {
+    let mut slug = String::with_capacity(name.len());
+    for ch in name.chars() {
+        if ch.is_ascii_alphanumeric() {
+            slug.push(ch.to_ascii_lowercase());
+        }
+    }
+    if slug.is_empty() {
+        return None;
+    }
+    let slug = match slug.as_str() {
+        // Nunu & Willump and Renata Glasc use shorter slugs on the site.
+        "nunuwillump" => "nunu",
+        "renataglasc" => "renata",
+        // Defensive: the client names the champion Wukong, but its alias and
+        // some game-data files call it MonkeyKing.
+        "monkeyking" => "wukong",
+        other => other,
+    };
+    Some(slug.to_string())
+}
+
+/// Maps one of Swapper's role slugs to a lolalytics lane slug. Modes without a
+/// lane (`none`) return `None`, which hides the build row.
+pub fn lane(position: &str) -> Option<&'static str> {
+    match position.trim().to_ascii_lowercase().as_str() {
+        "top" => Some("top"),
+        "jungle" => Some("jungle"),
+        "mid" | "middle" => Some("middle"),
+        "adc" | "bottom" => Some("bottom"),
+        "support" | "utility" => Some("support"),
+        _ => None,
+    }
+}
+
+/// The rank brackets lolalytics accepts. Swapper's own brackets are already
+/// these slugs, so an unknown value falls back to the default.
+pub fn tier_slug(value: &str) -> &'static str {
+    match value.trim().to_ascii_lowercase().as_str() {
+        "all" => "all",
+        "gold_plus" => "gold_plus",
+        "platinum_plus" => "platinum_plus",
+        "emerald_plus" => "emerald_plus",
+        "diamond_plus" => "diamond_plus",
+        "master_plus" => "master_plus",
+        "challenger" => "challenger",
+        _ => DEFAULT_TIER,
+    }
+}
+
+/// The build page URL for a keystone.
+pub fn url(champion_slug: &str, lane: &str, tier: &str, keystone: i64) -> String {
+    format!(
+        "{BASE_URL}/{champion_slug}/build/?lane={lane}&tier={}&keystone={keystone}",
+        tier_slug(tier)
+    )
+}
+
+/// Cache key for one champion, lane, bracket and keystone.
+pub fn cache_key(champion_slug: &str, lane: &str, tier: &str, keystone: i64) -> String {
+    format!("{champion_slug}|{lane}|{}|{keystone}", tier_slug(tier))
+}
+
+// ---------------------------------------------------------------------------
+// Parsing
+// ---------------------------------------------------------------------------
+
+/// Parses the 6-item build out of a lolalytics build page. A page without the
+/// expected data yields `None` rather than an error, so one card is simply
+/// left without a build.
+pub fn parse_build(html: &str) -> Option<KeystoneBuild> {
+    parse_qwik(html).or_else(|| parse_anchors(html))
+}
+
+/// The compacted state inside `<script type="qwik/json">`.
+#[derive(Deserialize)]
+struct Qwik {
+    #[serde(default)]
+    objs: Vec<Value>,
+}
+
+/// Parses the structured Qwik state, preferring the "Most Common Build".
+fn parse_qwik(html: &str) -> Option<KeystoneBuild> {
+    let payload = qwik_json(html)?;
+    let state: Qwik = serde_json::from_str(payload).ok()?;
+    let objs = &state.objs;
+    // The page summary is an object with exactly `pick` and `win` keys whose
+    // values are the two build summaries.
+    for entry in objs {
+        let Some(map) = entry.as_object() else {
+            continue;
+        };
+        if map.len() > 3 || !map.contains_key("pick") || !map.contains_key("win") {
+            continue;
+        }
+        let pick = resolve(map.get("pick")?, objs, 0);
+        if let Some(build) = build_from_summary(&pick) {
+            return Some(build);
+        }
+    }
+    None
+}
+
+/// The JSON string inside the page's Qwik state script.
+fn qwik_json(html: &str) -> Option<&str> {
+    let marker = "qwik/json";
+    let at = html.find(marker)?;
+    let start = html[at..].find('{')? + at;
+    let end = html[start..].find("</script>")? + start;
+    Some(&html[start..end])
+}
+
+/// Resolves one Qwik reference value. Objects and arrays hold references to
+/// other `objs` entries as base-36 indices; leaf strings and numbers are used
+/// as-is.
+fn resolve(value: &Value, objs: &[Value], depth: u8) -> Value {
+    if depth > 40 {
+        return Value::Null;
+    }
+    match value {
+        Value::String(text) => match base36_index(text) {
+            Some(index) if index < objs.len() => resolve_entry(&objs[index], objs, depth + 1),
+            _ => value.clone(),
+        },
+        Value::Array(items) => {
+            Value::Array(items.iter().map(|item| resolve(item, objs, depth + 1)).collect())
+        }
+        Value::Object(map) => {
+            let mut out = serde_json::Map::with_capacity(map.len());
+            for (key, item) in map {
+                out.insert(key.clone(), resolve(item, objs, depth + 1));
+            }
+            Value::Object(out)
+        }
+        other => other.clone(),
+    }
+}
+
+/// Resolves an `objs` entry: a leaf string is a literal, while an object or
+/// array has its values resolved.
+fn resolve_entry(entry: &Value, objs: &[Value], depth: u8) -> Value {
+    match entry {
+        Value::String(_) => entry.clone(),
+        other => resolve(other, objs, depth),
+    }
+}
+
+/// A base-36 index when the string is a plain lower-case base-36 number.
+fn base36_index(text: &str) -> Option<usize> {
+    if text.is_empty() {
+        return None;
+    }
+    if !text.bytes().all(|b| b.is_ascii_digit() || b.is_ascii_lowercase()) {
+        return None;
+    }
+    usize::from_str_radix(text, 36).ok()
+}
+
+/// Turns a resolved build summary into a [`KeystoneBuild`], reading the most
+/// common core set and the top option of slots 4, 5 and 6.
+///
+/// A build never contains the same legendary twice, but the top option of
+/// different slots can be the same item. Each slot therefore takes its highest
+/// option that is not already in the build, and a slot with no unused option is
+/// left out (a shorter row is fine).
+fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
+    let items = summary.get("items")?;
+    let core = items.get("core")?.get("set")?.as_array()?;
+    let mut ids: Vec<i64> = Vec::new();
+    for id in core.iter().filter_map(as_i64) {
+        if id > 0 && !ids.contains(&id) {
+            ids.push(id);
+            if ids.len() == 3 {
+                break;
+            }
+        }
+    }
+    for slot in ["item4", "item5", "item6"] {
+        if let Some(options) = items.get(slot).and_then(Value::as_array) {
+            let chosen = options
+                .iter()
+                .filter_map(|option| option.get("id").and_then(as_i64))
+                .find(|id| *id > 0 && !ids.contains(id));
+            if let Some(id) = chosen {
+                ids.push(id);
+            }
+        }
+    }
+    if ids.len() < 3 {
+        return None;
+    }
+    let games = items
+        .get("start")
+        .and_then(|start| start.get("n"))
+        .and_then(as_u64)
+        .unwrap_or(0);
+    Some(KeystoneBuild { items: ids, games })
+}
+
+fn as_i64(value: &Value) -> Option<i64> {
+    value.as_i64().or_else(|| value.as_f64().map(|number| number as i64))
+}
+
+fn as_u64(value: &Value) -> Option<u64> {
+    value
+        .as_u64()
+        .or_else(|| value.as_f64().map(|number| number.max(0.0) as u64))
+}
+
+/// Fallback parser for the visible markup, used when the Qwik state is absent
+/// or unrecognised. It reads the page's default ("Highest Win") build from the
+/// `Core Build` and `Item 4/5/6` anchors.
+fn parse_anchors(html: &str) -> Option<KeystoneBuild> {
+    let core_at = html.find("Core Build")?;
+    let item4_at = core_at + html[core_at..].find("Item 4")?;
+    let item5_at = item4_at + html[item4_at..].find("Item 5")?;
+    let item6_at = item5_at + html[item5_at..].find("Item 6")?;
+    let mut items: Vec<i64> = Vec::new();
+    for id in item_ids(&html[core_at..item4_at]) {
+        if !items.contains(&id) {
+            items.push(id);
+            if items.len() == 3 {
+                break;
+            }
+        }
+    }
+    if items.is_empty() {
+        return None;
+    }
+    let boundary = (item6_at + 6000).min(html.len());
+    for (from, to) in [(item4_at, item5_at), (item5_at, item6_at), (item6_at, boundary)] {
+        if let Some(id) = item_ids(&html[from..to])
+            .into_iter()
+            .find(|id| !items.contains(id))
+        {
+            items.push(id);
+        }
+    }
+    let games = html
+        .find("Starting Items")
+        .filter(|start| *start < core_at)
+        .map(|start| games_between(&html[start..core_at]))
+        .unwrap_or(0);
+    Some(KeystoneBuild { items, games })
+}
+
+/// The item ids in a markup fragment, in order, collapsing the adjacent pair
+/// each icon produces (`srcset` plus `src`).
+fn item_ids(fragment: &str) -> Vec<i64> {
+    let mut ids: Vec<i64> = Vec::new();
+    let mut rest = fragment;
+    while let Some(at) = rest.find("item64/") {
+        rest = &rest[at + "item64/".len()..];
+        let digits: String = rest.chars().take_while(|ch| ch.is_ascii_digit()).collect();
+        if digits.is_empty() {
+            continue;
+        }
+        if let Ok(id) = digits.parse::<i64>() {
+            if ids.last() != Some(&id) {
+                ids.push(id);
+            }
+        }
+    }
+    ids
+}
+
+/// The game count from the starting-items row, e.g. `70,627 Games`.
+fn games_between(fragment: &str) -> u64 {
+    let text = strip_tags(fragment);
+    let Some(at) = text.find("Games") else {
+        return 0;
+    };
+    let before = &text[..at];
+    let digits: String = before
+        .chars()
+        .rev()
+        .take_while(|ch| ch.is_ascii_digit() || *ch == ',')
+        .collect::<String>()
+        .chars()
+        .rev()
+        .collect();
+    digits.replace(',', "").parse().unwrap_or(0)
+}
+
+/// Drops HTML tags and comments so text patterns can be matched directly.
+fn strip_tags(fragment: &str) -> String {
+    let mut out = String::with_capacity(fragment.len());
+    let mut rest = fragment;
+    while let Some(at) = rest.find('<') {
+        out.push_str(&rest[..at]);
+        match rest[at..].find('>') {
+            Some(end) => rest = &rest[at + end + 1..],
+            None => return out,
+        }
+    }
+    out.push_str(rest);
+    out
+}
+
+// ---------------------------------------------------------------------------
+// Cache and client
+// ---------------------------------------------------------------------------
+
+/// A cached lookup result.
+pub enum Cached {
+    Fresh(KeystoneBuild),
+    Unavailable,
+    Miss,
+}
+
+/// Successes and failures for keystone builds, keyed by champion/lane/tier/
+/// keystone.
+#[derive(Default)]
+pub struct BuildCache {
+    success: std::collections::HashMap<String, (Instant, KeystoneBuild)>,
+    failures: std::collections::HashMap<String, Instant>,
+}
+
+impl BuildCache {
+    pub fn lookup(&self, key: &str) -> Cached {
+        self.lookup_at(key, Instant::now())
+    }
+
+    pub fn lookup_at(&self, key: &str, now: Instant) -> Cached {
+        if let Some((at, build)) = self.success.get(key) {
+            if now.saturating_duration_since(*at) < SUCCESS_TTL {
+                return Cached::Fresh(build.clone());
+            }
+        }
+        if let Some(at) = self.failures.get(key) {
+            if now.saturating_duration_since(*at) < FAILURE_TTL {
+                return Cached::Unavailable;
+            }
+        }
+        Cached::Miss
+    }
+
+    pub fn store(&mut self, key: String, build: KeystoneBuild) {
+        self.failures.remove(&key);
+        self.success.insert(key, (Instant::now(), build));
+    }
+
+    pub fn fail(&mut self, key: String) {
+        self.failures.insert(key, Instant::now());
+    }
+}
+
+pub struct LolalyticsClient {
+    client: reqwest::Client,
+}
+
+impl LolalyticsClient {
+    pub fn new() -> Result<Self, RuneError> {
+        let client = reqwest::Client::builder()
+            .user_agent(USER_AGENT)
+            .connect_timeout(Duration::from_secs(3))
+            .timeout(REQUEST_TIMEOUT)
+            .build()
+            .map_err(|e| {
+                RuneError::unavailable(format!("Could not create the lolalytics client: {e}"))
+            })?;
+        Ok(Self { client })
+    }
+
+    /// Fetches and parses one keystone's build page. `Ok(None)` means the page
+    /// loaded but carried no build for that filter.
+    pub async fn build(
+        &self,
+        champion_slug: &str,
+        lane: &str,
+        tier: &str,
+        keystone: i64,
+    ) -> Result<Option<KeystoneBuild>, RuneError> {
+        let response = self
+            .client
+            .get(url(champion_slug, lane, tier, keystone))
+            .header(reqwest::header::ACCEPT, "text/html")
+            .send()
+            .await
+            .map_err(|e| RuneError::unavailable(format!("lolalytics request failed: {e}")))?;
+        if !response.status().is_success() {
+            return Err(RuneError::unavailable(format!(
+                "lolalytics returned HTTP {}",
+                response.status().as_u16()
+            )));
+        }
+        let body = response
+            .text()
+            .await
+            .map_err(|e| RuneError::unavailable(format!("lolalytics response was unreadable: {e}")))?;
+        Ok(parse_build(&body))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const AHRI: &str = include_str!("../../tests/fixtures/lolalytics-ahri-mid-8112.html");
+    const JINX: &str = include_str!("../../tests/fixtures/lolalytics-jinx-adc-8008.html");
+
+    fn no_duplicates(ids: &[i64]) -> bool {
+        let mut sorted = ids.to_vec();
+        sorted.sort_unstable();
+        sorted.dedup();
+        sorted.len() == ids.len()
+    }
+
+    #[test]
+    fn parses_two_real_keystone_pages_into_their_builds() {
+        let ahri = parse_build(AHRI).expect("the Ahri page should give a build");
+        // Item 5 and Item 6 both have Rabadon's (3089) at the top; the second
+        // slot falls through to its next option (Void Staff, 3135).
+        assert_eq!(ahri.items, vec![3118, 3020, 4645, 3157, 3089, 3135]);
+        assert_eq!(ahri.games, 70627);
+        assert!(no_duplicates(&ahri.items), "Ahri build has duplicates: {:?}", ahri.items);
+
+        let jinx = parse_build(JINX).expect("the Jinx page should give a build");
+        assert_eq!(jinx.items, vec![2523, 3006, 3085, 3031, 3036, 3026]);
+        assert_eq!(jinx.games, 133854);
+        assert!(jinx.games > 0);
+        assert!(no_duplicates(&jinx.items));
+        assert_ne!(ahri.items, jinx.items);
+    }
+
+    #[test]
+    fn a_slot_whose_top_option_is_used_falls_through_to_its_next_option() {
+        // Item 5 and Item 6 share the same top item (3089); Item 6's next
+        // option (3135) must be chosen so the build has no duplicate legendaries.
+        let html = r#"<script type="qwik/json">{"objs":[
+            {"pick":"1","win":"2"},
+            {"items":"3"},
+            {"items":"4"},
+            {"core":"5","item4":"6","item5":"7","item6":"8","start":"9"},
+            {"core":"5"},
+            {"set":[3118]},
+            [{"id":3157}],
+            [{"id":3089}],
+            [{"id":3089},{"id":3135}],
+            {"n":10}
+        ]}</script>"#;
+        let build = parse_build(html).expect("the hand-built state should parse");
+        assert_eq!(build.items, vec![3118, 3157, 3089, 3135]);
+        assert!(no_duplicates(&build.items));
+
+        // When a slot has no unused option at all, it is simply left out.
+        let html = r#"<script type="qwik/json">{"objs":[
+            {"pick":"1","win":"2"},
+            {"items":"3"},
+            {"items":"4"},
+            {"core":"5","item4":"6","item5":"7","item6":"8","start":"9"},
+            {"core":"5"},
+            {"set":[3118,3020]},
+            [{"id":3157}],
+            [{"id":3089}],
+            [{"id":3089}],
+            {"n":10}
+        ]}</script>"#;
+        let build = parse_build(html).expect("the hand-built state should parse");
+        assert_eq!(build.items, vec![3118, 3020, 3157, 3089]);
+    }
+
+    #[test]
+    fn a_page_without_the_anchors_or_state_gives_no_build() {
+        assert!(parse_build("<html><body>Just a moment…</body></html>").is_none());
+        assert!(parse_build("").is_none());
+        // A Qwik payload that is not valid JSON must not panic.
+        assert!(parse_build(r#"<script type="qwik/json">{not json</script>"#).is_none());
+    }
+
+    #[test]
+    fn resolves_base36_references_and_reads_the_most_common_build() {
+        // A hand-built but well-formed Qwik state: objs[0] is the pick/win
+        // summary, and every index is base-36 (a = 10). The `pick` branch is
+        // the most common build.
+        let html = r#"<script type="qwik/json">{"objs":[
+            {"pick":"1","win":"2"},
+            {"items":"3"},
+            {"items":"4"},
+            {"core":"5","item4":"6","item5":"7","item6":"8","start":"9"},
+            {"core":"5","item4":"a"},
+            {"set":[3118,3020,4645]},
+            [{"id":3157}],
+            [{"id":3089}],
+            [{"id":3089},{"id":3135}],
+            {"n":70627},
+            [{"id":100}]
+        ]}</script>"#;
+        let build = parse_build(html).expect("the hand-built state should parse");
+        assert_eq!(build.items, vec![3118, 3020, 4645, 3157, 3089, 3135]);
+        assert_eq!(build.games, 70627);
+    }
+
+    #[test]
+    fn maps_champion_names_to_lolalytics_slugs() {
+        assert_eq!(champion_slug("Ahri").as_deref(), Some("ahri"));
+        assert_eq!(champion_slug("Lee Sin").as_deref(), Some("leesin"));
+        assert_eq!(champion_slug("Kai'Sa").as_deref(), Some("kaisa"));
+        assert_eq!(champion_slug("Dr. Mundo").as_deref(), Some("drmundo"));
+        assert_eq!(champion_slug("Cho'Gath").as_deref(), Some("chogath"));
+        assert_eq!(champion_slug("Jarvan IV").as_deref(), Some("jarvaniv"));
+        assert_eq!(champion_slug("Kog'Maw").as_deref(), Some("kogmaw"));
+        assert_eq!(champion_slug("LeBlanc").as_deref(), Some("leblanc"));
+        assert_eq!(champion_slug("Rek'Sai").as_deref(), Some("reksai"));
+        assert_eq!(champion_slug("Tahm Kench").as_deref(), Some("tahmkench"));
+        assert_eq!(champion_slug("Twisted Fate").as_deref(), Some("twistedfate"));
+        assert_eq!(champion_slug("Xin Zhao").as_deref(), Some("xinzhao"));
+        assert_eq!(champion_slug("Aurelion Sol").as_deref(), Some("aurelionsol"));
+        assert_eq!(champion_slug("Master Yi").as_deref(), Some("masteryi"));
+        assert_eq!(champion_slug("Miss Fortune").as_deref(), Some("missfortune"));
+        assert_eq!(champion_slug("Bel'Veth").as_deref(), Some("belveth"));
+        assert_eq!(champion_slug("K'Sante").as_deref(), Some("ksante"));
+        // Site-specific shorter slugs.
+        assert_eq!(champion_slug("Wukong").as_deref(), Some("wukong"));
+        assert_eq!(champion_slug("MonkeyKing").as_deref(), Some("wukong"));
+        assert_eq!(champion_slug("Nunu & Willump").as_deref(), Some("nunu"));
+        assert_eq!(champion_slug("Renata Glasc").as_deref(), Some("renata"));
+        assert_eq!(champion_slug(""), None);
+        assert_eq!(champion_slug("  "), None);
+    }
+
+    #[test]
+    fn maps_positions_to_lolalytics_lanes() {
+        assert_eq!(lane("top"), Some("top"));
+        assert_eq!(lane("JUNGLE"), Some("jungle"));
+        assert_eq!(lane("mid"), Some("middle"));
+        assert_eq!(lane("middle"), Some("middle"));
+        assert_eq!(lane("adc"), Some("bottom"));
+        assert_eq!(lane("support"), Some("support"));
+        assert_eq!(lane("none"), None);
+        assert_eq!(lane("aram"), None);
+        assert_eq!(lane(""), None);
+    }
+
+    #[test]
+    fn maps_rank_brackets_and_defaults_unknown_ones() {
+        assert_eq!(tier_slug("all"), "all");
+        assert_eq!(tier_slug("EMERALD_PLUS"), "emerald_plus");
+        assert_eq!(tier_slug("diamond_plus"), "diamond_plus");
+        assert_eq!(tier_slug("grandmaster_plus"), DEFAULT_TIER);
+        assert_eq!(tier_slug(""), DEFAULT_TIER);
+    }
+
+    #[test]
+    fn the_cache_key_carries_the_keystone_and_bracket() {
+        let base = cache_key("ahri", "middle", "emerald_plus", 8112);
+        assert_eq!(base, "ahri|middle|emerald_plus|8112");
+        assert_ne!(base, cache_key("ahri", "middle", "emerald_plus", 8229));
+        assert_ne!(base, cache_key("ahri", "middle", "diamond_plus", 8112));
+        assert_ne!(base, cache_key("ahri", "top", "emerald_plus", 8112));
+        // An unknown bracket is normalized into the key.
+        assert_eq!(
+            cache_key("ahri", "middle", "nonsense", 8112),
+            cache_key("ahri", "middle", DEFAULT_TIER, 8112)
+        );
+    }
+
+    #[test]
+    fn caches_successes_for_thirty_minutes_and_failures_for_five() {
+        let now = Instant::now();
+        let mut cache = BuildCache::default();
+        let key = cache_key("ahri", "middle", "emerald_plus", 8112);
+        assert!(matches!(cache.lookup_at(&key, now), Cached::Miss));
+
+        cache.store(key.clone(), KeystoneBuild { items: vec![1, 2, 3], games: 10 });
+        assert!(matches!(cache.lookup_at(&key, now), Cached::Fresh(_)));
+        assert!(matches!(cache.lookup_at(&key, now + SUCCESS_TTL / 2), Cached::Fresh(_)));
+        assert!(matches!(
+            cache.lookup_at(&key, now + SUCCESS_TTL + Duration::from_secs(1)),
+            Cached::Miss
+        ));
+
+        let failed = cache_key("ahri", "middle", "emerald_plus", 8229);
+        cache.fail(failed.clone());
+        assert!(matches!(cache.lookup_at(&failed, Instant::now()), Cached::Unavailable));
+    }
+
+    #[test]
+    fn builds_the_endpoint_url_with_the_keystone() {
+        assert_eq!(
+            url("ahri", "middle", "emerald_plus", 8112),
+            "https://lolalytics.com/lol/ahri/build/?lane=middle&tier=emerald_plus&keystone=8112"
+        );
+        // An unknown bracket is normalized in the URL too.
+        assert_eq!(
+            url("leesin", "jungle", "bogus", 8010),
+            "https://lolalytics.com/lol/leesin/build/?lane=jungle&tier=emerald_plus&keystone=8010"
+        );
+    }
+}

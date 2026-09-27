@@ -60,21 +60,12 @@ export type ItemView = {
   name: string;
 };
 
-/** One group of the item build (starter, boots, core, late). */
-export type BuildGroup = {
-  label: string;
+/** The 6-item build people build with one preset's keystone, from lolalytics. */
+export type KeystoneBuildView = {
+  /** The build in order: core (3, often including boots) then slots 4-6. */
   items: ItemView[];
-  winPct: number | null;
-  play: number;
-};
-
-/** The compact item build for the Presets tab. */
-export type ItemBuildView = {
-  starter: BuildGroup | null;
-  boots: BuildGroup | null;
-  core: BuildGroup | null;
-  coreAlternatives: BuildGroup[];
-  late: BuildGroup[];
+  /** The keystone's sample size, shown only when it is small. */
+  games: number;
 };
 
 /** One recorded purchase in a pro's game. */
@@ -109,8 +100,6 @@ export type RunesView = {
   sourceLabel: string;
   message: string | null;
   presets: Preset[];
-  /** The recommended item build for the current champion, role and bracket. */
-  build: ItemBuildView | null;
   trees: RuneTree[];
   shards: RuneRow[];
   applied: Applied | null;

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
 import { RoleIcon } from "./RoleIcon";
 import { SpellIcon } from "./SpellIcon";
-import { ItemBuild } from "./ItemBuild";
+import { PresetBuild } from "./PresetBuild";
 import { ProBuilds } from "./ProBuilds";
 import { RuneEditor } from "./RuneEditor";
 import { RankPicker } from "./RankPicker";
@@ -10,6 +10,7 @@ import {
   RunesView,
   ProBuild,
   ProBuildsView,
+  KeystoneBuildView,
   Selection,
   fmtGames,
   fmtPct,
@@ -62,6 +63,13 @@ type Props = {
   onPickSpell: (slot: "d" | "f", spellId: number) => void;
   /** Loads one page of pros' solo-queue games for the champion and role. */
   onLoadProBuilds: (championId: number, position: string, page: number) => Promise<ProBuildsView>;
+  /** Loads the 6-item build for one preset's keystone, from lolalytics. */
+  onLoadBuild: (
+    championId: number,
+    position: string,
+    tier: string,
+    keystone: number,
+  ) => Promise<KeystoneBuildView | null>;
   onTierChange: (tier: string) => void;
   onExit?: () => void;
 };
@@ -114,6 +122,7 @@ export function RunesPanel({
   onToggleSpellsWithRunes,
   onPickSpell,
   onLoadProBuilds,
+  onLoadBuild,
   onTierChange,
   onExit,
 }: Props) {
@@ -408,10 +417,17 @@ export function RunesPanel({
                       </>
                     )}
                   </span>
+                  <PresetBuild
+                    mode={mode}
+                    championId={view.championId}
+                    position={view.position}
+                    tier={view.tier}
+                    keystone={preset.keystone}
+                    onLoad={onLoadBuild}
+                  />
                 </button>
               );
             })}
-            {view.build && <ItemBuild build={view.build} mode={mode} />}
           </div>
         ) : canEdit && selection ? (
           <RuneEditor

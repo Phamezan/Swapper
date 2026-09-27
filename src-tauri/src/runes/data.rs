@@ -6,6 +6,7 @@ use std::collections::HashMap;
 use std::sync::OnceLock;
 use std::time::{Duration, Instant};
 
+use super::lolalytics;
 use super::opgg;
 use super::perks;
 use super::probuilds;
@@ -23,10 +24,20 @@ const GROUP_FAILURE_TTL: Duration = Duration::from_secs(60);
 /// fetch each file once.
 static CATALOG_LOCK: OnceLock<tokio::sync::Mutex<()>> = OnceLock::new();
 static NAMES_LOCK: OnceLock<tokio::sync::Mutex<()>> = OnceLock::new();
-/// Keyed gates for op.gg champion data, pro builds and per-rune icons.
+/// Keyed gates for op.gg champion data, pro builds, per-rune icons and
+/// per-keystone lolalytics builds.
 static GROUP_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
 static PRO_BUILDS_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
 static RUNE_ICON_FLIGHTS: OnceLock<super::Flights<i64>> = OnceLock::new();
+static KEYSTONE_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
+/// Bounds how many lolalytics pages are fetched at once. A preset list has a
+/// handful of keystones and each page is a few hundred KB, so this keeps the
+/// warm-up and on-demand loads polite without serializing them.
+static KEYSTONE_FETCHES: OnceLock<tokio::sync::Semaphore> = OnceLock::new();
+
+fn keystone_fetches() -> &'static tokio::sync::Semaphore {
+    KEYSTONE_FETCHES.get_or_init(|| tokio::sync::Semaphore::new(3))
+}
 
 fn catalog_lock() -> &'static tokio::sync::Mutex<()> {
     CATALOG_LOCK.get_or_init(|| tokio::sync::Mutex::new(()))
@@ -50,6 +61,12 @@ fn pro_build_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
 
 fn rune_icon_gate(id: i64) -> std::sync::Arc<tokio::sync::Mutex<()>> {
     RUNE_ICON_FLIGHTS.get_or_init(super::Flights::new).gate(&id)
+}
+
+fn keystone_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
+    KEYSTONE_FLIGHTS
+        .get_or_init(super::Flights::new)
+        .gate(&key.to_string())
 }
 
 pub async fn catalog() -> Result<perks::PerkCatalog, RuneError> {
@@ -217,6 +234,60 @@ fn cached_pro_builds(key: &str) -> Option<Result<Vec<probuilds::ProMatch>, RuneE
     }
 }
 
+/// The 6-item build for one keystone on lolalytics, cached for the session.
+///
+/// `Ok(None)` means the page carried no build for that champion/lane/bracket/
+/// keystone. A failure or an empty page is negative-cached for
+/// [`lolalytics::FAILURE_TTL`] so a locked champion select does not fetch the
+/// same page repeatedly. Concurrent misses for the same filter wait on one
+/// request.
+pub async fn keystone_build(
+    champion_slug: &str,
+    lane: &str,
+    tier: &str,
+    keystone: i64,
+) -> Result<Option<lolalytics::KeystoneBuild>, RuneError> {
+    let key = lolalytics::cache_key(champion_slug, lane, tier, keystone);
+    if let Some(cached) = cached_keystone_build(&key) {
+        return cached;
+    }
+    let gate = keystone_gate(&key);
+    let _guard = gate.lock().await;
+    if let Some(cached) = cached_keystone_build(&key) {
+        return cached;
+    }
+    let _permit = keystone_fetches()
+        .acquire()
+        .await
+        .expect("the keystone fetch semaphore is never closed");
+    let client = lolalytics::LolalyticsClient::new()?;
+    match client.build(champion_slug, lane, tier, keystone).await {
+        Ok(Some(build)) => {
+            super::shared().lolalytics.store(key, build.clone());
+            Ok(Some(build))
+        }
+        Ok(None) => {
+            super::shared().lolalytics.fail(key);
+            Ok(None)
+        }
+        Err(error) => {
+            super::shared().lolalytics.fail(key);
+            Err(error)
+        }
+    }
+}
+
+/// A cached keystone build for a filter key, if one is still fresh.
+fn cached_keystone_build(
+    key: &str,
+) -> Option<Result<Option<lolalytics::KeystoneBuild>, RuneError>> {
+    match super::shared().lolalytics.lookup(key) {
+        lolalytics::Cached::Fresh(build) => Some(Ok(Some(build))),
+        lolalytics::Cached::Unavailable => Some(Ok(None)),
+        lolalytics::Cached::Miss => None,
+    }
+}
+
 async fn lcu_recommended(
     current: &Lcu,
     context: &session::ChampSelectContext,
@@ -251,9 +322,6 @@ pub struct Loaded {
     /// applied with the page when the setting is on. `None` for the League
     /// fallback, which does not carry spells.
     pub spell_pair: Option<[i64; 2]>,
-    /// The compact item build for the Presets tab. `None` for the League
-    /// fallback, which does not carry items.
-    pub item_build: Option<opgg::ItemBuild>,
     /// True when the chosen rank bracket had no op.gg data but a broader bracket
     /// did. The caller shows a "not enough games" state instead of silently
     /// falling back to a different bracket.
@@ -298,7 +366,6 @@ pub async fn load_for(
                 groups: data.rune_pages,
                 selections,
                 spell_pair,
-                item_build: Some(opgg::item_build(&data.items)),
                 tier_empty: false,
             });
         }
@@ -321,7 +388,6 @@ pub async fn load_for(
                     groups: Vec::new(),
                     selections: Vec::new(),
                     spell_pair: None,
-                    item_build: None,
                     tier_empty: true,
                 });
             }
@@ -351,7 +417,6 @@ pub async fn load_for(
         groups: Vec::new(),
         selections,
         spell_pair: None,
-        item_build: None,
         tier_empty: false,
     })
 }

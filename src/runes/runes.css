@@ -610,49 +610,33 @@
 .rune-spell-option.is-active { border-color: #d8b25a; color: var(--text-primary); background: #2a2413; }
 .runes-remote .rune-spell-option { min-height: 78px; }
 
-/* Item icons, shared by the build block and the pro cards. */
+/* Item icons, shared by the per-keystone build rows and the pro cards. */
 .item-icon { display: block; border-radius: 5px; background: var(--surface-raised); object-fit: cover; }
 .item-icon-fallback { display: inline-block; border-radius: 5px; background: var(--surface-raised); }
 
-/* The recommended item build under the preset cards. Display only. */
-.item-build {
+/* The 6-item build on each preset card, from lolalytics. Display only. */
+.preset-build {
   display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding: 10px 11px;
-  border: 1px solid var(--line-subtle);
-  border-radius: 12px;
-  background: var(--surface-panel);
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  margin-top: 2px;
 }
-
-.item-build-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.item-build-title { color: var(--text-muted); font-size: 9px; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
-
-.item-build-more {
-  min-height: 26px;
-  padding: 0 9px;
-  border: 1px solid var(--line-strong);
-  border-radius: 7px;
-  color: var(--text-secondary);
-  background: transparent;
-  font-size: 10px;
-  font-weight: 650;
+.preset-build .item-icon, .preset-build .item-icon-fallback { width: 24px; height: 24px; border-radius: 6px; }
+.preset-build-skeleton {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--surface-raised) 25%, var(--surface-hover) 50%, var(--surface-raised) 75%);
+  background-size: 200% 100%;
+  animation: preset-build-shimmer 1.2s ease-in-out infinite;
 }
-.item-build-more:hover { color: var(--text-primary); background: var(--surface-hover); }
-
-.item-build-groups { display: flex; flex-direction: column; gap: 6px; }
-.build-row { display: flex; align-items: center; gap: 8px; }
-.build-row-label { flex: none; width: 42px; color: var(--text-secondary); font-size: 10px; font-weight: 700; }
-.build-row-items { display: flex; align-items: center; gap: 4px; min-width: 0; }
-.item-build .item-icon, .item-build .item-icon-fallback { width: 26px; height: 26px; }
-.build-row-stats { display: flex; align-items: baseline; gap: 6px; margin-left: auto; flex: none; font-variant-numeric: tabular-nums; }
-.build-row-win { color: #6ea8fe; font-size: 11px; font-weight: 700; }
-.build-row-games { color: var(--text-muted); font-size: 10px; font-weight: 600; }
-
-.item-build-late { display: flex; align-items: center; gap: 8px; padding-top: 7px; border-top: 1px solid var(--line-subtle); }
-.build-late-items { display: flex; align-items: flex-start; gap: 9px; }
-.build-late-option { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.build-late-win { color: #6ea8fe; font-size: 9px; font-weight: 700; font-variant-numeric: tabular-nums; }
+@keyframes preset-build-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+.preset-build-games { margin-left: 4px; color: var(--text-muted); font-size: 10px; font-weight: 600; white-space: nowrap; }
 
 /* Rank picker: a popover under the trigger on the desktop flyout, a bottom
    sheet on the phone. */
@@ -752,10 +736,10 @@
 
 .runes-remote .rank-trigger { min-height: 44px; font-size: 14px; }
 .runes-remote .rank-option-games { font-size: 12px; }
-.runes-remote .item-build .item-icon, .runes-remote .item-build .item-icon-fallback { width: 30px; height: 30px; }
-.runes-remote .item-build-more { min-height: 44px; font-size: 13px; }
-.runes-remote .build-row-label { width: 48px; font-size: 12px; }
-.runes-remote .build-row-win { font-size: 13px; }
+.runes-remote .preset-build .item-icon,
+.runes-remote .preset-build .item-icon-fallback,
+.runes-remote .preset-build-skeleton { width: 28px; height: 28px; }
+.runes-remote .preset-build-games { font-size: 12px; }
 
 /* Pro card items: the final build row, and the expandable item order. */
 .pro-card-items { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
