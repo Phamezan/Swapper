@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import { cachedIcon, loadIcon } from "./iconLoader";
 
 /** League positions, as the slugs used across the rune and pro-build data. */
 export type RoleKey = "all" | "top" | "jungle" | "mid" | "adc" | "support" | "none";
@@ -39,8 +40,6 @@ const ASSET: Partial<Record<RoleKey, string>> = {
   support: "utility",
 };
 
-const cache = new Map<string, string>();
-
 /** The two roles that have no client asset keep a small inline glyph. */
 const PATHS: Partial<Record<RoleKey, ReactNode>> = {
   // All: a grid of every role.
@@ -75,8 +74,9 @@ export function RoleIcon({
 }) {
   const key = roleKey(role);
   const asset = ASSET[key] ?? null;
+  const cacheKey = `role:${asset}`;
   const [src, setSrc] = useState<string | null>(() =>
-    asset ? (mode === "remote" ? `/api/role/icon/${asset}` : cache.get(asset) ?? null) : null,
+    asset ? (mode === "remote" ? `/api/role/icon/${asset}` : cachedIcon(cacheKey) ?? null) : null,
   );
 
   useEffect(() => {
@@ -85,24 +85,24 @@ export function RoleIcon({
       setSrc(`/api/role/icon/${asset}`);
       return;
     }
-    const cached = cache.get(asset);
+    const cached = cachedIcon(cacheKey);
     if (cached) {
       setSrc(cached);
       return;
     }
     let live = true;
     // The desktop webview cannot reach the LCU, so the SVG comes over IPC.
-    void import("@tauri-apps/api/core")
-      .then(({ invoke }) => invoke<string>("role_icon", { role: asset }))
+    void loadIcon(cacheKey, () =>
+      import("@tauri-apps/api/core").then(({ invoke }) => invoke<string>("role_icon", { role: asset })),
+    )
       .then((data) => {
-        cache.set(asset, data);
         if (live) setSrc(data);
       })
       .catch(() => {});
     return () => {
       live = false;
     };
-  }, [asset, mode]);
+  }, [asset, cacheKey, mode]);
 
   if (!asset) {
     return (

@@ -3,6 +3,7 @@
 //! locked champion select stays cheap.
 
 use std::collections::HashMap;
+use std::sync::OnceLock;
 use std::time::{Duration, Instant};
 
 use super::opgg;
@@ -18,11 +19,46 @@ use super::{
 /// select does not hit op.gg on every poll.
 const GROUP_FAILURE_TTL: Duration = Duration::from_secs(60);
 
+/// Serializes rune-catalog loads and champion-name loads so concurrent misses
+/// fetch each file once.
+static CATALOG_LOCK: OnceLock<tokio::sync::Mutex<()>> = OnceLock::new();
+static NAMES_LOCK: OnceLock<tokio::sync::Mutex<()>> = OnceLock::new();
+/// Keyed gates for op.gg champion data, pro builds and per-rune icons.
+static GROUP_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
+static PRO_BUILDS_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
+static RUNE_ICON_FLIGHTS: OnceLock<super::Flights<i64>> = OnceLock::new();
+
+fn catalog_lock() -> &'static tokio::sync::Mutex<()> {
+    CATALOG_LOCK.get_or_init(|| tokio::sync::Mutex::new(()))
+}
+
+fn names_lock() -> &'static tokio::sync::Mutex<()> {
+    NAMES_LOCK.get_or_init(|| tokio::sync::Mutex::new(()))
+}
+
+fn group_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
+    GROUP_FLIGHTS
+        .get_or_init(super::Flights::new)
+        .gate(&key.to_string())
+}
+
+fn pro_build_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
+    PRO_BUILDS_FLIGHTS
+        .get_or_init(super::Flights::new)
+        .gate(&key.to_string())
+}
+
+fn rune_icon_gate(id: i64) -> std::sync::Arc<tokio::sync::Mutex<()>> {
+    RUNE_ICON_FLIGHTS.get_or_init(super::Flights::new).gate(&id)
+}
+
 pub async fn catalog() -> Result<perks::PerkCatalog, RuneError> {
-    if let Some((at, catalog)) = super::shared().catalog.as_ref() {
-        if at.elapsed() < CATALOG_TTL {
-            return Ok(catalog.clone());
-        }
+    if let Some(catalog) = cached_catalog() {
+        return Ok(catalog);
+    }
+    let _guard = catalog_lock().lock().await;
+    if let Some(catalog) = cached_catalog() {
+        return Ok(catalog);
     }
     let lcu = super::lcu().await?;
     let perks_json = super::lcu_get_text(&lcu, PERKS_PATH).await?;
@@ -31,23 +67,39 @@ pub async fn catalog() -> Result<perks::PerkCatalog, RuneError> {
         perks::parse_perks(&perks_json)?,
         perks::parse_styles(&styles_json)?,
     );
-    let mut state = super::shared();
-    state.catalog = Some((Instant::now(), catalog.clone()));
+    super::shared().catalog = Some((Instant::now(), catalog.clone()));
     Ok(catalog)
 }
 
+fn cached_catalog() -> Option<perks::PerkCatalog> {
+    super::shared()
+        .catalog
+        .as_ref()
+        .filter(|(at, _)| at.elapsed() < CATALOG_TTL)
+        .map(|(_, catalog)| catalog.clone())
+}
+
 pub async fn champion_names() -> Result<HashMap<i64, String>, RuneError> {
-    if let Some((at, names)) = super::shared().names.as_ref() {
-        if at.elapsed() < CATALOG_TTL {
-            return Ok(names.clone());
-        }
+    if let Some(names) = cached_champion_names() {
+        return Ok(names);
+    }
+    let _guard = names_lock().lock().await;
+    if let Some(names) = cached_champion_names() {
+        return Ok(names);
     }
     let lcu = super::lcu().await?;
     let text = super::lcu_get_text(&lcu, CHAMPIONS_PATH).await?;
     let names = session::parse_champion_summary(&text)?;
-    let mut state = super::shared();
-    state.names = Some((Instant::now(), names.clone()));
+    super::shared().names = Some((Instant::now(), names.clone()));
     Ok(names)
+}
+
+fn cached_champion_names() -> Option<HashMap<i64, String>> {
+    super::shared()
+        .names
+        .as_ref()
+        .filter(|(at, _)| at.elapsed() < CATALOG_TTL)
+        .map(|(_, names)| names.clone())
 }
 
 /// The session cache key for an op.gg lookup. The rank bracket is part of the
@@ -71,20 +123,13 @@ pub async fn champion_data(
 ) -> Result<opgg::ChampionData, RuneError> {
     let tier = opgg::normalize_tier(tier);
     let key = group_key(region, mode, champion_id, position, tier);
-    {
-        let state = super::shared();
-        if let Some((at, data)) = state.groups.get(&key) {
-            if at.elapsed() < GROUP_TTL {
-                return Ok(data.clone());
-            }
-        }
-        if let Some(at) = state.group_failures.get(&key) {
-            if at.elapsed() < GROUP_FAILURE_TTL {
-                return Err(RuneError::unavailable(
-                    "op.gg data is temporarily unavailable.",
-                ));
-            }
-        }
+    if let Some(result) = cached_group(&key) {
+        return result;
+    }
+    let gate = group_gate(&key);
+    let _guard = gate.lock().await;
+    if let Some(result) = cached_group(&key) {
+        return result;
     }
     let client = opgg::OpggClient::new()?;
     match client
@@ -108,11 +153,30 @@ pub async fn champion_data(
     }
 }
 
+/// A cached op.gg result for a group key, if one is still fresh.
+fn cached_group(key: &str) -> Option<Result<opgg::ChampionData, RuneError>> {
+    let state = super::shared();
+    if let Some((at, data)) = state.groups.get(key) {
+        if at.elapsed() < GROUP_TTL {
+            return Some(Ok(data.clone()));
+        }
+    }
+    if let Some(at) = state.group_failures.get(key) {
+        if at.elapsed() < GROUP_FAILURE_TTL {
+            return Some(Err(RuneError::unavailable(
+                "op.gg data is temporarily unavailable.",
+            )));
+        }
+    }
+    None
+}
+
 /// pros' solo-queue games for a champion and role, cached for the session.
 ///
 /// The API pages 20 games at a time; `page` is 1-based. Successes are cached
 /// for [`probuilds::SUCCESS_TTL`] and failures for [`probuilds::FAILURE_TTL`],
-/// so a locked champion select never polls the endpoint.
+/// so a locked champion select never polls the endpoint. Concurrent misses for
+/// the same page wait on one request.
 pub async fn pro_builds(
     champion_id: i64,
     position: &str,
@@ -121,14 +185,13 @@ pub async fn pro_builds(
     let role = probuilds::role_arg(position);
     let page = page.max(1);
     let key = probuilds::cache_key(champion_id, role, page);
-    match super::shared().pro_builds.lookup(&key) {
-        probuilds::Cached::Fresh(matches) => return Ok(matches),
-        probuilds::Cached::Unavailable => {
-            return Err(RuneError::unavailable(
-                "Pro builds are temporarily unavailable.",
-            ))
-        }
-        probuilds::Cached::Miss => {}
+    if let Some(cached) = cached_pro_builds(&key) {
+        return cached;
+    }
+    let gate = pro_build_gate(&key);
+    let _guard = gate.lock().await;
+    if let Some(cached) = cached_pro_builds(&key) {
+        return cached;
     }
     let client = probuilds::ProBuildsClient::new()?;
     match client.matches(champion_id, role, page, false).await {
@@ -140,6 +203,17 @@ pub async fn pro_builds(
             super::shared().pro_builds.fail(key);
             Err(error)
         }
+    }
+}
+
+/// A cached pro-build lookup for a page, if one is still fresh.
+fn cached_pro_builds(key: &str) -> Option<Result<Vec<probuilds::ProMatch>, RuneError>> {
+    match super::shared().pro_builds.lookup(key) {
+        probuilds::Cached::Fresh(matches) => Some(Ok(matches)),
+        probuilds::Cached::Unavailable => Some(Err(RuneError::unavailable(
+            "Pro builds are temporarily unavailable.",
+        ))),
+        probuilds::Cached::Miss => None,
     }
 }
 
@@ -283,7 +357,13 @@ pub async fn load_for(
 }
 
 /// Returns the PNG bytes for a rune, keystone, tree, or shard icon id.
+/// Concurrent requests for the same id share one fetch.
 pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
+    if let Some(bytes) = super::shared().icons.get(&id) {
+        return Ok(bytes.clone());
+    }
+    let gate = rune_icon_gate(id);
+    let _guard = gate.lock().await;
     if let Some(bytes) = super::shared().icons.get(&id) {
         return Ok(bytes.clone());
     }

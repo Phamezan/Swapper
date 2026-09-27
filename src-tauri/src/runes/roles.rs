@@ -5,6 +5,7 @@
 //! CommunityDragon mirror otherwise. Only these five names are ever fetched, so
 //! no caller-supplied path reaches the client or the network.
 
+use std::sync::{Arc, OnceLock};
 use std::time::Duration;
 
 use super::RuneError;
@@ -12,6 +13,15 @@ use super::RuneError;
 const CDRAGON_BASE: &str =
     "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg";
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(4);
+
+/// One gate per asset name so concurrent requests for a role share a fetch.
+static ROLE_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
+
+fn role_gate(name: &str) -> Arc<tokio::sync::Mutex<()>> {
+    ROLE_FLIGHTS
+        .get_or_init(super::Flights::new)
+        .gate(&name.to_string())
+}
 
 /// Maps a role slug, LCU `assignedPosition`, or op.gg position to the icon name
 /// used by the client's static-assets plugin.
@@ -43,6 +53,11 @@ fn looks_like_svg(bytes: &[u8]) -> bool {
 /// the five known positions; anything else is `NotFound`.
 pub async fn icon(role: &str) -> Result<Vec<u8>, RuneError> {
     let name = asset_name(role).ok_or_else(|| RuneError::not_found("Unknown role."))?;
+    if let Some(bytes) = super::shared().role_icons.get(name) {
+        return Ok(bytes.clone());
+    }
+    let gate = role_gate(name);
+    let _guard = gate.lock().await;
     if let Some(bytes) = super::shared().role_icons.get(name) {
         return Ok(bytes.clone());
     }

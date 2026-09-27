@@ -5,6 +5,7 @@
 //! CommunityDragon mirror otherwise. Only a whitelisted tier is ever fetched,
 //! so no caller-supplied path reaches the client or the network.
 
+use std::sync::{Arc, OnceLock};
 use std::time::Duration;
 
 use super::RuneError;
@@ -12,6 +13,15 @@ use super::RuneError;
 const CDRAGON_BASE: &str =
     "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests";
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(4);
+
+/// One gate per crest name so concurrent requests for a bracket share a fetch.
+static RANK_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
+
+fn rank_gate(name: &str) -> Arc<tokio::sync::Mutex<()>> {
+    RANK_FLIGHTS
+        .get_or_init(super::Flights::new)
+        .gate(&name.to_string())
+}
 
 /// Maps an op.gg tier slug to the crest asset name the client uses. The
 /// broadest bracket has no tier of its own, so it borrows the unranked crest.
@@ -45,6 +55,11 @@ fn looks_like_svg(bytes: &[u8]) -> bool {
 /// of the op.gg bracket slugs; anything else is `NotFound`.
 pub async fn icon(tier: &str) -> Result<Vec<u8>, RuneError> {
     let name = asset_name(tier).ok_or_else(|| RuneError::not_found("Unknown rank bracket."))?;
+    if let Some(bytes) = super::shared().rank_icons.get(name) {
+        return Ok(bytes.clone());
+    }
+    let gate = rank_gate(name);
+    let _guard = gate.lock().await;
     if let Some(bytes) = super::shared().rank_icons.get(name) {
         return Ok(bytes.clone());
     }

@@ -18,6 +18,7 @@ pub mod items;
 pub mod opgg;
 pub mod page;
 pub mod perks;
+pub mod prefetch;
 pub mod probuilds;
 pub mod ranks;
 pub mod roles;
@@ -29,7 +30,8 @@ pub mod watch;
 
 use std::collections::HashMap;
 use std::fmt;
-use std::sync::{Mutex, MutexGuard, OnceLock};
+use std::hash::Hash;
+use std::sync::{Arc, Mutex, MutexGuard, OnceLock};
 use std::time::{Duration, Instant};
 
 use reqwest::{Client, Method};
@@ -63,6 +65,9 @@ const CHAMPIONS_PATH: &str = "/lol-game-data/assets/v1/champion-summary.json";
 const GROUP_TTL: Duration = Duration::from_secs(15 * 60);
 const CATALOG_TTL: Duration = Duration::from_secs(60 * 60);
 const MAX_ICON_BYTES: usize = 512 * 1024;
+/// How long a discovered LCU endpoint is trusted before it is re-discovered.
+/// A League restart is also picked up sooner by the retry in [`Lcu::send`].
+const LCU_ENDPOINT_TTL: Duration = Duration::from_secs(10);
 
 /// A failure that carries enough meaning for the HTTP layer to pick a status.
 #[derive(Debug, Clone)]
@@ -109,24 +114,145 @@ impl std::error::Error for RuneError {}
 // LCU plumbing
 // ---------------------------------------------------------------------------
 
+/// The one native-tls client every LCU call shares, so the Windows certificate
+/// store is read once and connections are reused. Building a client per call
+/// (and re-discovering the endpoint) is what made an uncached icon cost ~80ms.
+static LCU_CLIENT: OnceLock<Client> = OnceLock::new();
+/// The last discovered endpoint, valid for [`LCU_ENDPOINT_TTL`]. Discovery runs
+/// a Toolhelp process snapshot, so it must not happen on every request.
+static LCU_ENDPOINT: Mutex<Option<(Instant, LcuEndpoint)>> = Mutex::new(None);
+
 pub(crate) struct Lcu {
     client: Client,
     endpoint: LcuEndpoint,
 }
 
-async fn lcu() -> Result<Lcu, RuneError> {
-    let endpoint = tokio::task::spawn_blocking(lcu::discover)
-        .await
-        .ok()
-        .flatten()
-        .ok_or_else(|| RuneError::unavailable("League Client is not connected."))?;
+fn lcu_client() -> Result<&'static Client, RuneError> {
+    if let Some(client) = LCU_CLIENT.get() {
+        return Ok(client);
+    }
     let client = Client::builder()
         .danger_accept_invalid_certs(true)
         .connect_timeout(Duration::from_secs(2))
         .timeout(Duration::from_secs(4))
         .build()
         .map_err(|_| RuneError::unavailable("Could not reach the League Client."))?;
+    Ok(LCU_CLIENT.get_or_init(|| client))
+}
+
+fn cached_endpoint() -> Option<LcuEndpoint> {
+    LCU_ENDPOINT
+        .lock()
+        .unwrap_or_else(|error| error.into_inner())
+        .as_ref()
+        .filter(|(at, _)| at.elapsed() < LCU_ENDPOINT_TTL)
+        .map(|(_, endpoint)| endpoint.clone())
+}
+
+fn store_endpoint(endpoint: &LcuEndpoint) {
+    *LCU_ENDPOINT
+        .lock()
+        .unwrap_or_else(|error| error.into_inner()) = Some((Instant::now(), endpoint.clone()));
+}
+
+fn invalidate_endpoint() {
+    *LCU_ENDPOINT
+        .lock()
+        .unwrap_or_else(|error| error.into_inner()) = None;
+}
+
+async fn discover_endpoint() -> Result<LcuEndpoint, RuneError> {
+    tokio::task::spawn_blocking(lcu::discover)
+        .await
+        .ok()
+        .flatten()
+        .ok_or_else(|| RuneError::unavailable("League Client is not connected."))
+}
+
+/// Resolves the shared client and a cached endpoint, discovering only when the
+/// cache is empty or stale. The returned [`Lcu`] is a cheap snapshot; a stale
+/// endpoint is retried by [`Lcu::send`].
+async fn lcu() -> Result<Lcu, RuneError> {
+    let client = lcu_client()?.clone();
+    let endpoint = match cached_endpoint() {
+        Some(endpoint) => endpoint,
+        None => {
+            let endpoint = discover_endpoint().await?;
+            store_endpoint(&endpoint);
+            endpoint
+        }
+    };
     Ok(Lcu { client, endpoint })
+}
+
+impl Lcu {
+    /// Sends an authorized request. When the cached endpoint is stale — the
+    /// connection fails or League answers 401 — it is re-discovered once and
+    /// the request retried, so a League restart (new port or password) is
+    /// picked up without every caller paying for discovery.
+    async fn send(
+        &self,
+        method: Method,
+        path: &str,
+        body: Option<&Value>,
+    ) -> Result<reqwest::Response, RuneError> {
+        let mut client = self.client.clone();
+        let mut endpoint = self.endpoint.clone();
+        for retried in [false, true] {
+            let current = Lcu {
+                client: client.clone(),
+                endpoint: endpoint.clone(),
+            };
+            let mut request = authorized(&current, method.clone(), path);
+            if let Some(body) = body {
+                request = request.json(body);
+            }
+            match request.send().await {
+                Ok(response)
+                    if !retried && response.status() == reqwest::StatusCode::UNAUTHORIZED =>
+                {
+                    invalidate_endpoint();
+                    let fresh = lcu().await?;
+                    client = fresh.client;
+                    endpoint = fresh.endpoint;
+                }
+                Ok(response) => return Ok(response),
+                Err(error) if !retried && error.is_connect() => {
+                    invalidate_endpoint();
+                    let fresh = lcu().await?;
+                    client = fresh.client;
+                    endpoint = fresh.endpoint;
+                }
+                Err(_) => return Err(RuneError::unavailable("League Client did not respond.")),
+            }
+        }
+        Err(RuneError::unavailable("League Client did not respond."))
+    }
+}
+
+/// Keyed single-flight gates. Concurrent cache misses for the same key await
+/// one fetch; the winner stores the value and the waiters then find it. Callers
+/// for different keys never block each other.
+pub(crate) struct Flights<K> {
+    gates: Mutex<HashMap<K, Arc<tokio::sync::Mutex<()>>>>,
+}
+
+impl<K: Eq + Hash + Clone> Flights<K> {
+    pub(crate) fn new() -> Self {
+        Self {
+            gates: Mutex::new(HashMap::new()),
+        }
+    }
+
+    /// The gate for `key`. Hold its async lock, re-check the cache, then fetch.
+    pub(crate) fn gate(&self, key: &K) -> Arc<tokio::sync::Mutex<()>> {
+        self.gates
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .entry(key.clone())
+            .or_default()
+            .clone()
+    }
 }
 
 fn authorized(lcu: &Lcu, method: Method, path: &str) -> reqwest::RequestBuilder {
@@ -136,10 +262,7 @@ fn authorized(lcu: &Lcu, method: Method, path: &str) -> reqwest::RequestBuilder 
 }
 
 async fn lcu_get_text(lcu: &Lcu, path: &str) -> Result<String, RuneError> {
-    let response = authorized(lcu, Method::GET, path)
-        .send()
-        .await
-        .map_err(|_| RuneError::unavailable("League Client did not respond."))?;
+    let response = lcu.send(Method::GET, path, None).await?;
     if !response.status().is_success() {
         return Err(RuneError::unavailable(format!(
             "League Client returned HTTP {}.",
@@ -159,10 +282,7 @@ async fn lcu_get<T: for<'de> Deserialize<'de>>(lcu: &Lcu, path: &str) -> Result<
 }
 
 async fn lcu_get_bytes(lcu: &Lcu, path: &str) -> Result<Vec<u8>, RuneError> {
-    let response = authorized(lcu, Method::GET, path)
-        .send()
-        .await
-        .map_err(|_| RuneError::unavailable("League Client did not respond."))?;
+    let response = lcu.send(Method::GET, path, None).await?;
     let response = response
         .error_for_status()
         .map_err(|_| RuneError::not_found("That rune asset is unavailable."))?;
@@ -182,14 +302,7 @@ async fn lcu_send(
     path: &str,
     body: Option<Value>,
 ) -> Result<Option<Value>, RuneError> {
-    let mut request = authorized(lcu, method, path);
-    if let Some(body) = body {
-        request = request.json(&body);
-    }
-    let response = request
-        .send()
-        .await
-        .map_err(|_| RuneError::unavailable("League Client did not respond."))?;
+    let response = lcu.send(method, path, body.as_ref()).await?;
     if !response.status().is_success() {
         return Err(RuneError::conflict(format!(
             "League rejected the rune page (HTTP {}).",
@@ -361,12 +474,11 @@ struct Shared {
     role_icons: HashMap<String, Vec<u8>>,
     /// The ranked crest SVGs, keyed by crest asset name.
     rank_icons: HashMap<String, Vec<u8>>,
-    /// The item catalog, its id-to-name map, and the CommunityDragon mirror
-    /// used when the LCU is unreachable.
-    items: Option<(Instant, Vec<items::Item>)>,
-    item_names: Option<(Instant, HashMap<i64, String>)>,
-    item_fallback: Option<(Instant, Vec<items::Item>)>,
+    /// The item catalog, its id-to-icon-path index and its id-to-name map, plus
+    /// the CommunityDragon mirror used when the LCU is unreachable.
+    items: Option<(Instant, Arc<items::Catalog>)>,
     item_icons: HashMap<i64, Vec<u8>>,
+    item_fallback: Option<(Instant, Arc<items::Catalog>)>,
     /// The summoner-spell catalog and its icons.
     spells: Option<(Instant, Vec<spells::Spell>)>,
     spell_icons: HashMap<i64, Vec<u8>>,
@@ -388,7 +500,6 @@ fn shared() -> MutexGuard<'static, Shared> {
                 role_icons: HashMap::new(),
                 rank_icons: HashMap::new(),
                 items: None,
-                item_names: None,
                 item_fallback: None,
                 item_icons: HashMap::new(),
                 spells: None,
@@ -412,5 +523,12 @@ mod tests {
         assert_eq!(region_slug("NA1"), Some("na"));
         assert_eq!(region_slug("KR"), Some("kr"));
         assert_eq!(region_slug("unknown-region"), None);
+    }
+
+    #[test]
+    fn flights_give_one_gate_per_key() {
+        let flights: Flights<&str> = Flights::new();
+        assert!(Arc::ptr_eq(&flights.gate(&"a"), &flights.gate(&"a")));
+        assert!(!Arc::ptr_eq(&flights.gate(&"a"), &flights.gate(&"b")));
     }
 }

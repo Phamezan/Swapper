@@ -273,16 +273,27 @@ mod tests {
     }
 
     #[test]
-    fn resolves_icons_for_perks_and_trees() {
+    fn resolves_icons_for_perks_trees_and_stat_shards() {
         let catalog = catalog();
+        // A tree (style) id, as the pro cards' primary/secondary style ids.
         assert_eq!(
             catalog.asset_path(8000).as_deref(),
             Some("/lol-game-data/assets/v1/perk-images/Styles/7201_Precision.png")
         );
+        // The second tree is a style id too, not a perk id.
+        assert!(catalog
+            .asset_path(8100)
+            .unwrap()
+            .ends_with("/7200_Domination.png"));
         assert!(catalog
             .asset_path(8005)
             .unwrap()
             .ends_with("/PressTheAttack/PressTheAttack.png"));
+        // Stat shards are perks, so their icons resolve for the pro-card rows.
+        assert!(catalog
+            .asset_path(5008)
+            .unwrap()
+            .ends_with("/StatModsAdaptiveForceIcon.png"));
         assert!(catalog.asset_path(999999).is_none());
     }
 

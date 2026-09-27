@@ -101,6 +101,13 @@ pub fn spawn_watch(app: tauri::AppHandle) {
                 last = Some(event.clone());
                 let _ = app.emit("champ_select", event.clone());
             }
+            // Warm the runes and pro builds for the pick in the background, so
+            // opening a tab during champion select does not wait on op.gg/u.gg.
+            if let Some(context) = context.as_ref() {
+                if context.champion_id > 0 {
+                    super::prefetch::spawn(&app, context);
+                }
+            }
             let ready = context.as_ref().is_some_and(|c| c.auto_apply_ready());
             if phase == "ChampSelect" && ready {
                 if let Some(context) = context.as_ref() {

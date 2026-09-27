@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-const cache = new Map<number, string>();
+import { cachedIcon, loadIcon } from "./iconLoader";
 
 type Props = {
   id: number;
@@ -14,8 +13,9 @@ type Props = {
  *  over IPC in the desktop flyout, like the rune and spell icons. The name is
  *  shown on hover (title) and to screen readers. */
 export function ItemIcon({ id, name, mode, className }: Props) {
+  const key = `item:${id}`;
   const [src, setSrc] = useState<string | null>(() =>
-    mode === "remote" && id > 0 ? `/api/item/icon/${id}` : cache.get(id) ?? null,
+    mode === "remote" && id > 0 ? `/api/item/icon/${id}` : cachedIcon(key) ?? null,
   );
 
   useEffect(() => {
@@ -27,23 +27,23 @@ export function ItemIcon({ id, name, mode, className }: Props) {
       setSrc(`/api/item/icon/${id}`);
       return;
     }
-    const cached = cache.get(id);
+    const cached = cachedIcon(key);
     if (cached) {
       setSrc(cached);
       return;
     }
     let live = true;
-    void import("@tauri-apps/api/core")
-      .then(({ invoke }) => invoke<string>("item_icon", { id }))
+    void loadIcon(key, () =>
+      import("@tauri-apps/api/core").then(({ invoke }) => invoke<string>("item_icon", { id })),
+    )
       .then((data) => {
-        cache.set(id, data);
         if (live) setSrc(data);
       })
       .catch(() => {});
     return () => {
       live = false;
     };
-  }, [id, mode]);
+  }, [id, key, mode]);
 
   const label = name || `Item ${id}`;
   if (id <= 0) return <span className={`item-icon-fallback ${className ?? ""}`} aria-hidden />;

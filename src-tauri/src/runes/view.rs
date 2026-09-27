@@ -509,7 +509,10 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
         });
     // Only op.gg carries item builds, and only when the client can name them.
     let build = match loaded.item_build.as_ref() {
-        Some(build) => build_view(build, &items::names().await),
+        Some(build) => {
+            let names = items::names().await;
+            build_view(build, &names)
+        }
         None => None,
     };
     let preset_spells = loaded
@@ -705,8 +708,8 @@ pub async fn pro_builds_view(champion_id: i64, position: &str, page: u32) -> Pro
             let has_more = matches.len() >= probuilds::PAGE_SIZE;
             // Names come from the client's item catalog; empty when unavailable,
             // in which case each icon falls back to "Item <id>".
-            let names = if matches.is_empty() {
-                HashMap::new()
+            let names: std::sync::Arc<HashMap<i64, String>> = if matches.is_empty() {
+                std::sync::Arc::new(HashMap::new())
             } else {
                 items::names().await
             };

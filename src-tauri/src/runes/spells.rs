@@ -7,6 +7,7 @@
 //! `PATCH /lol-champ-select/v1/session/my-selection` call used by LeagueAkari
 //! (MIT, `src/shared/http-api-axios-helper/league-client/champ-select.ts`).
 
+use std::sync::{Arc, OnceLock};
 use std::time::Instant;
 
 use reqwest::Method;
@@ -20,6 +21,19 @@ pub const SPELL_FLASH: i64 = 4;
 const SPELLS_PATH: &str = "/lol-game-data/assets/v1/summoner-spells.json";
 const MY_SELECTION_PATH: &str = "/lol-champ-select/v1/session/my-selection";
 const SUMMONER_PATH: &str = "/lol-summoner/v1/current-summoner";
+
+/// Serializes summoner-spell catalog loads, and one gate per spell id so
+/// concurrent icon requests share a fetch.
+static CATALOG_LOCK: OnceLock<tokio::sync::Mutex<()>> = OnceLock::new();
+static SPELL_FLIGHTS: OnceLock<super::Flights<i64>> = OnceLock::new();
+
+fn catalog_lock() -> &'static tokio::sync::Mutex<()> {
+    CATALOG_LOCK.get_or_init(|| tokio::sync::Mutex::new(()))
+}
+
+fn icon_gate(id: i64) -> Arc<tokio::sync::Mutex<()>> {
+    SPELL_FLIGHTS.get_or_init(super::Flights::new).gate(&id)
+}
 
 /// One summoner spell from the client's game data.
 #[derive(Debug, Clone, Deserialize)]
@@ -134,18 +148,29 @@ pub fn pair_from_ids(ids: &[i64]) -> Option<[i64; 2]> {
     }
 }
 
-/// The summoner-spell catalog, cached for the session.
+/// The summoner-spell catalog, cached for the session. Concurrent misses wait
+/// on one fetch.
 pub async fn catalog() -> Result<Vec<Spell>, RuneError> {
-    if let Some((at, spells)) = super::shared().spells.as_ref() {
-        if at.elapsed() < super::CATALOG_TTL {
-            return Ok(spells.clone());
-        }
+    if let Some(spells) = cached_spells() {
+        return Ok(spells);
+    }
+    let _guard = catalog_lock().lock().await;
+    if let Some(spells) = cached_spells() {
+        return Ok(spells);
     }
     let lcu = super::lcu().await?;
     let text = super::lcu_get_text(&lcu, SPELLS_PATH).await?;
     let spells = parse(&text)?;
     super::shared().spells = Some((Instant::now(), spells.clone()));
     Ok(spells)
+}
+
+fn cached_spells() -> Option<Vec<Spell>> {
+    super::shared()
+        .spells
+        .as_ref()
+        .filter(|(at, _)| at.elapsed() < super::CATALOG_TTL)
+        .map(|(_, spells)| spells.clone())
 }
 
 /// The local player's level, or `0` when it cannot be read (which skips the
@@ -166,8 +191,14 @@ pub async fn player_level() -> i64 {
         .unwrap_or(0)
 }
 
-/// The PNG bytes for a summoner spell icon.
+/// The PNG bytes for a summoner spell icon. Concurrent requests for the same id
+/// share one fetch.
 pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
+    if let Some(bytes) = super::shared().spell_icons.get(&id) {
+        return Ok(bytes.clone());
+    }
+    let gate = icon_gate(id);
+    let _guard = gate.lock().await;
     if let Some(bytes) = super::shared().spell_icons.get(&id) {
         return Ok(bytes.clone());
     }
@@ -219,11 +250,10 @@ pub async fn apply_pair(pair: [i64; 2]) -> Result<(), RuneError> {
         return Err(RuneError::conflict("That summoner spell is not available."));
     }
     let lcu = super::lcu().await?;
-    let response = super::authorized(&lcu, Method::PATCH, MY_SELECTION_PATH)
-        .json(&my_selection_body(pair))
-        .send()
-        .await
-        .map_err(|_| RuneError::unavailable("League Client did not respond."))?;
+    let body = my_selection_body(pair);
+    let response = lcu
+        .send(Method::PATCH, MY_SELECTION_PATH, Some(&body))
+        .await?;
     if !response.status().is_success() {
         return Err(RuneError::conflict(format!(
             "League rejected the summoner spells (HTTP {}).",

@@ -11,6 +11,7 @@
 //! (`/lol-game-data/assets/...`) or the mirrored copy of it.
 
 use std::collections::HashMap;
+use std::sync::{Arc, OnceLock};
 use std::time::{Duration, Instant};
 
 use serde::Deserialize;
@@ -26,6 +27,20 @@ const CDRAGON_BASE: &str =
 const CDRAGON_ITEMS: &str = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json";
 const LCU_ASSET_PREFIX: &str = "/lol-game-data/assets/";
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(4);
+
+/// One gate per item id, so concurrent icon requests for the same item share a
+/// single fetch instead of each missing the cache at once.
+static ITEM_FLIGHTS: OnceLock<super::Flights<i64>> = OnceLock::new();
+/// Serializes catalog loads so concurrent misses fetch the file once.
+static CATALOG_LOCK: OnceLock<tokio::sync::Mutex<()>> = OnceLock::new();
+
+fn catalog_lock() -> &'static tokio::sync::Mutex<()> {
+    CATALOG_LOCK.get_or_init(|| tokio::sync::Mutex::new(()))
+}
+
+fn icon_gate(id: i64) -> Arc<tokio::sync::Mutex<()>> {
+    ITEM_FLIGHTS.get_or_init(super::Flights::new).gate(&id)
+}
 
 /// One item from the client's game data.
 #[derive(Debug, Clone, Default, Deserialize)]
@@ -79,48 +94,84 @@ fn cdragon_asset_url(icon_path: &str) -> Option<String> {
     Some(format!("{CDRAGON_BASE}/{}", relative.to_ascii_lowercase()))
 }
 
-/// The item catalog from the League client, cached for the session.
-pub async fn catalog() -> Result<Vec<Item>, RuneError> {
-    if let Some((at, items)) = super::shared().items.as_ref() {
+/// The item catalog, indexed for O(1) icon-path and name lookups so an icon
+/// request never clones the whole list to find one entry.
+#[derive(Default)]
+pub struct Catalog {
+    icons: HashMap<i64, String>,
+    names: Arc<HashMap<i64, String>>,
+}
+
+impl Catalog {
+    /// Builds the index from the parsed game-data list, keeping only items the
+    /// client can serve: named, with a safe asset path where the file has one.
+    pub fn build(items: Vec<Item>) -> Self {
+        let mut icons = HashMap::new();
+        let mut names = HashMap::new();
+        for item in items.iter().filter(|item| item.is_playable()) {
+            names.insert(item.id, item.name.clone());
+            if let Some(path) = lcu_asset_path(&item.icon_path) {
+                icons.insert(item.id, path);
+            }
+        }
+        Self {
+            icons,
+            names: Arc::new(names),
+        }
+    }
+
+    /// The client asset path for an item id, when the catalog has one.
+    pub fn icon_path(&self, id: i64) -> Option<&str> {
+        self.icons.get(&id).map(String::as_str)
+    }
+
+    /// The id-to-name map, shared with the view layer without cloning it.
+    pub fn names(&self) -> Arc<HashMap<i64, String>> {
+        Arc::clone(&self.names)
+    }
+}
+
+/// The item catalog from the League client, cached for the session. Concurrent
+/// misses wait on one fetch.
+pub async fn catalog() -> Result<Arc<Catalog>, RuneError> {
+    if let Some((at, catalog)) = super::shared().items.as_ref() {
         if at.elapsed() < super::CATALOG_TTL {
-            return Ok(items.clone());
+            return Ok(Arc::clone(catalog));
+        }
+    }
+    let _guard = catalog_lock().lock().await;
+    if let Some((at, catalog)) = super::shared().items.as_ref() {
+        if at.elapsed() < super::CATALOG_TTL {
+            return Ok(Arc::clone(catalog));
         }
     }
     let lcu = super::lcu().await?;
     let text = super::lcu_get_text(&lcu, ITEMS_PATH).await?;
-    let items = parse(&text)?;
-    super::shared().items = Some((Instant::now(), items.clone()));
-    Ok(items)
+    let catalog = Arc::new(Catalog::build(parse(&text)?));
+    super::shared().items = Some((Instant::now(), Arc::clone(&catalog)));
+    Ok(catalog)
 }
 
-/// Item id to name, cached. Used to label build and pro-build icons without a
-/// request per id.
-pub async fn names() -> HashMap<i64, String> {
-    if let Some((at, names)) = super::shared().item_names.as_ref() {
-        if at.elapsed() < super::CATALOG_TTL {
-            return names.clone();
-        }
+/// Item id to name, shared as an `Arc` so a caller never clones the map.
+pub async fn names() -> Arc<HashMap<i64, String>> {
+    match catalog().await {
+        Ok(catalog) => catalog.names(),
+        Err(_) => Arc::new(HashMap::new()),
     }
-    let map: HashMap<i64, String> = catalog()
-        .await
-        .map(|items| {
-            items
-                .into_iter()
-                .filter(Item::is_playable)
-                .map(|item| (item.id, item.name))
-                .collect()
-        })
-        .unwrap_or_default();
-    super::shared().item_names = Some((Instant::now(), map.clone()));
-    map
 }
 
 /// The CommunityDragon mirror of the item file, cached, used only when the LCU
 /// is unreachable.
-async fn cdragon_catalog() -> Result<Vec<Item>, RuneError> {
-    if let Some((at, items)) = super::shared().item_fallback.as_ref() {
+async fn cdragon_catalog() -> Result<Arc<Catalog>, RuneError> {
+    if let Some((at, catalog)) = super::shared().item_fallback.as_ref() {
         if at.elapsed() < super::CATALOG_TTL {
-            return Ok(items.clone());
+            return Ok(Arc::clone(catalog));
+        }
+    }
+    let _guard = catalog_lock().lock().await;
+    if let Some((at, catalog)) = super::shared().item_fallback.as_ref() {
+        if at.elapsed() < super::CATALOG_TTL {
+            return Ok(Arc::clone(catalog));
         }
     }
     let client = reqwest::Client::builder()
@@ -140,13 +191,14 @@ async fn cdragon_catalog() -> Result<Vec<Item>, RuneError> {
         .text()
         .await
         .map_err(|_| RuneError::unavailable("Could not load item data."))?;
-    let items = parse(&body)?;
-    super::shared().item_fallback = Some((Instant::now(), items.clone()));
-    Ok(items)
+    let catalog = Arc::new(Catalog::build(parse(&body)?));
+    super::shared().item_fallback = Some((Instant::now(), Arc::clone(&catalog)));
+    Ok(catalog)
 }
 
 /// The PNG bytes for an item icon, cached in memory. Only a positive numeric id
-/// is accepted; everything else is `NotFound`.
+/// is accepted; everything else is `NotFound`. Concurrent requests for the same
+/// id share one fetch.
 pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
     if !valid_id(id) {
         return Err(RuneError::not_found("Unknown item."));
@@ -154,16 +206,16 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
     if let Some(bytes) = super::shared().item_icons.get(&id) {
         return Ok(bytes.clone());
     }
-    let lcu_path = catalog()
-        .await
-        .ok()
-        .and_then(|items| {
-            items
-                .into_iter()
-                .find(|item| item.id == id && item.is_playable())
-                .and_then(|item| lcu_asset_path(&item.icon_path))
-        });
-    let bytes = match lcu_path {
+    let gate = icon_gate(id);
+    let _guard = gate.lock().await;
+    if let Some(bytes) = super::shared().item_icons.get(&id) {
+        return Ok(bytes.clone());
+    }
+    let path = match catalog().await {
+        Ok(catalog) => catalog.icon_path(id).map(str::to_string),
+        Err(_) => None,
+    };
+    let bytes = match path {
         Some(path) => {
             let lcu = super::lcu().await?;
             super::lcu_get_bytes(&lcu, &path).await?
@@ -175,13 +227,11 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
 }
 
 async fn from_cdragon(id: i64) -> Result<Vec<u8>, RuneError> {
-    let items = cdragon_catalog().await?;
-    let item = items
-        .into_iter()
-        .find(|item| item.id == id)
+    let catalog = cdragon_catalog().await?;
+    let path = catalog
+        .icon_path(id)
         .ok_or_else(|| RuneError::not_found("Unknown item."))?;
-    let url = cdragon_asset_url(&item.icon_path)
-        .ok_or_else(|| RuneError::not_found("Unknown item."))?;
+    let url = cdragon_asset_url(path).ok_or_else(|| RuneError::not_found("Unknown item."))?;
     let client = reqwest::Client::builder()
         .connect_timeout(REQUEST_TIMEOUT)
         .timeout(REQUEST_TIMEOUT)
@@ -263,5 +313,72 @@ mod tests {
         assert!(cdragon_asset_url("/somewhere/else/1001.png").is_none());
         assert!(cdragon_asset_url("/lol-game-data/assets/../secret.png").is_none());
         assert!(cdragon_asset_url("").is_none());
+    }
+
+    #[test]
+    fn catalog_indexes_icon_paths_and_names_for_playable_items_only() {
+        let catalog = Catalog::build(parse(FIXTURE).unwrap());
+        assert_eq!(
+            catalog.icon_path(1001),
+            Some("/lol-game-data/assets/ASSETS/Items/Icons2D/1001_Class_T1_BootsofSpeed.png")
+        );
+        assert!(catalog.icon_path(1056).is_some());
+        // The unnamed placeholder and the zero id are not indexed.
+        assert!(catalog.icon_path(9999).is_none());
+        assert!(catalog.icon_path(0).is_none());
+        assert!(catalog.icon_path(123456).is_none());
+
+        let names = catalog.names();
+        assert_eq!(names.get(&1001).map(String::as_str), Some("Boots"));
+        assert_eq!(names.get(&1056).map(String::as_str), Some("Doran's Ring"));
+        assert!(names.get(&9999).is_none());
+    }
+
+    /// Live benchmark against a running League client. The first 10 ids are
+    /// fetched serially, then 50 distinct ids at once, so a per-call client or
+    /// a missing single-flight shows up as latency or failures. Run with
+    /// `cargo test --manifest-path src-tauri/Cargo.toml bench_item_icons -- --ignored --nocapture`.
+    #[tokio::test]
+    #[ignore = "needs a running League client"]
+    async fn bench_item_icons_against_the_live_client() {
+        use futures_util::future::join_all;
+        use std::time::Instant;
+
+        if super::super::lcu().await.is_err() {
+            eprintln!("League Client is not running; skipping.");
+            return;
+        }
+        let catalog = match catalog().await {
+            Ok(catalog) => catalog,
+            Err(error) => {
+                eprintln!("item catalog unavailable: {error}");
+                return;
+            }
+        };
+        let mut ids: Vec<i64> = catalog.icons.keys().copied().collect();
+        ids.sort_unstable();
+        if ids.len() < 60 {
+            eprintln!("only {} item ids available; skipping.", ids.len());
+            return;
+        }
+        let serial = &ids[0..10];
+        let parallel = &ids[10..60];
+
+        let start = Instant::now();
+        for id in serial {
+            assert!(icon(*id).await.is_ok(), "serial icon {id} failed");
+        }
+        let serial_ms = start.elapsed().as_millis();
+
+        let start = Instant::now();
+        let results = join_all(parallel.iter().map(|id| icon(*id))).await;
+        let parallel_ms = start.elapsed().as_millis();
+        let failures = results.iter().filter(|result| result.is_err()).count();
+
+        eprintln!(
+            "serial 10 = {serial_ms}ms ({:.1}ms each); parallel 50 = {parallel_ms}ms; failures = {failures}",
+            serial_ms as f64 / 10.0
+        );
+        assert_eq!(failures, 0, "no icon fetch may fail under load");
     }
 }
