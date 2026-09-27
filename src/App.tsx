@@ -4,6 +4,9 @@ import { listen } from "@tauri-apps/api/event";
 import { QRCodeSVG } from "qrcode.react";
 import { open as browseForFile } from "@tauri-apps/plugin-dialog";
 import {
+  disable as disableAutostart, enable as enableAutostart, isEnabled as isAutostartEnabled,
+} from "@tauri-apps/plugin-autostart";
+import {
   ArrowLeft, ArrowRight, Check, ChevronRight, CircleAlert, Info, LoaderCircle,
   Pencil, Plus, QrCode, RefreshCw, Settings2, Trash2, X,
 } from "lucide-react";
@@ -126,6 +129,7 @@ function App() {
   const previousActiveId = useRef<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [showRemoteQr, setShowRemoteQr] = useState(false);
+  const [startOnStartup, setStartOnStartup] = useState(false);
   const [openInfo, setOpenInfo] = useState<string | null>(null);
   const [pathMode, setPathMode] = useState<"auto" | "manual" | null>(null);
   const native = isTauri();
@@ -183,6 +187,16 @@ function App() {
       .then((remote) => {
         if (live) setData((prev) => ({ ...prev, remote }));
       })
+      .catch(showError);
+    return () => { live = false; };
+  }, [native, view]);
+
+  // The startup toggle reads the real OS autostart entry, not a saved flag.
+  useEffect(() => {
+    if (!native || view !== "settings") return;
+    let live = true;
+    isAutostartEnabled()
+      .then((enabled) => { if (live) setStartOnStartup(enabled); })
       .catch(showError);
     return () => { live = false; };
   }, [native, view]);
@@ -289,6 +303,14 @@ function App() {
       setData((prev) => ({ ...prev, remote: previous }));
       showError(reason);
     }
+  }
+
+  async function setStartOnStartupSetting(enabled: boolean) {
+    await action("autostart", async () => {
+      if (enabled) await enableAutostart();
+      else await disableAutostart();
+      setStartOnStartup(await isAutostartEnabled());
+    });
   }
 
   async function copyRemoteAddress() {
@@ -614,6 +636,15 @@ function App() {
                   {openInfo === "deceive" && <p>Start League with Deceive’s offline presence. Included with Swapper.</p>}
                 </div>
                 <Switch checked={useDeceive} onCheckedChange={(checked) => void applySettings({ useDeceive: checked, riotExe: configuredPath() })} aria-label="Launch through Deceive" />
+              </div>
+
+              <div className="setting-row">
+                <div className="setting-copy">
+                  <strong>Start on startup</strong>
+                  <button className="info-button" aria-label="About Start on startup" aria-expanded={openInfo === "startup"} onClick={() => setOpenInfo(openInfo === "startup" ? null : "startup")}><Info size={13} /></button>
+                  {openInfo === "startup" && <p>Launch Swapper with Windows. It starts in the tray, without opening the flyout.</p>}
+                </div>
+                <Switch checked={startOnStartup} onCheckedChange={(checked) => void setStartOnStartupSetting(checked)} aria-label="Start on startup" />
               </div>
 
               <p className="field-label">RIOT CLIENT PATH</p>

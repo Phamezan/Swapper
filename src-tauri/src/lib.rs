@@ -19,6 +19,7 @@ use uuid::Uuid;
 
 const TRAY_ID: &str = "swapper-tray";
 const DEFAULT_TRAY_TOOLTIP: &str = "Swapper · Riot account switcher";
+const AUTOSTART_ARG: &str = "--autostart";
 
 #[derive(Clone, Default)]
 pub struct SwitchGuard {
@@ -430,6 +431,7 @@ fn exit_app(app: &tauri::AppHandle) {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let config = vault::load().expect("Swapper settings could not be loaded");
+    let launched_at_startup = std::env::args().any(|arg| arg == AUTOSTART_ARG);
     tauri::Builder::default()
         .setup(move |app| {
             let bundled_deceive = app.path().resolve("Deceive.exe", BaseDirectory::Resource)?;
@@ -450,6 +452,12 @@ pub fn run() {
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;
+            app.handle().plugin(
+                tauri_plugin_autostart::Builder::new()
+                    .args([AUTOSTART_ARG])
+                    .app_name("Swapper")
+                    .build(),
+            )?;
             let add = MenuItem::with_id(app, "add", "Add Account", true, None::<&str>)?;
             let edit = MenuItem::with_id(app, "edit", "Edit Account", true, None::<&str>)?;
             let remove = MenuItem::with_id(app, "remove", "Remove Account", true, None::<&str>)?;
@@ -481,6 +489,16 @@ pub fn run() {
                     }
                 })
                 .build(app)?;
+            // Windows starts Swapper through the autostart entry with --autostart.
+            // A login launch must never open the flyout, so keep the window hidden
+            // and leave the tray icon as the only entry point. The window already
+            // starts hidden (tauri.conf.json `visible: false`); this guard keeps
+            // that intent explicit if a future change adds a startup show.
+            if launched_at_startup {
+                if let Some(window) = app.get_webview_window("main") {
+                    let _ = window.hide();
+                }
+            }
             Ok(())
         })
         .on_window_event(|window, event| match event {
