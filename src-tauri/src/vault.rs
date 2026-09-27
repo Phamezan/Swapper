@@ -74,7 +74,7 @@ impl Account {
     }
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Default, Clone, Serialize, Deserialize)]
 pub struct Config {
     pub accounts: Vec<Account>,
     pub active_id: Option<Uuid>,
@@ -83,6 +83,12 @@ pub struct Config {
     pub deceive_exe: Option<String>,
     #[serde(default)]
     pub remote_enabled: bool,
+    #[serde(default)]
+    pub auto_apply_top_preset: bool,
+    /// Id of the single rune page Swapper owns. Ownership is by id, so a user
+    /// page that merely shares the `Swapper:` name is never modified.
+    #[serde(default)]
+    pub rune_page_id: Option<i64>,
 }
 
 #[derive(Serialize, Deserialize)]

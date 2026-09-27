@@ -4,9 +4,11 @@ mod remote;
 mod notify;
 mod riot;
 mod riot_client;
+mod runes;
 mod vault;
 pub mod windows;
 
+use base64::Engine;
 use serde::Serialize;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicBool, Ordering};
@@ -63,12 +65,48 @@ impl Drop for SwitchLease {
     }
 }
 
-struct AppState {
+pub(crate) struct AppState {
     config: Mutex<vault::Config>,
     bundled_deceive: PathBuf,
     keep_flyout_open: AtomicBool,
     switch_guard: SwitchGuard,
     remote: Arc<remote::RemoteCore>,
+}
+
+impl AppState {
+    fn auto_apply_top_preset(&self) -> bool {
+        self.config
+            .lock()
+            .map(|config| config.auto_apply_top_preset)
+            .unwrap_or(false)
+    }
+
+    pub(crate) fn set_auto_apply_top_preset(&self, enabled: bool) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        config.auto_apply_top_preset = enabled;
+        vault::save(&config)
+    }
+
+    /// The League page id Swapper owns, if it has created one yet.
+    pub(crate) fn rune_page_id(&self) -> Option<i64> {
+        self.config
+            .lock()
+            .map(|config| config.rune_page_id)
+            .unwrap_or(None)
+    }
+
+    pub(crate) fn set_rune_page_id(&self, id: i64) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        if config.rune_page_id == Some(id) {
+            return Ok(());
+        }
+        config.rune_page_id = Some(id);
+        vault::save(&config)
+    }
+
+    pub(crate) fn publish_runes(&self, applied: runes::AppliedView) {
+        self.remote.publish_runes(applied);
+    }
 }
 
 #[derive(Clone, Serialize)]
@@ -94,6 +132,7 @@ struct AppView {
     riot_exe: Option<String>,
     riot_detected: bool,
     deceive_detected: bool,
+    auto_apply_top_preset: bool,
     remote: remote::RemoteStatus,
 }
 
@@ -145,6 +184,7 @@ fn view(
         riot_exe: config.riot_exe.clone(),
         riot_detected: riot::riot_path(config).is_some(),
         deceive_detected: riot::deceive_path(config, bundled_deceive).is_some(),
+        auto_apply_top_preset: config.auto_apply_top_preset,
         remote: remote.clone(),
     }
 }
@@ -386,6 +426,66 @@ fn probe_remote(state: State<'_, AppState>) -> remote::RemoteStatus {
 }
 
 #[tauri::command]
+fn set_auto_apply_top_preset(
+    state: State<'_, AppState>,
+    enabled: bool,
+) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    state.set_auto_apply_top_preset(enabled)?;
+    let config = state.config.lock().map_err(|e| e.to_string())?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+    ))
+}
+
+#[tauri::command]
+async fn get_runes(state: State<'_, AppState>) -> Result<runes::RunesView, String> {
+    Ok(runes::view(state.auto_apply_top_preset()).await)
+}
+
+#[tauri::command]
+async fn champ_select_status() -> runes::ChampSelectEvent {
+    runes::current_status().await
+}
+
+#[tauri::command]
+async fn rune_icon(id: i64) -> Result<String, String> {
+    let bytes = runes::icon(id).await.map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
+#[tauri::command]
+async fn apply_rune_page(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    selection: runes::RuneSelection,
+    preset_index: Option<usize>,
+) -> Result<runes::AppliedView, String> {
+    let owned = state.rune_page_id();
+    let applied = runes::apply_selection(selection, preset_index, owned)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    if let Some(id) = applied.page_id {
+        let handle = app.clone();
+        let _ = tokio::task::spawn_blocking(move || {
+            if let Some(state) = handle.try_state::<AppState>() {
+                let _ = state.set_rune_page_id(id);
+            }
+        })
+        .await;
+    }
+    state.remote.clone().publish_runes(applied.clone());
+    let _ = app.emit("runes_changed", applied.clone());
+    Ok(applied)
+}
+
+#[tauri::command]
 fn set_add_mode(state: State<'_, AppState>, enabled: bool) {
     state.keep_flyout_open.store(enabled, Ordering::SeqCst);
 }
@@ -449,6 +549,7 @@ pub fn run() {
                     auto_enable.set_enabled(true);
                 }
             });
+            runes::spawn_watch(app.handle().clone());
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;
@@ -533,7 +634,12 @@ pub fn run() {
             set_add_mode,
             hide_flyout,
             set_remote_enabled,
-            probe_remote
+            probe_remote,
+            set_auto_apply_top_preset,
+            get_runes,
+            champ_select_status,
+            rune_icon,
+            apply_rune_page
         ])
         .run(tauri::generate_context!())
         .expect("Could not start Swapper");

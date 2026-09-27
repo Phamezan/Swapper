@@ -12,6 +12,7 @@ Download the Windows installer from the [latest GitHub release](https://github.c
 - Detect the signed-in Riot account automatically and avoid duplicate entries using Riot's account identifier. Give saved accounts optional nicknames and remove them from the tray app.
 - Optionally launch the selected account through the bundled [Deceive](https://github.com/molenzwiebel/Deceive) executable to use Deceive's presence behavior.
 - Use your phone, over [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve), to watch queue time, accept a match, prepick, ban, pick, and lock in a champion. Champion search, role filters, and icons are supplied by the running League client.
+- During champion select, pick a recommended rune page for your champion and role or edit every rune yourself, from the tray flyout or the phone. Recommended pages come from [op.gg](https://op.gg), page art from the League client, and Swapper applies the result to a single page it owns. Auto-applying the top preset is a setting, off by default.
 - Show a copyable remote link and QR code in Settings. Remote control works while Swapper, Tailscale, and League Client are running on the PC.
 
 ## Preview
@@ -49,6 +50,7 @@ Swapper reads the local Riot and League clients to identify a signed-in account 
 
 - [TcNo Account Switcher](https://github.com/TCNOco/TcNo-Acc-Switcher) inspired the account-switching flow and informed the session-path allowlist. Swapper is an independent Riot-focused implementation; TcNo is not bundled.
 - [Mimic](https://github.com/molenzwiebel/Mimic) inspired the phone-based League lobby and champion-select controls. Mimic is not bundled.
+- [LeagueAkari](https://github.com/LeagueAkari/LeagueAkari) is MIT licensed and is the reference for Swapper's op.gg client and rune-build parsing (`src-tauri/src/runes/opgg.rs`), which power the rune presets and the rune editor. LeagueAkari is not bundled. Swapper reads public [op.gg](https://op.gg) champion statistics for rune recommendations; it is not affiliated with op.gg.
 - [Deceive v1.18.0](https://github.com/molenzwiebel/Deceive/releases/tag/v1.18.0) is bundled as an **unmodified, separate executable**. Deceive is GPL-3.0 licensed; its [license](src-tauri/resources/Deceive-LICENSE.txt) and [source information](src-tauri/resources/Deceive-SOURCE.txt) ship with Swapper. Swapper does not claim authorship of Deceive.
 - [Accshift](https://github.com/klNuno/accshift) was another reference for Riot session paths; it is not bundled.
 

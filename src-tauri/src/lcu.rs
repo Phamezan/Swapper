@@ -159,13 +159,19 @@ fn read_at(path: &std::path::Path) -> Option<LcuEndpoint> {
 }
 
 fn league_pid_alive(pid: u32) -> bool {
-    let mut system = sysinfo::System::new();
-    system.refresh_processes(sysinfo::ProcessesToUpdate::All, true);
-    let Some(process) = system.process(sysinfo::Pid::from_u32(pid)) else {
-        return false;
-    };
-    let name = process.name().to_string_lossy();
-    name.eq_ignore_ascii_case("LeagueClient.exe") || name.eq_ignore_ascii_case("LeagueClientUx.exe")
+    // A single Toolhelp32 pass is far cheaper than a full sysinfo refresh, and
+    // `discover` runs from the champion-select watcher every few seconds.
+    match crate::windows::process::image_for_pid(pid) {
+        Ok(Some(image)) => {
+            image.eq_ignore_ascii_case("LeagueClient.exe")
+                || image.eq_ignore_ascii_case("LeagueClientUx.exe")
+        }
+        // The pid is gone, so the lockfile is stale.
+        Ok(None) => false,
+        // An unreadable table is treated as "still there": discover returns the
+        // endpoint and the caller's request decides whether it is real.
+        Err(_) => true,
+    }
 }
 
 fn process_endpoint() -> Option<LcuEndpoint> {
