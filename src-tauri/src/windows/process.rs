@@ -27,8 +27,8 @@ use windows_sys::Win32::System::Diagnostics::ToolHelp::{
 };
 use windows_sys::Win32::System::Threading::{OpenProcess, WaitForMultipleObjects};
 use windows_sys::Win32::UI::WindowsAndMessaging::{
-    EnumWindows, GetWindow, GetWindowThreadProcessId, PostMessageW, GW_OWNER, SC_CLOSE, WM_CLOSE,
-    WM_SYSCOMMAND,
+    EnumWindows, GetWindow, GetWindowThreadProcessId, IsWindowVisible, PostMessageW, GW_OWNER,
+    SC_CLOSE, WM_CLOSE, WM_SYSCOMMAND,
 };
 
 const CREATE_NO_WINDOW: u32 = 0x0800_0000;
@@ -205,6 +205,11 @@ unsafe extern "system" fn visit_window(hwnd: HWND, lparam: LPARAM) -> BOOL {
     if !GetWindow(hwnd, GW_OWNER).is_null() {
         return TRUE;
     }
+    // Hidden windows (tray, message sinks) ignore close requests: Riot Client
+    // in the tray would otherwise cost the full grace period before the kill.
+    if IsWindowVisible(hwnd) == 0 {
+        return TRUE;
+    }
     WINDOW_HITS.with(|hits| hits.set(hits.get() + 1));
     if POST_CLOSE.with(|post| post.get()) {
         PostMessageW(hwnd, WM_SYSCOMMAND, SC_CLOSE as usize, 0);
@@ -223,13 +228,13 @@ fn visit(pid: u32, post_close: bool) -> usize {
     WINDOW_HITS.with(|hits| hits.get())
 }
 
-/// How many top-level windows a process owns. Zero means no graceful close
-/// signal can ever reach it, so callers skip the grace wait.
+/// How many visible top-level windows a process owns. Zero means no graceful
+/// close signal will be honoured, so callers skip the grace wait.
 pub fn count_top_level_windows(pid: u32) -> usize {
     visit(pid, false)
 }
 
-/// Ask every top-level window of every PID to close. Returns how many windows
+/// Ask every visible top-level window of every PID to close. Returns how many windows
 /// were reached; `0` means the graceful phase should be skipped entirely.
 pub fn post_wm_close(pids: &[u32]) -> usize {
     pids.iter().map(|&pid| visit(pid, true)).sum()
@@ -408,7 +413,8 @@ pub struct StopReport {
 ///    game that starts while the stop is in flight aborts the stop instead of
 ///    being filtered away with the targets.
 /// 2. Processes are asked to close themselves — but only when they own a
-///    top-level window, because a windowless process cannot receive `WM_CLOSE`
+///    visible top-level window, because a windowless or tray-only process
+///    does not act on `WM_CLOSE`
 ///    and would otherwise cost a full grace timeout.
 /// 3. Whatever survives is force-killed in parallel and waited on with real
 ///    process handles, so there is no fixed sleep and no serial `taskkill`.
@@ -579,6 +585,36 @@ mod tests {
     fn window_lookup_ignores_unknown_pids() {
         assert_eq!(count_top_level_windows(u32::MAX), 0);
         assert_eq!(post_wm_close(&[0, u32::MAX]), 0);
+    }
+
+    /// Riot Client sits in the tray with only hidden top-level windows and
+    /// ignores close requests sent to them, which used to cost the full grace
+    /// period on every switch. Hidden windows must not count as close targets.
+    #[test]
+    fn hidden_top_level_windows_are_not_close_targets() {
+        use windows_sys::Win32::UI::WindowsAndMessaging::{CreateWindowExW, DestroyWindow};
+
+        let class: Vec<u16> = "STATIC\0".encode_utf16().collect();
+        let hwnd = unsafe {
+            CreateWindowExW(
+                0,
+                class.as_ptr(),
+                std::ptr::null(),
+                0,
+                0,
+                0,
+                0,
+                0,
+                std::ptr::null_mut(),
+                std::ptr::null_mut(),
+                std::ptr::null_mut(),
+                std::ptr::null(),
+            )
+        };
+        assert!(!hwnd.is_null(), "test window could not be created");
+        let counted = count_top_level_windows(std::process::id());
+        unsafe { DestroyWindow(hwnd) };
+        assert_eq!(counted, 0);
     }
 
     #[test]
