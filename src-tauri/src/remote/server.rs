@@ -42,6 +42,8 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
         .route("/api/rune/icon/{id}", get(rune_icon))
         .route("/api/role/icon/{role}", get(role_icon))
         .route("/api/spell/icon/{id}", get(spell_icon))
+        .route("/api/item/icon/{id}", get(item_icon))
+        .route("/api/rank/icon/{tier}", get(rank_icon))
         .route("/ws", get(socket))
         .fallback(asset)
         .with_state(core)
@@ -353,6 +355,38 @@ async fn spell_icon(Path(id): Path<i64>) -> Response {
         Ok(bytes) => (
             [
                 (header::CONTENT_TYPE, "image/png"),
+                (header::CACHE_CONTROL, "private, max-age=86400"),
+            ],
+            bytes,
+        )
+            .into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+/// Item icons are addressed by a numeric id only; axum rejects anything else
+/// with a 400 before this handler runs, and the module rejects non-positive ids.
+async fn item_icon(Path(id): Path<i64>) -> Response {
+    match crate::runes::items::icon(id).await {
+        Ok(bytes) => (
+            [
+                (header::CONTENT_TYPE, "image/png"),
+                (header::CACHE_CONTROL, "private, max-age=86400"),
+            ],
+            bytes,
+        )
+            .into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+/// Rank crests are addressed by an op.gg bracket slug; the module whitelists the
+/// few known slugs, so no caller-supplied path reaches the client or network.
+async fn rank_icon(Path(tier): Path<String>) -> Response {
+    match crate::runes::ranks::icon(&tier).await {
+        Ok(bytes) => (
+            [
+                (header::CONTENT_TYPE, "image/svg+xml"),
                 (header::CACHE_CONTROL, "private, max-age=86400"),
             ],
             bytes,

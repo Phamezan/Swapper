@@ -610,6 +610,28 @@ async fn spell_icon(id: i64) -> Result<String, String> {
 }
 
 #[tauri::command]
+async fn item_icon(id: i64) -> Result<String, String> {
+    let bytes = runes::items::icon(id)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
+#[tauri::command]
+async fn rank_icon(tier: String) -> Result<String, String> {
+    let bytes = runes::ranks::icon(&tier)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/svg+xml;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
+#[tauri::command]
 async fn get_pro_builds(champion_id: i64, position: String, page: Option<u32>) -> runes::ProBuildsView {
     runes::pro_builds_view(champion_id, &position, page.unwrap_or(1)).await
 }
@@ -805,6 +827,8 @@ pub fn run() {
             rune_icon,
             role_icon,
             spell_icon,
+            item_icon,
+            rank_icon,
             apply_spell,
             get_pro_builds,
             apply_rune_page

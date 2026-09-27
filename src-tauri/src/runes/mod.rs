@@ -14,10 +14,12 @@
 
 pub mod apply;
 pub mod data;
+pub mod items;
 pub mod opgg;
 pub mod page;
 pub mod perks;
 pub mod probuilds;
+pub mod ranks;
 pub mod roles;
 pub mod session;
 pub mod spells;
@@ -357,6 +359,14 @@ struct Shared {
     icons: HashMap<i64, Vec<u8>>,
     /// The client's position SVGs, keyed by plugin asset name.
     role_icons: HashMap<String, Vec<u8>>,
+    /// The ranked crest SVGs, keyed by crest asset name.
+    rank_icons: HashMap<String, Vec<u8>>,
+    /// The item catalog, its id-to-name map, and the CommunityDragon mirror
+    /// used when the LCU is unreachable.
+    items: Option<(Instant, Vec<items::Item>)>,
+    item_names: Option<(Instant, HashMap<i64, String>)>,
+    item_fallback: Option<(Instant, Vec<items::Item>)>,
+    item_icons: HashMap<i64, Vec<u8>>,
     /// The summoner-spell catalog and its icons.
     spells: Option<(Instant, Vec<spells::Spell>)>,
     spell_icons: HashMap<i64, Vec<u8>>,
@@ -376,6 +386,11 @@ fn shared() -> MutexGuard<'static, Shared> {
                 names: None,
                 icons: HashMap::new(),
                 role_icons: HashMap::new(),
+                rank_icons: HashMap::new(),
+                items: None,
+                item_names: None,
+                item_fallback: None,
+                item_icons: HashMap::new(),
                 spells: None,
                 spell_icons: HashMap::new(),
                 applied: None,

@@ -177,6 +177,9 @@ pub struct Loaded {
     /// applied with the page when the setting is on. `None` for the League
     /// fallback, which does not carry spells.
     pub spell_pair: Option<[i64; 2]>,
+    /// The compact item build for the Presets tab. `None` for the League
+    /// fallback, which does not carry items.
+    pub item_build: Option<opgg::ItemBuild>,
     /// True when the chosen rank bracket had no op.gg data but a broader bracket
     /// did. The caller shows a "not enough games" state instead of silently
     /// falling back to a different bracket.
@@ -221,6 +224,7 @@ pub async fn load_for(
                 groups: data.rune_pages,
                 selections,
                 spell_pair,
+                item_build: Some(opgg::item_build(&data.items)),
                 tier_empty: false,
             });
         }
@@ -243,6 +247,7 @@ pub async fn load_for(
                     groups: Vec::new(),
                     selections: Vec::new(),
                     spell_pair: None,
+                    item_build: None,
                     tier_empty: true,
                 });
             }
@@ -272,6 +277,7 @@ pub async fn load_for(
         groups: Vec::new(),
         selections,
         spell_pair: None,
+        item_build: None,
         tier_empty: false,
     })
 }

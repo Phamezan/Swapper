@@ -1,7 +1,11 @@
 //! View models for the rune screen, built for both the desktop flyout and the
 //! phone remote from the same data.
 
+use std::collections::HashMap;
+
 use super::data;
+use super::items;
+use super::opgg;
 use super::perks;
 use super::probuilds;
 use super::session;
@@ -58,6 +62,46 @@ pub struct PresetView {
 pub struct SpellView {
     pub id: i64,
     pub name: String,
+}
+
+/// One item in a build group.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ItemView {
+    pub id: i64,
+    pub name: String,
+}
+
+/// One group of the item build: its label, its items, and its popularity.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct BuildGroupView {
+    pub label: String,
+    pub items: Vec<ItemView>,
+    pub win_pct: Option<f64>,
+    pub play: u64,
+}
+
+/// The compact item build for the Presets tab, from op.gg.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ItemBuildView {
+    pub starter: Option<BuildGroupView>,
+    pub boots: Option<BuildGroupView>,
+    pub core: Option<BuildGroupView>,
+    /// The next most popular cores, revealed by the "more" toggle.
+    pub core_alternatives: Vec<BuildGroupView>,
+    pub late: Vec<BuildGroupView>,
+}
+
+/// One recorded purchase in a pro's game, for the item order.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ItemOrderView {
+    pub item_id: i64,
+    pub name: String,
+    /// Minute of the purchase, or `-1` when the API did not report a path.
+    pub minute: i64,
 }
 
 /// The local player's spells and the picker's choices for this game mode.
@@ -133,6 +177,10 @@ pub struct ProBuildView {
     pub assists: i64,
     /// The pro's summoner spell ids, `[D, F]`, when the API reported both.
     pub spells: Vec<i64>,
+    /// The final build as item icons, empty slots dropped and the trinket last.
+    pub final_items: Vec<ItemView>,
+    /// The pro's completed items in purchase order, with minute stamps.
+    pub item_order: Vec<ItemOrderView>,
     /// True for a "One Trick Pony" entry, which has no real team.
     pub otp: bool,
 }
@@ -174,6 +222,8 @@ pub struct RunesView {
     pub source_label: String,
     pub message: Option<String>,
     pub presets: Vec<PresetView>,
+    /// The recommended item build for the current champion, role and bracket.
+    pub build: Option<ItemBuildView>,
     pub trees: Vec<RuneTreeView>,
     pub shards: Vec<RuneRowView>,
     pub applied: Option<AppliedView>,
@@ -213,6 +263,7 @@ impl RunesView {
             source_label: "Unavailable".into(),
             message: Some(message.into()),
             presets: Vec::new(),
+            build: None,
             trees: Vec::new(),
             shards: Vec::new(),
             applied: None,
@@ -310,6 +361,64 @@ fn build_shards(catalog: &perks::PerkCatalog, stats: &stats::Aggregate) -> Vec<R
         .collect()
 }
 
+/// Maps a group of item ids to `ItemView`s with their display names.
+fn item_views(ids: &[i64], names: &HashMap<i64, String>) -> Vec<ItemView> {
+    ids.iter()
+        .map(|id| ItemView {
+            id: *id,
+            name: names
+                .get(id)
+                .cloned()
+                .unwrap_or_else(|| format!("Item {id}")),
+        })
+        .collect()
+}
+
+fn build_group_view(
+    label: &str,
+    stats: &opgg::ItemStats,
+    names: &HashMap<i64, String>,
+) -> BuildGroupView {
+    BuildGroupView {
+        label: label.to_string(),
+        items: item_views(&stats.ids, names),
+        win_pct: stats.win_pct(),
+        play: stats.play,
+    }
+}
+
+/// Turns op.gg's compact item build into its view, or `None` when there is no
+/// item data at all.
+fn build_view(build: &opgg::ItemBuild, names: &HashMap<i64, String>) -> Option<ItemBuildView> {
+    if build.is_empty() {
+        return None;
+    }
+    Some(ItemBuildView {
+        starter: build
+            .starter
+            .as_ref()
+            .map(|stats| build_group_view("Starter", stats, names)),
+        boots: build
+            .boots
+            .as_ref()
+            .map(|stats| build_group_view("Boots", stats, names)),
+        core: build
+            .core
+            .as_ref()
+            .map(|stats| build_group_view("Core", stats, names)),
+        core_alternatives: build
+            .core_alternatives
+            .iter()
+            .map(|stats| build_group_view("Core", stats, names))
+            .collect(),
+        late: build
+            .late
+            .iter()
+            .map(|stats| build_group_view("Late", stats, names))
+            .collect(),
+    })
+}
+
 /// Structural index used to validate selections from either surface.
 pub fn catalog_index(catalog: &perks::PerkCatalog) -> super::CatalogIndex {
     let mut index = super::CatalogIndex::default();
@@ -395,8 +504,14 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
             groups: Vec::new(),
             selections: Vec::new(),
             spell_pair: None,
+            item_build: None,
             tier_empty: false,
         });
+    // Only op.gg carries item builds, and only when the client can name them.
+    let build = match loaded.item_build.as_ref() {
+        Some(build) => build_view(build, &items::names().await),
+        None => None,
+    };
     let preset_spells = loaded
         .spell_pair
         .map(|pair| pair.to_vec())
@@ -448,6 +563,7 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
         source_label: source_label(loaded.source).to_string(),
         message,
         presets,
+        build,
         trees: build_trees(&catalog, &aggregates),
         shards: build_shards(&catalog, &aggregates),
         applied,
@@ -499,7 +615,11 @@ fn now_ms() -> i64 {
         .unwrap_or(0)
 }
 
-fn pro_build_view(matched: &probuilds::ProMatch, now: i64) -> Option<ProBuildView> {
+fn pro_build_view(
+    matched: &probuilds::ProMatch,
+    now: i64,
+    names: &HashMap<i64, String>,
+) -> Option<ProBuildView> {
     let selection = matched.selection()?;
     let team = if matched.pro_info.current_team.trim().is_empty() {
         matched.current_team.trim()
@@ -531,6 +651,19 @@ fn pro_build_view(matched: &probuilds::ProMatch, now: i64) -> Option<ProBuildVie
             .copied()
             .filter(|id| *id > 0)
             .take(2)
+            .collect(),
+        final_items: item_views(&matched.final_items(), names),
+        item_order: matched
+            .item_order()
+            .into_iter()
+            .map(|(item_id, minute)| ItemOrderView {
+                item_id,
+                name: names
+                    .get(&item_id)
+                    .cloned()
+                    .unwrap_or_else(|| format!("Item {item_id}")),
+                minute,
+            })
             .collect(),
         otp: probuilds::is_otp(team),
     })
@@ -570,8 +703,17 @@ pub async fn pro_builds_view(champion_id: i64, position: &str, page: u32) -> Pro
         Ok(matches) => {
             let now = now_ms();
             let has_more = matches.len() >= probuilds::PAGE_SIZE;
-            let views: Vec<ProBuildView> =
-                matches.iter().filter_map(|entry| pro_build_view(entry, now)).collect();
+            // Names come from the client's item catalog; empty when unavailable,
+            // in which case each icon falls back to "Item <id>".
+            let names = if matches.is_empty() {
+                HashMap::new()
+            } else {
+                items::names().await
+            };
+            let views: Vec<ProBuildView> = matches
+                .iter()
+                .filter_map(|entry| pro_build_view(entry, now, &names))
+                .collect();
             ProBuildsView {
                 champion_id,
                 position: position.to_string(),

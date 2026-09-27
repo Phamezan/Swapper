@@ -87,6 +87,27 @@
           }
         ]
       }
+    ],
+    "starter_items": [
+      { "ids": [1056, 2003, 2003], "play": 6000, "win": 3100, "pick_rate": 0.5 },
+      { "ids": [1055, 2003, 2003], "play": 2000, "win": 980, "pick_rate": 0.15 }
+    ],
+    "boots": [
+      { "ids": [3020], "play": 5000, "win": 2600, "pick_rate": 0.4 },
+      { "ids": [3157], "play": 3000, "win": 1500, "pick_rate": 0.25 }
+    ],
+    "core_items": [
+      { "ids": [6653, 4645, 3157], "play": 4000, "win": 2100, "pick_rate": 0.35 },
+      { "ids": [6653, 3157, 3089], "play": 2500, "win": 1200, "pick_rate": 0.2 },
+      { "ids": [6653, 4645, 3135], "play": 1200, "win": 600, "pick_rate": 0.1 },
+      { "ids": [6653, 4645, 3116], "play": 500, "win": 200, "pick_rate": 0.04 }
+    ],
+    "last_items": [
+      { "ids": [3089], "play": 3000, "win": 1500, "pick_rate": 0.3 },
+      { "ids": [3135], "play": 2500, "win": 1200, "pick_rate": 0.2 },
+      { "ids": [3116], "play": 2000, "win": 950, "pick_rate": 0.15 },
+      { "ids": [3157], "play": 1500, "win": 700, "pick_rate": 0.1 },
+      { "ids": [4645], "play": 900, "win": 400, "pick_rate": 0.05 }
     ]
   }
 }

@@ -52,6 +52,9 @@ query ChampionMatchList($championId: Int!, $role: String, $pageNumber: Int, $isO
       runes { perk0 perk1 perk2 perk3 perk4 perk5 primaryStyle subStyle }
       statShards
       summonerSpells
+      finalBuild
+      completedItems
+      itemPath { itemId timestamp type }
     }
   }
 }";
@@ -86,6 +89,19 @@ pub struct ProRunes {
     pub primary_style: Option<i64>,
     #[serde(default)]
     pub sub_style: Option<i64>,
+}
+
+/// One purchase in a game's item path, with the game-time it happened.
+#[derive(Debug, Clone, Default, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct ItemPathEntry {
+    #[serde(default)]
+    pub item_id: i64,
+    /// Milliseconds since the game started.
+    #[serde(default)]
+    pub timestamp: i64,
+    #[serde(default, rename = "type")]
+    pub kind: String,
 }
 
 /// One pro solo-queue game, as the API reports it.
@@ -124,6 +140,22 @@ pub struct ProMatch {
     /// The pro's summoner spell ids, `[D, F]`, when the API reports them.
     #[serde(default, rename = "summonerSpells")]
     pub summoner_spells: Vec<i64>,
+    /// The seven final inventory slots, trinket last, `0` for an empty slot.
+    #[serde(default)]
+    pub final_build: Vec<i64>,
+    /// The items the pro completed, in the order the API lists them.
+    #[serde(default)]
+    pub completed_items: Vec<i64>,
+    /// Every recorded purchase, with its game-time.
+    #[serde(default)]
+    pub item_path: Vec<ItemPathEntry>,
+}
+
+/// The trinket item ids. There is no trinket flag in the API, but the final
+/// build includes the trinket in its last slot, so these are moved to the end
+/// for display and drawn smaller.
+pub fn is_trinket(item_id: i64) -> bool {
+    matches!(item_id, 3340 | 3363 | 3364 | 3330)
 }
 
 impl ProMatch {
@@ -144,6 +176,44 @@ impl ProMatch {
             secondary_runes,
             shards: self.stat_shards.clone(),
         })
+    }
+
+    /// The final build's item ids, empty slots dropped and the trinket last.
+    pub fn final_items(&self) -> Vec<i64> {
+        let mut items: Vec<i64> = self
+            .final_build
+            .iter()
+            .copied()
+            .filter(|id| *id > 0)
+            .collect();
+        if let Some(position) = items.iter().position(|id| is_trinket(*id)) {
+            let trinket = items.remove(position);
+            items.push(trinket);
+        }
+        items
+    }
+
+    /// The recorded purchases in game order, as `(item id, minute)`. Falls back
+    /// to `completedItems` with an unknown minute when the API omits the path.
+    pub fn item_order(&self) -> Vec<(i64, i64)> {
+        let mut purchases: Vec<&ItemPathEntry> = self
+            .item_path
+            .iter()
+            .filter(|entry| entry.item_id > 0)
+            .collect();
+        if !purchases.is_empty() {
+            purchases.sort_by_key(|entry| entry.timestamp);
+            return purchases
+                .into_iter()
+                .map(|entry| (entry.item_id, entry.timestamp.max(0) / 60_000))
+                .collect();
+        }
+        self.completed_items
+            .iter()
+            .copied()
+            .filter(|id| *id > 0)
+            .map(|id| (id, -1))
+            .collect()
     }
 
     /// The name to show, preferring the pro's display name.
@@ -438,6 +508,54 @@ mod tests {
         assert!(is_otp("one trick pony"));
         assert!(!is_otp("Gen.G Esports"));
         assert!(!is_otp(""));
+    }
+
+    #[test]
+    fn reads_the_final_build_dropping_empty_slots_and_moving_the_trinket_last() {
+        let matches = parse(FIXTURE).unwrap();
+        assert_eq!(
+            matches[0].final_items(),
+            vec![6653, 3020, 4645, 3157, 3089, 3340]
+        );
+        // A trinket anywhere in the row is moved to the end.
+        let body = r#"{"data":{"getProChampionMatchList":{"matchList":[{
+            "matchId":1,
+            "runes":{"perk0":8112,"perk1":8139,"perk2":8137,"perk3":8106,"perk4":8444,"perk5":8242,"primaryStyle":8100,"subStyle":8400},
+            "statShards":[5005,5008,5011],
+            "finalBuild":[3340,6653,3157,0,0,0,0]
+        }]}}}"#;
+        assert_eq!(parse(body).unwrap()[0].final_items(), vec![6653, 3157, 3340]);
+        assert!(is_trinket(3340) && is_trinket(3363) && is_trinket(3364) && is_trinket(3330));
+        assert!(!is_trinket(6653) && !is_trinket(0));
+    }
+
+    #[test]
+    fn reads_the_item_order_in_purchase_order_with_minute_stamps() {
+        let matches = parse(FIXTURE).unwrap();
+        let order = matches[0].item_order();
+        assert_eq!(
+            order,
+            vec![
+                (1056, 0),
+                (2003, 0),
+                (6653, 7),
+                (3020, 9),
+                (3157, 13),
+                (4645, 17),
+                (3089, 25)
+            ]
+        );
+        // Without an item path, the completed items keep their order with no minute.
+        let body = r#"{"data":{"getProChampionMatchList":{"matchList":[{
+            "matchId":1,
+            "runes":{"perk0":8112,"perk1":8139,"perk2":8137,"perk3":8106,"perk4":8444,"perk5":8242,"primaryStyle":8100,"subStyle":8400},
+            "statShards":[5005,5008,5011],
+            "completedItems":[1056,6653,3157]
+        }]}}}"#;
+        assert_eq!(
+            parse(body).unwrap()[0].item_order(),
+            vec![(1056, -1), (6653, -1), (3157, -1)]
+        );
     }
 
     #[test]

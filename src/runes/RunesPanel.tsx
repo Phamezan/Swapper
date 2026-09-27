@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
 import { RoleIcon } from "./RoleIcon";
 import { SpellIcon } from "./SpellIcon";
+import { ItemBuild } from "./ItemBuild";
 import { ProBuilds } from "./ProBuilds";
 import { RuneEditor } from "./RuneEditor";
+import { RankPicker } from "./RankPicker";
 import {
   RunesView,
   ProBuild,
@@ -253,7 +255,6 @@ export function RunesPanel({
     </div>
   );
 
-  const sourceClass = view.source === "opgg" ? "is-live" : view.source === "lcu" ? "is-fallback" : "is-none";
   const roleLabel = view.position && view.position !== "none" ? positionLabels[view.position] : modeLabels[view.mode] ?? view.mode;
   const appliedKeystone = view.applied
     ? view.trees.flatMap((tree) => tree.keystones).find((rune) => rune.id === view.applied?.keystone)
@@ -287,26 +288,24 @@ export function RunesPanel({
         <button type="button" role="tab" aria-selected={screen === "presets"} className={screen === "presets" ? "is-active" : ""} onClick={() => setScreen("presets")}>Presets</button>
         <button type="button" role="tab" aria-selected={screen === "pro"} className={screen === "pro" ? "is-active" : ""} onClick={() => setScreen("pro")}>Pro builds</button>
         <button type="button" role="tab" aria-selected={screen === "editor"} className={screen === "editor" ? "is-active" : ""} onClick={startEditor}>Editor</button>
-        {screen !== "pro" && <span className={`runes-source ${sourceClass}`}>{view.sourceLabel}</span>}
+        {view.source === "lcu" && (
+          <span className="runes-source is-fallback" title="op.gg is unavailable; showing the League client's own recommendations.">
+            League fallback
+          </span>
+        )}
       </div>
 
       {screen !== "pro" && (
         <div className="runes-settings">
           {view.tierSupported && (
-            <label className="runes-filter-label">
-              <span>Rank</span>
-              <select
-                className="rune-tier-select"
-                value={view.tier}
-                disabled={busy}
-                aria-label="Rank bracket for rune statistics"
-                onChange={(event) => onTierChange(event.target.value)}
-              >
-                {view.tiers.map((option) => (
-                  <option key={option.value} value={option.value}>{option.label}</option>
-                ))}
-              </select>
-            </label>
+            <RankPicker
+              tiers={view.tiers}
+              value={view.tier}
+              games={view.games}
+              disabled={busy}
+              mode={mode}
+              onChange={onTierChange}
+            />
           )}
           <label className="runes-auto" title="Apply the recommended runes when your champion locks in">
             <input
@@ -328,9 +327,6 @@ export function RunesPanel({
             />
             <span>Apply summoner spells with runes</span>
           </label>
-          {view.tierSupported && view.games > 0 && (
-            <span className="runes-filter-games">{fmtGames(view.games)} games</span>
-          )}
         </div>
       )}
 
@@ -341,7 +337,6 @@ export function RunesPanel({
         )}
         {showLockHint && <p className="runes-note runes-auto-note">Applies when you lock in.</p>}
         {screen !== "pro" && view.message && !error && !view.tierEmpty && <p className="runes-note">{view.message}</p>}
-        {screen !== "pro" && view.source === "opgg" && <p className="runes-note runes-approx">Win%, pick% and games are approximate, aggregated from op.gg builds.</p>}
 
         {screen === "pro" ? (
           <ProBuilds
@@ -416,6 +411,7 @@ export function RunesPanel({
                 </button>
               );
             })}
+            {view.build && <ItemBuild build={view.build} mode={mode} />}
           </div>
         ) : canEdit && selection ? (
           <RuneEditor
