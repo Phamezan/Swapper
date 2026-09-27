@@ -17,14 +17,60 @@ use tauri::{path::BaseDirectory, Emitter, Manager, State, WindowEvent};
 use tauri_plugin_positioner::{Position, WindowExt};
 use uuid::Uuid;
 
+const TRAY_ID: &str = "swapper-tray";
+const DEFAULT_TRAY_TOOLTIP: &str = "Swapper · Riot account switcher";
+
+#[derive(Clone, Default)]
+pub struct SwitchGuard {
+    in_progress: Arc<AtomicBool>,
+}
+
+#[derive(Debug)]
+pub struct SwitchLease {
+    in_progress: Arc<AtomicBool>,
+}
+
+impl SwitchGuard {
+    pub fn new() -> Self {
+        Self {
+            in_progress: Arc::new(AtomicBool::new(false)),
+        }
+    }
+
+    pub fn is_switching(&self) -> bool {
+        self.in_progress.load(Ordering::SeqCst)
+    }
+
+    pub fn acquire(&self) -> Result<SwitchLease, String> {
+        if self
+            .in_progress
+            .compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst)
+            .is_ok()
+        {
+            Ok(SwitchLease {
+                in_progress: Arc::clone(&self.in_progress),
+            })
+        } else {
+            Err("Another account action is in progress. Try again when it finishes.".into())
+        }
+    }
+}
+
+impl Drop for SwitchLease {
+    fn drop(&mut self) {
+        self.in_progress.store(false, Ordering::SeqCst);
+    }
+}
+
 struct AppState {
     config: Mutex<vault::Config>,
     bundled_deceive: PathBuf,
     keep_flyout_open: AtomicBool,
+    switch_guard: SwitchGuard,
     remote: Arc<remote::RemoteCore>,
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 struct AccountView {
     id: Uuid,
@@ -37,11 +83,12 @@ struct AccountView {
     icon_data_url: Option<String>,
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 struct AppView {
     accounts: Vec<AccountView>,
     active_id: Option<Uuid>,
+    is_switching: bool,
     use_deceive: bool,
     riot_exe: Option<String>,
     riot_detected: bool,
@@ -49,10 +96,32 @@ struct AppView {
     remote: remote::RemoteStatus,
 }
 
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SwitchStartedPayload {
+    id: Uuid,
+    name: String,
+}
+
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SwitchDonePayload {
+    id: Uuid,
+    view: AppView,
+}
+
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SwitchFailedPayload {
+    id: Uuid,
+    error: String,
+}
+
 fn view(
     config: &vault::Config,
     bundled_deceive: &std::path::Path,
     remote: &remote::RemoteStatus,
+    is_switching: bool,
 ) -> AppView {
     AppView {
         accounts: config
@@ -70,11 +139,18 @@ fn view(
             })
             .collect(),
         active_id: config.active_id,
+        is_switching,
         use_deceive: config.use_deceive,
         riot_exe: config.riot_exe.clone(),
         riot_detected: riot::riot_path(config).is_some(),
         deceive_detected: riot::deceive_path(config, bundled_deceive).is_some(),
         remote: remote.clone(),
+    }
+}
+
+fn update_tray_tooltip(app: &tauri::AppHandle, tooltip: &str) {
+    if let Some(tray) = app.tray_by_id(TRAY_ID) {
+        let _ = tray.set_tooltip(Some(tooltip));
     }
 }
 
@@ -85,6 +161,7 @@ fn get_state(state: State<'_, AppState>) -> Result<AppView, String> {
         &config,
         &state.bundled_deceive,
         &state.remote.status(),
+        state.switch_guard.is_switching(),
     ))
 }
 
@@ -105,6 +182,7 @@ async fn detect_account_identity(
 
 #[tauri::command]
 async fn begin_add(state: State<'_, AppState>) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
     // Detect identity first, while Riot Client is still alive; the
     // backend verifies it before overwriting any saved session.
     let detection = identity::detect().await;
@@ -114,11 +192,13 @@ async fn begin_add(state: State<'_, AppState>) -> Result<AppView, String> {
         &config,
         &state.bundled_deceive,
         &state.remote.status(),
+        false,
     ))
 }
 
 #[tauri::command]
 async fn complete_add(state: State<'_, AppState>, puuid: String) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
     // Re-read the live identity at save time: if the Riot login changed
     // between detection and this click, refuse instead of saving the wrong
     // session under the account the user saw.
@@ -135,6 +215,7 @@ async fn complete_add(state: State<'_, AppState>, puuid: String) -> Result<AppVi
         &config,
         &state.bundled_deceive,
         &state.remote.status(),
+        false,
     ))
 }
 
@@ -158,56 +239,115 @@ fn mismatch_error() -> String {
 }
 
 #[tauri::command]
-async fn switch_account(
+fn switch_account(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
     id: Uuid,
-) -> Result<AppView, String> {
-    // Detect identity first, while Riot Client is still alive; a
-    // mismatch aborts the switch before anything is overwritten.
-    let detection = identity::detect().await;
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
-    let name = config
-        .accounts
-        .iter()
-        .find(|a| a.id == id)
-        .map(|a| a.display_name());
-    let use_deceive = config.use_deceive;
-    if let Some(name) = name.as_deref() {
-        notify::switch_started(&app, name);
-    }
-    let label = name.as_deref().unwrap_or("the selected account");
-    if let Err(failure) = riot::switch_account(&mut config, id, &state.bundled_deceive, &detection) {
-        notify::switch_failed(&app, label, use_deceive, &failure);
-        return Err(failure.detail);
-    }
-    notify::switch_succeeded(&app, label, use_deceive);
-    Ok(view(
-        &config,
-        &state.bundled_deceive,
-        &state.remote.status(),
-    ))
+) -> Result<(), String> {
+    // Acquire guard lease first
+    let lease = state.switch_guard.acquire()?;
+
+    let (name, use_deceive) = {
+        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let target = config
+            .accounts
+            .iter()
+            .find(|a| a.id == id)
+            .ok_or_else(|| "Account no longer exists.".to_string())?;
+        (target.display_name(), config.use_deceive)
+    };
+
+    notify::switch_started(&app, &name);
+    update_tray_tooltip(&app, &format!("Swapper · Switching to {name}…"));
+    let _ = app.emit("switch_started", SwitchStartedPayload { id, name: name.clone() });
+
+    let app_handle = app.clone();
+    let bundled_deceive = state.bundled_deceive.clone();
+
+    tauri::async_runtime::spawn(async move {
+        let _lease = lease;
+        let detection = identity::detect_account().await;
+
+        let name_for_switch = name.clone();
+        let result = tauri::async_runtime::spawn_blocking(move || {
+            let app_state = match app_handle.try_state::<AppState>() {
+                Some(state) => state,
+                None => {
+                    let err = "App state unavailable".to_string();
+                    return Err((riot::SwitchFailure::from(err.clone()), err));
+                }
+            };
+            let mut config = match app_state.config.lock() {
+                Ok(guard) => guard,
+                Err(e) => {
+                    let err = format!("Lock error: {e}");
+                    return Err((riot::SwitchFailure::from(err.clone()), err));
+                }
+            };
+
+            riot::switch_account(&mut config, id, &bundled_deceive, &detection)
+                .map_err(|failure| {
+                    let friendly = notify::human_reason(failure.kind, &name_for_switch, use_deceive)
+                        .unwrap_or_else(|| failure.detail.clone());
+                    (failure, friendly)
+                })?;
+
+            let updated_view = view(
+                &config,
+                &app_state.bundled_deceive,
+                &app_state.remote.status(),
+                false,
+            );
+            Ok::<_, (riot::SwitchFailure, String)>(updated_view)
+        })
+        .await;
+
+        update_tray_tooltip(&app, DEFAULT_TRAY_TOOLTIP);
+
+        match result {
+            Ok(Ok(updated_view)) => {
+                notify::switch_succeeded(&app, &name, use_deceive);
+                let _ = app.emit("switch_done", SwitchDonePayload { id, view: updated_view });
+            }
+            Ok(Err((failure, friendly_error))) => {
+                notify::switch_failed(&app, &name, use_deceive, &failure);
+                let _ = app.emit("switch_failed", SwitchFailedPayload { id, error: friendly_error });
+            }
+            Err(join_err) => {
+                let err_msg = format!("Background switch error: {join_err}");
+                let failure = riot::SwitchFailure::from(err_msg.clone());
+                notify::switch_failed(&app, &name, use_deceive, &failure);
+                let _ = app.emit("switch_failed", SwitchFailedPayload { id, error: err_msg });
+            }
+        }
+    });
+
+    Ok(())
 }
 
 #[tauri::command]
 fn set_nickname(state: State<'_, AppState>, id: Uuid, name: String) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
     let mut config = state.config.lock().map_err(|e| e.to_string())?;
     riot::set_nickname(&mut config, id, name)?;
     Ok(view(
         &config,
         &state.bundled_deceive,
         &state.remote.status(),
+        false,
     ))
 }
 
 #[tauri::command]
 fn remove_account(state: State<'_, AppState>, id: Uuid) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
     let mut config = state.config.lock().map_err(|e| e.to_string())?;
     riot::remove_account(&mut config, id)?;
     Ok(view(
         &config,
         &state.bundled_deceive,
         &state.remote.status(),
+        false,
     ))
 }
 
@@ -217,12 +357,14 @@ fn save_settings(
     use_deceive: bool,
     riot_exe: Option<String>,
 ) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
     let mut config = state.config.lock().map_err(|e| e.to_string())?;
     riot::save_settings(&mut config, use_deceive, riot_exe, &state.bundled_deceive)?;
     Ok(view(
         &config,
         &state.bundled_deceive,
         &state.remote.status(),
+        false,
     ))
 }
 
@@ -281,6 +423,7 @@ pub fn run() {
                 config: Mutex::new(config),
                 bundled_deceive,
                 keep_flyout_open: AtomicBool::new(false),
+                switch_guard: SwitchGuard::new(),
                 remote: remote.clone(),
             });
             let auto_enable = remote.clone();
@@ -298,9 +441,9 @@ pub fn run() {
             let settings = MenuItem::with_id(app, "settings", "Settings", true, None::<&str>)?;
             let exit = MenuItem::with_id(app, "exit", "Exit", true, None::<&str>)?;
             let menu = Menu::with_items(app, &[&add, &edit, &remove, &settings, &exit])?;
-            TrayIconBuilder::new()
+            TrayIconBuilder::with_id(TRAY_ID)
                 .icon(app.default_window_icon().expect("Missing app icon").clone())
-                .tooltip("Swapper · Riot account switcher")
+                .tooltip(DEFAULT_TRAY_TOOLTIP)
                 .menu(&menu)
                 .show_menu_on_left_click(false)
                 .on_menu_event(|app, event| match event.id().as_ref() {
@@ -366,4 +509,66 @@ pub fn run() {
         ])
         .run(tauri::generate_context!())
         .expect("Could not start Swapper");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn guard_initially_not_switching() {
+        let guard = SwitchGuard::new();
+        assert!(!guard.is_switching());
+    }
+
+    #[test]
+    fn guard_acquire_sets_switching_and_blocks_second_acquire() {
+        let guard = SwitchGuard::new();
+        let lease = guard.acquire().expect("First acquire should succeed");
+        assert!(guard.is_switching());
+
+        let second = guard.acquire();
+        assert!(second.is_err(), "Second acquire while leased should fail");
+        assert_eq!(
+            second.unwrap_err(),
+            "Another account action is in progress. Try again when it finishes."
+        );
+
+        drop(lease);
+        assert!(!guard.is_switching());
+    }
+
+    #[test]
+    fn guard_can_reacquire_after_lease_drop() {
+        let guard = SwitchGuard::new();
+        {
+            let _lease = guard.acquire().unwrap();
+            assert!(guard.is_switching());
+        }
+        assert!(!guard.is_switching());
+
+        let lease2 = guard.acquire().expect("Should be able to acquire after drop");
+        assert!(guard.is_switching());
+        drop(lease2);
+        assert!(!guard.is_switching());
+    }
+
+    #[test]
+    fn guard_resets_on_panic() {
+        let guard = SwitchGuard::new();
+        let guard_clone = guard.clone();
+
+        let _ = std::panic::catch_unwind(move || {
+            let _lease = guard_clone.acquire().unwrap();
+            assert!(guard_clone.is_switching());
+            panic!("Simulated panic inside switch task");
+        });
+
+        assert!(
+            !guard.is_switching(),
+            "Guard lease must be released even if task panics"
+        );
+        let next_lease = guard.acquire();
+        assert!(next_lease.is_ok(), "Guard can be acquired after panic unwinds");
+    }
 }

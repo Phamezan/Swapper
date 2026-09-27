@@ -1,19 +1,29 @@
 use crate::identity::{self, Detection, DetectedIdentity};
 use crate::vault::{self, Account, Config};
-use crate::windows::process::{self, SnapshotError, StopError, StopOptions};
+use crate::windows::process::{self, SnapshotError, StopError, StopOptions, StopReport};
 use std::path::{Path, PathBuf};
 use std::process::Command;
+use std::time::Instant;
 use sysinfo::{Pid, ProcessRefreshKind, ProcessesToUpdate, System, UpdateKind};
 use uuid::Uuid;
 
 const CLIENTS: &[&str] = &[
     "RiotClientServices.exe",
+    "Riot Client.exe",
     "RiotClientUx.exe",
     "RiotClientUxRender.exe",
     "LeagueClient.exe",
     "LeagueClientUx.exe",
     "LeagueClientUxRender.exe",
     "Deceive.exe",
+];
+/// Riot Client processes ignore `WM_CLOSE` (Services) or only hide to the
+/// tray (the Electron UI), so a graceful close just burns the grace period.
+const FORCE_ONLY: &[&str] = &[
+    "RiotClientServices.exe",
+    "Riot Client.exe",
+    "RiotClientUx.exe",
+    "RiotClientUxRender.exe",
 ];
 const GAMES: &[&str] = &[
     "League of Legends.exe",
@@ -66,9 +76,13 @@ fn ensure_no_game() -> Result<(), ProcessStateError> {
 ///
 /// An unreadable process table aborts the switch instead of being treated as
 /// "no clients and no game".
-fn stop_clients() -> Result<(), ProcessStateError> {
-    match process::stop_images(CLIENTS, GAMES, StopOptions::default()) {
-        Ok(_) => Ok(()),
+fn stop_clients() -> Result<StopReport, ProcessStateError> {
+    let options = StopOptions {
+        force_only: FORCE_ONLY,
+        ..StopOptions::default()
+    };
+    match process::stop_images(CLIENTS, GAMES, options) {
+        Ok(report) => Ok(report),
         Err(StopError::ForbiddenPresent) => Err(ProcessStateError::GameRunning),
         Err(StopError::StillRunning(_)) => Err(ProcessStateError::ClientStillRunning),
         Err(StopError::EnumerationFailed(error)) => {
@@ -241,14 +255,31 @@ fn refresh_active(
     config: &mut Config,
     verified: Option<&DetectedIdentity>,
 ) -> Result<(), String> {
+    refresh_active_with_snapshot(config, verified, None)
+}
+
+/// Variant of `refresh_active` that reuses an already-captured live snapshot
+/// (e.g. from the rollback capture pass) instead of reading the disk a second time.
+fn refresh_active_with_snapshot(
+    config: &mut Config,
+    verified: Option<&DetectedIdentity>,
+    snapshot: Option<&vault::Snapshot>,
+) -> Result<(), String> {
     let (Some(active), Some(identity)) = (config.active_id, verified) else {
         return Ok(());
     };
     if !vault::live_session_exists()? {
         return Ok(());
     }
-    let fresh = vault::capture()?;
-    let new_vault = vault::save_snapshot(&fresh)?;
+    let owned;
+    let fresh = match snapshot {
+        Some(s) => s,
+        None => {
+            owned = vault::capture()?;
+            &owned
+        }
+    };
+    let new_vault = vault::save_snapshot(fresh)?;
     let Some(index) = config.accounts.iter().position(|a| a.id == active) else {
         vault::remove_snapshot(new_vault)?;
         return Err("Active account is missing from Swapper settings".into());
@@ -423,6 +454,7 @@ pub fn switch_account(
     bundled_deceive: &Path,
     detection: &Detection,
 ) -> Result<(), SwitchFailure> {
+    let t_pre = Instant::now();
     ensure_no_game().map_err(switch_failure)?;
     let target = config
         .accounts
@@ -441,13 +473,22 @@ pub fn switch_account(
     // Verify the live identity before Riot Client is closed, so a manual
     // Riot login change can never overwrite another account's saved session.
     let verified = verified_live_identity(config, detection)?;
-    stop_clients().map_err(switch_failure)?;
+    let pre_ms = t_pre.elapsed();
+
+    let t_stop = Instant::now();
+    let stop_report = stop_clients().map_err(switch_failure)?;
+    let stop_ms = t_stop.elapsed();
+
+    let t_capture = Instant::now();
     let previous = if vault::live_session_exists()? {
         Some(vault::capture()?)
     } else {
         None
     };
-    refresh_active(config, verified.as_ref())?;
+    refresh_active_with_snapshot(config, verified.as_ref(), previous.as_ref())?;
+    let capture_ms = t_capture.elapsed();
+
+    let t_restore = Instant::now();
     if config.active_id == Some(id) {
         let fresh_id = config
             .accounts
@@ -477,6 +518,9 @@ pub fn switch_account(
         }
         return Err(e.into());
     }
+    let restore_save_ms = t_restore.elapsed();
+
+    let t_launch = Instant::now();
     if let Err(e) = launch_selected(config, bundled_deceive) {
         if let Some(previous) = previous.as_ref() {
             let _ = vault::restore(previous);
@@ -486,6 +530,17 @@ pub fn switch_account(
         config.active_id = previous_active;
         let _ = vault::save(config);
         return Err(SwitchFailure::new(SwitchFailureKind::Launch, e));
+    }
+    let launch_ms = t_launch.elapsed();
+
+    if cfg!(debug_assertions) {
+        eprintln!(
+            "[perf-swap] switch_account: pre_checks={pre_ms:?}, stop_clients={stop_ms:?} (graceful_ms={:?}, force_ms={:?}, force_rounds={}, pids={}), capture/refresh={capture_ms:?}, restore_save={restore_save_ms:?}, launch={launch_ms:?}",
+            stop_report.graceful_ms,
+            stop_report.force_ms,
+            stop_report.force_rounds,
+            stop_report.pids
+        );
     }
     Ok(())
 }
@@ -629,5 +684,22 @@ mod tests {
 
         assert!(conflicting_riot_id(&config, &identity("NEW-PUUID")));
         assert!(!conflicting_riot_id(&config, &identity("OLD-PUUID")));
+    }
+
+    #[test]
+    fn refresh_active_with_snapshot_skips_when_no_active_or_unverified() {
+        let active = account(Some("PUUID-A"));
+        let mut config = Config {
+            accounts: vec![active.clone()],
+            active_id: None,
+            ..Config::default()
+        };
+        let snapshot = vault::Snapshot { entries: vec![] };
+        // No active account set: skips cleanly without touching vault or erroring
+        assert!(refresh_active_with_snapshot(&mut config, Some(&identity("PUUID-A")), Some(&snapshot)).is_ok());
+
+        // Unverified identity (None): skips cleanly
+        config.active_id = Some(active.id);
+        assert!(refresh_active_with_snapshot(&mut config, None, Some(&snapshot)).is_ok());
     }
 }
