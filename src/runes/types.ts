@@ -54,6 +54,37 @@ export type TierOption = {
   label: string;
 };
 
+/** One item, with its display name. */
+export type ItemView = {
+  id: number;
+  name: string;
+};
+
+/** One group of the item build (starter, boots, core, late). */
+export type BuildGroup = {
+  label: string;
+  items: ItemView[];
+  winPct: number | null;
+  play: number;
+};
+
+/** The compact item build for the Presets tab. */
+export type ItemBuildView = {
+  starter: BuildGroup | null;
+  boots: BuildGroup | null;
+  core: BuildGroup | null;
+  coreAlternatives: BuildGroup[];
+  late: BuildGroup[];
+};
+
+/** One recorded purchase in a pro's game. */
+export type ItemOrderEntry = {
+  itemId: number;
+  name: string;
+  /** Minute of the purchase, or -1 when the API did not report a path. */
+  minute: number;
+};
+
 /** One selectable summoner spell. */
 export type Spell = {
   id: number;
@@ -78,6 +109,8 @@ export type RunesView = {
   sourceLabel: string;
   message: string | null;
   presets: Preset[];
+  /** The recommended item build for the current champion, role and bracket. */
+  build: ItemBuildView | null;
   trees: RuneTree[];
   shards: RuneRow[];
   applied: Applied | null;
@@ -115,6 +148,10 @@ export type ProBuild = {
   assists: number;
   /** The pro's spell pair `[D, F]`, empty when the API omitted it. */
   spells: number[];
+  /** The final build as item icons, empty slots dropped and the trinket last. */
+  finalItems: ItemView[];
+  /** The pro's completed items in purchase order, with minute stamps. */
+  itemOrder: ItemOrderEntry[];
   /** True for a "One Trick Pony" entry, which has no real team. */
   otp: boolean;
 };
@@ -139,6 +176,20 @@ export const TIER_OPTIONS: TierOption[] = [
   { value: "master_plus", label: "Master+" },
   { value: "challenger", label: "Challenger" },
 ];
+
+/** The trinkets, which the final build draws last and smaller. Kept in step
+ *  with `runes::probuilds::is_trinket`. */
+const TRINKET_IDS = new Set([3340, 3363, 3364, 3330]);
+
+export function isTrinketItem(id: number): boolean {
+  return TRINKET_IDS.has(id);
+}
+
+/** A purchase-minute label for the pro item order, or "–" when unknown. */
+export function fmtBuildMinute(minute: number): string {
+  if (minute < 0) return "–";
+  return `${minute}:00`;
+}
 
 export function fmtPct(value: number | null): string {
   if (value === null || Number.isNaN(value)) return "–";
