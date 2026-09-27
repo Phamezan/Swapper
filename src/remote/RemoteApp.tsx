@@ -272,6 +272,25 @@ export default function RemoteApp() {
     }
   }
 
+  async function setTier(tier: string) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const response = await fetch("/api/runes/tier", {
+        method: "POST",
+        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
+        body: JSON.stringify({ tier }),
+      });
+      const result = await response.json() as { ok: boolean; message: string | null };
+      if (!response.ok || !result.ok) setRunesError(result.message ?? "Could not update the rank filter.");
+      else await loadRunes();
+    } catch {
+      setRunesError("Could not reach Swapper. Check your connection and try again.");
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
   const ready = live && status?.state === "available" && status.tailscaleRunning && status.lcuConnected;
   const phase = game?.phase;
   const select = game?.championSelect;
@@ -324,6 +343,7 @@ export default function RemoteApp() {
                 error={runesError}
                 onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
+                onTierChange={(tier) => void setTier(tier)}
               />
             ) : (
             <>

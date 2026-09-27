@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
+import { RuneEditor } from "./RuneEditor";
 import {
-  Rune,
-  RuneTree,
   RunesView,
   Selection,
+  fmtGames,
+  fmtPct,
   selectionFromPreset,
   selectionFromApplied,
   sameSelection,
-  togglePrimary,
-  toggleSecondary,
-  selectShard,
 } from "./types";
 import "./runes.css";
 
@@ -43,6 +41,7 @@ type Props = {
   error: string | null;
   onApply: (selection: Selection, presetIndex: number | null) => void;
   onToggleAutoApply: (enabled: boolean) => void;
+  onTierChange: (tier: string) => void;
   onExit?: () => void;
 };
 
@@ -60,17 +59,6 @@ const modeLabels: Record<string, string> = {
   aram: "ARAM",
   arena: "Arena",
 };
-
-function fmtPct(value: number | null): string {
-  if (value === null || Number.isNaN(value)) return "–";
-  return `${value.toFixed(1)}%`;
-}
-
-function fmtGames(play: number): string {
-  if (!play) return "–";
-  if (play >= 1000) return `${(play / 1000).toFixed(1)}k`;
-  return String(play);
-}
 
 function defaultSelection(view: RunesView): Selection | null {
   const primary = view.trees[0];
@@ -94,39 +82,6 @@ function defaultSelection(view: RunesView): Selection | null {
   };
 }
 
-function RuneTile({
-  rune,
-  mode,
-  selected,
-  disabled,
-  onClick,
-}: {
-  rune: Rune;
-  mode: "desktop" | "remote";
-  selected: boolean;
-  disabled: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      className={`rune-tile ${selected ? "is-on" : ""}`}
-      disabled={disabled}
-      onClick={onClick}
-      title={rune.name}
-      aria-pressed={selected}
-      aria-label={`${rune.name}, ${selected ? "selected" : "not selected"}`}
-    >
-      <RuneIcon id={rune.id} mode={mode} className="rune-tile-icon" />
-      <span className="rune-tile-name">{rune.name}</span>
-      <span className="rune-tile-win">{fmtPct(rune.winPct)}</span>
-      <span className="rune-tile-meta">
-        {fmtPct(rune.pickPct)} · {fmtGames(rune.play)}
-      </span>
-    </button>
-  );
-}
-
 export function RunesPanel({
   mode,
   view,
@@ -135,6 +90,7 @@ export function RunesPanel({
   error,
   onApply,
   onToggleAutoApply,
+  onTierChange,
   onExit,
 }: Props) {
   const [screen, setScreen] = useState<"presets" | "editor">("presets");
@@ -175,13 +131,9 @@ export function RunesPanel({
     );
   }
 
-  const primaryTree = view.trees.find((tree) => tree.id === selection?.primaryPageId) ?? view.trees[0];
-  const secondaryTree =
-    view.trees.find((tree) => tree.id === selection?.secondaryPageId) ??
-    view.trees.find((tree) => tree.id !== primaryTree?.id);
   const active = view.applied ? selectionFromApplied(view.applied) : null;
   const dirty = selection !== null && !sameSelection(selection, active);
-  const canEdit = selection !== null && primaryTree !== undefined && secondaryTree !== undefined;
+  const canEdit = selection !== null && view.trees.length > 0;
   const applyIndex = selection && sameSelection(selection, active)
     ? view.applied?.presetIndex ?? null
     : null;
@@ -189,36 +141,6 @@ export function RunesPanel({
   // A stable non-null alias: TypeScript loses the narrowing above inside the
   // handlers declared below.
   const data = view;
-
-  function choosePrimaryTree(tree: RuneTree) {
-    if (!selection) return;
-    const keystone = tree.keystones[0]?.id ?? selection.keystone;
-    const primaryRunes = tree.rows
-      .map((row) => row.runes[0]?.id)
-      .filter((id): id is number => id !== undefined);
-    let secondaryPageId = selection.secondaryPageId;
-    let secondaryRunes = selection.secondaryRunes;
-    if (tree.id === secondaryPageId) {
-      const fallback = data.trees.find((entry) => entry.id !== tree.id);
-      if (fallback) {
-        secondaryPageId = fallback.id;
-        secondaryRunes = fallback.rows
-          .map((row) => row.runes[0]?.id)
-          .filter((id): id is number => id !== undefined)
-          .slice(0, 2);
-      }
-    }
-    setSelection({ ...selection, primaryPageId: tree.id, keystone, primaryRunes, secondaryPageId, secondaryRunes });
-  }
-
-  function chooseSecondaryTree(tree: RuneTree) {
-    if (!selection || tree.id === selection.primaryPageId) return;
-    const secondaryRunes = tree.rows
-      .map((row) => row.runes[0]?.id)
-      .filter((id): id is number => id !== undefined)
-      .slice(0, 2);
-    setSelection({ ...selection, secondaryPageId: tree.id, secondaryRunes });
-  }
 
   function startEditor() {
     setScreen("editor");
@@ -237,7 +159,7 @@ export function RunesPanel({
           <p>{view.championName || "Champion"} · {roleLabel}</p>
           <h2>Runes</h2>
         </div>
-        {onExit && (
+        {onExit && mode === "desktop" && (
           <button type="button" className="runes-back" onClick={onExit} aria-label="Back to accounts">
             Accounts
           </button>
@@ -250,18 +172,47 @@ export function RunesPanel({
         <span className={`runes-source ${sourceClass}`}>{view.sourceLabel}</span>
       </div>
 
+      {view.tierSupported && (
+        <div className="runes-filter">
+          <label className="runes-filter-label">
+            <span>Rank</span>
+            <select
+              className="rune-tier-select"
+              value={view.tier}
+              disabled={busy}
+              aria-label="Rank bracket for rune statistics"
+              onChange={(event) => onTierChange(event.target.value)}
+            >
+              {view.tiers.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </label>
+          {view.games > 0 && <span className="runes-filter-games">{fmtGames(view.games)} games</span>}
+        </div>
+      )}
+
       <div className="runes-body">
         {error && <p className="runes-alert" role="alert">{error}</p>}
-        {view.message && !error && <p className="runes-note">{view.message}</p>}
+        {view.message && !error && !view.tierEmpty && <p className="runes-note">{view.message}</p>}
         {view.source === "opgg" && <p className="runes-note runes-approx">Win%, pick% and games are approximate, aggregated from op.gg builds.</p>}
 
         {screen === "presets" ? (
           <div className="runes-presets">
-            {view.presets.length === 0 && (
+            {view.tierEmpty ? (
+              <div className="runes-tier-empty">
+                <p>{view.message ?? `Not enough games at ${view.tierLabel}.`}</p>
+                {view.tier !== "all" && (
+                  <button type="button" disabled={busy} onClick={() => onTierChange("all")}>
+                    Use All ranks
+                  </button>
+                )}
+              </div>
+            ) : view.presets.length === 0 ? (
               <p className="runes-note">
                 {view.canApply ? "No presets for this role yet." : "No recommendations available. You can still build a page in the Editor."}
               </p>
-            )}
+            ) : null}
             {view.presets.map((preset) => {
               const presetSelection = selectionFromPreset(preset);
               const isActive = sameSelection(presetSelection, active);
@@ -300,79 +251,14 @@ export function RunesPanel({
               );
             })}
           </div>
-        ) : canEdit ? (
-          <div className="runes-editor">
-            <div className="rune-trees">
-              <div className="rune-tree-picker" role="group" aria-label="Primary tree">
-                {view.trees.map((tree) => (
-                  <button
-                    type="button"
-                    key={`p-${tree.id}`}
-                    className={tree.id === primaryTree.id ? "is-on" : ""}
-                    title={tree.name}
-                    disabled={busy}
-                    onClick={() => choosePrimaryTree(tree)}
-                  >
-                    <RuneIcon id={tree.id} mode={mode} />
-                  </button>
-                ))}
-              </div>
-              <div className="rune-tree-picker" role="group" aria-label="Secondary tree">
-                {view.trees.map((tree) => (
-                  <button
-                    type="button"
-                    key={`s-${tree.id}`}
-                    className={tree.id === secondaryTree.id ? "is-on" : ""}
-                    title={tree.name}
-                    disabled={busy || tree.id === primaryTree.id}
-                    onClick={() => chooseSecondaryTree(tree)}
-                  >
-                    <RuneIcon id={tree.id} mode={mode} />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="rune-grid">
-              <div className="rune-col">
-                <p className="rune-col-label">{primaryTree.name}</p>
-                <div className="rune-row rune-row-keystones">
-                  {primaryTree.keystones.map((rune) => (
-                    <RuneTile key={rune.id} rune={rune} mode={mode} disabled={busy} selected={selection.keystone === rune.id} onClick={() => setSelection({ ...selection, keystone: rune.id })} />
-                  ))}
-                </div>
-                {primaryTree.rows.map((row, index) => (
-                  <div className="rune-row" key={`pr-${index}`}>
-                    {row.runes.map((rune) => (
-                      <RuneTile key={rune.id} rune={rune} mode={mode} disabled={busy} selected={selection.primaryRunes.includes(rune.id)} onClick={() => setSelection(togglePrimary(selection, primaryTree, rune.id))} />
-                    ))}
-                  </div>
-                ))}
-              </div>
-
-              <div className="rune-col">
-                <p className="rune-col-label">{secondaryTree.name}</p>
-                {secondaryTree.rows.map((row, index) => (
-                  <div className="rune-row" key={`sr-${index}`}>
-                    {row.runes.map((rune) => (
-                      <RuneTile key={rune.id} rune={rune} mode={mode} disabled={busy} selected={selection.secondaryRunes.includes(rune.id)} onClick={() => setSelection(toggleSecondary(selection, secondaryTree, rune.id))} />
-                    ))}
-                  </div>
-                ))}
-              </div>
-
-              <div className="rune-col rune-col-shards">
-                <p className="rune-col-label">Shards</p>
-                {view.shards.map((row, index) => (
-                  <div className="rune-row" key={`sh-${index}`}>
-                    {row.runes.map((rune) => (
-                      <RuneTile key={rune.id} rune={rune} mode={mode} disabled={busy} selected={selection.shards[index] === rune.id} onClick={() => setSelection(selectShard(selection, index, rune.id))} />
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        ) : canEdit && selection ? (
+          <RuneEditor
+            mode={mode}
+            view={view}
+            selection={selection}
+            busy={busy}
+            onChange={setSelection}
+          />
         ) : (
           <p className="runes-note">The rune grid is unavailable{view.message ? `: ${view.message}` : "."}</p>
         )}
@@ -381,7 +267,7 @@ export function RunesPanel({
       <div className="runes-foot">
         <label className="runes-auto">
           <input type="checkbox" checked={view.autoApply} disabled={busy} onChange={(event) => onToggleAutoApply(event.target.checked)} />
-          <span>Auto-apply top preset</span>
+          <span>Auto-apply recommended runes</span>
         </label>
         <div className="runes-actions">
           <button type="button" className="runes-reset" disabled={busy || !dirty || !selection} onClick={() => setSelection(active ?? defaultSelection(data))}>

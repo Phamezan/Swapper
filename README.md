@@ -12,7 +12,7 @@ Download the Windows installer from the [latest GitHub release](https://github.c
 - Detect the signed-in Riot account automatically and avoid duplicate entries using Riot's account identifier. Give saved accounts optional nicknames and remove them from the tray app.
 - Optionally launch the selected account through the bundled [Deceive](https://github.com/molenzwiebel/Deceive) executable to use Deceive's presence behavior.
 - Use your phone, over [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve), to watch queue time, accept a match, prepick, ban, pick, and lock in a champion. Champion search, role filters, and icons are supplied by the running League client.
-- During champion select, pick a recommended rune page for your champion and role or edit every rune yourself, from the tray flyout or the phone. Recommended pages come from [op.gg](https://op.gg), page art from the League client, and Swapper applies the result to a single page it owns. Auto-applying the top preset is a setting, off by default.
+- During champion select, pick a recommended rune page for your champion and role or edit every rune yourself, from the tray flyout or the phone. Recommended pages come from [op.gg](https://op.gg), page art from the League client, and Swapper applies the result to a single page it owns. Auto-applying the recommended runes is a setting, off by default.
 - Show a copyable remote link and QR code in Settings. Remote control works while Swapper, Tailscale, and League Client are running on the PC.
 
 ## Preview

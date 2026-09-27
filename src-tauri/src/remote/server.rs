@@ -32,6 +32,7 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
             "/api/runes/auto-apply",
             axum::routing::post(set_auto_apply),
         )
+        .route("/api/runes/tier", axum::routing::post(set_rune_tier))
         .route("/api/rune/icon/{id}", get(rune_icon))
         .route("/ws", get(socket))
         .fallback(asset)
@@ -125,7 +126,8 @@ async fn lock_champion(headers: HeaderMap) -> Response {
 
 async fn runes(State(core): State<Arc<RemoteCore>>) -> Response {
     let auto_apply = crate::runes::auto_apply_enabled(&core.app);
-    Json(crate::runes::view(auto_apply).await).into_response()
+    let tier = crate::runes::configured_tier(&core.app);
+    Json(crate::runes::view(auto_apply, &tier).await).into_response()
 }
 
 fn rune_status(error: &crate::runes::RuneError) -> StatusCode {
@@ -229,6 +231,50 @@ async fn set_auto_apply(
     }
 }
 
+#[derive(Deserialize)]
+struct TierRequest {
+    tier: String,
+}
+
+async fn set_rune_tier(
+    State(core): State<Arc<RemoteCore>>,
+    headers: HeaderMap,
+    Json(body): Json<TierRequest>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    let app = core.app.clone();
+    let tier = body.tier.clone();
+    // The vault save is blocking file I/O; keep it off the axum runtime.
+    let result = tokio::task::spawn_blocking(move || {
+        use tauri::Manager;
+        let state = app
+            .try_state::<crate::AppState>()
+            .ok_or_else(|| "Swapper is unavailable.".to_string())?;
+        state.set_rune_tier(&tier)
+    })
+    .await
+    .unwrap_or_else(|error| Err(error.to_string()));
+    match result {
+        Ok(()) => {
+            // Let the desktop flyout and the phone reload with the new bracket.
+            core.notify_runes_changed();
+            let _ = core.app.emit("runes_changed", serde_json::Value::Null);
+            (StatusCode::OK, Json(control::ActionResult::success())).into_response()
+        }
+        Err(message) => (
+            StatusCode::BAD_REQUEST,
+            Json(control::ActionResult::error(&message)),
+        )
+            .into_response(),
+    }
+}
+
 async fn rune_icon(Path(id): Path<i64>) -> Response {
     match crate::runes::icon(id).await {
         Ok(bytes) => (
@@ -266,6 +312,7 @@ async fn socket(ws: WebSocketUpgrade, State(core): State<Arc<RemoteCore>>) -> im
 async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>) {
     let mut updates = core.subscribe();
     let mut runes = core.subscribe_runes();
+    let mut runes_changed = core.subscribe_runes_changed();
     let payload = serde_json::json!({ "type": "status", "status": core.status() }).to_string();
     if stream.send(Message::Text(payload.into())).await.is_err() {
         return;
@@ -291,6 +338,12 @@ async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>) {
                 }
                 Err(tokio::sync::broadcast::error::RecvError::Lagged(_)) => {}
                 Err(tokio::sync::broadcast::error::RecvError::Closed) => return,
+            },
+            _ = runes_changed.recv() => {
+                let payload = serde_json::json!({ "type": "runes" }).to_string();
+                if stream.send(Message::Text(payload.into())).await.is_err() {
+                    return;
+                }
             },
             incoming = stream.next() => match incoming {
                 Some(Ok(Message::Text(text))) => {

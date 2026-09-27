@@ -167,6 +167,7 @@ button[data-slot="button"].add-inline:hover { border-color: transparent; backgro
 .info-button { width: 22px; height: 22px; display: inline-flex; flex: none; align-items: center; justify-content: center; border-radius: 50%; color: var(--text-muted); }
 .info-button:hover, .info-button[aria-expanded="true"] { color: var(--text-primary); background: var(--surface-hover); }
 .setting-status { display: flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--text-secondary); font-size: 11px; }
+.setting-select { flex: none; height: 30px; padding: 0 8px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--text-primary); background: var(--surface-panel); font-size: 11px; font-weight: 650; }
 .segmented { display: inline-flex; gap: 3px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 10px; background: var(--surface-panel); }
 .segmented button { height: 26px; padding: 0 15px; border: 0; border-radius: 7px; color: var(--text-secondary); background: transparent; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .segmented button:hover { color: var(--text-primary); background: var(--surface-hover); }

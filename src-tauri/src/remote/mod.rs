@@ -122,6 +122,8 @@ pub struct RemoteCore {
     service: Mutex<Option<Service>>,
     events: broadcast::Sender<RemoteStatus>,
     rune_events: broadcast::Sender<crate::runes::AppliedView>,
+    /// Fired when a rune setting changes so the phone reloads without polling.
+    runes_changed: broadcast::Sender<()>,
     owned_route: Mutex<Option<OwnedRoute>>,
 }
 
@@ -129,6 +131,7 @@ impl RemoteCore {
     pub fn new(app: AppHandle, enabled: bool) -> Arc<Self> {
         let (events, _) = broadcast::channel(32);
         let (rune_events, _) = broadcast::channel(32);
+        let (runes_changed, _) = broadcast::channel(32);
         let status = if enabled {
             RemoteStatus {
                 enabled: true,
@@ -145,6 +148,7 @@ impl RemoteCore {
             service: Mutex::new(None),
             events,
             rune_events,
+            runes_changed,
             owned_route: Mutex::new(None),
         });
         let weak = Arc::downgrade(&core);
@@ -171,6 +175,15 @@ impl RemoteCore {
 
     pub fn subscribe_runes(&self) -> broadcast::Receiver<crate::runes::AppliedView> {
         self.rune_events.subscribe()
+    }
+
+    /// Tells the phone a rune setting changed so it reloads the current view.
+    pub fn notify_runes_changed(&self) {
+        let _ = self.runes_changed.send(());
+    }
+
+    pub fn subscribe_runes_changed(&self) -> broadcast::Receiver<()> {
+        self.runes_changed.subscribe()
     }
 
     pub fn set_enabled(self: Arc<Self>, enabled: bool) {

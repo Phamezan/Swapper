@@ -85,6 +85,10 @@ pub struct Config {
     pub remote_enabled: bool,
     #[serde(default)]
     pub auto_apply_top_preset: bool,
+    /// op.gg rank bracket for rune statistics. `None` means the default
+    /// (Emerald+) has never been changed.
+    #[serde(default)]
+    pub rune_tier: Option<String>,
     /// Id of the single rune page Swapper owns. Ownership is by id, so a user
     /// page that merely shares the `Swapper:` name is never modified.
     #[serde(default)]
@@ -559,5 +563,21 @@ mod tests {
         let account: Account = serde_json::from_str(&partial).unwrap();
         assert_eq!(account.riot_id(), None);
         assert_eq!(account.display_name(), "Main");
+    }
+
+    #[test]
+    fn config_defaults_to_no_rune_tier_and_round_trips_one() {
+        // Settings saved before the rank filter existed have no `rune_tier`.
+        let legacy: Config = serde_json::from_str(r#"{"accounts":[],"use_deceive":false}"#).unwrap();
+        assert_eq!(legacy.rune_tier, None);
+        assert!(!legacy.auto_apply_top_preset);
+
+        let config = Config {
+            rune_tier: Some("diamond_plus".into()),
+            ..Config::default()
+        };
+        let json = serde_json::to_string(&config).unwrap();
+        let restored: Config = serde_json::from_str(&json).unwrap();
+        assert_eq!(restored.rune_tier.as_deref(), Some("diamond_plus"));
     }
 }

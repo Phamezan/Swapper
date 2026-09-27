@@ -86,6 +86,28 @@ impl AppState {
         vault::save(&config)
     }
 
+    /// The op.gg rank bracket, defaulting to Emerald+ when unset or unknown.
+    pub(crate) fn rune_tier(&self) -> String {
+        self.config
+            .lock()
+            .ok()
+            .and_then(|config| config.rune_tier.clone())
+            .map(|tier| runes::normalize_tier(&tier).to_string())
+            .unwrap_or_else(|| runes::DEFAULT_TIER.to_string())
+    }
+
+    pub(crate) fn set_rune_tier(&self, tier: &str) -> Result<(), String> {
+        let Some(slug) = runes::tier_slug(tier) else {
+            return Err("That rank filter is not available.".into());
+        };
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        if config.rune_tier.as_deref() == Some(slug) {
+            return Ok(());
+        }
+        config.rune_tier = Some(slug.to_string());
+        vault::save(&config)
+    }
+
     /// The League page id Swapper owns, if it has created one yet.
     pub(crate) fn rune_page_id(&self) -> Option<i64> {
         self.config
@@ -132,6 +154,7 @@ struct AppView {
     riot_detected: bool,
     deceive_detected: bool,
     auto_apply_top_preset: bool,
+    rune_tier: String,
     remote: remote::RemoteStatus,
 }
 
@@ -184,6 +207,11 @@ fn view(
         riot_detected: riot::riot_path(config).is_some(),
         deceive_detected: riot::deceive_path(config, bundled_deceive).is_some(),
         auto_apply_top_preset: config.auto_apply_top_preset,
+        rune_tier: config
+            .rune_tier
+            .clone()
+            .map(|tier| runes::normalize_tier(&tier).to_string())
+            .unwrap_or_else(|| runes::DEFAULT_TIER.to_string()),
         remote: remote.clone(),
     }
 }
@@ -442,7 +470,34 @@ fn set_auto_apply_top_preset(
 
 #[tauri::command]
 async fn get_runes(state: State<'_, AppState>) -> Result<runes::RunesView, String> {
-    Ok(runes::view(state.auto_apply_top_preset()).await)
+    Ok(runes::view(state.auto_apply_top_preset(), &state.rune_tier()).await)
+}
+
+#[tauri::command]
+fn set_rune_tier(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    tier: String,
+) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    state.set_rune_tier(&tier)?;
+    let view = {
+        let config = state.config.lock().map_err(|e| e.to_string())?;
+        view(
+            &config,
+            &state.bundled_deceive,
+            &state.remote.status(),
+            false,
+        )
+    };
+    notify_runes_changed(&app, &state);
+    Ok(view)
+}
+
+/// Nudges the desktop flyout and the phone to reload runes with the new setting.
+fn notify_runes_changed(app: &tauri::AppHandle, state: &AppState) {
+    state.remote.notify_runes_changed();
+    let _ = app.emit("runes_changed", serde_json::Value::Null);
 }
 
 #[tauri::command]
@@ -608,6 +663,7 @@ pub fn run() {
             set_remote_enabled,
             probe_remote,
             set_auto_apply_top_preset,
+            set_rune_tier,
             get_runes,
             champ_select_status,
             rune_icon,

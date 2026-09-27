@@ -154,6 +154,7 @@ pub async fn apply(
 pub async fn apply_top(
     context: &session::ChampSelectContext,
     owned_page_id: Option<i64>,
+    tier: &str,
 ) -> Result<Option<AppliedView>, RuneError> {
     let catalog = data::catalog().await?;
     let mut context = context.clone();
@@ -165,7 +166,7 @@ pub async fn apply_top(
         }
     }
     let lcu = super::lcu().await?;
-    let loaded = data::load_for(&lcu, &context, &catalog).await?;
+    let loaded = data::load_for(&lcu, &context, &catalog, tier).await?;
     let Some(preset) = loaded.selections.first() else {
         return Ok(None);
     };

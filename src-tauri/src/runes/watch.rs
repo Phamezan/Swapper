@@ -1,5 +1,5 @@
 //! Background champion-select watcher: emits `champ_select` events and applies
-//! the top preset once per champion when auto-apply is on.
+//! the recommended runes once per champion when auto-apply is on.
 //!
 //! The watcher polls quickly only inside champion select. Outside it — the
 //! lobby, matchmaking, or League not running at all — it backs off so the idle
@@ -77,7 +77,9 @@ pub fn spawn_watch(app: tauri::AppHandle) {
                         let key = format!("{}|{}", context.champion_id, context.map_id);
                         if applied_key.as_deref() != Some(key.as_str()) {
                             let owned = owned_page_id(&app);
-                            if let Ok(Some(applied)) = apply_top(context, owned).await {
+                            if let Ok(Some(applied)) =
+                                apply_top(context, owned, &configured_tier(&app)).await
+                            {
                                 if let Some(id) = applied.page_id {
                                     persist_page_id(&app, id).await;
                                 }
@@ -102,6 +104,15 @@ pub fn auto_apply_enabled(app: &tauri::AppHandle) -> bool {
     use tauri::Manager;
     app.try_state::<crate::AppState>()
         .is_some_and(|state| state.auto_apply_top_preset())
+}
+
+/// The persisted op.gg rank bracket, used when the view or auto-apply loads
+/// presets.
+pub fn configured_tier(app: &tauri::AppHandle) -> String {
+    use tauri::Manager;
+    app.try_state::<crate::AppState>()
+        .map(|state| state.rune_tier())
+        .unwrap_or_else(|| super::opgg::DEFAULT_TIER.to_string())
 }
 
 fn owned_page_id(app: &tauri::AppHandle) -> Option<i64> {

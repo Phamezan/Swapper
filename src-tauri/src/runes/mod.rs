@@ -35,9 +35,10 @@ use crate::lcu::{self, LcuEndpoint};
 
 pub use apply::{apply_selection, apply_top};
 pub use data::icon;
+pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
 pub use view::{view, RunesView};
-pub use watch::{auto_apply_enabled, current_status, spawn_watch, ChampSelectEvent};
+pub use watch::{auto_apply_enabled, configured_tier, current_status, spawn_watch, ChampSelectEvent};
 
 const PHASE_PATH: &str = "/lol-gameflow/v1/gameflow-phase";
 const GAMEFLOW_PATH: &str = "/lol-gameflow/v1/session";
