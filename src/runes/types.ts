@@ -30,6 +30,8 @@ export type Preset = {
   shards: number[];
   winPct: number | null;
   play: number;
+  /** op.gg's most-played spell pair `[D, F]`, empty when unknown. */
+  spells: number[];
 };
 
 export type Applied = {
@@ -52,6 +54,20 @@ export type TierOption = {
   label: string;
 };
 
+/** One selectable summoner spell. */
+export type Spell = {
+  id: number;
+  name: string;
+};
+
+/** The player's spells and the options the picker may offer. */
+export type SpellsView = {
+  spell1Id: number;
+  spell2Id: number;
+  available: Spell[];
+  applyWithRunes: boolean;
+};
+
 export type RunesView = {
   phase: string;
   championId: number;
@@ -68,6 +84,7 @@ export type RunesView = {
   autoApply: boolean;
   canApply: boolean;
   locked: boolean;
+  spells: SpellsView;
   tier: string;
   tierLabel: string;
   tiers: TierOption[];
@@ -96,6 +113,10 @@ export type ProBuild = {
   kills: number;
   deaths: number;
   assists: number;
+  /** The pro's spell pair `[D, F]`, empty when the API omitted it. */
+  spells: number[];
+  /** True for a "One Trick Pony" entry, which has no real team. */
+  otp: boolean;
 };
 
 export type ProBuildsView = {

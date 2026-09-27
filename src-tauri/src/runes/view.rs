@@ -4,6 +4,7 @@
 use super::data;
 use super::perks;
 use super::probuilds;
+use super::session;
 use super::stats;
 use super::AppliedView;
 
@@ -47,6 +48,64 @@ pub struct PresetView {
     pub shards: Vec<i64>,
     pub win_pct: Option<f64>,
     pub play: u64,
+    /// op.gg's most-played spell pair for this champion and role, if any.
+    pub spells: Vec<i64>,
+}
+
+/// One selectable summoner spell for the picker.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SpellView {
+    pub id: i64,
+    pub name: String,
+}
+
+/// The local player's spells and the picker's choices for this game mode.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SpellsView {
+    /// The player's current `spell1Id` (D).
+    pub spell1_id: i64,
+    /// The player's current `spell2Id` (F).
+    pub spell2_id: i64,
+    /// The spells the picker may offer, filtered by mode and level.
+    pub available: Vec<SpellView>,
+    /// The "Apply summoner spells with runes" setting.
+    pub apply_with_runes: bool,
+}
+
+impl SpellsView {
+    fn empty(apply_with_runes: bool) -> Self {
+        Self {
+            spell1_id: 0,
+            spell2_id: 0,
+            available: Vec::new(),
+            apply_with_runes,
+        }
+    }
+}
+
+async fn build_spells(
+    context: &session::ChampSelectContext,
+    apply_with_runes: bool,
+) -> SpellsView {
+    let level = super::spells::player_level().await;
+    let available = match super::spells::catalog().await {
+        Ok(list) => super::spells::available(&list, &context.game_mode, level),
+        Err(_) => Vec::new(),
+    };
+    SpellsView {
+        spell1_id: context.spell1_id,
+        spell2_id: context.spell2_id,
+        available: available
+            .into_iter()
+            .map(|spell| SpellView {
+                id: spell.id,
+                name: spell.name,
+            })
+            .collect(),
+        apply_with_runes,
+    }
 }
 
 /// One pro solo-queue game, ready to render and import.
@@ -72,6 +131,10 @@ pub struct ProBuildView {
     pub kills: i64,
     pub deaths: i64,
     pub assists: i64,
+    /// The pro's summoner spell ids, `[D, F]`, when the API reported both.
+    pub spells: Vec<i64>,
+    /// True for a "One Trick Pony" entry, which has no real team.
+    pub otp: bool,
 }
 
 /// The Pro builds tab payload for one champion, role and page.
@@ -117,6 +180,8 @@ pub struct RunesView {
     pub auto_apply: bool,
     pub can_apply: bool,
     pub locked: bool,
+    /// The local player's summoner spells and the options the picker offers.
+    pub spells: SpellsView,
     /// The active op.gg rank bracket slug and its label.
     pub tier: String,
     pub tier_label: String,
@@ -131,7 +196,13 @@ pub struct RunesView {
 }
 
 impl RunesView {
-    fn empty(phase: String, message: &str, auto_apply: bool, tier: &str) -> Self {
+    fn empty(
+        phase: String,
+        message: &str,
+        auto_apply: bool,
+        apply_with_runes: bool,
+        tier: &str,
+    ) -> Self {
         Self {
             phase,
             champion_id: 0,
@@ -148,6 +219,7 @@ impl RunesView {
             auto_apply,
             can_apply: false,
             locked: false,
+            spells: SpellsView::empty(apply_with_runes),
             tier: super::opgg::normalize_tier(tier).to_string(),
             tier_label: tier_options_label(tier),
             tiers: tier_options(),
@@ -264,11 +336,17 @@ fn source_label(source: &str) -> &'static str {
 }
 
 /// Builds the rune screen for the current champion select.
-pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
+pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> RunesView {
     let (phase, context) = match super::rune_context().await {
         Ok(super::RuneContext { phase, context }) => (phase, context),
         Err(error) => {
-            return RunesView::empty("Unavailable".into(), error.message(), auto_apply, tier);
+            return RunesView::empty(
+                "Unavailable".into(),
+                error.message(),
+                auto_apply,
+                apply_with_runes,
+                tier,
+            );
         }
     };
     let Some(mut context) = context else {
@@ -277,12 +355,18 @@ pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
         } else {
             "Not in champion select."
         };
-        return RunesView::empty(phase, message, auto_apply, tier);
+        return RunesView::empty(phase, message, auto_apply, apply_with_runes, tier);
     };
     let catalog = match data::catalog().await {
         Ok(catalog) => catalog,
         Err(error) => {
-            return RunesView::empty(phase, error.message(), auto_apply, tier);
+            return RunesView::empty(
+                phase,
+                error.message(),
+                auto_apply,
+                apply_with_runes,
+                tier,
+            );
         }
     };
     if context.champion_name.trim().is_empty() {
@@ -295,7 +379,13 @@ pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
     let current = match super::lcu().await {
         Ok(lcu) => lcu,
         Err(error) => {
-            return RunesView::empty(phase, error.message(), auto_apply, tier);
+            return RunesView::empty(
+                phase,
+                error.message(),
+                auto_apply,
+                apply_with_runes,
+                tier,
+            );
         }
     };
     let loaded = data::load_for(&current, &context, &catalog, tier)
@@ -304,8 +394,13 @@ pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
             source: "none",
             groups: Vec::new(),
             selections: Vec::new(),
+            spell_pair: None,
             tier_empty: false,
         });
+    let preset_spells = loaded
+        .spell_pair
+        .map(|pair| pair.to_vec())
+        .unwrap_or_default();
     let aggregates = stats::aggregate(&loaded.groups);
     let presets: Vec<PresetView> = loaded
         .selections
@@ -322,6 +417,7 @@ pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
             shards: preset.selection.shards.clone(),
             win_pct: preset.win_pct,
             play: preset.play,
+            spells: preset_spells.clone(),
         })
         .collect();
     let position = super::position_for(&current, &context).await.to_string();
@@ -335,6 +431,7 @@ pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
     let tier = super::opgg::normalize_tier(tier).to_string();
     let tier_label = tier_options_label(&tier);
     let tier_empty = loaded.tier_empty;
+    let spells = build_spells(&context, apply_with_runes).await;
     let message = if tier_empty {
         Some(format!("Not enough games at {tier_label}."))
     } else {
@@ -357,6 +454,7 @@ pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
         auto_apply,
         can_apply,
         locked: context.locked,
+        spells,
         tier,
         tier_label,
         tiers: tier_options(),
@@ -427,6 +525,14 @@ fn pro_build_view(matched: &probuilds::ProMatch, now: i64) -> Option<ProBuildVie
         kills: matched.total_kills,
         deaths: matched.total_deaths,
         assists: matched.total_assists,
+        spells: matched
+            .summoner_spells
+            .iter()
+            .copied()
+            .filter(|id| *id > 0)
+            .take(2)
+            .collect(),
+        otp: probuilds::is_otp(team),
     })
 }
 

@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
 import { RoleIcon } from "./RoleIcon";
+import { SpellIcon } from "./SpellIcon";
 import { ProBuilds } from "./ProBuilds";
 import { RuneEditor } from "./RuneEditor";
 import {
   RunesView,
+  ProBuild,
   ProBuildsView,
   Selection,
   fmtGames,
   fmtPct,
   selectionFromPreset,
+  selectionFromProBuild,
   selectionFromApplied,
   sameSelection,
 } from "./types";
@@ -51,8 +54,10 @@ type Props = {
   loading: boolean;
   busy: boolean;
   error: string | null;
-  onApply: (selection: Selection, presetIndex: number | null) => void;
+  onApply: (selection: Selection, presetIndex: number | null, spells: number[] | null) => void;
   onToggleAutoApply: (enabled: boolean) => void;
+  onToggleSpellsWithRunes: (enabled: boolean) => void;
+  onPickSpell: (slot: "d" | "f", spellId: number) => void;
   /** Loads one page of pros' solo-queue games for the champion and role. */
   onLoadProBuilds: (championId: number, position: string, page: number) => Promise<ProBuildsView>;
   onTierChange: (tier: string) => void;
@@ -104,6 +109,8 @@ export function RunesPanel({
   error,
   onApply,
   onToggleAutoApply,
+  onToggleSpellsWithRunes,
+  onPickSpell,
   onLoadProBuilds,
   onTierChange,
   onExit,
@@ -113,6 +120,7 @@ export function RunesPanel({
   const [proView, setProView] = useState<ProBuildsView | null>(null);
   const [proLoading, setProLoading] = useState(false);
   const [proError, setProError] = useState<string | null>(null);
+  const [pickerSlot, setPickerSlot] = useState<"d" | "f" | null>(null);
   const proRequested = useRef(false);
 
   const championId = view?.championId ?? 0;
@@ -123,6 +131,7 @@ export function RunesPanel({
     setSelection(view?.applied ? selectionFromApplied(view.applied) : null);
     setProView(null);
     setProError(null);
+    setPickerSlot(null);
     proRequested.current = false;
     // Reset only when the champion changes, not on every statistics refresh.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -209,11 +218,40 @@ export function RunesPanel({
 
   /** Import an exact pro page through the same apply path a preset uses, then
    *  open the editor so it can be tweaked and applied again. */
-  function importProBuild(next: Selection) {
+  function importProBuild(build: ProBuild) {
+    const next = selectionFromProBuild(build);
     setSelection(next);
     setScreen("editor");
-    onApply(next, null);
+    onApply(next, null, build.spells);
   }
+
+  /** The name of a spell for a tooltip; falls back when it is off-mode. */
+  function spellName(id: number): string {
+    if (id <= 0) return "Empty";
+    return data.spells.available.find((spell) => spell.id === id)?.name ?? "Summoner spell";
+  }
+
+  const spellSlots = (
+    <div className="runes-spells" role="group" aria-label="Summoner spells">
+      {(["d", "f"] as const).map((slot) => {
+        const id = slot === "d" ? data.spells.spell1Id : data.spells.spell2Id;
+        return (
+          <button
+            key={slot}
+            type="button"
+            className="rune-spell-slot"
+            disabled={busy || data.spells.available.length === 0}
+            onClick={() => setPickerSlot(slot)}
+            title={spellName(id)}
+            aria-label={`Change summoner spell ${slot.toUpperCase()}${id > 0 ? ` (${spellName(id)})` : ""}`}
+          >
+            <SpellIcon id={id} mode={mode} />
+            <span className="rune-spell-key">{slot.toUpperCase()}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
 
   const sourceClass = view.source === "opgg" ? "is-live" : view.source === "lcu" ? "is-fallback" : "is-none";
   const roleLabel = view.position && view.position !== "none" ? positionLabels[view.position] : modeLabels[view.mode] ?? view.mode;
@@ -230,16 +268,19 @@ export function RunesPanel({
       <div className="runes-head">
         <div className="runes-title">
           <p className="runes-champ">
-            <RoleIcon role={view.position || view.mode} size={13} />
+            <RoleIcon role={view.position || view.mode} size={13} mode={mode} />
             {view.championName || "Champion"} · {roleLabel}
           </p>
           <h2>Runes</h2>
         </div>
-        {onExit && mode === "desktop" && (
-          <button type="button" className="runes-back" onClick={onExit} aria-label="Back to accounts">
-            Accounts
-          </button>
-        )}
+        <div className="runes-head-right">
+          {spellSlots}
+          {onExit && mode === "desktop" && (
+            <button type="button" className="runes-back" onClick={onExit} aria-label="Back to accounts">
+              Accounts
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="runes-tabs" role="tablist">
@@ -276,6 +317,16 @@ export function RunesPanel({
               onChange={(event) => onToggleAutoApply(event.target.checked)}
             />
             <span>Auto-apply recommended runes</span>
+          </label>
+          <label className="runes-auto" title="Also set the recommended summoner spells when applying a page">
+            <input
+              type="checkbox"
+              role="switch"
+              checked={view.spells.applyWithRunes}
+              disabled={busy}
+              onChange={(event) => onToggleSpellsWithRunes(event.target.checked)}
+            />
+            <span>Apply summoner spells with runes</span>
           </label>
           {view.tierSupported && view.games > 0 && (
             <span className="runes-filter-games">{fmtGames(view.games)} games</span>
@@ -332,7 +383,7 @@ export function RunesPanel({
                   onClick={() => {
                     setSelection(presetSelection);
                     setScreen("editor");
-                    onApply(presetSelection, preset.index);
+                    onApply(presetSelection, preset.index, preset.spells);
                   }}
                 >
                   <span className="rune-preset-head">
@@ -353,6 +404,14 @@ export function RunesPanel({
                     {preset.secondaryRunes.map((id) => <RuneIcon key={`s${id}`} id={id} mode={mode} />)}
                     <span className="rune-preset-divider" />
                     {preset.shards.map((id, index) => <RuneIcon key={`m${index}`} id={id} mode={mode} className="rune-preset-shard" />)}
+                    {preset.spells.length === 2 && (
+                      <>
+                        <span className="rune-preset-divider" />
+                        {preset.spells.map((id, index) => (
+                          <SpellIcon key={`sp${index}`} id={id} mode={mode} className="rune-preset-spell" />
+                        ))}
+                      </>
+                    )}
                   </span>
                 </button>
               );
@@ -371,21 +430,58 @@ export function RunesPanel({
         )}
       </div>
 
-      <div className="runes-foot">
-        <div className="runes-actions">
-          <button type="button" className="runes-reset" disabled={busy || !dirty || !selection} onClick={() => setSelection(active ?? defaultSelection(data))}>
-            <ResetIcon size={14} /> Reset
-          </button>
-          <button
-            type="button"
-            className="runes-apply"
-            disabled={busy || !selection || (!view.canApply && !dirty)}
-            onClick={() => selection && onApply(selection, applyIndex)}
-          >
-            {busy ? <Spinner /> : <CheckIcon size={15} />} Apply page
-          </button>
+      {screen !== "pro" && (
+        <div className="runes-foot">
+          <div className="runes-actions">
+            <button type="button" className="runes-reset" disabled={busy || !dirty || !selection} onClick={() => setSelection(active ?? defaultSelection(data))}>
+              <ResetIcon size={14} /> Reset
+            </button>
+            <button
+              type="button"
+              className="runes-apply"
+              disabled={busy || !selection || (!view.canApply && !dirty)}
+              onClick={() => selection && onApply(selection, applyIndex, null)}
+            >
+              {busy ? <Spinner /> : <CheckIcon size={15} />} Apply page
+            </button>
+          </div>
         </div>
-      </div>
+      )}
+
+      {pickerSlot && (
+        <div className="runes-spell-picker" role="dialog" aria-modal="true" aria-label="Choose a summoner spell">
+          <div className="runes-spell-sheet">
+            <div className="runes-spell-sheet-head">
+              <strong>Summoner spell · {pickerSlot.toUpperCase()}</strong>
+              <button type="button" onClick={() => setPickerSlot(null)}>Close</button>
+            </div>
+            <div className="runes-spell-grid">
+              {view.spells.available.map((spell) => {
+                const currentId = pickerSlot === "d" ? view.spells.spell1Id : view.spells.spell2Id;
+                return (
+                  <button
+                    key={spell.id}
+                    type="button"
+                    className={`rune-spell-option ${spell.id === currentId ? "is-active" : ""}`}
+                    onClick={() => {
+                      onPickSpell(pickerSlot, spell.id);
+                      setPickerSlot(null);
+                    }}
+                    title={spell.name}
+                    aria-label={spell.name}
+                  >
+                    <SpellIcon id={spell.id} mode={mode} />
+                    <span>{spell.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+            {view.spells.available.length === 0 && (
+              <p className="runes-note">No summoner spells are available right now.</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

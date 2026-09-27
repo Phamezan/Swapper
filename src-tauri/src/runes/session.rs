@@ -32,6 +32,10 @@ struct TeamMember {
     champion_id: i64,
     #[serde(default)]
     assigned_position: String,
+    #[serde(default)]
+    spell1_id: i64,
+    #[serde(default)]
+    spell2_id: i64,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -52,6 +56,8 @@ struct GameflowSession {
     map: Option<MapInfo>,
     #[serde(default)]
     queue: Option<QueueInfo>,
+    #[serde(default, rename = "gameData")]
+    game_data: Option<GameData>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -64,6 +70,20 @@ struct MapInfo {
 struct QueueInfo {
     #[serde(default)]
     id: i64,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct GameData {
+    #[serde(default)]
+    queue: Option<GameflowQueue>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct GameflowQueue {
+    #[serde(default)]
+    game_mode: String,
 }
 
 /// Everything the rune screen needs from champion select.
@@ -79,6 +99,12 @@ pub struct ChampSelectContext {
     pub has_pick_actions: bool,
     pub map_id: i64,
     pub queue_id: i64,
+    /// LCU `gameData.queue.gameMode` (CLASSIC, ARAM, CHERRY, …), used to filter
+    /// the summoner-spell picker. Empty when the gameflow is not readable.
+    pub game_mode: String,
+    /// The local player's current summoner spells, `[D, F]`. `0` when unknown.
+    pub spell1_id: i64,
+    pub spell2_id: i64,
 }
 
 impl ChampSelectContext {
@@ -191,17 +217,33 @@ pub fn parse_champ_select(body: &str) -> Result<Option<ChampSelectContext>, Rune
         has_pick_actions,
         map_id: 0,
         queue_id: 0,
+        game_mode: String::new(),
+        spell1_id: local.map(|member| member.spell1_id).unwrap_or(0),
+        spell2_id: local.map(|member| member.spell2_id).unwrap_or(0),
     }))
 }
 
-/// Parses `/lol-gameflow/v1/session` for the map and queue ids.
-pub fn parse_gameflow(body: &str) -> Result<(i64, i64), RuneError> {
+/// The map, queue and game mode from `/lol-gameflow/v1/session`.
+#[derive(Debug, Clone, PartialEq)]
+pub struct GameflowInfo {
+    pub map_id: i64,
+    pub queue_id: i64,
+    pub game_mode: String,
+}
+
+/// Parses `/lol-gameflow/v1/session` for the map, queue and game-mode ids.
+pub fn parse_gameflow(body: &str) -> Result<GameflowInfo, RuneError> {
     let session: GameflowSession = serde_json::from_str(body)
         .map_err(|e| RuneError::unavailable(format!("Could not read the gameflow: {e}")))?;
-    Ok((
-        session.map.map(|map| map.id).unwrap_or(0),
-        session.queue.map(|queue| queue.id).unwrap_or(0),
-    ))
+    Ok(GameflowInfo {
+        map_id: session.map.map(|map| map.id).unwrap_or(0),
+        queue_id: session.queue.map(|queue| queue.id).unwrap_or(0),
+        game_mode: session
+            .game_data
+            .and_then(|data| data.queue)
+            .map(|queue| queue.game_mode)
+            .unwrap_or_default(),
+    })
 }
 
 #[cfg(test)]
@@ -315,9 +357,29 @@ mod tests {
     }
 
     #[test]
-    fn reads_the_map_and_queue_from_a_gameflow_session() {
-        let (map_id, queue_id) =
-            parse_gameflow(r#"{"map":{"id":11},"queue":{"id":420}}"#).unwrap();
-        assert_eq!((map_id, queue_id), (11, 420));
+    fn reads_the_map_queue_and_game_mode_from_a_gameflow_session() {
+        let info = parse_gameflow(
+            r#"{"map":{"id":11},"queue":{"id":420},"gameData":{"queue":{"gameMode":"CLASSIC"}}}"#,
+        )
+        .unwrap();
+        assert_eq!((info.map_id, info.queue_id), (11, 420));
+        assert_eq!(info.game_mode, "CLASSIC");
+    }
+
+    #[test]
+    fn reads_the_local_players_spells_from_a_session() {
+        let context = parse_champ_select(
+            r#"{
+                "localPlayerCellId": 2,
+                "myTeam": [
+                    {"cellId": 2, "championId": 103, "assignedPosition": "middle", "spell1Id": 4, "spell2Id": 14}
+                ],
+                "actions": []
+            }"#,
+        )
+        .unwrap()
+        .unwrap();
+        assert_eq!(context.spell1_id, 4);
+        assert_eq!(context.spell2_id, 14);
     }
 }

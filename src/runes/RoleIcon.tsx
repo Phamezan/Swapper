@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 /** League positions, as the slugs used across the rune and pro-build data. */
 export type RoleKey = "all" | "top" | "jungle" | "mid" | "adc" | "support" | "none";
@@ -30,38 +30,19 @@ export function roleKey(role: string): RoleKey {
   }
 }
 
-const PATHS: Record<RoleKey, ReactNode> = {
-  // Top: the lane's mountain.
-  top: (
-    <>
-      <path d="M4 19h16" />
-      <path d="M12 5l7 14H5z" />
-    </>
-  ),
-  // Jungle: a tree.
-  jungle: (
-    <>
-      <path d="M12 3 6 12h4l-3 5h10l-3-5h4z" />
-      <path d="M12 17v4" />
-    </>
-  ),
-  // Mid: a crosshair.
-  mid: (
-    <>
-      <circle cx="12" cy="12" r="6" />
-      <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
-    </>
-  ),
-  // Bot: the lane's arrow, pointing down.
-  adc: (
-    <>
-      <path d="M4 5h16" />
-      <path d="M12 7v12" />
-      <path d="M8 15l4 4 4-4" />
-    </>
-  ),
-  // Support: a shield.
-  support: <path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" />,
+/** Role key -> the client's static-asset SVG name. Only these five are proxied. */
+const ASSET: Partial<Record<RoleKey, string>> = {
+  top: "top",
+  jungle: "jungle",
+  mid: "middle",
+  adc: "bottom",
+  support: "utility",
+};
+
+const cache = new Map<string, string>();
+
+/** The two roles that have no client asset keep a small inline glyph. */
+const PATHS: Partial<Record<RoleKey, ReactNode>> = {
   // All: a grid of every role.
   all: (
     <>
@@ -75,30 +56,100 @@ const PATHS: Record<RoleKey, ReactNode> = {
 };
 
 /** An inline League-position glyph, used by the pick filters and next to the
- *  role on rune and pro-build cards. */
+ *  role on rune and pro-build cards.
+ *
+ *  The five real positions use the League client's own SVG, fetched through the
+ *  same proxy as the rune icons and rendered as a CSS mask so the current text
+ *  colour controls it: dim grey when idle, gold when the parent marks it
+ *  active. */
 export function RoleIcon({
   role,
   size = 18,
   className,
+  mode = "remote",
 }: {
   role: string;
   size?: number;
   className?: string;
+  mode?: "desktop" | "remote";
 }) {
+  const key = roleKey(role);
+  const asset = ASSET[key] ?? null;
+  const [src, setSrc] = useState<string | null>(() =>
+    asset ? (mode === "remote" ? `/api/role/icon/${asset}` : cache.get(asset) ?? null) : null,
+  );
+
+  useEffect(() => {
+    if (!asset) return;
+    if (mode !== "desktop") {
+      setSrc(`/api/role/icon/${asset}`);
+      return;
+    }
+    const cached = cache.get(asset);
+    if (cached) {
+      setSrc(cached);
+      return;
+    }
+    let live = true;
+    // The desktop webview cannot reach the LCU, so the SVG comes over IPC.
+    void import("@tauri-apps/api/core")
+      .then(({ invoke }) => invoke<string>("role_icon", { role: asset }))
+      .then((data) => {
+        cache.set(asset, data);
+        if (live) setSrc(data);
+      })
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [asset, mode]);
+
+  if (!asset) {
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.9}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        aria-hidden
+      >
+        {PATHS[key]}
+      </svg>
+    );
+  }
+
+  if (!src) {
+    return (
+      <span
+        className={`role-icon role-icon-fallback ${className ?? ""}`}
+        style={{ width: size, height: size }}
+        aria-hidden
+      />
+    );
+  }
+
+  const url = `url("${src}")`;
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.9}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
+    <span
+      className={`role-icon ${className ?? ""}`}
       aria-hidden
-    >
-      {PATHS[roleKey(role)]}
-    </svg>
+      style={{
+        width: size,
+        height: size,
+        WebkitMaskImage: url,
+        maskImage: url,
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskSize: "contain",
+        maskSize: "contain",
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+      }}
+    />
   );
 }

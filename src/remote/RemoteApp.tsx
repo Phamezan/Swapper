@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, Network, Search, Swords } from "lucide-react";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
 import type { RunesView, ProBuildsView, Selection } from "../runes/types";
@@ -237,20 +237,57 @@ export default function RemoteApp() {
     }
   }
 
-  async function applyRunes(selection: Selection, presetIndex: number | null) {
+  async function applyRunes(selection: Selection, presetIndex: number | null, spells: number[] | null) {
     setRunesBusy(true);
     setRunesError(null);
     try {
       const response = await fetch("/api/runes/apply", {
         method: "POST",
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
-        body: JSON.stringify({ selection, presetIndex }),
+        body: JSON.stringify({ selection, presetIndex, spells }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
       if (!response.ok || !result.ok) setRunesError(result.message ?? "League rejected the rune page.");
       else await loadRunes();
     } catch {
       setRunesError("Could not reach Swapper. Check your connection and try again.");
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function pickSpell(slot: "d" | "f", spellId: number) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const response = await fetch("/api/runes/spells", {
+        method: "POST",
+        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
+        body: JSON.stringify({ slot, spellId }),
+      });
+      const result = await response.json() as { ok: boolean; message: string | null };
+      if (!response.ok || !result.ok) setRunesError(result.message ?? "League rejected the summoner spell.");
+      else await loadRunes();
+    } catch {
+      setRunesError("Could not reach Swapper. Check your connection and try again.");
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function toggleSpellsWithRunes(enabled: boolean) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const response = await fetch("/api/runes/spells-setting", {
+        method: "POST",
+        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
+        body: JSON.stringify({ enabled }),
+      });
+      if (!response.ok) setRunesError("Could not update the setting.");
+      else await loadRunes();
+    } catch {
+      setRunesError("Could not update the setting.");
     } finally {
       setRunesBusy(false);
     }
@@ -326,8 +363,24 @@ export default function RemoteApp() {
           </div>
           {inChampSelect ? (
             <div className="remote-mini-status">
-              <span className={status?.tailscaleRunning && live ? "is-good" : "is-bad"} title={`Tailscale ${status?.tailscaleRunning && live ? "connected" : "offline"}`}><i /></span>
-              <span className={status?.lcuConnected ? "is-good" : "is-bad"} title={`League ${status?.lcuConnected ? "connected" : "offline"}`}><i /></span>
+              <span
+                className={`remote-chip ${status?.tailscaleRunning && live ? "is-good" : "is-bad"}`}
+                title={`Tailscale ${status?.tailscaleRunning && live ? "connected" : "offline"}`}
+                aria-label={`Tailscale ${status?.tailscaleRunning && live ? "connected" : "offline"}`}
+              >
+                <Network size={13} aria-hidden />
+                <i />
+                {!(status?.tailscaleRunning && live) && <b>Tailscale off</b>}
+              </span>
+              <span
+                className={`remote-chip ${status?.lcuConnected ? "is-good" : "is-bad"}`}
+                title={`League ${status?.lcuConnected ? "connected" : "offline"}`}
+                aria-label={`League ${status?.lcuConnected ? "connected" : "offline"}`}
+              >
+                <Swords size={13} aria-hidden />
+                <i />
+                {!status?.lcuConnected && <b>League offline</b>}
+              </span>
               <span className={`remote-ready ${ready ? "is-ready" : "is-bad"}`}>
                 <span className="remote-ready-dot" />{ready ? "Ready" : "Check"}
               </span>
@@ -377,7 +430,7 @@ export default function RemoteApp() {
                           aria-pressed={position === entry.value}
                           onClick={() => setPosition(entry.value)}
                         >
-                          <RoleIcon role={entry.value === "ALL" ? "all" : entry.value} size={18} />
+                          <RoleIcon role={entry.value === "ALL" ? "all" : entry.value} size={18} mode="remote" />
                         </button>
                       ))}
                     </div>
@@ -397,8 +450,10 @@ export default function RemoteApp() {
                 loading={false}
                 busy={runesBusy}
                 error={runesError}
-                onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
+                onApply={(selection, presetIndex, spells) => void applyRunes(selection, presetIndex, spells)}
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
+                onToggleSpellsWithRunes={(enabled) => void toggleSpellsWithRunes(enabled)}
+                onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
                 onLoadProBuilds={loadProBuilds}
                 onTierChange={(tier) => void setTier(tier)}
               />

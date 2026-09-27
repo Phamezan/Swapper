@@ -34,7 +34,14 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
             axum::routing::post(set_auto_apply),
         )
         .route("/api/runes/tier", axum::routing::post(set_rune_tier))
+        .route(
+            "/api/runes/spells-setting",
+            axum::routing::post(set_spells_with_runes),
+        )
+        .route("/api/runes/spells", axum::routing::post(apply_spells))
         .route("/api/rune/icon/{id}", get(rune_icon))
+        .route("/api/role/icon/{role}", get(role_icon))
+        .route("/api/spell/icon/{id}", get(spell_icon))
         .route("/ws", get(socket))
         .fallback(asset)
         .with_state(core)
@@ -127,8 +134,9 @@ async fn lock_champion(headers: HeaderMap) -> Response {
 
 async fn runes(State(core): State<Arc<RemoteCore>>) -> Response {
     let auto_apply = crate::runes::auto_apply_enabled(&core.app);
+    let apply_spells = crate::runes::apply_spells_enabled(&core.app);
     let tier = crate::runes::configured_tier(&core.app);
-    Json(crate::runes::view(auto_apply, &tier).await).into_response()
+    Json(crate::runes::view(auto_apply, apply_spells, &tier).await).into_response()
 }
 
 #[derive(Deserialize)]
@@ -165,6 +173,8 @@ struct ApplyRunesRequest {
     selection: crate::runes::RuneSelection,
     #[serde(default)]
     preset_index: Option<usize>,
+    #[serde(default)]
+    spells: Option<Vec<i64>>,
 }
 
 async fn apply_runes(
@@ -180,11 +190,15 @@ async fn apply_runes(
             .into_response();
     }
     use tauri::Manager;
-    let owned = core
+    let (owned, apply_spells) = core
         .app
         .try_state::<crate::AppState>()
-        .and_then(|state| state.rune_page_id());
-    match crate::runes::apply_selection(body.selection, body.preset_index, owned).await {
+        .map(|state| (state.rune_page_id(), state.apply_spells_with_runes()))
+        .unwrap_or((None, true));
+    let spells = body.spells.as_deref().and_then(crate::runes::spells::pair_from_ids);
+    match crate::runes::apply_selection(body.selection, body.preset_index, owned, spells, apply_spells)
+        .await
+    {
         Ok(applied) => {
             if let Some(id) = applied.page_id {
                 persist_rune_page_id(core.app.clone(), id).await;
@@ -317,6 +331,114 @@ async fn rune_icon(Path(id): Path<i64>) -> Response {
         )
             .into_response(),
         Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+async fn role_icon(Path(role): Path<String>) -> Response {
+    match crate::runes::roles::icon(&role).await {
+        Ok(bytes) => (
+            [
+                (header::CONTENT_TYPE, "image/svg+xml"),
+                (header::CACHE_CONTROL, "private, max-age=86400"),
+            ],
+            bytes,
+        )
+            .into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+async fn spell_icon(Path(id): Path<i64>) -> Response {
+    match crate::runes::spells::icon(id).await {
+        Ok(bytes) => (
+            [
+                (header::CONTENT_TYPE, "image/png"),
+                (header::CACHE_CONTROL, "private, max-age=86400"),
+            ],
+            bytes,
+        )
+            .into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct SpellRequest {
+    slot: String,
+    spell_id: i64,
+}
+
+async fn apply_spells(
+    State(core): State<Arc<RemoteCore>>,
+    headers: HeaderMap,
+    Json(body): Json<SpellRequest>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    let slot = if body.slot.eq_ignore_ascii_case("d") || body.slot == "1" {
+        0
+    } else {
+        1
+    };
+    match crate::runes::spells::apply_pick(slot, body.spell_id).await {
+        Ok(()) => {
+            core.notify_runes_changed();
+            let _ = core.app.emit("runes_changed", serde_json::Value::Null);
+            (StatusCode::OK, Json(control::ActionResult::success())).into_response()
+        }
+        Err(error) => (
+            rune_status(&error),
+            Json(control::ActionResult::error(error.message())),
+        )
+            .into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+struct SpellsSettingRequest {
+    enabled: bool,
+}
+
+async fn set_spells_with_runes(
+    State(core): State<Arc<RemoteCore>>,
+    headers: HeaderMap,
+    Json(body): Json<SpellsSettingRequest>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    let app = core.app.clone();
+    let enabled = body.enabled;
+    let result = tokio::task::spawn_blocking(move || {
+        use tauri::Manager;
+        let state = app
+            .try_state::<crate::AppState>()
+            .ok_or_else(|| "Swapper is unavailable.".to_string())?;
+        state.set_apply_spells_with_runes(enabled)
+    })
+    .await
+    .unwrap_or_else(|error| Err(error.to_string()));
+    match result {
+        Ok(()) => {
+            core.notify_runes_changed();
+            let _ = core.app.emit("runes_changed", serde_json::Value::Null);
+            (StatusCode::OK, Json(control::ActionResult::success())).into_response()
+        }
+        Err(message) => (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(control::ActionResult::error(&message)),
+        )
+            .into_response(),
     }
 }
 

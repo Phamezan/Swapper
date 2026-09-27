@@ -51,6 +51,7 @@ query ChampionMatchList($championId: Int!, $role: String, $pageNumber: Int, $isO
       proInfo { officialName league currentTeam }
       runes { perk0 perk1 perk2 perk3 perk4 perk5 primaryStyle subStyle }
       statShards
+      summonerSpells
     }
   }
 }";
@@ -120,6 +121,9 @@ pub struct ProMatch {
     pub runes: ProRunes,
     #[serde(default)]
     pub stat_shards: Vec<i64>,
+    /// The pro's summoner spell ids, `[D, F]`, when the API reports them.
+    #[serde(default, rename = "summonerSpells")]
+    pub summoner_spells: Vec<i64>,
 }
 
 impl ProMatch {
@@ -177,6 +181,12 @@ pub fn role_label(role: &str) -> &str {
         "all" => "All roles",
         other => other,
     }
+}
+
+/// Whether a `currentTeam` value means the game is an OTP entry rather than a
+/// real team. The API reports "One Trick Pony" for those.
+pub fn is_otp(team: &str) -> bool {
+    team.trim().eq_ignore_ascii_case("one trick pony")
 }
 
 /// Cache key for one champion, role and page.
@@ -409,6 +419,25 @@ mod tests {
     fn an_empty_match_list_is_a_valid_answer() {
         let body = r#"{"data":{"getProChampionMatchList":{"matchList":[]}}}"#;
         assert!(parse(body).unwrap().is_empty());
+    }
+
+    #[test]
+    fn reads_spells_and_recognises_otp_teams() {
+        let body = r#"{"data":{"getProChampionMatchList":{"matchList":[{
+            "matchId":1,
+            "currentTeam":"One Trick Pony",
+            "proInfo":{"currentTeam":"One Trick Pony","officialName":"Someone"},
+            "runes":{"perk0":8112,"perk1":8139,"perk2":8137,"perk3":8106,"perk4":8444,"perk5":8242,"primaryStyle":8100,"subStyle":8400},
+            "statShards":[5005,5008,5011],
+            "summonerSpells":[4,14]
+        }]}}}"#;
+        let matches = parse(body).unwrap();
+        assert_eq!(matches.len(), 1);
+        assert_eq!(matches[0].summoner_spells, vec![4, 14]);
+        assert!(is_otp(&matches[0].pro_info.current_team));
+        assert!(is_otp("one trick pony"));
+        assert!(!is_otp("Gen.G Esports"));
+        assert!(!is_otp(""));
     }
 
     #[test]

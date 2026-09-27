@@ -155,7 +155,7 @@ async fn apply_and_track(
     key: String,
 ) -> Option<AppliedView> {
     let owned = owned_page_id(app);
-    let applied = apply_top(context, owned, &configured_tier(app))
+    let applied = apply_top(context, owned, &configured_tier(app), apply_spells_enabled(app))
         .await
         .ok()
         .flatten()?;
@@ -178,6 +178,15 @@ pub fn auto_apply_enabled(app: &tauri::AppHandle) -> bool {
     use tauri::Manager;
     app.try_state::<crate::AppState>()
         .is_some_and(|state| state.auto_apply_top_preset())
+}
+
+/// Whether applying a page should also set its summoner spells. Defaults to on
+/// when the setting has never been changed.
+pub fn apply_spells_enabled(app: &tauri::AppHandle) -> bool {
+    use tauri::Manager;
+    app.try_state::<crate::AppState>()
+        .map(|state| state.apply_spells_with_runes())
+        .unwrap_or(true)
 }
 
 /// The persisted op.gg rank bracket, used when the view or auto-apply loads

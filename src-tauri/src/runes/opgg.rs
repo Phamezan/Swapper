@@ -123,13 +123,57 @@ struct Response {
 struct Data {
     #[serde(default)]
     rune_pages: Vec<RunePageGroup>,
+    #[serde(default)]
+    summoner_spells: Vec<SpellStats>,
+}
+
+/// One recommended summoner-spell pair, with its population.
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct SpellStats {
+    #[serde(default)]
+    pub ids: Vec<i64>,
+    #[serde(default)]
+    pub play: u64,
+    #[serde(default)]
+    pub win: u64,
+    #[serde(default)]
+    pub pick_rate: f64,
+}
+
+/// The parts of an op.gg champion response Swapper reads.
+#[derive(Debug, Clone, Default)]
+pub struct ChampionData {
+    pub rune_pages: Vec<RunePageGroup>,
+    pub summoner_spells: Vec<SpellStats>,
+}
+
+impl ChampionData {
+    /// The most-played spell pair, or `None` when op.gg reported none. op.gg
+    /// already ranks the list by popularity, but the maximum is taken so the
+    /// order is not assumed.
+    pub fn top_spell_pair(&self) -> Option<[i64; 2]> {
+        self.summoner_spells
+            .iter()
+            .filter(|entry| entry.ids.len() >= 2)
+            .max_by_key(|entry| entry.play)
+            .map(|entry| [entry.ids[0], entry.ids[1]])
+    }
+}
+
+/// Parses an op.gg champion response into the rune pages and spell pairs.
+pub fn parse_data(body: &str) -> Result<ChampionData, RuneError> {
+    let response: Response = serde_json::from_str(body)
+        .map_err(|e| RuneError::unavailable(format!("Could not read the op.gg response: {e}")))?;
+    Ok(ChampionData {
+        rune_pages: response.data.rune_pages,
+        summoner_spells: response.data.summoner_spells,
+    })
 }
 
 /// Parses an op.gg champion response and returns its rune-page groups.
+#[cfg(test)]
 pub fn parse(body: &str) -> Result<Vec<RunePageGroup>, RuneError> {
-    let response: Response = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read the op.gg response: {e}")))?;
-    Ok(response.data.rune_pages)
+    parse_data(body).map(|data| data.rune_pages)
 }
 
 /// Builds the op.gg champion path for the given region, mode, champion,
@@ -221,14 +265,14 @@ impl OpggClient {
         )
     }
 
-    pub async fn rune_pages(
+    pub async fn champion_data(
         &self,
         region: &str,
         mode: &str,
         champion_id: i64,
         position: &str,
         tier: &str,
-    ) -> Result<Vec<RunePageGroup>, RuneError> {
+    ) -> Result<ChampionData, RuneError> {
         let response = self
             .client
             .get(self.url(region, mode, champion_id, position, tier))
@@ -246,7 +290,7 @@ impl OpggClient {
             .text()
             .await
             .map_err(|e| RuneError::unavailable(format!("op.gg response was unreadable: {e}")))?;
-        parse(&body)
+        parse_data(&body)
     }
 }
 
@@ -327,6 +371,22 @@ mod tests {
             path("euw", MODE_RANKED, 103, "mid", "iron_plus"),
             "/api/euw/champions/ranked/103/mid?tier=emerald_plus"
         );
+    }
+
+    #[test]
+    fn picks_the_most_played_spell_pair() {
+        let body = r#"{"data":{"rune_pages":[],"summoner_spells":[
+            {"ids":[4,12],"play":100,"win":50,"pick_rate":0.1},
+            {"ids":[4,14],"play":900,"win":500,"pick_rate":0.5},
+            {"ids":[4],"play":5000,"win":2500,"pick_rate":0.3}
+        ]}}"#;
+        let data = parse_data(body).unwrap();
+        // A truncated pair (one id) is ignored even when it is more popular.
+        assert_eq!(data.top_spell_pair(), Some([4, 14]));
+        assert!(parse_data(r#"{"data":{"rune_pages":[]}}"#)
+            .unwrap()
+            .top_spell_pair()
+            .is_none());
     }
 
     #[test]

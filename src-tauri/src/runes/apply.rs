@@ -54,13 +54,17 @@ impl Inventory {
 /// Applies a rune selection by creating or replacing the single Swapper page.
 ///
 /// `owned_page_id` is the page id stored in Swapper's settings; only that id
-/// may be replaced.
+/// may be replaced. When `apply_spells` is on and `spells` is present, the
+/// recommended summoner-spell pair is written too; a spell failure never fails
+/// the rune apply.
 pub async fn apply(
     selection: RuneSelection,
     champion_id: i64,
     champion_name: &str,
     preset_index: Option<usize>,
     owned_page_id: Option<i64>,
+    spells: Option<[i64; 2]>,
+    apply_spells: bool,
 ) -> Result<AppliedView, RuneError> {
     let catalog = data::catalog().await?;
     page::validate(&selection, &view::catalog_index(&catalog))?;
@@ -147,6 +151,13 @@ pub async fn apply(
         auto_applied: false,
     };
     super::shared().applied = Some(applied.clone());
+    if apply_spells {
+        if let Some(pair) = spells {
+            // Best-effort: the rune page already applied, so a spell failure
+            // must not turn the whole action into an error.
+            let _ = super::spells::apply_recommended(pair).await;
+        }
+    }
     Ok(applied)
 }
 
@@ -156,6 +167,7 @@ pub async fn apply_top(
     context: &session::ChampSelectContext,
     owned_page_id: Option<i64>,
     tier: &str,
+    apply_spells: bool,
 ) -> Result<Option<AppliedView>, RuneError> {
     let catalog = data::catalog().await?;
     let mut context = context.clone();
@@ -168,6 +180,7 @@ pub async fn apply_top(
     }
     let lcu = super::lcu().await?;
     let loaded = data::load_for(&lcu, &context, &catalog, tier).await?;
+    let spells = loaded.spell_pair;
     let Some(preset) = loaded.selections.first() else {
         return Ok(None);
     };
@@ -177,6 +190,8 @@ pub async fn apply_top(
         &context.champion_name,
         Some(0),
         owned_page_id,
+        spells,
+        apply_spells,
     )
     .await
     .map(Some)
@@ -187,6 +202,8 @@ pub async fn apply_selection(
     selection: RuneSelection,
     preset_index: Option<usize>,
     owned_page_id: Option<i64>,
+    spells: Option<[i64; 2]>,
+    apply_spells: bool,
 ) -> Result<AppliedView, RuneError> {
     let (_, context) = match super::rune_context().await {
         Ok(super::RuneContext { phase, context }) => (phase, context),
@@ -208,6 +225,8 @@ pub async fn apply_selection(
         &context.champion_name,
         preset_index,
         owned_page_id,
+        spells,
+        apply_spells,
     )
     .await
 }

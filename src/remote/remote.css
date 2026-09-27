@@ -40,13 +40,25 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 .remote-topbar.is-compact { padding-bottom: 8px; }
 
-/* In champion select the header collapses to one slim row: the brand and two
-   small status dots plus the Ready pill, with no separate status line. */
-.remote-mini-status { display: flex; align-items: center; gap: 13px; }
-.remote-mini-status > span { display: flex; align-items: center; }
-.remote-mini-status i { display: block; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
-.remote-mini-status .is-good { color: #52dfa6; }
-.remote-mini-status .is-bad { color: var(--danger); }
+/* In champion select the header collapses to one slim row: the brand, two
+   labelled connection chips, and the Ready pill, with no separate status line.
+   The chips stay tiny when everything is connected and show a short label only
+   when something is offline, so the status is self-explanatory. */
+.remote-mini-status { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.remote-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.remote-chip i { display: block; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.remote-chip.is-good { color: #52dfa6; }
+.remote-chip.is-bad { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, var(--line-subtle)); }
 
 .remote-topline, .remote-brand, .remote-status-line, .remote-ready {
   display: flex;
@@ -167,13 +179,14 @@ button { -webkit-tap-highlight-color: transparent; }
 .remote-search input { width: 100%; border: 0; outline: 0; color: var(--text-primary); background: transparent; font-size: 13px; }
 .remote-search:focus-within { border-color: #52dfa6; box-shadow: 0 0 0 2px #52dfa633; }
 
-.remote-role-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-.remote-roles { display: flex; flex: 1; min-width: 0; gap: 4px; overflow-x: auto; scrollbar-width: none; }
-.remote-roles::-webkit-scrollbar { display: none; }
-.remote-roles button { display: grid; flex: none; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid transparent; border-radius: 9px; color: var(--text-secondary); background: transparent; cursor: pointer; }
-.remote-roles button.is-active { border-color: var(--line-strong); color: var(--text-primary); background: var(--surface-raised); }
+.remote-role-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
+/* The role row takes the full width so every button, including the last one's
+   selected highlight, stays inside 360px. Availability moves to its own line. */
+.remote-roles { display: flex; flex: 1 1 100%; min-width: 0; gap: 4px; }
+.remote-roles button { display: grid; flex: 1 1 0; min-width: 0; place-items: center; height: 40px; padding: 0; border: 1px solid transparent; border-radius: 9px; color: var(--text-secondary); background: transparent; cursor: pointer; }
+.remote-roles button.is-active { border-color: #d8b25a; color: #d8b25a; background: #2a2413; }
 
-.remote-availability { display: flex; flex: none; align-items: center; gap: 9px; color: var(--text-muted); font-size: 10px; }
+.remote-availability { display: flex; flex: 1 1 100%; align-items: center; justify-content: space-between; gap: 12px; color: var(--text-muted); font-size: 10px; }
 .remote-availability button { border: 0; padding: 0; color: #52dfa6; background: transparent; font-size: 10px; font-weight: 650; cursor: pointer; white-space: nowrap; }
 
 .remote-grid-wrap { flex: none; padding: 12px 12px calc(24px + env(safe-area-inset-bottom)); }

@@ -18,7 +18,9 @@ pub mod opgg;
 pub mod page;
 pub mod perks;
 pub mod probuilds;
+pub mod roles;
 pub mod session;
+pub mod spells;
 pub mod stats;
 pub mod view;
 pub mod watch;
@@ -40,8 +42,8 @@ pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
 pub use view::{pro_builds_view, view, ProBuildsView, RunesView};
 pub use watch::{
-    auto_apply_current, auto_apply_enabled, configured_tier, current_status, spawn_watch,
-    ChampSelectEvent,
+    apply_spells_enabled, auto_apply_current, auto_apply_enabled, configured_tier, current_status,
+    spawn_watch, ChampSelectEvent,
 };
 
 const PHASE_PATH: &str = "/lol-gameflow/v1/gameflow-phase";
@@ -230,15 +232,31 @@ async fn rune_context() -> Result<RuneContext, RuneError> {
         });
     };
     if let Ok(gameflow) = lcu_get_text(&lcu, GAMEFLOW_PATH).await {
-        if let Ok((map_id, queue_id)) = session::parse_gameflow(&gameflow) {
-            context.map_id = map_id;
-            context.queue_id = queue_id;
+        if let Ok(info) = session::parse_gameflow(&gameflow) {
+            context.map_id = info.map_id;
+            context.queue_id = info.queue_id;
+            if !info.game_mode.trim().is_empty() {
+                context.game_mode = info.game_mode;
+            }
         }
+    }
+    if context.game_mode.trim().is_empty() {
+        context.game_mode = default_game_mode(context.mode()).to_string();
     }
     Ok(RuneContext {
         phase,
         context: Some(context),
     })
+}
+
+/// The Riot `gameMode` used when the gameflow does not report one, from the
+/// op.gg mode slug.
+fn default_game_mode(mode: &str) -> &'static str {
+    match mode {
+        opgg::MODE_ARAM => "ARAM",
+        opgg::MODE_ARENA => "CHERRY",
+        _ => "CLASSIC",
+    }
 }
 
 /// Maps a Riot region code (e.g. "EUW") to an op.gg region slug.
@@ -330,13 +348,18 @@ pub struct AppliedView {
 }
 
 struct Shared {
-    groups: HashMap<String, (Instant, Vec<opgg::RunePageGroup>)>,
+    groups: HashMap<String, (Instant, opgg::ChampionData)>,
     /// Failed or empty op.gg lookups, so a locked champion select does not
     /// retry op.gg on every poll.
     group_failures: HashMap<String, Instant>,
     catalog: Option<(Instant, perks::PerkCatalog)>,
     names: Option<(Instant, HashMap<i64, String>)>,
     icons: HashMap<i64, Vec<u8>>,
+    /// The client's position SVGs, keyed by plugin asset name.
+    role_icons: HashMap<String, Vec<u8>>,
+    /// The summoner-spell catalog and its icons.
+    spells: Option<(Instant, Vec<spells::Spell>)>,
+    spell_icons: HashMap<i64, Vec<u8>>,
     applied: Option<AppliedView>,
     /// pros' solo-queue games from probuildstats, cached per champion/role/page.
     pro_builds: probuilds::MatchCache,
@@ -352,6 +375,9 @@ fn shared() -> MutexGuard<'static, Shared> {
                 catalog: None,
                 names: None,
                 icons: HashMap::new(),
+                role_icons: HashMap::new(),
+                spells: None,
+                spell_icons: HashMap::new(),
                 applied: None,
                 pro_builds: probuilds::MatchCache::default(),
             })

@@ -56,25 +56,26 @@ pub fn group_key(region: &str, mode: &str, champion_id: i64, position: &str, tie
     format!("{region}|{mode}|{champion_id}|{position}|{tier}")
 }
 
-/// op.gg rune-page groups for a champion and role, cached for the session.
+/// op.gg champion data (rune pages and spell pairs) for a champion and role,
+/// cached for the session.
 ///
 /// A failure or an empty answer is remembered for [`GROUP_FAILURE_TTL`] and
 /// returned as an error, so the caller falls back to the League client without
 /// retrying op.gg on every watcher poll.
-pub async fn rune_groups(
+pub async fn champion_data(
     region: &str,
     mode: &str,
     champion_id: i64,
     position: &str,
     tier: &str,
-) -> Result<Vec<opgg::RunePageGroup>, RuneError> {
+) -> Result<opgg::ChampionData, RuneError> {
     let tier = opgg::normalize_tier(tier);
     let key = group_key(region, mode, champion_id, position, tier);
     {
         let state = super::shared();
-        if let Some((at, groups)) = state.groups.get(&key) {
+        if let Some((at, data)) = state.groups.get(&key) {
             if at.elapsed() < GROUP_TTL {
-                return Ok(groups.clone());
+                return Ok(data.clone());
             }
         }
         if let Some(at) = state.group_failures.get(&key) {
@@ -86,16 +87,19 @@ pub async fn rune_groups(
         }
     }
     let client = opgg::OpggClient::new()?;
-    match client.rune_pages(region, mode, champion_id, position, tier).await {
-        Ok(groups) if !groups.is_empty() => {
+    match client
+        .champion_data(region, mode, champion_id, position, tier)
+        .await
+    {
+        Ok(data) if !data.rune_pages.is_empty() => {
             let mut state = super::shared();
             state.group_failures.remove(&key);
-            state.groups.insert(key, (Instant::now(), groups.clone()));
-            Ok(groups)
+            state.groups.insert(key, (Instant::now(), data.clone()));
+            Ok(data)
         }
         Ok(_) => {
             super::shared().group_failures.insert(key, Instant::now());
-            Ok(Vec::new())
+            Ok(opgg::ChampionData::default())
         }
         Err(error) => {
             super::shared().group_failures.insert(key, Instant::now());
@@ -169,6 +173,10 @@ pub struct Loaded {
     /// League fallback).
     pub groups: Vec<opgg::RunePageGroup>,
     pub selections: Vec<LoadedPreset>,
+    /// op.gg's most-played summoner-spell pair, shown on the preset cards and
+    /// applied with the page when the setting is on. `None` for the League
+    /// fallback, which does not carry spells.
+    pub spell_pair: Option<[i64; 2]>,
     /// True when the chosen rank bracket had no op.gg data but a broader bracket
     /// did. The caller shows a "not enough games" state instead of silently
     /// falling back to a different bracket.
@@ -185,8 +193,9 @@ pub async fn load_for(
     let position = position_for(current, context).await;
     let mode = context.mode();
     let tier = opgg::normalize_tier(tier);
-    if let Ok(groups) = rune_groups(&region, mode, context.champion_id, position, tier).await {
-        let presets = opgg::presets(&groups);
+    if let Ok(data) = champion_data(&region, mode, context.champion_id, position, tier).await {
+        let spell_pair = data.top_spell_pair();
+        let presets = opgg::presets(&data.rune_pages);
         if !presets.is_empty() {
             let selections = presets
                 .iter()
@@ -209,8 +218,9 @@ pub async fn load_for(
                 .collect();
             return Ok(Loaded {
                 source: "opgg",
-                groups,
+                groups: data.rune_pages,
                 selections,
+                spell_pair,
                 tier_empty: false,
             });
         }
@@ -218,7 +228,7 @@ pub async fn load_for(
         // bracket does have data, so the user is told the bracket is too narrow
         // instead of being shown a different bracket's presets.
         if tier != opgg::TIER_ALL {
-            let broad = rune_groups(
+            let broad = champion_data(
                 &region,
                 mode,
                 context.champion_id,
@@ -227,11 +237,12 @@ pub async fn load_for(
             )
             .await
             .unwrap_or_default();
-            if !broad.is_empty() {
+            if !broad.rune_pages.is_empty() {
                 return Ok(Loaded {
                     source: "none",
                     groups: Vec::new(),
                     selections: Vec::new(),
+                    spell_pair: None,
                     tier_empty: true,
                 });
             }
@@ -260,6 +271,7 @@ pub async fn load_for(
         source: if recommended.is_empty() { "none" } else { "lcu" },
         groups: Vec::new(),
         selections,
+        spell_pair: None,
         tier_empty: false,
     })
 }

@@ -1,5 +1,6 @@
 import { RuneIcon } from "./RuneIcon";
 import { RoleIcon } from "./RoleIcon";
+import { SpellIcon } from "./SpellIcon";
 import {
   ProBuild,
   ProBuildsView,
@@ -16,7 +17,7 @@ type Props = {
   busy: boolean;
   /** The page currently applied in League, highlighted on a matching card. */
   active: Selection | null;
-  onImport: (selection: Selection) => void;
+  onImport: (build: ProBuild) => void;
   onLoadMore: () => void;
   onRetry: () => void;
 };
@@ -40,55 +41,65 @@ function ProBuildCard({
   mode: "desktop" | "remote";
   active: boolean;
   busy: boolean;
-  onImport: (selection: Selection) => void;
+  onImport: (build: ProBuild) => void;
 }) {
-  const selection = selectionFromProBuild(build);
   const subtitle = [build.team, build.league].filter(Boolean).join(" · ");
   return (
     <button
       type="button"
       className={`pro-card ${active ? "is-active" : ""}`}
       disabled={busy}
-      onClick={() => onImport(selection)}
+      onClick={() => onImport(build)}
       aria-label={`Import ${build.proName}'s ${build.win ? "winning" : "losing"} ${build.roleLabel} page`}
     >
       <span className="pro-card-head">
         <RuneIcon id={build.keystone} mode={mode} className="pro-card-keystone" />
         <span className="pro-card-copy">
           <strong>{build.proName || "Pro player"}</strong>
-          {subtitle && <small>{subtitle}</small>}
+          {build.otp ? (
+            <span className="pro-card-otp">OTP</span>
+          ) : (
+            subtitle && <small>{subtitle}</small>
+          )}
         </span>
         <span className={`pro-card-result ${build.win ? "is-win" : "is-loss"}`}>
           {build.win ? "Win" : "Loss"}
         </span>
       </span>
       <span className="pro-card-meta">
+        <span className="pro-card-kda">{kda(build)}</span>
+        <span className="pro-card-dot" />
         <span>{build.playedAgo}</span>
         <span className="pro-card-dot" />
         <span>Patch {build.patch}</span>
         <span className="pro-card-dot" />
         <span className="pro-card-role">
-          <RoleIcon role={build.role || build.roleLabel} size={13} />
+          <RoleIcon role={build.role || build.roleLabel} size={13} mode={mode} />
           {build.roleLabel}
         </span>
       </span>
-      <span className="pro-card-stats">
-        <span className="pro-card-kda">{kda(build)}</span>
-        <span className="pro-card-icons">
-          <RuneIcon id={build.primaryPageId} mode={mode} className="pro-card-tree" />
-          {build.primaryRunes.map((id) => (
-            <RuneIcon key={`p${id}`} id={id} mode={mode} />
-          ))}
-          <span className="pro-card-divider" />
-          <RuneIcon id={build.secondaryPageId} mode={mode} className="pro-card-tree" />
-          {build.secondaryRunes.map((id) => (
-            <RuneIcon key={`s${id}`} id={id} mode={mode} />
-          ))}
-          <span className="pro-card-divider" />
-          {build.shards.map((id, index) => (
-            <RuneIcon key={`m${index}`} id={id} mode={mode} className="pro-card-shard" />
-          ))}
-        </span>
+      <span className="pro-card-icons">
+        <RuneIcon id={build.primaryPageId} mode={mode} className="pro-card-tree" />
+        {build.primaryRunes.map((id) => (
+          <RuneIcon key={`p${id}`} id={id} mode={mode} />
+        ))}
+        <span className="pro-card-divider" />
+        <RuneIcon id={build.secondaryPageId} mode={mode} className="pro-card-tree" />
+        {build.secondaryRunes.map((id) => (
+          <RuneIcon key={`s${id}`} id={id} mode={mode} />
+        ))}
+        <span className="pro-card-divider" />
+        {build.shards.map((id, index) => (
+          <RuneIcon key={`m${index}`} id={id} mode={mode} className="pro-card-shard" />
+        ))}
+        {build.spells.length === 2 && (
+          <>
+            <span className="pro-card-divider" />
+            {build.spells.map((id, index) => (
+              <SpellIcon key={`sp${index}`} id={id} mode={mode} className="pro-card-spell" />
+            ))}
+          </>
+        )}
       </span>
     </button>
   );

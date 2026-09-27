@@ -93,6 +93,10 @@ pub struct Config {
     /// page that merely shares the `Swapper:` name is never modified.
     #[serde(default)]
     pub rune_page_id: Option<i64>,
+    /// Whether applying a rune page also sets its recommended summoner spells.
+    /// `None` means the default (on) has never been changed.
+    #[serde(default)]
+    pub apply_spells_with_runes: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize)]

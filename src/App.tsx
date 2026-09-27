@@ -75,6 +75,7 @@ type AppState = {
   deceiveDetected: boolean;
   autoApplyTopPreset: boolean;
   runeTier: string;
+  applySpellsWithRunes: boolean;
   remote: RemoteStatus;
 };
 type ChampSelectStatus = {
@@ -95,7 +96,7 @@ const emptyRemote: RemoteStatus = {
 const empty: AppState = {
   accounts: [], activeId: null, isSwitching: false, useDeceive: false,
   riotExe: null, riotDetected: false, deceiveDetected: false,
-  autoApplyTopPreset: false, runeTier: "emerald_plus", remote: emptyRemote,
+  autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true, remote: emptyRemote,
 };
 
 const wait = (ms: number) =>
@@ -323,14 +324,41 @@ function App() {
     }
   }
 
-  async function applyRunes(selection: Selection, presetIndex: number | null) {
+  async function applyRunes(selection: Selection, presetIndex: number | null, spells: number[] | null) {
     setRunesBusy(true);
     setRunesError(null);
     try {
-      await invoke("apply_rune_page", { selection, presetIndex });
+      await invoke("apply_rune_page", { selection, presetIndex, spells });
       await loadRunes();
     } catch (reason) {
       setRunesError(String(reason));
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function pickSpell(slot: "d" | "f", spellId: number) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      await invoke("apply_spell", { slot, spellId });
+      await loadRunes();
+    } catch (reason) {
+      setRunesError(String(reason));
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function setApplySpellsWithRunes(enabled: boolean) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const next = await invoke<AppState>("set_apply_spells_with_runes", { enabled });
+      sync(next);
+      await loadRunes();
+    } catch (reason) {
+      showError(reason);
     } finally {
       setRunesBusy(false);
     }
@@ -646,8 +674,10 @@ function App() {
             loading={runesLoading}
             busy={runesBusy}
             error={runesError}
-            onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
+            onApply={(selection, presetIndex, spells) => void applyRunes(selection, presetIndex, spells)}
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
+            onToggleSpellsWithRunes={(enabled) => void setApplySpellsWithRunes(enabled)}
+            onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
             onLoadProBuilds={loadProBuilds}
             onTierChange={(tier) => void setRuneTier(tier)}
             onExit={() => { runesDismissed.current = true; navigate("accounts"); }}
@@ -764,6 +794,15 @@ function App() {
                   {openInfo === "runes" && <p>When your champion locks in during champion select, Swapper applies the recommended rune page shown on the runes screen. Off by default.</p>}
                 </div>
                 <Switch checked={data.autoApplyTopPreset} onCheckedChange={(checked) => void setAutoApply(checked)} aria-label="Auto-apply recommended runes" />
+              </div>
+
+              <div className="setting-row">
+                <div className="setting-copy">
+                  <strong>Apply summoner spells with runes</strong>
+                  <button className="info-button" aria-label="About Apply summoner spells with runes" aria-expanded={openInfo === "spells"} onClick={() => setOpenInfo(openInfo === "spells" ? null : "spells")}><Info size={13} /></button>
+                  {openInfo === "spells" && <p>When you apply a preset or a pro build, also set its recommended summoner spells. Flash stays on the key you already use.</p>}
+                </div>
+                <Switch checked={data.applySpellsWithRunes} onCheckedChange={(checked) => void setApplySpellsWithRunes(checked)} aria-label="Apply summoner spells with runes" />
               </div>
 
               <div className="setting-row">

@@ -129,6 +129,25 @@ impl AppState {
     pub(crate) fn publish_runes(&self, applied: runes::AppliedView) {
         self.remote.publish_runes(applied);
     }
+
+    /// Whether applying a page should also set its summoner spells. Defaults to
+    /// on until the user changes it.
+    pub(crate) fn apply_spells_with_runes(&self) -> bool {
+        self.config
+            .lock()
+            .ok()
+            .and_then(|config| config.apply_spells_with_runes)
+            .unwrap_or(true)
+    }
+
+    pub(crate) fn set_apply_spells_with_runes(&self, enabled: bool) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        if config.apply_spells_with_runes == Some(enabled) {
+            return Ok(());
+        }
+        config.apply_spells_with_runes = Some(enabled);
+        vault::save(&config)
+    }
 }
 
 #[derive(Clone, Serialize)]
@@ -156,6 +175,7 @@ struct AppView {
     deceive_detected: bool,
     auto_apply_top_preset: bool,
     rune_tier: String,
+    apply_spells_with_runes: bool,
     remote: remote::RemoteStatus,
 }
 
@@ -213,6 +233,7 @@ fn view(
             .clone()
             .map(|tier| runes::normalize_tier(&tier).to_string())
             .unwrap_or_else(|| runes::DEFAULT_TIER.to_string()),
+        apply_spells_with_runes: config.apply_spells_with_runes.unwrap_or(true),
         remote: remote.clone(),
     }
 }
@@ -479,7 +500,50 @@ fn set_auto_apply_top_preset(
 
 #[tauri::command]
 async fn get_runes(state: State<'_, AppState>) -> Result<runes::RunesView, String> {
-    Ok(runes::view(state.auto_apply_top_preset(), &state.rune_tier()).await)
+    Ok(runes::view(
+        state.auto_apply_top_preset(),
+        state.apply_spells_with_runes(),
+        &state.rune_tier(),
+    )
+    .await)
+}
+
+#[tauri::command]
+fn set_apply_spells_with_runes(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    enabled: bool,
+) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    state.set_apply_spells_with_runes(enabled)?;
+    let view = {
+        let config = state.config.lock().map_err(|e| e.to_string())?;
+        view(
+            &config,
+            &state.bundled_deceive,
+            &state.remote.status(),
+            false,
+        )
+    };
+    notify_runes_changed(&app, &state);
+    Ok(view)
+}
+
+/// Applies one summoner spell to a slot, swapping when it is already in the
+/// other slot. Published so both surfaces reload the new spells.
+#[tauri::command]
+async fn apply_spell(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    slot: String,
+    spell_id: i64,
+) -> Result<(), String> {
+    let slot = if slot.eq_ignore_ascii_case("d") || slot == "1" { 0 } else { 1 };
+    runes::spells::apply_pick(slot, spell_id)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    notify_runes_changed(&app, &state);
+    Ok(())
 }
 
 #[tauri::command]
@@ -524,6 +588,28 @@ async fn rune_icon(id: i64) -> Result<String, String> {
 }
 
 #[tauri::command]
+async fn role_icon(role: String) -> Result<String, String> {
+    let bytes = runes::roles::icon(&role)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/svg+xml;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
+#[tauri::command]
+async fn spell_icon(id: i64) -> Result<String, String> {
+    let bytes = runes::spells::icon(id)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
+#[tauri::command]
 async fn get_pro_builds(champion_id: i64, position: String, page: Option<u32>) -> runes::ProBuildsView {
     runes::pro_builds_view(champion_id, &position, page.unwrap_or(1)).await
 }
@@ -534,11 +620,19 @@ async fn apply_rune_page(
     state: State<'_, AppState>,
     selection: runes::RuneSelection,
     preset_index: Option<usize>,
+    spells: Option<Vec<i64>>,
 ) -> Result<runes::AppliedView, String> {
     let owned = state.rune_page_id();
-    let applied = runes::apply_selection(selection, preset_index, owned)
-        .await
-        .map_err(|e| e.message().to_string())?;
+    let spells = spells.as_deref().and_then(runes::spells::pair_from_ids);
+    let applied = runes::apply_selection(
+        selection,
+        preset_index,
+        owned,
+        spells,
+        state.apply_spells_with_runes(),
+    )
+    .await
+    .map_err(|e| e.message().to_string())?;
     if let Some(id) = applied.page_id {
         let handle = app.clone();
         let _ = tokio::task::spawn_blocking(move || {
@@ -705,9 +799,13 @@ pub fn run() {
             probe_remote,
             set_auto_apply_top_preset,
             set_rune_tier,
+            set_apply_spells_with_runes,
             get_runes,
             champ_select_status,
             rune_icon,
+            role_icon,
+            spell_icon,
+            apply_spell,
             get_pro_builds,
             apply_rune_page
         ])

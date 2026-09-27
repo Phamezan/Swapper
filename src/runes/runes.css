@@ -197,14 +197,26 @@
 .pro-card-meta { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 10px; font-weight: 600; }
 .pro-card-role { display: inline-flex; align-items: center; gap: 4px; }
 .pro-card-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--line-strong); }
+.pro-card-kda { color: var(--text-secondary); font-weight: 750; font-variant-numeric: tabular-nums; }
 
-.pro-card-stats { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.pro-card-kda { flex: none; color: var(--text-secondary); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+/* The OTP badge stands in for a team name, which OTP entries do not have. */
+.pro-card-otp {
+  align-self: flex-start;
+  padding: 1px 6px;
+  border-radius: 6px;
+  color: #e7c777;
+  background: #3a2f14;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
-.pro-card-icons { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.pro-card-icons { display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; }
 .pro-card-icons img, .pro-card-icons .rune-icon-fallback { width: 20px; height: 20px; border-radius: 5px; }
 .pro-card-tree { outline: 1px solid var(--line-strong); outline-offset: -1px; }
 .pro-card-shard { width: 16px !important; height: 16px !important; }
+.pro-card-spell { width: 20px !important; height: 20px !important; border-radius: 5px; }
 .pro-card-divider { width: 1px; height: 16px; margin: 0 1px; background: var(--line-strong); }
 
 .pro-more {
@@ -240,8 +252,11 @@
 
 .runes-remote .pro-card { padding: 12px; }
 .runes-remote .pro-card-keystone { width: 40px; height: 40px; }
+.runes-remote .pro-card-icons { gap: 3px; }
 .runes-remote .pro-card-icons img,
-.runes-remote .pro-card-icons .rune-icon-fallback { width: 24px; height: 24px; }
+.runes-remote .pro-card-icons .rune-icon-fallback { width: 22px; height: 22px; }
+.runes-remote .pro-card-spell { width: 22px !important; height: 22px !important; }
+.runes-remote .pro-card-shard { width: 14px !important; height: 14px !important; }
 .runes-remote .pro-more { min-height: 46px; font-size: 13px; }
 .runes-remote .pro-retry { min-height: 44px; font-size: 13px; }
 
@@ -495,3 +510,104 @@
 @media (prefers-reduced-motion: reduce) {
   .rune-orb-icon, .rune-orb-art { transition: none; }
 }
+
+/* Role icons use the League client's SVGs as a CSS mask, so the current text
+   colour drives them: dim when idle, gold when the parent marks them active. */
+.role-icon { display: inline-block; flex: none; background-color: currentColor; }
+.role-icon-fallback { border-radius: 4px; background: var(--surface-raised); }
+
+.spell-icon { display: block; border-radius: 6px; background: var(--surface-raised); }
+.spell-icon-fallback { display: inline-block; border-radius: 6px; background: var(--surface-raised); }
+
+/* Summoner-spell slots in the runes header. */
+.runes-head-right { display: flex; align-items: center; gap: 8px; flex: none; }
+.runes-spells { display: flex; align-items: center; gap: 5px; }
+
+.rune-spell-slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface-panel);
+}
+.rune-spell-slot:disabled { opacity: 0.55; }
+.rune-spell-slot .spell-icon, .rune-spell-slot .spell-icon-fallback { width: 26px; height: 26px; }
+
+.rune-spell-key {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  min-width: 13px;
+  padding: 0 3px;
+  border-radius: 5px;
+  color: var(--text-primary);
+  background: var(--surface-raised);
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 13px;
+  text-align: center;
+}
+
+.runes-remote .rune-spell-slot { width: 46px; height: 46px; }
+.runes-remote .rune-spell-slot .spell-icon,
+.runes-remote .rune-spell-slot .spell-icon-fallback { width: 34px; height: 34px; }
+.runes-remote .rune-spell-key { min-width: 15px; font-size: 10px; line-height: 15px; }
+
+.rune-preset-spell { width: 18px !important; height: 18px !important; border-radius: 5px; }
+
+/* Spell picker: a modal sheet over the panel. */
+.runes-spell-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+.runes-spell-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 14px 15px calc(14px + env(safe-area-inset-bottom));
+  border: 1px solid var(--line-subtle);
+  border-radius: 16px 16px 0 0;
+  background: var(--surface-header);
+}
+.runes-desktop .runes-spell-sheet { max-height: calc(100% - 24px); margin: 12px; border-radius: 12px; }
+.runes-spell-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.runes-spell-sheet-head strong { font-size: 13px; font-weight: 750; }
+.runes-spell-sheet-head button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 650;
+}
+.runes-spell-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.rune-spell-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 4px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  background: var(--surface-panel);
+}
+.rune-spell-option .spell-icon, .rune-spell-option .spell-icon-fallback { width: 38px; height: 38px; }
+.rune-spell-option span { max-width: 100%; overflow: hidden; font-size: 9px; font-weight: 650; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.rune-spell-option.is-active { border-color: #d8b25a; color: var(--text-primary); background: #2a2413; }
+.runes-remote .rune-spell-option { min-height: 78px; }
