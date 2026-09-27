@@ -125,6 +125,10 @@ button { -webkit-tap-highlight-color: transparent; }
 .remote-picker-head p:not(.remote-eyebrow), .remote-waiting p:not(.remote-eyebrow) { margin: 7px 0 0; color: var(--text-secondary); font-size: 12px; line-height: 1.4; }
 .remote-confirmed { color: #52dfa6 !important; }
 
+.remote-select-tabs { display: flex; gap: 4px; flex: none; margin: 0 16px 12px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 10px; background: var(--surface-panel); }
+.remote-select-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 8px; color: var(--text-secondary); background: transparent; font-size: 13px; font-weight: 720; }
+.remote-select-tabs button.is-active { color: var(--action-text); background: var(--action-fill); }
+
 .remote-accept, .remote-picker-footer button {
   min-height: 46px;
   border: 1px solid #459c74;

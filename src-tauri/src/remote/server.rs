@@ -8,6 +8,8 @@ use axum::routing::get;
 use axum::Json;
 use axum::Router;
 use futures_util::StreamExt;
+use serde::Deserialize;
+use tauri::Emitter;
 
 use super::{control, RemoteCore};
 
@@ -24,6 +26,13 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
             axum::routing::post(prepick_champion),
         )
         .route("/api/champion/lock", axum::routing::post(lock_champion))
+        .route("/api/runes", get(runes))
+        .route("/api/runes/apply", axum::routing::post(apply_runes))
+        .route(
+            "/api/runes/auto-apply",
+            axum::routing::post(set_auto_apply),
+        )
+        .route("/api/rune/icon/{id}", get(rune_icon))
         .route("/ws", get(socket))
         .fallback(asset)
         .with_state(core)
@@ -114,6 +123,126 @@ async fn lock_champion(headers: HeaderMap) -> Response {
     action_response(control::lock_champion().await)
 }
 
+async fn runes(State(core): State<Arc<RemoteCore>>) -> Response {
+    let auto_apply = crate::runes::auto_apply_enabled(&core.app);
+    Json(crate::runes::view(auto_apply).await).into_response()
+}
+
+fn rune_status(error: &crate::runes::RuneError) -> StatusCode {
+    match error {
+        crate::runes::RuneError::NotFound(_) => StatusCode::NOT_FOUND,
+        crate::runes::RuneError::Conflict(_) => StatusCode::CONFLICT,
+        crate::runes::RuneError::Unavailable(_) => StatusCode::BAD_GATEWAY,
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct ApplyRunesRequest {
+    selection: crate::runes::RuneSelection,
+    #[serde(default)]
+    preset_index: Option<usize>,
+}
+
+async fn apply_runes(
+    State(core): State<Arc<RemoteCore>>,
+    headers: HeaderMap,
+    Json(body): Json<ApplyRunesRequest>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    use tauri::Manager;
+    let owned = core
+        .app
+        .try_state::<crate::AppState>()
+        .and_then(|state| state.rune_page_id());
+    match crate::runes::apply_selection(body.selection, body.preset_index, owned).await {
+        Ok(applied) => {
+            if let Some(id) = applied.page_id {
+                persist_rune_page_id(core.app.clone(), id).await;
+            }
+            core.publish_runes(applied.clone());
+            let _ = core.app.emit("runes_changed", applied);
+            (StatusCode::OK, Json(control::ActionResult::success())).into_response()
+        }
+        Err(error) => (
+            rune_status(&error),
+            Json(control::ActionResult::error(error.message())),
+        )
+            .into_response(),
+    }
+}
+
+/// Saves the owned rune page id without blocking the axum runtime: the vault
+/// write is synchronous file I/O.
+async fn persist_rune_page_id(app: tauri::AppHandle, id: i64) {
+    use tauri::Manager;
+    let _ = tokio::task::spawn_blocking(move || {
+        if let Some(state) = app.try_state::<crate::AppState>() {
+            let _ = state.set_rune_page_id(id);
+        }
+    })
+    .await;
+}
+
+#[derive(Deserialize)]
+struct AutoApplyRequest {
+    enabled: bool,
+}
+
+async fn set_auto_apply(
+    State(core): State<Arc<RemoteCore>>,
+    headers: HeaderMap,
+    Json(body): Json<AutoApplyRequest>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    let app = core.app.clone();
+    let enabled = body.enabled;
+    // The vault save is blocking file I/O; keep it off the axum runtime.
+    let result = tokio::task::spawn_blocking(move || {
+        use tauri::Manager;
+        let state = app
+            .try_state::<crate::AppState>()
+            .ok_or_else(|| "Swapper is unavailable.".to_string())?;
+        state.set_auto_apply_top_preset(enabled)
+    })
+    .await
+    .unwrap_or_else(|error| Err(error.to_string()));
+    match result {
+        Ok(()) => (StatusCode::OK, Json(control::ActionResult::success())).into_response(),
+        Err(message) => (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(control::ActionResult::error(&message)),
+        )
+            .into_response(),
+    }
+}
+
+async fn rune_icon(Path(id): Path<i64>) -> Response {
+    match crate::runes::icon(id).await {
+        Ok(bytes) => (
+            [
+                (header::CONTENT_TYPE, "image/png"),
+                (header::CACHE_CONTROL, "private, max-age=86400"),
+            ],
+            bytes,
+        )
+            .into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
 fn action_response(result: Result<(), control::ActionError>) -> Response {
     match result {
         Ok(()) => (StatusCode::OK, Json(control::ActionResult::success())).into_response(),
@@ -136,6 +265,7 @@ async fn socket(ws: WebSocketUpgrade, State(core): State<Arc<RemoteCore>>) -> im
 
 async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>) {
     let mut updates = core.subscribe();
+    let mut runes = core.subscribe_runes();
     let payload = serde_json::json!({ "type": "status", "status": core.status() }).to_string();
     if stream.send(Message::Text(payload.into())).await.is_err() {
         return;
@@ -145,6 +275,16 @@ async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>) {
             event = updates.recv() => match event {
                 Ok(status) => {
                     let payload = serde_json::json!({ "type": "status", "status": status }).to_string();
+                    if stream.send(Message::Text(payload.into())).await.is_err() {
+                        return;
+                    }
+                }
+                Err(tokio::sync::broadcast::error::RecvError::Lagged(_)) => {}
+                Err(tokio::sync::broadcast::error::RecvError::Closed) => return,
+            },
+            applied = runes.recv() => match applied {
+                Ok(applied) => {
+                    let payload = serde_json::json!({ "type": "runes", "applied": applied }).to_string();
                     if stream.send(Message::Text(payload.into())).await.is_err() {
                         return;
                     }

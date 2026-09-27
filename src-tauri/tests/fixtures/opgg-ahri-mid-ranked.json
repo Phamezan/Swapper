@@ -1,0 +1,92 @@
+{
+  "data": {
+    "summary": { "id": 103, "average_stats": { "play": 18104, "win_rate": 0.508451 } },
+    "rune_pages": [
+      {
+        "id": 8112,
+        "primary_page_id": 8100,
+        "secondary_page_id": 8200,
+        "play": 13096,
+        "win": 6652,
+        "pick_rate": 0.7934,
+        "builds": [
+          {
+            "id": 8112,
+            "primary_page_id": 8100,
+            "primary_rune_ids": [8112, 8139, 8140, 8106],
+            "secondary_page_id": 8200,
+            "secondary_rune_ids": [8210, 8226],
+            "stat_mod_ids": [5005, 5008, 5001],
+            "play": 8058,
+            "win": 4083,
+            "pick_rate": 0.6153
+          },
+          {
+            "id": 8112,
+            "primary_page_id": 8100,
+            "primary_rune_ids": [8112, 8139, 8140, 8106],
+            "secondary_page_id": 8200,
+            "secondary_rune_ids": [8226, 8237],
+            "stat_mod_ids": [5005, 5008, 5011],
+            "play": 962,
+            "win": 474,
+            "pick_rate": 0.0735
+          },
+          {
+            "id": 8112,
+            "primary_page_id": 8100,
+            "primary_rune_ids": [8112, 8139, 8137, 8106],
+            "secondary_page_id": 8200,
+            "secondary_rune_ids": [8226, 8237],
+            "stat_mod_ids": [5005, 5008, 5011],
+            "play": 442,
+            "win": 230,
+            "pick_rate": 0.0338
+          }
+        ]
+      },
+      {
+        "id": 8992,
+        "primary_page_id": 8200,
+        "secondary_page_id": 8100,
+        "play": 1244,
+        "win": 659,
+        "pick_rate": 0.0754,
+        "builds": [
+          {
+            "id": 8992,
+            "primary_page_id": 8200,
+            "primary_rune_ids": [8992, 8226, 8210, 8237],
+            "secondary_page_id": 8100,
+            "secondary_rune_ids": [8106, 8139],
+            "stat_mod_ids": [5005, 5008, 5001],
+            "play": 985,
+            "win": 520,
+            "pick_rate": 0.7918
+          }
+        ]
+      },
+      {
+        "id": 8214,
+        "primary_page_id": 8200,
+        "secondary_page_id": 8100,
+        "play": 812,
+        "win": 405,
+        "pick_rate": 0.0492,
+        "builds": [
+          {
+            "id": 8214,
+            "primary_page_id": 8200,
+            "primary_rune_ids": [8214, 8226, 8210, 8237],
+            "secondary_page_id": 8100,
+            "secondary_rune_ids": [8106, 8139],
+            "stat_mod_ids": [5008, 5008, 5001],
+            "play": 640,
+            "win": 318,
+            "pick_rate": 0.788
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
+import { RunesPanel } from "../runes/RunesPanel";
+import type { RunesView, Selection } from "../runes/types";
 import "./remote.css";
 
 type RemoteState = "disabled" | "starting" | "notInstalled" | "disconnected" | "available" | "failed";
@@ -63,6 +65,10 @@ export default function RemoteApp() {
   const [position, setPosition] = useState("ALL");
   const [showUnavailable, setShowUnavailable] = useState(false);
   const [prepickId, setPrepickId] = useState<number | null>(null);
+  const [tab, setTab] = useState<"pick" | "runes">("pick");
+  const [runes, setRunes] = useState<RunesView | null>(null);
+  const [runesBusy, setRunesBusy] = useState(false);
+  const [runesError, setRunesError] = useState<string | null>(null);
   const socketRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
@@ -90,6 +96,7 @@ export default function RemoteApp() {
         try {
           const payload = JSON.parse(String(event.data)) as { type?: string; status?: RemoteStatus };
           if (payload.type === "status" && payload.status) setStatus(payload.status);
+          if (payload.type === "runes") void loadRunes();
         } catch { /* Ignore malformed updates. */ }
       };
       socket.onclose = () => {
@@ -178,6 +185,15 @@ export default function RemoteApp() {
     if (game?.phase !== "ChampSelect") setPrepickId(null);
   }, [game?.phase]);
 
+  useEffect(() => {
+    if (game?.phase !== "ChampSelect") setTab("pick");
+  }, [game?.phase]);
+
+  useEffect(() => {
+    if (tab !== "runes" || game?.phase !== "ChampSelect") return;
+    void loadRunes();
+  }, [tab, game?.phase, game?.championSelect?.selectedChampionId, game?.championSelect?.prepickChampionId]);
+
   async function refreshGame() {
     const response = await fetch("/api/game", { cache: "no-store" });
     if (response.ok) setGame(await response.json() as GameSnapshot);
@@ -211,10 +227,56 @@ export default function RemoteApp() {
     }
   }
 
+  async function loadRunes() {
+    try {
+      const response = await fetch("/api/runes", { cache: "no-store" });
+      if (response.ok) setRunes(await response.json() as RunesView);
+    } catch {
+      setRunesError("Could not load runes.");
+    }
+  }
+
+  async function applyRunes(selection: Selection, presetIndex: number | null) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const response = await fetch("/api/runes/apply", {
+        method: "POST",
+        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
+        body: JSON.stringify({ selection, presetIndex }),
+      });
+      const result = await response.json() as { ok: boolean; message: string | null };
+      if (!response.ok || !result.ok) setRunesError(result.message ?? "League rejected the rune page.");
+      else await loadRunes();
+    } catch {
+      setRunesError("Could not reach Swapper. Check your connection and try again.");
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function toggleAutoApply(enabled: boolean) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      await fetch("/api/runes/auto-apply", {
+        method: "POST",
+        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
+        body: JSON.stringify({ enabled }),
+      });
+      await loadRunes();
+    } catch {
+      setRunesError("Could not update the setting.");
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
   const ready = live && status?.state === "available" && status.tailscaleRunning && status.lcuConnected;
   const phase = game?.phase;
   const select = game?.championSelect;
   const showCatalog = Boolean(status?.lcuConnected && phase === "ChampSelect" && select);
+  const showRunes = Boolean(status?.lcuConnected && phase === "ChampSelect");
   const available = new Set(select?.availableChampionIds ?? []);
   const selected = select?.actionKind ? select.selectedChampionId : prepickId ?? select?.prepickChampionId;
   const filtered = champions.filter((champion) =>
@@ -242,13 +304,29 @@ export default function RemoteApp() {
         </div>
       </header>
 
-      <main className={`remote-main ${showCatalog ? "has-catalog" : ""}`}>
+      <main className={`remote-main ${showCatalog || showRunes ? "has-catalog" : ""}`}>
         {status?.message && <p className="remote-inline-error" role="alert">{status.message}</p>}
         {game?.message && <p className="remote-inline-error" role="alert">{game.message}</p>}
         {actionError && <p className="remote-inline-error" role="alert">{actionError}</p>}
 
-        {showCatalog ? (
-          <section className="remote-picker" aria-label="Champion catalog">
+        {showCatalog || showRunes ? (
+          <section className="remote-picker" aria-label="Champion select">
+            <div className="remote-select-tabs" role="tablist">
+              <button type="button" role="tab" aria-selected={tab === "pick"} className={tab === "pick" ? "is-active" : ""} onClick={() => setTab("pick")}>Pick</button>
+              <button type="button" role="tab" aria-selected={tab === "runes"} className={tab === "runes" ? "is-active" : ""} onClick={() => setTab("runes")}>Runes</button>
+            </div>
+            {tab === "runes" ? (
+              <RunesPanel
+                mode="remote"
+                view={runes}
+                loading={false}
+                busy={runesBusy}
+                error={runesError}
+                onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
+                onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
+              />
+            ) : (
+            <>
             <div className="remote-picker-head">
               <p className="remote-eyebrow">CHAMPION SELECT</p>
               <h1>{title}</h1>
@@ -292,6 +370,8 @@ export default function RemoteApp() {
                 <span>{select.selectedChampionId ? champions.find((champion) => champion.id === select.selectedChampionId)?.name ?? "Selected" : "Select a champion"}</span>
                 <button disabled={actionBusy || !select.canComplete} onClick={() => void sendAction("/api/champion/lock")}>{select.actionKind === "ban" ? "Confirm ban" : "Lock in"}</button>
               </div>
+            )}
+            </>
             )}
           </section>
         ) : (

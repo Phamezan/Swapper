@@ -1,0 +1,308 @@
+//! Writing the single rune page Swapper owns: create it once, then replace it
+//! in place. The stored page id is the ownership proof, so a user page that
+//! merely shares the `Swapper:` name is never touched.
+
+use reqwest::Method;
+use serde::Deserialize;
+use serde_json::Value;
+
+use super::page::{self, PagePlan};
+use super::session;
+use super::{data, view, AppliedView, LcuPage, RuneError, RuneSelection};
+
+#[derive(Deserialize, Default)]
+#[serde(rename_all = "camelCase")]
+struct Inventory {
+    /// League's own answer for whether another custom page will be accepted.
+    /// It already accounts for slot-consuming pages that are not editable.
+    #[serde(default)]
+    can_add_custom_page: Option<bool>,
+    /// Custom pages currently in use.
+    #[serde(default)]
+    custom_page_count: Option<u32>,
+    /// The account's custom-page capacity.
+    #[serde(default)]
+    owned_page_count: Option<u32>,
+    #[serde(default)]
+    is_custom_page_creation_unlocked: Option<bool>,
+}
+
+impl Inventory {
+    /// Whether a new custom page may be created.
+    ///
+    /// `canAddCustomPage` is authoritative and is what LeagueAkari's auto-rune
+    /// code checks. Older responses can omit it; then fall back to counting the
+    /// user's custom pages against the capacity, which never counts League's
+    /// built-in non-editable pages.
+    fn allows_new_page(&self, existing: &[LcuPage]) -> bool {
+        if let Some(allowed) = self.can_add_custom_page {
+            return allowed;
+        }
+        if self.is_custom_page_creation_unlocked == Some(false) {
+            return false;
+        }
+        let Some(capacity) = self.owned_page_count else {
+            // No capacity information: let League reject the create if full.
+            return true;
+        };
+        let counted = existing.iter().filter(|page| page.is_custom()).count() as u32;
+        let used = self.custom_page_count.unwrap_or(counted);
+        used < capacity
+    }
+}
+
+/// Applies a rune selection by creating or replacing the single Swapper page.
+///
+/// `owned_page_id` is the page id stored in Swapper's settings; only that id
+/// may be replaced.
+pub async fn apply(
+    selection: RuneSelection,
+    champion_id: i64,
+    champion_name: &str,
+    preset_index: Option<usize>,
+    owned_page_id: Option<i64>,
+) -> Result<AppliedView, RuneError> {
+    let catalog = data::catalog().await?;
+    page::validate(&selection, &view::catalog_index(&catalog))?;
+    let lcu = super::lcu().await?;
+    let existing: Vec<LcuPage> = super::lcu_get(&lcu, super::PAGES_PATH).await?;
+    let inventory: Inventory = super::lcu_get(&lcu, super::INVENTORY_PATH)
+        .await
+        .unwrap_or_default();
+    let name = page::page_name(champion_name);
+    let page_id = match page::plan(
+        &existing,
+        inventory.allows_new_page(&existing),
+        owned_page_id,
+    ) {
+        PagePlan::Create => {
+            let created = super::lcu_send(
+                &lcu,
+                Method::POST,
+                super::PAGES_PATH,
+                Some(page::page_body(&selection, &name)),
+            )
+            .await?;
+            match created
+                .as_ref()
+                .and_then(|value| value.get("id"))
+                .and_then(Value::as_i64)
+            {
+                Some(id) => Some(id),
+                None => {
+                    // Some client builds answer without a body. Re-read the
+                    // list and take the page that was not there before, instead
+                    // of trusting the pre-create list.
+                    let after: Vec<LcuPage> = super::lcu_get(&lcu, super::PAGES_PATH)
+                        .await
+                        .unwrap_or_default();
+                    after
+                        .iter()
+                        .find(|candidate| {
+                            candidate.name == name
+                                && !existing.iter().any(|seen| seen.id == candidate.id)
+                        })
+                        .map(|candidate| candidate.id)
+                }
+            }
+        }
+        PagePlan::Replace(id) => {
+            super::lcu_send(
+                &lcu,
+                Method::PUT,
+                &format!("{}/{id}", super::PAGES_PATH),
+                Some(page::page_put_body(&selection, &name, id)),
+            )
+            .await?;
+            Some(id)
+        }
+        PagePlan::LimitReached => {
+            return Err(RuneError::conflict(
+                "Your rune pages are full. Swapper never deletes your pages — remove one in the League client, then try again.",
+            ));
+        }
+    };
+    if let Some(id) = page_id {
+        // Make it current. The page body already asked for `current: true` on
+        // create, so a failure here is not fatal.
+        let _ = super::lcu_send(
+            &lcu,
+            Method::PUT,
+            super::CURRENT_PAGE_PATH,
+            Some(serde_json::json!(id)),
+        )
+        .await;
+    }
+    let applied = AppliedView {
+        name,
+        champion_id,
+        primary_page_id: selection.primary_page_id,
+        secondary_page_id: selection.secondary_page_id,
+        keystone: selection.keystone,
+        primary_runes: selection.primary_runes,
+        secondary_runes: selection.secondary_runes,
+        shards: selection.shards,
+        preset_index,
+        page_id,
+    };
+    super::shared().applied = Some(applied.clone());
+    Ok(applied)
+}
+
+/// Applies the top recommendation for a champion, used by the auto-apply
+/// setting. Returns `None` when nothing could be resolved.
+pub async fn apply_top(
+    context: &session::ChampSelectContext,
+    owned_page_id: Option<i64>,
+) -> Result<Option<AppliedView>, RuneError> {
+    let catalog = data::catalog().await?;
+    let mut context = context.clone();
+    if context.champion_name.trim().is_empty() {
+        if let Ok(names) = data::champion_names().await {
+            if let Some(name) = names.get(&context.champion_id) {
+                context.champion_name = name.clone();
+            }
+        }
+    }
+    let lcu = super::lcu().await?;
+    let loaded = data::load_for(&lcu, &context, &catalog).await?;
+    let Some(preset) = loaded.selections.first() else {
+        return Ok(None);
+    };
+    apply(
+        preset.selection.clone(),
+        context.champion_id,
+        &context.champion_name,
+        Some(0),
+        owned_page_id,
+    )
+    .await
+    .map(Some)
+}
+
+/// Applies a selection to the champion currently in champion select.
+pub async fn apply_selection(
+    selection: RuneSelection,
+    preset_index: Option<usize>,
+    owned_page_id: Option<i64>,
+) -> Result<AppliedView, RuneError> {
+    let (_, context) = match super::rune_context().await {
+        Ok(super::RuneContext { phase, context }) => (phase, context),
+        Err(error) => return Err(error),
+    };
+    let Some(mut context) = context else {
+        return Err(RuneError::conflict("Champion select is not active."));
+    };
+    if context.champion_name.trim().is_empty() {
+        if let Ok(names) = data::champion_names().await {
+            if let Some(name) = names.get(&context.champion_id) {
+                context.champion_name = name.clone();
+            }
+        }
+    }
+    apply(
+        selection,
+        context.champion_id,
+        &context.champion_name,
+        preset_index,
+        owned_page_id,
+    )
+    .await
+}
+
+#[cfg(test)]
+mod tests {
+    use super::super::page::PagePlan;
+    use super::*;
+
+    fn custom(id: i64) -> LcuPage {
+        LcuPage {
+            id,
+            name: format!("Page {id}"),
+            is_editable: true,
+            is_deletable: true,
+            is_temporary: false,
+        }
+    }
+
+    fn built_in(id: i64) -> LcuPage {
+        LcuPage {
+            id,
+            name: format!("Built-in {id}"),
+            is_editable: false,
+            is_deletable: false,
+            is_temporary: false,
+        }
+    }
+
+    fn inventory(
+        can_add: Option<bool>,
+        custom_count: Option<u32>,
+        owned: Option<u32>,
+    ) -> Inventory {
+        Inventory {
+            can_add_custom_page: can_add,
+            custom_page_count: custom_count,
+            owned_page_count: owned,
+            is_custom_page_creation_unlocked: Some(true),
+        }
+    }
+
+    fn plan_for(inv: &Inventory, pages: &[LcuPage], owned: Option<i64>) -> PagePlan {
+        super::super::page::plan(pages, inv.allows_new_page(pages), owned)
+    }
+
+    #[test]
+    fn built_in_pages_do_not_count_against_the_custom_capacity() {
+        // Three League built-ins plus one user page, capacity three.
+        let pages = vec![built_in(1), built_in(2), built_in(3), custom(4)];
+        let inv = inventory(None, None, Some(3));
+        assert!(inv.allows_new_page(&pages));
+        assert_eq!(plan_for(&inv, &pages, None), PagePlan::Create);
+    }
+
+    #[test]
+    fn a_full_inventory_with_no_owned_page_is_a_limit() {
+        let pages = vec![built_in(1), built_in(2), custom(3), custom(4)];
+        let inv = inventory(None, Some(2), Some(2));
+        assert!(!inv.allows_new_page(&pages));
+        assert_eq!(plan_for(&inv, &pages, None), PagePlan::LimitReached);
+    }
+
+    #[test]
+    fn the_capacity_fallback_counts_only_user_pages() {
+        // Capacity two: one user page and one built-in still has room.
+        let inv = inventory(None, None, Some(2));
+        let pages = vec![built_in(1), custom(2)];
+        assert!(inv.allows_new_page(&pages));
+        // A second user page fills the capacity.
+        let full = vec![built_in(1), custom(2), custom(3)];
+        assert!(!inv.allows_new_page(&full));
+    }
+
+    #[test]
+    fn the_clients_can_add_answer_wins_over_the_counts() {
+        let pages = vec![built_in(1), built_in(2)];
+        let open = inventory(Some(true), Some(9), Some(0));
+        assert!(open.allows_new_page(&pages));
+        let shut = inventory(Some(false), Some(0), Some(99));
+        assert!(!shut.allows_new_page(&pages));
+    }
+
+    #[test]
+    fn locked_custom_page_creation_is_a_limit() {
+        let inv = Inventory {
+            can_add_custom_page: None,
+            custom_page_count: None,
+            owned_page_count: Some(5),
+            is_custom_page_creation_unlocked: Some(false),
+        };
+        assert!(!inv.allows_new_page(&[custom(1)]));
+    }
+
+    #[test]
+    fn an_unknown_inventory_lets_league_reject_the_create() {
+        let inv = Inventory::default();
+        assert!(inv.allows_new_page(&[]));
+    }
+}

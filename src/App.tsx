@@ -10,6 +10,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+import { RunesPanel } from "./runes/RunesPanel";
+import type { RunesView, Selection } from "./runes/types";
 import "./App.css";
 
 type Account = {
@@ -67,9 +69,17 @@ type AppState = {
   riotExe: string | null;
   riotDetected: boolean;
   deceiveDetected: boolean;
+  autoApplyTopPreset: boolean;
   remote: RemoteStatus;
 };
-type View = "accounts" | "add" | "edit" | "remove" | "settings";
+type ChampSelectStatus = {
+  phase: string;
+  championId: number;
+  championName: string;
+  position: string;
+  locked: boolean;
+};
+type View = "accounts" | "add" | "edit" | "remove" | "settings" | "runes";
 
 const emptyRemote: RemoteStatus = {
   enabled: false, state: "disabled", address: null, message: null,
@@ -80,7 +90,7 @@ const emptyRemote: RemoteStatus = {
 const empty: AppState = {
   accounts: [], activeId: null, isSwitching: false, useDeceive: false,
   riotExe: null, riotDetected: false, deceiveDetected: false,
-  remote: emptyRemote,
+  autoApplyTopPreset: false, remote: emptyRemote,
 };
 
 const wait = (ms: number) =>
@@ -128,6 +138,12 @@ function App() {
   const [showRemoteQr, setShowRemoteQr] = useState(false);
   const [openInfo, setOpenInfo] = useState<string | null>(null);
   const [pathMode, setPathMode] = useState<"auto" | "manual" | null>(null);
+  const [runes, setRunes] = useState<RunesView | null>(null);
+  const [runesLoading, setRunesLoading] = useState(false);
+  const [runesBusy, setRunesBusy] = useState(false);
+  const [runesError, setRunesError] = useState<string | null>(null);
+  const runesDismissed = useRef(false);
+  const runesChampion = useRef(0);
   const native = isTauri();
 
   useEffect(() => {
@@ -146,6 +162,13 @@ function App() {
           }
         }
         invoke<AppState>("get_state").then(sync).catch(showError);
+        invoke<ChampSelectStatus>("champ_select_status").then(handleChampSelect).catch(() => {});
+      }),
+      listen<ChampSelectStatus>("champ_select", ({ payload }) => {
+        handleChampSelect(payload);
+      }),
+      listen("runes_changed", () => {
+        void loadRunes();
       }),
       listen<{ id: string; name: string }>("switch_started", ({ payload }) => {
         setSwitchingAccountId(payload.id);
@@ -268,6 +291,60 @@ function App() {
 
   function showError(reason: unknown) {
     setError(String(reason));
+  }
+
+  async function loadRunes() {
+    setRunesLoading(true);
+    try {
+      const next = await invoke<RunesView>("get_runes");
+      setRunes(next);
+      runesChampion.current = next.championId;
+      setRunesError(null);
+    } catch (reason) {
+      setRunesError(String(reason));
+    } finally {
+      setRunesLoading(false);
+    }
+  }
+
+  async function applyRunes(selection: Selection, presetIndex: number | null) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      await invoke("apply_rune_page", { selection, presetIndex });
+      await loadRunes();
+    } catch (reason) {
+      setRunesError(String(reason));
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function setAutoApply(enabled: boolean) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const next = await invoke<AppState>("set_auto_apply_top_preset", { enabled });
+      sync(next);
+      await loadRunes();
+    } catch (reason) {
+      showError(reason);
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  function handleChampSelect(payload: ChampSelectStatus) {
+    if (payload.phase === "ChampSelect") {
+      if (!runesDismissed.current || runesChampion.current !== payload.championId) {
+        runesDismissed.current = false;
+        setView("runes");
+        void loadRunes();
+      }
+    } else {
+      runesDismissed.current = false;
+      setView((current) => (current === "runes" ? "accounts" : current));
+    }
   }
 
   async function setRemote(enabled: boolean) {
@@ -520,6 +597,17 @@ function App() {
             </div>
             {data.accounts.length > 0 && <Button className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
           </>
+        ) : view === "runes" ? (
+          <RunesPanel
+            mode="desktop"
+            view={runes}
+            loading={runesLoading}
+            busy={runesBusy}
+            error={runesError}
+            onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
+            onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
+            onExit={() => { runesDismissed.current = true; navigate("accounts"); }}
+          />
         ) : (
           <>
             <div className="panel-heading compact">
@@ -614,6 +702,15 @@ function App() {
                   {openInfo === "deceive" && <p>Start League with Deceive’s offline presence. Included with Swapper.</p>}
                 </div>
                 <Switch checked={useDeceive} onCheckedChange={(checked) => void applySettings({ useDeceive: checked, riotExe: configuredPath() })} aria-label="Launch through Deceive" />
+              </div>
+
+              <div className="setting-row">
+                <div className="setting-copy">
+                  <strong>Auto-apply top preset</strong>
+                  <button className="info-button" aria-label="About Auto-apply top preset" aria-expanded={openInfo === "runes"} onClick={() => setOpenInfo(openInfo === "runes" ? null : "runes")}><Info size={13} /></button>
+                  {openInfo === "runes" && <p>When your champion locks in during champion select, Swapper applies the top rune preset shown on the runes screen. Off by default.</p>}
+                </div>
+                <Switch checked={data.autoApplyTopPreset} onCheckedChange={(checked) => void setAutoApply(checked)} aria-label="Auto-apply top preset" />
               </div>
 
               <p className="field-label">RIOT CLIENT PATH</p>

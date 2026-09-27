@@ -121,12 +121,14 @@ pub struct RemoteCore {
     inner: Mutex<Inner>,
     service: Mutex<Option<Service>>,
     events: broadcast::Sender<RemoteStatus>,
+    rune_events: broadcast::Sender<crate::runes::AppliedView>,
     owned_route: Mutex<Option<OwnedRoute>>,
 }
 
 impl RemoteCore {
     pub fn new(app: AppHandle, enabled: bool) -> Arc<Self> {
         let (events, _) = broadcast::channel(32);
+        let (rune_events, _) = broadcast::channel(32);
         let status = if enabled {
             RemoteStatus {
                 enabled: true,
@@ -142,6 +144,7 @@ impl RemoteCore {
             inner: Mutex::new(Inner { status, epoch: 0 }),
             service: Mutex::new(None),
             events,
+            rune_events,
             owned_route: Mutex::new(None),
         });
         let weak = Arc::downgrade(&core);
@@ -158,6 +161,16 @@ impl RemoteCore {
 
     pub fn subscribe(&self) -> broadcast::Receiver<RemoteStatus> {
         self.events.subscribe()
+    }
+
+    /// Broadcasts an applied rune page so both surfaces show the same active
+    /// page without polling.
+    pub fn publish_runes(&self, applied: crate::runes::AppliedView) {
+        let _ = self.rune_events.send(applied);
+    }
+
+    pub fn subscribe_runes(&self) -> broadcast::Receiver<crate::runes::AppliedView> {
+        self.rune_events.subscribe()
     }
 
     pub fn set_enabled(self: Arc<Self>, enabled: bool) {
