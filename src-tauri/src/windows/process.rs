@@ -25,7 +25,9 @@ use windows_sys::Win32::Storage::FileSystem::SYNCHRONIZE;
 use windows_sys::Win32::System::Diagnostics::ToolHelp::{
     CreateToolhelp32Snapshot, Process32FirstW, Process32NextW, PROCESSENTRY32W, TH32CS_SNAPPROCESS,
 };
-use windows_sys::Win32::System::Threading::{OpenProcess, WaitForMultipleObjects};
+use windows_sys::Win32::System::Threading::{
+    OpenProcess, TerminateProcess, WaitForMultipleObjects, PROCESS_TERMINATE,
+};
 use windows_sys::Win32::UI::WindowsAndMessaging::{
     EnumWindows, GetWindow, GetWindowThreadProcessId, IsWindowVisible, PostMessageW, GW_OWNER,
     SC_CLOSE, WM_CLOSE, WM_SYSCOMMAND,
@@ -360,6 +362,28 @@ pub fn force_kill(images: &[String]) {
     }
 }
 
+/// Terminate `pids` directly with `TerminateProcess`, returning the PIDs that
+/// could not be opened or terminated (for example access denied) so the
+/// caller can fall back to [`force_kill`]. No child process is spawned, so
+/// this costs microseconds per PID instead of a `taskkill` launch and tree walk.
+pub fn terminate(pids: &[u32]) -> Vec<u32> {
+    pids.iter()
+        .copied()
+        .filter(|&pid| {
+            let raw = unsafe { OpenProcess(PROCESS_TERMINATE, 0, pid) };
+            match OwnedHandle::from_raw(raw) {
+                Some(handle) => (unsafe { TerminateProcess(handle.as_raw(), 1) }) == 0,
+                None => true,
+            }
+        })
+        .collect()
+}
+
+/// Whether `image` should be asked to close itself before being force killed.
+fn wants_graceful(image: &str, force_only: &[&str]) -> bool {
+    !force_only.iter().any(|name| image.eq_ignore_ascii_case(name))
+}
+
 #[derive(Clone, Copy, Debug)]
 pub struct StopOptions {
     /// How long to wait for processes that were asked to close themselves.
@@ -368,6 +392,9 @@ pub struct StopOptions {
     pub force_wait: Duration,
     /// Force-kill rounds before giving up.
     pub max_force_rounds: u32,
+    /// Images that are force killed without a graceful close, because they
+    /// are known to ignore or merely hide on `WM_CLOSE`.
+    pub force_only: &'static [&'static str],
 }
 
 impl Default for StopOptions {
@@ -376,6 +403,7 @@ impl Default for StopOptions {
             grace: Duration::from_millis(1500),
             force_wait: Duration::from_millis(2000),
             max_force_rounds: 2,
+            force_only: &[],
         }
     }
 }
@@ -481,7 +509,11 @@ where
     report.pids = processes.len();
 
     let mut delivered: Vec<u32> = Vec::new();
-    for image in &report.images {
+    for image in report
+        .images
+        .iter()
+        .filter(|image| wants_graceful(image, options.force_only))
+    {
         let pids: Vec<u32> = processes
             .iter()
             .filter(|process| process.image.eq_ignore_ascii_case(image))
@@ -519,11 +551,19 @@ where
             report.total_ms = started.elapsed();
             return Err(StopError::StillRunning(unique_images(&alive_processes)));
         }
-        force_kill(&unique_images(&alive_processes));
         let pids: Vec<u32> = alive_processes
             .iter()
             .map(|process| process.pid)
             .collect();
+        let unkillable = terminate(&pids);
+        if !unkillable.is_empty() {
+            let fallback: Vec<ProcessRef> = alive_processes
+                .iter()
+                .filter(|process| unkillable.contains(&process.pid))
+                .cloned()
+                .collect();
+            force_kill(&unique_images(&fallback));
+        }
         let _ = wait_for_exit(&pids, options.force_wait);
     }
     report.force_ms = phase.elapsed();
@@ -586,6 +626,36 @@ mod tests {
         assert_eq!(count_top_level_windows(u32::MAX), 0);
         assert_eq!(post_wm_close(&[0, u32::MAX]), 0);
     }
+    #[test]
+    fn force_only_images_skip_the_graceful_close() {
+        let force_only = &["RiotClientServices.exe", "Riot Client.exe"];
+        assert!(!wants_graceful("riot client.exe", force_only));
+        assert!(!wants_graceful("RiotClientServices.exe", force_only));
+        assert!(wants_graceful("LeagueClientUx.exe", force_only));
+        assert!(wants_graceful("Riot Client.exe", &[]));
+    }
+
+    #[test]
+    fn terminate_ends_a_running_process_and_reports_what_it_cannot_open() {
+        let mut command = Command::new("ping");
+        command
+            .args(["-n", "30", "127.0.0.1"])
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .creation_flags(CREATE_NO_WINDOW);
+        let mut child = command.spawn().expect("spawn terminate fixture");
+        let pid = child.id();
+
+        let unkillable = terminate(&[pid, u32::MAX]);
+        let exited = wait_for_exit(&[pid], Duration::from_secs(5));
+        let _ = child.kill();
+        let _ = child.wait();
+
+        assert_eq!(unkillable, vec![u32::MAX]);
+        assert!(exited, "terminated process did not exit");
+    }
+
+
 
     /// Riot Client sits in the tray with only hidden top-level windows and
     /// ignores close requests sent to them, which used to cost the full grace
@@ -771,6 +841,7 @@ mod tests {
                 grace: Duration::from_millis(20),
                 force_wait: Duration::from_millis(20),
                 max_force_rounds: 2,
+                force_only: &[],
             },
         );
 

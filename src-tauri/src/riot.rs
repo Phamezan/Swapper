@@ -9,12 +9,21 @@ use uuid::Uuid;
 
 const CLIENTS: &[&str] = &[
     "RiotClientServices.exe",
+    "Riot Client.exe",
     "RiotClientUx.exe",
     "RiotClientUxRender.exe",
     "LeagueClient.exe",
     "LeagueClientUx.exe",
     "LeagueClientUxRender.exe",
     "Deceive.exe",
+];
+/// Riot Client processes ignore `WM_CLOSE` (Services) or only hide to the
+/// tray (the Electron UI), so a graceful close just burns the grace period.
+const FORCE_ONLY: &[&str] = &[
+    "RiotClientServices.exe",
+    "Riot Client.exe",
+    "RiotClientUx.exe",
+    "RiotClientUxRender.exe",
 ];
 const GAMES: &[&str] = &[
     "League of Legends.exe",
@@ -68,7 +77,11 @@ fn ensure_no_game() -> Result<(), ProcessStateError> {
 /// An unreadable process table aborts the switch instead of being treated as
 /// "no clients and no game".
 fn stop_clients() -> Result<StopReport, ProcessStateError> {
-    match process::stop_images(CLIENTS, GAMES, StopOptions::default()) {
+    let options = StopOptions {
+        force_only: FORCE_ONLY,
+        ..StopOptions::default()
+    };
+    match process::stop_images(CLIENTS, GAMES, options) {
         Ok(report) => Ok(report),
         Err(StopError::ForbiddenPresent) => Err(ProcessStateError::GameRunning),
         Err(StopError::StillRunning(_)) => Err(ProcessStateError::ClientStillRunning),
