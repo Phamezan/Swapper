@@ -50,6 +50,12 @@ pub async fn champion_names() -> Result<HashMap<i64, String>, RuneError> {
     Ok(names)
 }
 
+/// The session cache key for an op.gg lookup. The rank bracket is part of the
+/// key so switching tiers never serves another bracket's data.
+pub fn group_key(region: &str, mode: &str, champion_id: i64, position: &str, tier: &str) -> String {
+    format!("{region}|{mode}|{champion_id}|{position}|{tier}")
+}
+
 /// op.gg rune-page groups for a champion and role, cached for the session.
 ///
 /// A failure or an empty answer is remembered for [`GROUP_FAILURE_TTL`] and
@@ -60,8 +66,10 @@ pub async fn rune_groups(
     mode: &str,
     champion_id: i64,
     position: &str,
+    tier: &str,
 ) -> Result<Vec<opgg::RunePageGroup>, RuneError> {
-    let key = format!("{region}|{mode}|{champion_id}|{position}");
+    let tier = opgg::normalize_tier(tier);
+    let key = group_key(region, mode, champion_id, position, tier);
     {
         let state = super::shared();
         if let Some((at, groups)) = state.groups.get(&key) {
@@ -78,7 +86,7 @@ pub async fn rune_groups(
         }
     }
     let client = opgg::OpggClient::new()?;
-    match client.rune_pages(region, mode, champion_id, position).await {
+    match client.rune_pages(region, mode, champion_id, position, tier).await {
         Ok(groups) if !groups.is_empty() => {
             let mut state = super::shared();
             state.group_failures.remove(&key);
@@ -161,17 +169,23 @@ pub struct Loaded {
     /// League fallback).
     pub groups: Vec<opgg::RunePageGroup>,
     pub selections: Vec<LoadedPreset>,
+    /// True when the chosen rank bracket had no op.gg data but a broader bracket
+    /// did. The caller shows a "not enough games" state instead of silently
+    /// falling back to a different bracket.
+    pub tier_empty: bool,
 }
 
 pub async fn load_for(
     current: &Lcu,
     context: &session::ChampSelectContext,
     catalog: &perks::PerkCatalog,
+    tier: &str,
 ) -> Result<Loaded, RuneError> {
     let region = region_for(current).await;
     let position = position_for(current, context).await;
     let mode = context.mode();
-    if let Ok(groups) = rune_groups(&region, mode, context.champion_id, position).await {
+    let tier = opgg::normalize_tier(tier);
+    if let Ok(groups) = rune_groups(&region, mode, context.champion_id, position, tier).await {
         let presets = opgg::presets(&groups);
         if !presets.is_empty() {
             let selections = presets
@@ -197,7 +211,30 @@ pub async fn load_for(
                 source: "opgg",
                 groups,
                 selections,
+                tier_empty: false,
             });
+        }
+        // The chosen bracket had no data. Only skip the fallback when a broader
+        // bracket does have data, so the user is told the bracket is too narrow
+        // instead of being shown a different bracket's presets.
+        if tier != opgg::TIER_ALL {
+            let broad = rune_groups(
+                &region,
+                mode,
+                context.champion_id,
+                position,
+                opgg::TIER_ALL,
+            )
+            .await
+            .unwrap_or_default();
+            if !broad.is_empty() {
+                return Ok(Loaded {
+                    source: "none",
+                    groups: Vec::new(),
+                    selections: Vec::new(),
+                    tier_empty: true,
+                });
+            }
         }
     }
     let recommended = lcu_recommended(current, context).await.unwrap_or_default();
@@ -223,6 +260,7 @@ pub async fn load_for(
         source: if recommended.is_empty() { "none" } else { "lcu" },
         groups: Vec::new(),
         selections,
+        tier_empty: false,
     })
 }
 
@@ -239,4 +277,18 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
     let bytes = super::lcu_get_bytes(&lcu, &path).await?;
     super::shared().icons.insert(id, bytes.clone());
     Ok(bytes)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn the_cache_key_carries_the_rank_bracket() {
+        let emerald = group_key("euw", "ranked", 103, "mid", "emerald_plus");
+        let diamond = group_key("euw", "ranked", 103, "mid", "diamond_plus");
+        assert_ne!(emerald, diamond);
+        assert!(emerald.ends_with("|emerald_plus"));
+        assert_eq!(emerald, "euw|ranked|103|mid|emerald_plus");
+    }
 }

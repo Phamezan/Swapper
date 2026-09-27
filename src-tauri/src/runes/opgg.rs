@@ -23,6 +23,55 @@ pub const MODE_ARENA: &str = "arena";
 /// op.gg uses this position for modes that do not have one.
 pub const POSITION_NONE: &str = "none";
 
+/// Default rank bracket. op.gg answers with Emerald+ data when no `tier` is
+/// sent, so sending this explicitly keeps the default behaviour.
+pub const DEFAULT_TIER: &str = "emerald_plus";
+/// op.gg's broadest bracket, used as the fallback suggestion when a narrower
+/// bracket has too few games.
+pub const TIER_ALL: &str = "all";
+
+/// The rank brackets op.gg accepts on `.../champions/{mode}/{id}/{pos}?tier=`.
+/// `grandmaster_plus` and `iron_plus` are rejected by the API, so they are not
+/// offered.
+pub const TIERS: &[(&str, &str)] = &[
+    (TIER_ALL, "All ranks"),
+    ("gold_plus", "Gold+"),
+    ("platinum_plus", "Platinum+"),
+    (DEFAULT_TIER, "Emerald+"),
+    ("diamond_plus", "Diamond+"),
+    ("master_plus", "Master+"),
+    ("challenger", "Challenger"),
+];
+
+/// The canonical slug for a user- or settings-supplied tier name.
+pub fn tier_slug(value: &str) -> Option<&'static str> {
+    let value = value.trim().to_ascii_lowercase();
+    TIERS
+        .iter()
+        .find(|(slug, _)| *slug == value)
+        .map(|(slug, _)| *slug)
+}
+
+/// The human label shown for a tier slug.
+pub fn tier_label(value: &str) -> Option<&'static str> {
+    let slug = tier_slug(value)?;
+    TIERS
+        .iter()
+        .find(|(candidate, _)| *candidate == slug)
+        .map(|(_, label)| *label)
+}
+
+/// A known tier slug, or the default when the value is blank or unknown.
+pub fn normalize_tier(value: &str) -> &'static str {
+    tier_slug(value).unwrap_or(DEFAULT_TIER)
+}
+
+/// Whether op.gg honours the `tier` parameter for a mode. Ranked and ARAM do;
+/// Arena does not (the arena endpoint rejects the request outright).
+pub fn tier_supported(mode: &str) -> bool {
+    mode != MODE_ARENA
+}
+
 const BASE_URL: &str = "https://lol-api-champion.op.gg";
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(3);
 
@@ -83,9 +132,13 @@ pub fn parse(body: &str) -> Result<Vec<RunePageGroup>, RuneError> {
     Ok(response.data.rune_pages)
 }
 
-/// Builds the op.gg champion path for the given region, mode, champion and position.
-pub fn path(region: &str, mode: &str, champion_id: i64, position: &str) -> String {
-    format!("/api/{region}/champions/{mode}/{champion_id}/{position}")
+/// Builds the op.gg champion path for the given region, mode, champion,
+/// position and rank bracket.
+pub fn path(region: &str, mode: &str, champion_id: i64, position: &str, tier: &str) -> String {
+    format!(
+        "/api/{region}/champions/{mode}/{champion_id}/{position}?tier={}",
+        normalize_tier(tier)
+    )
 }
 
 /// One preset: the most-played build of an op.gg rune-page group.
@@ -160,8 +213,12 @@ impl OpggClient {
         })
     }
 
-    pub fn url(&self, region: &str, mode: &str, champion_id: i64, position: &str) -> String {
-        format!("{}{}", self.base_url, path(region, mode, champion_id, position))
+    pub fn url(&self, region: &str, mode: &str, champion_id: i64, position: &str, tier: &str) -> String {
+        format!(
+            "{}{}",
+            self.base_url,
+            path(region, mode, champion_id, position, tier)
+        )
     }
 
     pub async fn rune_pages(
@@ -170,10 +227,11 @@ impl OpggClient {
         mode: &str,
         champion_id: i64,
         position: &str,
+        tier: &str,
     ) -> Result<Vec<RunePageGroup>, RuneError> {
         let response = self
             .client
-            .get(self.url(region, mode, champion_id, position))
+            .get(self.url(region, mode, champion_id, position, tier))
             .header(reqwest::header::ACCEPT, "application/json")
             .send()
             .await
@@ -240,12 +298,41 @@ mod tests {
     #[test]
     fn builds_the_endpoint_path_with_the_league_position() {
         assert_eq!(
-            path("euw", MODE_RANKED, 103, "mid"),
-            "/api/euw/champions/ranked/103/mid"
+            path("euw", MODE_RANKED, 103, "mid", DEFAULT_TIER),
+            "/api/euw/champions/ranked/103/mid?tier=emerald_plus"
         );
         assert_eq!(
-            path("na", MODE_ARAM, 103, POSITION_NONE),
-            "/api/na/champions/aram/103/none"
+            path("na", MODE_ARAM, 103, POSITION_NONE, TIER_ALL),
+            "/api/na/champions/aram/103/none?tier=all"
         );
+    }
+
+    #[test]
+    fn maps_known_tiers_and_normalizes_unknown_ones() {
+        assert_eq!(tier_slug("emerald_plus"), Some("emerald_plus"));
+        assert_eq!(tier_slug("  ALL "), Some("all"));
+        assert_eq!(tier_slug("iron_plus"), None);
+        assert_eq!(tier_slug(""), None);
+        // An unknown or blank value falls back to Emerald+.
+        assert_eq!(normalize_tier("grandmaster_plus"), DEFAULT_TIER);
+        assert_eq!(normalize_tier(""), DEFAULT_TIER);
+        assert_eq!(normalize_tier("diamond_plus"), "diamond_plus");
+        assert_eq!(tier_label("all"), Some("All ranks"));
+        assert_eq!(tier_label("nonsense"), None);
+    }
+
+    #[test]
+    fn the_path_normalizes_an_unknown_tier_to_the_default() {
+        assert_eq!(
+            path("euw", MODE_RANKED, 103, "mid", "iron_plus"),
+            "/api/euw/champions/ranked/103/mid?tier=emerald_plus"
+        );
+    }
+
+    #[test]
+    fn the_tier_parameter_is_honoured_for_ranked_and_aram_only() {
+        assert!(tier_supported(MODE_RANKED));
+        assert!(tier_supported(MODE_ARAM));
+        assert!(!tier_supported(MODE_ARENA));
     }
 }

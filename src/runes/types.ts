@@ -44,6 +44,11 @@ export type Applied = {
   presetIndex: number | null;
 };
 
+export type TierOption = {
+  value: string;
+  label: string;
+};
+
 export type RunesView = {
   phase: string;
   championId: number;
@@ -60,6 +65,12 @@ export type RunesView = {
   autoApply: boolean;
   canApply: boolean;
   locked: boolean;
+  tier: string;
+  tierLabel: string;
+  tiers: TierOption[];
+  tierSupported: boolean;
+  tierEmpty: boolean;
+  games: number;
 };
 
 export type ProBuild = {
@@ -92,6 +103,27 @@ export type ProBuildsView = {
   unavailable: boolean;
   message: string | null;
 };
+/** The rank brackets op.gg accepts, kept in step with `runes::opgg::TIERS`. */
+export const TIER_OPTIONS: TierOption[] = [
+  { value: "all", label: "All ranks" },
+  { value: "gold_plus", label: "Gold+" },
+  { value: "platinum_plus", label: "Platinum+" },
+  { value: "emerald_plus", label: "Emerald+" },
+  { value: "diamond_plus", label: "Diamond+" },
+  { value: "master_plus", label: "Master+" },
+  { value: "challenger", label: "Challenger" },
+];
+
+export function fmtPct(value: number | null): string {
+  if (value === null || Number.isNaN(value)) return "–";
+  return `${value.toFixed(1)}%`;
+}
+
+export function fmtGames(play: number): string {
+  if (!play) return "–";
+  if (play >= 1000) return `${(play / 1000).toFixed(1)}k`;
+  return String(play);
+}
 
 export type Selection = {
   primaryPageId: number;

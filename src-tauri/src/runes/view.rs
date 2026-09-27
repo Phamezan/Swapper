@@ -92,6 +92,13 @@ pub struct ProBuildsView {
 
 #[derive(Debug, Clone, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
+pub struct TierOption {
+    pub value: String,
+    pub label: String,
+}
+
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct RunesView {
     pub phase: String,
     pub champion_id: i64,
@@ -108,10 +115,21 @@ pub struct RunesView {
     pub auto_apply: bool,
     pub can_apply: bool,
     pub locked: bool,
+    /// The active op.gg rank bracket slug and its label.
+    pub tier: String,
+    pub tier_label: String,
+    /// The selectable brackets, in a fixed order.
+    pub tiers: Vec<TierOption>,
+    /// Whether op.gg honours `tier` for this mode.
+    pub tier_supported: bool,
+    /// True when the active bracket had no data but a broader one did.
+    pub tier_empty: bool,
+    /// Total op.gg games behind the preset cards, for the sample-size hint.
+    pub games: u64,
 }
 
 impl RunesView {
-    fn empty(phase: String, message: &str, auto_apply: bool) -> Self {
+    fn empty(phase: String, message: &str, auto_apply: bool, tier: &str) -> Self {
         Self {
             phase,
             champion_id: 0,
@@ -128,8 +146,30 @@ impl RunesView {
             auto_apply,
             can_apply: false,
             locked: false,
+            tier: super::opgg::normalize_tier(tier).to_string(),
+            tier_label: tier_options_label(tier),
+            tiers: tier_options(),
+            tier_supported: false,
+            tier_empty: false,
+            games: 0,
         }
     }
+}
+
+fn tier_options() -> Vec<TierOption> {
+    super::opgg::TIERS
+        .iter()
+        .map(|(value, label)| TierOption {
+            value: (*value).to_string(),
+            label: (*label).to_string(),
+        })
+        .collect()
+}
+
+fn tier_options_label(tier: &str) -> String {
+    super::opgg::tier_label(tier)
+        .unwrap_or_else(|| super::opgg::tier_label(super::opgg::DEFAULT_TIER).unwrap_or("Emerald+"))
+        .to_string()
 }
 
 fn rune_view(id: i64, name: &str, stats: &stats::Aggregate, row: &[i64]) -> RuneView {
@@ -222,11 +262,11 @@ fn source_label(source: &str) -> &'static str {
 }
 
 /// Builds the rune screen for the current champion select.
-pub async fn view(auto_apply: bool) -> RunesView {
+pub async fn view(auto_apply: bool, tier: &str) -> RunesView {
     let (phase, context) = match super::rune_context().await {
         Ok(super::RuneContext { phase, context }) => (phase, context),
         Err(error) => {
-            return RunesView::empty("Unavailable".into(), error.message(), auto_apply);
+            return RunesView::empty("Unavailable".into(), error.message(), auto_apply, tier);
         }
     };
     let Some(mut context) = context else {
@@ -235,12 +275,12 @@ pub async fn view(auto_apply: bool) -> RunesView {
         } else {
             "Not in champion select."
         };
-        return RunesView::empty(phase, message, auto_apply);
+        return RunesView::empty(phase, message, auto_apply, tier);
     };
     let catalog = match data::catalog().await {
         Ok(catalog) => catalog,
         Err(error) => {
-            return RunesView::empty(phase, error.message(), auto_apply);
+            return RunesView::empty(phase, error.message(), auto_apply, tier);
         }
     };
     if context.champion_name.trim().is_empty() {
@@ -253,15 +293,16 @@ pub async fn view(auto_apply: bool) -> RunesView {
     let current = match super::lcu().await {
         Ok(lcu) => lcu,
         Err(error) => {
-            return RunesView::empty(phase, error.message(), auto_apply);
+            return RunesView::empty(phase, error.message(), auto_apply, tier);
         }
     };
-    let loaded = data::load_for(&current, &context, &catalog)
+    let loaded = data::load_for(&current, &context, &catalog, tier)
         .await
         .unwrap_or(data::Loaded {
             source: "none",
             groups: Vec::new(),
             selections: Vec::new(),
+            tier_empty: false,
         });
     let aggregates = stats::aggregate(&loaded.groups);
     let presets: Vec<PresetView> = loaded
@@ -288,16 +329,25 @@ pub async fn view(auto_apply: bool) -> RunesView {
         .clone()
         .filter(|applied| applied.champion_id == context.champion_id);
     let can_apply = !presets.is_empty();
+    let games: u64 = loaded.groups.iter().map(|group| group.play).sum();
+    let tier = super::opgg::normalize_tier(tier).to_string();
+    let tier_label = tier_options_label(&tier);
+    let tier_empty = loaded.tier_empty;
+    let message = if tier_empty {
+        Some(format!("Not enough games at {tier_label}."))
+    } else {
+        (loaded.source == "none" && presets.is_empty())
+            .then(|| "Rune recommendations are unavailable right now.".to_string())
+    };
     RunesView {
         phase,
         champion_id: context.champion_id,
         champion_name: context.champion_name,
         position,
-        mode,
+        mode: mode.clone(),
         source: loaded.source.to_string(),
         source_label: source_label(loaded.source).to_string(),
-        message: (loaded.source == "none" && presets.is_empty())
-            .then(|| "Rune recommendations are unavailable right now.".to_string()),
+        message,
         presets,
         trees: build_trees(&catalog, &aggregates),
         shards: build_shards(&catalog, &aggregates),
@@ -305,6 +355,12 @@ pub async fn view(auto_apply: bool) -> RunesView {
         auto_apply,
         can_apply,
         locked: context.locked,
+        tier,
+        tier_label,
+        tiers: tier_options(),
+        tier_supported: super::opgg::tier_supported(&mode),
+        tier_empty,
+        games,
     }
 }
 

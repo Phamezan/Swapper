@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { RunesPanel } from "./runes/RunesPanel";
+import { TIER_OPTIONS } from "./runes/types";
 import type { RunesView, ProBuildsView, Selection } from "./runes/types";
 import "./App.css";
 
@@ -73,6 +74,7 @@ type AppState = {
   riotDetected: boolean;
   deceiveDetected: boolean;
   autoApplyTopPreset: boolean;
+  runeTier: string;
   remote: RemoteStatus;
 };
 type ChampSelectStatus = {
@@ -93,7 +95,7 @@ const emptyRemote: RemoteStatus = {
 const empty: AppState = {
   accounts: [], activeId: null, isSwitching: false, useDeceive: false,
   riotExe: null, riotDetected: false, deceiveDetected: false,
-  autoApplyTopPreset: false, remote: emptyRemote,
+  autoApplyTopPreset: false, runeTier: "emerald_plus", remote: emptyRemote,
 };
 
 const wait = (ms: number) =>
@@ -347,6 +349,20 @@ function App() {
       await loadRunes();
     } catch (reason) {
       showError(reason);
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function setRuneTier(tier: string) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const next = await invoke<AppState>("set_rune_tier", { tier });
+      sync(next);
+      await loadRunes();
+    } catch (reason) {
+      setRunesError(String(reason));
     } finally {
       setRunesBusy(false);
     }
@@ -633,6 +649,7 @@ function App() {
             onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
             onLoadProBuilds={loadProBuilds}
+            onTierChange={(tier) => void setRuneTier(tier)}
             onExit={() => { runesDismissed.current = true; navigate("accounts"); }}
           />
         ) : (
@@ -742,11 +759,30 @@ function App() {
 
               <div className="setting-row">
                 <div className="setting-copy">
-                  <strong>Auto-apply top preset</strong>
-                  <button className="info-button" aria-label="About Auto-apply top preset" aria-expanded={openInfo === "runes"} onClick={() => setOpenInfo(openInfo === "runes" ? null : "runes")}><Info size={13} /></button>
-                  {openInfo === "runes" && <p>When your champion locks in during champion select, Swapper applies the top rune preset shown on the runes screen. Off by default.</p>}
+                  <strong>Auto-apply recommended runes</strong>
+                  <button className="info-button" aria-label="About Auto-apply recommended runes" aria-expanded={openInfo === "runes"} onClick={() => setOpenInfo(openInfo === "runes" ? null : "runes")}><Info size={13} /></button>
+                  {openInfo === "runes" && <p>When your champion locks in during champion select, Swapper applies the recommended rune page shown on the runes screen. Off by default.</p>}
                 </div>
-                <Switch checked={data.autoApplyTopPreset} onCheckedChange={(checked) => void setAutoApply(checked)} aria-label="Auto-apply top preset" />
+                <Switch checked={data.autoApplyTopPreset} onCheckedChange={(checked) => void setAutoApply(checked)} aria-label="Auto-apply recommended runes" />
+              </div>
+
+              <div className="setting-row">
+                <div className="setting-copy">
+                  <strong>Rune rank filter</strong>
+                  <button className="info-button" aria-label="About the rune rank filter" aria-expanded={openInfo === "tier"} onClick={() => setOpenInfo(openInfo === "tier" ? null : "tier")}><Info size={13} /></button>
+                  {openInfo === "tier" && <p>Swapper loads rune statistics for this rank bracket from op.gg. A narrower bracket has fewer games, so the numbers can get thin.</p>}
+                </div>
+                <select
+                  className="setting-select"
+                  value={data.runeTier}
+                  disabled={busy !== null}
+                  aria-label="Rune rank filter"
+                  onChange={(event) => void setRuneTier(event.target.value)}
+                >
+                  {TIER_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>{option.label}</option>
+                  ))}
+                </select>
               </div>
 
               <p className="field-label">RIOT CLIENT PATH</p>
