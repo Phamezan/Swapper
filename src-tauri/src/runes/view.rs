@@ -3,6 +3,7 @@
 
 use super::data;
 use super::perks;
+use super::probuilds;
 use super::stats;
 use super::AppliedView;
 
@@ -46,6 +47,47 @@ pub struct PresetView {
     pub shards: Vec<i64>,
     pub win_pct: Option<f64>,
     pub play: u64,
+}
+
+/// One pro solo-queue game, ready to render and import.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ProBuildView {
+    pub match_id: i64,
+    pub pro_name: String,
+    pub team: String,
+    pub league: String,
+    pub role_label: String,
+    pub win: bool,
+    pub played_ago: String,
+    pub patch: String,
+    pub keystone: i64,
+    pub primary_page_id: i64,
+    pub secondary_page_id: i64,
+    pub primary_runes: Vec<i64>,
+    pub secondary_runes: Vec<i64>,
+    pub shards: Vec<i64>,
+    pub kills: i64,
+    pub deaths: i64,
+    pub assists: i64,
+}
+
+/// The Pro builds tab payload for one champion, role and page.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ProBuildsView {
+    pub champion_id: i64,
+    pub position: String,
+    /// The API role that was requested, or `all` when none was.
+    pub role: String,
+    pub page: u32,
+    /// Whether another page is available to load.
+    pub has_more: bool,
+    pub matches: Vec<ProBuildView>,
+    /// True when the source could not be reached, so the UI shows its small
+    /// unavailable state instead of an error.
+    pub unavailable: bool,
+    pub message: Option<String>,
 }
 
 #[derive(Debug, Clone, serde::Serialize)]
@@ -263,5 +305,147 @@ pub async fn view(auto_apply: bool) -> RunesView {
         auto_apply,
         can_apply,
         locked: context.locked,
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Pro builds
+// ---------------------------------------------------------------------------
+
+/// `"16_19"` -> `"16.19"`, the patch label players recognise.
+fn patch_label(version: &str) -> String {
+    let version = version.trim();
+    if version.is_empty() {
+        "–".to_string()
+    } else {
+        version.replace('_', ".")
+    }
+}
+
+/// A short "how long ago" string from millisecond timestamps.
+fn played_ago(now_ms: i64, at_ms: i64) -> String {
+    let seconds = ((now_ms - at_ms).max(0)) / 1000;
+    if seconds < 60 {
+        "just now".to_string()
+    } else if seconds < 3600 {
+        format!("{}m ago", seconds / 60)
+    } else if seconds < 86_400 {
+        format!("{}h ago", seconds / 3600)
+    } else {
+        format!("{}d ago", seconds / 86_400)
+    }
+}
+
+fn now_ms() -> i64 {
+    std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|elapsed| elapsed.as_millis() as i64)
+        .unwrap_or(0)
+}
+
+fn pro_build_view(matched: &probuilds::ProMatch, now: i64) -> Option<ProBuildView> {
+    let selection = matched.selection()?;
+    let team = if matched.pro_info.current_team.trim().is_empty() {
+        matched.current_team.trim()
+    } else {
+        matched.pro_info.current_team.trim()
+    };
+    Some(ProBuildView {
+        match_id: matched.match_id,
+        pro_name: matched.display_name().to_string(),
+        team: team.to_string(),
+        league: matched.pro_league.clone(),
+        role_label: probuilds::role_label(&matched.calculated_role).to_string(),
+        win: matched.win,
+        played_ago: played_ago(now, matched.match_timestamp),
+        patch: patch_label(&matched.version),
+        keystone: selection.keystone,
+        primary_page_id: selection.primary_page_id,
+        secondary_page_id: selection.secondary_page_id,
+        primary_runes: selection.primary_runes,
+        secondary_runes: selection.secondary_runes,
+        shards: selection.shards,
+        kills: matched.total_kills,
+        deaths: matched.total_deaths,
+        assists: matched.total_assists,
+    })
+}
+
+fn unavailable_pro_builds(champion_id: i64, position: &str, role: &str, page: u32, message: &str) -> ProBuildsView {
+    ProBuildsView {
+        champion_id,
+        position: position.to_string(),
+        role: role.to_string(),
+        page,
+        has_more: false,
+        matches: Vec::new(),
+        unavailable: true,
+        message: Some(message.to_string()),
+    }
+}
+
+/// Builds the Pro builds tab for a champion and role. The frontend calls this
+/// once when the tab opens and again for each explicit "load more".
+pub async fn pro_builds_view(champion_id: i64, position: &str, page: u32) -> ProBuildsView {
+    let role = probuilds::role_arg(position).unwrap_or("all");
+    let page = page.max(1);
+    if champion_id <= 0 {
+        return ProBuildsView {
+            champion_id,
+            position: position.to_string(),
+            role: role.to_string(),
+            page,
+            has_more: false,
+            matches: Vec::new(),
+            unavailable: false,
+            message: Some("Pick a champion to load pro builds.".to_string()),
+        };
+    }
+    match data::pro_builds(champion_id, position, page).await {
+        Ok(matches) => {
+            let now = now_ms();
+            let has_more = matches.len() >= probuilds::PAGE_SIZE;
+            let views: Vec<ProBuildView> =
+                matches.iter().filter_map(|entry| pro_build_view(entry, now)).collect();
+            ProBuildsView {
+                champion_id,
+                position: position.to_string(),
+                role: role.to_string(),
+                page,
+                has_more,
+                matches: views,
+                unavailable: false,
+                message: None,
+            }
+        }
+        Err(_) => unavailable_pro_builds(
+            champion_id,
+            position,
+            role,
+            page,
+            "Pro builds unavailable.",
+        ),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn formats_patches_from_the_api_version_string() {
+        assert_eq!(patch_label("16_19"), "16.19");
+        assert_eq!(patch_label(""), "–");
+    }
+
+    #[test]
+    fn formats_how_long_ago_a_match_was_played() {
+        let now = 1_000_000_000_000;
+        assert_eq!(played_ago(now, now - 30_000), "just now");
+        assert_eq!(played_ago(now, now - 12 * 60_000), "12m ago");
+        assert_eq!(played_ago(now, now - 3 * 3_600_000), "3h ago");
+        assert_eq!(played_ago(now, now - 2 * 86_400_000), "2d ago");
+        // A clock skew in the future must not produce a negative duration.
+        assert_eq!(played_ago(now, now + 5_000), "just now");
     }
 }

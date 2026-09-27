@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import { RunesPanel } from "../runes/RunesPanel";
-import type { RunesView, Selection } from "../runes/types";
+import type { RunesView, ProBuildsView, Selection } from "../runes/types";
 import "./remote.css";
 
 type RemoteState = "disabled" | "starting" | "notInstalled" | "disconnected" | "available" | "failed";
@@ -255,6 +255,15 @@ export default function RemoteApp() {
     }
   }
 
+  async function loadProBuilds(championId: number, position: string, page: number): Promise<ProBuildsView> {
+    const response = await fetch(
+      `/api/runes/pro-builds?championId=${championId}&position=${encodeURIComponent(position)}&page=${page}`,
+      { cache: "no-store" },
+    );
+    if (!response.ok) throw new Error("Could not load pro builds.");
+    return await response.json() as ProBuildsView;
+  }
+
   async function toggleAutoApply(enabled: boolean) {
     setRunesBusy(true);
     setRunesError(null);
@@ -324,6 +333,7 @@ export default function RemoteApp() {
                 error={runesError}
                 onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
+                onLoadProBuilds={loadProBuilds}
               />
             ) : (
             <>

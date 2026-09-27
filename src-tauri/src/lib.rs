@@ -461,6 +461,11 @@ async fn rune_icon(id: i64) -> Result<String, String> {
 }
 
 #[tauri::command]
+async fn get_pro_builds(champion_id: i64, position: String, page: Option<u32>) -> runes::ProBuildsView {
+    runes::pro_builds_view(champion_id, &position, page.unwrap_or(1)).await
+}
+
+#[tauri::command]
 async fn apply_rune_page(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
@@ -639,6 +644,7 @@ pub fn run() {
             get_runes,
             champ_select_status,
             rune_icon,
+            get_pro_builds,
             apply_rune_page
         ])
         .run(tauri::generate_context!())

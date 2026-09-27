@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
+import { ProBuilds } from "./ProBuilds";
 import {
   Rune,
   RuneTree,
   RunesView,
+  ProBuildsView,
   Selection,
   selectionFromPreset,
   selectionFromApplied,
@@ -13,6 +15,15 @@ import {
   selectShard,
 } from "./types";
 import "./runes.css";
+
+type RuneScreen = "presets" | "pro" | "editor";
+
+/** Remembers the open tab so the choice survives a surface switch (for example
+ *  the phone swapping to the pick tab) during the same champion select. */
+let rememberedScreen: { championId: number; screen: RuneScreen } = {
+  championId: -1,
+  screen: "presets",
+};
 
 function CheckIcon({ size = 15 }: { size?: number }) {
   return (
@@ -43,6 +54,8 @@ type Props = {
   error: string | null;
   onApply: (selection: Selection, presetIndex: number | null) => void;
   onToggleAutoApply: (enabled: boolean) => void;
+  /** Loads one page of pros' solo-queue games for the champion and role. */
+  onLoadProBuilds: (championId: number, position: string, page: number) => Promise<ProBuildsView>;
   onExit?: () => void;
 };
 
@@ -135,18 +148,40 @@ export function RunesPanel({
   error,
   onApply,
   onToggleAutoApply,
+  onLoadProBuilds,
   onExit,
 }: Props) {
-  const [screen, setScreen] = useState<"presets" | "editor">("presets");
+  const [screen, setScreen] = useState<RuneScreen>("presets");
   const [selection, setSelection] = useState<Selection | null>(null);
+  const [proView, setProView] = useState<ProBuildsView | null>(null);
+  const [proLoading, setProLoading] = useState(false);
+  const [proError, setProError] = useState<string | null>(null);
+  const proRequested = useRef(false);
 
   const championId = view?.championId ?? 0;
   useEffect(() => {
-    setScreen("presets");
+    const restored =
+      rememberedScreen.championId === championId ? rememberedScreen.screen : "presets";
+    setScreen(restored);
     setSelection(view?.applied ? selectionFromApplied(view.applied) : null);
+    setProView(null);
+    setProError(null);
+    proRequested.current = false;
     // Reset only when the champion changes, not on every statistics refresh.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [championId]);
+
+  useEffect(() => {
+    if (championId > 0) rememberedScreen = { championId, screen };
+  }, [championId, screen]);
+
+  useEffect(() => {
+    if (screen !== "pro" || championId <= 0 || proView || proRequested.current) return;
+    proRequested.current = true;
+    void loadPro(1);
+    // Load once when the tab is opened; "load more" is the only other fetch.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screen, championId, proView]);
 
   const appliedKey = view?.applied ? JSON.stringify(view.applied) : "";
   useEffect(() => {
@@ -227,6 +262,36 @@ export function RunesPanel({
     );
   }
 
+  async function loadPro(page: number) {
+    setProLoading(true);
+    setProError(null);
+    try {
+      const next = await onLoadProBuilds(championId, view?.position ?? "none", page);
+      setProView((prev) =>
+        page > 1 && prev ? { ...next, matches: [...prev.matches, ...next.matches] } : next,
+      );
+    } catch (reason) {
+      setProError(String(reason));
+    } finally {
+      setProLoading(false);
+    }
+  }
+
+  function retryPro() {
+    proRequested.current = true;
+    setProView(null);
+    setProError(null);
+    void loadPro(1);
+  }
+
+  /** Import an exact pro page through the same apply path a preset uses, then
+   *  open the editor so it can be tweaked and applied again. */
+  function importProBuild(next: Selection) {
+    setSelection(next);
+    setScreen("editor");
+    onApply(next, null);
+  }
+
   const sourceClass = view.source === "opgg" ? "is-live" : view.source === "lcu" ? "is-fallback" : "is-none";
   const roleLabel = view.position && view.position !== "none" ? positionLabels[view.position] : modeLabels[view.mode] ?? view.mode;
 
@@ -246,16 +311,29 @@ export function RunesPanel({
 
       <div className="runes-tabs" role="tablist">
         <button type="button" role="tab" aria-selected={screen === "presets"} className={screen === "presets" ? "is-active" : ""} onClick={() => setScreen("presets")}>Presets</button>
+        <button type="button" role="tab" aria-selected={screen === "pro"} className={screen === "pro" ? "is-active" : ""} onClick={() => setScreen("pro")}>Pro builds</button>
         <button type="button" role="tab" aria-selected={screen === "editor"} className={screen === "editor" ? "is-active" : ""} onClick={startEditor}>Editor</button>
-        <span className={`runes-source ${sourceClass}`}>{view.sourceLabel}</span>
+        {screen !== "pro" && <span className={`runes-source ${sourceClass}`}>{view.sourceLabel}</span>}
       </div>
 
       <div className="runes-body">
         {error && <p className="runes-alert" role="alert">{error}</p>}
-        {view.message && !error && <p className="runes-note">{view.message}</p>}
-        {view.source === "opgg" && <p className="runes-note runes-approx">Win%, pick% and games are approximate, aggregated from op.gg builds.</p>}
+        {screen !== "pro" && view.message && !error && <p className="runes-note">{view.message}</p>}
+        {screen !== "pro" && view.source === "opgg" && <p className="runes-note runes-approx">Win%, pick% and games are approximate, aggregated from op.gg builds.</p>}
 
-        {screen === "presets" ? (
+        {screen === "pro" ? (
+          <ProBuilds
+            mode={mode}
+            view={proView}
+            loading={proLoading}
+            error={proError}
+            busy={busy}
+            active={active}
+            onImport={importProBuild}
+            onLoadMore={() => void loadPro((proView?.page ?? 1) + 1)}
+            onRetry={retryPro}
+          />
+        ) : screen === "presets" ? (
           <div className="runes-presets">
             {view.presets.length === 0 && (
               <p className="runes-note">

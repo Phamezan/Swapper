@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use axum::extract::ws::{Message, WebSocket, WebSocketUpgrade};
-use axum::extract::{Path, Request, State};
+use axum::extract::{Path, Query, Request, State};
 use axum::http::{header, HeaderMap, StatusCode};
 use axum::response::{IntoResponse, Response};
 use axum::routing::get;
@@ -27,6 +27,7 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
         )
         .route("/api/champion/lock", axum::routing::post(lock_champion))
         .route("/api/runes", get(runes))
+        .route("/api/runes/pro-builds", get(pro_builds))
         .route("/api/runes/apply", axum::routing::post(apply_runes))
         .route(
             "/api/runes/auto-apply",
@@ -126,6 +127,26 @@ async fn lock_champion(headers: HeaderMap) -> Response {
 async fn runes(State(core): State<Arc<RemoteCore>>) -> Response {
     let auto_apply = crate::runes::auto_apply_enabled(&core.app);
     Json(crate::runes::view(auto_apply).await).into_response()
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct ProBuildsQuery {
+    champion_id: i64,
+    #[serde(default)]
+    position: String,
+    #[serde(default)]
+    page: Option<u32>,
+}
+
+async fn pro_builds(Query(query): Query<ProBuildsQuery>) -> Response {
+    Json(crate::runes::pro_builds_view(
+        query.champion_id,
+        &query.position,
+        query.page.unwrap_or(1),
+    )
+    .await)
+        .into_response()
 }
 
 fn rune_status(error: &crate::runes::RuneError) -> StatusCode {

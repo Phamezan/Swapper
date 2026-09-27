@@ -7,6 +7,7 @@ use std::time::{Duration, Instant};
 
 use super::opgg;
 use super::perks;
+use super::probuilds;
 use super::session;
 use super::{
     position_for, region_for, CATALOG_TTL, CHAMPIONS_PATH, GROUP_TTL, Lcu, PERKS_PATH,
@@ -90,6 +91,41 @@ pub async fn rune_groups(
         }
         Err(error) => {
             super::shared().group_failures.insert(key, Instant::now());
+            Err(error)
+        }
+    }
+}
+
+/// pros' solo-queue games for a champion and role, cached for the session.
+///
+/// The API pages 20 games at a time; `page` is 1-based. Successes are cached
+/// for [`probuilds::SUCCESS_TTL`] and failures for [`probuilds::FAILURE_TTL`],
+/// so a locked champion select never polls the endpoint.
+pub async fn pro_builds(
+    champion_id: i64,
+    position: &str,
+    page: u32,
+) -> Result<Vec<probuilds::ProMatch>, RuneError> {
+    let role = probuilds::role_arg(position);
+    let page = page.max(1);
+    let key = probuilds::cache_key(champion_id, role, page);
+    match super::shared().pro_builds.lookup(&key) {
+        probuilds::Cached::Fresh(matches) => return Ok(matches),
+        probuilds::Cached::Unavailable => {
+            return Err(RuneError::unavailable(
+                "Pro builds are temporarily unavailable.",
+            ))
+        }
+        probuilds::Cached::Miss => {}
+    }
+    let client = probuilds::ProBuildsClient::new()?;
+    match client.matches(champion_id, role, page, false).await {
+        Ok(matches) => {
+            super::shared().pro_builds.store(key, matches.clone());
+            Ok(matches)
+        }
+        Err(error) => {
+            super::shared().pro_builds.fail(key);
             Err(error)
         }
     }
