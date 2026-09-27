@@ -476,7 +476,6 @@ function App() {
   }
 
   const navigate = (next: View) => {
-    if (native) void invoke("set_add_mode", { enabled: next === "add" }).catch(showError);
     setView(next);
     setAccountMenu(null);
     setError(null);
@@ -529,7 +528,6 @@ function App() {
     previousActiveId.current = data.activeId;
     setSwitchingAccountId(id);
     setData((prev) => ({ ...prev, activeId: id }));
-    void invoke("hide_flyout").catch(() => {});
     try {
       await invoke("switch_account", { id });
     } catch (reason) {
@@ -572,7 +570,6 @@ function App() {
 
   const browseRiotPath = async () => {
     if (!native) return;
-    void invoke("set_add_mode", { enabled: true }).catch(showError);
     try {
       const picked = await browseForFile({
         multiple: false,
@@ -585,8 +582,6 @@ function App() {
       }
     } catch (reason) {
       showError(reason);
-    } finally {
-      void invoke("set_add_mode", { enabled: false }).catch(showError);
     }
   };
 
@@ -700,7 +695,6 @@ function App() {
                 <h2>Sign in to Riot Client</h2>
                 <p>Use the official Riot Client and turn on “Stay signed in”. Swapper never asks for your password. League does not need to be open.</p>
                 <Button className="primary-action" disabled={busy !== null} onClick={() => action("launch", async () => {
-                  await invoke("set_add_mode", { enabled: true });
                   return data.accounts.length > 0 ? invoke<AppState>("begin_add") : invoke<void>("open_riot");
                 }, () => setAddStage("identify"))}>
                   {busy === "launch" ? <LoaderCircle className="spin" size={16} /> : <ArrowRight size={16} />}

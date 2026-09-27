@@ -68,7 +68,6 @@ impl Drop for SwitchLease {
 pub(crate) struct AppState {
     config: Mutex<vault::Config>,
     bundled_deceive: PathBuf,
-    keep_flyout_open: AtomicBool,
     switch_guard: SwitchGuard,
     remote: Arc<remote::RemoteCore>,
 }
@@ -648,13 +647,7 @@ async fn apply_rune_page(
 }
 
 #[tauri::command]
-fn set_add_mode(state: State<'_, AppState>, enabled: bool) {
-    state.keep_flyout_open.store(enabled, Ordering::SeqCst);
-}
-
-#[tauri::command]
-fn hide_flyout(app: tauri::AppHandle, state: State<'_, AppState>) -> Result<(), String> {
-    state.keep_flyout_open.store(false, Ordering::SeqCst);
+fn hide_flyout(app: tauri::AppHandle) -> Result<(), String> {
     app.get_webview_window("main")
         .ok_or("Flyout is unavailable")?
         .hide()
@@ -662,16 +655,25 @@ fn hide_flyout(app: tauri::AppHandle, state: State<'_, AppState>) -> Result<(), 
 }
 
 fn show_flyout(app: &tauri::AppHandle, destination: &str) {
-    if let Some(state) = app.try_state::<AppState>() {
-        state
-            .keep_flyout_open
-            .store(destination == "add", Ordering::SeqCst);
-    }
     if let Some(window) = app.get_webview_window("main") {
         let _ = window.as_ref().window().move_window(Position::TrayCenter);
         let _ = app.emit("navigate", destination);
         let _ = window.show();
         let _ = window.set_focus();
+    }
+}
+
+// The flyout stays open until the tray icon or the close button hides it, so a
+// tray left-click toggles by visibility rather than focus (clicking the tray
+// moves focus away before the event arrives). Only the Up event toggles once.
+fn toggle_flyout(app: &tauri::AppHandle) {
+    let Some(window) = app.get_webview_window("main") else {
+        return;
+    };
+    if window.is_visible().unwrap_or(false) {
+        let _ = window.hide();
+    } else {
+        show_flyout(app, "accounts");
     }
 }
 
@@ -701,7 +703,6 @@ pub fn run() {
             app.manage(AppState {
                 config: Mutex::new(config),
                 bundled_deceive,
-                keep_flyout_open: AtomicBool::new(false),
                 switch_guard: SwitchGuard::new(),
                 remote: remote.clone(),
             });
@@ -748,7 +749,7 @@ pub fn run() {
                         ..
                     } = event
                     {
-                        show_flyout(tray.app_handle(), "accounts");
+                        toggle_flyout(tray.app_handle());
                     }
                 })
                 .build(app)?;
@@ -764,24 +765,11 @@ pub fn run() {
             }
             Ok(())
         })
-        .on_window_event(|window, event| match event {
-            WindowEvent::CloseRequested { api, .. } => {
+        .on_window_event(|window, event| {
+            if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
-                if let Some(state) = window.app_handle().try_state::<AppState>() {
-                    state.keep_flyout_open.store(false, Ordering::SeqCst);
-                }
                 let _ = window.hide();
             }
-            WindowEvent::Focused(false) => {
-                let keep_open = window
-                    .app_handle()
-                    .try_state::<AppState>()
-                    .is_some_and(|state| state.keep_flyout_open.load(Ordering::SeqCst));
-                if !keep_open {
-                    let _ = window.hide();
-                }
-            }
-            _ => {}
         })
         .invoke_handler(tauri::generate_handler![
             get_state,
@@ -793,7 +781,6 @@ pub fn run() {
             set_nickname,
             remove_account,
             save_settings,
-            set_add_mode,
             hide_flyout,
             set_remote_enabled,
             probe_remote,
