@@ -72,6 +72,7 @@
 
 .runes-tabs > button {
   flex: 1;
+  min-width: 0;
   min-height: 32px;
   border: 0;
   border-radius: 7px;
@@ -79,6 +80,7 @@
   background: transparent;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .runes-tabs > button.is-active { color: var(--action-text); background: var(--action-fill); }
@@ -154,6 +156,88 @@
 .rune-preset-divider { width: 1px; height: 18px; margin: 0 2px; background: var(--line-strong); }
 
 .rune-icon-fallback { display: inline-block; background: var(--surface-raised); }
+
+/* Pro builds */
+
+.pro-list { display: flex; flex-direction: column; gap: 8px; }
+
+.pro-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  padding: 10px 11px;
+  text-align: left;
+  border: 1px solid var(--line-subtle);
+  border-radius: 12px;
+  color: var(--text-primary);
+  background: var(--surface-panel);
+}
+
+.pro-card:hover { border-color: var(--line-strong); background: var(--surface-raised); }
+.pro-card.is-active { border-color: #459c74; background: #143329; }
+.pro-card:disabled { opacity: 0.6; }
+
+.pro-card-head { display: flex; align-items: center; gap: 9px; }
+.pro-card-keystone { width: 34px; height: 34px; flex: none; border-radius: 9px; }
+
+.pro-card-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
+.pro-card-copy strong { overflow: hidden; font-size: 13px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.pro-card-copy small { overflow: hidden; color: var(--text-secondary); font-size: 10px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+
+.pro-card-result { flex: none; padding: 2px 7px; border-radius: 6px; font-size: 10px; font-weight: 750; }
+.pro-card-result.is-win { color: #6ee7b7; background: #12352a; }
+.pro-card-result.is-loss { color: #fca5a5; background: #3a1a1c; }
+
+.pro-card-meta { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 10px; font-weight: 600; }
+.pro-card-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--line-strong); }
+
+.pro-card-stats { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pro-card-kda { flex: none; color: var(--text-secondary); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.pro-card-icons { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.pro-card-icons img, .pro-card-icons .rune-icon-fallback { width: 20px; height: 20px; border-radius: 5px; }
+.pro-card-tree { outline: 1px solid var(--line-strong); outline-offset: -1px; }
+.pro-card-shard { width: 16px !important; height: 16px !important; }
+.pro-card-divider { width: 1px; height: 16px; margin: 0 1px; background: var(--line-strong); }
+
+.pro-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.pro-more:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
+
+.pro-retry {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.pro-retry:hover { color: var(--text-primary); background: var(--surface-hover); }
+.pro-unavailable { color: var(--text-secondary); }
+.pro-end { text-align: center; }
+
+.runes-remote .pro-card { padding: 12px; }
+.runes-remote .pro-card-keystone { width: 40px; height: 40px; }
+.runes-remote .pro-card-icons img,
+.runes-remote .pro-card-icons .rune-icon-fallback { width: 24px; height: 24px; }
+.runes-remote .pro-more { min-height: 46px; font-size: 13px; }
+.runes-remote .pro-retry { min-height: 44px; font-size: 13px; }
 
 .runes-spinner {
   display: inline-block;

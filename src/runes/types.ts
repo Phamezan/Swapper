@@ -62,6 +62,37 @@ export type RunesView = {
   locked: boolean;
 };
 
+export type ProBuild = {
+  matchId: number;
+  proName: string;
+  team: string;
+  league: string;
+  roleLabel: string;
+  win: boolean;
+  playedAgo: string;
+  patch: string;
+  keystone: number;
+  primaryPageId: number;
+  secondaryPageId: number;
+  primaryRunes: number[];
+  secondaryRunes: number[];
+  shards: number[];
+  kills: number;
+  deaths: number;
+  assists: number;
+};
+
+export type ProBuildsView = {
+  championId: number;
+  position: string;
+  role: string;
+  page: number;
+  hasMore: boolean;
+  matches: ProBuild[];
+  unavailable: boolean;
+  message: string | null;
+};
+
 export type Selection = {
   primaryPageId: number;
   secondaryPageId: number;
@@ -79,6 +110,17 @@ export function selectionFromPreset(preset: Preset): Selection {
     primaryRunes: [...preset.primaryRunes],
     secondaryRunes: [...preset.secondaryRunes],
     shards: [...preset.shards],
+  };
+}
+
+export function selectionFromProBuild(build: ProBuild): Selection {
+  return {
+    primaryPageId: build.primaryPageId,
+    secondaryPageId: build.secondaryPageId,
+    keystone: build.keystone,
+    primaryRunes: [...build.primaryRunes],
+    secondaryRunes: [...build.secondaryRunes],
+    shards: [...build.shards],
   };
 }
 

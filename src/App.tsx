@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { RunesPanel } from "./runes/RunesPanel";
-import type { RunesView, Selection } from "./runes/types";
+import type { RunesView, ProBuildsView, Selection } from "./runes/types";
 import "./App.css";
 
 type Account = {
@@ -320,6 +320,10 @@ function App() {
     }
   }
 
+  function loadProBuilds(championId: number, position: string, page: number): Promise<ProBuildsView> {
+    return invoke<ProBuildsView>("get_pro_builds", { championId, position, page });
+  }
+
   async function setAutoApply(enabled: boolean) {
     setRunesBusy(true);
     setRunesError(null);
@@ -606,6 +610,7 @@ function App() {
             error={runesError}
             onApply={(selection, presetIndex) => void applyRunes(selection, presetIndex)}
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
+            onLoadProBuilds={loadProBuilds}
             onExit={() => { runesDismissed.current = true; navigate("accounts"); }}
           />
         ) : (

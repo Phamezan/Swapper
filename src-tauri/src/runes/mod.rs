@@ -17,6 +17,7 @@ pub mod data;
 pub mod opgg;
 pub mod page;
 pub mod perks;
+pub mod probuilds;
 pub mod session;
 pub mod stats;
 pub mod view;
@@ -36,7 +37,7 @@ use crate::lcu::{self, LcuEndpoint};
 pub use apply::{apply_selection, apply_top};
 pub use data::icon;
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
-pub use view::{view, RunesView};
+pub use view::{pro_builds_view, view, ProBuildsView, RunesView};
 pub use watch::{auto_apply_enabled, current_status, spawn_watch, ChampSelectEvent};
 
 const PHASE_PATH: &str = "/lol-gameflow/v1/gameflow-phase";
@@ -329,6 +330,8 @@ struct Shared {
     names: Option<(Instant, HashMap<i64, String>)>,
     icons: HashMap<i64, Vec<u8>>,
     applied: Option<AppliedView>,
+    /// pros' solo-queue games from probuildstats, cached per champion/role/page.
+    pro_builds: probuilds::MatchCache,
 }
 
 fn shared() -> MutexGuard<'static, Shared> {
@@ -342,6 +345,7 @@ fn shared() -> MutexGuard<'static, Shared> {
                 names: None,
                 icons: HashMap::new(),
                 applied: None,
+                pro_builds: probuilds::MatchCache::default(),
             })
         })
         .lock()
