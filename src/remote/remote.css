@@ -68,19 +68,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .remote-topline { justify-content: space-between; gap: 14px; }
 .remote-brand { gap: 10px; }
 
-.remote-mark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1px;
-  width: 33px;
-  height: 33px;
-  border: 1px solid var(--line-strong);
-  border-radius: 10px;
-  background: var(--surface-raised);
-}
-
-.remote-mark-flip { transform: scaleX(-1); }
+.remote-mark { flex: none; display: block; }
 .remote-brand-copy { display: flex; flex-direction: column; gap: 2px; }
 .remote-brand-copy strong { font-size: 14px; font-weight: 700; line-height: 1; letter-spacing: -0.025em; }
 .remote-brand-copy span { color: var(--text-muted); font-size: 9px; font-weight: 650; letter-spacing: 0.15em; }

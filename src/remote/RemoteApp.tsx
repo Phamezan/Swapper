@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Network, Search, Swords } from "lucide-react";
+import { Network, Search, Swords } from "lucide-react";
+import { BrandIcon } from "@/components/BrandIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
 import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "../runes/types";
@@ -532,7 +533,7 @@ export default function RemoteApp() {
       <header className={`remote-topbar ${inChampSelect ? "is-compact" : ""}`}>
         <div className="remote-topline">
           <div className="remote-brand">
-            <span className="remote-mark"><ArrowRight size={15} /><ArrowRight size={15} className="remote-mark-flip" /></span>
+            <BrandIcon className="remote-mark" size={33} />
             <div className="remote-brand-copy"><strong>Swapper</strong>{!inChampSelect && <span>REMOTE</span>}</div>
           </div>
           {inChampSelect ? (
@@ -559,11 +560,11 @@ export default function RemoteApp() {
                 <span className="remote-ready-dot" />{ready ? "Ready" : "Check"}
               </span>
             </div>
-          ) : (
-            <span className={`remote-ready ${ready ? "is-ready" : "is-bad"}`}>
-              <span className="remote-ready-dot" />{ready ? "Ready" : "Check connection"}
+          ) : ready ? (
+            <span className="remote-ready is-ready">
+              <span className="remote-ready-dot" />Ready
             </span>
-          )}
+          ) : null}
         </div>
         {!inChampSelect && (
           <div className="remote-status-line">
@@ -575,7 +576,8 @@ export default function RemoteApp() {
 
       <main className={`remote-main ${showCatalog || showRunes ? "has-catalog" : ""}`}>
         {status?.message && <p className="remote-inline-error" role="alert">{status.message}</p>}
-        {game?.message && <p className="remote-inline-error" role="alert">{game.message}</p>}
+        {/* League being closed is already the status line and the hero below. */}
+        {game?.message && status?.lcuConnected && <p className="remote-inline-error" role="alert">{game.message}</p>}
         {actionError && <p className="remote-inline-error" role="alert">{actionError}</p>}
 
         {showHandoff && (

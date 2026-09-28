@@ -68,9 +68,7 @@ button[data-slot="button"][data-variant="outline"]:hover { border-color: var(--t
 
 .shell { width: 100%; height: 100%; display: flex; flex-direction: column; border: 0; background: var(--surface-base); box-shadow: none; }
 .topbar { min-height: 63px; display: flex; align-items: center; gap: 12px; padding: 0 20px; border-bottom: 1px solid var(--line-subtle); background: var(--surface-header); }
-.brand-mark { width: 35px; height: 35px; display: flex; flex: none; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line-strong); border-radius: 9px; color: var(--text-primary); background: var(--surface-raised); }
-.brand-mark svg:first-child { margin-bottom: -8px; margin-left: 4px; }
-.brand-mark svg:last-child { margin-right: 4px; }
+.brand-mark { flex: none; display: block; }
 .brand-copy { display: flex; flex-direction: column; gap: 2px; }
 .brand-copy strong { font-size: 15px; line-height: 1; letter-spacing: -.025em; font-weight: 780; }
 .brand-copy span { color: var(--text-muted); font-size: 9px; font-weight: 650; letter-spacing: .155em; }
@@ -95,7 +93,7 @@ button[data-slot="button"][data-variant="outline"]:hover { border-color: var(--t
 .account-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 5px; }
 .account-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; font-weight: 730; }
 .account-copy small { color: var(--text-secondary); font-size: 13px; }
-.active-indicator { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--action-text); background: var(--action-fill); }
+.active-indicator { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--brand-ink); background: var(--brand-green); }
 .row-chevron { color: var(--text-secondary); }
 .account-context-menu { position: fixed; z-index: 20; width: 184px; padding: 5px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface-raised); box-shadow: 0 12px 30px #0008; }
 .account-context-menu button { width: 100%; min-height: 33px; display: block; padding: 0 10px; border: 0; border-radius: 6px; background: transparent; color: var(--text-primary); font-size: 12px; text-align: left; }

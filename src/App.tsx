@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { BrandIcon } from "@/components/BrandIcon";
 import { RepairPanel } from "./accounts/RepairPanel";
 import { CreateShortcutButton } from "./accounts/CreateShortcutButton";
 import { RunesPanel } from "./runes/RunesPanel";
@@ -694,7 +695,7 @@ function App() {
   return (
     <div className="shell dark">
       <header className="topbar">
-        <div className="brand-mark"><ArrowRight size={16} strokeWidth={2.4} /><ArrowLeft size={16} strokeWidth={2.4} /></div>
+        <BrandIcon className="brand-mark" size={35} />
         <div className="brand-copy"><strong>Swapper</strong><span>RIOT ACCOUNTS</span></div>
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
       </header>
