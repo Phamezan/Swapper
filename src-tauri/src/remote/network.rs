@@ -4,8 +4,8 @@ use std::process::Command;
 use base64::Engine;
 use windows_sys::Win32::Foundation::ERROR_BUFFER_OVERFLOW;
 use windows_sys::Win32::NetworkManagement::IpHelper::{
-    GetAdaptersAddresses, GAA_FLAG_SKIP_ANYCAST, GAA_FLAG_SKIP_DNS_SERVER,
-    GAA_FLAG_SKIP_MULTICAST, IF_TYPE_ETHERNET_CSMACD, IF_TYPE_IEEE80211,
+    GetAdaptersAddresses, GAA_FLAG_INCLUDE_GATEWAYS, GAA_FLAG_SKIP_ANYCAST,
+    GAA_FLAG_SKIP_DNS_SERVER, GAA_FLAG_SKIP_MULTICAST, IF_TYPE_ETHERNET_CSMACD, IF_TYPE_IEEE80211,
     IP_ADAPTER_ADDRESSES_LH,
 };
 use windows_sys::Win32::NetworkManagement::Ndis::IfOperStatusUp;
@@ -27,7 +27,11 @@ pub struct LanInterface {
 /// tunnels, virtual adapters, loopback, link-local, and non-private addresses.
 pub fn default_interface() -> Result<Option<LanInterface>, String> {
     let mut size = 0u32;
-    let flags = GAA_FLAG_SKIP_ANYCAST | GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER;
+    // FirstGatewayAddress is only filled in when gateways are requested.
+    let flags = GAA_FLAG_INCLUDE_GATEWAYS
+        | GAA_FLAG_SKIP_ANYCAST
+        | GAA_FLAG_SKIP_MULTICAST
+        | GAA_FLAG_SKIP_DNS_SERVER;
     let first = unsafe {
         GetAdaptersAddresses(AF_INET as u32, flags, std::ptr::null(), std::ptr::null_mut(), &mut size)
     };
@@ -117,7 +121,11 @@ pub fn settings_page() -> &'static str {
 /// cannot be used for LAN sharing (for example, if it has no private IPv4).
 fn active_physical_adapter_is_wifi() -> Result<Option<bool>, String> {
     let mut size = 0u32;
-    let flags = GAA_FLAG_SKIP_ANYCAST | GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER;
+    // FirstGatewayAddress is only filled in when gateways are requested.
+    let flags = GAA_FLAG_INCLUDE_GATEWAYS
+        | GAA_FLAG_SKIP_ANYCAST
+        | GAA_FLAG_SKIP_MULTICAST
+        | GAA_FLAG_SKIP_DNS_SERVER;
     let first = unsafe {
         GetAdaptersAddresses(
             AF_INET as u32,
