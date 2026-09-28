@@ -10,7 +10,7 @@ use std::time::Duration;
 
 use serde::{Deserialize, Serialize};
 
-use super::RuneError;
+use super::provider::ProviderError;
 
 /// op.gg region slug used when the League client region is unknown.
 pub const DEFAULT_REGION: &str = "euw";
@@ -141,7 +141,7 @@ pub struct SpellStats {
 }
 
 /// The parts of an op.gg champion response Swapper reads.
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, Deserialize, Serialize)]
 pub struct ChampionData {
     pub rune_pages: Vec<RunePageGroup>,
     pub summoner_spells: Vec<SpellStats>,
@@ -161,9 +161,8 @@ impl ChampionData {
 }
 
 /// Parses an op.gg champion response into the rune pages and spell pairs.
-pub fn parse_data(body: &str) -> Result<ChampionData, RuneError> {
-    let response: Response = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read the op.gg response: {e}")))?;
+pub fn parse_data(body: &str) -> Result<ChampionData, ProviderError> {
+    let response: Response = serde_json::from_str(body).map_err(|_| ProviderError::Format)?;
     Ok(ChampionData {
         rune_pages: response.data.rune_pages,
         summoner_spells: response.data.summoner_spells,
@@ -172,7 +171,7 @@ pub fn parse_data(body: &str) -> Result<ChampionData, RuneError> {
 
 /// Parses an op.gg champion response and returns its rune-page groups.
 #[cfg(test)]
-pub fn parse(body: &str) -> Result<Vec<RunePageGroup>, RuneError> {
+pub fn parse(body: &str) -> Result<Vec<RunePageGroup>, ProviderError> {
     parse_data(body).map(|data| data.rune_pages)
 }
 
@@ -245,12 +244,12 @@ pub struct OpggClient {
 }
 
 impl OpggClient {
-    pub fn new() -> Result<Self, RuneError> {
+    pub fn new() -> Result<Self, ProviderError> {
         let client = reqwest::Client::builder()
             .connect_timeout(REQUEST_TIMEOUT)
             .timeout(REQUEST_TIMEOUT)
             .build()
-            .map_err(|e| RuneError::unavailable(format!("Could not create the op.gg client: {e}")))?;
+            .map_err(|_| ProviderError::Unavailable)?;
         Ok(Self {
             client,
             base_url: BASE_URL.to_string(),
@@ -272,24 +271,21 @@ impl OpggClient {
         champion_id: i64,
         position: &str,
         tier: &str,
-    ) -> Result<ChampionData, RuneError> {
+    ) -> Result<ChampionData, ProviderError> {
         let response = self
             .client
             .get(self.url(region, mode, champion_id, position, tier))
             .header(reqwest::header::ACCEPT, "application/json")
             .send()
             .await
-            .map_err(|e| RuneError::unavailable(format!("op.gg request failed: {e}")))?;
+            .map_err(|e| ProviderError::from_reqwest(&e))?;
         if !response.status().is_success() {
-            return Err(RuneError::unavailable(format!(
-                "op.gg returned HTTP {}",
-                response.status().as_u16()
-            )));
+            return Err(ProviderError::from_status(response.status()));
         }
         let body = response
             .text()
             .await
-            .map_err(|e| RuneError::unavailable(format!("op.gg response was unreadable: {e}")))?;
+            .map_err(|_| ProviderError::Unavailable)?;
         parse_data(&body)
     }
 }
@@ -315,6 +311,12 @@ mod tests {
         assert!(parse("{}").is_err());
         assert!(parse("not json").is_err());
         assert!(parse(r#"{"data":{}}"#).unwrap().is_empty());
+    }
+
+    #[test]
+    fn a_malformed_body_is_classified_as_a_format_change() {
+        assert_eq!(parse("not json").unwrap_err(), ProviderError::Format);
+        assert_eq!(parse("{}").unwrap_err(), ProviderError::Format);
     }
 
     #[test]

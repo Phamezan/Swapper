@@ -45,15 +45,15 @@ Before implementing a task:
 - [ ] Never include PUUIDs, Riot IDs, session data, access tokens, pairing secrets, cookies or encrypted vault contents in copied diagnostics.
 
 ### Provider resilience and cached fallback
-- [ ] Introduce provider abstractions instead of coupling rune/build features directly to individual websites.
-- [ ] Separate recommendation data from OP.GG-specific implementation details.
-- [ ] Separate build data from Lolalytics-specific implementation details.
-- [ ] Cache the last successfully fetched recommendations.
-- [ ] Cache the last successfully fetched item builds.
-- [ ] Continue showing cached data when a provider is temporarily unavailable.
-- [ ] Clearly label stale data with its last-updated timestamp.
-- [ ] Add fallback providers where reliable alternatives exist.
-- [ ] Distinguish provider outage, timeout and response-format changes in diagnostics.
+- [x] Introduce provider abstractions instead of coupling rune/build features directly to individual websites.
+- [x] Separate recommendation data from OP.GG-specific implementation details.
+- [x] Separate build data from Lolalytics-specific implementation details.
+- [x] Cache the last successfully fetched recommendations.
+- [x] Cache the last successfully fetched item builds.
+- [x] Continue showing cached data when a provider is temporarily unavailable.
+- [x] Clearly label stale data with its last-updated timestamp.
+- [x] Add fallback providers where reliable alternatives exist.
+- [x] Distinguish provider outage, timeout and response-format changes in diagnostics.
 
 ### Automatic updates
 - [ ] Add update checking against GitHub Releases.

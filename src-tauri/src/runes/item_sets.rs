@@ -378,6 +378,8 @@ mod tests {
             games: 100,
             core_games: 80,
             core_win_pct: Some(53.0),
+            stale: false,
+            updated_at: None,
         }
     }
 

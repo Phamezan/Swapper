@@ -6,10 +6,12 @@ use std::collections::HashMap;
 use std::sync::OnceLock;
 use std::time::{Duration, Instant};
 
+use super::cache::{self, LastGoodCache};
 use super::lolalytics;
 use super::opgg;
 use super::perks;
 use super::probuilds;
+use super::provider::{DataKind, Provider, ProviderError, Sourced};
 use super::session;
 use super::{
     region_for, CATALOG_TTL, CHAMPIONS_PATH, GROUP_TTL, Lcu, PERKS_PATH,
@@ -19,6 +21,10 @@ use super::{
 /// Failed or empty op.gg lookups are cached for this long so a locked champion
 /// select does not hit op.gg on every poll.
 const GROUP_FAILURE_TTL: Duration = Duration::from_secs(60);
+/// Bounds for each provider's persisted last-successful cache, so it survives
+/// restarts without growing without limit.
+const LAST_GOOD_MAX_ENTRIES: usize = 128;
+const LAST_GOOD_MAX_BYTES: usize = 1024 * 1024;
 
 /// Serializes rune-catalog loads and champion-name loads so concurrent misses
 /// fetch each file once.
@@ -67,6 +73,45 @@ fn keystone_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
     KEYSTONE_FLIGHTS
         .get_or_init(super::Flights::new)
         .gate(&key.to_string())
+}
+
+/// The last successful result per kind, persisted under the Swapper data
+/// folder. A failed fetch is served from this cache, labelled stale.
+static RUNE_LAST_GOOD: OnceLock<LastGoodCache<opgg::ChampionData>> = OnceLock::new();
+static BUILD_LAST_GOOD: OnceLock<LastGoodCache<lolalytics::KeystoneBuild>> = OnceLock::new();
+static PRO_LAST_GOOD: OnceLock<LastGoodCache<Vec<probuilds::ProMatch>>> = OnceLock::new();
+
+fn rune_last_good() -> &'static LastGoodCache<opgg::ChampionData> {
+    RUNE_LAST_GOOD.get_or_init(|| {
+        LastGoodCache::open(
+            cache::cache_path(DataKind::RuneRecommendations),
+            GROUP_TTL,
+            LAST_GOOD_MAX_ENTRIES,
+            LAST_GOOD_MAX_BYTES,
+        )
+    })
+}
+
+fn build_last_good() -> &'static LastGoodCache<lolalytics::KeystoneBuild> {
+    BUILD_LAST_GOOD.get_or_init(|| {
+        LastGoodCache::open(
+            cache::cache_path(DataKind::ItemBuild),
+            lolalytics::SUCCESS_TTL,
+            LAST_GOOD_MAX_ENTRIES,
+            LAST_GOOD_MAX_BYTES,
+        )
+    })
+}
+
+fn pro_last_good() -> &'static LastGoodCache<Vec<probuilds::ProMatch>> {
+    PRO_LAST_GOOD.get_or_init(|| {
+        LastGoodCache::open(
+            cache::cache_path(DataKind::ProBuilds),
+            probuilds::SUCCESS_TTL,
+            LAST_GOOD_MAX_ENTRIES,
+            LAST_GOOD_MAX_BYTES,
+        )
+    })
 }
 
 pub async fn catalog() -> Result<perks::PerkCatalog, RuneError> {
@@ -126,18 +171,19 @@ pub fn group_key(region: &str, mode: &str, champion_id: i64, position: &str, tie
 }
 
 /// op.gg champion data (rune pages and spell pairs) for a champion and role,
-/// cached for the session.
+/// cached for the session and, on success, persisted per request key.
 ///
-/// A failure or an empty answer is remembered for [`GROUP_FAILURE_TTL`] and
-/// returned as an error, so the caller falls back to the League client without
-/// retrying op.gg on every watcher poll.
+/// A failure or an empty answer is remembered for [`GROUP_FAILURE_TTL`] and, if
+/// a previous result is on disk, that result is served stale instead of an
+/// error. With no cached result the classified error is returned, so the caller
+/// falls back to the League client without retrying op.gg on every watcher poll.
 pub async fn champion_data(
     region: &str,
     mode: &str,
     champion_id: i64,
     position: &str,
     tier: &str,
-) -> Result<opgg::ChampionData, RuneError> {
+) -> Result<Sourced<opgg::ChampionData>, RuneError> {
     let tier = opgg::normalize_tier(tier);
     let key = group_key(region, mode, champion_id, position, tier);
     if let Some(result) = cached_group(&key) {
@@ -148,57 +194,98 @@ pub async fn champion_data(
     if let Some(result) = cached_group(&key) {
         return result;
     }
-    let client = opgg::OpggClient::new()?;
+    let client = match opgg::OpggClient::new() {
+        Ok(client) => client,
+        Err(error) => {
+            super::shared().group_failures.insert(key.clone(), Instant::now());
+            return group_stale_or_error(&key, error);
+        }
+    };
     match client
         .champion_data(region, mode, champion_id, position, tier)
         .await
     {
         Ok(data) if !data.rune_pages.is_empty() => {
-            let mut state = super::shared();
-            state.group_failures.remove(&key);
-            state.groups.insert(key, (Instant::now(), data.clone()));
-            Ok(data)
+            {
+                let mut state = super::shared();
+                state.group_failures.remove(&key);
+                state.groups.insert(key.clone(), (Instant::now(), data.clone()));
+            }
+            rune_last_good().store(key, data.clone());
+            Ok(Sourced::fresh(data, Provider::Opgg))
         }
         Ok(_) => {
             super::shared().group_failures.insert(key, Instant::now());
-            Ok(opgg::ChampionData::default())
+            Ok(Sourced::fresh(opgg::ChampionData::default(), Provider::Opgg))
         }
         Err(error) => {
-            super::shared().group_failures.insert(key, Instant::now());
-            Err(error)
+            super::shared().group_failures.insert(key.clone(), Instant::now());
+            group_stale_or_error(&key, error)
         }
     }
 }
 
-/// A cached op.gg result for a group key, if one is still fresh.
-fn cached_group(key: &str) -> Option<Result<opgg::ChampionData, RuneError>> {
-    let state = super::shared();
-    if let Some((at, data)) = state.groups.get(key) {
-        if at.elapsed() < GROUP_TTL {
-            return Some(Ok(data.clone()));
+/// A cached op.gg result for a group key, if one is still fresh. A remembered
+/// failure returns the persisted last-good result when there is one.
+fn cached_group(key: &str) -> Option<Result<Sourced<opgg::ChampionData>, RuneError>> {
+    let failed = {
+        let state = super::shared();
+        if let Some((at, data)) = state.groups.get(key) {
+            if at.elapsed() < GROUP_TTL {
+                return Some(Ok(Sourced {
+                    value: data.clone(),
+                    provider: Provider::Opgg,
+                    stale: false,
+                    fetched_at: None,
+                }));
+            }
         }
-    }
-    if let Some(at) = state.group_failures.get(key) {
-        if at.elapsed() < GROUP_FAILURE_TTL {
-            return Some(Err(RuneError::unavailable(
-                "op.gg data is temporarily unavailable.",
-            )));
-        }
+        state
+            .group_failures
+            .get(key)
+            .map(|at| at.elapsed() < GROUP_FAILURE_TTL)
+            .unwrap_or(false)
+    };
+    if failed {
+        return Some(group_stale_or_error(key, ProviderError::Unavailable));
     }
     None
 }
 
-/// pros' solo-queue games for a champion and role, cached for the session.
+/// The persisted last-good op.gg result for a key, or the classified error.
+fn group_stale_or_error(
+    key: &str,
+    error: ProviderError,
+) -> Result<Sourced<opgg::ChampionData>, RuneError> {
+    match rune_last_good().lookup(key) {
+        Some(cached) if !cached.fresh => Ok(Sourced::stale(
+            cached.value,
+            Provider::Opgg,
+            cached.fetched_at,
+        )),
+        Some(cached) => Ok(Sourced {
+            value: cached.value,
+            provider: Provider::Opgg,
+            stale: false,
+            fetched_at: Some(cached.fetched_at),
+        }),
+        None => Err(RuneError::provider(error, DataKind::RuneRecommendations)),
+    }
+}
+
+/// pros' solo-queue games for a champion and role, cached for the session and,
+/// on success, persisted per request key.
 ///
 /// The API pages 20 games at a time; `page` is 1-based. Successes are cached
 /// for [`probuilds::SUCCESS_TTL`] and failures for [`probuilds::FAILURE_TTL`],
-/// so a locked champion select never polls the endpoint. Concurrent misses for
-/// the same page wait on one request.
+/// so a locked champion select never polls the endpoint. A failure serves the
+/// persisted last-good page when there is one. Concurrent misses for the same
+/// page wait on one request.
 pub async fn pro_builds(
     champion_id: i64,
     position: &str,
     page: u32,
-) -> Result<Vec<probuilds::ProMatch>, RuneError> {
+) -> Result<Sourced<Vec<probuilds::ProMatch>>, RuneError> {
     let role = probuilds::role_arg(position);
     let page = page.max(1);
     let key = probuilds::cache_key(champion_id, role, page);
@@ -210,27 +297,61 @@ pub async fn pro_builds(
     if let Some(cached) = cached_pro_builds(&key) {
         return cached;
     }
-    let client = probuilds::ProBuildsClient::new()?;
+    let client = match probuilds::ProBuildsClient::new() {
+        Ok(client) => client,
+        Err(error) => {
+            super::shared().pro_builds.fail(key.clone());
+            return pro_stale_or_error(&key, error);
+        }
+    };
     match client.matches(champion_id, role, page, false).await {
         Ok(matches) => {
-            super::shared().pro_builds.store(key, matches.clone());
-            Ok(matches)
+            super::shared().pro_builds.store(key.clone(), matches.clone());
+            pro_last_good().store(key, matches.clone());
+            Ok(Sourced::fresh(matches, Provider::Ugg))
         }
         Err(error) => {
-            super::shared().pro_builds.fail(key);
-            Err(error)
+            super::shared().pro_builds.fail(key.clone());
+            pro_stale_or_error(&key, error)
         }
     }
 }
 
-/// A cached pro-build lookup for a page, if one is still fresh.
-fn cached_pro_builds(key: &str) -> Option<Result<Vec<probuilds::ProMatch>, RuneError>> {
+/// A cached pro-build lookup for a page. A remembered failure returns the
+/// persisted last-good page when there is one.
+fn cached_pro_builds(key: &str) -> Option<Result<Sourced<Vec<probuilds::ProMatch>>, RuneError>> {
     match super::shared().pro_builds.lookup(key) {
-        probuilds::Cached::Fresh(matches) => Some(Ok(matches)),
-        probuilds::Cached::Unavailable => Some(Err(RuneError::unavailable(
-            "Pro builds are temporarily unavailable.",
-        ))),
+        probuilds::Cached::Fresh(matches) => Some(Ok(Sourced {
+            value: matches,
+            provider: Provider::Ugg,
+            stale: false,
+            fetched_at: None,
+        })),
+        probuilds::Cached::Unavailable => {
+            Some(pro_stale_or_error(key, ProviderError::Unavailable))
+        }
         probuilds::Cached::Miss => None,
+    }
+}
+
+/// The persisted last-good pro-build page for a key, or the classified error.
+fn pro_stale_or_error(
+    key: &str,
+    error: ProviderError,
+) -> Result<Sourced<Vec<probuilds::ProMatch>>, RuneError> {
+    match pro_last_good().lookup(key) {
+        Some(cached) if !cached.fresh => Ok(Sourced::stale(
+            cached.value,
+            Provider::Ugg,
+            cached.fetched_at,
+        )),
+        Some(cached) => Ok(Sourced {
+            value: cached.value,
+            provider: Provider::Ugg,
+            stale: false,
+            fetched_at: Some(cached.fetched_at),
+        }),
+        None => Err(RuneError::provider(error, DataKind::ProBuilds)),
     }
 }
 
@@ -240,13 +361,14 @@ fn cached_pro_builds(key: &str) -> Option<Result<Vec<probuilds::ProMatch>, RuneE
 /// keystone. A failure or an empty page is negative-cached for
 /// [`lolalytics::FAILURE_TTL`] so a locked champion select does not fetch the
 /// same page repeatedly. Concurrent misses for the same filter wait on one
-/// request.
+/// request. A failed fetch serves the persisted last-good build when there is
+/// one; with no cached build the card simply hides, as before.
 pub async fn keystone_build(
     champion_slug: &str,
     lane: &str,
     tier: &str,
     keystone: i64,
-) -> Result<Option<lolalytics::KeystoneBuild>, RuneError> {
+) -> Result<Option<Sourced<lolalytics::KeystoneBuild>>, RuneError> {
     let key = lolalytics::cache_key(champion_slug, lane, tier, keystone);
     if let Some(cached) = cached_keystone_build(&key) {
         return cached;
@@ -260,32 +382,56 @@ pub async fn keystone_build(
         .acquire()
         .await
         .expect("the keystone fetch semaphore is never closed");
-    let client = lolalytics::LolalyticsClient::new()?;
+    let client = match lolalytics::LolalyticsClient::new() {
+        Ok(client) => client,
+        Err(_) => return Ok(keystone_stale(&key)),
+    };
     match client.build(champion_slug, lane, tier, keystone).await {
         Ok(Some(build)) => {
-            super::shared().lolalytics.store(key, build.clone());
-            Ok(Some(build))
+            super::shared().lolalytics.store(key.clone(), build.clone());
+            build_last_good().store(key, build.clone());
+            Ok(Some(Sourced::fresh(build, Provider::Lolalytics)))
         }
         Ok(None) => {
             super::shared().lolalytics.fail(key);
             Ok(None)
         }
-        Err(error) => {
-            super::shared().lolalytics.fail(key);
-            Err(error)
-        }
+        Err(_) => Ok(keystone_stale(&key)),
     }
 }
 
-/// A cached keystone build for a filter key, if one is still fresh.
+/// A cached keystone build for a filter key, if one is still fresh. A
+/// remembered failure returns the persisted last-good build when there is one.
 fn cached_keystone_build(
     key: &str,
-) -> Option<Result<Option<lolalytics::KeystoneBuild>, RuneError>> {
+) -> Option<Result<Option<Sourced<lolalytics::KeystoneBuild>>, RuneError>> {
     match super::shared().lolalytics.lookup(key) {
-        lolalytics::Cached::Fresh(build) => Some(Ok(Some(build))),
-        lolalytics::Cached::Unavailable => Some(Ok(None)),
+        lolalytics::Cached::Fresh(build) => Some(Ok(Some(Sourced {
+            value: build,
+            provider: Provider::Lolalytics,
+            stale: false,
+            fetched_at: None,
+        }))),
+        lolalytics::Cached::Unavailable => Some(Ok(keystone_stale(key))),
         lolalytics::Cached::Miss => None,
     }
+}
+
+/// The persisted last-good build for a key, marked stale. `None` when there is
+/// nothing cached, so the card hides rather than showing an error.
+fn keystone_stale(key: &str) -> Option<Sourced<lolalytics::KeystoneBuild>> {
+    build_last_good().lookup(key).map(|cached| {
+        if cached.fresh {
+            Sourced {
+                value: cached.value,
+                provider: Provider::Lolalytics,
+                stale: false,
+                fetched_at: Some(cached.fetched_at),
+            }
+        } else {
+            Sourced::stale(cached.value, Provider::Lolalytics, cached.fetched_at)
+        }
+    })
 }
 
 async fn lcu_recommended(
@@ -318,6 +464,8 @@ pub struct LoadedPreset {
 
 pub struct Loaded {
     pub source: &'static str,
+    /// The provider the presets came from, used to label the source.
+    pub provider: Provider,
     /// The op.gg groups the statistics were aggregated from (empty for the
     /// League fallback).
     pub groups: Vec<opgg::RunePageGroup>,
@@ -330,8 +478,20 @@ pub struct Loaded {
     /// did. The caller shows a "not enough games" state instead of silently
     /// falling back to a different bracket.
     pub tier_empty: bool,
+    /// True when the presets are the last successful op.gg result, served
+    /// because the live fetch failed.
+    pub stale: bool,
+    /// Unix milliseconds of that last successful fetch, when known.
+    pub fetched_at: Option<i64>,
 }
 
+/// Loads the recommendation set for a champion select.
+///
+/// op.gg is the source of record; when it answers with nothing, the League
+/// client's own recommended pages are the fallback. That is the only genuine
+/// substitute Swapper has: item builds (lolalytics) and pro games
+/// (probuildstats/u.gg) carry data shapes and meanings the other sources cannot
+/// produce, so no cross-kind fallback is attempted.
 pub async fn load_for(
     current: &Lcu,
     context: &session::ChampSelectContext,
@@ -342,7 +502,13 @@ pub async fn load_for(
     let region = region_for(current).await;
     let mode = context.mode();
     let tier = opgg::normalize_tier(tier);
-    if let Ok(data) = champion_data(&region, mode, context.champion_id, position, tier).await {
+    if let Ok(sourced) = champion_data(&region, mode, context.champion_id, position, tier).await {
+        let Sourced {
+            value: data,
+            provider,
+            stale,
+            fetched_at,
+        } = sourced;
         let spell_pair = data.top_spell_pair();
         let presets = opgg::presets(&data.rune_pages);
         if !presets.is_empty() {
@@ -367,10 +533,13 @@ pub async fn load_for(
                 .collect();
             return Ok(Loaded {
                 source: "opgg",
+                provider,
                 groups: data.rune_pages,
                 selections,
                 spell_pair,
                 tier_empty: false,
+                stale,
+                fetched_at,
             });
         }
         // The chosen bracket had no data. Only skip the fallback when a broader
@@ -385,14 +554,18 @@ pub async fn load_for(
                 opgg::TIER_ALL,
             )
             .await
+            .map(|sourced| sourced.value)
             .unwrap_or_default();
             if !broad.rune_pages.is_empty() {
                 return Ok(Loaded {
                     source: "none",
+                    provider,
                     groups: Vec::new(),
                     selections: Vec::new(),
                     spell_pair: None,
                     tier_empty: true,
+                    stale: false,
+                    fetched_at: None,
                 });
             }
         }
@@ -418,10 +591,14 @@ pub async fn load_for(
         .collect();
     Ok(Loaded {
         source: if recommended.is_empty() { "none" } else { "lcu" },
+        provider: Provider::LeagueClient,
         groups: Vec::new(),
         selections,
         spell_pair: None,
         tier_empty: false,
+        // The League client answered live; this is not cached op.gg data.
+        stale: false,
+        fetched_at: None,
     })
 }
 
@@ -457,5 +634,16 @@ mod tests {
         assert_ne!(emerald, diamond);
         assert!(emerald.ends_with("|emerald_plus"));
         assert_eq!(emerald, "euw|ranked|103|mid|emerald_plus");
+    }
+
+    #[test]
+    fn a_fresh_in_memory_group_is_served_without_a_live_fetch() {
+        let key = group_key("euw", "ranked", 999, "mid", "emerald_plus");
+        crate::runes::shared()
+            .groups
+            .insert(key.clone(), (Instant::now(), opgg::ChampionData::default()));
+        let cached = cached_group(&key).expect("a fresh hit");
+        let sourced = cached.expect("a fresh hit is not an error");
+        assert!(!sourced.stale);
     }
 }

@@ -14,10 +14,10 @@
 use std::collections::HashMap;
 use std::time::{Duration, Instant};
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
-use super::RuneError;
+use super::provider::ProviderError;
 
 /// The GraphQL endpoint. The same API also answers at `https://u.gg/api`.
 pub const ENDPOINT: &str = "https://u.gg/api";
@@ -59,7 +59,7 @@ query ChampionMatchList($championId: Int!, $role: String, $pageNumber: Int, $isO
   }
 }";
 
-#[derive(Debug, Clone, Default, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Deserialize, Serialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct ProInfo {
     #[serde(default)]
@@ -70,7 +70,7 @@ pub struct ProInfo {
     pub current_team: String,
 }
 
-#[derive(Debug, Clone, Default, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Deserialize, Serialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct ProRunes {
     #[serde(default)]
@@ -92,7 +92,7 @@ pub struct ProRunes {
 }
 
 /// One purchase in a game's item path, with the game-time it happened.
-#[derive(Debug, Clone, Default, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Deserialize, Serialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct ItemPathEntry {
     #[serde(default)]
@@ -106,7 +106,7 @@ pub struct ItemPathEntry {
 }
 
 /// One pro solo-queue game, as the API reports it.
-#[derive(Debug, Clone, Default, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Deserialize, Serialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct ProMatch {
     #[serde(default)]
@@ -269,18 +269,17 @@ pub fn cache_key(champion_id: i64, role: Option<&str>, page: u32) -> String {
 ///
 /// A match list that is empty is a valid answer (no recent games), not an
 /// error. Individual malformed matches and entries are dropped.
-pub fn parse(body: &str) -> Result<Vec<ProMatch>, RuneError> {
-    let value: Value = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read the pro build response: {e}")))?;
+pub fn parse(body: &str) -> Result<Vec<ProMatch>, ProviderError> {
+    let value: Value = serde_json::from_str(body).map_err(|_| ProviderError::Format)?;
     if let Some(errors) = value.get("errors").and_then(Value::as_array) {
         if !errors.is_empty() {
-            return Err(RuneError::unavailable("The pro build service returned an error."));
+            return Err(ProviderError::Unavailable);
         }
     }
     let list = value
         .pointer("/data/getProChampionMatchList/matchList")
         .and_then(Value::as_array)
-        .ok_or_else(|| RuneError::unavailable("The pro build response was missing its matches."))?;
+        .ok_or(ProviderError::Format)?;
     let mut matches = Vec::with_capacity(list.len());
     let mut unreadable = 0;
     for entry in list {
@@ -296,7 +295,7 @@ pub fn parse(body: &str) -> Result<Vec<ProMatch>, RuneError> {
     // Every entry failing to deserialize means the response shape changed, not
     // that there are no games; report it instead of showing an empty list.
     if !list.is_empty() && unreadable == list.len() {
-        return Err(RuneError::unavailable("The pro build response format was not recognised."));
+        return Err(ProviderError::Format);
     }
     Ok(matches)
 }
@@ -358,14 +357,12 @@ pub struct ProBuildsClient {
 }
 
 impl ProBuildsClient {
-    pub fn new() -> Result<Self, RuneError> {
+    pub fn new() -> Result<Self, ProviderError> {
         let client = reqwest::Client::builder()
             .connect_timeout(REQUEST_TIMEOUT)
             .timeout(REQUEST_TIMEOUT)
             .build()
-            .map_err(|e| {
-                RuneError::unavailable(format!("Could not create the pro builds client: {e}"))
-            })?;
+            .map_err(|_| ProviderError::Unavailable)?;
         Ok(Self {
             client,
             endpoint: ENDPOINT.to_string(),
@@ -390,24 +387,21 @@ impl ProBuildsClient {
         role: Option<&str>,
         page: u32,
         is_otp: bool,
-    ) -> Result<Vec<ProMatch>, RuneError> {
+    ) -> Result<Vec<ProMatch>, ProviderError> {
         let response = self
             .client
             .post(&self.endpoint)
             .json(&Self::body(champion_id, role, page, is_otp))
             .send()
             .await
-            .map_err(|e| RuneError::unavailable(format!("Pro builds request failed: {e}")))?;
+            .map_err(|e| ProviderError::from_reqwest(&e))?;
         if !response.status().is_success() {
-            return Err(RuneError::unavailable(format!(
-                "Pro builds returned HTTP {}",
-                response.status().as_u16()
-            )));
+            return Err(ProviderError::from_status(response.status()));
         }
         let body = response
             .text()
             .await
-            .map_err(|e| RuneError::unavailable(format!("Pro build response was unreadable: {e}")))?;
+            .map_err(|_| ProviderError::Unavailable)?;
         parse(&body)
     }
 }
@@ -587,6 +581,16 @@ mod tests {
         assert!(parse(r#"{"errors":[{"message":"nope"}]}"#).is_err());
         assert!(parse(r#"{"data":{}}"#).is_err());
         assert!(parse("not json").is_err());
+    }
+
+    #[test]
+    fn a_changed_response_shape_is_a_format_error_not_an_outage() {
+        assert_eq!(parse("not json"), Err(ProviderError::Format));
+        assert_eq!(parse(r#"{"data":{}}"#), Err(ProviderError::Format));
+        assert_eq!(
+            parse(r#"{"errors":[{"message":"nope"}]}"#),
+            Err(ProviderError::Unavailable)
+        );
     }
 
     #[test]

@@ -13,6 +13,7 @@
 //! plumbing and champion-select context they share.
 
 pub mod apply;
+pub mod cache;
 pub mod data;
 pub mod items;
 pub mod item_sets;
@@ -22,6 +23,7 @@ pub mod page;
 pub mod perks;
 pub mod prefetch;
 pub mod probuilds;
+pub mod provider;
 pub mod ranks;
 pub mod roles;
 pub mod session;
@@ -46,6 +48,7 @@ pub use apply::{apply_selection, apply_top};
 pub use data::icon;
 pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
+use provider::{DataKind, ProviderError};
 pub use view::{
     preset_build_view, pro_builds_view, view, KeystoneBuildView, ProBuildsView, RunesView,
 };
@@ -94,6 +97,11 @@ impl RuneError {
 
     pub fn not_found(message: impl Into<String>) -> Self {
         Self::NotFound(message.into())
+    }
+
+    /// A classified third-party provider failure, reduced to a short message.
+    pub fn provider(error: ProviderError, kind: DataKind) -> Self {
+        Self::Unavailable(error.message(kind))
     }
 
     pub fn message(&self) -> &str {

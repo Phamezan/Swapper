@@ -3,6 +3,7 @@ import { ItemIcon } from "./ItemIcon";
 import { RuneIcon } from "./RuneIcon";
 import { RoleIcon } from "./RoleIcon";
 import { SpellIcon } from "./SpellIcon";
+import { CachedBadge } from "./CachedBadge";
 import {
   fmtBuildMinute,
   isTrinketItem,
@@ -226,6 +227,7 @@ export function ProBuilds({
   }
   return (
     <div className="pro-list">
+      {view.stale && <CachedBadge stale updatedAt={view.updatedAt} />}
       {view.matches.map((build) => (
         <ProBuildCard
           key={build.matchId}

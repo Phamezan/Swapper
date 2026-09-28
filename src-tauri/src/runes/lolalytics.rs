@@ -20,10 +20,10 @@
 
 use std::time::{Duration, Instant};
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-use super::RuneError;
+use super::provider::ProviderError;
 
 /// The build page. `lane` and `tier` are slugs; `keystone` is a Riot perk id.
 const BASE_URL: &str = "https://lolalytics.com/lol";
@@ -41,14 +41,14 @@ pub const FAILURE_TTL: Duration = Duration::from_secs(5 * 60);
 pub const DEFAULT_TIER: &str = "emerald_plus";
 
 /// One item stack in the starting set.
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ItemStack {
     pub id: i64,
     pub count: u32,
 }
 
 /// A later-slot candidate and the evidence LoLalytics reports for that slot.
-#[derive(Debug, Clone, Default, PartialEq)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct ItemCandidate {
     pub id: i64,
     pub slot: u8,
@@ -57,7 +57,7 @@ pub struct ItemCandidate {
 }
 
 /// One keystone's common item path and its observed alternatives.
-#[derive(Debug, Clone, Default, PartialEq)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct KeystoneBuild {
     /// Starting item set, preserving stacked consumable counts where reported.
     pub starters: Vec<ItemStack>,
@@ -555,15 +555,13 @@ pub struct LolalyticsClient {
 }
 
 impl LolalyticsClient {
-    pub fn new() -> Result<Self, RuneError> {
+    pub fn new() -> Result<Self, ProviderError> {
         let client = reqwest::Client::builder()
             .user_agent(USER_AGENT)
             .connect_timeout(Duration::from_secs(3))
             .timeout(REQUEST_TIMEOUT)
             .build()
-            .map_err(|e| {
-                RuneError::unavailable(format!("Could not create the lolalytics client: {e}"))
-            })?;
+            .map_err(|_| ProviderError::Unavailable)?;
         Ok(Self { client })
     }
 
@@ -575,23 +573,21 @@ impl LolalyticsClient {
         lane: &str,
         tier: &str,
         keystone: i64,
-    ) -> Result<Option<KeystoneBuild>, RuneError> {
+    ) -> Result<Option<KeystoneBuild>, ProviderError> {
         let response = self
             .client
             .get(url(champion_slug, lane, tier, keystone))
             .header(reqwest::header::ACCEPT, "text/html")
             .send()
             .await
-            .map_err(|e| RuneError::unavailable(format!("lolalytics request failed: {e}")))?;
+            .map_err(|e| ProviderError::from_reqwest(&e))?;
         if !response.status().is_success() {
-            return Err(RuneError::unavailable(format!(
-                "lolalytics returned HTTP {}",
-                response.status().as_u16()
-            )));
+            return Err(ProviderError::from_status(response.status()));
         }
-        let body = response.text().await.map_err(|e| {
-            RuneError::unavailable(format!("lolalytics response was unreadable: {e}"))
-        })?;
+        let body = response
+            .text()
+            .await
+            .map_err(|_| ProviderError::Unavailable)?;
         Ok(parse_build(&body))
     }
 }

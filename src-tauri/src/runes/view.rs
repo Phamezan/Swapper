@@ -111,6 +111,13 @@ pub struct KeystoneBuildView {
     pub core_games: u64,
     /// Win rate for the core combination.
     pub core_win_pct: Option<f64>,
+    /// True when this is the last successful lolalytics build, served because
+    /// the live fetch failed.
+    #[serde(default)]
+    pub stale: bool,
+    /// Unix milliseconds of that last successful fetch, when known.
+    #[serde(default)]
+    pub updated_at: Option<i64>,
 }
 
 /// One recorded purchase in a pro's game, for the item order.
@@ -220,6 +227,13 @@ pub struct ProBuildsView {
     /// unavailable state instead of an error.
     pub unavailable: bool,
     pub message: Option<String>,
+    /// True when these are the last successful pro games, served because the
+    /// live fetch failed.
+    #[serde(default)]
+    pub stale: bool,
+    /// Unix milliseconds of that last successful fetch, when known.
+    #[serde(default)]
+    pub updated_at: Option<i64>,
 }
 
 #[derive(Debug, Clone, serde::Serialize)]
@@ -260,6 +274,13 @@ pub struct RunesView {
     pub tier_empty: bool,
     /// Total op.gg games behind the preset cards, for the sample-size hint.
     pub games: u64,
+    /// True when the presets are the last successful op.gg result, served
+    /// because the live fetch failed.
+    #[serde(default)]
+    pub stale: bool,
+    /// Unix milliseconds of that last successful fetch, when known.
+    #[serde(default)]
+    pub updated_at: Option<i64>,
 }
 
 impl RunesView {
@@ -293,6 +314,8 @@ impl RunesView {
             tier_supported: false,
             tier_empty: false,
             games: 0,
+            stale: false,
+            updated_at: None,
         }
     }
 }
@@ -407,11 +430,10 @@ pub fn catalog_index(catalog: &perks::PerkCatalog) -> super::CatalogIndex {
     index
 }
 
-fn source_label(source: &str) -> &'static str {
+fn source_label(source: &str, provider: super::provider::Provider) -> &'static str {
     match source {
-        "opgg" => "op.gg",
-        "lcu" => "League client",
-        _ => "Unavailable",
+        "none" => "Unavailable",
+        _ => provider.label(),
     }
 }
 
@@ -482,10 +504,13 @@ pub async fn view(
         .await
         .unwrap_or(data::Loaded {
             source: "none",
+            provider: super::provider::Provider::Opgg,
             groups: Vec::new(),
             selections: Vec::new(),
             spell_pair: None,
             tier_empty: false,
+            stale: false,
+            fetched_at: None,
         });
     let preset_spells = loaded
         .spell_pair
@@ -535,7 +560,7 @@ pub async fn view(
         position,
         mode: mode.clone(),
         source: loaded.source.to_string(),
-        source_label: source_label(loaded.source).to_string(),
+        source_label: source_label(loaded.source, loaded.provider).to_string(),
         message,
         presets,
         trees: build_trees(&catalog, &aggregates),
@@ -551,6 +576,8 @@ pub async fn view(
         tier_supported: super::opgg::tier_supported(&mode),
         tier_empty,
         games,
+        stale: loaded.stale,
+        updated_at: loaded.fetched_at,
     }
 }
 
@@ -560,8 +587,8 @@ pub async fn view(
 
 /// The 6-item build people build with one preset's keystone, for a champion,
 /// role and bracket. Returns `None` (so the card shows nothing) when the
-/// champion cannot be mapped, the mode has no lane, or lolalytics has no
-/// build; a network problem is treated the same way.
+/// champion cannot be mapped, the mode has no lane, or lolalytics has no build;
+/// a network problem is treated the same way unless a cached build exists.
 pub async fn preset_build_view(
     champion_id: i64,
     position: &str,
@@ -574,9 +601,10 @@ pub async fn preset_build_view(
     let lane = lolalytics::lane(position)?;
     let names = data::champion_names().await.ok()?;
     let slug = lolalytics::champion_slug(names.get(&champion_id)?)?;
-    let build = data::keystone_build(&slug, lane, tier, keystone)
+    let sourced = data::keystone_build(&slug, lane, tier, keystone)
         .await
         .ok()??;
+    let build = sourced.value;
     let item_names = items::names().await;
     Some(KeystoneBuildView {
         starters: build
@@ -613,6 +641,8 @@ pub async fn preset_build_view(
         games: build.games,
         core_games: build.core_games,
         core_win_pct: build.core_win_pct,
+        stale: sourced.stale,
+        updated_at: sourced.fetched_at,
     })
 }
 
@@ -645,10 +675,7 @@ fn played_ago(now_ms: i64, at_ms: i64) -> String {
 }
 
 fn now_ms() -> i64 {
-    std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .map(|elapsed| elapsed.as_millis() as i64)
-        .unwrap_or(0)
+    super::provider::now_ms()
 }
 
 fn pro_build_view(
@@ -715,6 +742,8 @@ fn unavailable_pro_builds(champion_id: i64, position: &str, role: &str, page: u3
         matches: Vec::new(),
         unavailable: true,
         message: Some(message.to_string()),
+        stale: false,
+        updated_at: None,
     }
 }
 
@@ -733,10 +762,13 @@ pub async fn pro_builds_view(champion_id: i64, position: &str, page: u32) -> Pro
             matches: Vec::new(),
             unavailable: false,
             message: Some("Pick a champion to load pro builds.".to_string()),
+            stale: false,
+            updated_at: None,
         };
     }
     match data::pro_builds(champion_id, position, page).await {
-        Ok(matches) => {
+        Ok(sourced) => {
+            let matches = sourced.value;
             let now = now_ms();
             let has_more = matches.len() >= probuilds::PAGE_SIZE;
             // Names come from the client's item catalog; empty when unavailable,
@@ -759,14 +791,16 @@ pub async fn pro_builds_view(champion_id: i64, position: &str, page: u32) -> Pro
                 matches: views,
                 unavailable: false,
                 message: None,
+                stale: sourced.stale,
+                updated_at: sourced.fetched_at,
             }
         }
-        Err(_) => unavailable_pro_builds(
+        Err(error) => unavailable_pro_builds(
             champion_id,
             position,
             role,
             page,
-            "Pro builds unavailable.",
+            error.message(),
         ),
     }
 }

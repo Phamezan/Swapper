@@ -121,11 +121,11 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
         items.extend(build.options.iter().map(|item| item.id));
     }
     // Pro builds page 1: the slow u.gg call this prefetch exists to hide.
-    if let Ok(matches) = data::pro_builds(context.champion_id, &position, 1).await {
+    if let Ok(sourced) = data::pro_builds(context.champion_id, &position, 1).await {
         if stale(generation) {
             return;
         }
-        for matched in &matches {
+        for matched in &sourced.value {
             if let Some(selection) = matched.selection() {
                 collect_selection(&selection, &mut runes);
             }

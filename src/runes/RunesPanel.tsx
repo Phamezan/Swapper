@@ -4,6 +4,7 @@ import { RoleIcon } from "./RoleIcon";
 import { SpellIcon } from "./SpellIcon";
 import { PresetBuild } from "./PresetBuild";
 import { ProBuilds } from "./ProBuilds";
+import { CachedBadge } from "./CachedBadge";
 import { RuneEditor } from "./RuneEditor";
 import { RankPicker } from "./RankPicker";
 import {
@@ -357,6 +358,7 @@ export function RunesPanel({
             League fallback
           </span>
         )}
+        {view.stale && <CachedBadge stale updatedAt={view.updatedAt} />}
       </div>
 
       {view.mode === "ranked" && (
