@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ItemIcon } from "./ItemIcon";
+import { CachedBadge } from "./CachedBadge";
 import type { KeystoneBuildView } from "./types";
 
 /** How many placeholder tiles the loading skeleton shows. */
@@ -75,6 +76,7 @@ export function PresetBuild({ mode, championId, position, tier, keystone, onLoad
             {build.coreGames || build.games} core games
           </span>
         )}
+        <CachedBadge stale={build.stale} updatedAt={build.updatedAt} className="preset-build-cached" />
       </span>
       <button
         type="button"

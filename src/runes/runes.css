@@ -102,6 +102,22 @@
 
 .runes-source.is-fallback { color: var(--positive); background: #143329; }
 
+.cached-badge {
+  flex: none;
+  align-self: center;
+  padding: 0 8px;
+  border-radius: 7px;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--line-subtle) 60%, transparent);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.preset-build-cached { margin-left: 4px; align-self: center; }
+
 .runes-body { display: flex; flex-direction: column; gap: 9px; min-height: 0; }
 
 .runes-alert {

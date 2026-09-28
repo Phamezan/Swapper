@@ -83,6 +83,11 @@ export type KeystoneBuildView = {
   games: number;
   coreGames: number;
   coreWinPct: number | null;
+  /** True when this is the last successful build, served because the live
+   *  source failed. */
+  stale: boolean;
+  /** Unix milliseconds of that last successful fetch, when known. */
+  updatedAt: number | null;
 };
 
 /** One recorded purchase in a pro's game. */
@@ -130,6 +135,10 @@ export type RunesView = {
   tierSupported: boolean;
   tierEmpty: boolean;
   games: number;
+  /** True when the presets are the last successful op.gg result. */
+  stale: boolean;
+  /** Unix milliseconds of that last successful fetch, when known. */
+  updatedAt: number | null;
 };
 
 export type ProBuild = {
@@ -171,6 +180,11 @@ export type ProBuildsView = {
   matches: ProBuild[];
   unavailable: boolean;
   message: string | null;
+  /** True when these are the last successful games, served because the live
+   *  source failed. */
+  stale: boolean;
+  /** Unix milliseconds of that last successful fetch, when known. */
+  updatedAt: number | null;
 };
 /** The rank brackets op.gg accepts, kept in step with `runes::opgg::TIERS`. */
 export const TIER_OPTIONS: TierOption[] = [
@@ -206,6 +220,16 @@ export function fmtGames(play: number): string {
   if (!play) return "–";
   if (play >= 1000) return `${(play / 1000).toFixed(1)}k`;
   return String(play);
+}
+
+/** A short "how long ago" label for a Unix-millisecond timestamp. */
+export function fmtAgo(updatedAt: number | null | undefined): string {
+  if (!updatedAt) return "unknown";
+  const seconds = Math.max(0, Math.floor((Date.now() - updatedAt) / 1000));
+  if (seconds < 60) return "just now";
+  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
+  if (seconds < 86_400) return `${Math.floor(seconds / 3600)}h ago`;
+  return `${Math.floor(seconds / 86_400)}d ago`;
 }
 
 export type Selection = {
