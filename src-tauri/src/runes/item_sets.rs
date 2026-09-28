@@ -275,6 +275,28 @@ fn preset_item_set_body(
     item_set_body(champion_id, champion_name, source, blocks)
 }
 
+/// The player's item set list with `item_set` added at the end. Every other
+/// field League returned (accountId, the player's own sets) is kept as-is.
+fn with_item_set_appended(mut existing: Value, item_set: Value, now_ms: i64) -> Value {
+    if !existing.is_object() {
+        existing = json!({});
+    }
+    let sets = existing
+        .as_object_mut()
+        .expect("normalized to an object")
+        .entry("itemSets")
+        .or_insert_with(|| json!([]));
+    if !sets.is_array() {
+        *sets = json!([]);
+    }
+    sets.as_array_mut().expect("normalized to an array").push(item_set);
+    existing["timestamp"] = json!(now_ms);
+    existing
+}
+
+/// Adds one item set to the player's list. League answers POST .../sets with
+/// 204 but saves nothing, so Swapper reads the whole list, appends, and PUTs it
+/// back — the same thing the client's own item set editor does.
 async fn post_item_set(title: String, body: Value) -> Result<String, RuneError> {
     let lcu = super::lcu().await?;
     let summoner: CurrentSummoner = super::lcu_get(&lcu, CURRENT_SUMMONER_PATH).await?;
@@ -284,7 +306,13 @@ async fn post_item_set(title: String, body: Value) -> Result<String, RuneError> 
         ));
     }
     let path = format!("{ITEM_SETS_PATH}/{}/sets", summoner.summoner_id);
-    let response = lcu.send(Method::POST, &path, Some(&body)).await?;
+    let existing: Value = super::lcu_get(&lcu, &path).await?;
+    let now_ms = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|elapsed| elapsed.as_millis() as i64)
+        .unwrap_or(0);
+    let updated = with_item_set_appended(existing, body, now_ms);
+    let response = lcu.send(Method::PUT, &path, Some(&updated)).await?;
     if response.status().is_success() {
         return Ok(title);
     }
@@ -413,6 +441,34 @@ mod tests {
         assert_eq!(blocks[0]["items"][1]["id"], "2003");
         assert_eq!(blocks[0]["items"][1]["count"], 2);
         assert_eq!(blocks[1]["items"].as_array().unwrap().len(), 3);
+    }
+
+    #[test]
+    fn appending_keeps_the_players_sets_and_account() {
+        let existing = json!({
+            "accountId": 42,
+            "timestamp": 0,
+            "itemSets": [{ "title": "Mine", "uid": "a" }]
+        });
+        let added = json!({ "title": "Swapper: Ahri", "uid": "b" });
+
+        let updated = with_item_set_appended(existing, added, 1_700_000_000_000);
+
+        assert_eq!(updated["accountId"], 42);
+        assert_eq!(updated["timestamp"], 1_700_000_000_000_i64);
+        let titles: Vec<&str> = updated["itemSets"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|set| set["title"].as_str().unwrap())
+            .collect();
+        assert_eq!(titles, ["Mine", "Swapper: Ahri"]);
+    }
+
+    #[test]
+    fn appending_to_an_account_without_sets_starts_the_list() {
+        let updated = with_item_set_appended(json!({ "accountId": 7 }), json!({ "uid": "b" }), 1);
+        assert_eq!(updated["itemSets"].as_array().unwrap().len(), 1);
     }
 
     #[test]
