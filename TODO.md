@@ -101,10 +101,10 @@ Before implementing a task:
 - [ ] Allow the hotkey to be disabled.
 
 ### Account launch shortcuts
-- [ ] Add a Swapper command/protocol for switching to a specific saved account.
-- [ ] Support creating desktop shortcuts for individual accounts.
-- [ ] Keep account identifiers internal rather than embedding sensitive session data in shortcuts.
-- [ ] Refuse shortcut-triggered switching while a game is running using the same safety checks as the normal UI.
+- [x] Add a Swapper command/protocol for switching to a specific saved account.
+- [x] Support creating desktop shortcuts for individual accounts.
+- [x] Keep account identifiers internal rather than embedding sensitive session data in shortcuts.
+- [x] Refuse shortcut-triggered switching while a game is running using the same safety checks as the normal UI.
 
 ---
 

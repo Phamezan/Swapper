@@ -31,6 +31,13 @@
       "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost data:; style-src 'self' 'unsafe-inline'"
     }
   },
+  "plugins": {
+    "deep-link": {
+      "desktop": {
+        "schemes": ["swapper"]
+      }
+    }
+  },
   "bundle": {
     "active": true,
     "targets": ["nsis"],

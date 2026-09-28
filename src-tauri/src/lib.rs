@@ -5,6 +5,7 @@ mod notify;
 mod riot;
 mod riot_client;
 mod runes;
+mod shortcuts;
 mod vault;
 pub mod windows;
 
@@ -327,12 +328,10 @@ fn mismatch_error() -> String {
     "Different Riot account detected. The current login does not match the account Swapper expected. Save this account separately or sign back into the expected account.".into()
 }
 
-#[tauri::command]
-fn switch_account(
-    app: tauri::AppHandle,
-    state: State<'_, AppState>,
-    id: Uuid,
-) -> Result<(), String> {
+/// Starts switching to one saved account: guard lease, notifications, tray
+/// tooltip, then the switch on a background thread. Shared by the UI command
+/// and deep-link shortcuts so both get identical safety checks.
+fn start_switch(app: &tauri::AppHandle, state: &AppState, id: Uuid) -> Result<(), String> {
     // Acquire guard lease first
     let lease = state.switch_guard.acquire()?;
 
@@ -346,11 +345,12 @@ fn switch_account(
         (target.display_name(), config.use_deceive)
     };
 
-    notify::switch_started(&app, &name);
-    update_tray_tooltip(&app, &format!("Swapper · Switching to {name}…"));
+    notify::switch_started(app, &name);
+    update_tray_tooltip(app, &format!("Swapper · Switching to {name}…"));
     let _ = app.emit("switch_started", SwitchStartedPayload { id, name: name.clone() });
 
     let app_handle = app.clone();
+    let app = app.clone();
     let bundled_deceive = state.bundled_deceive.clone();
 
     tauri::async_runtime::spawn(async move {
@@ -412,6 +412,15 @@ fn switch_account(
     });
 
     Ok(())
+}
+
+#[tauri::command]
+fn switch_account(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    id: Uuid,
+) -> Result<(), String> {
+    start_switch(&app, &state, id)
 }
 
 #[tauri::command]
@@ -790,6 +799,17 @@ pub fn run() {
     let config = vault::load().expect("Swapper settings could not be loaded");
     let launched_at_startup = std::env::args().any(|arg| arg == AUTOSTART_ARG);
     tauri::Builder::default()
+        .plugin(tauri_plugin_single_instance::init(|app, args, _cwd| {
+            // With the deep-link feature the second instance's arguments were
+            // already forwarded to the deep-link plugin, whose handler (see
+            // shortcuts::init) performs the switch. A second plain launch
+            // behaves like a tray click instead of starting a second Swapper.
+            let has_link = args.iter().any(|arg| arg.starts_with("swapper://"));
+            let is_autostart = args.iter().any(|arg| arg == AUTOSTART_ARG);
+            if !has_link && !is_autostart {
+                show_flyout(app, "accounts");
+            }
+        }))
         .setup(move |app| {
             let bundled_deceive = app.path().resolve("Deceive.exe", BaseDirectory::Resource)?;
             let remote = remote::RemoteCore::new(app.handle().clone(), config.remote_enabled);
@@ -809,6 +829,10 @@ pub fn run() {
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;
+            app.handle().plugin(tauri_plugin_deep_link::init())?;
+            // After the notification plugin so shortcut links can always report
+            // their outcome, and after AppState exists so links can switch.
+            shortcuts::init(app.handle().clone());
             app.handle().plugin(
                 tauri_plugin_autostart::Builder::new()
                     .args([AUTOSTART_ARG])
@@ -871,6 +895,7 @@ pub fn run() {
             detect_account_identity,
             complete_add,
             switch_account,
+            shortcuts::create_account_shortcut,
             set_nickname,
             remove_account,
             save_settings,
