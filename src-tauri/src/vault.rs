@@ -215,6 +215,17 @@ fn unprotect(input: &[u8]) -> Result<Vec<u8>, String> {
     crypt(input, false)
 }
 
+/// Protects non-account secrets with the same current-Windows-user DPAPI
+/// boundary used for saved Riot sessions.
+pub(crate) fn protect_local_data(input: &[u8]) -> Result<Vec<u8>, String> {
+    protect(input)
+}
+
+/// Opens data previously protected for the current Windows user.
+pub(crate) fn unprotect_local_data(input: &[u8]) -> Result<Vec<u8>, String> {
+    unprotect(input)
+}
+
 fn crypt(input: &[u8], encrypt: bool) -> Result<Vec<u8>, String> {
     let source = CRYPT_INTEGER_BLOB {
         cbData: input.len().try_into().map_err(|_| "Session is too large")?,

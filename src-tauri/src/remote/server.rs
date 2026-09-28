@@ -114,25 +114,58 @@ struct PairingQuery {
 async fn pair_lan_device(
     State(core): State<Arc<RemoteCore>>,
     Query(query): Query<PairingQuery>,
+    headers: HeaderMap,
 ) -> Response {
     let Some(token) = query.token else {
         return StatusCode::NOT_FOUND.into_response();
     };
-    let Some(session) = core.pair_lan_device(&token) else {
-        return StatusCode::NOT_FOUND.into_response();
+    let device_name = headers
+        .get(header::USER_AGENT)
+        .and_then(|value| value.to_str().ok())
+        .map(infer_lan_device_name)
+        .unwrap_or("Phone");
+    let session = match core.pair_lan_device(&token, device_name) {
+        Ok(Some(session)) => session,
+        Ok(None) => return StatusCode::NOT_FOUND.into_response(),
+        Err(_) => {
+            return (
+                StatusCode::SERVICE_UNAVAILABLE,
+                "LAN pairing is unavailable. Reset LAN Access in Swapper Settings and try again.",
+            )
+                .into_response();
+        }
     };
     let mut response = axum::response::Redirect::to("/").into_response();
     response.headers_mut().insert(
         header::SET_COOKIE,
-        format!("swapper_lan_session={session}; HttpOnly; SameSite=Strict; Path=/")
-            .parse()
-            .expect("valid pairing cookie"),
+        format!(
+            "swapper_lan_session={session}; Max-Age=31536000; HttpOnly; SameSite=Strict; Path=/"
+        )
+        .parse()
+        .expect("valid pairing cookie"),
     );
     response.headers_mut().insert(
         header::REFERRER_POLICY,
         "no-referrer".parse().expect("valid referrer policy"),
     );
     response
+}
+
+fn infer_lan_device_name(user_agent: &str) -> &'static str {
+    let user_agent = user_agent.to_ascii_lowercase();
+    if user_agent.contains("ipad") {
+        "iPad"
+    } else if user_agent.contains("iphone") {
+        "iPhone"
+    } else if user_agent.contains("android") && user_agent.contains("mobile") {
+        "Android phone"
+    } else if user_agent.contains("android") {
+        "Android tablet"
+    } else if user_agent.contains("mobile") {
+        "Mobile browser"
+    } else {
+        "Phone"
+    }
 }
 
 async fn game() -> impl IntoResponse {

@@ -480,7 +480,7 @@ fn create_lan_pairing_url(state: State<'_, AppState>) -> Result<String, String> 
 
 #[tauri::command]
 fn reset_lan_access(state: State<'_, AppState>) -> Result<String, String> {
-    state.remote.reset_lan_access();
+    state.remote.reset_lan_access()?;
     state.remote.create_lan_pairing_url()
 }
 

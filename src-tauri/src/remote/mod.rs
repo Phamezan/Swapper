@@ -9,7 +9,7 @@ use std::path::{Path, PathBuf};
 use std::sync::mpsc;
 use std::sync::{Arc, Mutex, MutexGuard, Weak};
 use std::thread;
-use std::time::{Duration, Instant};
+use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
 use serde::Serialize;
 use tauri::AppHandle;
@@ -101,7 +101,107 @@ struct ServiceInfo {
 
 struct LanAccess {
     pairing_token: Option<(String, Instant)>,
-    sessions: std::collections::HashSet<String>,
+    devices: Vec<PairedLanDevice>,
+    storage_available: bool,
+    last_seen_saved_at: Instant,
+}
+
+#[derive(Clone, serde::Serialize, serde::Deserialize)]
+struct PairedLanDevice {
+    id: uuid::Uuid,
+    credential: String,
+    name: String,
+    paired_at: u64,
+    last_seen: u64,
+}
+
+const MAX_LAN_DEVICE_STORE_BYTES: usize = 1024 * 1024;
+const LAN_LAST_SEEN_SAVE_INTERVAL: Duration = Duration::from_secs(60);
+// Keep a paired phone's saved address usable after Swapper restarts.
+const LAN_REMOTE_PORT: u16 = 38127;
+
+fn paired_devices_path() -> Result<PathBuf, String> {
+    let root = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
+    Ok(PathBuf::from(root)
+        .join("Swapper")
+        .join("lan-paired-devices.bin"))
+}
+
+fn load_paired_devices_at(path: &Path) -> Result<Vec<PairedLanDevice>, String> {
+    match fs::metadata(path) {
+        Ok(metadata) if metadata.len() > MAX_LAN_DEVICE_STORE_BYTES as u64 => {
+            return Err("Paired LAN device store is too large".into());
+        }
+        Ok(_) => {}
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(Vec::new()),
+        Err(error) => return Err(format!("Could not read paired LAN devices: {error}")),
+    }
+    let encrypted = match fs::read(path) {
+        Ok(bytes) => bytes,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(Vec::new()),
+        Err(error) => return Err(format!("Could not read paired LAN devices: {error}")),
+    };
+    if encrypted.len() > MAX_LAN_DEVICE_STORE_BYTES {
+        return Err("Paired LAN device store is too large".into());
+    }
+    let plain = crate::vault::unprotect_local_data(&encrypted)
+        .map_err(|_| "Could not unlock paired LAN devices for this Windows user".to_string())?;
+    if plain.len() > MAX_LAN_DEVICE_STORE_BYTES {
+        return Err("Paired LAN device store is too large".into());
+    }
+    let devices: Vec<PairedLanDevice> = serde_json::from_slice(&plain)
+        .map_err(|_| "Paired LAN device store is invalid".to_string())?;
+    if devices.iter().any(|device| {
+        device.credential.len() != 32
+            || !device
+                .credential
+                .bytes()
+                .all(|byte| byte.is_ascii_hexdigit())
+            || device.name.len() > 32
+    }) {
+        return Err("Paired LAN device store contains invalid entries".into());
+    }
+    Ok(devices)
+}
+
+fn save_paired_devices_at(path: &Path, devices: &[PairedLanDevice]) -> Result<(), String> {
+    let plain = serde_json::to_vec(devices).map_err(|_| "Could not encode paired LAN devices")?;
+    if plain.len() > MAX_LAN_DEVICE_STORE_BYTES {
+        return Err("Paired LAN device store is too large".into());
+    }
+    let encrypted = crate::vault::protect_local_data(&plain)
+        .map_err(|_| "Could not protect paired LAN devices for this Windows user")?;
+    let parent = path
+        .parent()
+        .ok_or("Invalid paired LAN device store path")?;
+    fs::create_dir_all(parent)
+        .map_err(|error| format!("Could not create Swapper data folder: {error}"))?;
+    let pending = parent.join(format!("lan-paired-devices-{}.tmp", uuid::Uuid::new_v4()));
+    if let Err(error) = fs::write(&pending, encrypted) {
+        let _ = fs::remove_file(&pending);
+        return Err(format!("Could not write paired LAN devices: {error}"));
+    }
+    if let Err(error) = fs::rename(&pending, path) {
+        let _ = fs::remove_file(&pending);
+        return Err(format!("Could not save paired LAN devices: {error}"));
+    }
+    Ok(())
+}
+
+fn clear_paired_devices_at(path: &Path) -> Result<(), String> {
+    match fs::remove_file(path) {
+        Ok(()) => Ok(()),
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => Ok(()),
+        Err(remove_error) => save_paired_devices_at(path, &[])
+            .map_err(|_| format!("Could not clear saved paired LAN devices: {remove_error}")),
+    }
+}
+
+fn unix_timestamp() -> u64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_secs()
 }
 
 #[derive(Clone, serde::Serialize, serde::Deserialize)]
@@ -176,6 +276,11 @@ impl RemoteCore {
         } else {
             RemoteStatus::disabled()
         };
+        let (devices, storage_available) =
+            match paired_devices_path().and_then(|path| load_paired_devices_at(&path)) {
+                Ok(devices) => (devices, true),
+                Err(_) => (Vec::new(), false),
+            };
         let core = Arc::new(Self {
             app,
             ops: Mutex::new(()),
@@ -187,7 +292,9 @@ impl RemoteCore {
             owned_route: Mutex::new(None),
             lan_access: Mutex::new(LanAccess {
                 pairing_token: None,
-                sessions: std::collections::HashSet::new(),
+                devices,
+                storage_available,
+                last_seen_saved_at: Instant::now(),
             }),
         });
         let weak = Arc::downgrade(&core);
@@ -202,22 +309,69 @@ impl RemoteCore {
         lock(&self.inner).status.clone()
     }
 
-    pub(crate) fn pair_lan_device(&self, token: &str) -> Option<String> {
+    pub(crate) fn pair_lan_device(
+        &self,
+        token: &str,
+        name: &str,
+    ) -> Result<Option<String>, String> {
         let mut access = lock(&self.lan_access);
-        let valid = access.pairing_token.as_ref().is_some_and(|(expected, expires)| {
-            Instant::now() <= *expires && expected == token
-        });
+        if !access.storage_available {
+            return Err(
+                "Saved LAN devices could not be opened. Use Reset LAN Access in Swapper Settings before pairing again."
+                    .into(),
+            );
+        }
+        let valid = access
+            .pairing_token
+            .as_ref()
+            .is_some_and(|(expected, expires)| Instant::now() <= *expires && expected == token);
         if !valid {
-            return None;
+            return Ok(None);
         }
         access.pairing_token = None;
-        let session = new_secret();
-        access.sessions.insert(session.clone());
-        Some(session)
+        let credential = new_secret();
+        let now = unix_timestamp();
+        access.devices.push(PairedLanDevice {
+            id: uuid::Uuid::new_v4(),
+            credential: credential.clone(),
+            name: name.chars().take(32).collect(),
+            paired_at: now,
+            last_seen: now,
+        });
+        let save_result =
+            paired_devices_path().and_then(|path| save_paired_devices_at(&path, &access.devices));
+        if let Err(error) = save_result {
+            access.devices.pop();
+            return Err(error);
+        }
+        access.last_seen_saved_at = Instant::now();
+        Ok(Some(credential))
     }
 
     pub(crate) fn has_lan_session(&self, session: &str) -> bool {
-        lock(&self.lan_access).sessions.contains(session)
+        let mut access = lock(&self.lan_access);
+        let Some(index) = access
+            .devices
+            .iter()
+            .position(|device| device.credential == session)
+        else {
+            return false;
+        };
+        let now = unix_timestamp();
+        if now.saturating_sub(access.devices[index].last_seen)
+            >= LAN_LAST_SEEN_SAVE_INTERVAL.as_secs()
+        {
+            access.devices[index].last_seen = now;
+            if access.last_seen_saved_at.elapsed() >= LAN_LAST_SEEN_SAVE_INTERVAL {
+                if let Ok(path) = paired_devices_path() {
+                    // Last-seen writes are best effort; they must not interrupt
+                    // an already paired phone's request or WebSocket.
+                    let _ = save_paired_devices_at(&path, &access.devices);
+                }
+                access.last_seen_saved_at = Instant::now();
+            }
+        }
+        true
     }
 
     pub(crate) fn create_lan_pairing_url(&self) -> Result<String, String> {
@@ -225,14 +379,25 @@ impl RemoteCore {
             "LAN Remote Control is not available on a private network.".to_string()
         })?;
         let token = new_secret();
-        lock(&self.lan_access).pairing_token = Some((token.clone(), Instant::now() + Duration::from_secs(300)));
+        lock(&self.lan_access).pairing_token =
+            Some((token.clone(), Instant::now() + Duration::from_secs(300)));
         Ok(format!("{address}/pair?token={token}"))
     }
 
-    pub(crate) fn reset_lan_access(&self) {
+    pub(crate) fn reset_lan_access(&self) -> Result<(), String> {
         let mut access = lock(&self.lan_access);
-        access.sessions.clear();
+        // Revoke sessions in memory before touching disk, so active HTTP and
+        // WebSocket requests are rejected immediately.
+        access.devices.clear();
         access.pairing_token = None;
+        let result = paired_devices_path().and_then(|path| clear_paired_devices_at(&path));
+        access.storage_available = result.is_ok();
+        access.last_seen_saved_at = Instant::now();
+        result
+    }
+
+    fn clear_lan_pairing_token(&self) {
+        lock(&self.lan_access).pairing_token = None;
     }
 
     pub fn subscribe(&self) -> broadcast::Receiver<RemoteStatus> {
@@ -261,7 +426,7 @@ impl RemoteCore {
     pub fn set_enabled(self: Arc<Self>, enabled: bool) {
         let _ops = lock(&self.ops);
         if !enabled {
-            self.reset_lan_access();
+            self.clear_lan_pairing_token();
             self.apply_disabled();
             self.remove_owned_route();
             self.stop_service();
@@ -273,7 +438,7 @@ impl RemoteCore {
             status.state = RemoteState::Starting;
             status.message = None;
         });
-        self.reset_lan_access();
+        self.clear_lan_pairing_token();
         if let Err(err) = Self::ensure_service(&self) {
             self.apply(|status| {
                 status.state = RemoteState::Failed;
@@ -291,7 +456,7 @@ impl RemoteCore {
     /// timeout), so a stuck shutdown cannot hang the caller.
     pub fn shutdown(&self) {
         let _ops = lock(&self.ops);
-        self.reset_lan_access();
+        self.clear_lan_pairing_token();
         self.apply_disabled();
         self.remove_owned_route();
         self.stop_service();
@@ -678,8 +843,12 @@ fn service_thread(
             Ok(Some(interface)) => match network::is_private_profile(interface.index) {
                 Err(error) => Some(error),
                 Ok(false) => Some("LAN access is off because the active Windows network is not set to Private.".into()),
-                Ok(true) => match tokio::net::TcpListener::bind((interface.address, 0)).await {
-                    Err(error) => Some(format!("Could not listen on {} ({}): {error}", interface.name, interface.address)),
+                Ok(true) => match tokio::net::TcpListener::bind((interface.address, LAN_REMOTE_PORT)).await {
+                    Err(error) => Some(format!(
+                        "Could not listen on {} ({}:{LAN_REMOTE_PORT}): {error}",
+                        interface.name,
+                        interface.address
+                    )),
                     Ok(listener) => match listener.local_addr() {
                         Err(error) => Some(format!("Could not read the LAN listener address: {error}")),
                         Ok(address) => match network::allow_private_app() {
@@ -756,6 +925,35 @@ fn maintain(weak: Weak<RemoteCore>) {
 #[cfg(test)]
 mod route_recovery_tests {
     use super::*;
+
+    #[test]
+    fn paired_lan_credentials_are_encrypted_and_reloadable() {
+        let directory =
+            std::env::temp_dir().join(format!("swapper-lan-test-{}", uuid::Uuid::new_v4()));
+        let path = directory.join("lan-paired-devices.bin");
+        let credential = new_secret();
+        let device = PairedLanDevice {
+            id: uuid::Uuid::new_v4(),
+            credential: credential.clone(),
+            name: "iPhone".into(),
+            paired_at: 123,
+            last_seen: 456,
+        };
+
+        save_paired_devices_at(&path, std::slice::from_ref(&device)).unwrap();
+        let stored = fs::read(&path).unwrap();
+        assert!(!String::from_utf8_lossy(&stored).contains(&credential));
+
+        let restored = load_paired_devices_at(&path).unwrap();
+        assert_eq!(restored.len(), 1);
+        assert_eq!(restored[0].credential, credential);
+        assert_eq!(restored[0].name, "iPhone");
+        assert_eq!(restored[0].last_seen, 456);
+
+        clear_paired_devices_at(&path).unwrap();
+        assert!(load_paired_devices_at(&path).unwrap().is_empty());
+        fs::remove_dir_all(directory).unwrap();
+    }
 
     #[test]
     fn a_recorded_route_can_be_replaced_after_restart() {
