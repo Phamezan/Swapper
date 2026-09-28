@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { RepairPanel } from "./accounts/RepairPanel";
+import { CreateShortcutButton } from "./accounts/CreateShortcutButton";
 import { RunesPanel } from "./runes/RunesPanel";
 import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
 import { SwapperDoctor } from "./settings/SwapperDoctor";
@@ -911,6 +912,9 @@ function App() {
                     : <strong>{account.name}</strong>}
                   {account.nickname && account.riotId && <small>{account.riotId}</small>}
                 </div>
+                {view === "edit" && editing !== account.id && (
+                  <CreateShortcutButton accountId={account.id} accountName={account.name} disabled={busy !== null} onError={showError} />
+                )}
                 {view === "edit" ? editing === account.id
                   ? <button className="icon-button" aria-label={`Save nickname for ${account.name}`} onClick={() => action("nickname", () => invoke<AppState>("set_nickname", { id: account.id, name }), () => setEditing(null))}><Check size={17} /></button>
                   : <button className="icon-button" aria-label={`Set a nickname for ${account.name}`} onClick={() => { setEditing(account.id); setName(account.nickname ?? ""); }}><Pencil size={16} /></button>
