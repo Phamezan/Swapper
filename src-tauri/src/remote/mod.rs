@@ -1,5 +1,6 @@
 mod control;
 mod lcu;
+mod network;
 mod server;
 mod tailscale;
 
@@ -39,6 +40,9 @@ pub struct RemoteStatus {
     pub enabled: bool,
     pub state: RemoteState,
     pub address: Option<String>,
+    pub tailscale_address: Option<String>,
+    pub lan_address: Option<String>,
+    pub lan_message: Option<String>,
     pub message: Option<String>,
     pub tailscale_installed: bool,
     pub tailscale_running: bool,
@@ -53,6 +57,9 @@ impl RemoteStatus {
             enabled: false,
             state: RemoteState::Disabled,
             address: None,
+            tailscale_address: None,
+            lan_address: None,
+            lan_message: None,
             message: None,
             tailscale_installed: false,
             tailscale_running: false,
@@ -70,8 +77,27 @@ struct Inner {
 
 struct Service {
     port: u16,
+    lan: Option<LanEndpoint>,
+    lan_message: Option<String>,
     shutdown: Option<oneshot::Sender<()>>,
     join: Option<thread::JoinHandle<()>>,
+}
+
+#[derive(Clone)]
+struct LanEndpoint {
+    address: std::net::Ipv4Addr,
+    port: u16,
+}
+
+struct ServiceInfo {
+    port: u16,
+    lan: Option<LanEndpoint>,
+    lan_message: Option<String>,
+}
+
+struct LanAccess {
+    pairing_token: Option<(String, Instant)>,
+    sessions: std::collections::HashSet<String>,
 }
 
 #[derive(Clone, serde::Serialize, serde::Deserialize)]
@@ -129,6 +155,7 @@ pub struct RemoteCore {
     /// Fired when a rune setting changes so the phone reloads without polling.
     runes_changed: broadcast::Sender<()>,
     owned_route: Mutex<Option<OwnedRoute>>,
+    lan_access: Mutex<LanAccess>,
 }
 
 impl RemoteCore {
@@ -154,6 +181,10 @@ impl RemoteCore {
             rune_events,
             runes_changed,
             owned_route: Mutex::new(None),
+            lan_access: Mutex::new(LanAccess {
+                pairing_token: None,
+                sessions: std::collections::HashSet::new(),
+            }),
         });
         let weak = Arc::downgrade(&core);
         thread::Builder::new()
@@ -165,6 +196,39 @@ impl RemoteCore {
 
     pub fn status(&self) -> RemoteStatus {
         lock(&self.inner).status.clone()
+    }
+
+    pub(crate) fn pair_lan_device(&self, token: &str) -> Option<String> {
+        let mut access = lock(&self.lan_access);
+        let valid = access.pairing_token.as_ref().is_some_and(|(expected, expires)| {
+            Instant::now() <= *expires && expected == token
+        });
+        if !valid {
+            return None;
+        }
+        access.pairing_token = None;
+        let session = new_secret();
+        access.sessions.insert(session.clone());
+        Some(session)
+    }
+
+    pub(crate) fn has_lan_session(&self, session: &str) -> bool {
+        lock(&self.lan_access).sessions.contains(session)
+    }
+
+    pub(crate) fn create_lan_pairing_url(&self) -> Result<String, String> {
+        let address = self.status().lan_address.ok_or_else(|| {
+            "LAN Remote Control is not available on a private network.".to_string()
+        })?;
+        let token = new_secret();
+        lock(&self.lan_access).pairing_token = Some((token.clone(), Instant::now() + Duration::from_secs(300)));
+        Ok(format!("{address}/pair?token={token}"))
+    }
+
+    pub(crate) fn reset_lan_access(&self) {
+        let mut access = lock(&self.lan_access);
+        access.sessions.clear();
+        access.pairing_token = None;
     }
 
     pub fn subscribe(&self) -> broadcast::Receiver<RemoteStatus> {
@@ -193,6 +257,7 @@ impl RemoteCore {
     pub fn set_enabled(self: Arc<Self>, enabled: bool) {
         let _ops = lock(&self.ops);
         if !enabled {
+            self.reset_lan_access();
             self.apply_disabled();
             self.remove_owned_route();
             self.stop_service();
@@ -204,6 +269,7 @@ impl RemoteCore {
             status.state = RemoteState::Starting;
             status.message = None;
         });
+        self.reset_lan_access();
         if let Err(err) = Self::ensure_service(&self) {
             self.apply(|status| {
                 status.state = RemoteState::Failed;
@@ -221,6 +287,7 @@ impl RemoteCore {
     /// timeout), so a stuck shutdown cannot hang the caller.
     pub fn shutdown(&self) {
         let _ops = lock(&self.ops);
+        self.reset_lan_access();
         self.apply_disabled();
         self.remove_owned_route();
         self.stop_service();
@@ -271,6 +338,7 @@ impl RemoteCore {
             self.apply(|status| {
                 status.tailscale_installed = false;
                 status.tailscale_running = false;
+                status.tailscale_address = None;
                 status.dns_name = None;
             });
             return;
@@ -282,6 +350,7 @@ impl RemoteCore {
                 .as_ref()
                 .is_some_and(|ts| ts.backend_state.eq_ignore_ascii_case("Running"));
             status.dns_name = detected.and_then(|ts| ts.dns_name);
+            status.tailscale_address = None;
         });
     }
 
@@ -326,10 +395,6 @@ impl RemoteCore {
         }
     }
 
-    fn service_port(&self) -> Option<u16> {
-        lock(&self.service).as_ref().map(|service| service.port)
-    }
-
     fn stop_service(&self) {
         let taken = lock(&self.service).take();
         let Some(mut service) = taken else {
@@ -367,8 +432,8 @@ impl RemoteCore {
             .name("swapper-remote".into())
             .spawn(move || service_thread(thread_core, ready_tx, shutdown_rx))
             .map_err(|e| format!("Could not start the remote service: {e}"))?;
-        let port = match ready_rx.recv_timeout(Duration::from_secs(10)) {
-            Ok(Ok(port)) => port,
+        let info = match ready_rx.recv_timeout(Duration::from_secs(30)) {
+            Ok(Ok(info)) => info,
             Ok(Err(err)) => {
                 let _ = shutdown_tx.send(());
                 let _ = join.join();
@@ -381,7 +446,9 @@ impl RemoteCore {
             }
         };
         *lock(&core.service) = Some(Service {
-            port,
+            port: info.port,
+            lan: info.lan,
+            lan_message: info.lan_message,
             shutdown: Some(shutdown_tx),
             join: Some(join),
         });
@@ -390,36 +457,77 @@ impl RemoteCore {
 
     fn reconcile(&self) {
         let epoch = lock(&self.inner).epoch;
+        let (port, lan_address, lan_message) = {
+            let service = lock(&self.service);
+            let Some(service) = service.as_ref() else {
+                self.apply_if_current(epoch, |status| {
+                    status.state = RemoteState::Failed;
+                    status.address = None;
+                    status.lan_address = None;
+                    status.message = Some("The remote service is not running.".into());
+                });
+                return;
+            };
+            (
+                service.port,
+                service.lan.as_ref().map(|lan| format!("http://{}:{}", lan.address, lan.port)),
+                service.lan_message.clone(),
+            )
+        };
         let Some(cli) = tailscale::find_cli() else {
             self.apply_if_current(epoch, |status| {
-                status.state = RemoteState::NotInstalled;
                 status.tailscale_installed = false;
                 status.tailscale_running = false;
-                status.address = None;
-                status.message =
-                    Some("Tailscale is not installed. Install Tailscale, then turn Remote Control off and on again.".into());
+                status.tailscale_address = None;
+                status.dns_name = None;
+                status.lan_address = lan_address.clone();
+                status.lan_message = lan_message.clone();
+                status.address = lan_address.clone();
+                if lan_address.is_some() {
+                    status.state = RemoteState::Available;
+                    status.message = None;
+                } else {
+                    status.state = RemoteState::NotInstalled;
+                    status.message = lan_message.clone().or_else(|| Some("Tailscale is not installed and LAN access is unavailable.".into()));
+                }
             });
             return;
         };
         match tailscale::status(&cli) {
             Err(err) => self.apply_if_current(epoch, |status| {
-                status.state = RemoteState::Disconnected;
                 status.tailscale_installed = true;
                 status.tailscale_running = false;
-                status.address = None;
-                status.message = Some(err);
+                status.tailscale_address = None;
+                status.dns_name = None;
+                status.lan_address = lan_address.clone();
+                status.lan_message = lan_message.clone();
+                status.address = lan_address.clone();
+                if lan_address.is_some() {
+                    status.state = RemoteState::Available;
+                    status.message = None;
+                } else {
+                    status.state = RemoteState::Disconnected;
+                    status.message = lan_message.clone().or(Some(err));
+                }
             }),
             Ok(ts) => {
                 let running = ts.backend_state.eq_ignore_ascii_case("Running");
                 if !running {
                     self.apply_if_current(epoch, |status| {
-                        status.state = RemoteState::Disconnected;
                         status.tailscale_installed = true;
                         status.tailscale_running = false;
+                        status.tailscale_address = None;
                         status.dns_name = ts.dns_name.clone();
-                        status.address = None;
-                        status.message =
-                            Some("Tailscale is not connected. Open Tailscale and sign in, then turn Remote Control off and on again.".into());
+                        status.lan_address = lan_address.clone();
+                        status.lan_message = lan_message.clone();
+                        status.address = lan_address.clone();
+                        if lan_address.is_some() {
+                            status.state = RemoteState::Available;
+                            status.message = None;
+                        } else {
+                            status.state = RemoteState::Disconnected;
+                            status.message = lan_message.clone().or(Some("Tailscale is not connected.".into()));
+                        }
                     });
                     return;
                 }
@@ -429,33 +537,46 @@ impl RemoteCore {
                     .and_then(tailscale::address_for);
                 let Some(address) = address else {
                     self.apply_if_current(epoch, |status| {
-                        status.state = RemoteState::Failed;
                         status.tailscale_installed = true;
                         status.tailscale_running = true;
+                        status.tailscale_address = None;
                         status.dns_name = ts.dns_name.clone();
-                        status.address = None;
-                        status.message =
-                            Some("Tailscale is connected but did not report a MagicDNS name.".into());
-                    });
-                    return;
-                };
-                let Some(port) = self.service_port() else {
-                    self.apply_if_current(epoch, |status| {
-                        status.state = RemoteState::Failed;
-                        status.message = Some("The remote service is not running.".into());
-                    });
-                    return;
-                };
-                let owned = route_claim_path()
-                    .and_then(|path| load_route_claim_at(&path))
-                    .inspect_err(|err| {
-                        self.apply_if_current(epoch, |status| {
+                        status.lan_address = lan_address.clone();
+                        status.lan_message = lan_message.clone();
+                        status.address = lan_address.clone();
+                        if lan_address.is_some() {
+                            status.state = RemoteState::Available;
+                            status.message = None;
+                        } else {
                             status.state = RemoteState::Failed;
-                            status.address = None;
-                            status.message = Some(err.clone());
-                        });
+                            status.message = Some("Tailscale is connected but did not report a MagicDNS name, and no private LAN address is available.".into());
+                        }
                     });
-                let Ok(owned) = owned else { return; };
+                    return;
+                };
+                let owned = route_claim_path().and_then(|path| load_route_claim_at(&path));
+                let owned = match owned {
+                    Ok(owned) => owned,
+                    Err(err) => {
+                        self.apply_if_current(epoch, |status| {
+                            status.tailscale_installed = true;
+                            status.tailscale_running = true;
+                            status.tailscale_address = None;
+                            status.dns_name = ts.dns_name.clone();
+                            status.lan_address = lan_address.clone();
+                            status.lan_message = lan_message.clone();
+                            status.address = lan_address.clone();
+                            if lan_address.is_some() {
+                                status.state = RemoteState::Available;
+                                status.message = None;
+                            } else {
+                                status.state = RemoteState::Failed;
+                                status.message = Some(err.clone());
+                            }
+                        });
+                        return;
+                    }
+                };
                 let route_result = tailscale::root_route(&cli, &ts.dns_name.clone().unwrap_or_default())
                     .and_then(|route| {
                         if route_is_available(&route, ts.dns_name.as_deref().unwrap_or_default(), owned.as_ref()) {
@@ -481,26 +602,42 @@ impl RemoteCore {
                             status.tailscale_running = true;
                             status.dns_name = ts.dns_name.clone();
                             status.address = Some(address.clone());
+                            status.tailscale_address = Some(address.clone());
+                            status.lan_address = lan_address.clone();
+                            status.lan_message = lan_message.clone();
                             status.message = None;
                         });
                     }
                     Err(err) => self.apply_if_current(epoch, |status| {
-                        status.state = RemoteState::Failed;
                         status.tailscale_installed = true;
                         status.tailscale_running = true;
+                        status.tailscale_address = None;
                         status.dns_name = ts.dns_name.clone();
-                        status.address = None;
-                        status.message = Some(err);
+                        status.lan_address = lan_address.clone();
+                        status.lan_message = lan_message.clone();
+                        status.address = lan_address.clone();
+                        if lan_address.is_some() {
+                            status.state = RemoteState::Available;
+                            status.message = None;
+                        } else {
+                            status.state = RemoteState::Failed;
+                            status.message = Some(err);
+                        }
                     }),
                 }
             }
         }
     }
+
+}
+
+fn new_secret() -> String {
+    uuid::Uuid::new_v4().simple().to_string()
 }
 
 fn service_thread(
     core: Arc<RemoteCore>,
-    ready: mpsc::SyncSender<Result<u16, String>>,
+    ready: mpsc::SyncSender<Result<ServiceInfo, String>>,
     shutdown: oneshot::Receiver<()>,
 ) {
     let runtime = match tokio::runtime::Builder::new_current_thread().enable_all().build() {
@@ -529,12 +666,50 @@ fn service_thread(
                 return;
             }
         };
-        let _ = ready.send(Ok(port));
+        let mut lan_listener = None;
+        let mut lan = None;
+        let lan_message = match network::default_interface() {
+            Err(error) => Some(error),
+            Ok(None) => Some("No active Ethernet or Wi-Fi interface with a private IPv4 default route was found.".into()),
+            Ok(Some(interface)) => match network::is_private_profile(interface.index) {
+                Err(error) => Some(error),
+                Ok(false) => Some("LAN access is off because the active Windows network is not set to Private.".into()),
+                Ok(true) => match tokio::net::TcpListener::bind((interface.address, 0)).await {
+                    Err(error) => Some(format!("Could not listen on {} ({}): {error}", interface.name, interface.address)),
+                    Ok(listener) => match listener.local_addr() {
+                        Err(error) => Some(format!("Could not read the LAN listener address: {error}")),
+                        Ok(address) => match network::allow_private_app() {
+                            Err(error) => Some(error),
+                            Ok(()) => {
+                                lan = Some(LanEndpoint {
+                                    address: interface.address,
+                                    port: address.port(),
+                                });
+                                lan_listener = Some(listener);
+                                None
+                            }
+                        },
+                    },
+                },
+            },
+        };
+        let _ = ready.send(Ok(ServiceInfo { port, lan, lan_message }));
         tokio::spawn(lcu::watch(core.clone()));
-        let router = server::router(core);
+        let router = server::router(core.clone());
+        let lan_router = server::lan_router(core);
         let mut shutdown = shutdown;
         let _ = tokio::select! {
-            result = axum::serve(listener, router) => result.map_err(|e| e.to_string()),
+            result = async move {
+                if let Some(lan_listener) = lan_listener {
+                    let lan_service = lan_router.into_make_service_with_connect_info::<std::net::SocketAddr>();
+                    let (local_result, lan_result) = tokio::join!(axum::serve(listener, router), axum::serve(lan_listener, lan_service));
+                    local_result.map_err(|error| error.to_string())?;
+                    lan_result.map_err(|error| error.to_string())?;
+                    Ok::<(), String>(())
+                } else {
+                    axum::serve(listener, router).await.map_err(|error| error.to_string())
+                }
+            } => result,
             _ = &mut shutdown => Ok(()),
         };
     });

@@ -15,6 +15,7 @@
 pub mod apply;
 pub mod data;
 pub mod items;
+pub mod item_sets;
 pub mod lolalytics;
 pub mod opgg;
 pub mod page;
@@ -59,7 +60,6 @@ const SESSION_PATH: &str = "/lol-champ-select/v1/session";
 const PAGES_PATH: &str = "/lol-perks/v1/pages";
 const CURRENT_PAGE_PATH: &str = "/lol-perks/v1/currentpage";
 const INVENTORY_PATH: &str = "/lol-perks/v1/inventory";
-const RECOMMENDED_POSITIONS_PATH: &str = "/lol-perks/v1/recommended-champion-positions";
 const REGION_PATH: &str = "/riotclient/region-locale";
 const PERKS_PATH: &str = "/lol-game-data/assets/v1/perks.json";
 const PERKSTYLES_PATH: &str = "/lol-game-data/assets/v1/perkstyles.json";
@@ -417,28 +417,14 @@ async fn region_for(lcu: &Lcu) -> String {
     opgg::DEFAULT_REGION.to_string()
 }
 
-async fn position_for(lcu: &Lcu, context: &session::ChampSelectContext) -> &'static str {
+async fn position_for(_lcu: &Lcu, context: &session::ChampSelectContext) -> &'static str {
     if let Some(position) = context.position() {
         return position;
     }
-    #[derive(Deserialize)]
-    #[serde(rename_all = "camelCase")]
-    struct Recommended {
-        #[serde(default)]
-        recommended_positions: Vec<String>,
-    }
-    if let Ok(text) = lcu_get_text(lcu, RECOMMENDED_POSITIONS_PATH).await {
-        if let Ok(by_champion) = serde_json::from_str::<HashMap<String, Recommended>>(&text) {
-            if let Some(entry) = by_champion.get(&context.champion_id.to_string()) {
-                for position in &entry.recommended_positions {
-                    if let Some(mapped) = session::position_from_assigned(position) {
-                        return mapped;
-                    }
-                }
-            }
-        }
-    }
-    opgg::POSITION_NONE
+    // A roleless ranked context is commonly Practice Tool. Keep the current
+    // default Swapper has always inferred there, while allowing the user to
+    // choose a different lane from the rune screen.
+    "jungle"
 }
 
 // ---------------------------------------------------------------------------

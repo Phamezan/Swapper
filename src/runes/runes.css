@@ -142,6 +142,17 @@
 
 .rune-preset:hover { border-color: var(--line-strong); background: var(--surface-raised); }
 .rune-preset.is-active { border-color: #459c74; background: #143329; }
+.rune-preset-main {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+}
 
 .rune-preset-head { display: flex; align-items: center; gap: 10px; }
 .rune-preset-keystone { width: 38px; height: 38px; flex: none; border-radius: 9px; }
@@ -397,9 +408,15 @@
 .runes-remote .rune-stats-toggle { min-height: 44px; font-size: 13px; }
 .runes-remote .rune-stats-toggle input { width: 20px; height: 20px; }
 
-/* Compact settings row: the rank filter and the auto-apply switch. */
+/* Compact settings row: role, rank filter and rune options. */
 
 .runes-settings { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.runes-role-picker { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-panel); }
+.runes-role-picker button { display: grid; place-items: center; width: 27px; height: 27px; padding: 0; border: 0; border-radius: 6px; color: var(--text-muted); background: transparent; }
+.runes-role-picker button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
+.runes-role-picker button.is-active { color: #52dfa6; background: #143329; }
+.runes-role-picker button:disabled { opacity: 0.45; }
+.runes-import-note { color: #7fd6b3; }
 
 .runes-tier-empty {
   display: flex;
@@ -498,6 +515,10 @@
 /* Touch targets: at least 44px on the phone, while the desktop flyout stays
    compact. The label wraps the checkbox, so its hit area is the whole row. */
 .runes-remote .runes-settings { row-gap: 4px; }
+.runes-remote .runes-role-picker { gap: 3px; }
+.runes-remote .runes-role-picker button { width: 39px; height: 39px; }
+.runes-remote .item-set-import { min-height: 44px; padding: 0 11px; font-size: 12px; }
+.runes-remote .preset-build-row { flex-wrap: wrap; }
 /* The long switch label gets its own full-width line on the phone, so the rank
    filter and the game count share the first line without overflowing. */
 .runes-remote .runes-auto { flex: 1 1 100%; min-height: 44px; font-size: 13px; }
@@ -614,13 +635,15 @@
 .item-icon { display: block; border-radius: 5px; background: var(--surface-raised); object-fit: cover; }
 .item-icon-fallback { display: inline-block; border-radius: 5px; background: var(--surface-raised); }
 
-/* The 6-item build on each preset card, from lolalytics. Display only. */
+/* The 6-item build on each preset card, from lolalytics. */
+.preset-build-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .preset-build {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   gap: 4px;
-  margin-top: 2px;
+  min-width: 0;
+  margin-top: 0;
 }
 .preset-build .item-icon, .preset-build .item-icon-fallback { width: 24px; height: 24px; border-radius: 6px; }
 .preset-build-skeleton {
@@ -637,6 +660,22 @@
   to { background-position: -200% 0; }
 }
 .preset-build-games { margin-left: 4px; color: var(--text-muted); font-size: 10px; font-weight: 600; white-space: nowrap; }
+.item-set-import {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 10px;
+  font-weight: 700;
+}
+.item-set-import:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
+.item-set-import:disabled { opacity: 0.5; }
 
 /* Rank picker: a popover under the trigger on the desktop flyout, a bottom
    sheet on the phone. */
@@ -761,6 +800,7 @@
 }
 .pro-card-toggle:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
 .pro-card-toggle:disabled { opacity: 0.55; }
+.pro-card-actions { display: flex; align-items: center; gap: 7px; }
 .pro-card-chevron { transition: transform 0.15s ease; }
 .pro-card-chevron.is-open { transform: rotate(180deg); }
 .pro-card-order { display: flex; flex-direction: column; gap: 3px; margin: 0; padding: 0; list-style: none; }

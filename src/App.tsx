@@ -58,6 +58,9 @@ type RemoteStatus = {
   enabled: boolean;
   state: RemoteState;
   address: string | null;
+  tailscaleAddress: string | null;
+  lanAddress: string | null;
+  lanMessage: string | null;
   message: string | null;
   tailscaleInstalled: boolean;
   tailscaleRunning: boolean;
@@ -88,7 +91,8 @@ type ChampSelectStatus = {
 type View = "accounts" | "add" | "edit" | "remove" | "settings" | "runes";
 
 const emptyRemote: RemoteStatus = {
-  enabled: false, state: "disabled", address: null, message: null,
+  enabled: false, state: "disabled", address: null, tailscaleAddress: null,
+  lanAddress: null, lanMessage: null, message: null,
   tailscaleInstalled: false, tailscaleRunning: false, dnsName: null,
   leagueRunning: false, lcuConnected: false,
 };
@@ -142,6 +146,8 @@ function App() {
   const previousActiveId = useRef<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [showRemoteQr, setShowRemoteQr] = useState(false);
+  const [remoteQrUrl, setRemoteQrUrl] = useState<string | null>(null);
+  const [remoteTransport, setRemoteTransport] = useState<"lan" | "tailscale">("lan");
   const [startOnStartup, setStartOnStartup] = useState(false);
   const [openInfo, setOpenInfo] = useState<string | null>(null);
   const [pathMode, setPathMode] = useState<"auto" | "manual" | null>(null);
@@ -149,8 +155,9 @@ function App() {
   const [runesLoading, setRunesLoading] = useState(false);
   const [runesBusy, setRunesBusy] = useState(false);
   const [runesError, setRunesError] = useState<string | null>(null);
-  const runesDismissed = useRef(false);
-  const runesChampion = useRef(0);
+  const runePosition = useRef<string | undefined>(undefined);
+  const runeChampion = useRef(0);
+  const runeRequest = useRef(0);
   const native = isTauri();
 
   useEffect(() => {
@@ -310,17 +317,40 @@ function App() {
     setError(String(reason));
   }
 
-  async function loadRunes() {
+  async function loadRunes(position?: string) {
+    if (position) runePosition.current = position;
+    const selectedPosition = position ?? runePosition.current;
+    const request = ++runeRequest.current;
     setRunesLoading(true);
     try {
-      const next = await invoke<RunesView>("get_runes");
-      setRunes(next);
-      runesChampion.current = next.championId;
-      setRunesError(null);
+      const next = await invoke<RunesView>("get_runes", selectedPosition ? { position: selectedPosition } : {});
+      if (request === runeRequest.current) {
+        setRunes(next);
+        runeChampion.current = next.championId;
+        setRunesError(null);
+      }
+    } catch (reason) {
+      if (request === runeRequest.current) setRunesError(String(reason));
+    } finally {
+      if (request === runeRequest.current) setRunesLoading(false);
+    }
+  }
+
+  async function importItemBuild(
+    championId: number,
+    championName: string,
+    source: string,
+    items: number[],
+  ) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      await invoke("import_item_build", { championId, championName, source, items });
     } catch (reason) {
       setRunesError(String(reason));
+      throw reason;
     } finally {
-      setRunesLoading(false);
+      setRunesBusy(false);
     }
   }
 
@@ -412,13 +442,10 @@ function App() {
 
   function handleChampSelect(payload: ChampSelectStatus) {
     if (payload.phase === "ChampSelect") {
-      if (!runesDismissed.current || runesChampion.current !== payload.championId) {
-        runesDismissed.current = false;
-        setView("runes");
-        void loadRunes();
-      }
+      if (runeChampion.current !== payload.championId) runePosition.current = undefined;
+      setView("runes");
+      void loadRunes();
     } else {
-      runesDismissed.current = false;
       setView((current) => (current === "runes" ? "accounts" : current));
     }
   }
@@ -429,7 +456,10 @@ function App() {
       return;
     }
     const previous = data.remote;
-    if (!enabled) setShowRemoteQr(false);
+    if (!enabled) {
+      setShowRemoteQr(false);
+      setRemoteQrUrl(null);
+    }
     setCopied(false);
     setData((prev) => ({
       ...prev,
@@ -453,7 +483,7 @@ function App() {
   }
 
   async function copyRemoteAddress() {
-    const address = data.remote.address;
+    const address = data.remote.tailscaleAddress;
     if (!address) return;
     try {
       await navigator.clipboard.writeText(address);
@@ -469,6 +499,33 @@ function App() {
     }
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1500);
+  }
+
+  async function toggleRemoteQr() {
+    if (showRemoteQr) {
+      setShowRemoteQr(false);
+      return;
+    }
+    try {
+      const url = remoteTransport === "lan"
+        ? await invoke<string>("create_lan_pairing_url")
+        : data.remote.tailscaleAddress;
+      if (!url) return;
+      setRemoteQrUrl(url);
+      setShowRemoteQr(true);
+    } catch (reason) {
+      showError(reason);
+    }
+  }
+
+  async function resetLanAccess() {
+    try {
+      const url = await invoke<string>("reset_lan_access");
+      setRemoteQrUrl(url);
+      setShowRemoteQr(true);
+    } catch (reason) {
+      showError(reason);
+    }
   }
 
   async function action(key: string, fn: () => Promise<AppState | void>, after?: () => void) {
@@ -687,10 +744,11 @@ function App() {
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
             onToggleSpellsWithRunes={(enabled) => void setApplySpellsWithRunes(enabled)}
             onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
+            onPositionChange={(position) => void loadRunes(position)}
+            onImportItems={importItemBuild}
             onLoadProBuilds={loadProBuilds}
             onLoadBuild={loadKeystoneBuild}
             onTierChange={(tier) => void setRuneTier(tier)}
-            onExit={() => { runesDismissed.current = true; navigate("accounts"); }}
           />
         ) : (
           <>
@@ -853,27 +911,49 @@ function App() {
                 <div className="setting-copy">
                   <strong>Remote Control</strong>
                   <button className="info-button" aria-label="About Remote Control" aria-expanded={openInfo === "remote"} onClick={() => setOpenInfo(openInfo === "remote" ? null : "remote")}><Info size={13} /></button>
-                  {openInfo === "remote" && <p>Control Swapper from your phone through your Tailscale network. Devices on your tailnet only — no pairing codes.</p>}
+                  {openInfo === "remote" && <p>Open the existing League remote on your phone over a trusted private Wi-Fi network or your Tailscale network.</p>}
                 </div>
                 <Switch checked={data.remote.enabled} onCheckedChange={setRemote} aria-label="Remote Control" />
               </div>
               {data.remote.state === "starting" && <div className="setting-status"><LoaderCircle className="spin" size={13} /> Starting the remote service…</div>}
-              {data.remote.state === "available" && data.remote.address && (
-                <>
-                  <div className="remote-address">
-                    <Input readOnly value={data.remote.address} aria-label="Remote address" onFocus={(e) => e.currentTarget.select()} />
-                    <Button variant="outline" disabled={copied} onClick={() => void copyRemoteAddress()}>{copied ? "Copied" : "Copy"}</Button>
-                    <Button variant="outline" className="remote-qr-toggle" aria-label={showRemoteQr ? "Hide remote QR code" : "Show remote QR code"} aria-controls="remote-qr-panel" aria-expanded={showRemoteQr} onClick={() => setShowRemoteQr((shown) => !shown)}><QrCode size={15} /> QR</Button>
-                  </div>
-                  {showRemoteQr && <div id="remote-qr-panel" className="remote-qr-panel">
-                    <div className="remote-qr-image"><QRCodeSVG value={data.remote.address} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="Tailscale remote address QR code" /></div>
-                    <p>Scan with a phone connected to your Tailscale network.</p>
-                  </div>}
-                </>
-              )}
-              {(data.remote.state === "notInstalled" || data.remote.state === "disconnected" || data.remote.state === "failed") && data.remote.message && (
-                <div className="setting-status remote-error"><CircleAlert size={13} /> {data.remote.message}</div>
-              )}
+              {data.remote.enabled && <>
+                <div className="remote-transport" role="group" aria-label="Remote Control transport">
+                  <button type="button" className={remoteTransport === "lan" ? "is-active" : ""} aria-pressed={remoteTransport === "lan"} onClick={() => { setRemoteTransport("lan"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>LAN</button>
+                  <button type="button" className={remoteTransport === "tailscale" ? "is-active" : ""} aria-pressed={remoteTransport === "tailscale"} onClick={() => { setRemoteTransport("tailscale"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>Tailscale</button>
+                </div>
+                {remoteTransport === "lan" ? (
+                  <>
+                    <div className="setting-status"><span className={`remote-status-dot ${data.remote.lanAddress ? "is-good" : "is-bad"}`} />Local network · {data.remote.lanAddress ? "Ready" : "Unavailable"}</div>
+                    {data.remote.lanAddress ? <>
+                      <div className="remote-address"><Button variant="outline" className="remote-qr-toggle" aria-label={showRemoteQr ? "Hide LAN pairing QR code" : "Generate LAN pairing QR code"} aria-controls="remote-qr-panel" aria-expanded={showRemoteQr} onClick={() => void toggleRemoteQr()}><QrCode size={15} />{showRemoteQr ? "Hide QR" : "QR"}</Button><Button variant="outline" onClick={() => void resetLanAccess()}>Reset LAN Access</Button></div>
+                      {showRemoteQr && remoteQrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
+                        <div className="remote-qr-image"><QRCodeSVG value={remoteQrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="LAN pairing QR code" /></div>
+                        <p>Scan on a phone connected to this trusted private network. Pairing links expire after five minutes.</p>
+                      </div>}
+                    </> : <p className="remote-transport-message">{data.remote.lanMessage ?? "LAN is available only when the active Windows network is set to Private."}</p>}
+                  </>
+                ) : (
+                  data.remote.tailscaleAddress ? <>
+                    <div className="setting-status"><span className="remote-status-dot is-good" />Tailscale · Ready</div>
+                    <div className="remote-address">
+                      <Input readOnly value={data.remote.tailscaleAddress} aria-label="Tailscale remote address" onFocus={(e) => e.currentTarget.select()} />
+                      <Button variant="outline" disabled={copied} onClick={() => void copyRemoteAddress()}>{copied ? "Copied" : "Copy"}</Button>
+                      <Button variant="outline" className="remote-qr-toggle" aria-label={showRemoteQr ? "Hide Tailscale QR code" : "Show Tailscale QR code"} aria-controls="remote-qr-panel" aria-expanded={showRemoteQr} onClick={() => void toggleRemoteQr()}><QrCode size={15} /> QR</Button>
+                    </div>
+                    {showRemoteQr && remoteQrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
+                      <div className="remote-qr-image"><QRCodeSVG value={remoteQrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="Tailscale remote address QR code" /></div>
+                      <p>Scan with a phone connected to your Tailscale network.</p>
+                    </div>}
+                  </> : <>
+                    <div className="setting-status"><span className="remote-status-dot is-bad" />Tailscale · {data.remote.tailscaleInstalled ? "Not connected" : "Not installed"}</div>
+                    <p className="remote-transport-message">{!data.remote.tailscaleInstalled
+                      ? "Install Tailscale to use this transport. LAN remains available on a Private network."
+                      : !data.remote.tailscaleRunning
+                        ? "Connect Tailscale on this PC and your phone to use this transport."
+                        : data.remote.message ?? "Tailscale Serve could not be started."}</p>
+                  </>
+                )}
+              </>}
             </div>}
           </>
         )}

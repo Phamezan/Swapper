@@ -179,7 +179,8 @@ pub async fn apply_top(
         }
     }
     let lcu = super::lcu().await?;
-    let loaded = data::load_for(&lcu, &context, &catalog, tier).await?;
+    let position = super::position_for(&lcu, &context).await;
+    let loaded = data::load_for(&lcu, &context, &catalog, tier, position).await?;
     let spells = loaded.spell_pair;
     let Some(preset) = loaded.selections.first() else {
         return Ok(None);

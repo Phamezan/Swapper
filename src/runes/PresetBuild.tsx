@@ -20,13 +20,15 @@ type Props = {
     tier: string,
     keystone: number,
   ) => Promise<KeystoneBuildView | null>;
+  onImport: (items: number[]) => void;
+  disabled: boolean;
 };
 
 /** The row of 6 items people build with this preset's keystone, from
  *  lolalytics. The card renders immediately and the row fills in when the
  *  (cached, prefetched) build arrives, showing a skeleton until then. The row
  *  is hidden when there is no build; a failed lookup is simply nothing. */
-export function PresetBuild({ mode, championId, position, tier, keystone, onLoad }: Props) {
+export function PresetBuild({ mode, championId, position, tier, keystone, onLoad, onImport, disabled }: Props) {
   const [build, setBuild] = useState<KeystoneBuildView | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -63,13 +65,24 @@ export function PresetBuild({ mode, championId, position, tier, keystone, onLoad
   if (!build || build.items.length === 0) return null;
 
   return (
-    <span className="preset-build" aria-label="Common build">
-      {build.items.map((item) => (
-        <ItemIcon key={item.id} id={item.id} name={item.name} mode={mode} />
-      ))}
-      {build.games > 0 && build.games < SMALL_SAMPLE && (
-        <span className="preset-build-games">{build.games} games</span>
-      )}
-    </span>
+    <div className="preset-build-row">
+      <span className="preset-build" aria-label="Common build">
+        {build.items.map((item) => (
+          <ItemIcon key={item.id} id={item.id} name={item.name} mode={mode} />
+        ))}
+        {build.games > 0 && build.games < SMALL_SAMPLE && (
+          <span className="preset-build-games">{build.games} games</span>
+        )}
+      </span>
+      <button
+        type="button"
+        className="item-set-import"
+        disabled={disabled}
+        onClick={() => onImport(build.items.map((item) => item.id))}
+        aria-label="Add this preset's item build to the League shop"
+      >
+        Add to shop
+      </button>
+    </div>
   );
 }

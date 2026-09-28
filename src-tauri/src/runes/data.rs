@@ -12,7 +12,7 @@ use super::perks;
 use super::probuilds;
 use super::session;
 use super::{
-    position_for, region_for, CATALOG_TTL, CHAMPIONS_PATH, GROUP_TTL, Lcu, PERKS_PATH,
+    region_for, CATALOG_TTL, CHAMPIONS_PATH, GROUP_TTL, Lcu, PERKS_PATH,
     PERKSTYLES_PATH, RuneError,
 };
 
@@ -291,15 +291,19 @@ fn cached_keystone_build(
 async fn lcu_recommended(
     current: &Lcu,
     context: &session::ChampSelectContext,
+    position: &str,
 ) -> Result<Vec<perks::RecommendedPage>, RuneError> {
-    let position = if context.assigned_position.trim().is_empty() {
-        opgg::POSITION_NONE
-    } else {
-        context.assigned_position.trim()
+    let lcu_position = match position {
+        "mid" => "middle",
+        "adc" => "bottom",
+        "support" => "utility",
+        "top" | "jungle" => position,
+        _ if !context.assigned_position.trim().is_empty() => context.assigned_position.trim(),
+        _ => opgg::POSITION_NONE,
     };
     let path = format!(
         "/lol-perks/v1/recommended-pages/champion/{}/position/{}/map/{}",
-        context.champion_id, position, context.map_id
+        context.champion_id, lcu_position, context.map_id
     );
     let text = super::lcu_get_text(current, &path).await?;
     perks::parse_recommended_pages(&text)
@@ -333,9 +337,9 @@ pub async fn load_for(
     context: &session::ChampSelectContext,
     catalog: &perks::PerkCatalog,
     tier: &str,
+    position: &str,
 ) -> Result<Loaded, RuneError> {
     let region = region_for(current).await;
-    let position = position_for(current, context).await;
     let mode = context.mode();
     let tier = opgg::normalize_tier(tier);
     if let Ok(data) = champion_data(&region, mode, context.champion_id, position, tier).await {
@@ -393,7 +397,7 @@ pub async fn load_for(
             }
         }
     }
-    let recommended = lcu_recommended(current, context).await.unwrap_or_default();
+    let recommended = lcu_recommended(current, context, position).await.unwrap_or_default();
     let selections = recommended
         .iter()
         .enumerate()

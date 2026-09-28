@@ -22,6 +22,7 @@ type Props = {
   /** The page currently applied in League, highlighted on a matching card. */
   active: Selection | null;
   onImport: (build: ProBuild) => void;
+  onImportItems: (build: ProBuild) => void;
   onLoadMore: () => void;
   onRetry: () => void;
 };
@@ -59,12 +60,14 @@ function ProBuildCard({
   active,
   busy,
   onImport,
+  onImportItems,
 }: {
   build: ProBuild;
   mode: "desktop" | "remote";
   active: boolean;
   busy: boolean;
   onImport: (build: ProBuild) => void;
+  onImportItems: (build: ProBuild) => void;
 }) {
   const [open, setOpen] = useState(false);
   const subtitle = [build.team, build.league].filter(Boolean).join(" · ");
@@ -140,18 +143,27 @@ function ProBuildCard({
           </span>
         )}
       </button>
-      {build.itemOrder.length > 0 && (
+      {(build.itemOrder.length > 0 || build.finalItems.length > 0) && (
         <>
-          <button
-            type="button"
-            className="pro-card-toggle"
-            disabled={busy}
-            aria-expanded={open}
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span>Item order</span>
-            <ChevronIcon open={open} />
-          </button>
+          <div className="pro-card-actions">
+            {build.itemOrder.length > 0 && <button
+              type="button"
+              className="pro-card-toggle"
+              disabled={busy}
+              aria-expanded={open}
+              onClick={() => setOpen((value) => !value)}
+            >
+              <span>Item order</span>
+              <ChevronIcon open={open} />
+            </button>}
+            {build.finalItems.length > 0 && <button
+              type="button"
+              className="item-set-import"
+              disabled={busy}
+              onClick={() => onImportItems(build)}
+              aria-label={`Add ${build.proName}'s item build to the League shop`}
+            >Add to shop</button>}
+          </div>
           {open && (
             <ol className="pro-card-order">
               {build.itemOrder.map((entry, index) => (
@@ -180,6 +192,7 @@ export function ProBuilds({
   busy,
   active,
   onImport,
+  onImportItems,
   onLoadMore,
   onRetry,
 }: Props) {
@@ -221,6 +234,7 @@ export function ProBuilds({
           busy={busy}
           active={active !== null && sameSelection(active, selectionFromProBuild(build))}
           onImport={onImport}
+          onImportItems={onImportItems}
         />
       ))}
       {view.hasMore && (

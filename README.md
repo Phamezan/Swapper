@@ -1,6 +1,6 @@
 # Swapper
 
-Swapper is a free Windows tray app for switching between saved Riot Client sign-ins. It uses the official Riot Client for sign-in and never asks for your password. A companion page on your phone can follow League's queue and champion select through your own Tailscale network.
+Swapper is a free Windows tray app for switching between saved Riot Client sign-ins. It uses the official Riot Client for sign-in and never asks for your password. Its existing phone remote follows League's queue and champion select over your private local network or Tailscale.
 
 ## Download
 
@@ -10,10 +10,13 @@ Download the Windows installer from the [latest GitHub release](https://github.c
 
 - Save multiple Riot Client sign-ins and switch between them from the tray flyout. Swapper closes Riot and League client processes before restoring the selected session; it refuses to switch while a game is running.
 - Detect the signed-in Riot account automatically and avoid duplicate entries using Riot's account identifier. Give saved accounts optional nicknames and remove them from the tray app.
+- Start Swapper when you sign in to Windows, and pin the tray flyout open while you use it.
 - Optionally launch the selected account through the bundled [Deceive](https://github.com/molenzwiebel/Deceive) executable to use Deceive's presence behavior.
-- Use your phone, over [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve), to watch queue time, accept a match, prepick, ban, pick, and lock in a champion. Champion search, role filters, and icons are supplied by the running League client.
-- During champion select, pick a recommended rune page for your champion and role or edit every rune yourself, from the tray flyout or the phone. Recommended pages come from [op.gg](https://op.gg), page art from the League client, and Swapper applies the result to a single page it owns. A **Pro builds** tab lists recent solo-queue games by pro players on the current champion and imports any of their pages. Auto-applying the recommended runes is a setting, off by default.
-- Show a copyable remote link and QR code in Settings. Remote control works while Swapper, Tailscale, and League Client are running on the PC.
+- Use your phone over a trusted private Wi-Fi or Ethernet network, without Tailscale, to watch queue time, accept a match, prepick, ban, pick, and lock in a champion. Tailscale remains an optional transport. Champion search, role filters, and icons are supplied by the running League client.
+- During champion select, pick a recommended rune preset for your champion and role or edit every rune yourself, from the tray flyout or the phone. The role follows champion select and defaults to jungle in modes without a role. A rank filter adjusts the [op.gg](https://op.gg) recommendation bracket. Swapper can also apply the preset's summoner spells and lets you choose whether spells are applied with runes.
+- A **Pro builds** tab lists recent solo-queue games by pro players on the current champion and imports their rune pages. Presets include a six-item build for each keystone; add a preset or pro build's items to the League in-game shop as an item set.
+- Auto-applying the recommended rune preset is a setting, off by default. Page art and spell information come from the League client.
+- Show a single-use pairing QR for LAN Remote Control or a copyable link and QR through [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve). Remote Control works while Swapper and League Client are running on the PC.
 
 ## Preview
 
@@ -31,14 +34,23 @@ These illustrations use sample account names and show the tray flyout and phone 
 
 Do not use Riot Client's **Sign out** between saved accounts; it can invalidate a session that Swapper needs to restore. Use Swapper's **Sign in to another account** flow. If a saved session expires, sign back into that same account in Riot Client and update its saved session. Accounts created by older Swapper builds without a stored account identifier cannot be verified automatically; save a new verified entry before removing the old one.
 
-## Phone remote control with Tailscale
+## Phone Remote Control over LAN
+
+1. Connect the PC and phone to the same trusted private Wi-Fi or Ethernet network. In Swapper **Settings**, turn on **Remote Control** and leave the transport on **LAN**.
+2. If Windows asks for firewall permission, approve Swapper for Private networks. Swapper only offers LAN access when Windows identifies the active network as **Private** and selects an active default-route Ethernet or Wi-Fi interface. It does not advertise an address on a Public network.
+3. Press **QR** and scan it with the phone. Pairing links work once and expire after five minutes; the phone then keeps a private session until Swapper exits, Remote Control is turned off, or **Reset LAN Access** is pressed. Reset invalidates paired phones and displays a fresh QR.
+4. The phone opens the existing remote page. League Client must be running for queue and champion-select controls to be available.
+
+LAN uses HTTP and is meant for trusted private networks. Do not use it on public or untrusted Wi-Fi. No router configuration, IP entry, or pairing code is needed.
+
+## Phone Remote Control with Tailscale
 
 1. Follow [Tailscale's quickstart](https://tailscale.com/docs/how-to/quickstart) to install Tailscale on the Windows PC and your phone. Sign both devices into the same tailnet. See Tailscale's [Windows installation guide](https://tailscale.com/docs/install/windows) if needed.
 2. Enable [MagicDNS and HTTPS certificates](https://tailscale.com/docs/how-to/set-up-https-certificates) for your tailnet. Swapper uses [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve) to expose its local page to devices allowed by your tailnet policy. Swapper does not use Funnel or make the page public on the internet.
-3. In Swapper **Settings**, turn on **Remote Control**. Open the displayed link on your phone, or scan the QR code. Keep Tailscale connected on both devices.
+3. In Swapper **Settings**, turn on **Remote Control**, select **Tailscale**, and open the displayed link on your phone or scan its QR code. Keep Tailscale connected on both devices.
 4. Open League Client on the PC. The phone page shows connection status and the queue timer. At ready check you can accept the match; during champion select you can prepick, ban, pick, and lock in when League allows those actions.
 
-Anyone permitted by your tailnet's access rules to reach this Serve route can use the page; Swapper does not add a separate pairing code. See Tailscale's [Serve access guidance](https://tailscale.com/docs/features/tailscale-serve) if you share a tailnet. Account switching itself remains in the Windows tray app.
+Anyone permitted by your tailnet's access rules to reach this Serve route can use the page; Swapper leaves access control to Tailscale on this transport. See Tailscale's [Serve access guidance](https://tailscale.com/docs/features/tailscale-serve) if you share a tailnet. Account switching itself remains in the Windows tray app.
 
 ## Privacy and storage
 

@@ -35,7 +35,7 @@ pub fn spawn(app: &tauri::AppHandle, context: &ChampSelectContext) {
         return;
     }
     let tier = super::watch::configured_tier(app);
-    let position = context.position().unwrap_or("").to_string();
+    let position = context.position().unwrap_or("jungle").to_string();
     let key = format!("{}|{}|{}", context.champion_id, position, tier);
     {
         let mut current = CURRENT_KEY
@@ -69,15 +69,19 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
     let _ = data::champion_names().await;
     let _ = super::items::names().await;
     let _ = super::spells::catalog().await;
-    let position = context.position().unwrap_or("").to_string();
+    let current = super::lcu().await.ok();
+    let position = match current.as_ref() {
+        Some(lcu) => super::position_for(lcu, &context).await.to_string(),
+        None => context.position().unwrap_or("jungle").to_string(),
+    };
     let mut runes: Vec<i64> = Vec::new();
     let mut items: Vec<i64> = Vec::new();
     let mut spells: Vec<i64> = Vec::new();
     let mut keystones: Vec<i64> = Vec::new();
 
     // Presets for the current champion and role.
-    if let Ok(lcu) = super::lcu().await {
-        if let Ok(loaded) = data::load_for(&lcu, &context, &catalog, &tier).await {
+    if let Some(lcu) = current.as_ref() {
+        if let Ok(loaded) = data::load_for(lcu, &context, &catalog, &tier, &position).await {
             if stale(generation) {
                 return;
             }

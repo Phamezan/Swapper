@@ -2,7 +2,9 @@ use std::sync::Arc;
 
 use axum::extract::ws::{Message, WebSocket, WebSocketUpgrade};
 use axum::extract::{Path, Query, Request, State};
+use axum::Extension;
 use axum::http::{header, HeaderMap, StatusCode};
+use axum::middleware::{self, Next};
 use axum::response::{IntoResponse, Response};
 use axum::routing::get;
 use axum::Json;
@@ -13,7 +15,14 @@ use tauri::Emitter;
 
 use super::{control, RemoteCore};
 
+#[derive(Clone)]
+struct LanSession(String);
+
 pub fn router(core: Arc<RemoteCore>) -> Router {
+    routes().with_state(core)
+}
+
+fn routes() -> Router<Arc<RemoteCore>> {
     Router::new()
         .route("/api/status", get(status))
         .route("/api/game", get(game))
@@ -29,6 +38,7 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
         .route("/api/runes", get(runes))
         .route("/api/runes/pro-builds", get(pro_builds))
         .route("/api/runes/keystone-build", get(keystone_build))
+        .route("/api/items/import", axum::routing::post(import_item_build))
         .route("/api/runes/apply", axum::routing::post(apply_runes))
         .route(
             "/api/runes/auto-apply",
@@ -47,7 +57,81 @@ pub fn router(core: Arc<RemoteCore>) -> Router {
         .route("/api/rank/icon/{tier}", get(rank_icon))
         .route("/ws", get(socket))
         .fallback(asset)
+}
+
+pub fn lan_router(core: Arc<RemoteCore>) -> Router {
+    routes()
+        .route("/pair", get(pair_lan_device))
+        .layer(middleware::from_fn_with_state(core.clone(), authorize_lan))
         .with_state(core)
+}
+
+async fn authorize_lan(
+    State(core): State<Arc<RemoteCore>>,
+    mut request: Request,
+    next: Next,
+) -> Response {
+    let peer = request
+        .extensions()
+        .get::<axum::extract::ConnectInfo<std::net::SocketAddr>>()
+        .map(|info| info.0.ip());
+    let allowed_peer = peer.is_some_and(|ip| {
+        ip.is_loopback() || match ip {
+            std::net::IpAddr::V4(address) => address.is_private(),
+            std::net::IpAddr::V6(_) => false,
+        }
+    });
+    if !allowed_peer {
+        return StatusCode::NOT_FOUND.into_response();
+    }
+    if request.uri().path() == "/pair" {
+        return next.run(request).await;
+    }
+    let session = request
+        .headers()
+        .get(header::COOKIE)
+        .and_then(|value| value.to_str().ok())
+        .and_then(|cookies| {
+            cookies.split(';').find_map(|cookie| {
+                let (name, value) = cookie.trim().split_once('=')?;
+                (name == "swapper_lan_session").then_some(value)
+            })
+        })
+        .map(str::to_string);
+    let Some(session) = session.filter(|session| core.has_lan_session(session)) else {
+        return StatusCode::UNAUTHORIZED.into_response();
+    };
+    request.extensions_mut().insert(LanSession(session));
+    next.run(request).await
+}
+
+#[derive(Deserialize, Default)]
+struct PairingQuery {
+    token: Option<String>,
+}
+
+async fn pair_lan_device(
+    State(core): State<Arc<RemoteCore>>,
+    Query(query): Query<PairingQuery>,
+) -> Response {
+    let Some(token) = query.token else {
+        return StatusCode::NOT_FOUND.into_response();
+    };
+    let Some(session) = core.pair_lan_device(&token) else {
+        return StatusCode::NOT_FOUND.into_response();
+    };
+    let mut response = axum::response::Redirect::to("/").into_response();
+    response.headers_mut().insert(
+        header::SET_COOKIE,
+        format!("swapper_lan_session={session}; HttpOnly; SameSite=Strict; Path=/")
+            .parse()
+            .expect("valid pairing cookie"),
+    );
+    response.headers_mut().insert(
+        header::REFERRER_POLICY,
+        "no-referrer".parse().expect("valid referrer policy"),
+    );
+    response
 }
 
 async fn game() -> impl IntoResponse {
@@ -135,11 +219,19 @@ async fn lock_champion(headers: HeaderMap) -> Response {
     action_response(control::lock_champion().await)
 }
 
-async fn runes(State(core): State<Arc<RemoteCore>>) -> Response {
+#[derive(Deserialize, Default)]
+struct PositionQuery {
+    position: Option<String>,
+}
+
+async fn runes(
+    State(core): State<Arc<RemoteCore>>,
+    Query(query): Query<PositionQuery>,
+) -> Response {
     let auto_apply = crate::runes::auto_apply_enabled(&core.app);
     let apply_spells = crate::runes::apply_spells_enabled(&core.app);
     let tier = crate::runes::configured_tier(&core.app);
-    Json(crate::runes::view(auto_apply, apply_spells, &tier).await).into_response()
+    Json(crate::runes::view(auto_apply, apply_spells, &tier, query.position.as_deref()).await).into_response()
 }
 
 #[derive(Deserialize)]
@@ -179,6 +271,40 @@ async fn keystone_build(Query(query): Query<KeystoneBuildQuery>) -> Response {
             .await,
     )
     .into_response()
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct ImportItemBuildRequest {
+    champion_id: i64,
+    champion_name: String,
+    source: String,
+    items: Vec<i64>,
+}
+
+async fn import_item_build(headers: HeaderMap, Json(body): Json<ImportItemBuildRequest>) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    match crate::runes::item_sets::import_build(
+        body.champion_id,
+        &body.champion_name,
+        &body.source,
+        &body.items,
+    )
+    .await
+    {
+        Ok(_) => (StatusCode::OK, Json(control::ActionResult::success())).into_response(),
+        Err(error) => (
+            rune_status(&error),
+            Json(control::ActionResult::error(error.message())),
+        )
+            .into_response(),
+    }
 }
 
 fn rune_status(error: &crate::runes::RuneError) -> StatusCode {
@@ -512,11 +638,16 @@ async fn status(State(core): State<Arc<RemoteCore>>) -> Response {
     ([(header::CONTENT_TYPE, "application/json")], body).into_response()
 }
 
-async fn socket(ws: WebSocketUpgrade, State(core): State<Arc<RemoteCore>>) -> impl IntoResponse {
-    ws.on_upgrade(move |stream| serve_socket(stream, core))
+async fn socket(
+    ws: WebSocketUpgrade,
+    State(core): State<Arc<RemoteCore>>,
+    lan_session: Option<Extension<LanSession>>,
+) -> impl IntoResponse {
+    let session = lan_session.map(|Extension(LanSession(session))| session);
+    ws.on_upgrade(move |stream| serve_socket(stream, core, session))
 }
 
-async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>) {
+async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>, lan_session: Option<String>) {
     let mut updates = core.subscribe();
     let mut runes = core.subscribe_runes();
     let mut runes_changed = core.subscribe_runes_changed();
@@ -524,8 +655,15 @@ async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>) {
     if stream.send(Message::Text(payload.into())).await.is_err() {
         return;
     }
+    let mut session_check = tokio::time::interval(std::time::Duration::from_secs(1));
     loop {
         tokio::select! {
+            _ = session_check.tick() => {
+                if lan_session.as_deref().is_some_and(|session| !core.has_lan_session(session)) {
+                    let _ = stream.send(Message::Close(None)).await;
+                    return;
+                }
+            },
             event = updates.recv() => match event {
                 Ok(status) => {
                     let payload = serde_json::json!({ "type": "status", "status": status }).to_string();

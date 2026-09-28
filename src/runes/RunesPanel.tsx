@@ -61,6 +61,13 @@ type Props = {
   onToggleAutoApply: (enabled: boolean) => void;
   onToggleSpellsWithRunes: (enabled: boolean) => void;
   onPickSpell: (slot: "d" | "f", spellId: number) => void;
+  onPositionChange: (position: string) => void;
+  onImportItems: (
+    championId: number,
+    championName: string,
+    source: string,
+    items: number[],
+  ) => Promise<void>;
   /** Loads one page of pros' solo-queue games for the champion and role. */
   onLoadProBuilds: (championId: number, position: string, page: number) => Promise<ProBuildsView>;
   /** Loads the 6-item build for one preset's keystone, from lolalytics. */
@@ -71,7 +78,6 @@ type Props = {
     keystone: number,
   ) => Promise<KeystoneBuildView | null>;
   onTierChange: (tier: string) => void;
-  onExit?: () => void;
 };
 
 const positionLabels: Record<string, string> = {
@@ -82,6 +88,14 @@ const positionLabels: Record<string, string> = {
   support: "Support",
   none: "No role",
 };
+
+const runeRoles = [
+  { value: "top", label: "Top" },
+  { value: "jungle", label: "Jungle" },
+  { value: "mid", label: "Mid" },
+  { value: "adc", label: "Bot" },
+  { value: "support", label: "Support" },
+] as const;
 
 const modeLabels: Record<string, string> = {
   ranked: "Ranked",
@@ -121,10 +135,11 @@ export function RunesPanel({
   onToggleAutoApply,
   onToggleSpellsWithRunes,
   onPickSpell,
+  onPositionChange,
+  onImportItems,
   onLoadProBuilds,
   onLoadBuild,
   onTierChange,
-  onExit,
 }: Props) {
   const [screen, setScreen] = useState<RuneScreen>("presets");
   const [selection, setSelection] = useState<Selection | null>(null);
@@ -132,21 +147,35 @@ export function RunesPanel({
   const [proLoading, setProLoading] = useState(false);
   const [proError, setProError] = useState<string | null>(null);
   const [pickerSlot, setPickerSlot] = useState<"d" | "f" | null>(null);
+  const [importNotice, setImportNotice] = useState<string | null>(null);
   const proRequested = useRef(false);
+  const proRequest = useRef(0);
 
   const championId = view?.championId ?? 0;
+  const position = view?.position ?? "";
   useEffect(() => {
     const restored =
       rememberedScreen.championId === championId ? rememberedScreen.screen : "presets";
     setScreen(restored);
     setSelection(view?.applied ? selectionFromApplied(view.applied) : null);
+    proRequest.current += 1;
+    setProLoading(false);
     setProView(null);
     setProError(null);
     setPickerSlot(null);
+    setImportNotice(null);
     proRequested.current = false;
     // Reset only when the champion changes, not on every statistics refresh.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [championId]);
+
+  useEffect(() => {
+    proRequest.current += 1;
+    setProLoading(false);
+    setProView(null);
+    setProError(null);
+    proRequested.current = false;
+  }, [position]);
 
   useEffect(() => {
     if (championId > 0) rememberedScreen = { championId, screen };
@@ -206,17 +235,21 @@ export function RunesPanel({
   }
 
   async function loadPro(page: number) {
+    const request = ++proRequest.current;
+    const requestedPosition = view?.position ?? "none";
     setProLoading(true);
     setProError(null);
     try {
-      const next = await onLoadProBuilds(championId, view?.position ?? "none", page);
-      setProView((prev) =>
-        page > 1 && prev ? { ...next, matches: [...prev.matches, ...next.matches] } : next,
-      );
+      const next = await onLoadProBuilds(championId, requestedPosition, page);
+      if (request === proRequest.current) {
+        setProView((prev) =>
+          page > 1 && prev ? { ...next, matches: [...prev.matches, ...next.matches] } : next,
+        );
+      }
     } catch (reason) {
-      setProError(String(reason));
+      if (request === proRequest.current) setProError(String(reason));
     } finally {
-      setProLoading(false);
+      if (request === proRequest.current) setProLoading(false);
     }
   }
 
@@ -225,6 +258,16 @@ export function RunesPanel({
     setProView(null);
     setProError(null);
     void loadPro(1);
+  }
+
+  async function importItemSet(source: string, items: number[]) {
+    setImportNotice(null);
+    try {
+      await onImportItems(championId, view?.championName ?? "Champion", source, items);
+      setImportNotice("Item set added to the League shop.");
+    } catch {
+      // The parent displays the request error beside the rune controls.
+    }
   }
 
   /** Import an exact pro page through the same apply path a preset uses, then
@@ -285,11 +328,6 @@ export function RunesPanel({
         </div>
         <div className="runes-head-right">
           {spellSlots}
-          {onExit && mode === "desktop" && (
-            <button type="button" className="runes-back" onClick={onExit} aria-label="Back to accounts">
-              Accounts
-            </button>
-          )}
         </div>
       </div>
 
@@ -303,6 +341,28 @@ export function RunesPanel({
           </span>
         )}
       </div>
+
+      {view.mode === "ranked" && (
+        <div className="runes-role-picker" role="group" aria-label="Choose rune role">
+          {runeRoles.map((role) => (
+            <button
+              key={role.value}
+              type="button"
+              title={role.label}
+              aria-label={`${role.label} runes`}
+              aria-pressed={view.position === role.value}
+              className={view.position === role.value ? "is-active" : ""}
+              disabled={busy}
+              onClick={() => {
+                setImportNotice(null);
+                onPositionChange(role.value);
+              }}
+            >
+              <RoleIcon role={role.value} size={17} mode={mode} />
+            </button>
+          ))}
+        </div>
+      )}
 
       {screen !== "pro" && (
         <div className="runes-settings">
@@ -341,6 +401,7 @@ export function RunesPanel({
 
       <div className="runes-body">
         {error && <p className="runes-alert" role="alert">{error}</p>}
+        {importNotice && <p className="runes-note runes-import-note" role="status">{importNotice}</p>}
         {screen !== "pro" && autoAppliedLabel && (
           <p className="runes-note runes-auto-note">Auto-applied {autoAppliedLabel}</p>
         )}
@@ -356,6 +417,10 @@ export function RunesPanel({
             busy={busy}
             active={active}
             onImport={importProBuild}
+            onImportItems={(build) => void importItemSet(
+              `Pro · ${build.proName || "build"}`,
+              build.finalItems.map((item) => item.id),
+            )}
             onLoadMore={() => void loadPro((proView?.page ?? 1) + 1)}
             onRetry={retryPro}
           />
@@ -379,44 +444,45 @@ export function RunesPanel({
               const presetSelection = selectionFromPreset(preset);
               const isActive = sameSelection(presetSelection, active);
               return (
-                <button
-                  type="button"
-                  key={preset.index}
-                  className={`rune-preset ${isActive ? "is-active" : ""}`}
-                  disabled={busy}
-                  onClick={() => {
-                    setSelection(presetSelection);
-                    setScreen("editor");
-                    onApply(presetSelection, preset.index, preset.spells);
-                  }}
-                >
-                  <span className="rune-preset-head">
-                    <RuneIcon id={preset.keystone} mode={mode} className="rune-preset-keystone" />
-                    <span className="rune-preset-copy">
-                      <strong>{preset.title}</strong>
-                      <small>
-                        {preset.play > 0
-                          ? `${fmtPct(preset.winPct)} win · ${fmtGames(preset.play)} games`
-                          : "League recommendation"}
-                      </small>
+                <div key={preset.index} className={`rune-preset ${isActive ? "is-active" : ""}`}>
+                  <button
+                    type="button"
+                    className="rune-preset-main"
+                    disabled={busy}
+                    onClick={() => {
+                      setSelection(presetSelection);
+                      setScreen("editor");
+                      onApply(presetSelection, preset.index, preset.spells);
+                    }}
+                  >
+                    <span className="rune-preset-head">
+                      <RuneIcon id={preset.keystone} mode={mode} className="rune-preset-keystone" />
+                      <span className="rune-preset-copy">
+                        <strong>{preset.title}</strong>
+                        <small>
+                          {preset.play > 0
+                            ? `${fmtPct(preset.winPct)} win · ${fmtGames(preset.play)} games`
+                            : "League recommendation"}
+                        </small>
+                      </span>
+                      {isActive && <span className="rune-preset-check"><CheckIcon size={15} /></span>}
                     </span>
-                    {isActive && <span className="rune-preset-check"><CheckIcon size={15} /></span>}
-                  </span>
-                  <span className="rune-preset-icons">
-                    {preset.primaryRunes.map((id) => <RuneIcon key={`p${id}`} id={id} mode={mode} />)}
-                    <span className="rune-preset-divider" />
-                    {preset.secondaryRunes.map((id) => <RuneIcon key={`s${id}`} id={id} mode={mode} />)}
-                    <span className="rune-preset-divider" />
-                    {preset.shards.map((id, index) => <RuneIcon key={`m${index}`} id={id} mode={mode} className="rune-preset-shard" />)}
-                    {preset.spells.length === 2 && (
-                      <>
-                        <span className="rune-preset-divider" />
-                        {preset.spells.map((id, index) => (
-                          <SpellIcon key={`sp${index}`} id={id} mode={mode} className="rune-preset-spell" />
-                        ))}
-                      </>
-                    )}
-                  </span>
+                    <span className="rune-preset-icons">
+                      {preset.primaryRunes.map((id) => <RuneIcon key={`p${id}`} id={id} mode={mode} />)}
+                      <span className="rune-preset-divider" />
+                      {preset.secondaryRunes.map((id) => <RuneIcon key={`s${id}`} id={id} mode={mode} />)}
+                      <span className="rune-preset-divider" />
+                      {preset.shards.map((id, index) => <RuneIcon key={`m${index}`} id={id} mode={mode} className="rune-preset-shard" />)}
+                      {preset.spells.length === 2 && (
+                        <>
+                          <span className="rune-preset-divider" />
+                          {preset.spells.map((id, index) => (
+                            <SpellIcon key={`sp${index}`} id={id} mode={mode} className="rune-preset-spell" />
+                          ))}
+                        </>
+                      )}
+                    </span>
+                  </button>
                   <PresetBuild
                     mode={mode}
                     championId={view.championId}
@@ -424,8 +490,10 @@ export function RunesPanel({
                     tier={view.tier}
                     keystone={preset.keystone}
                     onLoad={onLoadBuild}
+                    onImport={(items) => void importItemSet(`Preset · ${preset.title}`, items)}
+                    disabled={busy}
                   />
-                </button>
+                </div>
               );
             })}
           </div>

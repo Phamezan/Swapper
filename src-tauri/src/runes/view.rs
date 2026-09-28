@@ -385,7 +385,12 @@ fn source_label(source: &str) -> &'static str {
 }
 
 /// Builds the rune screen for the current champion select.
-pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> RunesView {
+pub async fn view(
+    auto_apply: bool,
+    apply_with_runes: bool,
+    tier: &str,
+    requested_position: Option<&str>,
+) -> RunesView {
     let (phase, context) = match super::rune_context().await {
         Ok(super::RuneContext { phase, context }) => (phase, context),
         Err(error) => {
@@ -437,7 +442,12 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
             );
         }
     };
-    let loaded = data::load_for(&current, &context, &catalog, tier)
+    let detected_position = super::position_for(&current, &context).await;
+    let position = requested_position
+        .and_then(session::position_from_assigned)
+        .filter(|position| *position != super::opgg::POSITION_NONE)
+        .unwrap_or(detected_position);
+    let loaded = data::load_for(&current, &context, &catalog, tier, position)
         .await
         .unwrap_or(data::Loaded {
             source: "none",
@@ -469,7 +479,7 @@ pub async fn view(auto_apply: bool, apply_with_runes: bool, tier: &str) -> Runes
             spells: preset_spells.clone(),
         })
         .collect();
-    let position = super::position_for(&current, &context).await.to_string();
+    let position = position.to_string();
     let mode = context.mode().to_string();
     let applied = super::shared()
         .applied

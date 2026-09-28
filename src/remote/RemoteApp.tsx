@@ -70,6 +70,9 @@ export default function RemoteApp() {
   const [runes, setRunes] = useState<RunesView | null>(null);
   const [runesBusy, setRunesBusy] = useState(false);
   const [runesError, setRunesError] = useState<string | null>(null);
+  const runePosition = useRef<string | undefined>(undefined);
+  const runeChampion = useRef(0);
+  const runeRequest = useRef(0);
   const socketRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
@@ -192,6 +195,8 @@ export default function RemoteApp() {
 
   useEffect(() => {
     if (tab !== "runes" || game?.phase !== "ChampSelect") return;
+    const selectedChampion = game.championSelect?.selectedChampionId ?? game.championSelect?.prepickChampionId ?? 0;
+    if (selectedChampion > 0 && runeChampion.current !== selectedChampion) runePosition.current = undefined;
     void loadRunes();
   }, [tab, game?.phase, game?.championSelect?.selectedChampionId, game?.championSelect?.prepickChampionId]);
 
@@ -228,12 +233,46 @@ export default function RemoteApp() {
     }
   }
 
-  async function loadRunes() {
+  async function loadRunes(position?: string) {
+    if (position) runePosition.current = position;
+    const selectedPosition = position ?? runePosition.current;
+    const request = ++runeRequest.current;
     try {
-      const response = await fetch("/api/runes", { cache: "no-store" });
-      if (response.ok) setRunes(await response.json() as RunesView);
+      const query = selectedPosition ? `?position=${encodeURIComponent(selectedPosition)}` : "";
+      const response = await fetch(`/api/runes${query}`, { cache: "no-store" });
+      if (response.ok) {
+        const next = await response.json() as RunesView;
+        if (request === runeRequest.current) {
+          setRunes(next);
+          runeChampion.current = next.championId;
+        }
+      }
     } catch {
-      setRunesError("Could not load runes.");
+      if (request === runeRequest.current) setRunesError("Could not load runes.");
+    }
+  }
+
+  async function importItemBuild(
+    championId: number,
+    championName: string,
+    source: string,
+    items: number[],
+  ) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const response = await fetch("/api/items/import", {
+        method: "POST",
+        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
+        body: JSON.stringify({ championId, championName, source, items }),
+      });
+      const result = await response.json() as { ok: boolean; message: string | null };
+      if (!response.ok || !result.ok) throw new Error(result.message ?? "Could not add the item set.");
+    } catch (reason) {
+      setRunesError(String(reason));
+      throw reason;
+    } finally {
+      setRunesBusy(false);
     }
   }
 
@@ -355,7 +394,8 @@ export default function RemoteApp() {
     }
   }
 
-  const ready = live && status?.state === "available" && status.tailscaleRunning && status.lcuConnected;
+  const ready = live && status?.state === "available" && status.lcuConnected;
+  const swapperConnected = live && status?.state === "available";
   const phase = game?.phase;
   const select = game?.championSelect;
   const inChampSelect = Boolean(status?.lcuConnected && phase === "ChampSelect");
@@ -381,13 +421,13 @@ export default function RemoteApp() {
           {inChampSelect ? (
             <div className="remote-mini-status">
               <span
-                className={`remote-chip ${status?.tailscaleRunning && live ? "is-good" : "is-bad"}`}
-                title={`Tailscale ${status?.tailscaleRunning && live ? "connected" : "offline"}`}
-                aria-label={`Tailscale ${status?.tailscaleRunning && live ? "connected" : "offline"}`}
+                className={`remote-chip ${swapperConnected ? "is-good" : "is-bad"}`}
+                title={`Swapper ${swapperConnected ? "connected" : "offline"}`}
+                aria-label={`Swapper ${swapperConnected ? "connected" : "offline"}`}
               >
                 <Network size={13} aria-hidden />
                 <i />
-                {!(status?.tailscaleRunning && live) && <b>Tailscale off</b>}
+                {!swapperConnected && <b>Swapper offline</b>}
               </span>
               <span
                 className={`remote-chip ${status?.lcuConnected ? "is-good" : "is-bad"}`}
@@ -410,7 +450,7 @@ export default function RemoteApp() {
         </div>
         {!inChampSelect && (
           <div className="remote-status-line">
-            <span className={status?.tailscaleRunning && live ? "is-good" : "is-bad"}><i />Tailscale {status?.tailscaleRunning && live ? "connected" : "offline"}</span>
+            <span className={swapperConnected ? "is-good" : "is-bad"}><i />Swapper {swapperConnected ? "connected" : "offline"}</span>
             <span className={status?.lcuConnected ? "is-good" : "is-bad"}><i />League {status?.lcuConnected ? "connected" : "offline"}</span>
           </div>
         )}
@@ -471,6 +511,8 @@ export default function RemoteApp() {
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
                 onToggleSpellsWithRunes={(enabled) => void toggleSpellsWithRunes(enabled)}
                 onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
+                onPositionChange={(nextPosition) => void loadRunes(nextPosition)}
+                onImportItems={importItemBuild}
                 onLoadProBuilds={loadProBuilds}
                 onLoadBuild={loadKeystoneBuild}
                 onTierChange={(tier) => void setTier(tier)}

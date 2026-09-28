@@ -474,6 +474,17 @@ fn probe_remote(state: State<'_, AppState>) -> remote::RemoteStatus {
 }
 
 #[tauri::command]
+fn create_lan_pairing_url(state: State<'_, AppState>) -> Result<String, String> {
+    state.remote.create_lan_pairing_url()
+}
+
+#[tauri::command]
+fn reset_lan_access(state: State<'_, AppState>) -> Result<String, String> {
+    state.remote.reset_lan_access();
+    state.remote.create_lan_pairing_url()
+}
+
+#[tauri::command]
 fn set_auto_apply_top_preset(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
@@ -498,11 +509,15 @@ fn set_auto_apply_top_preset(
 }
 
 #[tauri::command]
-async fn get_runes(state: State<'_, AppState>) -> Result<runes::RunesView, String> {
+async fn get_runes(
+    state: State<'_, AppState>,
+    position: Option<String>,
+) -> Result<runes::RunesView, String> {
     Ok(runes::view(
         state.auto_apply_top_preset(),
         state.apply_spells_with_runes(),
         &state.rune_tier(),
+        position.as_deref(),
     )
     .await)
 }
@@ -645,6 +660,18 @@ async fn get_keystone_build(
     keystone: i64,
 ) -> Option<runes::KeystoneBuildView> {
     runes::preset_build_view(champion_id, &position, &tier, keystone).await
+}
+
+#[tauri::command]
+async fn import_item_build(
+    champion_id: i64,
+    champion_name: String,
+    source: String,
+    items: Vec<i64>,
+) -> Result<String, String> {
+    runes::item_sets::import_build(champion_id, &champion_name, &source, &items)
+        .await
+        .map_err(|error| error.message().to_string())
 }
 
 #[tauri::command]
@@ -818,6 +845,8 @@ pub fn run() {
             hide_flyout,
             set_remote_enabled,
             probe_remote,
+            create_lan_pairing_url,
+            reset_lan_access,
             set_auto_apply_top_preset,
             set_rune_tier,
             set_apply_spells_with_runes,
@@ -831,6 +860,7 @@ pub fn run() {
             apply_spell,
             get_pro_builds,
             get_keystone_build,
+            import_item_build,
             apply_rune_page
         ])
         .run(tauri::generate_context!())

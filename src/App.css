@@ -176,6 +176,14 @@ button[data-slot="button"].add-inline:hover { border-color: transparent; backgro
 .path-input input { flex: 1; min-width: 0; }
 .path-input button { height: 36px; flex: none; padding: 0 13px; font-size: 11px; }
 .remote-setting { margin-top: 20px; padding-top: 17px; border-top: 1px solid var(--line-strong); }
+.remote-transport { display: flex; width: fit-content; gap: 3px; margin-top: 13px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-panel); }
+.remote-transport button { min-width: 84px; height: 27px; padding: 0 12px; border: 0; border-radius: 6px; color: var(--text-secondary); background: transparent; font-size: 10px; font-weight: 700; }
+.remote-transport button:hover { color: var(--text-primary); background: var(--surface-hover); }
+.remote-transport button.is-active { color: var(--action-text); background: var(--action-fill); }
+.remote-status-dot { width: 7px; height: 7px; display: inline-block; flex: none; border-radius: 50%; }
+.remote-status-dot.is-good { background: var(--positive); box-shadow: 0 0 0 3px color-mix(in srgb, var(--positive) 13%, transparent); }
+.remote-status-dot.is-bad { background: var(--danger); }
+.remote-transport-message { margin: 6px 0 0; color: var(--text-muted); font-size: 10px; line-height: 1.4; }
 .remote-address { display: flex; align-items: center; gap: 7px; margin-top: 12px; }
 .remote-address input { flex: 1; min-width: 0; font-family: "Outfit", ui-monospace, monospace; }
 .remote-address button { height: 36px; flex: none; padding: 0 10px; font-size: 11px; }
