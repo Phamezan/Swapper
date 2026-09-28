@@ -3,278 +3,271 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Imported Build · In-game Preview</title>
+  <title>Swapper imported build · shop preview</title>
   <style>
-    :root {
-      color-scheme: dark;
-      --ink: #e8e1cf;
-      --muted: #9b9b91;
-      --dim: #74776f;
-      --gold: #c8aa6e;
-      --line: #3c4544;
-      --panel: #10191a;
-      --panel-2: #172324;
-      --teal: #0b3437;
-    }
+    :root { color-scheme: dark; --gold: #c4a45d; --text: #d6d2c7; --muted: #91928a; --line: #326067; --panel: #071a20; --teal: #06363d; }
     * { box-sizing: border-box; }
     body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 36px 20px;
-      color: var(--ink);
-      background:
-        radial-gradient(ellipse at 50% 28%, #263b38 0, #152322 42%, #0a1111 80%),
-        #0a1111;
-      font: 14px/1.4 "Segoe UI", Arial, sans-serif;
-    }
-    .preview { width: min(1120px, 100%); }
-    .caption {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin: 0 0 12px 2px;
-      color: #d5d0c3;
-      font-size: 12px;
-      letter-spacing: .02em;
-    }
-    .caption-mark {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #78bdb0;
-      box-shadow: 0 0 12px #78bdb088;
-    }
-    .shop {
-      overflow: hidden;
-      border: 1px solid #6f6242;
-      background: rgba(10, 17, 18, .97);
-      box-shadow: 0 28px 90px #000a, inset 0 0 0 1px #c8aa6e18;
-    }
-    .shop-head {
-      height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 21px;
-      border-bottom: 1px solid #4c493c;
-      background: linear-gradient(90deg, #172426, #111a1b 60%, #172426);
-    }
-    .shop-title { color: #e6d9bb; font: 600 18px/1 Georgia, serif; letter-spacing: .08em; }
-    .shop-meta { color: #a8a89f; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
-    .close {
-      width: 27px; height: 27px; display: grid; place-items: center;
-      border: 1px solid #555447; color: #b8b4a8; font-size: 18px;
-    }
-    .shop-body { min-height: 492px; display: grid; grid-template-columns: 174px minmax(0, 1fr) 246px; }
-    .nav {
-      padding: 19px 0;
-      border-right: 1px solid var(--line);
-      background: #111a1b;
-    }
-    .nav-label { padding: 0 17px 12px; color: #777f7a; font-size: 10px; letter-spacing: .16em; }
-    .nav-item {
-      position: relative;
-      padding: 14px 17px;
-      color: #aeb1a8;
-      font-size: 12px;
-      letter-spacing: .055em;
-      text-transform: uppercase;
-    }
-    .nav-item.active {
-      color: #f0dfb3;
-      background: linear-gradient(90deg, #29413d, #1d302e);
-      box-shadow: inset 3px 0 var(--gold);
-    }
-    .nav-item.active::after {
-      content: ""; position: absolute; right: 14px; top: 50%; width: 5px; height: 5px;
-      border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); transform: translateY(-50%) rotate(45deg);
-    }
-    .nav-foot { margin: 24px 17px 0; padding-top: 13px; border-top: 1px solid #303a39; color: #777f7a; font-size: 10px; }
-    .content { min-width: 0; padding: 20px 22px 24px; }
-    .content-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
-    .eyebrow { margin-bottom: 5px; color: #8e9891; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
-    .section-title { margin: 0; color: #e0d2ab; font: 500 20px/1.2 Georgia, serif; }
-    .search { padding: 8px 11px; width: 156px; border: 1px solid #374443; color: #858d86; font-size: 11px; }
-    .set-card { border: 1px solid #62573d; background: #121c1d; }
-    .set-head {
-      display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;
-      padding: 16px 17px 15px;
-      border-bottom: 1px solid #3f4843;
-      background: linear-gradient(100deg, #1d302e, #182423 68%, #1b2725);
-    }
-    .set-kicker { color: #a99a70; font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
-    .set-name { margin: 5px 0 0; color: #f0e7d0; font: 500 17px/1.3 Georgia, serif; }
-    .champion {
-      display: flex; align-items: center; gap: 8px; white-space: nowrap;
-      color: #d4d0c2; font-size: 11px;
-    }
-    .champion img { width: 30px; height: 30px; border: 1px solid #a88d57; object-fit: cover; }
-    .block-title {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 13px 17px 11px;
-      color: #e4d8b9; font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
-    }
-    .block-title span:last-child { color: #818a82; font-size: 9px; font-weight: 400; letter-spacing: .08em; }
-    .items { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; padding: 0 17px 17px; }
-    .item {
-      min-width: 0;
-      min-height: 94px;
-      display: grid;
-      grid-template-columns: 49px minmax(0, 1fr);
-      align-items: center;
-      gap: 10px;
-      padding: 9px;
-      border: 1px solid #384241;
-      background: linear-gradient(135deg, #1d2a2a, #131d1e);
-    }
-    .icon {
-      position: relative; width: 49px; height: 49px;
+      margin: 0; min-height: 100vh; padding: 28px;
       display: grid; place-items: center;
-      overflow: hidden; border: 1px solid #71613e; background: #273232;
-      box-shadow: 0 2px 7px #0008;
+      color: var(--text); font: 12px/1.35 Arial, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 17% 4%, #56766d 0, transparent 21%),
+        radial-gradient(ellipse at 92% 97%, #274c40 0, transparent 28%),
+        linear-gradient(135deg, #142c2b, #142324 49%, #0e211f);
     }
-    .icon img { width: 100%; height: 100%; object-fit: cover; }
-    .fallback { position: absolute; color: #c8aa6e; font-size: 10px; font-weight: 700; }
-    .item-copy { min-width: 0; }
-    .item-name { display: block; color: #e3dfd1; font-size: 11px; line-height: 1.25; }
-    .item-price { display: block; margin-top: 6px; color: #d0b36f; font-size: 11px; }
-    .item-price::before { content: "◈"; padding-right: 4px; color: #b59c5e; }
-    .empty-hint { padding: 0 17px 15px; color: #737f79; font-size: 10px; }
-    .details {
-      padding: 20px 16px;
-      border-left: 1px solid var(--line);
-      background: #111a1b;
+    .preview { width: min(1380px, 100%); }
+    .preview-label { margin: 0 0 10px 3px; color: #d2d0c4; font-size: 12px; letter-spacing: .015em; }
+    .preview-label b { color: #e6cd83; font-weight: 600; }
+    .game {
+      height: min(790px, calc(100vh - 86px)); min-height: 620px;
+      position: relative; overflow: hidden;
+      border: 1px solid #97814b; background: #0b2328;
+      box-shadow: 0 30px 90px #000a, inset 0 0 0 1px #e0c57725;
     }
-    .detail-heading { margin: 1px 0 15px; color: #8e9891; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
-    .featured {
-      display: flex; align-items: center; gap: 12px; padding-bottom: 15px; border-bottom: 1px solid #35403e;
+    /* Hints of the match stay visible around the shop, as in the client. */
+    .map-art {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, #172e2b22, #06141916 28%, #0614194d 70%, #142b2630),
+        repeating-linear-gradient(135deg, transparent 0 74px, #bfd0a008 76px 78px),
+        radial-gradient(ellipse at 13% 25%, #3e5c4a 0, transparent 22%),
+        radial-gradient(ellipse at 90% 78%, #3d5941 0, transparent 26%),
+        #18312c;
     }
-    .featured .icon { width: 62px; height: 62px; flex: 0 0 auto; }
-    .featured-name { color: #e8e0ce; font: 500 15px/1.25 Georgia, serif; }
-    .featured-cost { margin-top: 5px; color: #d0b36f; font-size: 12px; }
-    .detail-copy { margin: 14px 0 0; color: #a0a69d; font-size: 11px; line-height: 1.65; }
-    .stat-list { display: grid; gap: 8px; margin-top: 17px; color: #c4c5bb; font-size: 11px; }
-    .stat { display: flex; justify-content: space-between; padding-bottom: 7px; border-bottom: 1px solid #293332; }
-    .stat span:first-child { color: #7f8b83; }
-    .right-note { margin-top: 19px; padding: 11px; border: 1px solid #344240; color: #8e9891; font-size: 10px; line-height: 1.5; }
-    .shop-foot {
-      min-height: 74px;
-      display: flex; align-items: center; justify-content: space-between; gap: 20px;
-      padding: 12px 20px;
-      border-top: 1px solid #4a493d;
-      background: linear-gradient(90deg, #172323, #10191a 70%, #172323);
+    .hud {
+      position: absolute; z-index: 1; left: 12px; bottom: 14px; width: 180px;
+      padding: 8px; border: 1px solid #917a48; background: #071518e8;
+      box-shadow: 0 3px 14px #0008;
     }
-    .inventory { display: flex; align-items: center; gap: 7px; }
-    .inventory-label { margin-right: 5px; color: #858d85; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
-    .slot { width: 35px; height: 35px; border: 1px solid #4a4e43; background: #0e1718; }
+    .hud-top { display: flex; gap: 5px; margin-bottom: 7px; }
+    .hud-portrait { width: 42px; height: 42px; border: 1px solid #ac9354; background: #26312b; }
+    .hud-mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; flex: 1; }
+    .hud-mini i { background: linear-gradient(135deg, #544d3d, #25383a); border: 1px solid #425353; }
+    .hud-stats { display: flex; justify-content: space-between; color: #70c27c; font-size: 10px; }
+
+    .shop {
+      position: absolute; z-index: 2; top: 15px; bottom: 15px; left: 50%;
+      width: min(1060px, calc(100% - 72px)); transform: translateX(-50%);
+      display: grid; grid-template-rows: 44px minmax(0, 1fr);
+      border: 1px solid #98824c; background: rgba(4, 20, 26, .96);
+      box-shadow: 0 12px 36px #0009, inset 0 0 0 1px #a78e5025;
+    }
+    .shop-tabs {
+      display: flex; align-items: stretch; justify-content: center;
+      border-bottom: 1px solid #326067; background: linear-gradient(#0b292f, #061b21);
+    }
+    .shop-tab {
+      min-width: 142px; display: grid; place-items: center; padding: 0 17px;
+      color: #aebbb4; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .shop-tab.active { color: #f0dfaa; border-bottom: 2px solid var(--gold); background: #17404770; }
+    .shop-close { position: absolute; top: 8px; right: 11px; color: #b4b2a6; font-size: 19px; }
+    .shop-content { min-height: 0; display: grid; grid-template-columns: 76px minmax(0, 1fr) 286px; }
+    .quickbar {
+      padding: 10px 7px; overflow: hidden; border-right: 1px solid #275058;
+      background: linear-gradient(90deg, #081a20, #0a2329);
+    }
+    .quick-group { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; margin-bottom: 11px; padding-bottom: 9px; border-bottom: 1px solid #21434a; }
+    .quick-item { position: relative; width: 27px; height: 27px; border: 1px solid #34585d; background: #182c2d; }
+    .quick-item img { width: 100%; height: 100%; object-fit: cover; }
+    .quick-cost { position: absolute; right: -2px; bottom: -6px; padding: 0 2px; color: #dac479; background: #061519; font-size: 8px; }
+    .set-browser { min-width: 0; min-height: 0; overflow: auto; padding: 13px 17px 18px; scrollbar-color: #a4823d #092126; scrollbar-width: thin; }
+    .search-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .search { height: 27px; flex: 1; padding: 6px 9px; border: 1px solid #27606a; color: #8da2a0; background: #06171c; font-size: 10px; }
+    .set-title-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 1px 0 13px; }
+    .set-title { margin: 0; color: #f0e2b9; font: 600 15px/1.2 Georgia, serif; }
+    .set-source { margin-left: 7px; color: #839792; font: 10px Arial, sans-serif; }
+    .set-champion { display: flex; align-items: center; gap: 6px; color: #b6b7ab; font-size: 10px; }
+    .set-champion img { width: 23px; height: 23px; border: 1px solid #9c8145; }
+    .block { margin: 0 0 14px; padding: 0 0 12px; border-bottom: 1px solid #245158; }
+    .block:last-child { border-bottom: 0; }
+    .block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 8px; }
+    .block-name { margin: 0; color: #e3d9bc; font-size: 11px; font-weight: 700; letter-spacing: .035em; }
+    .block-hint { color: #778e8b; font-size: 9px; }
+    .skill-order {
+      min-height: 34px; display: flex; align-items: center; gap: 8px;
+      padding: 6px 9px; border: 1px solid #244b51; background: #0a2428;
+      color: #c8d2c4; font-size: 11px;
+    }
+    .skill-order strong { color: #edd78f; font-size: 14px; letter-spacing: .08em; }
+    .skill-label { color: #7ea29a; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
+    .item-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 11px; }
+    .build-item { width: 49px; text-align: center; }
+    .item-icon {
+      position: relative; width: 42px; height: 42px; margin: 0 auto 4px;
+      border: 1px solid #95804b; background: #1b3031; box-shadow: 0 2px 5px #0008;
+    }
+    .item-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .order-num {
+      position: absolute; top: -6px; left: -6px; width: 15px; height: 15px;
+      display: grid; place-items: center; border: 1px solid #c5a75f; border-radius: 50%;
+      color: #f3e6be; background: #18363a; font-size: 9px; font-weight: 700;
+    }
+    .fallback { position: absolute; inset: 0; display: grid; place-items: center; color: #d2b567; font-size: 9px; font-weight: 700; }
+    .item-cost { color: #c6ab69; font-size: 9px; }
+    .build-order-note { margin: 7px 0 0; color: #9ba69a; font-size: 9px; }
+    .side-build { display: flex; flex-direction: column; min-height: 0; padding: 15px 15px 14px; border-left: 1px solid #275058; background: linear-gradient(115deg, #09242a, #061920 70%); }
+    .side-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 11px; border-bottom: 1px solid #275058; }
+    .side-title { color: #e6d8b0; font-size: 11px; font-weight: 700; letter-spacing: .13em; }
+    .side-meta { color: #79928d; font-size: 9px; }
+    .slots { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; margin-top: 12px; }
+    .slot { aspect-ratio: 1; border: 1px solid #285159; background: #06171c; }
     .slot img { width: 100%; height: 100%; object-fit: cover; }
-    .gold { margin-left: auto; color: #ddc47e; font-size: 12px; white-space: nowrap; }
-    .buy { padding: 10px 23px; border: 1px solid #8e7747; background: linear-gradient(#6d5c37, #3a3425); color: #e5d7b6; font: 600 10px/1 "Segoe UI", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
-    .fine-print { margin: 11px 2px 0; color: #89908a; font-size: 11px; }
-    @media (max-width: 800px) {
-      body { padding: 18px 10px; }
-      .shop-body { grid-template-columns: 125px minmax(0, 1fr); }
-      .details { display: none; }
-      .content { padding: 16px 14px; }
-      .items { padding: 0 12px 14px; gap: 7px; }
-      .item { grid-template-columns: 40px minmax(0, 1fr); gap: 7px; padding: 6px; }
-      .icon { width: 40px; height: 40px; }
+    .side-empty { flex: 1; min-height: 60px; }
+    .purchase { width: 100%; height: 31px; border: 1px solid #7d6940; color: #94865d; background: linear-gradient(#20292a, #162122); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .purchase-note { margin: 7px 0 0; color: #607b79; text-align: center; font-size: 9px; }
+    .footnote { margin: 9px 2px 0; color: #a2aaa1; font-size: 10px; }
+    @media (max-width: 850px) {
+      body { padding: 12px; }
+      .game { height: calc(100vh - 60px); min-height: 560px; }
+      .shop { width: calc(100% - 34px); }
+      .shop-content { grid-template-columns: 52px minmax(0, 1fr) 210px; }
+      .quickbar { padding-inline: 5px; }
+      .quick-item { width: 19px; height: 19px; }
+      .item-row { gap: 7px; }
+      .build-item { width: 43px; }
+      .item-icon { width: 37px; height: 37px; }
+      .side-build { padding-inline: 10px; }
+      .slot { min-width: 0; }
     }
-    @media (max-width: 540px) {
-      .shop-body { display: block; }
-      .nav { display: flex; overflow-x: auto; padding: 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .nav-label, .nav-foot { display: none; }
-      .nav-item { padding: 13px 12px; white-space: nowrap; font-size: 10px; }
-      .items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .shop-meta { display: none; }
-      .shop-foot { flex-wrap: wrap; }
-      .slot:nth-of-type(n+5) { display: none; }
+    @media (max-width: 610px) {
+      body { display: block; padding: 0; }
+      .preview { width: 100%; }
+      .preview-label, .footnote, .hud { display: none; }
+      .game { width: 100%; height: 100vh; min-height: 0; }
+      .shop { inset: 3px; width: auto; bottom: 3px; transform: none; left: 0; grid-template-rows: 29px minmax(0, 1fr); }
+      .shop-content { grid-template-columns: 40px minmax(0, 1fr) 142px; }
+      .shop-tab { min-width: 0; flex: 1; padding-inline: 5px; font-size: 8px; }
+      .quickbar { display: block; padding: 5px 4px; }
+      .quick-group { gap: 3px; margin-bottom: 6px; padding-bottom: 5px; }
+      .quick-item { width: 14px; height: 14px; }
+      .set-browser { padding: 6px 7px; }
+      .search-row { margin-bottom: 6px; }
+      .search { height: 19px; padding: 3px 6px; font-size: 8px; }
+      .set-title-row { margin: 0 0 7px; }
+      .set-title { font-size: 10px; }
+      .set-source { display: none; }
+      .set-champion { gap: 4px; font-size: 8px; }
+      .set-champion img { width: 16px; height: 16px; }
+      .block { margin-bottom: 6px; padding-bottom: 5px; }
+      .block-head { margin-bottom: 4px; }
+      .block-name { font-size: 8px; }
+      .block-hint { font-size: 7px; }
+      .skill-order { min-height: 23px; gap: 5px; padding: 3px 6px; font-size: 8px; }
+      .skill-order strong { font-size: 10px; }
+      .skill-label { font-size: 7px; }
+      .item-row { gap: 4px; }
+      .build-item { width: 31px; }
+      .item-icon { width: 27px; height: 27px; margin-bottom: 2px; }
+      .order-num { width: 12px; height: 12px; top: -4px; left: -4px; font-size: 7px; }
+      .fallback { font-size: 7px; }
+      .item-cost { font-size: 7px; }
+      .build-order-note { margin-top: 4px; font-size: 7px; }
+      .side-build { padding: 7px 6px; border-left: 1px solid #275058; border-top: 0; }
+      .side-head { padding-bottom: 6px; }
+      .side-title { font-size: 8px; }
+      .side-meta { font-size: 7px; }
+      .slots { gap: 3px; margin-top: 7px; }
+      .side-empty { min-height: 0; }
+      .purchase { height: 21px; font-size: 8px; }
+      .purchase-note { display: none; }
     }
   </style>
 </head>
 <body>
   <main class="preview">
-    <p class="caption"><span class="caption-mark"></span>Static preview of the item set Swapper imports into League</p>
-
-    <section class="shop" aria-label="Illustrative League item shop preview">
-      <header class="shop-head">
-        <div class="shop-title">ITEM SHOP</div>
-        <div class="shop-meta">Summoner’s Rift &nbsp;·&nbsp; In-game view</div>
-        <div class="close" aria-hidden="true">×</div>
-      </header>
-
-      <div class="shop-body">
-        <nav class="nav" aria-label="Shop categories">
-          <div class="nav-label">Browse</div>
-          <div class="nav-item">Recommended</div>
-          <div class="nav-item">All Items</div>
-          <div class="nav-item active">Item Sets</div>
-          <div class="nav-foot">Custom sets<br>created by you</div>
-        </nav>
-
-        <section class="content">
-          <div class="content-top">
-            <div>
-              <div class="eyebrow">Custom item sets</div>
-              <h1 class="section-title">Your Item Sets</h1>
-            </div>
-            <div class="search">⌕ &nbsp; Search item sets</div>
-          </div>
-
-          <article class="set-card">
-            <header class="set-head">
-              <div>
-                <div class="set-kicker">Imported build</div>
-                <h2 class="set-name">Swapper: Ahri · Preset · Electrocute</h2>
-              </div>
-              <div class="champion">
-                <img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Ahri.png" alt="" onerror="this.style.display='none'">
-                <span>Ahri</span>
-              </div>
-            </header>
-            <div class="block-title"><span>Build</span><span>ITEM SET BLOCK</span></div>
-            <div class="items">
-              <div class="item"><span class="icon"><span class="fallback">3020</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3020.png" alt="Sorcerer's Shoes" onerror="this.style.display='none'"></span><span class="item-copy"><span class="item-name">Sorcerer’s Shoes</span><span class="item-price">1,100</span></span></div>
-              <div class="item"><span class="icon"><span class="fallback">6655</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/6655.png" alt="Luden's Echo" onerror="this.style.display='none'"></span><span class="item-copy"><span class="item-name">Luden’s Echo</span><span class="item-price">2,750</span></span></div>
-              <div class="item"><span class="icon"><span class="fallback">4645</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/4645.png" alt="Shadowflame" onerror="this.style.display='none'"></span><span class="item-copy"><span class="item-name">Shadowflame</span><span class="item-price">3,200</span></span></div>
-              <div class="item"><span class="icon"><span class="fallback">3089</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3089.png" alt="Rabadon's Deathcap" onerror="this.style.display='none'"></span><span class="item-copy"><span class="item-name">Rabadon’s Deathcap</span><span class="item-price">3,500</span></span></div>
-              <div class="item"><span class="icon"><span class="fallback">3157</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3157.png" alt="Zhonya's Hourglass" onerror="this.style.display='none'"></span><span class="item-copy"><span class="item-name">Zhonya’s Hourglass</span><span class="item-price">3,250</span></span></div>
-              <div class="item"><span class="icon"><span class="fallback">3135</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3135.png" alt="Void Staff" onerror="this.style.display='none'"></span><span class="item-copy"><span class="item-name">Void Staff</span><span class="item-price">3,000</span></span></div>
-            </div>
-            <div class="empty-hint">Select an item to view its details, then buy it from the shop.</div>
-          </article>
-        </section>
-
-        <aside class="details" aria-label="Selected item details">
-          <div class="detail-heading">Item details</div>
-          <div class="featured">
-            <span class="icon"><span class="fallback">3089</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3089.png" alt="Rabadon's Deathcap" onerror="this.style.display='none'"></span>
-            <div><div class="featured-name">Rabadon’s Deathcap</div><div class="featured-cost">◈ &nbsp;3,500</div></div>
-          </div>
-          <p class="detail-copy">A late-game item from this imported build. In League, selecting an item shows its stats, recipe, and purchase options here.</p>
-          <div class="stat-list">
-            <div class="stat"><span>Ability Power</span><span>+130</span></div>
-            <div class="stat"><span>Item tier</span><span>Legendary</span></div>
-          </div>
-          <div class="right-note">Swapper adds the set to the Item Sets tab. It does not buy items for you.</div>
-        </aside>
-      </div>
-
-      <footer class="shop-foot">
-        <div class="inventory">
-          <span class="inventory-label">Inventory</span>
-          <span class="slot"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3020.png" alt=""></span>
-          <span class="slot"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/6655.png" alt=""></span>
-          <span class="slot"></span><span class="slot"></span><span class="slot"></span><span class="slot"></span>
+    <p class="preview-label"><b>Preview:</b> this is the Item Sets layout, with editable text and custom section names.</p>
+    <section class="game" aria-label="Illustrative League game shop">
+      <div class="map-art" aria-hidden="true"></div>
+      <aside class="hud" aria-hidden="true">
+        <div class="hud-top">
+          <img class="hud-portrait" src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Ahri.png" alt="">
+          <div class="hud-mini"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
-        <div class="gold">◈ &nbsp;1,380</div>
-        <div class="buy">Purchase</div>
-      </footer>
-    </section>
+        <div class="hud-stats"><span>◈ 526</span><span>LEVEL 11</span><span>◉ 4/1/6</span></div>
+      </aside>
 
-    <p class="fine-print">Illustrative UI preview. Item artwork is loaded from Riot’s Data Dragon; a network connection is needed to display it.</p>
+      <section class="shop">
+        <header class="shop-tabs">
+          <div class="shop-tab">Recommended</div>
+          <div class="shop-tab">All Items</div>
+          <div class="shop-tab active">Item Sets</div>
+          <div class="shop-close" aria-hidden="true">×</div>
+        </header>
+        <div class="shop-content">
+          <aside class="quickbar" aria-label="Quick buy items">
+            <div class="quick-group">
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/1056.png" alt=""><small class="quick-cost">400</small></span>
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/2003.png" alt=""><small class="quick-cost">50</small></span>
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3020.png" alt=""><small class="quick-cost">1100</small></span>
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/6655.png" alt=""><small class="quick-cost">2750</small></span>
+            </div>
+            <div class="quick-group">
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/4645.png" alt=""></span>
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3089.png" alt=""></span>
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3157.png" alt=""></span>
+              <span class="quick-item"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3135.png" alt=""></span>
+            </div>
+          </aside>
+
+          <section class="set-browser" aria-label="Imported item set">
+            <div class="search-row"><div class="search">⌕ &nbsp; Search items</div></div>
+            <div class="set-title-row">
+              <h1 class="set-title">Swapper: Ahri · Preset · Electrocute</h1>
+              <div class="set-champion"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/champion/Ahri.png" alt=""> Ahri</div>
+            </div>
+
+            <section class="block">
+              <header class="block-head"><h2 class="block-name">Upgrade Order</h2><span class="block-hint">Skill priority</span></header>
+              <div class="skill-order"><span class="skill-label">Max skills</span><strong>E &gt; W &gt; Q</strong></div>
+            </section>
+
+            <section class="block">
+              <header class="block-head"><h2 class="block-name">Full Build</h2><span class="block-hint">Buy left to right</span></header>
+              <div class="item-row">
+                <div class="build-item"><div class="item-icon"><span class="fallback">3020</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3020.png" alt="Sorcerer's Shoes" onerror="this.style.display='none'"><span class="order-num">1</span></div><span class="item-cost">1,100</span></div>
+                <div class="build-item"><div class="item-icon"><span class="fallback">6655</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/6655.png" alt="Luden's Echo" onerror="this.style.display='none'"><span class="order-num">2</span></div><span class="item-cost">2,750</span></div>
+                <div class="build-item"><div class="item-icon"><span class="fallback">4645</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/4645.png" alt="Shadowflame" onerror="this.style.display='none'"><span class="order-num">3</span></div><span class="item-cost">3,200</span></div>
+                <div class="build-item"><div class="item-icon"><span class="fallback">3089</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3089.png" alt="Rabadon's Deathcap" onerror="this.style.display='none'"><span class="order-num">4</span></div><span class="item-cost">3,500</span></div>
+                <div class="build-item"><div class="item-icon"><span class="fallback">3157</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3157.png" alt="Zhonya's Hourglass" onerror="this.style.display='none'"><span class="order-num">5</span></div><span class="item-cost">3,250</span></div>
+                <div class="build-item"><div class="item-icon"><span class="fallback">3135</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3135.png" alt="Void Staff" onerror="this.style.display='none'"><span class="order-num">6</span></div><span class="item-cost">3,000</span></div>
+              </div>
+              <p class="build-order-note">Items are listed in the order they appear in the imported build.</p>
+            </section>
+
+            <section class="block">
+              <header class="block-head"><h2 class="block-name">Starting Items</h2><span class="block-hint">Early game</span></header>
+              <div class="item-row">
+                <div class="build-item"><div class="item-icon"><span class="fallback">1056</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/1056.png" alt="Doran's Ring" onerror="this.style.display='none'"></div><span class="item-cost">400</span></div>
+                <div class="build-item"><div class="item-icon"><span class="fallback">2003</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/2003.png" alt="Health Potion" onerror="this.style.display='none'"></div><span class="item-cost">50</span></div>
+              </div>
+            </section>
+
+            <section class="block">
+              <header class="block-head"><h2 class="block-name">Situational</h2><span class="block-hint">Optional choices</span></header>
+              <div class="item-row">
+                <div class="build-item"><div class="item-icon"><span class="fallback">3157</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3157.png" alt="Zhonya's Hourglass" onerror="this.style.display='none'"></div><span class="item-cost">3,250</span></div>
+                <div class="build-item"><div class="item-icon"><span class="fallback">3135</span><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3135.png" alt="Void Staff" onerror="this.style.display='none'"></div><span class="item-cost">3,000</span></div>
+              </div>
+            </section>
+          </section>
+
+          <aside class="side-build" aria-label="Current build and purchase controls">
+            <div class="side-head"><span class="side-title">BUILD</span><span class="side-meta">6 item slots</span></div>
+            <div class="slots">
+              <div class="slot"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/3020.png" alt=""></div>
+              <div class="slot"><img src="https://ddragon.leagueoflegends.com/cdn/16.19.1/img/item/6655.png" alt=""></div>
+              <div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div>
+            </div>
+            <div class="side-empty"></div>
+            <button class="purchase" disabled>Buy</button>
+            <p class="purchase-note">Select an item to see its purchase options.</p>
+          </aside>
+        </div>
+      </section>
+    </section>
+    <p class="footnote">Illustrative mockup based on the shop layout in your screenshot. The section names, text, and example items are editable; this file does not change what Swapper imports yet.</p>
   </main>
 </body>
 </html>
