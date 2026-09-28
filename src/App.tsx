@@ -17,6 +17,7 @@ import { RunesPanel } from "./runes/RunesPanel";
 import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
 import { SwapperDoctor } from "./settings/SwapperDoctor";
 import { UpdateBanner, UpdateSection } from "./settings/UpdateSection";
+import { NotificationSettings } from "./settings/NotificationSettings";
 import { TIER_OPTIONS } from "./runes/types";
 import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
 import { HotkeySetting } from "./settings/HotkeySetting";
@@ -86,6 +87,8 @@ type AppState = {
   applySpellsWithRunes: boolean;
   hotkey: string | null;
   hotkeyActive: boolean;
+  notificationsEnabled: boolean;
+  readyCheckNotifications: boolean;
   remote: RemoteStatus;
 };
 type ChampSelectStatus = {
@@ -109,6 +112,7 @@ const empty: AppState = {
   riotExe: null, riotDetected: false, deceiveDetected: false,
   autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true,
   hotkey: null, hotkeyActive: false, remote: emptyRemote,
+  notificationsEnabled: true, readyCheckNotifications: true, remote: emptyRemote,
 };
 
 const wait = (ms: number) =>
@@ -465,6 +469,11 @@ function App() {
       setRunesBusy(false);
     }
   }
+
+  const setNotifications = (enabled: boolean) =>
+    action("notifications", () => invoke<AppState>("set_notifications_enabled", { enabled }));
+  const setReadyCheckNotifications = (enabled: boolean) =>
+    action("ready-check-notifications", () => invoke<AppState>("set_ready_check_notifications", { enabled }));
 
   function handleChampSelect(payload: ChampSelectStatus) {
     if (payload.phase === "ChampSelect") {
@@ -912,6 +921,14 @@ function App() {
                 </div>
                 <Switch checked={data.applySpellsWithRunes} onCheckedChange={(checked) => void setApplySpellsWithRunes(checked)} aria-label="Apply summoner spells with runes" />
               </div>
+
+              <NotificationSettings
+                notifications={data.notificationsEnabled}
+                readyCheck={data.readyCheckNotifications}
+                busy={busy !== null}
+                onNotificationsChange={(enabled) => void setNotifications(enabled)}
+                onReadyCheckChange={(enabled) => void setReadyCheckNotifications(enabled)}
+              />
 
               <div className="setting-row">
                 <div className="setting-copy">

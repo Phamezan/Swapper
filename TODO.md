@@ -86,13 +86,13 @@ Before implementing a task:
 - [ ] Return directly to the normal account list when repair succeeds.
 
 ### Ready-check and champion-select notifications
-- [ ] Show a Windows notification when a ready check starts.
-- [ ] Show a notification when champion select begins.
-- [ ] Avoid duplicate notifications for the same event.
-- [ ] Add notification settings.
-- [ ] Allow ready-check notifications to be disabled independently.
-- [ ] Consider optional sound.
-- [ ] Add phone vibration/sound cues in the Remote Control UI where browser support allows it.
+- [x] Show a Windows notification when a ready check starts.
+- [x] Show a notification when champion select begins.
+- [x] Avoid duplicate notifications for the same event.
+- [x] Add notification settings.
+- [x] Allow ready-check notifications to be disabled independently.
+- [x] Consider optional sound.
+- [x] Add phone vibration/sound cues in the Remote Control UI where browser support allows it.
 
 ### Global Swapper hotkey
 - [x] Add an optional global keyboard shortcut to open/toggle the tray flyout.

@@ -101,6 +101,14 @@ pub struct Config {
     /// "ctrl+shift+s". `None` means the hotkey is disabled (the default).
     #[serde(default)]
     pub hotkey: Option<String>,
+    /// Whether gameflow notifications (ready check, champion select) are on.
+    /// `None` means the default (on) has never been changed.
+    #[serde(default)]
+    pub notifications_enabled: Option<bool>,
+    /// Whether ready-check notifications are on, independently of champion
+    /// select. `None` means the default (on) has never been changed.
+    #[serde(default)]
+    pub ready_check_notifications: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -613,5 +621,23 @@ mod tests {
         let json = serde_json::to_string(&config).unwrap();
         let restored: Config = serde_json::from_str(&json).unwrap();
         assert_eq!(restored.hotkey.as_deref(), Some("ctrl+shift+s"));
+    }
+
+    #[test]
+    fn notification_settings_default_on_and_round_trip() {
+        // Settings saved before notifications existed have neither toggle.
+        let legacy: Config = serde_json::from_str(r#"{"accounts":[],"use_deceive":false}"#).unwrap();
+        assert_eq!(legacy.notifications_enabled, None);
+        assert_eq!(legacy.ready_check_notifications, None);
+
+        let config = Config {
+            notifications_enabled: Some(true),
+            ready_check_notifications: Some(false),
+            ..Config::default()
+        };
+        let json = serde_json::to_string(&config).unwrap();
+        let restored: Config = serde_json::from_str(&json).unwrap();
+        assert_eq!(restored.notifications_enabled, Some(true));
+        assert_eq!(restored.ready_check_notifications, Some(false));
     }
 }
