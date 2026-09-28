@@ -161,10 +161,62 @@ fn infer_lan_device_name(user_agent: &str) -> &'static str {
         "Android phone"
     } else if user_agent.contains("android") {
         "Android tablet"
+    } else if user_agent.contains("windows") {
+        "Windows PC"
+    } else if (user_agent.contains("macintosh") || user_agent.contains("mac os x"))
+        && user_agent.contains("mobile/")
+    {
+        // iPadOS Safari ships a desktop "Macintosh" UA and adds a Mobile/ token.
+        "iPad"
+    } else if user_agent.contains("macintosh") || user_agent.contains("mac os x") {
+        "Mac"
+    } else if user_agent.contains("linux") {
+        "Linux PC"
     } else if user_agent.contains("mobile") {
         "Mobile browser"
     } else {
         "Phone"
+    }
+}
+
+#[cfg(test)]
+mod name_tests {
+    use super::infer_lan_device_name;
+
+    #[test]
+    fn names_phones_and_computers_from_the_user_agent() {
+        assert_eq!(
+            infer_lan_device_name("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)"),
+            "iPhone"
+        );
+        assert_eq!(
+            infer_lan_device_name("Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit Mobile"),
+            "Android phone"
+        );
+        assert_eq!(
+            infer_lan_device_name("Mozilla/5.0 (Linux; Android 13; SM-X700) AppleWebKit"),
+            "Android tablet"
+        );
+        assert_eq!(
+            infer_lan_device_name("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126"),
+            "Windows PC"
+        );
+        // iPadOS Safari masquerades as a Macintosh, but adds a Mobile/ token.
+        assert_eq!(
+            infer_lan_device_name(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 \
+                 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+            ),
+            "iPad"
+        );
+        assert_eq!(
+            infer_lan_device_name(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 \
+                 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
+            ),
+            "Mac"
+        );
+        assert_eq!(infer_lan_device_name("curl/8.0"), "Phone");
     }
 }
 

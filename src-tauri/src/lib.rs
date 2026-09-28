@@ -485,6 +485,21 @@ fn reset_lan_access(state: State<'_, AppState>) -> Result<String, String> {
 }
 
 #[tauri::command]
+fn list_paired_lan_devices(state: State<'_, AppState>) -> Vec<remote::PairedDeviceView> {
+    state.remote.paired_devices()
+}
+
+#[tauri::command]
+fn revoke_lan_device(state: State<'_, AppState>, id: String) -> Result<(), String> {
+    state.remote.revoke_paired_device(&id)
+}
+
+#[tauri::command]
+fn rename_lan_device(state: State<'_, AppState>, id: String, name: String) -> Result<String, String> {
+    state.remote.rename_paired_device(&id, &name)
+}
+
+#[tauri::command]
 fn set_auto_apply_top_preset(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
@@ -880,6 +895,9 @@ pub fn run() {
             probe_remote,
             create_lan_pairing_url,
             reset_lan_access,
+            list_paired_lan_devices,
+            revoke_lan_device,
+            rename_lan_device,
             set_auto_apply_top_preset,
             set_rune_tier,
             set_apply_spells_with_runes,
