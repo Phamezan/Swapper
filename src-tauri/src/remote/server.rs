@@ -13,7 +13,7 @@ use futures_util::StreamExt;
 use serde::Deserialize;
 use tauri::Emitter;
 
-use super::{control, RemoteCore};
+use super::{control, mdns, RemoteCore};
 
 #[derive(Clone)]
 struct LanSession(String);
@@ -63,8 +63,19 @@ fn routes() -> Router<Arc<RemoteCore>> {
 pub fn lan_router(core: Arc<RemoteCore>) -> Router {
     routes()
         .route("/pair", get(pair_lan_device))
+        // Authenticated: mints a one-time handoff token for the calling device.
+        .route("/handoff/token", axum::routing::post(mint_handoff))
+        // Unauthenticated: consumes the token on the `.local` origin only.
+        .route("/handoff", get(consume_handoff))
+        .route("/handoff/ping", get(handoff_ping))
         .layer(middleware::from_fn_with_state(core.clone(), authorize_lan))
         .with_state(core)
+}
+
+/// Paths that may be reached without a paired-device cookie. Everything else on
+/// the LAN router requires `swapper_lan_session`.
+fn is_public_lan_path(path: &str) -> bool {
+    matches!(path, "/pair" | "/handoff" | "/handoff/ping")
 }
 
 async fn authorize_lan(
@@ -85,7 +96,7 @@ async fn authorize_lan(
     if !allowed_peer {
         return StatusCode::NOT_FOUND.into_response();
     }
-    if request.uri().path() == "/pair" {
+    if is_public_lan_path(request.uri().path()) {
         return next.run(request).await;
     }
     let session = request
@@ -149,6 +160,74 @@ async fn pair_lan_device(
         "no-referrer".parse().expect("valid referrer policy"),
     );
     response
+}
+
+/// Mints a one-time token for the calling paired device. The LAN middleware has
+/// already authenticated the session and recorded which device it belongs to.
+async fn mint_handoff(
+    State(core): State<Arc<RemoteCore>>,
+    headers: HeaderMap,
+    Extension(LanSession(session)): Extension<LanSession>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    match core.mint_lan_handoff(&session) {
+        Ok(token) => (StatusCode::OK, Json(serde_json::json!({ "token": token }))).into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+#[derive(Deserialize, Default)]
+struct HandoffQuery {
+    token: Option<String>,
+}
+
+/// Sets the paired device's cookie on the `.local` origin after a one-time
+/// token handoff. The `Host` must be the mDNS name so the cookie is scoped to
+/// the stable hostname; anything invalid returns a plain 404 with no detail.
+async fn consume_handoff(
+    State(core): State<Arc<RemoteCore>>,
+    Query(query): Query<HandoffQuery>,
+    headers: HeaderMap,
+) -> Response {
+    let host_is_local = headers
+        .get(header::HOST)
+        .and_then(|value| value.to_str().ok())
+        .is_some_and(mdns::is_local_host);
+    let Some(token) = query.token.as_deref().filter(|token| !token.is_empty()) else {
+        return StatusCode::NOT_FOUND.into_response();
+    };
+    if !host_is_local {
+        return StatusCode::NOT_FOUND.into_response();
+    }
+    let Some(credential) = core.consume_lan_handoff(token) else {
+        return StatusCode::NOT_FOUND.into_response();
+    };
+    let mut response = axum::response::Redirect::to("/").into_response();
+    response.headers_mut().insert(
+        header::SET_COOKIE,
+        format!(
+            "swapper_lan_session={credential}; Max-Age=31536000; HttpOnly; SameSite=Strict; Path=/"
+        )
+        .parse()
+        .expect("valid handoff cookie"),
+    );
+    response.headers_mut().insert(
+        header::REFERRER_POLICY,
+        "no-referrer".parse().expect("valid referrer policy"),
+    );
+    response
+}
+
+/// Cheap reachability probe the IP page uses to decide whether offering the
+/// `.local` handoff makes sense. Public on the LAN, no state, no body.
+async fn handoff_ping() -> StatusCode {
+    StatusCode::NO_CONTENT
 }
 
 fn infer_lan_device_name(user_agent: &str) -> &'static str {
