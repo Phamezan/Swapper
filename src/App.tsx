@@ -354,6 +354,24 @@ function App() {
     }
   }
 
+  async function importKeystoneItemBuild(
+    championId: number,
+    championName: string,
+    source: string,
+    build: KeystoneBuildView,
+  ) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      await invoke("import_keystone_item_build", { championId, championName, source, build });
+    } catch (reason) {
+      setRunesError(String(reason));
+      throw reason;
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
   async function applyRunes(selection: Selection, presetIndex: number | null, spells: number[] | null) {
     setRunesBusy(true);
     setRunesError(null);
@@ -746,6 +764,7 @@ function App() {
             onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
             onPositionChange={(position) => void loadRunes(position)}
             onImportItems={importItemBuild}
+            onImportPresetBuild={importKeystoneItemBuild}
             onLoadProBuilds={loadProBuilds}
             onLoadBuild={loadKeystoneBuild}
             onTierChange={(tier) => void setRuneTier(tier)}

@@ -60,12 +60,29 @@ export type ItemView = {
   name: string;
 };
 
-/** The 6-item build people build with one preset's keystone, from lolalytics. */
-export type KeystoneBuildView = {
-  /** The build in order: core (3, often including boots) then slots 4-6. */
-  items: ItemView[];
-  /** The keystone's sample size, shown only when it is small. */
+/** One item stack in the recommended starting block. */
+export type ItemStackView = ItemView & {
+  count: number;
+};
+
+/** A reported later-slot alternative and its slot-level sample. */
+export type ItemOptionView = ItemView & {
+  slot: number;
   games: number;
+  winPct: number | null;
+  reason: string | null;
+};
+
+/** Starter, full build and slot alternatives for one preset's keystone. */
+export type KeystoneBuildView = {
+  starters: ItemStackView[];
+  /** Core plus the most-supported unused choice for later slots. */
+  items: ItemView[];
+  options: ItemOptionView[];
+  /** Sample size for the most-picked starter set. */
+  games: number;
+  coreGames: number;
+  coreWinPct: number | null;
 };
 
 /** One recorded purchase in a pro's game. */

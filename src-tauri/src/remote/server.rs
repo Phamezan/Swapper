@@ -39,6 +39,7 @@ fn routes() -> Router<Arc<RemoteCore>> {
         .route("/api/runes/pro-builds", get(pro_builds))
         .route("/api/runes/keystone-build", get(keystone_build))
         .route("/api/items/import", axum::routing::post(import_item_build))
+        .route("/api/items/import-preset", axum::routing::post(import_keystone_item_build))
         .route("/api/runes/apply", axum::routing::post(apply_runes))
         .route(
             "/api/runes/auto-apply",
@@ -295,6 +296,43 @@ async fn import_item_build(headers: HeaderMap, Json(body): Json<ImportItemBuildR
         &body.champion_name,
         &body.source,
         &body.items,
+    )
+    .await
+    {
+        Ok(_) => (StatusCode::OK, Json(control::ActionResult::success())).into_response(),
+        Err(error) => (
+            rune_status(&error),
+            Json(control::ActionResult::error(error.message())),
+        )
+            .into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct ImportKeystoneBuildRequest {
+    champion_id: i64,
+    champion_name: String,
+    source: String,
+    build: crate::runes::KeystoneBuildView,
+}
+
+async fn import_keystone_item_build(
+    headers: HeaderMap,
+    Json(body): Json<ImportKeystoneBuildRequest>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    match crate::runes::item_sets::import_keystone_build(
+        body.champion_id,
+        &body.champion_name,
+        &body.source,
+        &body.build,
     )
     .await
     {

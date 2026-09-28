@@ -116,7 +116,9 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
         return;
     }
     for build in builds.into_iter().flatten() {
+        items.extend(build.starters.iter().map(|item| item.id));
         items.extend(build.items.iter().map(|item| item.id));
+        items.extend(build.options.iter().map(|item| item.id));
     }
     // Pro builds page 1: the slow u.gg call this prefetch exists to hide.
     if let Ok(matches) = data::pro_builds(context.champion_id, &position, 1).await {

@@ -675,6 +675,18 @@ async fn import_item_build(
 }
 
 #[tauri::command]
+async fn import_keystone_item_build(
+    champion_id: i64,
+    champion_name: String,
+    source: String,
+    build: runes::KeystoneBuildView,
+) -> Result<String, String> {
+    runes::item_sets::import_keystone_build(champion_id, &champion_name, &source, &build)
+        .await
+        .map_err(|error| error.message().to_string())
+}
+
+#[tauri::command]
 async fn apply_rune_page(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
@@ -882,6 +894,7 @@ pub fn run() {
             get_pro_builds,
             get_keystone_build,
             import_item_build,
+            import_keystone_item_build,
             apply_rune_page
         ])
         .run(tauri::generate_context!())

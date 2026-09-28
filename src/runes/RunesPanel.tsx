@@ -68,6 +68,12 @@ type Props = {
     source: string,
     items: number[],
   ) => Promise<void>;
+  onImportPresetBuild: (
+    championId: number,
+    championName: string,
+    source: string,
+    build: KeystoneBuildView,
+  ) => Promise<void>;
   /** Loads one page of pros' solo-queue games for the champion and role. */
   onLoadProBuilds: (championId: number, position: string, page: number) => Promise<ProBuildsView>;
   /** Loads the 6-item build for one preset's keystone, from lolalytics. */
@@ -137,6 +143,7 @@ export function RunesPanel({
   onPickSpell,
   onPositionChange,
   onImportItems,
+  onImportPresetBuild,
   onLoadProBuilds,
   onLoadBuild,
   onTierChange,
@@ -265,6 +272,16 @@ export function RunesPanel({
     try {
       await onImportItems(championId, view?.championName ?? "Champion", source, items);
       setImportNotice("Item set added to the League shop.");
+    } catch {
+      // The parent displays the request error beside the rune controls.
+    }
+  }
+
+  async function importPresetItemSet(source: string, build: KeystoneBuildView) {
+    setImportNotice(null);
+    try {
+      await onImportPresetBuild(championId, view?.championName ?? "Champion", source, build);
+      setImportNotice("Starter items, full build and options added to the League shop.");
     } catch {
       // The parent displays the request error beside the rune controls.
     }
@@ -490,7 +507,7 @@ export function RunesPanel({
                     tier={view.tier}
                     keystone={preset.keystone}
                     onLoad={onLoadBuild}
-                    onImport={(items) => void importItemSet(`Preset · ${preset.title}`, items)}
+                    onImport={(build) => void importPresetItemSet(`Preset · ${preset.title}`, build)}
                     disabled={busy}
                   />
                 </div>

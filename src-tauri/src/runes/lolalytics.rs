@@ -7,8 +7,11 @@
 //!
 //! The Qwik page embeds its serialized state in a `<script type="qwik/json">`
 //! block that holds both the "Highest Win Build" and "Most Common Build"
-//! summaries. That structured copy is preferred: it yields the *most common,
-//! actually built* 6-item build. When the payload is missing or changed, the
+//! summaries. That structured copy is preferred: it yields the common core,
+//! later-slot item marginals, and starting set. Since later slots are marginal
+//! counts rather than a joint six-item sequence, the displayed path is
+//! assembled from the strongest unused choice in each slot. When the payload
+//! is missing or changed, the
 //! visible markup (the `Core Build` / `Item 4` / `Item 5` / `Item 6` anchors
 //! with `cdn5.lolalytics.com/item64/{id}.webp` icons) is parsed instead.
 //!
@@ -37,14 +40,37 @@ pub const FAILURE_TTL: Duration = Duration::from_secs(5 * 60);
 /// Default rank bracket, the same slug lolalytics uses when none is sent.
 pub const DEFAULT_TIER: &str = "emerald_plus";
 
-/// One keystone's 6-item build.
+/// One item stack in the starting set.
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
-pub struct KeystoneBuild {
-    /// Item ids in build order: core (3, often including boots), then the top
-    /// item of slots 4, 5 and 6.
-    pub items: Vec<i64>,
-    /// The keystone's sample size on lolalytics.
+pub struct ItemStack {
+    pub id: i64,
+    pub count: u32,
+}
+
+/// A later-slot candidate and the evidence LoLalytics reports for that slot.
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct ItemCandidate {
+    pub id: i64,
+    pub slot: u8,
     pub games: u64,
+    pub win_pct: Option<f64>,
+}
+
+/// One keystone's common item path and its observed alternatives.
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct KeystoneBuild {
+    /// Starting item set, preserving stacked consumable counts where reported.
+    pub starters: Vec<ItemStack>,
+    /// The core plus the most-supported unused choice in later slots.
+    pub items: Vec<i64>,
+    /// Unselected candidates, deduplicated and sorted by slot support.
+    pub options: Vec<ItemCandidate>,
+    /// Sample size reported for the starting item set.
+    pub games: u64,
+    /// Sample size for the core combination.
+    pub core_games: u64,
+    /// Win rate for the core combination.
+    pub core_win_pct: Option<f64>,
 }
 
 /// The champion slug lolalytics uses: lower-case, no spaces or punctuation.
@@ -118,9 +144,9 @@ pub fn cache_key(champion_slug: &str, lane: &str, tier: &str, keystone: i64) -> 
 // Parsing
 // ---------------------------------------------------------------------------
 
-/// Parses the 6-item build out of a lolalytics build page. A page without the
-/// expected data yields `None` rather than an error, so one card is simply
-/// left without a build.
+/// Parses the common item path and slot alternatives from a lolalytics page.
+/// A page without the expected data yields `None` rather than an error, so one
+/// card is simply left without a build.
 pub fn parse_build(html: &str) -> Option<KeystoneBuild> {
     parse_qwik(html).or_else(|| parse_anchors(html))
 }
@@ -175,9 +201,12 @@ fn resolve(value: &Value, objs: &[Value], depth: u8) -> Value {
             Some(index) if index < objs.len() => resolve_entry(&objs[index], objs, depth + 1),
             _ => value.clone(),
         },
-        Value::Array(items) => {
-            Value::Array(items.iter().map(|item| resolve(item, objs, depth + 1)).collect())
-        }
+        Value::Array(items) => Value::Array(
+            items
+                .iter()
+                .map(|item| resolve(item, objs, depth + 1))
+                .collect(),
+        ),
         Value::Object(map) => {
             let mut out = serde_json::Map::with_capacity(map.len());
             for (key, item) in map {
@@ -203,19 +232,19 @@ fn base36_index(text: &str) -> Option<usize> {
     if text.is_empty() {
         return None;
     }
-    if !text.bytes().all(|b| b.is_ascii_digit() || b.is_ascii_lowercase()) {
+    if !text
+        .bytes()
+        .all(|b| b.is_ascii_digit() || b.is_ascii_lowercase())
+    {
         return None;
     }
     usize::from_str_radix(text, 36).ok()
 }
 
-/// Turns a resolved build summary into a [`KeystoneBuild`], reading the most
-/// common core set and the top option of slots 4, 5 and 6.
-///
-/// A build never contains the same legendary twice, but the top option of
-/// different slots can be the same item. Each slot therefore takes its highest
-/// option that is not already in the build, and a slot with no unused option is
-/// left out (a shorter row is fine).
+/// Turns a resolved build summary into a [`KeystoneBuild`]. The core is the
+/// source's common combination; later slots are selected by support while
+/// avoiding duplicate items. The remaining per-slot candidates are retained
+/// separately so the importer can put them in an Options block.
 fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
     let items = summary.get("items")?;
     let core = items.get("core")?.get("set")?.as_array()?;
@@ -228,30 +257,136 @@ fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
             }
         }
     }
-    for slot in ["item4", "item5", "item6"] {
-        if let Some(options) = items.get(slot).and_then(Value::as_array) {
-            let chosen = options
-                .iter()
-                .filter_map(|option| option.get("id").and_then(as_i64))
-                .find(|id| *id > 0 && !ids.contains(id));
-            if let Some(id) = chosen {
-                ids.push(id);
-            }
-        }
-    }
     if ids.len() < 3 {
         return None;
     }
+
+    let slot_candidates = [
+        item_candidates(items, "item4", 4),
+        item_candidates(items, "item5", 5),
+        item_candidates(items, "item6", 6),
+    ];
+    for candidates in &slot_candidates {
+        if let Some(candidate) = candidates
+            .iter()
+            .find(|candidate| !ids.contains(&candidate.id))
+        {
+            ids.push(candidate.id);
+        }
+    }
+
+    let mut options: Vec<ItemCandidate> = Vec::new();
+    for candidate in slot_candidates.into_iter().flatten() {
+        if ids.contains(&candidate.id) {
+            continue;
+        }
+        if let Some(existing) = options.iter_mut().find(|item| item.id == candidate.id) {
+            if candidate.games > existing.games {
+                *existing = candidate;
+            }
+        } else {
+            options.push(candidate);
+        }
+    }
+    options.sort_by(|left, right| {
+        right
+            .games
+            .cmp(&left.games)
+            .then_with(|| left.slot.cmp(&right.slot))
+            .then_with(|| {
+                right
+                    .win_pct
+                    .unwrap_or_default()
+                    .total_cmp(&left.win_pct.unwrap_or_default())
+            })
+    });
+
+    let start = items.get("start");
+    let starters = start.map(parse_starters).unwrap_or_default();
     let games = items
         .get("start")
         .and_then(|start| start.get("n"))
         .and_then(as_u64)
         .unwrap_or(0);
-    Some(KeystoneBuild { items: ids, games })
+    let core_games = items
+        .get("core")
+        .and_then(|core| core.get("n"))
+        .and_then(as_u64)
+        .unwrap_or(0);
+    let core_win_pct = items
+        .get("core")
+        .and_then(|core| core.get("wr"))
+        .and_then(Value::as_f64);
+    Some(KeystoneBuild {
+        starters,
+        items: ids,
+        options,
+        games,
+        core_games,
+        core_win_pct,
+    })
+}
+
+fn parse_starters(start: &Value) -> Vec<ItemStack> {
+    let ids = start
+        .get("setUnique")
+        .and_then(Value::as_array)
+        .or_else(|| start.get("set").and_then(Value::as_array));
+    let Some(ids) = ids else {
+        return Vec::new();
+    };
+    let counts = start.get("count").and_then(Value::as_array);
+    ids.iter()
+        .enumerate()
+        .filter_map(|(index, value)| {
+            let id = as_i64(value)?;
+            if id <= 0 {
+                return None;
+            }
+            let count = counts
+                .and_then(|counts| counts.get(index))
+                .and_then(as_u64)
+                .unwrap_or(1)
+                .clamp(1, u32::MAX as u64) as u32;
+            Some(ItemStack { id, count })
+        })
+        .collect()
+}
+
+fn item_candidates(items: &Value, key: &str, slot: u8) -> Vec<ItemCandidate> {
+    let Some(candidates) = items.get(key).and_then(Value::as_array) else {
+        return Vec::new();
+    };
+    let mut result: Vec<ItemCandidate> = candidates
+        .iter()
+        .filter_map(|candidate| {
+            let id = candidate.get("id").and_then(as_i64)?;
+            if id <= 0 {
+                return None;
+            }
+            Some(ItemCandidate {
+                id,
+                slot,
+                games: candidate.get("n").and_then(as_u64).unwrap_or(0),
+                win_pct: candidate.get("wr").and_then(Value::as_f64),
+            })
+        })
+        .collect();
+    result.sort_by(|left, right| {
+        right.games.cmp(&left.games).then_with(|| {
+            right
+                .win_pct
+                .unwrap_or_default()
+                .total_cmp(&left.win_pct.unwrap_or_default())
+        })
+    });
+    result
 }
 
 fn as_i64(value: &Value) -> Option<i64> {
-    value.as_i64().or_else(|| value.as_f64().map(|number| number as i64))
+    value
+        .as_i64()
+        .or_else(|| value.as_f64().map(|number| number as i64))
 }
 
 fn as_u64(value: &Value) -> Option<u64> {
@@ -261,9 +396,10 @@ fn as_u64(value: &Value) -> Option<u64> {
 }
 
 /// Fallback parser for the visible markup, used when the Qwik state is absent
-/// or unrecognised. It reads the page's default ("Highest Win") build from the
-/// `Core Build` and `Item 4/5/6` anchors.
+/// or unrecognised. It can recover the starting items and common item path, but
+/// the markup does not provide reliable per-candidate sample details.
 fn parse_anchors(html: &str) -> Option<KeystoneBuild> {
+    let start_at = html.find("Starting Items");
     let core_at = html.find("Core Build")?;
     let item4_at = core_at + html[core_at..].find("Item 4")?;
     let item5_at = item4_at + html[item4_at..].find("Item 5")?;
@@ -281,7 +417,11 @@ fn parse_anchors(html: &str) -> Option<KeystoneBuild> {
         return None;
     }
     let boundary = (item6_at + 6000).min(html.len());
-    for (from, to) in [(item4_at, item5_at), (item5_at, item6_at), (item6_at, boundary)] {
+    for (from, to) in [
+        (item4_at, item5_at),
+        (item5_at, item6_at),
+        (item6_at, boundary),
+    ] {
         if let Some(id) = item_ids(&html[from..to])
             .into_iter()
             .find(|id| !items.contains(id))
@@ -289,12 +429,24 @@ fn parse_anchors(html: &str) -> Option<KeystoneBuild> {
             items.push(id);
         }
     }
-    let games = html
-        .find("Starting Items")
+    let start_fragment = start_at
         .filter(|start| *start < core_at)
-        .map(|start| games_between(&html[start..core_at]))
-        .unwrap_or(0);
-    Some(KeystoneBuild { items, games })
+        .map(|start| &html[start..core_at]);
+    let games = start_fragment.map(games_between).unwrap_or(0);
+    let starters = start_fragment
+        .map(item_ids)
+        .unwrap_or_default()
+        .into_iter()
+        .map(|id| ItemStack { id, count: 1 })
+        .collect();
+    Some(KeystoneBuild {
+        starters,
+        items,
+        options: Vec::new(),
+        games,
+        core_games: 0,
+        core_win_pct: None,
+    })
 }
 
 /// The item ids in a markup fragment, in order, collapsing the adjacent pair
@@ -437,10 +589,9 @@ impl LolalyticsClient {
                 response.status().as_u16()
             )));
         }
-        let body = response
-            .text()
-            .await
-            .map_err(|e| RuneError::unavailable(format!("lolalytics response was unreadable: {e}")))?;
+        let body = response.text().await.map_err(|e| {
+            RuneError::unavailable(format!("lolalytics response was unreadable: {e}"))
+        })?;
         Ok(parse_build(&body))
     }
 }
@@ -466,7 +617,11 @@ mod tests {
         // slot falls through to its next option (Void Staff, 3135).
         assert_eq!(ahri.items, vec![3118, 3020, 4645, 3157, 3089, 3135]);
         assert_eq!(ahri.games, 70627);
-        assert!(no_duplicates(&ahri.items), "Ahri build has duplicates: {:?}", ahri.items);
+        assert!(
+            no_duplicates(&ahri.items),
+            "Ahri build has duplicates: {:?}",
+            ahri.items
+        );
 
         let jinx = parse_build(JINX).expect("the Jinx page should give a build");
         assert_eq!(jinx.items, vec![2523, 3006, 3085, 3031, 3036, 3026]);
@@ -514,6 +669,30 @@ mod tests {
     }
 
     #[test]
+    fn parses_starter_stacks_core_evidence_and_slot_options() {
+        let html = r#"<script type="qwik/json">{"objs":[
+            {"pick":"1","win":"2"},
+            {"items":"3"},
+            {"items":"3"},
+            {"core":"4","item4":"5","item5":"6","item6":"7","start":"8"},
+            {"set":[3118,3020,4645],"n":200,"wr":54.2},
+            [{"id":3157,"n":100,"wr":55},{"id":3161,"n":20,"wr":52}],
+            [{"id":3089,"n":90,"wr":57},{"id":3124,"n":30,"wr":51}],
+            [{"id":3089,"n":80,"wr":58},{"id":3135,"n":45,"wr":53}],
+            {"set":[1054,2003,2003],"setUnique":[1054,2003],"count":[1,2],"n":1000}
+        ]}</script>"#;
+        let build = parse_build(html).expect("the hand-built state should parse");
+        assert_eq!(build.starters, vec![ItemStack { id: 1054, count: 1 }, ItemStack { id: 2003, count: 2 }]);
+        assert_eq!(build.items, vec![3118, 3020, 4645, 3157, 3089, 3135]);
+        assert_eq!(build.games, 1000);
+        assert_eq!(build.core_games, 200);
+        assert_eq!(build.core_win_pct, Some(54.2));
+        assert_eq!(build.options.len(), 2);
+        assert!(build.options.iter().any(|option| option.id == 3161 && option.slot == 4));
+        assert!(build.options.iter().any(|option| option.id == 3124 && option.slot == 5));
+    }
+
+    #[test]
     fn a_page_without_the_anchors_or_state_gives_no_build() {
         assert!(parse_build("<html><body>Just a moment…</body></html>").is_none());
         assert!(parse_build("").is_none());
@@ -556,11 +735,20 @@ mod tests {
         assert_eq!(champion_slug("LeBlanc").as_deref(), Some("leblanc"));
         assert_eq!(champion_slug("Rek'Sai").as_deref(), Some("reksai"));
         assert_eq!(champion_slug("Tahm Kench").as_deref(), Some("tahmkench"));
-        assert_eq!(champion_slug("Twisted Fate").as_deref(), Some("twistedfate"));
+        assert_eq!(
+            champion_slug("Twisted Fate").as_deref(),
+            Some("twistedfate")
+        );
         assert_eq!(champion_slug("Xin Zhao").as_deref(), Some("xinzhao"));
-        assert_eq!(champion_slug("Aurelion Sol").as_deref(), Some("aurelionsol"));
+        assert_eq!(
+            champion_slug("Aurelion Sol").as_deref(),
+            Some("aurelionsol")
+        );
         assert_eq!(champion_slug("Master Yi").as_deref(), Some("masteryi"));
-        assert_eq!(champion_slug("Miss Fortune").as_deref(), Some("missfortune"));
+        assert_eq!(
+            champion_slug("Miss Fortune").as_deref(),
+            Some("missfortune")
+        );
         assert_eq!(champion_slug("Bel'Veth").as_deref(), Some("belveth"));
         assert_eq!(champion_slug("K'Sante").as_deref(), Some("ksante"));
         // Site-specific shorter slugs.
@@ -615,9 +803,19 @@ mod tests {
         let key = cache_key("ahri", "middle", "emerald_plus", 8112);
         assert!(matches!(cache.lookup_at(&key, now), Cached::Miss));
 
-        cache.store(key.clone(), KeystoneBuild { items: vec![1, 2, 3], games: 10 });
+        cache.store(
+            key.clone(),
+            KeystoneBuild {
+                items: vec![1, 2, 3],
+                games: 10,
+                ..KeystoneBuild::default()
+            },
+        );
         assert!(matches!(cache.lookup_at(&key, now), Cached::Fresh(_)));
-        assert!(matches!(cache.lookup_at(&key, now + SUCCESS_TTL / 2), Cached::Fresh(_)));
+        assert!(matches!(
+            cache.lookup_at(&key, now + SUCCESS_TTL / 2),
+            Cached::Fresh(_)
+        ));
         assert!(matches!(
             cache.lookup_at(&key, now + SUCCESS_TTL + Duration::from_secs(1)),
             Cached::Miss
@@ -625,7 +823,10 @@ mod tests {
 
         let failed = cache_key("ahri", "middle", "emerald_plus", 8229);
         cache.fail(failed.clone());
-        assert!(matches!(cache.lookup_at(&failed, Instant::now()), Cached::Unavailable));
+        assert!(matches!(
+            cache.lookup_at(&failed, Instant::now()),
+            Cached::Unavailable
+        ));
     }
 
     #[test]

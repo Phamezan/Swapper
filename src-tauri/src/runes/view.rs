@@ -65,21 +65,52 @@ pub struct SpellView {
 }
 
 /// One item in a build group.
-#[derive(Debug, Clone, serde::Serialize)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ItemView {
     pub id: i64,
     pub name: String,
 }
 
-/// The 6-item build people build with one preset's keystone, from lolalytics.
-#[derive(Debug, Clone, serde::Serialize)]
+/// One item in the starting block, including a consumable stack count.
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ItemStackView {
+    pub id: i64,
+    pub name: String,
+    pub count: u32,
+}
+
+/// A LoLalytics later-slot alternative and its per-slot evidence.
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ItemOptionView {
+    pub id: i64,
+    pub name: String,
+    pub slot: u8,
+    pub games: u64,
+    pub win_pct: Option<f64>,
+    /// A short, effect-based reminder when the item's role is well-defined.
+    pub reason: Option<String>,
+}
+
+/// The item set people build with one preset's keystone, from lolalytics.
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct KeystoneBuildView {
-    /// The build in order: core (3, often including boots) then slots 4-6.
+    /// Starting item combination from the selected keystone page.
+    pub starters: Vec<ItemStackView>,
+    /// Core and the most-supported unused choice in later slots; later slots
+    /// are independent marginals, not a joint sample of the full path.
     pub items: Vec<ItemView>,
-    /// The keystone's sample size, shown only when it is small.
+    /// Other unique item-slot candidates, ordered by their reported support.
+    pub options: Vec<ItemOptionView>,
+    /// Starting-item sample size.
     pub games: u64,
+    /// Sample size for the core combination.
+    pub core_games: u64,
+    /// Win rate for the core combination.
+    pub core_win_pct: Option<f64>,
 }
 
 /// One recorded purchase in a pro's game, for the item order.
@@ -548,8 +579,40 @@ pub async fn preset_build_view(
         .ok()??;
     let item_names = items::names().await;
     Some(KeystoneBuildView {
+        starters: build
+            .starters
+            .iter()
+            .map(|stack| ItemStackView {
+                id: stack.id,
+                name: item_names
+                    .get(&stack.id)
+                    .cloned()
+                    .unwrap_or_else(|| format!("Item {}", stack.id)),
+                count: stack.count,
+            })
+            .collect(),
         items: item_views(&build.items, &item_names),
+        options: build
+            .options
+            .iter()
+            .map(|candidate| {
+                let name = item_names
+                    .get(&candidate.id)
+                    .cloned()
+                    .unwrap_or_else(|| format!("Item {}", candidate.id));
+                ItemOptionView {
+                    id: candidate.id,
+                    reason: super::item_sets::option_reason(&name).map(str::to_string),
+                    name,
+                    slot: candidate.slot,
+                    games: candidate.games,
+                    win_pct: candidate.win_pct,
+                }
+            })
+            .collect(),
         games: build.games,
+        core_games: build.core_games,
+        core_win_pct: build.core_win_pct,
     })
 }
 

@@ -20,7 +20,7 @@ type Props = {
     tier: string,
     keystone: number,
   ) => Promise<KeystoneBuildView | null>;
-  onImport: (items: number[]) => void;
+  onImport: (build: KeystoneBuildView) => void;
   disabled: boolean;
 };
 
@@ -66,19 +66,21 @@ export function PresetBuild({ mode, championId, position, tier, keystone, onLoad
 
   return (
     <div className="preset-build-row">
-      <span className="preset-build" aria-label="Common build">
+      <span className="preset-build" aria-label="Recommended path from the common core and later-slot item data">
         {build.items.map((item) => (
           <ItemIcon key={item.id} id={item.id} name={item.name} mode={mode} />
         ))}
-        {build.games > 0 && build.games < SMALL_SAMPLE && (
-          <span className="preset-build-games">{build.games} games</span>
+        {(build.coreGames || build.games) > 0 && (build.coreGames || build.games) < SMALL_SAMPLE && (
+          <span className="preset-build-games" title="Games in the core item combination">
+            {build.coreGames || build.games} core games
+          </span>
         )}
       </span>
       <button
         type="button"
         className="item-set-import"
         disabled={disabled}
-        onClick={() => onImport(build.items.map((item) => item.id))}
+        onClick={() => onImport(build)}
         aria-label="Add this preset's item build to the League shop"
       >
         Add to shop
