@@ -65,9 +65,9 @@ Before implementing a task:
 - [ ] Handle failed updates without leaving Swapper unusable.
 
 ### Signed Windows releases
-- [ ] Investigate free OSS certificate such as https://ossign.org/ or https://signpath.org/
+- [x] Investigate free OSS certificate such as https://ossign.org/ or https://signpath.org/
 - [ ] Sign Swapper executables and installers.
-- [ ] Verify whether bundled `Deceive.exe` affects signing requirements.
+- [x] Verify whether bundled `Deceive.exe` affects signing requirements.
 - [ ] Integrate signing into the release workflow.
 - [ ] Remove unsigned-installer guidance from the README once releases are consistently signed.
 
