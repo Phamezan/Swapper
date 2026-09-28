@@ -28,21 +28,21 @@ Before implementing a task:
 - [ ] Fall back gracefully to the current IP-based connection if mDNS is unavailable.
 
 ### Swapper Doctor / diagnostics
-- [ ] Add a **Swapper Doctor** section in Settings.
-- [ ] Report Riot Client connection status.
-- [ ] Report League Client / LCU connection status.
-- [ ] Report active account session health.
-- [ ] Report OP.GG availability and latency.
-- [ ] Report Lolalytics availability and latency.
-- [ ] Report ProBuildStats / U.GG availability and latency.
-- [ ] Report LAN Remote Control status and selected interface.
-- [ ] Report Tailscale availability when selected.
+- [x] Add a **Swapper Doctor** section in Settings.
+- [x] Report Riot Client connection status.
+- [x] Report League Client / LCU connection status.
+- [x] Report active account session health.
+- [x] Report OP.GG availability and latency.
+- [x] Report Lolalytics availability and latency.
+- [x] Report ProBuildStats / U.GG availability and latency.
+- [x] Report LAN Remote Control status and selected interface.
+- [x] Report Tailscale availability when selected.
 - [ ] Report bundled Deceive availability/version.
 - [ ] Report Swapper version/update status.
-- [ ] Provide actionable recovery messages instead of raw backend errors.
-- [ ] Add **Retry** actions where appropriate.
-- [ ] Add **Copy diagnostics** with sanitized diagnostic information.
-- [ ] Never include PUUIDs, Riot IDs, session data, access tokens, pairing secrets, cookies or encrypted vault contents in copied diagnostics.
+- [x] Provide actionable recovery messages instead of raw backend errors.
+- [x] Add **Retry** actions where appropriate.
+- [x] Add **Copy diagnostics** with sanitized diagnostic information.
+- [x] Never include PUUIDs, Riot IDs, session data, access tokens, pairing secrets, cookies or encrypted vault contents in copied diagnostics.
 
 ### Provider resilience and cached fallback
 - [ ] Introduce provider abstractions instead of coupling rune/build features directly to individual websites.

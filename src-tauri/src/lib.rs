@@ -2,6 +2,7 @@ mod identity;
 mod lcu;
 mod remote;
 mod notify;
+mod doctor;
 mod riot;
 mod riot_client;
 mod runes;
@@ -895,7 +896,10 @@ pub fn run() {
             get_keystone_build,
             import_item_build,
             import_keystone_item_build,
-            apply_rune_page
+            apply_rune_page,
+            doctor::run_doctor,
+            doctor::run_doctor_check,
+            doctor::doctor_report
         ])
         .run(tauri::generate_context!())
         .expect("Could not start Swapper");
