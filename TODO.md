@@ -37,8 +37,8 @@ Before implementing a task:
 - [x] Report ProBuildStats / U.GG availability and latency.
 - [x] Report LAN Remote Control status and selected interface.
 - [x] Report Tailscale availability when selected.
-- [ ] Report bundled Deceive availability/version.
-- [ ] Report Swapper version/update status.
+- [x] Report bundled Deceive availability/version.
+- [x] Report Swapper version/update status.
 - [x] Provide actionable recovery messages instead of raw backend errors.
 - [x] Add **Retry** actions where appropriate.
 - [x] Add **Copy diagnostics** with sanitized diagnostic information.
@@ -56,13 +56,13 @@ Before implementing a task:
 - [ ] Distinguish provider outage, timeout and response-format changes in diagnostics.
 
 ### Automatic updates
-- [ ] Add update checking against GitHub Releases.
-- [ ] Check periodically rather than only on app startup.
-- [ ] Show the installed and available version.
-- [ ] Display release notes before updating.
-- [ ] Add **Update & Restart**.
-- [ ] Ensure account vault/session data survives application updates.
-- [ ] Handle failed updates without leaving Swapper unusable.
+- [x] Add update checking against GitHub Releases.
+- [x] Check periodically rather than only on app startup.
+- [x] Show the installed and available version.
+- [x] Display release notes before updating.
+- [x] Add **Update & Restart**.
+- [x] Ensure account vault/session data survives application updates.
+- [x] Handle failed updates without leaving Swapper unusable.
 
 ### Signed Windows releases
 - [ ] Investigate free OSS certificate such as https://ossign.org/ or https://signpath.org/

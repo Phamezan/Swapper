@@ -41,11 +41,79 @@ jobs:
           shared-key: windows-msvc
 
       - run: npm ci
-      - run: npm run tauri build -- --target x86_64-pc-windows-msvc --bundles nsis
+
+      # Updater signing is additive: with TAURI_SIGNING_PRIVATE_KEY set the build
+      # also produces the signed updater artifacts (latest.json + .sig); without
+      # it the workflow builds exactly as before.
+      - name: Detect updater signing key
+        id: signing
+        shell: bash
+        env:
+          KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        run: |
+          if [ -n "$KEY" ]; then
+            echo "signed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Enable updater artifacts
+        if: steps.signing.outputs.signed == 'true'
+        shell: node {0}
+        run: |
+          const fs = require('node:fs');
+          const path = 'src-tauri/tauri.conf.json';
+          const config = JSON.parse(fs.readFileSync(path, 'utf8'));
+          config.bundle.createUpdaterArtifacts = true;
+          fs.writeFileSync(path, JSON.stringify(config, null, 2) + '\n');
+
+      - name: Build Swapper
+        if: steps.signing.outputs.signed != 'true'
+        run: npm run tauri build -- --target x86_64-pc-windows-msvc --bundles nsis
+
+      - name: Build Swapper (signed updater artifacts)
+        if: steps.signing.outputs.signed == 'true'
+        env:
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        run: npm run tauri build -- --target x86_64-pc-windows-msvc --bundles nsis
+
+      - name: Generate latest.json
+        if: steps.signing.outputs.signed == 'true'
+        shell: node {0}
+        run: |
+          const fs = require('node:fs');
+          const config = JSON.parse(fs.readFileSync('src-tauri/tauri.conf.json', 'utf8'));
+          const version = config.version;
+          const bundle = 'src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis';
+          const installer = `Swapper_${version}_x64-setup.exe`;
+          const latest = {
+            version,
+            notes: '',
+            pub_date: new Date().toISOString(),
+            platforms: {
+              'windows-x86_64': {
+                signature: fs.readFileSync(`${bundle}/${installer}.sig`, 'utf8').trim(),
+                url: `https://github.com/Phamezan/Swapper/releases/download/v${version}/${installer}`,
+              },
+            },
+          };
+          fs.writeFileSync(`${bundle}/latest.json`, JSON.stringify(latest, null, 2) + '\n');
 
       - uses: actions/upload-artifact@v4
         with:
           name: Swapper-Windows
           path: src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/*.exe
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload updater artifacts
+        if: steps.signing.outputs.signed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Swapper-Windows-Updater
+          path: |
+            src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/*.sig
+            src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/latest.json
           if-no-files-found: error
           retention-days: 7

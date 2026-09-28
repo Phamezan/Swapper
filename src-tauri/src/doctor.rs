@@ -13,12 +13,12 @@ use std::sync::OnceLock;
 use std::time::{Duration, Instant};
 
 use serde::{Deserialize, Serialize};
-use tauri::State;
+use tauri::{Manager, State};
 use tokio::time::timeout;
 
 use crate::identity::{self, Detection};
 use crate::remote::RemoteState;
-use crate::{riot, vault};
+use crate::{riot, updater, vault};
 
 pub const CHECK_RIOT_CLIENT: &str = "riot-client";
 pub const CHECK_LEAGUE_CLIENT: &str = "league-client";
@@ -109,10 +109,16 @@ struct DoctorContext {
     /// Whether the Remote Control Tailscale transport is selected. The Tailscale
     /// CLI is only probed when it is.
     tailscale_selected: bool,
+    /// What the background updater last found, if it is running.
+    update: Option<updater::UpdateSnapshot>,
 }
 
 impl DoctorContext {
-    fn capture(state: &crate::AppState, remote_transport: Option<&str>) -> Self {
+    fn capture(
+        app: &tauri::AppHandle,
+        state: &crate::AppState,
+        remote_transport: Option<&str>,
+    ) -> Self {
         let config = state
             .config
             .lock()
@@ -123,6 +129,7 @@ impl DoctorContext {
             bundled_deceive: state.bundled_deceive.clone(),
             remote: state.remote.clone(),
             tailscale_selected: remote_transport == Some("tailscale"),
+            update: app.try_state::<updater::UpdateState>().map(|s| s.snapshot()),
         }
     }
 
@@ -134,21 +141,23 @@ impl DoctorContext {
 
 #[tauri::command]
 pub async fn run_doctor(
+    app: tauri::AppHandle,
     state: State<'_, crate::AppState>,
     remote_transport: Option<String>,
 ) -> Result<Vec<DoctorCheck>, String> {
-    let context = DoctorContext::capture(&state, remote_transport.as_deref());
+    let context = DoctorContext::capture(&app, &state, remote_transport.as_deref());
     Ok(run_all(&context).await)
 }
 
 /// One check, for the per-check Retry action.
 #[tauri::command]
 pub async fn run_doctor_check(
+    app: tauri::AppHandle,
     state: State<'_, crate::AppState>,
     id: String,
     remote_transport: Option<String>,
 ) -> Result<DoctorCheck, String> {
-    let context = DoctorContext::capture(&state, remote_transport.as_deref());
+    let context = DoctorContext::capture(&app, &state, remote_transport.as_deref());
     Ok(run_one(&context, &id).await)
 }
 
@@ -245,18 +254,28 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
             guarded(id, check).await
         }
         CHECK_DECEIVE => guarded(id, async {
-            // deceive_path walks the process table; keep it off the async threads.
+            // deceive_path walks the process table; keep it off the async threads,
+            // together with the version-resource read for the found executable.
             let config = context.config.clone();
             let bundled = context.bundled_deceive.clone();
-            let found = tokio::task::spawn_blocking(move || riot::deceive_path(&config, &bundled))
-                .await
-                .ok()
-                .flatten();
+            let found = tokio::task::spawn_blocking(move || {
+                riot::deceive_path(&config, &bundled).map(|path| {
+                    let version = crate::windows::file_version(&path);
+                    (path, version)
+                })
+            })
+            .await
+            .ok()
+            .flatten();
             match found {
-                Some(path) if path == context.bundled_deceive => {
-                    DoctorCheck::ok(id, "Bundled Deceive is available.")
-                }
-                Some(_) => DoctorCheck::ok(id, "Deceive was found on this PC."),
+                Some((path, version)) if path == context.bundled_deceive => with_detail_or_none(
+                    DoctorCheck::ok(id, "Bundled Deceive is available."),
+                    version.map(|version| format!("File version {version}")),
+                ),
+                Some((_, version)) => with_detail_or_none(
+                    DoctorCheck::ok(id, "Deceive was found on this PC."),
+                    version.map(|version| format!("File version {version}")),
+                ),
                 None if context.config.use_deceive => DoctorCheck::error(
                     id,
                     "Deceive.exe is missing. Reinstall Swapper or turn off Launch through Deceive.",
@@ -268,16 +287,12 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
             }
         })
         .await,
-        CHECK_VERSION => guarded(id, async {
-            DoctorCheck::ok(
-                id,
-                format!(
-                    "Swapper {} is installed. Update checking is not available yet.",
-                    env!("CARGO_PKG_VERSION")
-                ),
-            )
-        })
-        .await,
+        CHECK_VERSION => {
+            guarded(id, async {
+                version_check(context.update.as_ref(), env!("CARGO_PKG_VERSION"))
+            })
+            .await
+        }
         _ => DoctorCheck::error(id, "Unknown check."),
     }
 }
@@ -508,8 +523,47 @@ fn provider_client() -> &'static reqwest::Client {
     })
 }
 
-fn check_remote(summary: &crate::remote::DoctorSummary) -> DoctorCheck {
-    if !summary.enabled {
+/// The Swapper version check: the installed version plus the updater's last
+/// verdict. Read-only — it never triggers a check, it reports the updater state.
+fn version_check(snapshot: Option<&updater::UpdateSnapshot>, installed: &str) -> DoctorCheck {
+    let Some(snapshot) = snapshot else {
+        return DoctorCheck::warn(CHECK_VERSION, "Could not read the updater status. Retry.");
+    };
+    match snapshot.state {
+        updater::UpdateStateKind::NotConfigured => DoctorCheck::ok(
+            CHECK_VERSION,
+            format!(
+                "Swapper {installed} is installed. Update checking is not configured in this build."
+            ),
+        ),
+        updater::UpdateStateKind::Checking => DoctorCheck::ok(
+            CHECK_VERSION,
+            format!("Swapper {installed} is installed. Checking for updates…"),
+        ),
+        updater::UpdateStateKind::UpToDate => {
+            DoctorCheck::ok(CHECK_VERSION, format!("Swapper {installed} is up to date."))
+        }
+        updater::UpdateStateKind::Available => {
+            let available = snapshot.available_version.as_deref().unwrap_or("newer");
+            DoctorCheck::ok(
+                CHECK_VERSION,
+                format!(
+                    "Swapper {installed} is installed, and version {available} is available. Use Update & Restart to install it."
+                ),
+            )
+        }
+        updater::UpdateStateKind::Installing => DoctorCheck::ok(
+            CHECK_VERSION,
+            "An update is installing. Swapper restarts when it finishes.",
+        ),
+        updater::UpdateStateKind::Failed => DoctorCheck::warn(
+            CHECK_VERSION,
+            "The last update check failed. Retry, or check for updates in Settings.",
+        ),
+    }
+}
+
+fn check_remote(summary: &crate::remote::DoctorSummary) -> DoctorCheck {    if !summary.enabled {
         return DoctorCheck::ok(
             CHECK_REMOTE,
             "Remote Control is off. Turn it on in Settings to control League from a phone.",
@@ -729,13 +783,62 @@ mod tests {
         for line in [
             "Riot Client is connected.",
             "Reachable.",
-            "Swapper 0.4.0 is installed. Update checking is not available yet.",
+            "Swapper 0.4.0 is installed. Update checking is not configured in this build.",
+            "Swapper 0.4.0 is installed, and version 0.5.0 is available. Use Update & Restart to install it.",
+            "Bundled Deceive is available.",
+            "File version 1.18.0",
             "LAN Remote Control is ready.",
             "Timed out. The site may be slow or blocked by your network; retry.",
             "Adapter: Wi-Fi",
         ] {
             assert_eq!(sanitize(line), line);
         }
+    }
+
+    #[test]
+    fn version_check_reports_the_updater_verdict() {
+        fn snapshot(state: updater::UpdateStateKind) -> updater::UpdateSnapshot {
+            updater::UpdateSnapshot {
+                state,
+                current_version: "0.4.0".into(),
+                available_version: None,
+                notes: None,
+                message: None,
+                last_check: None,
+            }
+        }
+
+        let unconfigured = version_check(
+            Some(&snapshot(updater::UpdateStateKind::NotConfigured)),
+            "0.4.0",
+        );
+        assert_eq!(unconfigured.status, DoctorStatus::Ok);
+        assert!(unconfigured.message.contains("0.4.0"));
+        assert!(unconfigured.message.contains("not configured in this build"));
+
+        let up_to_date = version_check(
+            Some(&snapshot(updater::UpdateStateKind::UpToDate)),
+            "0.4.0",
+        );
+        assert_eq!(up_to_date.status, DoctorStatus::Ok);
+        assert!(up_to_date.message.contains("up to date"));
+
+        let available = version_check(
+            Some(&updater::UpdateSnapshot {
+                available_version: Some("0.5.0".into()),
+                ..snapshot(updater::UpdateStateKind::Available)
+            }),
+            "0.4.0",
+        );
+        assert_eq!(available.status, DoctorStatus::Ok);
+        assert!(available.message.contains("0.5.0"));
+
+        let failed = version_check(Some(&snapshot(updater::UpdateStateKind::Failed)), "0.4.0");
+        assert_eq!(failed.status, DoctorStatus::Warn);
+        assert!(failed.message.contains("failed"));
+
+        let missing = version_check(None, "0.4.0");
+        assert_eq!(missing.status, DoctorStatus::Warn);
     }
 
     #[test]
