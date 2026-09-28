@@ -715,6 +715,26 @@ fn hide_flyout(app: tauri::AppHandle) -> Result<(), String> {
         .map_err(|e| e.to_string())
 }
 
+#[tauri::command]
+fn open_windows_network_settings() -> Result<(), String> {
+    #[cfg(target_os = "windows")]
+    {
+        use std::os::windows::process::CommandExt;
+
+        const CREATE_NO_WINDOW: u32 = 0x08000000;
+        std::process::Command::new("cmd.exe")
+            .args(["/C", "start", "", remote::network_settings_page()])
+            .creation_flags(CREATE_NO_WINDOW)
+            .spawn()
+            .map(|_| ())
+            .map_err(|error| format!("Could not open Windows network settings: {error}"))
+    }
+    #[cfg(not(target_os = "windows"))]
+    {
+        Err("Windows network settings are only available on Windows.".into())
+    }
+}
+
 fn show_flyout(app: &tauri::AppHandle, destination: &str) {
     if let Some(window) = app.get_webview_window("main") {
         let _ = window.as_ref().window().move_window(Position::TrayCenter);
@@ -843,6 +863,7 @@ pub fn run() {
             remove_account,
             save_settings,
             hide_flyout,
+            open_windows_network_settings,
             set_remote_enabled,
             probe_remote,
             create_lan_pairing_url,

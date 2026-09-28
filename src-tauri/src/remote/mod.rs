@@ -15,6 +15,10 @@ use serde::Serialize;
 use tauri::AppHandle;
 use tokio::sync::{broadcast, oneshot};
 
+pub(crate) fn network_settings_page() -> &'static str {
+    network::settings_page()
+}
+
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
     mutex.lock().unwrap_or_else(|e| e.into_inner())
 }

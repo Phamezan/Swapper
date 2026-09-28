@@ -917,9 +917,15 @@ function App() {
               </div>
               {data.remote.state === "starting" && <div className="setting-status"><LoaderCircle className="spin" size={13} /> Starting the remote service…</div>}
               {data.remote.enabled && <>
-                <div className="remote-transport" role="group" aria-label="Remote Control transport">
-                  <button type="button" className={remoteTransport === "lan" ? "is-active" : ""} aria-pressed={remoteTransport === "lan"} onClick={() => { setRemoteTransport("lan"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>LAN</button>
-                  <button type="button" className={remoteTransport === "tailscale" ? "is-active" : ""} aria-pressed={remoteTransport === "tailscale"} onClick={() => { setRemoteTransport("tailscale"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>Tailscale</button>
+                <div className="remote-transport-row">
+                  <div className="remote-transport" role="group" aria-label="Remote Control transport">
+                    <button type="button" className={remoteTransport === "lan" ? "is-active" : ""} aria-pressed={remoteTransport === "lan"} onClick={() => { setRemoteTransport("lan"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>LAN</button>
+                    <button type="button" className={remoteTransport === "tailscale" ? "is-active" : ""} aria-pressed={remoteTransport === "tailscale"} onClick={() => { setRemoteTransport("tailscale"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>Tailscale</button>
+                  </div>
+                  <span className="remote-transport-help">
+                    <button type="button" className="info-button remote-transport-info" aria-label="About LAN and Tailscale" aria-describedby="remote-transport-tooltip"><Info size={13} /></button>
+                    <span id="remote-transport-tooltip" className="remote-transport-tooltip" role="tooltip">LAN connects over your local Wi-Fi or Ethernet and works without Tailscale. It uses HTTP and requires a trusted Private Windows network. Tailscale uses your Tailscale network over HTTPS; Tailscale must be connected on your PC and phone.</span>
+                  </span>
                 </div>
                 {remoteTransport === "lan" ? (
                   <>
@@ -930,7 +936,13 @@ function App() {
                         <div className="remote-qr-image"><QRCodeSVG value={remoteQrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="LAN pairing QR code" /></div>
                         <p>Scan on a phone connected to this trusted private network. Pairing links expire after five minutes.</p>
                       </div>}
-                    </> : <p className="remote-transport-message">{data.remote.lanMessage ?? "LAN is available only when the active Windows network is set to Private."}</p>}
+                    </> : <>
+                      <p className="remote-transport-message">{data.remote.lanMessage ?? "LAN needs an active Ethernet or Wi-Fi network."}</p>
+                      <div className="remote-network-help">
+                        <span>For a trusted network, set its Windows profile to Private.</span>
+                        <Button variant="outline" className="remote-settings-button" aria-label="Open Windows network settings" title="Open Windows network settings" onClick={() => void invoke("open_windows_network_settings").catch(showError)}><Settings2 size={14} /></Button>
+                      </div>
+                    </>}
                   </>
                 ) : (
                   data.remote.tailscaleAddress ? <>
