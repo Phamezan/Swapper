@@ -641,14 +641,14 @@ mod tests {
             {"items":"4"},
             {"core":"5","item4":"6","item5":"7","item6":"8","start":"9"},
             {"core":"5"},
-            {"set":[3118]},
+            {"set":[3118,3020,4645]},
             [{"id":3157}],
             [{"id":3089}],
             [{"id":3089},{"id":3135}],
             {"n":10}
         ]}</script>"#;
         let build = parse_build(html).expect("the hand-built state should parse");
-        assert_eq!(build.items, vec![3118, 3157, 3089, 3135]);
+        assert_eq!(build.items, vec![3118, 3020, 4645, 3157, 3089, 3135]);
         assert!(no_duplicates(&build.items));
 
         // When a slot has no unused option at all, it is simply left out.
@@ -658,14 +658,14 @@ mod tests {
             {"items":"4"},
             {"core":"5","item4":"6","item5":"7","item6":"8","start":"9"},
             {"core":"5"},
-            {"set":[3118,3020]},
+            {"set":[3118,3020,4645]},
             [{"id":3157}],
             [{"id":3089}],
             [{"id":3089}],
             {"n":10}
         ]}</script>"#;
         let build = parse_build(html).expect("the hand-built state should parse");
-        assert_eq!(build.items, vec![3118, 3020, 3157, 3089]);
+        assert_eq!(build.items, vec![3118, 3020, 4645, 3157, 3089]);
     }
 
     #[test]
