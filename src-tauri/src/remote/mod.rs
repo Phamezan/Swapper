@@ -12,7 +12,7 @@ use std::thread;
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
 use serde::Serialize;
-use tauri::AppHandle;
+use tauri::{AppHandle, Emitter};
 use tokio::sync::{broadcast, oneshot};
 
 pub(crate) fn network_settings_page() -> &'static str {
@@ -113,10 +113,29 @@ struct PairedLanDevice {
     name: String,
     paired_at: u64,
     last_seen: u64,
+    /// In-memory only: the last authorized request or WebSocket check, used to
+    /// show whether a paired device is currently connected.
+    #[serde(skip)]
+    last_activity: Option<Instant>,
+}
+
+/// The serialized shape sent to the frontend. It deliberately omits the
+/// credential so paired device passwords never leave the backend.
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PairedDeviceView {
+    pub id: String,
+    pub name: String,
+    pub paired_at: u64,
+    pub last_seen: u64,
+    pub connected: bool,
 }
 
 const MAX_LAN_DEVICE_STORE_BYTES: usize = 1024 * 1024;
 const LAN_LAST_SEEN_SAVE_INTERVAL: Duration = Duration::from_secs(60);
+// A phone is reported as connected while it keeps hitting Swapper: the remote
+// page's WebSocket re-checks its session every second.
+const LAN_DEVICE_CONNECTED_WINDOW: Duration = Duration::from_secs(45);
 // Keep a paired phone's saved address usable after Swapper restarts.
 const LAN_REMOTE_PORT: u16 = 38127;
 
@@ -202,6 +221,85 @@ fn unix_timestamp() -> u64 {
         .duration_since(UNIX_EPOCH)
         .unwrap_or_default()
         .as_secs()
+}
+
+/// Trims and caps a device name to the 32-byte store limit without splitting a
+/// multi-byte character.
+fn sanitize_device_name(raw: &str) -> String {
+    let mut name = String::new();
+    for character in raw.trim().chars() {
+        if name.len() + character.len_utf8() > 32 {
+            break;
+        }
+        name.push(character);
+    }
+    name
+}
+
+fn device_view(device: &PairedLanDevice) -> PairedDeviceView {
+    PairedDeviceView {
+        id: device.id.to_string(),
+        name: device.name.clone(),
+        paired_at: device.paired_at,
+        last_seen: device.last_seen,
+        connected: device
+            .last_activity
+            .is_some_and(|at| at.elapsed() < LAN_DEVICE_CONNECTED_WINDOW),
+    }
+}
+
+fn ensure_lan_storage(access: &LanAccess) -> Result<(), String> {
+    if access.storage_available {
+        Ok(())
+    } else {
+        Err(
+            "Saved LAN devices could not be opened. Use Reset LAN Access in Swapper Settings first."
+                .into(),
+        )
+    }
+}
+
+fn apply_revoke(devices: &mut Vec<PairedLanDevice>, id: &str) -> Result<(), String> {
+    let Some(index) = devices
+        .iter()
+        .position(|device| device.id.to_string() == id)
+    else {
+        return Err("That paired device is no longer paired.".into());
+    };
+    devices.remove(index);
+    Ok(())
+}
+
+/// Renames one device and returns the name that was stored, after the same
+/// 32-byte sanitizing the backend applies. A failure leaves the list unchanged.
+fn apply_rename(devices: &mut [PairedLanDevice], id: &str, name: &str) -> Result<String, String> {
+    let name = sanitize_device_name(name);
+    if name.is_empty() {
+        return Err("Enter a name for this device.".into());
+    }
+    let Some(device) = devices
+        .iter_mut()
+        .find(|device| device.id.to_string() == id)
+    else {
+        return Err("That paired device is no longer paired.".into());
+    };
+    device.name = name.clone();
+    Ok(name)
+}
+
+/// Constant-time comparison of two credentials so a paired device's secret
+/// cannot be discovered by timing. The length check only reveals the length,
+/// which the store already fixes at 32 hex characters.
+fn constant_time_eq(left: &str, right: &str) -> bool {
+    let (left, right) = (left.as_bytes(), right.as_bytes());
+    if left.len() != right.len() {
+        return false;
+    }
+    let mut difference = 0u8;
+    for (a, b) in left.iter().zip(right) {
+        difference |= a ^ b;
+    }
+    difference == 0
 }
 
 #[derive(Clone, serde::Serialize, serde::Deserialize)]
@@ -331,12 +429,15 @@ impl RemoteCore {
         access.pairing_token = None;
         let credential = new_secret();
         let now = unix_timestamp();
+        let name = sanitize_device_name(name);
+        let name = if name.is_empty() { "Phone".to_string() } else { name };
         access.devices.push(PairedLanDevice {
             id: uuid::Uuid::new_v4(),
             credential: credential.clone(),
-            name: name.chars().take(32).collect(),
+            name,
             paired_at: now,
             last_seen: now,
+            last_activity: Some(Instant::now()),
         });
         let save_result =
             paired_devices_path().and_then(|path| save_paired_devices_at(&path, &access.devices));
@@ -345,7 +446,52 @@ impl RemoteCore {
             return Err(error);
         }
         access.last_seen_saved_at = Instant::now();
+        let view = device_view(access.devices.last().expect("just paired a device"));
+        drop(access);
+        // Let the desktop notice the new device without waiting for a refresh.
+        let _ = self.app.emit("lan_device_paired", view);
+        let _ = self.app.emit("lan_devices_changed", ());
         Ok(Some(credential))
+    }
+
+    /// Serialized paired devices for Settings. Never includes credentials.
+    pub fn paired_devices(&self) -> Vec<PairedDeviceView> {
+        lock(&self.lan_access)
+            .devices
+            .iter()
+            .map(device_view)
+            .collect()
+    }
+
+    /// Revokes one paired device. The reduced list is saved first, so a failed
+    /// save leaves the device paired; only after a successful save is it swapped
+    /// into memory, which rejects that device's requests immediately.
+    pub fn revoke_paired_device(&self, id: &str) -> Result<(), String> {
+        let mut access = lock(&self.lan_access);
+        ensure_lan_storage(&access)?;
+        let mut next = access.devices.clone();
+        apply_revoke(&mut next, id)?;
+        save_paired_devices_at(&paired_devices_path()?, &next)?;
+        access.devices = next;
+        access.last_seen_saved_at = Instant::now();
+        drop(access);
+        let _ = self.app.emit("lan_devices_changed", ());
+        Ok(())
+    }
+
+    /// Renames a paired device and returns the stored name the frontend should
+    /// display, so it never has to guess the backend's 32-byte sanitizing.
+    pub fn rename_paired_device(&self, id: &str, name: &str) -> Result<String, String> {
+        let mut access = lock(&self.lan_access);
+        ensure_lan_storage(&access)?;
+        let mut next = access.devices.clone();
+        let stored = apply_rename(&mut next, id, name)?;
+        save_paired_devices_at(&paired_devices_path()?, &next)?;
+        access.devices = next;
+        access.last_seen_saved_at = Instant::now();
+        drop(access);
+        let _ = self.app.emit("lan_devices_changed", ());
+        Ok(stored)
     }
 
     pub(crate) fn has_lan_session(&self, session: &str) -> bool {
@@ -353,10 +499,11 @@ impl RemoteCore {
         let Some(index) = access
             .devices
             .iter()
-            .position(|device| device.credential == session)
+            .position(|device| constant_time_eq(&device.credential, session))
         else {
             return false;
         };
+        access.devices[index].last_activity = Some(Instant::now());
         let now = unix_timestamp();
         if now.saturating_sub(access.devices[index].last_seen)
             >= LAN_LAST_SEEN_SAVE_INTERVAL.as_secs()
@@ -393,6 +540,8 @@ impl RemoteCore {
         let result = paired_devices_path().and_then(|path| clear_paired_devices_at(&path));
         access.storage_available = result.is_ok();
         access.last_seen_saved_at = Instant::now();
+        drop(access);
+        let _ = self.app.emit("lan_devices_changed", ());
         result
     }
 
@@ -938,6 +1087,7 @@ mod route_recovery_tests {
             name: "iPhone".into(),
             paired_at: 123,
             last_seen: 456,
+            last_activity: None,
         };
 
         save_paired_devices_at(&path, std::slice::from_ref(&device)).unwrap();
@@ -987,5 +1137,73 @@ mod route_recovery_tests {
         save_route_claim_at(&path, &replacement).unwrap();
         assert_eq!(load_route_claim_at(&path).unwrap().unwrap().port, 5678);
         std::fs::remove_file(path).unwrap();
+    }
+
+    fn device(name: &str) -> PairedLanDevice {
+        PairedLanDevice {
+            id: uuid::Uuid::new_v4(),
+            credential: new_secret(),
+            name: name.into(),
+            paired_at: 1,
+            last_seen: 1,
+            last_activity: None,
+        }
+    }
+
+    #[test]
+    fn device_views_never_expose_credentials() {
+        let device = device("iPhone");
+        let json = serde_json::to_string(&device_view(&device)).unwrap();
+        assert!(!json.contains(&device.credential));
+        assert!(!json.contains("credential"));
+        assert!(json.contains("\"name\":\"iPhone\""));
+    }
+
+    #[test]
+    fn connected_devices_are_reported_from_recent_activity() {
+        let mut device = device("iPhone");
+        assert!(!device_view(&device).connected);
+        device.last_activity = Some(Instant::now());
+        assert!(device_view(&device).connected);
+    }
+
+    #[test]
+    fn revoke_and_rename_update_a_device_list() {
+        let first = device("iPhone");
+        let second = device("Android phone");
+        let mut devices = vec![first.clone(), second.clone()];
+
+        apply_rename(&mut devices, &first.id.to_string(), "  My phone  ").unwrap();
+        assert_eq!(devices[0].name, "My phone");
+        assert_eq!(
+            apply_rename(&mut devices, &second.id.to_string(), "Android phone").unwrap(),
+            "Android phone"
+        );
+
+        apply_revoke(&mut devices, &first.id.to_string()).unwrap();
+        assert_eq!(devices.len(), 1);
+        assert_eq!(devices[0].id, second.id);
+
+        assert!(apply_revoke(&mut devices, &first.id.to_string()).is_err());
+        assert!(apply_rename(&mut devices, &second.id.to_string(), "   ").is_err());
+    }
+
+    #[test]
+    fn credentials_are_compared_constant_time() {
+        assert!(constant_time_eq("abc123", "abc123"));
+        assert!(!constant_time_eq("abc123", "abc124"));
+        assert!(!constant_time_eq("abc123", "abc12"));
+        assert!(!constant_time_eq("", "a"));
+        assert!(constant_time_eq("", ""));
+    }
+
+    #[test]
+    fn device_names_are_capped_to_32_bytes_without_splitting() {
+        assert_eq!(sanitize_device_name("  iPhone  "), "iPhone");
+        assert_eq!(sanitize_device_name(&"x".repeat(40)).len(), 32);
+        // "é" is two bytes, so only 16 fit in the 32-byte cap.
+        let capped = sanitize_device_name(&"é".repeat(20));
+        assert_eq!(capped.len(), 32);
+        assert_eq!(capped.chars().count(), 16);
     }
 }

@@ -10,15 +10,15 @@ Before implementing a task:
 ## P0  Reliability and Product Polish
 
 ### Persistent Remote Control pairing
-- [ ] Persist paired LAN devices across Swapper restarts.
-- [ ] Replace restart-scoped LAN sessions with durable device credentials.
-- [ ] Store pairing credentials securely on the PC.
-- [ ] Add a **Paired devices** section in Settings.
-- [ ] Show device name and last-seen time.
-- [ ] Allow individual paired devices to be revoked.
-- [ ] Keep **Reset LAN Access** as a way to revoke every paired device.
-- [ ] Keep QR pairing as the first-time trust establishment flow.
-- [ ] Ensure pairing credentials are never exposed in logs or diagnostics.
+- [x] Persist paired LAN devices across Swapper restarts.
+- [x] Replace restart-scoped LAN sessions with durable device credentials.
+- [x] Store pairing credentials securely on the PC.
+- [x] Add a **Paired devices** section in Settings.
+- [x] Show device name and last-seen time.
+- [x] Allow individual paired devices to be revoked.
+- [x] Keep **Reset LAN Access** as a way to revoke every paired device.
+- [x] Keep QR pairing as the first-time trust establishment flow.
+- [x] Ensure pairing credentials are never exposed in logs or diagnostics.
 
 ### LAN discovery with mDNS
 - [ ] Advertise Swapper's LAN Remote Control service through mDNS.
@@ -109,11 +109,11 @@ Before implementing a task:
 ---
 
 ### Remote Control device UX
-- [ ] Give paired phones readable names where possible.
-- [ ] Show whether each paired device is currently connected.
-- [ ] Show last-seen timestamps.
-- [ ] Allow renaming paired devices locally.
-- [ ] Show a subtle notification when a new device is paired.
+- [x] Give paired phones readable names where possible.
+- [x] Show whether each paired device is currently connected.
+- [x] Show last-seen timestamps.
+- [x] Allow renaming paired devices locally.
+- [x] Show a subtle notification when a new device is paired.
 
 ---
 

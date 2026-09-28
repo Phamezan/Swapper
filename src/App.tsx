@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { RunesPanel } from "./runes/RunesPanel";
+import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
 import { TIER_OPTIONS } from "./runes/types";
 import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
 import "./App.css";
@@ -984,6 +985,7 @@ function App() {
                         : data.remote.message ?? "Tailscale Serve could not be started."}</p>
                   </>
                 )}
+                <PairedDevices />
               </>}
             </div>}
           </>
@@ -1003,6 +1005,7 @@ function App() {
       </div>}
 
       {!native && !error && <div className="error-banner" role="status"><CircleAlert size={16} /><span>Browser preview only. Account actions need the Windows tray app.</span></div>}
+      <PairingNotice />
       {error && <div className="error-banner" role="alert"><CircleAlert size={16} /><span>{error}</span><button aria-label="Dismiss error" onClick={() => setError(null)}><X size={14} /></button></div>}
       <footer className="footer"><span className="footer-status"><span className={footerLoggedIn ? "status-dot good" : "status-dot idle"} /> {footerText}</span><span className="footer-mode">{data.useDeceive ? "DECEIVE" : "RIOT CLIENT"}</span></footer>
     </div>

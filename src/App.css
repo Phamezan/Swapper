@@ -201,6 +201,23 @@ button[data-slot="button"].add-inline:hover { border-color: transparent; backgro
 .remote-qr-panel p { max-width: 220px; margin: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.4; text-align: center; }
 .remote-error { align-items: flex-start; color: var(--danger); }
 .remote-error svg { flex: none; margin-top: 1px; }
+.paired-devices { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--line-subtle); }
+.paired-devices-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.paired-devices-head strong { font-size: 12px; font-weight: 660; }
+.paired-devices-head span { color: var(--text-muted); font-size: 10px; }
+.paired-device { display: flex; align-items: center; gap: 9px; margin-top: 8px; padding: 9px 10px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-panel); }
+.paired-device > .remote-status-dot { margin: 0 1px; }
+.paired-device-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.paired-device-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 640; }
+.paired-device-copy small { color: var(--text-muted); font-size: 10px; line-height: 1.35; }
+.paired-device-copy input { height: 30px; font-size: 11px; }
+.paired-device-actions { display: flex; align-items: center; gap: 2px; }
+.paired-device-actions .icon-button { width: 26px; height: 26px; }
+.paired-revoke-confirm { height: 27px; padding: 0 9px; font-size: 10px; }
+.pairing-notice { display: flex; flex: none; align-items: center; gap: 8px; margin: 0 14px 9px; padding: 9px 12px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--text-primary); background: var(--surface-raised); font-size: 11px; box-shadow: 0 8px 20px #0006; }
+.pairing-notice span { flex: 1; }
+.pairing-notice button { flex: none; color: var(--text-secondary); }
+.pairing-notice button:hover { color: var(--text-primary); }
 .status-dot { width: 6px; height: 6px; display: inline-block; flex: none; border-radius: 50%; background: var(--danger); }
 .status-dot.good { background: var(--positive); box-shadow: 0 0 0 3px color-mix(in srgb, var(--positive) 13%, transparent); }
 .status-dot.idle { background: var(--text-muted); }
