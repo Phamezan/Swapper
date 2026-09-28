@@ -2,13 +2,17 @@ name: Windows Installer
 
 on:
   workflow_dispatch:
+  # Pushing an annotated tag vX.Y.Z publishes a release; the tag message is
+  # the release notes.
+  push:
+    tags: ["v*"]
 
 permissions:
   contents: read
 
 concurrency:
   group: windows-installer-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
 
 jobs:
   build:
@@ -16,6 +20,24 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+
+      # The tag must name the version being built, because latest.json points
+      # at the installer under that tag's release.
+      - name: Read release tag
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        run: |
+          git fetch --force origin "+${GITHUB_REF}:${GITHUB_REF}"
+          version=$(node -p "require('./src-tauri/tauri.conf.json').version")
+          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match tauri.conf.json version $version"
+            exit 1
+          fi
+          git tag -l --format='%(contents)' "$GITHUB_REF_NAME" | sed '/-----BEGIN PGP SIGNATURE-----/,$d' > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "::error::Use an annotated tag: its message becomes the release notes"
+            exit 1
+          fi
 
       - name: Verify bundled Deceive release
         shell: pwsh
@@ -53,6 +75,11 @@ jobs:
         run: |
           if [ -n "$KEY" ]; then
             echo "signed=true" >> "$GITHUB_OUTPUT"
+          elif [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            # A release without latest.json would become "latest" and break
+            # update checks for everyone, so tagged builds must be signed.
+            echo "::error::TAURI_SIGNING_PRIVATE_KEY is required to publish a release"
+            exit 1
           else
             echo "signed=false" >> "$GITHUB_OUTPUT"
           fi
@@ -87,9 +114,12 @@ jobs:
           const version = config.version;
           const bundle = 'src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis';
           const installer = `Swapper_${version}_x64-setup.exe`;
+          const notes = fs.existsSync('release-notes.md')
+            ? fs.readFileSync('release-notes.md', 'utf8').trim()
+            : '';
           const latest = {
             version,
-            notes: '',
+            notes,
             pub_date: new Date().toISOString(),
             platforms: {
               'windows-x86_64': {
@@ -117,3 +147,45 @@ jobs:
             src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/latest.json
           if-no-files-found: error
           retention-days: 7
+
+      - name: Upload release notes
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-artifact@v4
+        with:
+          name: Swapper-Release-Notes
+          path: release-notes.md
+          if-no-files-found: error
+          retention-days: 7
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      # Deceive is GPL-3.0: every release ships the source of the bundled
+      # upstream tag. The hash pins the archive previous releases shipped.
+      - name: Fetch Deceive source
+        run: |
+          curl -fsSL -o dist/Deceive-v1.18.0-source.zip \
+            https://github.com/molenzwiebel/Deceive/archive/refs/tags/v1.18.0.zip
+          echo "9d1e34249a89cbd404523db83fed553c89273c40df074b73121766d660dda255  dist/Deceive-v1.18.0-source.zip" | sha256sum -c -
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd dist
+          installer=$(ls Swapper_*_x64-setup.exe)
+          sha256sum "$installer" Deceive-v1.18.0-source.zip > SHA256SUMS.txt
+          gh release create "$GITHUB_REF_NAME" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Swapper $GITHUB_REF_NAME" \
+            --notes-file release-notes.md \
+            "$installer" latest.json Deceive-v1.18.0-source.zip SHA256SUMS.txt

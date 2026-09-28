@@ -48,21 +48,29 @@ Add two GitHub secrets (*Settings → Secrets and variables → Actions*):
 ## 3. Cut a release
 
 1. Bump the version in all three places: `src-tauri/tauri.conf.json`,
-   `src-tauri/Cargo.toml`, and `package.json`.
-2. Commit, tag `vX.Y.Z`, push the tag.
-3. Run the **Windows Installer** workflow (workflow_dispatch).
-   - With the secrets set, it produces the signed installer
-     `Swapper_X.Y.Z_x64-setup.exe`, its `.sig` file, and a `latest.json`.
-   - Without the secrets it builds the installer only, exactly as before.
-4. Edit the generated `latest.json` before publishing: its `notes` field is the
-   one-line release summary users see before updating (the workflow leaves it
-   empty).
-5. Create the GitHub release for the tag (a regular release, not a
-   pre-release — `releases/latest` resolves to the newest non-prerelease) and
-   attach all three files: the installer `.exe`, the `.sig`, and `latest.json`.
+   `src-tauri/Cargo.toml`, and `package.json`. Commit and push.
+2. Create an **annotated** tag whose message is the release notes, then push it:
 
-`latest.json` must be attached to the release or clients have nothing to check
-against. Its `url` points at the release download URL for the installer.
+   ```sh
+   git tag -a v0.5.0 -F notes.md   # or -m "short notes"
+   git push origin v0.5.0
+   ```
+
+3. The **Windows Installer** workflow runs on the tag and publishes the GitHub
+   release `Swapper vX.Y.Z` with the installer, `latest.json`,
+   `Deceive-v1.18.0-source.zip` and `SHA256SUMS.txt`. The tag message becomes
+   both the release body and the notes shown in Swapper's update prompt.
+
+The workflow refuses to publish when the tag does not match the version in
+`tauri.conf.json`, when the tag is lightweight (no notes), or when
+`TAURI_SIGNING_PRIVATE_KEY` is missing — a release without `latest.json` would
+become "latest" and break update checks for every installed copy.
+
+Running the workflow manually (workflow_dispatch) still builds without
+publishing, for testing an installer.
+
+Installs older than the first updater-enabled release have no updater: users
+install that release by hand once, and update in-app from then on.
 
 ## 4. Where user data lives
 
