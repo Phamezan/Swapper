@@ -113,7 +113,7 @@ const empty: AppState = {
   accounts: [], activeId: null, isSwitching: false, useDeceive: false,
   riotExe: null, riotDetected: false, deceiveDetected: false,
   autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true,
-  hotkey: null, hotkeyActive: false, remote: emptyRemote,
+  hotkey: null, hotkeyActive: false,
   notificationsEnabled: true, readyCheckNotifications: true, remote: emptyRemote,
 };
 
