@@ -168,6 +168,7 @@ pub async fn apply_top(
     owned_page_id: Option<i64>,
     tier: &str,
     apply_spells: bool,
+    import_items: bool,
 ) -> Result<Option<AppliedView>, RuneError> {
     let catalog = data::catalog().await?;
     let mut context = context.clone();
@@ -185,7 +186,7 @@ pub async fn apply_top(
     let Some(preset) = loaded.selections.first() else {
         return Ok(None);
     };
-    apply(
+    let applied = apply(
         preset.selection.clone(),
         context.champion_id,
         &context.champion_name,
@@ -194,8 +195,15 @@ pub async fn apply_top(
         spells,
         apply_spells,
     )
-    .await
-    .map(Some)
+    .await?;
+    if import_items {
+        spawn_preset_items_import(
+            Some(position.to_string()),
+            tier.to_string(),
+            preset.selection.keystone,
+        );
+    }
+    Ok(Some(applied))
 }
 
 /// Applies a selection to the champion currently in champion select.
@@ -230,6 +238,55 @@ pub async fn apply_selection(
         apply_spells,
     )
     .await
+}
+
+/// Adds the item build people play with `keystone` to the League shop for
+/// the champion in champion select, replacing Swapper's previous item set.
+/// `position` is the role the player picked, if any; otherwise the assigned
+/// or detected role is used.
+pub async fn import_preset_items(
+    position: Option<&str>,
+    tier: &str,
+    keystone: i64,
+) -> Result<(), RuneError> {
+    let (_, context) = match super::rune_context().await {
+        Ok(super::RuneContext { phase, context }) => (phase, context),
+        Err(error) => return Err(error),
+    };
+    let Some(mut context) = context else {
+        return Err(RuneError::conflict("Champion select is not active."));
+    };
+    if context.champion_name.trim().is_empty() {
+        if let Ok(names) = data::champion_names().await {
+            if let Some(name) = names.get(&context.champion_id) {
+                context.champion_name = name.clone();
+            }
+        }
+    }
+    let position = match position.and_then(session::position_from_request) {
+        Some(position) => position,
+        None => super::position_for(&super::lcu().await?, &context).await,
+    };
+    let Some(build) = view::preset_build_view(context.champion_id, position, tier, keystone).await
+    else {
+        return Ok(());
+    };
+    super::item_sets::import_keystone_build(
+        context.champion_id,
+        &context.champion_name,
+        "Recommended build",
+        &build,
+    )
+    .await
+    .map(|_| ())
+}
+
+/// Starts [`import_preset_items`] in the background, so importing items never
+/// delays the rune page. A failure only means no item set this time.
+pub fn spawn_preset_items_import(position: Option<String>, tier: String, keystone: i64) {
+    tauri::async_runtime::spawn(async move {
+        let _ = import_preset_items(position.as_deref(), &tier, keystone).await;
+    });
 }
 
 #[cfg(test)]

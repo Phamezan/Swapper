@@ -370,30 +370,6 @@ export default function RemoteApp() {
     }
   }
 
-  async function importKeystoneItemBuild(
-    championId: number,
-    championName: string,
-    source: string,
-    build: KeystoneBuildView,
-  ) {
-    setRunesBusy(true);
-    setRunesError(null);
-    try {
-      const response = await fetch("/api/items/import-preset", {
-        method: "POST",
-        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
-        body: JSON.stringify({ championId, championName, source, build }),
-      });
-      const result = await response.json() as { ok: boolean; message: string | null };
-      if (!response.ok || !result.ok) throw new Error(result.message ?? "Could not add the item set.");
-    } catch (reason) {
-      setRunesError(String(reason));
-      throw reason;
-    } finally {
-      setRunesBusy(false);
-    }
-  }
-
   async function applyRunes(selection: Selection, presetIndex: number | null, spells: number[] | null) {
     setRunesBusy(true);
     setRunesError(null);
@@ -401,7 +377,7 @@ export default function RemoteApp() {
       const response = await fetch("/api/runes/apply", {
         method: "POST",
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
-        body: JSON.stringify({ selection, presetIndex, spells }),
+        body: JSON.stringify({ selection, presetIndex, spells, position: runes?.position ?? null }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
       if (!response.ok || !result.ok) setRunesError(result.message ?? "League rejected the rune page.");
@@ -427,6 +403,24 @@ export default function RemoteApp() {
       else await loadRunes();
     } catch {
       setRunesError("Could not reach Swapper. Check your connection and try again.");
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function toggleImportItems(enabled: boolean) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const response = await fetch("/api/runes/items-setting", {
+        method: "POST",
+        headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
+        body: JSON.stringify({ enabled }),
+      });
+      if (!response.ok) setRunesError("Could not update the setting.");
+      else await loadRunes();
+    } catch {
+      setRunesError("Could not update the setting.");
     } finally {
       setRunesBusy(false);
     }
@@ -639,10 +633,10 @@ export default function RemoteApp() {
                 onApply={(selection, presetIndex, spells) => void applyRunes(selection, presetIndex, spells)}
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
                 onToggleSpellsWithRunes={(enabled) => void toggleSpellsWithRunes(enabled)}
+                onToggleImportItems={(enabled) => void toggleImportItems(enabled)}
                 onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
                 onPositionChange={(nextPosition) => void loadRunes(nextPosition)}
                 onImportItems={importItemBuild}
-                onImportPresetBuild={importKeystoneItemBuild}
                 onLoadProBuilds={loadProBuilds}
                 onLoadBuild={loadKeystoneBuild}
                 onTierChange={(tier) => void setTier(tier)}

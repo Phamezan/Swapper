@@ -173,7 +173,13 @@ async fn apply_and_track(
     key: String,
 ) -> Option<AppliedView> {
     let owned = owned_page_id(app);
-    let applied = apply_top(context, owned, &configured_tier(app), apply_spells_enabled(app))
+    let applied = apply_top(
+        context,
+        owned,
+        &configured_tier(app),
+        apply_spells_enabled(app),
+        import_items_enabled(app),
+    )
         .await
         .ok()
         .flatten()?;
@@ -204,6 +210,13 @@ pub fn apply_spells_enabled(app: &tauri::AppHandle) -> bool {
     use tauri::Manager;
     app.try_state::<crate::AppState>()
         .map(|state| state.apply_spells_with_runes())
+        .unwrap_or(true)
+}
+
+pub fn import_items_enabled(app: &tauri::AppHandle) -> bool {
+    use tauri::Manager;
+    app.try_state::<crate::AppState>()
+        .map(|state| state.import_items_with_runes())
         .unwrap_or(true)
 }
 

@@ -21,15 +21,13 @@ type Props = {
     tier: string,
     keystone: number,
   ) => Promise<KeystoneBuildView | null>;
-  onImport: (build: KeystoneBuildView) => void;
-  disabled: boolean;
 };
 
 /** The row of 6 items people build with this preset's keystone, from
  *  lolalytics. The card renders immediately and the row fills in when the
  *  (cached, prefetched) build arrives, showing a skeleton until then. The row
  *  is hidden when there is no build; a failed lookup is simply nothing. */
-export function PresetBuild({ mode, championId, position, tier, keystone, onLoad, onImport, disabled }: Props) {
+export function PresetBuild({ mode, championId, position, tier, keystone, onLoad }: Props) {
   const [build, setBuild] = useState<KeystoneBuildView | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -78,15 +76,6 @@ export function PresetBuild({ mode, championId, position, tier, keystone, onLoad
         )}
         <CachedBadge stale={build.stale} updatedAt={build.updatedAt} className="preset-build-cached" />
       </span>
-      <button
-        type="button"
-        className="item-set-import"
-        disabled={disabled}
-        onClick={() => onImport(build)}
-        aria-label="Add this preset's item build to the League shop"
-      >
-        Add to shop
-      </button>
     </div>
   );
 }

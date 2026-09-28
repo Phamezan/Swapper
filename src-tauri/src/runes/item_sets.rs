@@ -13,6 +13,9 @@ const MAX_ITEMS: usize = 7;
 const MAX_OPTIONS: usize = 7;
 const MAX_OPTION_CANDIDATES: usize = 256;
 const MAX_TITLE_CHARS: usize = 50;
+/// Every item set Swapper creates starts with this, which is how it finds its
+/// own sets to replace or clean up without touching the player's.
+const TITLE_PREFIX: &str = "Swapper: ";
 
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -119,7 +122,7 @@ fn item_set_body(
         champion_name.as_str()
     };
     let title = clean(
-        &format!("Swapper: {champion_name} · {source}"),
+        &format!("{TITLE_PREFIX}{champion_name} · {source}"),
         MAX_TITLE_CHARS,
     );
     // POST .../sets takes the item set itself as the body. Wrapping it (for
@@ -275,46 +278,68 @@ fn preset_item_set_body(
     item_set_body(champion_id, champion_name, source, blocks)
 }
 
-/// The player's item set list with `item_set` added at the end. Every other
-/// field League returned (accountId, the player's own sets) is kept as-is.
-fn with_item_set_appended(mut existing: Value, item_set: Value, now_ms: i64) -> Value {
-    if !existing.is_object() {
-        existing = json!({});
+fn is_swapper_set(set: &Value) -> bool {
+    set["title"]
+        .as_str()
+        .is_some_and(|title| title.starts_with(TITLE_PREFIX))
+}
+
+/// The player's item set list as League returned it, normalized so it always
+/// has an `itemSets` array. Every other field (accountId, …) is kept as-is.
+fn normalized(existing: Value) -> Value {
+    let mut existing = if existing.is_object() { existing } else { json!({}) };
+    if !existing["itemSets"].is_array() {
+        existing["itemSets"] = json!([]);
     }
-    let sets = existing
-        .as_object_mut()
-        .expect("normalized to an object")
-        .entry("itemSets")
-        .or_insert_with(|| json!([]));
-    if !sets.is_array() {
-        *sets = json!([]);
-    }
-    sets.as_array_mut().expect("normalized to an array").push(item_set);
-    existing["timestamp"] = json!(now_ms);
     existing
 }
 
-/// Adds one item set to the player's list. League answers POST .../sets with
-/// 204 but saves nothing, so Swapper reads the whole list, appends, and PUTs it
-/// back — the same thing the client's own item set editor does.
-async fn post_item_set(title: String, body: Value) -> Result<String, RuneError> {
-    let lcu = super::lcu().await?;
-    let summoner: CurrentSummoner = super::lcu_get(&lcu, CURRENT_SUMMONER_PATH).await?;
+/// The player's list with `item_set` added and any earlier Swapper set
+/// dropped, so imports never pile up. The player's own sets are kept.
+fn with_item_set_appended(existing: Value, item_set: Value, now_ms: i64) -> Value {
+    let mut updated = normalized(existing);
+    let sets = updated["itemSets"].as_array_mut().expect("normalized to an array");
+    sets.retain(|set| !is_swapper_set(set));
+    sets.push(item_set);
+    updated["timestamp"] = json!(now_ms);
+    updated
+}
+
+/// The player's list without Swapper's sets, or `None` when there were none
+/// (so nothing needs writing).
+fn without_swapper_item_sets(existing: Value, now_ms: i64) -> Option<Value> {
+    let mut updated = normalized(existing);
+    let sets = updated["itemSets"].as_array_mut().expect("normalized to an array");
+    let before = sets.len();
+    sets.retain(|set| !is_swapper_set(set));
+    if sets.len() == before {
+        return None;
+    }
+    updated["timestamp"] = json!(now_ms);
+    Some(updated)
+}
+
+fn now_ms() -> i64 {
+    std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|elapsed| elapsed.as_millis() as i64)
+        .unwrap_or(0)
+}
+
+async fn item_sets_path(lcu: &super::Lcu) -> Result<String, RuneError> {
+    let summoner: CurrentSummoner = super::lcu_get(lcu, CURRENT_SUMMONER_PATH).await?;
     if summoner.summoner_id <= 0 {
         return Err(RuneError::unavailable(
             "League did not report the current summoner id.",
         ));
     }
-    let path = format!("{ITEM_SETS_PATH}/{}/sets", summoner.summoner_id);
-    let existing: Value = super::lcu_get(&lcu, &path).await?;
-    let now_ms = std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .map(|elapsed| elapsed.as_millis() as i64)
-        .unwrap_or(0);
-    let updated = with_item_set_appended(existing, body, now_ms);
-    let response = lcu.send(Method::PUT, &path, Some(&updated)).await?;
+    Ok(format!("{ITEM_SETS_PATH}/{}/sets", summoner.summoner_id))
+}
+
+async fn put_item_sets(lcu: &super::Lcu, path: &str, sets: &Value) -> Result<(), RuneError> {
+    let response = lcu.send(Method::PUT, path, Some(sets)).await?;
     if response.status().is_success() {
-        return Ok(title);
+        return Ok(());
     }
     Err(RuneError::conflict(format!(
         "League rejected the item set (HTTP {}).",
@@ -322,7 +347,30 @@ async fn post_item_set(title: String, body: Value) -> Result<String, RuneError> 
     )))
 }
 
-/// Adds one item set without replacing any item sets the player already owns.
+/// Removes the item sets Swapper imported, e.g. once a game ends. The
+/// player's own sets are left alone; nothing is written when there are none.
+pub async fn remove_imported_sets() -> Result<(), RuneError> {
+    let lcu = super::lcu().await?;
+    let path = item_sets_path(&lcu).await?;
+    let existing: Value = super::lcu_get(&lcu, &path).await?;
+    match without_swapper_item_sets(existing, now_ms()) {
+        Some(cleaned) => put_item_sets(&lcu, &path, &cleaned).await,
+        None => Ok(()),
+    }
+}
+
+/// Adds one item set to the player's list. League answers POST .../sets with
+/// 204 but saves nothing, so Swapper reads the whole list, appends, and PUTs it
+/// back — the same thing the client's own item set editor does.
+async fn post_item_set(title: String, body: Value) -> Result<String, RuneError> {
+    let lcu = super::lcu().await?;
+    let path = item_sets_path(&lcu).await?;
+    let existing: Value = super::lcu_get(&lcu, &path).await?;
+    put_item_sets(&lcu, &path, &with_item_set_appended(existing, body, now_ms())).await?;
+    Ok(title)
+}
+
+/// Adds one item set, replacing Swapper's previous one but never the player's.
 pub async fn import_build(
     champion_id: i64,
     champion_name: &str,
@@ -463,6 +511,49 @@ mod tests {
             .map(|set| set["title"].as_str().unwrap())
             .collect();
         assert_eq!(titles, ["Mine", "Swapper: Ahri"]);
+    }
+
+    #[test]
+    fn a_new_import_replaces_the_previous_swapper_set() {
+        let existing = json!({
+            "itemSets": [
+                { "title": "Swapper: Ahri · Recommended build", "uid": "old" },
+                { "title": "Mine", "uid": "a" }
+            ]
+        });
+        let updated = with_item_set_appended(
+            existing,
+            json!({ "title": "Swapper: Lux · Recommended build", "uid": "new" }),
+            1,
+        );
+        let uids: Vec<&str> = updated["itemSets"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|set| set["uid"].as_str().unwrap())
+            .collect();
+        assert_eq!(uids, ["a", "new"]);
+    }
+
+    #[test]
+    fn cleanup_removes_only_swapper_sets() {
+        let existing = json!({
+            "accountId": 42,
+            "itemSets": [
+                { "title": "Swapper: Ahri · Recommended build" },
+                { "title": "My Swapper build" }
+            ]
+        });
+        let cleaned = without_swapper_item_sets(existing, 5).expect("a Swapper set was removed");
+        assert_eq!(cleaned["accountId"], 42);
+        assert_eq!(cleaned["itemSets"].as_array().unwrap().len(), 1);
+        assert_eq!(cleaned["itemSets"][0]["title"], "My Swapper build");
+    }
+
+    #[test]
+    fn cleanup_without_swapper_sets_writes_nothing() {
+        let existing = json!({ "itemSets": [{ "title": "Mine" }] });
+        assert!(without_swapper_item_sets(existing, 5).is_none());
     }
 
     #[test]

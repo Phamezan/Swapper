@@ -180,6 +180,25 @@ impl AppState {
         vault::save(&config)
     }
 
+    /// Whether applying a recommended preset also imports its item build.
+    /// Defaults to on until the user changes it.
+    pub(crate) fn import_items_with_runes(&self) -> bool {
+        self.config
+            .lock()
+            .ok()
+            .and_then(|config| config.import_items_with_runes)
+            .unwrap_or(true)
+    }
+
+    pub(crate) fn set_import_items_with_runes(&self, enabled: bool) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        if config.import_items_with_runes == Some(enabled) {
+            return Ok(());
+        }
+        config.import_items_with_runes = Some(enabled);
+        vault::save(&config)
+    }
+
     /// Whether gameflow notifications (ready check, champion select) are on.
     /// Defaults to on until the user changes it.
     pub(crate) fn notifications_enabled(&self) -> bool {
@@ -245,6 +264,7 @@ struct AppView {
     auto_apply_top_preset: bool,
     rune_tier: String,
     apply_spells_with_runes: bool,
+    import_items_with_runes: bool,
     hotkey: Option<String>,
     hotkey_active: bool,
     notifications_enabled: bool,
@@ -311,6 +331,7 @@ fn view(
             .map(|tier| runes::normalize_tier(&tier).to_string())
             .unwrap_or_else(|| runes::DEFAULT_TIER.to_string()),
         apply_spells_with_runes: config.apply_spells_with_runes.unwrap_or(true),
+        import_items_with_runes: config.import_items_with_runes.unwrap_or(true),
         hotkey: config.hotkey.clone(),
         hotkey_active,
         notifications_enabled: config.notifications_enabled.unwrap_or(true),
@@ -759,13 +780,15 @@ async fn get_runes(
     state: State<'_, AppState>,
     position: Option<String>,
 ) -> Result<runes::RunesView, String> {
-    Ok(runes::view(
+    let mut view = runes::view(
         state.auto_apply_top_preset(),
         state.apply_spells_with_runes(),
         &state.rune_tier(),
         position.as_deref(),
     )
-    .await)
+    .await;
+    view.import_items = state.import_items_with_runes();
+    Ok(view)
 }
 
 #[tauri::command]
@@ -776,6 +799,28 @@ fn set_apply_spells_with_runes(
 ) -> Result<AppView, String> {
     let _lease = state.switch_guard.acquire()?;
     state.set_apply_spells_with_runes(enabled)?;
+    let view = {
+        let config = state.config.lock().map_err(|e| e.to_string())?;
+        view(
+            &config,
+            &state.bundled_deceive,
+            &state.remote.status(),
+            false,
+            state.hotkey_active.load(Ordering::SeqCst),
+        )
+    };
+    notify_runes_changed(&app, &state);
+    Ok(view)
+}
+
+#[tauri::command]
+fn set_import_items_with_runes(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    enabled: bool,
+) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    state.set_import_items_with_runes(enabled)?;
     let view = {
         let config = state.config.lock().map_err(|e| e.to_string())?;
         view(
@@ -957,26 +1002,16 @@ async fn import_item_build(
 }
 
 #[tauri::command]
-async fn import_keystone_item_build(
-    champion_id: i64,
-    champion_name: String,
-    source: String,
-    build: runes::KeystoneBuildView,
-) -> Result<String, String> {
-    runes::item_sets::import_keystone_build(champion_id, &champion_name, &source, &build)
-        .await
-        .map_err(|error| error.message().to_string())
-}
-
-#[tauri::command]
 async fn apply_rune_page(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
     selection: runes::RuneSelection,
     preset_index: Option<usize>,
     spells: Option<Vec<i64>>,
+    position: Option<String>,
 ) -> Result<runes::AppliedView, String> {
     let owned = state.rune_page_id();
+    let keystone = selection.keystone;
     let spells = spells.as_deref().and_then(runes::spells::pair_from_ids);
     let applied = runes::apply_selection(
         selection,
@@ -987,6 +1022,11 @@ async fn apply_rune_page(
     )
     .await
     .map_err(|e| e.message().to_string())?;
+    // Presets carry a recommended item build; exact pro pages import items
+    // through their own button.
+    if preset_index.is_some() && state.import_items_with_runes() {
+        runes::spawn_preset_items_import(position, state.rune_tier(), keystone);
+    }
     if let Some(id) = applied.page_id {
         let handle = app.clone();
         let _ = tokio::task::spawn_blocking(move || {
@@ -1206,6 +1246,7 @@ pub fn run() {
             set_auto_apply_top_preset,
             set_rune_tier,
             set_apply_spells_with_runes,
+            set_import_items_with_runes,
             set_notifications_enabled,
             set_ready_check_notifications,
             get_runes,
@@ -1219,7 +1260,6 @@ pub fn run() {
             get_pro_builds,
             get_keystone_build,
             import_item_build,
-            import_keystone_item_build,
             apply_rune_page,
             updater::update_status,
             updater::update_check_now,

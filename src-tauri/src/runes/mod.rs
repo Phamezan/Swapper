@@ -44,7 +44,7 @@ use serde_json::Value;
 
 use crate::lcu::{self, LcuEndpoint};
 
-pub use apply::{apply_selection, apply_top};
+pub use apply::{apply_selection, apply_top, spawn_preset_items_import};
 pub use data::icon;
 pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
@@ -54,6 +54,7 @@ pub use view::{
 };
 pub use watch::{
     apply_spells_enabled, auto_apply_current, auto_apply_enabled, configured_tier, current_status,
+    import_items_enabled,
     spawn_watch, ChampSelectEvent,
 };
 

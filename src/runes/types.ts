@@ -126,6 +126,8 @@ export type RunesView = {
   shards: RuneRow[];
   applied: Applied | null;
   autoApply: boolean;
+  /** Applying a preset also adds its item build to the League shop. */
+  importItems: boolean;
   canApply: boolean;
   locked: boolean;
   spells: SpellsView;

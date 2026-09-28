@@ -61,6 +61,7 @@ type Props = {
   onApply: (selection: Selection, presetIndex: number | null, spells: number[] | null) => void;
   onToggleAutoApply: (enabled: boolean) => void;
   onToggleSpellsWithRunes: (enabled: boolean) => void;
+  onToggleImportItems: (enabled: boolean) => void;
   onPickSpell: (slot: "d" | "f", spellId: number) => void;
   onPositionChange: (position: string) => void;
   onImportItems: (
@@ -68,12 +69,6 @@ type Props = {
     championName: string,
     source: string,
     items: number[],
-  ) => Promise<void>;
-  onImportPresetBuild: (
-    championId: number,
-    championName: string,
-    source: string,
-    build: KeystoneBuildView,
   ) => Promise<void>;
   /** Loads one page of pros' solo-queue games for the champion and role. */
   onLoadProBuilds: (championId: number, position: string, page: number) => Promise<ProBuildsView>;
@@ -149,10 +144,10 @@ export function RunesPanel({
   onApply,
   onToggleAutoApply,
   onToggleSpellsWithRunes,
+  onToggleImportItems,
   onPickSpell,
   onPositionChange,
   onImportItems,
-  onImportPresetBuild,
   onLoadProBuilds,
   onLoadBuild,
   onTierChange,
@@ -286,16 +281,6 @@ export function RunesPanel({
     }
   }
 
-  async function importPresetItemSet(source: string, build: KeystoneBuildView) {
-    setImportNotice(null);
-    try {
-      await onImportPresetBuild(championId, view?.championName ?? "Champion", source, build);
-      setImportNotice("Starter items, full build and options added to the League shop.");
-    } catch {
-      // The parent displays the request error beside the rune controls.
-    }
-  }
-
   /** Import an exact pro page through the same apply path a preset uses, then
    *  open the editor so it can be tweaked and applied again. */
   function importProBuild(build: ProBuild) {
@@ -423,6 +408,16 @@ export function RunesPanel({
             />
             <span>Apply summoner spells with runes</span>
           </label>
+          <label className="runes-auto" title="Also add the preset's item build to the League shop when applying it; Swapper removes it after the game">
+            <input
+              type="checkbox"
+              role="switch"
+              checked={view.importItems}
+              disabled={busy}
+              onChange={(event) => onToggleImportItems(event.target.checked)}
+            />
+            <span>Import item build</span>
+          </label>
         </div>
       )}
 
@@ -518,8 +513,6 @@ export function RunesPanel({
                     tier={view.tier}
                     keystone={preset.keystone}
                     onLoad={onLoadBuild}
-                    onImport={(build) => void importPresetItemSet(`Preset · ${preset.title}`, build)}
-                    disabled={busy}
                   />
                 </div>
               );

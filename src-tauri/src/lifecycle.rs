@@ -34,10 +34,30 @@ fn should_notify(event: LifecycleEvent, enabled: bool, ready_check_enabled: bool
     enabled && (event == LifecycleEvent::ChampSelectStarted || ready_check_enabled)
 }
 
+/// Phases during which a game is running or wrapping up.
+fn in_game(phase: &str) -> bool {
+    matches!(
+        phase,
+        "InProgress" | "Reconnect" | "WaitingForStats" | "PreEndOfGame"
+    )
+}
+
+/// Whether the move from `previous` to `current` means a game just finished.
+fn game_ended(previous: Option<&str>, current: &str) -> bool {
+    previous.is_some_and(in_game) && !in_game(current)
+}
+
 /// Observes one polled phase and fires the notification its transition calls
 /// for. A failed read leaves the previous phase in place (the caller keeps its
 /// state), so a reconnecting League client cannot re-fire an old transition.
 pub fn observe(app: &AppHandle, previous: Option<&str>, current: &str) {
+    if game_ended(previous, current) {
+        // Imported item sets are only useful for the game they were made for;
+        // clearing them keeps the shop from filling up with old builds.
+        tauri::async_runtime::spawn(async {
+            let _ = crate::runes::item_sets::remove_imported_sets().await;
+        });
+    }
     let Some(event) = transition(previous, current) else {
         return;
     };
@@ -60,6 +80,18 @@ pub fn observe(app: &AppHandle, previous: Option<&str>, current: &str) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn leaving_a_game_counts_as_the_game_ending() {
+        assert!(game_ended(Some("InProgress"), "EndOfGame"));
+        assert!(game_ended(Some("WaitingForStats"), "Lobby"));
+        assert!(game_ended(Some("PreEndOfGame"), "None"));
+        // Still in the game, or never in one.
+        assert!(!game_ended(Some("InProgress"), "InProgress"));
+        assert!(!game_ended(Some("InProgress"), "Reconnect"));
+        assert!(!game_ended(Some("ChampSelect"), "InProgress"));
+        assert!(!game_ended(None, "EndOfGame"));
+    }
 
     #[test]
     fn a_new_ready_check_notifies_once() {

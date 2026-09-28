@@ -34,6 +34,7 @@ type Props = {
   onReadyCheckChange: (enabled: boolean) => void;
   onAutoApplyChange: (enabled: boolean) => void;
   onApplySpellsChange: (enabled: boolean) => void;
+  onImportItemsChange: (enabled: boolean) => void;
   onRuneTierChange: (tier: string) => void;
   remoteTransport: "lan" | "tailscale";
   onRemoteTransportChange: (transport: "lan" | "tailscale") => void;
@@ -123,6 +124,8 @@ export function SettingsView(props: Props) {
           onAutoApplyChange={props.onAutoApplyChange}
           applySpells={props.state.applySpellsWithRunes}
           onApplySpellsChange={props.onApplySpellsChange}
+          importItems={props.state.importItemsWithRunes}
+          onImportItemsChange={props.onImportItemsChange}
           runeTier={props.state.runeTier}
           busy={props.busy}
           onRuneTierChange={props.onRuneTierChange}

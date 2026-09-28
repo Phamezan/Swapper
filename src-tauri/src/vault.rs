@@ -97,6 +97,10 @@ pub struct Config {
     /// `None` means the default (on) has never been changed.
     #[serde(default)]
     pub apply_spells_with_runes: Option<bool>,
+    /// Whether applying a recommended preset also adds its item build to the
+    /// League shop. `None` means the default (on) has never been changed.
+    #[serde(default)]
+    pub import_items_with_runes: Option<bool>,
     /// Optional global shortcut that toggles the tray flyout, e.g.
     /// "ctrl+shift+s". `None` means the hotkey is disabled (the default).
     #[serde(default)]

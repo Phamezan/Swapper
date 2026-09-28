@@ -259,6 +259,9 @@ pub struct RunesView {
     pub shards: Vec<RuneRowView>,
     pub applied: Option<AppliedView>,
     pub auto_apply: bool,
+    /// Whether applying a preset also imports its item build. Set by the
+    /// caller from the saved setting.
+    pub import_items: bool,
     pub can_apply: bool,
     pub locked: bool,
     /// The local player's summoner spells and the options the picker offers.
@@ -305,6 +308,7 @@ impl RunesView {
             shards: Vec::new(),
             applied: None,
             auto_apply,
+            import_items: false,
             can_apply: false,
             locked: false,
             spells: SpellsView::empty(apply_with_runes),
@@ -567,6 +571,7 @@ pub async fn view(
         shards: build_shards(&catalog, &aggregates),
         applied,
         auto_apply,
+        import_items: false,
         can_apply,
         locked: context.locked,
         spells,

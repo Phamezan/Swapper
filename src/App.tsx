@@ -84,6 +84,7 @@ export type AppState = {
   autoApplyTopPreset: boolean;
   runeTier: string;
   applySpellsWithRunes: boolean;
+  importItemsWithRunes: boolean;
   hotkey: string | null;
   hotkeyActive: boolean;
   notificationsEnabled: boolean;
@@ -109,7 +110,7 @@ const emptyRemote: RemoteStatus = {
 const empty: AppState = {
   accounts: [], activeId: null, isSwitching: false, useDeceive: false,
   riotExe: null, riotDetected: false, deceiveDetected: false,
-  autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true,
+  autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true, importItemsWithRunes: true,
   hotkey: null, hotkeyActive: false,
   notificationsEnabled: true, readyCheckNotifications: true, remote: emptyRemote,
 };
@@ -376,29 +377,11 @@ function App() {
     }
   }
 
-  async function importKeystoneItemBuild(
-    championId: number,
-    championName: string,
-    source: string,
-    build: KeystoneBuildView,
-  ) {
-    setRunesBusy(true);
-    setRunesError(null);
-    try {
-      await invoke("import_keystone_item_build", { championId, championName, source, build });
-    } catch (reason) {
-      setRunesError(String(reason));
-      throw reason;
-    } finally {
-      setRunesBusy(false);
-    }
-  }
-
   async function applyRunes(selection: Selection, presetIndex: number | null, spells: number[] | null) {
     setRunesBusy(true);
     setRunesError(null);
     try {
-      await invoke("apply_rune_page", { selection, presetIndex, spells });
+      await invoke("apply_rune_page", { selection, presetIndex, spells, position: runes?.position ?? null });
       await loadRunes();
     } catch (reason) {
       setRunesError(String(reason));
@@ -415,6 +398,20 @@ function App() {
       await loadRunes();
     } catch (reason) {
       setRunesError(String(reason));
+    } finally {
+      setRunesBusy(false);
+    }
+  }
+
+  async function setImportItemsWithRunes(enabled: boolean) {
+    setRunesBusy(true);
+    setRunesError(null);
+    try {
+      const next = await invoke<AppState>("set_import_items_with_runes", { enabled });
+      sync(next);
+      await loadRunes();
+    } catch (reason) {
+      showError(reason);
     } finally {
       setRunesBusy(false);
     }
@@ -782,10 +779,10 @@ function App() {
             onApply={(selection, presetIndex, spells) => void applyRunes(selection, presetIndex, spells)}
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
             onToggleSpellsWithRunes={(enabled) => void setApplySpellsWithRunes(enabled)}
+            onToggleImportItems={(enabled) => void setImportItemsWithRunes(enabled)}
             onPickSpell={(slot, spellId) => void pickSpell(slot, spellId)}
             onPositionChange={(position) => void loadRunes(position)}
             onImportItems={importItemBuild}
-            onImportPresetBuild={importKeystoneItemBuild}
             onLoadProBuilds={loadProBuilds}
             onLoadBuild={loadKeystoneBuild}
             onTierChange={(tier) => void setRuneTier(tier)}
@@ -904,6 +901,7 @@ function App() {
               onReadyCheckChange={(enabled) => void setReadyCheckNotifications(enabled)}
               onAutoApplyChange={(enabled) => void setAutoApply(enabled)}
               onApplySpellsChange={(enabled) => void setApplySpellsWithRunes(enabled)}
+              onImportItemsChange={(enabled) => void setImportItemsWithRunes(enabled)}
               onRuneTierChange={(tier) => void setRuneTier(tier)}
               remoteTransport={remoteTransport}
               onRemoteTransportChange={setRemoteTransport}

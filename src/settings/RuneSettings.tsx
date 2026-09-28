@@ -8,6 +8,8 @@ type Props = {
   onAutoApplyChange: (enabled: boolean) => void;
   applySpells: boolean;
   onApplySpellsChange: (enabled: boolean) => void;
+  importItems: boolean;
+  onImportItemsChange: (enabled: boolean) => void;
   runeTier: string;
   busy: boolean;
   onRuneTierChange: (tier: string) => void;
@@ -18,6 +20,8 @@ export function RuneSettings({
   onAutoApplyChange,
   applySpells,
   onApplySpellsChange,
+  importItems,
+  onImportItemsChange,
   runeTier,
   busy,
   onRuneTierChange,
@@ -43,6 +47,15 @@ export function RuneSettings({
           {openInfo === "spells" && <p>When you apply a preset or a pro build, also set its recommended summoner spells. Flash stays on the key you already use.</p>}
         </div>
         <Switch checked={applySpells} onCheckedChange={onApplySpellsChange} aria-label="Apply summoner spells with runes" />
+      </div>
+
+      <div className="setting-row">
+        <div className="setting-copy">
+          <strong>Import item build</strong>
+          <button className="info-button" aria-label="About Import item build" aria-expanded={openInfo === "items"} onClick={() => toggle("items")}><Info size={13} /></button>
+          {openInfo === "items" && <p>When you apply a preset, also add its item build to the League shop. Swapper keeps only one of its item sets and removes it after the game, so your own sets are never touched.</p>}
+        </div>
+        <Switch checked={importItems} onCheckedChange={onImportItemsChange} aria-label="Import item build" />
       </div>
 
       <div className="setting-row">

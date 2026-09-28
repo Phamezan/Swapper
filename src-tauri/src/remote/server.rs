@@ -39,7 +39,6 @@ fn routes() -> Router<Arc<RemoteCore>> {
         .route("/api/runes/pro-builds", get(pro_builds))
         .route("/api/runes/keystone-build", get(keystone_build))
         .route("/api/items/import", axum::routing::post(import_item_build))
-        .route("/api/items/import-preset", axum::routing::post(import_keystone_item_build))
         .route("/api/runes/apply", axum::routing::post(apply_runes))
         .route(
             "/api/runes/auto-apply",
@@ -49,6 +48,10 @@ fn routes() -> Router<Arc<RemoteCore>> {
         .route(
             "/api/runes/spells-setting",
             axum::routing::post(set_spells_with_runes),
+        )
+        .route(
+            "/api/runes/items-setting",
+            axum::routing::post(set_import_items_with_runes),
         )
         .route("/api/runes/spells", axum::routing::post(apply_spells))
         .route("/api/rune/icon/{id}", get(rune_icon))
@@ -406,7 +409,9 @@ async fn runes(
     let auto_apply = crate::runes::auto_apply_enabled(&core.app);
     let apply_spells = crate::runes::apply_spells_enabled(&core.app);
     let tier = crate::runes::configured_tier(&core.app);
-    Json(crate::runes::view(auto_apply, apply_spells, &tier, query.position.as_deref()).await).into_response()
+    let mut view = crate::runes::view(auto_apply, apply_spells, &tier, query.position.as_deref()).await;
+    view.import_items = crate::runes::import_items_enabled(&core.app);
+    Json(view).into_response()
 }
 
 #[derive(Deserialize)]
@@ -482,43 +487,6 @@ async fn import_item_build(headers: HeaderMap, Json(body): Json<ImportItemBuildR
     }
 }
 
-#[derive(Deserialize)]
-#[serde(rename_all = "camelCase")]
-struct ImportKeystoneBuildRequest {
-    champion_id: i64,
-    champion_name: String,
-    source: String,
-    build: crate::runes::KeystoneBuildView,
-}
-
-async fn import_keystone_item_build(
-    headers: HeaderMap,
-    Json(body): Json<ImportKeystoneBuildRequest>,
-) -> Response {
-    if !action_allowed(&headers) {
-        return (
-            StatusCode::FORBIDDEN,
-            Json(control::ActionResult::error("Invalid action request.")),
-        )
-            .into_response();
-    }
-    match crate::runes::item_sets::import_keystone_build(
-        body.champion_id,
-        &body.champion_name,
-        &body.source,
-        &body.build,
-    )
-    .await
-    {
-        Ok(_) => (StatusCode::OK, Json(control::ActionResult::success())).into_response(),
-        Err(error) => (
-            rune_status(&error),
-            Json(control::ActionResult::error(error.message())),
-        )
-            .into_response(),
-    }
-}
-
 fn rune_status(error: &crate::runes::RuneError) -> StatusCode {
     match error {
         crate::runes::RuneError::NotFound(_) => StatusCode::NOT_FOUND,
@@ -535,6 +503,9 @@ struct ApplyRunesRequest {
     preset_index: Option<usize>,
     #[serde(default)]
     spells: Option<Vec<i64>>,
+    /// The role the preset was loaded for, so its item build matches.
+    #[serde(default)]
+    position: Option<String>,
 }
 
 async fn apply_runes(
@@ -556,10 +527,18 @@ async fn apply_runes(
         .map(|state| (state.rune_page_id(), state.apply_spells_with_runes()))
         .unwrap_or((None, true));
     let spells = body.spells.as_deref().and_then(crate::runes::spells::pair_from_ids);
+    let keystone = body.selection.keystone;
     match crate::runes::apply_selection(body.selection, body.preset_index, owned, spells, apply_spells)
         .await
     {
         Ok(applied) => {
+            if body.preset_index.is_some() && crate::runes::import_items_enabled(&core.app) {
+                crate::runes::spawn_preset_items_import(
+                    body.position,
+                    crate::runes::configured_tier(&core.app),
+                    keystone,
+                );
+            }
             if let Some(id) = applied.page_id {
                 persist_rune_page_id(core.app.clone(), id).await;
             }
@@ -817,6 +796,48 @@ async fn set_spells_with_runes(
             .try_state::<crate::AppState>()
             .ok_or_else(|| "Swapper is unavailable.".to_string())?;
         state.set_apply_spells_with_runes(enabled)
+    })
+    .await
+    .unwrap_or_else(|error| Err(error.to_string()));
+    match result {
+        Ok(()) => {
+            core.notify_runes_changed();
+            let _ = core.app.emit("runes_changed", serde_json::Value::Null);
+            (StatusCode::OK, Json(control::ActionResult::success())).into_response()
+        }
+        Err(message) => (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(control::ActionResult::error(&message)),
+        )
+            .into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+struct ImportItemsSettingRequest {
+    enabled: bool,
+}
+
+async fn set_import_items_with_runes(
+    State(core): State<Arc<RemoteCore>>,
+    headers: HeaderMap,
+    Json(body): Json<ImportItemsSettingRequest>,
+) -> Response {
+    if !action_allowed(&headers) {
+        return (
+            StatusCode::FORBIDDEN,
+            Json(control::ActionResult::error("Invalid action request.")),
+        )
+            .into_response();
+    }
+    let app = core.app.clone();
+    let enabled = body.enabled;
+    let result = tokio::task::spawn_blocking(move || {
+        use tauri::Manager;
+        let state = app
+            .try_state::<crate::AppState>()
+            .ok_or_else(|| "Swapper is unavailable.".to_string())?;
+        state.set_import_items_with_runes(enabled)
     })
     .await
     .unwrap_or_else(|error| Err(error.to_string()));
