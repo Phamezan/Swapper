@@ -160,6 +160,17 @@ pub fn position_from_assigned(assigned: &str) -> Option<&'static str> {
     }
 }
 
+/// A role the user picked, in Swapper's own role names ("mid", "adc") or the
+/// League client's ("middle", "bottom").
+pub fn position_from_request(requested: &str) -> Option<&'static str> {
+    match requested.trim().to_ascii_lowercase().as_str() {
+        "mid" => Some("mid"),
+        "adc" => Some("adc"),
+        "support" => Some("support"),
+        other => position_from_assigned(other),
+    }
+}
+
 pub fn parse_champion_summary(body: &str) -> Result<HashMap<i64, String>, RuneError> {
     #[derive(Deserialize)]
     struct Summary {
@@ -259,6 +270,18 @@ mod tests {
         assert_eq!(position_from_assigned("utility"), Some("support"));
         assert_eq!(position_from_assigned(""), None);
         assert_eq!(position_from_assigned("fill"), None);
+    }
+
+    #[test]
+    fn a_role_picked_in_the_ui_selects_that_role() {
+        // The role picker sends Swapper's own role names.
+        for role in ["top", "jungle", "mid", "adc", "support"] {
+            assert_eq!(position_from_request(role), Some(role));
+        }
+        // League client names still work for callers that pass them through.
+        assert_eq!(position_from_request("MIDDLE"), Some("mid"));
+        assert_eq!(position_from_request("utility"), Some("support"));
+        assert_eq!(position_from_request("fill"), None);
     }
 
     #[test]

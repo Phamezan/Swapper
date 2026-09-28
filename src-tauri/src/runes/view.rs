@@ -497,7 +497,7 @@ pub async fn view(
     };
     let detected_position = super::position_for(&current, &context).await;
     let position = requested_position
-        .and_then(session::position_from_assigned)
+        .and_then(session::position_from_request)
         .filter(|position| *position != super::opgg::POSITION_NONE)
         .unwrap_or(detected_position);
     let loaded = data::load_for(&current, &context, &catalog, tier, position)
