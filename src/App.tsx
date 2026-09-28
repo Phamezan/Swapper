@@ -17,6 +17,7 @@ import { RunesPanel } from "./runes/RunesPanel";
 import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
 import { TIER_OPTIONS } from "./runes/types";
 import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
+import { HotkeySetting } from "./settings/HotkeySetting";
 import "./App.css";
 
 type Account = {
@@ -81,6 +82,8 @@ type AppState = {
   autoApplyTopPreset: boolean;
   runeTier: string;
   applySpellsWithRunes: boolean;
+  hotkey: string | null;
+  hotkeyActive: boolean;
   remote: RemoteStatus;
 };
 type ChampSelectStatus = {
@@ -102,7 +105,8 @@ const emptyRemote: RemoteStatus = {
 const empty: AppState = {
   accounts: [], activeId: null, isSwitching: false, useDeceive: false,
   riotExe: null, riotDetected: false, deceiveDetected: false,
-  autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true, remote: emptyRemote,
+  autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true,
+  hotkey: null, hotkeyActive: false, remote: emptyRemote,
 };
 
 const wait = (ms: number) =>
@@ -659,6 +663,17 @@ function App() {
     if (native) void invoke<AppState>("get_state").then(sync).catch(showError);
   };
 
+  // The backend registers the combination before persisting it, so a rejection
+  // (invalid or already owned by another app) leaves the previous one working.
+  // HotkeySetting shows the rejection inline instead of the shared error banner.
+  const applyHotkey = async (value: string | null) => {
+    if (!native) {
+      setError("The global hotkey is available in the Windows tray app. Start it with npm run tauri dev.");
+      return;
+    }
+    sync(await invoke<AppState>("set_hotkey", { shortcut: value }));
+  };
+
   const browseRiotPath = async () => {
     if (!native) return;
     try {
@@ -874,6 +889,8 @@ function App() {
                 </div>
                 <Switch checked={startOnStartup} onCheckedChange={(checked) => void setStartOnStartupSetting(checked)} aria-label="Start on startup" />
               </div>
+
+              <HotkeySetting hotkey={data.hotkey} active={data.hotkeyActive} disabled={busy !== null} onSet={applyHotkey} />
 
               <div className="setting-row">
                 <div className="setting-copy">
