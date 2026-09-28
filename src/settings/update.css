@@ -1,8 +1,10 @@
 /* Updates: the Settings section and the slim accounts-view banner. */
 
 .update-section { margin-top: 20px; padding-top: 17px; border-top: 1px solid var(--line-strong); }
-.update-section .setting-row { padding-bottom: 12px; border-bottom: 0; }
-.update-actions { display: flex; flex: none; gap: 7px; }
+/* Same stacked header as the Doctor: full-width title, actions row below. */
+.update-section .setting-row { flex-wrap: wrap; row-gap: 6px; padding-bottom: 12px; border-bottom: 0; }
+.update-section .setting-row .setting-copy { flex-basis: 100%; }
+.update-actions { display: flex; flex: 1 0 100%; gap: 7px; }
 .update-actions button { height: 30px; flex: none; padding: 0 11px; font-size: 10px; }
 
 .update-dot { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--text-muted); }
