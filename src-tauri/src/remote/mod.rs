@@ -80,6 +80,20 @@ impl RemoteStatus {
     }
 }
 
+/// Read-only Remote Control summary for Swapper Doctor. Carries interface
+/// names only — never addresses, credentials, or pairing data. Deliberately
+/// excludes Tailscale: the doctor probes it separately, and only when the
+/// Tailscale transport is selected.
+pub(crate) struct DoctorSummary {
+    pub enabled: bool,
+    pub state: RemoteState,
+    pub lan_ready: bool,
+    pub lan_message: Option<String>,
+    pub message: Option<String>,
+    /// Selected adapter's friendly name, without its address.
+    pub interface: Option<String>,
+}
+
 struct Inner {
     status: RemoteStatus,
     epoch: u64,
@@ -735,6 +749,35 @@ impl RemoteCore {
             status.league_running = league_running;
             status.lcu_connected = lcu_connected;
         });
+    }
+
+    /// Read-only diagnostics for Swapper Doctor: the cached service status
+    /// plus a fresh adapter lookup. Starts nothing and changes nothing. This
+    /// never probes Tailscale; see [`Self::tailscale_availability`].
+    pub(crate) fn doctor_summary(&self) -> DoctorSummary {
+        let status = self.status();
+        let interface = network::default_interface().ok().flatten();
+        DoctorSummary {
+            enabled: status.enabled,
+            state: status.state,
+            lan_ready: status.lan_address.is_some(),
+            lan_message: status.lan_message,
+            message: status.message,
+            interface: interface.map(|item| item.name),
+        }
+    }
+
+    /// Read-only Tailscale availability for Swapper Doctor: installed, and
+    /// whether the backend is running. Runs one bounded `tailscale status`
+    /// call, so the doctor invokes it only for the Tailscale check.
+    pub(crate) fn tailscale_availability(&self) -> (bool, bool) {
+        match tailscale::find_cli() {
+            Some(cli) => match tailscale::status(&cli) {
+                Ok(ts) => (true, ts.backend_state.eq_ignore_ascii_case("Running")),
+                Err(_) => (true, false),
+            },
+            None => (false, false),
+        }
     }
 
     fn apply(&self, update: impl FnOnce(&mut RemoteStatus)) {

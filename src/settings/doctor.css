@@ -1,0 +1,21 @@
+/* Swapper Doctor: Settings health checks. Follows the settings-row styling. */
+
+.doctor-section { --warning: #e8b866; margin-top: 20px; padding-top: 17px; border-top: 1px solid var(--line-strong); }
+.doctor-section .setting-row { padding-bottom: 12px; border-bottom: 0; }
+.doctor-actions { display: flex; flex: none; gap: 7px; }
+.doctor-actions button { height: 30px; flex: none; padding: 0 11px; font-size: 10px; }
+.doctor-refresh { width: 30px; min-width: 30px; padding: 0; }
+
+.doctor-list { display: flex; flex-direction: column; }
+.doctor-check { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line-subtle); }
+.doctor-check:last-child { border-bottom: 0; }
+.doctor-dot { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--text-muted); }
+.doctor-dot.is-ok { background: var(--positive); box-shadow: 0 0 0 3px color-mix(in srgb, var(--positive) 13%, transparent); }
+.doctor-dot.is-warn { background: var(--warning); box-shadow: 0 0 0 3px color-mix(in srgb, var(--warning) 13%, transparent); }
+.doctor-dot.is-error { background: var(--danger); box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 13%, transparent); }
+.doctor-text { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
+.doctor-text strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 660; }
+.doctor-text small { color: var(--text-secondary); font-size: 11px; line-height: 1.4; text-wrap: pretty; }
+.doctor-check .icon-button { width: 27px; height: 27px; }
+
+.doctor-note { display: flex; align-items: center; gap: 8px; padding: 9px 0; color: var(--text-secondary); font-size: 11px; }

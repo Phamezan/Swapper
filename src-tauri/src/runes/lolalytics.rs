@@ -26,7 +26,7 @@ use serde_json::Value;
 use super::RuneError;
 
 /// The build page. `lane` and `tier` are slugs; `keystone` is a Riot perk id.
-const BASE_URL: &str = "https://lolalytics.com/lol";
+pub(crate) const BASE_URL: &str = "https://lolalytics.com/lol";
 /// A normal browser user agent; lolalytics does not require one, but it is
 /// polite and matches what a person's browser sends.
 const USER_AGENT: &str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";

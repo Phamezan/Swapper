@@ -72,7 +72,7 @@ pub fn tier_supported(mode: &str) -> bool {
     mode != MODE_ARENA
 }
 
-const BASE_URL: &str = "https://lol-api-champion.op.gg";
+pub(crate) const BASE_URL: &str = "https://lol-api-champion.op.gg";
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(3);
 
 #[derive(Debug, Clone, Deserialize, Serialize)]

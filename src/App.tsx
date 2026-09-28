@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { RunesPanel } from "./runes/RunesPanel";
 import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
+import { SwapperDoctor } from "./settings/SwapperDoctor";
 import { TIER_OPTIONS } from "./runes/types";
 import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
 import { HotkeySetting } from "./settings/HotkeySetting";
@@ -1006,6 +1007,8 @@ function App() {
                 )}
                 <PairedDevices />
               </>}
+
+              <SwapperDoctor remoteTransport={remoteTransport} />
             </div>}
           </>
         )}
