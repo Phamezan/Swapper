@@ -1,9 +1,11 @@
-//! Background champion-select watcher: emits `champ_select` events and applies
-//! the recommended runes once per champion when auto-apply is on.
+//! Background champion-select watcher: emits `champ_select` events, applies
+//! the recommended runes once per champion when auto-apply is on, and turns
+//! gameflow phase transitions into lifecycle notifications.
 //!
-//! The watcher polls quickly only inside champion select. Outside it — the
-//! lobby, matchmaking, or League not running at all — it backs off so the idle
-//! app is not doing work every few seconds.
+//! The watcher polls quickly only while something is waiting on the phase:
+//! champion select, matchmaking, or a ready check (which expires in seconds).
+//! Away from those — the lobby, or League not running at all — it backs off so
+//! the idle app is not doing work every few seconds.
 
 use std::sync::Mutex;
 use std::time::Duration;
@@ -68,22 +70,31 @@ pub struct ChampSelectEvent {
 pub fn spawn_watch(app: tauri::AppHandle) {
     tauri::async_runtime::spawn(async move {
         let mut last: Option<ChampSelectEvent> = None;
+        // The last gameflow phase, so lifecycle notifications fire once per
+        // transition instead of per poll.
+        let mut last_phase: Option<String> = None;
         let mut interval = IDLE_INTERVAL;
         loop {
             tokio::time::sleep(interval).await;
             let (phase, context) = match super::rune_context().await {
                 Ok(super::RuneContext { phase, context }) => (phase, context),
                 Err(_) => {
-                    // League is not connected; keep backing off.
+                    // League is not connected; keep backing off. last_phase is
+                    // kept, so a reconnect cannot re-fire an old transition.
                     interval = IDLE_INTERVAL;
                     continue;
                 }
             };
-            interval = if phase == "ChampSelect" {
+            interval = if matches!(
+                phase.as_str(),
+                "ChampSelect" | "ReadyCheck" | "Matchmaking"
+            ) {
                 ACTIVE_INTERVAL
             } else {
                 IDLE_INTERVAL
             };
+            crate::lifecycle::observe(&app, last_phase.as_deref(), &phase);
+            last_phase = Some(phase.clone());
             let mut event = ChampSelectEvent {
                 phase: phase.clone(),
                 champion_id: context.as_ref().map(|c| c.champion_id).unwrap_or(0),

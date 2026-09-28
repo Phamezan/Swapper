@@ -54,6 +54,33 @@ function formatQueueTime(seconds: number): string {
     : `${minutes}:${String(remaining).padStart(2, "0")}`;
 }
 
+// A short rising two-tone cue for a ready check. Autoplay rules or missing
+// support make it a silent no-op; the vibration API is Android-only.
+function playReadyCheckCue() {
+  const CueAudio = window.AudioContext
+    ?? (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!CueAudio) return;
+  const ctx = new CueAudio();
+  if (ctx.state === "suspended") {
+    void ctx.close();
+    return;
+  }
+  const now = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(880, now);
+  osc.frequency.setValueAtTime(1174, now + 0.16);
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.18, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.36);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+  osc.stop(now + 0.38);
+  osc.onended = () => void ctx.close();
+}
+
 export default function RemoteApp() {
   const [status, setStatus] = useState<RemoteStatus | null>(null);
   const [live, setLive] = useState(false);
@@ -134,6 +161,17 @@ export default function RemoteApp() {
     const timer = window.setInterval(() => void poll(), 1500);
     return () => { cancelled = true; window.clearInterval(timer); };
   }, []);
+
+  // One vibration/sound cue per ready check, only while this page is open.
+  const readyCheckActive = game?.phase === "ReadyCheck" && Boolean(game.readyCheck);
+  const wasReadyCheckActive = useRef(false);
+  useEffect(() => {
+    if (readyCheckActive && !wasReadyCheckActive.current) {
+      try { navigator.vibrate?.([180, 90, 180]); } catch { /* Unsupported. */ }
+      try { playReadyCheckCue(); } catch { /* Blocked by autoplay rules. */ }
+    }
+    wasReadyCheckActive.current = readyCheckActive;
+  }, [readyCheckActive]);
 
   useEffect(() => {
     if (!status?.lcuConnected || game?.phase !== "ChampSelect" || champions.length > 0) return;

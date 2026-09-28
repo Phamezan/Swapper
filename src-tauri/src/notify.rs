@@ -37,6 +37,25 @@ pub fn switch_failed(app: &AppHandle, account: &str, use_deceive: bool, failure:
         .show();
 }
 
+// Both lifecycle notifications use the notification's default sound.
+pub fn ready_check_started(app: &AppHandle) {
+    let _ = app
+        .notification()
+        .builder()
+        .title("Match found")
+        .body("A ready check started. Accept it in the League client.")
+        .show();
+}
+
+pub fn champ_select_started(app: &AppHandle) {
+    let _ = app
+        .notification()
+        .builder()
+        .title("Champion select")
+        .body("Champion select has begun.")
+        .show();
+}
+
 pub(crate) fn human_reason(kind: SwitchFailureKind, account: &str, use_deceive: bool) -> Option<String> {
     let text = match kind {
         SwitchFailureKind::GameRunning => "Close the running Riot game before switching accounts.".to_string(),

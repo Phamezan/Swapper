@@ -1,4 +1,5 @@
 mod identity;
+mod lifecycle;
 mod lcu;
 mod remote;
 mod notify;
@@ -147,6 +148,44 @@ impl AppState {
         config.apply_spells_with_runes = Some(enabled);
         vault::save(&config)
     }
+
+    /// Whether gameflow notifications (ready check, champion select) are on.
+    /// Defaults to on until the user changes it.
+    pub(crate) fn notifications_enabled(&self) -> bool {
+        self.config
+            .lock()
+            .ok()
+            .and_then(|config| config.notifications_enabled)
+            .unwrap_or(true)
+    }
+
+    pub(crate) fn set_notifications_enabled(&self, enabled: bool) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        if config.notifications_enabled == Some(enabled) {
+            return Ok(());
+        }
+        config.notifications_enabled = Some(enabled);
+        vault::save(&config)
+    }
+
+    /// Whether ready-check notifications are on, independently of champion
+    /// select. Defaults to on until the user changes it.
+    pub(crate) fn ready_check_notifications(&self) -> bool {
+        self.config
+            .lock()
+            .ok()
+            .and_then(|config| config.ready_check_notifications)
+            .unwrap_or(true)
+    }
+
+    pub(crate) fn set_ready_check_notifications(&self, enabled: bool) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        if config.ready_check_notifications == Some(enabled) {
+            return Ok(());
+        }
+        config.ready_check_notifications = Some(enabled);
+        vault::save(&config)
+    }
 }
 
 #[derive(Clone, Serialize)]
@@ -175,6 +214,8 @@ struct AppView {
     auto_apply_top_preset: bool,
     rune_tier: String,
     apply_spells_with_runes: bool,
+    notifications_enabled: bool,
+    ready_check_notifications: bool,
     remote: remote::RemoteStatus,
 }
 
@@ -233,6 +274,8 @@ fn view(
             .map(|tier| runes::normalize_tier(&tier).to_string())
             .unwrap_or_else(|| runes::DEFAULT_TIER.to_string()),
         apply_spells_with_runes: config.apply_spells_with_runes.unwrap_or(true),
+        notifications_enabled: config.notifications_enabled.unwrap_or(true),
+        ready_check_notifications: config.ready_check_notifications.unwrap_or(true),
         remote: remote.clone(),
     }
 }
@@ -561,6 +604,38 @@ async fn apply_spell(
 }
 
 #[tauri::command]
+fn set_notifications_enabled(
+    state: State<'_, AppState>,
+    enabled: bool,
+) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    state.set_notifications_enabled(enabled)?;
+    let config = state.config.lock().map_err(|e| e.to_string())?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+    ))
+}
+
+#[tauri::command]
+fn set_ready_check_notifications(
+    state: State<'_, AppState>,
+    enabled: bool,
+) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    state.set_ready_check_notifications(enabled)?;
+    let config = state.config.lock().map_err(|e| e.to_string())?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+    ))
+}
+
+#[tauri::command]
 fn set_rune_tier(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
@@ -883,6 +958,8 @@ pub fn run() {
             set_auto_apply_top_preset,
             set_rune_tier,
             set_apply_spells_with_runes,
+            set_notifications_enabled,
+            set_ready_check_notifications,
             get_runes,
             champ_select_status,
             rune_icon,
