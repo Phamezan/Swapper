@@ -1,28 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { QRCodeSVG } from "qrcode.react";
 import { open as browseForFile } from "@tauri-apps/plugin-dialog";
 import {
   disable as disableAutostart, enable as enableAutostart, isEnabled as isAutostartEnabled,
 } from "@tauri-apps/plugin-autostart";
 import {
-  ArrowLeft, ArrowRight, Check, ChevronRight, CircleAlert, Info, LoaderCircle,
-  Pencil, Plus, QrCode, RefreshCw, Settings2, Trash2, Wrench, X,
+  ArrowLeft, ArrowRight, Check, ChevronRight, CircleAlert, LoaderCircle,
+  Pencil, Plus, RefreshCw, Settings2, Trash2, Wrench, X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
 import { RepairPanel } from "./accounts/RepairPanel";
 import { CreateShortcutButton } from "./accounts/CreateShortcutButton";
 import { RunesPanel } from "./runes/RunesPanel";
-import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
-import { SwapperDoctor } from "./settings/SwapperDoctor";
-import { UpdateBanner, UpdateSection } from "./settings/UpdateSection";
-import { NotificationSettings } from "./settings/NotificationSettings";
-import { TIER_OPTIONS } from "./runes/types";
+import { PairingNotice } from "./settings/PairedDevices";
+import { UpdateBanner } from "./settings/UpdateSection";
 import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
-import { HotkeySetting } from "./settings/HotkeySetting";
+import { SettingsView } from "./settings/SettingsView";
+import type { SettingsTab } from "./settings/SettingsView";
 import "./App.css";
 
 export type Account = {
@@ -61,7 +57,7 @@ type RemoteState =
   | "disconnected"
   | "available"
   | "failed";
-type RemoteStatus = {
+export type RemoteStatus = {
   enabled: boolean;
   state: RemoteState;
   address: string | null;
@@ -162,12 +158,9 @@ function App() {
   const [detectedPrompt, setDetectedPrompt] = useState<DetectedIdentity | null>(null);
   const detectionEpoch = useRef(0);
   const previousActiveId = useRef<string | null>(null);
-  const [copied, setCopied] = useState(false);
-  const [showRemoteQr, setShowRemoteQr] = useState(false);
-  const [remoteQrUrl, setRemoteQrUrl] = useState<string | null>(null);
   const [remoteTransport, setRemoteTransport] = useState<"lan" | "tailscale">("lan");
+  const [settingsTab, setSettingsTab] = useState<SettingsTab>("general");
   const [startOnStartup, setStartOnStartup] = useState(false);
-  const [openInfo, setOpenInfo] = useState<string | null>(null);
   const [pathMode, setPathMode] = useState<"auto" | "manual" | null>(null);
   const [runes, setRunes] = useState<RunesView | null>(null);
   const [runesLoading, setRunesLoading] = useState(false);
@@ -507,11 +500,6 @@ function App() {
       return;
     }
     const previous = data.remote;
-    if (!enabled) {
-      setShowRemoteQr(false);
-      setRemoteQrUrl(null);
-    }
-    setCopied(false);
     setData((prev) => ({
       ...prev,
       remote: { ...prev.remote, enabled, state: enabled ? "starting" : "disabled" },
@@ -531,52 +519,6 @@ function App() {
       else await disableAutostart();
       setStartOnStartup(await isAutostartEnabled());
     });
-  }
-
-  async function copyRemoteAddress() {
-    const address = data.remote.tailscaleAddress;
-    if (!address) return;
-    try {
-      await navigator.clipboard.writeText(address);
-    } catch {
-      const field = document.createElement("textarea");
-      field.value = address;
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.appendChild(field);
-      field.select();
-      document.execCommand("copy");
-      field.remove();
-    }
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1500);
-  }
-
-  async function toggleRemoteQr() {
-    if (showRemoteQr) {
-      setShowRemoteQr(false);
-      return;
-    }
-    try {
-      const url = remoteTransport === "lan"
-        ? await invoke<string>("create_lan_pairing_url")
-        : data.remote.tailscaleAddress;
-      if (!url) return;
-      setRemoteQrUrl(url);
-      setShowRemoteQr(true);
-    } catch (reason) {
-      showError(reason);
-    }
-  }
-
-  async function resetLanAccess() {
-    try {
-      const url = await invoke<string>("reset_lan_access");
-      setRemoteQrUrl(url);
-      setShowRemoteQr(true);
-    } catch (reason) {
-      showError(reason);
-    }
   }
 
   async function action(key: string, fn: () => Promise<AppState | void>, after?: () => void) {
@@ -603,7 +545,6 @@ function App() {
     setError(null);
     setEditing(null);
     setPendingRemove(null);
-    setShowRemoteQr(false);
     if (next === "add") {
       setName("");
       setAddStage("signIn");
@@ -701,6 +642,25 @@ function App() {
       await invoke("save_settings", patch);
     });
     if (native) void invoke<AppState>("get_state").then(sync).catch(showError);
+  };
+
+  const changeRiotPathMode = (mode: "auto" | "manual") => {
+    if (mode === "manual") {
+      setPathMode("manual");
+      return;
+    }
+    setPathMode("auto");
+    setRiotExe("");
+    void applySettings({ useDeceive, riotExe: null });
+  };
+
+  const commitRiotPath = (value: string | null) => {
+    if (value === null) {
+      setPathMode("auto");
+      void applySettings({ useDeceive, riotExe: null });
+      return;
+    }
+    void applySettings({ useDeceive, riotExe: value });
   };
 
   // The backend registers the combination before persisting it, so a rejection
@@ -923,153 +883,32 @@ function App() {
               </div>)}
             </div>}
 
-            {view === "settings" && <div className="settings-content">
-              <div className="setting-row">
-                <div className="setting-copy">
-                  <strong>Launch through Deceive</strong>
-                  <button className="info-button" aria-label="About Launch through Deceive" aria-expanded={openInfo === "deceive"} onClick={() => setOpenInfo(openInfo === "deceive" ? null : "deceive")}><Info size={13} /></button>
-                  {openInfo === "deceive" && <p>Start League with Deceive’s offline presence. Included with Swapper.</p>}
-                </div>
-                <Switch checked={useDeceive} onCheckedChange={(checked) => void applySettings({ useDeceive: checked, riotExe: configuredPath() })} aria-label="Launch through Deceive" />
-              </div>
-
-              <div className="setting-row">
-                <div className="setting-copy">
-                  <strong>Start on startup</strong>
-                  <button className="info-button" aria-label="About Start on startup" aria-expanded={openInfo === "startup"} onClick={() => setOpenInfo(openInfo === "startup" ? null : "startup")}><Info size={13} /></button>
-                  {openInfo === "startup" && <p>Launch Swapper with Windows. It starts in the tray, without opening the flyout.</p>}
-                </div>
-                <Switch checked={startOnStartup} onCheckedChange={(checked) => void setStartOnStartupSetting(checked)} aria-label="Start on startup" />
-              </div>
-
-              <HotkeySetting hotkey={data.hotkey} active={data.hotkeyActive} disabled={busy !== null} onSet={applyHotkey} />
-
-              <div className="setting-row">
-                <div className="setting-copy">
-                  <strong>Auto-apply recommended runes</strong>
-                  <button className="info-button" aria-label="About Auto-apply recommended runes" aria-expanded={openInfo === "runes"} onClick={() => setOpenInfo(openInfo === "runes" ? null : "runes")}><Info size={13} /></button>
-                  {openInfo === "runes" && <p>When your champion locks in during champion select, Swapper applies the recommended rune page shown on the runes screen. Off by default.</p>}
-                </div>
-                <Switch checked={data.autoApplyTopPreset} onCheckedChange={(checked) => void setAutoApply(checked)} aria-label="Auto-apply recommended runes" />
-              </div>
-
-              <div className="setting-row">
-                <div className="setting-copy">
-                  <strong>Apply summoner spells with runes</strong>
-                  <button className="info-button" aria-label="About Apply summoner spells with runes" aria-expanded={openInfo === "spells"} onClick={() => setOpenInfo(openInfo === "spells" ? null : "spells")}><Info size={13} /></button>
-                  {openInfo === "spells" && <p>When you apply a preset or a pro build, also set its recommended summoner spells. Flash stays on the key you already use.</p>}
-                </div>
-                <Switch checked={data.applySpellsWithRunes} onCheckedChange={(checked) => void setApplySpellsWithRunes(checked)} aria-label="Apply summoner spells with runes" />
-              </div>
-
-              <NotificationSettings
-                notifications={data.notificationsEnabled}
-                readyCheck={data.readyCheckNotifications}
-                busy={busy !== null}
-                onNotificationsChange={(enabled) => void setNotifications(enabled)}
-                onReadyCheckChange={(enabled) => void setReadyCheckNotifications(enabled)}
-              />
-
-              <div className="setting-row">
-                <div className="setting-copy">
-                  <strong>Rune rank filter</strong>
-                  <button className="info-button" aria-label="About the rune rank filter" aria-expanded={openInfo === "tier"} onClick={() => setOpenInfo(openInfo === "tier" ? null : "tier")}><Info size={13} /></button>
-                  {openInfo === "tier" && <p>Swapper loads rune statistics for this rank bracket from op.gg. A narrower bracket has fewer games, so the numbers can get thin.</p>}
-                </div>
-                <select
-                  className="setting-select"
-                  value={data.runeTier}
-                  disabled={busy !== null}
-                  aria-label="Rune rank filter"
-                  onChange={(event) => void setRuneTier(event.target.value)}
-                >
-                  {TIER_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>{option.label}</option>
-                  ))}
-                </select>
-              </div>
-
-              <p className="field-label">RIOT CLIENT PATH</p>
-              <div className="segmented" role="group" aria-label="Riot Client path">
-                <button type="button" className={manualPath ? "" : "is-on"} aria-pressed={!manualPath} onClick={() => { setPathMode("auto"); setRiotExe(""); void applySettings({ useDeceive, riotExe: null }); }}>Auto</button>
-                <button type="button" className={manualPath ? "is-on" : ""} aria-pressed={manualPath} onClick={() => setPathMode("manual")}>Manual</button>
-              </div>
-              {manualPath && (
-                <div className="path-input">
-                  <Input id="riot-path" placeholder="Path to RiotClientServices.exe" value={riotExe} onChange={(e) => setRiotExe(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") e.currentTarget.blur(); }} onBlur={() => {
-                    const value = riotExe.trim();
-                    if (!value) { setPathMode("auto"); void applySettings({ useDeceive, riotExe: null }); return; }
-                    void applySettings({ useDeceive, riotExe: value });
-                  }} />
-                  <Button variant="outline" onMouseDown={(e) => e.preventDefault()} onClick={() => void browseRiotPath()}>Browse…</Button>
-                </div>
-              )}
-
-              <div className="setting-row remote-setting">
-                <div className="setting-copy">
-                  <strong>Remote Control</strong>
-                  <button className="info-button" aria-label="About Remote Control" aria-expanded={openInfo === "remote"} onClick={() => setOpenInfo(openInfo === "remote" ? null : "remote")}><Info size={13} /></button>
-                  {openInfo === "remote" && <p>Open the existing League remote on your phone over a trusted private Wi-Fi network or your Tailscale network.</p>}
-                </div>
-                <Switch checked={data.remote.enabled} onCheckedChange={setRemote} aria-label="Remote Control" />
-              </div>
-              {data.remote.state === "starting" && <div className="setting-status"><LoaderCircle className="spin" size={13} /> Starting the remote service…</div>}
-              {data.remote.enabled && <>
-                <div className="remote-transport-row">
-                  <div className="remote-transport" role="group" aria-label="Remote Control transport">
-                    <button type="button" className={remoteTransport === "lan" ? "is-active" : ""} aria-pressed={remoteTransport === "lan"} onClick={() => { setRemoteTransport("lan"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>LAN</button>
-                    <button type="button" className={remoteTransport === "tailscale" ? "is-active" : ""} aria-pressed={remoteTransport === "tailscale"} onClick={() => { setRemoteTransport("tailscale"); setShowRemoteQr(false); setRemoteQrUrl(null); }}>Tailscale</button>
-                  </div>
-                  <span className="remote-transport-help">
-                    <button type="button" className="info-button remote-transport-info" aria-label="About LAN and Tailscale" aria-describedby="remote-transport-tooltip"><Info size={13} /></button>
-                    <span id="remote-transport-tooltip" className="remote-transport-tooltip" role="tooltip">LAN connects over your local Wi-Fi or Ethernet and works without Tailscale. It uses HTTP and requires a trusted Private Windows network. Tailscale uses your Tailscale network over HTTPS; Tailscale must be connected on your PC and phone.</span>
-                  </span>
-                </div>
-                {remoteTransport === "lan" ? (
-                  <>
-                    <div className="setting-status"><span className={`remote-status-dot ${data.remote.lanAddress ? "is-good" : "is-bad"}`} />Local network · {data.remote.lanAddress ? "Ready" : "Unavailable"}</div>
-                    {data.remote.lanAddress ? <>
-                      <div className="remote-address"><Button variant="outline" className="remote-qr-toggle" aria-label={showRemoteQr ? "Hide LAN pairing QR code" : "Generate LAN pairing QR code"} aria-controls="remote-qr-panel" aria-expanded={showRemoteQr} onClick={() => void toggleRemoteQr()}><QrCode size={15} />{showRemoteQr ? "Hide QR" : "QR"}</Button><Button variant="outline" onClick={() => void resetLanAccess()}>Reset LAN Access</Button></div>
-                      {showRemoteQr && remoteQrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
-                        <div className="remote-qr-image"><QRCodeSVG value={remoteQrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="LAN pairing QR code" /></div>
-                        <p>Scan on a phone connected to this trusted private network. Pairing links expire after five minutes.</p>
-                      </div>}
-                      {data.remote.localAddress && <p className="remote-transport-message">Discovery: {data.remote.localAddress}. A paired phone that switches to it once keeps working when the PC IP changes.</p>}
-                    </> : <>
-                      <p className="remote-transport-message">{data.remote.lanMessage ?? "LAN needs an active Ethernet or Wi-Fi network."}</p>
-                      <div className="remote-network-help">
-                        <span>For a trusted network, set its Windows profile to Private.</span>
-                        <Button variant="outline" className="remote-settings-button" aria-label="Open Windows network settings" title="Open Windows network settings" onClick={() => void invoke("open_windows_network_settings").catch(showError)}><Settings2 size={14} /></Button>
-                      </div>
-                    </>}
-                  </>
-                ) : (
-                  data.remote.tailscaleAddress ? <>
-                    <div className="setting-status"><span className="remote-status-dot is-good" />Tailscale · Ready</div>
-                    <div className="remote-address">
-                      <Input readOnly value={data.remote.tailscaleAddress} aria-label="Tailscale remote address" onFocus={(e) => e.currentTarget.select()} />
-                      <Button variant="outline" disabled={copied} onClick={() => void copyRemoteAddress()}>{copied ? "Copied" : "Copy"}</Button>
-                      <Button variant="outline" className="remote-qr-toggle" aria-label={showRemoteQr ? "Hide Tailscale QR code" : "Show Tailscale QR code"} aria-controls="remote-qr-panel" aria-expanded={showRemoteQr} onClick={() => void toggleRemoteQr()}><QrCode size={15} /> QR</Button>
-                    </div>
-                    {showRemoteQr && remoteQrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
-                      <div className="remote-qr-image"><QRCodeSVG value={remoteQrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="Tailscale remote address QR code" /></div>
-                      <p>Scan with a phone connected to your Tailscale network.</p>
-                    </div>}
-                  </> : <>
-                    <div className="setting-status"><span className="remote-status-dot is-bad" />Tailscale · {data.remote.tailscaleInstalled ? "Not connected" : "Not installed"}</div>
-                    <p className="remote-transport-message">{!data.remote.tailscaleInstalled
-                      ? "Install Tailscale to use this transport. LAN remains available on a Private network."
-                      : !data.remote.tailscaleRunning
-                        ? "Connect Tailscale on this PC and your phone to use this transport."
-                        : data.remote.message ?? "Tailscale Serve could not be started."}</p>
-                  </>
-                )}
-                <PairedDevices />
-              </>}
-
-              <UpdateSection />
-              <SwapperDoctor remoteTransport={remoteTransport} />
-            </div>}
+            {view === "settings" && <SettingsView
+              state={data}
+              busy={busy !== null}
+              tab={settingsTab}
+              onTabChange={setSettingsTab}
+              useDeceive={useDeceive}
+              onUseDeceiveChange={(checked) => void applySettings({ useDeceive: checked, riotExe: configuredPath() })}
+              startOnStartup={startOnStartup}
+              onStartOnStartupChange={(enabled) => void setStartOnStartupSetting(enabled)}
+              manualPath={manualPath}
+              riotExe={riotExe}
+              onRiotExeChange={setRiotExe}
+              onPathModeChange={changeRiotPathMode}
+              onRiotPathCommit={commitRiotPath}
+              onBrowseRiotPath={() => void browseRiotPath()}
+              onSetHotkey={applyHotkey}
+              onNotificationsChange={(enabled) => void setNotifications(enabled)}
+              onReadyCheckChange={(enabled) => void setReadyCheckNotifications(enabled)}
+              onAutoApplyChange={(enabled) => void setAutoApply(enabled)}
+              onApplySpellsChange={(enabled) => void setApplySpellsWithRunes(enabled)}
+              onRuneTierChange={(tier) => void setRuneTier(tier)}
+              remoteTransport={remoteTransport}
+              onRemoteTransportChange={setRemoteTransport}
+              onRemoteToggle={(enabled) => void setRemote(enabled)}
+              onError={showError}
+            />}
           </>
         )}
       </main>

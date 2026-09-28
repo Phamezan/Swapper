@@ -1,8 +1,11 @@
 /* Swapper Doctor: Settings health checks. Follows the settings-row styling. */
 
 .doctor-section { --warning: #e8b866; margin-top: 20px; padding-top: 17px; border-top: 1px solid var(--line-strong); }
-.doctor-section .setting-row { padding-bottom: 12px; border-bottom: 0; }
-.doctor-actions { display: flex; flex: none; gap: 7px; }
+/* At flyout width the title and the two buttons share no row: the title spans
+   the full width and the actions wrap onto their own row below it. */
+.doctor-section .setting-row { flex-wrap: wrap; row-gap: 6px; padding-bottom: 12px; border-bottom: 0; }
+.doctor-section .setting-row .setting-copy { flex-basis: 100%; }
+.doctor-actions { display: flex; flex: 1 0 100%; gap: 7px; }
 .doctor-actions button { height: 30px; flex: none; padding: 0 11px; font-size: 10px; }
 .doctor-refresh { width: 30px; min-width: 30px; padding: 0; }
 

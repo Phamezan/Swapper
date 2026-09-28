@@ -255,6 +255,9 @@ async fn run_check(app: &AppHandle) {
             }
         }
         Ok(None) => state.set_up_to_date(),
+        // A missing manifest means the newest published release predates the
+        // updater — there is nothing to update to, so this is not a failure.
+        Err(error) if is_missing_feed_error(&error) => state.set_up_to_date(),
         Err(error) => {
             let message = friendly_check_error(&error);
             state.set_failed(message);
@@ -301,6 +304,16 @@ pub fn spawn(app: AppHandle) {
     });
 }
 
+/// True when a check failed only because no endpoint served a release
+/// manifest. The updater plugin answers a 404 (or any other non-success
+/// status) from the feed with [`UpdaterError::ReleaseNotFound`] and no
+/// underlying request error, so this is exactly the "the latest published
+/// release has no latest.json yet" case — not a network failure, which always
+/// surfaces as [`UpdaterError::Network`] or [`UpdaterError::Reqwest`] instead.
+pub fn is_missing_feed_error(error: &UpdaterError) -> bool {
+    matches!(error, UpdaterError::ReleaseNotFound)
+}
+
 fn friendly_check_error(error: &UpdaterError) -> String {
     match error {
         UpdaterError::Reqwest(problem) if problem.is_timeout() => {
@@ -308,9 +321,6 @@ fn friendly_check_error(error: &UpdaterError) -> String {
         }
         UpdaterError::Reqwest(problem) if problem.is_connect() => {
             "Could not reach the update server. Check your internet connection, then retry.".into()
-        }
-        UpdaterError::ReleaseNotFound => {
-            "The update feed could not be read. Swapper keeps running the current version.".into()
         }
         _ => "Could not check for updates. Swapper keeps running the current version.".into(),
     }
@@ -379,6 +389,10 @@ pub async fn update_install(app: AppHandle) -> Result<(), String> {
                 update
             }
             Ok(_) => {
+                state.set_up_to_date();
+                return Err("No update is available anymore.".into());
+            }
+            Err(error) if is_missing_feed_error(&error) => {
                 state.set_up_to_date();
                 return Err("No update is available anymore.".into());
             }
@@ -453,6 +467,16 @@ mod tests {
         assert!(!should_run_check(false, false, false), "placeholder build");
         assert!(!should_run_check(true, true, false), "switch in progress");
         assert!(!should_run_check(true, false, true), "install in progress");
+    }
+
+    #[test]
+    fn missing_feed_is_only_the_release_not_found_error() {
+        // A 404 from the feed answers as ReleaseNotFound with no cause.
+        assert!(is_missing_feed_error(&UpdaterError::ReleaseNotFound));
+        // Network problems are real failures, never classified as a missing feed.
+        assert!(!is_missing_feed_error(&UpdaterError::Network("timeout".into())));
+        assert!(!is_missing_feed_error(&UpdaterError::EmptyEndpoints));
+        assert!(!is_missing_feed_error(&UpdaterError::UnsupportedOs));
     }
 
     #[test]
