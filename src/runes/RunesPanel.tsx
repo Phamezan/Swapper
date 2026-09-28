@@ -87,6 +87,14 @@ type Props = {
   onTierChange: (tier: string) => void;
 };
 
+/** Names the champion and role when there are no pro games, so it reads as
+ *  "nobody plays this role" rather than a failed load. */
+function proEmptyMessage(championName: string, position: string): string | undefined {
+  const role = position && position !== "none" ? positionLabels[position] : undefined;
+  if (!championName || !role) return undefined;
+  return `No recent pro games for ${championName} as ${role} — try another role.`;
+}
+
 const positionLabels: Record<string, string> = {
   top: "Top",
   jungle: "Jungle",
@@ -431,6 +439,7 @@ export function RunesPanel({
           <ProBuilds
             mode={mode}
             view={proView}
+            emptyMessage={proEmptyMessage(view.championName, position)}
             loading={proLoading}
             error={proError}
             busy={busy}

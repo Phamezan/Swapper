@@ -17,6 +17,8 @@ import {
 type Props = {
   mode: "desktop" | "remote";
   view: ProBuildsView | null;
+  /** Shown when there are no games and the backend gave no reason. */
+  emptyMessage?: string;
   loading: boolean;
   error: string | null;
   busy: boolean;
@@ -188,6 +190,7 @@ function ProBuildCard({
 export function ProBuilds({
   mode,
   view,
+  emptyMessage,
   loading,
   error,
   busy,
@@ -221,7 +224,7 @@ export function ProBuilds({
   if (view.matches.length === 0) {
     return (
       <p className="runes-note">
-        {view.message ?? "No recent pro games for this champion."}
+        {view.message ?? emptyMessage ?? "No recent pro games for this champion."}
       </p>
     );
   }
