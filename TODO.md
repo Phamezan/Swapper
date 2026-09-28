@@ -95,10 +95,10 @@ Before implementing a task:
 - [ ] Add phone vibration/sound cues in the Remote Control UI where browser support allows it.
 
 ### Global Swapper hotkey
-- [ ] Add an optional global keyboard shortcut to open/toggle the tray flyout.
-- [ ] Make the shortcut configurable.
-- [ ] Detect shortcut conflicts.
-- [ ] Allow the hotkey to be disabled.
+- [x] Add an optional global keyboard shortcut to open/toggle the tray flyout.
+- [x] Make the shortcut configurable.
+- [x] Detect shortcut conflicts.
+- [x] Allow the hotkey to be disabled.
 
 ### Account launch shortcuts
 - [ ] Add a Swapper command/protocol for switching to a specific saved account.

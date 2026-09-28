@@ -97,6 +97,10 @@ pub struct Config {
     /// `None` means the default (on) has never been changed.
     #[serde(default)]
     pub apply_spells_with_runes: Option<bool>,
+    /// Optional global shortcut that toggles the tray flyout, e.g.
+    /// "ctrl+shift+s". `None` means the hotkey is disabled (the default).
+    #[serde(default)]
+    pub hotkey: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -594,5 +598,20 @@ mod tests {
         let json = serde_json::to_string(&config).unwrap();
         let restored: Config = serde_json::from_str(&json).unwrap();
         assert_eq!(restored.rune_tier.as_deref(), Some("diamond_plus"));
+    }
+
+    #[test]
+    fn config_defaults_to_hotkey_disabled_and_round_trips_one() {
+        // Settings saved before the hotkey existed have no `hotkey` entry.
+        let legacy: Config = serde_json::from_str(r#"{"accounts":[],"use_deceive":false}"#).unwrap();
+        assert_eq!(legacy.hotkey, None);
+
+        let config = Config {
+            hotkey: Some("ctrl+shift+s".into()),
+            ..Config::default()
+        };
+        let json = serde_json::to_string(&config).unwrap();
+        let restored: Config = serde_json::from_str(&json).unwrap();
+        assert_eq!(restored.hotkey.as_deref(), Some("ctrl+shift+s"));
     }
 }

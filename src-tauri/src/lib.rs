@@ -1,3 +1,4 @@
+mod hotkey;
 mod identity;
 mod lcu;
 mod remote;
@@ -16,6 +17,7 @@ use std::sync::{Arc, Mutex};
 use tauri::menu::{Menu, MenuItem};
 use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
 use tauri::{path::BaseDirectory, Emitter, Manager, State, WindowEvent};
+use tauri_plugin_global_shortcut::ShortcutState;
 use tauri_plugin_positioner::{Position, WindowExt};
 use uuid::Uuid;
 
@@ -70,6 +72,9 @@ pub(crate) struct AppState {
     bundled_deceive: PathBuf,
     switch_guard: SwitchGuard,
     remote: Arc<remote::RemoteCore>,
+    /// Whether the saved global hotkey is actually registered with the OS.
+    /// A saved hotkey can be inactive when another application owns it.
+    hotkey_active: AtomicBool,
 }
 
 impl AppState {
@@ -175,6 +180,8 @@ struct AppView {
     auto_apply_top_preset: bool,
     rune_tier: String,
     apply_spells_with_runes: bool,
+    hotkey: Option<String>,
+    hotkey_active: bool,
     remote: remote::RemoteStatus,
 }
 
@@ -204,6 +211,7 @@ fn view(
     bundled_deceive: &std::path::Path,
     remote: &remote::RemoteStatus,
     is_switching: bool,
+    hotkey_active: bool,
 ) -> AppView {
     AppView {
         accounts: config
@@ -233,6 +241,8 @@ fn view(
             .map(|tier| runes::normalize_tier(&tier).to_string())
             .unwrap_or_else(|| runes::DEFAULT_TIER.to_string()),
         apply_spells_with_runes: config.apply_spells_with_runes.unwrap_or(true),
+        hotkey: config.hotkey.clone(),
+        hotkey_active,
         remote: remote.clone(),
     }
 }
@@ -251,6 +261,7 @@ fn get_state(state: State<'_, AppState>) -> Result<AppView, String> {
         &state.bundled_deceive,
         &state.remote.status(),
         state.switch_guard.is_switching(),
+        state.hotkey_active.load(Ordering::SeqCst),
     ))
 }
 
@@ -282,6 +293,7 @@ async fn begin_add(state: State<'_, AppState>) -> Result<AppView, String> {
         &state.bundled_deceive,
         &state.remote.status(),
         false,
+        state.hotkey_active.load(Ordering::SeqCst),
     ))
 }
 
@@ -305,6 +317,7 @@ async fn complete_add(state: State<'_, AppState>, puuid: String) -> Result<AppVi
         &state.bundled_deceive,
         &state.remote.status(),
         false,
+        state.hotkey_active.load(Ordering::SeqCst),
     ))
 }
 
@@ -386,6 +399,7 @@ fn switch_account(
                 &app_state.bundled_deceive,
                 &app_state.remote.status(),
                 false,
+                app_state.hotkey_active.load(Ordering::SeqCst),
             );
             Ok::<_, (riot::SwitchFailure, String)>(updated_view)
         })
@@ -424,6 +438,7 @@ fn set_nickname(state: State<'_, AppState>, id: Uuid, name: String) -> Result<Ap
         &state.bundled_deceive,
         &state.remote.status(),
         false,
+        state.hotkey_active.load(Ordering::SeqCst),
     ))
 }
 
@@ -437,6 +452,7 @@ fn remove_account(state: State<'_, AppState>, id: Uuid) -> Result<AppView, Strin
         &state.bundled_deceive,
         &state.remote.status(),
         false,
+        state.hotkey_active.load(Ordering::SeqCst),
     ))
 }
 
@@ -454,6 +470,82 @@ fn save_settings(
         &state.bundled_deceive,
         &state.remote.status(),
         false,
+        state.hotkey_active.load(Ordering::SeqCst),
+    ))
+}
+
+/// Sets or clears the global hotkey. `None` disables it. Validation and
+/// registration happen before the change is persisted, and the previous
+/// combination is only released once the new one registered, so a rejected
+/// combination leaves the previous shortcut in effect.
+#[tauri::command]
+fn set_hotkey(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    shortcut: Option<String>,
+) -> Result<AppView, String> {
+    let raw = shortcut
+        .as_deref()
+        .map(str::trim)
+        .filter(|value| !value.is_empty())
+        .map(str::to_string);
+    let incoming = raw
+        .as_deref()
+        .map(|value| hotkey::parse(value).map(|parsed| (parsed, hotkey::canonical(parsed))))
+        .transpose()?;
+    // An inactive saved hotkey (another app held it at startup) is retried
+    // even when the same combination is recorded again.
+    let unchanged = {
+        let config = state.config.lock().map_err(|e| e.to_string())?;
+        config.hotkey.as_deref() == incoming.as_ref().map(|(_, text)| text.as_str())
+            && (incoming.is_none() || state.hotkey_active.load(Ordering::SeqCst))
+    };
+    if unchanged {
+        let config = state.config.lock().map_err(|e| e.to_string())?;
+        return Ok(view(
+            &config,
+            &state.bundled_deceive,
+            &state.remote.status(),
+            false,
+            state.hotkey_active.load(Ordering::SeqCst),
+        ));
+    }
+    let previous = state.config.lock().map_err(|e| e.to_string())?.hotkey.clone();
+    let registered = previous.as_deref().and_then(|value| hotkey::parse(value).ok());
+    let wanted = incoming.as_ref().map(|(parsed, _)| *parsed);
+    hotkey::swap(&app, registered, wanted)?;
+    let saved = {
+        let mut config = state.config.lock().map_err(|e| e.to_string())?;
+        config.hotkey = incoming.map(|(_, text)| text);
+        match vault::save(&config) {
+            Ok(()) => Ok(()),
+            Err(error) => {
+                // Put the in-memory setting back so it matches disk and the
+                // registration that swap is about to restore.
+                config.hotkey = previous.clone();
+                Err(error)
+            }
+        }
+    };
+    if let Err(error) = saved {
+        // Best effort: the previous combination was registered moments ago,
+        // but re-registering it can race with another application.
+        let _ = hotkey::swap(&app, wanted, registered);
+        state
+            .hotkey_active
+            .store(registered.is_some(), Ordering::SeqCst);
+        return Err(error);
+    }
+    state
+        .hotkey_active
+        .store(wanted.is_some(), Ordering::SeqCst);
+    let config = state.config.lock().map_err(|e| e.to_string())?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+        state.hotkey_active.load(Ordering::SeqCst),
     ))
 }
 
@@ -505,6 +597,7 @@ fn set_auto_apply_top_preset(
         &state.bundled_deceive,
         &state.remote.status(),
         false,
+        state.hotkey_active.load(Ordering::SeqCst),
     ))
 }
 
@@ -537,6 +630,7 @@ fn set_apply_spells_with_runes(
             &state.bundled_deceive,
             &state.remote.status(),
             false,
+            state.hotkey_active.load(Ordering::SeqCst),
         )
     };
     notify_runes_changed(&app, &state);
@@ -575,6 +669,7 @@ fn set_rune_tier(
             &state.bundled_deceive,
             &state.remote.status(),
             false,
+            state.hotkey_active.load(Ordering::SeqCst),
         )
     };
     notify_runes_changed(&app, &state);
@@ -791,6 +886,7 @@ pub fn run() {
     let launched_at_startup = std::env::args().any(|arg| arg == AUTOSTART_ARG);
     tauri::Builder::default()
         .setup(move |app| {
+            let saved_hotkey = config.hotkey.clone();
             let bundled_deceive = app.path().resolve("Deceive.exe", BaseDirectory::Resource)?;
             let remote = remote::RemoteCore::new(app.handle().clone(), config.remote_enabled);
             app.manage(AppState {
@@ -798,6 +894,7 @@ pub fn run() {
                 bundled_deceive,
                 switch_guard: SwitchGuard::new(),
                 remote: remote.clone(),
+                hotkey_active: AtomicBool::new(false),
             });
             let auto_enable = remote.clone();
             std::thread::spawn(move || {
@@ -809,6 +906,20 @@ pub fn run() {
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;
+            app.handle().plugin(
+                tauri_plugin_global_shortcut::Builder::new()
+                    .with_handler(|app, _shortcut, event| {
+                        // Fire once per press; the Released half is ignored.
+                        if event.state == ShortcutState::Pressed {
+                            toggle_flyout(app);
+                        }
+                    })
+                    .build(),
+            )?;
+            let hotkey_registered = hotkey::register_saved(app.handle(), saved_hotkey.as_deref());
+            if let Some(state) = app.try_state::<AppState>() {
+                state.hotkey_active.store(hotkey_registered, Ordering::SeqCst);
+            }
             app.handle().plugin(
                 tauri_plugin_autostart::Builder::new()
                     .args([AUTOSTART_ARG])
@@ -875,6 +986,7 @@ pub fn run() {
             remove_account,
             save_settings,
             hide_flyout,
+            set_hotkey,
             open_windows_network_settings,
             set_remote_enabled,
             probe_remote,
