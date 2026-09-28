@@ -1,5 +1,12 @@
 # TODO
 
+Before implementing a task:
+
+- Read the **Scope Guardrails** and the matching **Minimum Swapper Implementations** and **Feature-by-feature recommendation** sections in `docs/research/swapper-open-source-references.md`.
+- Check each project's recommendation and license caveat. Inspect Swapper's existing code for reusable pieces first.
+- In your plan, list relevant references and say whether each is a dependency, code-reuse candidate, or design/architecture inspiration.
+- Verify the upstream license for the exact code and revision before copying, and preserve required notices. Treat unclear or unlicensed code as reference-only.
+
 ## P0  Reliability and Product Polish
 
 ### Persistent Remote Control pairing
