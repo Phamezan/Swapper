@@ -76,14 +76,14 @@ Before implementing a task:
 ## P1  User Experience
 
 ### Account session repair flow
-- [ ] Detect when a saved Riot session has expired or can no longer be restored.
-- [ ] Replace generic restore failures with a **Repair Account** action.
-- [ ] Launch Riot Client for the repair flow.
-- [ ] Ask the user to sign into the affected account normally.
-- [ ] Detect the signed-in Riot identity automatically.
-- [ ] Verify that the detected PUUID matches the saved account.
-- [ ] Replace the expired saved session without creating a duplicate account.
-- [ ] Return directly to the normal account list when repair succeeds.
+- [x] Detect when a saved Riot session has expired or can no longer be restored.
+- [x] Replace generic restore failures with a **Repair Account** action.
+- [x] Launch Riot Client for the repair flow.
+- [x] Ask the user to sign into the affected account normally.
+- [x] Detect the signed-in Riot identity automatically.
+- [x] Verify that the detected PUUID matches the saved account.
+- [x] Replace the expired saved session without creating a duplicate account.
+- [x] Return directly to the normal account list when repair succeeds.
 
 ### Ready-check and champion-select notifications
 - [ ] Show a Windows notification when a ready check starts.
