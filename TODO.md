@@ -21,11 +21,11 @@ Before implementing a task:
 - [x] Ensure pairing credentials are never exposed in logs or diagnostics.
 
 ### LAN discovery with mDNS
-- [ ] Advertise Swapper's LAN Remote Control service through mDNS.
-- [ ] Give the PC a stable local discovery name such as `swapper.local`.
-- [ ] Let previously paired phones rediscover the PC after its LAN IP changes.
-- [ ] Keep authentication separate from discovery; mDNS must not expose pairing credentials.
-- [ ] Fall back gracefully to the current IP-based connection if mDNS is unavailable.
+- [x] Advertise Swapper's LAN Remote Control service through mDNS.
+- [x] Give the PC a stable local discovery name such as `swapper.local`.
+- [x] Let previously paired phones rediscover the PC after its LAN IP changes.
+- [x] Keep authentication separate from discovery; mDNS must not expose pairing credentials.
+- [x] Fall back gracefully to the current IP-based connection if mDNS is unavailable.
 
 ### Swapper Doctor / diagnostics
 - [ ] Add a **Swapper Doctor** section in Settings.

@@ -66,6 +66,7 @@ type RemoteStatus = {
   tailscaleInstalled: boolean;
   tailscaleRunning: boolean;
   dnsName: string | null;
+  localAddress: string | null;
   leagueRunning: boolean;
   lcuConnected: boolean;
 };
@@ -94,7 +95,7 @@ type View = "accounts" | "add" | "edit" | "remove" | "settings" | "runes";
 const emptyRemote: RemoteStatus = {
   enabled: false, state: "disabled", address: null, tailscaleAddress: null,
   lanAddress: null, lanMessage: null, message: null,
-  tailscaleInstalled: false, tailscaleRunning: false, dnsName: null,
+  tailscaleInstalled: false, tailscaleRunning: false, dnsName: null, localAddress: null,
   leagueRunning: false, lcuConnected: false,
 };
 
@@ -956,6 +957,7 @@ function App() {
                         <div className="remote-qr-image"><QRCodeSVG value={remoteQrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="LAN pairing QR code" /></div>
                         <p>Scan on a phone connected to this trusted private network. Pairing links expire after five minutes.</p>
                       </div>}
+                      {data.remote.localAddress && <p className="remote-transport-message">Discovery: {data.remote.localAddress}. A paired phone that switches to it once keeps working when the PC IP changes.</p>}
                     </> : <>
                       <p className="remote-transport-message">{data.remote.lanMessage ?? "LAN needs an active Ethernet or Wi-Fi network."}</p>
                       <div className="remote-network-help">

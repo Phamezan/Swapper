@@ -37,6 +37,9 @@ futures-util = "0.3"
 tokio-tungstenite = { version = "0.29", features = ["native-tls"] }
 reqwest = { version = "0.12", features = ["json"] }
 tauri-plugin-autostart = "2"
+# MIT OR Apache-2.0. Advertises the LAN Remote Control service so phones can
+# rediscover the PC at a stable `swapper.local` name after its IP changes.
+mdns-sd = "0.21"
 
 
 # Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration

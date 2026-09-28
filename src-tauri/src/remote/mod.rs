@@ -1,5 +1,7 @@
 mod control;
+mod handoff;
 mod lcu;
+mod mdns;
 mod network;
 mod server;
 mod tailscale;
@@ -51,6 +53,9 @@ pub struct RemoteStatus {
     pub tailscale_installed: bool,
     pub tailscale_running: bool,
     pub dns_name: Option<String>,
+    /// Stable `http://swapper.local:<port>` address, present only while the
+    /// mDNS service is actually advertised.
+    pub local_address: Option<String>,
     pub league_running: bool,
     pub lcu_connected: bool,
 }
@@ -68,6 +73,7 @@ impl RemoteStatus {
             tailscale_installed: false,
             tailscale_running: false,
             dns_name: None,
+            local_address: None,
             league_running: false,
             lcu_connected: false,
         }
@@ -83,6 +89,12 @@ struct Service {
     port: u16,
     lan: Option<LanEndpoint>,
     lan_message: Option<String>,
+    /// True while the mDNS service for this LAN endpoint is registered.
+    advertising: bool,
+    /// The address the service intended to serve on, even if binding or the
+    /// firewall check later failed. Used to notice interface/profile changes
+    /// without repeatedly restarting when LAN cannot start.
+    lan_target: Option<std::net::Ipv4Addr>,
     shutdown: Option<oneshot::Sender<()>>,
     join: Option<thread::JoinHandle<()>>,
 }
@@ -97,6 +109,8 @@ struct ServiceInfo {
     port: u16,
     lan: Option<LanEndpoint>,
     lan_message: Option<String>,
+    advertising: bool,
+    lan_target: Option<std::net::Ipv4Addr>,
 }
 
 struct LanAccess {
@@ -104,6 +118,8 @@ struct LanAccess {
     devices: Vec<PairedLanDevice>,
     storage_available: bool,
     last_seen_saved_at: Instant,
+    /// One-time tokens letting a paired phone copy its cookie to `.local`.
+    handoff: handoff::HandoffTokens,
 }
 
 #[derive(Clone, serde::Serialize, serde::Deserialize)]
@@ -358,6 +374,10 @@ pub struct RemoteCore {
     runes_changed: broadcast::Sender<()>,
     owned_route: Mutex<Option<OwnedRoute>>,
     lan_access: Mutex<LanAccess>,
+    /// Stable public identity for mDNS discovery. Not a secret; `None` only
+    /// when the Swapper data folder is unavailable, which silently disables
+    /// advertising.
+    installation_id: Option<String>,
 }
 
 impl RemoteCore {
@@ -393,7 +413,9 @@ impl RemoteCore {
                 devices,
                 storage_available,
                 last_seen_saved_at: Instant::now(),
+                handoff: handoff::HandoffTokens::default(),
             }),
+            installation_id: mdns::load_or_create_installation_id().ok(),
         });
         let weak = Arc::downgrade(&core);
         thread::Builder::new()
@@ -521,6 +543,38 @@ impl RemoteCore {
         true
     }
 
+    /// Mints a one-time token that lets an already paired phone move its
+    /// credential cookie from the IP origin to the stable `.local` hostname.
+    /// The token is bound to the calling device; a revoked device's token
+    /// simply stops resolving to a credential.
+    pub(crate) fn mint_lan_handoff(&self, session: &str) -> Result<String, String> {
+        let mut access = lock(&self.lan_access);
+        let Some(device_id) = access
+            .devices
+            .iter()
+            .find(|device| constant_time_eq(&device.credential, session))
+            .map(|device| device.id.to_string())
+        else {
+            return Err("This device is not paired.".into());
+        };
+        Ok(access
+            .handoff
+            .mint(&device_id, Instant::now(), handoff::HANDOFF_TTL))
+    }
+
+    /// Consumes a handoff token and returns the paired device's credential so
+    /// the caller can set the same cookie on the `.local` origin. Returns
+    /// `None` for unknown, expired, used, or revoked-device tokens.
+    pub(crate) fn consume_lan_handoff(&self, token: &str) -> Option<String> {
+        let mut access = lock(&self.lan_access);
+        let device_id = access.handoff.consume(token, Instant::now())?;
+        access
+            .devices
+            .iter()
+            .find(|device| device.id.to_string() == device_id)
+            .map(|device| device.credential.clone())
+    }
+
     pub(crate) fn create_lan_pairing_url(&self) -> Result<String, String> {
         let address = self.status().lan_address.ok_or_else(|| {
             "LAN Remote Control is not available on a private network.".to_string()
@@ -537,6 +591,7 @@ impl RemoteCore {
         // WebSocket requests are rejected immediately.
         access.devices.clear();
         access.pairing_token = None;
+        access.handoff = handoff::HandoffTokens::default();
         let result = paired_devices_path().and_then(|path| clear_paired_devices_at(&path));
         access.storage_available = result.is_ok();
         access.last_seen_saved_at = Instant::now();
@@ -767,6 +822,8 @@ impl RemoteCore {
             port: info.port,
             lan: info.lan,
             lan_message: info.lan_message,
+            advertising: info.advertising,
+            lan_target: info.lan_target,
             shutdown: Some(shutdown_tx),
             join: Some(join),
         });
@@ -775,23 +832,39 @@ impl RemoteCore {
 
     fn reconcile(&self) {
         let epoch = lock(&self.inner).epoch;
-        let (port, lan_address, lan_message) = {
+        let (port, lan_address, lan_message, local_address) = {
             let service = lock(&self.service);
             let Some(service) = service.as_ref() else {
                 self.apply_if_current(epoch, |status| {
                     status.state = RemoteState::Failed;
                     status.address = None;
                     status.lan_address = None;
+                    status.local_address = None;
                     status.message = Some("The remote service is not running.".into());
                 });
                 return;
             };
+            let lan_address = service
+                .lan
+                .as_ref()
+                .map(|lan| format!("http://{}:{}", lan.address, lan.port));
+            let local_address = if service.advertising {
+                service.lan.as_ref().map(|lan| mdns::local_url(lan.port))
+            } else {
+                None
+            };
             (
                 service.port,
-                service.lan.as_ref().map(|lan| format!("http://{}:{}", lan.address, lan.port)),
+                lan_address,
                 service.lan_message.clone(),
+                local_address,
             )
         };
+        // The discovery address is derived from whichever LAN endpoint is
+        // serving, so set it before the transport branches below.
+        self.apply_if_current(epoch, |status| {
+            status.local_address = local_address;
+        });
         let Some(cli) = tailscale::find_cli() else {
             self.apply_if_current(epoch, |status| {
                 status.tailscale_installed = false;
@@ -985,37 +1058,60 @@ fn service_thread(
             }
         };
         let mut lan_listener = None;
-        let mut lan = None;
-        let lan_message = match network::default_interface() {
-            Err(error) => Some(error),
-            Ok(None) => Some("No active Ethernet or Wi-Fi interface with a private IPv4 default route was found.".into()),
+        let (lan, lan_message, lan_target): (
+            Option<LanEndpoint>,
+            Option<String>,
+            Option<std::net::Ipv4Addr>,
+        ) = match network::default_interface() {
+            Err(error) => (None, Some(error), None),
+            Ok(None) => (None, Some("No active Ethernet or Wi-Fi interface with a private IPv4 default route was found.".into()), None),
             Ok(Some(interface)) => match network::is_private_profile(interface.index) {
-                Err(error) => Some(error),
-                Ok(false) => Some("LAN access is off because the active Windows network is not set to Private.".into()),
-                Ok(true) => match tokio::net::TcpListener::bind((interface.address, LAN_REMOTE_PORT)).await {
-                    Err(error) => Some(format!(
-                        "Could not listen on {} ({}:{LAN_REMOTE_PORT}): {error}",
-                        interface.name,
-                        interface.address
-                    )),
-                    Ok(listener) => match listener.local_addr() {
-                        Err(error) => Some(format!("Could not read the LAN listener address: {error}")),
-                        Ok(address) => match network::allow_private_app() {
-                            Err(error) => Some(error),
-                            Ok(()) => {
-                                lan = Some(LanEndpoint {
-                                    address: interface.address,
-                                    port: address.port(),
-                                });
-                                lan_listener = Some(listener);
-                                None
-                            }
+                Err(error) => (None, Some(error), None),
+                Ok(false) => (None, Some("LAN access is off because the active Windows network is not set to Private.".into()), None),
+                Ok(true) => {
+                    let target = Some(interface.address);
+                    match tokio::net::TcpListener::bind((interface.address, LAN_REMOTE_PORT)).await {
+                        Err(error) => (None, Some(format!(
+                            "Could not listen on {} ({}:{LAN_REMOTE_PORT}): {error}",
+                            interface.name,
+                            interface.address
+                        )), target),
+                        Ok(listener) => match listener.local_addr() {
+                            Err(error) => (None, Some(format!("Could not read the LAN listener address: {error}")), target),
+                            Ok(address) => match network::allow_private_app() {
+                                Err(error) => (None, Some(error), target),
+                                Ok(()) => {
+                                    let endpoint = LanEndpoint {
+                                        address: interface.address,
+                                        port: address.port(),
+                                    };
+                                    lan_listener = Some(listener);
+                                    (Some(endpoint), None, target)
+                                }
+                            },
                         },
-                    },
-                },
+                    }
+                }
             },
         };
-        let _ = ready.send(Ok(ServiceInfo { port, lan, lan_message }));
+        // Advertise only when Remote Control is enabled and a private LAN
+        // endpoint is actually serving. A failed daemon just means no
+        // discovery; the IP-based flow is untouched.
+        let target = mdns::advertise_target(
+            core.installation_id.is_some(),
+            lan.as_ref().map(|endpoint| (endpoint.address, endpoint.port)),
+        );
+        let advertiser = match (core.installation_id.as_deref(), target) {
+            (Some(id), Some((address, port))) => {
+                mdns::Advertiser::start(id, address, port).ok()
+            }
+            _ => None,
+        };
+        let advertising = advertiser.is_some();
+        // Hold the advertiser for the lifetime of the service thread so the
+        // records are withdrawn when this listener stops.
+        let _advertiser = advertiser;
+        let _ = ready.send(Ok(ServiceInfo { port, lan, lan_message, advertising, lan_target }));
         tokio::spawn(lcu::watch(core.clone()));
         let router = server::router(core.clone());
         let lan_router = server::lan_router(core);
@@ -1057,7 +1153,17 @@ fn maintain(weak: Weak<RemoteCore>) {
             // Keep the maintainer alive for a later Settings toggle.
             continue;
         }
+        // The LAN interface (or its Windows profile) can change while Swapper
+        // runs: a DHCP lease change, a Wi-Fi/Ethernet switch, or a Private to
+        // Public toggle. Restart the service so the listener rebinds and mDNS
+        // re-advertises the new address, or withdraws entirely when LAN stops.
+        // The probe runs outside the service lock, which must stay cheap.
+        let desired_lan = desired_lan_address();
+        let lan_changed = lock(&core.service)
+            .as_ref()
+            .is_some_and(|service| service.lan_target != desired_lan);
         let unhealthy = crashed
+            || lan_changed
             || matches!(
                 state,
                 RemoteState::NotInstalled | RemoteState::Disconnected | RemoteState::Failed
@@ -1066,9 +1172,22 @@ fn maintain(weak: Weak<RemoteCore>) {
             continue;
         }
         let _ops = lock(&core.ops);
+        if lan_changed {
+            core.stop_service();
+        }
         let _ = RemoteCore::ensure_service(&core);
         core.reconcile();
     }
+}
+
+/// The LAN address Remote Control should currently be serving, or `None` when
+/// there is no usable interface or the active network is not Private.
+fn desired_lan_address() -> Option<std::net::Ipv4Addr> {
+    let interface = network::default_interface().ok().flatten()?;
+    network::is_private_profile(interface.index)
+        .ok()
+        .filter(|private| *private)
+        .map(|_| interface.address)
 }
 
 #[cfg(test)]

@@ -54,6 +54,19 @@ function formatQueueTime(seconds: number): string {
     : `${minutes}:${String(remaining).padStart(2, "0")}`;
 }
 
+// Once the phone has switched (or declined), do not ask again on this origin.
+const HANDOFF_DISMISSED_KEY = "swapper_local_handoff_dismissed";
+const LOCAL_HOSTNAME = "swapper.local";
+
+function isIpv4Hostname(hostname: string): boolean {
+  return /^\d{1,3}(\.\d{1,3}){3}$/.test(hostname);
+}
+
+// The stable address on the same LAN port the phone reached over the IP.
+function localRemoteOrigin(): string {
+  return `http://${LOCAL_HOSTNAME}${window.location.port ? `:${window.location.port}` : ""}`;
+}
+
 export default function RemoteApp() {
   const [status, setStatus] = useState<RemoteStatus | null>(null);
   const [live, setLive] = useState(false);
@@ -67,6 +80,8 @@ export default function RemoteApp() {
   const [showUnavailable, setShowUnavailable] = useState(false);
   const [prepickId, setPrepickId] = useState<number | null>(null);
   const [tab, setTab] = useState<"pick" | "runes">("pick");
+  const [showHandoff, setShowHandoff] = useState(false);
+  const [handoffBusy, setHandoffBusy] = useState(false);
   const [runes, setRunes] = useState<RunesView | null>(null);
   const [runesBusy, setRunesBusy] = useState(false);
   const [runesError, setRunesError] = useState<string | null>(null);
@@ -119,6 +134,46 @@ export default function RemoteApp() {
       socketRef.current?.close();
     };
   }, []);
+
+  // Only when the phone reached Swapper over the LAN IP: after a moment, check
+  // whether the stable `swapper.local` name also answers here. If it does,
+  // offer a one-time switch so the paired cookie survives a future IP change.
+  // If it does not resolve, nothing is shown and the IP flow is unchanged.
+  useEffect(() => {
+    if (window.location.protocol !== "http:" || !isIpv4Hostname(window.location.hostname)) return;
+    try {
+      if (window.localStorage.getItem(HANDOFF_DISMISSED_KEY) === "1") return;
+    } catch { return; }
+    let cancelled = false;
+    const timer = window.setTimeout(() => {
+      const controller = new AbortController();
+      const abort = window.setTimeout(() => controller.abort(), 1500);
+      fetch(`${localRemoteOrigin()}/handoff/ping`, { mode: "no-cors", cache: "no-store", signal: controller.signal })
+        .then(() => { if (!cancelled) setShowHandoff(true); })
+        .catch(() => undefined)
+        .finally(() => window.clearTimeout(abort));
+    }, 1500);
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, []);
+
+  function dismissHandoff() {
+    try { window.localStorage.setItem(HANDOFF_DISMISSED_KEY, "1"); } catch { /* ignore */ }
+    setShowHandoff(false);
+  }
+
+  async function startHandoff() {
+    setHandoffBusy(true);
+    try {
+      const response = await fetch("/handoff/token", { method: "POST", headers: { "X-Swapper-Action": "1" } });
+      const result = response.ok ? await response.json() as { token?: string } : null;
+      if (!result?.token) throw new Error("handoff unavailable");
+      try { window.localStorage.setItem(HANDOFF_DISMISSED_KEY, "1"); } catch { /* ignore */ }
+      window.location.assign(`${localRemoteOrigin()}/handoff?token=${encodeURIComponent(result.token)}`);
+    } catch {
+      setHandoffBusy(false);
+      setShowHandoff(false);
+    }
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -484,6 +539,16 @@ export default function RemoteApp() {
         {status?.message && <p className="remote-inline-error" role="alert">{status.message}</p>}
         {game?.message && <p className="remote-inline-error" role="alert">{game.message}</p>}
         {actionError && <p className="remote-inline-error" role="alert">{actionError}</p>}
+
+        {showHandoff && (
+          <div className="remote-handoff" role="status">
+            <p>Use <strong>{LOCAL_HOSTNAME}</strong> so this phone keeps working when the PC IP changes.</p>
+            <div className="remote-handoff-actions">
+              <button disabled={handoffBusy} onClick={() => void startHandoff()}>{handoffBusy ? "Switching…" : "Use swapper.local"}</button>
+              <button disabled={handoffBusy} onClick={dismissHandoff}>Not now</button>
+            </div>
+          </div>
+        )}
 
         {showCatalog || showRunes ? (
           <section className="remote-picker" aria-label="Champion select">
