@@ -88,6 +88,8 @@ export type KeystoneBuildView = {
   stale: boolean;
   /** Unix milliseconds of that last successful fetch, when known. */
   updatedAt: number | null;
+  /** Ability max order, e.g. "QWE", when lolalytics reports one. */
+  skillPriority?: string | null;
 };
 
 /** One recorded purchase in a pro's game. */

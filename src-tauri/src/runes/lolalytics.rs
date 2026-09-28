@@ -71,6 +71,10 @@ pub struct KeystoneBuild {
     pub core_games: u64,
     /// Win rate for the core combination.
     pub core_win_pct: Option<f64>,
+    /// Which ability to max first, second and third, e.g. "QWE". Missing from
+    /// builds cached before it was parsed.
+    #[serde(default)]
+    pub skill_priority: Option<String>,
 }
 
 /// The champion slug lolalytics uses: lower-case, no spaces or punctuation.
@@ -173,7 +177,17 @@ fn parse_qwik(html: &str) -> Option<KeystoneBuild> {
             continue;
         }
         let pick = resolve(map.get("pick")?, objs, 0);
-        if let Some(build) = build_from_summary(&pick) {
+        if let Some(mut build) = build_from_summary(&pick) {
+            let tables = page_tables(objs);
+            build.skill_priority = pick
+                .get("skillpriority")
+                .and_then(|priority| priority.get("id"))
+                .and_then(Value::as_str)
+                .and_then(skill_priority)
+                .or_else(|| tables.as_ref().and_then(page_skill_priority));
+            if let Some(tables) = &tables {
+                widen_options(&mut build, tables);
+            }
             return Some(build);
         }
     }
@@ -225,6 +239,98 @@ fn resolve_entry(entry: &Value, objs: &[Value], depth: u8) -> Value {
         Value::String(_) => entry.clone(),
         other => resolve(other, objs, depth),
     }
+}
+
+/// Items below this share of a slot's games are left out of Options, so a
+/// handful of off-meta picks cannot crowd out real alternatives.
+const MIN_OPTION_SHARE_PCT: u64 = 2;
+
+/// `"QWE"`-style max order, when it names each basic ability exactly once.
+fn skill_priority(text: &str) -> Option<String> {
+    let text = text.trim().to_ascii_uppercase();
+    let mut letters: Vec<char> = text.chars().collect();
+    letters.sort_unstable();
+    (letters == ['E', 'Q', 'W']).then_some(text)
+}
+
+/// The page-wide build tables: per-slot item rows and the skill order list,
+/// resolved. Lolalytics numbers these tables from 0, so `item3` is the 4th
+/// item slot.
+fn page_tables(objs: &[Value]) -> Option<Value> {
+    objs.iter().find_map(|entry| {
+        let map = entry.as_object()?;
+        if !["item3", "item4", "item5"].iter().all(|key| map.contains_key(*key)) {
+            return None;
+        }
+        let resolved = resolve(entry, objs, 0);
+        resolved["item3"]
+            .as_array()
+            .and_then(|rows| rows.first())
+            .is_some_and(Value::is_array)
+            .then_some(resolved)
+    })
+}
+
+/// The most played max order from the page-wide skill order table.
+fn page_skill_priority(tables: &Value) -> Option<String> {
+    tables["skillOrder"]
+        .as_array()?
+        .first()?
+        .get(0)?
+        .as_str()
+        .and_then(skill_priority)
+}
+
+/// Adds every reasonably played later-slot item from the page-wide tables to
+/// the build's options. Rows are `[id, win %, pick %, games, …]`.
+fn widen_options(build: &mut KeystoneBuild, tables: &Value) {
+    for (slot, key) in [(4u8, "item3"), (5, "item4"), (6, "item5")] {
+        let Some(rows) = tables[key].as_array() else {
+            continue;
+        };
+        let candidates: Vec<ItemCandidate> = rows
+            .iter()
+            .filter_map(|row| {
+                let id = row.get(0).and_then(as_i64)?;
+                (id > 0).then_some(ItemCandidate {
+                    id,
+                    slot,
+                    games: row.get(3).and_then(as_u64).unwrap_or(0),
+                    win_pct: row.get(1).and_then(Value::as_f64),
+                })
+            })
+            .collect();
+        let total: u64 = candidates.iter().map(|candidate| candidate.games).sum();
+        for candidate in candidates {
+            if candidate.games * 100 < total * MIN_OPTION_SHARE_PCT
+                || build.items.contains(&candidate.id)
+                || build.starters.iter().any(|stack| stack.id == candidate.id)
+            {
+                continue;
+            }
+            match build.options.iter_mut().find(|option| option.id == candidate.id) {
+                Some(existing) if candidate.games > existing.games => *existing = candidate,
+                Some(_) => {}
+                None => build.options.push(candidate),
+            }
+        }
+    }
+    sort_options(&mut build.options);
+}
+
+fn sort_options(options: &mut [ItemCandidate]) {
+    options.sort_by(|left, right| {
+        right
+            .games
+            .cmp(&left.games)
+            .then_with(|| left.slot.cmp(&right.slot))
+            .then_with(|| {
+                right
+                    .win_pct
+                    .unwrap_or_default()
+                    .total_cmp(&left.win_pct.unwrap_or_default())
+            })
+    });
 }
 
 /// A base-36 index when the string is a plain lower-case base-36 number.
@@ -288,18 +394,7 @@ fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
             options.push(candidate);
         }
     }
-    options.sort_by(|left, right| {
-        right
-            .games
-            .cmp(&left.games)
-            .then_with(|| left.slot.cmp(&right.slot))
-            .then_with(|| {
-                right
-                    .win_pct
-                    .unwrap_or_default()
-                    .total_cmp(&left.win_pct.unwrap_or_default())
-            })
-    });
+    sort_options(&mut options);
 
     let start = items.get("start");
     let starters = start.map(parse_starters).unwrap_or_default();
@@ -324,6 +419,7 @@ fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
         games,
         core_games,
         core_win_pct,
+        skill_priority: None,
     })
 }
 
@@ -446,6 +542,7 @@ fn parse_anchors(html: &str) -> Option<KeystoneBuild> {
         games,
         core_games: 0,
         core_win_pct: None,
+        skill_priority: None,
     })
 }
 
@@ -686,6 +783,60 @@ mod tests {
         assert_eq!(build.options.len(), 2);
         assert!(build.options.iter().any(|option| option.id == 3161 && option.slot == 4));
         assert!(build.options.iter().any(|option| option.id == 3124 && option.slot == 5));
+    }
+
+    /// A page with the build summary plus the page-wide per-slot tables and
+    /// skill data, shaped like lolalytics' Qwik state.
+    const PAGE_WITH_TABLES: &str = r#"<script type="qwik/json">{"objs":[
+            {"pick":"1","win":"2"},
+            {"items":"3","skillpriority":"9"},
+            {"items":"3"},
+            {"core":"4","item4":"5","item5":"6","item6":"7","start":"8"},
+            {"set":[3118,3020,4645],"n":200,"wr":54.2},
+            [{"id":3157,"n":100,"wr":55}],
+            [{"id":3089,"n":90,"wr":57}],
+            [{"id":3135,"n":45,"wr":53}],
+            {"set":[1056,2003],"setUnique":[1056,2003],"count":[1,1],"n":1000},
+            {"id":"QWE","n":800,"wr":52.4},
+            {"item3":"b","item4":"c","item5":"d","skillOrder":"e"},
+            [[3157,55.7,33.7,1000,31],[3041,79.5,7.2,300,27],[3100,67.9,3.3,150,30],[3102,56.6,1.9,5,29]],
+            [[3089,60.8,31.7,600,31],[3135,54.4,8.3,200,35],[3137,58.4,3.8,80,34]],
+            [[3165,63.1,3.3,100,40],[3089,62.8,20.8,400,34]],
+            [["QWE",52.4,91.6,800],["QEW",52.5,7.8,70]]
+        ]}</script>"#;
+
+    #[test]
+    fn reads_the_skill_priority_from_the_build_summary() {
+        let build = parse_build(PAGE_WITH_TABLES).expect("the page should parse");
+        assert_eq!(build.skill_priority.as_deref(), Some("QWE"));
+    }
+
+    #[test]
+    fn an_unreadable_skill_priority_is_left_out() {
+        let html = PAGE_WITH_TABLES.replace(r#""id":"QWE""#, r#""id":"QXZ""#);
+        let build = parse_build(&html).expect("the page should parse");
+        // Falls back to the page-wide skill order.
+        assert_eq!(build.skill_priority.as_deref(), Some("QWE"));
+        let html = html.replace(r#"["QWE",52.4"#, r#"["Q",52.4"#);
+        assert_eq!(parse_build(&html).unwrap().skill_priority, None);
+    }
+
+    #[test]
+    fn the_full_slot_tables_widen_the_options() {
+        let build = parse_build(PAGE_WITH_TABLES).expect("the page should parse");
+        assert_eq!(build.items, vec![3118, 3020, 4645, 3157, 3089, 3135]);
+        let ids: Vec<i64> = build.options.iter().map(|option| option.id).collect();
+        // Mejai's, Lich Bane, Morellonomicon, Void Staff… but never an item
+        // already in the build, and not Banshee's with 5 of 1455 games.
+        for expected in [3041, 3100, 3137, 3165] {
+            assert!(ids.contains(&expected), "missing {expected} in {ids:?}");
+        }
+        assert!(!ids.contains(&3102), "rare pick kept: {ids:?}");
+        for built in &build.items {
+            assert!(!ids.contains(built), "build item {built} in options");
+        }
+        let void_staff = build.options.iter().find(|option| option.id == 3165).unwrap();
+        assert_eq!((void_staff.slot, void_staff.games), (6, 100));
     }
 
     #[test]

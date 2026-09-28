@@ -118,6 +118,9 @@ pub struct KeystoneBuildView {
     /// Unix milliseconds of that last successful fetch, when known.
     #[serde(default)]
     pub updated_at: Option<i64>,
+    /// Ability max order, e.g. "QWE", when lolalytics reports one.
+    #[serde(default)]
+    pub skill_priority: Option<String>,
 }
 
 /// One recorded purchase in a pro's game, for the item order.
@@ -648,6 +651,7 @@ pub async fn preset_build_view(
         core_win_pct: build.core_win_pct,
         stale: sourced.stale,
         updated_at: sourced.fetched_at,
+        skill_priority: build.skill_priority,
     })
 }
 

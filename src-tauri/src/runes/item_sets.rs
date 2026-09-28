@@ -278,6 +278,23 @@ fn preset_item_set_body(
     item_set_body(champion_id, champion_name, source, blocks)
 }
 
+/// What follows the champion in an imported set's title: the ability max
+/// order when lolalytics reported one ("Max Q > W > E"), since the shop has no
+/// other place to show it.
+pub fn build_label(skill_priority: Option<&str>) -> String {
+    match skill_priority {
+        Some(order) => {
+            let steps: Vec<String> = order
+                .trim()
+                .chars()
+                .map(|ability| ability.to_ascii_uppercase().to_string())
+                .collect();
+            format!("Max {}", steps.join(" > "))
+        }
+        None => "Recommended build".into(),
+    }
+}
+
 fn is_swapper_set(set: &Value) -> bool {
     set["title"]
         .as_str()
@@ -457,6 +474,7 @@ mod tests {
             core_win_pct: Some(53.0),
             stale: false,
             updated_at: None,
+            skill_priority: None,
         }
     }
 
@@ -511,6 +529,13 @@ mod tests {
             .map(|set| set["title"].as_str().unwrap())
             .collect();
         assert_eq!(titles, ["Mine", "Swapper: Ahri"]);
+    }
+
+    #[test]
+    fn the_set_is_named_after_the_skill_order_when_known() {
+        assert_eq!(build_label(Some("QWE")), "Max Q > W > E");
+        assert_eq!(build_label(Some("ewq")), "Max E > W > Q");
+        assert_eq!(build_label(None), "Recommended build");
     }
 
     #[test]

@@ -274,7 +274,7 @@ pub async fn import_preset_items(
     super::item_sets::import_keystone_build(
         context.champion_id,
         &context.champion_name,
-        "Recommended build",
+        &super::item_sets::build_label(build.skill_priority.as_deref()),
         &build,
     )
     .await
