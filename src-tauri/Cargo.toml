@@ -48,6 +48,14 @@ url = "2"
 
 
 # Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+# Full debug info makes Windows debug builds several GB of PDBs. Line tables
+# keep file:line in panics and backtraces; dependencies need none.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
 [profile.release]
 codegen-units = 1
 lto = true
