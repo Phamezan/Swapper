@@ -230,6 +230,7 @@ button[data-slot="button"].add-inline:hover { border-color: transparent; backgro
 .error-banner { display: flex; flex: none; align-items: flex-start; gap: 8px; margin: 0 14px 9px; padding: 10px 12px; border: 1px solid var(--danger); border-radius: 8px; color: var(--danger); background: var(--surface-raised); font-size: 11px; line-height: 1.35; }
 .error-banner span { flex: 1; }
 .error-banner button { flex: none; color: var(--danger); }
+.error-banner .repair-banner-action { margin-top: -4px; white-space: nowrap; }
 .footer { min-height: 41px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-top: 1px solid var(--line-subtle); color: var(--text-secondary); background: var(--surface-header); font-size: 10px; }
 .footer-status { display: flex; align-items: center; gap: 8px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .footer-mode { color: var(--text-muted); font-size: 9px; font-weight: 700; letter-spacing: .13em; }

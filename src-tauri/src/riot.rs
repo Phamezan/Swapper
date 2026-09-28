@@ -59,7 +59,7 @@ impl ProcessStateError {
     }
 }
 
-fn ensure_no_game() -> Result<(), ProcessStateError> {
+pub(crate) fn ensure_no_game() -> Result<(), ProcessStateError> {
     match process::any_running(GAMES) {
         Ok(true) => Err(ProcessStateError::GameRunning),
         Ok(false) => Ok(()),

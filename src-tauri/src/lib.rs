@@ -5,6 +5,7 @@ mod lcu;
 mod remote;
 mod notify;
 mod doctor;
+mod repair;
 mod riot;
 mod riot_client;
 mod runes;
@@ -15,7 +16,7 @@ pub mod windows;
 use base64::Engine;
 use serde::Serialize;
 use std::path::PathBuf;
-use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 use tauri::menu::{Menu, MenuItem};
 use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
@@ -31,6 +32,10 @@ const AUTOSTART_ARG: &str = "--autostart";
 #[derive(Clone, Default)]
 pub struct SwitchGuard {
     in_progress: Arc<AtomicBool>,
+    /// Bumped on every acquired lease. Background watches compare the epoch
+    /// they started with and stop when it has moved on, so a stale watch can
+    /// never fire for a session another action already replaced.
+    epoch: Arc<AtomicU64>,
 }
 
 #[derive(Debug)]
@@ -42,11 +47,22 @@ impl SwitchGuard {
     pub fn new() -> Self {
         Self {
             in_progress: Arc::new(AtomicBool::new(false)),
+            epoch: Arc::new(AtomicU64::new(0)),
         }
     }
 
     pub fn is_switching(&self) -> bool {
         self.in_progress.load(Ordering::SeqCst)
+    }
+
+    /// The epoch value handed to a background watch so it can detect that
+    /// another account action started after its switch.
+    pub fn epoch(&self) -> u64 {
+        self.epoch.load(Ordering::SeqCst)
+    }
+
+    pub(crate) fn epoch_handle(&self) -> Arc<AtomicU64> {
+        Arc::clone(&self.epoch)
     }
 
     pub fn acquire(&self) -> Result<SwitchLease, String> {
@@ -55,6 +71,7 @@ impl SwitchGuard {
             .compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst)
             .is_ok()
         {
+            self.epoch.fetch_add(1, Ordering::SeqCst);
             Ok(SwitchLease {
                 in_progress: Arc::clone(&self.in_progress),
             })
@@ -253,6 +270,9 @@ struct SwitchDonePayload {
 struct SwitchFailedPayload {
     id: Uuid,
     error: String,
+    /// Whether the failure left a dead saved session the user can fix through
+    /// the Repair Account flow (see `repair::is_repairable`).
+    repairable: bool,
 }
 
 fn view(
@@ -391,6 +411,43 @@ fn mismatch_error() -> String {
     "Different Riot account detected. The current login does not match the account Swapper expected. Save this account separately or sign back into the expected account.".into()
 }
 
+/// Opens Riot Client so the user can sign in to the account whose saved
+/// session could not be restored. Nothing is saved until `complete_repair`
+/// verifies the signed-in identity belongs to that account.
+#[tauri::command]
+fn begin_repair(state: State<'_, AppState>, id: Uuid) -> Result<(), String> {
+    let _lease = state.switch_guard.acquire()?;
+    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let account = config
+        .accounts
+        .iter()
+        .find(|a| a.id == id)
+        .ok_or_else(|| "Account no longer exists.".to_string())?;
+    repair::ensure_repairable(account)?;
+    riot::open_riot(&config)
+}
+
+/// Replaces a repaired account's saved session with the live one. The live
+/// identity is re-read here so a login change between detection and this
+/// call can never save the wrong session (same rule as complete_add).
+#[tauri::command]
+async fn complete_repair(state: State<'_, AppState>, id: Uuid) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    let live = match identity::detect().await {
+        identity::Detection::Identified(found) => found,
+        other => return Err(detection_error(&other)),
+    };
+    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    repair::complete(&mut config, id, &live)?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+        state.hotkey_active.load(Ordering::SeqCst),
+    ))
+}
+
 #[tauri::command]
 fn switch_account(
     app: tauri::AppHandle,
@@ -400,14 +457,19 @@ fn switch_account(
     // Acquire guard lease first
     let lease = state.switch_guard.acquire()?;
 
-    let (name, use_deceive) = {
+    let (name, use_deceive, expected_puuid, watch_epoch) = {
         let config = state.config.lock().map_err(|e| e.to_string())?;
         let target = config
             .accounts
             .iter()
             .find(|a| a.id == id)
             .ok_or_else(|| "Account no longer exists.".to_string())?;
-        (target.display_name(), config.use_deceive)
+        (
+            target.display_name(),
+            config.use_deceive,
+            target.puuid.clone(),
+            state.switch_guard.epoch(),
+        )
     };
 
     notify::switch_started(&app, &name);
@@ -462,16 +524,32 @@ fn switch_account(
             Ok(Ok(updated_view)) => {
                 notify::switch_succeeded(&app, &name, use_deceive);
                 let _ = app.emit("switch_done", SwitchDonePayload { id, view: updated_view });
+                // Watch in the background for a session that was dead on
+                // arrival; the watch cancels itself when any other account
+                // action starts. Accounts saved without a PUUID cannot be
+                // verified, so they are never watched.
+                if let Some(expected_puuid) = expected_puuid {
+                    if let Some(app_state) = app.try_state::<AppState>() {
+                        repair::spawn_session_watch(
+                            app.clone(),
+                            id,
+                            name,
+                            expected_puuid,
+                            watch_epoch,
+                            app_state.switch_guard.epoch_handle(),
+                        );
+                    }
+                }
             }
             Ok(Err((failure, friendly_error))) => {
                 notify::switch_failed(&app, &name, use_deceive, &failure);
-                let _ = app.emit("switch_failed", SwitchFailedPayload { id, error: friendly_error });
+                let _ = app.emit("switch_failed", SwitchFailedPayload { id, error: friendly_error, repairable: repair::is_repairable(failure.kind) });
             }
             Err(join_err) => {
                 let err_msg = format!("Background switch error: {join_err}");
                 let failure = riot::SwitchFailure::from(err_msg.clone());
                 notify::switch_failed(&app, &name, use_deceive, &failure);
-                let _ = app.emit("switch_failed", SwitchFailedPayload { id, error: err_msg });
+                let _ = app.emit("switch_failed", SwitchFailedPayload { id, error: err_msg, repairable: repair::is_repairable(failure.kind) });
             }
         }
     });
@@ -1084,6 +1162,8 @@ pub fn run() {
             begin_add,
             detect_account_identity,
             complete_add,
+            begin_repair,
+            complete_repair,
             switch_account,
             set_nickname,
             remove_account,

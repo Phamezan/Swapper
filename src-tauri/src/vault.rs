@@ -211,6 +211,33 @@ pub fn read_snapshot(id: Uuid) -> Result<Snapshot, String> {
     bincode::deserialize(&bytes).map_err(|e| format!("Saved account is invalid: {e}"))
 }
 
+/// Replaces one account's saved snapshot in place: writes `snapshot` as a new
+/// encrypted blob, points the account at it, and deletes the previous blob
+/// only after the state file saved. On a save failure the account keeps its
+/// previous record, so the old snapshot stays the one it points at.
+pub fn replace_account_snapshot(
+    config: &mut Config,
+    account_id: Uuid,
+    snapshot: &Snapshot,
+) -> Result<(), String> {
+    let index = config
+        .accounts
+        .iter()
+        .position(|a| a.id == account_id)
+        .ok_or("Account no longer exists")?;
+    let new_vault = save_snapshot(snapshot)?;
+    let previous = config.accounts[index].clone();
+    let old_vault = previous.vault_id;
+    config.accounts[index].vault_id = new_vault;
+    if let Err(e) = save(config) {
+        config.accounts[index] = previous;
+        let _ = remove_snapshot(new_vault);
+        return Err(e);
+    }
+    let _ = remove_snapshot(old_vault);
+    Ok(())
+}
+
 pub fn remove_snapshot(id: Uuid) -> Result<(), String> {
     let path = data_root()?.join("vault").join(format!("{id}.bin"));
     if path.exists() {

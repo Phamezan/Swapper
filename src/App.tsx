@@ -8,11 +8,12 @@ import {
 } from "@tauri-apps/plugin-autostart";
 import {
   ArrowLeft, ArrowRight, Check, ChevronRight, CircleAlert, Info, LoaderCircle,
-  Pencil, Plus, QrCode, RefreshCw, Settings2, Trash2, X,
+  Pencil, Plus, QrCode, RefreshCw, Settings2, Trash2, Wrench, X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+import { RepairPanel } from "./accounts/RepairPanel";
 import { RunesPanel } from "./runes/RunesPanel";
 import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
 import { SwapperDoctor } from "./settings/SwapperDoctor";
@@ -23,7 +24,7 @@ import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./r
 import { HotkeySetting } from "./settings/HotkeySetting";
 import "./App.css";
 
-type Account = {
+export type Account = {
   id: string;
   name: string;
   riotId: string | null;
@@ -42,7 +43,7 @@ type DetectedIdentity = {
   profileIconId: number | null;
   iconDataUrl: string | null;
 };
-type DetectOutcome =
+export type DetectOutcome =
   | { state: "identified"; identity: DetectedIdentity; savedAccountId: string | null }
   | { state: "notRunning" }
   | { state: "notReady" }
@@ -74,7 +75,7 @@ type RemoteStatus = {
   leagueRunning: boolean;
   lcuConnected: boolean;
 };
-type AppState = {
+export type AppState = {
   accounts: Account[];
   activeId: string | null;
   isSwitching?: boolean;
@@ -98,7 +99,7 @@ type ChampSelectStatus = {
   position: string;
   locked: boolean;
 };
-type View = "accounts" | "add" | "edit" | "remove" | "settings" | "runes";
+type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings" | "runes";
 
 const emptyRemote: RemoteStatus = {
   enabled: false, state: "disabled", address: null, tailscaleAddress: null,
@@ -147,6 +148,10 @@ function App() {
   const [name, setName] = useState("");
   const [editing, setEditing] = useState<string | null>(null);
   const [pendingRemove, setPendingRemove] = useState<string | null>(null);
+  // Switch failure that left a dead saved session, and the account currently
+  // going through the repair flow.
+  const [repairableId, setRepairableId] = useState<string | null>(null);
+  const [repairingId, setRepairingId] = useState<string | null>(null);
   const [accountMenu, setAccountMenu] = useState<{ id: string; x: number; y: number } | null>(null);
   const [useDeceive, setUseDeceive] = useState(false);
   const [riotExe, setRiotExe] = useState("");
@@ -198,17 +203,27 @@ function App() {
       }),
       listen<{ id: string; name: string }>("switch_started", ({ payload }) => {
         setSwitchingAccountId(payload.id);
+        setRepairableId(null);
         setError(null);
       }),
       listen<{ id: string; view: AppState }>("switch_done", ({ payload }) => {
         setSwitchingAccountId(null);
         sync(payload.view);
       }),
-      listen<{ id: string; error: string }>("switch_failed", ({ payload }) => {
+      listen<{ id: string; error: string; repairable: boolean }>("switch_failed", ({ payload }) => {
         setSwitchingAccountId(null);
         setData((prev) => ({ ...prev, activeId: previousActiveId.current }));
         showError(payload.error);
+        setRepairableId(payload.repairable ? payload.id : null);
         invoke<AppState>("get_state").then(sync).catch(() => {});
+      }),
+      listen<{ id: string; name: string; mismatch: boolean }>("session_expired", ({ payload }) => {
+        // A background watch decided the switched-in session was dead on
+        // arrival; offer the same Repair Account action as a failed switch.
+        setRepairableId(payload.id);
+        showError(payload.mismatch
+          ? `Riot Client signed in to a different account than ${payload.name}. Use Repair Account to fix it.`
+          : `The saved session for ${payload.name} has expired. Use Repair Account to sign in again.`);
       }),
     ]);
     return () => {
@@ -643,6 +658,19 @@ function App() {
     }
   };
   const active = data.accounts.find((account) => account.id === data.activeId);
+  // Opens Riot Client for the affected account, then hands over to the
+  // repair flow, which waits for that account's sign-in.
+  const startRepair = (id: string) => {
+    if (!data.accounts.some((account) => account.id === id)) {
+      setRepairableId(null);
+      return;
+    }
+    void action("repair-begin", () => invoke<void>("begin_repair", { id }), () => {
+      setRepairableId(null);
+      setRepairingId(id);
+      navigate("repair");
+    });
+  };
   const savedWithRiotId = (identity: DetectedIdentity) => data.accounts.find((account) =>
     account.riotId?.toLowerCase() === riotIdOf(identity).toLowerCase());
   // The display ID is enough to suppress a redundant save prompt, but a
@@ -763,7 +791,9 @@ function App() {
                           ? "Switching…"
                           : isActive
                             ? "Current session"
-                            : "Click to switch"}
+                            : repairableId === account.id
+                              ? "Session needs repair"
+                              : "Click to switch"}
                         {account.region ? ` · ${account.region}` : ""}
                       </small>
                     </span>
@@ -802,8 +832,14 @@ function App() {
           <>
             <div className="panel-heading compact">
               <button className="icon-button back-button" aria-label="Back to accounts" onClick={() => navigate("accounts")}><ArrowLeft size={17} /></button>
-              <div><p className="eyebrow">SWAPPER</p><h1>{view === "add" ? "Add account" : view === "settings" ? "Settings" : view === "edit" ? "Edit accounts" : "Remove account"}</h1></div>
+              <div><p className="eyebrow">SWAPPER</p><h1>{view === "add" ? "Add account" : view === "settings" ? "Settings" : view === "edit" ? "Edit accounts" : view === "repair" ? "Repair account" : "Remove account"}</h1></div>
             </div>
+
+            {view === "repair" && <RepairPanel
+              account={data.accounts.find((account) => account.id === repairingId)}
+              onDone={(next) => { setRepairingId(null); sync(next); navigate("accounts"); }}
+              onCancel={() => { setRepairingId(null); navigate("accounts"); }}
+            />}
 
             {view === "add" && <div className="form-content add-flow">
               <div className="flow-progress" aria-label={`Step ${addStage === "signIn" ? 1 : 2} of 2`}>
@@ -1048,7 +1084,7 @@ function App() {
 
       {!native && !error && <div className="error-banner" role="status"><CircleAlert size={16} /><span>Browser preview only. Account actions need the Windows tray app.</span></div>}
       <PairingNotice />
-      {error && <div className="error-banner" role="alert"><CircleAlert size={16} /><span>{error}</span><button aria-label="Dismiss error" onClick={() => setError(null)}><X size={14} /></button></div>}
+      {error && <div className="error-banner" role="alert"><CircleAlert size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair Account</Button>}<button aria-label="Dismiss error" onClick={() => { setRepairableId(null); setError(null); }}><X size={14} /></button></div>}
       <footer className="footer"><span className="footer-status"><span className={footerLoggedIn ? "status-dot good" : "status-dot idle"} /> {footerText}</span><span className="footer-mode">{data.useDeceive ? "DECEIVE" : "RIOT CLIENT"}</span></footer>
     </div>
   );
