@@ -122,20 +122,21 @@ fn item_set_body(
         &format!("Swapper: {champion_name} · {source}"),
         MAX_TITLE_CHARS,
     );
+    // POST .../sets takes the item set itself as the body. Wrapping it (for
+    // example in {"itemSet": …}) is ignored and League saves a blank
+    // "New Item Set" instead.
     let body = json!({
-        "itemSet": {
-            "associatedChampions": [champion_id],
-            "associatedMaps": [],
-            "blocks": blocks,
-            "map": "any",
-            "mode": "any",
-            "preferredItemSlots": [],
-            "sortrank": 0,
-            "startedFrom": "blank",
-            "title": title,
-            "type": "custom",
-            "uid": Uuid::new_v4().to_string()
-        }
+        "associatedChampions": [champion_id],
+        "associatedMaps": [],
+        "blocks": blocks,
+        "map": "any",
+        "mode": "any",
+        "preferredItemSlots": [],
+        "sortrank": 0,
+        "startedFrom": "blank",
+        "title": title,
+        "type": "custom",
+        "uid": Uuid::new_v4().to_string()
     });
     Ok((title, body))
 }
@@ -394,7 +395,7 @@ mod tests {
         )
         .unwrap();
         assert!(title.starts_with("Swapper: Ambessa"));
-        let blocks = body["itemSet"]["blocks"].as_array().unwrap();
+        let blocks = body["blocks"].as_array().unwrap();
         let labels: Vec<&str> = blocks
             .iter()
             .map(|block| block["type"].as_str().unwrap())
@@ -417,7 +418,7 @@ mod tests {
     #[test]
     fn generic_pro_build_keeps_its_single_build_block() {
         let (_, body) = generic_item_set_body(799, "Ambessa", "Pro", &[6692, 3047]).unwrap();
-        let blocks = body["itemSet"]["blocks"].as_array().unwrap();
+        let blocks = body["blocks"].as_array().unwrap();
         assert_eq!(blocks.len(), 1);
         assert_eq!(blocks[0]["type"], "Build");
     }
@@ -456,7 +457,7 @@ mod tests {
             &Default::default(),
         )
         .unwrap();
-        let blocks = body["itemSet"]["blocks"].as_array().unwrap();
+        let blocks = body["blocks"].as_array().unwrap();
         let options = blocks
             .iter()
             .find(|block| block["type"] == "Options")
