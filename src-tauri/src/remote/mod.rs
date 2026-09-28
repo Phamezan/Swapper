@@ -1069,6 +1069,17 @@ fn new_secret() -> String {
     uuid::Uuid::new_v4().simple().to_string()
 }
 
+/// Ensures the Private-network firewall rule exists, saying why Windows is
+/// about to ask before its elevation prompt appears.
+fn allow_lan_through_firewall(core: &RemoteCore) -> Result<(), String> {
+    if !network::private_app_allowed() {
+        core.apply(|status| {
+            status.lan_message = Some("Windows will ask to allow Swapper through the firewall on Private networks. Approve it to turn on LAN access.".into());
+        });
+    }
+    network::allow_private_app()
+}
+
 fn service_thread(
     core: Arc<RemoteCore>,
     ready: mpsc::SyncSender<Result<ServiceInfo, String>>,
@@ -1121,7 +1132,7 @@ fn service_thread(
                         )), target),
                         Ok(listener) => match listener.local_addr() {
                             Err(error) => (None, Some(format!("Could not read the LAN listener address: {error}")), target),
-                            Ok(address) => match network::allow_private_app() {
+                            Ok(address) => match allow_lan_through_firewall(&core) {
                                 Err(error) => (None, Some(error), target),
                                 Ok(()) => {
                                     let endpoint = LanEndpoint {

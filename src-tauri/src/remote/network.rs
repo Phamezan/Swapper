@@ -232,20 +232,51 @@ pub fn is_private_profile(interface_index: u32) -> Result<bool, String> {
     Ok(String::from_utf8_lossy(&output.stdout).trim().eq_ignore_ascii_case("Private"))
 }
 
-/// Adds a Private-profile-only rule for Swapper once. Windows asks for
-/// elevation when the rule is installed; denying it leaves LAN closed.
-pub fn allow_private_app() -> Result<(), String> {
+const FIREWALL_RULE: &str = "Swapper LAN Remote Control";
+
+fn current_exe_for_powershell() -> Result<String, String> {
     let executable = std::env::current_exe()
         .map_err(|error| format!("Could not locate Swapper for the firewall rule: {error}"))?;
-    let executable = executable.to_string_lossy().replace('\'', "''");
+    Ok(executable.to_string_lossy().replace('\'', "''"))
+}
+
+/// PowerShell that exits 0 when a Swapper rule already allows this executable
+/// and otherwise falls through to whatever follows it.
+fn rule_present_check(executable: &str) -> String {
+    format!(
+        "$programs=Get-NetFirewallRule -DisplayName '{FIREWALL_RULE}' -ErrorAction SilentlyContinue | Get-NetFirewallApplicationFilter | ForEach-Object Program; if ($programs -contains '{executable}') {{ exit 0 }}"
+    )
+}
+
+/// Whether Windows Firewall already allows this Swapper executable on Private
+/// networks. Querying needs no elevation, so Swapper can explain the prompt
+/// before asking for it.
+pub fn private_app_allowed() -> bool {
+    let Ok(executable) = current_exe_for_powershell() else {
+        return false;
+    };
+    Command::new("powershell.exe")
+        .args(["-NoProfile", "-NonInteractive", "-WindowStyle", "Hidden", "-Command", &format!("{}; exit 1", rule_present_check(&executable))])
+        .output()
+        .is_ok_and(|output| output.status.success())
+}
+
+/// Adds a Private-profile-only rule for this Swapper executable once. Windows
+/// asks for elevation when the rule is installed; denying it leaves LAN closed.
+/// Rules for other Swapper executables (an installed build next to a dev
+/// build) are kept, so switching between them does not prompt every time;
+/// rules whose executable no longer exists are removed.
+pub fn allow_private_app() -> Result<(), String> {
+    let executable = current_exe_for_powershell()?;
     let elevated = format!(
-        "Get-NetFirewallRule -DisplayName 'Swapper LAN Remote Control' -ErrorAction SilentlyContinue | Remove-NetFirewallRule; New-NetFirewallRule -DisplayName 'Swapper LAN Remote Control' -Program '{executable}' -Direction Inbound -Action Allow -Protocol TCP -Profile Private | Out-Null"
+        "Get-NetFirewallRule -DisplayName '{FIREWALL_RULE}' -ErrorAction SilentlyContinue | ForEach-Object {{ $program=($_ | Get-NetFirewallApplicationFilter).Program; if (-not (Test-Path -LiteralPath $program)) {{ $_ | Remove-NetFirewallRule }} }}; New-NetFirewallRule -DisplayName '{FIREWALL_RULE}' -Program '{executable}' -Direction Inbound -Action Allow -Protocol TCP -Profile Private | Out-Null"
     );
     let encoded = base64::engine::general_purpose::STANDARD.encode(
         elevated.encode_utf16().flat_map(u16::to_le_bytes).collect::<Vec<_>>(),
     );
+    let check = rule_present_check(&executable);
     let script = format!(
-        "$existing=Get-NetFirewallRule -DisplayName 'Swapper LAN Remote Control' -ErrorAction SilentlyContinue; $programs=$existing | Get-NetFirewallApplicationFilter | ForEach-Object Program; if ($programs -contains '{executable}') {{ exit 0 }}; try {{ $p=Start-Process -FilePath 'powershell.exe' -Verb RunAs -WindowStyle Hidden -Wait -PassThru -ArgumentList @('-NoProfile','-NonInteractive','-EncodedCommand','{encoded}'); exit $p.ExitCode }} catch {{ exit 1 }}"
+        "{check}; try {{ $p=Start-Process -FilePath 'powershell.exe' -Verb RunAs -WindowStyle Hidden -Wait -PassThru -ArgumentList @('-NoProfile','-NonInteractive','-EncodedCommand','{encoded}'); exit $p.ExitCode }} catch {{ exit 1 }}"
     );
     let output = Command::new("powershell.exe")
         .args(["-NoProfile", "-NonInteractive", "-WindowStyle", "Hidden", "-Command", &script])
@@ -254,7 +285,7 @@ pub fn allow_private_app() -> Result<(), String> {
     if output.status.success() {
         Ok(())
     } else {
-        Err("Windows Firewall did not allow LAN access. Approve the Swapper firewall request and try again.".into())
+        Err("LAN access needs a Windows Firewall rule for Private networks. Turn Remote Control off and on, then approve the Windows prompt.".into())
     }
 }
 

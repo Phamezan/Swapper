@@ -187,6 +187,8 @@ struct HandoffQuery {
     token: Option<String>,
 }
 
+const HANDOFF_CONTINUE_PAGE: &str = r#"<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=/"><title>Swapper</title></head><body><p><a href="/">Continue to Swapper</a></p></body></html>"#;
+
 /// Sets the paired device's cookie on the `.local` origin after a one-time
 /// token handoff. The `Host` must be the mDNS name so the cookie is scoped to
 /// the stable hostname; anything invalid returns a plain 404 with no detail.
@@ -208,7 +210,15 @@ async fn consume_handoff(
     let Some(credential) = core.consume_lan_handoff(token) else {
         return StatusCode::NOT_FOUND.into_response();
     };
-    let mut response = axum::response::Redirect::to("/").into_response();
+    // The phone arrives here from the IP origin, a different site, so a 302 to
+    // "/" would still be a cross-site navigation and the browser would withhold
+    // the SameSite=Strict cookie set just now. A page that moves on by itself
+    // starts a same-site navigation, which carries the cookie.
+    let mut response = (
+        [(header::CACHE_CONTROL, "no-store")],
+        axum::response::Html(HANDOFF_CONTINUE_PAGE),
+    )
+        .into_response();
     response.headers_mut().insert(
         header::SET_COOKIE,
         format!(
