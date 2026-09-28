@@ -7,6 +7,7 @@ mod doctor;
 mod riot;
 mod riot_client;
 mod runes;
+mod updater;
 mod vault;
 pub mod windows;
 
@@ -79,6 +80,12 @@ pub(crate) struct AppState {
 }
 
 impl AppState {
+    /// Whether an account action is running. The updater stays out of the way
+    /// while it is.
+    pub(crate) fn is_switching(&self) -> bool {
+        self.switch_guard.is_switching()
+    }
+
     fn auto_apply_top_preset(&self) -> bool {
         self.config
             .lock()
@@ -922,6 +929,9 @@ pub fn run() {
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;
+            app.handle().plugin(tauri_plugin_updater::Builder::new().build())?;
+            app.manage(updater::UpdateState::new(app.handle().clone()));
+            updater::spawn(app.handle().clone());
             app.handle().plugin(
                 tauri_plugin_global_shortcut::Builder::new()
                     .with_handler(|app, _shortcut, event| {
@@ -1027,6 +1037,9 @@ pub fn run() {
             import_item_build,
             import_keystone_item_build,
             apply_rune_page,
+            updater::update_status,
+            updater::update_check_now,
+            updater::update_install,
             doctor::run_doctor,
             doctor::run_doctor_check,
             doctor::doctor_report

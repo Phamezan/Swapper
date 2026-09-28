@@ -1,0 +1,39 @@
+/* Updates: the Settings section and the slim accounts-view banner. */
+
+.update-section { margin-top: 20px; padding-top: 17px; border-top: 1px solid var(--line-strong); }
+.update-section .setting-row { padding-bottom: 12px; border-bottom: 0; }
+.update-actions { display: flex; flex: none; gap: 7px; }
+.update-actions button { height: 30px; flex: none; padding: 0 11px; font-size: 10px; }
+
+.update-dot { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--text-muted); }
+.update-dot.is-good { background: var(--positive); box-shadow: 0 0 0 3px color-mix(in srgb, var(--positive) 13%, transparent); }
+
+.update-offer { display: flex; flex-direction: column; }
+.update-offer .setting-status { margin-top: 12px; color: var(--text-primary); }
+.update-notes { margin: 6px 0 0; color: var(--text-secondary); font-size: 11px; line-height: 1.45; text-wrap: pretty; }
+
+.update-failed { color: var(--danger); }
+
+.update-banner {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px; padding: 7px 8px 7px 12px;
+  border: 1px solid var(--line-subtle); border-radius: 10px;
+  background: color-mix(in srgb, var(--positive) 7%, var(--surface-panel));
+}
+.update-banner-text {
+  display: flex; flex: 1; min-width: 0; align-items: center; gap: 8px;
+  padding: 0; border: 0; background: transparent;
+  color: var(--text-primary); font-size: 11px; font-weight: 620; text-align: left;
+  cursor: pointer;
+}
+.update-banner-text svg { flex: none; color: var(--positive); }
+.update-banner-text span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.update-banner-action {
+  flex: none; height: 26px; padding: 0 10px;
+  border: 1px solid var(--line-strong); border-radius: 7px;
+  background: var(--surface-raised);
+  color: var(--text-primary); font-size: 10px; font-weight: 660;
+  cursor: pointer;
+}
+.update-banner-action:hover { border-color: var(--positive); }
+.update-banner-action:disabled { opacity: 0.6; cursor: default; }

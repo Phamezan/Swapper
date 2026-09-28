@@ -16,6 +16,7 @@ import { Switch } from "@/components/ui/switch";
 import { RunesPanel } from "./runes/RunesPanel";
 import { PairedDevices, PairingNotice } from "./settings/PairedDevices";
 import { SwapperDoctor } from "./settings/SwapperDoctor";
+import { UpdateBanner, UpdateSection } from "./settings/UpdateSection";
 import { TIER_OPTIONS } from "./runes/types";
 import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
 import { HotkeySetting } from "./settings/HotkeySetting";
@@ -707,6 +708,7 @@ function App() {
               <div><p className="eyebrow">{data.accounts.length === 0 ? "GET STARTED" : "READY TO PLAY"}</p><h1>Your accounts</h1></div>
               <button className="icon-button" aria-label="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings2 size={19} /></button>
             </div>
+            <UpdateBanner onOpenSettings={() => navigate("settings")} />
             {visibleDetectedPrompt && (
               <section className="detected-prompt">
                 <strong className="detected-title">Signed-in account detected</strong>
@@ -1008,6 +1010,7 @@ function App() {
                 <PairedDevices />
               </>}
 
+              <UpdateSection />
               <SwapperDoctor remoteTransport={remoteTransport} />
             </div>}
           </>
