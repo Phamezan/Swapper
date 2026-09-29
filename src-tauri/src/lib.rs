@@ -28,6 +28,7 @@ use uuid::Uuid;
 
 const TRAY_ID: &str = "swapper-tray";
 const DEFAULT_TRAY_TOOLTIP: &str = "Swapper · Riot account switcher";
+const RECONNECT_TOOLTIP_SUFFIX: &str = " · Phone needs to reconnect";
 const AUTOSTART_ARG: &str = "--autostart";
 
 #[derive(Clone, Default)]
@@ -346,6 +347,31 @@ fn update_tray_tooltip(app: &tauri::AppHandle, tooltip: &str) {
     }
 }
 
+/// The idle tray tooltip, plus the reconnect hint while paired phones must
+/// scan a new QR code.
+fn default_tray_tooltip(app: &tauri::AppHandle) -> String {
+    let needed = app
+        .try_state::<AppState>()
+        .is_some_and(|state| state.remote.status().lan_reconnect_needed);
+    if needed {
+        format!("{DEFAULT_TRAY_TOOLTIP}{RECONNECT_TOOLTIP_SUFFIX}")
+    } else {
+        DEFAULT_TRAY_TOOLTIP.to_string()
+    }
+}
+
+/// Restores the tray tooltip from the current reconnect state, unless a switch
+/// owns the tooltip; the switch restores it when it finishes.
+pub(crate) fn refresh_tray_tooltip(app: &tauri::AppHandle) {
+    let switching = app
+        .try_state::<AppState>()
+        .is_some_and(|state| state.switch_guard.is_switching());
+    if switching {
+        return;
+    }
+    update_tray_tooltip(app, &default_tray_tooltip(app));
+}
+
 #[tauri::command]
 fn get_state(state: State<'_, AppState>) -> Result<AppView, String> {
     let config = state.config.lock().map_err(|e| e.to_string())?;
@@ -539,7 +565,7 @@ fn start_switch(app: &tauri::AppHandle, state: &AppState, id: Uuid) -> Result<()
         })
         .await;
 
-        update_tray_tooltip(&app, DEFAULT_TRAY_TOOLTIP);
+        update_tray_tooltip(&app, &default_tray_tooltip(&app));
 
         match result {
             Ok(Ok(updated_view)) => {
@@ -748,6 +774,16 @@ fn revoke_lan_device(state: State<'_, AppState>, id: String) -> Result<(), Strin
 #[tauri::command]
 fn rename_lan_device(state: State<'_, AppState>, id: String, name: String) -> Result<String, String> {
     state.remote.rename_paired_device(&id, &name)
+}
+
+#[tauri::command]
+fn dismiss_lan_reconnect(state: State<'_, AppState>) {
+    state.remote.dismiss_lan_reconnect();
+}
+
+#[tauri::command]
+fn remove_stale_lan_devices(state: State<'_, AppState>) -> Result<usize, String> {
+    state.remote.remove_stale_lan_devices()
 }
 
 #[tauri::command]
@@ -1243,6 +1279,8 @@ pub fn run() {
             list_paired_lan_devices,
             revoke_lan_device,
             rename_lan_device,
+            dismiss_lan_reconnect,
+            remove_stale_lan_devices,
             set_auto_apply_top_preset,
             set_rune_tier,
             set_apply_spells_with_runes,

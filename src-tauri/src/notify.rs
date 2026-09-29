@@ -56,6 +56,17 @@ pub fn champ_select_started(app: &AppHandle) {
         .show();
 }
 
+/// Fired once per LAN address change while a phone is paired. The notification
+/// plugin has no cheap click action on Windows, so there is no click handler.
+pub fn lan_reconnect_needed(app: &AppHandle) {
+    let _ = app
+        .notification()
+        .builder()
+        .title("Phone needs to reconnect")
+        .body("Your PC's network address changed. Scan the new QR code in Swapper to keep using your phone.")
+        .show();
+}
+
 pub(crate) fn human_reason(kind: SwitchFailureKind, account: &str, use_deceive: bool) -> Option<String> {
     let text = match kind {
         SwitchFailureKind::GameRunning => "Close the running Riot game before switching accounts.".to_string(),

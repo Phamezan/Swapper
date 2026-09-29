@@ -39,6 +39,8 @@ type Props = {
   remoteTransport: "lan" | "tailscale";
   onRemoteTransportChange: (transport: "lan" | "tailscale") => void;
   onRemoteToggle: (enabled: boolean) => void;
+  /** Bumped to ask the Remote tab to open its QR panel. */
+  qrRequest: number;
   onError: (reason: unknown) => void;
 };
 
@@ -135,6 +137,7 @@ export function SettingsView(props: Props) {
           transport={props.remoteTransport}
           onTransportChange={props.onRemoteTransportChange}
           onToggle={props.onRemoteToggle}
+          qrRequest={props.qrRequest}
           onError={props.onError}
         />}
         {tab === "about" && <AboutSettings remoteTransport={props.remoteTransport} />}
