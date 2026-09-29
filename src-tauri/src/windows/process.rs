@@ -170,10 +170,46 @@ pub fn any_running(names: &[&str]) -> Result<bool, SnapshotError> {
 
 /// Image base name of a PID, from one snapshot pass.
 pub fn image_for_pid(pid: u32) -> Result<Option<String>, SnapshotError> {
-    Ok(snapshot()?
-        .into_iter()
-        .find(|process| process.pid == pid)
-        .map(|process| process.image))
+    // Opening the one process is effectively free; a full snapshot costs
+    // several milliseconds with a few hundred processes and this runs every
+    // few seconds while League is open. The snapshot stays as the fallback
+    // for processes Windows will not let us open.
+    match image_for_pid_direct(pid) {
+        Some(answer) => Ok(answer),
+        None => Ok(snapshot()?
+            .into_iter()
+            .find(|process| process.pid == pid)
+            .map(|process| process.image)),
+    }
+}
+
+/// `Some(None)` when no live process has this pid, `Some(Some(image))` for a
+/// live one, and `None` when Windows refused to open it.
+fn image_for_pid_direct(pid: u32) -> Option<Option<String>> {
+    use windows_sys::Win32::Foundation::{CloseHandle, GetLastError, ERROR_INVALID_PARAMETER, STILL_ACTIVE};
+    use windows_sys::Win32::System::Threading::{
+        GetExitCodeProcess, OpenProcess, QueryFullProcessImageNameW, PROCESS_QUERY_LIMITED_INFORMATION,
+    };
+    unsafe {
+        let handle = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, 0, pid);
+        if handle.is_null() {
+            return (GetLastError() == ERROR_INVALID_PARAMETER).then_some(None);
+        }
+        let mut code = 0u32;
+        let alive = GetExitCodeProcess(handle, &mut code) != 0 && code == STILL_ACTIVE as u32;
+        let mut buffer = [0u16; 1024];
+        let mut length = buffer.len() as u32;
+        let named = QueryFullProcessImageNameW(handle, 0, buffer.as_mut_ptr(), &mut length) != 0;
+        CloseHandle(handle);
+        if !alive {
+            return Some(None);
+        }
+        if !named {
+            return None;
+        }
+        let path = String::from_utf16_lossy(&buffer[..length as usize]);
+        Some(Some(path.rsplit(['\\', '/']).next().unwrap_or(&path).to_string()))
+    }
 }
 
 /// Distinct image names, preserving first-seen casing. Renderer processes
@@ -685,6 +721,16 @@ mod tests {
         let counted = count_top_level_windows(std::process::id());
         unsafe { DestroyWindow(hwnd) };
         assert_eq!(counted, 0);
+    }
+
+    #[test]
+    fn looks_up_a_live_pid_by_image_name_and_rejects_a_missing_one() {
+        let own = std::env::current_exe().unwrap();
+        let own = own.file_name().unwrap().to_string_lossy();
+        let found = image_for_pid(std::process::id()).unwrap();
+        assert!(found.as_deref().is_some_and(|image| image.eq_ignore_ascii_case(&own)), "{found:?}");
+        // Windows pids are multiples of 4, so this one can never exist.
+        assert_eq!(image_for_pid(0xFFFF_FFF1).unwrap(), None);
     }
 
     #[test]

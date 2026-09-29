@@ -888,6 +888,24 @@ async fn apply_spell(
     Ok(())
 }
 
+/// Allows Swapper through Windows Firewall on Private networks. Windows shows
+/// one elevation prompt for Swapper; nothing is asked without this click.
+#[tauri::command]
+async fn allow_lan_firewall(state: State<'_, AppState>) -> Result<AppView, String> {
+    let remote = state.remote.clone();
+    tauri::async_runtime::spawn_blocking(move || remote.allow_lan_firewall())
+        .await
+        .map_err(|error| error.to_string())??;
+    let config = state.config.lock().map_err(|e| e.to_string())?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+        state.hotkey_active.load(Ordering::SeqCst),
+    ))
+}
+
 #[tauri::command]
 fn set_notifications_enabled(
     state: State<'_, AppState>,
@@ -1079,10 +1097,38 @@ async fn apply_rune_page(
 
 #[tauri::command]
 fn hide_flyout(app: tauri::AppHandle) -> Result<(), String> {
-    app.get_webview_window("main")
-        .ok_or("Flyout is unavailable")?
-        .hide()
-        .map_err(|e| e.to_string())
+    hide_main(&app.get_webview_window("main").ok_or("Flyout is unavailable")?)
+}
+
+/// Tells WebView2 how much memory the flyout may keep. While it sits hidden in
+/// the tray, Low lets WebView2 release most of its caches; Normal comes back
+/// before it is shown again.
+fn set_flyout_memory(window: &tauri::WebviewWindow, low: bool) {
+    let _ = window.with_webview(move |webview| unsafe {
+        use webview2_com::Microsoft::Web::WebView2::Win32::{
+            ICoreWebView2_19, COREWEBVIEW2_MEMORY_USAGE_TARGET_LEVEL_LOW,
+            COREWEBVIEW2_MEMORY_USAGE_TARGET_LEVEL_NORMAL,
+        };
+        use windows_core::Interface;
+        let Ok(core) = webview.controller().CoreWebView2() else {
+            return;
+        };
+        if let Ok(core) = core.cast::<ICoreWebView2_19>() {
+            let _ = core.SetMemoryUsageTargetLevel(if low {
+                COREWEBVIEW2_MEMORY_USAGE_TARGET_LEVEL_LOW
+            } else {
+                COREWEBVIEW2_MEMORY_USAGE_TARGET_LEVEL_NORMAL
+            });
+        }
+    });
+}
+
+/// Every way the flyout hides goes through here, so it always drops to the
+/// low memory target.
+fn hide_main(window: &tauri::WebviewWindow) -> Result<(), String> {
+    let result = window.hide().map_err(|e| e.to_string());
+    set_flyout_memory(window, true);
+    result
 }
 
 #[tauri::command]
@@ -1109,6 +1155,7 @@ fn show_flyout(app: &tauri::AppHandle, destination: &str) {
     if let Some(window) = app.get_webview_window("main") {
         let _ = window.as_ref().window().move_window(Position::TrayCenter);
         let _ = app.emit("navigate", destination);
+        set_flyout_memory(&window, false);
         let _ = window.show();
         let _ = window.set_focus();
     }
@@ -1122,7 +1169,7 @@ fn toggle_flyout(app: &tauri::AppHandle) {
         return;
     };
     if window.is_visible().unwrap_or(false) {
-        let _ = window.hide();
+        let _ = hide_main(&window);
     } else {
         show_flyout(app, "accounts");
     }
@@ -1145,6 +1192,15 @@ fn exit_app(app: &tauri::AppHandle) {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    // The elevated copy Swapper starts to allow itself in Windows Firewall:
+    // add the rule and exit before any window, tray icon or single-instance
+    // handoff exists.
+    if std::env::args().any(|arg| arg == remote::network::ALLOW_FIREWALL_ARG) {
+        std::process::exit(match remote::network::add_private_app_rule() {
+            Ok(()) => 0,
+            Err(_) => 1,
+        });
+    }
     let config = vault::load().expect("Swapper settings could not be loaded");
     let launched_at_startup = std::env::args().any(|arg| arg == AUTOSTART_ARG);
     tauri::Builder::default()
@@ -1243,9 +1299,12 @@ pub fn run() {
             // and leave the tray icon as the only entry point. The window already
             // starts hidden (tauri.conf.json `visible: false`); this guard keeps
             // that intent explicit if a future change adds a startup show.
-            if launched_at_startup {
-                if let Some(window) = app.get_webview_window("main") {
-                    let _ = window.hide();
+            if let Some(window) = app.get_webview_window("main") {
+                if launched_at_startup {
+                    let _ = hide_main(&window);
+                } else if !window.is_visible().unwrap_or(false) {
+                    // The window starts hidden; start it on the low target too.
+                    set_flyout_memory(&window, true);
                 }
             }
             Ok(())
@@ -1253,7 +1312,14 @@ pub fn run() {
         .on_window_event(|window, event| {
             if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
-                let _ = window.hide();
+                match window.app_handle().get_webview_window(window.label()) {
+                    Some(webview) => {
+                        let _ = hide_main(&webview);
+                    }
+                    None => {
+                        let _ = window.hide();
+                    }
+                }
             }
         })
         .invoke_handler(tauri::generate_handler![
@@ -1286,6 +1352,7 @@ pub fn run() {
             set_apply_spells_with_runes,
             set_import_items_with_runes,
             set_notifications_enabled,
+            allow_lan_firewall,
             set_ready_check_notifications,
             get_runes,
             champ_select_status,

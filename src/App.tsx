@@ -65,6 +65,7 @@ export type RemoteStatus = {
   tailscaleAddress: string | null;
   lanAddress: string | null;
   lanMessage: string | null;
+  lanFirewallNeeded: boolean;
   message: string | null;
   tailscaleInstalled: boolean;
   tailscaleRunning: boolean;
@@ -106,7 +107,7 @@ type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings" | "ru
 
 const emptyRemote: RemoteStatus = {
   enabled: false, state: "disabled", address: null, tailscaleAddress: null,
-  lanAddress: null, lanMessage: null, message: null,
+  lanAddress: null, lanMessage: null, lanFirewallNeeded: false, message: null,
   tailscaleInstalled: false, tailscaleRunning: false, dnsName: null, localAddress: null,
   leagueRunning: false, lcuConnected: false,
   lanReconnectNeeded: false, lanReconnectOldAddress: null, lanReconnectNewAddress: null,
@@ -412,6 +413,17 @@ function App() {
       setRunesError(String(reason));
     } finally {
       setRunesBusy(false);
+    }
+  }
+
+  // Only on this click does Windows ask for firewall permission, for Swapper.
+  async function allowLanFirewall() {
+    try {
+      sync(await invoke<AppState>("allow_lan_firewall"));
+      // The service restarts in the background; pick up the LAN address.
+      window.setTimeout(() => { invoke<AppState>("get_state").then(sync).catch(() => {}); }, 1500);
+    } catch (reason) {
+      showError(reason);
     }
   }
 
@@ -938,6 +950,7 @@ function App() {
               onAutoApplyChange={(enabled) => void setAutoApply(enabled)}
               onApplySpellsChange={(enabled) => void setApplySpellsWithRunes(enabled)}
               onImportItemsChange={(enabled) => void setImportItemsWithRunes(enabled)}
+              onAllowLanFirewall={allowLanFirewall}
               onRuneTierChange={(tier) => void setRuneTier(tier)}
               remoteTransport={remoteTransport}
               onRemoteTransportChange={setRemoteTransport}

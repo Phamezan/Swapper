@@ -2,7 +2,7 @@ mod control;
 mod handoff;
 mod lcu;
 mod mdns;
-mod network;
+pub(crate) mod network;
 mod server;
 mod tailscale;
 
@@ -49,6 +49,9 @@ pub struct RemoteStatus {
     pub tailscale_address: Option<String>,
     pub lan_address: Option<String>,
     pub lan_message: Option<String>,
+    /// LAN is waiting for the user to allow Swapper in Windows Firewall.
+    /// Swapper never asks on its own; the Remote tab offers the button.
+    pub lan_firewall_needed: bool,
     pub message: Option<String>,
     pub tailscale_installed: bool,
     pub tailscale_running: bool,
@@ -79,6 +82,7 @@ impl RemoteStatus {
             tailscale_address: None,
             lan_address: None,
             lan_message: None,
+            lan_firewall_needed: false,
             message: None,
             tailscale_installed: false,
             tailscale_running: false,
@@ -476,7 +480,20 @@ impl RemoteCore {
     }
 
     pub fn status(&self) -> RemoteStatus {
-        lock(&self.inner).status.clone()
+        let mut status = lock(&self.inner).status.clone();
+        status.lan_firewall_needed = status.lan_message.as_deref() == Some(FIREWALL_NEEDED_MESSAGE);
+        status
+    }
+
+    /// Asks Windows (one elevation prompt showing Swapper) to allow Swapper on
+    /// Private networks, then restarts the service so LAN starts listening.
+    pub(crate) fn allow_lan_firewall(self: &Arc<Self>) -> Result<(), String> {
+        network::request_private_app_rule()?;
+        let _ops = lock(&self.ops);
+        self.stop_service();
+        let _ = Self::ensure_service(self);
+        self.reconcile();
+        Ok(())
     }
 
     pub(crate) fn pair_lan_device(
@@ -1187,16 +1204,8 @@ fn new_secret() -> String {
     uuid::Uuid::new_v4().simple().to_string()
 }
 
-/// Ensures the Private-network firewall rule exists, saying why Windows is
-/// about to ask before its elevation prompt appears.
-fn allow_lan_through_firewall(core: &RemoteCore) -> Result<(), String> {
-    if !network::private_app_allowed() {
-        core.apply(|status| {
-            status.lan_message = Some("Windows will ask to allow Swapper through the firewall on Private networks. Approve it to turn on LAN access.".into());
-        });
-    }
-    network::allow_private_app()
-}
+/// Shown instead of prompting when the firewall rule is missing.
+const FIREWALL_NEEDED_MESSAGE: &str = "LAN access needs permission in Windows Firewall. Choose Allow on private networks.";
 
 fn service_thread(
     core: Arc<RemoteCore>,
@@ -1237,9 +1246,14 @@ fn service_thread(
         ) = match network::default_interface() {
             Err(error) => (None, Some(error), None),
             Ok(None) => (None, Some("No active Ethernet or Wi-Fi interface with a private IPv4 default route was found.".into()), None),
-            Ok(Some(interface)) => match network::is_private_profile(interface.index) {
+            Ok(Some(interface)) => match network::is_private_profile(&interface.adapter_id) {
                 Err(error) => (None, Some(error), None),
                 Ok(false) => (None, Some("LAN access is off because the active Windows network is not set to Private.".into()), None),
+                // Checked before binding: listening without a rule would make
+                // Windows pop its own firewall prompt on startup.
+                Ok(true) if !network::private_app_allowed() => {
+                    (None, Some(FIREWALL_NEEDED_MESSAGE.into()), Some(interface.address))
+                }
                 Ok(true) => {
                     let target = Some(interface.address);
                     match tokio::net::TcpListener::bind((interface.address, LAN_REMOTE_PORT)).await {
@@ -1250,17 +1264,14 @@ fn service_thread(
                         )), target),
                         Ok(listener) => match listener.local_addr() {
                             Err(error) => (None, Some(format!("Could not read the LAN listener address: {error}")), target),
-                            Ok(address) => match allow_lan_through_firewall(&core) {
-                                Err(error) => (None, Some(error), target),
-                                Ok(()) => {
-                                    let endpoint = LanEndpoint {
-                                        address: interface.address,
-                                        port: address.port(),
-                                    };
-                                    lan_listener = Some(listener);
-                                    (Some(endpoint), None, target)
-                                }
-                            },
+                            Ok(address) => {
+                                let endpoint = LanEndpoint {
+                                    address: interface.address,
+                                    port: address.port(),
+                                };
+                                lan_listener = Some(listener);
+                                (Some(endpoint), None, target)
+                            }
                         },
                     }
                 }
@@ -1362,7 +1373,7 @@ fn maintain(weak: Weak<RemoteCore>) {
 /// there is no usable interface or the active network is not Private.
 fn desired_lan_address() -> Option<std::net::Ipv4Addr> {
     let interface = network::default_interface().ok().flatten()?;
-    network::is_private_profile(interface.index)
+    network::is_private_profile_cached(&interface.adapter_id)
         .ok()
         .filter(|private| *private)
         .map(|_| interface.address)

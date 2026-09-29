@@ -50,7 +50,7 @@ Do not use Riot Client's **Sign out** between saved accounts; it can invalidate 
 ## Phone Remote Control over LAN
 
 1. Connect the PC and phone to the same trusted private Wi-Fi or Ethernet network. In Swapper **Settings → Remote**, turn on **Remote Control** and leave the transport on **LAN**.
-2. The first time, Swapper says Windows is about to ask for firewall permission; approve Swapper for Private networks. Swapper only offers LAN access when Windows identifies the active network as **Private** and selects an active default-route Ethernet or Wi-Fi interface. It does not advertise an address on a Public network.
+2. The first time, the Remote tab shows **Allow on private networks**. Click it and approve the Windows prompt, which names Swapper; it adds a Windows Firewall rule for Private networks only. Swapper never asks on its own, and it starts no PowerShell or command windows. Swapper only offers LAN access when Windows identifies the active network as **Private** and selects an active default-route Ethernet or Wi-Fi interface. It does not advertise an address on a Public network.
 3. Press **QR** and scan it with the phone. Pairing links work once and expire after five minutes. The phone stays paired, also after Swapper or the PC restarts, until you revoke it in the paired devices list or press **Reset LAN Access**, which unpairs every phone and shows a fresh QR.
 4. The phone opens the existing remote page. League Client must be running for queue and champion-select controls to be available.
 

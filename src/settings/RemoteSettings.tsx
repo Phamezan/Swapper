@@ -13,13 +13,16 @@ type Props = {
   transport: "lan" | "tailscale";
   onTransportChange: (transport: "lan" | "tailscale") => void;
   onToggle: (enabled: boolean) => void;
+  /** Asks Windows (once, for Swapper) to allow LAN on Private networks. */
+  onAllowFirewall: () => Promise<void>;
   /** Bumped by the desktop to open the QR panel, e.g. after an address change. */
   qrRequest: number;
   onError: (reason: unknown) => void;
 };
 
-export function RemoteSettings({ remote, transport, onTransportChange, onToggle, qrRequest, onError }: Props) {
+export function RemoteSettings({ remote, transport, onTransportChange, onToggle, onAllowFirewall, qrRequest, onError }: Props) {
   const [copied, setCopied] = useState(false);
+  const [allowing, setAllowing] = useState(false);
   const [showQr, setShowQr] = useState(false);
   const [qrUrl, setQrUrl] = useState<string | null>(null);
   const [openInfo, setOpenInfo] = useState(false);
@@ -126,6 +129,13 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
               </div>}
               {remote.localAddress && <p className="remote-transport-message">Discovery: {remote.localAddress}. A paired phone that switches to it once keeps working when the PC IP changes.</p>}
               {remote.localAddress && <p className="remote-transport-message">Works on iPhone. Android browsers can't open .local addresses.</p>}
+            </> : remote.lanFirewallNeeded ? <>
+              <p className="remote-transport-message">Phones on this Private network need Windows Firewall to let Swapper in. Windows will ask once, for Swapper.</p>
+              <div className="remote-address">
+                <Button variant="outline" disabled={allowing} onClick={() => { setAllowing(true); void onAllowFirewall().finally(() => setAllowing(false)); }}>
+                  {allowing && <LoaderCircle className="spin" size={15} />} Allow on private networks
+                </Button>
+              </div>
             </> : <>
               <p className="remote-transport-message">{remote.lanMessage ?? "LAN needs an active Ethernet or Wi-Fi network."}</p>
               <div className="remote-network-help">

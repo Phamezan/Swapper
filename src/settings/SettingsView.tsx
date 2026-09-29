@@ -35,6 +35,7 @@ type Props = {
   onAutoApplyChange: (enabled: boolean) => void;
   onApplySpellsChange: (enabled: boolean) => void;
   onImportItemsChange: (enabled: boolean) => void;
+  onAllowLanFirewall: () => Promise<void>;
   onRuneTierChange: (tier: string) => void;
   remoteTransport: "lan" | "tailscale";
   onRemoteTransportChange: (transport: "lan" | "tailscale") => void;
@@ -137,6 +138,7 @@ export function SettingsView(props: Props) {
           transport={props.remoteTransport}
           onTransportChange={props.onRemoteTransportChange}
           onToggle={props.onRemoteToggle}
+          onAllowFirewall={props.onAllowLanFirewall}
           qrRequest={props.qrRequest}
           onError={props.onError}
         />}

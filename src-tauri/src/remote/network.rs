@@ -1,7 +1,5 @@
 use std::net::Ipv4Addr;
-use std::process::Command;
 
-use base64::Engine;
 use windows_sys::Win32::Foundation::ERROR_BUFFER_OVERFLOW;
 use windows_sys::Win32::NetworkManagement::IpHelper::{
     GetAdaptersAddresses, GAA_FLAG_INCLUDE_GATEWAYS, GAA_FLAG_SKIP_ANYCAST,
@@ -18,7 +16,8 @@ const VIRTUAL_ADAPTER_MARKERS: [&str; 10] = [
 pub struct LanInterface {
     pub address: Ipv4Addr,
     pub name: String,
-    pub index: u32,
+    /// The adapter's `{GUID}` name, which the Network List Manager uses.
+    pub adapter_id: String,
     pub is_wifi: bool,
     metric: u32,
 }
@@ -86,7 +85,7 @@ pub fn default_interface() -> Result<Option<LanInterface>, String> {
                                 candidates.push(LanInterface {
                                     address,
                                     name: name.clone(),
-                                    index: current.Anonymous1.Anonymous.IfIndex,
+                                    adapter_id: ansi_string(current.AdapterName),
                                     is_wifi: current.IfType == IF_TYPE_IEEE80211,
                                     metric: current.Ipv4Metric,
                                 });
@@ -214,79 +213,224 @@ mod tests {
     }
 }
 
-pub fn is_private_profile(interface_index: u32) -> Result<bool, String> {
-    let output = Command::new("powershell.exe")
-        .args([
-            "-NoProfile",
-            "-NonInteractive",
-            "-Command",
-            &format!(
-                "(Get-NetConnectionProfile -InterfaceIndex {interface_index} -ErrorAction Stop).NetworkCategory"
-            ),
-        ])
-        .output()
-        .map_err(|error| format!("Could not check the Windows network profile: {error}"))?;
-    if !output.status.success() {
-        return Err("Could not check the Windows network profile for the active interface.".into());
+/// Whether Windows files the network behind this adapter as **Private**.
+/// Asks the Network List Manager directly, so no process or window is started.
+pub fn is_private_profile(adapter_id: &str) -> Result<bool, String> {
+    let adapter_id = adapter_id
+        .trim_matches(|c| c == '{' || c == '}')
+        .to_ascii_uppercase();
+    com::run(move || unsafe {
+        use windows::Win32::Networking::NetworkListManager::{
+            INetworkConnection, INetworkListManager, NetworkListManager,
+            NLM_NETWORK_CATEGORY_PRIVATE,
+        };
+        use windows::Win32::System::Com::{CoCreateInstance, CLSCTX_ALL};
+        let fail = |error: windows::core::Error| {
+            format!("Could not check the Windows network profile ({error}).")
+        };
+        let manager: INetworkListManager =
+            CoCreateInstance(&NetworkListManager, None, CLSCTX_ALL).map_err(fail)?;
+        let connections = manager.GetNetworkConnections().map_err(fail)?;
+        loop {
+            let mut item: [Option<INetworkConnection>; 1] = [None];
+            let mut fetched = 0u32;
+            if connections.Next(&mut item, Some(&mut fetched)).is_err() || fetched == 0 {
+                return Ok(false);
+            }
+            let Some(connection) = item[0].take() else {
+                return Ok(false);
+            };
+            let Ok(id) = connection.GetAdapterId() else {
+                continue;
+            };
+            if format!("{id:?}").to_ascii_uppercase() != adapter_id {
+                continue;
+            }
+            let category = connection
+                .GetNetwork()
+                .and_then(|network| network.GetCategory())
+                .map_err(fail)?;
+            return Ok(category == NLM_NETWORK_CATEGORY_PRIVATE);
+        }
+    })
+}
+
+/// How long a Private/Public answer is reused for the same adapter. Asking
+/// Windows costs ~100 ms of CPU, too much for the 30-second maintenance loop;
+/// a new adapter or address is always asked immediately.
+const PROFILE_REUSE: std::time::Duration = std::time::Duration::from_secs(5 * 60);
+
+/// [`is_private_profile`], reusing a recent answer for the same adapter.
+pub fn is_private_profile_cached(adapter_id: &str) -> Result<bool, String> {
+    use std::sync::Mutex;
+    use std::time::Instant;
+    static LAST: Mutex<Option<(String, bool, Instant)>> = Mutex::new(None);
+    if let Some((id, private, at)) = LAST.lock().ok().and_then(|last| last.clone()) {
+        if id == adapter_id && at.elapsed() < PROFILE_REUSE {
+            return Ok(private);
+        }
     }
-    Ok(String::from_utf8_lossy(&output.stdout).trim().eq_ignore_ascii_case("Private"))
+    let private = is_private_profile(adapter_id)?;
+    if let Ok(mut last) = LAST.lock() {
+        *last = Some((adapter_id.to_string(), private, Instant::now()));
+    }
+    Ok(private)
 }
 
-const FIREWALL_RULE: &str = "Swapper LAN Remote Control";
+/// Command-line argument that makes an elevated Swapper add its firewall rule
+/// and exit, so the Windows prompt names Swapper rather than a shell.
+pub const ALLOW_FIREWALL_ARG: &str = "--allow-lan-firewall";
 
-fn current_exe_for_powershell() -> Result<String, String> {
-    let executable = std::env::current_exe()
-        .map_err(|error| format!("Could not locate Swapper for the firewall rule: {error}"))?;
-    Ok(executable.to_string_lossy().replace('\'', "''"))
+/// One Private-profile rule per Swapper executable, so a dev build and an
+/// installed build do not replace each other's rule.
+fn firewall_rule_name(executable: &str) -> String {
+    format!("Swapper LAN Remote Control ({executable})")
 }
 
-/// PowerShell that exits 0 when a Swapper rule already allows this executable
-/// and otherwise falls through to whatever follows it.
-fn rule_present_check(executable: &str) -> String {
-    format!(
-        "$programs=Get-NetFirewallRule -DisplayName '{FIREWALL_RULE}' -ErrorAction SilentlyContinue | Get-NetFirewallApplicationFilter | ForEach-Object Program; if ($programs -contains '{executable}') {{ exit 0 }}"
-    )
+fn current_executable() -> Result<String, String> {
+    std::env::current_exe()
+        .map(|path| path.to_string_lossy().into_owned())
+        .map_err(|error| format!("Could not locate Swapper for the firewall rule: {error}"))
 }
 
-/// Whether Windows Firewall already allows this Swapper executable on Private
-/// networks. Querying needs no elevation, so Swapper can explain the prompt
-/// before asking for it.
+/// Whether Windows Firewall already allows this Swapper executable inbound on
+/// Private networks. Reading rules needs no elevation and opens no window.
 pub fn private_app_allowed() -> bool {
-    let Ok(executable) = current_exe_for_powershell() else {
+    let Ok(executable) = current_executable() else {
         return false;
     };
-    Command::new("powershell.exe")
-        .args(["-NoProfile", "-NonInteractive", "-WindowStyle", "Hidden", "-Command", &format!("{}; exit 1", rule_present_check(&executable))])
-        .output()
-        .is_ok_and(|output| output.status.success())
+    com::run(move || unsafe {
+        use windows::core::BSTR;
+        use windows::Win32::NetworkManagement::WindowsFirewall::{
+            INetFwPolicy2, NetFwPolicy2, NET_FW_ACTION_ALLOW, NET_FW_PROFILE2_PRIVATE,
+            NET_FW_RULE_DIR_IN,
+        };
+        use windows::Win32::System::Com::{CoCreateInstance, CLSCTX_ALL};
+        let Ok(policy) = CoCreateInstance::<_, INetFwPolicy2>(&NetFwPolicy2, None, CLSCTX_ALL)
+        else {
+            return false;
+        };
+        let Ok(rule) = policy
+            .Rules()
+            .and_then(|rules| rules.Item(&BSTR::from(firewall_rule_name(&executable))))
+        else {
+            return false;
+        };
+        rule.Enabled().is_ok_and(|on| on.as_bool())
+            && rule.Direction().ok() == Some(NET_FW_RULE_DIR_IN)
+            && rule.Action().ok() == Some(NET_FW_ACTION_ALLOW)
+            && rule
+                .Profiles()
+                .is_ok_and(|profiles| profiles & NET_FW_PROFILE2_PRIVATE.0 != 0)
+            && rule
+                .ApplicationName()
+                .is_ok_and(|name| name.to_string().eq_ignore_ascii_case(&executable))
+    })
 }
 
-/// Adds a Private-profile-only rule for this Swapper executable once. Windows
-/// asks for elevation when the rule is installed; denying it leaves LAN closed.
-/// Rules for other Swapper executables (an installed build next to a dev
-/// build) are kept, so switching between them does not prompt every time;
-/// rules whose executable no longer exists are removed.
-pub fn allow_private_app() -> Result<(), String> {
-    let executable = current_exe_for_powershell()?;
-    let elevated = format!(
-        "Get-NetFirewallRule -DisplayName '{FIREWALL_RULE}' -ErrorAction SilentlyContinue | ForEach-Object {{ $program=($_ | Get-NetFirewallApplicationFilter).Program; if (-not (Test-Path -LiteralPath $program)) {{ $_ | Remove-NetFirewallRule }} }}; New-NetFirewallRule -DisplayName '{FIREWALL_RULE}' -Program '{executable}' -Direction Inbound -Action Allow -Protocol TCP -Profile Private | Out-Null"
-    );
-    let encoded = base64::engine::general_purpose::STANDARD.encode(
-        elevated.encode_utf16().flat_map(u16::to_le_bytes).collect::<Vec<_>>(),
-    );
-    let check = rule_present_check(&executable);
-    let script = format!(
-        "{check}; try {{ $p=Start-Process -FilePath 'powershell.exe' -Verb RunAs -WindowStyle Hidden -Wait -PassThru -ArgumentList @('-NoProfile','-NonInteractive','-EncodedCommand','{encoded}'); exit $p.ExitCode }} catch {{ exit 1 }}"
-    );
-    let output = Command::new("powershell.exe")
-        .args(["-NoProfile", "-NonInteractive", "-WindowStyle", "Hidden", "-Command", &script])
-        .output()
-        .map_err(|error| format!("Could not configure Windows Firewall for LAN access: {error}"))?;
-    if output.status.success() {
+/// Adds the Private-profile rule for this executable. Only works elevated; it
+/// runs in the `--allow-lan-firewall` child that [`request_private_app_rule`]
+/// starts.
+pub fn add_private_app_rule() -> Result<(), String> {
+    let executable = current_executable()?;
+    com::run(move || unsafe {
+        use windows::core::BSTR;
+        use windows::Win32::Foundation::VARIANT_TRUE;
+        use windows::Win32::NetworkManagement::WindowsFirewall::{
+            INetFwPolicy2, INetFwRule, NetFwPolicy2, NetFwRule, NET_FW_ACTION_ALLOW,
+            NET_FW_IP_PROTOCOL_TCP, NET_FW_PROFILE2_PRIVATE, NET_FW_RULE_DIR_IN,
+        };
+        use windows::Win32::System::Com::{CoCreateInstance, CLSCTX_ALL};
+        let fail = |error: windows::core::Error| {
+            format!("Could not add the Windows Firewall rule ({error}).")
+        };
+        let policy: INetFwPolicy2 =
+            CoCreateInstance(&NetFwPolicy2, None, CLSCTX_ALL).map_err(fail)?;
+        let rules = policy.Rules().map_err(fail)?;
+        let name = BSTR::from(firewall_rule_name(&executable));
+        let _ = rules.Remove(&name);
+        let rule: INetFwRule = CoCreateInstance(&NetFwRule, None, CLSCTX_ALL).map_err(fail)?;
+        rule.SetName(&name).map_err(fail)?;
+        rule.SetDescription(&BSTR::from(
+            "Lets phones on your Private network use Swapper Remote Control.",
+        ))
+        .map_err(fail)?;
+        rule.SetGrouping(&BSTR::from("Swapper")).map_err(fail)?;
+        rule.SetApplicationName(&BSTR::from(executable.as_str()))
+            .map_err(fail)?;
+        rule.SetProtocol(NET_FW_IP_PROTOCOL_TCP.0).map_err(fail)?;
+        rule.SetDirection(NET_FW_RULE_DIR_IN).map_err(fail)?;
+        rule.SetAction(NET_FW_ACTION_ALLOW).map_err(fail)?;
+        rule.SetProfiles(NET_FW_PROFILE2_PRIVATE.0).map_err(fail)?;
+        rule.SetEnabled(VARIANT_TRUE).map_err(fail)?;
+        rules.Add(&rule).map_err(fail)
+    })
+}
+
+/// Asks Windows to run Swapper elevated just to add its firewall rule. The
+/// prompt shows Swapper's name and icon. Blocks until that child exits.
+pub fn request_private_app_rule() -> Result<(), String> {
+    use windows_sys::Win32::Foundation::{CloseHandle, GetLastError, ERROR_CANCELLED};
+    use windows_sys::Win32::System::Threading::{GetExitCodeProcess, WaitForSingleObject};
+    use windows_sys::Win32::UI::Shell::{
+        ShellExecuteExW, SEE_MASK_NOCLOSEPROCESS, SHELLEXECUTEINFOW,
+    };
+    use windows_sys::Win32::UI::WindowsAndMessaging::SW_HIDE;
+
+    let wide = |text: &str| text.encode_utf16().chain(Some(0)).collect::<Vec<u16>>();
+    let executable = wide(&current_executable()?);
+    let verb = wide("runas");
+    let arguments = wide(ALLOW_FIREWALL_ARG);
+    let mut info: SHELLEXECUTEINFOW = unsafe { std::mem::zeroed() };
+    info.cbSize = std::mem::size_of::<SHELLEXECUTEINFOW>() as u32;
+    info.fMask = SEE_MASK_NOCLOSEPROCESS;
+    info.lpVerb = verb.as_ptr();
+    info.lpFile = executable.as_ptr();
+    info.lpParameters = arguments.as_ptr();
+    info.nShow = SW_HIDE;
+    if unsafe { ShellExecuteExW(&mut info) } == 0 {
+        return Err(if unsafe { GetLastError() } == ERROR_CANCELLED {
+            "Windows Firewall permission was not given, so LAN access stays off.".into()
+        } else {
+            "Could not ask Windows for firewall permission.".into()
+        });
+    }
+    let mut code = 1u32;
+    unsafe {
+        WaitForSingleObject(info.hProcess, 60_000);
+        GetExitCodeProcess(info.hProcess, &mut code);
+        CloseHandle(info.hProcess);
+    }
+    if code == 0 {
         Ok(())
     } else {
-        Err("LAN access needs a Windows Firewall rule for Private networks. Turn Remote Control off and on, then approve the Windows prompt.".into())
+        Err("Could not add the Windows Firewall rule.".into())
     }
+}
+
+/// Runs COM work on a short-lived thread of its own, so it never depends on
+/// (or changes) how the calling thread initialized COM.
+mod com {
+    pub fn run<T: Send + 'static>(work: impl FnOnce() -> T + Send + 'static) -> T {
+        std::thread::spawn(move || unsafe {
+            use windows::Win32::System::Com::{CoInitializeEx, CoUninitialize, COINIT_MULTITHREADED};
+            let initialized = CoInitializeEx(None, COINIT_MULTITHREADED).is_ok();
+            let result = work();
+            if initialized {
+                CoUninitialize();
+            }
+            result
+        })
+        .join()
+        .expect("COM worker thread panicked")
+    }
+}
+
+unsafe fn ansi_string(value: *const u8) -> String {
+    if value.is_null() {
+        return String::new();
+    }
+    std::ffi::CStr::from_ptr(value.cast()).to_string_lossy().into_owned()
 }
 
 unsafe fn wide_string(value: *const u16) -> String {
