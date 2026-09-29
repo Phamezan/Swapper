@@ -1,30 +1,43 @@
 # Swapper
 
-Swapper is a free Windows tray app for switching between saved Riot Client sign-ins. It uses the official Riot Client for sign-in and never asks for your password. Its existing phone remote follows League's queue and champion select over your private local network or Tailscale.
+Swapper is a free Windows tray app for switching between saved Riot Client sign-ins. It uses the official Riot Client for sign-in and never asks for your password. In champion select it sets your runes, summoner spells and item build in one click, and its phone remote follows League's queue and champion select over your private local network or Tailscale.
 
 ## Download
 
-Download the Windows installer from the [latest GitHub release](https://github.com/Phamezan/Swapper/releases/latest). Exit an older Swapper from the tray before installing the update. The installer is currently unsigned, so Windows may ask you to confirm that you trust it. Swapper stores its settings and encrypted sessions under `%LOCALAPPDATA%\Swapper`; reinstalling the app does not remove them.
+Download the Windows installer from the [latest GitHub release](https://github.com/Phamezan/Swapper/releases/latest). From v0.4 on, Swapper checks for updates itself and installs them with **Update & Restart**; older versions need v0.4 installed by hand once. Exit an older Swapper from the tray before installing it. The installer is currently unsigned, so Windows may ask you to confirm that you trust it. Swapper stores its settings and encrypted sessions under `%LOCALAPPDATA%\Swapper`; reinstalling the app does not remove them.
+
+## Demo
+
+[![Swapper v0.4 demo: switching accounts, applying runes and an item build, pro builds, the rune editor, the in-game shop and the phone remote](docs/media/swapper-v0.4.jpg)](docs/media/swapper-v0.4.mp4)
+
+A 26-second tour of v0.4 ([MP4](docs/media/swapper-v0.4.mp4)). The account names are samples.
 
 ## Features
 
+**Accounts**
+
 - Save multiple Riot Client sign-ins and switch between them from the tray flyout. Swapper closes Riot and League client processes before restoring the selected session; it refuses to switch while a game is running.
 - Detect the signed-in Riot account automatically and avoid duplicate entries using Riot's account identifier. Give saved accounts optional nicknames and remove them from the tray app.
-- Start Swapper when you sign in to Windows, and pin the tray flyout open while you use it.
-- Optionally launch the selected account through the bundled [Deceive](https://github.com/molenzwiebel/Deceive) executable to use Deceive's presence behavior.
-- Use your phone over a trusted private Wi-Fi or Ethernet network, without Tailscale, to watch queue time, accept a match, prepick, ban, pick, and lock in a champion. Tailscale remains an optional transport. Champion search, role filters, and icons are supplied by the running League client.
-- During champion select, pick a recommended rune preset for your champion and role or edit every rune yourself, from the tray flyout or the phone. The role follows champion select and defaults to jungle in modes without a role. A rank filter adjusts the [op.gg](https://op.gg) recommendation bracket. Swapper can also apply the preset's summoner spells and lets you choose whether spells are applied with runes.
-- A **Pro builds** tab lists recent solo-queue games by pro players on the current champion and imports their rune pages. Presets include a six-item build for each keystone; add a preset or pro build's items to the League in-game shop as an item set.
-- Auto-applying the recommended rune preset is a setting, off by default. Page art and spell information come from the League client.
-- Show a single-use pairing QR for LAN Remote Control or a copyable link and QR through [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve). Remote Control works while Swapper and League Client are running on the PC.
+- **Repair Account** when a saved session has expired or can't be restored: sign in again in Riot Client and Swapper replaces the saved session after checking it is the same account. After each switch Swapper watches for Riot's login screen and offers the repair when it appears.
+- **Desktop shortcuts** that switch straight to one account (`swapper://switch/…` links), and an optional **global hotkey** that opens the flyout.
+- Start Swapper when you sign in to Windows, and pin the tray flyout open while you use it. Optionally launch through the bundled [Deceive](https://github.com/molenzwiebel/Deceive) executable to use Deceive's presence behavior.
 
-## Preview
+**Champion select**
 
-These illustrations use sample account names and show the tray flyout and phone layout. The phone view changes with the League client phase.
+- Pick a recommended rune preset for your champion and role, copy a pro's page from the **Pro builds** tab, or edit every rune yourself in the **Editor** — from the tray flyout or the phone. The role follows champion select; the role buttons override it. A rank filter adjusts the [op.gg](https://op.gg) recommendation bracket.
+- Presets can also set their summoner spells and, with **Import item build** on, add an item set to the League in-game shop: starter items, the full build, situational options grouped by purpose, and the ability max order in its title (for example `Swapper: Ahri · Max Q > W > E`). Swapper keeps only one of its own item sets, removes it after the game, and never touches yours.
+- Auto-applying the recommended preset when your champion locks in is a setting, off by default.
+- Windows notifications when a ready check pops and when champion select starts, each with its own toggle.
+- When op.gg, lolalytics or u.gg is slow or down, Swapper shows the last data it fetched, labelled with its age.
 
-| Windows tray flyout | Phone remote control |
-| --- | --- |
-| ![Swapper account list with account actions](docs/images/desktop-preview.svg) | ![Swapper phone remote with queue and draft controls](docs/images/phone-preview.svg) |
+**Phone remote**
+
+- Use your phone over a trusted private Wi-Fi or Ethernet network, without Tailscale, to watch queue time, accept a match, prepick, ban, pick, and lock in a champion. Tailscale remains an optional transport. Champion search, role filters, and icons come from the running League client. The phone vibrates and chimes on a ready check while the page is open.
+- Pair a phone by scanning a single-use QR code. Paired phones stay paired across restarts; rename or revoke them in **Settings → Remote**.
+
+**Diagnostics**
+
+- **Swapper Doctor** (Settings → About) checks Riot Client, League Client, the data providers, Remote Control and the installed version, and copies a sanitized report for bug reports.
 
 ## Add and switch accounts
 
@@ -36,12 +49,14 @@ Do not use Riot Client's **Sign out** between saved accounts; it can invalidate 
 
 ## Phone Remote Control over LAN
 
-1. Connect the PC and phone to the same trusted private Wi-Fi or Ethernet network. In Swapper **Settings**, turn on **Remote Control** and leave the transport on **LAN**.
-2. If Windows asks for firewall permission, approve Swapper for Private networks. Swapper only offers LAN access when Windows identifies the active network as **Private** and selects an active default-route Ethernet or Wi-Fi interface. It does not advertise an address on a Public network.
-3. Press **QR** and scan it with the phone. Pairing links work once and expire after five minutes; the phone then keeps a private session until Swapper exits, Remote Control is turned off, or **Reset LAN Access** is pressed. Reset invalidates paired phones and displays a fresh QR.
+1. Connect the PC and phone to the same trusted private Wi-Fi or Ethernet network. In Swapper **Settings → Remote**, turn on **Remote Control** and leave the transport on **LAN**.
+2. The first time, Swapper says Windows is about to ask for firewall permission; approve Swapper for Private networks. Swapper only offers LAN access when Windows identifies the active network as **Private** and selects an active default-route Ethernet or Wi-Fi interface. It does not advertise an address on a Public network.
+3. Press **QR** and scan it with the phone. Pairing links work once and expire after five minutes. The phone stays paired, also after Swapper or the PC restarts, until you revoke it in the paired devices list or press **Reset LAN Access**, which unpairs every phone and shows a fresh QR.
 4. The phone opens the existing remote page. League Client must be running for queue and champion-select controls to be available.
 
 LAN uses HTTP and is meant for trusted private networks. Do not use it on public or untrusted Wi-Fi. No router configuration, IP entry, or pairing code is needed.
+
+A paired phone is tied to the PC's local address. If that address changes (for example after a router restart), Swapper shows **Your phone needs to reconnect** with the new QR code; scan it once and remove the old entry. Swapper also advertises itself as `swapper.local`, and an iPhone can switch to that name from the phone page so it keeps working when the address changes. Android browsers can't open `.local` addresses.
 
 ## Phone Remote Control with Tailscale
 
@@ -63,7 +78,7 @@ Swapper reads the local Riot and League clients to identify a signed-in account 
 - [TcNo Account Switcher](https://github.com/TCNOco/TcNo-Acc-Switcher) inspired the account-switching flow and informed the session-path allowlist. Swapper is an independent Riot-focused implementation; TcNo is not bundled.
 - [Mimic](https://github.com/molenzwiebel/Mimic) inspired the phone-based League lobby and champion-select controls. Mimic is not bundled.
 - [LeagueAkari](https://github.com/LeagueAkari/LeagueAkari) is MIT licensed and is the reference for Swapper's op.gg client and rune-build parsing (`src-tauri/src/runes/opgg.rs`), which power the rune presets and the rune editor. LeagueAkari is not bundled. Swapper reads public [op.gg](https://op.gg) champion statistics for rune recommendations; it is not affiliated with op.gg.
-- Each preset rune page also shows the 6 items players build with that keystone, read from public [lolalytics](https://lolalytics.com) build pages (`src-tauri/src/runes/lolalytics.rs`). Swapper fetches at most one page per keystone, caches it for 30 minutes, and shows the sample size when it is small; the data is a third-party aggregate and the site is **unofficial** and can change. Swapper is not affiliated with lolalytics.
+- Each preset rune page also shows the 6 items players build with that keystone, and the imported item set's options and skill order, read from public [lolalytics](https://lolalytics.com) build pages (`src-tauri/src/runes/lolalytics.rs`). Swapper fetches at most one page per keystone, caches it for 30 minutes, and shows the sample size when it is small; the data is a third-party aggregate and the site is **unofficial** and can change. Swapper is not affiliated with lolalytics.
 - The **Pro builds** tab reads [probuildstats](https://probuildstats.com) / [u.gg](https://u.gg) (same company) through their public, **unofficial** GraphQL endpoint for pros' solo-queue games (`src-tauri/src/runes/probuilds.rs`). Swapper sends at most one request per champion per champion select, cached, with a short timeout; the endpoint is undocumented and can change or be unavailable. Swapper is not affiliated with probuildstats or u.gg. No pro images are hotlinked; only names, teams and leagues are shown as text.
 - [Deceive v1.18.0](https://github.com/molenzwiebel/Deceive/releases/tag/v1.18.0) is bundled as an **unmodified, separate executable**. Deceive is GPL-3.0 licensed; its [license](src-tauri/resources/Deceive-LICENSE.txt) and [source information](src-tauri/resources/Deceive-SOURCE.txt) ship with Swapper. Swapper does not claim authorship of Deceive.
 - [Accshift](https://github.com/klNuno/accshift) was another reference for Riot session paths; it is not bundled.
@@ -79,7 +94,7 @@ npm ci
 npm run tauri dev
 ```
 
-`npm run build` checks and bundles the frontend. `cargo test --manifest-path src-tauri/Cargo.toml --locked` runs native tests. To make a Windows installer locally, run `npm run tauri -- build`; a release also needs a manual test with Riot Client and multiple accounts.
+`npm run build` checks and bundles the frontend. See [docs/RELEASING.md](docs/RELEASING.md) for publishing a release. `cargo test --manifest-path src-tauri/Cargo.toml --locked` runs native tests. To make a Windows installer locally, run `npm run tauri -- build`; a release also needs a manual test with Riot Client and multiple accounts.
 
 During `npm run tauri dev`, the phone page is proxied to the Vite dev server instead of being served from the bundled `dist/` assets, so it stays in step with the desktop UI on every reload. Release builds serve the bundled assets as usual.
 
