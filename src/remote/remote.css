@@ -125,6 +125,18 @@ button { -webkit-tap-highlight-color: transparent; }
   line-height: 1.45;
 }
 
+.remote-offline-help {
+  flex: none;
+  margin: 10px 14px 0;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--line-subtle));
+  border-radius: 9px;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--danger) 6%, var(--surface-panel));
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .remote-handoff {
   flex: none;
   margin: 10px 14px 0;

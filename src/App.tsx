@@ -72,6 +72,10 @@ export type RemoteStatus = {
   localAddress: string | null;
   leagueRunning: boolean;
   lcuConnected: boolean;
+  lanReconnectNeeded: boolean;
+  lanReconnectOldAddress: string | null;
+  lanReconnectNewAddress: string | null;
+  lanReconnectSince: number | null;
 };
 export type AppState = {
   accounts: Account[];
@@ -105,6 +109,8 @@ const emptyRemote: RemoteStatus = {
   lanAddress: null, lanMessage: null, message: null,
   tailscaleInstalled: false, tailscaleRunning: false, dnsName: null, localAddress: null,
   leagueRunning: false, lcuConnected: false,
+  lanReconnectNeeded: false, lanReconnectOldAddress: null, lanReconnectNewAddress: null,
+  lanReconnectSince: null,
 };
 
 const empty: AppState = {
@@ -162,6 +168,9 @@ function App() {
   const previousActiveId = useRef<string | null>(null);
   const [remoteTransport, setRemoteTransport] = useState<"lan" | "tailscale">("lan");
   const [settingsTab, setSettingsTab] = useState<SettingsTab>("general");
+  // Bumped to ask the Remote tab to open its QR panel, e.g. from the reconnect
+  // banner's Show QR button.
+  const [remoteQrRequest, setRemoteQrRequest] = useState(0);
   const [startOnStartup, setStartOnStartup] = useState(false);
   const [pathMode, setPathMode] = useState<"auto" | "manual" | null>(null);
   const [runes, setRunes] = useState<RunesView | null>(null);
@@ -220,6 +229,9 @@ function App() {
         showError(payload.mismatch
           ? `Riot Client signed in to a different account than ${payload.name}. Use Repair Account to fix it.`
           : `The saved session for ${payload.name} has expired. Use Repair Account to sign in again.`);
+      }),
+      listen("lan_reconnect_changed", () => {
+        invoke<AppState>("get_state").then(sync).catch(() => {});
       }),
     ]);
     return () => {
@@ -511,6 +523,22 @@ function App() {
     }
   }
 
+  // Jumps to Settings → Remote and asks the QR panel to open, for re-pairing a
+  // phone after the PC's LAN address changed.
+  const showRemoteQr = () => {
+    setRemoteTransport("lan");
+    setSettingsTab("remote");
+    setRemoteQrRequest((request) => request + 1);
+    navigate("settings");
+  };
+
+  const dismissReconnect = () => {
+    if (!native) return;
+    invoke("dismiss_lan_reconnect")
+      .then(() => invoke<AppState>("get_state").then(sync))
+      .catch(showError);
+  };
+
   async function setStartOnStartupSetting(enabled: boolean) {
     await action("autostart", async () => {
       if (enabled) await enableAutostart();
@@ -704,6 +732,14 @@ function App() {
               <div><p className="eyebrow">{data.accounts.length === 0 ? "GET STARTED" : "READY TO PLAY"}</p><h1>Your accounts</h1></div>
               <button className="icon-button" aria-label="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings2 size={19} /></button>
             </div>
+            {data.remote.lanReconnectNeeded && (
+              <div className="reconnect-banner" role="status">
+                <CircleAlert size={16} />
+                <span>Your phone needs to reconnect — your PC's network address changed.</span>
+                <button type="button" className="reconnect-banner-action" onClick={showRemoteQr}>Show QR</button>
+                <button type="button" className="reconnect-dismiss" aria-label="Dismiss reconnect notice" onClick={dismissReconnect}><X size={14} /></button>
+              </div>
+            )}
             <UpdateBanner onOpenSettings={() => navigate("settings")} />
             {visibleDetectedPrompt && (
               <section className="detected-prompt">
@@ -906,6 +942,7 @@ function App() {
               remoteTransport={remoteTransport}
               onRemoteTransportChange={setRemoteTransport}
               onRemoteToggle={(enabled) => void setRemote(enabled)}
+              qrRequest={remoteQrRequest}
               onError={showError}
             />}
           </>

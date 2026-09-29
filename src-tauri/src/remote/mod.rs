@@ -58,6 +58,16 @@ pub struct RemoteStatus {
     pub local_address: Option<String>,
     pub league_running: bool,
     pub lcu_connected: bool,
+    /// Set while paired phones must scan the QR again because the PC's LAN
+    /// address changed. Never set on startup or while LAN is simply off.
+    pub lan_reconnect_needed: bool,
+    /// Private LAN address the phone paired against, before the change.
+    pub lan_reconnect_old_address: Option<String>,
+    /// Private LAN address the PC serves now. Phones must re-pair to it.
+    pub lan_reconnect_new_address: Option<String>,
+    /// Unix time of the change. Devices not seen since then are "old" and can
+    /// be removed in one action.
+    pub lan_reconnect_since: Option<u64>,
 }
 
 impl RemoteStatus {
@@ -76,6 +86,10 @@ impl RemoteStatus {
             local_address: None,
             league_running: false,
             lcu_connected: false,
+            lan_reconnect_needed: false,
+            lan_reconnect_old_address: None,
+            lan_reconnect_new_address: None,
+            lan_reconnect_since: None,
         }
     }
 }
@@ -317,6 +331,28 @@ fn apply_rename(devices: &mut [PairedLanDevice], id: &str, name: &str) -> Result
     Ok(name)
 }
 
+/// The address change that makes paired phones need to scan the QR again, if
+/// any. Only a private-to-different-private move counts: startup (`None` to an
+/// address), LAN turning on or off (`None` on either side), and an unchanged
+/// address all return `None`.
+fn lan_reconnect_change(
+    previous: Option<std::net::Ipv4Addr>,
+    next: Option<std::net::Ipv4Addr>,
+) -> Option<(std::net::Ipv4Addr, std::net::Ipv4Addr)> {
+    let (previous, next) = (previous?, next?);
+    if previous == next || !previous.is_private() || !next.is_private() {
+        return None;
+    }
+    Some((previous, next))
+}
+
+/// Drops devices last seen before `since`, returning how many were removed.
+fn apply_remove_stale(devices: &mut Vec<PairedLanDevice>, since: u64) -> usize {
+    let before = devices.len();
+    devices.retain(|device| device.last_seen >= since);
+    before - devices.len()
+}
+
 /// Constant-time comparison of two credentials so a paired device's secret
 /// cannot be discovered by timing. The length check only reveals the length,
 /// which the store already fixes at 32 hex characters.
@@ -487,6 +523,8 @@ impl RemoteCore {
         // Let the desktop notice the new device without waiting for a refresh.
         let _ = self.app.emit("lan_device_paired", view);
         let _ = self.app.emit("lan_devices_changed", ());
+        // A phone paired again, so the "reconnect" call to action is done.
+        self.clear_lan_reconnect_after_pair();
         Ok(Some(credential))
     }
 
@@ -528,6 +566,83 @@ impl RemoteCore {
         drop(access);
         let _ = self.app.emit("lan_devices_changed", ());
         Ok(stored)
+    }
+
+    /// Removes paired devices last seen before `since`, so one action can clear
+    /// the phones that still hold a cookie for the old LAN address.
+    pub(crate) fn remove_stale_lan_devices(&self) -> Result<usize, String> {
+        let Some(since) = self.status().lan_reconnect_since else {
+            return Ok(0);
+        };
+        let mut access = lock(&self.lan_access);
+        ensure_lan_storage(&access)?;
+        let mut next = access.devices.clone();
+        let removed = apply_remove_stale(&mut next, since);
+        if removed == 0 {
+            return Ok(0);
+        }
+        save_paired_devices_at(&paired_devices_path()?, &next)?;
+        access.devices = next;
+        access.last_seen_saved_at = Instant::now();
+        drop(access);
+        let _ = self.app.emit("lan_devices_changed", ());
+        Ok(removed)
+    }
+
+    /// Clears the reconnect flag once a phone pairs again. The address-change
+    /// time is kept so the paired devices list can still offer to remove the
+    /// phones that never came back.
+    fn clear_lan_reconnect_after_pair(&self) {
+        if !self.status().lan_reconnect_needed {
+            return;
+        }
+        self.apply(|status| {
+            status.lan_reconnect_needed = false;
+            status.lan_reconnect_old_address = None;
+            status.lan_reconnect_new_address = None;
+        });
+        let _ = self.app.emit("lan_reconnect_changed", ());
+        crate::refresh_tray_tooltip(&self.app);
+    }
+
+    /// Hides the reconnect banner and forgets the change time, at the user's
+    /// request. Any still-paired old devices stay paired.
+    pub(crate) fn dismiss_lan_reconnect(&self) {
+        self.apply(|status| {
+            status.lan_reconnect_needed = false;
+            status.lan_reconnect_old_address = None;
+            status.lan_reconnect_new_address = None;
+            status.lan_reconnect_since = None;
+        });
+        let _ = self.app.emit("lan_reconnect_changed", ());
+        crate::refresh_tray_tooltip(&self.app);
+    }
+
+    /// Records that the LAN address changed while phones were paired, and tells
+    /// the desktop (toast, tray, flyout) once per change.
+    fn record_lan_reconnect(&self, previous: std::net::Ipv4Addr, next: std::net::Ipv4Addr) {
+        if lock(&self.lan_access).devices.is_empty() {
+            return;
+        }
+        let next_text = next.to_string();
+        let changed = {
+            let inner = lock(&self.inner);
+            !inner.status.lan_reconnect_needed
+                || inner.status.lan_reconnect_new_address.as_deref() != Some(next_text.as_str())
+        };
+        if !changed {
+            return;
+        }
+        let since = unix_timestamp();
+        self.apply(|status| {
+            status.lan_reconnect_needed = true;
+            status.lan_reconnect_old_address = Some(previous.to_string());
+            status.lan_reconnect_new_address = Some(next_text);
+            status.lan_reconnect_since = Some(since);
+        });
+        let _ = self.app.emit("lan_reconnect_changed", ());
+        crate::notify::lan_reconnect_needed(&self.app);
+        crate::refresh_tray_tooltip(&self.app);
     }
 
     pub(crate) fn has_lan_session(&self, session: &str) -> bool {
@@ -611,6 +726,8 @@ impl RemoteCore {
         access.last_seen_saved_at = Instant::now();
         drop(access);
         let _ = self.app.emit("lan_devices_changed", ());
+        // LAN access is reset from scratch, so no phone is waiting to re-pair.
+        self.dismiss_lan_reconnect();
         result
     }
 
@@ -646,6 +763,7 @@ impl RemoteCore {
         if !enabled {
             self.clear_lan_pairing_token();
             self.apply_disabled();
+            crate::refresh_tray_tooltip(&self.app);
             self.remove_owned_route();
             self.stop_service();
             self.probe_tailscale_without_remote();
@@ -1213,9 +1331,10 @@ fn maintain(weak: Weak<RemoteCore>) {
         // re-advertises the new address, or withdraws entirely when LAN stops.
         // The probe runs outside the service lock, which must stay cheap.
         let desired_lan = desired_lan_address();
-        let lan_changed = lock(&core.service)
+        let previous_lan = lock(&core.service)
             .as_ref()
-            .is_some_and(|service| service.lan_target != desired_lan);
+            .map(|service| service.lan_target);
+        let lan_changed = previous_lan.is_some_and(|target| target != desired_lan);
         let unhealthy = crashed
             || lan_changed
             || matches!(
@@ -1227,6 +1346,11 @@ fn maintain(weak: Weak<RemoteCore>) {
         }
         let _ops = lock(&core.ops);
         if lan_changed {
+            // A paired phone's cookie is bound to the old address, so flag the
+            // change before the service drops the old listener.
+            if let Some((previous, next)) = lan_reconnect_change(previous_lan.flatten(), desired_lan) {
+                core.record_lan_reconnect(previous, next);
+            }
             core.stop_service();
         }
         let _ = RemoteCore::ensure_service(&core);
@@ -1378,5 +1502,46 @@ mod route_recovery_tests {
         let capped = sanitize_device_name(&"é".repeat(20));
         assert_eq!(capped.len(), 32);
         assert_eq!(capped.chars().count(), 16);
+    }
+
+    #[test]
+    fn a_private_address_change_needs_a_reconnect() {
+        let old = "192.168.1.20".parse().unwrap();
+        let new = "192.168.1.77".parse().unwrap();
+        assert_eq!(lan_reconnect_change(Some(old), Some(new)), Some((old, new)));
+    }
+
+    #[test]
+    fn startup_and_lan_toggling_do_not_need_a_reconnect() {
+        let address = "10.0.0.5".parse().unwrap();
+        // Startup, or LAN coming on from nothing.
+        assert_eq!(lan_reconnect_change(None, Some(address)), None);
+        // LAN turning off.
+        assert_eq!(lan_reconnect_change(Some(address), None), None);
+        // Nothing moved.
+        assert_eq!(lan_reconnect_change(Some(address), Some(address)), None);
+        assert_eq!(lan_reconnect_change(None, None), None);
+    }
+
+    #[test]
+    fn only_private_addresses_need_a_reconnect() {
+        let private = "192.168.4.8".parse().unwrap();
+        let public = "8.8.8.8".parse().unwrap();
+        assert_eq!(lan_reconnect_change(Some(private), Some(public)), None);
+        assert_eq!(lan_reconnect_change(Some(public), Some(private)), None);
+    }
+
+    #[test]
+    fn removing_stale_devices_keeps_recent_ones() {
+        let mut stale = device("Old phone");
+        stale.last_seen = 100;
+        let mut fresh = device("Current phone");
+        fresh.last_seen = 900;
+        let since = 500;
+        let mut devices = vec![stale, fresh];
+        assert_eq!(apply_remove_stale(&mut devices, since), 1);
+        assert_eq!(devices.len(), 1);
+        assert_eq!(devices[0].name, "Current phone");
+        assert_eq!(apply_remove_stale(&mut devices, since), 0);
     }
 }

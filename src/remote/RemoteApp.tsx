@@ -98,6 +98,9 @@ function playReadyCheckCue() {
 export default function RemoteApp() {
   const [status, setStatus] = useState<RemoteStatus | null>(null);
   const [live, setLive] = useState(false);
+  // True once the phone has reached the PC at least once, so the "can't reach"
+  // guidance only appears after a real disconnect, not during the first load.
+  const [everConnected, setEverConnected] = useState(false);
   const [game, setGame] = useState<GameSnapshot | null>(null);
   const [champions, setChampions] = useState<Champion[]>([]);
   const [catalogError, setCatalogError] = useState(false);
@@ -136,6 +139,7 @@ export default function RemoteApp() {
       socket.onopen = () => {
         if (cancelled) return;
         attempt = 0;
+        setEverConnected(true);
         setLive(true);
       };
       socket.onmessage = (event) => {
@@ -534,12 +538,12 @@ export default function RemoteApp() {
             <div className="remote-mini-status">
               <span
                 className={`remote-chip ${swapperConnected ? "is-good" : "is-bad"}`}
-                title={`Swapper ${swapperConnected ? "connected" : "offline"}`}
-                aria-label={`Swapper ${swapperConnected ? "connected" : "offline"}`}
+                title={`Swapper on your PC ${swapperConnected ? "connected" : "offline"}`}
+                aria-label={`Swapper on your PC ${swapperConnected ? "connected" : "offline"}`}
               >
                 <Network size={13} aria-hidden />
                 <i />
-                {!swapperConnected && <b>Swapper offline</b>}
+                {!swapperConnected && <b>PC offline</b>}
               </span>
               <span
                 className={`remote-chip ${status?.lcuConnected ? "is-good" : "is-bad"}`}
@@ -562,7 +566,7 @@ export default function RemoteApp() {
         </div>
         {!inChampSelect && (
           <div className="remote-status-line">
-            <span className={swapperConnected ? "is-good" : "is-bad"}><i />Swapper {swapperConnected ? "connected" : "offline"}</span>
+            <span className={swapperConnected ? "is-good" : "is-bad"}><i />PC {swapperConnected ? "connected" : "offline"}</span>
             <span className={status?.lcuConnected ? "is-good" : "is-bad"}><i />League {status?.lcuConnected ? "connected" : "offline"}</span>
           </div>
         )}
@@ -573,6 +577,9 @@ export default function RemoteApp() {
         {/* League being closed is already the status line and the hero below. */}
         {game?.message && status?.lcuConnected && <p className="remote-inline-error" role="alert">{game.message}</p>}
         {actionError && <p className="remote-inline-error" role="alert">{actionError}</p>}
+        {everConnected && !swapperConnected && (
+          <p className="remote-offline-help" role="alert">Can't reach Swapper on your PC. If your PC's network changed, open Swapper on your PC → Remote and scan the new QR code.</p>
+        )}
 
         {showHandoff && (
           <div className="remote-handoff" role="status">

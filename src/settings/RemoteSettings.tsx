@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { QRCodeSVG } from "qrcode.react";
 import { Info, LoaderCircle, QrCode, Settings2 } from "lucide-react";
@@ -13,14 +13,23 @@ type Props = {
   transport: "lan" | "tailscale";
   onTransportChange: (transport: "lan" | "tailscale") => void;
   onToggle: (enabled: boolean) => void;
+  /** Bumped by the desktop to open the QR panel, e.g. after an address change. */
+  qrRequest: number;
   onError: (reason: unknown) => void;
 };
 
-export function RemoteSettings({ remote, transport, onTransportChange, onToggle, onError }: Props) {
+export function RemoteSettings({ remote, transport, onTransportChange, onToggle, qrRequest, onError }: Props) {
   const [copied, setCopied] = useState(false);
   const [showQr, setShowQr] = useState(false);
   const [qrUrl, setQrUrl] = useState<string | null>(null);
   const [openInfo, setOpenInfo] = useState(false);
+
+  // The desktop's reconnect banner asks the LAN QR panel to open.
+  useEffect(() => {
+    if (qrRequest === 0 || showQr) return;
+    if (transport !== "lan" || !remote.lanAddress) return;
+    void toggleQr();
+  }, [qrRequest]);
 
   const changeTransport = (next: "lan" | "tailscale") => {
     setShowQr(false);
@@ -107,6 +116,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
         </div>
         {transport === "lan" ? (
           <>
+            {remote.lanReconnectNeeded && <p className="remote-reconnect-message" role="status">Your phone needs to reconnect — your PC's network address changed. Scan the new QR code below.</p>}
             <div className="setting-status"><span className={`remote-status-dot ${remote.lanAddress ? "is-good" : "is-bad"}`} />Local network · {remote.lanAddress ? "Ready" : "Unavailable"}</div>
             {remote.lanAddress ? <>
               <div className="remote-address"><Button variant="outline" className="remote-qr-toggle" aria-label={showQr ? "Hide LAN pairing QR code" : "Generate LAN pairing QR code"} aria-controls="remote-qr-panel" aria-expanded={showQr} onClick={() => void toggleQr()}><QrCode size={15} />{showQr ? "Hide QR" : "QR"}</Button><Button variant="outline" onClick={() => void resetLanAccess()}>Reset LAN Access</Button></div>
@@ -115,6 +125,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
                 <p>Scan on a phone connected to this trusted private network. Pairing links expire after five minutes.</p>
               </div>}
               {remote.localAddress && <p className="remote-transport-message">Discovery: {remote.localAddress}. A paired phone that switches to it once keeps working when the PC IP changes.</p>}
+              {remote.localAddress && <p className="remote-transport-message">Works on iPhone. Android browsers can't open .local addresses.</p>}
             </> : <>
               <p className="remote-transport-message">{remote.lanMessage ?? "LAN needs an active Ethernet or Wi-Fi network."}</p>
               <div className="remote-network-help">
@@ -144,7 +155,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
                 : remote.message ?? "Tailscale Serve could not be started."}</p>
           </>
         )}
-        <PairedDevices />
+        <PairedDevices staleSince={remote.lanReconnectSince} />
       </>}
     </>
   );

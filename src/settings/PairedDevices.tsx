@@ -31,13 +31,19 @@ function revokeMessage(reason: unknown) {
   return typeof reason === "string" ? reason : "Could not update paired devices.";
 }
 
-export function PairedDevices() {
+type Props = {
+  /** Unix time of the last LAN address change; devices unseen since are stale. */
+  staleSince?: number | null;
+};
+
+export function PairedDevices({ staleSince = null }: Props) {
   const native = isTauri();
   const [devices, setDevices] = useState<PairedDevice[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState("");
   const [pendingRevoke, setPendingRevoke] = useState<string | null>(null);
+  const [pendingRemoveStale, setPendingRemoveStale] = useState(false);
 
   useEffect(() => {
     if (!native) return;
@@ -90,6 +96,22 @@ export function PairedDevices() {
       setError(revokeMessage(reason));
     }
   }
+
+  async function removeStale() {
+    setPendingRemoveStale(false);
+    try {
+      await invoke<number>("remove_stale_lan_devices");
+      setDevices((prev) =>
+        staleSince ? prev.filter((device) => device.lastSeen >= staleSince) : prev,
+      );
+      setError(null);
+    } catch (reason) {
+      setError(revokeMessage(reason));
+    }
+  }
+
+  // Devices that never came back after the PC's LAN address changed.
+  const stale = staleSince ? devices.filter((device) => device.lastSeen < staleSince) : [];
 
   return (
     <div className="paired-devices" aria-label="Paired devices">
@@ -146,6 +168,19 @@ export function PairedDevices() {
           </div>
         </div>
       ))}
+      {stale.length > 0 && (
+        <div className="paired-stale">
+          {pendingRemoveStale ? (
+            <>
+              <span>Remove {stale.length} device{stale.length === 1 ? "" : "s"} not seen since the address change?</span>
+              <Button variant="outline" className="paired-revoke-confirm" onClick={() => void removeStale()}>Remove</Button>
+              <button type="button" className="icon-button" aria-label="Cancel removing old devices" onClick={() => setPendingRemoveStale(false)}><X size={14} /></button>
+            </>
+          ) : (
+            <button type="button" className="paired-stale-action" onClick={() => setPendingRemoveStale(true)}>Remove old devices</button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
