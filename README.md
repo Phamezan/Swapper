@@ -8,9 +8,9 @@ Download the Windows installer from the [latest GitHub release](https://github.c
 
 ## Demo
 
-[![Swapper v0.4 demo: switching accounts, applying runes and an item build, pro builds, the rune editor, the in-game shop and the phone remote](docs/media/swapper-v0.4.jpg)](docs/media/swapper-v0.4.mp4)
+https://github.com/user-attachments/assets/0b5bcc1b-b6f0-492a-853b-2f47ef7b6417
 
-A 26-second tour of v0.4 ([MP4](docs/media/swapper-v0.4.mp4)). The account names are samples.
+A 26-second tour of v0.4 (also as an [MP4 file](docs/media/swapper-v0.4.mp4)). The account names are samples.
 
 ## Features
 
