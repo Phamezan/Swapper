@@ -220,10 +220,61 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
             let lcu = super::lcu().await?;
             super::lcu_get_bytes(&lcu, &path).await?
         }
-        None => from_cdragon(id).await?,
+        None => match from_cdragon(id).await {
+            Ok(bytes) => bytes,
+            // CommunityDragon's raw host has outages; Riot's own CDN covers them.
+            Err(_) => from_ddragon(id).await?,
+        },
     };
     super::shared().item_icons.insert(id, bytes.clone());
     Ok(bytes)
+}
+
+/// Riot's Data Dragon item icon, which needs only the id and the latest patch
+/// version. Used when CommunityDragon cannot serve the icon.
+async fn from_ddragon(id: i64) -> Result<Vec<u8>, RuneError> {
+    static VERSION: OnceLock<String> = OnceLock::new();
+    let client = reqwest::Client::builder()
+        .connect_timeout(REQUEST_TIMEOUT)
+        .timeout(REQUEST_TIMEOUT)
+        .build()
+        .map_err(|_| RuneError::unavailable("Could not create the item client."))?;
+    let version = match VERSION.get() {
+        Some(version) => version.clone(),
+        None => {
+            let versions: Vec<String> = client
+                .get("https://ddragon.leagueoflegends.com/api/versions.json")
+                .send()
+                .await
+                .map_err(|_| RuneError::unavailable("Could not load the item icon."))?
+                .json()
+                .await
+                .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
+            let latest = versions
+                .into_iter()
+                .next()
+                .ok_or_else(|| RuneError::unavailable("Could not load the item icon."))?;
+            VERSION.get_or_init(|| latest).clone()
+        }
+    };
+    let response = client
+        .get(format!(
+            "https://ddragon.leagueoflegends.com/cdn/{version}/img/item/{id}.png"
+        ))
+        .send()
+        .await
+        .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
+    if !response.status().is_success() {
+        return Err(RuneError::not_found("That item icon is unavailable."));
+    }
+    let bytes = response
+        .bytes()
+        .await
+        .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
+    if bytes.is_empty() || bytes.len() > super::MAX_ICON_BYTES {
+        return Err(RuneError::not_found("That item icon is unavailable."));
+    }
+    Ok(bytes.to_vec())
 }
 
 async fn from_cdragon(id: i64) -> Result<Vec<u8>, RuneError> {
