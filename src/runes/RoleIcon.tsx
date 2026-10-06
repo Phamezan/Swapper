@@ -40,6 +40,14 @@ const ASSET: Partial<Record<RoleKey, string>> = {
   support: "utility",
 };
 
+/** How many times a desktop icon load is attempted before giving up. The fetch
+ *  can fail transiently (the LCU does not serve the asset in-game and the CDragon
+ *  mirror is sometimes down), so a late icon beats a blank one. Failed loads are
+ *  never cached, so each retry starts a fresh request. */
+const ICON_LOAD_TRIES = 3;
+/** Wait between retries. */
+const ICON_RETRY_MS = 3_000;
+
 /** The two roles that have no client asset keep a small inline glyph. */
 const PATHS: Partial<Record<RoleKey, ReactNode>> = {
   // All: a grid of every role.
@@ -91,16 +99,25 @@ export function RoleIcon({
       return;
     }
     let live = true;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     // The desktop webview cannot reach the LCU, so the SVG comes over IPC.
-    void loadIcon(cacheKey, () =>
-      import("@tauri-apps/api/core").then(({ invoke }) => invoke<string>("role_icon", { role: asset })),
-    )
-      .then((data) => {
-        if (live) setSrc(data);
-      })
-      .catch(() => {});
+    const attempt = (triesLeft: number) => {
+      void loadIcon(cacheKey, () =>
+        import("@tauri-apps/api/core").then(({ invoke }) => invoke<string>("role_icon", { role: asset })),
+      )
+        .then((data) => {
+          if (live) setSrc(data);
+        })
+        .catch(() => {
+          if (live && triesLeft > 1) {
+            timer = setTimeout(() => attempt(triesLeft - 1), ICON_RETRY_MS);
+          }
+        });
+    };
+    attempt(ICON_LOAD_TRIES);
     return () => {
       live = false;
+      if (timer) clearTimeout(timer);
     };
   }, [asset, cacheKey, mode]);
 

@@ -8,6 +8,7 @@
 use std::sync::{Arc, OnceLock};
 use std::time::Duration;
 
+use super::asset_cache;
 use super::RuneError;
 
 const CDRAGON_BASE: &str =
@@ -63,6 +64,12 @@ pub async fn icon(tier: &str) -> Result<Vec<u8>, RuneError> {
     if let Some(bytes) = super::shared().rank_icons.get(name) {
         return Ok(bytes.clone());
     }
+    // A previous run's copy outlives the RAM cache, so an in-game client and a
+    // down mirror no longer mean a blank crest on launch.
+    if let Some(bytes) = asset_cache::read(asset_cache::Kind::Rank, name) {
+        super::shared().rank_icons.insert(name.to_string(), bytes.clone());
+        return Ok(bytes);
+    }
     let from_lcu = match super::lcu().await {
         Ok(lcu) => {
             let mut found = None;
@@ -82,6 +89,7 @@ pub async fn icon(tier: &str) -> Result<Vec<u8>, RuneError> {
         Some(bytes) => bytes,
         None => from_cdragon(name).await?,
     };
+    asset_cache::write(asset_cache::Kind::Rank, name, &bytes);
     super::shared().rank_icons.insert(name.to_string(), bytes.clone());
     Ok(bytes)
 }

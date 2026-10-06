@@ -13,6 +13,14 @@ const ASSET: Record<string, string> = {
   challenger: "challenger",
 };
 
+/** How many times a desktop icon load is attempted before giving up. The fetch
+ *  can fail transiently (the LCU does not serve the asset in-game and the CDragon
+ *  mirror is sometimes down), so a late crest beats a blank one. Failed loads are
+ *  never cached, so each retry starts a fresh request. */
+const ICON_LOAD_TRIES = 3;
+/** Wait between retries. */
+const ICON_RETRY_MS = 3_000;
+
 type Props = {
   /** The op.gg bracket slug, e.g. `emerald_plus`. */
   tier: string;
@@ -45,16 +53,25 @@ export function RankCrest({ tier, size = 22, mode = "remote", className }: Props
       return;
     }
     let live = true;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     // The desktop webview cannot reach the LCU, so the SVG comes over IPC.
-    void loadIcon(cacheKey, () =>
-      import("@tauri-apps/api/core").then(({ invoke }) => invoke<string>("rank_icon", { tier })),
-    )
-      .then((data) => {
-        if (live) setSrc(data);
-      })
-      .catch(() => {});
+    const attempt = (triesLeft: number) => {
+      void loadIcon(cacheKey, () =>
+        import("@tauri-apps/api/core").then(({ invoke }) => invoke<string>("rank_icon", { tier })),
+      )
+        .then((data) => {
+          if (live) setSrc(data);
+        })
+        .catch(() => {
+          if (live && triesLeft > 1) {
+            timer = setTimeout(() => attempt(triesLeft - 1), ICON_RETRY_MS);
+          }
+        });
+    };
+    attempt(ICON_LOAD_TRIES);
     return () => {
       live = false;
+      if (timer) clearTimeout(timer);
     };
   }, [asset, tier, cacheKey, mode]);
 

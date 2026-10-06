@@ -13,6 +13,7 @@
 //! plumbing and champion-select context they share.
 
 pub mod apply;
+mod asset_cache;
 pub mod cache;
 pub mod data;
 pub mod items;
