@@ -38,6 +38,11 @@ fn routes() -> Router<Arc<RemoteCore>> {
         .route("/api/runes", get(runes))
         .route("/api/runes/pro-builds", get(pro_builds))
         .route("/api/runes/keystone-build", get(keystone_build))
+        .route("/api/runes/matchup", get(matchup))
+        .route("/api/runes/counters", get(champion_counters))
+        .route("/api/runes/overview", get(champion_overview))
+        .route("/api/runes/tierlist", get(tier_list))
+        .route("/api/runes/champions", get(champion_list))
         .route("/api/items/import", axum::routing::post(import_item_build))
         .route("/api/runes/apply", axum::routing::post(apply_runes))
         .route(
@@ -455,6 +460,80 @@ async fn keystone_build(Query(query): Query<KeystoneBuildQuery>) -> Response {
 
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
+struct MatchupQuery {
+    champion_id: i64,
+    enemy_champion_id: i64,
+    #[serde(default)]
+    position: String,
+    #[serde(default)]
+    tier: String,
+}
+
+async fn matchup(Query(query): Query<MatchupQuery>) -> Response {
+    Json(
+        crate::runes::matchup_view(
+            query.champion_id,
+            query.enemy_champion_id,
+            &query.position,
+            &query.tier,
+        )
+        .await,
+    )
+    .into_response()
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct CountersQuery {
+    champion_id: i64,
+    #[serde(default)]
+    position: Option<String>,
+    #[serde(default)]
+    tier: String,
+}
+
+async fn champion_counters(Query(query): Query<CountersQuery>) -> Response {
+    Json(
+        crate::runes::champion_counters_view(
+            query.champion_id,
+            query.position.as_deref(),
+            &query.tier,
+        )
+        .await,
+    )
+    .into_response()
+}
+
+async fn champion_overview(Query(query): Query<CountersQuery>) -> Response {
+    Json(
+        crate::runes::champion_overview_view(
+            query.champion_id,
+            query.position.as_deref(),
+            &query.tier,
+        )
+        .await,
+    )
+    .into_response()
+}
+
+#[derive(Deserialize)]
+struct TierListQuery {
+    #[serde(default)]
+    position: String,
+    #[serde(default)]
+    tier: String,
+}
+
+async fn tier_list(Query(query): Query<TierListQuery>) -> Response {
+    Json(crate::runes::tier_list_view(&query.position, &query.tier).await).into_response()
+}
+
+async fn champion_list() -> Response {
+    Json(crate::runes::champion_list().await).into_response()
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
 struct ImportItemBuildRequest {
     champion_id: i64,
     champion_name: String,
@@ -506,6 +585,9 @@ struct ApplyRunesRequest {
     /// The role the preset was loaded for, so its item build matches.
     #[serde(default)]
     position: Option<String>,
+    /// The enemy laner of a matchup build, so its item build is imported.
+    #[serde(default)]
+    enemy_champion_id: Option<i64>,
 }
 
 async fn apply_runes(
@@ -532,11 +614,13 @@ async fn apply_runes(
         .await
     {
         Ok(applied) => {
-            if body.preset_index.is_some() && crate::runes::import_items_enabled(&core.app) {
+            let wants_items = body.preset_index.is_some() || body.enemy_champion_id.is_some();
+            if wants_items && crate::runes::import_items_enabled(&core.app) {
                 crate::runes::spawn_preset_items_import(
                     body.position,
                     crate::runes::configured_tier(&core.app),
                     keystone,
+                    body.enemy_champion_id,
                 );
             }
             if let Some(id) = applied.page_id {

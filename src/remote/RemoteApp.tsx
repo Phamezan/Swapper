@@ -3,7 +3,7 @@ import { Network, Search, Swords } from "lucide-react";
 import { BrandIcon } from "@/components/BrandIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
-import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "../runes/types";
+import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection } from "../runes/types";
 import "./remote.css";
 
 type RemoteState = "disabled" | "starting" | "notInstalled" | "disconnected" | "available" | "failed";
@@ -374,14 +374,25 @@ export default function RemoteApp() {
     }
   }
 
-  async function applyRunes(selection: Selection, presetIndex: number | null, spells: number[] | null) {
+  async function applyRunes(
+    selection: Selection,
+    presetIndex: number | null,
+    spells: number[] | null,
+    enemyChampionId?: number | null,
+  ) {
     setRunesBusy(true);
     setRunesError(null);
     try {
       const response = await fetch("/api/runes/apply", {
         method: "POST",
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
-        body: JSON.stringify({ selection, presetIndex, spells, position: runes?.position ?? null }),
+        body: JSON.stringify({
+          selection,
+          presetIndex,
+          spells,
+          position: runes?.position ?? null,
+          enemyChampionId: enemyChampionId ?? null,
+        }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
       if (!response.ok || !result.ok) setRunesError(result.message ?? "League rejected the rune page.");
@@ -473,6 +484,40 @@ export default function RemoteApp() {
     if (!response.ok) return null;
     return await response.json() as KeystoneBuildView | null;
   }
+
+  async function loadMatchup(
+    championId: number,
+    enemyChampionId: number,
+    position: string,
+    tier: string,
+  ): Promise<MatchupView | null> {
+    const params = new URLSearchParams({
+      championId: String(championId),
+      enemyChampionId: String(enemyChampionId),
+      position,
+      tier,
+    });
+    const response = await fetch(`/api/runes/matchup?${params.toString()}`, { cache: "no-store" });
+    if (!response.ok) return null;
+    return await response.json() as MatchupView | null;
+  }
+
+  async function getJson<T>(path: string, params: Record<string, string | null>): Promise<T> {
+    const query = new URLSearchParams();
+    for (const [key, value] of Object.entries(params)) if (value) query.set(key, value);
+    const response = await fetch(`${path}?${query.toString()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not load champion data.");
+    return await response.json() as T;
+  }
+
+  const championApi: ChampionApi = {
+    list: () => getJson("/api/runes/champions", {}),
+    counters: (championId, position, tier) =>
+      getJson("/api/runes/counters", { championId: String(championId), position, tier }),
+    overview: (championId, position, tier) =>
+      getJson("/api/runes/overview", { championId: String(championId), position, tier }),
+    tierList: (position, tier) => getJson("/api/runes/tierlist", { position, tier }),
+  };
 
   async function toggleAutoApply(enabled: boolean) {
     setRunesBusy(true);
@@ -637,7 +682,7 @@ export default function RemoteApp() {
                 loading={false}
                 busy={runesBusy}
                 error={runesError}
-                onApply={(selection, presetIndex, spells) => void applyRunes(selection, presetIndex, spells)}
+                onApply={(selection, presetIndex, spells, enemy) => void applyRunes(selection, presetIndex, spells, enemy)}
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
                 onToggleSpellsWithRunes={(enabled) => void toggleSpellsWithRunes(enabled)}
                 onToggleImportItems={(enabled) => void toggleImportItems(enabled)}
@@ -646,6 +691,8 @@ export default function RemoteApp() {
                 onImportItems={importItemBuild}
                 onLoadProBuilds={loadProBuilds}
                 onLoadBuild={loadKeystoneBuild}
+                onLoadMatchup={loadMatchup}
+                championApi={championApi}
                 onTierChange={(tier) => void setTier(tier)}
               />
             ) : (

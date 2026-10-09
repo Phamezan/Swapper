@@ -8,6 +8,7 @@ use std::time::{Duration, Instant};
 
 use super::cache::{self, LastGoodCache};
 use super::lolalytics;
+use super::matchup::Matchup;
 use super::opgg;
 use super::perks;
 use super::probuilds;
@@ -41,7 +42,7 @@ static KEYSTONE_FLIGHTS: OnceLock<super::Flights<String>> = OnceLock::new();
 /// warm-up and on-demand loads polite without serializing them.
 static KEYSTONE_FETCHES: OnceLock<tokio::sync::Semaphore> = OnceLock::new();
 
-fn keystone_fetches() -> &'static tokio::sync::Semaphore {
+pub(super) fn keystone_fetches() -> &'static tokio::sync::Semaphore {
     KEYSTONE_FETCHES.get_or_init(|| tokio::sync::Semaphore::new(3))
 }
 
@@ -69,7 +70,7 @@ fn rune_icon_gate(id: i64) -> std::sync::Arc<tokio::sync::Mutex<()>> {
     RUNE_ICON_FLIGHTS.get_or_init(super::Flights::new).gate(&id)
 }
 
-fn keystone_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
+pub(super) fn keystone_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
     KEYSTONE_FLIGHTS
         .get_or_init(super::Flights::new)
         .gate(&key.to_string())
@@ -79,6 +80,7 @@ fn keystone_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>> {
 /// folder. A failed fetch is served from this cache, labelled stale.
 static RUNE_LAST_GOOD: OnceLock<LastGoodCache<opgg::ChampionData>> = OnceLock::new();
 static BUILD_LAST_GOOD: OnceLock<LastGoodCache<lolalytics::KeystoneBuild>> = OnceLock::new();
+static MATCHUP_LAST_GOOD: OnceLock<LastGoodCache<Matchup>> = OnceLock::new();
 static PRO_LAST_GOOD: OnceLock<LastGoodCache<Vec<probuilds::ProMatch>>> = OnceLock::new();
 
 fn rune_last_good() -> &'static LastGoodCache<opgg::ChampionData> {
@@ -96,6 +98,17 @@ fn build_last_good() -> &'static LastGoodCache<lolalytics::KeystoneBuild> {
     BUILD_LAST_GOOD.get_or_init(|| {
         LastGoodCache::open(
             cache::cache_path(DataKind::ItemBuild),
+            lolalytics::SUCCESS_TTL,
+            LAST_GOOD_MAX_ENTRIES,
+            LAST_GOOD_MAX_BYTES,
+        )
+    })
+}
+
+fn matchup_last_good() -> &'static LastGoodCache<Matchup> {
+    MATCHUP_LAST_GOOD.get_or_init(|| {
+        LastGoodCache::open(
+            cache::cache_path(DataKind::Matchup),
             lolalytics::SUCCESS_TTL,
             LAST_GOOD_MAX_ENTRIES,
             LAST_GOOD_MAX_BYTES,
@@ -421,6 +434,85 @@ fn cached_keystone_build(
 /// nothing cached, so the card hides rather than showing an error.
 fn keystone_stale(key: &str) -> Option<Sourced<lolalytics::KeystoneBuild>> {
     build_last_good().lookup(key).map(|cached| {
+        if cached.fresh {
+            Sourced {
+                value: cached.value,
+                provider: Provider::Lolalytics,
+                stale: false,
+                fetched_at: Some(cached.fetched_at),
+            }
+        } else {
+            Sourced::stale(cached.value, Provider::Lolalytics, cached.fetched_at)
+        }
+    })
+}
+
+/// The lane matchup build for a champion against one enemy, cached for the
+/// session like [`keystone_build`]: `Ok(None)` means lolalytics had no page for
+/// that matchup, failures are negative-cached, concurrent misses share one
+/// request, and a failed fetch serves the persisted last-good matchup. The
+/// caller decides whether the sample is large enough to use.
+pub async fn matchup(
+    champion_slug: &str,
+    enemy_slug: &str,
+    champion_id: i64,
+    enemy_id: i64,
+    lane: &str,
+    tier: &str,
+) -> Result<Option<Sourced<Matchup>>, RuneError> {
+    let key = lolalytics::vs_cache_key(champion_slug, enemy_slug, lane, tier);
+    if let Some(cached) = cached_matchup(&key) {
+        return cached;
+    }
+    let gate = keystone_gate(&key);
+    let _guard = gate.lock().await;
+    if let Some(cached) = cached_matchup(&key) {
+        return cached;
+    }
+    let _permit = keystone_fetches()
+        .acquire()
+        .await
+        .expect("the keystone fetch semaphore is never closed");
+    let client = match lolalytics::LolalyticsClient::new() {
+        Ok(client) => client,
+        Err(_) => return Ok(matchup_stale(&key)),
+    };
+    match client
+        .matchup(champion_slug, enemy_slug, champion_id, enemy_id, lane, tier)
+        .await
+    {
+        Ok(Some(found)) => {
+            super::shared().matchups.store(key.clone(), found.clone());
+            matchup_last_good().store(key, found.clone());
+            Ok(Some(Sourced::fresh(found, Provider::Lolalytics)))
+        }
+        Ok(None) => {
+            super::shared().matchups.fail(key);
+            Ok(None)
+        }
+        Err(_) => {
+            super::shared().matchups.fail(key.clone());
+            Ok(matchup_stale(&key))
+        }
+    }
+}
+
+fn cached_matchup(key: &str) -> Option<Result<Option<Sourced<Matchup>>, RuneError>> {
+    match super::shared().matchups.lookup(key) {
+        lolalytics::Cached::Fresh(found) => Some(Ok(Some(Sourced {
+            value: found,
+            provider: Provider::Lolalytics,
+            stale: false,
+            fetched_at: None,
+        }))),
+        lolalytics::Cached::Unavailable => Some(Ok(matchup_stale(key))),
+        lolalytics::Cached::Miss => None,
+    }
+}
+
+/// The persisted last-good matchup for a key, marked stale.
+fn matchup_stale(key: &str) -> Option<Sourced<Matchup>> {
+    matchup_last_good().lookup(key).map(|cached| {
         if cached.fresh {
             Sourced {
                 value: cached.value,

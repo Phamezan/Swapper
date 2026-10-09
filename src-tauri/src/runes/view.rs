@@ -121,6 +121,9 @@ pub struct KeystoneBuildView {
     /// Ability max order, e.g. "QWE", when lolalytics reports one.
     #[serde(default)]
     pub skill_priority: Option<String>,
+    /// Ability order for levels 1-15, set on matchup builds only.
+    #[serde(default)]
+    pub skill_order: Option<String>,
 }
 
 /// One recorded purchase in a pro's game, for the item order.
@@ -248,6 +251,13 @@ pub struct TierOption {
 
 #[derive(Debug, Clone, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
+pub struct EnemyView {
+    pub id: i64,
+    pub name: String,
+}
+
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct RunesView {
     pub phase: String,
     pub champion_id: i64,
@@ -278,6 +288,14 @@ pub struct RunesView {
     pub tier_supported: bool,
     /// True when the active bracket had no data but a broader one did.
     pub tier_empty: bool,
+    /// The revealed enemy in the player's lane (0 when unknown), for the
+    /// matchup build.
+    pub enemy_champion_id: i64,
+    pub enemy_champion_name: String,
+    /// Every revealed enemy, for the manual opponent picker.
+    pub enemies: Vec<EnemyView>,
+    /// How many enemy slots the draft has; the unrevealed ones show as "TBD".
+    pub enemy_slots: usize,
     /// Total op.gg games behind the preset cards, for the sample-size hint.
     pub games: u64,
     /// True when the presets are the last successful op.gg result, served
@@ -320,6 +338,10 @@ impl RunesView {
             tiers: tier_options(),
             tier_supported: false,
             tier_empty: false,
+            enemy_champion_id: 0,
+            enemy_champion_name: String::new(),
+            enemies: Vec::new(),
+            enemy_slots: 0,
             games: 0,
             stale: false,
             updated_at: None,
@@ -554,6 +576,28 @@ pub async fn view(
     let tier_label = tier_options_label(&tier);
     let tier_empty = loaded.tier_empty;
     let spells = build_spells(&context, apply_with_runes).await;
+    // The auto-detected laner is only a default for the assigned lane; the
+    // picker lists every revealed enemy whatever role is being viewed.
+    let enemy_champion_id = context
+        .enemy_champion_id
+        .filter(|_| position == detected_position)
+        .unwrap_or(0);
+    let champion_names = data::champion_names().await.unwrap_or_default();
+    let enemy_champion_name = champion_names
+        .get(&enemy_champion_id)
+        .cloned()
+        .unwrap_or_default();
+    let enemies = context
+        .enemy_champion_ids
+        .iter()
+        .map(|id| EnemyView {
+            id: *id,
+            name: champion_names
+                .get(id)
+                .cloned()
+                .unwrap_or_else(|| format!("Champion {id}")),
+        })
+        .collect();
     let message = if tier_empty {
         Some(format!("Not enough games at {tier_label}."))
     } else {
@@ -583,6 +627,10 @@ pub async fn view(
         tiers: tier_options(),
         tier_supported: super::opgg::tier_supported(&mode),
         tier_empty,
+        enemy_champion_id,
+        enemy_champion_name,
+        enemies,
+        enemy_slots: context.enemy_slots,
         games,
         stale: loaded.stale,
         updated_at: loaded.fetched_at,
@@ -612,9 +660,23 @@ pub async fn preset_build_view(
     let sourced = data::keystone_build(&slug, lane, tier, keystone)
         .await
         .ok()??;
-    let build = sourced.value;
     let item_names = items::names().await;
-    Some(KeystoneBuildView {
+    Some(keystone_build_view(
+        sourced.value,
+        sourced.stale,
+        sourced.fetched_at,
+        &item_names,
+    ))
+}
+
+/// The display model for one lolalytics build.
+pub(super) fn keystone_build_view(
+    build: lolalytics::KeystoneBuild,
+    stale: bool,
+    updated_at: Option<i64>,
+    item_names: &HashMap<i64, String>,
+) -> KeystoneBuildView {
+    KeystoneBuildView {
         starters: build
             .starters
             .iter()
@@ -627,7 +689,7 @@ pub async fn preset_build_view(
                 count: stack.count,
             })
             .collect(),
-        items: item_views(&build.items, &item_names),
+        items: item_views(&build.items, item_names),
         options: build
             .options
             .iter()
@@ -649,10 +711,11 @@ pub async fn preset_build_view(
         games: build.games,
         core_games: build.core_games,
         core_win_pct: build.core_win_pct,
-        stale: sourced.stale,
-        updated_at: sourced.fetched_at,
+        stale,
+        updated_at,
         skill_priority: build.skill_priority,
-    })
+        skill_order: None,
+    }
 }
 
 // ---------------------------------------------------------------------------

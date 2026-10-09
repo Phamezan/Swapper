@@ -26,6 +26,8 @@ A 26-second tour of v0.4 (also as an [MP4 file](docs/media/swapper-v0.4.mp4)). T
 
 - Pick a recommended rune preset for your champion and role, copy a pro's page from the **Pro builds** tab, or edit every rune yourself in the **Editor** — from the tray flyout or the phone. The role follows champion select; the role buttons override it. A rank filter adjusts the [op.gg](https://op.gg) recommendation bracket.
 - Presets can also set their summoner spells and, with **Import item build** on, add an item set to the League in-game shop: starter items, the full build, situational options grouped by purpose, and the ability max order in its title (for example `Swapper: Ahri · Max Q > W > E`). Swapper keeps only one of its own item sets, removes it after the game, and never touches yours.
+- Once the enemy laner is revealed, a **vs {enemy}** option next to the generic presets offers a lane matchup build (runes, spells, items, skill order) with the matchup's win rate and sample size. Small samples fall back to the generic build, and auto-apply only uses a matchup with 500+ games.
+- The **Champion** tab works before you pick: it shows a lane tier list (tier, win/pick/ban rate, games), and for any searched champion its tier, win rate, pick and ban rates, lane rank, damage split, a read-only common build, and its toughest and easiest matchups, all from lolalytics.
 - Auto-applying the recommended preset when your champion locks in is a setting, off by default.
 - Windows notifications when a ready check pops and when champion select starts, each with its own toggle.
 - When op.gg, lolalytics or u.gg is slow or down, Swapper shows the last data it fetched, labelled with its age.

@@ -19,6 +19,14 @@ pub enum DataKind {
     RuneRecommendations,
     /// Item builds for a keystone (lolalytics).
     ItemBuild,
+    /// Lane matchup builds (lolalytics).
+    Matchup,
+    /// A champion's matchup table (lolalytics).
+    Counters,
+    /// A champion's overview page (lolalytics).
+    Overview,
+    /// A lane tier list (lolalytics).
+    TierList,
     /// Pros' solo-queue games (probuildstats/u.gg).
     ProBuilds,
 }
@@ -29,6 +37,10 @@ impl DataKind {
         match self {
             Self::RuneRecommendations => "rune-recommendations",
             Self::ItemBuild => "item-builds",
+            Self::Matchup => "matchup-builds",
+            Self::Counters => "champion-counters",
+            Self::Overview => "champion-overviews",
+            Self::TierList => "tier-lists",
             Self::ProBuilds => "pro-builds",
         }
     }
@@ -38,6 +50,10 @@ impl DataKind {
         match self {
             Self::RuneRecommendations => "Rune recommendations",
             Self::ItemBuild => "Item builds",
+            Self::Matchup => "Matchup builds",
+            Self::Counters => "Champion matchups",
+            Self::Overview => "Champion overviews",
+            Self::TierList => "Tier lists",
             Self::ProBuilds => "Pro builds",
         }
     }

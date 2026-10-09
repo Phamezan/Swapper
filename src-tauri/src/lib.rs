@@ -1043,6 +1043,61 @@ async fn get_keystone_build(
     runes::preset_build_view(champion_id, &position, &tier, keystone).await
 }
 
+/// The lane matchup build against the enemy laner, from lolalytics. `None`
+/// means there is nothing to show; a low sample comes back flagged `fallback`.
+#[tauri::command]
+async fn get_matchup(
+    champion_id: i64,
+    enemy_champion_id: i64,
+    position: String,
+    tier: String,
+) -> Option<runes::MatchupView> {
+    runes::matchup_view(champion_id, enemy_champion_id, &position, &tier).await
+}
+
+/// A champion's matchup table (who beats it, who it beats), from lolalytics.
+#[tauri::command]
+async fn get_champion_counters(
+    champion_id: i64,
+    position: Option<String>,
+    tier: String,
+) -> runes::ChampionCountersView {
+    runes::champion_counters_view(champion_id, position.as_deref(), &tier).await
+}
+
+/// A champion's tier, rates, lane rank and most common build, from lolalytics.
+#[tauri::command]
+async fn get_champion_overview(
+    champion_id: i64,
+    position: Option<String>,
+    tier: String,
+) -> runes::ChampionOverviewView {
+    runes::champion_overview_view(champion_id, position.as_deref(), &tier).await
+}
+
+/// The strongest champions for a role and rank bracket, from lolalytics.
+#[tauri::command]
+async fn get_tier_list(position: String, tier: String) -> runes::TierListView {
+    runes::tier_list_view(&position, &tier).await
+}
+
+/// Every champion, for the Champion tab search box.
+#[tauri::command]
+async fn get_champion_list() -> Vec<runes::ChampionOption> {
+    runes::champion_list().await
+}
+
+#[tauri::command]
+async fn champion_icon(id: i64) -> Result<String, String> {
+    let bytes = runes::champion_icon::icon(id)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
 #[tauri::command]
 async fn import_item_build(
     champion_id: i64,
@@ -1063,6 +1118,7 @@ async fn apply_rune_page(
     preset_index: Option<usize>,
     spells: Option<Vec<i64>>,
     position: Option<String>,
+    enemy_champion_id: Option<i64>,
 ) -> Result<runes::AppliedView, String> {
     let owned = state.rune_page_id();
     let keystone = selection.keystone;
@@ -1078,8 +1134,8 @@ async fn apply_rune_page(
     .map_err(|e| e.message().to_string())?;
     // Presets carry a recommended item build; exact pro pages import items
     // through their own button.
-    if preset_index.is_some() && state.import_items_with_runes() {
-        runes::spawn_preset_items_import(position, state.rune_tier(), keystone);
+    if (preset_index.is_some() || enemy_champion_id.is_some()) && state.import_items_with_runes() {
+        runes::spawn_preset_items_import(position, state.rune_tier(), keystone, enemy_champion_id);
     }
     if let Some(id) = applied.page_id {
         let handle = app.clone();
@@ -1364,6 +1420,12 @@ pub fn run() {
             apply_spell,
             get_pro_builds,
             get_keystone_build,
+            get_matchup,
+            get_champion_counters,
+            get_champion_overview,
+            get_tier_list,
+            get_champion_list,
+            champion_icon,
             import_item_build,
             apply_rune_page,
             updater::update_status,

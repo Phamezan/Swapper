@@ -13,6 +13,8 @@ const MAX_ITEMS: usize = 7;
 const MAX_OPTIONS: usize = 7;
 const MAX_OPTION_CANDIDATES: usize = 256;
 const MAX_TITLE_CHARS: usize = 50;
+/// The champion part of a title is clipped to this many characters.
+const MAX_CHAMPION_CHARS: usize = 28;
 /// Every item set Swapper creates starts with this, which is how it finds its
 /// own sets to replace or clean up without touching the player's.
 const TITLE_PREFIX: &str = "Swapper: ";
@@ -115,7 +117,7 @@ fn item_set_body(
     if source.is_empty() {
         return Err(RuneError::conflict("The item build has no name."));
     }
-    let champion_name = clean(champion_name, 28);
+    let champion_name = clean(champion_name, MAX_CHAMPION_CHARS);
     let champion_name = if champion_name.is_empty() {
         "Champion"
     } else {
@@ -276,6 +278,37 @@ fn preset_item_set_body(
     );
 
     item_set_body(champion_id, champion_name, source, blocks)
+}
+
+/// The champion part of a matchup set's title, "Champion vs Enemy", with each
+/// name cut to a fair share of the room the 50-character title leaves after the
+/// prefix and `label`, so the label (the skill order) is never clipped away.
+/// The generic title path does not use this.
+pub fn matchup_title_name(champion: &str, enemy: &str, label: &str) -> String {
+    // "Swapper: " + names + " · " + label, with " vs " between the two names.
+    let fixed = TITLE_PREFIX.chars().count() + 3 + clean(label, 24).chars().count() + 4;
+    let room = MAX_TITLE_CHARS
+        .saturating_sub(fixed)
+        .min(MAX_CHAMPION_CHARS - 4);
+    let champion = clean(champion, MAX_CHAMPION_CHARS);
+    let enemy = clean(enemy, MAX_CHAMPION_CHARS);
+    let (own, other) = (champion.chars().count(), enemy.chars().count());
+    // A short name leaves its unused share to the other one.
+    let half = room / 2;
+    let (own_share, other_share) = if own + other <= room {
+        (own, other)
+    } else if own <= half {
+        (own, room - own)
+    } else if other <= half {
+        (room - other, other)
+    } else {
+        (room - half, half)
+    };
+    format!(
+        "{} vs {}",
+        champion.chars().take(own_share).collect::<String>().trim_end(),
+        enemy.chars().take(other_share).collect::<String>().trim_end()
+    )
 }
 
 /// What follows the champion in an imported set's title: the ability max
@@ -475,6 +508,7 @@ mod tests {
             stale: false,
             updated_at: None,
             skill_priority: None,
+            skill_order: None,
         }
     }
 
@@ -661,5 +695,30 @@ mod tests {
         );
         assert_eq!(option_reason("Hubris"), Some("Options · Damage pivot"));
         assert_eq!(option_reason("Unknown item"), None);
+    }
+
+    fn title_for(champion: &str, enemy: &str, label: &str) -> String {
+        let name = matchup_title_name(champion, enemy, label);
+        let blocks = vec![block("Build", vec![json!({ "id": "1", "count": 1 })])];
+        item_set_body(1, &name, label, blocks).unwrap().0
+    }
+
+    #[test]
+    fn a_long_matchup_title_keeps_the_skill_label() {
+        let label = build_label(Some("QWE"));
+        let title = title_for("Nunu & Willump", "Renata Glasc", &label);
+        assert!(title.chars().count() <= MAX_TITLE_CHARS, "{title}");
+        assert!(title.ends_with("Max Q > W > E"), "{title}");
+        assert!(title.starts_with("Swapper: Nunu"), "{title}");
+        assert!(title.contains(" vs Renata"), "{title}");
+    }
+
+    #[test]
+    fn short_matchup_names_are_not_cut_and_a_short_name_lends_its_room() {
+        let label = build_label(Some("QWE"));
+        assert_eq!(title_for("Ahri", "Zed", &label), "Swapper: Ahri vs Zed · Max Q > W > E");
+        let title = title_for("Ahri", "Aurelion Sol Of The Stars", &label);
+        assert!(title.starts_with("Swapper: Ahri vs Aurelion"), "{title}");
+        assert!(title.ends_with("Max Q > W > E"), "{title}");
     }
 }

@@ -15,10 +15,17 @@
 pub mod apply;
 mod asset_cache;
 pub mod cache;
+pub mod champion_views;
+pub mod champion_icon;
+pub mod counters;
+pub mod counters_view;
 pub mod data;
 pub mod items;
 pub mod item_sets;
 pub mod lolalytics;
+pub mod matchup;
+pub mod matchup_view;
+pub mod overview;
 pub mod opgg;
 pub mod page;
 pub mod perks;
@@ -30,6 +37,7 @@ pub mod roles;
 pub mod session;
 pub mod spells;
 pub mod stats;
+pub mod tierlist;
 pub mod view;
 pub mod watch;
 
@@ -50,6 +58,11 @@ pub use data::icon;
 pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
 use provider::{DataKind, ProviderError};
+pub use champion_views::{
+    champion_overview_view, tier_list_view, ChampionOverviewView, TierListView,
+};
+pub use counters_view::{champion_counters_view, champion_list, ChampionCountersView, ChampionOption};
+pub use matchup_view::{matchup_view, MatchupView};
 pub use view::{
     preset_build_view, pro_builds_view, view, KeystoneBuildView, ProBuildsView, RunesView,
 };
@@ -243,6 +256,9 @@ impl Lcu {
     }
 }
 
+/// Idle gates are dropped when the map reaches this size.
+const GATE_PRUNE_AT: usize = 64;
+
 /// Keyed single-flight gates. Concurrent cache misses for the same key await
 /// one fetch; the winner stores the value and the waiters then find it. Callers
 /// for different keys never block each other.
@@ -259,12 +275,12 @@ impl<K: Eq + Hash + Clone> Flights<K> {
 
     /// The gate for `key`. Hold its async lock, re-check the cache, then fetch.
     pub(crate) fn gate(&self, key: &K) -> Arc<tokio::sync::Mutex<()>> {
-        self.gates
-            .lock()
-            .unwrap_or_else(|error| error.into_inner())
-            .entry(key.clone())
-            .or_default()
-            .clone()
+        let mut gates = self.gates.lock().unwrap_or_else(|error| error.into_inner());
+        // Drop gates nobody holds (only the map owns them) before the map grows.
+        if gates.len() >= GATE_PRUNE_AT && !gates.contains_key(key) {
+            gates.retain(|_, gate| Arc::strong_count(gate) > 1);
+        }
+        gates.entry(key.clone()).or_default().clone()
     }
 }
 
@@ -371,6 +387,7 @@ async fn rune_context() -> Result<RuneContext, RuneError> {
     if context.game_mode.trim().is_empty() {
         context.game_mode = default_game_mode(context.mode()).to_string();
     }
+    context.clear_enemy_without_lane();
     Ok(RuneContext {
         phase,
         context: Some(context),
@@ -486,6 +503,14 @@ struct Shared {
     pro_builds: probuilds::MatchCache,
     /// Per-keystone item builds from lolalytics, cached per filter.
     lolalytics: lolalytics::BuildCache,
+    /// Lane matchup builds from lolalytics, cached per champion/enemy/lane.
+    matchups: lolalytics::BuildCache<matchup::Matchup>,
+    /// Per-champion matchup tables from lolalytics.
+    counters: lolalytics::BuildCache<counters::Counters>,
+    /// Champion overviews and lane tier lists from lolalytics.
+    overviews: lolalytics::BuildCache<overview::Overview>,
+    tierlists: lolalytics::BuildCache<tierlist::TierList>,
+    champion_icons: HashMap<i64, Vec<u8>>,
 }
 
 fn shared() -> MutexGuard<'static, Shared> {
@@ -508,6 +533,11 @@ fn shared() -> MutexGuard<'static, Shared> {
                 applied: None,
                 pro_builds: probuilds::MatchCache::default(),
                 lolalytics: lolalytics::BuildCache::default(),
+                matchups: lolalytics::BuildCache::default(),
+                counters: lolalytics::BuildCache::default(),
+                overviews: lolalytics::BuildCache::default(),
+                tierlists: lolalytics::BuildCache::default(),
+                champion_icons: HashMap::new(),
             })
         })
         .lock()
@@ -525,6 +555,18 @@ mod tests {
         assert_eq!(region_slug("NA1"), Some("na"));
         assert_eq!(region_slug("KR"), Some("kr"));
         assert_eq!(region_slug("unknown-region"), None);
+    }
+
+    #[test]
+    fn idle_gates_are_dropped_but_held_ones_are_kept() {
+        let flights: Flights<usize> = Flights::new();
+        let held = flights.gate(&0);
+        for key in 1..(GATE_PRUNE_AT * 3) {
+            drop(flights.gate(&key));
+        }
+        let len = flights.gates.lock().unwrap().len();
+        assert!(len <= GATE_PRUNE_AT, "gates grew to {len}");
+        assert!(Arc::ptr_eq(&held, &flights.gate(&0)));
     }
 
     #[test]

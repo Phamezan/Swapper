@@ -14,6 +14,8 @@ type Props = {
   position: string;
   tier: string;
   keystone: number;
+  /** A build that is already loaded (the matchup build); skips the lookup. */
+  preloaded?: KeystoneBuildView | null;
   /** Loads the keystone's build for the current champion, role and bracket. */
   onLoad: (
     championId: number,
@@ -27,11 +29,16 @@ type Props = {
  *  lolalytics. The card renders immediately and the row fills in when the
  *  (cached, prefetched) build arrives, showing a skeleton until then. The row
  *  is hidden when there is no build; a failed lookup is simply nothing. */
-export function PresetBuild({ mode, championId, position, tier, keystone, onLoad }: Props) {
-  const [build, setBuild] = useState<KeystoneBuildView | null>(null);
-  const [loading, setLoading] = useState(true);
+export function PresetBuild({ mode, championId, position, tier, keystone, preloaded, onLoad }: Props) {
+  const [build, setBuild] = useState<KeystoneBuildView | null>(preloaded ?? null);
+  const [loading, setLoading] = useState(!preloaded);
 
   useEffect(() => {
+    if (preloaded) {
+      setBuild(preloaded);
+      setLoading(false);
+      return;
+    }
     let live = true;
     setBuild(null);
     setLoading(true);
@@ -50,7 +57,7 @@ export function PresetBuild({ mode, championId, position, tier, keystone, onLoad
     };
     // The loader is a stable wrapper; only the filter values should refetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [championId, position, tier, keystone]);
+  }, [championId, position, tier, keystone, preloaded]);
 
   if (loading && !build) {
     return (
@@ -76,6 +83,11 @@ export function PresetBuild({ mode, championId, position, tier, keystone, onLoad
         )}
         <CachedBadge stale={build.stale} updatedAt={build.updatedAt} className="preset-build-cached" />
       </span>
+      {build.skillOrder && (
+        <span className="preset-skill-order" title="Skill order, levels 1 to 15">
+          {build.skillOrder.split("").join(" ")}
+        </span>
+      )}
     </div>
   );
 }

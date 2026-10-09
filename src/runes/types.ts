@@ -90,6 +90,132 @@ export type KeystoneBuildView = {
   updatedAt: number | null;
   /** Ability max order, e.g. "QWE", when lolalytics reports one. */
   skillPriority?: string | null;
+  /** Ability order for levels 1-15; matchup builds only. */
+  skillOrder?: string | null;
+};
+
+/** Win rate and sample of one lane matchup. */
+export type MatchupStats = {
+  winPct: number;
+  avgWinPct: number;
+  /** Matchup win rate minus the champion's average. */
+  delta: number;
+  games: number;
+  patch: string;
+};
+
+/** One champion in the Champion tab search. */
+export type ChampionOption = {
+  id: number;
+  name: string;
+};
+
+/** One opposing champion in a champion's matchup table. */
+export type CounterRow = {
+  championId: number;
+  name: string;
+  /** The searched champion's win rate into this opponent. */
+  winPct: number;
+  /** `winPct` minus the opponent's overall win rate. */
+  delta: number;
+  games: number;
+  /** Under 100 games: shown greyed out, below the rest. */
+  lowSample: boolean;
+};
+
+/** One champion in a lane's tier list. */
+export type TierRow = {
+  championId: number;
+  name: string;
+  /** "S+" to "D-". */
+  tier: string;
+  winPct: number;
+  pickPct: number;
+  banPct: number;
+  games: number;
+};
+
+export type TierListView = {
+  rows: TierRow[];
+  unavailable: boolean;
+  stale: boolean;
+  updatedAt: number | null;
+};
+
+export type OverviewStats = {
+  tier: string;
+  winPct: number;
+  avgWinPct: number;
+  /** `winPct` minus the champion's average win rate. */
+  delta: number;
+  pickPct: number;
+  banPct: number;
+  games: number;
+  rank: number;
+  rankTotal: number;
+  patch: string;
+};
+
+/** Share of damage by type, in percent. */
+export type DamageSplit = {
+  physical: number;
+  magic: number;
+  trueDamage: number;
+};
+
+/** What a champion probably builds; read-only. */
+export type ChampionBuild = {
+  runes: {
+    keystone: number;
+    primaryRunes: number[];
+    secondaryRunes: number[];
+    shards: number[];
+  } | null;
+  spells: number[];
+  items: KeystoneBuildView;
+  /** Ability order for levels 1-15. */
+  skillOrder: string | null;
+};
+
+export type ChampionOverviewView = {
+  championId: number;
+  position: string;
+  stats: OverviewStats | null;
+  damage: DamageSplit | null;
+  build: ChampionBuild | null;
+  unavailable: boolean;
+};
+
+/** Everything the Champion tab loads. */
+export type ChampionApi = {
+  list: () => Promise<ChampionOption[]>;
+  counters: (championId: number, position: string | null, tier: string) => Promise<ChampionCountersView>;
+  overview: (championId: number, position: string | null, tier: string) => Promise<ChampionOverviewView>;
+  tierList: (position: string, tier: string) => Promise<TierListView>;
+};
+
+export type ChampionCountersView = {
+  championId: number;
+  championName: string;
+  /** The role the table is for ("mid", "adc"), or empty. */
+  position: string;
+  bestInto: CounterRow[];
+  beats: CounterRow[];
+  unavailable: boolean;
+  stale: boolean;
+  updatedAt: number | null;
+};
+
+/** The lane matchup against the enemy laner, from lolalytics. */
+export type MatchupView = {
+  enemyChampionId: number;
+  enemyName: string;
+  /** Null when lolalytics had no usable page for this matchup. */
+  stats: MatchupStats | null;
+  /** True when the generic build is shown: low sample or no matchup data. */
+  fallback: boolean;
+  preset: Preset | null;
+  build: KeystoneBuildView | null;
 };
 
 /** One recorded purchase in a pro's game. */
@@ -138,6 +264,13 @@ export type RunesView = {
   tiers: TierOption[];
   tierSupported: boolean;
   tierEmpty: boolean;
+  /** The revealed enemy in the player's lane; 0 when unknown. */
+  enemyChampionId: number;
+  enemyChampionName: string;
+  /** Every revealed enemy, for the opponent picker. */
+  enemies: { id: number; name: string }[];
+  /** Enemy slots in the draft; unrevealed ones show as "TBD". */
+  enemySlots: number;
   games: number;
   /** True when the presets are the last successful op.gg result. */
   stale: boolean;
@@ -224,6 +357,11 @@ export function fmtGames(play: number): string {
   if (!play) return "–";
   if (play >= 1000) return `${(play / 1000).toFixed(1)}k`;
   return String(play);
+}
+
+/** A signed one-decimal difference, e.g. "+0.7". */
+export function fmtDelta(value: number): string {
+  return `${value >= 0 ? "+" : ""}${value.toFixed(1)}`;
 }
 
 /** A short "how long ago" label for a Unix-millisecond timestamp. */

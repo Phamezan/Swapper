@@ -20,6 +20,9 @@ struct ChampionSession {
     local_player_cell_id: i64,
     #[serde(default)]
     my_team: Vec<TeamMember>,
+    /// Enemy picks appear here only once they are revealed.
+    #[serde(default)]
+    their_team: Vec<TeamMember>,
     #[serde(default)]
     actions: Vec<Vec<ChampionAction>>,
 }
@@ -105,9 +108,28 @@ pub struct ChampSelectContext {
     /// The local player's current summoner spells, `[D, F]`. `0` when unknown.
     pub spell1_id: i64,
     pub spell2_id: i64,
+    /// The revealed enemy champion in the local player's lane, if it can be
+    /// told unambiguously.
+    pub enemy_champion_id: Option<i64>,
+    /// Every revealed enemy champion, for the manual opponent picker.
+    pub enemy_champion_ids: Vec<i64>,
+    /// How many enemy slots the draft has, revealed or not.
+    pub enemy_slots: usize,
 }
 
 impl ChampSelectContext {
+    /// Drops the enemy laner in modes without lanes (ARAM, Arena), and when the
+    /// gameflow could not be read (map and queue both unknown), since the mode
+    /// cannot be told then. Called once the gameflow has set the map and queue.
+    pub fn clear_enemy_without_lane(&mut self) {
+        let unknown = self.map_id == 0 && self.queue_id == 0;
+        if unknown || mode_for(self.map_id, self.queue_id) != MODE_RANKED {
+            self.enemy_champion_id = None;
+            self.enemy_champion_ids.clear();
+            self.enemy_slots = 0;
+        }
+    }
+
     pub fn mode(&self) -> &'static str {
         mode_for(self.map_id, self.queue_id)
     }
@@ -183,6 +205,27 @@ pub fn parse_champion_summary(body: &str) -> Result<HashMap<i64, String>, RuneEr
     Ok(entries.into_iter().map(|entry| (entry.id, entry.name)).collect())
 }
 
+/// The revealed enemy in the local player's lane. With a known position the
+/// enemy must hold the same one; without positions (blind pick) a single
+/// revealed enemy is used, and anything more ambiguous gives `None`.
+fn enemy_laner(their_team: &[TeamMember], assigned: &str) -> Option<i64> {
+    let revealed: Vec<&TeamMember> = their_team
+        .iter()
+        .filter(|member| member.champion_id > 0)
+        .collect();
+    let assigned = assigned.trim();
+    if !assigned.is_empty() {
+        return revealed
+            .iter()
+            .find(|member| member.assigned_position.trim().eq_ignore_ascii_case(assigned))
+            .map(|member| member.champion_id);
+    }
+    match revealed.as_slice() {
+        [only] if only.assigned_position.trim().is_empty() => Some(only.champion_id),
+        _ => None,
+    }
+}
+
 /// Parses `/lol-champ-select/v1/session`, preferring the champion shown for the
 /// local player and reporting whether the pick is locked in.
 pub fn parse_champ_select(body: &str) -> Result<Option<ChampSelectContext>, RuneError> {
@@ -218,12 +261,21 @@ pub fn parse_champ_select(body: &str) -> Result<Option<ChampSelectContext>, Rune
         .iter()
         .flatten()
         .any(|action| action.kind == "pick");
+    let assigned_position = local
+        .map(|member| member.assigned_position.clone())
+        .unwrap_or_default();
     Ok(Some(ChampSelectContext {
         champion_id,
         champion_name: String::new(),
-        assigned_position: local
-            .map(|member| member.assigned_position.clone())
-            .unwrap_or_default(),
+        enemy_champion_id: enemy_laner(&session.their_team, &assigned_position),
+        enemy_champion_ids: session
+            .their_team
+            .iter()
+            .map(|member| member.champion_id)
+            .filter(|id| *id > 0)
+            .collect(),
+        enemy_slots: session.their_team.len(),
+        assigned_position,
         locked,
         has_pick_actions,
         map_id: 0,
@@ -404,5 +456,165 @@ mod tests {
         .unwrap();
         assert_eq!(context.spell1_id, 4);
         assert_eq!(context.spell2_id, 14);
+    }
+
+    fn enemy_of(session_json: &str) -> Option<i64> {
+        parse_champ_select(session_json)
+            .unwrap()
+            .expect("a champion is being picked")
+            .enemy_champion_id
+    }
+
+    #[test]
+    fn ranked_picks_the_enemy_with_the_same_position() {
+        let enemy = enemy_of(
+            r#"{
+                "localPlayerCellId": 2,
+                "myTeam": [{"cellId": 2, "championId": 103, "assignedPosition": "middle"}],
+                "theirTeam": [
+                    {"cellId": 5, "championId": 266, "assignedPosition": "top"},
+                    {"cellId": 7, "championId": 238, "assignedPosition": "middle"}
+                ],
+                "actions": []
+            }"#,
+        );
+        assert_eq!(enemy, Some(238));
+    }
+
+    #[test]
+    fn blind_pick_uses_the_only_revealed_enemy() {
+        let enemy = enemy_of(
+            r#"{
+                "localPlayerCellId": 0,
+                "myTeam": [{"cellId": 0, "championId": 103, "assignedPosition": ""}],
+                "theirTeam": [
+                    {"cellId": 5, "championId": 238, "assignedPosition": ""},
+                    {"cellId": 6, "championId": 0, "assignedPosition": ""}
+                ],
+                "actions": []
+            }"#,
+        );
+        assert_eq!(enemy, Some(238));
+    }
+
+    #[test]
+    fn an_unrevealed_or_ambiguous_enemy_gives_none() {
+        let session = |their: &str| {
+            format!(
+                r#"{{
+                    "localPlayerCellId": 0,
+                    "myTeam": [{{"cellId": 0, "championId": 103, "assignedPosition": ""}}],
+                    "theirTeam": [{their}],
+                    "actions": []
+                }}"#
+            )
+        };
+        assert_eq!(enemy_of(&session(r#"{"cellId": 5, "championId": 0}"#)), None);
+        assert_eq!(
+            enemy_of(&session(r#"{"cellId": 5, "championId": 238},{"cellId": 6, "championId": 266}"#)),
+            None
+        );
+        // Ranked: our lane is known but the enemy has not picked it yet.
+        let ranked = enemy_of(
+            r#"{
+                "localPlayerCellId": 0,
+                "myTeam": [{"cellId": 0, "championId": 103, "assignedPosition": "middle"}],
+                "theirTeam": [{"cellId": 5, "championId": 266, "assignedPosition": "top"}],
+                "actions": []
+            }"#,
+        );
+        assert_eq!(ranked, None);
+    }
+
+    fn context_of(their: &str, assigned: &str) -> ChampSelectContext {
+        parse_champ_select(&format!(
+            r#"{{
+                "localPlayerCellId": 0,
+                "myTeam": [{{"cellId": 0, "championId": 103, "assignedPosition": "{assigned}"}}],
+                "theirTeam": [{their}],
+                "actions": []
+            }}"#
+        ))
+        .unwrap()
+        .unwrap()
+    }
+
+    #[test]
+    fn ranked_with_empty_positions_lists_every_enemy_and_guesses_none() {
+        let context = context_of(
+            r#"{"cellId":5,"championId":81,"assignedPosition":""},
+               {"cellId":6,"championId":246,"assignedPosition":""},
+               {"cellId":7,"championId":350,"assignedPosition":""},
+               {"cellId":8,"championId":103,"assignedPosition":""},
+               {"cellId":9,"championId":58,"assignedPosition":""}"#,
+            "middle",
+        );
+        assert_eq!(context.enemy_champion_ids, vec![81, 246, 350, 103, 58]);
+        assert_eq!(context.enemy_slots, 5);
+        assert_eq!(context.enemy_champion_id, None);
+    }
+
+    #[test]
+    fn blind_pick_with_one_reveal_preselects_it() {
+        let context = context_of(
+            r#"{"cellId":5,"championId":238,"assignedPosition":""},{"cellId":6,"championId":0}"#,
+            "",
+        );
+        assert_eq!(context.enemy_champion_ids, vec![238]);
+        assert_eq!(context.enemy_champion_id, Some(238));
+    }
+
+    #[test]
+    fn unrevealed_enemies_are_left_out_of_the_list_but_keep_their_slot() {
+        let context = context_of(
+            r#"{"cellId":5,"championId":0},{"cellId":6,"championId":266},{"cellId":7,"championId":0}"#,
+            "middle",
+        );
+        assert_eq!(context.enemy_champion_ids, vec![266]);
+        assert_eq!(context.enemy_slots, 3);
+    }
+
+    #[test]
+    fn modes_without_lanes_have_no_enemy_laner() {
+        let mut context = parse_champ_select(
+            r#"{
+                "localPlayerCellId": 0,
+                "myTeam": [{"cellId": 0, "championId": 103, "assignedPosition": ""}],
+                "theirTeam": [{"cellId": 5, "championId": 238, "assignedPosition": ""}],
+                "actions": []
+            }"#,
+        )
+        .unwrap()
+        .unwrap();
+        assert_eq!(context.enemy_champion_id, Some(238));
+        for (map_id, queue_id) in [(MAP_ARAM, QUEUE_ARAM), (MAP_ARENA, QUEUE_ARENA)] {
+            let mut laneless = context.clone();
+            laneless.map_id = map_id;
+            laneless.queue_id = queue_id;
+            laneless.clear_enemy_without_lane();
+            assert_eq!(laneless.enemy_champion_id, None);
+            assert!(laneless.enemy_champion_ids.is_empty());
+        }
+        context.map_id = 11;
+        context.queue_id = 420;
+        context.clear_enemy_without_lane();
+        assert_eq!(context.enemy_champion_id, Some(238));
+
+        // An unreadable gameflow leaves map and queue at 0: the mode is unknown,
+        // so no enemy is offered rather than assuming ranked.
+        let mut unknown = parse_champ_select(
+            r#"{
+                "localPlayerCellId": 0,
+                "myTeam": [{"cellId": 0, "championId": 103, "assignedPosition": ""}],
+                "theirTeam": [{"cellId": 5, "championId": 238, "assignedPosition": ""}],
+                "actions": []
+            }"#,
+        )
+        .unwrap()
+        .unwrap();
+        unknown.clear_enemy_without_lane();
+        assert_eq!(unknown.enemy_champion_id, None);
+        assert!(unknown.enemy_champion_ids.is_empty());
+        assert_eq!(unknown.enemy_slots, 0);
     }
 }

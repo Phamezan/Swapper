@@ -6,8 +6,11 @@ use reqwest::Method;
 use serde::Deserialize;
 use serde_json::Value;
 
+use super::matchup::AUTO_APPLY_MATCHUP_GAMES;
+use super::matchup_view::matchup_view;
 use super::page::{self, PagePlan};
 use super::session;
+use super::spells;
 use super::{data, view, AppliedView, LcuPage, RuneError, RuneSelection};
 
 #[derive(Deserialize, Default)]
@@ -181,6 +184,12 @@ pub async fn apply_top(
     }
     let lcu = super::lcu().await?;
     let position = super::position_for(&lcu, &context).await;
+    if let Some(applied) =
+        apply_top_matchup(&context, position, owned_page_id, tier, apply_spells, import_items)
+            .await?
+    {
+        return Ok(Some(applied));
+    }
     let loaded = data::load_for(&lcu, &context, &catalog, tier, position).await?;
     let spells = loaded.spell_pair;
     let Some(preset) = loaded.selections.first() else {
@@ -201,6 +210,62 @@ pub async fn apply_top(
             Some(position.to_string()),
             tier.to_string(),
             preset.selection.keystone,
+            None,
+        );
+    }
+    Ok(Some(applied))
+}
+
+/// Applies the lane matchup build instead of the generic top preset, but only
+/// when the sample is large enough to trust without the player looking at it.
+/// `None` means the generic preset should be used.
+async fn apply_top_matchup(
+    context: &session::ChampSelectContext,
+    position: &str,
+    owned_page_id: Option<i64>,
+    tier: &str,
+    apply_spells: bool,
+    import_items: bool,
+) -> Result<Option<AppliedView>, RuneError> {
+    let Some(enemy_id) = context.enemy_champion_id else {
+        return Ok(None);
+    };
+    let Some(matchup) = matchup_view(context.champion_id, enemy_id, position, tier).await else {
+        return Ok(None);
+    };
+    // Never auto-apply from cached data left over after a failed fetch.
+    let trusted = !matchup.stale
+        && matchup
+            .stats
+            .as_ref()
+            .is_some_and(|stats| stats.games >= AUTO_APPLY_MATCHUP_GAMES);
+    let Some(preset) = matchup.preset.filter(|_| trusted && !matchup.fallback) else {
+        return Ok(None);
+    };
+    let selection = RuneSelection {
+        primary_page_id: preset.primary_page_id,
+        secondary_page_id: preset.secondary_page_id,
+        keystone: preset.keystone,
+        primary_runes: preset.primary_runes,
+        secondary_runes: preset.secondary_runes,
+        shards: preset.shards,
+    };
+    let applied = apply(
+        selection,
+        context.champion_id,
+        &context.champion_name,
+        None,
+        owned_page_id,
+        spells::pair_from_ids(&preset.spells),
+        apply_spells,
+    )
+    .await?;
+    if import_items {
+        spawn_preset_items_import(
+            Some(position.to_string()),
+            tier.to_string(),
+            preset.keystone,
+            Some(enemy_id),
         );
     }
     Ok(Some(applied))
@@ -244,10 +309,15 @@ pub async fn apply_selection(
 /// the champion in champion select, replacing Swapper's previous item set.
 /// `position` is the role the player picked, if any; otherwise the assigned
 /// or detected role is used.
+///
+/// With an `enemy_champion_id`, the lane matchup's build is imported (and the
+/// set is titled "Champion vs Enemy") when it has a large enough sample;
+/// otherwise the keystone's generic build is.
 pub async fn import_preset_items(
     position: Option<&str>,
     tier: &str,
     keystone: i64,
+    enemy_champion_id: Option<i64>,
 ) -> Result<(), RuneError> {
     let (_, context) = match super::rune_context().await {
         Ok(super::RuneContext { phase, context }) => (phase, context),
@@ -267,25 +337,47 @@ pub async fn import_preset_items(
         Some(position) => position,
         None => super::position_for(&super::lcu().await?, &context).await,
     };
-    let Some(build) = view::preset_build_view(context.champion_id, position, tier, keystone).await
-    else {
-        return Ok(());
+    let matchup = match validated_enemy(&context, enemy_champion_id) {
+        Some(enemy_id) => matchup_view(context.champion_id, enemy_id, position, tier).await,
+        None => None,
     };
-    super::item_sets::import_keystone_build(
-        context.champion_id,
-        &context.champion_name,
-        &super::item_sets::build_label(build.skill_priority.as_deref()),
-        &build,
-    )
-    .await
-    .map(|_| ())
+    let (build, matchup_enemy) = match matchup.and_then(|m| m.build.map(|b| (b, m.enemy_name))) {
+        Some((build, enemy_name)) => (build, Some(enemy_name)),
+        None => {
+            let Some(build) =
+                view::preset_build_view(context.champion_id, position, tier, keystone).await
+            else {
+                return Ok(());
+            };
+            (build, None)
+        }
+    };
+    let label = super::item_sets::build_label(build.skill_priority.as_deref());
+    let title_name = match &matchup_enemy {
+        Some(enemy) => super::item_sets::matchup_title_name(&context.champion_name, enemy, &label),
+        None => context.champion_name.clone(),
+    };
+    super::item_sets::import_keystone_build(context.champion_id, &title_name, &label, &build)
+        .await
+        .map(|_| ())
+}
+
+/// The requested enemy, only if it is actually revealed on the enemy team in
+/// this champion select; the id comes from the client and is not trusted.
+fn validated_enemy(context: &session::ChampSelectContext, requested: Option<i64>) -> Option<i64> {
+    requested.filter(|id| context.enemy_champion_ids.contains(id))
 }
 
 /// Starts [`import_preset_items`] in the background, so importing items never
 /// delays the rune page. A failure only means no item set this time.
-pub fn spawn_preset_items_import(position: Option<String>, tier: String, keystone: i64) {
+pub fn spawn_preset_items_import(
+    position: Option<String>,
+    tier: String,
+    keystone: i64,
+    enemy_champion_id: Option<i64>,
+) {
     tauri::async_runtime::spawn(async move {
-        let _ = import_preset_items(position.as_deref(), &tier, keystone).await;
+        let _ = import_preset_items(position.as_deref(), &tier, keystone, enemy_champion_id).await;
     });
 }
 
@@ -293,6 +385,23 @@ pub fn spawn_preset_items_import(position: Option<String>, tier: String, keyston
 mod tests {
     use super::super::page::PagePlan;
     use super::*;
+
+    #[test]
+    fn a_requested_enemy_must_be_on_the_enemy_team() {
+        let context = session::parse_champ_select(
+            r#"{
+                "localPlayerCellId": 0,
+                "myTeam": [{"cellId": 0, "championId": 103, "assignedPosition": ""}],
+                "theirTeam": [{"cellId": 5, "championId": 238}, {"cellId": 6, "championId": 0}],
+                "actions": []
+            }"#,
+        )
+        .unwrap()
+        .unwrap();
+        assert_eq!(validated_enemy(&context, Some(238)), Some(238));
+        assert_eq!(validated_enemy(&context, Some(266)), None);
+        assert_eq!(validated_enemy(&context, None), None);
+    }
 
     fn custom(id: i64) -> LcuPage {
         LcuPage {

@@ -65,6 +65,7 @@
 
 .runes-tabs {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 4px;
   padding: 3px;
@@ -73,9 +74,15 @@
   background: var(--surface-panel);
 }
 
+/* Status badges sit on their own line instead of squeezing the four tabs. */
+.runes-tabs > .runes-source, .runes-tabs > .cached-badge { flex: 1 0 100%; line-height: 20px; text-align: center; }
+
 .runes-tabs > button {
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
+  padding: 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   min-height: 32px;
   border: 0;
   border-radius: 7px;
@@ -675,6 +682,7 @@
   from { background-position: 200% 0; }
   to { background-position: -200% 0; }
 }
+.preset-skill-order { color: var(--text-muted); font-size: 10px; font-weight: 650; letter-spacing: 0.04em; white-space: nowrap; }
 .preset-build-games { margin-left: 4px; color: var(--text-muted); font-size: 10px; font-weight: 600; white-space: nowrap; }
 .item-set-import {
   display: inline-flex;
@@ -832,3 +840,273 @@
 .runes-remote .pro-order-icon { width: 26px !important; height: 26px !important; }
 .runes-remote .pro-order-name { font-size: 13px; }
 .runes-remote .pro-order-minute { font-size: 12px; }
+
+/* Lane matchup banner: Generic / vs {enemy} toggle with the matchup's stats. */
+.matchup-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 12px;
+  background: var(--surface-panel);
+}
+.matchup-stats { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.matchup-stats strong { font-size: 12px; font-weight: 700; }
+.matchup-stats small { color: var(--text-secondary); font-size: 11px; }
+.matchup-delta.is-up { color: var(--positive); }
+.matchup-delta.is-down { color: var(--danger); }
+.matchup-toggle { display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-base); }
+.matchup-toggle button {
+  flex: 1;
+  min-width: 0;
+  min-height: 28px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.matchup-toggle button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
+.matchup-toggle button.is-active { color: var(--action-text); background: var(--action-fill); }
+.matchup-toggle button:disabled { opacity: 0.45; }
+.runes-remote .matchup-toggle button { min-height: 40px; font-size: 13px; }
+.runes-remote .matchup-stats strong { font-size: 14px; }
+.runes-remote .matchup-stats small { font-size: 12px; }
+
+.matchup-picker { display: flex; flex-direction: column; gap: 6px; }
+.matchup-picker > small { color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.matchup-picker-row { display: flex; flex-wrap: wrap; gap: 4px; }
+.matchup-picker-row button, .matchup-picker-tbd {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 26px;
+}
+.matchup-picker-row button { color: var(--text-secondary); background: var(--surface-panel); }
+.matchup-picker-row button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
+.matchup-picker-row button.is-active { color: var(--action-text); background: var(--action-fill); border-color: transparent; }
+.matchup-picker-tbd { color: var(--text-muted); border-style: dashed; opacity: 0.6; }
+.matchup-loading { margin: 0; color: var(--text-muted); font-size: 11px; }
+.runes-remote .matchup-picker-row button, .runes-remote .matchup-picker-tbd { min-height: 40px; font-size: 13px; line-height: 38px; }
+
+/* Champion tab: search, lane and the two matchup lists. */
+.champion-tab { display: flex; flex-direction: column; gap: 10px; }
+.champion-search { position: relative; }
+.champion-search input {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 11px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 9px;
+  color: var(--text-primary);
+  background: var(--surface-panel);
+  font-size: 12px;
+}
+.champion-suggestions {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface-raised);
+}
+.champion-suggestions button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 32px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--text-primary);
+  background: transparent;
+  font-size: 12px;
+  text-align: left;
+}
+.champion-suggestions button:hover { background: var(--surface-hover); }
+.champion-icon, .champion-icon-fallback { flex: none; display: block; width: 24px; height: 24px; border-radius: 6px; background: var(--surface-raised); }
+.counter-detail { padding: 2px 8px; }
+.counter-strip { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.counter-strip h3 { margin: 4px 0 0; font-size: 13px; font-weight: 750; letter-spacing: -0.01em; }
+.counter-strip > p:not(.runes-note) { margin: 0 0 6px; color: var(--text-muted); font-size: 11px; }
+.counter-cards {
+  display: flex;
+  gap: 6px;
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+.counter-card, .counter-card-skeleton {
+  flex: none;
+  width: 68px;
+  scroll-snap-align: start;
+  border-radius: 10px;
+}
+.counter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px 7px;
+  border: 1px solid var(--line-subtle);
+  color: var(--text-primary);
+  background: var(--surface-panel);
+}
+.counter-card:hover { background: var(--surface-hover); }
+.counter-card[aria-expanded="true"] { border-color: var(--line-strong); }
+.counter-card .champion-icon, .counter-card .champion-icon-fallback { width: 38px; height: 38px; border-radius: 50%; }
+.counter-card-name {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line-subtle);
+  font-size: 11px;
+  font-weight: 650;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.counter-card-rate { font-size: 14px; font-weight: 750; }
+.counter-card-rate.is-loss { color: var(--danger); }
+.counter-card-rate.is-win { color: var(--positive); }
+.counter-card small { color: var(--text-muted); font-size: 9px; white-space: nowrap; }
+.counter-card.is-low { opacity: 0.45; }
+.counter-card-skeleton {
+  height: 118px;
+  background: linear-gradient(90deg, var(--surface-raised) 25%, var(--surface-hover) 50%, var(--surface-raised) 75%);
+  background-size: 200% 100%;
+  animation: preset-build-shimmer 1.2s ease-in-out infinite;
+}
+.runes-remote .champion-search input { min-height: 44px; font-size: 14px; }
+.runes-remote .counter-card { width: 78px; }
+.runes-remote .counter-card-name { font-size: 12px; }
+.runes-remote .counter-card-rate { font-size: 16px; }
+.runes-remote .counter-card small { font-size: 10px; }
+.runes-remote .champion-suggestions button { min-height: 44px; font-size: 14px; }
+
+/* Champion tab: tier list, overview header, damage bar and build summary. */
+.tier-list { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tier-list h3 { margin: 4px 0 0; font-size: 13px; font-weight: 750; letter-spacing: -0.01em; }
+.tier-list > p:not(.runes-note) { margin: 0 0 4px; color: var(--text-muted); font-size: 11px; }
+.tier-row {
+  display: grid;
+  grid-template-columns: 30px 24px minmax(0, 1fr) auto;
+  grid-template-areas: "badge icon name rate" "badge icon stats stats";
+  align-items: center;
+  column-gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 5px 8px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 9px;
+  color: var(--text-primary);
+  background: var(--surface-panel);
+  text-align: left;
+}
+.tier-row:hover { background: var(--surface-hover); }
+.tier-row > .champion-icon, .tier-row > .champion-icon-fallback { grid-area: icon; width: 24px; height: 24px; border-radius: 50%; }
+.tier-row > strong { grid-area: name; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+.tier-row > .tier-rate { grid-area: rate; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tier-row > small { grid-area: stats; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-muted); font-size: 10px; }
+/* Tier colours: warm for S, then green, blue, grey-blue and muted red. */
+.runes-panel {
+  --tier-s: #f0b45a;
+  --tier-a: #6fd29a;
+  --tier-b: #74a9ff;
+  --tier-c: #9aaec4;
+  --tier-d: #e08f8a;
+}
+.tier-text { font-weight: 800; letter-spacing: 0.01em; color: var(--text-secondary); }
+.tier-text.is-s { color: var(--tier-s); }
+.tier-text.is-a { color: var(--tier-a); }
+.tier-text.is-b { color: var(--tier-b); }
+.tier-text.is-c { color: var(--tier-c); }
+.tier-text.is-d { color: var(--tier-d); }
+.tier-row > .tier-text { grid-area: badge; width: 30px; font-size: 13px; text-align: center; }
+.overview-name .tier-text { margin-left: 4px; font-size: 13px; }
+.overview-icon .champion-icon, .overview-icon .champion-icon-fallback { width: 44px; height: 44px; border-radius: 50%; }
+.champion-filter { display: flex; }
+.tier-row-skeleton, .overview-skeleton {
+  display: block;
+  height: 40px;
+  border-radius: 9px;
+  background: linear-gradient(90deg, var(--surface-raised) 25%, var(--surface-hover) 50%, var(--surface-raised) 75%);
+  background-size: 200% 100%;
+  animation: preset-build-shimmer 1.2s ease-in-out infinite;
+}
+.overview-skeleton { height: 76px; }
+.tier-more {
+  min-height: 34px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--text-primary);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 650;
+}
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 12px;
+  background: var(--surface-panel);
+}
+.overview-head { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.overview-icon { flex: none; }
+.overview-rates { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.overview-rates strong { font-size: 15px; font-weight: 750; }
+.overview-rates strong.overview-name { font-size: 14px; }
+.overview-rates small { color: var(--text-secondary); font-size: 11px; }
+.overview-rates strong small.is-up { color: var(--positive); }
+.overview-rates strong small.is-down { color: var(--danger); }
+.damage-bar { display: flex; height: 6px; overflow: hidden; border-radius: 3px; background: var(--surface-raised); }
+.damage-bar .is-physical { background: var(--danger); }
+.damage-bar .is-magic { background: #7fa6ff; }
+.damage-bar .is-true { background: var(--text-secondary); }
+.overview-toggle {
+  align-self: flex-start;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+}
+.overview-toggle:hover { color: var(--text-primary); background: var(--surface-hover); }
+.build-summary { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.build-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.build-row .rune-icon-fallback, .build-row img, .build-row .item-icon-fallback, .build-row .spell-icon-fallback { width: 24px; height: 24px; border-radius: 6px; }
+.build-row .build-keystone { width: 30px; height: 30px; }
+.build-divider { width: 1px; height: 18px; margin: 0 2px; background: var(--line-strong); }
+.build-skills { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 0; font-size: 11px; font-weight: 650; }
+.build-skills small { color: var(--text-muted); font-size: 10px; letter-spacing: 0.04em; }
+.runes-remote .tier-row { min-height: 52px; }
+.runes-remote .tier-row > strong, .runes-remote .tier-row > .tier-rate { font-size: 14px; }
+.runes-remote .tier-row > small { font-size: 11px; }
+.runes-remote .tier-more, .runes-remote .overview-toggle { min-height: 44px; }
+.runes-remote .overview-rates small { font-size: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .counter-card-skeleton, .tier-row-skeleton, .overview-skeleton { animation: none; }
+}

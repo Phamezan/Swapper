@@ -144,6 +144,20 @@ pub fn cache_key(champion_slug: &str, lane: &str, tier: &str, keystone: i64) -> 
     format!("{champion_slug}|{lane}|{}|{keystone}", tier_slug(tier))
 }
 
+/// The matchup page: the same build page filtered to games against one enemy
+/// champion in `vslane`.
+pub fn vs_url(champion_slug: &str, enemy_slug: &str, lane: &str, tier: &str) -> String {
+    format!(
+        "{BASE_URL}/{champion_slug}/vs/{enemy_slug}/build/?lane={lane}&vslane={lane}&tier={}",
+        tier_slug(tier)
+    )
+}
+
+/// Cache key for one champion, enemy, lane and bracket.
+pub fn vs_cache_key(champion_slug: &str, enemy_slug: &str, lane: &str, tier: &str) -> String {
+    format!("{champion_slug}|vs|{enemy_slug}|{lane}|{}", tier_slug(tier))
+}
+
 // ---------------------------------------------------------------------------
 // Parsing
 // ---------------------------------------------------------------------------
@@ -157,9 +171,9 @@ pub fn parse_build(html: &str) -> Option<KeystoneBuild> {
 
 /// The compacted state inside `<script type="qwik/json">`.
 #[derive(Deserialize)]
-struct Qwik {
+pub(super) struct Qwik {
     #[serde(default)]
-    objs: Vec<Value>,
+    pub(super) objs: Vec<Value>,
 }
 
 /// Parses the structured Qwik state, preferring the "Most Common Build".
@@ -195,7 +209,7 @@ fn parse_qwik(html: &str) -> Option<KeystoneBuild> {
 }
 
 /// The JSON string inside the page's Qwik state script.
-fn qwik_json(html: &str) -> Option<&str> {
+pub(super) fn qwik_json(html: &str) -> Option<&str> {
     let marker = "qwik/json";
     let at = html.find(marker)?;
     let start = html[at..].find('{')? + at;
@@ -206,25 +220,40 @@ fn qwik_json(html: &str) -> Option<&str> {
 /// Resolves one Qwik reference value. Objects and arrays hold references to
 /// other `objs` entries as base-36 indices; leaf strings and numbers are used
 /// as-is.
-fn resolve(value: &Value, objs: &[Value], depth: u8) -> Value {
-    if depth > 40 {
+///
+/// Shared references expand once per use, so a crafted or changed page could
+/// blow up exponentially; each top-level call visits at most
+/// [`MAX_RESOLVE_NODES`] values and yields `Null` past that.
+pub(super) fn resolve(value: &Value, objs: &[Value], depth: u8) -> Value {
+    let mut budget = MAX_RESOLVE_NODES;
+    resolve_within(value, objs, depth, &mut budget)
+}
+
+/// Far above what a real page needs (a full pick summary is a few thousand).
+const MAX_RESOLVE_NODES: usize = 100_000;
+
+fn resolve_within(value: &Value, objs: &[Value], depth: u8, budget: &mut usize) -> Value {
+    if depth > 40 || *budget == 0 {
         return Value::Null;
     }
+    *budget -= 1;
     match value {
         Value::String(text) => match base36_index(text) {
-            Some(index) if index < objs.len() => resolve_entry(&objs[index], objs, depth + 1),
+            Some(index) if index < objs.len() => {
+                resolve_entry(&objs[index], objs, depth + 1, budget)
+            }
             _ => value.clone(),
         },
         Value::Array(items) => Value::Array(
             items
                 .iter()
-                .map(|item| resolve(item, objs, depth + 1))
+                .map(|item| resolve_within(item, objs, depth + 1, budget))
                 .collect(),
         ),
         Value::Object(map) => {
             let mut out = serde_json::Map::with_capacity(map.len());
             for (key, item) in map {
-                out.insert(key.clone(), resolve(item, objs, depth + 1));
+                out.insert(key.clone(), resolve_within(item, objs, depth + 1, budget));
             }
             Value::Object(out)
         }
@@ -234,11 +263,18 @@ fn resolve(value: &Value, objs: &[Value], depth: u8) -> Value {
 
 /// Resolves an `objs` entry: a leaf string is a literal, while an object or
 /// array has its values resolved.
-fn resolve_entry(entry: &Value, objs: &[Value], depth: u8) -> Value {
+fn resolve_entry(entry: &Value, objs: &[Value], depth: u8, budget: &mut usize) -> Value {
     match entry {
         Value::String(_) => entry.clone(),
-        other => resolve(other, objs, depth),
+        other => resolve_within(other, objs, depth, budget),
     }
+}
+
+/// A number lolalytics sometimes sends as a string ("51.03").
+pub(super) fn number(value: &Value) -> Option<f64> {
+    value
+        .as_f64()
+        .or_else(|| value.as_str().and_then(|text| text.trim().parse().ok()))
 }
 
 /// Items below this share of a slot's games are left out of Options, so a
@@ -479,13 +515,13 @@ fn item_candidates(items: &Value, key: &str, slot: u8) -> Vec<ItemCandidate> {
     result
 }
 
-fn as_i64(value: &Value) -> Option<i64> {
+pub(super) fn as_i64(value: &Value) -> Option<i64> {
     value
         .as_i64()
         .or_else(|| value.as_f64().map(|number| number as i64))
 }
 
-fn as_u64(value: &Value) -> Option<u64> {
+pub(super) fn as_u64(value: &Value) -> Option<u64> {
     value
         .as_u64()
         .or_else(|| value.as_f64().map(|number| number.max(0.0) as u64))
@@ -604,26 +640,38 @@ fn strip_tags(fragment: &str) -> String {
 // ---------------------------------------------------------------------------
 
 /// A cached lookup result.
-pub enum Cached {
-    Fresh(KeystoneBuild),
+pub enum Cached<T = KeystoneBuild> {
+    Fresh(T),
     Unavailable,
     Miss,
 }
 
+/// Entries kept per cache; past this the oldest are dropped, so a long
+/// session cannot grow the cache without bound.
+const MAX_CACHE_ENTRIES: usize = 256;
+
 /// Successes and failures for keystone builds, keyed by champion/lane/tier/
-/// keystone.
-#[derive(Default)]
-pub struct BuildCache {
-    success: std::collections::HashMap<String, (Instant, KeystoneBuild)>,
+/// keystone. Matchup pages use the same cache with their own value type.
+pub struct BuildCache<T = KeystoneBuild> {
+    success: std::collections::HashMap<String, (Instant, T)>,
     failures: std::collections::HashMap<String, Instant>,
 }
 
-impl BuildCache {
-    pub fn lookup(&self, key: &str) -> Cached {
+impl<T> Default for BuildCache<T> {
+    fn default() -> Self {
+        Self {
+            success: std::collections::HashMap::new(),
+            failures: std::collections::HashMap::new(),
+        }
+    }
+}
+
+impl<T: Clone> BuildCache<T> {
+    pub fn lookup(&self, key: &str) -> Cached<T> {
         self.lookup_at(key, Instant::now())
     }
 
-    pub fn lookup_at(&self, key: &str, now: Instant) -> Cached {
+    pub fn lookup_at(&self, key: &str, now: Instant) -> Cached<T> {
         if let Some((at, build)) = self.success.get(key) {
             if now.saturating_duration_since(*at) < SUCCESS_TTL {
                 return Cached::Fresh(build.clone());
@@ -637,13 +685,45 @@ impl BuildCache {
         Cached::Miss
     }
 
-    pub fn store(&mut self, key: String, build: KeystoneBuild) {
+    pub fn store(&mut self, key: String, build: T) {
         self.failures.remove(&key);
         self.success.insert(key, (Instant::now(), build));
+        self.prune(Instant::now());
     }
 
     pub fn fail(&mut self, key: String) {
         self.failures.insert(key, Instant::now());
+        self.prune(Instant::now());
+    }
+
+    /// Drops expired entries, then the oldest ones past [`MAX_CACHE_ENTRIES`].
+    fn prune(&mut self, now: Instant) {
+        self.success
+            .retain(|_, (at, _)| now.saturating_duration_since(*at) < SUCCESS_TTL);
+        self.failures
+            .retain(|_, at| now.saturating_duration_since(*at) < FAILURE_TTL);
+        while self.success.len() > MAX_CACHE_ENTRIES {
+            let Some(oldest) = self
+                .success
+                .iter()
+                .min_by_key(|(_, (at, _))| *at)
+                .map(|(key, _)| key.clone())
+            else {
+                break;
+            };
+            self.success.remove(&oldest);
+        }
+        while self.failures.len() > MAX_CACHE_ENTRIES {
+            let Some(oldest) = self
+                .failures
+                .iter()
+                .min_by_key(|(_, at)| **at)
+                .map(|(key, _)| key.clone())
+            else {
+                break;
+            };
+            self.failures.remove(&oldest);
+        }
     }
 }
 
@@ -671,9 +751,15 @@ impl LolalyticsClient {
         tier: &str,
         keystone: i64,
     ) -> Result<Option<KeystoneBuild>, ProviderError> {
+        let body = self.page(url(champion_slug, lane, tier, keystone)).await?;
+        Ok(parse_build(&body))
+    }
+
+    /// The HTML of one lolalytics page.
+    pub(super) async fn page(&self, url: String) -> Result<String, ProviderError> {
         let response = self
             .client
-            .get(url(champion_slug, lane, tier, keystone))
+            .get(url)
             .header(reqwest::header::ACCEPT, "text/html")
             .send()
             .await
@@ -681,11 +767,10 @@ impl LolalyticsClient {
         if !response.status().is_success() {
             return Err(ProviderError::from_status(response.status()));
         }
-        let body = response
+        response
             .text()
             .await
-            .map_err(|_| ProviderError::Unavailable)?;
-        Ok(parse_build(&body))
+            .map_err(|_| ProviderError::Unavailable)
     }
 }
 
@@ -974,6 +1059,46 @@ mod tests {
             cache.lookup_at(&failed, Instant::now()),
             Cached::Unavailable
         ));
+    }
+
+    #[test]
+    fn the_cache_is_bounded_and_drops_expired_entries() {
+        let mut cache = BuildCache::<u32>::default();
+        for index in 0..(MAX_CACHE_ENTRIES + 50) {
+            cache.store(format!("k{index}"), index as u32);
+            cache.fail(format!("f{index}"));
+        }
+        assert_eq!(cache.success.len(), MAX_CACHE_ENTRIES);
+        assert_eq!(cache.failures.len(), MAX_CACHE_ENTRIES);
+        // The newest survive; the oldest are gone.
+        assert!(matches!(cache.lookup("k305"), Cached::Fresh(305)));
+        assert!(matches!(cache.lookup("k0"), Cached::Miss));
+        // Expired entries are pruned on the next write.
+        cache.prune(Instant::now() + SUCCESS_TTL + Duration::from_secs(1));
+        assert!(cache.success.is_empty() && cache.failures.is_empty());
+    }
+
+    #[test]
+    fn resolving_shared_references_stays_within_the_node_budget() {
+        // Each level references the previous one twice: 2^30 leaves unbudgeted.
+        let mut objs = vec![serde_json::json!(1)];
+        for level in 1..=30usize {
+            objs.push(serde_json::json!([base36(level - 1), base36(level - 1)]));
+        }
+        let resolved = resolve(&Value::String(base36(30)), &objs, 0);
+        // Terminates, and the budget cut leaves Nulls rather than a huge tree.
+        assert!(resolved.is_array());
+    }
+
+    fn base36(mut number: usize) -> String {
+        let digits = b"0123456789abcdefghijklmnopqrstuvwxyz";
+        let mut out = vec![digits[number % 36]];
+        while number >= 36 {
+            number /= 36;
+            out.push(digits[number % 36]);
+        }
+        out.reverse();
+        String::from_utf8(out).unwrap()
     }
 
     #[test]

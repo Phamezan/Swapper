@@ -17,7 +17,7 @@ import { CreateShortcutButton } from "./accounts/CreateShortcutButton";
 import { RunesPanel } from "./runes/RunesPanel";
 import { PairingNotice } from "./settings/PairedDevices";
 import { UpdateBanner } from "./settings/UpdateSection";
-import type { RunesView, ProBuildsView, KeystoneBuildView, Selection } from "./runes/types";
+import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
 import type { SettingsTab } from "./settings/SettingsView";
 import "./App.css";
@@ -390,11 +390,22 @@ function App() {
     }
   }
 
-  async function applyRunes(selection: Selection, presetIndex: number | null, spells: number[] | null) {
+  async function applyRunes(
+    selection: Selection,
+    presetIndex: number | null,
+    spells: number[] | null,
+    enemyChampionId?: number | null,
+  ) {
     setRunesBusy(true);
     setRunesError(null);
     try {
-      await invoke("apply_rune_page", { selection, presetIndex, spells, position: runes?.position ?? null });
+      await invoke("apply_rune_page", {
+        selection,
+        presetIndex,
+        spells,
+        position: runes?.position ?? null,
+        enemyChampionId: enemyChampionId ?? null,
+      });
       await loadRunes();
     } catch (reason) {
       setRunesError(String(reason));
@@ -472,6 +483,24 @@ function App() {
       keystone,
     });
   }
+
+  function loadMatchup(
+    championId: number,
+    enemyChampionId: number,
+    position: string,
+    tier: string,
+  ): Promise<MatchupView | null> {
+    return invoke<MatchupView | null>("get_matchup", { championId, enemyChampionId, position, tier });
+  }
+
+  const championApi: ChampionApi = {
+    list: () => invoke("get_champion_list"),
+    counters: (championId, position, tier) =>
+      invoke("get_champion_counters", { championId, position, tier }),
+    overview: (championId, position, tier) =>
+      invoke("get_champion_overview", { championId, position, tier }),
+    tierList: (position, tier) => invoke("get_tier_list", { position, tier }),
+  };
 
   async function setAutoApply(enabled: boolean) {
     setRunesBusy(true);
@@ -732,7 +761,7 @@ function App() {
   return (
     <div className="shell dark">
       <header className="topbar">
-        <BrandIcon className="brand-mark" size={35} />
+        <BrandIcon className="brand-mark" size={26} />
         <div className="brand-copy"><strong>Swapper</strong><span>RIOT ACCOUNTS</span></div>
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
       </header>
@@ -824,7 +853,7 @@ function App() {
             loading={runesLoading}
             busy={runesBusy}
             error={runesError}
-            onApply={(selection, presetIndex, spells) => void applyRunes(selection, presetIndex, spells)}
+            onApply={(selection, presetIndex, spells, enemy) => void applyRunes(selection, presetIndex, spells, enemy)}
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
             onToggleSpellsWithRunes={(enabled) => void setApplySpellsWithRunes(enabled)}
             onToggleImportItems={(enabled) => void setImportItemsWithRunes(enabled)}
@@ -833,6 +862,8 @@ function App() {
             onImportItems={importItemBuild}
             onLoadProBuilds={loadProBuilds}
             onLoadBuild={loadKeystoneBuild}
+            onLoadMatchup={loadMatchup}
+            championApi={championApi}
             onTierChange={(tier) => void setRuneTier(tier)}
           />
         ) : (

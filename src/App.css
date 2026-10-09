@@ -67,7 +67,7 @@ button[data-slot="button"][data-variant="outline"] { border-color: var(--line-st
 button[data-slot="button"][data-variant="outline"]:hover { border-color: var(--text-secondary); background: var(--surface-hover); }
 
 .shell { width: 100%; height: 100%; display: flex; flex-direction: column; border: 0; background: var(--surface-base); box-shadow: none; }
-.topbar { min-height: 63px; display: flex; align-items: center; gap: 12px; padding: 0 20px; border-bottom: 1px solid var(--line-subtle); background: var(--surface-header); }
+.topbar { min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 16px; border-bottom: 1px solid var(--line-subtle); background: var(--surface-header); }
 .brand-mark { flex: none; display: block; }
 .brand-copy { display: flex; flex-direction: column; gap: 2px; }
 .brand-copy strong { font-size: 15px; line-height: 1; letter-spacing: -.025em; font-weight: 780; }

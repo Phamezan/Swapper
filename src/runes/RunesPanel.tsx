@@ -3,6 +3,8 @@ import { RuneIcon } from "./RuneIcon";
 import { RoleIcon } from "./RoleIcon";
 import { SpellIcon } from "./SpellIcon";
 import { PresetBuild } from "./PresetBuild";
+import { MatchupBanner, EnemyPicker, BuildChoice } from "./MatchupBanner";
+import { ChampionTab } from "./ChampionTab";
 import { ProBuilds } from "./ProBuilds";
 import { CachedBadge } from "./CachedBadge";
 import { RuneEditor } from "./RuneEditor";
@@ -12,6 +14,8 @@ import {
   ProBuild,
   ProBuildsView,
   KeystoneBuildView,
+  MatchupView,
+  ChampionApi,
   Selection,
   fmtGames,
   fmtPct,
@@ -22,7 +26,7 @@ import {
 } from "./types";
 import "./runes.css";
 
-type RuneScreen = "presets" | "pro" | "editor";
+type RuneScreen = "presets" | "pro" | "editor" | "champion";
 
 /** Remembers the open tab so the choice survives a surface switch (for example
  *  the phone swapping to the pick tab) during the same champion select. */
@@ -58,7 +62,12 @@ type Props = {
   loading: boolean;
   busy: boolean;
   error: string | null;
-  onApply: (selection: Selection, presetIndex: number | null, spells: number[] | null) => void;
+  onApply: (
+    selection: Selection,
+    presetIndex: number | null,
+    spells: number[] | null,
+    enemyChampionId?: number | null,
+  ) => void;
   onToggleAutoApply: (enabled: boolean) => void;
   onToggleSpellsWithRunes: (enabled: boolean) => void;
   onToggleImportItems: (enabled: boolean) => void;
@@ -79,6 +88,15 @@ type Props = {
     tier: string,
     keystone: number,
   ) => Promise<KeystoneBuildView | null>;
+  /** Loads the lane matchup build against the enemy laner, from lolalytics. */
+  onLoadMatchup: (
+    championId: number,
+    enemyChampionId: number,
+    position: string,
+    tier: string,
+  ) => Promise<MatchupView | null>;
+  /** Loaders for the Champion tab. */
+  championApi: ChampionApi;
   onTierChange: (tier: string) => void;
 };
 
@@ -150,6 +168,8 @@ export function RunesPanel({
   onImportItems,
   onLoadProBuilds,
   onLoadBuild,
+  onLoadMatchup,
+  championApi,
   onTierChange,
 }: Props) {
   const [screen, setScreen] = useState<RuneScreen>("presets");
@@ -159,15 +179,36 @@ export function RunesPanel({
   const [proError, setProError] = useState<string | null>(null);
   const [pickerSlot, setPickerSlot] = useState<"d" | "f" | null>(null);
   const [importNotice, setImportNotice] = useState<string | null>(null);
+  const [matchup, setMatchup] = useState<MatchupView | null>(null);
+  const [matchupLoading, setMatchupLoading] = useState(false);
+  const [chosenEnemy, setChosenEnemy] = useState<{ championId: number; enemyId: number } | null>(null);
+  const [buildChoice, setBuildChoice] = useState<BuildChoice>("generic");
+  // True once the user clicked a tab themselves; their screen then survives
+  // champion changes. Without it the Champion tab is only an automatic default.
+  const userPickedTab = useRef(false);
+  // Changes whenever champion select starts or ends, so the Champion tab drops
+  // its search between sessions.
+  const inChampSelect = view?.phase === "ChampSelect";
+  const [sessionId, setSessionId] = useState(0);
+  const lastInChampSelect = useRef(inChampSelect);
+  useEffect(() => {
+    if (lastInChampSelect.current === inChampSelect) return;
+    lastInChampSelect.current = inChampSelect;
+    setSessionId((id) => id + 1);
+  }, [inChampSelect]);
   const proRequested = useRef(false);
   const proRequest = useRef(0);
 
   const championId = view?.championId ?? 0;
   const position = view?.position ?? "";
   useEffect(() => {
-    const restored =
-      rememberedScreen.championId === championId ? rememberedScreen.screen : "presets";
-    setScreen(restored);
+    // With no champion yet, the Champion tab is the only useful one.
+    if (championId <= 0) {
+      userPickedTab.current = false;
+      setScreen("champion");
+    } else if (!userPickedTab.current) {
+      setScreen(rememberedScreen.championId === championId ? rememberedScreen.screen : "presets");
+    }
     setSelection(view?.applied ? selectionFromApplied(view.applied) : null);
     proRequest.current += 1;
     setProLoading(false);
@@ -187,6 +228,44 @@ export function RunesPanel({
     setProError(null);
     proRequested.current = false;
   }, [position]);
+
+  // The player's choice wins while that enemy is still in the draft; otherwise
+  // the unambiguous auto-detected laner (or nothing) is the default.
+  const enemies = view?.enemies ?? [];
+  const enemyId =
+    chosenEnemy !== null &&
+    chosenEnemy.championId === championId &&
+    enemies.some((enemy) => enemy.id === chosenEnemy.enemyId)
+      ? chosenEnemy.enemyId
+      : view?.enemyChampionId ?? 0;
+  // With no enemy chosen the Champion tab opens on the champion you picked.
+  const ownChampion =
+    view && view.championId > 0 ? { id: view.championId, name: view.championName } : null;
+  const tier = view?.tier ?? "";
+  useEffect(() => {
+    let live = true;
+    setMatchup(null);
+    setBuildChoice("generic");
+    setMatchupLoading(false);
+    if (championId > 0 && enemyId > 0) {
+      setMatchupLoading(true);
+      onLoadMatchup(championId, enemyId, position, tier)
+        .then((next) => {
+          if (live) setMatchup(next);
+        })
+        .catch(() => {
+          if (live) setMatchup(null);
+        })
+        .finally(() => {
+          if (live) setMatchupLoading(false);
+        });
+    }
+    return () => {
+      live = false;
+    };
+    // The loader is a stable wrapper; only the matchup filter should refetch.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [championId, enemyId, position, tier]);
 
   useEffect(() => {
     if (championId > 0) rememberedScreen = { championId, screen };
@@ -217,11 +296,44 @@ export function RunesPanel({
     );
   }
   if (!view || view.championId === 0) {
+    const tabs: [RuneScreen, string][] = [
+      ["presets", "Presets"],
+      ["pro", "Pro builds"],
+      ["champion", "Champion"],
+      ["editor", "Editor"],
+    ];
     return (
       <div className={`runes-panel runes-${mode}`}>
-        <div className="runes-empty">
-          <h2>Runes</h2>
-          <p>{view?.message ?? "Waiting for champion select."}</p>
+        <div className="runes-tabs" role="group" aria-label="Runes sections">
+          {tabs.map(([id, label]) => (
+            <button
+              key={id}
+              type="button"
+              aria-pressed={screen === id}
+              className={screen === id ? "is-active" : ""}
+              onClick={() => pickTab(id)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="runes-body">
+          {screen === "champion" ? (
+            <ChampionTab
+              mode={mode}
+              initialTier={view?.tier ?? "emerald_plus"}
+              prefillChampion={null}
+              prefillPosition=""
+              sessionKey={String(sessionId)}
+              api={championApi}
+              onLoadMatchup={onLoadMatchup}
+            />
+          ) : (
+            <div className="runes-empty">
+              <h2>Runes</h2>
+              <p>{view?.message ?? "Waiting for champion select."}</p>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -238,7 +350,13 @@ export function RunesPanel({
   // handlers declared below.
   const data = view;
 
+  function pickTab(next: RuneScreen) {
+    userPickedTab.current = true;
+    setScreen(next);
+  }
+
   function startEditor() {
+    userPickedTab.current = true;
     setScreen("editor");
     setSelection((prev) =>
       prev ?? (data.applied ? selectionFromApplied(data.applied) : defaultSelection(data)),
@@ -325,7 +443,9 @@ export function RunesPanel({
   const autoAppliedLabel = view.applied?.autoApplied
     ? `${appliedKeystone?.name ?? "Recommended runes"} · ${view.applied.name}`
     : null;
-  const showLockHint = screen !== "pro" && view.autoApply && !view.applied && view.phase === "ChampSelect" && !view.locked;
+  const matchupActive = buildChoice === "matchup" && !matchup?.fallback && !!matchup?.preset;
+  const shownPresets = matchupActive && matchup?.preset ? [matchup.preset] : view.presets;
+  const showLockHint = screen !== "pro" && screen !== "champion" && view.autoApply && !view.applied && view.phase === "ChampSelect" && !view.locked;
 
   return (
     <div className={`runes-panel runes-${mode}`}>
@@ -342,19 +462,20 @@ export function RunesPanel({
         </div>
       </div>
 
-      <div className="runes-tabs" role="tablist">
-        <button type="button" role="tab" aria-selected={screen === "presets"} className={screen === "presets" ? "is-active" : ""} onClick={() => setScreen("presets")}>Presets</button>
-        <button type="button" role="tab" aria-selected={screen === "pro"} className={screen === "pro" ? "is-active" : ""} onClick={() => setScreen("pro")}>Pro builds</button>
-        <button type="button" role="tab" aria-selected={screen === "editor"} className={screen === "editor" ? "is-active" : ""} onClick={startEditor}>Editor</button>
+      <div className="runes-tabs" role="group" aria-label="Runes sections">
+        <button type="button" aria-pressed={screen === "presets"} className={screen === "presets" ? "is-active" : ""} onClick={() => pickTab("presets")}>Presets</button>
+        <button type="button" aria-pressed={screen === "pro"} className={screen === "pro" ? "is-active" : ""} onClick={() => pickTab("pro")}>Pro builds</button>
+        <button type="button" aria-pressed={screen === "champion"} className={screen === "champion" ? "is-active" : ""} onClick={() => pickTab("champion")}>Champion</button>
+        <button type="button" aria-pressed={screen === "editor"} className={screen === "editor" ? "is-active" : ""} onClick={startEditor}>Editor</button>
         {view.source === "lcu" && (
-          <span className="runes-source is-fallback" title="op.gg is unavailable; showing the League client's own recommendations.">
+          <span className="runes-source is-fallback" title="op.gg had no data for this champion and role (or could not be reached); showing the League client's own recommendations.">
             League fallback
           </span>
         )}
         {view.stale && <CachedBadge stale updatedAt={view.updatedAt} />}
       </div>
 
-      {view.mode === "ranked" && (
+      {view.mode === "ranked" && screen !== "champion" && (
         <div className="runes-role-picker" role="group" aria-label="Choose rune role">
           {runeRoles.map((role) => (
             <button
@@ -376,7 +497,7 @@ export function RunesPanel({
         </div>
       )}
 
-      {screen !== "pro" && (
+      {screen !== "pro" && screen !== "champion" && (
         <div className="runes-settings">
           {view.tierSupported && (
             <RankPicker
@@ -424,13 +545,23 @@ export function RunesPanel({
       <div className="runes-body">
         {error && <p className="runes-alert" role="alert">{error}</p>}
         {importNotice && <p className="runes-note runes-import-note" role="status">{importNotice}</p>}
-        {screen !== "pro" && autoAppliedLabel && (
+        {screen !== "pro" && screen !== "champion" && autoAppliedLabel && (
           <p className="runes-note runes-auto-note">Auto-applied {autoAppliedLabel}</p>
         )}
         {showLockHint && <p className="runes-note runes-auto-note">Applies when you lock in.</p>}
-        {screen !== "pro" && view.message && !error && !view.tierEmpty && <p className="runes-note">{view.message}</p>}
+        {screen !== "pro" && screen !== "champion" && view.message && !error && !view.tierEmpty && <p className="runes-note">{view.message}</p>}
 
-        {screen === "pro" ? (
+        {screen === "champion" ? (
+          <ChampionTab
+            mode={mode}
+            initialTier={view.tier}
+            prefillChampion={enemies.find((enemy) => enemy.id === enemyId) ?? ownChampion}
+            prefillPosition={view.mode === "ranked" && view.position !== "none" ? view.position : ""}
+            sessionKey={String(sessionId)}
+            api={championApi}
+            onLoadMatchup={onLoadMatchup}
+          />
+        ) : screen === "pro" ? (
           <ProBuilds
             mode={mode}
             view={proView}
@@ -458,16 +589,29 @@ export function RunesPanel({
                   </button>
                 )}
               </div>
-            ) : view.presets.length === 0 ? (
+            ) : shownPresets.length === 0 ? (
               <p className="runes-note">
                 {view.canApply ? "No presets for this role yet." : "No recommendations available. You can still build a page in the Editor."}
               </p>
             ) : null}
-            {view.presets.map((preset) => {
+            {enemies.length > 0 && view.position !== "none" && (
+              <EnemyPicker
+                enemies={enemies}
+                slots={view.enemySlots}
+                selected={enemyId}
+                disabled={busy}
+                onSelect={(id) => setChosenEnemy({ championId, enemyId: id })}
+              />
+            )}
+            {matchupLoading && <p className="matchup-loading">Loading matchup…</p>}
+            {matchup && !view.tierEmpty && (
+              <MatchupBanner matchup={matchup} choice={buildChoice} disabled={busy} onChoose={setBuildChoice} />
+            )}
+            {shownPresets.map((preset) => {
               const presetSelection = selectionFromPreset(preset);
               const isActive = sameSelection(presetSelection, active);
               return (
-                <div key={preset.index} className={`rune-preset ${isActive ? "is-active" : ""}`}>
+                <div key={matchupActive ? "matchup" : preset.index} className={`rune-preset ${isActive ? "is-active" : ""}`}>
                   <button
                     type="button"
                     className="rune-preset-main"
@@ -475,7 +619,11 @@ export function RunesPanel({
                     onClick={() => {
                       setSelection(presetSelection);
                       setScreen("editor");
-                      onApply(presetSelection, preset.index, preset.spells);
+                      if (matchupActive && matchup) {
+                        onApply(presetSelection, null, preset.spells, matchup.enemyChampionId);
+                      } else {
+                        onApply(presetSelection, preset.index, preset.spells);
+                      }
                     }}
                   >
                     <span className="rune-preset-head">
@@ -512,6 +660,7 @@ export function RunesPanel({
                     position={view.position}
                     tier={view.tier}
                     keystone={preset.keystone}
+                    preloaded={matchupActive ? matchup?.build : null}
                     onLoad={onLoadBuild}
                   />
                 </div>
@@ -531,7 +680,7 @@ export function RunesPanel({
         )}
       </div>
 
-      {screen !== "pro" && (
+      {screen !== "pro" && screen !== "champion" && (
         <div className="runes-foot">
           <div className="runes-actions">
             <button type="button" className="runes-reset" disabled={busy || !dirty || !selection} onClick={() => setSelection(active ?? defaultSelection(data))}>
