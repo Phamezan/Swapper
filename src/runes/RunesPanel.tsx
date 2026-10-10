@@ -496,7 +496,7 @@ export function RunesPanel({
                 onPositionChange(role.value);
               }}
             >
-              <RoleIcon role={role.value} size={17} mode={mode} />
+              <RoleIcon role={role.value} size={20} mode={mode} />
             </button>
           ))}
         </div>

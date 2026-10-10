@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChampionIcon } from "./ChampionIcon";
 import { CachedBadge } from "./CachedBadge";
-import { fmtGames, fmtPct } from "./types";
+import { fmtGames, fmtPct, tierClass } from "./types";
 import type { ChampionOption, TierListView } from "./types";
 
 /** Rows shown at first, and added by each "Show more". */
@@ -62,12 +62,12 @@ export function TierList({ mode, position, tier, onLoad, onPick }: Props) {
               className="tier-row"
               onClick={() => onPick({ id: row.championId, name: row.name })}
             >
-              <span className={`tier-text is-${row.tier.charAt(0).toLowerCase()}`}>{row.tier}</span>
+              <span className={`tier-text ${tierClass(row.tier)}`}>{row.tier}</span>
               <ChampionIcon id={row.championId} name={row.name} mode={mode} />
               <strong>{row.name}</strong>
               <span className="tier-rate">{fmtPct(row.winPct)}</span>
               <small>
-                {fmtPct(row.pickPct)} pick · {fmtPct(row.banPct)} ban · {fmtGames(row.games)}
+                <b>{fmtPct(row.pickPct)}</b> pick · <b>{fmtPct(row.banPct)}</b> ban · <b>{fmtGames(row.games)}</b> games
               </small>
             </button>
           ))}

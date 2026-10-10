@@ -248,6 +248,7 @@ mod tests {
             pick_pct: 5.0,
             ban_pct: 3.0,
             games: 9000,
+            score: 0.0,
         }
     }
 
@@ -255,7 +256,7 @@ mod tests {
     fn tier_rows_get_names_and_labels_and_unknown_champions_are_skipped() {
         let names = HashMap::from([(31, "Cho'Gath".to_string())]);
         let list = TierList {
-            rows: vec![row(31, 1), row(9999, 2)],
+            rows: vec![row(31, 0), row(9999, 1)],
         };
         let view = build_tier_list(Some(Sourced::fresh(list, Provider::Lolalytics)), &names);
         assert_eq!(view.rows.len(), 1);

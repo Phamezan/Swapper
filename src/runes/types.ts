@@ -127,7 +127,7 @@ export type CounterRow = {
 export type TierRow = {
   championId: number;
   name: string;
-  /** "S+" to "D-". */
+  /** Our tier label: "S+", "S", "A", "B", "C" or "D". */
   tier: string;
   winPct: number;
   pickPct: number;
@@ -346,6 +346,12 @@ export function isTrinketItem(id: number): boolean {
 export function fmtBuildMinute(minute: number): string {
   if (minute < 0) return "–";
   return `${minute}:00`;
+}
+
+/** Tier badge colour class: `is-splus` for "S+", else `is-s`, `is-a`... from
+ *  the letter (so lolalytics' "S-" or "A+" map to their letter). */
+export function tierClass(label: string): string {
+  return label === "S+" ? "is-splus" : `is-${label.charAt(0).toLowerCase()}`;
 }
 
 export function fmtPct(value: number | null): string {

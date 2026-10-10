@@ -3,13 +3,8 @@ import { ChampionIcon } from "./ChampionIcon";
 import { ItemIcon } from "./ItemIcon";
 import { RuneIcon } from "./RuneIcon";
 import { SpellIcon } from "./SpellIcon";
-import { fmtDelta, fmtPct } from "./types";
+import { fmtDelta, fmtPct, tierClass } from "./types";
 import type { ChampionBuild, ChampionOverviewView } from "./types";
-
-/** `is-s`, `is-a`... from a label such as "S-". */
-function tierClass(label: string): string {
-  return `is-${label.charAt(0).toLowerCase()}`;
-}
 
 type Props = {
   mode: "desktop" | "remote";

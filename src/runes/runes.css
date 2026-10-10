@@ -434,8 +434,8 @@
 /* Compact settings row: role, rank filter and rune options. */
 
 .runes-settings { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.runes-role-picker { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-panel); }
-.runes-role-picker button { display: grid; place-items: center; width: 27px; height: 27px; padding: 0; border: 0; border-radius: 6px; color: var(--text-muted); background: transparent; }
+.runes-role-picker { display: flex; align-items: center; gap: 4px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-panel); }
+.runes-role-picker button { display: grid; flex: 1; place-items: center; height: 32px; padding: 0; border: 0; border-radius: 6px; color: var(--text-muted); background: transparent; }
 .runes-role-picker button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
 .runes-role-picker button.is-active { color: #52dfa6; background: #143329; }
 .runes-role-picker button:disabled { opacity: 0.45; }
@@ -903,12 +903,20 @@
 .champion-search input {
   width: 100%;
   min-height: 36px;
-  padding: 0 11px;
+  padding: 0 64px 0 11px;
   border: 1px solid var(--line-subtle);
   border-radius: 9px;
   color: var(--text-primary);
   background: var(--surface-panel);
   font-size: 12px;
+}
+/* The native search field's tiny blue × is hard to click; we show our own. */
+.champion-search input::-webkit-search-cancel-button { display: none; }
+.champion-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
 }
 .champion-suggestions {
   position: absolute;
@@ -1023,16 +1031,19 @@
 .tier-row > .champion-icon, .tier-row > .champion-icon-fallback { grid-area: icon; width: 24px; height: 24px; border-radius: 50%; }
 .tier-row > strong { grid-area: name; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
 .tier-row > .tier-rate { grid-area: rate; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.tier-row > small { grid-area: stats; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-muted); font-size: 10px; }
-/* Tier colours: warm for S, then green, blue, grey-blue and muted red. */
+.tier-row > small { grid-area: stats; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-secondary); font-size: 11px; }
+.tier-row > small b { color: var(--text-primary); font-weight: 650; font-variant-numeric: tabular-nums; }
+/* Tier colours: gold for S+, purple for S, then green, blue, grey-blue and muted red. */
 .runes-panel {
-  --tier-s: #f0b45a;
+  --tier-splus: #f0b45a;
+  --tier-s: #b98cff;
   --tier-a: #6fd29a;
   --tier-b: #74a9ff;
   --tier-c: #9aaec4;
   --tier-d: #e08f8a;
 }
 .tier-text { font-weight: 800; letter-spacing: 0.01em; color: var(--text-secondary); }
+.tier-text.is-splus { color: var(--tier-splus); }
 .tier-text.is-s { color: var(--tier-s); }
 .tier-text.is-a { color: var(--tier-a); }
 .tier-text.is-b { color: var(--tier-b); }

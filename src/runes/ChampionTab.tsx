@@ -6,6 +6,7 @@ import { CardStrip } from "./CounterStrips";
 import { ChampionOverview } from "./ChampionOverview";
 import { RankPicker } from "./RankPicker";
 import { TierList } from "./TierList";
+import { Button } from "@/components/ui/button";
 import { TIER_OPTIONS } from "./types";
 import type {
   ChampionApi,
@@ -102,6 +103,7 @@ export function ChampionTab({
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const [overview, setOverview] = useState<ChampionOverviewView | null>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     let live = true;
@@ -199,6 +201,7 @@ export function ChampionTab({
       </div>
       <div className="champion-search">
         <input
+          ref={searchRef}
           type="search"
           value={query}
           placeholder="Search a champion"
@@ -213,6 +216,22 @@ export function ChampionTab({
             }
           }}
         />
+        {query.length > 0 && (
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            className="champion-search-clear"
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={() => {
+              setQuery("");
+              setChampion(null);
+              searchRef.current?.focus();
+            }}
+          >
+            Clear
+          </Button>
+        )}
         {suggestions.length > 0 && (
           <ul className="champion-suggestions">
             {suggestions.map((option) => (
