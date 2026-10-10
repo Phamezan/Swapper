@@ -94,6 +94,8 @@ export type AppState = {
   hotkeyActive: boolean;
   notificationsEnabled: boolean;
   readyCheckNotifications: boolean;
+  koreanFont: boolean;
+  ltkInstalled: boolean;
   remote: RemoteStatus;
 };
 type ChampSelectStatus = {
@@ -119,7 +121,7 @@ const empty: AppState = {
   riotExe: null, riotDetected: false, deceiveDetected: false,
   autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true, importItemsWithRunes: true,
   hotkey: null, hotkeyActive: false,
-  notificationsEnabled: true, readyCheckNotifications: true, remote: emptyRemote,
+  notificationsEnabled: true, readyCheckNotifications: true, koreanFont: false, ltkInstalled: false, remote: emptyRemote,
 };
 
 const wait = (ms: number) =>
@@ -160,6 +162,9 @@ function App() {
   const [repairingId, setRepairingId] = useState<string | null>(null);
   const [accountMenu, setAccountMenu] = useState<{ id: string; x: number; y: number } | null>(null);
   const [useDeceive, setUseDeceive] = useState(false);
+  const [koreanFont, setKoreanFont] = useState(false);
+  const [ltkInstalling, setLtkInstalling] = useState(false);
+  const [ltkInstallError, setLtkInstallError] = useState<string | null>(null);
   const [riotExe, setRiotExe] = useState("");
   const [addStage, setAddStage] = useState<"signIn" | "identify">("signIn");
   const [detect, setDetect] = useState<DetectState>({ phase: "idle" });
@@ -247,6 +252,7 @@ function App() {
     }
     setUseDeceive(next.useDeceive);
     setRiotExe(next.riotExe ?? "");
+    setKoreanFont(next.koreanFont);
   }
 
   useEffect(() => {
@@ -534,6 +540,25 @@ function App() {
     action("notifications", () => invoke<AppState>("set_notifications_enabled", { enabled }));
   const setReadyCheckNotifications = (enabled: boolean) =>
     action("ready-check-notifications", () => invoke<AppState>("set_ready_check_notifications", { enabled }));
+  const setKoreanFontSetting = (enabled: boolean) =>
+    action("korean-font", () => invoke<AppState>("set_korean_font", { enabled }));
+
+  async function installLtkManager() {
+    if (!native) {
+      setError("Installing LTK Manager is available in the Windows tray app. Start it with npm run tauri dev.");
+      return;
+    }
+    setLtkInstalling(true);
+    setLtkInstallError(null);
+    try {
+      await invoke("install_ltk_manager");
+      sync(await invoke<AppState>("get_state"));
+    } catch (reason) {
+      setLtkInstallError(String(reason));
+    } finally {
+      setLtkInstalling(false);
+    }
+  }
 
   function handleChampSelect(payload: ChampSelectStatus) {
     if (payload.phase === "ChampSelect") {
@@ -978,6 +1003,12 @@ function App() {
               onSetHotkey={applyHotkey}
               onNotificationsChange={(enabled) => void setNotifications(enabled)}
               onReadyCheckChange={(enabled) => void setReadyCheckNotifications(enabled)}
+              koreanFont={koreanFont}
+              onKoreanFontChange={(enabled) => void setKoreanFontSetting(enabled)}
+              ltkInstalled={data.ltkInstalled}
+              ltkInstalling={ltkInstalling}
+              ltkInstallError={ltkInstallError}
+              onInstallLtk={() => void installLtkManager()}
               onAutoApplyChange={(enabled) => void setAutoApply(enabled)}
               onApplySpellsChange={(enabled) => void setApplySpellsWithRunes(enabled)}
               onImportItemsChange={(enabled) => void setImportItemsWithRunes(enabled)}

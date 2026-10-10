@@ -81,6 +81,9 @@ pub fn spawn_watch(app: tauri::AppHandle) {
                 Err(_) => {
                     // League is not connected; keep backing off. last_phase is
                     // kept, so a reconnect cannot re-fire an old transition.
+                    // The Korean font patcher is stopped so a closed client
+                    // cannot leave it stranded.
+                    crate::korean_font::observe(&app, "Offline");
                     interval = IDLE_INTERVAL;
                     continue;
                 }
@@ -94,6 +97,7 @@ pub fn spawn_watch(app: tauri::AppHandle) {
                 IDLE_INTERVAL
             };
             crate::lifecycle::observe(&app, last_phase.as_deref(), &phase);
+            crate::korean_font::observe(&app, &phase);
             last_phase = Some(phase.clone());
             let mut event = ChampSelectEvent {
                 phase: phase.clone(),

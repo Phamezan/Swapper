@@ -47,6 +47,19 @@ jobs:
             throw "Bundled Deceive.exe does not match the official v1.18.0 release"
           }
 
+      - name: Verify bundled Korean font files
+        shell: pwsh
+        run: |
+          $expected = @{
+            'src-tauri/resources/korean-font.fantome' = '23f0e309c4e89e7f2da12bc5c82c833b9b7ed53d80b40af03b68f6b9ed3eefb0'
+          }
+          foreach ($file in $expected.Keys) {
+            $actual = (Get-FileHash $file -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actual -ne $expected[$file]) {
+              throw "Bundled $file does not match the Korean font files shipped by Swapper"
+            }
+          }
+
       - uses: actions/setup-node@v4
         with:
           node-version: 24

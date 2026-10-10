@@ -32,6 +32,12 @@ type Props = {
   onSetHotkey: (value: string | null) => Promise<void>;
   onNotificationsChange: (enabled: boolean) => void;
   onReadyCheckChange: (enabled: boolean) => void;
+  koreanFont: boolean;
+  onKoreanFontChange: (enabled: boolean) => void;
+  ltkInstalled: boolean;
+  ltkInstalling: boolean;
+  ltkInstallError: string | null;
+  onInstallLtk: () => void;
   onAutoApplyChange: (enabled: boolean) => void;
   onApplySpellsChange: (enabled: boolean) => void;
   onImportItemsChange: (enabled: boolean) => void;
@@ -121,6 +127,12 @@ export function SettingsView(props: Props) {
           readyCheck={props.state.readyCheckNotifications}
           onNotificationsChange={props.onNotificationsChange}
           onReadyCheckChange={props.onReadyCheckChange}
+          koreanFont={props.koreanFont}
+          onKoreanFontChange={props.onKoreanFontChange}
+          ltkInstalled={props.ltkInstalled}
+          ltkInstalling={props.ltkInstalling}
+          ltkInstallError={props.ltkInstallError}
+          onInstallLtk={props.onInstallLtk}
         />}
         {tab === "runes" && <RuneSettings
           autoApply={props.state.autoApplyTopPreset}

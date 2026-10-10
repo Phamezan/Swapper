@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Info } from "lucide-react";
+import { invoke } from "@tauri-apps/api/core";
+import { CircleHelp, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
@@ -28,6 +29,12 @@ type Props = {
   readyCheck: boolean;
   onNotificationsChange: (enabled: boolean) => void;
   onReadyCheckChange: (enabled: boolean) => void;
+  koreanFont: boolean;
+  onKoreanFontChange: (enabled: boolean) => void;
+  ltkInstalled: boolean;
+  ltkInstalling: boolean;
+  ltkInstallError: string | null;
+  onInstallLtk: () => void;
 };
 
 export function GeneralSettings({
@@ -49,6 +56,12 @@ export function GeneralSettings({
   readyCheck,
   onNotificationsChange,
   onReadyCheckChange,
+  koreanFont,
+  onKoreanFontChange,
+  ltkInstalled,
+  ltkInstalling,
+  ltkInstallError,
+  onInstallLtk,
 }: Props) {
   const [openInfo, setOpenInfo] = useState<string | null>(null);
   const toggle = (key: string) => setOpenInfo(openInfo === key ? null : key);
@@ -71,6 +84,26 @@ export function GeneralSettings({
           {openInfo === "deceive" && <p>Start League with Deceive’s offline presence. Included with Swapper.</p>}
         </div>
         <Switch checked={useDeceive} onCheckedChange={onUseDeceiveChange} aria-label="Launch through Deceive" />
+      </div>
+
+      <div className="setting-row">
+        <div className="setting-copy">
+          <strong>Korean font</strong>
+          {!ltkInstalled && (
+            <button className="info-button" aria-label="What is LTK Manager?" title="What is LTK Manager?" onClick={() => void invoke("open_ltk_website")}><CircleHelp size={13} /></button>
+          )}
+          {ltkInstalled ? (
+            <p>Use at your own risk: changes League's game files while it runs.</p>
+          ) : (
+            <>
+              <p>Requires LTK Manager.</p>
+              {ltkInstallError && <p>{ltkInstallError}</p>}
+            </>
+          )}
+        </div>
+        {ltkInstalled
+          ? <Switch checked={koreanFont} onCheckedChange={onKoreanFontChange} aria-label="Korean font" />
+          : <Button variant="outline" disabled={ltkInstalling} onClick={onInstallLtk}>{ltkInstalling ? "Installing…" : "Install"}</Button>}
       </div>
 
       <p className="field-label">RIOT CLIENT PATH</p>

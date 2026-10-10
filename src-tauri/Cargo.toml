@@ -51,6 +51,16 @@ tauri-plugin-updater = "2"
 tauri-plugin-deep-link = "2"
 tauri-plugin-single-instance = { version = "2", features = ["deep-link"] }
 url = "2"
+# Apache-2.0. League Toolkit's mod crates power the optional Korean font:
+# ltk_overlay builds the patched-WAD overlay from the bundled .fantome
+# (ltk_fantome via its FantomeContent provider) and ltk_mod_core detects the
+# League install. Crates only; no GPL ltk-manager code is copied.
+ltk_overlay = "0.16"
+ltk_mod_core = "0.1"
+camino = "1"
+# MIT. Verifies the LTK Manager installer Swapper downloads and runs, at the
+# version tauri-plugin-updater already locks.
+minisign-verify = "0.2"
 
 
 # Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration

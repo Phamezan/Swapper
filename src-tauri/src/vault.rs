@@ -113,6 +113,10 @@ pub struct Config {
     /// select. `None` means the default (on) has never been changed.
     #[serde(default)]
     pub ready_check_notifications: Option<bool>,
+    /// Whether the optional Korean font is on. Off by default; when on, Swapper
+    /// patches League's in-game UI while a game runs.
+    #[serde(default)]
+    pub korean_font: bool,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -126,7 +130,7 @@ pub struct Snapshot {
     pub entries: Vec<Entry>,
 }
 
-fn data_root() -> Result<PathBuf, String> {
+pub(crate) fn data_root() -> Result<PathBuf, String> {
     let local = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
     Ok(PathBuf::from(local).join("Swapper"))
 }
