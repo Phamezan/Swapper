@@ -198,6 +198,9 @@ export function RunesPanel({
   }, [inChampSelect]);
   const proRequested = useRef(false);
   const proRequest = useRef(0);
+  // True when the editor is opened from a preset card, so it can scroll its
+  // rune grid into view (the grid sits below the settings otherwise).
+  const editorFromPreset = useRef(false);
 
   const championId = view?.championId ?? 0;
   const position = view?.position ?? "";
@@ -357,6 +360,7 @@ export function RunesPanel({
 
   function startEditor() {
     userPickedTab.current = true;
+    editorFromPreset.current = false;
     setScreen("editor");
     setSelection((prev) =>
       prev ?? (data.applied ? selectionFromApplied(data.applied) : defaultSelection(data)),
@@ -404,6 +408,7 @@ export function RunesPanel({
   function importProBuild(build: ProBuild) {
     const next = selectionFromProBuild(build);
     setSelection(next);
+    editorFromPreset.current = false;
     setScreen("editor");
     onApply(next, null, build.spells);
   }
@@ -617,6 +622,7 @@ export function RunesPanel({
                     className="rune-preset-main"
                     disabled={busy}
                     onClick={() => {
+                      editorFromPreset.current = true;
                       setSelection(presetSelection);
                       setScreen("editor");
                       if (matchupActive && matchup) {
@@ -673,6 +679,7 @@ export function RunesPanel({
             view={view}
             selection={selection}
             busy={busy}
+            focusGrid={editorFromPreset.current}
             onChange={setSelection}
           />
         ) : (

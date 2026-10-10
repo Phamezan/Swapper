@@ -20,6 +20,19 @@ use std::sync::OnceLock;
 
 /// Rows with fewer games are too noisy to rank.
 pub const MIN_TIER_GAMES: u64 = 500;
+/// Challenger's pool is a few dozen players, so its champions accrue a few
+/// hundred games each rather than thousands; the default floor would drop
+/// every row. The page still ranks them, so a lower floor keeps the list.
+const MIN_CHALLENGER_GAMES: u64 = 100;
+
+/// The games floor for one rank bracket. The smallest bracket needs a lower
+/// one, since its whole sample is a fraction of the others'.
+fn min_games(tier: &str) -> u64 {
+    match tier.trim().to_ascii_lowercase().as_str() {
+        "challenger" => MIN_CHALLENGER_GAMES,
+        _ => MIN_TIER_GAMES,
+    }
+}
 /// The page's tier labels, indexed by the numeric `tier`.
 const TIER_LABELS: [&str; 16] = [
     "", "S+", "S", "S-", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-",
@@ -65,13 +78,19 @@ pub fn tierlist_cache_key(lane: &str, tier: &str) -> String {
 
 /// Parses a tier list page. `None` when no champion dictionary is found.
 pub fn parse_tierlist(html: &str) -> Option<TierList> {
+    parse_tierlist_with_min(html, MIN_TIER_GAMES)
+}
+
+/// Parses a tier list page, dropping rows below `min_games`. `None` when no
+/// champion dictionary is found.
+fn parse_tierlist_with_min(html: &str, min_games: u64) -> Option<TierList> {
     let state: Qwik = serde_json::from_str(lolalytics::qwik_json(html)?).ok()?;
     let objs = &state.objs;
     let table = objs.iter().find(|entry| is_row_table(entry, objs))?;
     let mut rows: Vec<TierRow> = table
         .as_object()?
         .iter()
-        .filter_map(|(key, row)| tier_row(key.parse().ok()?, &resolve(row, objs, 0)))
+        .filter_map(|(key, row)| tier_row(key.parse().ok()?, &resolve(row, objs, 0), min_games))
         .collect();
     rows.sort_by(|left, right| {
         left.tier
@@ -93,11 +112,11 @@ fn is_row_table(entry: &Value, objs: &[Value]) -> bool {
     map.len() >= 20 && map.values().take(3).all(is_row)
 }
 
-fn tier_row(champion_id: i64, row: &Value) -> Option<TierRow> {
+fn tier_row(champion_id: i64, row: &Value, min_games: u64) -> Option<TierRow> {
     let rank = row.get("rank").and_then(as_u64)?;
     let tier = row.get("tier").and_then(as_u64)?;
     let games = row.get("games").and_then(as_u64)?;
-    if champion_id <= 0 || rank == 0 || !(1..=15).contains(&tier) || games < MIN_TIER_GAMES {
+    if champion_id <= 0 || rank == 0 || !(1..=15).contains(&tier) || games < min_games {
         return None;
     }
     Some(TierRow {
@@ -114,7 +133,7 @@ impl LolalyticsClient {
     /// Fetches and parses one lane's tier list.
     pub async fn tierlist(&self, lane: &str, tier: &str) -> Result<Option<TierList>, ProviderError> {
         let body = self.page(tierlist_url(lane, tier)).await?;
-        Ok(parse_tierlist(&body))
+        Ok(parse_tierlist_with_min(&body, min_games(tier)))
     }
 }
 
@@ -252,6 +271,34 @@ mod tests {
         let list = parse_tierlist(&page()).unwrap();
         assert!(list.rows.iter().all(|row| row.champion_id != 7 && row.champion_id != 8));
         assert!(list.rows.iter().all(|row| row.games >= MIN_TIER_GAMES));
+    }
+
+    /// A page whose rows all have `games` games, one per champion id.
+    fn page_with_games(games: u64) -> String {
+        let mut objs = vec![String::from("{}")];
+        let mut table = Vec::new();
+        for id in 1..=20 {
+            objs.push(format!(
+                r#"{{"rank":{id},"tier":1,"wr":52.0,"pr":5.0,"br":3.0,"pbi":1,"games":{games}}}"#
+            ));
+            let index = objs.len() - 1;
+            table.push(format!(r#""{id}":"{}""#, base36(index)));
+        }
+        objs[0] = format!("{{{}}}", table.join(","));
+        format!(r#"<script type="qwik/json">{{"objs":[{}]}}</script>"#, objs.join(","))
+    }
+
+    #[test]
+    fn the_challenger_bracket_keeps_rows_the_default_floor_drops() {
+        assert!(min_games("challenger") < MIN_TIER_GAMES);
+        assert_eq!(min_games("emerald_plus"), MIN_TIER_GAMES);
+        assert_eq!(min_games("CHALLENGER"), MIN_CHALLENGER_GAMES);
+
+        // Every row has 200 games: below the default floor, above Challenger's.
+        let html = page_with_games(200);
+        assert_eq!(parse_tierlist(&html).unwrap().rows.len(), 0);
+        let challenger = parse_tierlist_with_min(&html, min_games("challenger")).unwrap();
+        assert_eq!(challenger.rows.len(), 20);
     }
 
     #[test]

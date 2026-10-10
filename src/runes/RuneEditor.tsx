@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
 import {
   Rune,
@@ -20,6 +20,9 @@ type Props = {
   view: RunesView;
   selection: Selection;
   busy: boolean;
+  /** Scroll the rune grid into view on mount, for when the editor is opened
+   *  from a preset card rather than the Editor tab. */
+  focusGrid?: boolean;
   onChange: (selection: Selection) => void;
 };
 
@@ -53,7 +56,7 @@ function RuneOrb({
   keystone?: boolean;
   onClick: () => void;
 }) {
-  const hasWin = rune.winPct !== null && rune.play > 0;
+  const hasWin = showStats && rune.winPct !== null && rune.play > 0;
   const hasDetail = showStats && rune.pickPct !== null && rune.play > 0;
   return (
     <button
@@ -205,8 +208,13 @@ function ShardRows({
   );
 }
 
-export function RuneEditor({ mode, view, selection, busy, onChange }: Props) {
+export function RuneEditor({ mode, view, selection, busy, focusGrid, onChange }: Props) {
   const [showStats, setShowStats] = useState(false);
+  const boardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (focusGrid) boardRef.current?.scrollIntoView({ block: "start" });
+  }, [focusGrid]);
 
   const primaryTree =
     view.trees.find((tree) => tree.id === selection.primaryPageId) ?? view.trees[0];
@@ -260,7 +268,7 @@ export function RuneEditor({ mode, view, selection, busy, onChange }: Props) {
         </label>
       </div>
 
-      <div className="rune-board">
+      <div className="rune-board" ref={boardRef}>
         <div className="rune-board-col rune-board-primary">
           <TreeHeader
             label="Primary"
