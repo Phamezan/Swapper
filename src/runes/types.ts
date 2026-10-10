@@ -218,12 +218,12 @@ export type MatchupView = {
   build: KeystoneBuildView | null;
 };
 
-/** One recorded purchase in a pro's game. */
-export type ItemOrderEntry = {
-  itemId: number;
-  name: string;
-  /** Minute of the purchase, or -1 when the API did not report a path. */
+/** One minute of a pro's item path: the items bought that minute, in purchase
+ *  order, repeated ids stacked with a count. */
+export type ItemPathGroup = {
+  /** Whole minute of the purchases, or -1 when the API reported no path. */
   minute: number;
+  items: ItemStackView[];
 };
 
 /** One selectable summoner spell. */
@@ -283,6 +283,8 @@ export type ProBuild = {
   proName: string;
   team: string;
   league: string;
+  /** The league's region for the badge; the league code when unmapped. */
+  region: string;
   /** API role slug (`top`, `jungle`, `mid`, `adc`, `supp`). */
   role: string;
   roleLabel: string;
@@ -302,8 +304,12 @@ export type ProBuild = {
   spells: number[];
   /** The final build as item icons, empty slots dropped and the trinket last. */
   finalItems: ItemView[];
-  /** The pro's completed items in purchase order, with minute stamps. */
-  itemOrder: ItemOrderEntry[];
+  /** The items the pro completed, in the order the API lists them. */
+  completedItems: ItemView[];
+  /** Purchases grouped by whole minute, for the item path. */
+  itemPath: ItemPathGroup[];
+  /** The ability levelled at each level, one `"Q" | "W" | "E" | "R"` per level. */
+  skillOrder: string[];
   /** True for a "One Trick Pony" entry, which has no real team. */
   otp: boolean;
 };
@@ -342,10 +348,26 @@ export function isTrinketItem(id: number): boolean {
   return TRINKET_IDS.has(id);
 }
 
-/** A purchase-minute label for the pro item order, or "–" when unknown. */
+/** A purchase-minute label for the pro item path, or "–" when unknown. */
 export function fmtBuildMinute(minute: number): string {
   if (minute < 0) return "–";
-  return `${minute}:00`;
+  return `${minute} min`;
+}
+
+/** Whether a gameflow phase is part of, or around, a live game. Used to reset
+ *  the Champion tab search once a game is over, without resetting while the
+ *  player is in champion select or still in game. */
+const GAME_PHASES = new Set([
+  "GameStart",
+  "InProgress",
+  "Reconnect",
+  "WaitingForStats",
+  "PreEndOfGame",
+  "EndOfGame",
+]);
+
+export function isGamePhase(phase: string): boolean {
+  return GAME_PHASES.has(phase);
 }
 
 /** Tier badge colour class: `is-splus` for "S+", else `is-s`, `is-a`... from

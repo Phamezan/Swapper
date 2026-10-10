@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { ItemIcon } from "./ItemIcon";
 import { RuneIcon } from "./RuneIcon";
 import { RoleIcon } from "./RoleIcon";
 import { SpellIcon } from "./SpellIcon";
+import { TeamLogo } from "./TeamLogo";
 import { CachedBadge } from "./CachedBadge";
 import {
   fmtBuildMinute,
@@ -24,6 +25,9 @@ type Props = {
   busy: boolean;
   /** The page currently applied in League, highlighted on a matching card. */
   active: Selection | null;
+  /** True when the OTP list (not the pro list) is shown. */
+  otp: boolean;
+  onOtpChange: (otp: boolean) => void;
   onImport: (build: ProBuild) => void;
   onImportItems: (build: ProBuild) => void;
   onLoadMore: () => void;
@@ -57,6 +61,9 @@ function kda(build: ProBuild): string {
   return `${build.kills}/${build.deaths}/${build.assists}`;
 }
 
+/** The ability rows of the skill-order grid, in display order. */
+const SKILL_ROWS = ["Q", "W", "E", "R"] as const;
+
 function ProBuildCard({
   build,
   mode,
@@ -73,7 +80,8 @@ function ProBuildCard({
   onImportItems: (build: ProBuild) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const subtitle = [build.team, build.league].filter(Boolean).join(" · ");
+  const hasDetails =
+    build.completedItems.length > 0 || build.itemPath.length > 0 || build.skillOrder.length > 0;
   return (
     <div className={`pro-card ${active ? "is-active" : ""}`}>
       <button
@@ -84,13 +92,25 @@ function ProBuildCard({
         aria-label={`Import ${build.proName}'s ${build.win ? "winning" : "losing"} ${build.roleLabel} page`}
       >
         <span className="pro-card-head">
+          <TeamLogo team={build.team} size={26} mode={mode} className="pro-card-logo" />
           <RuneIcon id={build.keystone} mode={mode} className="pro-card-keystone" />
           <span className="pro-card-copy">
-            <strong>{build.proName || "Pro player"}</strong>
+            <span className="pro-card-name">
+              <strong>{build.proName || "Pro player"}</strong>
+              {build.region && (
+                <span
+                  className="pro-card-region"
+                  data-region={build.region}
+                  title={build.league || undefined}
+                >
+                  {build.region}
+                </span>
+              )}
+            </span>
             {build.otp ? (
               <span className="pro-card-otp">OTP</span>
             ) : (
-              subtitle && <small>{subtitle}</small>
+              build.team && <small>{build.team}</small>
             )}
           </span>
           <span className={`pro-card-result ${build.win ? "is-win" : "is-loss"}`}>
@@ -146,19 +166,21 @@ function ProBuildCard({
           </span>
         )}
       </button>
-      {(build.itemOrder.length > 0 || build.finalItems.length > 0) && (
+      {(hasDetails || build.finalItems.length > 0) && (
         <>
           <div className="pro-card-actions">
-            {build.itemOrder.length > 0 && <button
-              type="button"
-              className="pro-card-toggle"
-              disabled={busy}
-              aria-expanded={open}
-              onClick={() => setOpen((value) => !value)}
-            >
-              <span>Item order</span>
-              <ChevronIcon open={open} />
-            </button>}
+            {hasDetails && (
+              <button
+                type="button"
+                className="pro-card-toggle"
+                disabled={busy}
+                aria-expanded={open}
+                onClick={() => setOpen((value) => !value)}
+              >
+                <span>Build details</span>
+                <ChevronIcon open={open} />
+              </button>
+            )}
             {build.finalItems.length > 0 && <button
               type="button"
               className="item-set-import"
@@ -167,16 +189,76 @@ function ProBuildCard({
               aria-label={`Add ${build.proName}'s item build to the League shop`}
             >Add to shop</button>}
           </div>
-          {open && (
-            <ol className="pro-card-order">
-              {build.itemOrder.map((entry, index) => (
-                <li key={`${entry.itemId}-${index}`} className="pro-order-row">
-                  <span className="pro-order-minute">{fmtBuildMinute(entry.minute)}</span>
-                  <ItemIcon id={entry.itemId} name={entry.name} mode={mode} className="pro-order-icon" />
-                  <span className="pro-order-name">{entry.name}</span>
-                </li>
-              ))}
-            </ol>
+          {open && hasDetails && (
+            <div className="pro-details">
+              {build.completedItems.length > 0 && (
+                <section className="pro-details-section">
+                  <span className="pro-details-title">Completed build</span>
+                  <div className="pro-chain">
+                    {build.completedItems.map((item, index) => (
+                      <Fragment key={`${item.id}-${index}`}>
+                        {index > 0 && <span className="pro-chain-sep" aria-hidden>›</span>}
+                        <ItemIcon
+                          id={item.id}
+                          name={item.name}
+                          mode={mode}
+                          className="pro-details-item"
+                        />
+                      </Fragment>
+                    ))}
+                  </div>
+                </section>
+              )}
+              {build.itemPath.length > 0 && (
+                <section className="pro-details-section">
+                  <span className="pro-details-title">Item path</span>
+                  <div className="pro-path">
+                    {build.itemPath.map((group, groupIndex) => (
+                      <div key={`${group.minute}-${groupIndex}`} className="pro-path-group">
+                        <div className="pro-path-icons">
+                          {group.items.map((item, index) => (
+                            <span key={`${item.id}-${index}`} className="pro-path-cell">
+                              <ItemIcon
+                                id={item.id}
+                                name={item.name}
+                                mode={mode}
+                                className="pro-path-icon"
+                              />
+                              {item.count > 1 && (
+                                <span className="pro-path-count">{item.count}</span>
+                              )}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="pro-path-minute">{fmtBuildMinute(group.minute)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+              {build.skillOrder.length > 0 && (
+                <section className="pro-details-section">
+                  <span className="pro-details-title">Skill order</span>
+                  <div className="pro-skill-scroll">
+                    <div className="pro-skill-rows">
+                      {SKILL_ROWS.map((letter) => (
+                        <div key={letter} className="pro-skill-row">
+                          <span className="pro-skill-label">{letter}</span>
+                          {build.skillOrder.map((chosen, level) => (
+                            <span
+                              key={`${letter}-${level}`}
+                              className={`pro-skill-cell ${chosen === letter ? "is-filled" : ""}`}
+                            >
+                              {chosen === letter ? level + 1 : ""}
+                            </span>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+            </div>
           )}
         </>
       )}
@@ -195,25 +277,56 @@ export function ProBuilds({
   error,
   busy,
   active,
+  otp,
+  onOtpChange,
   onImport,
   onImportItems,
   onLoadMore,
   onRetry,
 }: Props) {
+  const toggle = (
+    <div className="matchup-toggle pro-otp-toggle" role="tablist" aria-label="Pro builds source">
+      <button
+        type="button"
+        role="tab"
+        aria-selected={!otp}
+        className={otp ? "" : "is-active"}
+        onClick={() => onOtpChange(false)}
+      >
+        Pros
+      </button>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={otp}
+        className={otp ? "is-active" : ""}
+        onClick={() => onOtpChange(true)}
+      >
+        OTPs
+      </button>
+    </div>
+  );
   if (error) {
     return (
       <div className="pro-list">
+        {toggle}
         <p className="runes-alert" role="alert">{error}</p>
         <button type="button" className="pro-retry" onClick={onRetry}>Try again</button>
       </div>
     );
   }
   if (!view) {
-    return <div className="runes-status"><Spinner /> Loading pro builds…</div>;
+    return (
+      <div className="pro-list">
+        {toggle}
+        <div className="runes-status"><Spinner /> Loading pro builds…</div>
+      </div>
+    );
   }
   if (view.unavailable) {
     return (
       <div className="pro-list">
+        {toggle}
         <p className="runes-note pro-unavailable">
           {view.message ?? "Pro builds unavailable."}
         </p>
@@ -223,13 +336,17 @@ export function ProBuilds({
   }
   if (view.matches.length === 0) {
     return (
-      <p className="runes-note">
-        {view.message ?? emptyMessage ?? "No recent pro games for this champion."}
-      </p>
+      <div className="pro-list">
+        {toggle}
+        <p className="runes-note">
+          {view.message ?? emptyMessage ?? "No recent pro games for this champion."}
+        </p>
+      </div>
     );
   }
   return (
     <div className="pro-list">
+      {toggle}
       {view.stale && <CachedBadge stale updatedAt={view.updatedAt} />}
       {view.matches.map((build) => (
         <ProBuildCard

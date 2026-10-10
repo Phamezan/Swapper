@@ -4,6 +4,7 @@ import { BrandIcon } from "@/components/BrandIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
 import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection } from "../runes/types";
+import { isGamePhase } from "../runes/types";
 import "./remote.css";
 
 type RemoteState = "disabled" | "starting" | "notInstalled" | "disconnected" | "available" | "failed";
@@ -119,6 +120,10 @@ export default function RemoteApp() {
   const runePosition = useRef<string | undefined>(undefined);
   const runeChampion = useRef(0);
   const runeRequest = useRef(0);
+  // Bumped when a game ends, so the Champion tab drops its search instead of
+  // keeping it for the next champion select.
+  const [runeSession, setRuneSession] = useState(0);
+  const lastGamePhase = useRef(false);
   const socketRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
@@ -221,6 +226,15 @@ export default function RemoteApp() {
     const timer = window.setInterval(() => void poll(), 1500);
     return () => { cancelled = true; window.clearInterval(timer); };
   }, []);
+
+  // Leaving a live game bumps the rune session, so the Champion tab's search is
+  // cleared before the next champion select opens.
+  useEffect(() => {
+    if (!game) return;
+    const inGame = isGamePhase(game.phase);
+    if (lastGamePhase.current && !inGame) setRuneSession((id) => id + 1);
+    lastGamePhase.current = inGame;
+  }, [game]);
 
   // One vibration/sound cue per ready check, only while this page is open.
   const readyCheckActive = game?.phase === "ReadyCheck" && Boolean(game.readyCheck);
@@ -459,9 +473,9 @@ export default function RemoteApp() {
     }
   }
 
-  async function loadProBuilds(championId: number, position: string, page: number): Promise<ProBuildsView> {
+  async function loadProBuilds(championId: number, position: string, page: number, otp: boolean): Promise<ProBuildsView> {
     const response = await fetch(
-      `/api/runes/pro-builds?championId=${championId}&position=${encodeURIComponent(position)}&page=${page}`,
+      `/api/runes/pro-builds?championId=${championId}&position=${encodeURIComponent(position)}&page=${page}&isOtp=${otp}`,
       { cache: "no-store" },
     );
     if (!response.ok) throw new Error("Could not load pro builds.");
@@ -694,6 +708,7 @@ export default function RemoteApp() {
                 onLoadMatchup={loadMatchup}
                 championApi={championApi}
                 onTierChange={(tier) => void setTier(tier)}
+                sessionKey={String(runeSession)}
               />
             ) : (
               <>

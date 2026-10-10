@@ -64,6 +64,7 @@ fn routes() -> Router<Arc<RemoteCore>> {
         .route("/api/spell/icon/{id}", get(spell_icon))
         .route("/api/item/icon/{id}", get(item_icon))
         .route("/api/rank/icon/{tier}", get(rank_icon))
+        .route("/api/team/icon/{team}", get(team_icon))
         .route("/ws", get(socket))
         .fallback(asset)
 }
@@ -427,6 +428,8 @@ struct ProBuildsQuery {
     position: String,
     #[serde(default)]
     page: Option<u32>,
+    #[serde(default)]
+    is_otp: bool,
 }
 
 async fn pro_builds(Query(query): Query<ProBuildsQuery>) -> Response {
@@ -434,6 +437,7 @@ async fn pro_builds(Query(query): Query<ProBuildsQuery>) -> Response {
         query.champion_id,
         &query.position,
         query.page.unwrap_or(1),
+        query.is_otp,
     )
     .await)
         .into_response()
@@ -808,6 +812,22 @@ async fn rank_icon(Path(tier): Path<String>) -> Response {
         Ok(bytes) => (
             [
                 (header::CONTENT_TYPE, "image/svg+xml"),
+                (header::CACHE_CONTROL, "private, max-age=86400"),
+            ],
+            bytes,
+        )
+            .into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+/// Team logos are addressed by the team's display name; the module slugifies it
+/// and only ever fetches from the one fixed probuildstats host.
+async fn team_icon(Path(team): Path<String>) -> Response {
+    match crate::runes::teams::icon(&team).await {
+        Ok(bytes) => (
+            [
+                (header::CONTENT_TYPE, "image/png"),
                 (header::CACHE_CONTROL, "private, max-age=86400"),
             ],
             bytes,

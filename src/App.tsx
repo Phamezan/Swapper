@@ -18,6 +18,7 @@ import { RunesPanel } from "./runes/RunesPanel";
 import { PairingNotice } from "./settings/PairedDevices";
 import { UpdateBanner } from "./settings/UpdateSection";
 import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection } from "./runes/types";
+import { isGamePhase } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
 import type { SettingsTab } from "./settings/SettingsView";
 import "./App.css";
@@ -181,6 +182,10 @@ function App() {
   const runePosition = useRef<string | undefined>(undefined);
   const runeChampion = useRef(0);
   const runeRequest = useRef(0);
+  // Bumped when a game ends, so the Champion tab drops its search instead of
+  // keeping it for the next champion select.
+  const [runeSession, setRuneSession] = useState(0);
+  const lastGamePhase = useRef(false);
   const native = isTauri();
 
   useEffect(() => {
@@ -466,8 +471,13 @@ function App() {
     }
   }
 
-  function loadProBuilds(championId: number, position: string, page: number): Promise<ProBuildsView> {
-    return invoke<ProBuildsView>("get_pro_builds", { championId, position, page });
+  function loadProBuilds(
+    championId: number,
+    position: string,
+    page: number,
+    otp: boolean,
+  ): Promise<ProBuildsView> {
+    return invoke<ProBuildsView>("get_pro_builds", { championId, position, page, isOtp: otp });
   }
 
   function loadKeystoneBuild(
@@ -536,6 +546,11 @@ function App() {
     action("ready-check-notifications", () => invoke<AppState>("set_ready_check_notifications", { enabled }));
 
   function handleChampSelect(payload: ChampSelectStatus) {
+    // Leaving a live game bumps the rune session, so the Champion tab's search
+    // is cleared before the next champion select opens.
+    const inGame = isGamePhase(payload.phase);
+    if (lastGamePhase.current && !inGame) setRuneSession((id) => id + 1);
+    lastGamePhase.current = inGame;
     if (payload.phase === "ChampSelect") {
       if (runeChampion.current !== payload.championId) runePosition.current = undefined;
       setView("runes");
@@ -865,6 +880,7 @@ function App() {
             onLoadMatchup={loadMatchup}
             championApi={championApi}
             onTierChange={(tier) => void setRuneTier(tier)}
+            sessionKey={String(runeSession)}
           />
         ) : (
           <>

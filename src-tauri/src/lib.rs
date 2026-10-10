@@ -1027,8 +1027,25 @@ async fn rank_icon(tier: String) -> Result<String, String> {
 }
 
 #[tauri::command]
-async fn get_pro_builds(champion_id: i64, position: String, page: Option<u32>) -> runes::ProBuildsView {
-    runes::pro_builds_view(champion_id, &position, page.unwrap_or(1)).await
+async fn get_pro_builds(
+    champion_id: i64,
+    position: String,
+    page: Option<u32>,
+    is_otp: Option<bool>,
+) -> runes::ProBuildsView {
+    runes::pro_builds_view(champion_id, &position, page.unwrap_or(1), is_otp.unwrap_or(false)).await
+}
+
+/// The PNG bytes for a pro team's logo, addressed by the team's display name.
+#[tauri::command]
+async fn team_icon(team: String) -> Result<String, String> {
+    let bytes = runes::teams::icon(&team)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
 }
 
 /// The 6-item build people build with one preset's keystone, from lolalytics.
@@ -1417,6 +1434,7 @@ pub fn run() {
             spell_icon,
             item_icon,
             rank_icon,
+            team_icon,
             apply_spell,
             get_pro_builds,
             get_keystone_build,

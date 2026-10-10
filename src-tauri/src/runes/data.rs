@@ -314,10 +314,11 @@ pub async fn pro_builds(
     champion_id: i64,
     position: &str,
     page: u32,
+    is_otp: bool,
 ) -> Result<Sourced<Vec<probuilds::ProMatch>>, RuneError> {
     let role = probuilds::role_arg(position);
     let page = page.max(1);
-    let key = probuilds::cache_key(champion_id, role, page);
+    let key = probuilds::cache_key(champion_id, role, page, is_otp);
     if let Some(cached) = cached_pro_builds(&key) {
         return cached;
     }
@@ -333,7 +334,7 @@ pub async fn pro_builds(
             return pro_stale_or_error(&key, error);
         }
     };
-    match client.matches(champion_id, role, page, false).await {
+    match client.matches(champion_id, role, page, is_otp).await {
         Ok(matches) => {
             super::shared().pro_builds.store(key.clone(), matches.clone());
             pro_last_good().store(key, matches.clone());

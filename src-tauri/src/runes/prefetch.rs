@@ -121,7 +121,7 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
         items.extend(build.options.iter().map(|item| item.id));
     }
     // Pro builds page 1: the slow u.gg call this prefetch exists to hide.
-    if let Ok(sourced) = data::pro_builds(context.champion_id, &position, 1).await {
+    if let Ok(sourced) = data::pro_builds(context.champion_id, &position, 1, false).await {
         if stale(generation) {
             return;
         }
@@ -130,7 +130,13 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
                 collect_selection(&selection, &mut runes);
             }
             items.extend(matched.final_items());
-            items.extend(matched.item_order().into_iter().map(|(id, _)| id));
+            items.extend(matched.completed_items.iter().copied().filter(|id| *id > 0));
+            items.extend(
+                matched
+                    .item_path_groups()
+                    .into_iter()
+                    .flat_map(|(_, group)| group.into_iter().map(|(id, _)| id)),
+            );
             spells.extend(
                 matched
                     .summoner_spells

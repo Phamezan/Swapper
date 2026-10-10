@@ -37,11 +37,12 @@ pub mod roles;
 pub mod session;
 pub mod spells;
 pub mod stats;
+pub mod teams;
 pub mod tierlist;
 pub mod view;
 pub mod watch;
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::hash::Hash;
 use std::sync::{Arc, Mutex, MutexGuard, OnceLock};
@@ -502,6 +503,11 @@ struct Shared {
     role_icons: HashMap<String, Vec<u8>>,
     /// The ranked crest SVGs, keyed by crest asset name.
     rank_icons: HashMap<String, Vec<u8>>,
+    /// Pro team logo PNGs, keyed by the CDN slug.
+    team_icons: HashMap<String, Vec<u8>>,
+    /// Team slugs the CDN 404'd on, so a missing logo is not refetched all
+    /// session. An outage is not cached here.
+    team_icon_misses: HashSet<String>,
     /// The item catalog, its id-to-icon-path index and its id-to-name map, plus
     /// the CommunityDragon mirror used when the LCU is unreachable.
     items: Option<(Instant, Arc<items::Catalog>)>,
@@ -537,6 +543,8 @@ fn shared() -> MutexGuard<'static, Shared> {
                 icons: HashMap::new(),
                 role_icons: HashMap::new(),
                 rank_icons: HashMap::new(),
+                team_icons: HashMap::new(),
+                team_icon_misses: HashSet::new(),
                 items: None,
                 item_fallback: None,
                 item_icons: HashMap::new(),

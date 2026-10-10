@@ -257,6 +257,57 @@
   text-transform: uppercase;
 }
 
+/* Source toggle: Pros vs OTPs, reusing the matchup segmented control. */
+.pro-otp-toggle { align-self: flex-start; width: 180px; }
+.pro-otp-toggle button { padding: 0 12px; }
+
+/* Team logo: a small rounded square. When the logo is missing the same square
+   shows the team's initials, so a card never shows a broken image. */
+.team-logo { display: block; flex: none; object-fit: contain; border-radius: 7px; }
+.team-logo-fallback {
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: var(--text-secondary);
+  background: var(--surface-raised);
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+.pro-card-logo { outline: 1px solid var(--line-subtle); outline-offset: -1px; }
+
+.pro-card-name { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.pro-card-name strong { min-width: 0; }
+
+/* League -> region pill. Colours are tokens per region; an unmapped league
+   falls back to a neutral grey pill that still shows the league code. */
+.runes-panel {
+  --region-eu: #8ab4ff;
+  --region-na: #f9a8a8;
+  --region-kr: #7dd3fc;
+  --region-cn: #e7c777;
+  --region-apac: #c4b5fd;
+  --region-vn: #fdba74;
+  --region-br: #86efac;
+}
+.pro-card-region {
+  flex: none;
+  padding: 1px 6px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  background: color-mix(in srgb, var(--line-subtle) 60%, transparent);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.pro-card-region[data-region="EU"] { color: var(--region-eu); background: color-mix(in srgb, var(--region-eu) 22%, var(--surface-base)); }
+.pro-card-region[data-region="NA"] { color: var(--region-na); background: color-mix(in srgb, var(--region-na) 22%, var(--surface-base)); }
+.pro-card-region[data-region="KR"] { color: var(--region-kr); background: color-mix(in srgb, var(--region-kr) 22%, var(--surface-base)); }
+.pro-card-region[data-region="CN"] { color: var(--region-cn); background: color-mix(in srgb, var(--region-cn) 22%, var(--surface-base)); }
+.pro-card-region[data-region="APAC"] { color: var(--region-apac); background: color-mix(in srgb, var(--region-apac) 22%, var(--surface-base)); }
+.pro-card-region[data-region="VN"] { color: var(--region-vn); background: color-mix(in srgb, var(--region-vn) 22%, var(--surface-base)); }
+.pro-card-region[data-region="BR"] { color: var(--region-br); background: color-mix(in srgb, var(--region-br) 22%, var(--surface-base)); }
+
 .pro-card-icons { display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; }
 .pro-card-icons img, .pro-card-icons .rune-icon-fallback { width: 20px; height: 20px; border-radius: 5px; }
 .pro-card-tree { outline: 1px solid var(--line-strong); outline-offset: -1px; }
@@ -827,19 +878,91 @@
 .pro-card-actions { display: flex; align-items: center; gap: 7px; }
 .pro-card-chevron { transition: transform 0.15s ease; }
 .pro-card-chevron.is-open { transform: rotate(180deg); }
-.pro-card-order { display: flex; flex-direction: column; gap: 3px; margin: 0; padding: 0; list-style: none; }
-.pro-order-row { display: flex; align-items: center; gap: 8px; }
-.pro-order-minute { flex: none; width: 34px; color: var(--text-muted); font-size: 10px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.pro-order-icon { width: 20px !important; height: 20px !important; }
-.pro-order-name { overflow: hidden; color: var(--text-secondary); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Expanded build details: completed chain, item path and skill grid. */
+.pro-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 9px;
+  border-top: 1px solid var(--line-subtle);
+}
+.pro-details-section { display: flex; flex-direction: column; gap: 5px; }
+.pro-details-title {
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.pro-details-item { width: 27px !important; height: 27px !important; border-radius: 6px; }
+
+.pro-chain { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.pro-chain-sep { color: var(--text-muted); font-size: 13px; font-weight: 700; }
+
+.pro-path { display: flex; flex-wrap: wrap; gap: 8px 11px; }
+.pro-path-group { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.pro-path-icons { display: flex; align-items: center; gap: 3px; }
+.pro-path-cell { position: relative; display: inline-flex; }
+.pro-path-icon { width: 22px !important; height: 22px !important; border-radius: 5px; }
+.pro-path-count {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  min-width: 12px;
+  padding: 0 3px;
+  border: 1px solid var(--surface-panel);
+  border-radius: 7px;
+  color: #fff;
+  background: #111418;
+  font-size: 9px;
+  font-weight: 750;
+  line-height: 12px;
+  text-align: center;
+}
+.pro-path-minute {
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Skill order scrolls sideways inside the panel, never the page. */
+.pro-skill-scroll { overflow-x: auto; padding-bottom: 2px; }
+.pro-skill-rows { display: flex; flex-direction: column; gap: 2px; width: max-content; }
+.pro-skill-row { display: flex; align-items: center; gap: 2px; }
+.pro-skill-label {
+  flex: none;
+  width: 12px;
+  color: var(--text-secondary);
+  font-size: 9px;
+  font-weight: 750;
+  text-align: center;
+}
+.pro-skill-cell {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  color: var(--text-primary);
+  background: var(--surface-raised);
+  font-size: 9px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.pro-skill-cell.is-filled { color: #fff; background: #1d4ed8; }
 
 .runes-remote .pro-card-item { width: 28px !important; height: 28px !important; }
 .runes-remote .pro-card-item.is-trinket { width: 22px !important; height: 22px !important; }
 .runes-remote .pro-card-toggle { min-height: 44px; font-size: 13px; }
-.runes-remote .pro-order-row { min-height: 34px; }
-.runes-remote .pro-order-icon { width: 26px !important; height: 26px !important; }
-.runes-remote .pro-order-name { font-size: 13px; }
-.runes-remote .pro-order-minute { font-size: 12px; }
+.runes-remote .pro-details-item { width: 32px !important; height: 32px !important; }
+.runes-remote .pro-path-icon { width: 26px !important; height: 26px !important; }
+.runes-remote .pro-path-minute { font-size: 11px; }
+.runes-remote .pro-skill-cell { width: 18px; height: 18px; font-size: 10px; }
+.runes-remote .pro-skill-label { width: 14px; font-size: 11px; }
 
 /* Lane matchup banner: Generic / vs {enemy} toggle with the matchup's stats. */
 .matchup-banner {

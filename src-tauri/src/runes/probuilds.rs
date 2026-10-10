@@ -55,6 +55,7 @@ query ChampionMatchList($championId: Int!, $role: String, $pageNumber: Int, $isO
       finalBuild
       completedItems
       itemPath { itemId timestamp type }
+      skillOrders
     }
   }
 }";
@@ -150,6 +151,10 @@ pub struct ProMatch {
     /// Every recorded purchase, with its game-time.
     #[serde(default)]
     pub item_path: Vec<ItemPathEntry>,
+    /// The ability levelled at each level, one letter per level, e.g.
+    /// `"EQWQQRQEQEREEWWR"`.
+    #[serde(default)]
+    pub skill_orders: Option<String>,
 }
 
 /// The trinket item ids. There is no trinket flag in the API, but the final
@@ -194,26 +199,43 @@ impl ProMatch {
         items
     }
 
-    /// The recorded purchases in game order, as `(item id, minute)`. Falls back
-    /// to `completedItems` with an unknown minute when the API omits the path.
-    pub fn item_order(&self) -> Vec<(i64, i64)> {
+    /// The recorded purchases as whole minutes: `(minute, [(item id, count)])`.
+    ///
+    /// Only purchase events (`type: 1`) are kept; sells and undos are dropped.
+    /// Purchases in the same minute form one group in purchase order, and
+    /// repeated item ids inside a group collapse to one entry with a count.
+    pub fn item_path_groups(&self) -> Vec<(i64, Vec<(i64, u32)>)> {
         let mut purchases: Vec<&ItemPathEntry> = self
             .item_path
             .iter()
-            .filter(|entry| entry.item_id > 0)
+            .filter(|entry| entry.kind == 1 && entry.item_id > 0)
             .collect();
-        if !purchases.is_empty() {
-            purchases.sort_by_key(|entry| entry.timestamp);
-            return purchases
-                .into_iter()
-                .map(|entry| (entry.item_id, entry.timestamp.max(0) / 60_000))
-                .collect();
+        purchases.sort_by_key(|entry| entry.timestamp);
+        let mut groups: Vec<(i64, Vec<(i64, u32)>)> = Vec::new();
+        for entry in purchases {
+            let minute = entry.timestamp.max(0) / 60_000;
+            if groups.last().map(|(minute, _)| *minute) != Some(minute) {
+                groups.push((minute, Vec::new()));
+            }
+            let items = &mut groups.last_mut().expect("a group was just pushed").1;
+            match items.iter_mut().find(|(id, _)| *id == entry.item_id) {
+                Some((_, count)) => *count += 1,
+                None => items.push((entry.item_id, 1)),
+            }
         }
-        self.completed_items
-            .iter()
-            .copied()
-            .filter(|id| *id > 0)
-            .map(|id| (id, -1))
+        groups
+    }
+
+    /// The ability levelled at each level, as `Q`/`W`/`E`/`R`. Unknown letters
+    /// are dropped and the order is capped at the 18 levels a game has.
+    pub fn skill_order(&self) -> Vec<char> {
+        self.skill_orders
+            .as_deref()
+            .unwrap_or("")
+            .chars()
+            .map(|letter| letter.to_ascii_uppercase())
+            .filter(|letter| matches!(*letter, 'Q' | 'W' | 'E' | 'R'))
+            .take(18)
             .collect()
     }
 
@@ -260,9 +282,34 @@ pub fn is_otp(team: &str) -> bool {
     team.trim().eq_ignore_ascii_case("one trick pony")
 }
 
-/// Cache key for one champion, role and page.
-pub fn cache_key(champion_id: i64, role: Option<&str>, page: u32) -> String {
-    format!("{champion_id}|{}|{page}", role.unwrap_or("all"))
+/// The region a `proLeague` value belongs to, for the card's coloured badge.
+///
+/// The map is deliberately one flat list so a new league is a one-line change.
+/// An unknown league returns its own code, which the card shows in a neutral
+/// pill rather than hiding the league entirely.
+pub fn region_for_league(league: &str) -> &str {
+    let trimmed = league.trim();
+    match trimmed.to_ascii_uppercase().as_str() {
+        // EMEA Masters and the European regional leagues.
+        "LEC" | "EMEA" | "LFL" | "PRM" | "SL" | "NLC" | "EBL" | "LIT" | "HLL" | "TCL" => "EU",
+        "LCS" | "NACL" | "LTAN" | "LTA NORTH" => "NA",
+        "LCK" | "LCKC" | "LCK CL" => "KR",
+        "LPL" | "LDL" => "CN",
+        "LCP" | "PCS" | "LJL" => "APAC",
+        "VCS" => "VN",
+        "CBLOL" | "LTAS" | "LTA SOUTH" => "BR",
+        _ => trimmed,
+    }
+}
+
+/// Cache key for one champion, role, page and source list. The source is part
+/// of the key so the Pro and OTP lists can never serve each other's games.
+pub fn cache_key(champion_id: i64, role: Option<&str>, page: u32, is_otp: bool) -> String {
+    format!(
+        "{champion_id}|{}|{page}|{}",
+        role.unwrap_or("all"),
+        if is_otp { "otp" } else { "pro" }
+    )
 }
 
 /// Parses a GraphQL response into the matches that map to a valid rune page.
@@ -548,32 +595,69 @@ mod tests {
     }
 
     #[test]
-    fn reads_the_item_order_in_purchase_order_with_minute_stamps() {
+    fn groups_item_path_purchases_by_whole_minute() {
         let matches = parse(FIXTURE).unwrap();
-        let order = matches[0].item_order();
         assert_eq!(
-            order,
+            matches[0].item_path_groups(),
             vec![
-                (1056, 0),
-                (2003, 0),
-                (6653, 7),
-                (3020, 9),
-                (3157, 13),
-                (4645, 17),
-                (3089, 25)
+                (0, vec![(1056, 1), (2003, 1)]),
+                (7, vec![(6653, 1)]),
+                (9, vec![(3020, 1)]),
+                (13, vec![(3157, 1)]),
+                (17, vec![(4645, 1)]),
+                (25, vec![(3089, 1)]),
             ]
         );
-        // Without an item path, the completed items keep their order with no minute.
-        let body = r#"{"data":{"getProChampionMatchList":{"matchList":[{
+    }
+
+    #[test]
+    fn stacks_repeated_items_drops_non_purchases_and_splits_the_minute_at_60_000ms() {
+        let match_json = r#"{"data":{"getProChampionMatchList":{"matchList":[{
             "matchId":1,
             "runes":{"perk0":8112,"perk1":8139,"perk2":8137,"perk3":8106,"perk4":8444,"perk5":8242,"primaryStyle":8100,"subStyle":8400},
             "statShards":[5005,5008,5011],
-            "completedItems":[1056,6653,3157]
+            "itemPath":[
+                {"itemId":1001,"timestamp":59999,"type":1},
+                {"itemId":1001,"timestamp":59999,"type":1},
+                {"itemId":1002,"timestamp":60000,"type":1},
+                {"itemId":1001,"timestamp":30000,"type":2},
+                {"itemId":1003,"timestamp":60001,"type":0}
+            ]
+        }]}}}"#;
+        // Two buys at 59.999s stack in minute 0; 60.000s is minute 1. The sale
+        // (type 2) and the type-0 entry are dropped.
+        assert_eq!(
+            parse(match_json).unwrap()[0].item_path_groups(),
+            vec![(0, vec![(1001, 2)]), (1, vec![(1002, 1)])]
+        );
+    }
+
+    #[test]
+    fn parses_the_skill_order_dropping_unknown_letters_and_capping_at_18() {
+        let match_json = r#"{"data":{"getProChampionMatchList":{"matchList":[{
+            "matchId":1,
+            "runes":{"perk0":8112,"perk1":8139,"perk2":8137,"perk3":8106,"perk4":8444,"perk5":8242,"primaryStyle":8100,"subStyle":8400},
+            "statShards":[5005,5008,5011],
+            "skillOrders":"EQWQQRQEQEREEWWR"
         }]}}}"#;
         assert_eq!(
-            parse(body).unwrap()[0].item_order(),
-            vec![(1056, -1), (6653, -1), (3157, -1)]
+            parse(match_json).unwrap()[0].skill_order(),
+            "EQWQQRQEQEREEWWR".chars().collect::<Vec<_>>()
         );
+        // Unknown letters are ignored, lowercase is accepted, and the order
+        // stops at 18 levels even when the API sends more.
+        let match_json = r#"{"data":{"getProChampionMatchList":{"matchList":[{
+            "matchId":1,
+            "runes":{"perk0":8112,"perk1":8139,"perk2":8137,"perk3":8106,"perk4":8444,"perk5":8242,"primaryStyle":8100,"subStyle":8400},
+            "statShards":[5005,5008,5011],
+            "skillOrders":"q-ewxQEREEWWRQQEWWRQQ"
+        }]}}}"#;
+        assert_eq!(
+            parse(match_json).unwrap()[0].skill_order(),
+            "QEWQEREEWWRQQEWWRQ".chars().collect::<Vec<_>>()
+        );
+        // A missing field is an empty order, not an error.
+        assert!(parse(FIXTURE).unwrap()[0].skill_order().is_empty());
     }
 
     #[test]
@@ -622,7 +706,7 @@ mod tests {
     fn caches_successes_for_ten_minutes_and_failures_for_one() {
         let now = Instant::now();
         let mut cache = MatchCache::default();
-        let key = cache_key(103, Some("mid"), 1);
+        let key = cache_key(103, Some("mid"), 1, false);
         assert!(matches!(cache.lookup_at(&key, now), Cached::Miss));
 
         cache.store_at(key.clone(), vec![ProMatch::default()], now);
@@ -635,7 +719,7 @@ mod tests {
         ));
 
         // A failed key is negative-cached for a minute.
-        let failed = cache_key(103, Some("top"), 1);
+        let failed = cache_key(103, Some("top"), 1, false);
         cache.fail_at(failed.clone(), now);
         assert!(matches!(cache.lookup_at(&failed, now + Duration::from_secs(30)), Cached::Unavailable));
         assert!(matches!(
@@ -648,16 +732,37 @@ mod tests {
     fn a_new_success_clears_a_previous_failure() {
         let now = Instant::now();
         let mut cache = MatchCache::default();
-        let key = cache_key(103, None, 1);
+        let key = cache_key(103, None, 1, false);
         cache.fail_at(key.clone(), now);
         cache.store_at(key.clone(), vec![ProMatch::default()], now);
         assert!(matches!(cache.lookup_at(&key, now), Cached::Fresh(_)));
     }
 
     #[test]
-    fn distinguishes_role_and_page_in_the_cache_key() {
-        assert_ne!(cache_key(103, Some("mid"), 1), cache_key(103, Some("mid"), 2));
-        assert_ne!(cache_key(103, Some("mid"), 1), cache_key(103, Some("top"), 1));
-        assert_eq!(cache_key(103, None, 1), "103|all|1");
+    fn distinguishes_role_page_and_source_in_the_cache_key() {
+        assert_ne!(cache_key(103, Some("mid"), 1, false), cache_key(103, Some("mid"), 2, false));
+        assert_ne!(cache_key(103, Some("mid"), 1, false), cache_key(103, Some("top"), 1, false));
+        // The Pro and OTP lists must never share a cache slot.
+        assert_ne!(cache_key(103, Some("mid"), 1, false), cache_key(103, Some("mid"), 1, true));
+        assert_eq!(cache_key(103, None, 1, false), "103|all|1|pro");
+        assert_eq!(cache_key(103, None, 1, true), "103|all|1|otp");
+    }
+
+    #[test]
+    fn maps_leagues_to_their_regions() {
+        for eu in ["LEC", "EMEA", "LFL", "NLC", "TCL"] {
+            assert_eq!(region_for_league(eu), "EU");
+        }
+        assert_eq!(region_for_league("NACL"), "NA");
+        assert_eq!(region_for_league("lcs"), "NA");
+        assert_eq!(region_for_league("LTAN"), "NA");
+        assert_eq!(region_for_league("LCKC"), "KR");
+        assert_eq!(region_for_league("LPL"), "CN");
+        assert_eq!(region_for_league("LJL"), "APAC");
+        assert_eq!(region_for_league("VCS"), "VN");
+        assert_eq!(region_for_league("CBLOL"), "BR");
+        // An unknown league falls back to its own code, and blanks stay blank.
+        assert_eq!(region_for_league("CD"), "CD");
+        assert_eq!(region_for_league(""), "");
     }
 }

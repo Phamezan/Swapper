@@ -80,7 +80,12 @@ type Props = {
     items: number[],
   ) => Promise<void>;
   /** Loads one page of pros' solo-queue games for the champion and role. */
-  onLoadProBuilds: (championId: number, position: string, page: number) => Promise<ProBuildsView>;
+  onLoadProBuilds: (
+    championId: number,
+    position: string,
+    page: number,
+    otp: boolean,
+  ) => Promise<ProBuildsView>;
   /** Loads the 6-item build for one preset's keystone, from lolalytics. */
   onLoadBuild: (
     championId: number,
@@ -98,14 +103,17 @@ type Props = {
   /** Loaders for the Champion tab. */
   championApi: ChampionApi;
   onTierChange: (tier: string) => void;
+  /** Changes when a game ends, so the Champion tab drops its search. */
+  sessionKey: string;
 };
 
 /** Names the champion and role when there are no pro games, so it reads as
  *  "nobody plays this role" rather than a failed load. */
-function proEmptyMessage(championName: string, position: string): string | undefined {
+function proEmptyMessage(championName: string, position: string, otp: boolean): string | undefined {
   const role = position && position !== "none" ? positionLabels[position] : undefined;
   if (!championName || !role) return undefined;
-  return `No recent pro games for ${championName} as ${role} — try another role.`;
+  const who = otp ? "one-trick" : "pro";
+  return `No recent ${who} games for ${championName} as ${role} — try another role.`;
 }
 
 const positionLabels: Record<string, string> = {
@@ -171,12 +179,15 @@ export function RunesPanel({
   onLoadMatchup,
   championApi,
   onTierChange,
+  sessionKey,
 }: Props) {
   const [screen, setScreen] = useState<RuneScreen>("presets");
   const [selection, setSelection] = useState<Selection | null>(null);
   const [proView, setProView] = useState<ProBuildsView | null>(null);
   const [proLoading, setProLoading] = useState(false);
   const [proError, setProError] = useState<string | null>(null);
+  // False shows the pro list, true the OTP list. Kept when loading more pages.
+  const [proOtp, setProOtp] = useState(false);
   const [pickerSlot, setPickerSlot] = useState<"d" | "f" | null>(null);
   const [importNotice, setImportNotice] = useState<string | null>(null);
   const [matchup, setMatchup] = useState<MatchupView | null>(null);
@@ -186,16 +197,6 @@ export function RunesPanel({
   // True once the user clicked a tab themselves; their screen then survives
   // champion changes. Without it the Champion tab is only an automatic default.
   const userPickedTab = useRef(false);
-  // Changes whenever champion select starts or ends, so the Champion tab drops
-  // its search between sessions.
-  const inChampSelect = view?.phase === "ChampSelect";
-  const [sessionId, setSessionId] = useState(0);
-  const lastInChampSelect = useRef(inChampSelect);
-  useEffect(() => {
-    if (lastInChampSelect.current === inChampSelect) return;
-    lastInChampSelect.current = inChampSelect;
-    setSessionId((id) => id + 1);
-  }, [inChampSelect]);
   const proRequested = useRef(false);
   const proRequest = useRef(0);
   // True when the editor is opened from a preset card, so it can scroll its
@@ -217,6 +218,7 @@ export function RunesPanel({
     setProLoading(false);
     setProView(null);
     setProError(null);
+    setProOtp(false);
     setPickerSlot(null);
     setImportNotice(null);
     proRequested.current = false;
@@ -229,6 +231,7 @@ export function RunesPanel({
     setProLoading(false);
     setProView(null);
     setProError(null);
+    setProOtp(false);
     proRequested.current = false;
   }, [position]);
 
@@ -280,7 +283,7 @@ export function RunesPanel({
     void loadPro(1);
     // Load once when the tab is opened; "load more" is the only other fetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [screen, championId, proView]);
+  }, [screen, championId, proView, proOtp]);
 
   const appliedKey = view?.applied ? JSON.stringify(view.applied) : "";
   useEffect(() => {
@@ -327,7 +330,7 @@ export function RunesPanel({
               initialTier={view?.tier ?? "emerald_plus"}
               prefillChampion={null}
               prefillPosition=""
-              sessionKey={String(sessionId)}
+              sessionKey={sessionKey}
               api={championApi}
               onLoadMatchup={onLoadMatchup}
             />
@@ -373,7 +376,7 @@ export function RunesPanel({
     setProLoading(true);
     setProError(null);
     try {
-      const next = await onLoadProBuilds(championId, requestedPosition, page);
+      const next = await onLoadProBuilds(championId, requestedPosition, page, proOtp);
       if (request === proRequest.current) {
         setProView((prev) =>
           page > 1 && prev ? { ...next, matches: [...prev.matches, ...next.matches] } : next,
@@ -391,6 +394,17 @@ export function RunesPanel({
     setProView(null);
     setProError(null);
     void loadPro(1);
+  }
+
+  /** Switch between the pro and OTP lists, reloading from page one. */
+  function chooseProOtp(otp: boolean) {
+    if (otp === proOtp) return;
+    proRequest.current += 1;
+    setProLoading(false);
+    setProView(null);
+    setProError(null);
+    setProOtp(otp);
+    proRequested.current = false;
   }
 
   async function importItemSet(source: string, items: number[]) {
@@ -562,7 +576,7 @@ export function RunesPanel({
             initialTier={view.tier}
             prefillChampion={enemies.find((enemy) => enemy.id === enemyId) ?? ownChampion}
             prefillPosition={view.mode === "ranked" && view.position !== "none" ? view.position : ""}
-            sessionKey={String(sessionId)}
+            sessionKey={sessionKey}
             api={championApi}
             onLoadMatchup={onLoadMatchup}
           />
@@ -570,11 +584,13 @@ export function RunesPanel({
           <ProBuilds
             mode={mode}
             view={proView}
-            emptyMessage={proEmptyMessage(view.championName, position)}
+            emptyMessage={proEmptyMessage(view.championName, position, proOtp)}
             loading={proLoading}
             error={proError}
             busy={busy}
             active={active}
+            otp={proOtp}
+            onOtpChange={chooseProOtp}
             onImport={importProBuild}
             onImportItems={(build) => void importItemSet(
               `Pro · ${build.proName || "build"}`,

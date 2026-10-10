@@ -1,12 +1,17 @@
 //! A tiny on-disk cache of the client's static SVGs (positions and rank
-//! crests), so a restart without League or CommunityDragon still shows icons.
+//! crests) and the pro teams' logo PNGs, so a restart without League or
+//! CommunityDragon still shows icons.
 //!
-//! Both [`super::roles`] and [`super::ranks`] fetch the same plugin's assets
-//! from the LCU first and CommunityDragon second. When neither answers — which
-//! happens in-game, and while the mirror is down — the last good bytes are read
-//! from `%LOCALAPPDATA%\Swapper\icons` instead of rendering a blank. Only names
-//! on the existing whitelists are ever turned into a path, so no caller-supplied
-//! string can escape the icons folder.
+//! [`super::roles`] and [`super::ranks`] fetch the same plugin's assets from the
+//! LCU first and CommunityDragon second; [`super::teams`] fetches from the
+//! probuildstats CDN. When neither answers — which happens in-game, and while a
+//! mirror is down — the last good bytes are read from
+//! `%LOCALAPPDATA%\Swapper\icons` instead of rendering a blank.
+//!
+//! Roles and ranks are a fixed whitelist, so no caller-supplied string can name
+//! a file. Team names are not, so their on-disk stem is sanitized to alphanumeric
+//! characters and capped, and an empty result is rejected. Either way, only a
+//! validated stem is ever turned into a path.
 //!
 //! Every operation is best-effort: a missing, unreadable, empty or oversized
 //! file reads as a miss, and a failed write is ignored, because this is a cache
@@ -14,13 +19,17 @@
 
 use std::path::{Path, PathBuf};
 
+/// The longest cached team stem. Real slugs are short; this is just a bound.
+const MAX_TEAM_STEM: usize = 64;
+
 /// Which asset family a cached file belongs to. The variant also selects the
-/// on-disk subfolder and the whitelist that is re-checked here, so an
-/// unvalidated name can never name a file.
+/// on-disk subfolder and the validation applied to the name, so an unvalidated
+/// name can never name a file.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum Kind {
     Role,
     Rank,
+    Team,
 }
 
 impl Kind {
@@ -28,45 +37,65 @@ impl Kind {
         match self {
             Kind::Role => "role",
             Kind::Rank => "rank",
+            Kind::Team => "team",
         }
     }
 
-    /// The asset names this kind may cache. These mirror the caller's
-    /// `asset_name` whitelist; re-checking here keeps the guarantee that only a
-    /// known name reaches the disk.
-    fn allows(self, name: &str) -> bool {
+    fn extension(self) -> &'static str {
         match self {
-            Kind::Role => matches!(name, "top" | "jungle" | "middle" | "bottom" | "utility"),
+            Kind::Team => "png",
+            _ => "svg",
+        }
+    }
+
+    /// The on-disk file stem for `name`, or `None` when the name may not be
+    /// cached. Roles and ranks are a fixed whitelist; a team slug is sanitized
+    /// so no caller string reaches the path unsanitised.
+    fn file_stem(self, name: &str) -> Option<String> {
+        match self {
+            Kind::Role => matches!(name, "top" | "jungle" | "middle" | "bottom" | "utility")
+                .then(|| name.to_string()),
             Kind::Rank => matches!(
                 name,
                 "unranked" | "gold" | "platinum" | "emerald" | "diamond" | "master" | "challenger"
-            ),
+            )
+            .then(|| name.to_string()),
+            Kind::Team => team_stem(name),
         }
     }
+}
+
+/// A safe on-disk stem for a team slug: alphanumeric characters only (accents
+/// are alphanumeric in Unicode, so they survive), capped, and never empty.
+fn team_stem(name: &str) -> Option<String> {
+    let stem: String = name
+        .chars()
+        .filter(|c| c.is_alphanumeric())
+        .take(MAX_TEAM_STEM)
+        .collect();
+    (!stem.is_empty()).then_some(stem)
 }
 
 /// A cached file larger than this is ignored: a valid crest or position SVG is
 /// only a few kilobytes.
 const MAX_FILE_BYTES: u64 = 512 * 1024;
 
-/// The on-disk path for a whitelisted asset, or `None` when `name` is not on
-/// the whitelist or `LOCALAPPDATA` is unavailable (the cache is then skipped).
+/// The on-disk path for a cacheable asset, or `None` when `name` may not be
+/// cached or `LOCALAPPDATA` is unavailable (the cache is then skipped).
 pub(crate) fn path(kind: Kind, name: &str) -> Option<PathBuf> {
     let root = std::env::var_os("LOCALAPPDATA")?;
     path_in(Path::new(&root), kind, name)
 }
 
 /// Builds the path under an explicit root. Split out so a test can pin the
-/// whitelist and round-trip a file without touching the real data folder.
+/// validation and round-trip a file without touching the real data folder.
 fn path_in(root: &Path, kind: Kind, name: &str) -> Option<PathBuf> {
-    if !kind.allows(name) {
-        return None;
-    }
+    let stem = kind.file_stem(name)?;
     Some(
         root.join("Swapper")
             .join("icons")
             .join(kind.folder())
-            .join(format!("{name}.svg")),
+            .join(format!("{stem}.{}", kind.extension())),
     )
 }
 
@@ -130,5 +159,42 @@ mod tests {
         assert!(path_in(root, Kind::Role, "../../secret").is_none());
         assert!(path_in(root, Kind::Rank, "bogus").is_none());
         assert!(path_in(root, Kind::Role, "").is_none());
+    }
+
+    #[test]
+    fn team_slugs_are_sanitized_to_a_safe_stem() {
+        let root = Path::new("C:\\icons");
+        // Punctuation and separators are dropped; the stem stays inside the folder.
+        assert_eq!(
+            path_in(root, Kind::Team, "gen.g").unwrap().file_name().unwrap(),
+            "geng.png"
+        );
+        assert_eq!(
+            path_in(root, Kind::Team, "kabum!eports").unwrap().file_name().unwrap(),
+            "kabumeports.png"
+        );
+        // Accents are alphanumeric, so they survive the sanitizer.
+        assert_eq!(
+            path_in(root, Kind::Team, "movistarkoifénix").unwrap().file_name().unwrap(),
+            "movistarkoifénix.png"
+        );
+        // Traversal and separators are stripped, so the file stays in the team
+        // folder with a plain alphanumeric name.
+        let traversing = path_in(root, Kind::Team, "../../secret").expect("sanitized, not rejected");
+        assert_eq!(traversing.file_name().unwrap(), "secret.png");
+        assert_eq!(
+            traversing.parent().unwrap(),
+            root.join("Swapper").join("icons").join("team")
+        );
+        assert_eq!(
+            path_in(root, Kind::Team, "..\\..\\secret").unwrap().file_name().unwrap(),
+            "secret.png"
+        );
+        // A slug with nothing alphanumeric left is rejected outright.
+        assert!(path_in(root, Kind::Team, "").is_none());
+        assert!(path_in(root, Kind::Team, "...").is_none());
+        // The stem is capped so an absurd name cannot create a huge filename.
+        let long = path_in(root, Kind::Team, &"a".repeat(500)).unwrap();
+        assert_eq!(long.file_name().unwrap().to_string_lossy().len(), MAX_TEAM_STEM + 4);
     }
 }
