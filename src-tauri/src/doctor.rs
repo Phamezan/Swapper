@@ -29,6 +29,7 @@ pub const CHECK_PROBUILDS: &str = "probuilds";
 pub const CHECK_REMOTE: &str = "remote";
 pub const CHECK_TAILSCALE: &str = "tailscale";
 pub const CHECK_DECEIVE: &str = "deceive";
+pub const CHECK_KOREAN_FONT: &str = "korean-font";
 pub const CHECK_VERSION: &str = "version";
 
 /// Upper bound for one check. The slowest single probe inside a check is the
@@ -179,6 +180,7 @@ async fn run_all(context: &DoctorContext) -> Vec<DoctorCheck> {
         remote,
         tailscale,
         deceive,
+        korean_font,
         version,
     ) = tokio::join!(
         run_one(context, CHECK_RIOT_CLIENT),
@@ -190,6 +192,7 @@ async fn run_all(context: &DoctorContext) -> Vec<DoctorCheck> {
         run_one(context, CHECK_REMOTE),
         run_one(context, CHECK_TAILSCALE),
         run_one(context, CHECK_DECEIVE),
+        run_one(context, CHECK_KOREAN_FONT),
         run_one(context, CHECK_VERSION),
     );
     vec![
@@ -202,6 +205,7 @@ async fn run_all(context: &DoctorContext) -> Vec<DoctorCheck> {
         remote,
         tailscale,
         deceive,
+        korean_font,
         version,
     ]
 }
@@ -284,6 +288,29 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
                     id,
                     "Deceive.exe is missing. Reinstall Swapper to launch through Deceive.",
                 ),
+            }
+        })
+        .await,
+        CHECK_KOREAN_FONT => guarded(id, async {
+            // LTK Manager's patcher is resolved from the user's install, not
+            // bundled, so it is checked here at run time.
+            let found = tokio::task::spawn_blocking(crate::korean_font::patcher_path)
+                .await
+                .ok()
+                .flatten()
+                .is_some();
+            if found {
+                DoctorCheck::ok(id, "The Korean font patcher was found in LTK Manager.")
+            } else if context.config.korean_font {
+                DoctorCheck::error(
+                    id,
+                    "The Korean font needs LTK Manager. Install it from Settings \u{2192} General.",
+                )
+            } else {
+                DoctorCheck::warn(
+                    id,
+                    "The Korean font needs LTK Manager. Install it from Settings \u{2192} General.",
+                )
             }
         })
         .await,
@@ -639,6 +666,7 @@ fn label(id: &str) -> &'static str {
         CHECK_REMOTE => "LAN Remote Control",
         CHECK_TAILSCALE => "Tailscale",
         CHECK_DECEIVE => "Deceive",
+        CHECK_KOREAN_FONT => "Korean font",
         CHECK_VERSION => "Swapper version",
         _ => "Check",
     }
@@ -920,6 +948,7 @@ mod tests {
             CHECK_REMOTE,
             CHECK_TAILSCALE,
             CHECK_DECEIVE,
+            CHECK_KOREAN_FONT,
             CHECK_VERSION,
         ] {
             assert_ne!(label(id), "Check", "check {id} has no report label");

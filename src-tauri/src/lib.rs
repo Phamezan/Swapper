@@ -1,5 +1,6 @@
 mod hotkey;
 mod identity;
+mod korean_font;
 mod lifecycle;
 mod lcu;
 mod remote;
@@ -92,6 +93,9 @@ impl Drop for SwitchLease {
 pub(crate) struct AppState {
     config: Mutex<vault::Config>,
     bundled_deceive: PathBuf,
+    /// Bundled `.fantome` the Korean font overlay is built from. Its patcher is
+    /// resolved at use time from the user's LTK Manager install.
+    bundled_korean_font: PathBuf,
     switch_guard: SwitchGuard,
     remote: Arc<remote::RemoteCore>,
     /// Whether the saved global hotkey is actually registered with the OS.
@@ -237,6 +241,23 @@ impl AppState {
         config.ready_check_notifications = Some(enabled);
         vault::save(&config)
     }
+
+    /// Whether the optional Korean font is on. Off until the user turns it on.
+    pub(crate) fn korean_font_enabled(&self) -> bool {
+        self.config
+            .lock()
+            .map(|config| config.korean_font)
+            .unwrap_or(false)
+    }
+
+    pub(crate) fn set_korean_font_enabled(&self, enabled: bool) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        if config.korean_font == enabled {
+            return Ok(());
+        }
+        config.korean_font = enabled;
+        vault::save(&config)
+    }
 }
 
 #[derive(Clone, Serialize)]
@@ -270,6 +291,10 @@ struct AppView {
     hotkey_active: bool,
     notifications_enabled: bool,
     ready_check_notifications: bool,
+    korean_font: bool,
+    /// Whether the user's LTK Manager install has the patcher host the Korean
+    /// font needs. The UI shows the toggle only when it is.
+    ltk_installed: bool,
     remote: remote::RemoteStatus,
 }
 
@@ -337,6 +362,8 @@ fn view(
         hotkey_active,
         notifications_enabled: config.notifications_enabled.unwrap_or(true),
         ready_check_notifications: config.ready_check_notifications.unwrap_or(true),
+        korean_font: config.korean_font,
+        ltk_installed: korean_font::patcher_path().is_some(),
         remote: remote.clone(),
     }
 }
@@ -940,6 +967,31 @@ fn set_ready_check_notifications(
     ))
 }
 
+/// Persists the Korean font toggle and, when turned on mid-game, starts the
+/// patcher now instead of waiting for the watcher's next poll. Turning it off
+/// stops the patcher immediately.
+#[tauri::command]
+fn set_korean_font(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    enabled: bool,
+) -> Result<AppView, String> {
+    state.set_korean_font_enabled(enabled)?;
+    if enabled {
+        korean_font::on_enabled(&app);
+    } else {
+        korean_font::stop();
+    }
+    let config = state.config.lock().map_err(|e| e.to_string())?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+        state.hotkey_active.load(Ordering::SeqCst),
+    ))
+}
+
 #[tauri::command]
 fn set_rune_tier(
     app: tauri::AppHandle,
@@ -1291,10 +1343,13 @@ pub fn run() {
         .setup(move |app| {
             let saved_hotkey = config.hotkey.clone();
             let bundled_deceive = app.path().resolve("Deceive.exe", BaseDirectory::Resource)?;
+            let bundled_korean_font =
+                app.path().resolve("korean-font.fantome", BaseDirectory::Resource)?;
             let remote = remote::RemoteCore::new(app.handle().clone(), config.remote_enabled);
             app.manage(AppState {
                 config: Mutex::new(config),
                 bundled_deceive,
+                bundled_korean_font,
                 switch_guard: SwitchGuard::new(),
                 remote: remote.clone(),
                 hotkey_active: AtomicBool::new(false),
@@ -1427,6 +1482,9 @@ pub fn run() {
             set_notifications_enabled,
             allow_lan_firewall,
             set_ready_check_notifications,
+            set_korean_font,
+            korean_font::install_ltk_manager,
+            korean_font::open_ltk_website,
             get_runes,
             champ_select_status,
             rune_icon,
@@ -1453,8 +1511,14 @@ pub fn run() {
             doctor::run_doctor_check,
             doctor::doctor_report
         ])
-        .run(tauri::generate_context!())
-        .expect("Could not start Swapper");
+        .build(tauri::generate_context!())
+        .expect("Could not start Swapper")
+        .run(|_app, event| {
+            // Never leave the Korean font patcher running once Swapper exits.
+            if let tauri::RunEvent::Exit = event {
+                korean_font::stop();
+            }
+        });
 }
 
 #[cfg(test)]

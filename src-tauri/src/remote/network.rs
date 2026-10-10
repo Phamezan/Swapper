@@ -176,7 +176,7 @@ fn active_physical_adapter_is_wifi() -> Result<Option<bool>, String> {
                     current.Ipv4Metric,
                     is_wifi,
                 );
-                if selected.map_or(true, |best| candidate < best) {
+                if selected.is_none_or(|best| candidate < best) {
                     selected = Some(candidate);
                 }
             }
@@ -367,9 +367,23 @@ pub fn add_private_app_rule() -> Result<(), String> {
     })
 }
 
-/// Asks Windows to run Swapper elevated just to add its firewall rule. The
-/// prompt shows Swapper's name and icon. Blocks until that child exits.
-pub fn request_private_app_rule() -> Result<(), String> {
+/// Why an elevated launch did not complete. Carries no wording; each caller
+/// names its own action.
+pub enum ElevateError {
+    /// The user declined the Windows elevation prompt.
+    Cancelled,
+    /// Windows could not start the elevated process at all.
+    Failed,
+}
+
+/// Runs `exe args` elevated (a `runas` ShellExecuteExW), blocking the calling
+/// thread until the child exits or `wait_ms` elapses, and returns its exit code.
+/// A timeout still returns the code observed so far (the still-running process
+/// reports `STILL_ACTIVE`), so callers treat any non-zero code as a failure.
+///
+/// Both the firewall rule and the LTK Manager install need admin and use this,
+/// so the elevation prompt shows the named executable and no console window.
+pub fn run_elevated(exe: &str, args: &str, wait_ms: u32) -> Result<u32, ElevateError> {
     use windows_sys::Win32::Foundation::{CloseHandle, GetLastError, ERROR_CANCELLED};
     use windows_sys::Win32::System::Threading::{GetExitCodeProcess, WaitForSingleObject};
     use windows_sys::Win32::UI::Shell::{
@@ -378,9 +392,9 @@ pub fn request_private_app_rule() -> Result<(), String> {
     use windows_sys::Win32::UI::WindowsAndMessaging::SW_HIDE;
 
     let wide = |text: &str| text.encode_utf16().chain(Some(0)).collect::<Vec<u16>>();
-    let executable = wide(&current_executable()?);
+    let executable = wide(exe);
     let verb = wide("runas");
-    let arguments = wide(ALLOW_FIREWALL_ARG);
+    let arguments = wide(args);
     let mut info: SHELLEXECUTEINFOW = unsafe { std::mem::zeroed() };
     info.cbSize = std::mem::size_of::<SHELLEXECUTEINFOW>() as u32;
     info.fMask = SEE_MASK_NOCLOSEPROCESS;
@@ -390,21 +404,30 @@ pub fn request_private_app_rule() -> Result<(), String> {
     info.nShow = SW_HIDE;
     if unsafe { ShellExecuteExW(&mut info) } == 0 {
         return Err(if unsafe { GetLastError() } == ERROR_CANCELLED {
-            "Windows Firewall permission was not given, so LAN access stays off.".into()
+            ElevateError::Cancelled
         } else {
-            "Could not ask Windows for firewall permission.".into()
+            ElevateError::Failed
         });
     }
     let mut code = 1u32;
     unsafe {
-        WaitForSingleObject(info.hProcess, 60_000);
+        WaitForSingleObject(info.hProcess, wait_ms);
         GetExitCodeProcess(info.hProcess, &mut code);
         CloseHandle(info.hProcess);
     }
-    if code == 0 {
-        Ok(())
-    } else {
-        Err("Could not add the Windows Firewall rule.".into())
+    Ok(code)
+}
+
+/// Asks Windows to run Swapper elevated just to add its firewall rule. The
+/// prompt shows Swapper's name and icon. Blocks until that child exits.
+pub fn request_private_app_rule() -> Result<(), String> {
+    match run_elevated(&current_executable()?, ALLOW_FIREWALL_ARG, 60_000) {
+        Ok(0) => Ok(()),
+        Ok(_) => Err("Could not add the Windows Firewall rule.".into()),
+        Err(ElevateError::Cancelled) => {
+            Err("Windows Firewall permission was not given, so LAN access stays off.".into())
+        }
+        Err(ElevateError::Failed) => Err("Could not ask Windows for firewall permission.".into()),
     }
 }
 

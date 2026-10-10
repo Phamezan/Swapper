@@ -537,7 +537,7 @@ fn probe_window_fixtures() {
         }
         let alive = process::image_for_pid(pid).expect("snapshot").is_some();
         println!("{image:<36} alive={alive:<5} windows={windows}");
-        process::force_kill(&[image.clone()]);
+        process::force_kill(std::slice::from_ref(&image));
         let mut child = child;
         let _ = child.kill();
         let _ = child.wait();
