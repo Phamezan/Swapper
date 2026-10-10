@@ -478,11 +478,23 @@ pub struct AppliedView {
     pub auto_applied: bool,
 }
 
+/// Why an op.gg champion lookup produced nothing, remembered so a locked
+/// champion select does not retry op.gg on every poll. The two cases are kept
+/// apart because an empty answer replays as an empty result, while a failed
+/// lookup replays as the provider error (or the last-good data).
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum GroupMiss {
+    /// op.gg answered, but had no rune pages for this champion and role.
+    Empty,
+    /// op.gg could not be reached or answered with an error.
+    Failed,
+}
+
 struct Shared {
     groups: HashMap<String, (Instant, opgg::ChampionData)>,
     /// Failed or empty op.gg lookups, so a locked champion select does not
     /// retry op.gg on every poll.
-    group_failures: HashMap<String, Instant>,
+    group_failures: HashMap<String, (Instant, GroupMiss)>,
     catalog: Option<(Instant, perks::PerkCatalog)>,
     names: Option<(Instant, HashMap<i64, String>)>,
     icons: HashMap<i64, Vec<u8>>,

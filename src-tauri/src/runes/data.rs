@@ -210,7 +210,9 @@ pub async fn champion_data(
     let client = match opgg::OpggClient::new() {
         Ok(client) => client,
         Err(error) => {
-            super::shared().group_failures.insert(key.clone(), Instant::now());
+            super::shared()
+                .group_failures
+                .insert(key.clone(), (Instant::now(), super::GroupMiss::Failed));
             return group_stale_or_error(&key, error);
         }
     };
@@ -228,20 +230,25 @@ pub async fn champion_data(
             Ok(Sourced::fresh(data, Provider::Opgg))
         }
         Ok(_) => {
-            super::shared().group_failures.insert(key, Instant::now());
+            super::shared()
+                .group_failures
+                .insert(key, (Instant::now(), super::GroupMiss::Empty));
             Ok(Sourced::fresh(opgg::ChampionData::default(), Provider::Opgg))
         }
         Err(error) => {
-            super::shared().group_failures.insert(key.clone(), Instant::now());
+            super::shared()
+                .group_failures
+                .insert(key.clone(), (Instant::now(), super::GroupMiss::Failed));
             group_stale_or_error(&key, error)
         }
     }
 }
 
 /// A cached op.gg result for a group key, if one is still fresh. A remembered
-/// failure returns the persisted last-good result when there is one.
+/// empty answer replays as an empty result; a remembered failure returns the
+/// persisted last-good result when there is one, otherwise the error.
 fn cached_group(key: &str) -> Option<Result<Sourced<opgg::ChampionData>, RuneError>> {
-    let failed = {
+    let miss = {
         let state = super::shared();
         if let Some((at, data)) = state.groups.get(key) {
             if at.elapsed() < GROUP_TTL {
@@ -256,13 +263,22 @@ fn cached_group(key: &str) -> Option<Result<Sourced<opgg::ChampionData>, RuneErr
         state
             .group_failures
             .get(key)
-            .map(|at| at.elapsed() < GROUP_FAILURE_TTL)
-            .unwrap_or(false)
+            .filter(|(at, _)| at.elapsed() < GROUP_FAILURE_TTL)
+            .map(|(_, kind)| *kind)
     };
-    if failed {
-        return Some(group_stale_or_error(key, ProviderError::Unavailable));
+    match miss {
+        // A remembered empty answer must replay exactly like the original empty
+        // answer, so the caller's bracket probe and League fallback behave the
+        // same on the first visit and on later ones.
+        Some(super::GroupMiss::Empty) => Some(Ok(Sourced::fresh(
+            opgg::ChampionData::default(),
+            Provider::Opgg,
+        ))),
+        Some(super::GroupMiss::Failed) => {
+            Some(group_stale_or_error(key, ProviderError::Unavailable))
+        }
+        None => None,
     }
-    None
 }
 
 /// The persisted last-good op.gg result for a key, or the classified error.
@@ -663,7 +679,7 @@ pub async fn load_for(
         }
     }
     let recommended = lcu_recommended(current, context, position).await.unwrap_or_default();
-    let selections = recommended
+    let selections: Vec<LoadedPreset> = recommended
         .iter()
         .enumerate()
         .filter_map(|(index, page)| {
@@ -682,7 +698,10 @@ pub async fn load_for(
         })
         .collect();
     Ok(Loaded {
-        source: if recommended.is_empty() { "none" } else { "lcu" },
+        // The League fallback is only the source when it actually produced a
+        // usable preset. Pages that parse but cannot form a selection leave the
+        // list empty, and then there is simply no data to show or badge.
+        source: if selections.is_empty() { "none" } else { "lcu" },
         provider: Provider::LeagueClient,
         groups: Vec::new(),
         selections,
@@ -737,5 +756,21 @@ mod tests {
         let cached = cached_group(&key).expect("a fresh hit");
         let sourced = cached.expect("a fresh hit is not an error");
         assert!(!sourced.stale);
+    }
+
+    #[test]
+    fn a_remembered_empty_group_replays_as_empty_not_an_error() {
+        // op.gg answering with no rune pages is remembered as an empty answer.
+        // It must replay as an empty result, exactly like the first visit, so
+        // the caller still probes the broader bracket instead of treating the
+        // champion and role as an error and dropping straight to the fallback.
+        let key = group_key("euw", "ranked", 999, "jungle", "emerald_plus");
+        crate::runes::shared().group_failures.insert(
+            key.clone(),
+            (Instant::now(), crate::runes::GroupMiss::Empty),
+        );
+        let cached = cached_group(&key).expect("a remembered miss is served from the cache");
+        let sourced = cached.expect("an empty answer must not replay as an error");
+        assert!(sourced.value.rune_pages.is_empty());
     }
 }
