@@ -12,7 +12,7 @@
 
 .update-offer { display: flex; flex-direction: column; }
 .update-offer .setting-status { margin-top: 12px; color: var(--text-primary); }
-.update-notes { margin: 6px 0 0; color: var(--text-secondary); font-size: 11px; line-height: 1.45; text-wrap: pretty; }
+.update-notes { margin: 6px 0 0; color: var(--text-secondary); font-size: 12px; line-height: 1.45; text-wrap: pretty; }
 
 .update-failed { color: var(--danger); }
 
@@ -25,7 +25,7 @@
 .update-banner-text {
   display: flex; flex: 1; min-width: 0; align-items: center; gap: 8px;
   padding: 0; border: 0; background: transparent;
-  color: var(--text-primary); font-size: 11px; font-weight: 620; text-align: left;
+  color: var(--text-primary); font-size: 12px; font-weight: 620; text-align: left;
   cursor: pointer;
 }
 .update-banner-text svg { flex: none; color: var(--positive); }

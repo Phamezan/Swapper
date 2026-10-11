@@ -15,6 +15,7 @@ type Props = {
   /** True once the user picks Manual, or when a custom path is configured. */
   manualPath: boolean;
   riotExe: string;
+  riotDetected: boolean;
   onRiotExeChange: (value: string) => void;
   /** Persists the mode; Auto also clears and saves the path as undetected. */
   onPathModeChange: (mode: "auto" | "manual") => void;
@@ -44,6 +45,7 @@ export function GeneralSettings({
   onStartOnStartupChange,
   manualPath,
   riotExe,
+  riotDetected,
   onRiotExeChange,
   onPathModeChange,
   onRiotPathCommit,
@@ -70,25 +72,25 @@ export function GeneralSettings({
     <>
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Start on startup</strong>
+          <label htmlFor="startup-switch">Start on startup</label>
           <button className="info-button" aria-label="About Start on startup" aria-expanded={openInfo === "startup"} onClick={() => toggle("startup")}><Info size={13} /></button>
           {openInfo === "startup" && <p>Launch Swapper with Windows. It starts in the tray, without opening the flyout.</p>}
         </div>
-        <Switch checked={startOnStartup} onCheckedChange={onStartOnStartupChange} aria-label="Start on startup" />
+        <Switch id="startup-switch" checked={startOnStartup} disabled={busy} onCheckedChange={onStartOnStartupChange} aria-label="Start on startup" />
       </div>
 
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Launch through Deceive</strong>
+          <label htmlFor="deceive-switch">Launch through Deceive</label>
           <button className="info-button" aria-label="About Launch through Deceive" aria-expanded={openInfo === "deceive"} onClick={() => toggle("deceive")}><Info size={13} /></button>
           {openInfo === "deceive" && <p>Start League with Deceive’s offline presence. Included with Swapper.</p>}
         </div>
-        <Switch checked={useDeceive} onCheckedChange={onUseDeceiveChange} aria-label="Launch through Deceive" />
+        <Switch id="deceive-switch" checked={useDeceive} disabled={busy} onCheckedChange={onUseDeceiveChange} aria-label="Launch through Deceive" />
       </div>
 
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Korean font</strong>
+          <label htmlFor={ltkInstalled ? "korean-font-switch" : undefined}>Korean font</label>
           {!ltkInstalled && (
             <button className="info-button" aria-label="What is LTK Manager?" title="What is LTK Manager?" onClick={() => void invoke("open_ltk_website")}><CircleHelp size={13} /></button>
           )}
@@ -102,7 +104,7 @@ export function GeneralSettings({
           )}
         </div>
         {ltkInstalled
-          ? <Switch checked={koreanFont} onCheckedChange={onKoreanFontChange} aria-label="Korean font" />
+          ? <Switch id="korean-font-switch" checked={koreanFont} disabled={busy} onCheckedChange={onKoreanFontChange} aria-label="Korean font" />
           : <Button variant="outline" disabled={ltkInstalling} onClick={onInstallLtk}>{ltkInstalling ? "Installing…" : "Install"}</Button>}
       </div>
 
@@ -111,6 +113,7 @@ export function GeneralSettings({
         <button type="button" className={manualPath ? "" : "is-on"} aria-pressed={!manualPath} onClick={() => onPathModeChange("auto")}>Auto</button>
         <button type="button" className={manualPath ? "is-on" : ""} aria-pressed={manualPath} onClick={() => onPathModeChange("manual")}>Manual</button>
       </div>
+      {!manualPath && <p className="path-status" role="status"><span className={`status-dot ${riotDetected ? "good" : "idle"}`} />{riotDetected ? "Riot Client detected" : "Riot Client not found"}</p>}
       {manualPath && (
         <div className="path-input">
           <Input id="riot-path" placeholder="Path to RiotClientServices.exe" value={riotExe} onChange={(e) => onRiotExeChange(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") e.currentTarget.blur(); }} onBlur={(e) => onRiotPathCommit(e.currentTarget.value.trim() || null)} />

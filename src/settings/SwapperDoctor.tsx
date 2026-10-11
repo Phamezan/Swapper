@@ -100,20 +100,20 @@ export function SwapperDoctor({ remoteTransport }: { remoteTransport: "lan" | "t
 
   if (!native) {
     return (
-      <section className="doctor-section" aria-label="Swapper Doctor">
-        <p className="support-text">Swapper Doctor runs in the Windows tray app. Start it with npm run tauri dev.</p>
+      <section className="doctor-section" aria-label="Connection checks">
+        <p className="support-text">Connection checks are available in the Windows tray app.</p>
       </section>
     );
   }
 
   return (
-    <section className="doctor-section" aria-label="Swapper Doctor">
+    <section className="doctor-section" aria-label="Connection checks">
       <div className="setting-row doctor-heading">
         <div className="setting-copy">
-          <strong>Swapper Doctor</strong>
+          <strong>Connection checks</strong>
           <button
             className="info-button"
-            aria-label="About Swapper Doctor"
+            aria-label="About connection checks"
             aria-expanded={openInfo}
             onClick={() => setOpenInfo((open) => !open)}
           >
@@ -122,28 +122,29 @@ export function SwapperDoctor({ remoteTransport }: { remoteTransport: "lan" | "t
           {openInfo && (
             <p>
               Checks the clients, providers and connections Swapper depends on. Nothing
-              identifiable is collected, and copied diagnostics are sanitized.
+              identifiable is collected, and copied diagnostics are sanitized. Run checks first to enable Copy diagnostics.
             </p>
           )}
         </div>
         <div className="doctor-actions">
+          <Button variant="outline" disabled={running || retrying !== null} onClick={() => void runAll()}>
+            {running ? <LoaderCircle className="spin" size={15} /> : <Play size={14} />}
+            {running ? "Running…" : "Run checks"}
+          </Button>
           <Button
             variant="outline"
             disabled={state.phase !== "done"}
+            title={state.phase === "done" ? "Copy diagnostic results" : "Run checks first to generate diagnostics"}
             onClick={() => void copyReport()}
           >
             {copied ? "Copied" : "Copy diagnostics"}
-          </Button>
-          <Button variant="outline" disabled={running} onClick={() => void runAll()}>
-            {running ? <LoaderCircle className="spin" size={15} /> : <Play size={14} />}
-            {running ? "Running…" : "Run checks"}
           </Button>
         </div>
       </div>
 
       {state.phase === "idle" && (
         <div className="doctor-note">
-          Run checks to test the clients, providers and connections Swapper uses.
+          Run checks to generate diagnostics.
         </div>
       )}
       {running && (

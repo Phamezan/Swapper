@@ -40,7 +40,7 @@ A 26-second tour of v0.4 (also as an [MP4 file](docs/media/swapper-v0.4.mp4)). T
 
 **Diagnostics**
 
-- **Swapper Doctor** (Settings → About) checks Riot Client, League Client, the data providers, Remote Control and the installed version, and copies a sanitized report for bug reports.
+- **Connection checks** (Settings → About) checks Riot Client, League Client, the data providers, Remote Control and the installed version, and copies a sanitized report for bug reports.
 
 ## Add and switch accounts
 
@@ -54,7 +54,7 @@ Do not use Riot Client's **Sign out** between saved accounts; it can invalidate 
 
 1. Connect the PC and phone to the same trusted private Wi-Fi or Ethernet network. In Swapper **Settings → Remote**, turn on **Remote Control** and leave the transport on **LAN**.
 2. The first time, the Remote tab shows **Allow on private networks**. Click it and approve the Windows prompt, which names Swapper; it adds a Windows Firewall rule for Private networks only. Swapper never asks on its own, and it starts no PowerShell or command windows. Swapper only offers LAN access when Windows identifies the active network as **Private** and selects an active default-route Ethernet or Wi-Fi interface. It does not advertise an address on a Public network.
-3. Press **QR** and scan it with the phone. Pairing links work once and expire after five minutes. The phone stays paired, also after Swapper or the PC restarts, until you revoke it in the paired devices list or press **Reset LAN Access**, which unpairs every phone and shows a fresh QR.
+3. Press **Pair a phone** and scan the QR code with the phone. Pairing links work once and expire after five minutes. The phone stays paired, also after Swapper or the PC restarts, until you revoke it in the paired devices list or use **Advanced → Reset LAN access…** and confirm **Reset and unpair all**, which unpairs every phone and shows a fresh QR code.
 4. The phone opens the existing remote page. League Client must be running for queue and champion-select controls to be available.
 
 LAN uses HTTP and is meant for trusted private networks. Do not use it on public or untrusted Wi-Fi. No router configuration, IP entry, or pairing code is needed.

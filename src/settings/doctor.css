@@ -18,7 +18,7 @@
 .doctor-dot.is-error { background: var(--danger); box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 13%, transparent); }
 .doctor-text { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
 .doctor-text strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 660; }
-.doctor-text small { color: var(--text-secondary); font-size: 11px; line-height: 1.4; text-wrap: pretty; }
+.doctor-text small { color: var(--text-secondary); font-size: 12px; line-height: 1.4; text-wrap: pretty; }
 .doctor-check .icon-button { width: 27px; height: 27px; }
 
-.doctor-note { display: flex; align-items: center; gap: 8px; padding: 9px 0; color: var(--text-secondary); font-size: 11px; }
+.doctor-note { display: flex; align-items: center; gap: 8px; padding: 9px 0; color: var(--text-secondary); font-size: 12px; }

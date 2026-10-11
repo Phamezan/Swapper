@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { QRCodeSVG } from "qrcode.react";
 import { Info, LoaderCircle, QrCode, Settings2 } from "lucide-react";
@@ -26,6 +26,22 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
   const [showQr, setShowQr] = useState(false);
   const [qrUrl, setQrUrl] = useState<string | null>(null);
   const [openInfo, setOpenInfo] = useState(false);
+  const [pendingReset, setPendingReset] = useState(false);
+  const [qrBusy, setQrBusy] = useState(false);
+  const requestId = useRef(0);
+  const copyTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    setShowQr(false);
+    setQrUrl(null);
+    setPendingReset(false);
+    setCopied(false);
+    setQrBusy(false);
+    return () => {
+      requestId.current += 1;
+      window.clearTimeout(copyTimer.current);
+    };
+  }, [transport, remote.enabled, remote.lanAddress, remote.tailscaleAddress]);
 
   // The desktop's reconnect banner asks the LAN QR panel to open.
   useEffect(() => {
@@ -35,6 +51,8 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
   }, [qrRequest]);
 
   const changeTransport = (next: "lan" | "tailscale") => {
+    if (next === transport) return;
+    requestId.current += 1;
     setShowQr(false);
     setQrUrl(null);
     onTransportChange(next);
@@ -43,55 +61,66 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
   // Disabling hides the QR panel, exactly like before the tabs split.
   const toggle = (enabled: boolean) => {
     if (!enabled) {
+      requestId.current += 1;
+      setQrBusy(false);
       setShowQr(false);
       setQrUrl(null);
     }
     onToggle(enabled);
   };
 
-  async function copyAddress() {
-    const address = remote.tailscaleAddress;
+  async function copyAddress(address: string | null) {
     if (!address) return;
     try {
       await navigator.clipboard.writeText(address);
-    } catch {
-      const field = document.createElement("textarea");
-      field.value = address;
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.appendChild(field);
-      field.select();
-      document.execCommand("copy");
-      field.remove();
+    } catch (reason) {
+      onError(reason);
+      return;
     }
     setCopied(true);
-    window.setTimeout(() => setCopied(false), 1500);
+    window.clearTimeout(copyTimer.current);
+    copyTimer.current = window.setTimeout(() => setCopied(false), 1500);
   }
 
   async function toggleQr() {
+    if (qrBusy) return;
     if (showQr) {
       setShowQr(false);
       return;
     }
+    const request = ++requestId.current;
+    setQrBusy(true);
+    setCopied(false);
     try {
       const url = transport === "lan"
         ? await invoke<string>("create_lan_pairing_url")
         : remote.tailscaleAddress;
-      if (!url) return;
+      if (!url || request !== requestId.current) return;
       setQrUrl(url);
       setShowQr(true);
     } catch (reason) {
-      onError(reason);
+      if (request === requestId.current) onError(reason);
+    } finally {
+      if (request === requestId.current) setQrBusy(false);
     }
   }
 
   async function resetLanAccess() {
+    if (qrBusy) return;
+    const request = ++requestId.current;
+    setQrBusy(true);
     try {
       const url = await invoke<string>("reset_lan_access");
+      if (request !== requestId.current) return;
       setQrUrl(url);
       setShowQr(true);
+      setPendingReset(false);
+      setCopied(false);
+      window.requestAnimationFrame(() => document.getElementById("remote-qr-panel")?.scrollIntoView({ block: "nearest" }));
     } catch (reason) {
-      onError(reason);
+      if (request === requestId.current) onError(reason);
+    } finally {
+      if (request === requestId.current) setQrBusy(false);
     }
   }
 
@@ -99,11 +128,11 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
     <>
       <div className="setting-row remote-setting">
         <div className="setting-copy">
-          <strong>Remote Control</strong>
+          <label htmlFor="remote-switch">Remote Control</label>
           <button className="info-button" aria-label="About Remote Control" aria-expanded={openInfo} onClick={() => setOpenInfo((open) => !open)}><Info size={13} /></button>
           {openInfo && <p>Open the existing League remote on your phone over a trusted private Wi-Fi network or your Tailscale network.</p>}
         </div>
-        <Switch checked={remote.enabled} onCheckedChange={toggle} aria-label="Remote Control" />
+        <Switch id="remote-switch" checked={remote.enabled} onCheckedChange={toggle} aria-label="Remote Control" />
       </div>
       {remote.state === "starting" && <div className="setting-status"><LoaderCircle className="spin" size={13} /> Starting the remote service…</div>}
       {remote.enabled && <>
@@ -122,13 +151,16 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
             {remote.lanReconnectNeeded && <p className="remote-reconnect-message" role="status">Your phone needs to reconnect — your PC's network address changed. Scan the new QR code below.</p>}
             <div className="setting-status"><span className={`remote-status-dot ${remote.lanAddress ? "is-good" : "is-bad"}`} />Local network · {remote.lanAddress ? "Ready" : "Unavailable"}</div>
             {remote.lanAddress ? <>
-              <div className="remote-address"><Button variant="outline" className="remote-qr-toggle" aria-label={showQr ? "Hide LAN pairing QR code" : "Generate LAN pairing QR code"} aria-controls="remote-qr-panel" aria-expanded={showQr} onClick={() => void toggleQr()}><QrCode size={15} />{showQr ? "Hide QR" : "QR"}</Button><Button variant="outline" onClick={() => void resetLanAccess()}>Reset LAN Access</Button></div>
+              <div className="remote-address"><Button className="remote-qr-toggle" disabled={qrBusy} aria-controls="remote-qr-panel" aria-expanded={showQr} onClick={() => void toggleQr()}>{qrBusy ? <LoaderCircle className="spin" size={15} /> : <QrCode size={15} />}{showQr ? "Hide pairing code" : "Pair a phone"}</Button></div>
               {showQr && qrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
                 <div className="remote-qr-image"><QRCodeSVG value={qrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="LAN pairing QR code" /></div>
-                <p>Scan on a phone connected to this trusted private network. Pairing links expire after five minutes.</p>
+                <p>Scan with your phone camera on the same private Wi-Fi. This single-use link expires in five minutes.</p>
+                <div className="remote-address">
+                  <Input readOnly value={qrUrl} aria-label="Phone pairing link" onFocus={(e) => e.currentTarget.select()} />
+                  <Button variant="outline" onClick={() => void copyAddress(qrUrl)}>{copied ? "Copied" : "Copy link"}</Button>
+                </div>
+                {remote.localAddress && <details className="remote-discovery-help"><summary>Keeping your phone connected</summary><p>After pairing, iPhone users can switch to {remote.localAddress} from the phone page to reconnect when the PC's IP changes. Android browsers cannot open .local addresses; use the QR code again if the PC's address changes.</p></details>}
               </div>}
-              {remote.localAddress && <p className="remote-transport-message">Discovery: {remote.localAddress}. A paired phone that switches to it once keeps working when the PC IP changes.</p>}
-              {remote.localAddress && <p className="remote-transport-message">Works on iPhone. Android browsers can't open .local addresses.</p>}
             </> : remote.lanFirewallNeeded ? <>
               <p className="remote-transport-message">Phones on this Private network need Windows Firewall to let Swapper in. Windows will ask once, for Swapper.</p>
               <div className="remote-address">
@@ -149,7 +181,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
             <div className="setting-status"><span className="remote-status-dot is-good" />Tailscale · Ready</div>
             <div className="remote-address">
               <Input readOnly value={remote.tailscaleAddress} aria-label="Tailscale remote address" onFocus={(e) => e.currentTarget.select()} />
-              <Button variant="outline" disabled={copied} onClick={() => void copyAddress()}>{copied ? "Copied" : "Copy"}</Button>
+              <Button variant="outline" disabled={copied} onClick={() => void copyAddress(remote.tailscaleAddress)}>{copied ? "Copied" : "Copy"}</Button>
               <Button variant="outline" className="remote-qr-toggle" aria-label={showQr ? "Hide Tailscale QR code" : "Show Tailscale QR code"} aria-controls="remote-qr-panel" aria-expanded={showQr} onClick={() => void toggleQr()}><QrCode size={15} /> QR</Button>
             </div>
             {showQr && qrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
@@ -165,7 +197,17 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
                 : remote.message ?? "Tailscale Serve could not be started."}</p>
           </>
         )}
-        <PairedDevices staleSince={remote.lanReconnectSince} />
+        {transport === "lan" && <>
+          <PairedDevices staleSince={remote.lanReconnectSince} />
+          {remote.lanAddress && <details className="remote-advanced" onToggle={(event) => { if (!event.currentTarget.open) setPendingReset(false); }}>
+            <summary>Advanced</summary>
+            {pendingReset ? <div className="remote-reset-confirm" role="group" aria-label="Confirm reset LAN access">
+              <p>This disconnects every paired phone and invalidates existing pairing links. Each phone will need to pair again.</p>
+              <Button variant="outline" className="remote-reset" disabled={qrBusy} onClick={() => void resetLanAccess()}>{qrBusy ? "Resetting…" : "Reset and unpair all"}</Button>
+              <Button variant="ghost" disabled={qrBusy} onClick={() => setPendingReset(false)}>Cancel</Button>
+            </div> : <Button variant="ghost" className="remote-reset" onClick={() => setPendingReset(true)}>Reset LAN access…</Button>}
+          </details>}
+        </>}
       </>}
     </>
   );

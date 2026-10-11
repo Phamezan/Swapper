@@ -169,16 +169,17 @@ export function HotkeySetting({ hotkey, active, disabled, onSet }: HotkeySetting
     <>
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Global hotkey</strong>
+          <label htmlFor="hotkey-switch">Global hotkey</label>
           <button
             className="info-button"
             aria-label="About the global hotkey"
             aria-expanded={infoOpen}
             onClick={() => setInfoOpen((open) => !open)}
           ><Info size={13} /></button>
-          {infoOpen && <p>Open or hide the Swapper flyout from anywhere with a keyboard combination. Off by default.</p>}
+          {infoOpen && <p>Open or hide the Swapper flyout from anywhere with a keyboard combination. Select Change to record a new shortcut. Off by default.</p>}
         </div>
         <Switch
+          id="hotkey-switch"
           checked={hotkey !== null}
           disabled={locked}
           onCheckedChange={(checked) => void handleToggle(checked)}
@@ -194,11 +195,9 @@ export function HotkeySetting({ hotkey, active, disabled, onSet }: HotkeySetting
             disabled={locked}
             onClick={() => { setStatus(null); setRecording(true); }}
           >
-            {recording ? (saving ? "Saving…" : "Press a combination…") : prettyShortcut(hotkey as string)}
+            {recording ? "Press a combination…" : saving ? "Saving…" : <><kbd>{prettyShortcut(hotkey as string)}</kbd><span className="hotkey-change">Change</span></>}
           </button>
-          <span className="hotkey-hint">
-            {recording ? "Press the keys to use. Esc cancels." : "Click to record a different combination."}
-          </span>
+          {recording && <span className="hotkey-hint">Press the keys to use. Esc cancels.</span>}
           {hotkey !== null && !active && !recording && (
             <span className="hotkey-status">Another application is using this shortcut. Record a different one.</span>
           )}

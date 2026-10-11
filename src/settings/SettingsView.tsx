@@ -51,9 +51,8 @@ type Props = {
   onError: (reason: unknown) => void;
 };
 
-/** The Settings view: one compact tab bar, only the active tab's content
- *  mounted. The bar sticks to the top of the scroll area; the panel below it
- *  scrolls. Arrow keys follow the tabs pattern with a roving tabindex. */
+/** Only the tab content scrolls; the heading and tabs stay in place.
+ *  Arrow keys follow the tabs pattern with a roving tabindex. */
 export function SettingsView(props: Props) {
   const { tab, onTabChange } = props;
   const tabRefs = useRef(new Map<SettingsTab, HTMLButtonElement | null>());
@@ -102,6 +101,7 @@ export function SettingsView(props: Props) {
         </div>
       </div>
       <div
+        key={tab}
         className="settings-content"
         role="tabpanel"
         id={`settings-panel-${tab}`}
@@ -115,6 +115,7 @@ export function SettingsView(props: Props) {
           onStartOnStartupChange={props.onStartOnStartupChange}
           manualPath={props.manualPath}
           riotExe={props.riotExe}
+          riotDetected={props.state.riotDetected}
           onRiotExeChange={props.onRiotExeChange}
           onPathModeChange={props.onPathModeChange}
           onRiotPathCommit={props.onRiotPathCommit}

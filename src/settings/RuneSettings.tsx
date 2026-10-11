@@ -33,42 +33,43 @@ export function RuneSettings({
     <>
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Auto-apply recommended runes</strong>
+          <label htmlFor="auto-runes-switch">Auto-apply recommended runes</label>
           <button className="info-button" aria-label="About Auto-apply recommended runes" aria-expanded={openInfo === "runes"} onClick={() => toggle("runes")}><Info size={13} /></button>
           {openInfo === "runes" && <p>When your champion locks in during champion select, Swapper applies the recommended rune page shown on the runes screen. Off by default.</p>}
         </div>
-        <Switch checked={autoApply} onCheckedChange={onAutoApplyChange} aria-label="Auto-apply recommended runes" />
+        <Switch id="auto-runes-switch" checked={autoApply} disabled={busy} onCheckedChange={onAutoApplyChange} aria-label="Auto-apply recommended runes" />
       </div>
 
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Apply summoner spells with runes</strong>
+          <label htmlFor="spells-switch">Apply spells with runes</label>
           <button className="info-button" aria-label="About Apply summoner spells with runes" aria-expanded={openInfo === "spells"} onClick={() => toggle("spells")}><Info size={13} /></button>
-          {openInfo === "spells" && <p>When you apply a preset or a pro build, also set its recommended summoner spells. Flash stays on the key you already use.</p>}
+          {openInfo === "spells" && <p>Set recommended summoner spells when you apply a preset or pro build, manually or through auto-apply. Works even when auto-apply is off. Flash stays on the key you already use.</p>}
         </div>
-        <Switch checked={applySpells} onCheckedChange={onApplySpellsChange} aria-label="Apply summoner spells with runes" />
+        <Switch id="spells-switch" checked={applySpells} disabled={busy} onCheckedChange={onApplySpellsChange} aria-label="Apply spells with runes" />
       </div>
 
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Import item build</strong>
+          <label htmlFor="items-switch">Import item build</label>
           <button className="info-button" aria-label="About Import item build" aria-expanded={openInfo === "items"} onClick={() => toggle("items")}><Info size={13} /></button>
-          {openInfo === "items" && <p>When you apply a preset, also add its item build to the League shop. Swapper keeps only one of its item sets and removes it after the game, so your own sets are never touched.</p>}
+          {openInfo === "items" && <p>Add the preset's item build to the League shop when you apply runes, manually or through auto-apply. Works even when auto-apply is off. Swapper keeps only one of its item sets and removes it after the game; your own sets are never touched.</p>}
         </div>
-        <Switch checked={importItems} onCheckedChange={onImportItemsChange} aria-label="Import item build" />
+        <Switch id="items-switch" checked={importItems} disabled={busy} onCheckedChange={onImportItemsChange} aria-label="Import item build" />
       </div>
 
       <div className="setting-row">
         <div className="setting-copy">
-          <strong>Rune rank filter</strong>
+          <label htmlFor="rune-tier">Use builds from</label>
           <button className="info-button" aria-label="About the rune rank filter" aria-expanded={openInfo === "tier"} onClick={() => toggle("tier")}><Info size={13} /></button>
           {openInfo === "tier" && <p>Swapper loads rune statistics for this rank bracket from op.gg. A narrower bracket has fewer games, so the numbers can get thin.</p>}
         </div>
         <select
+          id="rune-tier"
           className="setting-select"
           value={runeTier}
           disabled={busy}
-          aria-label="Rune rank filter"
+          aria-label="Use builds from"
           onChange={(event) => onRuneTierChange(event.target.value)}
         >
           {TIER_OPTIONS.map((option) => (

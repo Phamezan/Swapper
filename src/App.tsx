@@ -7,7 +7,7 @@ import {
 } from "@tauri-apps/plugin-autostart";
 import {
   ArrowLeft, ArrowRight, Check, ChevronRight, CircleAlert, LoaderCircle,
-  Pencil, Plus, RefreshCw, Settings2, Trash2, Wrench, X,
+  Pencil, Plus, RefreshCw, Settings, Trash2, Wrench, X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -806,12 +806,12 @@ function App() {
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
       </header>
 
-      <main className="main-panel">
+      <main className={`main-panel${view === "settings" ? " settings-panel" : ""}`}>
         {view === "accounts" ? (
           <>
             <div className="panel-heading">
               <div><p className="eyebrow">{data.accounts.length === 0 ? "GET STARTED" : "READY TO PLAY"}</p><h1>Your accounts</h1></div>
-              <button className="icon-button" aria-label="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings2 size={19} /></button>
+              <button className="icon-button" aria-label="Settings" title="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings size={19} /></button>
             </div>
             {data.remote.lanReconnectNeeded && (
               <div className="reconnect-banner" role="status">
@@ -866,7 +866,7 @@ function App() {
                         {isThisSwitching
                           ? "Switching…"
                           : isActive
-                            ? "Current session"
+                            ? "Active"
                             : repairableId === account.id
                               ? "Session needs repair"
                               : "Click to switch"}
@@ -884,7 +884,7 @@ function App() {
                 );
               })}
             </div>
-            {data.accounts.length > 0 && <Button className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
+            {data.accounts.length > 0 && <Button variant="outline" className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
           </>
         ) : view === "runes" ? (
           <RunesPanel
