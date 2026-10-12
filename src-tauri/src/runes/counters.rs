@@ -11,6 +11,7 @@ use serde_json::Value;
 
 use super::data::{keystone_fetches, keystone_gate};
 use super::lolalytics::{self, as_i64, as_u64, number, resolve, LolalyticsClient, Qwik};
+use super::patch::{self, blend_rate, PatchInfo};
 use super::provider::{DataKind, Provider, ProviderError, Sourced};
 use super::cache::{self, LastGoodCache};
 use super::RuneError;
@@ -36,18 +37,57 @@ pub struct Counters {
     /// The lolalytics lane the page was for, e.g. "middle".
     pub lane: String,
     pub rows: Vec<CounterRow>,
+    /// Which patch this is, and whether the previous one was blended in.
+    #[serde(default)]
+    pub patch: Option<PatchInfo>,
+}
+
+/// Blends the previous patch's table into the current one: each matchup's win
+/// rates are blended per [`blend_rate`] and the games stay the current patch's.
+/// Matchups only the previous patch has come last with 0 games, so they sort as
+/// low-sample rows.
+pub fn blend_counters(now: Counters, prev: Option<&Counters>, info: PatchInfo) -> Counters {
+    let Some(prev) = prev else {
+        return Counters { patch: Some(info), ..now };
+    };
+    let mut rows: Vec<CounterRow> = now
+        .rows
+        .iter()
+        .map(|row| match prev.rows.iter().find(|other| other.champion_id == row.champion_id) {
+            Some(other) => CounterRow {
+                vs_win_pct: blend_rate(row.vs_win_pct, row.games, other.vs_win_pct),
+                all_win_pct: blend_rate(row.all_win_pct, row.games, other.all_win_pct),
+                ..row.clone()
+            },
+            None => row.clone(),
+        })
+        .collect();
+    rows.extend(
+        prev.rows
+            .iter()
+            .filter(|other| !now.rows.iter().any(|row| row.champion_id == other.champion_id))
+            .map(|other| CounterRow { games: 0, ..other.clone() }),
+    );
+    Counters {
+        rows,
+        patch: Some(info),
+        ..now
+    }
 }
 
 /// The counters page. `lane` is omitted to get the champion's usual lane.
-pub fn counters_url(champion_slug: &str, lane: Option<&str>, tier: &str) -> String {
+pub fn counters_url(champion_slug: &str, lane: Option<&str>, tier: &str, patch: Option<&str>) -> String {
     let tier = lolalytics::tier_slug(tier);
-    match lane {
-        Some(lane) => format!(
-            "{}/{champion_slug}/counters/?lane={lane}&tier={tier}",
-            lolalytics::BASE_URL
-        ),
-        None => format!("{}/{champion_slug}/counters/?tier={tier}", lolalytics::BASE_URL),
-    }
+    lolalytics::patched(
+        match lane {
+            Some(lane) => format!(
+                "{}/{champion_slug}/counters/?lane={lane}&tier={tier}",
+                lolalytics::BASE_URL
+            ),
+            None => format!("{}/{champion_slug}/counters/?tier={tier}", lolalytics::BASE_URL),
+        },
+        patch,
+    )
 }
 
 pub fn counters_cache_key(champion_slug: &str, lane: Option<&str>, tier: &str) -> String {
@@ -79,6 +119,7 @@ pub fn parse_counters(html: &str, champion_id: i64) -> Option<Counters> {
     Some(Counters {
         lane: stats.get("lane")?.as_str()?.to_string(),
         rows,
+        patch: None,
     })
 }
 
@@ -101,8 +142,11 @@ impl LolalyticsClient {
         champion_id: i64,
         lane: Option<&str>,
         tier: &str,
+        patch: Option<&str>,
     ) -> Result<Option<Counters>, ProviderError> {
-        let body = self.page(counters_url(champion_slug, lane, tier)).await?;
+        let body = self
+            .page(counters_url(champion_slug, lane, tier, patch))
+            .await?;
         Ok(parse_counters(&body, champion_id))
     }
 }
@@ -146,8 +190,23 @@ pub async fn load(
     let Ok(client) = LolalyticsClient::new() else {
         return Ok(stale(&key));
     };
-    match client.counters(champion_slug, champion_id, lane, tier).await {
+    match client.counters(champion_slug, champion_id, lane, tier, None).await {
         Ok(Some(found)) => {
+            let found = patch::blended(
+                found,
+                &key,
+                last_good(),
+                |previous| {
+                    let client = &client;
+                    async move {
+                        client
+                            .counters(champion_slug, champion_id, lane, tier, Some(&previous))
+                            .await
+                    }
+                },
+                blend_counters,
+            )
+            .await;
             super::shared().counters.store(key.clone(), found.clone());
             last_good().store(key, found.clone());
             Ok(Some(Sourced::fresh(found, Provider::Lolalytics)))
@@ -239,11 +298,11 @@ mod tests {
     #[test]
     fn urls_and_keys_carry_lane_and_bracket() {
         assert_eq!(
-            counters_url("graves", Some("jungle"), "emerald_plus"),
+            counters_url("graves", Some("jungle"), "emerald_plus", None),
             "https://lolalytics.com/lol/graves/counters/?lane=jungle&tier=emerald_plus"
         );
         assert_eq!(
-            counters_url("graves", None, "bogus"),
+            counters_url("graves", None, "bogus", None),
             "https://lolalytics.com/lol/graves/counters/?tier=emerald_plus"
         );
         assert_ne!(
@@ -254,5 +313,59 @@ mod tests {
             counters_cache_key("graves", None, "emerald_plus"),
             counters_cache_key("graves", None, "diamond_plus")
         );
+    }
+
+    fn row(champion_id: i64, vs: f64, games: u64, all: f64) -> CounterRow {
+        CounterRow { champion_id, vs_win_pct: vs, games, all_win_pct: all }
+    }
+
+    fn info() -> PatchInfo {
+        PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) }
+    }
+
+    #[test]
+    fn day_zero_counters_take_the_previous_patch_rates_and_keep_zero_games() {
+        let now = parse_counters(GRAVES, 104).unwrap();
+        // Day 0: the current page has the matchups but no games yet.
+        let empty = Counters {
+            rows: now.rows.iter().map(|r| CounterRow { games: 0, ..r.clone() }).collect(),
+            ..now
+        };
+        let prev = Counters { rows: vec![row(48, 51.0, 9000, 49.0), row(120, 53.0, 9000, 49.0)], ..empty.clone() };
+        let blended = blend_counters(empty, Some(&prev), info());
+        let first = blended.rows.iter().find(|r| r.champion_id == 48).unwrap();
+        assert!((first.vs_win_pct - 51.0).abs() < 1e-9);
+        assert_eq!(first.games, 0, "displayed games are the current patch's");
+        assert!(blended.patch.unwrap().previous.is_some());
+    }
+
+    #[test]
+    fn a_large_current_counters_sample_dominates_and_prev_only_rows_come_last() {
+        let now = Counters { lane: "jungle".into(), rows: vec![row(48, 58.0, 5000, 49.0)], patch: None };
+        let prev = Counters { rows: vec![row(48, 52.0, 8000, 49.0), row(7, 47.0, 3000, 50.0)], ..now.clone() };
+        let blended = blend_counters(now, Some(&prev), info());
+        assert!((blended.rows[0].vs_win_pct - 58.0).abs() < 0.5, "{}", blended.rows[0].vs_win_pct);
+        assert_eq!(blended.rows[0].games, 5000);
+        assert_eq!((blended.rows[1].champion_id, blended.rows[1].games), (7, 0));
+        assert!((blended.rows[1].vs_win_pct - 47.0).abs() < 1e-9);
+    }
+
+    #[test]
+    fn without_a_previous_patch_the_counters_are_the_current_ones() {
+        let now = parse_counters(GRAVES, 104).unwrap();
+        let blended = blend_counters(now.clone(), None, PatchInfo { previous: None, ..info() });
+        assert_eq!(blended.rows, now.rows);
+        assert_eq!(blended.patch.unwrap().previous, None);
+    }
+
+    #[test]
+    fn the_patch_is_a_query_parameter_and_the_prior_cache_key_carries_it() {
+        assert_eq!(
+            counters_url("yone", Some("middle"), "emerald_plus", Some("16.19")),
+            "https://lolalytics.com/lol/yone/counters/?lane=middle&tier=emerald_plus&patch=16.19"
+        );
+        let base = counters_cache_key("yone", Some("middle"), "emerald_plus");
+        assert_ne!(patch::prior_key(&base, "16.19"), patch::prior_key(&base, "16.18"));
+        assert_ne!(patch::prior_key(&base, "16.19"), base);
     }
 }

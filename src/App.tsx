@@ -17,8 +17,8 @@ import { CreateShortcutButton } from "./accounts/CreateShortcutButton";
 import { RunesPanel } from "./runes/RunesPanel";
 import { PairingNotice } from "./settings/PairedDevices";
 import { UpdateBanner } from "./settings/UpdateSection";
-import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection } from "./runes/types";
-import { isGamePhase } from "./runes/types";
+import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "./runes/types";
+import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
 import type { SettingsTab } from "./settings/SettingsView";
 import "./App.css";
@@ -184,6 +184,7 @@ function App() {
   const [runesLoading, setRunesLoading] = useState(false);
   const [runesBusy, setRunesBusy] = useState(false);
   const [runesError, setRunesError] = useState<string | null>(null);
+  const [shopNotice, setShopNotice] = useState<ShopNotice | null>(null);
   const runePosition = useRef<string | undefined>(undefined);
   const runeChampion = useRef(0);
   const runeRequest = useRef(0);
@@ -217,6 +218,9 @@ function App() {
       listen("runes_changed", () => {
         void loadRunes();
       }),
+      // Background shop imports have no confirmed result on the apply
+      // command, so this event reports the shop status separately.
+      listen<ItemsImported>("items_imported", ({ payload }) => setShopNotice(shopNoticeFrom(payload))),
       listen<{ id: string; name: string }>("switch_started", ({ payload }) => {
         setSwitchingAccountId(payload.id);
         setRepairableId(null);
@@ -372,6 +376,7 @@ function App() {
     try {
       const next = await invoke<RunesView>("get_runes", selectedPosition ? { position: selectedPosition } : {});
       if (request === runeRequest.current) {
+        if (next.championId !== runeChampion.current) setShopNotice(null);
         setRunes(next);
         runeChampion.current = next.championId;
         setRunesError(null);
@@ -391,6 +396,7 @@ function App() {
   ) {
     setRunesBusy(true);
     setRunesError(null);
+    setShopNotice(null);
     try {
       await invoke("import_item_build", { championId, championName, source, items });
     } catch (reason) {
@@ -409,6 +415,7 @@ function App() {
   ) {
     setRunesBusy(true);
     setRunesError(null);
+    setShopNotice(null);
     try {
       await invoke("apply_rune_page", {
         selection,
@@ -806,7 +813,7 @@ function App() {
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
       </header>
 
-      <main className={`main-panel${view === "settings" ? " settings-panel" : ""}`}>
+      <main className={`main-panel${view === "settings" ? " settings-panel" : ""}${view === "runes" ? " runes-panel-host" : ""}`}>
         {view === "accounts" ? (
           <>
             <div className="panel-heading">
@@ -893,7 +900,8 @@ function App() {
             loading={runesLoading}
             busy={runesBusy}
             error={runesError}
-            onApply={(selection, presetIndex, spells, enemy) => void applyRunes(selection, presetIndex, spells, enemy)}
+            shopNotice={shopNotice}
+            onApply={(selection, presetIndex, spells, enemy) => applyRunes(selection, presetIndex, spells, enemy)}
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
             onToggleSpellsWithRunes={(enabled) => void setApplySpellsWithRunes(enabled)}
             onToggleImportItems={(enabled) => void setImportItemsWithRunes(enabled)}

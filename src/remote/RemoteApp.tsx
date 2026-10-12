@@ -3,8 +3,8 @@ import { Network, Search, Swords } from "lucide-react";
 import { BrandIcon } from "@/components/BrandIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
-import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection } from "../runes/types";
-import { isGamePhase } from "../runes/types";
+import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "../runes/types";
+import { isGamePhase, shopNoticeFrom } from "../runes/types";
 import "./remote.css";
 
 type RemoteState = "disabled" | "starting" | "notInstalled" | "disconnected" | "available" | "failed";
@@ -117,6 +117,7 @@ export default function RemoteApp() {
   const [runes, setRunes] = useState<RunesView | null>(null);
   const [runesBusy, setRunesBusy] = useState(false);
   const [runesError, setRunesError] = useState<string | null>(null);
+  const [shopNotice, setShopNotice] = useState<ShopNotice | null>(null);
   const runePosition = useRef<string | undefined>(undefined);
   const runeChampion = useRef(0);
   const runeRequest = useRef(0);
@@ -150,9 +151,10 @@ export default function RemoteApp() {
       socket.onmessage = (event) => {
         if (cancelled) return;
         try {
-          const payload = JSON.parse(String(event.data)) as { type?: string; status?: RemoteStatus };
+          const payload = JSON.parse(String(event.data)) as { type?: string; status?: RemoteStatus; result?: ItemsImported };
           if (payload.type === "status" && payload.status) setStatus(payload.status);
           if (payload.type === "runes") void loadRunes();
+          if (payload.type === "itemsImported" && payload.result) setShopNotice(shopNoticeFrom(payload.result));
         } catch { /* Ignore malformed updates. */ }
       };
       socket.onclose = () => {
@@ -355,6 +357,7 @@ export default function RemoteApp() {
       if (response.ok) {
         const next = await response.json() as RunesView;
         if (request === runeRequest.current) {
+          if (next.championId !== runeChampion.current) setShopNotice(null);
           setRunes(next);
           runeChampion.current = next.championId;
         }
@@ -372,6 +375,7 @@ export default function RemoteApp() {
   ) {
     setRunesBusy(true);
     setRunesError(null);
+    setShopNotice(null);
     try {
       const response = await fetch("/api/items/import", {
         method: "POST",
@@ -396,6 +400,7 @@ export default function RemoteApp() {
   ) {
     setRunesBusy(true);
     setRunesError(null);
+    setShopNotice(null);
     try {
       const response = await fetch("/api/runes/apply", {
         method: "POST",
@@ -696,7 +701,8 @@ export default function RemoteApp() {
                 loading={false}
                 busy={runesBusy}
                 error={runesError}
-                onApply={(selection, presetIndex, spells, enemy) => void applyRunes(selection, presetIndex, spells, enemy)}
+                shopNotice={shopNotice}
+                onApply={(selection, presetIndex, spells, enemy) => applyRunes(selection, presetIndex, spells, enemy)}
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
                 onToggleSpellsWithRunes={(enabled) => void toggleSpellsWithRunes(enabled)}
                 onToggleImportItems={(enabled) => void toggleImportItems(enabled)}

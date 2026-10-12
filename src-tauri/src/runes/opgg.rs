@@ -6,10 +6,12 @@
 //! `src/shared/data-adapter/champion-data/opgg.ts`. Swapper only reads the
 //! rune-page part of the response.
 
+use std::collections::HashMap;
 use std::time::Duration;
 
 use serde::{Deserialize, Serialize};
 
+use super::patch::{blend_choices, PatchInfo, Rate};
 use super::provider::ProviderError;
 
 /// op.gg region slug used when the League client region is unknown.
@@ -89,6 +91,16 @@ pub struct RunePageGroup {
     pub pick_rate: f64,
     #[serde(default)]
     pub builds: Vec<RuneBuild>,
+    /// Patch-blended weight and win rate; `None` on a plain current-patch group.
+    #[serde(default)]
+    pub blend: Option<Rate>,
+}
+
+impl RunePageGroup {
+    /// What orders the group: its games, or the patch-blended weight.
+    pub fn weight(&self) -> f64 {
+        self.blend.map_or(self.play as f64, |rate| rate.weight)
+    }
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -106,11 +118,38 @@ pub struct RuneBuild {
     pub win: u64,
     #[serde(default)]
     pub pick_rate: f64,
+    /// Patch-blended weight and win rate; `None` on a plain current-patch build.
+    #[serde(default)]
+    pub blend: Option<Rate>,
 }
 
+/// The runes and shards that identify one build.
+type BuildKey = (i64, i64, Vec<i64>, Vec<i64>, Vec<i64>);
+
 impl RuneBuild {
-    pub fn win_pct(&self) -> Option<f64> {
+    /// The current patch's own win rate.
+    fn raw_win_pct(&self) -> Option<f64> {
         (self.play > 0).then(|| (self.win as f64 / self.play as f64) * 100.0)
+    }
+
+    /// The win rate, blended with the previous patch's when there is one.
+    pub fn win_pct(&self) -> Option<f64> {
+        self.blend.map(|rate| rate.win_pct).or_else(|| self.raw_win_pct())
+    }
+
+    /// What orders the build: its games, or the patch-blended weight.
+    pub fn weight(&self) -> f64 {
+        self.blend.map_or(self.play as f64, |rate| rate.weight)
+    }
+
+    fn key(&self) -> BuildKey {
+        (
+            self.primary_page_id,
+            self.secondary_page_id,
+            self.primary_rune_ids.clone(),
+            self.secondary_rune_ids.clone(),
+            self.stat_mod_ids.clone(),
+        )
     }
 }
 
@@ -138,6 +177,15 @@ pub struct SpellStats {
     pub win: u64,
     #[serde(default)]
     pub pick_rate: f64,
+    /// Patch-blended weight and win rate; `None` on a plain current-patch pair.
+    #[serde(default)]
+    pub blend: Option<Rate>,
+}
+
+impl SpellStats {
+    fn weight(&self) -> f64 {
+        self.blend.map_or(self.play as f64, |rate| rate.weight)
+    }
 }
 
 /// The parts of an op.gg champion response Swapper reads.
@@ -145,6 +193,125 @@ pub struct SpellStats {
 pub struct ChampionData {
     pub rune_pages: Vec<RunePageGroup>,
     pub summoner_spells: Vec<SpellStats>,
+    /// Which patch this is, and whether the previous one was blended in.
+    #[serde(default)]
+    pub patch: Option<PatchInfo>,
+}
+
+/// A previous-patch-only option is carried over only with at least this share
+/// (percent) of the table's weight, so a stale rare page cannot crowd the list.
+const MIN_PRIOR_SHARE_PCT: f64 = 2.0;
+
+/// Whether a previous-patch-only option has enough of `rates`' total weight to
+/// be carried over.
+fn keeps<K>(rates: &[(K, Rate)]) -> impl Fn(Option<&Rate>) -> bool {
+    let total: f64 = rates.iter().map(|(_, rate)| rate.weight).sum();
+    move |rate| rate.is_some_and(|rate| rate.weight * 100.0 >= total * MIN_PRIOR_SHARE_PCT)
+}
+
+/// Blends the previous patch into op.gg's data: rune builds, page groups and
+/// spell pairs get a weight and win rate from [`blend_choices`]. Their `play`
+/// stays the current patch's games; only ordering and win rates change.
+pub fn blend_champion_data(
+    mut now: ChampionData,
+    prev: Option<&ChampionData>,
+    info: PatchInfo,
+) -> ChampionData {
+    now.patch = Some(info);
+    let Some(prev) = prev else {
+        return now;
+    };
+    let rate_of = |play: u64, win: u64| (play > 0).then(|| win as f64 / play as f64 * 100.0);
+    let builds = |data: &ChampionData| -> Vec<(BuildKey, u64, Option<f64>)> {
+        data.rune_pages
+            .iter()
+            .flat_map(|group| &group.builds)
+            .map(|build| (build.key(), build.play, build.raw_win_pct()))
+            .collect()
+    };
+    let group_key = |group: &RunePageGroup| (group.primary_page_id, group.secondary_page_id);
+    let groups = |data: &ChampionData| -> Vec<((i64, i64), u64, Option<f64>)> {
+        data.rune_pages
+            .iter()
+            .map(|group| (group_key(group), group.play, rate_of(group.play, group.win)))
+            .collect()
+    };
+    let spells = |data: &ChampionData| -> Vec<(Vec<i64>, u64, Option<f64>)> {
+        data.summoner_spells
+            .iter()
+            .map(|spell| (spell.ids.clone(), spell.play, rate_of(spell.play, spell.win)))
+            .collect()
+    };
+
+    let build_rates = blend_choices(&builds(&now), &builds(prev));
+    let keep_build = keeps(&build_rates);
+    let build_rates: HashMap<BuildKey, Rate> = build_rates.into_iter().collect();
+    let group_rates = blend_choices(&groups(&now), &groups(prev));
+    let keep_group = keeps(&group_rates);
+    let group_rates: HashMap<(i64, i64), Rate> = group_rates.into_iter().collect();
+    let carried = |build: &RuneBuild| RuneBuild {
+        play: 0,
+        win: 0,
+        pick_rate: 0.0,
+        blend: build_rates.get(&build.key()).copied(),
+        ..build.clone()
+    };
+
+    for group in &mut now.rune_pages {
+        group.blend = group_rates.get(&group_key(group)).copied();
+        for build in &mut group.builds {
+            build.blend = build_rates.get(&build.key()).copied();
+        }
+    }
+    for old in &prev.rune_pages {
+        let missing: Vec<RuneBuild> = old
+            .builds
+            .iter()
+            .filter(|build| keep_build(build_rates.get(&build.key())))
+            .filter(|build| {
+                !now.rune_pages
+                    .iter()
+                    .any(|group| group.builds.iter().any(|other| other.key() == build.key()))
+            })
+            .map(carried)
+            .collect();
+        match now.rune_pages.iter_mut().find(|group| group_key(group) == group_key(old)) {
+            Some(group) => group.builds.extend(missing),
+            None if keep_group(group_rates.get(&group_key(old))) && !missing.is_empty() => {
+                now.rune_pages.push(RunePageGroup {
+                    play: 0,
+                    win: 0,
+                    pick_rate: 0.0,
+                    blend: group_rates.get(&group_key(old)).copied(),
+                    builds: missing,
+                    ..old.clone()
+                });
+            }
+            None => {}
+        }
+    }
+
+    let spell_rates = blend_choices(&spells(&now), &spells(prev));
+    let keep_spell = keeps(&spell_rates);
+    let spell_rates: HashMap<Vec<i64>, Rate> = spell_rates.into_iter().collect();
+    for spell in &mut now.summoner_spells {
+        spell.blend = spell_rates.get(&spell.ids).copied();
+    }
+    let carried: Vec<SpellStats> = prev
+        .summoner_spells
+        .iter()
+        .filter(|old| !now.summoner_spells.iter().any(|spell| spell.ids == old.ids))
+        .filter(|old| keep_spell(spell_rates.get(&old.ids)))
+        .map(|old| SpellStats {
+            play: 0,
+            win: 0,
+            pick_rate: 0.0,
+            blend: spell_rates.get(&old.ids).copied(),
+            ..old.clone()
+        })
+        .collect();
+    now.summoner_spells.extend(carried);
+    now
 }
 
 impl ChampionData {
@@ -155,7 +322,7 @@ impl ChampionData {
         self.summoner_spells
             .iter()
             .filter(|entry| entry.ids.len() >= 2)
-            .max_by_key(|entry| entry.play)
+            .max_by(|left, right| left.weight().total_cmp(&right.weight()))
             .map(|entry| [entry.ids[0], entry.ids[1]])
     }
 }
@@ -166,6 +333,7 @@ pub fn parse_data(body: &str) -> Result<ChampionData, ProviderError> {
     Ok(ChampionData {
         rune_pages: response.data.rune_pages,
         summoner_spells: response.data.summoner_spells,
+        patch: None,
     })
 }
 
@@ -220,7 +388,7 @@ impl Preset {
 /// The top build of each rune-page group, most popular group first.
 pub fn presets(groups: &[RunePageGroup]) -> Vec<Preset> {
     let mut ranked: Vec<&RunePageGroup> = groups.iter().filter(|g| !g.builds.is_empty()).collect();
-    ranked.sort_by(|a, b| b.play.cmp(&a.play));
+    ranked.sort_by(|a, b| b.weight().total_cmp(&a.weight()));
     ranked
         .into_iter()
         .enumerate()
@@ -229,8 +397,8 @@ pub fn presets(groups: &[RunePageGroup]) -> Vec<Preset> {
                 .builds
                 .iter()
                 .max_by(|a, b| {
-                    a.play
-                        .cmp(&b.play)
+                    a.weight()
+                        .total_cmp(&b.weight())
                         .then_with(|| a.win.cmp(&b.win))
                 })?;
             Preset::from_build(index, build)
@@ -271,10 +439,15 @@ impl OpggClient {
         champion_id: i64,
         position: &str,
         tier: &str,
+        version: Option<&str>,
     ) -> Result<ChampionData, ProviderError> {
+        let mut url = self.url(region, mode, champion_id, position, tier);
+        if let Some(version) = version {
+            url.push_str(&format!("&version={version}"));
+        }
         let response = self
             .client
-            .get(self.url(region, mode, champion_id, position, tier))
+            .get(url)
             .header(reqwest::header::ACCEPT, "application/json")
             .send()
             .await
@@ -396,5 +569,70 @@ mod tests {
         assert!(tier_supported(MODE_RANKED));
         assert!(tier_supported(MODE_ARAM));
         assert!(!tier_supported(MODE_ARENA));
+    }
+
+    fn info() -> PatchInfo {
+        PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) }
+    }
+
+    /// The fixture with every play and win scaled to `plays` per build.
+    fn with_plays(data: &ChampionData, plays: u64) -> ChampionData {
+        let mut data = data.clone();
+        for group in &mut data.rune_pages {
+            group.play = plays;
+            group.win = plays / 2;
+            for build in &mut group.builds {
+                build.win = (build.win_pct().unwrap_or(50.0) / 100.0 * plays as f64) as u64;
+                build.play = plays;
+            }
+        }
+        data
+    }
+
+    #[test]
+    fn day_zero_rune_pages_follow_the_previous_patch_order_and_rates() {
+        let prev = parse_data(FIXTURE).unwrap();
+        let now = with_plays(&prev, 0);
+        let blended = blend_champion_data(now, Some(&prev), info());
+        assert_eq!(presets(&blended.rune_pages)[0].keystone, presets(&prev.rune_pages)[0].keystone);
+        let top = &presets(&blended.rune_pages)[0];
+        assert_eq!(top.play, 0, "plays shown are the current patch's");
+        let expected = presets(&prev.rune_pages)[0].win_pct.unwrap();
+        assert!((top.win_pct.unwrap() - expected).abs() < 1e-9);
+    }
+
+    #[test]
+    fn a_current_only_rune_page_outranks_the_previous_patchs_top_page() {
+        let prev = parse_data(FIXTURE).unwrap();
+        let mut now = with_plays(&prev, 50);
+        // The current patch has switched keystone: a build only it has, 20,000 plays.
+        let mut fresh = now.rune_pages[0].builds[0].clone();
+        fresh.primary_rune_ids = vec![8010, 9111, 9104, 8299];
+        fresh.play = 20_000;
+        fresh.win = 10_400;
+        now.rune_pages[0].builds.push(fresh);
+        now.rune_pages[0].play += 20_000;
+        let blended = blend_champion_data(now, Some(&prev), info());
+        assert_eq!(presets(&blended.rune_pages)[0].keystone, 8010);
+    }
+
+    #[test]
+    fn the_rune_statistics_follow_the_blended_weights() {
+        let prev = parse_data(FIXTURE).unwrap();
+        let blended = blend_champion_data(with_plays(&prev, 0), Some(&prev), info());
+        let stats = crate::runes::stats::aggregate(&blended.rune_pages);
+        let plain = crate::runes::stats::aggregate(&prev.rune_pages);
+        let blended_pct = stats.get(8112).unwrap().win_pct().unwrap();
+        assert!(blended_pct > 0.0 && blended_pct < 100.0);
+        assert_eq!(stats.get(8112).unwrap().play, 0);
+        assert!(plain.get(8112).unwrap().play > 0);
+    }
+
+    #[test]
+    fn a_failed_or_missing_previous_patch_leaves_the_current_data_alone() {
+        let now = parse_data(FIXTURE).unwrap();
+        let blended = blend_champion_data(now.clone(), None, PatchInfo { previous: None, ..info() });
+        assert_eq!(presets(&blended.rune_pages), presets(&now.rune_pages));
+        assert!(blended.patch.unwrap().previous.is_none());
     }
 }

@@ -11,12 +11,20 @@ use super::opgg::RunePageGroup;
 
 #[derive(Debug, Clone, Copy, Default, PartialEq)]
 pub struct RuneStat {
+    /// The current patch's plays and wins, which are what is shown.
     pub play: u64,
     pub win: u64,
+    /// The patch-blended plays and wins (equal to the above on a plain page);
+    /// they set the win rate and the pick share.
+    pub weight: f64,
+    pub weighted_win: f64,
 }
 
 impl RuneStat {
     pub fn win_pct(&self) -> Option<f64> {
+        if self.weight > 0.0 {
+            return Some(self.weighted_win / self.weight * 100.0);
+        }
         (self.play > 0).then(|| (self.win as f64 / self.play as f64) * 100.0)
     }
 }
@@ -36,16 +44,16 @@ impl Aggregate {
     /// appear in a build contribute no plays, so the row total is only the
     /// plays of the row's observed runes.
     pub fn pick_pct(&self, id: i64, row: &[i64]) -> Option<f64> {
-        let row_play: u64 = row
+        let row_weight: f64 = row
             .iter()
             .filter_map(|candidate| self.per_rune.get(candidate))
-            .map(|stat| stat.play)
+            .map(|stat| stat.weight)
             .sum();
-        if row_play == 0 {
+        if row_weight <= 0.0 {
             return None;
         }
-        let play = self.per_rune.get(&id)?.play;
-        Some((play as f64 / row_play as f64) * 100.0)
+        let weight = self.per_rune.get(&id)?.weight;
+        Some((weight / row_weight) * 100.0)
     }
 }
 
@@ -62,6 +70,8 @@ pub fn aggregate(groups: &[RunePageGroup]) -> Aggregate {
                 let entry = result.per_rune.entry(id).or_default();
                 entry.play += build.play;
                 entry.win += build.win;
+                entry.weight += build.weight();
+                entry.weighted_win += build.weight() * build.win_pct().unwrap_or(0.0) / 100.0;
             }
         }
     }
@@ -93,7 +103,7 @@ mod tests {
     #[test]
     fn win_pct_is_none_without_plays() {
         assert_eq!(RuneStat::default().win_pct(), None);
-        assert_eq!(RuneStat { play: 10, win: 4 }.win_pct(), Some(40.0));
+        assert_eq!(RuneStat { play: 10, win: 4, ..RuneStat::default() }.win_pct(), Some(40.0));
     }
 
     #[test]

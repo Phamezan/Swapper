@@ -90,8 +90,6 @@ pub struct ItemOptionView {
     pub slot: u8,
     pub games: u64,
     pub win_pct: Option<f64>,
-    /// A short, effect-based reminder when the item's role is well-defined.
-    pub reason: Option<String>,
 }
 
 /// The item set people build with one preset's keystone, from lolalytics.
@@ -103,6 +101,11 @@ pub struct KeystoneBuildView {
     /// Core and the most-supported unused choice in later slots; later slots
     /// are independent marginals, not a joint sample of the full path.
     pub items: Vec<ItemView>,
+    /// How many leading `items` are the one core combination `core_games` and
+    /// `core_win_pct` describe (0 when no joint sample was reported). The rest
+    /// are per-slot popular picks that were never observed as a whole build.
+    #[serde(default)]
+    pub core_len: usize,
     /// Other unique item-slot candidates, ordered by their reported support.
     pub options: Vec<ItemOptionView>,
     /// Starting-item sample size.
@@ -712,7 +715,6 @@ pub(super) fn keystone_build_view(
                     .unwrap_or_else(|| format!("Item {}", candidate.id));
                 ItemOptionView {
                     id: candidate.id,
-                    reason: super::item_sets::option_reason(&name).map(str::to_string),
                     name,
                     slot: candidate.slot,
                     games: candidate.games,
@@ -721,12 +723,13 @@ pub(super) fn keystone_build_view(
             })
             .collect(),
         games: build.games,
+        core_len: build.core_len,
         core_games: build.core_games,
         core_win_pct: build.core_win_pct,
         stale,
         updated_at,
         skill_priority: build.skill_priority,
-        skill_order: None,
+        skill_order: build.skill_order,
     }
 }
 

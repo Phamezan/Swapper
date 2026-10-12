@@ -987,6 +987,7 @@ async fn socket(
 async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>, lan_session: Option<String>) {
     let mut updates = core.subscribe();
     let mut runes = core.subscribe_runes();
+    let mut items = crate::runes::subscribe_items_imported();
     let mut runes_changed = core.subscribe_runes_changed();
     let payload = serde_json::json!({ "type": "status", "status": core.status() }).to_string();
     if stream.send(Message::Text(payload.into())).await.is_err() {
@@ -1014,6 +1015,16 @@ async fn serve_socket(mut stream: WebSocket, core: Arc<RemoteCore>, lan_session:
             applied = runes.recv() => match applied {
                 Ok(applied) => {
                     let payload = serde_json::json!({ "type": "runes", "applied": applied }).to_string();
+                    if stream.send(Message::Text(payload.into())).await.is_err() {
+                        return;
+                    }
+                }
+                Err(tokio::sync::broadcast::error::RecvError::Lagged(_)) => {}
+                Err(tokio::sync::broadcast::error::RecvError::Closed) => return,
+            },
+            imported = items.recv() => match imported {
+                Ok(imported) => {
+                    let payload = serde_json::json!({ "type": "itemsImported", "result": imported }).to_string();
                     if stream.send(Message::Text(payload.into())).await.is_err() {
                         return;
                     }

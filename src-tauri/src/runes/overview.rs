@@ -13,6 +13,7 @@ use super::cache::{self, LastGoodCache};
 use super::data::{keystone_fetches, keystone_gate};
 use super::lolalytics::{self, as_i64, as_u64, number, resolve, KeystoneBuild, LolalyticsClient, Qwik};
 use super::matchup::{pick_details, MatchupRunes};
+use super::patch::{self, blend_rate, PatchInfo};
 use super::provider::{DataKind, Provider, ProviderError, Sourced};
 use super::RuneError;
 
@@ -53,18 +54,47 @@ pub struct Overview {
     pub runes: Option<MatchupRunes>,
     pub spells: Option<[i64; 2]>,
     pub skill_order: Option<String>,
+    /// Which patch this is, and whether the previous one was blended in.
+    #[serde(default)]
+    pub blend: Option<PatchInfo>,
+}
+
+/// Blends the previous patch into an overview: win, average win, pick and ban
+/// rates move toward the previous patch's (games, rank and tier stay current)
+/// and the build merges per [`lolalytics::blend_build`].
+pub fn blend_overview(now: Overview, prev: Option<&Overview>, info: PatchInfo) -> Overview {
+    let mut stats = now.stats;
+    if let Some(prev) = prev {
+        let games = stats.games;
+        stats.win_pct = blend_rate(stats.win_pct, games, prev.stats.win_pct);
+        stats.avg_win_pct = blend_rate(stats.avg_win_pct, games, prev.stats.avg_win_pct);
+        stats.pick_pct = blend_rate(stats.pick_pct, games, prev.stats.pick_pct);
+        stats.ban_pct = blend_rate(stats.ban_pct, games, prev.stats.ban_pct);
+    }
+    let build = now
+        .build
+        .map(|build| lolalytics::blend_build(build, prev.and_then(|prev| prev.build.as_ref()), info.clone()));
+    Overview {
+        stats,
+        build,
+        blend: Some(info),
+        ..now
+    }
 }
 
 /// The champion's build page. `lane` is omitted to get its usual lane.
-pub fn overview_url(champion_slug: &str, lane: Option<&str>, tier: &str) -> String {
+pub fn overview_url(champion_slug: &str, lane: Option<&str>, tier: &str, patch: Option<&str>) -> String {
     let tier = lolalytics::tier_slug(tier);
-    match lane {
-        Some(lane) => format!(
-            "{}/{champion_slug}/build/?lane={lane}&tier={tier}",
-            lolalytics::BASE_URL
-        ),
-        None => format!("{}/{champion_slug}/build/?tier={tier}", lolalytics::BASE_URL),
-    }
+    lolalytics::patched(
+        match lane {
+            Some(lane) => format!(
+                "{}/{champion_slug}/build/?lane={lane}&tier={tier}",
+                lolalytics::BASE_URL
+            ),
+            None => format!("{}/{champion_slug}/build/?tier={tier}", lolalytics::BASE_URL),
+        },
+        patch,
+    )
 }
 
 pub fn overview_cache_key(champion_slug: &str, lane: Option<&str>, tier: &str) -> String {
@@ -109,6 +139,7 @@ pub fn parse_overview(html: &str, champion_id: i64) -> Option<Overview> {
         runes: details.runes,
         spells: details.spells,
         skill_order: details.skill_order,
+        blend: None,
     })
 }
 
@@ -130,8 +161,11 @@ impl LolalyticsClient {
         champion_id: i64,
         lane: Option<&str>,
         tier: &str,
+        patch: Option<&str>,
     ) -> Result<Option<Overview>, ProviderError> {
-        let body = self.page(overview_url(champion_slug, lane, tier)).await?;
+        let body = self
+            .page(overview_url(champion_slug, lane, tier, patch))
+            .await?;
         Ok(parse_overview(&body, champion_id))
     }
 }
@@ -174,8 +208,23 @@ pub async fn load(
     let Ok(client) = LolalyticsClient::new() else {
         return Ok(stale(&key));
     };
-    match client.overview(champion_slug, champion_id, lane, tier).await {
+    match client.overview(champion_slug, champion_id, lane, tier, None).await {
         Ok(Some(found)) => {
+            let found = patch::blended(
+                found,
+                &key,
+                last_good(),
+                |previous| {
+                    let client = &client;
+                    async move {
+                        client
+                            .overview(champion_slug, champion_id, lane, tier, Some(&previous))
+                            .await
+                    }
+                },
+                blend_overview,
+            )
+            .await;
             super::shared().overviews.store(key.clone(), found.clone());
             last_good().store(key, found.clone());
             Ok(Some(Sourced::fresh(found, Provider::Lolalytics)))
@@ -269,16 +318,31 @@ mod tests {
     #[test]
     fn urls_and_keys_carry_lane_and_bracket() {
         assert_eq!(
-            overview_url("ahri", Some("middle"), "emerald_plus"),
+            overview_url("ahri", Some("middle"), "emerald_plus", None),
             "https://lolalytics.com/lol/ahri/build/?lane=middle&tier=emerald_plus"
         );
         assert_eq!(
-            overview_url("ahri", None, "bogus"),
+            overview_url("ahri", None, "bogus", None),
             "https://lolalytics.com/lol/ahri/build/?tier=emerald_plus"
         );
         assert_ne!(
             overview_cache_key("ahri", None, "emerald_plus"),
             overview_cache_key("ahri", Some("middle"), "emerald_plus")
         );
+    }
+
+    #[test]
+    fn the_overview_blends_rates_but_keeps_the_current_games_and_rank() {
+        let now = Overview {
+            stats: OverviewStats { win_pct: 50.0, avg_win_pct: 50.0, pick_pct: 5.0, ban_pct: 1.0, games: 0, rank: 3, ..Default::default() },
+            ..Default::default()
+        };
+        let mut prev = now.clone();
+        prev.stats = OverviewStats { win_pct: 53.0, avg_win_pct: 50.5, pick_pct: 8.0, ban_pct: 2.0, games: 90_000, rank: 9, ..Default::default() };
+        let info = PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) };
+        let blended = blend_overview(now, Some(&prev), info);
+        assert!((blended.stats.win_pct - 53.0).abs() < 1e-9, "day 0 is the previous patch's rate");
+        assert_eq!((blended.stats.games, blended.stats.rank), (0, 3));
+        assert!(blended.blend.unwrap().previous.is_some());
     }
 }

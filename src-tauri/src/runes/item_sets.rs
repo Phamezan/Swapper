@@ -15,6 +15,14 @@ const MAX_OPTION_CANDIDATES: usize = 256;
 const MAX_TITLE_CHARS: usize = 50;
 /// The champion part of a title is clipped to this many characters.
 const MAX_CHAMPION_CHARS: usize = 28;
+/// Shop block names. The build list is a final inventory in no purchase order;
+/// the first three items are one observed combination, the rest are the most
+/// common pick per later slot.
+const BUILD_BLOCK: &str = "Core + Popular Picks";
+const BUILD_BLOCK_UNCORED: &str = "Popular Picks";
+/// A pro game's completed items, as listed; the data has no purchase order here.
+const FINAL_ITEMS_BLOCK: &str = "Final Items";
+const ALTERNATIVES_BLOCK: &str = "Alternatives";
 /// Every item set Swapper creates starts with this, which is how it finds its
 /// own sets to replace or clean up without touching the player's.
 const TITLE_PREFIX: &str = "Swapper: ";
@@ -36,44 +44,6 @@ fn clean(value: &str, max_chars: usize) -> String {
         .chars()
         .take(max_chars)
         .collect()
-}
-
-/// Short reason labels for item effects that have a clear in-game use.
-/// These labels organize the static options block; they do not claim to react
-/// to the enemy draft.
-pub fn option_reason(name: &str) -> Option<&'static str> {
-    let normalized: String = name
-        .chars()
-        .filter(|character| character.is_ascii_alphanumeric())
-        .flat_map(char::to_lowercase)
-        .collect();
-    match normalized.as_str() {
-        "mawofmalmortius" | "forceofnature" | "spiritvisage" | "kaenicrookern" | "witsend" => {
-            Some("Options · Against AP")
-        }
-        "serpentsfang" => Some("Options · Against shields"),
-        "blackcleaver" | "lorddominiksregards" | "seryldasgrudge" => {
-            Some("Options · Against armor")
-        }
-        "mortalreminder" | "chempunkchainsword" | "thornmail" => Some("Options · Against healing"),
-        "hubris" | "youmuusghostblade" | "opportunity" => Some("Options · Damage pivot"),
-        "steraksgage" | "guardianangel" | "deathsdance" | "randuinsomen" => {
-            Some("Options · More durability")
-        }
-        _ => None,
-    }
-}
-
-fn known_reason(label: &str) -> Option<&'static str> {
-    match label {
-        "Options · Against AP" => Some("Options · Against AP"),
-        "Options · Against shields" => Some("Options · Against shields"),
-        "Options · Against armor" => Some("Options · Against armor"),
-        "Options · Against healing" => Some("Options · Against healing"),
-        "Options · Damage pivot" => Some("Options · Damage pivot"),
-        "Options · More durability" => Some("Options · More durability"),
-        _ => None,
-    }
 }
 
 fn item_values(item_ids: &[i64]) -> Result<Vec<Value>, RuneError> {
@@ -157,7 +127,7 @@ fn generic_item_set_body(
         champion_id,
         champion_name,
         source,
-        vec![block("Build", items)],
+        vec![block(FINAL_ITEMS_BLOCK, items)],
     )
 }
 
@@ -166,7 +136,6 @@ fn preset_item_set_body(
     champion_name: &str,
     source: &str,
     build: &KeystoneBuildView,
-    option_names: &std::collections::HashMap<i64, String>,
 ) -> Result<(String, Value), RuneError> {
     if build.items.is_empty()
         || build.items.len() > MAX_ITEMS
@@ -201,8 +170,14 @@ fn preset_item_set_body(
             .collect();
         blocks.push(block("Starter Items", items));
     }
+    // `items` is a final inventory, not a purchase order, and only its leading
+    // core was observed as one combination (see `KeystoneBuildView::core_len`).
     blocks.push(block(
-        "Full Build",
+        if build.core_len > 0 {
+            BUILD_BLOCK
+        } else {
+            BUILD_BLOCK_UNCORED
+        },
         build
             .items
             .iter()
@@ -212,7 +187,7 @@ fn preset_item_set_body(
 
     // LoLalytics reports independent later-slot marginals. Round-robin their
     // highest-support alternatives so one slot cannot crowd out the other
-    // two from the in-game Options blocks.
+    // two, then keep them all in one block.
     let by_slot: Vec<Vec<&super::view::ItemOptionView>> = (4..=6)
         .map(|slot| {
             let mut candidates: Vec<_> = build
@@ -224,10 +199,10 @@ fn preset_item_set_body(
             candidates
         })
         .collect();
-    let mut options: Vec<(i64, String)> = Vec::new();
+    let mut options: Vec<Value> = Vec::new();
     let mut used = Vec::new();
     let max_rounds = by_slot.iter().map(Vec::len).max().unwrap_or(0);
-    for index in 0..max_rounds {
+    'rounds: for index in 0..max_rounds {
         for candidates in &by_slot {
             let Some(option) = candidates.get(index) else {
                 continue;
@@ -239,43 +214,16 @@ fn preset_item_set_body(
             {
                 continue;
             }
-            let name = option_names
-                .get(&option.id)
-                .map(String::as_str)
-                .unwrap_or(option.name.as_str());
-            let label = option_reason(name)
-                .or_else(|| option.reason.as_deref().and_then(known_reason))
-                .unwrap_or("Options")
-                .to_string();
             used.push(option.id);
-            options.push((option.id, label));
+            options.push(json!({ "id": option.id.to_string(), "count": 1 }));
             if options.len() == MAX_OPTIONS {
-                break;
+                break 'rounds;
             }
         }
-        if options.len() == MAX_OPTIONS {
-            break;
-        }
     }
-
-    // Keep the standard Options block first, then named matchup/effect groups.
-    let mut grouped: Vec<(String, Vec<Value>)> = Vec::new();
-    for (id, label) in options {
-        if let Some((_, items)) = grouped
-            .iter_mut()
-            .find(|(group, _)| group.as_str() == label)
-        {
-            items.push(json!({ "id": id.to_string(), "count": 1 }));
-        } else {
-            grouped.push((label, vec![json!({ "id": id.to_string(), "count": 1 })]));
-        }
+    if !options.is_empty() {
+        blocks.push(block(ALTERNATIVES_BLOCK, options));
     }
-    grouped.sort_by_key(|(label, _)| (label != "Options", label.clone()));
-    blocks.extend(
-        grouped
-            .into_iter()
-            .map(|(label, items)| block(&label, items)),
-    );
 
     item_set_body(champion_id, champion_name, source, blocks)
 }
@@ -431,15 +379,14 @@ pub async fn import_build(
     post_item_set(title, body).await
 }
 
-/// Imports a preset build with separate starter, full-build and option blocks.
+/// Imports a preset build as starter, final-inventory and alternatives blocks.
 pub async fn import_keystone_build(
     champion_id: i64,
     champion_name: &str,
     source: &str,
     build: &KeystoneBuildView,
 ) -> Result<String, RuneError> {
-    let names = super::items::names().await;
-    let (title, body) = preset_item_set_body(champion_id, champion_name, source, build, &names)?;
+    let (title, body) = preset_item_set_body(champion_id, champion_name, source, build)?;
     post_item_set(title, body).await
 }
 
@@ -483,7 +430,6 @@ mod tests {
                     slot: 4,
                     games: 8,
                     win_pct: None,
-                    reason: None,
                 },
                 ItemOptionView {
                     id: 6695,
@@ -491,7 +437,6 @@ mod tests {
                     slot: 5,
                     games: 7,
                     win_pct: None,
-                    reason: None,
                 },
                 ItemOptionView {
                     id: 3071,
@@ -499,11 +444,11 @@ mod tests {
                     slot: 5,
                     games: 6,
                     win_pct: None,
-                    reason: None,
                 },
             ],
             games: 100,
             core_games: 80,
+            core_len: 3,
             core_win_pct: Some(53.0),
             stale: false,
             updated_at: None,
@@ -519,7 +464,6 @@ mod tests {
             "Ambessa",
             "Preset · Grasp",
             &sample_build(),
-            &Default::default(),
         )
         .unwrap();
         assert!(title.starts_with("Swapper: Ambessa"));
@@ -532,15 +476,37 @@ mod tests {
             labels,
             [
                 "Starter Items",
-                "Full Build",
-                "Options · Against AP",
-                "Options · Against armor",
-                "Options · Against shields",
+                "Core + Popular Picks",
+                "Alternatives",
             ]
         );
         assert_eq!(blocks[0]["items"][1]["id"], "2003");
         assert_eq!(blocks[0]["items"][1]["count"], 2);
         assert_eq!(blocks[1]["items"].as_array().unwrap().len(), 3);
+        // One situational block, highest-support first, never one row per purpose.
+        let ids: Vec<&str> = blocks[2]["items"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|item| item["id"].as_str().unwrap())
+            .collect();
+        assert_eq!(ids, ["3156", "6695", "3071"]);
+    }
+
+    #[test]
+    fn a_build_without_an_observed_core_is_not_called_one() {
+        let mut build = sample_build();
+        build.core_len = 0;
+        let (_, body) = preset_item_set_body(799, "Ambessa", "Preset", &build).unwrap();
+        assert_eq!(body["blocks"][1]["type"], "Popular Picks");
+    }
+
+    #[test]
+    fn a_build_without_alternatives_has_no_empty_block() {
+        let mut build = sample_build();
+        build.options.clear();
+        let (_, body) = preset_item_set_body(799, "Ambessa", "Preset", &build).unwrap();
+        assert_eq!(body["blocks"].as_array().unwrap().len(), 2);
     }
 
     #[test]
@@ -626,7 +592,7 @@ mod tests {
         let (_, body) = generic_item_set_body(799, "Ambessa", "Pro", &[6692, 3047]).unwrap();
         let blocks = body["blocks"].as_array().unwrap();
         assert_eq!(blocks.len(), 1);
-        assert_eq!(blocks[0]["type"], "Build");
+        assert_eq!(blocks[0]["type"], "Final Items");
     }
 
     #[test]
@@ -634,7 +600,7 @@ mod tests {
         let mut build = sample_build();
         build.items.clear();
         assert!(
-            preset_item_set_body(799, "Ambessa", "Preset", &build, &Default::default()).is_err()
+            preset_item_set_body(799, "Ambessa", "Preset", &build).is_err()
         );
         assert!(generic_item_set_body(799, "Ambessa", "Pro", &[0]).is_err());
     }
@@ -651,22 +617,14 @@ mod tests {
                     slot,
                     games: 100 - index as u64,
                     win_pct: None,
-                    reason: None,
                 })
             })
             .collect();
-        let (_, body) = preset_item_set_body(
-            799,
-            "Ambessa",
-            "Preset",
-            &build,
-            &Default::default(),
-        )
-        .unwrap();
+        let (_, body) = preset_item_set_body(799, "Ambessa", "Preset", &build).unwrap();
         let blocks = body["blocks"].as_array().unwrap();
         let options = blocks
             .iter()
-            .find(|block| block["type"] == "Options")
+            .find(|block| block["type"] == "Alternatives")
             .unwrap()["items"]
             .as_array()
             .unwrap();
@@ -680,21 +638,7 @@ mod tests {
         );
 
         build.options.resize(MAX_OPTION_CANDIDATES + 1, build.options[0].clone());
-        assert!(preset_item_set_body(799, "Ambessa", "Preset", &build, &Default::default()).is_err());
-    }
-
-    #[test]
-    fn item_reasons_are_effect_labels_not_archetype_guesses() {
-        assert_eq!(
-            option_reason("Maw of Malmortius"),
-            Some("Options · Against AP")
-        );
-        assert_eq!(
-            option_reason("Serpent's Fang"),
-            Some("Options · Against shields")
-        );
-        assert_eq!(option_reason("Hubris"), Some("Options · Damage pivot"));
-        assert_eq!(option_reason("Unknown item"), None);
+        assert!(preset_item_set_body(799, "Ambessa", "Preset", &build).is_err());
     }
 
     fn title_for(champion: &str, enemy: &str, label: &str) -> String {

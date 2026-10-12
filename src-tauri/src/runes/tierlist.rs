@@ -19,6 +19,7 @@ use serde_json::Value;
 use super::cache::{self, LastGoodCache};
 use super::data::{keystone_fetches, keystone_gate};
 use super::lolalytics::{self, as_u64, number, resolve, LolalyticsClient, Qwik};
+use super::patch::{self, blend_rate, PatchInfo};
 use super::provider::{DataKind, Provider, ProviderError, Sourced};
 use super::RuneError;
 
@@ -84,13 +85,56 @@ impl TierRow {
 pub struct TierList {
     /// Rows ordered by tier, then win rate (best first).
     pub rows: Vec<TierRow>,
+    /// Which patch this is, and whether the previous one was blended in.
+    #[serde(default)]
+    pub patch: Option<PatchInfo>,
 }
 
-pub fn tierlist_url(lane: &str, tier: &str) -> String {
-    format!(
-        "{}/tierlist/?lane={lane}&tier={}",
-        lolalytics::BASE_URL,
-        lolalytics::tier_slug(tier)
+/// Blends the previous patch's rows into the current ones (win, pick and ban
+/// rates per [`blend_rate`]; games stay the current patch's), keeps the rows
+/// that clear the games floor on either patch, then scores and labels them.
+/// A row only the previous patch has comes in with 0 games. Both inputs are
+/// unfiltered, unscored page rows.
+pub fn blend_tierlist(now: TierList, prev: Option<&TierList>, tier: &str, info: PatchInfo) -> TierList {
+    let floor = min_games(tier);
+    let mut rows: Vec<TierRow> = now
+        .rows
+        .iter()
+        .filter_map(|row| {
+            let other = prev.and_then(|prev| prev.rows.iter().find(|o| o.champion_id == row.champion_id));
+            match other {
+                Some(other) if row.games >= floor || other.games >= floor => Some(TierRow {
+                    win_pct: blend_rate(row.win_pct, row.games, other.win_pct),
+                    pick_pct: blend_rate(row.pick_pct, row.games, other.pick_pct),
+                    ban_pct: blend_rate(row.ban_pct, row.games, other.ban_pct),
+                    ..row.clone()
+                }),
+                Some(_) => None,
+                None => (row.games >= floor).then(|| row.clone()),
+            }
+        })
+        .collect();
+    if let Some(prev) = prev {
+        rows.extend(
+            prev.rows
+                .iter()
+                .filter(|other| other.games >= floor)
+                .filter(|other| !now.rows.iter().any(|row| row.champion_id == other.champion_id))
+                .map(|other| TierRow { games: 0, ..other.clone() }),
+        );
+    }
+    score_rows(&mut rows);
+    TierList { rows, patch: Some(info) }
+}
+
+pub fn tierlist_url(lane: &str, tier: &str, patch: Option<&str>) -> String {
+    lolalytics::patched(
+        format!(
+            "{}/tierlist/?lane={lane}&tier={}",
+            lolalytics::BASE_URL,
+            lolalytics::tier_slug(tier)
+        ),
+        patch,
     )
 }
 
@@ -102,17 +146,25 @@ pub fn tierlist_cache_key(lane: &str, tier: &str) -> String {
 
 /// Parses a tier list page, dropping rows below `min_games`. `None` when no
 /// champion dictionary is found.
+#[cfg(test)]
 fn parse_tierlist_with_min(html: &str, min_games: u64) -> Option<TierList> {
+    let mut rows = parse_rows(html, min_games)?;
+    score_rows(&mut rows);
+    Some(TierList { rows, patch: None })
+}
+
+/// The unscored rows of a tier list page with at least `min_games` games.
+fn parse_rows(html: &str, min_games: u64) -> Option<Vec<TierRow>> {
     let state: Qwik = serde_json::from_str(lolalytics::qwik_json(html)?).ok()?;
     let objs = &state.objs;
     let table = objs.iter().find(|entry| is_row_table(entry, objs))?;
-    let mut rows: Vec<TierRow> = table
-        .as_object()?
-        .iter()
-        .filter_map(|(key, row)| tier_row(key.parse().ok()?, &resolve(row, objs, 0), min_games))
-        .collect();
-    score_rows(&mut rows);
-    Some(TierList { rows })
+    Some(
+        table
+            .as_object()?
+            .iter()
+            .filter_map(|(key, row)| tier_row(key.parse().ok()?, &resolve(row, objs, 0), min_games))
+            .collect(),
+    )
 }
 
 /// Scores every kept row from its win rate (shrunk toward the lane average) and
@@ -206,10 +258,16 @@ fn tier_row(champion_id: i64, row: &Value, min_games: u64) -> Option<TierRow> {
 }
 
 impl LolalyticsClient {
-    /// Fetches and parses one lane's tier list.
-    pub async fn tierlist(&self, lane: &str, tier: &str) -> Result<Option<TierList>, ProviderError> {
-        let body = self.page(tierlist_url(lane, tier)).await?;
-        Ok(parse_tierlist_with_min(&body, min_games(tier)))
+    /// Fetches and parses one lane's tier list: every ranked row, unfiltered and
+    /// unscored, so [`blend_tierlist`] can apply the games floor after blending.
+    pub async fn tierlist(
+        &self,
+        lane: &str,
+        tier: &str,
+        patch: Option<&str>,
+    ) -> Result<Option<TierList>, ProviderError> {
+        let body = self.page(tierlist_url(lane, tier, patch)).await?;
+        Ok(parse_rows(&body, 0).map(|rows| TierList { rows, patch: None }))
     }
 }
 
@@ -244,8 +302,19 @@ pub async fn load(lane: &str, tier: &str) -> Result<Option<Sourced<TierList>>, R
     let Ok(client) = LolalyticsClient::new() else {
         return Ok(stale(&key));
     };
-    match client.tierlist(lane, tier).await {
+    match client.tierlist(lane, tier, None).await {
         Ok(Some(found)) => {
+            let found = patch::blended(
+                found,
+                &key,
+                last_good(),
+                |previous| {
+                    let client = &client;
+                    async move { client.tierlist(lane, tier, Some(&previous)).await }
+                },
+                |now, prev, info| blend_tierlist(now, prev, tier, info),
+            )
+            .await;
             super::shared().tierlists.store(key.clone(), found.clone());
             last_good().store(key, found.clone());
             Ok(Some(Sourced::fresh(found, Provider::Lolalytics)))
@@ -457,7 +526,7 @@ mod tests {
     #[test]
     fn urls_and_keys_carry_lane_and_bracket() {
         assert_eq!(
-            tierlist_url("jungle", "emerald_plus"),
+            tierlist_url("jungle", "emerald_plus", None),
             "https://lolalytics.com/lol/tierlist/?lane=jungle&tier=emerald_plus"
         );
         assert_ne!(tierlist_cache_key("jungle", "all"), tierlist_cache_key("top", "all"));
@@ -471,10 +540,11 @@ mod tests {
     async fn prints_the_live_emerald_plus_middle_scoring() {
         let client = LolalyticsClient::new().expect("a client");
         let list = client
-            .tierlist("middle", "emerald_plus")
+            .tierlist("middle", "emerald_plus", None)
             .await
             .expect("a fetch")
             .expect("a tier list");
+        let list = blend_tierlist(list, None, "emerald_plus", PatchInfo::default());
         println!("kept rows: {}", list.rows.len());
         for (rank, row) in list.rows.iter().take(20).enumerate() {
             println!(
@@ -493,5 +563,44 @@ mod tests {
             *counts.entry(row.label()).or_insert(0usize) += 1;
         }
         println!("tier counts: {counts:?}");
+    }
+
+    fn raw(id: i64, win: f64, pick: f64, games: u64) -> TierRow {
+        TierRow { champion_id: id, tier: 0, win_pct: win, pick_pct: pick, ban_pct: 1.0, games, score: 0.0 }
+    }
+
+    fn info() -> PatchInfo {
+        PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) }
+    }
+
+    #[test]
+    fn day_zero_tier_list_is_the_previous_patch_with_zero_current_games() {
+        let now = TierList { rows: (1..=4).map(|id| raw(id, 50.0, 5.0, 0)).collect(), patch: None };
+        let prev = TierList {
+            rows: vec![raw(1, 54.0, 9.0, 30_000), raw(2, 50.0, 5.0, 30_000), raw(3, 47.0, 2.0, 30_000), raw(4, 52.0, 6.0, 30_000)],
+            patch: None,
+        };
+        let list = blend_tierlist(now, Some(&prev), "emerald_plus", info());
+        assert_eq!(list.rows.len(), 4, "rows clear the floor on the previous patch");
+        assert_eq!(list.rows[0].champion_id, 1);
+        assert!((list.rows[0].win_pct - 54.0).abs() < 1e-9);
+        assert!(list.rows.iter().all(|row| row.games == 0));
+    }
+
+    #[test]
+    fn without_a_previous_patch_the_floor_applies_to_current_games_only() {
+        let now = TierList { rows: (1..=3).map(|id| raw(id, 50.0, 5.0, if id == 1 { 100 } else { 900 })).collect(), patch: None };
+        let list = blend_tierlist(now, None, "emerald_plus", PatchInfo { previous: None, ..info() });
+        assert_eq!(list.rows.len(), 2);
+        assert!(list.patch.unwrap().previous.is_none());
+    }
+
+    #[test]
+    fn a_large_current_tier_sample_dominates_the_blended_rate() {
+        let now = TierList { rows: vec![raw(1, 51.0, 5.0, 20_000), raw(2, 50.0, 5.0, 20_000)], patch: None };
+        let prev = TierList { rows: vec![raw(1, 55.0, 5.0, 20_000)], patch: None };
+        let list = blend_tierlist(now, Some(&prev), "emerald_plus", info());
+        let row = list.rows.iter().find(|row| row.champion_id == 1).unwrap();
+        assert!((row.win_pct - 51.0).abs() < 0.5);
     }
 }

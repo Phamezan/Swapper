@@ -1346,6 +1346,19 @@ pub fn run() {
             let bundled_korean_font =
                 app.path().resolve("korean-font.fantome", BaseDirectory::Resource)?;
             let remote = remote::RemoteCore::new(app.handle().clone(), config.remote_enabled);
+            let items_app = app.handle().clone();
+            tauri::async_runtime::spawn(async move {
+                let mut imported = runes::subscribe_items_imported();
+                loop {
+                    match imported.recv().await {
+                        Ok(result) => {
+                            let _ = items_app.emit("items_imported", result);
+                        }
+                        Err(tokio::sync::broadcast::error::RecvError::Lagged(_)) => {}
+                        Err(tokio::sync::broadcast::error::RecvError::Closed) => break,
+                    }
+                }
+            });
             app.manage(AppState {
                 config: Mutex::new(config),
                 bundled_deceive,

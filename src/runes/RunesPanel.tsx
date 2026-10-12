@@ -17,12 +17,16 @@ import {
   MatchupView,
   ChampionApi,
   Selection,
+  ShopNotice,
+  LOW_SAMPLE_GAMES,
   fmtGames,
   fmtPct,
+  isLowSample,
   selectionFromPreset,
   selectionFromProBuild,
   selectionFromApplied,
   sameSelection,
+  treeName,
 } from "./types";
 import "./runes.css";
 
@@ -62,12 +66,15 @@ type Props = {
   loading: boolean;
   busy: boolean;
   error: string | null;
+  /** Shop-import result from the `items_imported` event;
+   *  separate from the rune-apply confirmation, which is the applied badge. */
+  shopNotice?: ShopNotice | null;
   onApply: (
     selection: Selection,
     presetIndex: number | null,
     spells: number[] | null,
     enemyChampionId?: number | null,
-  ) => void;
+  ) => void | Promise<void>;
   onToggleAutoApply: (enabled: boolean) => void;
   onToggleSpellsWithRunes: (enabled: boolean) => void;
   onToggleImportItems: (enabled: boolean) => void;
@@ -167,6 +174,7 @@ export function RunesPanel({
   loading,
   busy,
   error,
+  shopNotice,
   onApply,
   onToggleAutoApply,
   onToggleSpellsWithRunes,
@@ -194,6 +202,11 @@ export function RunesPanel({
   const [matchupLoading, setMatchupLoading] = useState(false);
   const [chosenEnemy, setChosenEnemy] = useState<{ championId: number; enemyId: number } | null>(null);
   const [buildChoice, setBuildChoice] = useState<BuildChoice>("generic");
+  // The backend keeps the last applied page per champion and does not clear it
+  // when a new session starts, so a fresh champion select can show a stale
+  // "Applied". Suppress the confirmation until an apply actually changes it.
+  // ponytail: identical re-apply in a new session stays suppressed; acceptable.
+  const [appliedStale, setAppliedStale] = useState(false);
   // True once the user clicked a tab themselves; their screen then survives
   // champion changes. Without it the Champion tab is only an automatic default.
   const userPickedTab = useRef(false);
@@ -222,9 +235,9 @@ export function RunesPanel({
     setPickerSlot(null);
     setImportNotice(null);
     proRequested.current = false;
-    // Reset only when the champion changes, not on every statistics refresh.
+    // Reset on a champion or session change, not on a statistics refresh.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [championId]);
+  }, [championId, sessionKey]);
 
   useEffect(() => {
     proRequest.current += 1;
@@ -294,6 +307,19 @@ export function RunesPanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appliedKey]);
 
+  // A new session hides the carried-over confirmation; a changed applied page
+  // (a real apply) brings it back. Skip the first render so an already-applied
+  // page still shows when the panel opens mid-session.
+  const lastSession = useRef(sessionKey);
+  useEffect(() => {
+    if (lastSession.current === sessionKey) return;
+    lastSession.current = sessionKey;
+    setAppliedStale(true);
+  }, [sessionKey]);
+  useEffect(() => {
+    setAppliedStale(false);
+  }, [appliedKey]);
+
   if (loading && !view) {
     return (
       <div className={`runes-panel runes-${mode}`}>
@@ -345,7 +371,7 @@ export function RunesPanel({
     );
   }
 
-  const active = view.applied ? selectionFromApplied(view.applied) : null;
+  const active = view.applied && !appliedStale ? selectionFromApplied(view.applied) : null;
   const dirty = selection !== null && !sameSelection(selection, active);
   const canEdit = selection !== null && view.trees.length > 0;
   const applyIndex = selection && sameSelection(selection, active)
@@ -417,14 +443,18 @@ export function RunesPanel({
     }
   }
 
-  /** Import an exact pro page through the same apply path a preset uses, then
-   *  open the editor so it can be tweaked and applied again. */
-  function importProBuild(build: ProBuild) {
+  /** Apply a pro's exact page through the same path a preset uses, then add
+   *  their items to the shop (removed after the game like any Swapper set).
+   *  Sequential so the two requests never race the shared busy state. */
+  async function importProBuild(build: ProBuild) {
     const next = selectionFromProBuild(build);
     setSelection(next);
     editorFromPreset.current = false;
     setScreen("editor");
-    onApply(next, null, build.spells);
+    await onApply(next, null, build.spells);
+    if (build.finalItems.length > 0) {
+      await importItemSet(`Pro · ${build.proName || "build"}`, build.finalItems.map((item) => item.id));
+    }
   }
 
   /** The name of a spell for a tooltip; falls back when it is off-mode. */
@@ -516,54 +546,63 @@ export function RunesPanel({
         </div>
       )}
 
-      {screen !== "pro" && screen !== "champion" && (
-        <div className="runes-settings">
-          {view.tierSupported && (
-            <RankPicker
-              tiers={view.tiers}
-              value={view.tier}
-              games={view.games}
-              disabled={busy}
-              mode={mode}
-              onChange={onTierChange}
-            />
-          )}
-          <label className="runes-auto" title="Apply the recommended runes when your champion locks in">
-            <input
-              type="checkbox"
-              role="switch"
-              checked={view.autoApply}
-              disabled={busy}
-              onChange={(event) => onToggleAutoApply(event.target.checked)}
-            />
-            <span>Auto-apply recommended runes</span>
-          </label>
-          <label className="runes-auto" title="Also set the recommended summoner spells when applying a page">
-            <input
-              type="checkbox"
-              role="switch"
-              checked={view.spells.applyWithRunes}
-              disabled={busy}
-              onChange={(event) => onToggleSpellsWithRunes(event.target.checked)}
-            />
-            <span>Apply summoner spells with runes</span>
-          </label>
-          <label className="runes-auto" title="Also add the preset's item build to the League shop when applying it; Swapper removes it after the game">
-            <input
-              type="checkbox"
-              role="switch"
-              checked={view.importItems}
-              disabled={busy}
-              onChange={(event) => onToggleImportItems(event.target.checked)}
-            />
-            <span>Import item build</span>
-          </label>
-        </div>
-      )}
 
       <div className="runes-body">
+        {screen !== "pro" && screen !== "champion" && (
+          <div className="runes-settings">
+            {view.tierSupported && (
+              <RankPicker
+                tiers={view.tiers}
+                value={view.tier}
+                games={view.games}
+                disabled={busy}
+                mode={mode}
+                onChange={onTierChange}
+              />
+            )}
+            <label className="runes-auto" title="Apply the recommended runes when your champion locks in">
+              <input
+                type="checkbox"
+                role="switch"
+                checked={view.autoApply}
+                disabled={busy}
+                onChange={(event) => onToggleAutoApply(event.target.checked)}
+              />
+              <span>Auto-apply recommended runes</span>
+            </label>
+            <label className="runes-auto" title="Also set the recommended summoner spells when applying a page">
+              <input
+                type="checkbox"
+                role="switch"
+                checked={view.spells.applyWithRunes}
+                disabled={busy}
+                onChange={(event) => onToggleSpellsWithRunes(event.target.checked)}
+              />
+              <span>Apply summoner spells with runes</span>
+            </label>
+            <label className="runes-auto" title="Also add the preset's item build to the League shop when applying it; Swapper removes it after the game">
+              <input
+                type="checkbox"
+                role="switch"
+                checked={view.importItems}
+                disabled={busy}
+                onChange={(event) => onToggleImportItems(event.target.checked)}
+              />
+              <span>Import item build</span>
+            </label>
+          </div>
+        )}
+
         {error && <p className="runes-alert" role="alert">{error}</p>}
         {importNotice && <p className="runes-note runes-import-note" role="status">{importNotice}</p>}
+        {shopNotice && (
+          <p
+            className={`runes-note ${shopNotice.ok ? "runes-import-note" : "runes-alert"}`}
+            role={shopNotice.ok ? "status" : "alert"}
+          >
+            {shopNotice.message}
+          </p>
+        )}
         {screen !== "pro" && screen !== "champion" && autoAppliedLabel && (
           <p className="runes-note runes-auto-note">Auto-applied {autoAppliedLabel}</p>
         )}
@@ -591,11 +630,7 @@ export function RunesPanel({
             active={active}
             otp={proOtp}
             onOtpChange={chooseProOtp}
-            onImport={importProBuild}
-            onImportItems={(build) => void importItemSet(
-              `Pro · ${build.proName || "build"}`,
-              build.finalItems.map((item) => item.id),
-            )}
+            onImport={(build) => void importProBuild(build)}
             onLoadMore={() => void loadPro((proView?.page ?? 1) + 1)}
             onRetry={retryPro}
           />
@@ -631,12 +666,19 @@ export function RunesPanel({
             {shownPresets.map((preset) => {
               const presetSelection = selectionFromPreset(preset);
               const isActive = sameSelection(presetSelection, active);
+              const isPending = busy && !isActive && selection !== null && sameSelection(presetSelection, selection);
+              const variant = [treeName(view.trees, preset.primaryPageId), treeName(view.trees, preset.secondaryPageId)]
+                .filter(Boolean)
+                .join(" · ");
+              const lowSample = isLowSample(preset.play);
               return (
                 <div key={matchupActive ? "matchup" : preset.index} className={`rune-preset ${isActive ? "is-active" : ""}`}>
                   <button
                     type="button"
                     className="rune-preset-main"
                     disabled={busy}
+                    title={`Apply ${preset.title}${variant ? ` (${variant})` : ""}`}
+                    aria-label={`Apply ${preset.title}${variant ? `, ${variant}` : ""}${preset.play > 0 ? `, ${fmtPct(preset.winPct)} win over ${preset.play} games` : ""}`}
                     onClick={() => {
                       editorFromPreset.current = true;
                       setSelection(presetSelection);
@@ -656,11 +698,18 @@ export function RunesPanel({
                           {preset.play > 0
                             ? `${fmtPct(preset.winPct)} win · ${fmtGames(preset.play)} games`
                             : "League recommendation"}
+                          {lowSample && (
+                            <span className="rune-low" title={`Under ${LOW_SAMPLE_GAMES} games`}>small sample</span>
+                          )}
                         </small>
                       </span>
-                      {isActive && <span className="rune-preset-check"><CheckIcon size={15} /></span>}
+                      {isActive ? (
+                        <span className="rune-preset-badge is-applied"><CheckIcon size={12} /> Applied</span>
+                      ) : isPending ? (
+                        <span className="rune-preset-badge is-pending"><Spinner /> Applying…</span>
+                      ) : null}
                     </span>
-                    <span className="rune-preset-icons">
+                    <span className="rune-preset-icons" aria-hidden>
                       {preset.primaryRunes.map((id) => <RuneIcon key={`p${id}`} id={id} mode={mode} />)}
                       <span className="rune-preset-divider" />
                       {preset.secondaryRunes.map((id) => <RuneIcon key={`s${id}`} id={id} mode={mode} />)}

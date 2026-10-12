@@ -257,6 +257,7 @@ mod tests {
         let names = HashMap::from([(31, "Cho'Gath".to_string())]);
         let list = TierList {
             rows: vec![row(31, 0), row(9999, 1)],
+            patch: None,
         };
         let view = build_tier_list(Some(Sourced::fresh(list, Provider::Lolalytics)), &names);
         assert_eq!(view.rows.len(), 1);
@@ -293,6 +294,7 @@ mod tests {
             }),
             spells: Some([4, 14]),
             skill_order: Some("QWEQQRQWQWRWWEE".into()),
+            blend: None,
         }
     }
 

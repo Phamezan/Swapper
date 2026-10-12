@@ -23,6 +23,7 @@ use std::time::{Duration, Instant};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
+use super::patch::{blend_choices, blend_rate, PatchInfo};
 use super::provider::ProviderError;
 
 /// The build page. `lane` and `tier` are slugs; `keystone` is a Riot perk id.
@@ -67,6 +68,10 @@ pub struct KeystoneBuild {
     pub options: Vec<ItemCandidate>,
     /// Sample size reported for the starting item set.
     pub games: u64,
+    /// How many leading `items` are the jointly observed core combination
+    /// (0 when the page gave no joint sample, e.g. the markup fallback).
+    #[serde(default)]
+    pub core_len: usize,
     /// Sample size for the core combination.
     pub core_games: u64,
     /// Win rate for the core combination.
@@ -75,6 +80,16 @@ pub struct KeystoneBuild {
     /// builds cached before it was parsed.
     #[serde(default)]
     pub skill_priority: Option<String>,
+    /// The most common level 1-15 skill order, e.g. "QEWQQRQEQERE...".
+    #[serde(default)]
+    pub skill_order: Option<String>,
+    /// Every later-slot candidate the page reported (the chosen items too), so
+    /// the previous patch's table can be merged in. Empty for the markup fallback.
+    #[serde(default)]
+    pub slots: Vec<ItemCandidate>,
+    /// Which patch this is, and whether the previous one was blended in.
+    #[serde(default)]
+    pub patch: Option<PatchInfo>,
 }
 
 /// The champion slug lolalytics uses: lower-case, no spaces or punctuation.
@@ -131,11 +146,22 @@ pub fn tier_slug(value: &str) -> &'static str {
     }
 }
 
+/// `url` pinned to a named patch (`16.19`); `None` is the current patch.
+pub(super) fn patched(url: String, patch: Option<&str>) -> String {
+    match patch {
+        Some(patch) => format!("{url}&patch={patch}"),
+        None => url,
+    }
+}
+
 /// The build page URL for a keystone.
-pub fn url(champion_slug: &str, lane: &str, tier: &str, keystone: i64) -> String {
-    format!(
-        "{BASE_URL}/{champion_slug}/build/?lane={lane}&tier={}&keystone={keystone}",
-        tier_slug(tier)
+pub fn url(champion_slug: &str, lane: &str, tier: &str, keystone: i64, patch: Option<&str>) -> String {
+    patched(
+        format!(
+            "{BASE_URL}/{champion_slug}/build/?lane={lane}&tier={}&keystone={keystone}",
+            tier_slug(tier)
+        ),
+        patch,
     )
 }
 
@@ -146,10 +172,13 @@ pub fn cache_key(champion_slug: &str, lane: &str, tier: &str, keystone: i64) -> 
 
 /// The matchup page: the same build page filtered to games against one enemy
 /// champion in `vslane`.
-pub fn vs_url(champion_slug: &str, enemy_slug: &str, lane: &str, tier: &str) -> String {
-    format!(
-        "{BASE_URL}/{champion_slug}/vs/{enemy_slug}/build/?lane={lane}&vslane={lane}&tier={}",
-        tier_slug(tier)
+pub fn vs_url(champion_slug: &str, enemy_slug: &str, lane: &str, tier: &str, patch: Option<&str>) -> String {
+    patched(
+        format!(
+            "{BASE_URL}/{champion_slug}/vs/{enemy_slug}/build/?lane={lane}&vslane={lane}&tier={}",
+            tier_slug(tier)
+        ),
+        patch,
     )
 }
 
@@ -199,6 +228,7 @@ fn parse_qwik(html: &str) -> Option<KeystoneBuild> {
                 .and_then(Value::as_str)
                 .and_then(skill_priority)
                 .or_else(|| tables.as_ref().and_then(page_skill_priority));
+            build.skill_order = super::matchup::parse_skill_order(&pick);
             if let Some(tables) = &tables {
                 widen_options(&mut build, tables);
             }
@@ -281,6 +311,129 @@ pub(super) fn number(value: &Value) -> Option<f64> {
 /// handful of off-meta picks cannot crowd out real alternatives.
 const MIN_OPTION_SHARE_PCT: u64 = 2;
 
+/// Whether a candidate has enough of its slot's games to be recommended; one
+/// off-meta pick with a tiny sample (and often a huge win rate) must not
+/// become part of a build or crowd out real alternatives.
+fn is_supported(weight: f64, slot_total: f64) -> bool {
+    weight * 100.0 >= slot_total * MIN_OPTION_SHARE_PCT as f64
+}
+
+/// A later-slot candidate with the weight that orders and selects it: its games
+/// on a plain page, the patch-blended weight after [`blend_build`].
+struct Ranked {
+    candidate: ItemCandidate,
+    weight: f64,
+}
+
+/// Completes `ids` (the core) with the strongest unused supported choice of
+/// each later slot, and returns the remaining supported candidates, best first,
+/// as the options. Each slot is ordered best first.
+fn select_path(ids: &mut Vec<i64>, slots: Vec<Vec<Ranked>>) -> Vec<ItemCandidate> {
+    let totals: Vec<f64> = slots
+        .iter()
+        .map(|slot| slot.iter().map(|ranked| ranked.weight).sum())
+        .collect();
+    for (slot, total) in slots.iter().zip(&totals) {
+        if let Some(ranked) = slot
+            .iter()
+            .find(|ranked| !ids.contains(&ranked.candidate.id) && is_supported(ranked.weight, *total))
+        {
+            ids.push(ranked.candidate.id);
+        }
+    }
+    let mut options: Vec<Ranked> = Vec::new();
+    for (slot, total) in slots.into_iter().zip(totals) {
+        for ranked in slot {
+            if ids.contains(&ranked.candidate.id) || !is_supported(ranked.weight, total) {
+                continue;
+            }
+            match options
+                .iter_mut()
+                .find(|item| item.candidate.id == ranked.candidate.id)
+            {
+                Some(existing) if ranked.weight > existing.weight => *existing = ranked,
+                Some(_) => {}
+                None => options.push(ranked),
+            }
+        }
+    }
+    options.sort_by(|left, right| {
+        right
+            .weight
+            .total_cmp(&left.weight)
+            .then_with(|| left.candidate.slot.cmp(&right.candidate.slot))
+            .then_with(|| {
+                right
+                    .candidate
+                    .win_pct
+                    .unwrap_or_default()
+                    .total_cmp(&left.candidate.win_pct.unwrap_or_default())
+            })
+    });
+    options.into_iter().map(|ranked| ranked.candidate).collect()
+}
+
+/// Blends the previous patch's build into the current one: later-slot choices
+/// and their win rates are merged with [`blend_choices`], and the path and
+/// options are re-chosen from the merged weights. Candidates keep the current
+/// patch's game counts. The core, starters and skill order stay the current
+/// patch's (the page only reports its single most common one); the core's win
+/// rate is blended when both patches have the same core.
+pub fn blend_build(mut now: KeystoneBuild, prev: Option<&KeystoneBuild>, info: PatchInfo) -> KeystoneBuild {
+    now.patch = Some(info);
+    let Some(prev) = prev else {
+        return now;
+    };
+    if now.core_len == 0 || now.slots.is_empty() {
+        return now;
+    }
+    let sorted_core = |build: &KeystoneBuild| {
+        let mut core = build.items[..build.core_len.min(build.items.len())].to_vec();
+        core.sort_unstable();
+        core
+    };
+    if let (Some(rate), Some(prev_rate)) = (now.core_win_pct, prev.core_win_pct) {
+        if sorted_core(&now) == sorted_core(prev) {
+            now.core_win_pct = Some(blend_rate(rate, now.core_games, prev_rate));
+        }
+    }
+    let table = |build: &KeystoneBuild, slot: u8| -> Vec<(i64, u64, Option<f64>)> {
+        build
+            .slots
+            .iter()
+            .filter(|candidate| candidate.slot == slot)
+            .map(|candidate| (candidate.id, candidate.games, candidate.win_pct))
+            .collect()
+    };
+    let ranked: Vec<Vec<Ranked>> = [4u8, 5, 6]
+        .into_iter()
+        .map(|slot| {
+            let now_table = table(&now, slot);
+            let mut merged: Vec<Ranked> = blend_choices(&now_table, &table(prev, slot))
+                .into_iter()
+                .map(|(id, rate)| Ranked {
+                    candidate: ItemCandidate {
+                        id,
+                        slot,
+                        games: now_table
+                            .iter()
+                            .find(|(other, _, _)| *other == id)
+                            .map_or(0, |(_, games, _)| *games),
+                        win_pct: (rate.win_pct > 0.0).then_some(rate.win_pct),
+                    },
+                    weight: rate.weight,
+                })
+                .collect();
+            merged.sort_by(|left, right| right.weight.total_cmp(&left.weight));
+            merged
+        })
+        .collect();
+    let mut items = now.items[..now.core_len.min(now.items.len())].to_vec();
+    now.options = select_path(&mut items, ranked);
+    now.items = items;
+    now
+}
+
 /// `"QWE"`-style max order, when it names each basic ability exactly once.
 fn skill_priority(text: &str) -> Option<String> {
     let text = text.trim().to_ascii_uppercase();
@@ -295,7 +448,10 @@ fn skill_priority(text: &str) -> Option<String> {
 fn page_tables(objs: &[Value]) -> Option<Value> {
     objs.iter().find_map(|entry| {
         let map = entry.as_object()?;
-        if !["item3", "item4", "item5"].iter().all(|key| map.contains_key(*key)) {
+        if !["item3", "item4", "item5"]
+            .iter()
+            .all(|key| map.contains_key(*key))
+        {
             return None;
         }
         let resolved = resolve(entry, objs, 0);
@@ -336,15 +492,20 @@ fn widen_options(build: &mut KeystoneBuild, tables: &Value) {
                 })
             })
             .collect();
-        let total: u64 = candidates.iter().map(|candidate| candidate.games).sum();
+        let total: f64 = candidates.iter().map(|candidate| candidate.games as f64).sum();
         for candidate in candidates {
-            if candidate.games * 100 < total * MIN_OPTION_SHARE_PCT
+            upsert_slot(&mut build.slots, &candidate);
+            if !is_supported(candidate.games as f64, total)
                 || build.items.contains(&candidate.id)
                 || build.starters.iter().any(|stack| stack.id == candidate.id)
             {
                 continue;
             }
-            match build.options.iter_mut().find(|option| option.id == candidate.id) {
+            match build
+                .options
+                .iter_mut()
+                .find(|option| option.id == candidate.id)
+            {
                 Some(existing) if candidate.games > existing.games => *existing = candidate,
                 Some(_) => {}
                 None => build.options.push(candidate),
@@ -352,6 +513,19 @@ fn widen_options(build: &mut KeystoneBuild, tables: &Value) {
         }
     }
     sort_options(&mut build.options);
+}
+
+/// Records a candidate in the per-slot table, keeping the larger sample when the
+/// slot already has the item.
+fn upsert_slot(slots: &mut Vec<ItemCandidate>, candidate: &ItemCandidate) {
+    match slots
+        .iter_mut()
+        .find(|existing| existing.id == candidate.id && existing.slot == candidate.slot)
+    {
+        Some(existing) if candidate.games > existing.games => *existing = candidate.clone(),
+        Some(_) => {}
+        None => slots.push(candidate.clone()),
+    }
 }
 
 fn sort_options(options: &mut [ItemCandidate]) {
@@ -408,29 +582,21 @@ fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
         item_candidates(items, "item5", 5),
         item_candidates(items, "item6", 6),
     ];
-    for candidates in &slot_candidates {
-        if let Some(candidate) = candidates
-            .iter()
-            .find(|candidate| !ids.contains(&candidate.id))
-        {
-            ids.push(candidate.id);
-        }
-    }
-
-    let mut options: Vec<ItemCandidate> = Vec::new();
-    for candidate in slot_candidates.into_iter().flatten() {
-        if ids.contains(&candidate.id) {
-            continue;
-        }
-        if let Some(existing) = options.iter_mut().find(|item| item.id == candidate.id) {
-            if candidate.games > existing.games {
-                *existing = candidate;
-            }
-        } else {
-            options.push(candidate);
-        }
-    }
-    sort_options(&mut options);
+    let core_len = ids.len();
+    let slots: Vec<ItemCandidate> = slot_candidates.iter().flatten().cloned().collect();
+    let ranked = slot_candidates
+        .into_iter()
+        .map(|candidates| {
+            candidates
+                .into_iter()
+                .map(|candidate| Ranked {
+                    weight: candidate.games as f64,
+                    candidate,
+                })
+                .collect()
+        })
+        .collect();
+    let options = select_path(&mut ids, ranked);
 
     let start = items.get("start");
     let starters = start.map(parse_starters).unwrap_or_default();
@@ -453,9 +619,13 @@ fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
         items: ids,
         options,
         games,
+        core_len,
         core_games,
         core_win_pct,
         skill_priority: None,
+        skill_order: None,
+        slots,
+        patch: None,
     })
 }
 
@@ -576,9 +746,13 @@ fn parse_anchors(html: &str) -> Option<KeystoneBuild> {
         items,
         options: Vec::new(),
         games,
+        core_len: 0,
         core_games: 0,
         core_win_pct: None,
         skill_priority: None,
+        skill_order: None,
+        slots: Vec::new(),
+        patch: None,
     })
 }
 
@@ -750,8 +924,11 @@ impl LolalyticsClient {
         lane: &str,
         tier: &str,
         keystone: i64,
+        patch: Option<&str>,
     ) -> Result<Option<KeystoneBuild>, ProviderError> {
-        let body = self.page(url(champion_slug, lane, tier, keystone)).await?;
+        let body = self
+            .page(url(champion_slug, lane, tier, keystone, patch))
+            .await?;
         Ok(parse_build(&body))
     }
 
@@ -860,14 +1037,26 @@ mod tests {
             {"set":[1054,2003,2003],"setUnique":[1054,2003],"count":[1,2],"n":1000}
         ]}</script>"#;
         let build = parse_build(html).expect("the hand-built state should parse");
-        assert_eq!(build.starters, vec![ItemStack { id: 1054, count: 1 }, ItemStack { id: 2003, count: 2 }]);
+        assert_eq!(
+            build.starters,
+            vec![
+                ItemStack { id: 1054, count: 1 },
+                ItemStack { id: 2003, count: 2 }
+            ]
+        );
         assert_eq!(build.items, vec![3118, 3020, 4645, 3157, 3089, 3135]);
         assert_eq!(build.games, 1000);
         assert_eq!(build.core_games, 200);
         assert_eq!(build.core_win_pct, Some(54.2));
         assert_eq!(build.options.len(), 2);
-        assert!(build.options.iter().any(|option| option.id == 3161 && option.slot == 4));
-        assert!(build.options.iter().any(|option| option.id == 3124 && option.slot == 5));
+        assert!(build
+            .options
+            .iter()
+            .any(|option| option.id == 3161 && option.slot == 4));
+        assert!(build
+            .options
+            .iter()
+            .any(|option| option.id == 3124 && option.slot == 5));
     }
 
     /// A page with the build summary plus the page-wide per-slot tables and
@@ -889,6 +1078,13 @@ mod tests {
             [[3165,63.1,3.3,100,40],[3089,62.8,20.8,400,34]],
             [["QWE",52.4,91.6,800],["QEW",52.5,7.8,70]]
         ]}</script>"#;
+
+    #[test]
+    fn reads_the_level_by_level_skill_order_from_a_real_build_page() {
+        let order = parse_build(AHRI).unwrap().skill_order.expect("the Ahri page has a skill order");
+        assert_eq!(order.len(), 15);
+        assert!(order.chars().all(|c| "QWER".contains(c)), "{order}");
+    }
 
     #[test]
     fn reads_the_skill_priority_from_the_build_summary() {
@@ -920,8 +1116,40 @@ mod tests {
         for built in &build.items {
             assert!(!ids.contains(built), "build item {built} in options");
         }
-        let void_staff = build.options.iter().find(|option| option.id == 3165).unwrap();
+        let void_staff = build
+            .options
+            .iter()
+            .find(|option| option.id == 3165)
+            .unwrap();
         assert_eq!((void_staff.slot, void_staff.games), (6, 100));
+    }
+
+    #[test]
+    fn only_the_core_is_a_joint_sample_and_a_tiny_slot_pick_is_never_recommended() {
+        // Slot 6's only unused item has 5 of 905 games (0.6%) but a 90% win
+        // rate: it must neither join the build nor the options.
+        let html = r#"<script type="qwik/json">{"objs":[
+            {"pick":"1","win":"2"},
+            {"items":"3"},
+            {"items":"3"},
+            {"core":"4","item4":"5","item5":"6","item6":"7","start":"8"},
+            {"set":[3118,3020,4645],"n":200,"wr":54.2},
+            [{"id":3157,"n":100,"wr":55}],
+            [{"id":3089,"n":90,"wr":57}],
+            [{"id":3089,"n":900,"wr":58},{"id":3135,"n":5,"wr":90}],
+            {"set":[1056],"setUnique":[1056],"count":[1],"n":1000}
+        ]}</script>"#;
+        let build = parse_build(html).expect("the hand-built state should parse");
+        assert_eq!(build.items, vec![3118, 3020, 4645, 3157, 3089]);
+        assert_eq!(build.core_len, 3);
+        assert!(build.options.iter().all(|option| option.id != 3135));
+    }
+
+    #[test]
+    fn the_markup_fallback_reports_no_joint_core() {
+        assert_eq!(parse_build(AHRI).unwrap().core_len, 3);
+        let anchors = r#"Core Build <img src="x/item64/3118.webp"> Item 4 <img src="x/item64/3157.webp"> Item 5 <img src="x/item64/3089.webp"> Item 6 <img src="x/item64/3135.webp">"#;
+        assert_eq!(parse_build(anchors).unwrap().core_len, 0);
     }
 
     #[test]
@@ -1104,13 +1332,61 @@ mod tests {
     #[test]
     fn builds_the_endpoint_url_with_the_keystone() {
         assert_eq!(
-            url("ahri", "middle", "emerald_plus", 8112),
+            url("ahri", "middle", "emerald_plus", 8112, None),
             "https://lolalytics.com/lol/ahri/build/?lane=middle&tier=emerald_plus&keystone=8112"
         );
         // An unknown bracket is normalized in the URL too.
         assert_eq!(
-            url("leesin", "jungle", "bogus", 8010),
+            url("leesin", "jungle", "bogus", 8010, None),
             "https://lolalytics.com/lol/leesin/build/?lane=jungle&tier=emerald_plus&keystone=8010"
         );
+    }
+
+    fn blend_info() -> PatchInfo {
+        PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) }
+    }
+
+    fn with_games(build: &KeystoneBuild, games: u64) -> KeystoneBuild {
+        KeystoneBuild {
+            // Reversed: the current patch has not settled on an order yet.
+            slots: build.slots.iter().rev().map(|c| ItemCandidate { games, ..c.clone() }).collect(),
+            ..build.clone()
+        }
+    }
+
+    #[test]
+    fn the_real_page_keeps_every_slot_candidate() {
+        let build = parse_build(AHRI).unwrap();
+        assert!(build.slots.len() >= build.options.len(), "slots hold options and chosen items");
+        for slot in [4u8, 5, 6] {
+            assert!(build.slots.iter().any(|c| c.slot == slot), "slot {slot} is empty");
+        }
+    }
+
+    #[test]
+    fn a_day_zero_build_is_the_previous_patchs_path_with_current_game_counts() {
+        let prev = parse_build(AHRI).unwrap();
+        let now = with_games(&prev, 0);
+        let blended = blend_build(KeystoneBuild { items: now.items[..now.core_len].to_vec(), ..now }, Some(&prev), blend_info());
+        assert_eq!(blended.items, prev.items);
+        assert!(blended.options.iter().all(|option| option.games == 0));
+        assert!(blended.patch.unwrap().previous.is_some());
+    }
+
+    #[test]
+    fn a_current_only_item_can_take_a_slot_and_a_big_sample_keeps_its_rate() {
+        let prev = parse_build(AHRI).unwrap();
+        let mut now = with_games(&prev, 4000);
+        now.slots.push(ItemCandidate { id: 99_999, slot: 4, games: 9000, win_pct: Some(61.0) });
+        let blended = blend_build(now, Some(&prev), blend_info());
+        assert_eq!(blended.items[prev.core_len], 99_999, "the new item is the strongest slot-4 pick");
+        let shown = blended.options.iter().find(|option| option.games == 4000);
+        assert!(shown.is_some(), "options show current games, never the weighted ones");
+    }
+
+    #[test]
+    fn the_build_url_pins_the_previous_patch() {
+        assert!(url("ahri", "middle", "emerald_plus", 8112, Some("16.19")).ends_with("&keystone=8112&patch=16.19"));
+        assert!(!url("ahri", "middle", "emerald_plus", 8112, None).contains("patch"));
     }
 }

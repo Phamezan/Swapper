@@ -125,7 +125,7 @@ pub async fn apply(
         }
         PagePlan::LimitReached => {
             return Err(RuneError::conflict(
-                "Your rune pages are full. Swapper never deletes your pages — remove one in the League client, then try again.",
+                "Your rune pages are full. Select one of your own pages in the League client so Swapper can overwrite it, or remove one, then try again.",
             ));
         }
     };
@@ -318,7 +318,7 @@ pub async fn import_preset_items(
     tier: &str,
     keystone: i64,
     enemy_champion_id: Option<i64>,
-) -> Result<(), RuneError> {
+) -> Result<Option<String>, RuneError> {
     let (_, context) = match super::rune_context().await {
         Ok(super::RuneContext { phase, context }) => (phase, context),
         Err(error) => return Err(error),
@@ -347,7 +347,7 @@ pub async fn import_preset_items(
             let Some(build) =
                 view::preset_build_view(context.champion_id, position, tier, keystone).await
             else {
-                return Ok(());
+                return Ok(None);
             };
             (build, None)
         }
@@ -359,7 +359,7 @@ pub async fn import_preset_items(
     };
     super::item_sets::import_keystone_build(context.champion_id, &title_name, &label, &build)
         .await
-        .map(|_| ())
+        .map(Some)
 }
 
 /// The requested enemy, only if it is actually revealed on the enemy team in
@@ -368,8 +368,48 @@ fn validated_enemy(context: &session::ChampSelectContext, requested: Option<i64>
     requested.filter(|id| context.enemy_champion_ids.contains(id))
 }
 
+/// Outcome of a background shop import, broadcast so the desktop (Tauri
+/// event `items_imported`) and the phone can tell "requested" from "added".
+#[derive(Debug, Clone, PartialEq, serde::Serialize)]
+pub struct ItemsImported {
+    pub ok: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub message: Option<String>,
+}
+
+impl ItemsImported {
+    fn from_result(result: Result<Option<String>, RuneError>) -> Self {
+        match result {
+            Ok(Some(title)) => Self { ok: true, title: Some(title), message: None },
+            // No build for this champion/role: nothing was added.
+            Ok(None) => Self {
+                ok: false,
+                title: None,
+                message: Some("No item build is available for this champion and role.".into()),
+            },
+            Err(error) => Self {
+                ok: false,
+                title: None,
+                message: Some(error.message().to_string()),
+            },
+        }
+    }
+}
+
+fn items_imported_channel() -> &'static tokio::sync::broadcast::Sender<ItemsImported> {
+    static CHANNEL: std::sync::OnceLock<tokio::sync::broadcast::Sender<ItemsImported>> =
+        std::sync::OnceLock::new();
+    CHANNEL.get_or_init(|| tokio::sync::broadcast::channel(8).0)
+}
+
+pub fn subscribe_items_imported() -> tokio::sync::broadcast::Receiver<ItemsImported> {
+    items_imported_channel().subscribe()
+}
+
 /// Starts [`import_preset_items`] in the background, so importing items never
-/// delays the rune page. A failure only means no item set this time.
+/// delays the rune page, and reports the outcome on [`subscribe_items_imported`].
 pub fn spawn_preset_items_import(
     position: Option<String>,
     tier: String,
@@ -377,7 +417,9 @@ pub fn spawn_preset_items_import(
     enemy_champion_id: Option<i64>,
 ) {
     tauri::async_runtime::spawn(async move {
-        let _ = import_preset_items(position.as_deref(), &tier, keystone, enemy_champion_id).await;
+        let result =
+            import_preset_items(position.as_deref(), &tier, keystone, enemy_champion_id).await;
+        let _ = items_imported_channel().send(ItemsImported::from_result(result));
     });
 }
 
@@ -385,6 +427,19 @@ pub fn spawn_preset_items_import(
 mod tests {
     use super::super::page::PagePlan;
     use super::*;
+
+    #[test]
+    fn items_imported_reports_added_missing_and_failed() {
+        let added = ItemsImported::from_result(Ok(Some("Swapper: Ahri".into())));
+        assert!(added.ok && added.title.as_deref() == Some("Swapper: Ahri"));
+        assert_eq!(
+            serde_json::to_value(&added).unwrap(),
+            serde_json::json!({ "ok": true, "title": "Swapper: Ahri" })
+        );
+        assert!(!ItemsImported::from_result(Ok(None)).ok);
+        let failed = ItemsImported::from_result(Err(RuneError::conflict("League rejected it")));
+        assert!(!failed.ok && failed.message.as_deref() == Some("League rejected it"));
+    }
 
     #[test]
     fn a_requested_enemy_must_be_on_the_enemy_team() {
@@ -410,6 +465,7 @@ mod tests {
             is_editable: true,
             is_deletable: true,
             is_temporary: false,
+            current: false,
         }
     }
 
@@ -420,6 +476,7 @@ mod tests {
             is_editable: false,
             is_deletable: false,
             is_temporary: false,
+            current: false,
         }
     }
 

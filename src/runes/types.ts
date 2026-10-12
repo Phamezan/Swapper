@@ -49,6 +49,14 @@ export type Applied = {
   autoApplied?: boolean;
 };
 
+/** The result of the background shop-import task, from the `items_imported`
+ *  event. `ok` is the only confirmed fact; the apply command's success says
+ *  nothing about the shop import. */
+export type ShopNotice = {
+  ok: boolean;
+  message: string;
+};
+
 export type TierOption = {
   value: string;
   label: string;
@@ -70,7 +78,6 @@ export type ItemOptionView = ItemView & {
   slot: number;
   games: number;
   winPct: number | null;
-  reason: string | null;
 };
 
 /** Starter, full build and slot alternatives for one preset's keystone. */
@@ -82,6 +89,8 @@ export type KeystoneBuildView = {
   /** Sample size for the most-picked starter set. */
   games: number;
   coreGames: number;
+  /** Leading `items` that are the one observed core; the rest are per-slot picks. */
+  coreLen: number;
   coreWinPct: number | null;
   /** True when this is the last successful build, served because the live
    *  source failed. */
@@ -385,6 +394,32 @@ export function fmtGames(play: number): string {
   if (!play) return "–";
   if (play >= 1000) return `${(play / 1000).toFixed(1)}k`;
   return String(play);
+}
+
+/** The nearest existing sample policy (backend `MIN_MATCHUP_GAMES`). Below it
+ *  the UI may call a sample "small"; this is a presentation hint, never a
+ *  statistical claim, and 0 games means "unknown", not "small". */
+export const LOW_SAMPLE_GAMES = 100;
+
+export function isLowSample(games: number): boolean {
+  return games > 0 && games < LOW_SAMPLE_GAMES;
+}
+
+/** The `items_imported` event payload (desktop event and phone socket). */
+export type ItemsImported = { ok: boolean; title?: string; message?: string };
+
+export function shopNoticeFrom(result: ItemsImported): ShopNotice {
+  return {
+    ok: result.ok,
+    message: result.ok
+      ? result.title ? `Shop items added: ${result.title}` : "Shop items added."
+      : result.message ?? "Could not add the item build to the shop.",
+  };
+}
+
+/** A rune tree's display name, or an empty string when the id is unknown. */
+export function treeName(trees: RuneTree[], id: number): string {
+  return trees.find((tree) => tree.id === id)?.name ?? "";
 }
 
 /** A signed one-decimal difference, e.g. "+0.7". */

@@ -50,6 +50,9 @@ pub struct LcuPage {
     /// a custom-page slot.
     #[serde(default)]
     pub is_temporary: bool,
+    /// The page selected in the client right now.
+    #[serde(default)]
+    pub current: bool,
 }
 
 impl LcuPage {
@@ -67,7 +70,8 @@ pub enum PagePlan {
     Create,
     /// Replace this existing Swapper page.
     Replace(i64),
-    /// The page limit is reached and there is no Swapper page to reuse.
+    /// The page limit is reached and neither a Swapper page nor an editable
+    /// current page can be reused.
     LimitReached,
 }
 
@@ -78,8 +82,9 @@ pub enum PagePlan {
 /// longer in the list, or that points at a non-editable page, is not ours to
 /// replace. `can_add_custom_page` is the capacity answer from the inventory
 /// (see `apply::Inventory`), which already excludes League's built-in pages.
-/// Never deletes anything: when the limit is hit and there is no owned page to
-/// reuse the caller must show a clear message.
+/// Never deletes anything: when the limit is hit and there is no owned page,
+/// the page selected in the client is overwritten (what the player is about to
+/// play with anyway), as long as it is a custom page.
 pub fn plan(existing: &[LcuPage], can_add_custom_page: bool, owned_page_id: Option<i64>) -> PagePlan {
     if let Some(id) = owned_page_id {
         if existing
@@ -90,9 +95,11 @@ pub fn plan(existing: &[LcuPage], can_add_custom_page: bool, owned_page_id: Opti
         }
     }
     if can_add_custom_page {
-        PagePlan::Create
-    } else {
-        PagePlan::LimitReached
+        return PagePlan::Create;
+    }
+    match existing.iter().find(|page| page.current && page.is_custom()) {
+        Some(page) => PagePlan::Replace(page.id),
+        None => PagePlan::LimitReached,
     }
 }
 
@@ -333,6 +340,7 @@ mod tests {
             is_editable: true,
             is_deletable: true,
             is_temporary: false,
+            current: false,
         }
     }
 
@@ -343,6 +351,7 @@ mod tests {
             is_editable: false,
             is_deletable: false,
             is_temporary: false,
+            current: false,
         }
     }
 
@@ -387,6 +396,19 @@ mod tests {
         assert_eq!(plan(&pages, false, None), PagePlan::LimitReached);
         // A stale stored id does not earn a delete either.
         assert_eq!(plan(&pages, false, Some(9)), PagePlan::LimitReached);
+    }
+
+    #[test]
+    fn a_full_inventory_overwrites_the_selected_custom_page() {
+        let mut pages = vec![custom_page(1, "One"), custom_page(2, "Two")];
+        pages[1].current = true;
+        assert_eq!(plan(&pages, false, None), PagePlan::Replace(2));
+        // The owned page still wins over the selected one.
+        assert_eq!(plan(&pages, false, Some(1)), PagePlan::Replace(1));
+        // A selected built-in page is never overwritten.
+        let mut built_in = built_in_page(3, "Recommended");
+        built_in.current = true;
+        assert_eq!(plan(&[custom_page(1, "One"), built_in], false, None), PagePlan::LimitReached);
     }
 
     #[test]

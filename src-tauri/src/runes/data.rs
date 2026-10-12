@@ -8,7 +8,8 @@ use std::time::{Duration, Instant};
 
 use super::cache::{self, LastGoodCache};
 use super::lolalytics;
-use super::matchup::Matchup;
+use super::matchup::{self, Matchup};
+use super::patch;
 use super::opgg;
 use super::perks;
 use super::probuilds;
@@ -217,10 +218,26 @@ pub async fn champion_data(
         }
     };
     match client
-        .champion_data(region, mode, champion_id, position, tier)
+        .champion_data(region, mode, champion_id, position, tier, None)
         .await
     {
         Ok(data) if !data.rune_pages.is_empty() => {
+            let data = patch::blended(
+                data,
+                &key,
+                rune_last_good(),
+                |previous| {
+                    let client = &client;
+                    async move {
+                        client
+                            .champion_data(region, mode, champion_id, position, tier, Some(&previous))
+                            .await
+                            .map(|data| Some(data).filter(|data| !data.rune_pages.is_empty()))
+                    }
+                },
+                opgg::blend_champion_data,
+            )
+            .await;
             {
                 let mut state = super::shared();
                 state.group_failures.remove(&key);
@@ -416,8 +433,23 @@ pub async fn keystone_build(
         Ok(client) => client,
         Err(_) => return Ok(keystone_stale(&key)),
     };
-    match client.build(champion_slug, lane, tier, keystone).await {
+    match client.build(champion_slug, lane, tier, keystone, None).await {
         Ok(Some(build)) => {
+            let build = patch::blended(
+                build,
+                &key,
+                build_last_good(),
+                |previous| {
+                    let client = &client;
+                    async move {
+                        client
+                            .build(champion_slug, lane, tier, keystone, Some(&previous))
+                            .await
+                    }
+                },
+                lolalytics::blend_build,
+            )
+            .await;
             super::shared().lolalytics.store(key.clone(), build.clone());
             build_last_good().store(key, build.clone());
             Ok(Some(Sourced::fresh(build, Provider::Lolalytics)))
@@ -495,10 +527,33 @@ pub async fn matchup(
         Err(_) => return Ok(matchup_stale(&key)),
     };
     match client
-        .matchup(champion_slug, enemy_slug, champion_id, enemy_id, lane, tier)
+        .matchup(champion_slug, enemy_slug, champion_id, enemy_id, lane, tier, None)
         .await
     {
         Ok(Some(found)) => {
+            let found = patch::blended(
+                found,
+                &key,
+                matchup_last_good(),
+                |previous| {
+                    let client = &client;
+                    async move {
+                        client
+                            .matchup(
+                                champion_slug,
+                                enemy_slug,
+                                champion_id,
+                                enemy_id,
+                                lane,
+                                tier,
+                                Some(&previous),
+                            )
+                            .await
+                    }
+                },
+                matchup::blend_matchup,
+            )
+            .await;
             super::shared().matchups.store(key.clone(), found.clone());
             matchup_last_good().store(key, found.clone());
             Ok(Some(Sourced::fresh(found, Provider::Lolalytics)))

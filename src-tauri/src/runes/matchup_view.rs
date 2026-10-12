@@ -169,6 +169,7 @@ mod tests {
                 }),
                 spells: Some([4, 14]),
                 skill_order: Some("WQEQQRQWQWRWWEE".into()),
+                patch: None,
             },
             super::super::provider::Provider::Lolalytics,
         )

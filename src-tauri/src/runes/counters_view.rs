@@ -11,6 +11,10 @@ use super::provider::Sourced;
 
 /// Cards per strip.
 const LIST_LEN: usize = 15;
+/// How many games of "average matchup" each row is blended with before
+/// ranking, so a 100-game off-meta pick at 41% cannot outrank an 800-game
+/// matchup at 46%. Only the order uses it; cards show the raw rate.
+const PRIOR_GAMES: f64 = 500.0;
 
 /// One opposing champion, from the searched champion's point of view.
 #[derive(Debug, Clone, PartialEq, serde::Serialize)]
@@ -128,9 +132,11 @@ fn build_view(
         .iter()
         .map(|row| row_view(row, names))
         .collect();
-    let mut best_into = ranked(&rows, |left, right| left.win_pct.total_cmp(&right.win_pct));
+    let center = average_win_pct(&rows);
+    let adjusted = |row: &CounterRowView| shrunk_win_pct(row, center);
+    let mut best_into = ranked(&rows, |left, right| adjusted(left).total_cmp(&adjusted(right)));
     best_into.truncate(LIST_LEN);
-    let mut beats = ranked(&rows, |left, right| right.win_pct.total_cmp(&left.win_pct));
+    let mut beats = ranked(&rows, |left, right| adjusted(right).total_cmp(&adjusted(left)));
     beats.retain(|row| !best_into.iter().any(|other| other.champion_id == row.champion_id));
     beats.truncate(LIST_LEN);
     ChampionCountersView {
@@ -157,6 +163,22 @@ fn row_view(row: &CounterRow, names: &HashMap<i64, String>) -> CounterRowView {
         games: row.games,
         low_sample: row.games < MIN_MATCHUP_GAMES,
     }
+}
+
+/// The searched champion's game-weighted win rate across all its matchups.
+fn average_win_pct(rows: &[CounterRowView]) -> f64 {
+    let games: u64 = rows.iter().map(|row| row.games).sum();
+    if games == 0 {
+        return 50.0;
+    }
+    rows.iter().map(|row| row.win_pct * row.games as f64).sum::<f64>() / games as f64
+}
+
+/// A matchup's win rate pulled toward `center` by [`PRIOR_GAMES`]: big samples
+/// keep their rate, small ones move toward the champion's average.
+fn shrunk_win_pct(row: &CounterRowView, center: f64) -> f64 {
+    let games = row.games as f64;
+    (row.win_pct * games + center * PRIOR_GAMES) / (games + PRIOR_GAMES)
 }
 
 /// Rows ordered by `order`, with low-sample rows after all the others.
@@ -191,6 +213,7 @@ mod tests {
         let counters = Counters {
             lane: "middle".into(),
             rows,
+            patch: None,
         };
         build_view(
             1,
@@ -233,6 +256,20 @@ mod tests {
     }
 
     #[test]
+    fn a_big_sample_counter_outranks_a_tiny_off_meta_one() {
+        // Yone mid on 16.20: Ambessa 41.75% over 103 games vs Annie 46.55% over 827.
+        let view = view(vec![
+            row(799, 41.75, 103),
+            row(1, 46.55, 827),
+            row(7, 49.33, 2098),
+            row(134, 49.85, 2736),
+            row(238, 52.0, 3000),
+        ]);
+        assert_eq!(view.best_into[0].champion_id, 1);
+        assert!((view.best_into[0].win_pct - 46.55).abs() < 1e-9, "cards keep the raw rate");
+    }
+
+    #[test]
     fn a_missing_table_is_unavailable() {
         let view = build_view(1, "Annie".into(), None, &HashMap::new());
         assert!(view.unavailable && view.best_into.is_empty() && view.beats.is_empty());
@@ -245,5 +282,27 @@ mod tests {
         assert!(!is_selectable_champion(60103, "Ahri"));
         assert!(!is_selectable_champion(-1, "None"));
         assert!(!is_selectable_champion(5, " "));
+    }
+
+    #[test]
+    fn a_blended_view_keeps_current_games_and_blends_the_rate() {
+        let now = Counters {
+            lane: "middle".into(),
+            rows: vec![CounterRow { champion_id: 2, vs_win_pct: 47.0, games: 300, all_win_pct: 50.0 }],
+            patch: None,
+        };
+        let prev = Counters {
+            rows: vec![CounterRow { champion_id: 2, vs_win_pct: 52.0, games: 9000, all_win_pct: 50.0 }],
+            ..now.clone()
+        };
+        let info = crate::runes::patch::PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) };
+        let blended = counters::blend_counters(now, Some(&prev), info);
+        let names = HashMap::from([(2, "Olaf".to_string())]);
+        let view = build_view(1, "Yone".into(), Some(Sourced::fresh(blended, Provider::Lolalytics)), &names);
+        let json = serde_json::to_value(&view).unwrap();
+        // 300 current games: (47 * 300 + 52 * 400) / 700 = 49.857..., games stay 300.
+        assert_eq!(json["bestInto"][0]["games"], 300);
+        let win = json["bestInto"][0]["winPct"].as_f64().unwrap();
+        assert!((win - 49.857).abs() < 0.01, "{win}");
     }
 }

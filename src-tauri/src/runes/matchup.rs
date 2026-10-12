@@ -10,6 +10,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 use super::lolalytics::{self, as_i64, as_u64, number, resolve, KeystoneBuild, Qwik};
+use super::patch::{blend_rate, PatchInfo};
 use super::perks::PerkCatalog;
 use super::provider::ProviderError;
 use super::RuneSelection;
@@ -58,6 +59,26 @@ pub struct Matchup {
     pub spells: Option<[i64; 2]>,
     /// Ability order for levels 1-15, e.g. "WQEQQRQWQWRWWEE".
     pub skill_order: Option<String>,
+    /// Which patch this is, and whether the previous one was blended in.
+    #[serde(default)]
+    pub patch: Option<PatchInfo>,
+}
+
+/// Blends the previous patch into a matchup: its win rates move toward the
+/// previous patch's (the games stay the current patch's) and its build merges
+/// per [`lolalytics::blend_build`]. Runes, spells and skill order stay current.
+pub fn blend_matchup(now: Matchup, prev: Option<&Matchup>, info: PatchInfo) -> Matchup {
+    let mut stats = now.stats;
+    if let Some(prev) = prev {
+        stats.win_pct = blend_rate(stats.win_pct, stats.games, prev.stats.win_pct);
+        stats.avg_win_pct = blend_rate(stats.avg_win_pct, stats.games, prev.stats.avg_win_pct);
+    }
+    Matchup {
+        stats,
+        build: lolalytics::blend_build(now.build, prev.map(|prev| &prev.build), info.clone()),
+        patch: Some(info),
+        ..now
+    }
 }
 
 impl Matchup {
@@ -103,6 +124,7 @@ pub fn parse_matchup(html: &str, champion_id: i64, enemy_id: i64) -> Option<Matc
         runes: details.runes,
         spells: details.spells,
         skill_order: details.skill_order,
+        patch: None,
     })
 }
 
@@ -187,7 +209,7 @@ fn parse_spells(pick: &Value) -> Option<[i64; 2]> {
 }
 
 /// The level 1-15 order from a digit id (`1`=Q, `2`=W, `3`=E, `4`=R).
-fn parse_skill_order(pick: &Value) -> Option<String> {
+pub(super) fn parse_skill_order(pick: &Value) -> Option<String> {
     let id = pick.get("skillorder")?.get("id")?;
     let digits = id
         .as_u64()
@@ -211,6 +233,7 @@ fn parse_skill_order(pick: &Value) -> Option<String> {
 impl lolalytics::LolalyticsClient {
     /// Fetches and parses one matchup page. `Ok(None)` means the page loaded
     /// but carried no matchup for that enemy.
+    #[allow(clippy::too_many_arguments)]
     pub async fn matchup(
         &self,
         champion_slug: &str,
@@ -219,9 +242,10 @@ impl lolalytics::LolalyticsClient {
         enemy_id: i64,
         lane: &str,
         tier: &str,
+        patch: Option<&str>,
     ) -> Result<Option<Matchup>, ProviderError> {
         let body = self
-            .page(lolalytics::vs_url(champion_slug, enemy_slug, lane, tier))
+            .page(lolalytics::vs_url(champion_slug, enemy_slug, lane, tier, patch))
             .await?;
         Ok(parse_matchup(&body, champion_id, enemy_id))
     }
@@ -355,11 +379,30 @@ mod tests {
     #[test]
     fn matchup_urls_and_keys_carry_the_enemy_and_lane() {
         assert_eq!(
-            lolalytics::vs_url("ahri", "zed", "middle", "emerald_plus"),
+            lolalytics::vs_url("ahri", "zed", "middle", "emerald_plus", None),
             "https://lolalytics.com/lol/ahri/vs/zed/build/?lane=middle&vslane=middle&tier=emerald_plus"
         );
         let key = lolalytics::vs_cache_key("ahri", "zed", "middle", "emerald_plus");
         assert_ne!(key, lolalytics::vs_cache_key("ahri", "yasuo", "middle", "emerald_plus"));
         assert_ne!(key, lolalytics::cache_key("ahri", "middle", "emerald_plus", 8112));
+    }
+
+    #[test]
+    fn the_matchup_win_rates_blend_and_the_games_stay_current() {
+        let now = parse_matchup(AHRI_VS_ZED, 103, 238).unwrap();
+        let mut prev = now.clone();
+        prev.stats.win_pct = 49.0;
+        prev.stats.avg_win_pct = 50.0;
+        let info = PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) };
+        let blended = blend_matchup(now.clone(), Some(&prev), info);
+        let expected = blend_rate(now.stats.win_pct, now.stats.games, 49.0);
+        assert!((blended.stats.win_pct - expected).abs() < 1e-9);
+        assert!(blended.stats.win_pct < now.stats.win_pct);
+        assert_eq!(blended.stats.games, now.stats.games);
+    }
+
+    #[test]
+    fn the_matchup_url_pins_the_previous_patch() {
+        assert!(lolalytics::vs_url("ahri", "zed", "middle", "emerald_plus", Some("15.24")).ends_with("&patch=15.24"));
     }
 }

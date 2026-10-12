@@ -117,6 +117,7 @@ function TreeHeader({
             key={entry.id}
             className="rune-head-option"
             title={entry.name}
+            aria-label={`Use ${entry.name}`}
             disabled={busy}
             onClick={() => onPick(entry)}
           >

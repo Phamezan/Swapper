@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { ItemIcon } from "./ItemIcon";
 import { CachedBadge } from "./CachedBadge";
 import type { KeystoneBuildView } from "./types";
@@ -70,22 +70,39 @@ export function PresetBuild({ mode, championId, position, tier, keystone, preloa
   }
   if (!build || build.items.length === 0) return null;
 
+  // The first `coreLen` items are one observed 3-item core; the rest are
+  // independent per-slot popularity picks, not a joint sample.
+  const coreLen = build.coreLen ?? 0;
+  const showCoreGames = coreLen > 0 && build.coreGames < SMALL_SAMPLE;
+
   return (
     <div className="preset-build-row">
-      <span className="preset-build" aria-label="Recommended path from the common core and later-slot item data">
-        {build.items.map((item) => (
-          <ItemIcon key={item.id} id={item.id} name={item.name} mode={mode} />
+      <span className="preset-build" aria-label="Item picks from LoLalytics: the observed core, then the most popular later-slot items">
+        {build.items.map((item, index) => (
+          <Fragment key={item.id}>
+            {coreLen > 0 && index === coreLen && <span className="preset-build-divider" />}
+            <ItemIcon id={item.id} name={item.name} mode={mode} />
+          </Fragment>
         ))}
-        {(build.coreGames || build.games) > 0 && (build.coreGames || build.games) < SMALL_SAMPLE && (
-          <span className="preset-build-games" title="Games in the core item combination">
-            {build.coreGames || build.games} core games
+        {showCoreGames && (
+          <span className="preset-build-games" title="Games for this exact 3-item core combination">
+            {build.coreGames} core games
           </span>
         )}
         <CachedBadge stale={build.stale} updatedAt={build.updatedAt} className="preset-build-cached" />
       </span>
-      {build.skillOrder && (
-        <span className="preset-skill-order" title="Skill order, levels 1 to 15">
-          {build.skillOrder.split("").join(" ")}
+      {build.skillPriority && (
+        <span
+          className="preset-skill-priority"
+          title={build.skillOrder ? `Skill order: ${build.skillOrder.split("").join(" ")}` : "Ability max order"}
+          aria-label={`Max ${build.skillPriority.split("").join(", then ")}`}
+        >
+          {build.skillPriority.split("").map((key, index) => (
+            <Fragment key={key}>
+              {index > 0 && <span className="preset-skill-sep">›</span>}
+              <span className="preset-skill-key">{key}</span>
+            </Fragment>
+          ))}
         </span>
       )}
     </div>

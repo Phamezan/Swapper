@@ -27,6 +27,7 @@ pub mod matchup;
 pub mod matchup_view;
 pub mod overview;
 pub mod opgg;
+pub mod patch;
 pub mod page;
 pub mod perks;
 pub mod prefetch;
@@ -54,7 +55,9 @@ use serde_json::Value;
 
 use crate::lcu::{self, LcuEndpoint};
 
-pub use apply::{apply_selection, apply_top, spawn_preset_items_import};
+pub use apply::{
+    apply_selection, apply_top, spawn_preset_items_import, subscribe_items_imported,
+};
 pub use data::icon;
 pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
