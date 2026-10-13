@@ -391,14 +391,13 @@ function App() {
   async function importItemBuild(
     championId: number,
     championName: string,
-    source: string,
     items: number[],
   ) {
     setRunesBusy(true);
     setRunesError(null);
     setShopNotice(null);
     try {
-      await invoke("import_item_build", { championId, championName, source, items });
+      await invoke("import_item_build", { championId, championName, items });
     } catch (reason) {
       setRunesError(String(reason));
       throw reason;

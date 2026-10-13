@@ -1171,10 +1171,9 @@ async fn champion_icon(id: i64) -> Result<String, String> {
 async fn import_item_build(
     champion_id: i64,
     champion_name: String,
-    source: String,
     items: Vec<i64>,
 ) -> Result<String, String> {
-    runes::item_sets::import_build(champion_id, &champion_name, &source, &items)
+    runes::item_sets::import_build(champion_id, &champion_name, &items)
         .await
         .map_err(|error| error.message().to_string())
 }

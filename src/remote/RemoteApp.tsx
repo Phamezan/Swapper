@@ -370,7 +370,6 @@ export default function RemoteApp() {
   async function importItemBuild(
     championId: number,
     championName: string,
-    source: string,
     items: number[],
   ) {
     setRunesBusy(true);
@@ -380,7 +379,7 @@ export default function RemoteApp() {
       const response = await fetch("/api/items/import", {
         method: "POST",
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
-        body: JSON.stringify({ championId, championName, source, items }),
+        body: JSON.stringify({ championId, championName, items }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
       if (!response.ok || !result.ok) throw new Error(result.message ?? "Could not add the item set.");

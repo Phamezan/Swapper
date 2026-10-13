@@ -70,7 +70,6 @@ fn block(label: &str, items: Vec<Value>) -> Value {
 fn item_set_body(
     champion_id: i64,
     champion_name: &str,
-    source: &str,
     blocks: Vec<Value>,
 ) -> Result<(String, Value), RuneError> {
     if !(1..=10_000).contains(&champion_id) {
@@ -83,10 +82,6 @@ fn item_set_body(
             "This build does not contain any item groups.",
         ));
     }
-    let source = clean(source, 24);
-    if source.is_empty() {
-        return Err(RuneError::conflict("The item build has no name."));
-    }
     let champion_name = clean(champion_name, MAX_CHAMPION_CHARS);
     let champion_name = if champion_name.is_empty() {
         "Champion"
@@ -94,7 +89,7 @@ fn item_set_body(
         champion_name.as_str()
     };
     let title = clean(
-        &format!("{TITLE_PREFIX}{champion_name} · {source}"),
+        &format!("{TITLE_PREFIX}{champion_name}"),
         MAX_TITLE_CHARS,
     );
     // POST .../sets takes the item set itself as the body. Wrapping it (for
@@ -119,22 +114,15 @@ fn item_set_body(
 fn generic_item_set_body(
     champion_id: i64,
     champion_name: &str,
-    source: &str,
     item_ids: &[i64],
 ) -> Result<(String, Value), RuneError> {
     let items = item_values(item_ids)?;
-    item_set_body(
-        champion_id,
-        champion_name,
-        source,
-        vec![block(FINAL_ITEMS_BLOCK, items)],
-    )
+    item_set_body(champion_id, champion_name, vec![block(FINAL_ITEMS_BLOCK, items)])
 }
 
 fn preset_item_set_body(
     champion_id: i64,
     champion_name: &str,
-    source: &str,
     build: &KeystoneBuildView,
 ) -> Result<(String, Value), RuneError> {
     if build.items.is_empty()
@@ -161,6 +149,13 @@ fn preset_item_set_body(
         ));
     }
 
+    // The ability max order rides on the first block's name: the shop has no
+    // other place for it, and the set title stays just "Swapper: Champion".
+    let skills = build_label(build.skill_priority.as_deref());
+    let named = |name: &str| match &skills {
+        Some(skills) => format!("{name} · {skills}"),
+        None => name.to_string(),
+    };
     let mut blocks = Vec::with_capacity(3);
     if !build.starters.is_empty() {
         let items = build
@@ -168,16 +163,13 @@ fn preset_item_set_body(
             .iter()
             .map(|item| json!({ "id": item.id.to_string(), "count": item.count }))
             .collect();
-        blocks.push(block("Starter Items", items));
+        blocks.push(block(&named("Starter Items"), items));
     }
     // `items` is a final inventory, not a purchase order, and only its leading
     // core was observed as one combination (see `KeystoneBuildView::core_len`).
+    let build_name = if build.core_len > 0 { BUILD_BLOCK } else { BUILD_BLOCK_UNCORED };
     blocks.push(block(
-        if build.core_len > 0 {
-            BUILD_BLOCK
-        } else {
-            BUILD_BLOCK_UNCORED
-        },
+        &if blocks.is_empty() { named(build_name) } else { build_name.to_string() },
         build
             .items
             .iter()
@@ -225,55 +217,18 @@ fn preset_item_set_body(
         blocks.push(block(ALTERNATIVES_BLOCK, options));
     }
 
-    item_set_body(champion_id, champion_name, source, blocks)
+    item_set_body(champion_id, champion_name, blocks)
 }
 
-/// The champion part of a matchup set's title, "Champion vs Enemy", with each
-/// name cut to a fair share of the room the 50-character title leaves after the
-/// prefix and `label`, so the label (the skill order) is never clipped away.
-/// The generic title path does not use this.
-pub fn matchup_title_name(champion: &str, enemy: &str, label: &str) -> String {
-    // "Swapper: " + names + " · " + label, with " vs " between the two names.
-    let fixed = TITLE_PREFIX.chars().count() + 3 + clean(label, 24).chars().count() + 4;
-    let room = MAX_TITLE_CHARS
-        .saturating_sub(fixed)
-        .min(MAX_CHAMPION_CHARS - 4);
-    let champion = clean(champion, MAX_CHAMPION_CHARS);
-    let enemy = clean(enemy, MAX_CHAMPION_CHARS);
-    let (own, other) = (champion.chars().count(), enemy.chars().count());
-    // A short name leaves its unused share to the other one.
-    let half = room / 2;
-    let (own_share, other_share) = if own + other <= room {
-        (own, other)
-    } else if own <= half {
-        (own, room - own)
-    } else if other <= half {
-        (room - other, other)
-    } else {
-        (room - half, half)
-    };
-    format!(
-        "{} vs {}",
-        champion.chars().take(own_share).collect::<String>().trim_end(),
-        enemy.chars().take(other_share).collect::<String>().trim_end()
-    )
-}
-
-/// What follows the champion in an imported set's title: the ability max
-/// order when lolalytics reported one ("Max Q > W > E"), since the shop has no
-/// other place to show it.
-pub fn build_label(skill_priority: Option<&str>) -> String {
-    match skill_priority {
-        Some(order) => {
-            let steps: Vec<String> = order
-                .trim()
-                .chars()
-                .map(|ability| ability.to_ascii_uppercase().to_string())
-                .collect();
-            format!("Max {}", steps.join(" > "))
-        }
-        None => "Recommended build".into(),
-    }
+/// The ability max order as a block-name suffix ("Max Q > W > E"), when
+/// lolalytics reported one.
+fn build_label(skill_priority: Option<&str>) -> Option<String> {
+    let steps: Vec<String> = skill_priority?
+        .trim()
+        .chars()
+        .map(|ability| ability.to_ascii_uppercase().to_string())
+        .collect();
+    (!steps.is_empty()).then(|| format!("Max {}", steps.join(" > ")))
 }
 
 fn is_swapper_set(set: &Value) -> bool {
@@ -372,10 +327,9 @@ async fn post_item_set(title: String, body: Value) -> Result<String, RuneError> 
 pub async fn import_build(
     champion_id: i64,
     champion_name: &str,
-    source: &str,
     item_ids: &[i64],
 ) -> Result<String, RuneError> {
-    let (title, body) = generic_item_set_body(champion_id, champion_name, source, item_ids)?;
+    let (title, body) = generic_item_set_body(champion_id, champion_name, item_ids)?;
     post_item_set(title, body).await
 }
 
@@ -383,10 +337,9 @@ pub async fn import_build(
 pub async fn import_keystone_build(
     champion_id: i64,
     champion_name: &str,
-    source: &str,
     build: &KeystoneBuildView,
 ) -> Result<String, RuneError> {
-    let (title, body) = preset_item_set_body(champion_id, champion_name, source, build)?;
+    let (title, body) = preset_item_set_body(champion_id, champion_name, build)?;
     post_item_set(title, body).await
 }
 
@@ -459,12 +412,7 @@ mod tests {
 
     #[test]
     fn preset_item_set_keeps_the_requested_block_order_and_starter_stacks() {
-        let (title, body) = preset_item_set_body(
-            799,
-            "Ambessa",
-            "Preset · Grasp",
-            &sample_build(),
-        )
+        let (title, body) = preset_item_set_body(799, "Ambessa", &sample_build())
         .unwrap();
         assert!(title.starts_with("Swapper: Ambessa"));
         let blocks = body["blocks"].as_array().unwrap();
@@ -497,7 +445,7 @@ mod tests {
     fn a_build_without_an_observed_core_is_not_called_one() {
         let mut build = sample_build();
         build.core_len = 0;
-        let (_, body) = preset_item_set_body(799, "Ambessa", "Preset", &build).unwrap();
+        let (_, body) = preset_item_set_body(799, "Ambessa", &build).unwrap();
         assert_eq!(body["blocks"][1]["type"], "Popular Picks");
     }
 
@@ -505,7 +453,7 @@ mod tests {
     fn a_build_without_alternatives_has_no_empty_block() {
         let mut build = sample_build();
         build.options.clear();
-        let (_, body) = preset_item_set_body(799, "Ambessa", "Preset", &build).unwrap();
+        let (_, body) = preset_item_set_body(799, "Ambessa", &build).unwrap();
         assert_eq!(body["blocks"].as_array().unwrap().len(), 2);
     }
 
@@ -532,10 +480,18 @@ mod tests {
     }
 
     #[test]
-    fn the_set_is_named_after_the_skill_order_when_known() {
-        assert_eq!(build_label(Some("QWE")), "Max Q > W > E");
-        assert_eq!(build_label(Some("ewq")), "Max E > W > Q");
-        assert_eq!(build_label(None), "Recommended build");
+    fn the_title_is_only_the_champion_and_the_max_order_names_the_first_block() {
+        let mut build = sample_build();
+        build.skill_priority = Some("wqe".into());
+        let (title, body) = preset_item_set_body(799, "Ambessa", &build).unwrap();
+        assert_eq!(title, "Swapper: Ambessa");
+        assert_eq!(body["blocks"][0]["type"], "Starter Items · Max W > Q > E");
+        assert_eq!(body["blocks"][1]["type"], "Core + Popular Picks");
+        // Without starters the label moves to the build block.
+        build.starters.clear();
+        let (_, body) = preset_item_set_body(799, "Ambessa", &build).unwrap();
+        assert_eq!(body["blocks"][0]["type"], "Core + Popular Picks · Max W > Q > E");
+        assert_eq!(build_label(None), None);
     }
 
     #[test]
@@ -589,7 +545,7 @@ mod tests {
 
     #[test]
     fn generic_pro_build_keeps_its_single_build_block() {
-        let (_, body) = generic_item_set_body(799, "Ambessa", "Pro", &[6692, 3047]).unwrap();
+        let (_, body) = generic_item_set_body(799, "Ambessa", &[6692, 3047]).unwrap();
         let blocks = body["blocks"].as_array().unwrap();
         assert_eq!(blocks.len(), 1);
         assert_eq!(blocks[0]["type"], "Final Items");
@@ -600,9 +556,9 @@ mod tests {
         let mut build = sample_build();
         build.items.clear();
         assert!(
-            preset_item_set_body(799, "Ambessa", "Preset", &build).is_err()
+            preset_item_set_body(799, "Ambessa", &build).is_err()
         );
-        assert!(generic_item_set_body(799, "Ambessa", "Pro", &[0]).is_err());
+        assert!(generic_item_set_body(799, "Ambessa", &[0]).is_err());
     }
 
     #[test]
@@ -620,7 +576,7 @@ mod tests {
                 })
             })
             .collect();
-        let (_, body) = preset_item_set_body(799, "Ambessa", "Preset", &build).unwrap();
+        let (_, body) = preset_item_set_body(799, "Ambessa", &build).unwrap();
         let blocks = body["blocks"].as_array().unwrap();
         let options = blocks
             .iter()
@@ -638,31 +594,6 @@ mod tests {
         );
 
         build.options.resize(MAX_OPTION_CANDIDATES + 1, build.options[0].clone());
-        assert!(preset_item_set_body(799, "Ambessa", "Preset", &build).is_err());
-    }
-
-    fn title_for(champion: &str, enemy: &str, label: &str) -> String {
-        let name = matchup_title_name(champion, enemy, label);
-        let blocks = vec![block("Build", vec![json!({ "id": "1", "count": 1 })])];
-        item_set_body(1, &name, label, blocks).unwrap().0
-    }
-
-    #[test]
-    fn a_long_matchup_title_keeps_the_skill_label() {
-        let label = build_label(Some("QWE"));
-        let title = title_for("Nunu & Willump", "Renata Glasc", &label);
-        assert!(title.chars().count() <= MAX_TITLE_CHARS, "{title}");
-        assert!(title.ends_with("Max Q > W > E"), "{title}");
-        assert!(title.starts_with("Swapper: Nunu"), "{title}");
-        assert!(title.contains(" vs Renata"), "{title}");
-    }
-
-    #[test]
-    fn short_matchup_names_are_not_cut_and_a_short_name_lends_its_room() {
-        let label = build_label(Some("QWE"));
-        assert_eq!(title_for("Ahri", "Zed", &label), "Swapper: Ahri vs Zed · Max Q > W > E");
-        let title = title_for("Ahri", "Aurelion Sol Of The Stars", &label);
-        assert!(title.starts_with("Swapper: Ahri vs Aurelion"), "{title}");
-        assert!(title.ends_with("Max Q > W > E"), "{title}");
+        assert!(preset_item_set_body(799, "Ambessa", &build).is_err());
     }
 }

@@ -341,23 +341,18 @@ pub async fn import_preset_items(
         Some(enemy_id) => matchup_view(context.champion_id, enemy_id, position, tier).await,
         None => None,
     };
-    let (build, matchup_enemy) = match matchup.and_then(|m| m.build.map(|b| (b, m.enemy_name))) {
-        Some((build, enemy_name)) => (build, Some(enemy_name)),
+    let build = match matchup.and_then(|m| m.build) {
+        Some(build) => build,
         None => {
             let Some(build) =
                 view::preset_build_view(context.champion_id, position, tier, keystone).await
             else {
                 return Ok(None);
             };
-            (build, None)
+            build
         }
     };
-    let label = super::item_sets::build_label(build.skill_priority.as_deref());
-    let title_name = match &matchup_enemy {
-        Some(enemy) => super::item_sets::matchup_title_name(&context.champion_name, enemy, &label),
-        None => context.champion_name.clone(),
-    };
-    super::item_sets::import_keystone_build(context.champion_id, &title_name, &label, &build)
+    super::item_sets::import_keystone_build(context.champion_id, &context.champion_name, &build)
         .await
         .map(Some)
 }

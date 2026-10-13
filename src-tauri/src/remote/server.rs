@@ -541,7 +541,6 @@ async fn champion_list() -> Response {
 struct ImportItemBuildRequest {
     champion_id: i64,
     champion_name: String,
-    source: String,
     items: Vec<i64>,
 }
 
@@ -556,7 +555,6 @@ async fn import_item_build(headers: HeaderMap, Json(body): Json<ImportItemBuildR
     match crate::runes::item_sets::import_build(
         body.champion_id,
         &body.champion_name,
-        &body.source,
         &body.items,
     )
     .await

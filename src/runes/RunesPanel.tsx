@@ -83,7 +83,6 @@ type Props = {
   onImportItems: (
     championId: number,
     championName: string,
-    source: string,
     items: number[],
   ) => Promise<void>;
   /** Loads one page of pros' solo-queue games for the champion and role. */
@@ -433,10 +432,10 @@ export function RunesPanel({
     proRequested.current = false;
   }
 
-  async function importItemSet(source: string, items: number[]) {
+  async function importItemSet(items: number[]) {
     setImportNotice(null);
     try {
-      await onImportItems(championId, view?.championName ?? "Champion", source, items);
+      await onImportItems(championId, view?.championName ?? "Champion", items);
       setImportNotice("Item set added to the League shop.");
     } catch {
       // The parent displays the request error beside the rune controls.
@@ -453,7 +452,7 @@ export function RunesPanel({
     setScreen("editor");
     await onApply(next, null, build.spells);
     if (build.finalItems.length > 0) {
-      await importItemSet(`Pro · ${build.proName || "build"}`, build.finalItems.map((item) => item.id));
+      await importItemSet(build.finalItems.map((item) => item.id));
     }
   }
 
