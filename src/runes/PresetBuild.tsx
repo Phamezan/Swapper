@@ -16,6 +16,8 @@ type Props = {
   keystone: number;
   /** A build that is already loaded (the matchup build); skips the lookup. */
   preloaded?: KeystoneBuildView | null;
+  /** Never silently show general items inside a tailored card. */
+  matchupOnly?: boolean;
   /** Loads the keystone's build for the current champion, role and bracket. */
   onLoad: (
     championId: number,
@@ -25,17 +27,17 @@ type Props = {
   ) => Promise<KeystoneBuildView | null>;
 };
 
-/** The row of 6 items people build with this preset's keystone, from
+/** The starting items and core people build with this preset's keystone, from
  *  lolalytics. The card renders immediately and the row fills in when the
  *  (cached, prefetched) build arrives, showing a skeleton until then. The row
  *  is hidden when there is no build; a failed lookup is simply nothing. */
-export function PresetBuild({ mode, championId, position, tier, keystone, preloaded, onLoad }: Props) {
+export function PresetBuild({ mode, championId, position, tier, keystone, preloaded, matchupOnly = false, onLoad }: Props) {
   const [build, setBuild] = useState<KeystoneBuildView | null>(preloaded ?? null);
-  const [loading, setLoading] = useState(!preloaded);
+  const [loading, setLoading] = useState(!preloaded && !matchupOnly);
 
   useEffect(() => {
-    if (preloaded) {
-      setBuild(preloaded);
+    if (preloaded || matchupOnly) {
+      setBuild(preloaded ?? null);
       setLoading(false);
       return;
     }
@@ -57,7 +59,7 @@ export function PresetBuild({ mode, championId, position, tier, keystone, preloa
     };
     // The loader is a stable wrapper; only the filter values should refetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [championId, position, tier, keystone, preloaded]);
+  }, [championId, position, tier, keystone, preloaded, matchupOnly]);
 
   if (loading && !build) {
     return (
@@ -68,7 +70,8 @@ export function PresetBuild({ mode, championId, position, tier, keystone, preloa
       </span>
     );
   }
-  if (!build || build.items.length === 0) return null;
+  if (!build) return matchupOnly ? <p className="runes-note">Item build unavailable for this matchup.</p> : null;
+  if (build.items.length === 0 && build.starters.length === 0) return null;
 
   // The first `coreLen` items are one observed 3-item core; the rest are
   // independent per-slot popularity picks, not a joint sample.
@@ -77,7 +80,9 @@ export function PresetBuild({ mode, championId, position, tier, keystone, preloa
 
   return (
     <div className="preset-build-row">
-      <span className="preset-build" aria-label="Item picks from LoLalytics: the observed core, then the most popular later-slot items">
+      <span className="preset-build" aria-label="Starting items, then core items from LoLalytics">
+        {build.starters.map((item) => <span key={item.id} title={`${item.name}${item.count > 1 ? ` ×${item.count}` : ""}`}><ItemIcon id={item.id} name={item.name} mode={mode} />{item.count > 1 && <small>×{item.count}</small>}</span>)}
+        {build.starters.length > 0 && build.items.length > 0 && <span aria-hidden>›</span>}
         {build.items.map((item, index) => (
           <Fragment key={item.id}>
             {coreLen > 0 && index === coreLen && <span className="preset-build-divider" />}
@@ -95,7 +100,7 @@ export function PresetBuild({ mode, championId, position, tier, keystone, preloa
         <span
           className="preset-skill-priority"
           title={build.skillOrder ? `Skill order: ${build.skillOrder.split("").join(" ")}` : "Ability max order"}
-          aria-label={`Max ${build.skillPriority.split("").join(", then ")}`}
+          aria-label={`Skill priority: ${build.skillPriority.split("").join(", then ")}`}
         >
           {build.skillPriority.split("").map((key, index) => (
             <Fragment key={key}>

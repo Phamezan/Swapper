@@ -1230,6 +1230,25 @@ fn hide_flyout(app: tauri::AppHandle) -> Result<(), String> {
     hide_main(&app.get_webview_window("main").ok_or("Flyout is unavailable")?)
 }
 
+/// Windows fades popup windows in and out; the flyout should appear and vanish
+/// at once.
+fn disable_window_transitions(window: &tauri::WebviewWindow) {
+    use windows_sys::Win32::Graphics::Dwm::{DwmSetWindowAttribute, DWMWA_TRANSITIONS_FORCEDISABLED};
+    let Ok(hwnd) = window.hwnd() else {
+        return;
+    };
+    let disabled: i32 = 1;
+    // SAFETY: a live window handle and a BOOL-sized attribute value.
+    unsafe {
+        DwmSetWindowAttribute(
+            hwnd.0 as _,
+            DWMWA_TRANSITIONS_FORCEDISABLED as _,
+            (&disabled as *const i32).cast(),
+            std::mem::size_of::<i32>() as u32,
+        );
+    }
+}
+
 /// Tells WebView2 how much memory the flyout may keep. While it sits hidden in
 /// the tray, Low lets WebView2 release most of its caches; Normal comes back
 /// before it is shown again.
@@ -1372,6 +1391,9 @@ pub fn run() {
                 remote: remote.clone(),
                 hotkey_active: AtomicBool::new(false),
             });
+            if let Some(window) = app.get_webview_window("main") {
+                disable_window_transitions(&window);
+            }
             let auto_enable = remote.clone();
             std::thread::spawn(move || {
                 if auto_enable.status().enabled {

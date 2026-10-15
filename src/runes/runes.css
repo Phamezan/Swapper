@@ -185,19 +185,6 @@
 
 .rune-preset:hover { border-color: var(--line-strong); background: var(--surface-raised); }
 .rune-preset.is-active { border-color: #459c74; background: #143329; }
-.rune-preset-main {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  width: 100%;
-  min-width: 0;
-  padding: 0;
-  border: 0;
-  color: inherit;
-  background: transparent;
-  text-align: left;
-}
-
 .rune-preset-head { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .rune-preset-keystone { width: 38px; height: 38px; flex: none; border-radius: 9px; }
 
@@ -206,9 +193,6 @@
 .rune-preset-copy small { color: var(--text-secondary); font-size: 10px; font-weight: 600; }
 .rune-low { margin-left: 6px; padding: 0 5px; border-radius: 5px; color: #e7c777; background: #3a2f14; font-size: 9px; font-weight: 700; }
 .rune-preset-badge { display: inline-flex; align-items: center; gap: 4px; flex: none; padding: 2px 7px; border-radius: 6px; font-size: 9px; font-weight: 750; letter-spacing: 0.03em; }
-.rune-preset-badge.is-applied { color: #081a12; background: #52dfa6; }
-.rune-preset-badge.is-pending { color: var(--text-secondary); background: var(--surface-raised); }
-.rune-preset-badge .runes-spinner { width: 10px; height: 10px; border-width: 2px; }
 
 .rune-preset-icons { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
 .rune-preset-icons img, .rune-preset-icons .rune-icon-fallback { width: 22px; height: 22px; border-radius: 6px; }
@@ -735,9 +719,7 @@
 /* The 6-item build on each preset card, from lolalytics. */
 .preset-build-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; min-width: 0; }
 .preset-skill-priority {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+  margin-left: auto;
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -756,11 +738,7 @@
 }
 .preset-skill-key:first-child { color: #fff; border-color: #1d4ed8; background: #1d4ed8; }
 .preset-skill-sep { color: var(--text-muted); font-size: 11px; }
-/* Keep the applied badge clear of the max-order keys. */
-.rune-preset:has(.preset-skill-priority) .rune-preset-head { padding-right: 76px; }
 .runes-remote .preset-skill-key { width: 22px; height: 22px; font-size: 12px; }
-.runes-remote .rune-preset:has(.preset-skill-priority) .rune-preset-head { padding-right: 92px; }
-.preset-build-divider { width: 1px; height: 18px; margin: 0 2px; background: var(--line-strong); }
 .preset-build {
   display: flex;
   align-items: center;
@@ -1016,63 +994,45 @@
 .runes-remote .pro-skill-cell { width: 18px; height: 18px; font-size: 10px; }
 .runes-remote .pro-skill-label { width: 14px; font-size: 11px; }
 
-/* Lane matchup banner: Generic / vs {enemy} toggle with the matchup's stats. */
-.matchup-banner {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px 12px;
-  border: 1px solid var(--line-subtle);
-  border-radius: 12px;
-  background: var(--surface-panel);
-}
-.matchup-stats { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.matchup-stats strong { font-size: 12px; font-weight: 700; }
-.matchup-stats small { color: var(--text-secondary); font-size: 11px; }
-.matchup-delta.is-up { color: var(--positive); }
-.matchup-delta.is-down { color: var(--danger); }
-.matchup-toggle { display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-base); }
-.matchup-toggle button {
-  flex: 1;
-  min-width: 0;
-  min-height: 28px;
-  border: 0;
-  border-radius: 6px;
-  color: var(--text-secondary);
-  background: transparent;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.matchup-toggle button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
-.matchup-toggle button.is-active { color: var(--action-text); background: var(--action-fill); }
-.matchup-toggle button:disabled { opacity: 0.45; }
-.runes-remote .matchup-toggle button { min-height: 40px; font-size: 13px; }
-.runes-remote .matchup-stats strong { font-size: 14px; }
-.runes-remote .matchup-stats small { font-size: 12px; }
-
-.matchup-picker { display: flex; flex-direction: column; gap: 6px; }
-.matchup-picker > small { color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-.matchup-picker-row { display: flex; flex-wrap: wrap; gap: 4px; }
-.matchup-picker-row button, .matchup-picker-tbd {
-  min-height: 28px;
-  padding: 0 10px;
-  border: 1px solid var(--line-subtle);
-  border-radius: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 26px;
-}
-.matchup-picker-row button { color: var(--text-secondary); background: var(--surface-panel); }
-.matchup-picker-row button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
-.matchup-picker-row button.is-active { color: var(--action-text); background: var(--action-fill); border-color: transparent; }
-.matchup-picker-tbd { color: var(--text-muted); border-style: dashed; opacity: 0.6; }
+/* Lane opponent picker and matchup summary. */
+.matchup-picker { display: flex; flex-direction: column; gap: 10px; }
+.matchup-picker > small, .matchup-high-value > small { color: var(--text-muted); font-size: 10px; font-weight: 650; letter-spacing: .08em; }
+.matchup-picker-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.matchup-picker-row button, .matchup-picker-tbd { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; padding: 6px 0 5px; border: 1px solid var(--line-subtle); border-radius: 11px; background: var(--surface-panel); color: var(--text-primary); }
+.matchup-picker-row .champion-icon, .matchup-picker-row .champion-icon-fallback, .matchup-silhouette { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; flex: none; }
+.matchup-picker-row small { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; font-weight: 600; }
+.matchup-picker-row .is-active { border-color: var(--brand-champions); background: color-mix(in srgb, var(--brand-champions) 10%, var(--surface-panel)); }
+.matchup-picker-row .is-active .champion-icon, .matchup-picker-row .is-active .champion-icon-fallback { box-shadow: 0 0 0 2px var(--brand-champions); }
+.matchup-picker-row .is-dimmed .champion-icon, .matchup-picker-row .is-dimmed .champion-icon-fallback { opacity: .55; }
+.matchup-picker-row button:hover { border-color: var(--brand-champions); }
+.matchup-lane-tag { position: absolute; top: -7px; left: 50%; transform: translateX(-50%); padding: 1px 6px; border-radius: 999px; background: var(--brand-champions); color: var(--brand-ink); font-size: 9px; font-weight: 800; letter-spacing: .08em; }
+.matchup-picker-tbd { border-style: dashed; color: var(--text-muted); background: transparent; }
+.matchup-silhouette { background: var(--surface-panel); color: var(--surface-avatar); }
+.matchup-banner { display: flex; flex-direction: column; gap: 10px; padding: 12px; border: 1px solid var(--line-subtle); border-radius: 14px; background: var(--surface-panel); }
+.matchup-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.matchup-portraits { display: flex; align-items: center; }
+.matchup-portraits .champion-icon, .matchup-portraits .champion-icon-fallback { width: 40px; height: 40px; border-radius: 50%; }
+.matchup-portraits b { z-index: 1; margin: 0 -4px; padding: 1px 5px; border-radius: 999px; background: var(--surface-hover); color: var(--text-secondary); font-size: 9px; }
+.matchup-title { display: flex; flex: 1; min-width: 100px; flex-direction: column; gap: 3px; }
+.matchup-title strong { font-size: 14px; }
+.matchup-title small { color: var(--text-muted); font-size: 11px; }
+.matchup-difficulty { padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; background: color-mix(in srgb, currentColor 12%, transparent); }
+.matchup-difficulty.is-hard, .matchup-delta.is-down { color: var(--danger); }
+.matchup-difficulty.is-tough { color: #e9ad70; }
+.matchup-difficulty.is-even { color: var(--text-secondary); }
+.matchup-difficulty.is-favoured, .matchup-difficulty.is-easy, .matchup-delta.is-up { color: var(--positive); }
+.matchup-stat-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.matchup-stat-tiles > div { padding: 8px 10px; border-radius: 10px; background: var(--surface-raised); }
+.matchup-stat-tiles small { font-size: 10px; color: var(--text-muted); letter-spacing: .08em; }
+.matchup-stat-tiles strong { font-size: 20px; }
+.matchup-delta { display: inline-block; font-size: 11px; }
+.matchup-high-value { display: flex; flex-direction: column; gap: 6px; }
+.matchup-high-value > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.matchup-high-value > div > span { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 3px; border: 1px solid color-mix(in srgb, var(--positive) 35%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--positive) 8%, transparent); font-size: 12px; }
+.matchup-high-value img, .matchup-high-value .item-icon-fallback, .matchup-high-value .spell-icon-fallback { width: 22px; height: 22px; border-radius: 50%; }
+.matchup-waiting { margin: 0; padding: 12px; border: 1px dashed var(--line-strong); border-radius: 14px; color: var(--text-secondary); font-size: 12px; line-height: 1.4; }
 .matchup-loading { margin: 0; color: var(--text-muted); font-size: 11px; }
-.runes-remote .matchup-picker-row button, .runes-remote .matchup-picker-tbd { min-height: 40px; font-size: 13px; line-height: 38px; }
 
-/* Champion tab: search, lane and the two matchup lists. */
 .champion-tab { display: flex; flex-direction: column; gap: 10px; }
 .champion-search { position: relative; }
 .champion-search input {
@@ -1302,3 +1262,44 @@
 @media (prefers-reduced-motion: reduce) {
   .counter-card-skeleton, .tier-row-skeleton, .overview-skeleton { animation: none; }
 }
+
+/* Build card: runes and boxed spells, then starter/core items and skill keycaps. */
+.rune-preset.is-tailored { border-color: color-mix(in srgb, var(--brand-champions) 45%, transparent); }
+.rune-preset-badge.is-tailored { color: var(--brand-champions); background: color-mix(in srgb, var(--brand-champions) 13%, transparent); white-space: normal; max-width: 110px; }
+.rune-preset-copy strong { white-space: normal; }
+.rune-preset-icons { gap: 3px; }
+.rune-preset-icons .rune-preset-keystone { width: 28px; height: 28px; }
+.rune-preset-icons .rune-preset-shard { width: 14px !important; height: 14px !important; }
+.rune-preset-divider { margin: 0 1px; }
+.preset-spell-box { margin-left: auto; display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-raised); }
+.preset-build > span:has(.item-icon), .preset-build > span:has(.item-icon-fallback) { display: inline-flex; align-items: center; gap: 2px; }
+.preset-build > span > small { font-size: 9px; color: var(--text-secondary); }
+.preset-build-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.preset-build-actions .runes-apply { margin-left: auto; flex: none; min-height: 34px; }
+.matchup-build-link { border: 0; padding: 4px 0; background: transparent; color: var(--text-muted); font: inherit; font-size: 11px; text-align: left; text-decoration: underline; text-underline-offset: 2px; }
+.matchup-build-link:hover { color: var(--text-primary); }
+
+/* Segmented switch shared by Pros/OTPs and Champions/Duos. */
+.matchup-toggle { display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-base); }
+.matchup-toggle button {
+  flex: 1;
+  min-width: 0;
+  min-height: 28px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.matchup-toggle button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
+.matchup-toggle button.is-active { color: var(--action-text); background: var(--action-fill); }
+.matchup-toggle button:disabled { opacity: 0.45; }
+.runes-remote .matchup-toggle button { min-height: 40px; font-size: 13px; }
+
+/* Applied state on a preset card, and the core | later-items divider. */
+.rune-preset-badge.is-applied { color: #081a12; background: #52dfa6; }
+.preset-build-divider { width: 1px; height: 18px; margin: 0 2px; background: var(--line-strong); }

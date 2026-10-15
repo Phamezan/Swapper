@@ -20,13 +20,11 @@ import {
   ShopNotice,
   LOW_SAMPLE_GAMES,
   fmtGames,
-  fmtPct,
   isLowSample,
   selectionFromPreset,
   selectionFromProBuild,
   selectionFromApplied,
   sameSelection,
-  treeName,
 } from "./types";
 import "./runes.css";
 
@@ -197,10 +195,11 @@ export function RunesPanel({
   const [proOtp, setProOtp] = useState(false);
   const [pickerSlot, setPickerSlot] = useState<"d" | "f" | null>(null);
   const [importNotice, setImportNotice] = useState<string | null>(null);
-  const [matchup, setMatchup] = useState<MatchupView | null>(null);
+  const [matchupResult, setMatchupResult] = useState<{ key: string; value: MatchupView | null } | null>(null);
+  const [generalResult, setGeneralResult] = useState<{ key: string; value: KeystoneBuildView | null } | null>(null);
   const [matchupLoading, setMatchupLoading] = useState(false);
-  const [chosenEnemy, setChosenEnemy] = useState<{ championId: number; enemyId: number } | null>(null);
-  const [buildChoice, setBuildChoice] = useState<BuildChoice>("generic");
+  const [chosenEnemy, setChosenEnemy] = useState<{ championId: number; enemyId: number; session: string } | null>(null);
+  const [buildChoice, setBuildChoice] = useState<BuildChoice>("matchup");
   // The backend keeps the last applied page per champion and does not clear it
   // when a new session starts, so a fresh champion select can show a stale
   // "Applied". Suppress the confirmation until an apply actually changes it.
@@ -253,6 +252,7 @@ export function RunesPanel({
   const enemyId =
     chosenEnemy !== null &&
     chosenEnemy.championId === championId &&
+    chosenEnemy.session === sessionKey &&
     enemies.some((enemy) => enemy.id === chosenEnemy.enemyId)
       ? chosenEnemy.enemyId
       : view?.enemyChampionId ?? 0;
@@ -260,19 +260,35 @@ export function RunesPanel({
   const ownChampion =
     view && view.championId > 0 ? { id: view.championId, name: view.championName } : null;
   const tier = view?.tier ?? "";
+  const matchupKey = `${sessionKey}:${championId}:${enemyId}:${position}:${tier}`;
+  const matchup = matchupResult?.key === matchupKey ? matchupResult.value : null;
+  const topKeystone = view?.presets[0]?.keystone;
+  const generalKey = `${sessionKey}:${championId}:${position}:${tier}:${topKeystone}`;
+  const generalBuild = generalResult?.key === generalKey ? generalResult.value : null;
   useEffect(() => {
     let live = true;
-    setMatchup(null);
-    setBuildChoice("generic");
+    if (championId > 0 && topKeystone !== undefined && enemyId > 0) {
+      onLoadBuild(championId, position, tier, topKeystone)
+        .then((value) => { if (live) setGeneralResult({ key: generalKey, value }); })
+        .catch(() => { if (live) setGeneralResult({ key: generalKey, value: null }); });
+    }
+    return () => { live = false; };
+    // The key covers the general build filters; enemy changes reuse the same baseline.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [generalKey, enemyId > 0]);
+  useEffect(() => {
+    let live = true;
+    setMatchupResult(null);
+    setBuildChoice("matchup");
     setMatchupLoading(false);
     if (championId > 0 && enemyId > 0) {
       setMatchupLoading(true);
       onLoadMatchup(championId, enemyId, position, tier)
         .then((next) => {
-          if (live) setMatchup(next);
+          if (live) setMatchupResult({ key: matchupKey, value: next });
         })
         .catch(() => {
-          if (live) setMatchup(null);
+          if (live) setMatchupResult({ key: matchupKey, value: null });
         })
         .finally(() => {
           if (live) setMatchupLoading(false);
@@ -283,7 +299,7 @@ export function RunesPanel({
     };
     // The loader is a stable wrapper; only the matchup filter should refetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [championId, enemyId, position, tier]);
+  }, [matchupKey]);
 
   useEffect(() => {
     if (championId > 0) rememberedScreen = { championId, screen };
@@ -649,90 +665,78 @@ export function RunesPanel({
                 {view.canApply ? "No presets for this role yet." : "No recommendations available. You can still build a page in the Editor."}
               </p>
             ) : null}
-            {enemies.length > 0 && view.position !== "none" && (
+            {view.enemySlots > 0 && view.position !== "none" && (
               <EnemyPicker
+                mode={mode}
+                laner={view.enemyChampionId}
                 enemies={enemies}
                 slots={view.enemySlots}
                 selected={enemyId}
                 disabled={busy}
-                onSelect={(id) => setChosenEnemy({ championId, enemyId: id })}
+                onSelect={(id) => { setChosenEnemy({ championId, enemyId: id, session: sessionKey }); setBuildChoice("matchup"); }}
               />
             )}
             {matchupLoading && <p className="matchup-loading">Loading matchup…</p>}
             {matchup && !view.tierEmpty && (
-              <MatchupBanner matchup={matchup} choice={buildChoice} disabled={busy} onChoose={setBuildChoice} />
+              <MatchupBanner mode={mode} matchup={matchup} championId={championId} championName={view.championName}
+                lane={roleLabel} rank={view.tierLabel} general={generalBuild} preset={view.presets[0]} spells={view.spells.available} />
             )}
+            {enemyId > 0 && !matchupLoading && !matchup && <p className="matchup-waiting">No {roleLabel.toLowerCase()} data vs {enemies.find((enemy) => enemy.id === enemyId)?.name ?? view.enemyChampionName}. Showing the general build.</p>}
             {shownPresets.map((preset) => {
               const presetSelection = selectionFromPreset(preset);
               const isActive = sameSelection(presetSelection, active);
               const isPending = busy && !isActive && selection !== null && sameSelection(presetSelection, selection);
-              const variant = [treeName(view.trees, preset.primaryPageId), treeName(view.trees, preset.secondaryPageId)]
-                .filter(Boolean)
-                .join(" · ");
+              const keystoneName = view.trees.flatMap((tree) => tree.keystones).find((rune) => rune.id === preset.keystone)?.name ?? preset.title;
               const lowSample = isLowSample(preset.play);
               return (
-                <div key={matchupActive ? "matchup" : preset.index} className={`rune-preset ${isActive ? "is-active" : ""}`}>
-                  <button
-                    type="button"
-                    className="rune-preset-main"
-                    disabled={busy}
-                    title={`Apply ${preset.title}${variant ? ` (${variant})` : ""}`}
-                    aria-label={`Apply ${preset.title}${variant ? `, ${variant}` : ""}${preset.play > 0 ? `, ${fmtPct(preset.winPct)} win over ${preset.play} games` : ""}`}
-                    onClick={() => {
-                      editorFromPreset.current = true;
-                      setSelection(presetSelection);
-                      setScreen("editor");
-                      if (matchupActive && matchup) {
-                        onApply(presetSelection, null, preset.spells, matchup.enemyChampionId);
-                      } else {
-                        onApply(presetSelection, preset.index, preset.spells);
-                      }
-                    }}
-                  >
-                    <span className="rune-preset-head">
-                      <RuneIcon id={preset.keystone} mode={mode} className="rune-preset-keystone" />
-                      <span className="rune-preset-copy">
-                        <strong>{preset.title}</strong>
-                        <small>
-                          {preset.play > 0
-                            ? `${fmtPct(preset.winPct)} win · ${fmtGames(preset.play)} games`
-                            : "League recommendation"}
-                          {lowSample && (
-                            <span className="rune-low" title={`Under ${LOW_SAMPLE_GAMES} games`}>small sample</span>
-                          )}
-                        </small>
-                      </span>
-                      {isActive ? (
-                        <span className="rune-preset-badge is-applied"><CheckIcon size={12} /> Applied</span>
-                      ) : isPending ? (
-                        <span className="rune-preset-badge is-pending"><Spinner /> Applying…</span>
-                      ) : null}
+                <div key={matchupActive ? matchupKey : `${generalKey}:${preset.index}`} className={`rune-preset ${matchupActive ? "is-tailored" : ""} ${isActive ? "is-active" : ""}`}>
+                  <div className="rune-preset-head">
+                    <span className="rune-preset-copy">
+                      <strong>{matchupActive ? `Build vs ${matchup?.enemyName}` : preset.title}</strong>
+                      <small>{keystoneName} · {preset.play > 0 ? `${fmtGames(preset.play)} games${matchupActive ? " in this matchup" : ""}` : "League recommendation"}
+                        {lowSample && <span className="rune-low" title={`Under ${LOW_SAMPLE_GAMES} games`}>small sample</span>}
+                      </small>
                     </span>
-                    <span className="rune-preset-icons" aria-hidden>
-                      {preset.primaryRunes.map((id) => <RuneIcon key={`p${id}`} id={id} mode={mode} />)}
-                      <span className="rune-preset-divider" />
-                      {preset.secondaryRunes.map((id) => <RuneIcon key={`s${id}`} id={id} mode={mode} />)}
-                      <span className="rune-preset-divider" />
-                      {preset.shards.map((id, index) => <RuneIcon key={`m${index}`} id={id} mode={mode} className="rune-preset-shard" />)}
-                      {preset.spells.length === 2 && (
-                        <>
-                          <span className="rune-preset-divider" />
-                          {preset.spells.map((id, index) => (
-                            <SpellIcon key={`sp${index}`} id={id} mode={mode} className="rune-preset-spell" />
-                          ))}
-                        </>
-                      )}
-                    </span>
-                  </button>
+                    {isActive ? (
+                      <span className="rune-preset-badge is-applied"><CheckIcon size={12} /> Applied</span>
+                    ) : matchupActive ? (
+                      <span className="rune-preset-badge is-tailored">Built for {matchup?.enemyName}</span>
+                    ) : null}
+                  </div>
+                  <div className="rune-preset-icons" aria-label="Runes and summoner spells">
+                    <RuneIcon id={preset.keystone} mode={mode} className="rune-preset-keystone" />
+                    {preset.primaryRunes.map((id) => <RuneIcon key={`p${id}`} id={id} mode={mode} />)}
+                    <span className="rune-preset-divider" />
+                    {preset.secondaryRunes.map((id) => <RuneIcon key={`s${id}`} id={id} mode={mode} />)}
+                    <span className="rune-preset-divider" />
+                    {preset.shards.map((id, index) => <RuneIcon key={`m${index}`} id={id} mode={mode} className="rune-preset-shard" />)}
+                    {preset.spells.length === 2 && <span className="preset-spell-box" aria-label="Summoner spells">
+                      {preset.spells.map((id, index) => <SpellIcon key={index} id={id} mode={mode} className="rune-preset-spell" />)}
+                    </span>}
+                  </div>
                   <PresetBuild
                     mode={mode}
                     championId={view.championId}
                     position={view.position}
                     tier={view.tier}
                     keystone={preset.keystone}
-                    preloaded={matchupActive ? matchup?.build : null}
+                    preloaded={matchupActive ? matchup?.build : preset === view.presets[0] ? generalBuild : null}
+                    matchupOnly={matchupActive}
                     onLoad={onLoadBuild}
                   />
+                  <div className="preset-build-actions">
+                    {matchup && !matchup.fallback && matchup.preset && <button type="button" className="matchup-build-link" disabled={busy} onClick={() => setBuildChoice(matchupActive ? "generic" : "matchup")}>
+                      {matchupActive ? "Use the general build instead" : `Use the build for ${matchup.enemyName}`}
+                    </button>}
+                    <button type="button" className="runes-apply" disabled={busy || !view.canApply} onClick={() => {
+                      setSelection(presetSelection);
+                      if (matchupActive && matchup) {
+                        void onApply(presetSelection, null, preset.spells, matchup.enemyChampionId);
+                      } else {
+                        void onApply(presetSelection, preset.index, preset.spells);
+                      }
+                    }}>{isPending ? "Applying…" : "Apply build"}</button>
+                  </div>
                 </div>
               );
             })}
@@ -751,7 +755,7 @@ export function RunesPanel({
         )}
       </div>
 
-      {screen !== "pro" && screen !== "champion" && (
+      {screen === "editor" && (
         <div className="runes-foot">
           <div className="runes-actions">
             <button type="button" className="runes-reset" disabled={busy || !dirty || !selection} onClick={() => setSelection(active ?? defaultSelection(data))}>
