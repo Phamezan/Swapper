@@ -275,6 +275,7 @@ export function ChampionTab({
           position={listLane}
           tier={tier}
           onLoad={api.tierList}
+          onLoadDuos={api.duoList}
           onPick={(picked) => {
             setChampion(picked);
             setQuery(picked.name);

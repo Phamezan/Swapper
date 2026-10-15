@@ -1225,6 +1225,12 @@
 .tier-text.is-c { color: var(--tier-c); }
 .tier-text.is-d { color: var(--tier-d); }
 .tier-row > .tier-text { grid-area: badge; width: 30px; font-size: 13px; text-align: center; }
+.tier-duo-toggle { align-self: flex-start; width: 200px; margin-bottom: 2px; }
+.tier-duo-toggle button { padding: 0 12px; }
+.tier-duo-row { grid-template-columns: 30px 40px minmax(0, 1fr) auto; }
+.tier-duo-icons { grid-area: icon; display: flex; }
+.tier-duo-icons .champion-icon, .tier-duo-icons .champion-icon-fallback { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--surface-panel); }
+.tier-duo-icons > :last-child { margin-left: -8px; }
 .overview-name .tier-text { margin-left: 4px; font-size: 13px; }
 .overview-icon .champion-icon, .overview-icon .champion-icon-fallback { width: 44px; height: 44px; border-radius: 50%; }
 .champion-filter { display: flex; }

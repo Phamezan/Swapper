@@ -18,6 +18,7 @@ pub mod cache;
 pub mod champion_views;
 pub mod champion_icon;
 pub mod counters;
+pub mod duos;
 pub mod counters_view;
 pub mod data;
 pub mod items;
@@ -63,7 +64,8 @@ pub use opgg::{normalize_tier, tier_slug, DEFAULT_TIER};
 pub use page::{CatalogIndex, LcuPage, RuneSelection};
 use provider::{DataKind, ProviderError};
 pub use champion_views::{
-    champion_overview_view, tier_list_view, ChampionOverviewView, TierListView,
+    champion_overview_view, duo_list_view, tier_list_view, ChampionOverviewView, DuoListView,
+    TierListView,
 };
 pub use counters_view::{champion_counters_view, champion_list, ChampionCountersView, ChampionOption};
 pub use matchup_view::{matchup_view, MatchupView};

@@ -535,6 +535,7 @@ export default function RemoteApp() {
     overview: (championId, position, tier) =>
       getJson("/api/runes/overview", { championId: String(championId), position, tier }),
     tierList: (position, tier) => getJson("/api/runes/tierlist", { position, tier }),
+    duoList: (tier) => getJson("/api/runes/duos", { tier }),
   };
 
   async function toggleAutoApply(enabled: boolean) {

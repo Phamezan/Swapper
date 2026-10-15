@@ -29,6 +29,8 @@ pub enum DataKind {
     TierList,
     /// Pros' solo-queue games (probuildstats/u.gg).
     ProBuilds,
+    /// Bot lane duo list (u.gg).
+    Duos,
 }
 
 impl DataKind {
@@ -42,6 +44,7 @@ impl DataKind {
             Self::Overview => "champion-overviews",
             Self::TierList => "tier-lists",
             Self::ProBuilds => "pro-builds",
+            Self::Duos => "bot-duos",
         }
     }
 
@@ -55,6 +58,7 @@ impl DataKind {
             Self::Overview => "Champion overviews",
             Self::TierList => "Tier lists",
             Self::ProBuilds => "Pro builds",
+            Self::Duos => "Bot lane duos",
         }
     }
 }

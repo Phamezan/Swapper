@@ -144,6 +144,25 @@ export type TierRow = {
   games: number;
 };
 
+/** One ADC + Support pair in the bot lane duo list. */
+export type DuoRow = {
+  adcId: number;
+  adcName: string;
+  supportId: number;
+  supportName: string;
+  tier: string;
+  winPct: number;
+  /** Current-patch games together; 0 when only the previous patch had it. */
+  games: number;
+};
+
+export type DuoListView = {
+  rows: DuoRow[];
+  unavailable: boolean;
+  stale: boolean;
+  updatedAt: number | null;
+};
+
 export type TierListView = {
   rows: TierRow[];
   unavailable: boolean;
@@ -201,6 +220,7 @@ export type ChampionApi = {
   counters: (championId: number, position: string | null, tier: string) => Promise<ChampionCountersView>;
   overview: (championId: number, position: string | null, tier: string) => Promise<ChampionOverviewView>;
   tierList: (position: string, tier: string) => Promise<TierListView>;
+  duoList: (tier: string) => Promise<DuoListView>;
 };
 
 export type ChampionCountersView = {

@@ -1150,6 +1150,12 @@ async fn get_tier_list(position: String, tier: String) -> runes::TierListView {
     runes::tier_list_view(&position, &tier).await
 }
 
+/// The best bot lane ADC + Support pairs for a rank bracket, from u.gg.
+#[tauri::command]
+async fn get_duo_list(tier: String) -> runes::DuoListView {
+    runes::duo_list_view(&tier).await
+}
+
 /// Every champion, for the Champion tab search box.
 #[tauri::command]
 async fn get_champion_list() -> Vec<runes::ChampionOption> {
@@ -1512,6 +1518,7 @@ pub fn run() {
             get_champion_counters,
             get_champion_overview,
             get_tier_list,
+            get_duo_list,
             get_champion_list,
             champion_icon,
             import_item_build,

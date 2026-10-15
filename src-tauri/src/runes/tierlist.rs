@@ -44,9 +44,8 @@ fn min_games(tier: &str) -> u64 {
 /// a low-sample (situational/counterpick) win rate cannot top the list. One of
 /// the calibration knobs.
 pub const PRIOR_GAMES: f64 = 3000.0;
-/// Win-rate weight in the blended score. One of the calibration knobs.
-pub const WR_WEIGHT: f64 = 0.55;
-/// Pick-rate weight in the blended score. One of the calibration knobs.
+/// Pick-rate weight in the blended score; win rate gets the rest. One of the
+/// calibration knobs.
 pub const POP_WEIGHT: f64 = 0.45;
 /// Score floor for each tier, best first. A score at or above the first floor is
 /// `S+`; below every floor is `D`. Calibrated against the live emerald_plus
@@ -77,8 +76,13 @@ pub struct TierRow {
 impl TierRow {
     /// The label for this row's tier.
     pub fn label(&self) -> &'static str {
-        TIER_LABELS.get(self.tier as usize).copied().unwrap_or("")
+        tier_label(self.tier)
     }
+}
+
+/// The label for a tier index (0 = S+, 5 = D).
+pub fn tier_label(tier: u8) -> &'static str {
+    TIER_LABELS.get(tier as usize).copied().unwrap_or("")
 }
 
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
@@ -168,42 +172,45 @@ fn parse_rows(html: &str, min_games: u64) -> Option<Vec<TierRow>> {
 }
 
 /// Scores every kept row from its win rate (shrunk toward the lane average) and
-/// its pick rate, sorts best-first and labels each with its tier. Fewer than
-/// two rows cannot be normalized, so they keep a zero score and their labels
-/// come from that.
+/// its pick rate, sorts best-first and labels each with its tier.
 fn score_rows(rows: &mut [TierRow]) {
-    if rows.len() < 2 {
-        for row in rows.iter_mut() {
-            row.score = 0.0;
-            row.tier = tier_index(0.0);
-        }
-        return;
+    let stats: Vec<(f64, f64, u64)> = rows.iter().map(|row| (row.win_pct, row.pick_pct, row.games)).collect();
+    for (row, score) in rows.iter_mut().zip(scores(&stats, POP_WEIGHT)) {
+        row.score = score;
+        row.tier = tier_index(score);
     }
-    let total_games: f64 = rows.iter().map(|row| row.games as f64).sum();
+    rows.sort_by(|left, right| right.score.total_cmp(&left.score));
+}
+
+/// One score per `(win %, pick %, games)`: the win rate shrunk toward the
+/// game-weighted average, z-scored and blended with the z-scored log pick
+/// rate (`pop_weight`, the rest goes to win rate). Fewer than two rows cannot
+/// be normalized, so they all score zero.
+pub(super) fn scores(rows: &[(f64, f64, u64)], pop_weight: f64) -> Vec<f64> {
+    if rows.len() < 2 {
+        return vec![0.0; rows.len()];
+    }
+    let total_games: f64 = rows.iter().map(|row| row.2 as f64).sum();
     let lane_avg = if total_games > 0.0 {
-        rows.iter().map(|row| row.win_pct * row.games as f64).sum::<f64>() / total_games
+        rows.iter().map(|row| row.0 * row.2 as f64).sum::<f64>() / total_games
     } else {
-        rows.iter().map(|row| row.win_pct).sum::<f64>() / rows.len() as f64
+        rows.iter().map(|row| row.0).sum::<f64>() / rows.len() as f64
     };
     let swr: Vec<f64> = rows
         .iter()
-        .map(|row| {
-            let games = row.games as f64;
-            (row.win_pct * games + lane_avg * PRIOR_GAMES) / (games + PRIOR_GAMES)
+        .map(|&(win, _, games)| {
+            let games = games as f64;
+            (win * games + lane_avg * PRIOR_GAMES) / (games + PRIOR_GAMES)
         })
         .collect();
     // Pick rate is a percentage; a non-positive one would make `ln` undefined,
     // so clamp to 0.01% (a z-scored outlier with no meaningful effect).
-    let pres: Vec<f64> = rows.iter().map(|row| row.pick_pct.max(0.01).ln()).collect();
-    let z_wr = zscores(&swr);
-    let z_pr = zscores(&pres);
-    for (index, row) in rows.iter_mut().enumerate() {
-        row.score = WR_WEIGHT * z_wr[index] + POP_WEIGHT * z_pr[index];
-    }
-    rows.sort_by(|left, right| right.score.total_cmp(&left.score));
-    for row in rows.iter_mut() {
-        row.tier = tier_index(row.score);
-    }
+    let pres: Vec<f64> = rows.iter().map(|row| row.1.max(0.01).ln()).collect();
+    zscores(&swr)
+        .into_iter()
+        .zip(zscores(&pres))
+        .map(|(wr, pr)| (1.0 - pop_weight) * wr + pop_weight * pr)
+        .collect()
 }
 
 /// Population z-scores. All zeros when the spread is zero, so a flat list does
@@ -221,7 +228,7 @@ fn zscores(values: &[f64]) -> Vec<f64> {
 
 /// The tier index for a score: the first label whose floor it reaches, or the
 /// last label (`D`) below every floor.
-fn tier_index(score: f64) -> u8 {
+pub(super) fn tier_index(score: f64) -> u8 {
     TIER_THRESHOLDS
         .iter()
         .position(|(_, floor)| score >= *floor)

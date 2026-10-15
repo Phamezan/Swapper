@@ -15,6 +15,7 @@ import { BrandIcon } from "@/components/BrandIcon";
 import { RepairPanel } from "./accounts/RepairPanel";
 import { CreateShortcutButton } from "./accounts/CreateShortcutButton";
 import { RunesPanel } from "./runes/RunesPanel";
+import { ChampionTab } from "./runes/ChampionTab";
 import { PairingNotice } from "./settings/PairedDevices";
 import { UpdateBanner } from "./settings/UpdateSection";
 import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "./runes/types";
@@ -106,7 +107,7 @@ type ChampSelectStatus = {
   position: string;
   locked: boolean;
 };
-type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings" | "runes";
+type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings" | "runes" | "champions";
 
 const emptyRemote: RemoteStatus = {
   enabled: false, state: "disabled", address: null, tailscaleAddress: null,
@@ -151,6 +152,8 @@ function IdentityCard({ identity }: { identity: DetectedIdentity }) {
 function App() {
   const [data, setData] = useState<AppState>(empty);
   const [view, setView] = useState<View>("accounts");
+  const [inChampSelect, setInChampSelect] = useState(false);
+  const [modeSpin, setModeSpin] = useState(0);
   const [busy, setBusy] = useState<string | null>(null);
   const [switchingAccountId, setSwitchingAccountId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -191,7 +194,7 @@ function App() {
   // Bumped when a game ends, so the Champion tab drops its search instead of
   // keeping it for the next champion select.
   const [runeSession, setRuneSession] = useState(0);
-  const lastGamePhase = useRef(false);
+  const lastPhase = useRef("");
   const native = isTauri();
 
   useEffect(() => {
@@ -522,6 +525,7 @@ function App() {
     overview: (championId, position, tier) =>
       invoke("get_champion_overview", { championId, position, tier }),
     tierList: (position, tier) => invoke("get_tier_list", { position, tier }),
+    duoList: (tier) => invoke("get_duo_list", { tier }),
   };
 
   async function setAutoApply(enabled: boolean) {
@@ -580,15 +584,16 @@ function App() {
     // Leaving a live game bumps the rune session, so the Champion tab's search
     // is cleared before the next champion select opens.
     const inGame = isGamePhase(payload.phase);
-    if (lastGamePhase.current && !inGame) setRuneSession((id) => id + 1);
-    lastGamePhase.current = inGame;
+    if (isGamePhase(lastPhase.current) && !inGame) setRuneSession((id) => id + 1);
+    setInChampSelect(payload.phase === "ChampSelect");
     if (payload.phase === "ChampSelect") {
       if (runeChampion.current !== payload.championId) runePosition.current = undefined;
-      setView("runes");
+      if (lastPhase.current !== "ChampSelect") setView("runes");
       void loadRunes();
     } else {
       setView((current) => (current === "runes" ? "accounts" : current));
     }
+    lastPhase.current = payload.phase;
   }
 
   async function setRemote(enabled: boolean) {
@@ -804,15 +809,40 @@ function App() {
     }
   };
 
+  const toolsOpen = view === "champions" || view === "runes";
+  const brandMode = toolsOpen ? view : "accounts";
+  const otherMode = toolsOpen ? "accounts" : inChampSelect ? "runes" : "champions";
+  const switchLabel = toolsOpen ? "Switch to accounts" : inChampSelect ? "Switch to runes" : "Switch to champion lookup";
+
   return (
     <div className="shell dark">
       <header className="topbar">
-        <BrandIcon className="brand-mark" size={26} />
-        <div className="brand-copy"><strong>Swapper</strong><span>RIOT ACCOUNTS</span></div>
+        <button type="button" className={`brand-button mode-${brandMode}`} aria-label={switchLabel} title={switchLabel} onClick={() => {
+          setModeSpin((spin) => spin + 180);
+          navigate(otherMode);
+        }}>
+          <span className="brand-icon" style={{ transform: `rotate(${modeSpin}deg)` }}>
+            <span style={{ transform: `rotate(${-modeSpin}deg)` }}>
+              {brandMode === "accounts" ? <BrandIcon className="brand-mark" size={22} /> : brandMode === "champions" ? (
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12 1.8C6.6 1.8 3.4 5.8 3.4 10.6v5L7.2 20.4v2.2l3-2V22h3.6v-1.4l3 2v-2.2l3.8-4.8v-5C20.6 5.8 17.4 1.8 12 1.8zM6 9.8h5V19l-2.2 1.4v-8.2H6zM18 9.8h-5V19l2.2 1.4v-8.2H18z" />
+                </svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 2l8.5 5v10L12 22l-8.5-5V7z" /><path d="M12 7v10" /><path d="M8.5 9.5L12 7l3.5 2.5" />
+                </svg>
+              )}
+            </span>
+          </span>
+          <span className="brand-copy">
+            <strong>{brandMode === "accounts" ? "Swapper" : brandMode === "champions" ? "Champions" : "Runes"}{brandMode === "runes" && <i className="brand-live-dot" aria-label="Live champion select" />}</strong>
+            <span>⇄ <span className={`mode-${otherMode}`}>{otherMode.toUpperCase()}</span></span>
+          </span>
+        </button>
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
       </header>
 
-      <main className={`main-panel${view === "settings" ? " settings-panel" : ""}${view === "runes" ? " runes-panel-host" : ""}`}>
+      <main className={`main-panel${view === "settings" ? " settings-panel" : ""}${toolsOpen ? " runes-panel-host" : ""}`}>
         {view === "accounts" ? (
           <>
             <div className="panel-heading">
@@ -892,6 +922,20 @@ function App() {
             </div>
             {data.accounts.length > 0 && <Button variant="outline" className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
           </>
+        ) : view === "champions" ? (
+          <div className="runes-panel runes-desktop">
+            <div className="runes-body">
+              <ChampionTab
+                mode="desktop"
+                initialTier={data.runeTier}
+                prefillChampion={null}
+                prefillPosition=""
+                sessionKey={String(runeSession)}
+                api={championApi}
+                onLoadMatchup={loadMatchup}
+              />
+            </div>
+          </div>
         ) : view === "runes" ? (
           <RunesPanel
             mode="desktop"

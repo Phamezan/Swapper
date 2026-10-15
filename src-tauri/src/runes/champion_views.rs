@@ -5,6 +5,7 @@
 use std::collections::HashMap;
 
 use super::data;
+use super::duos::{self, DuoList};
 use super::items;
 use super::lolalytics;
 use super::overview::{self, Damage, Overview};
@@ -81,6 +82,58 @@ fn build_tier_list(found: Option<Sourced<TierList>>, names: &HashMap<i64, String
         stale: sourced.stale,
         updated_at: sourced.fetched_at,
     }
+}
+
+#[derive(Debug, Clone, PartialEq, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DuoRowView {
+    pub adc_id: i64,
+    pub adc_name: String,
+    pub support_id: i64,
+    pub support_name: String,
+    pub tier: String,
+    pub win_pct: f64,
+    /// Current-patch games together; 0 when only the previous patch had it.
+    pub games: u64,
+}
+
+#[derive(Debug, Clone, PartialEq, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DuoListView {
+    pub rows: Vec<DuoRowView>,
+    pub unavailable: bool,
+    pub stale: bool,
+    pub updated_at: Option<i64>,
+}
+
+/// The best ADC + Support pairs for a rank bracket, from u.gg.
+pub async fn duo_list_view(tier: &str) -> DuoListView {
+    let found = duos::load(tier).await;
+    let names = data::champion_names().await.unwrap_or_default();
+    build_duo_list(found, &names)
+}
+
+fn build_duo_list(found: Option<Sourced<DuoList>>, names: &HashMap<i64, String>) -> DuoListView {
+    let Some(sourced) = found else {
+        return DuoListView { rows: Vec::new(), unavailable: true, stale: false, updated_at: None };
+    };
+    let rows = sourced
+        .value
+        .duos
+        .iter()
+        .filter_map(|duo| {
+            Some(DuoRowView {
+                adc_id: duo.adc_id,
+                adc_name: names.get(&duo.adc_id)?.clone(),
+                support_id: duo.support_id,
+                support_name: names.get(&duo.support_id)?.clone(),
+                tier: tierlist::tier_label(duo.tier).to_string(),
+                win_pct: duo.win_pct,
+                games: duo.games,
+            })
+        })
+        .collect();
+    DuoListView { rows, unavailable: false, stale: sourced.stale, updated_at: sourced.fetched_at }
 }
 
 // ---------------------------------------------------------------------------

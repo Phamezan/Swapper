@@ -67,7 +67,18 @@ button[data-slot="button"][data-variant="outline"] { border-color: var(--line-st
 button[data-slot="button"][data-variant="outline"]:hover { border-color: var(--text-secondary); background: var(--surface-hover); }
 
 .shell { width: 100%; height: 100%; display: flex; flex-direction: column; border: 0; background: var(--surface-base); box-shadow: none; }
-.topbar { min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 16px; border-bottom: 1px solid var(--line-subtle); background: var(--surface-header); }
+.topbar { min-height: 52px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 12px 0 8px; border-bottom: 1px solid var(--line-subtle); background: var(--surface-header); }
+.mode-accounts { --mode-color: var(--brand-green); }
+.mode-champions { --mode-color: var(--brand-champions); }
+.mode-runes { --mode-color: var(--brand-runes); }
+.brand-button { display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px 0 8px; border: 1px solid var(--line-subtle); border-radius: 11px; background: var(--surface-panel); color: var(--mode-color); text-align: left; font-family: inherit; }
+.brand-button:hover { background: var(--surface-raised); border-color: var(--line-strong); }
+.brand-icon { width: 28px; height: 28px; flex: none; display: grid; place-items: center; border-radius: 8px; background: color-mix(in srgb, var(--mode-color) 13%, transparent); transition: transform .4s ease, background .3s ease, color .3s ease; }
+.brand-icon > span { display: grid; place-items: center; }
+.brand-copy strong { color: var(--mode-color); transition: color .3s ease; }
+.brand-copy span[class^="mode-"] { color: var(--mode-color); transition: color .3s ease; }
+.brand-live-dot { display: inline-block; width: 7px; height: 7px; margin-left: 6px; border-radius: 50%; background: var(--mode-color); }
+@media (prefers-reduced-motion: reduce) { .brand-icon { transition: none; } }
 .brand-mark { flex: none; display: block; }
 .brand-copy { display: flex; flex-direction: column; gap: 2px; }
 .brand-copy strong { font-size: 15px; line-height: 1; letter-spacing: -.025em; font-weight: 780; }

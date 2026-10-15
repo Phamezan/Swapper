@@ -42,6 +42,7 @@ fn routes() -> Router<Arc<RemoteCore>> {
         .route("/api/runes/counters", get(champion_counters))
         .route("/api/runes/overview", get(champion_overview))
         .route("/api/runes/tierlist", get(tier_list))
+        .route("/api/runes/duos", get(duo_list))
         .route("/api/runes/champions", get(champion_list))
         .route("/api/items/import", axum::routing::post(import_item_build))
         .route("/api/runes/apply", axum::routing::post(apply_runes))
@@ -530,6 +531,10 @@ struct TierListQuery {
 
 async fn tier_list(Query(query): Query<TierListQuery>) -> Response {
     Json(crate::runes::tier_list_view(&query.position, &query.tier).await).into_response()
+}
+
+async fn duo_list(Query(query): Query<TierListQuery>) -> Response {
+    Json(crate::runes::duo_list_view(&query.tier).await).into_response()
 }
 
 async fn champion_list() -> Response {
