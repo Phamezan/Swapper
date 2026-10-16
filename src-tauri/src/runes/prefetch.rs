@@ -100,13 +100,19 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
     // Each preset's keystone build from lolalytics, bounded and single-flighted.
     // The item ids are collected so their icons are warm too.
     unique(&mut keystones);
-    let builds: Vec<Option<super::KeystoneBuildView>> = stream::iter(keystones)
+    let builds: Vec<Option<super::PresetBuildView>> = stream::iter(keystones)
         .map(|keystone| {
             let position = position.clone();
             let tier = tier.clone();
             async move {
-                super::view::preset_build_view(context.champion_id, &position, &tier, keystone)
-                    .await
+                super::view::preset_build_view(
+                    context.champion_id,
+                    &position,
+                    &tier,
+                    keystone,
+                    None,
+                )
+                .await
             }
         })
         .buffer_unordered(BUILD_CONCURRENCY)
@@ -116,9 +122,20 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
         return;
     }
     for build in builds.into_iter().flatten() {
-        items.extend(build.starters.iter().map(|item| item.id));
-        items.extend(build.items.iter().map(|item| item.id));
-        items.extend(build.options.iter().map(|item| item.id));
+        if let Some(win) = &build.highest_win {
+            runes.push(win.preset.keystone);
+            runes.extend(&win.preset.primary_runes);
+            runes.extend(&win.preset.secondary_runes);
+            runes.extend(&win.preset.shards);
+            spells.extend(&win.preset.spells);
+        }
+        for path in
+            std::iter::once(&build.pick).chain(build.highest_win.as_ref().map(|win| &win.build))
+        {
+            items.extend(path.starters.iter().map(|item| item.id));
+            items.extend(path.items.iter().map(|item| item.id));
+            items.extend(path.options.iter().map(|item| item.id));
+        }
     }
     // Pro builds page 1: the slow u.gg call this prefetch exists to hide.
     if let Ok(sourced) = data::pro_builds(context.champion_id, &position, 1, false).await {

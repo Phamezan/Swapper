@@ -85,7 +85,13 @@ impl Matchup {
     /// The rune page as a selection, with tree ids looked up in the catalog.
     /// `None` when the page is missing or its runes are not in the catalog.
     pub fn selection(&self, catalog: &PerkCatalog) -> Option<RuneSelection> {
-        let runes = self.runes.as_ref()?;
+        self.runes.as_ref()?.selection(catalog)
+    }
+}
+
+impl MatchupRunes {
+    pub fn selection(&self, catalog: &PerkCatalog) -> Option<RuneSelection> {
+        let runes = self;
         let primary_page_id = tree_of(catalog, runes.keystone)?;
         let secondary_page_id = tree_of(catalog, *runes.secondary_runes.first()?)?;
         if primary_page_id == secondary_page_id {
@@ -192,7 +198,7 @@ fn id_list(value: &Value, len: usize) -> Option<Vec<i64>> {
     (ids.len() == len).then_some(ids)
 }
 
-fn parse_runes(pick: &Value) -> Option<MatchupRunes> {
+pub(super) fn parse_runes(pick: &Value) -> Option<MatchupRunes> {
     let set = pick.get("runes")?.get("set")?;
     let primary = id_list(set.get("pri")?, 4)?;
     Some(MatchupRunes {
@@ -203,7 +209,7 @@ fn parse_runes(pick: &Value) -> Option<MatchupRunes> {
     })
 }
 
-fn parse_spells(pick: &Value) -> Option<[i64; 2]> {
+pub(super) fn parse_spells(pick: &Value) -> Option<[i64; 2]> {
     let ids = id_list(pick.get("sums")?.get("ids")?, 2)?;
     Some([ids[0], ids[1]])
 }

@@ -92,6 +92,65 @@ pub struct KeystoneBuild {
     pub patch: Option<PatchInfo>,
 }
 
+/// Both summaries from a single page. Flattening preserves old pick-only caches.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct KeystoneBuilds {
+    #[serde(flatten)]
+    pub pick: KeystoneBuild,
+    #[serde(default)]
+    pub win: Option<WinBuild>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct WinBuild {
+    pub build: KeystoneBuild,
+    pub runes: super::matchup::MatchupRunes,
+    pub spells: Option<[i64; 2]>,
+}
+
+impl WinBuild {
+    /// Compare with the actual op.gg preset, whose runes may differ from pick's.
+    pub fn matches_most_played(
+        &self,
+        selection: &super::RuneSelection,
+        pick: &KeystoneBuild,
+    ) -> bool {
+        let same_ids = |left: &[i64], right: &[i64]| {
+            let mut left = left.to_vec();
+            let mut right = right.to_vec();
+            left.sort_unstable();
+            right.sort_unstable();
+            left == right
+        };
+        self.runes.keystone == selection.keystone
+            && same_ids(&self.runes.primary_runes, &selection.primary_runes)
+            && same_ids(&self.runes.secondary_runes, &selection.secondary_runes)
+            // Shards belong to specific rows; their order matters.
+            && self.runes.shards == selection.shards
+            && self.build.core_len == 3 && pick.core_len == 3
+            && self.build.items.get(..3).zip(pick.items.get(..3))
+                .is_some_and(|(win, pick)| same_ids(win, pick))
+    }
+}
+
+pub fn blend_builds(
+    now: KeystoneBuilds,
+    prev: Option<&KeystoneBuilds>,
+    info: PatchInfo,
+) -> KeystoneBuilds {
+    KeystoneBuilds {
+        pick: blend_build(now.pick, prev.map(|p| &p.pick), info.clone()),
+        win: now.win.map(|win| WinBuild {
+            build: blend_build(
+                win.build,
+                prev.and_then(|p| p.win.as_ref()).map(|w| &w.build),
+                info,
+            ),
+            ..win
+        }),
+    }
+}
+
 /// The champion slug lolalytics uses: lower-case, no spaces or punctuation.
 ///
 /// Most names slugify directly (`Kai'Sa` -> `kaisa`, `Dr. Mundo` -> `drmundo`).
@@ -195,7 +254,11 @@ pub fn vs_cache_key(champion_slug: &str, enemy_slug: &str, lane: &str, tier: &st
 /// A page without the expected data yields `None` rather than an error, so one
 /// card is simply left without a build.
 pub fn parse_build(html: &str) -> Option<KeystoneBuild> {
-    parse_qwik(html).or_else(|| parse_anchors(html))
+    parse_builds(html).map(|builds| builds.pick)
+}
+
+pub fn parse_builds(html: &str) -> Option<KeystoneBuilds> {
+    parse_qwik(html).or_else(|| parse_anchors(html).map(|pick| KeystoneBuilds { pick, win: None }))
 }
 
 /// The compacted state inside `<script type="qwik/json">`.
@@ -206,7 +269,7 @@ pub(super) struct Qwik {
 }
 
 /// Parses the structured Qwik state, preferring the "Most Common Build".
-fn parse_qwik(html: &str) -> Option<KeystoneBuild> {
+fn parse_qwik(html: &str) -> Option<KeystoneBuilds> {
     let payload = qwik_json(html)?;
     let state: Qwik = serde_json::from_str(payload).ok()?;
     let objs = &state.objs;
@@ -222,17 +285,21 @@ fn parse_qwik(html: &str) -> Option<KeystoneBuild> {
         let pick = resolve(map.get("pick")?, objs, 0);
         if let Some(mut build) = build_from_summary(&pick) {
             let tables = page_tables(objs);
-            build.skill_priority = pick
-                .get("skillpriority")
-                .and_then(|priority| priority.get("id"))
-                .and_then(Value::as_str)
-                .and_then(skill_priority)
+            build.skill_priority = build
+                .skill_priority
                 .or_else(|| tables.as_ref().and_then(page_skill_priority));
-            build.skill_order = super::matchup::parse_skill_order(&pick);
             if let Some(tables) = &tables {
                 widen_options(&mut build, tables);
             }
-            return Some(build);
+            let win = map.get("win").and_then(|value| {
+                let summary = resolve(value, objs, 0);
+                Some(WinBuild {
+                    build: build_from_summary(&summary)?,
+                    runes: super::matchup::parse_runes(&summary)?,
+                    spells: super::matchup::parse_spells(&summary),
+                })
+            });
+            return Some(KeystoneBuilds { pick: build, win });
         }
     }
     None
@@ -379,7 +446,11 @@ fn select_path(ids: &mut Vec<i64>, slots: Vec<Vec<Ranked>>) -> Vec<ItemCandidate
 /// patch's game counts. The core, starters and skill order stay the current
 /// patch's (the page only reports its single most common one); the core's win
 /// rate is blended when both patches have the same core.
-pub fn blend_build(mut now: KeystoneBuild, prev: Option<&KeystoneBuild>, info: PatchInfo) -> KeystoneBuild {
+pub fn blend_build(
+    mut now: KeystoneBuild,
+    prev: Option<&KeystoneBuild>,
+    info: PatchInfo,
+) -> KeystoneBuild {
     now.patch = Some(info);
     let Some(prev) = prev else {
         return now;
@@ -622,8 +693,12 @@ fn build_from_summary(summary: &Value) -> Option<KeystoneBuild> {
         core_len,
         core_games,
         core_win_pct,
-        skill_priority: None,
-        skill_order: None,
+        skill_priority: summary
+            .get("skillpriority")
+            .and_then(|p| p.get("id"))
+            .and_then(Value::as_str)
+            .and_then(skill_priority),
+        skill_order: super::matchup::parse_skill_order(summary),
         slots,
         patch: None,
     })
@@ -925,11 +1000,11 @@ impl LolalyticsClient {
         tier: &str,
         keystone: i64,
         patch: Option<&str>,
-    ) -> Result<Option<KeystoneBuild>, ProviderError> {
+    ) -> Result<Option<KeystoneBuilds>, ProviderError> {
         let body = self
             .page(url(champion_slug, lane, tier, keystone, patch))
             .await?;
-        Ok(parse_build(&body))
+        Ok(parse_builds(&body))
     }
 
     /// The HTML of one lolalytics page.
@@ -957,6 +1032,135 @@ mod tests {
 
     const AHRI: &str = include_str!("../../tests/fixtures/lolalytics-ahri-mid-8112.html");
     const JINX: &str = include_str!("../../tests/fixtures/lolalytics-jinx-adc-8008.html");
+
+    #[test]
+    fn win_later_slots_prefer_support_over_a_small_high_win_sample() {
+        let html = r#"<script type="qwik/json">{"objs":[
+            {"pick":"1","win":"1"},
+            {"items":"2","runes":"3"},
+            {"core":{"set":[1,2,3]},
+             "item4":[{"id":4,"n":50,"wr":90},{"id":5,"n":1500,"wr":55}],
+             "item5":[{"id":6,"n":50,"wr":90},{"id":7,"n":1500,"wr":55}],
+             "item6":[{"id":8,"n":50,"wr":90},{"id":9,"n":1500,"wr":55}]},
+            {"set":{"pri":[8112,8139,8137,8106],"sec":[8473,8242],"mod":[5008,5008,5011]}}
+        ]}</script>"#;
+        let builds = parse_builds(html).unwrap();
+        let win = &builds.win.as_ref().unwrap().build;
+        assert_eq!(win.items, vec![1, 2, 3, 5, 7, 9]);
+        assert!(
+            win.options.iter().any(|item| item.id == 4),
+            "the small sample exceeds the 2% floor"
+        );
+
+        let blended = blend_builds(builds.clone(), Some(&builds), blend_info());
+        assert_eq!(blended.win.unwrap().build.items, vec![1, 2, 3, 5, 7, 9]);
+    }
+
+    #[test]
+    fn qwik_requires_both_summary_keys_but_accepts_a_null_win() {
+        let html = r#"<script type="qwik/json">{"objs":[
+            {"pick":{"items":{"core":{"set":[1,2,3]}}},"win":null}
+        ]}</script>"#;
+        assert!(parse_qwik(html).is_some());
+        assert!(parse_qwik(&html.replace(",\"win\":null", "")).is_none());
+    }
+
+    #[test]
+    fn both_summaries_keep_their_own_items_runes_spells_and_skills() {
+        let ahri = parse_builds(AHRI).unwrap();
+        assert_eq!(ahri.pick, parse_build(AHRI).unwrap());
+        let win = ahri.win.unwrap();
+        assert_eq!(win.build.items, vec![2503, 3020, 3100, 3089, 3157, 3041]);
+        assert_eq!(win.build.core_games, 1835);
+        assert_eq!(win.build.core_win_pct, Some(56.19));
+        assert_eq!(win.runes.keystone, 8112);
+        assert_eq!(win.runes.primary_runes, vec![8139, 8137, 8106]);
+        assert_eq!(win.runes.secondary_runes, vec![8473, 8242]);
+        assert_eq!(win.runes.shards, vec![5008, 5008, 5011]);
+        assert_eq!(win.spells, Some([4, 14]));
+        assert_eq!(win.build.skill_order.as_deref(), Some("WEQQQRQWQWRWWEE"));
+        assert_ne!(win.build.skill_order, ahri.pick.skill_order);
+
+        let jinx = parse_builds(JINX).unwrap();
+        assert_eq!(jinx.pick.core_games, 44247);
+        let win = jinx.win.unwrap();
+        assert_eq!(win.build.items, vec![2523, 3085, 3006, 3031, 3036, 3026]);
+        assert_eq!(win.build.core_games, 4790);
+        assert_eq!(win.runes.primary_runes, vec![8009, 9103, 8014]);
+        assert_eq!(win.runes.shards, vec![5008, 5008, 5001]);
+    }
+
+    #[test]
+    fn a_missing_or_unusable_win_summary_keeps_the_pick() {
+        for win in ["null", r#"{"items":{"core":{"set":[1,2,3]}}}"#] {
+            let html = format!(
+                r#"<script type="qwik/json">{{"objs":[{{"pick":{{"items":{{"core":{{"set":[4,5,6]}}}}}},"win":{win}}}]}}</script>"#
+            );
+            let builds = parse_builds(&html).unwrap();
+            assert_eq!(builds.pick.items, vec![4, 5, 6]);
+            assert!(builds.win.is_none());
+        }
+    }
+
+    #[test]
+    fn win_dedupe_requires_the_same_runes_and_core_set() {
+        let mut builds = parse_builds(JINX).unwrap();
+        let win = builds.win.as_ref().unwrap();
+        let selection = super::super::RuneSelection {
+            primary_page_id: 8000,
+            secondary_page_id: 8300,
+            keystone: win.runes.keystone,
+            primary_runes: win.runes.primary_runes.clone(),
+            secondary_runes: win.runes.secondary_runes.clone(),
+            shards: win.runes.shards.clone(),
+        };
+        // The fixture cores have the same three items in different orders.
+        assert!(win.matches_most_played(&selection, &builds.pick));
+        for field in ["keystone", "primary", "secondary", "shards"] {
+            let mut other = selection.clone();
+            match field {
+                "keystone" => other.keystone += 1,
+                "primary" => other.primary_runes[0] += 1,
+                "secondary" => other.secondary_runes[0] += 1,
+                _ => other.shards[0] += 1,
+            }
+            assert!(!win.matches_most_played(&other, &builds.pick), "{field}");
+        }
+        builds.pick.items[0] = 9999;
+        assert!(!builds
+            .win
+            .as_ref()
+            .unwrap()
+            .matches_most_played(&selection, &builds.pick));
+    }
+
+    #[test]
+    fn both_builds_blend_against_their_own_previous_summary() {
+        let now = parse_builds(AHRI).unwrap();
+        let mut prev = now.clone();
+        prev.pick.core_win_pct = Some(40.0);
+        prev.win.as_mut().unwrap().build.core_win_pct = Some(70.0);
+        let original_win = now.win.as_ref().unwrap().clone();
+        let blended = blend_builds(now.clone(), Some(&prev), blend_info());
+        assert_eq!(
+            blended.pick,
+            blend_build(now.pick, Some(&prev.pick), blend_info())
+        );
+        let win = blended.win.unwrap();
+        assert!(win.build.core_win_pct.unwrap() > original_win.build.core_win_pct.unwrap());
+        assert_eq!(win.runes, original_win.runes);
+        assert_eq!(win.spells, original_win.spells);
+        assert_eq!(win.build.patch, Some(blend_info()));
+    }
+
+    #[test]
+    fn old_pick_only_cache_entries_remain_readable() {
+        let pick = parse_build(AHRI).unwrap();
+        let cached: KeystoneBuilds =
+            serde_json::from_value(serde_json::to_value(&pick).unwrap()).unwrap();
+        assert_eq!(cached.pick, pick);
+        assert!(cached.win.is_none());
+    }
 
     fn no_duplicates(ids: &[i64]) -> bool {
         let mut sorted = ids.to_vec();

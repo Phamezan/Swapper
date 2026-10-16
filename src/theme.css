@@ -32,5 +32,10 @@
   --brand-champions: #7cc4ff;
   --brand-ink: #141a1b;
   --danger: #ec918d;
+  /* Preset card win-rate scale: >=54, 52-54, 50-52 (text colour), <50 (danger). */
+  --wr-high: #5fe0c4;
+  --wr-good: #a6dd7e;
+  --wr-mid: var(--text-primary);
+  --wr-low: var(--danger);
   --focus: #ffffff;
 }

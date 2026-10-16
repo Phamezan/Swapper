@@ -3,7 +3,7 @@ import { Network, Search, Swords } from "lucide-react";
 import { BrandIcon } from "@/components/BrandIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
-import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "../runes/types";
+import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "../runes/types";
 import { isGamePhase, shopNoticeFrom } from "../runes/types";
 import "./remote.css";
 
@@ -396,6 +396,7 @@ export default function RemoteApp() {
     presetIndex: number | null,
     spells: number[] | null,
     enemyChampionId?: number | null,
+    highestWin = false,
   ) {
     setRunesBusy(true);
     setRunesError(null);
@@ -410,6 +411,7 @@ export default function RemoteApp() {
           spells,
           position: runes?.position ?? null,
           enemyChampionId: enemyChampionId ?? null,
+          highestWin,
         }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
@@ -491,16 +493,18 @@ export default function RemoteApp() {
     position: string,
     tier: string,
     keystone: number,
-  ): Promise<KeystoneBuildView | null> {
+    mostPlayed?: Selection,
+  ): Promise<PresetBuildView | null> {
     const params = new URLSearchParams({
       championId: String(championId),
       position,
       tier,
       keystone: String(keystone),
     });
+    if (mostPlayed) params.set("mostPlayed", JSON.stringify(mostPlayed));
     const response = await fetch(`/api/runes/keystone-build?${params.toString()}`, { cache: "no-store" });
     if (!response.ok) return null;
-    return await response.json() as KeystoneBuildView | null;
+    return await response.json() as PresetBuildView | null;
   }
 
   async function loadMatchup(
@@ -702,7 +706,7 @@ export default function RemoteApp() {
                 busy={runesBusy}
                 error={runesError}
                 shopNotice={shopNotice}
-                onApply={(selection, presetIndex, spells, enemy) => applyRunes(selection, presetIndex, spells, enemy)}
+                onApply={applyRunes}
                 onToggleAutoApply={(enabled) => void toggleAutoApply(enabled)}
                 onToggleSpellsWithRunes={(enabled) => void toggleSpellsWithRunes(enabled)}
                 onToggleImportItems={(enabled) => void toggleImportItems(enabled)}

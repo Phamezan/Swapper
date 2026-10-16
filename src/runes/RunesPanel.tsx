@@ -13,14 +13,16 @@ import {
   RunesView,
   ProBuild,
   ProBuildsView,
-  KeystoneBuildView,
+  PresetBuildView,
   MatchupView,
   ChampionApi,
   Selection,
   ShopNotice,
   LOW_SAMPLE_GAMES,
-  fmtGames,
+  fmtExactGames,
+  fmtPct,
   isLowSample,
+  wrTone,
   selectionFromPreset,
   selectionFromProBuild,
   selectionFromApplied,
@@ -36,6 +38,41 @@ let rememberedScreen: { championId: number; screen: RuneScreen } = {
   championId: -1,
   screen: "presets",
 };
+
+function SwordsIcon() {
+  return (
+    <svg className="rune-preset-swords" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14.5 17.5 3 6V3h3l11.5 11.5" /><path d="m13 19 6-6" /><path d="m16 16 4 4" /><path d="m19 21 2-2" />
+      <path d="M9.5 6.5 14 2h3v3l-4.5 4.5" /><path d="m5 13 6 6" /><path d="m8 16-4 4" /><path d="m3 19 2 2" />
+    </svg>
+  );
+}
+
+const lineIcon = { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
+
+function CrowdIcon() {
+  return (
+    <svg className="preset-tab-icon" {...lineIcon}>
+      <circle cx="9" cy="8" r="3.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0" /><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6" />
+    </svg>
+  );
+}
+
+function TrophyIcon() {
+  return (
+    <svg className="preset-tab-icon" {...lineIcon}>
+      <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z" /><path d="M17 5h3v2a4 4 0 0 1-4 4M7 5H4v2a4 4 0 0 0 4 4" />
+    </svg>
+  );
+}
+
+function PencilIcon() {
+  return (
+    <svg {...lineIcon} width={14} height={14} strokeWidth={2.2}>
+      <path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+    </svg>
+  );
+}
 
 function CheckIcon({ size = 15 }: { size?: number }) {
   return (
@@ -72,6 +109,7 @@ type Props = {
     presetIndex: number | null,
     spells: number[] | null,
     enemyChampionId?: number | null,
+    highestWin?: boolean,
   ) => void | Promise<void>;
   onToggleAutoApply: (enabled: boolean) => void;
   onToggleSpellsWithRunes: (enabled: boolean) => void;
@@ -96,7 +134,8 @@ type Props = {
     position: string,
     tier: string,
     keystone: number,
-  ) => Promise<KeystoneBuildView | null>;
+    mostPlayed?: Selection,
+  ) => Promise<PresetBuildView | null>;
   /** Loads the lane matchup build against the enemy laner, from lolalytics. */
   onLoadMatchup: (
     championId: number,
@@ -196,7 +235,8 @@ export function RunesPanel({
   const [pickerSlot, setPickerSlot] = useState<"d" | "f" | null>(null);
   const [importNotice, setImportNotice] = useState<string | null>(null);
   const [matchupResult, setMatchupResult] = useState<{ key: string; value: MatchupView | null } | null>(null);
-  const [generalResult, setGeneralResult] = useState<{ key: string; value: KeystoneBuildView | null } | null>(null);
+  const [buildResults, setBuildResults] = useState<{ key: string; values: Record<number, PresetBuildView | null> } | null>(null);
+  const [presetTab, setPresetTab] = useState<"pick" | "win">("pick");
   const [matchupLoading, setMatchupLoading] = useState(false);
   const [chosenEnemy, setChosenEnemy] = useState<{ championId: number; enemyId: number; session: string } | null>(null);
   const [buildChoice, setBuildChoice] = useState<BuildChoice>("matchup");
@@ -232,6 +272,7 @@ export function RunesPanel({
     setProOtp(false);
     setPickerSlot(null);
     setImportNotice(null);
+    setPresetTab("pick");
     proRequested.current = false;
     // Reset on a champion or session change, not on a statistics refresh.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -263,19 +304,34 @@ export function RunesPanel({
   const matchupKey = `${sessionKey}:${championId}:${enemyId}:${position}:${tier}`;
   const matchup = matchupResult?.key === matchupKey ? matchupResult.value : null;
   const topKeystone = view?.presets[0]?.keystone;
-  const generalKey = `${sessionKey}:${championId}:${position}:${tier}:${topKeystone}`;
-  const generalBuild = generalResult?.key === generalKey ? generalResult.value : null;
+  // Compare against the most-played preset for each keystone, without capping
+  // either list. Ignore changing game counts when deciding whether to reload.
+  const presetSelections = (view?.presets ?? []).filter((preset, index, presets) =>
+    presets.findIndex((other) => other.keystone === preset.keystone) === index).map(selectionFromPreset);
+  const generalKey = `${sessionKey}:${championId}:${position}:${tier}:${JSON.stringify(presetSelections)}`;
+  const builds = buildResults?.key === generalKey ? buildResults.values : {};
+  const generalBuild = topKeystone !== undefined ? builds[topKeystone] ?? null : null;
+  const buildsLoading = presetSelections.some((preset) => builds[preset.keystone] === undefined);
   useEffect(() => {
     let live = true;
-    if (championId > 0 && topKeystone !== undefined && enemyId > 0) {
-      onLoadBuild(championId, position, tier, topKeystone)
-        .then((value) => { if (live) setGeneralResult({ key: generalKey, value }); })
-        .catch(() => { if (live) setGeneralResult({ key: generalKey, value: null }); });
+    setPresetTab("pick");
+    setBuildResults({ key: generalKey, values: {} });
+    if (championId > 0) {
+      for (const preset of presetSelections) {
+        void onLoadBuild(championId, position, tier, preset.keystone, preset)
+          .catch(() => null)
+          .then((value) => {
+            if (live) setBuildResults((previous) => ({
+              key: generalKey,
+              values: { ...(previous?.key === generalKey ? previous.values : {}), [preset.keystone]: value },
+            }));
+          });
+      }
     }
     return () => { live = false; };
-    // The key covers the general build filters; enemy changes reuse the same baseline.
+    // The key covers all filters and rune selections; the loader is a wrapper.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [generalKey, enemyId > 0]);
+  }, [generalKey]);
   useEffect(() => {
     let live = true;
     setMatchupResult(null);
@@ -508,7 +564,18 @@ export function RunesPanel({
     ? `${appliedKeystone?.name ?? "Recommended runes"} · ${view.applied.name}`
     : null;
   const matchupActive = buildChoice === "matchup" && !matchup?.fallback && !!matchup?.preset;
-  const shownPresets = matchupActive && matchup?.preset ? [matchup.preset] : view.presets;
+  const winPresets = presetSelections.flatMap((selection) => {
+    const win = builds[selection.keystone]?.highestWin;
+    return win ? [win.preset] : [];
+  });
+  const winActive = !matchupActive && presetTab === "win" && winPresets.length > 0;
+  const allWinBuildsMatch = presetSelections.length > 0 && presetSelections.every(
+    (selection) => builds[selection.keystone]?.highestWinMatchesPick === true,
+  );
+  const emptyWinTooltip = buildsLoading ? "Loading highest win-rate builds…"
+    : allWinBuildsMatch ? "The highest win-rate builds match the most played ones."
+    : "No distinct highest win-rate builds are available for this champion and role.";
+  const shownPresets = matchupActive && matchup?.preset ? [matchup.preset] : winActive ? winPresets : view.presets;
   const showLockHint = screen !== "pro" && screen !== "champion" && view.autoApply && !view.applied && view.phase === "ChampSelect" && !view.locked;
 
   return (
@@ -651,6 +718,18 @@ export function RunesPanel({
           />
         ) : screen === "presets" ? (
           <div className="runes-presets">
+            {!matchupActive && !view.tierEmpty && view.presets.length > 0 && (
+              <div className="runes-tabs preset-build-tabs" role="group" aria-label="Preset builds">
+                <button type="button" aria-pressed={!winActive} className={!winActive ? "is-active" : ""}
+                  onClick={() => setPresetTab("pick")}><CrowdIcon />Most played <em>{view.presets.length}</em></button>
+                <button type="button" aria-pressed={winActive} className={winActive ? "is-active" : ""}
+                  aria-disabled={winPresets.length === 0}
+                  title={winPresets.length === 0 ? emptyWinTooltip : undefined}
+                  onClick={() => { if (winPresets.length > 0) setPresetTab("win"); }}>
+                  <TrophyIcon />Highest win rate <em>{winPresets.length}</em>
+                </button>
+              </div>
+            )}
             {view.tierEmpty ? (
               <div className="runes-tier-empty">
                 <p>{view.message ?? `Not enough games at ${view.tierLabel}.`}</p>
@@ -683,25 +762,64 @@ export function RunesPanel({
             )}
             {enemyId > 0 && !matchupLoading && !matchup && <p className="matchup-waiting">No {roleLabel.toLowerCase()} data vs {enemies.find((enemy) => enemy.id === enemyId)?.name ?? view.enemyChampionName}. Showing the general build.</p>}
             {shownPresets.map((preset) => {
+              const win = winActive ? builds[preset.keystone]?.highestWin : null;
               const presetSelection = selectionFromPreset(preset);
               const isActive = sameSelection(presetSelection, active);
               const isPending = busy && !isActive && selection !== null && sameSelection(presetSelection, selection);
               const keystoneName = view.trees.flatMap((tree) => tree.keystones).find((rune) => rune.id === preset.keystone)?.name ?? preset.title;
-              const lowSample = isLowSample(preset.play);
+              const build = matchupActive ? matchup?.build ?? null : win ? win.build : builds[preset.keystone] ?? null;
+              const loadingBuild = !matchupActive && builds[preset.keystone] === undefined;
+              // Lolalytics core numbers of the shown build; op.gg's only once no build is coming.
+              const fromBuild = !!build && build.coreGames > 0;
+              const games = fromBuild ? build.coreGames : loadingBuild && buildsLoading ? null : preset.play;
+              const winPct = fromBuild ? build.coreWinPct : loadingBuild && buildsLoading ? null : preset.winPct;
+              const lowSample = games !== null && isLowSample(games);
+              const canClick = !busy && (isActive || view.canApply);
+              // A second click on the applied card opens it in the Editor instead of re-applying.
+              const applyPreset = () => {
+                if (!canClick) return;
+                setSelection(presetSelection);
+                if (isActive) {
+                  userPickedTab.current = true;
+                  editorFromPreset.current = true;
+                  setScreen("editor");
+                  return;
+                }
+                if (matchupActive && matchup) {
+                  void onApply(presetSelection, null, preset.spells, matchup.enemyChampionId);
+                } else if (winActive) {
+                  void onApply(presetSelection, null, preset.spells, null, true);
+                } else {
+                  void onApply(presetSelection, preset.index, preset.spells);
+                }
+              };
+              const presetTitle = matchupActive ? `Build vs ${matchup?.enemyName}` : winActive ? keystoneName : preset.title;
               return (
-                <div key={matchupActive ? matchupKey : `${generalKey}:${preset.index}`} className={`rune-preset ${matchupActive ? "is-tailored" : ""} ${isActive ? "is-active" : ""}`}>
+                <div
+                  key={matchupActive ? matchupKey : `${generalKey}:${winActive ? `win:${preset.keystone}` : preset.index}`}
+                  className={`rune-preset ${matchupActive ? "is-tailored" : ""} ${winActive ? "is-highest-win" : ""} ${isActive ? "is-active" : ""} ${isPending ? "is-pending" : ""}`}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={isActive ? `Edit ${presetTitle} in the Editor` : `Apply ${presetTitle} build`}
+                  aria-disabled={!canClick}
+                  onClick={applyPreset}
+                  onKeyDown={(event) => {
+                    // Only the card itself: Enter/Space on a nested control must not apply.
+                    if (event.target !== event.currentTarget || (event.key !== "Enter" && event.key !== " ")) return;
+                    event.preventDefault();
+                    applyPreset();
+                  }}
+                >
                   <div className="rune-preset-head">
                     <span className="rune-preset-copy">
-                      <strong>{matchupActive ? `Build vs ${matchup?.enemyName}` : preset.title}</strong>
-                      <small>{keystoneName} · {preset.play > 0 ? `${fmtGames(preset.play)} games${matchupActive ? " in this matchup" : ""}` : "League recommendation"}
+                      <strong>{presetTitle}</strong>
+                      <small className="rune-preset-games">
+                        <SwordsIcon />
+                        {games === null ? "–" : games > 0 ? fmtExactGames(games) : "–"}
                         {lowSample && <span className="rune-low" title={`Under ${LOW_SAMPLE_GAMES} games`}>small sample</span>}
                       </small>
                     </span>
-                    {isActive ? (
-                      <span className="rune-preset-badge is-applied"><CheckIcon size={12} /> Applied</span>
-                    ) : matchupActive ? (
-                      <span className="rune-preset-badge is-tailored">Built for {matchup?.enemyName}</span>
-                    ) : null}
+                    {winPct !== null && winPct > 0 && <b className={`rune-preset-wr wr-${wrTone(winPct)}`}>{fmtPct(winPct)}</b>}
                   </div>
                   <div className="rune-preset-icons" aria-label="Runes and summoner spells">
                     <RuneIcon id={preset.keystone} mode={mode} className="rune-preset-keystone" />
@@ -716,27 +834,23 @@ export function RunesPanel({
                   </div>
                   <PresetBuild
                     mode={mode}
-                    championId={view.championId}
-                    position={view.position}
-                    tier={view.tier}
-                    keystone={preset.keystone}
-                    preloaded={matchupActive ? matchup?.build : preset === view.presets[0] ? generalBuild : null}
+                    build={build}
+                    loading={loadingBuild}
                     matchupOnly={matchupActive}
-                    onLoad={onLoadBuild}
                   />
-                  <div className="preset-build-actions">
-                    {matchup && !matchup.fallback && matchup.preset && <button type="button" className="matchup-build-link" disabled={busy} onClick={() => setBuildChoice(matchupActive ? "generic" : "matchup")}>
-                      {matchupActive ? "Use the general build instead" : `Use the build for ${matchup.enemyName}`}
-                    </button>}
-                    <button type="button" className="runes-apply" disabled={busy || !view.canApply} onClick={() => {
-                      setSelection(presetSelection);
-                      if (matchupActive && matchup) {
-                        void onApply(presetSelection, null, preset.spells, matchup.enemyChampionId);
-                      } else {
-                        void onApply(presetSelection, preset.index, preset.spells);
-                      }
-                    }}>{isPending ? "Applying…" : "Apply build"}</button>
-                  </div>
+                  {matchup && !matchup.fallback && matchup.preset && <button
+                    type="button"
+                    className="matchup-build-link"
+                    disabled={busy}
+                    onClick={(event) => { event.stopPropagation(); setBuildChoice(matchupActive ? "generic" : "matchup"); }}
+                    onKeyDown={(event) => event.stopPropagation()}
+                  >
+                    {matchupActive ? "Use the general build instead" : `Use the build for ${matchup.enemyName}`}
+                  </button>}
+                  {isActive ? <>
+                    <span className="corner-badge"><CheckIcon size={12} /> Applied</span>
+                    <span className="rune-preset-edit" aria-hidden><PencilIcon /><i>Edit</i></span>
+                  </> : isPending && <span className="corner-badge is-pending">Applying…</span>}
                 </div>
               );
             })}

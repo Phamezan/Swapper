@@ -70,7 +70,8 @@ pub use champion_views::{
 pub use counters_view::{champion_counters_view, champion_list, ChampionCountersView, ChampionOption};
 pub use matchup_view::{matchup_view, MatchupView};
 pub use view::{
-    preset_build_view, pro_builds_view, view, KeystoneBuildView, ProBuildsView, RunesView,
+    preset_build_view, pro_builds_view, view, KeystoneBuildView, PresetBuildView, ProBuildsView,
+    RunesView,
 };
 pub use watch::{
     apply_spells_enabled, auto_apply_current, auto_apply_enabled, configured_tier, current_status,
@@ -525,7 +526,7 @@ struct Shared {
     /// pros' solo-queue games from probuildstats, cached per champion/role/page.
     pro_builds: probuilds::MatchCache,
     /// Per-keystone item builds from lolalytics, cached per filter.
-    lolalytics: lolalytics::BuildCache,
+    lolalytics: lolalytics::BuildCache<lolalytics::KeystoneBuilds>,
     /// Lane matchup builds from lolalytics, cached per champion/enemy/lane.
     matchups: lolalytics::BuildCache<matchup::Matchup>,
     /// Per-champion matchup tables from lolalytics.

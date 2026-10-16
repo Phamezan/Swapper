@@ -453,12 +453,29 @@ struct KeystoneBuildQuery {
     #[serde(default)]
     tier: String,
     keystone: i64,
+    #[serde(default)]
+    most_played: Option<String>,
 }
 
 async fn keystone_build(Query(query): Query<KeystoneBuildQuery>) -> Response {
+    let most_played = match query
+        .most_played
+        .as_deref()
+        .map(serde_json::from_str::<crate::runes::RuneSelection>)
+        .transpose()
+    {
+        Ok(selection) => selection,
+        Err(_) => return StatusCode::BAD_REQUEST.into_response(),
+    };
     Json(
-        crate::runes::preset_build_view(query.champion_id, &query.position, &query.tier, query.keystone)
-            .await,
+        crate::runes::preset_build_view(
+            query.champion_id,
+            &query.position,
+            &query.tier,
+            query.keystone,
+            most_played.as_ref(),
+        )
+        .await,
     )
     .into_response()
 }
@@ -595,6 +612,8 @@ struct ApplyRunesRequest {
     /// The enemy laner of a matchup build, so its item build is imported.
     #[serde(default)]
     enemy_champion_id: Option<i64>,
+    #[serde(default)]
+    highest_win: bool,
 }
 
 async fn apply_runes(
@@ -621,13 +640,15 @@ async fn apply_runes(
         .await
     {
         Ok(applied) => {
-            let wants_items = body.preset_index.is_some() || body.enemy_champion_id.is_some();
+            let wants_items =
+                body.preset_index.is_some() || body.enemy_champion_id.is_some() || body.highest_win;
             if wants_items && crate::runes::import_items_enabled(&core.app) {
                 crate::runes::spawn_preset_items_import(
                     body.position,
                     crate::runes::configured_tier(&core.app),
                     keystone,
                     body.enemy_champion_id,
+                    body.highest_win,
                 );
             }
             if let Some(id) = applied.page_id {

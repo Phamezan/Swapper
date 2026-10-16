@@ -129,6 +129,33 @@ pub struct KeystoneBuildView {
     pub skill_order: Option<String>,
 }
 
+/// Existing pick payload plus the optional alternative from the same page.
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PresetBuildView {
+    #[serde(flatten)]
+    pub pick: KeystoneBuildView,
+    pub highest_win: Option<HighestWinView>,
+    pub highest_win_matches_pick: bool,
+}
+
+impl PresetBuildView {
+    pub fn into_items(self, highest_win: bool) -> Option<KeystoneBuildView> {
+        if highest_win {
+            self.highest_win.map(|win| win.build)
+        } else {
+            Some(self.pick)
+        }
+    }
+}
+
+#[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct HighestWinView {
+    pub preset: PresetView,
+    pub build: KeystoneBuildView,
+}
+
 /// One minute of a pro's item path: the items bought that minute, in purchase
 /// order, repeated ids stacked with a count.
 #[derive(Debug, Clone, serde::Serialize)]
@@ -665,7 +692,8 @@ pub async fn preset_build_view(
     position: &str,
     tier: &str,
     keystone: i64,
-) -> Option<KeystoneBuildView> {
+    most_played: Option<&super::RuneSelection>,
+) -> Option<PresetBuildView> {
     if champion_id <= 0 || keystone <= 0 {
         return None;
     }
@@ -676,12 +704,80 @@ pub async fn preset_build_view(
         .await
         .ok()??;
     let item_names = items::names().await;
-    Some(keystone_build_view(
-        sourced.value,
-        sourced.stale,
-        sourced.fetched_at,
-        &item_names,
-    ))
+    let catalog = data::catalog().await.ok();
+    let highest_win = catalog
+        .as_ref()
+        .ok_or(HighestWinOmission::Unavailable)
+        .and_then(|catalog| {
+            highest_win_view(
+                &sourced.value,
+                keystone,
+                most_played,
+                catalog,
+                sourced.stale,
+                sourced.fetched_at,
+                &item_names,
+            )
+        });
+    Some(PresetBuildView {
+        pick: keystone_build_view(
+            sourced.value.pick,
+            sourced.stale,
+            sourced.fetched_at,
+            &item_names,
+        ),
+        highest_win_matches_pick: matches!(highest_win, Err(HighestWinOmission::Duplicate)),
+        highest_win: highest_win.ok(),
+    })
+}
+
+#[derive(Debug, PartialEq, Eq)]
+enum HighestWinOmission {
+    Unavailable,
+    Duplicate,
+}
+
+fn highest_win_view(
+    builds: &lolalytics::KeystoneBuilds,
+    keystone: i64,
+    most_played: Option<&super::RuneSelection>,
+    catalog: &perks::PerkCatalog,
+    stale: bool,
+    updated_at: Option<i64>,
+    item_names: &HashMap<i64, String>,
+) -> Result<HighestWinView, HighestWinOmission> {
+    let win = builds.win.as_ref().ok_or(HighestWinOmission::Unavailable)?;
+    if win.runes.keystone != keystone {
+        return Err(HighestWinOmission::Unavailable);
+    }
+    let selection = win
+        .runes
+        .selection(catalog)
+        .ok_or(HighestWinOmission::Unavailable)?;
+    super::page::validate(&selection, &catalog_index(catalog))
+        .map_err(|_| HighestWinOmission::Unavailable)?;
+    if most_played.is_some_and(|selection| win.matches_most_played(selection, &builds.pick)) {
+        return Err(HighestWinOmission::Duplicate);
+    }
+    Ok(HighestWinView {
+        preset: PresetView {
+            index: 0,
+            title: catalog
+                .name(keystone)
+                .unwrap_or("Highest win rate")
+                .to_string(),
+            primary_page_id: selection.primary_page_id,
+            secondary_page_id: selection.secondary_page_id,
+            keystone: selection.keystone,
+            primary_runes: selection.primary_runes,
+            secondary_runes: selection.secondary_runes,
+            shards: selection.shards,
+            win_pct: win.build.core_win_pct,
+            play: win.build.core_games,
+            spells: win.spells.map(|pair| pair.to_vec()).unwrap_or_default(),
+        },
+        build: keystone_build_view(win.build.clone(), stale, updated_at, item_names),
+    })
 }
 
 /// The display model for one lolalytics build.
@@ -978,6 +1074,116 @@ async fn mixed_pages(champion_id: i64, position: &str, page: u32) -> Result<ProP
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn win_catalog() -> perks::PerkCatalog {
+        let styles = perks::parse_styles(
+            r#"{"styles":[
+            {"id":8100,"slots":[
+                {"type":"kKeyStone","perks":[8112]},
+                {"type":"minor","perks":[8139]},
+                {"type":"minor","perks":[8137,8140]},
+                {"type":"minor","perks":[8106]},
+                {"type":"kStatMod","perks":[5005,5008]},
+                {"type":"kStatMod","perks":[5008]},
+                {"type":"kStatMod","perks":[5001,5011]}]},
+            {"id":8400,"slots":[
+                {"type":"minor","perks":[]},
+                {"type":"minor","perks":[8473]},
+                {"type":"minor","perks":[8242]}]}
+        ]}"#,
+        )
+        .unwrap();
+        perks::PerkCatalog::new(HashMap::new(), styles)
+    }
+
+    #[test]
+    fn win_preset_maps_tree_ids_and_carries_its_own_apply_payload() {
+        let builds = lolalytics::parse_builds(include_str!(
+            "../../tests/fixtures/lolalytics-ahri-mid-8112.html"
+        ))
+        .unwrap();
+        let catalog = win_catalog();
+        let win = highest_win_view(
+            &builds,
+            8112,
+            None,
+            &catalog,
+            true,
+            Some(123),
+            &HashMap::new(),
+        )
+        .unwrap();
+        assert_eq!(win.preset.primary_page_id, 8100);
+        assert_eq!(win.preset.secondary_page_id, 8400);
+        assert_eq!(win.preset.primary_runes, vec![8139, 8137, 8106]);
+        assert_eq!(win.preset.secondary_runes, vec![8473, 8242]);
+        assert_eq!(win.preset.shards, vec![5008, 5008, 5011]);
+        assert_eq!(win.preset.spells, vec![4, 14]);
+        assert_eq!(win.preset.play, 1835);
+        assert_eq!(win.preset.win_pct, Some(56.19));
+        assert!(win.build.stale);
+        assert_eq!(win.build.updated_at, Some(123));
+        let view = PresetBuildView {
+            pick: keystone_build_view(builds.pick, false, None, &HashMap::new()),
+            highest_win: Some(win),
+            highest_win_matches_pick: false,
+        };
+        assert_eq!(view.clone().into_items(true).unwrap().items[0].id, 2503);
+        assert_eq!(view.clone().into_items(false).unwrap().items[0].id, 3118);
+        let without_win = PresetBuildView {
+            highest_win: None,
+            ..view
+        };
+        assert!(
+            without_win.into_items(true).is_none(),
+            "never import pick as a win build"
+        );
+    }
+
+    #[test]
+    fn win_view_dedupes_against_the_displayed_preset_and_omits_invalid_runes() {
+        let mut builds = lolalytics::parse_builds(include_str!(
+            "../../tests/fixtures/lolalytics-ahri-mid-8112.html"
+        ))
+        .unwrap();
+        let catalog = win_catalog();
+        let mut most_played = builds
+            .win
+            .as_ref()
+            .unwrap()
+            .runes
+            .selection(&catalog)
+            .unwrap();
+        builds.pick.items = builds.win.as_ref().unwrap().build.items.clone();
+        let project = |builds: &lolalytics::KeystoneBuilds,
+                       selection: &super::super::RuneSelection| {
+            highest_win_view(
+                builds,
+                8112,
+                Some(selection),
+                &catalog,
+                false,
+                None,
+                &HashMap::new(),
+            )
+        };
+        assert!(matches!(
+            project(&builds, &most_played),
+            Err(HighestWinOmission::Duplicate)
+        ));
+        most_played.primary_runes[1] = 8140;
+        assert!(project(&builds, &most_played).is_ok());
+        builds.win.as_mut().unwrap().runes.secondary_runes[1] = 99999;
+        assert!(matches!(
+            project(&builds, &most_played),
+            Err(HighestWinOmission::Unavailable)
+        ));
+        builds.win = None;
+        assert!(matches!(
+            project(&builds, &most_played),
+            Err(HighestWinOmission::Unavailable)
+        ));
+    }
 
     #[test]
     fn formats_patches_from_the_api_version_string() {

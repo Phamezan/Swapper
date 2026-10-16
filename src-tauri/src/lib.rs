@@ -1108,8 +1108,16 @@ async fn get_keystone_build(
     position: String,
     tier: String,
     keystone: i64,
-) -> Option<runes::KeystoneBuildView> {
-    runes::preset_build_view(champion_id, &position, &tier, keystone).await
+    most_played: Option<runes::RuneSelection>,
+) -> Option<runes::PresetBuildView> {
+    runes::preset_build_view(
+        champion_id,
+        &position,
+        &tier,
+        keystone,
+        most_played.as_ref(),
+    )
+    .await
 }
 
 /// The lane matchup build against the enemy laner, from lolalytics. `None`
@@ -1185,6 +1193,7 @@ async fn import_item_build(
 }
 
 #[tauri::command]
+#[allow(clippy::too_many_arguments)] // Tauri exposes these as named command arguments.
 async fn apply_rune_page(
     app: tauri::AppHandle,
     state: State<'_, AppState>,
@@ -1193,6 +1202,7 @@ async fn apply_rune_page(
     spells: Option<Vec<i64>>,
     position: Option<String>,
     enemy_champion_id: Option<i64>,
+    highest_win: Option<bool>,
 ) -> Result<runes::AppliedView, String> {
     let owned = state.rune_page_id();
     let keystone = selection.keystone;
@@ -1208,8 +1218,16 @@ async fn apply_rune_page(
     .map_err(|e| e.message().to_string())?;
     // Presets carry a recommended item build; exact pro pages import items
     // through their own button.
-    if (preset_index.is_some() || enemy_champion_id.is_some()) && state.import_items_with_runes() {
-        runes::spawn_preset_items_import(position, state.rune_tier(), keystone, enemy_champion_id);
+    if (preset_index.is_some() || enemy_champion_id.is_some() || highest_win == Some(true))
+        && state.import_items_with_runes()
+    {
+        runes::spawn_preset_items_import(
+            position,
+            state.rune_tier(),
+            keystone,
+            enemy_champion_id,
+            highest_win.unwrap_or(false),
+        );
     }
     if let Some(id) = applied.page_id {
         let handle = app.clone();

@@ -18,7 +18,7 @@ import { RunesPanel } from "./runes/RunesPanel";
 import { ChampionTab } from "./runes/ChampionTab";
 import { PairingNotice } from "./settings/PairedDevices";
 import { UpdateBanner } from "./settings/UpdateSection";
-import type { RunesView, ProBuildsView, KeystoneBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "./runes/types";
+import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "./runes/types";
 import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
 import type { SettingsTab } from "./settings/SettingsView";
@@ -415,6 +415,7 @@ function App() {
     presetIndex: number | null,
     spells: number[] | null,
     enemyChampionId?: number | null,
+    highestWin = false,
   ) {
     setRunesBusy(true);
     setRunesError(null);
@@ -426,6 +427,7 @@ function App() {
         spells,
         position: runes?.position ?? null,
         enemyChampionId: enemyChampionId ?? null,
+        highestWin,
       });
       await loadRunes();
     } catch (reason) {
@@ -501,12 +503,14 @@ function App() {
     position: string,
     tier: string,
     keystone: number,
-  ): Promise<KeystoneBuildView | null> {
-    return invoke<KeystoneBuildView | null>("get_keystone_build", {
+    mostPlayed?: Selection,
+  ): Promise<PresetBuildView | null> {
+    return invoke<PresetBuildView | null>("get_keystone_build", {
       championId,
       position,
       tier,
       keystone,
+      mostPlayed: mostPlayed ?? null,
     });
   }
 
@@ -941,7 +945,7 @@ function App() {
             busy={runesBusy}
             error={runesError}
             shopNotice={shopNotice}
-            onApply={(selection, presetIndex, spells, enemy) => applyRunes(selection, presetIndex, spells, enemy)}
+            onApply={applyRunes}
             onToggleAutoApply={(enabled) => void setAutoApply(enabled)}
             onToggleSpellsWithRunes={(enabled) => void setApplySpellsWithRunes(enabled)}
             onToggleImportItems={(enabled) => void setImportItemsWithRunes(enabled)}

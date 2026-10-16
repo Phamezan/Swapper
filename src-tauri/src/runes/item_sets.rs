@@ -348,6 +348,40 @@ mod tests {
     use super::*;
     use crate::runes::view::{ItemOptionView, ItemStackView, ItemView};
 
+    #[test]
+    fn win_summary_imports_its_own_full_item_set() {
+        let builds = crate::runes::lolalytics::parse_builds(include_str!(
+            "../../tests/fixtures/lolalytics-ahri-mid-8112.html"
+        ))
+        .unwrap();
+        let win = builds.win.unwrap();
+        let view = crate::runes::view::keystone_build_view(
+            win.build,
+            false,
+            None,
+            &std::collections::HashMap::new(),
+        );
+        let (_, body) = preset_item_set_body(103, "Ahri", &view).unwrap();
+        assert_eq!(
+            body["blocks"][0]["items"],
+            json!([
+                {"id":"1056","count":1}, {"id":"2003","count":2}
+            ])
+        );
+        assert_eq!(
+            body["blocks"][1]["items"],
+            json!([
+                {"id":"2503","count":1}, {"id":"3020","count":1}, {"id":"3100","count":1},
+                {"id":"3089","count":1}, {"id":"3157","count":1}, {"id":"3041","count":1}
+            ])
+        );
+        assert_eq!(body["blocks"][2]["items"], json!([{"id":"4645","count":1}]));
+        assert!(body["blocks"][0]["type"]
+            .as_str()
+            .unwrap()
+            .contains("Max Q > W > E"));
+    }
+
     fn sample_build() -> KeystoneBuildView {
         KeystoneBuildView {
             starters: vec![

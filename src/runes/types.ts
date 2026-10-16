@@ -103,6 +103,17 @@ export type KeystoneBuildView = {
   skillOrder?: string | null;
 };
 
+export type HighestWinView = {
+  preset: Preset;
+  build: KeystoneBuildView;
+};
+
+/** Both summaries are delivered by the same cached keystone lookup. */
+export type PresetBuildView = KeystoneBuildView & {
+  highestWin: HighestWinView | null;
+  highestWinMatchesPick: boolean;
+};
+
 /** Win rate and sample of one lane matchup. */
 export type MatchupStats = {
   winPct: number;
@@ -414,6 +425,16 @@ export function fmtGames(play: number): string {
   if (!play) return "–";
   if (play >= 1000) return `${(play / 1000).toFixed(1)}k`;
   return String(play);
+}
+
+/** Exact game count in the user's locale (12,152 / 12.152). */
+export function fmtExactGames(games: number): string {
+  return games.toLocaleString();
+}
+
+/** Colour tier of a build win rate, shared by every preset card (see `--wr-*` in theme.css). */
+export function wrTone(winPct: number): "high" | "good" | "mid" | "low" {
+  return winPct >= 54 ? "high" : winPct >= 52 ? "good" : winPct >= 50 ? "mid" : "low";
 }
 
 /** The nearest existing sample policy (backend `MIN_MATCHUP_GAMES`). Below it

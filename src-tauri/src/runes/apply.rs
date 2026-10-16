@@ -211,6 +211,7 @@ pub async fn apply_top(
             tier.to_string(),
             preset.selection.keystone,
             None,
+            false,
         );
     }
     Ok(Some(applied))
@@ -266,6 +267,7 @@ async fn apply_top_matchup(
             tier.to_string(),
             preset.keystone,
             Some(enemy_id),
+            false,
         );
     }
     Ok(Some(applied))
@@ -318,6 +320,7 @@ pub async fn import_preset_items(
     tier: &str,
     keystone: i64,
     enemy_champion_id: Option<i64>,
+    highest_win: bool,
 ) -> Result<Option<String>, RuneError> {
     let (_, context) = match super::rune_context().await {
         Ok(super::RuneContext { phase, context }) => (phase, context),
@@ -345,8 +348,12 @@ pub async fn import_preset_items(
         Some(build) => build,
         None => {
             let Some(build) =
-                view::preset_build_view(context.champion_id, position, tier, keystone).await
+                view::preset_build_view(context.champion_id, position, tier, keystone, None).await
             else {
+                return Ok(None);
+            };
+            // Never fall back to pick after the user chose a win build.
+            let Some(build) = build.into_items(highest_win) else {
                 return Ok(None);
             };
             build
@@ -410,10 +417,17 @@ pub fn spawn_preset_items_import(
     tier: String,
     keystone: i64,
     enemy_champion_id: Option<i64>,
+    highest_win: bool,
 ) {
     tauri::async_runtime::spawn(async move {
-        let result =
-            import_preset_items(position.as_deref(), &tier, keystone, enemy_champion_id).await;
+        let result = import_preset_items(
+            position.as_deref(),
+            &tier,
+            keystone,
+            enemy_champion_id,
+            highest_win,
+        )
+        .await;
         let _ = items_imported_channel().send(ItemsImported::from_result(result));
     });
 }

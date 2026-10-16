@@ -113,6 +113,17 @@
 
 .runes-tabs > button.is-active { color: var(--action-text); background: var(--action-fill); }
 
+.preset-build-tabs > button { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 4px; }
+.preset-tab-icon { flex: none; }
+.preset-build-tabs em { min-width: 20px; padding: 1px 7px; border-radius: 99px; background: var(--surface-raised); color: var(--text-primary); font-size: 12px; font-style: normal; font-weight: 800; font-variant-numeric: tabular-nums; text-align: center; }
+.preset-build-tabs > button.is-active { color: var(--text-primary); background: var(--surface-hover); }
+.preset-build-tabs > button.is-active em { background: var(--text-primary); color: var(--surface-base); }
+.preset-build-tabs > button.is-active:last-child .preset-tab-icon { color: var(--brand-green); }
+.preset-build-tabs > button.is-active:last-child em { background: var(--brand-green); color: var(--brand-ink); }
+.preset-build-tabs > button[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; }
+.preset-build-tabs > button:focus-visible { outline: 2px solid var(--positive); outline-offset: 2px; }
+.rune-preset.is-highest-win { border-color: color-mix(in srgb, var(--positive) 35%, var(--line-subtle)); }
+
 .runes-source {
   flex: none;
   padding: 0 8px;
@@ -183,16 +194,24 @@
   background: var(--surface-panel);
 }
 
-.rune-preset:hover { border-color: var(--line-strong); background: var(--surface-raised); }
-.rune-preset.is-active { border-color: #459c74; background: #143329; }
+.rune-preset { cursor: pointer; }
+.rune-preset[aria-disabled="true"] { cursor: default; }
+.rune-preset:hover:not([aria-disabled="true"]), .rune-preset:focus-visible { border-color: color-mix(in srgb, var(--brand-green) 50%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand-green) 50%, transparent); }
+.rune-preset:focus-visible { outline: 2px solid var(--brand-green); outline-offset: 2px; }
+.rune-preset.is-pending { padding-bottom: 32px; }
+.runes-presets .rune-preset.is-active, .runes-presets .rune-preset.is-active:hover:not([aria-disabled="true"]) { padding: 11px 46px 32px 12px; border-color: var(--brand-green); box-shadow: inset 0 0 0 1px var(--brand-green); }
+.corner-badge { position: absolute; left: 12px; bottom: 10px; display: inline-flex; align-items: center; gap: 4px; color: var(--brand-green); font-size: 11px; font-weight: 700; }
+.corner-badge.is-pending { color: var(--text-muted); }
+.rune-preset-edit { position: absolute; top: -1px; right: -1px; bottom: -1px; width: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0; border: 0; border-left: 1px solid var(--brand-green); border-radius: 0 12px 12px 0; color: var(--brand-green); background: color-mix(in srgb, var(--brand-green) 16%, var(--surface-panel)); }
+.rune-preset-edit i { font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; writing-mode: vertical-rl; transform: rotate(180deg); }
+.rune-preset.is-active:hover > .rune-preset-edit, .rune-preset.is-active:focus-visible > .rune-preset-edit { color: var(--brand-ink); background: var(--brand-green); }
 .rune-preset-head { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .rune-preset-keystone { width: 38px; height: 38px; flex: none; border-radius: 9px; }
 
 .rune-preset-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 3px; }
 .rune-preset-copy strong { overflow: hidden; font-size: 13px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
 .rune-preset-copy small { color: var(--text-secondary); font-size: 10px; font-weight: 600; }
-.rune-low { margin-left: 6px; padding: 0 5px; border-radius: 5px; color: #e7c777; background: #3a2f14; font-size: 9px; font-weight: 700; }
-.rune-preset-badge { display: inline-flex; align-items: center; gap: 4px; flex: none; padding: 2px 7px; border-radius: 6px; font-size: 9px; font-weight: 750; letter-spacing: 0.03em; }
+.rune-low { margin-left: 8px; padding: 0 5px; border-radius: 5px; color: #e7c777; background: #3a2f14; font-size: 9px; font-weight: 700; }
 
 .rune-preset-icons { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
 .rune-preset-icons img, .rune-preset-icons .rune-icon-fallback { width: 22px; height: 22px; border-radius: 6px; }
@@ -762,7 +781,6 @@
   from { background-position: 200% 0; }
   to { background-position: -200% 0; }
 }
-.preset-build-games { margin-left: 4px; color: var(--text-muted); font-size: 10px; font-weight: 600; white-space: nowrap; }
 
 /* Rank picker: a popover under the trigger on the desktop flyout, a bottom
    sheet on the phone. */
@@ -865,7 +883,6 @@
 .runes-remote .preset-build .item-icon,
 .runes-remote .preset-build .item-icon-fallback,
 .runes-remote .preset-build-skeleton { width: 28px; height: 28px; }
-.runes-remote .preset-build-games { font-size: 12px; }
 
 /* Pro card items: the final build row, and the expandable item order. */
 .pro-card-items { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
@@ -1265,7 +1282,6 @@
 
 /* Build card: runes and boxed spells, then starter/core items and skill keycaps. */
 .rune-preset.is-tailored { border-color: color-mix(in srgb, var(--brand-champions) 45%, transparent); }
-.rune-preset-badge.is-tailored { color: var(--brand-champions); background: color-mix(in srgb, var(--brand-champions) 13%, transparent); white-space: normal; max-width: 110px; }
 .rune-preset-copy strong { white-space: normal; }
 .rune-preset-icons { gap: 3px; }
 .rune-preset-icons .rune-preset-keystone { width: 28px; height: 28px; }
@@ -1274,9 +1290,7 @@
 .preset-spell-box { margin-left: auto; display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-raised); }
 .preset-build > span:has(.item-icon), .preset-build > span:has(.item-icon-fallback) { display: inline-flex; align-items: center; gap: 2px; }
 .preset-build > span > small { font-size: 9px; color: var(--text-secondary); }
-.preset-build-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.preset-build-actions .runes-apply { margin-left: auto; flex: none; min-height: 34px; }
-.matchup-build-link { border: 0; padding: 4px 0; background: transparent; color: var(--text-muted); font: inherit; font-size: 11px; text-align: left; text-decoration: underline; text-underline-offset: 2px; }
+.matchup-build-link { align-self: flex-start; border: 0; padding: 4px 0; background: transparent; color: var(--text-muted); font: inherit; font-size: 11px; text-align: left; text-decoration: underline; text-underline-offset: 2px; }
 .matchup-build-link:hover { color: var(--text-primary); }
 
 /* Segmented switch shared by Pros/OTPs and Champions/Duos. */
@@ -1301,5 +1315,14 @@
 .runes-remote .matchup-toggle button { min-height: 40px; font-size: 13px; }
 
 /* Applied state on a preset card, and the core | later-items divider. */
-.rune-preset-badge.is-applied { color: #081a12; background: #52dfa6; }
 .preset-build-divider { width: 1px; height: 18px; margin: 0 2px; background: var(--line-strong); }
+
+/* Card stats: exact games under the title, win rate large on the right. */
+.rune-preset-head { align-items: flex-start; }
+.rune-preset-games { display: inline-flex; align-items: center; gap: 5px; font-variant-numeric: tabular-nums; font-size: 12px !important; }
+.rune-preset-swords { flex: none; color: var(--text-muted); }
+.rune-preset-wr { flex: none; font-size: 22px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.rune-preset-wr.wr-high { color: var(--wr-high); }
+.rune-preset-wr.wr-good { color: var(--wr-good); }
+.rune-preset-wr.wr-mid { color: var(--wr-mid); }
+.rune-preset-wr.wr-low { color: var(--wr-low); }

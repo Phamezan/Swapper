@@ -80,7 +80,7 @@ pub(super) fn keystone_gate(key: &str) -> std::sync::Arc<tokio::sync::Mutex<()>>
 /// The last successful result per kind, persisted under the Swapper data
 /// folder. A failed fetch is served from this cache, labelled stale.
 static RUNE_LAST_GOOD: OnceLock<LastGoodCache<opgg::ChampionData>> = OnceLock::new();
-static BUILD_LAST_GOOD: OnceLock<LastGoodCache<lolalytics::KeystoneBuild>> = OnceLock::new();
+static BUILD_LAST_GOOD: OnceLock<LastGoodCache<lolalytics::KeystoneBuilds>> = OnceLock::new();
 static MATCHUP_LAST_GOOD: OnceLock<LastGoodCache<Matchup>> = OnceLock::new();
 static PRO_LAST_GOOD: OnceLock<LastGoodCache<Vec<probuilds::ProMatch>>> = OnceLock::new();
 
@@ -95,7 +95,7 @@ fn rune_last_good() -> &'static LastGoodCache<opgg::ChampionData> {
     })
 }
 
-fn build_last_good() -> &'static LastGoodCache<lolalytics::KeystoneBuild> {
+fn build_last_good() -> &'static LastGoodCache<lolalytics::KeystoneBuilds> {
     BUILD_LAST_GOOD.get_or_init(|| {
         LastGoodCache::open(
             cache::cache_path(DataKind::ItemBuild),
@@ -415,7 +415,7 @@ pub async fn keystone_build(
     lane: &str,
     tier: &str,
     keystone: i64,
-) -> Result<Option<Sourced<lolalytics::KeystoneBuild>>, RuneError> {
+) -> Result<Option<Sourced<lolalytics::KeystoneBuilds>>, RuneError> {
     let key = lolalytics::cache_key(champion_slug, lane, tier, keystone);
     if let Some(cached) = cached_keystone_build(&key) {
         return cached;
@@ -447,7 +447,7 @@ pub async fn keystone_build(
                             .await
                     }
                 },
-                lolalytics::blend_build,
+                lolalytics::blend_builds,
             )
             .await;
             super::shared().lolalytics.store(key.clone(), build.clone());
@@ -466,7 +466,7 @@ pub async fn keystone_build(
 /// remembered failure returns the persisted last-good build when there is one.
 fn cached_keystone_build(
     key: &str,
-) -> Option<Result<Option<Sourced<lolalytics::KeystoneBuild>>, RuneError>> {
+) -> Option<Result<Option<Sourced<lolalytics::KeystoneBuilds>>, RuneError>> {
     match super::shared().lolalytics.lookup(key) {
         lolalytics::Cached::Fresh(build) => Some(Ok(Some(Sourced {
             value: build,
@@ -481,7 +481,7 @@ fn cached_keystone_build(
 
 /// The persisted last-good build for a key, marked stale. `None` when there is
 /// nothing cached, so the card hides rather than showing an error.
-fn keystone_stale(key: &str) -> Option<Sourced<lolalytics::KeystoneBuild>> {
+fn keystone_stale(key: &str) -> Option<Sourced<lolalytics::KeystoneBuilds>> {
     build_last_good().lookup(key).map(|cached| {
         if cached.fresh {
             Sourced {
