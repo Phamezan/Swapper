@@ -1166,13 +1166,13 @@
 .tier-list > p:not(.runes-note) { margin: 0 0 4px; color: var(--text-muted); font-size: 11px; }
 .tier-row {
   display: grid;
-  grid-template-columns: 30px 24px minmax(0, 1fr) auto;
+  grid-template-columns: 30px 40px minmax(0, 1fr) auto;
   grid-template-areas: "badge icon name rate" "badge icon stats stats";
   align-items: center;
   column-gap: 8px;
   width: 100%;
-  min-height: 40px;
-  padding: 5px 8px;
+  min-height: 56px;
+  padding: 8px 10px;
   border: 1px solid var(--line-subtle);
   border-radius: 9px;
   color: var(--text-primary);
@@ -1180,11 +1180,26 @@
   text-align: left;
 }
 .tier-row:hover { background: var(--surface-hover); }
-.tier-row > .champion-icon, .tier-row > .champion-icon-fallback { grid-area: icon; width: 24px; height: 24px; border-radius: 50%; }
-.tier-row > strong { grid-area: name; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
-.tier-row > .tier-rate { grid-area: rate; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.tier-row > small { grid-area: stats; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-secondary); font-size: 11px; }
-.tier-row > small b { color: var(--text-primary); font-weight: 650; font-variant-numeric: tabular-nums; }
+.tier-row > .champion-icon, .tier-row > .champion-icon-fallback { grid-area: icon; width: 40px; height: 40px; border-radius: 50%; }
+.tier-row > strong { grid-area: name; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; }
+.tier-row > .tier-rate { grid-area: rate; font-size: 20px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tier-rate.wr-high, .overview-wr.wr-high { color: var(--wr-high); }
+.tier-rate.wr-good, .overview-wr.wr-good { color: var(--wr-good); }
+.tier-rate.wr-mid, .overview-wr.wr-mid { color: var(--wr-mid); }
+.tier-rate.wr-low, .overview-wr.wr-low { color: var(--wr-low); }
+.tier-row > .stat-blk { grid-area: stats; }
+/* Bold value over a small caps label: tier rows, duo rows and the overview tiles. */
+.stat-blk { display: flex; gap: 18px; margin-top: 4px; min-width: 0; }
+.stat-blk > span { display: flex; flex-direction: column; line-height: 1.1; }
+.stat-blk b { font-size: 14px; font-weight: 800; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.stat-blk b.v-pick { color: var(--brand-green); }
+.stat-blk b.v-ban { color: var(--stat-ban); }
+.stat-blk i { font-style: normal; font-size: 9.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); }
+.stat-note { color: var(--text-muted); font-size: 11px; font-weight: 650; }
+.stat-blk.is-big { gap: 6px; margin-top: 0; }
+.stat-blk.is-big > span { flex: 1; align-items: center; gap: 2px; padding: 8px 0; background: var(--surface-raised); border-radius: 8px; }
+.stat-blk.is-big b { font-size: 18px; }
+.stat-blk b em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--text-muted); }
 /* Tier colours: gold for S+, purple for S, then green, blue, grey-blue and muted red. */
 .runes-panel {
   --tier-splus: #f0b45a;
@@ -1204,12 +1219,19 @@
 .tier-row > .tier-text { grid-area: badge; width: 30px; font-size: 13px; text-align: center; }
 .tier-duo-toggle { align-self: flex-start; width: 200px; margin-bottom: 2px; }
 .tier-duo-toggle button { padding: 0 12px; }
-.tier-duo-row { grid-template-columns: 30px 40px minmax(0, 1fr) auto; }
+.tier-duo-row { grid-template-columns: 30px 46px minmax(0, 1fr) auto; }
 .tier-duo-icons { grid-area: icon; display: flex; }
-.tier-duo-icons .champion-icon, .tier-duo-icons .champion-icon-fallback { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--surface-panel); }
-.tier-duo-icons > :last-child { margin-left: -8px; }
-.overview-name .tier-text { margin-left: 4px; font-size: 13px; }
-.overview-icon .champion-icon, .overview-icon .champion-icon-fallback { width: 44px; height: 44px; border-radius: 50%; }
+.tier-duo-icons .champion-icon, .tier-duo-icons .champion-icon-fallback { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--surface-panel); }
+.tier-duo-icons > :last-child { margin-left: -10px; }
+/* Filled tier badge: the tier colour as background, dark text. */
+.tier-badge { margin-left: 6px; padding: 3px 9px; border-radius: 7px; color: #1a1408; background: var(--text-secondary); font-size: 14px; font-weight: 800; line-height: 1.1; vertical-align: 3px; }
+.tier-badge.is-splus { background: var(--tier-splus); }
+.tier-badge.is-s { background: var(--tier-s); }
+.tier-badge.is-a { background: var(--tier-a); }
+.tier-badge.is-b { background: var(--tier-b); }
+.tier-badge.is-c { background: var(--tier-c); }
+.tier-badge.is-d { background: var(--tier-d); }
+.overview-icon .champion-icon, .overview-icon .champion-icon-fallback { width: 60px; height: 60px; border-radius: 50%; }
 .champion-filter { display: flex; }
 .tier-row-skeleton, .overview-skeleton {
   display: block;
@@ -1242,11 +1264,14 @@
 .overview-head { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .overview-icon { flex: none; }
 .overview-rates { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.overview-rates strong { font-size: 15px; font-weight: 750; }
-.overview-rates strong.overview-name { font-size: 14px; }
-.overview-rates small { color: var(--text-secondary); font-size: 11px; }
-.overview-rates strong small.is-up { color: var(--positive); }
-.overview-rates strong small.is-down { color: var(--danger); }
+.overview-rates { flex: 1; }
+.overview-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.overview-rates strong.overview-name { font-size: 22px; font-weight: 800; }
+.wr-stack { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.1; }
+.overview-wr { font-size: 24px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.overview-rates small { font-size: 11px; font-weight: 600; }
+.overview-rates small.is-up { color: var(--positive); }
+.overview-rates small.is-down { color: var(--danger); }
 .damage-bar { display: flex; height: 6px; overflow: hidden; border-radius: 3px; background: var(--surface-raised); }
 .damage-bar .is-physical { background: var(--danger); }
 .damage-bar .is-magic { background: #7fa6ff; }
@@ -1271,8 +1296,7 @@
 .build-skills { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 0; font-size: 11px; font-weight: 650; }
 .build-skills small { color: var(--text-muted); font-size: 10px; letter-spacing: 0.04em; }
 .runes-remote .tier-row { min-height: 52px; }
-.runes-remote .tier-row > strong, .runes-remote .tier-row > .tier-rate { font-size: 14px; }
-.runes-remote .tier-row > small { font-size: 11px; }
+.runes-remote .tier-row > strong { font-size: 16px; }
 .runes-remote .tier-more, .runes-remote .overview-toggle { min-height: 44px; }
 .runes-remote .overview-rates small { font-size: 12px; }
 

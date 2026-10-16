@@ -10,7 +10,7 @@ use super::items;
 use super::lolalytics;
 use super::overview::{self, Damage, Overview};
 use super::provider::Sourced;
-use super::tierlist::{self, TierList};
+use super::tierlist::{self, TierList, TierRow};
 use super::view::{self, KeystoneBuildView};
 
 // ---------------------------------------------------------------------------
@@ -143,7 +143,8 @@ fn build_duo_list(found: Option<Sourced<DuoList>>, names: &HashMap<i64, String>)
 #[derive(Debug, Clone, PartialEq, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct OverviewStatsView {
-    pub tier: String,
+    /// Our tier-list tier (`S+` to `D`); `None` when the champion is not in that lane's list.
+    pub tier: Option<String>,
     pub win_pct: f64,
     pub avg_win_pct: f64,
     /// `win_pct` minus the champion's average win rate.
@@ -151,8 +152,9 @@ pub struct OverviewStatsView {
     pub pick_pct: f64,
     pub ban_pct: f64,
     pub games: u64,
-    pub rank: u32,
-    pub rank_total: u32,
+    /// 1-based position in the tier list, with `rank_total` its length.
+    pub rank: Option<u32>,
+    pub rank_total: Option<u32>,
     pub patch: String,
 }
 
@@ -214,11 +216,41 @@ pub async fn champion_overview_view(
             .flatten(),
         _ => None,
     };
+    // Cached by the tier list itself, so this is a second fetch only on a cold cache.
+    let placed = match tier_lane(lane, found.as_ref().map(|sourced| &sourced.value)) {
+        Some(lane) => tierlist::load(lane, tier).await.ok().flatten(),
+        None => None,
+    };
+    let placement = placed.as_ref().and_then(|list| placement(&list.value, champion_id, &names));
     let item_names = match &found {
         Some(sourced) if sourced.value.build.is_some() => items::names().await,
         _ => Default::default(),
     };
-    build_overview(champion_id, found, &item_names)
+    build_overview(champion_id, found, placement, &item_names)
+}
+
+/// The lane whose tier list the overview is placed in: the requested one, else the
+/// lane lolalytics resolved the page to (a champion opened without a role).
+fn tier_lane(requested: Option<&'static str>, found: Option<&Overview>) -> Option<&'static str> {
+    requested.or_else(|| found.and_then(|overview| lolalytics::lane(&overview.lane)))
+}
+
+/// Our tier label, 1-based position and list length for a champion in a lane's tier list.
+/// Counts only champions with a client name, matching the rows the tier list shows.
+fn placement(list: &TierList, champion_id: i64, names: &HashMap<i64, String>) -> Option<Placement> {
+    let shown: Vec<&TierRow> = list.rows.iter().filter(|row| names.contains_key(&row.champion_id)).collect();
+    let index = shown.iter().position(|row| row.champion_id == champion_id)?;
+    Some(Placement {
+        tier: shown[index].label().to_string(),
+        rank: index as u32 + 1,
+        total: shown.len() as u32,
+    })
+}
+
+struct Placement {
+    tier: String,
+    rank: u32,
+    total: u32,
 }
 
 fn percent_split(damage: &Damage) -> DamageView {
@@ -233,6 +265,7 @@ fn percent_split(damage: &Damage) -> DamageView {
 fn build_overview(
     champion_id: i64,
     found: Option<Sourced<Overview>>,
+    placement: Option<Placement>,
     item_names: &HashMap<i64, String>,
 ) -> ChampionOverviewView {
     let Some(sourced) = found else {
@@ -267,15 +300,15 @@ fn build_overview(
         champion_id,
         position: super::counters_view::position_of(&overview.lane).to_string(),
         stats: Some(OverviewStatsView {
-            tier: stats.tier.clone(),
+            tier: placement.as_ref().map(|placed| placed.tier.clone()),
             win_pct: stats.win_pct,
             avg_win_pct: stats.avg_win_pct,
             delta: stats.win_pct - stats.avg_win_pct,
             pick_pct: stats.pick_pct,
             ban_pct: stats.ban_pct,
             games: stats.games,
-            rank: stats.rank,
-            rank_total: stats.rank_total,
+            rank: placement.as_ref().map(|placed| placed.rank),
+            rank_total: placement.as_ref().map(|placed| placed.total),
             patch: stats.patch.clone(),
         }),
         damage: overview.damage.as_ref().map(percent_split),
@@ -318,6 +351,34 @@ mod tests {
         assert!(build_tier_list(None, &names).unavailable);
     }
 
+    fn list() -> TierList {
+        TierList { rows: vec![row(77, 0), row(5, 0), row(22, 1), row(9, 3)], patch: None }
+    }
+
+    fn known() -> HashMap<i64, String> {
+        HashMap::from([(5, "A".to_string()), (22, "B".to_string()), (9, "C".to_string())])
+    }
+
+    #[test]
+    fn the_tier_lane_falls_back_to_the_page_lane() {
+        assert_eq!(tier_lane(Some("top"), Some(&overview())), Some("top"));
+        assert_eq!(tier_lane(None, Some(&overview())), Some("bottom"));
+        assert_eq!(tier_lane(None, None), None);
+    }
+
+    #[test]
+    fn placement_is_the_tier_list_position_or_nothing() {
+        let found = placement(&list(), 9, &known()).expect("in list");
+        assert_eq!((found.tier.as_str(), found.rank, found.total), ("B", 3, 3));
+        assert!(placement(&list(), 1234, &known()).is_none());
+        // An unnamed champion is not shown, so it is neither placed nor counted.
+        assert!(placement(&list(), 77, &known()).is_none());
+        // No lane means no list is loaded, so the view carries no tier or position.
+        let view = build_overview(22, Some(Sourced::fresh(overview(), Provider::Lolalytics)), None, &HashMap::new());
+        let stats = view.stats.expect("stats");
+        assert!(stats.tier.is_none() && stats.rank.is_none() && stats.rank_total.is_none());
+    }
+
     fn overview() -> Overview {
         Overview {
             lane: "bottom".into(),
@@ -354,11 +415,12 @@ mod tests {
     #[test]
     fn the_overview_carries_delta_damage_shares_and_the_build() {
         let found = Some(Sourced::fresh(overview(), Provider::Lolalytics));
-        let view = build_overview(22, found, &HashMap::new());
+        let view = build_overview(22, found, placement(&list(), 22, &known()), &HashMap::new());
         assert_eq!(view.position, "adc");
         let stats = view.stats.expect("stats");
         assert!((stats.delta - 1.5).abs() < 1e-9);
-        assert_eq!((stats.rank, stats.rank_total), (7, 40));
+        assert_eq!((stats.rank, stats.rank_total), (Some(2), Some(3)));
+        assert_eq!(stats.tier.as_deref(), Some("S"));
         let damage = view.damage.expect("damage");
         assert!((damage.physical - 75.0).abs() < 1e-9 && damage.true_damage == 0.0);
         let build = view.build.expect("build");
@@ -369,7 +431,7 @@ mod tests {
 
     #[test]
     fn a_missing_overview_is_unavailable() {
-        let view = build_overview(22, None, &HashMap::new());
+        let view = build_overview(22, None, None, &HashMap::new());
         assert!(view.unavailable && view.stats.is_none() && view.build.is_none());
     }
 }

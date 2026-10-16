@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ChampionIcon } from "./ChampionIcon";
 import { CachedBadge } from "./CachedBadge";
-import { fmtGames, fmtPct, tierClass } from "./types";
+import { fmtExactGames, fmtPct, tierClass, wrTone } from "./types";
 import type { ChampionOption, DuoListView, TierListView } from "./types";
 
 /** Rows shown at first, and added by each "Show more". */
@@ -17,6 +17,16 @@ type Props = {
   onLoadDuos: (tier: string) => Promise<DuoListView>;
   onPick: (champion: ChampionOption) => void;
 };
+
+/** A bold value over a small caps label; `tone` colours pick and ban figures. */
+export function Stat({ value, label, tone }: { value: ReactNode; label: string; tone?: "pick" | "ban" }) {
+  return (
+    <span>
+      <b className={tone ? `v-${tone}` : undefined}>{value}</b>
+      <i>{label}</i>
+    </span>
+  );
+}
 
 /** A loaded list, tagged so a stale one of the other kind is never drawn. */
 type Loaded = { duos: false; list: TierListView } | { duos: true; list: DuoListView };
@@ -103,10 +113,10 @@ export function TierList({ mode, position, tier, onLoad, onLoadDuos, onPick }: P
                   <ChampionIcon id={row.supportId} name={row.supportName} mode={mode} />
                 </span>
                 <strong>{row.adcName} + {row.supportName}</strong>
-                <span className="tier-rate">{fmtPct(row.winPct)}</span>
-                <small>
-                  {row.games > 0 ? <><b>{fmtGames(row.games)}</b> games together</> : "Last patch"}
-                </small>
+                <span className={`tier-rate wr-${wrTone(row.winPct)}`}>{fmtPct(row.winPct)}</span>
+                <span className="stat-blk">
+                  {row.games > 0 ? <Stat value={fmtExactGames(row.games)} label="games" /> : <small className="stat-note">Last patch</small>}
+                </span>
               </button>
             ))
           : view.list.rows.slice(0, shown).map((row) => (
@@ -119,10 +129,12 @@ export function TierList({ mode, position, tier, onLoad, onLoadDuos, onPick }: P
                 <span className={`tier-text ${tierClass(row.tier)}`}>{row.tier}</span>
                 <ChampionIcon id={row.championId} name={row.name} mode={mode} />
                 <strong>{row.name}</strong>
-                <span className="tier-rate">{fmtPct(row.winPct)}</span>
-                <small>
-                  <b>{fmtPct(row.pickPct)}</b> pick · <b>{fmtPct(row.banPct)}</b> ban · <b>{fmtGames(row.games)}</b> games
-                </small>
+                <span className={`tier-rate wr-${wrTone(row.winPct)}`}>{fmtPct(row.winPct)}</span>
+                <span className="stat-blk">
+                  <Stat value={fmtExactGames(row.games)} label="games" />
+                  <Stat value={fmtPct(row.pickPct)} label="pick" tone="pick" />
+                  <Stat value={fmtPct(row.banPct)} label="ban" tone="ban" />
+                </span>
               </button>
             ))}
       {view && total === 0 && <p className="runes-note">TBD</p>}

@@ -182,7 +182,8 @@ export type TierListView = {
 };
 
 export type OverviewStats = {
-  tier: string;
+  /** Our tier-list tier; null when the champion is not in that lane's list. */
+  tier: string | null;
   winPct: number;
   avgWinPct: number;
   /** `winPct` minus the champion's average win rate. */
@@ -190,8 +191,9 @@ export type OverviewStats = {
   pickPct: number;
   banPct: number;
   games: number;
-  rank: number;
-  rankTotal: number;
+  /** 1-based tier-list position and list length; null with `tier`. */
+  rank: number | null;
+  rankTotal: number | null;
   patch: string;
 };
 

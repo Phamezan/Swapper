@@ -37,5 +37,7 @@
   --wr-good: #a6dd7e;
   --wr-mid: var(--text-primary);
   --wr-low: var(--danger);
+  /* Ban-rate figures in the tier list and overview (pick uses --brand-green). */
+  --stat-ban: #f2a19d;
   --focus: #ffffff;
 }

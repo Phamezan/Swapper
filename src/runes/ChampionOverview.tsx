@@ -3,7 +3,8 @@ import { ChampionIcon } from "./ChampionIcon";
 import { ItemIcon } from "./ItemIcon";
 import { RuneIcon } from "./RuneIcon";
 import { SpellIcon } from "./SpellIcon";
-import { fmtDelta, fmtPct, tierClass } from "./types";
+import { Stat } from "./TierList";
+import { fmtExactGames, fmtPct, tierClass, wrTone } from "./types";
 import type { ChampionBuild, ChampionOverviewView } from "./types";
 
 type Props = {
@@ -32,20 +33,26 @@ export function ChampionOverview({ mode, championId, name, view, loading }: Prop
           <ChampionIcon key={championId} id={championId} name={name} mode={mode} />
         </span>
         <div className="overview-rates">
-          <strong className="overview-name">
-            {name} <span className={`tier-text ${tierClass(stats.tier)}`}>{stats.tier}</span>
-          </strong>
-          <strong>
-            {fmtPct(stats.winPct)}{" "}
-            <small className={stats.delta >= 0 ? "is-up" : "is-down"}>{fmtDelta(stats.delta)} vs avg</small>
-          </strong>
-          <small>
-            {fmtPct(stats.pickPct)} pick · {fmtPct(stats.banPct)} ban
-          </small>
-          <small>
-            Rank {stats.rank} of {stats.rankTotal} · Patch {stats.patch}
-          </small>
+          <div className="overview-top">
+            <strong className="overview-name">
+              {name} {stats.tier && <span className={`tier-badge ${tierClass(stats.tier)}`}>{stats.tier}</span>}
+            </strong>
+            <span className="wr-stack">
+              <strong className={`overview-wr wr-${wrTone(stats.winPct)}`}>{fmtPct(stats.winPct)}</strong>
+              <small className={stats.delta >= 0 ? "is-up" : "is-down"}>
+                {Math.abs(stats.delta).toFixed(1)}% {stats.delta >= 0 ? "above" : "below"} average
+              </small>
+            </span>
+          </div>
         </div>
+      </div>
+      <div className="stat-blk is-big">
+        <Stat value={fmtExactGames(stats.games)} label="games" />
+        <Stat value={fmtPct(stats.pickPct)} label="pick" tone="pick" />
+        <Stat value={fmtPct(stats.banPct)} label="ban" tone="ban" />
+        {stats.rank !== null && stats.rankTotal !== null && (
+          <Stat value={<>#{stats.rank}<em>/{stats.rankTotal}</em></>} label="rank" />
+        )}
       </div>
       {damage && (
         <div
