@@ -117,7 +117,7 @@ export type FullAppBridge = {
   Runes?: ComponentType<ComponentProps<typeof RunesPanel>>;
   Settings?: ComponentType<ComponentProps<typeof SettingsView>>;
   /** A new object navigates once, e.g. from the sidebar. */
-  request: { view: View } | null;
+  request: { view: View; switchId?: string } | null;
   onViewChange: (view: View) => void;
   onChampSelectChange: (active: boolean) => void;
 };
@@ -284,6 +284,8 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
     if (!fullApp?.request) return;
     navigate(fullApp.request.view);
     if (fullApp.request.view === "runes") void loadRunes();
+    // The Dashboard's Switch buttons reuse the Accounts page's switch flow.
+    if (fullApp.request.switchId) void switchToAccount(fullApp.request.switchId);
   }, [fullApp?.request]);
 
   function sync(next: AppState) {

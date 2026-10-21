@@ -16,13 +16,13 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
 `feat-full-app\HANDOFF-phase1.md` + `HANDOFF-phase2.md`, `feat-live-game\HANDOFF-live-game.md`, `feat-full-app-ui\HANDOFF-ui.md`.
 
 ## 1. Build (designed, not started)
-- [ ] **Dashboard redesign** — `docs/specs/dashboard.md`
-  - [ ] Top strip: active account (rank, status; becomes a Live Game card in game) + other accounts (rank, last played, record, Switch)
-  - [ ] Performance: queue filter (default Solo/Duo if ≥5 games), 20-game W/L strip (only chart)
-  - [ ] 5 tiles "you vs lane opponent": KDA, KP, CS/min, dmg share + 1 role stat (support vision/min, lanes dmg/min, jungle: decide gold/min vs vision/min or an objective stat if the LCU has one)
-  - [ ] Up to 3 insight lines (≥4 games per group, ≥20 pt gap, plain wording)
-  - [ ] Match rows: + lane opponent icon with CS diff, + LP change, + click to expand all 10 players
-  - [ ] "Your champions & roles" column; drop sparkline cards, big rank card, full-width hero
+- [x] **Dashboard redesign** (other-account cards and the in-game card not yet seen with real data) — `docs/specs/dashboard.md`
+  - [x] Top strip: active account (rank, status; becomes a Live Game card in game) + other accounts (rank, last played, record, Switch)
+  - [x] Performance: queue filter (default Solo/Duo if ≥5 games), 20-game W/L strip (only chart)
+  - [x] 5 tiles: KDA, CS/game (support: vision/min), damage/game vs same champion + tier (lolalytics `build-full` sidebar averages), KP and damage share vs lane opponent
+  - [x] Up to 3 insight lines (≥4 games per group, ≥20 pt gap, plain wording)
+  - [x] Match rows: + lane opponent icon with CS diff, + LP change, + click to expand all 10 players
+  - [x] "Your champions & roles" column; drop sparkline cards, big rank card, full-width hero
   - [x] LP recording after each game, per account (Solo/Duo; `full_app/lp.rs`, `lp-history.json`) + LP chip on match rows
   - [x] Per-account rank/record cache for the account cards (`full_app/cards.rs`, `account-cards.json`, `cards` in the dashboard view)
   - [ ] Empty/thin-data states

@@ -13,7 +13,17 @@ export type Game = {
   role: string; placement: number;
   /** Solo/Duo LP change; only when Swapper recorded the rank around the game. */
   lpChange?: number | null;
+  /** All ten players, own team first; empty for games cached before this field. */
+  players: Player[];
+  /** Index into `players` of the lane opponent, when unambiguous. */
+  opponent?: number | null;
 };
+export type Player = {
+  championId: number; riotId: string; me: boolean; ally: boolean; role: string;
+  kills: number; deaths: number; assists: number; cs: number; damage: number; gold: number; vision: number; items: number[];
+};
+/** Per-game averages of a champion in a role and tier (lolalytics). */
+export type Bench = { kills: number; deaths: number; assists: number; damage: number; gold: number; cs: number; games: number };
 export type Snapshot = {
   championNames: Record<string, string>;
   summoner: { riotId: string; level: number; icon: string | null };

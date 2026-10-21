@@ -110,6 +110,8 @@ function App() {
 
   const [view, setView] = useState<DashboardView | null>(null);
   const [region, setRegion] = useState<string | null>(null);
+  const [accounts, setAccounts] = useState<AppState | null>(null);
+  const [phase, setPhase] = useState("");
   const [champions, setChampions] = useState<ChampionOption[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -121,7 +123,9 @@ function App() {
     if (!isTauri()) { setError("Open Swapper from the tray to connect to League Client."); return; }
     if (fetching.current) { queued.current = true; return; }
     fetching.current = true; setLoading(true);
-    void invoke<AppState>("get_state").then(state => { if (mounted.current) setRegion(state.accounts.find(a => a.id === state.activeId)?.region ?? null); }).catch(() => {});
+    void invoke<AppState>("get_state").then(state => {
+      if (mounted.current) { setAccounts(state); setRegion(state.accounts.find(a => a.id === state.activeId)?.region ?? null); }
+    }).catch(() => {});
     try { const next = await invoke<DashboardView>("dashboard_snapshot"); if (mounted.current) { setView(next); setError(""); } }
     catch (reason) { if (mounted.current) setError(String(reason)); }
     finally {
@@ -134,7 +138,7 @@ function App() {
     const focusRefresh = () => { if (document.visibilityState === "visible") void refresh(); };
     window.addEventListener("focus", focusRefresh);
     const stop = isTauri() ? listen<{ phase: string }>("champ_select", ({ payload }) => {
-      if (lastPhase.current !== payload.phase) { lastPhase.current = payload.phase; void refresh(); }
+      if (lastPhase.current !== payload.phase) { lastPhase.current = payload.phase; setPhase(payload.phase); void refresh(); }
     }) : Promise.resolve(() => {});
     // Tray menu destinations (Add Account, Settings, ...) are App views.
     const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => setPage(payload === "live" ? LIVE_PAGE : "app")) : Promise.resolve(() => {});
@@ -185,7 +189,10 @@ function App() {
         {view?.stale && page === "Dashboard" && <div className="notice" role="status">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</div>}
         {error && <div className="notice" role="alert">{error}</div>}
         {page === "Dashboard"
-          ? snapshot ? <Dashboard snapshot={snapshot} region={region} onOpenChampion={(id, name) => openChampion({ id, name })} />
+          ? snapshot ? <Dashboard snapshot={snapshot} region={region} accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null}
+              cards={view?.cards ?? {}} phase={phase} busy={false} onOpenLive={() => go(LIVE_PAGE)}
+              onSwitch={id => { setPage("app"); setRequest({ view: "accounts", switchId: id }); }}
+              onOpenChampion={(id, name) => openChampion({ id, name })} />
             : <section className="empty"><BrandIcon size={52} /><h2>{loading ? "Connecting to League Client…" : "Sign in to League Client"}</h2><p>Your recent Rift games and Solo/Duo rank appear here once League Client is open.</p></section>
           : page === "Live Game" ? <Suspense fallback={<p role="status" className="loading-line">Loading Live Game…</p>}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<p role="status" className="loading-line">Loading champion tools…</p>}>
