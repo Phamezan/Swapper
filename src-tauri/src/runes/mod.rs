@@ -166,10 +166,14 @@ fn lcu_client() -> Result<&'static Client, RuneError> {
     if let Some(client) = LCU_CLIENT.get() {
         return Ok(client);
     }
+    // The League Client accepts only a few dozen connections in total; an
+    // unbounded keep-alive pool once filled them and it refused every request.
     let client = Client::builder()
         .danger_accept_invalid_certs(true)
         .connect_timeout(Duration::from_secs(2))
         .timeout(Duration::from_secs(4))
+        .pool_max_idle_per_host(4)
+        .pool_idle_timeout(Duration::from_secs(15))
         .build()
         .map_err(|_| RuneError::unavailable("Could not reach the League Client."))?;
     Ok(LCU_CLIENT.get_or_init(|| client))

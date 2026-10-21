@@ -66,7 +66,12 @@ fn read_cached(path: &std::path::Path) -> Option<Vec<u8>> {
     std::fs::read(path).ok().filter(|bytes| is_jpeg(bytes))
 }
 
+/// Art loads come in bursts (a grid of portraits); a few at a time keeps the
+/// League Client's connection limit free for picks and the draft.
+static ART_FETCHES: tokio::sync::Semaphore = tokio::sync::Semaphore::const_new(4);
+
 async fn fetch(id: i64, kind: Kind) -> Result<Vec<u8>, String> {
+    let _permit = ART_FETCHES.acquire().await.map_err(|e| e.to_string())?;
     let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
     let champion: Value =
         crate::runes::lcu_get(&client, &format!("/lol-game-data/assets/v1/champions/{id}.json"))
