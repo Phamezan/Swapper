@@ -8,6 +8,7 @@ import { fmtPct, selectionFromPreset } from "../runes/types";
 import { ItemIcon } from "../runes/ItemIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
+import { RoleIcon } from "../runes/RoleIcon";
 import { BuildPanel } from "./BuildPanel";
 import { CooldownSheet } from "./CooldownSheet";
 import { DraftBand } from "./ChampionSelectDraft";
@@ -67,7 +68,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   return <div className="fa-draft-page dash-scope">
     <header className="page-heading"><div><h1>Champion select</h1><p>{mode === "build" ? "Locked in. Set up your build before the Rift." : mode === "planning" ? "Pick suggestions for your lane. Click to hover, then lock in." : "Your draft companion. Ready when you are."}</p></div><span className={`fa-status-pill${mode !== "idle" ? " is-live" : ""}`}>{mode === "build" ? "BUILD" : mode === "planning" ? "PLANNING" : "WAITING FOR DRAFT"}</span></header>
     {props.error && <p className="fa-notice" role="alert">{props.error}</p>}{error && <p className="fa-notice" role="alert">{error}</p>}
-    {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting to champion select…" : "Your next game starts here"}</h2><p>Enter champion select in League Client. Your team’s picks, revealed opponents and recommended build will appear automatically.</p><div className="fa-draft-placeholder-team">{["TOP", "JUNGLE", "MID", "BOT", "SUPPORT"].map(role => <span key={role}><Crosshair size={20} /><small>{role}</small></span>)}</div></section> : <>
+    {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting to champion select…" : "Waiting for game to start"}</h2><div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section> : <>
       <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyId={enemyId} small={mode === "build"} />
       <div className="fa-draft-controls cs-toolbar">
         <h2>{championName || "Choose your champion"}{enemyName && <small> vs {enemyName}</small>}</h2>

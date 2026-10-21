@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { defaultQueue, insights, tiles, tierLabel } from "./dashboardModel.ts";
+import { defaultQueue, insights, tiles, tierLabel, tone } from "./dashboardModel.ts";
 
 const line = (over = {}) => ({ championId: 1, riotId: "", me: false, ally: true, role: "mid", kills: 2, deaths: 2, assists: 2, cs: 150, damage: 10000, gold: 0, vision: 10, items: [], ...over });
 function game({ win = true, deaths = 3, cs = 200, oppCs = 150, champion = 103, queue = "solo", opponent = 7, kills = 5, assists = 5 } = {}) {
@@ -41,17 +41,23 @@ test("insights need four games a side and a 20 point gap, strongest first", () =
     ...Array.from({ length: 4 }, () => game({ deaths: 9, win: false, cs: 100 })),
   ];
   const lines = insights(games, names);
-  assert.deepEqual(lines[0], { condition: "Die 5 or fewer times", other: "Die 6 or more times", yes: { wins: 6, games: 6, rate: 100 }, no: { wins: 0, games: 4, rate: 0 }, gap: 100 });
+  assert.deepEqual(lines[0], { topic: "Deaths", condition: "5 or fewer", other: "6 or more", yes: { wins: 6, games: 6, rate: 100 }, no: { wins: 0, games: 4, rate: 0 }, gap: 100 });
   assert.ok(lines.length <= 3);
   assert.ok(lines.every((l, i) => i === 0 || l.gap <= lines[i - 1].gap));
   // Three games on one side are not enough.
-  assert.deepEqual(insights(games.slice(0, 9), names).filter(l => l.condition.includes("Die")), []);
+  assert.deepEqual(insights(games.slice(0, 9), names).filter(l => l.topic === "Deaths"), []);
   // A 10-point gap is not a pattern.
   const even = [
     ...Array.from({ length: 10 }, (_, i) => game({ deaths: 2, win: i < 6 })),
     ...Array.from({ length: 10 }, (_, i) => game({ deaths: 9, win: i < 5 })),
   ];
-  assert.deepEqual(insights(even, names).filter(l => l.condition.includes("Die")), []);
+  assert.deepEqual(insights(even, names).filter(l => l.topic === "Deaths"), []);
+});
+
+test("values within 5% of their reference read as even", () => {
+  assert.equal(tone(4.17, 2.72), "up");
+  assert.equal(tone(2.8, 2.72), "even");
+  assert.equal(tone(2.5, 2.72), "down");
 });
 
 test("tier labels match the benchmark brackets", () => {

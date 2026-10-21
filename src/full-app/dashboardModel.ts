@@ -98,7 +98,7 @@ type Split = { yes: Game[]; no: Game[] };
 /** Wins, games and rounded win rate of one side of a pattern. */
 export type WinRecord = { wins: number; games: number; rate: number };
 /** A win-rate pattern: how often you win when `condition` holds, and when `other` does. */
-export type Insight = { condition: string; other: string; yes: WinRecord; no: WinRecord; gap: number };
+export type Insight = { topic: string; condition: string; other: string; yes: WinRecord; no: WinRecord; gap: number };
 const record = (games: Game[]): WinRecord => {
   const wins = games.filter(g => g.win).length;
   return { wins, games: games.length, rate: Math.round(100 * wins / games.length) };
@@ -108,32 +108,39 @@ const record = (games: Game[]): WinRecord => {
  *  four games on each side and a 20-point gap (15 for kill participation). */
 export function insights(games: Game[], championName: (id: number) => string): Insight[] {
   const found: Insight[] = [];
-  const consider = (split: Split, minGap: number, condition: string, other: string) => {
+  const consider = (split: Split, minGap: number, topic: string, condition: string, other: string) => {
     if (split.yes.length < MIN_GROUP || split.no.length < MIN_GROUP) return;
     const [yes, no] = [record(split.yes), record(split.no)];
     const gap = Math.abs(yes.rate - no.rate);
-    if (gap >= minGap) found.push({ condition, other, yes, no, gap });
+    if (gap >= minGap) found.push({ topic, condition, other, yes, no, gap });
   };
   const split = (test: (g: Game) => boolean | null): Split => {
     const known = games.filter(g => test(g) !== null);
     return { yes: known.filter(g => test(g)), no: known.filter(g => !test(g)) };
   };
-  consider(split(g => g.deaths <= 5), MIN_GAP, "Die 5 or fewer times", "Die 6 or more times");
+  consider(split(g => g.deaths <= 5), MIN_GAP, "Deaths", "5 or fewer", "6 or more");
   consider(split(g => {
     const p = me(g), o = opponent(g);
     return p && o ? p.cs > o.cs : null;
-  }), MIN_GAP, "Out-farm your lane opponent", "Don't out-farm them");
+  }), MIN_GAP, "CS vs lane opponent", "Ahead", "Behind");
   consider(split(g => {
     const p = me(g), kp = p ? teamShare(g, p, "kp") : null;
     return kp == null ? null : kp >= 50;
-  }), MIN_KP_GAP, "50%+ kill participation", "Below 50%");
+  }), MIN_KP_GAP, "Kill participation", "50% or more", "Under 50%");
   const byChampion = new Map<number, Game[]>();
   for (const g of games) byChampion.set(g.championId, [...(byChampion.get(g.championId) ?? []), g]);
   for (const [id, played] of byChampion) {
     if (played.length < MIN_GROUP) continue;
-    consider({ yes: played, no: games.filter(g => g.championId !== id) }, MIN_GAP, `On ${championName(id)}`, "Other champions");
+    consider({ yes: played, no: games.filter(g => g.championId !== id) }, MIN_GAP, "Champion", championName(id), "Other champions");
   }
   return found.sort((a, b) => b.gap - a.gap).slice(0, 3);
+}
+
+/** How a value compares with its reference: within 5% reads as even. */
+export function tone(value: number, reference: number): "up" | "even" | "down" {
+  const diff = value - reference;
+  if (Math.abs(diff) <= 0.05 * Math.abs(reference)) return "even";
+  return diff > 0 ? "up" : "down";
 }
 
 /** The Solo/Duo bracket label for a tier, matching the benchmark brackets. */

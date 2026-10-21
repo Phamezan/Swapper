@@ -10,7 +10,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
-import { benchKey, defaultQueue, formatStat, insights, MIN_COMPARED, opponent, tierLabel, tiles, type WinRecord } from "./dashboardModel";
+import { benchKey, defaultQueue, formatStat, insights, MIN_COMPARED, opponent, tierLabel, tiles, tone, type WinRecord } from "./dashboardModel";
 import type { AccountCard, Bench, Game, Player, Snapshot } from "./types";
 export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
 const roleLabels: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
@@ -46,8 +46,9 @@ function useSeen<T extends Element>() {
 }
 
 const pct = (wins: number, games: number) => (games ? Math.round(100 * wins / games) : 0);
+// Five-digit stats (damage) as 22.4k so the big tile number fits.
+const big = (value: number, digits: number, unit: string) => value >= 10000 ? `${(value / 1000).toFixed(1)}k` : formatStat(value, digits, unit);
 const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
-const signed = (value: number, digits: number, unit = "") => `${value >= 0 ? "+" : "−"}${formatStat(Math.abs(value), digits, unit)}`;
 
 type Props = {
   snapshot: Snapshot; region: string | null; accounts: Account[]; activeId: string | null;
@@ -155,22 +156,29 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
         {Object.entries(queueLabels).map(([value, label]) => <button key={value} aria-pressed={queue === value} onClick={() => onQueue(value)}>{label}</button>)}
       </div>
       <div className="wl-strip" aria-label={`${wins} wins, ${games.length - wins} losses, oldest first`}>
-        {oldestFirst.map(g => <i key={g.id} className={g.win ? "is-win" : "is-loss"} title={`${g.win ? "Win" : "Loss"} · ${name(g.championId)} · ${g.kills}/${g.deaths}/${g.assists} · ${fmtAgo(g.createdAt)}`} />)}
+        {oldestFirst.map(g => <span key={g.id} className={g.win ? "is-win" : "is-loss"} title={`${g.win ? "Win" : "Loss"} · ${name(g.championId)} · ${g.kills}/${g.deaths}/${g.assists} · ${fmtAgo(g.createdAt)}`}>
+          <ChampionIcon id={g.championId} name={name(g.championId)} mode="desktop" /></span>)}
         <small>{wins}W {games.length - wins}L</small>
       </div>
     </div>
-    <div className="tiles">{rows.map(tile => <article key={tile.key} className={`tile${!tile.versus ? "" : tile.versus.delta >= 0 ? " is-up" : " is-down"}`}>
-      <small>{tile.label}</small>
-      <strong>{tile.value == null ? "–" : formatStat(tile.value, tile.digits, tile.unit)}</strong>
-      {tile.versus ? <p title={`Your average and theirs over the same ${tile.versus.games} games`}>vs {tile.versus.label} {formatStat(tile.versus.value, tile.digits, tile.unit)} <b className={tile.versus.delta >= 0 ? "up" : "down"}>{signed(tile.versus.delta, tile.digits, tile.unit)}</b></p>
-        : <p>{games.length < MIN_COMPARED ? `${games.length} ${games.length === 1 ? "game" : "games"}` : "Not enough comparable games"}</p>}
-    </article>)}</div>
+    <div className="tiles">{rows.map(tile => {
+      const versus = tile.value != null ? tile.versus : null;
+      return <article key={tile.key} className={`tile tone-${versus ? tone(tile.value!, versus.value) : "none"}`}
+        title={versus ? `You ${formatStat(tile.value!, tile.digits, tile.unit)} vs ${versus.label} ${formatStat(versus.value, tile.digits, tile.unit)} over the same ${versus.games} games` : undefined}>
+        <div className="tile-head"><small>{tile.label}</small>{versus && <small className="tile-vs">vs {versus.label}</small>}</div>
+        <strong><span className="tile-value">{tile.value == null ? "–" : big(tile.value, tile.digits, tile.unit)}</span>
+          {versus && <span className="tile-ref">/{big(versus.value, tile.digits, tile.unit)}</span>}</strong>
+        {!versus && <p>{games.length < MIN_COMPARED ? `${games.length} ${games.length === 1 ? "game" : "games"}` : "Not enough comparable games"}</p>}
+      </article>;
+    })}</div>
     {lines.length > 0 && <ul className="insights" aria-label="Win-rate patterns">{lines.map(line => {
       const better = line.yes.rate >= line.no.rate;
-      return <li key={line.condition} className={`insight ${better ? "leans-yes" : "leans-no"}`}>
-        <InsightSide label={line.condition} record={line.yes} up={better} />
-        <span className="insight-gap" title="Difference in win rate">{line.gap}<small>pt</small></span>
-        <InsightSide label={line.other} record={line.no} up={!better} />
+      return <li key={line.topic + line.condition} className="insight">
+        <p className="insight-topic">{line.topic}<small>Win rate</small></p>
+        <div className="insight-sides">
+          <InsightSide label={line.condition} record={line.yes} up={better} />
+          <InsightSide label={line.other} record={line.no} up={!better} />
+        </div>
       </li>;
     })}</ul>}
   </section>;
@@ -178,9 +186,9 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
 
 function InsightSide({ label, record, up }: { label: string; record: WinRecord; up: boolean }) {
   return <div className={`insight-side ${up ? "up" : "down"}`}>
-    <b>{record.rate}<i>%</i></b>
     <span>{label}</span>
-    <small>{record.wins}/{record.games} won</small>
+    <b>{record.rate}<i>%</i></b>
+    <small>{record.wins}W {record.games - record.wins}L</small>
     <i className="insight-meter" style={{ "--rate": `${record.rate}%` } as CSSProperties} aria-hidden />
   </div>;
 }
