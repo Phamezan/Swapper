@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { mockIPC } from "@tauri-apps/api/mocks";
 import { invoke } from "@tauri-apps/api/core";
+import { emit } from "@tauri-apps/api/event";
 import type { RuneTree, RunesView } from "../runes/types";
 import { ChampionSelect } from "./ChampionSelect";
 import { fixtureDraft, fixtureView, type FixtureName } from "./champ-select-fixtures";
+import "../runes/runes.css";
 import "./dashboard.css";
 import "./full-app.css";
 
@@ -41,7 +43,7 @@ let applied: RunesView["applied"] = fixtureView(fixture).applied;
 let spells = fixtureView(fixture).spells;
 const listeners = new Set<() => void>();
 const current = (): RunesView => ({ ...fixtureView(fixture), applied, spells });
-const change = (next: FixtureName) => { fixture = next; applied = fixtureView(next).applied; spells = fixtureView(next).spells; listeners.forEach(listener => listener()); };
+const change = (next: FixtureName) => { fixture = next; applied = fixtureView(next).applied; spells = fixtureView(next).spells; listeners.forEach(listener => listener()); void emit("draft_changed", fixtureDraft(next)); };
 let catalog: { trees: RuneTree[]; shards: { kind: string; label: string; runes: { id: number; name: string; winPct: null; pickPct: null; play: number }[] }[] } | null = null;
 const runeIcons = new Map<number, string>();
 const ready = fetch(`${DD}/${VERSION}/data/en_US/runesReforged.json`).then(r => r.json()).then((trees: { id: number; name: string; slots: { runes: { id: number; name: string; icon: string }[] }[] }[]) => {
@@ -65,7 +67,7 @@ mockIPC(async (cmd, args) => {
     case "item_icon": return `${DD}/${VERSION}/img/item/${a.id}.png`;
     case "spell_icon": return `${DD}/${VERSION}/img/spell/${SPELLS[a.id] ?? "SummonerFlash"}.png`;
     case "rune_icon": await ready; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("no icon");
-    case "role_icon": throw new Error("no icon");
+    case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     case "full_app_rune_catalog": await ready; if (catalog) return catalog; throw new Error("Rune catalog unavailable");
     case "full_app_abilities": return ["Q", "W", "E", "R"].map(key => ({ key, name: `Aatrox ${key}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${key === "R" ? "R" : key}.png` }));
     case "get_champion_overview": return { championId: a.championId, position: "top", stats: null, damage: null, unavailable: false, build: { runes: page(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347], [5005, 5008, 5001]), spells: [4, 12], items: build([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), skillOrder: ORDER } };
@@ -73,7 +75,7 @@ mockIPC(async (cmd, args) => {
     case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...page(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: build([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
     case "full_app_matchups": return { championId: a.championId, championName: "Darius", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null, beats: counters.map(([id, winPct, games]) => ({ championId: id, name: CHAMPIONS[id][0], winPct, delta: winPct - 50.4, games, lowSample: false })) };
     case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct]) => ({ championId: id, name: CHAMPIONS[id as number][0], tier, winPct, pickPct: 6, banPct: 3, games: 20000 })) };
-    case "recommended_picks": throw new Error("Command recommended_picks not found");
+    case "recommended_picks": return tiers.slice(0, 8).map(([championId, , winRate]) => ({ championId, winRate, games: 20000, flex: championId === 875 }));
     case "get_pro_builds": return { championId: 266, position: "top", role: "top", page: 1, hasMore: false, unavailable: false, message: null, stale: false, updatedAt: null, matches: [1, 2, 3, 4].map(i => ({ matchId: i, proName: `Pro player ${String.fromCharCode(64 + i)}`, team: `Team ${i}`, league: "LCK", region: "KR", role: "top", roleLabel: "Top", win: i % 2 === 1, playedAgo: `${i * 3}h ago`, patch: "16.21", ...page(8000, 8010, [9111, 9104, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), kills: 4 + i, deaths: 2, assists: 6, spells: [4, 12], finalItems: [6692, 3053, 3071, 3047, 6333, 3026].map(item), completedItems: [6692, 3053, 3071, 6333].map(item), skillOrder: ORDER.split(""), itemPath: [] })) };
     case "full_app_hover_champion": change(a.championId === 266 ? "hover" : fixture); return null;
     case "full_app_lock_in": change("locked"); return null;

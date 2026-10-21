@@ -58,7 +58,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
 
   return <section className="fa-card cs-picks">
     <div className="fa-section-heading">
-      <div><h3>Pick suggestions</h3><p>{subtitle} · click to hover in League Client</p></div>
+      <div><h3>Pick suggestions</h3><p>{subtitle}</p></div>
       <div className="fa-seg" role="group" aria-label="Suggestions">{TABS.map(([value, label]) => <button key={value} aria-pressed={tab === value} onClick={() => setChosenTab(value)}>{label}</button>)}</div>
     </div>
     {notice && <p className="fa-notice" role="alert">{notice}</p>}
@@ -67,7 +67,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
       : <div className="cs-pick-grid">{picks.map(pick => <button key={pick.championId} className="cs-pick" aria-pressed={pick.championId === hovered} disabled={!!pending} onClick={() => void hover(pick.championId)}
         title={`${pick.name}: ${fmtPct(pick.winPct)} over ${pick.games.toLocaleString()} games`}>
         <NearViewport className="cs-pick-art"><ChampionArt id={pick.championId} name={pick.name} /></NearViewport>
-        <span className="cs-pick-copy"><strong>{pick.name}</strong><b>{fmtPct(pick.winPct)}</b><small>{pick.games.toLocaleString()} games</small>{pick.flex && <span className="cs-flex">Flex</span>}</span>
+        <span className="cs-pick-copy"><strong>{pick.name}</strong><b>{fmtPct(pick.winPct)} <small>WR</small></b><small>{pick.games.toLocaleString()} games</small>{pick.flex && <span className="cs-flex">Flex</span>}</span>
         {pick.championId === pending && <span className="cs-pick-state">Hovering…</span>}
         {pick.championId === hovered && pending !== pick.championId && <span className="cs-pick-state">Hovered</span>}
       </button>)}</div>}
@@ -88,7 +88,7 @@ export function LockIn({ championId, name }: { championId: number; name: string 
   };
   return <div className="cs-lock">
     {confirming ? <><span>Lock in <strong>{name}</strong>? You cannot change it afterwards.</span><div><button className="fa-secondary" onClick={() => setConfirming(false)}>Cancel</button><button className="fa-primary" disabled={busy} onClick={() => void lock()}><LockKeyhole size={14} />{busy ? "Locking…" : "Confirm"}</button></div></>
-      : <><span>{championId ? <>Hovering <strong>{name}</strong></> : "Hover a champion to lock it in."}</span><div><button className="fa-secondary" disabled={!championId} onClick={() => setConfirming(true)}><LockKeyhole size={14} />Lock in</button></div></>}
+      : <><span>{championId ? <>Ready to play <strong>{name}</strong>?</> : "Choose a champion to lock in."}</span><div><button className="fa-primary" disabled={!championId} onClick={() => setConfirming(true)}><LockKeyhole size={14} />Lock in</button></div></>}
     {notice && <p className="fa-notice" role="alert">{notice}</p>}
   </div>;
 }
