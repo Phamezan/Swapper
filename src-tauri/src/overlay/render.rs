@@ -269,11 +269,9 @@ const MUTED: u32 = 0xFF8B93A7;
 const BLUE: u32 = 0xFF6E9BFF;
 const RED: u32 = 0xFFFF6B7A;
 const GOLD: u32 = 0xFFE3B45C;
-const ACCENT: u32 = 0xFF7C83FD;
-/// The level-up hint's box (DPM-like blue) and the chevron drawn in it.
-const HINT_FILL: u32 = 0xF04A57E0;
-const HINT_EDGE: u32 = 0xFF9BA3FF;
-const HINT_CHEVRON: u32 = 0xFFE4E7FF;
+/// Swapper's signature green (`--brand-green`) on graphite, for the level-up hint.
+const BRAND_GREEN: u32 = 0xFFC5E39E;
+const HINT_FILL: u32 = 0xF2181A17;
 /// Steps per diamond animation cycle, at the overlay's 50 ms tick.
 pub const PULSE_STEPS: u8 = 20;
 
@@ -501,8 +499,8 @@ impl Surface {
         )
     }
 
-    /// Covers the game's level-up arrow for the recommended skill with a blue
-    /// box and a light double chevron, like DPM, with three diamonds above
+    /// Covers the game's level-up arrow for the recommended skill with a graphite
+    /// box and a green double chevron, with three diamonds above
     /// lighting up in a rising wave. Sized from the detected arrow, so it
     /// follows the HUD scale.
     fn arrow(&self, rect: RectF, pulse: u8) -> Result<(), String> {
@@ -510,7 +508,7 @@ impl Surface {
         let side = unit * 1.3;
         let (cx, cy) = (rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0);
         let frame = RectF { X: cx - side / 2.0, Y: cy - side / 2.0, Width: side, Height: side };
-        self.rounded(frame, unit * 0.12, HINT_FILL, Some((HINT_EDGE, (unit * 0.08).max(1.5))))?;
+        self.rounded(frame, unit * 0.12, HINT_FILL, Some((BRAND_GREEN, (unit * 0.08).max(1.5))))?;
         let (half, rise, gap) = (unit * 0.3, unit * 0.2, unit * 0.22);
         for top in [cy - (rise + gap) / 2.0, cy - (rise + gap) / 2.0 + gap] {
             let points = [
@@ -518,7 +516,7 @@ impl Surface {
                 PointF { X: cx, Y: top },
                 PointF { X: cx + half, Y: top + rise },
             ];
-            self.with_pen(HINT_CHEVRON, (unit * 0.11).max(1.5), |pen| unsafe {
+            self.with_pen(BRAND_GREEN, (unit * 0.11).max(1.5), |pen| unsafe {
                 GdipSetPenStartCap(pen, LineCapRound);
                 GdipSetPenEndCap(pen, LineCapRound);
                 GdipSetPenLineJoin(pen, LineJoinRound);
@@ -528,7 +526,7 @@ impl Surface {
         let half = unit * 0.1;
         for i in 0..3u8 {
             let y = frame.Y - unit * 0.28 - f32::from(i) * unit * 0.3;
-            self.diamond(cx, y, half, (pulse_alpha(pulse, i) << 24) | (ACCENT & 0x00FF_FFFF))?;
+            self.diamond(cx, y, half, (pulse_alpha(pulse, i) << 24) | (BRAND_GREEN & 0x00FF_FFFF))?;
         }
         std::result::Result::Ok(())
     }

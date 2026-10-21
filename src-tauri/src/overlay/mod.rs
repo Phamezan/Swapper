@@ -301,6 +301,7 @@ async fn run(
     let mut read_cache = false;
     let mut lookup: Option<tokio::task::JoinHandle<Option<String>>> = None;
     let mut arrow: Option<[i32; 4]> = None;
+    let mut arrow_for = None;
     let mut next_scan = Instant::now();
     let started = Instant::now();
     let mut prepared = model::DisplayData::default();
@@ -476,18 +477,22 @@ async fn run(
             if !held {
                 visible.gold = None;
             }
-            // Find the game's own level-up arrows a few times a second, only while
-            // a skill point is waiting; the hint is drawn on the matching arrow.
-            match visible.skill.and_then(|skill| Some((skill, skill_ranks(data)?))) {
-                Some((skill, (level, ranks))) if now >= next_scan => {
+            // Find the game's own level-up arrows while a skill point is waiting, and
+            // keep the first match until the point is spent or the window changes:
+            // the game's arrow pulses, so rescanning would make the hint jump or blink.
+            let pending = visible.skill.and_then(|skill| Some((skill, skill_ranks(data)?, bounds.width, bounds.height)));
+            if pending != arrow_for {
+                arrow_for = pending;
+                arrow = None;
+            }
+            if let (Some((skill, (level, ranks), _, _)), None) = (pending, arrow) {
+                if now >= next_scan {
                     next_scan = now + Duration::from_millis(400);
                     let shown = model::levelable(level, ranks);
                     let keys: Vec<char> = ['Q', 'W', 'E', 'R'].into_iter().zip(shown).filter(|(_, on)| *on).map(|(key, _)| key).collect();
                     let found = arrows::find(bounds, keys.len());
                     arrow = keys.iter().position(|key| *key == skill).and_then(|i| found.get(i)).map(|a| [a.x, a.y, a.width, a.height]);
                 }
-                Some(_) => {}
-                None => arrow = None,
             }
             visible.arrow = arrow;
             // Redraws at the 20 Hz tick only while the hint shows, to animate its diamonds.
