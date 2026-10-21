@@ -20,4 +20,6 @@ export type Snapshot = {
   rank: { tier: string; division: string; lp: number; wins: number; losses: number } | null;
   fetchedAt: number; games: Game[]; summaries: Record<string, Summary>;
 };
-export type DashboardView = { snapshot: Snapshot | null; stale: boolean; message: string | null };
+/** Last saved rank and recent record of a saved account (key: account id). */
+export type AccountCard = { rank: Snapshot["rank"]; wins: number; losses: number; lastPlayed: number; updatedAt: number };
+export type DashboardView = { snapshot: Snapshot | null; cards: Record<string, AccountCard>; stale: boolean; message: string | null };

@@ -2,6 +2,7 @@
 //! webview is never created and every entry point opens this window instead.
 //! No window or data task exists until it is opened; closing destroys it.
 pub mod art;
+pub(crate) mod cards;
 pub(crate) mod lp;
 pub mod ui_data;
 pub(crate) mod model;
@@ -304,6 +305,8 @@ fn show_minimized_without_focus(window: &tauri::WebviewWindow) {
 #[serde(rename_all = "camelCase")]
 pub struct View {
     snapshot: Option<Snapshot>,
+    /// Rank and recent record per saved account id.
+    cards: cards::Cards,
     stale: bool,
     message: Option<String>,
 }
@@ -440,16 +443,22 @@ pub async fn dashboard_snapshot(
             match fresh(previous.as_ref()).await {
                 Ok(snapshot) => {
                     let bytes = serde_json::to_vec(&snapshot).ok();
-                    let _ = tokio::task::spawn_blocking(move || {
+                    let saved = tokio::task::spawn_blocking(move || {
                         if let (Some(path), Some(bytes)) = (cache_path(), bytes) {
                             if let Some(parent) = path.parent() { let _ = std::fs::create_dir_all(parent); }
                             let pending = path.with_extension("tmp");
                             if std::fs::write(&pending, bytes).is_ok() { let _ = std::fs::rename(pending, path); }
                         }
+                        let cards = cards::update(Some(&snapshot));
+                        (cards, snapshot)
                     }).await;
-                    Ok(View { snapshot: Some(snapshot), stale: false, message: None })
+                    let (cards, snapshot) = saved.map_err(|e| e.to_string())?;
+                    Ok(View { snapshot: Some(snapshot), cards, stale: false, message: None })
                 },
-                Err(error) => Ok(View { snapshot: previous, stale: true, message: Some(error) }),
+                Err(error) => {
+                    let cards = tokio::task::spawn_blocking(|| cards::update(None)).await.unwrap_or_default();
+                    Ok(View { snapshot: previous, cards, stale: true, message: Some(error) })
+                },
             }
         } => result
     }

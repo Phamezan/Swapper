@@ -24,7 +24,7 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
   - [ ] Match rows: + lane opponent icon with CS diff, + LP change, + click to expand all 10 players
   - [ ] "Your champions & roles" column; drop sparkline cards, big rank card, full-width hero
   - [x] LP recording after each game, per account (Solo/Duo; `full_app/lp.rs`, `lp-history.json`) + LP chip on match rows
-  - [ ] Per-account rank/record cache for the account cards
+  - [x] Per-account rank/record cache for the account cards (`full_app/cards.rs`, `account-cards.json`, `cards` in the dashboard view)
   - [ ] Empty/thin-data states
 - [ ] **Champion select redesign** — `docs/specs/champion-select.md`
   - [ ] Planning mode / build mode, auto-switch on lock-in; compact draft band (no win %, no radar)
