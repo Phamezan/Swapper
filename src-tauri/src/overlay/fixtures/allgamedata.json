@@ -1,0 +1,12 @@
+{
+  "activePlayer": {
+    "summonerName": "Player", "riotId": "Player#TEST", "level": 6,
+    "abilities": {"Q":{"abilityLevel":3},"W":{"abilityLevel":1},"E":{"abilityLevel":1},"R":{"abilityLevel":0}}
+  },
+  "allPlayers": [
+    {"summonerName":"Player","riotId":"Player#TEST","championName":"Ahri","rawChampionName":"game_character_displayname_Ahri","team":"ORDER","position":"MIDDLE","items":[{"itemID":1056,"price":400,"count":1},{"itemID":2003,"price":50,"count":2},{"itemID":1001,"price":600,"count":1}]},
+    {"summonerName":"Enemy","riotId":"Enemy#TEST","championName":"Annie","team":"CHAOS","position":"MIDDLE","items":[{"itemID":1056,"price":400,"count":1},{"itemID":1001,"price":300,"count":1}]}
+  ],
+  "events":{"Events":[{"EventID":0,"EventName":"GameStart","EventTime":0.0},{"EventID":1,"EventName":"DragonKill","EventTime":500.0,"DragonType":"Fire","KillerName":"Enemy"}]},
+  "gameData":{"gameMode":"CLASSIC","mapNumber":11,"gameTime":600.0}
+}

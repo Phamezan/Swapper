@@ -318,6 +318,11 @@ async fn lcu_get<T: for<'de> Deserialize<'de>>(lcu: &Lcu, path: &str) -> Result<
         .map_err(|_| RuneError::unavailable("League Client sent an unexpected response."))
 }
 
+/// Read-only game scope check for the native overlay, reusing the LCU connection.
+pub(crate) async fn overlay_game_session() -> Result<Value, RuneError> {
+    lcu_get(&lcu().await?, GAMEFLOW_PATH).await
+}
+
 async fn lcu_get_bytes(lcu: &Lcu, path: &str) -> Result<Vec<u8>, RuneError> {
     let response = lcu.send(Method::GET, path, None).await?;
     let response = response
