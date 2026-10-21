@@ -7,6 +7,8 @@ pub struct DisplayData {
     pub skill: Option<char>,
     /// The game's own level-up arrow for `skill` (client x, y, width, height).
     pub arrow: Option<[i32; 4]>,
+    /// Animation step of the diamonds above the arrow (0..PULSE_STEPS).
+    pub pulse: u8,
 }
 
 /// Held-item value per team, rounded to whole gold so redraws only happen on change.

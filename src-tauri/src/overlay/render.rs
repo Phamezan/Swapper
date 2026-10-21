@@ -270,6 +270,12 @@ const BLUE: u32 = 0xFF6E9BFF;
 const RED: u32 = 0xFFFF6B7A;
 const GOLD: u32 = 0xFFE3B45C;
 const ACCENT: u32 = 0xFF7C83FD;
+/// The level-up hint's box (DPM-like blue) and the chevron drawn in it.
+const HINT_FILL: u32 = 0xF04A57E0;
+const HINT_EDGE: u32 = 0xFF9BA3FF;
+const HINT_CHEVRON: u32 = 0xFFE4E7FF;
+/// Steps per diamond animation cycle, at the overlay's 50 ms tick.
+pub const PULSE_STEPS: u8 = 20;
 
 const GOLD_BOX: f32 = 44.0;
 const LANE_BADGE: f32 = 26.0;
@@ -373,7 +379,7 @@ impl Surface {
             match widget {
                 Widget::Gold(rect, gold) => self.gold(rect, gold)?,
                 Widget::Objective(rect, objective) => self.objective(rect, objective)?,
-                Widget::Arrow(rect) => self.arrow(rect)?,
+                Widget::Arrow(rect, pulse) => self.arrow(rect, pulse)?,
             }
         }
         // Flush before GDI consumes the same DIB memory.
@@ -495,32 +501,34 @@ impl Surface {
         )
     }
 
-    /// Frames the game's own level-up button: a crisp rounded border with a soft
-    /// outer glow and a faint tint, so the game's arrow stays visible inside it,
-    /// plus three stacked diamonds above, fading upward. Sized from the arrow
-    /// itself, so it follows the HUD scale.
-    fn arrow(&self, rect: RectF) -> Result<(), String> {
+    /// Covers the game's level-up arrow for the recommended skill with a blue
+    /// box and a light double chevron, like DPM, with three diamonds above
+    /// lighting up in a rising wave. Sized from the detected arrow, so it
+    /// follows the HUD scale.
+    fn arrow(&self, rect: RectF, pulse: u8) -> Result<(), String> {
         let unit = rect.Width.max(rect.Height * 2.0);
-        let side = unit * 1.5;
+        let side = unit * 1.3;
         let (cx, cy) = (rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0);
         let frame = RectF { X: cx - side / 2.0, Y: cy - side / 2.0, Width: side, Height: side };
-        let radius = unit * 0.2;
-        let glow = |grow: f32| RectF {
-            X: frame.X - grow,
-            Y: frame.Y - grow,
-            Width: frame.Width + 2.0 * grow,
-            Height: frame.Height + 2.0 * grow,
-        };
-        let tint = |alpha: u32| (ACCENT & 0x00FF_FFFF) | (alpha << 24);
-        for (grow, alpha) in [(unit * 0.22, 0x18), (unit * 0.12, 0x30)] {
-            self.rounded(glow(grow), radius + grow, 0, Some((tint(alpha), unit * 0.12)))?;
+        self.rounded(frame, unit * 0.12, HINT_FILL, Some((HINT_EDGE, (unit * 0.08).max(1.5))))?;
+        let (half, rise, gap) = (unit * 0.3, unit * 0.2, unit * 0.22);
+        for top in [cy - (rise + gap) / 2.0, cy - (rise + gap) / 2.0 + gap] {
+            let points = [
+                PointF { X: cx - half, Y: top + rise },
+                PointF { X: cx, Y: top },
+                PointF { X: cx + half, Y: top + rise },
+            ];
+            self.with_pen(HINT_CHEVRON, (unit * 0.11).max(1.5), |pen| unsafe {
+                GdipSetPenStartCap(pen, LineCapRound);
+                GdipSetPenEndCap(pen, LineCapRound);
+                GdipSetPenLineJoin(pen, LineJoinRound);
+                GdipDrawLines(self.graphics, pen, points.as_ptr(), 3)
+            })?;
         }
-        self.rounded(frame, radius, tint(0x1C), Some((ACCENT, (unit * 0.09).max(1.5))))?;
-        let mut y = frame.Y - unit * 0.32;
-        for (size, alpha) in [(0.26, 0xFF), (0.2, 0xB0), (0.15, 0x66)] {
-            let half = unit * size / 2.0;
-            self.diamond(cx, y - half, half, tint(alpha))?;
-            y -= half * 2.0 + unit * 0.14;
+        let half = unit * 0.1;
+        for i in 0..3u8 {
+            let y = frame.Y - unit * 0.28 - f32::from(i) * unit * 0.3;
+            self.diamond(cx, y, half, (pulse_alpha(pulse, i) << 24) | (ACCENT & 0x00FF_FFFF))?;
         }
         std::result::Result::Ok(())
     }
@@ -728,7 +736,7 @@ fn short(value: i64, signed: bool) -> String {
 enum Widget {
     Gold(RectF, Gold),
     Objective(RectF, Objective),
-    Arrow(RectF),
+    Arrow(RectF, u8),
 }
 
 fn widgets(width: i32, height: i32, data: &DisplayData) -> Vec<Widget> {
@@ -761,14 +769,25 @@ fn widgets(width: i32, height: i32, data: &DisplayData) -> Vec<Widget> {
         ));
     }
     if let (Some(_), Some([x, y, aw, ah])) = (data.skill, data.arrow) {
-        widgets.push(Widget::Arrow(RectF {
-            X: x as f32,
-            Y: y as f32,
-            Width: aw as f32,
-            Height: ah as f32,
-        }));
+        widgets.push(Widget::Arrow(
+            RectF {
+                X: x as f32,
+                Y: y as f32,
+                Width: aw as f32,
+                Height: ah as f32,
+            },
+            data.pulse,
+        ));
     }
     widgets
+}
+
+/// Diamond `index` (0 = lowest) brightness at `pulse`: a wave rising from the
+/// box, each diamond lit a few steps after the one below, dim between waves.
+fn pulse_alpha(pulse: u8, index: u8) -> u32 {
+    let step = (pulse + PULSE_STEPS - index * 3) % PULSE_STEPS;
+    let lit = 1.0 - (f32::from(step) / 6.0 - 1.0).abs();
+    (0x40 as f32 + lit.max(0.0) * (0xFF - 0x40) as f32) as u32
 }
 
 #[cfg(test)]
@@ -796,7 +815,16 @@ mod tests {
             ],
             skill: Some('R'),
             arrow: Some([60, 120, 20, 8]),
+            pulse: 0,
         }
+    }
+
+    #[test]
+    fn diamonds_light_up_bottom_first_and_never_vanish() {
+        assert_eq!(pulse_alpha(6, 0), 0xFF);
+        assert_eq!(pulse_alpha(9, 1), 0xFF);
+        assert!(pulse_alpha(6, 0) > pulse_alpha(6, 2));
+        assert!((0..PULSE_STEPS).all(|p| (0..3).all(|i| pulse_alpha(p, i) >= 0x40)));
     }
 
     #[test]
@@ -810,11 +838,11 @@ mod tests {
         ] {
             let widgets = widgets(width, height, &sample());
             assert_eq!(widgets.len(), 4);
-            assert_eq!(widgets.iter().filter(|w| matches!(w, Widget::Arrow(_))).count(), 1);
+            assert_eq!(widgets.iter().filter(|w| matches!(w, Widget::Arrow(..))).count(), 1);
             for widget in widgets {
                 let (Widget::Gold(rect, _)
                 | Widget::Objective(rect, _)
-                | Widget::Arrow(rect)) = widget;
+                | Widget::Arrow(rect, _)) = widget;
                 assert!(rect.X >= 0.0 && rect.Y >= 0.0);
                 assert!(
                     rect.X + rect.Width <= width as f32 && rect.Y + rect.Height <= height as f32
@@ -853,6 +881,7 @@ mod tests {
             objectives: super::super::model::objectives(&data),
             skill: Some('R'),
             arrow: Some([600, 600, 20, 8]),
+            pulse: 0,
         };
         let bounds = Bounds {
             x: -10000,
@@ -913,6 +942,7 @@ mod tests {
             objectives: super::super::model::objectives(&fixture),
             skill: Some('R'),
             arrow: Some([600, 600, 20, 8]),
+            pulse: 0,
         };
         let bounds = Bounds {
             x: 0,

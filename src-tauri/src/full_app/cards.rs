@@ -146,7 +146,7 @@ mod tests {
         assert_eq!(first.rank.as_ref().unwrap().lp, 40);
         // A League account Swapper has not saved changes nothing; removed accounts drop out.
         update_at(&path, &accounts, Some(&snapshot("other", &[true])));
-        let cards = update_at(&path, &[smurf.clone()], None);
+        let cards = update_at(&path, std::slice::from_ref(&smurf), None);
         assert_eq!(cards.keys().collect::<Vec<_>>(), vec![&smurf.id]);
         std::fs::write(&path, b"{broken").unwrap();
         assert!(update_at(&path, &accounts, None).is_empty());

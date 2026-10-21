@@ -265,6 +265,7 @@ fn display(
         },
         skill,
         arrow: None,
+        pulse: 0,
     }
 }
 
@@ -301,6 +302,7 @@ async fn run(
     let mut lookup: Option<tokio::task::JoinHandle<Option<String>>> = None;
     let mut arrow: Option<[i32; 4]> = None;
     let mut next_scan = Instant::now();
+    let started = Instant::now();
     let mut prepared = model::DisplayData::default();
     let mut dirty = true;
     let mut renderer: Option<render::Renderer> = None;
@@ -488,6 +490,10 @@ async fn run(
                 None => arrow = None,
             }
             visible.arrow = arrow;
+            // Redraws at the 20 Hz tick only while the hint shows, to animate its diamonds.
+            if arrow.is_some() {
+                visible.pulse = (started.elapsed().as_millis() / 50 % render::PULSE_STEPS as u128) as u8;
+            }
             if visible == model::DisplayData::default() {
                 if let Some(renderer) = renderer.as_mut() {
                     renderer.hide();
