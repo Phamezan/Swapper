@@ -279,7 +279,11 @@ fn parse_counters(root: &Value, lane: &str, list: &TierList) -> Option<Counters>
         .iter()
         .filter_map(|row| {
             let champion_id = row.get(0)?.as_i64().filter(|id| *id > 0)?;
-            let (vs_win_pct, games) = counts(row.get(1)?, row.get(2)?)?;
+            // u.gg's wins column counts the opponent's wins: a champion's rows
+            // sum to the complement of its own win rate over the same games
+            // (Ezreal D+ ADC: rows 54.1%, ranking 45.9%, 108,439 games).
+            let (opponent_win_pct, games) = counts(row.get(1)?, row.get(2)?)?;
+            let vs_win_pct = 100.0 - opponent_win_pct;
             let opponent = list
                 .rows
                 .iter()
@@ -968,7 +972,8 @@ mod tests {
         let found = parse_counters(&body, "top", &list).unwrap();
         assert_eq!(found.rows.len(), 1);
         assert_eq!(found.rows[0].games, 1262);
-        assert!((found.rows[0].vs_win_pct - 56.1807).abs() < 0.001);
+        // 709 of 1262 are the opponent's wins.
+        assert!((found.rows[0].vs_win_pct - 43.8193).abs() < 0.001);
         assert_eq!(found.rows[0].all_win_pct, 52.0);
         assert!(parse_counters(&body, "middle", &list).is_none());
     }
