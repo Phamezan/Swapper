@@ -19,6 +19,7 @@ export default function LiveGame({ championNames }: { championNames: Map<number,
   const { view, error, loaded } = useLiveGame(true);
   const [selected, setSelected] = useState<string | null>(null);
   const player = view?.players.find(p => p.key === selected) ?? null;
+  const selfSide = view?.players.find(p => p.isSelf)?.side;
   const fetched = view?.players.filter(p => p.status !== "pending").length ?? 0;
   if (!view) {
     return <section className="empty lg-empty">
@@ -35,7 +36,7 @@ export default function LiveGame({ championNames }: { championNames: Map<number,
     </div>
     {(["blue", "red"] as const).map(side => <Team key={side} side={side} summary={view[side]}
       players={view.players.filter(p => p.side === side)} live={view.gameTime !== null} onOpen={setSelected} />)}
-    {player && <LiveGamePlayer player={player} championNames={championNames} onClose={() => setSelected(null)} />}
+    {player && <LiveGamePlayer player={player} championNames={championNames} enemy={player.side !== selfSide} onClose={() => setSelected(null)} />}
   </div>;
 }
 

@@ -48,6 +48,9 @@ pub struct Spell {
     pub summoner_level: i64,
     #[serde(default)]
     pub icon_path: String,
+    /// Base cooldown in seconds, for the cooldown cheat sheet.
+    #[serde(default)]
+    pub cooldown: f64,
 }
 
 impl Spell {

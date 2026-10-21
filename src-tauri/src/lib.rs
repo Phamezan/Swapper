@@ -1581,6 +1581,8 @@ pub fn run() {
             full_app::ui_data::full_app_rune_catalog,
             full_app::ui_data::full_app_draft,
             full_app::ui_data::full_app_abilities,
+            full_app::abilities::champion_abilities,
+            full_app::abilities::ability_icon,
             full_app::ui_data::full_app_matchups,
             overlay::get_overlay_settings,
             overlay::set_overlay_settings,
