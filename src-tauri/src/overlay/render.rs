@@ -495,24 +495,46 @@ impl Surface {
         )
     }
 
-    /// Lights up the game's own level-up arrow: a soft glow and bright chevrons on top of it.
+    /// Frames the game's own level-up button: a crisp rounded border with a soft
+    /// outer glow and a faint tint, so the game's arrow stays visible inside it,
+    /// plus three stacked diamonds above, fading upward. Sized from the arrow
+    /// itself, so it follows the HUD scale.
     fn arrow(&self, rect: RectF) -> Result<(), String> {
-        let s = self.scale;
-        let glow = RectF {
-            X: rect.X - 6.0 * s,
-            Y: rect.Y - 5.0 * s,
-            Width: rect.Width + 12.0 * s,
-            Height: rect.Height + 10.0 * s,
+        let unit = rect.Width.max(rect.Height * 2.0);
+        let side = unit * 1.5;
+        let (cx, cy) = (rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0);
+        let frame = RectF { X: cx - side / 2.0, Y: cy - side / 2.0, Width: side, Height: side };
+        let radius = unit * 0.2;
+        let glow = |grow: f32| RectF {
+            X: frame.X - grow,
+            Y: frame.Y - grow,
+            Width: frame.Width + 2.0 * grow,
+            Height: frame.Height + 2.0 * grow,
         };
-        self.rounded(glow, 6.0 * s, (ACCENT & 0x00FF_FFFF) | 0x5500_0000, Some((ACCENT, 1.5 * s)))?;
-        let mid = rect.X + rect.Width / 2.0;
-        let half = rect.Width / 2.0;
-        let tall = (rect.Height * 0.55).max(4.0 * s);
-        for (i, alpha) in [(0.0, 0xFF00_0000u32), (1.0, 0x9900_0000)] {
-            let base = rect.Y + rect.Height - i * tall * 0.9;
-            self.triangle(mid, base, half, tall, (ACCENT & 0x00FF_FFFF) | alpha)?;
+        let tint = |alpha: u32| (ACCENT & 0x00FF_FFFF) | (alpha << 24);
+        for (grow, alpha) in [(unit * 0.22, 0x18), (unit * 0.12, 0x30)] {
+            self.rounded(glow(grow), radius + grow, 0, Some((tint(alpha), unit * 0.12)))?;
+        }
+        self.rounded(frame, radius, tint(0x1C), Some((ACCENT, (unit * 0.09).max(1.5))))?;
+        let mut y = frame.Y - unit * 0.32;
+        for (size, alpha) in [(0.26, 0xFF), (0.2, 0xB0), (0.15, 0x66)] {
+            let half = unit * size / 2.0;
+            self.diamond(cx, y - half, half, tint(alpha))?;
+            y -= half * 2.0 + unit * 0.14;
         }
         std::result::Result::Ok(())
+    }
+
+    fn diamond(&self, x: f32, y: f32, half: f32, color: u32) -> Result<(), String> {
+        let points = [
+            PointF { X: x, Y: y - half },
+            PointF { X: x + half, Y: y },
+            PointF { X: x, Y: y + half },
+            PointF { X: x - half, Y: y },
+        ];
+        self.with_brush(color, |brush| unsafe {
+            GdipFillPolygon(self.graphics, brush, points.as_ptr(), 4, FillModeAlternate)
+        })
     }
 
     fn text(&self, rect: RectF, text: &str, font: *mut GpFont, color: u32) -> Result<(), String> {
@@ -608,33 +630,6 @@ impl Surface {
     fn circle(&self, x: f32, y: f32, size: f32, color: u32) -> Result<(), String> {
         self.with_brush(color, |brush| unsafe {
             GdipFillEllipse(self.graphics, brush, x, y, size, size)
-        })
-    }
-
-    fn triangle(
-        &self,
-        mid: f32,
-        base: f32,
-        half: f32,
-        height: f32,
-        color: u32,
-    ) -> Result<(), String> {
-        let points = [
-            PointF {
-                X: mid - half,
-                Y: base,
-            },
-            PointF {
-                X: mid,
-                Y: base - height,
-            },
-            PointF {
-                X: mid + half,
-                Y: base,
-            },
-        ];
-        self.with_brush(color, |brush| unsafe {
-            GdipFillPolygon(self.graphics, brush, points.as_ptr(), 3, FillModeAlternate)
         })
     }
 
