@@ -155,7 +155,8 @@ function MatchRow({ game, name, onOpen }: { game: Game; name: string; onOpen: ()
   return <li ref={row} className={`match-row ${game.win ? "is-win" : "is-loss"}`}>
     <div className="match-meta">
       <strong>{game.win ? "Victory" : "Defeat"}</strong>
-      <span>{queueLabels[game.queue]}</span>
+      <span>{queueLabels[game.queue]}{game.lpChange != null &&
+        <b className={game.lpChange >= 0 ? "up" : "down"}> {game.lpChange >= 0 ? "+" : "−"}{Math.abs(game.lpChange)} LP</b>}</span>
       <small>{fmtAgo(game.createdAt)} · {clock(game.duration)}</small>
     </div>
     <button className="match-champ" onClick={onOpen} title={`Open ${name} build`}>

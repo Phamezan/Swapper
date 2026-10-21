@@ -57,6 +57,7 @@ pub fn observe(app: &AppHandle, previous: Option<&str>, current: &str) {
         tauri::async_runtime::spawn(async {
             let _ = crate::runes::item_sets::remove_imported_sets().await;
         });
+        tauri::async_runtime::spawn(crate::full_app::lp::record_after_game());
     }
     let Some(event) = transition(previous, current) else {
         return;

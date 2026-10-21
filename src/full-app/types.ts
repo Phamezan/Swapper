@@ -11,6 +11,8 @@ export type Game = {
   /** Empty for games cached before these fields existed. */
   items: number[]; spells: number[]; keystone: number; cs: number; level: number;
   role: string; placement: number;
+  /** Solo/Duo LP change; only when Swapper recorded the rank around the game. */
+  lpChange?: number | null;
 };
 export type Snapshot = {
   championNames: Record<string, string>;

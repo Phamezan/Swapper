@@ -23,7 +23,7 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
   - [ ] Up to 3 insight lines (≥4 games per group, ≥20 pt gap, plain wording)
   - [ ] Match rows: + lane opponent icon with CS diff, + LP change, + click to expand all 10 players
   - [ ] "Your champions & roles" column; drop sparkline cards, big rank card, full-width hero
-  - [ ] LP recording after each game, per account (start now — history can't be recovered later)
+  - [x] LP recording after each game, per account (Solo/Duo; `full_app/lp.rs`, `lp-history.json`) + LP chip on match rows
   - [ ] Per-account rank/record cache for the account cards
   - [ ] Empty/thin-data states
 - [ ] **Champion select redesign** — `docs/specs/champion-select.md`

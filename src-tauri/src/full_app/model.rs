@@ -53,6 +53,9 @@ pub struct Game {
     /// 1-10 among all players by `placement`; 0 when unknown.
     #[serde(default)]
     pub placement: u8,
+    /// Solo/Duo LP gained or lost, when Swapper recorded the rank around it.
+    #[serde(default)]
+    pub lp_change: Option<i64>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -247,6 +250,7 @@ pub fn game(value: &Value, player: &Summoner) -> Option<Game> {
         level: stats["champLevel"].as_u64().unwrap_or(0),
         role: role(own).into(),
         placement: placement(participants, own),
+        lp_change: None,
     })
 }
 

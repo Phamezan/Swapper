@@ -2,6 +2,7 @@
 //! webview is never created and every entry point opens this window instead.
 //! No window or data task exists until it is opened; closing destroys it.
 pub mod art;
+pub(crate) mod lp;
 pub mod ui_data;
 pub(crate) mod model;
 pub mod routing;
@@ -380,6 +381,12 @@ async fn fresh(previous: Option<&Snapshot>) -> Result<Snapshot, String> {
     .collect::<Vec<_>>()
     .await;
     games.sort_by_key(|g| std::cmp::Reverse(g.created_at));
+    let rank = model::rank(&ranked);
+    let (puuid, recorded) = (summoner.puuid.clone(), rank.clone());
+    let points = tokio::task::spawn_blocking(move || lp::record(&puuid, recorded))
+        .await
+        .unwrap_or_default();
+    lp::annotate(&mut games, &points);
     if let Some(id) = current["profileIconId"].as_u64() {
         if let Ok(bytes) = crate::runes::lcu_get_bytes(
             &client,
@@ -408,7 +415,7 @@ async fn fresh(previous: Option<&Snapshot>) -> Result<Snapshot, String> {
     Ok(Snapshot {
         champion_names,
         summoner,
-        rank: model::rank(&ranked),
+        rank,
         fetched_at: crate::runes::provider::now_ms(),
         summaries: model::summaries(&games),
         games,
