@@ -13,6 +13,10 @@ import { TitleBar } from "./TitleBar";
 import FlyoutApp from "../App";
 import type { AppState, FullAppBridge, View } from "../App";
 import "./dashboard.css";
+import "./full-app.css";
+import { AccountCards } from "./AccountCards";
+import { SettingsPage } from "./SettingsPage";
+import { ChampionSelect } from "./ChampionSelect";
 
 const Champions = lazy(() => import("./Champions"));
 type Page = "Dashboard" | "Tier list & Builds" | "Matchups";
@@ -66,6 +70,9 @@ function App() {
 
   const bridge = useMemo<FullAppBridge>(() => ({
     request,
+    Accounts: AccountCards,
+    Settings: SettingsPage,
+    Runes: ChampionSelect,
     onViewChange: setAppView,
     onChampSelectChange: active => {
       setInChampSelect(active);

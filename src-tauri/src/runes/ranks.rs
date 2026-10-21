@@ -29,11 +29,15 @@ fn rank_gate(name: &str) -> Arc<tokio::sync::Mutex<()>> {
 pub fn asset_name(tier: &str) -> Option<&'static str> {
     match tier.trim().to_ascii_lowercase().as_str() {
         "all" => Some("unranked"),
-        "gold_plus" => Some("gold"),
-        "platinum_plus" => Some("platinum"),
-        "emerald_plus" => Some("emerald"),
-        "diamond_plus" => Some("diamond"),
-        "master_plus" => Some("master"),
+        "iron" => Some("iron"),
+        "bronze" => Some("bronze"),
+        "silver" => Some("silver"),
+        "grandmaster" => Some("grandmaster"),
+        "gold" | "gold_plus" => Some("gold"),
+        "platinum" | "platinum_plus" => Some("platinum"),
+        "emerald" | "emerald_plus" => Some("emerald"),
+        "diamond" | "diamond_plus" => Some("diamond"),
+        "master" | "master_plus" => Some("master"),
         "challenger" => Some("challenger"),
         _ => None,
     }
@@ -132,8 +136,10 @@ mod tests {
         assert_eq!(asset_name("diamond_plus"), Some("diamond"));
         assert_eq!(asset_name("master_plus"), Some("master"));
         assert_eq!(asset_name("challenger"), Some("challenger"));
-        // Bare tier names are not slugs the picker sends.
-        assert_eq!(asset_name("gold"), None);
+        // Bare tiers name a player's own rank (every tier has a crest).
+        for rank in ["iron", "bronze", "silver", "gold", "platinum", "emerald", "diamond", "master", "grandmaster"] {
+            assert_eq!(asset_name(rank), Some(rank));
+        }
         assert_eq!(asset_name("grandmaster_plus"), None);
         // No arbitrary paths or traversal survive.
         assert_eq!(asset_name("../../secret"), None);

@@ -1,0 +1,244 @@
+//! Read-only full-window data from the existing LCU and rune catalogs.
+use base64::Engine;
+use serde::{Deserialize, Serialize};
+use serde_json::Value;
+
+/// The wide page offers every reported opponent. The flyout keeps its two
+/// existing fifteen-card strips and its sample-adjusted ordering.
+#[tauri::command]
+pub async fn full_app_matchups(
+    champion_id: i64,
+    position: String,
+    tier: String,
+) -> Result<crate::runes::ChampionCountersView, String> {
+    use crate::runes::{counters, counters_view, data, lolalytics};
+    let names = data::champion_names().await.map_err(|e| e.to_string())?;
+    let name = names.get(&champion_id).cloned().ok_or("Unknown champion")?;
+    let slug = lolalytics::champion_slug(&name).ok_or("Unknown champion")?;
+    let lane = lolalytics::lane(&position);
+    let found = counters::load(&slug, champion_id, lane, &tier)
+        .await
+        .map_err(|e| e.to_string())?;
+    let Some(found) = found else {
+        return Ok(crate::runes::champion_counters_view(champion_id, Some(&position), &tier).await);
+    };
+    let rows = found
+        .value
+        .rows
+        .iter()
+        .map(|row| counters_view::CounterRowView {
+            champion_id: row.champion_id,
+            name: names
+                .get(&row.champion_id)
+                .cloned()
+                .unwrap_or_else(|| format!("Champion {}", row.champion_id)),
+            win_pct: row.vs_win_pct,
+            delta: row.vs_win_pct - row.all_win_pct,
+            games: row.games,
+            low_sample: row.games < crate::runes::matchup::MIN_MATCHUP_GAMES,
+        })
+        .collect();
+    Ok(crate::runes::ChampionCountersView {
+        champion_id,
+        champion_name: name,
+        position,
+        best_into: Vec::new(),
+        beats: rows,
+        unavailable: false,
+        stale: found.stale,
+        updated_at: found.fetched_at,
+    })
+}
+
+#[derive(Serialize)]
+pub struct RuneCatalog {
+    trees: Vec<crate::runes::view::RuneTreeView>,
+    shards: Vec<crate::runes::view::RuneRowView>,
+}
+
+#[tauri::command]
+pub async fn full_app_rune_catalog() -> Result<RuneCatalog, String> {
+    let catalog = crate::runes::data::catalog()
+        .await
+        .map_err(|e| e.to_string())?;
+    let stats = crate::runes::stats::Aggregate::default();
+    Ok(RuneCatalog {
+        trees: crate::runes::view::build_trees(&catalog, &stats),
+        shards: crate::runes::view::build_shards(&catalog, &stats),
+    })
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DraftMember {
+    champion_id: i64,
+    position: String,
+    local: bool,
+}
+
+#[derive(Serialize)]
+pub struct Draft {
+    allies: Vec<DraftMember>,
+    enemies: Vec<DraftMember>,
+    bans: Vec<i64>,
+}
+
+fn draft_from(value: &Value) -> Draft {
+    let local = value["localPlayerCellId"].as_i64();
+    let members = |field: &str| {
+        value[field]
+            .as_array()
+            .into_iter()
+            .flatten()
+            .map(|member| DraftMember {
+                champion_id: member["championId"].as_i64().unwrap_or(0).max(0),
+                position: member["assignedPosition"]
+                    .as_str()
+                    .unwrap_or("")
+                    .to_string(),
+                local: field == "myTeam" && local.is_some() && member["cellId"].as_i64() == local,
+            })
+            .collect()
+    };
+    let bans = value["actions"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .filter_map(Value::as_array)
+        .flatten()
+        .filter(|action| action["type"] == "ban" && action["completed"] == true)
+        .filter_map(|action| action["championId"].as_i64())
+        .filter(|id| *id > 0)
+        .collect();
+    Draft {
+        allies: members("myTeam"),
+        enemies: members("theirTeam"),
+        bans,
+    }
+}
+
+#[tauri::command]
+pub async fn full_app_draft() -> Result<Draft, String> {
+    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
+    let session: Value = crate::runes::lcu_get(&client, "/lol-champ-select/v1/session")
+        .await
+        .map_err(|e| e.to_string())?;
+    Ok(draft_from(&session))
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Ability {
+    key: String,
+    name: String,
+    icon: Option<String>,
+}
+
+fn ability_path(spell: &Value) -> Option<&str> {
+    let path = spell["abilityIconPath"].as_str()?;
+    (path.starts_with("/lol-game-data/assets/") && !path.contains("..") && !path.contains('\\'))
+        .then_some(path)
+}
+
+#[tauri::command]
+pub async fn full_app_abilities(champion_id: i64) -> Result<Vec<Ability>, String> {
+    if champion_id <= 0 {
+        return Err("Unknown champion.".into());
+    }
+    let path = crate::vault::data_root()?
+        .join("art")
+        .join(format!("abilities-{champion_id}.json"));
+    let cached_path = path.clone();
+    let cached = tokio::task::spawn_blocking(move || {
+        if std::fs::metadata(&cached_path).ok()?.len() > 1024 * 1024 {
+            return None;
+        }
+        serde_json::from_slice::<Vec<Ability>>(&std::fs::read(cached_path).ok()?).ok()
+    })
+    .await
+    .unwrap_or(None);
+    if let Some(abilities) = cached {
+        return Ok(abilities);
+    }
+    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
+    let champion: Value = crate::runes::lcu_get(
+        &client,
+        &format!("/lol-game-data/assets/v1/champions/{champion_id}.json"),
+    )
+    .await
+    .map_err(|e| e.to_string())?;
+    let mut abilities = Vec::new();
+    for (index, spell) in champion["spells"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .take(4)
+        .enumerate()
+    {
+        let icon = match ability_path(spell) {
+            Some(asset) => crate::runes::lcu_get_bytes(&client, asset)
+                .await
+                .ok()
+                .filter(|bytes| {
+                    bytes.len() <= 256 * 1024 && bytes.starts_with(b"\x89PNG\r\n\x1a\n")
+                })
+                .map(|bytes| {
+                    format!(
+                        "data:image/png;base64,{}",
+                        base64::engine::general_purpose::STANDARD.encode(bytes)
+                    )
+                }),
+            None => None,
+        };
+        abilities.push(Ability {
+            key: ["Q", "W", "E", "R"][index].into(),
+            name: spell["name"].as_str().unwrap_or("").into(),
+            icon,
+        });
+    }
+    if abilities.len() == 4 && abilities.iter().all(|ability| ability.icon.is_some()) {
+        if let Ok(bytes) = serde_json::to_vec(&abilities) {
+            let _ = tokio::task::spawn_blocking(move || {
+                std::fs::create_dir_all(path.parent()?).ok()?;
+                let pending = path.with_extension("tmp");
+                std::fs::write(&pending, bytes).ok()?;
+                std::fs::rename(pending, path).ok()
+            })
+            .await;
+        }
+    }
+    Ok(abilities)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+    #[test]
+    fn draft_preserves_hidden_slots_and_only_completed_bans() {
+        let draft = draft_from(
+            &json!({"localPlayerCellId": 2, "myTeam": [{"cellId":2,"championId":103,"assignedPosition":"middle"}], "theirTeam":[{"championId":0},{"championId":238}], "actions":[[{"type":"ban","completed":true,"championId":222},{"type":"ban","completed":false,"championId":23},{"type":"pick","completed":true,"championId":1}]]}),
+        );
+        assert!(draft.allies[0].local);
+        assert_eq!(draft.enemies.len(), 2);
+        assert_eq!(draft.enemies[0].champion_id, 0);
+        assert_eq!(draft.bans, vec![222]);
+        assert!(draft_from(&json!({"myTeam":[{}]}))
+            .allies
+            .iter()
+            .all(|member| !member.local));
+    }
+    #[test]
+    fn ability_paths_stay_in_game_data() {
+        assert!(
+            ability_path(&json!({"abilityIconPath":"/lol-game-data/assets/ASSETS/q.png"}))
+                .is_some()
+        );
+        for path in [
+            "https://example.com/q.png",
+            "/lol-game-data/assets/../secret",
+            "/lol-game-data/assets/\\secret",
+        ] {
+            assert!(ability_path(&json!({"abilityIconPath":path})).is_none());
+        }
+    }
+}

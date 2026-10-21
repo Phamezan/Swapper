@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentType, type ComponentProps } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { open as browseForFile } from "@tauri-apps/plugin-dialog";
@@ -22,6 +22,7 @@ import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionAp
 import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
 import type { SettingsTab } from "./settings/SettingsView";
+import type { AccountCardsProps } from "./full-app/AccountCards";
 import "./App.css";
 
 export type Account = {
@@ -111,6 +112,9 @@ export type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings
 /** Lets the Fullsized App host this component as its Accounts, Champion select
  *  and Settings pages. The flyout passes nothing. */
 export type FullAppBridge = {
+  Accounts?: ComponentType<AccountCardsProps>;
+  Runes?: ComponentType<ComponentProps<typeof RunesPanel>>;
+  Settings?: ComponentType<ComponentProps<typeof SettingsView>>;
   /** A new object navigates once, e.g. from the sidebar. */
   request: { view: View } | null;
   onViewChange: (view: View) => void;
@@ -158,6 +162,9 @@ function IdentityCard({ identity }: { identity: DetectedIdentity }) {
 }
 
 function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
+  const RunesSurface = fullApp?.Runes ?? RunesPanel;
+  const SettingsSurface = fullApp?.Settings ?? SettingsView;
+  const AccountsSurface = fullApp?.Accounts;
   const [data, setData] = useState<AppState>(empty);
   const [view, setView] = useState<View>("accounts");
   const [inChampSelect, setInChampSelect] = useState(false);
@@ -891,7 +898,10 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                 </Button>
               </section>
             )}
-            <div className="account-list">
+            {AccountsSurface ? <AccountsSurface accounts={data.accounts} activeId={displayedActiveId} switchingId={switchingAccountId} repairableId={repairableId} busy={isBusy}
+              onSwitch={id => void switchToAccount(id)} onAdd={() => navigate("add")} onRepair={startRepair} onError={showError}
+              onRename={account => { navigate("edit"); setEditing(account.id); setName(account.nickname ?? ""); }}
+              onRemove={id => { navigate("remove"); setPendingRemove(id); }} /> : <div className="account-list">
               {data.accounts.length === 0 ? (
                 <div className="empty-state">
                   <div className="empty-symbol"><Plus size={22} /></div>
@@ -943,8 +953,8 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                   </button>
                 );
               })}
-            </div>
-            {data.accounts.length > 0 && <Button variant="outline" className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
+            </div>}
+            {!AccountsSurface && data.accounts.length > 0 && <Button variant="outline" className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
           </>
         ) : view === "champions" ? (
           <div className="runes-panel runes-desktop">
@@ -961,7 +971,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
             </div>
           </div>
         ) : view === "runes" ? (
-          <RunesPanel
+          <RunesSurface
             mode="desktop"
             view={runes}
             loading={runesLoading}
@@ -1076,7 +1086,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               </div>)}
             </div>}
 
-            {view === "settings" && <SettingsView
+            {view === "settings" && <SettingsSurface
               state={data}
               busy={busy !== null}
               tab={settingsTab}

@@ -2,6 +2,7 @@
 //! webview is never created and every entry point opens this window instead.
 //! No window or data task exists until it is opened; closing destroys it.
 pub mod art;
+pub mod ui_data;
 mod model;
 pub mod routing;
 

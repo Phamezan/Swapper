@@ -413,7 +413,7 @@ fn rune_view(id: i64, name: &str, stats: &stats::Aggregate, row: &[i64]) -> Rune
     }
 }
 
-fn build_trees(catalog: &perks::PerkCatalog, stats: &stats::Aggregate) -> Vec<RuneTreeView> {
+pub(crate) fn build_trees(catalog: &perks::PerkCatalog, stats: &stats::Aggregate) -> Vec<RuneTreeView> {
     catalog
         .trees()
         .map(|style| {
@@ -451,7 +451,7 @@ fn build_trees(catalog: &perks::PerkCatalog, stats: &stats::Aggregate) -> Vec<Ru
         .collect()
 }
 
-fn build_shards(catalog: &perks::PerkCatalog, stats: &stats::Aggregate) -> Vec<RuneRowView> {
+pub(crate) fn build_shards(catalog: &perks::PerkCatalog, stats: &stats::Aggregate) -> Vec<RuneRowView> {
     catalog
         .shard_rows()
         .into_iter()

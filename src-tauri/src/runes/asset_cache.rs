@@ -57,7 +57,8 @@ impl Kind {
                 .then(|| name.to_string()),
             Kind::Rank => matches!(
                 name,
-                "unranked" | "gold" | "platinum" | "emerald" | "diamond" | "master" | "challenger"
+                "unranked" | "iron" | "bronze" | "silver" | "gold" | "platinum" | "emerald" | "diamond"
+                    | "master" | "grandmaster" | "challenger"
             )
             .then(|| name.to_string()),
             Kind::Team => team_stem(name),

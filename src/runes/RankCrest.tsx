@@ -5,6 +5,8 @@ import { cachedIcon, loadIcon } from "./iconLoader";
  *  `runes::ranks::asset_name`. */
 const ASSET: Record<string, string> = {
   all: "unranked",
+  iron: "iron", bronze: "bronze", silver: "silver", gold: "gold",
+  platinum: "platinum", emerald: "emerald", diamond: "diamond", master: "master", grandmaster: "grandmaster",
   gold_plus: "gold",
   platinum_plus: "platinum",
   emerald_plus: "emerald",

@@ -16,13 +16,8 @@ const metricUnit = ["", "%", "", "", "%", ""];
 export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
 const roleLabels: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 
-/** Player tier -> the crest slug `RankCrest` knows. Iron to Silver have no crest asset. */
-export function crestSlug(tier: string | undefined): string {
-  const t = (tier ?? "").toLowerCase();
-  if (t === "challenger") return "challenger";
-  if (t === "master" || t === "grandmaster") return "master_plus";
-  return ["gold", "platinum", "emerald", "diamond"].includes(t) ? `${t}_plus` : "none";
-}
+export { crestForTier as crestSlug } from "./buildLogic";
+import { crestForTier as crestSlug } from "./buildLogic";
 
 export function titleCase(text: string) {
   return text.charAt(0) + text.slice(1).toLowerCase();
@@ -126,7 +121,7 @@ function StatCard({ metric, index }: { metric: Metric; index: number }) {
   const gradient = `spark-${index}`;
   return <article className={`stat-card trend-${trend}`}>
     <small>{metricLabels[index]}</small>
-    <strong>{metric.average === null ? "–" : fmt(metric.average, index)}</strong>
+    <strong>{metric.average === null ? "–" : <>{metric.average.toFixed(metricDigits[index])}<i>{metricUnit[index]}</i></>}</strong>
     <span className="delta-chip" title="Latest 5 games vs this queue’s average">
       {metric.delta === null ? "No team data" : <>{metric.delta >= 0 ? "▲" : "▼"} {fmt(Math.abs(metric.delta), index)}</>}
     </span>
@@ -140,7 +135,7 @@ function StatCard({ metric, index }: { metric: Metric; index: number }) {
 
 function RankCard({ rank }: { rank: Snapshot["rank"] }) {
   const games = rank ? rank.wins + rank.losses : 0;
-  return <section className={`panel rank-card${rank ? "" : " is-unranked"}`} aria-label="Ranked Solo/Duo">
+  return <section className={`panel rank-card${rank ? "" : " is-unranked"}`} data-tier={(rank?.tier ?? "").toLowerCase()} aria-label="Ranked Solo/Duo">
     <div className="rank-emblem"><RankCrest tier={crestSlug(rank?.tier)} size={76} mode="desktop" /></div>
     <div className="rank-copy">
       <small>Ranked Solo/Duo</small>
