@@ -40,7 +40,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
     else if (tab === "counters") void invoke<ChampionCountersView>("full_app_matchups", { championId: enemyId, position: role, tier })
       .then(view => done(counterPicks(view.beats, new Set(), 24))).catch(reason => done(null, String(reason)));
     else if (tab === "recommended") void invoke<RecommendedPick[]>("recommended_picks", { role, tier })
-      .then(picks => done(recommendedSuggestions(picks, names, new Set()))).catch(() => done(null, "Recommended picks are not available yet."));
+      .then(picks => done(recommendedSuggestions(picks, names, new Set()))).catch(reason => done(null, String(reason)));
     else void tierList(role, tier).then(view => done(metaPicks(view.rows, new Set(), 24))).catch(reason => done(null, String(reason)));
     return () => { live = false; };
   }, [key]);

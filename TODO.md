@@ -32,7 +32,8 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
   - [ ] Build tabs (most played, highest WR, vs enemy laner, pro builds), full rune trees, 1–18 skill grid, items
   - [ ] Per-section apply status (Runes/Spells/Item set) + Apply all + inline auto-apply
   - [ ] Lane cheat sheet: enemy cooldowns per rank, their summoners + starters, power spikes, matchup WR
-- [ ] **Recommended blind picks** (part of champ select spec)
+- [x] **Recommended blind picks** (merged; lolalytics matchups, ~2-3 MB preload for 2 roles. Left: UI does not pass
+      `allies`/`partner` yet, so team comp v1 is unused; Jayce/Ezreal/Nautilus/Nami miss the sanity list, see HANDOFF)
   - [ ] Conservative score: expected WR across likely opponents + heavy safety (few hard counters), sample-shrunk
   - [ ] Bracket = your rank automatically; all champions in role; 5–8 picks; no reason line
   - [ ] Team comp v1: damage balance + bot duo synergy
