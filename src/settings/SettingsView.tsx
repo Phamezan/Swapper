@@ -2,12 +2,14 @@ import { useRef } from "react";
 import type { AppState } from "../App";
 import { GeneralSettings } from "./GeneralSettings";
 import { RuneSettings } from "./RuneSettings";
+import { OverlaySettings } from "./OverlaySettings";
 import { RemoteSettings } from "./RemoteSettings";
 import { AboutSettings } from "./AboutSettings";
 
 const TABS = [
   { id: "general", label: "General" },
   { id: "runes", label: "Runes" },
+  { id: "overlay", label: "Overlay" },
   { id: "remote", label: "Remote" },
   { id: "about", label: "About" },
 ] as const;
@@ -146,6 +148,7 @@ export function SettingsView(props: Props) {
           busy={props.busy}
           onRuneTierChange={props.onRuneTierChange}
         />}
+        {tab === "overlay" && <OverlaySettings />}
         {tab === "remote" && <RemoteSettings
           remote={props.state.remote}
           transport={props.remoteTransport}

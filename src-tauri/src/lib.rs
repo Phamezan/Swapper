@@ -6,6 +6,7 @@ mod lifecycle;
 mod lcu;
 mod remote;
 mod notify;
+mod overlay;
 mod doctor;
 mod repair;
 mod riot;
@@ -1410,6 +1411,7 @@ pub fn run() {
                 remote: remote.clone(),
                 hotkey_active: AtomicBool::new(false),
             });
+            overlay::init(app.handle())?;
             if let Some(window) = app.get_webview_window("main") {
                 disable_window_transitions(&window);
             }
@@ -1528,6 +1530,8 @@ pub fn run() {
             dashboard::set_dashboard_enabled,
             dashboard::open_dashboard,
             dashboard::dashboard_snapshot,
+            overlay::get_overlay_settings,
+            overlay::set_overlay_settings,
             get_state,
             open_riot,
             begin_add,

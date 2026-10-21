@@ -78,6 +78,8 @@ impl Account {
 pub struct Config {
     #[serde(default)]
     pub dashboard_window: bool,
+    #[serde(default)]
+    pub overlay: crate::overlay::Settings,
     pub accounts: Vec<Account>,
     pub active_id: Option<Uuid>,
     pub use_deceive: bool,
