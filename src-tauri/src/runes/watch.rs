@@ -2,12 +2,12 @@
 //! the recommended runes once per champion when auto-apply is on, and turns
 //! gameflow phase transitions into lifecycle notifications.
 //!
-//! The watcher polls quickly only while something is waiting on the phase:
-//! champion select, matchmaking, or a ready check (which expires in seconds).
-//! Away from those — the lobby, or League not running at all — it backs off so
-//! the idle app is not doing work every few seconds.
+//! League pushes phase and draft changes over its local WebSocket. REST polling
+//! recovers missed events and clients that do not support subscriptions.
 
-use std::sync::Mutex;
+mod events;
+
+use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
 use serde::Serialize;
@@ -21,6 +21,7 @@ use super::AppliedView;
 const ACTIVE_INTERVAL: Duration = Duration::from_secs(3);
 /// Away from champion select there is nothing to auto-apply, so back off.
 const IDLE_INTERVAL: Duration = Duration::from_secs(10);
+const RECONCILE_INTERVAL: Duration = Duration::from_secs(30);
 
 /// `champion|map` of the last auto-applied page, shared between the watcher and
 /// the enable path so turning the setting on while already locked applies once
@@ -46,12 +47,7 @@ fn apply_key(context: &ChampSelectContext) -> String {
 
 /// Whether an auto-apply should run for this state. Split out so the "enable
 /// while already locked applies once" rule is testable without League.
-fn auto_apply_target(
-    enabled: bool,
-    ready: bool,
-    key: &str,
-    last: Option<&str>,
-) -> bool {
+fn auto_apply_target(enabled: bool, ready: bool, key: &str, last: Option<&str>) -> bool {
     enabled && ready && last != Some(key)
 }
 
@@ -65,72 +61,155 @@ pub struct ChampSelectEvent {
     pub locked: bool,
 }
 
-fn replace_draft(last: &mut Option<crate::full_app::ui_data::Draft>, next: Option<crate::full_app::ui_data::Draft>) -> bool {
-    if *last == next { return false; }
+fn replace_draft(
+    last: &mut Option<crate::full_app::ui_data::Draft>,
+    next: Option<crate::full_app::ui_data::Draft>,
+) -> bool {
+    if *last == next {
+        return false;
+    }
     *last = next;
     true
 }
 
-/// Polls champion select and emits `champ_select` events, applying the top
+#[derive(Default)]
+struct WatchState {
+    phase: Option<String>,
+    revision: u64,
+    connected: bool,
+    last: Option<ChampSelectEvent>,
+    draft: Option<crate::full_app::ui_data::Draft>,
+}
+
+impl WatchState {
+    fn set_phase(&mut self, phase: &str) -> bool {
+        if self.phase.as_deref() == Some(phase) {
+            return false;
+        }
+        self.phase = Some(phase.into());
+        self.revision += 1;
+        true
+    }
+
+    fn emit(&mut self, app: &tauri::AppHandle, event: ChampSelectEvent) -> bool {
+        if self.last.as_ref() == Some(&event) {
+            return false;
+        }
+        self.last = Some(event.clone());
+        let _ = app.emit("champ_select", event);
+        true
+    }
+
+    fn emit_draft(
+        &mut self,
+        app: &tauri::AppHandle,
+        draft: Option<crate::full_app::ui_data::Draft>,
+    ) {
+        if replace_draft(&mut self.draft, draft) {
+            let _ = app.emit("draft_changed", &self.draft);
+        }
+    }
+
+    fn observe(&mut self, app: &tauri::AppHandle, phase: &str) {
+        let previous = self.phase.clone();
+        crate::korean_font::observe(app, phase);
+        if !self.set_phase(phase) {
+            return;
+        }
+        crate::lifecycle::observe(app, previous.as_deref(), phase);
+        crate::live_game::observe(app, phase);
+        crate::overlay::observe(app, phase);
+        if phase != "ChampSelect" {
+            self.emit_draft(app, None);
+            set_applied_key(None);
+        }
+        self.emit(app, champ_event(phase, None));
+    }
+}
+
+fn champ_event(phase: &str, context: Option<&ChampSelectContext>) -> ChampSelectEvent {
+    ChampSelectEvent {
+        phase: phase.into(),
+        champion_id: context.map(|c| c.champion_id).unwrap_or(0),
+        champion_name: context.map(|c| c.champion_name.clone()).unwrap_or_default(),
+        position: context
+            .and_then(ChampSelectContext::position)
+            .unwrap_or("")
+            .into(),
+        locked: context.is_some_and(|c| c.locked),
+    }
+}
+
+/// Watches champion select and emits `champ_select` events, applying the top
 /// preset once per champion when the auto-apply setting is on.
 pub fn spawn_watch(app: tauri::AppHandle) {
+    let state = Arc::new(Mutex::new(WatchState::default()));
+    let refresh = Arc::new(tokio::sync::Notify::new());
+    let event_app = app.clone();
+    let event_state = state.clone();
+    let event_refresh = refresh.clone();
+    events::spawn(move |event| {
+        let mut state = event_state.lock().unwrap_or_else(|e| e.into_inner());
+        match event {
+            events::Event::Connected | events::Event::Disconnected => {
+                let connected = matches!(event, events::Event::Connected);
+                if state.connected == connected {
+                    return;
+                }
+                state.connected = connected;
+                state.revision += 1;
+            }
+            events::Event::Phase(phase) => state.observe(&event_app, &phase),
+            events::Event::Draft(draft) => {
+                if state.phase.as_deref() != Some("ChampSelect") {
+                    return;
+                }
+                state.revision += 1;
+                let context = draft.as_ref().and_then(|value| {
+                    super::session::parse_champ_select(&value.to_string())
+                        .ok()
+                        .flatten()
+                });
+                state.emit_draft(
+                    &event_app,
+                    draft.as_ref().map(crate::full_app::ui_data::draft_from),
+                );
+                if !state.emit(&event_app, champ_event("ChampSelect", context.as_ref())) {
+                    return;
+                }
+            }
+        }
+        event_refresh.notify_one();
+    });
     tauri::async_runtime::spawn(async move {
-        let mut last: Option<ChampSelectEvent> = None;
-        let mut last_draft = None;
-        // The last gameflow phase, so lifecycle notifications fire once per
-        // transition instead of per poll.
-        let mut last_phase: Option<String> = None;
-        let mut interval = IDLE_INTERVAL;
         loop {
-            tokio::time::sleep(interval).await;
-            let (phase, context, draft) = match super::rune_context().await {
-                Ok(super::RuneContext { phase, context, draft }) => (phase, context, draft),
-                Err(_) => {
-                    // League is not connected; keep backing off. last_phase is
-                    // kept, so a reconnect cannot re-fire an old transition.
-                    // The Korean font patcher is stopped so a closed client
-                    // cannot leave it stranded.
-                    crate::korean_font::observe(&app, "Offline");
-                    crate::live_game::observe(&app, "Offline");
-                    if replace_draft(&mut last_draft, None) {
-                        let _ = app.emit("draft_changed", &last_draft);
-                    }
-                    interval = IDLE_INTERVAL;
+            let revision = state.lock().unwrap_or_else(|e| e.into_inner()).revision;
+            let result = super::rune_context().await;
+            let context = {
+                let mut state = state.lock().unwrap_or_else(|e| e.into_inner());
+                // A push received during the REST read is newer than its result.
+                if state.revision != revision {
                     continue;
                 }
+                match result {
+                    Ok(super::RuneContext {
+                        phase,
+                        context,
+                        draft,
+                    }) => {
+                        state.observe(&app, &phase);
+                        state.emit_draft(&app, draft);
+                        state.emit(&app, champ_event(&phase, context.as_ref()));
+                        context
+                    }
+                    Err(_) => {
+                        if !state.connected {
+                            state.observe(&app, "Offline");
+                        }
+                        None
+                    }
+                }
             };
-            interval = if matches!(
-                phase.as_str(),
-                "ChampSelect" | "ReadyCheck" | "Matchmaking"
-            ) {
-                ACTIVE_INTERVAL
-            } else {
-                IDLE_INTERVAL
-            };
-            if replace_draft(&mut last_draft, draft) {
-                let _ = app.emit("draft_changed", &last_draft);
-            }
-            crate::lifecycle::observe(&app, last_phase.as_deref(), &phase);
-            crate::korean_font::observe(&app, &phase);
-            crate::live_game::observe(&app, &phase);
-            last_phase = Some(phase.clone());
-            let mut event = ChampSelectEvent {
-                phase: phase.clone(),
-                champion_id: context.as_ref().map(|c| c.champion_id).unwrap_or(0),
-                champion_name: context
-                    .as_ref()
-                    .map(|c| c.champion_name.clone())
-                    .unwrap_or_default(),
-                position: String::new(),
-                locked: context.as_ref().map(|c| c.locked).unwrap_or(false),
-            };
-            if let Some(context) = context.as_ref() {
-                event.position = context.position().unwrap_or("").to_string();
-            }
-            if last.as_ref() != Some(&event) {
-                last = Some(event.clone());
-                let _ = app.emit("champ_select", event.clone());
-            }
             // Warm the runes and pro builds for the pick in the background, so
             // opening a tab during champion select does not wait on op.gg/u.gg.
             if let Some(context) = context.as_ref() {
@@ -139,11 +218,9 @@ pub fn spawn_watch(app: tauri::AppHandle) {
                 }
             }
             let ready = context.as_ref().is_some_and(|c| c.auto_apply_ready());
-            if phase == "ChampSelect" && ready {
+            if ready {
                 if let Some(context) = context.as_ref() {
-                    // One apply per champion. ARAM rerolls and bench swaps
-                    // change the champion, so the key changes and the page is
-                    // re-applied on the next poll (the poll is the debounce).
+                    // One apply per champion, including ARAM rerolls and bench swaps.
                     let key = apply_key(context);
                     if auto_apply_target(
                         auto_apply_enabled(&app),
@@ -154,8 +231,33 @@ pub fn spawn_watch(app: tauri::AppHandle) {
                         let _ = apply_and_track(&app, context, key).await;
                     }
                 }
-            } else if phase != "ChampSelect" {
-                set_applied_key(None);
+            }
+            let retry_apply = context.as_ref().is_some_and(|context| {
+                auto_apply_target(
+                    auto_apply_enabled(&app),
+                    context.auto_apply_ready(),
+                    &apply_key(context),
+                    applied_key().as_deref(),
+                )
+            });
+            let interval = {
+                let state = state.lock().unwrap_or_else(|e| e.into_inner());
+                if retry_apply {
+                    ACTIVE_INTERVAL
+                } else if state.connected {
+                    RECONCILE_INTERVAL
+                } else if matches!(
+                    state.phase.as_deref(),
+                    Some("ChampSelect" | "ReadyCheck" | "Matchmaking")
+                ) {
+                    ACTIVE_INTERVAL
+                } else {
+                    IDLE_INTERVAL
+                }
+            };
+            tokio::select! {
+                _ = refresh.notified() => {},
+                _ = tokio::time::sleep(interval) => {},
             }
         }
     });
@@ -199,9 +301,9 @@ async fn apply_and_track(
         apply_spells_enabled(app),
         import_items_enabled(app),
     )
-        .await
-        .ok()
-        .flatten()?;
+    .await
+    .ok()
+    .flatten()?;
     if let Some(id) = applied.page_id {
         persist_page_id(app, id).await;
     }
@@ -308,6 +410,23 @@ mod tests {
     use super::*;
 
     #[test]
+    fn pushed_phase_invalidates_a_slow_poll_without_repeating_transitions() {
+        let mut state = WatchState::default();
+        assert!(state.set_phase("ChampSelect"));
+        let pending_poll = state.revision;
+        assert!(state.set_phase("GameStart"));
+        assert_ne!(
+            pending_poll, state.revision,
+            "old champion-select reads must be discarded"
+        );
+        let current = state.revision;
+        assert!(!state.set_phase("GameStart"));
+        assert_eq!(state.revision, current);
+        assert!(state.set_phase("InProgress"));
+        assert!(state.set_phase("EndOfGame"));
+    }
+
+    #[test]
     fn draft_events_follow_other_players_bans_and_timer_without_duplicates() {
         let base = serde_json::json!({"localPlayerCellId": 0,
             "myTeam": [{"cellId": 0, "championId": 103}, {"cellId": 1, "championId": 0}],
@@ -317,11 +436,13 @@ mod tests {
         let mut last = None;
         assert!(replace_draft(&mut last, draft(&base)));
         assert!(!replace_draft(&mut last, draft(&base)));
-        let mut next = base.clone(); next["theirTeam"][0]["championId"] = serde_json::json!(238);
+        let mut next = base.clone();
+        next["theirTeam"][0]["championId"] = serde_json::json!(238);
         assert!(replace_draft(&mut last, draft(&next)));
         next["myTeam"][1]["championId"] = serde_json::json!(266);
         assert!(replace_draft(&mut last, draft(&next)));
-        next["actions"] = serde_json::json!([[{"type": "ban", "championId": 11, "completed": true}]]);
+        next["actions"] =
+            serde_json::json!([[{"type": "ban", "championId": 11, "completed": true}]]);
         assert!(replace_draft(&mut last, draft(&next)));
         next["timer"]["phase"] = serde_json::json!("FINALIZATION");
         assert!(replace_draft(&mut last, draft(&next)));

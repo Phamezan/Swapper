@@ -13,8 +13,14 @@ export function useInGame(): boolean {
   useEffect(() => {
     if (!isTauri()) return;
     let live = true;
-    const stop = listen<boolean>("live_game_state", ({ payload }) => { if (live) setInGame(payload); });
-    void invoke<boolean>("live_game_active").then(active => { if (live) setInGame(active); }).catch(() => {});
+    let stateReceived = false;
+    const stop = listen<boolean>("live_game_state", ({ payload }) => {
+      stateReceived = true;
+      if (live) setInGame(payload);
+    });
+    void stop.then(() => invoke<boolean>("live_game_active")).then(active => {
+      if (live && !stateReceived) setInGame(active);
+    }).catch(() => {});
     return () => { live = false; void stop.then(unlisten => unlisten()); };
   }, []);
   return inGame;

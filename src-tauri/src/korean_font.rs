@@ -107,6 +107,7 @@ fn phase_wants_patcher(phase: &str) -> bool {
         "ReadyCheck"
             | "ChampSelect"
             | "Matchmaking"
+            | "GameStart"
             | "InProgress"
             | "Reconnect"
             | "WaitingForStats"
@@ -446,6 +447,7 @@ mod tests {
     #[test]
     fn patcher_runs_for_a_loading_or_running_game_only() {
         for phase in [
+            "GameStart",
             "ReadyCheck",
             "ChampSelect",
             "Matchmaking",

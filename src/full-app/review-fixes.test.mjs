@@ -127,6 +127,21 @@ test("draft events update taken picks and enemy build context without a local vi
   assert.ok(suggestions.props.taken.has(11));
   assert.equal(buildReads, before, "enemy reveals must not reload and reset the source build");
 });
+test("game-state pushes update navigation immediately and beat a stale startup read", async () => {
+  let finish;
+  const h = harness("./LiveGameData.ts", "useInGame", {
+    live_game_active: () => new Promise(resolve => { finish = resolve; }),
+  });
+  h.render(); await h.flush();
+  await h.emit("live_game_state", true);
+  assert.equal(h.tree(), true);
+  assert.equal(h.timers.size, 0, "navigation must not wait for a refresh timer");
+  finish(false); await h.flush();
+  assert.equal(h.tree(), true, "stale startup state overwrote the game-start event");
+  await h.emit("live_game_state", false);
+  assert.equal(h.tree(), false);
+});
+
 test("hidden Live Game surfaces defer initial data and ignore player events until shown", async () => {
   const h = harness("./LiveGameData.ts", "useLiveGame", { live_game_active: true, live_game_view: { gameId: 1 } }, "hidden");
   h.render(false); await h.flush();

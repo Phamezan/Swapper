@@ -54,8 +54,14 @@ impl Settings {
 pub struct Controller(Mutex<Option<Worker>>);
 
 struct Worker {
-    sender: tokio::sync::mpsc::UnboundedSender<Option<Settings>>,
+    sender: tokio::sync::mpsc::UnboundedSender<Command>,
     thread: Option<JoinHandle<()>>,
+}
+
+enum Command {
+    Settings(Settings),
+    Phase(bool),
+    Stop,
 }
 
 impl Worker {
@@ -96,7 +102,7 @@ impl Worker {
 
 impl Drop for Worker {
     fn drop(&mut self) {
-        let _ = self.sender.send(None);
+        let _ = self.sender.send(Command::Stop);
         if let Some(thread) = self.thread.take() {
             let _ = thread.join();
         }
@@ -118,7 +124,7 @@ impl Controller {
         if let Some(worker) = worker {
             worker
                 .sender
-                .send(Some(settings))
+                .send(Command::Settings(settings))
                 .map_err(|e| e.to_string())?;
         } else {
             *worker = Some(Worker::start(settings, tier.to_string())?);
@@ -140,6 +146,21 @@ pub fn init(app: &tauri::AppHandle) -> Result<(), String> {
     )?;
     app.manage(Controller(Mutex::new(worker)));
     Ok(())
+}
+
+pub fn observe(app: &tauri::AppHandle, phase: &str) {
+    if let Some(controller) = app.try_state::<Controller>() {
+        if let Some(worker) = controller
+            .0
+            .lock()
+            .unwrap_or_else(|e| e.into_inner())
+            .as_ref()
+        {
+            let _ = worker
+                .sender
+                .send(Command::Phase(crate::live_game::model::in_game(phase)));
+        }
+    }
 }
 
 #[tauri::command]
@@ -223,16 +244,23 @@ fn display(
     }
 }
 
+fn session_scope(session: &Value) -> Option<bool> {
+    session["map"]["id"].as_u64().filter(|id| *id > 0)?;
+    session["gameData"]["queue"]["id"].as_u64()?;
+    Some(model::supported_session(session))
+}
+
 async fn run(
     mut settings: Settings,
     tier: String,
-    mut commands: tokio::sync::mpsc::UnboundedReceiver<Option<Settings>>,
+    mut commands: tokio::sync::mpsc::UnboundedReceiver<Command>,
 ) {
     let mut next_process = Instant::now();
     let mut next_fetch = Instant::now();
+    let mut fast_until = Instant::now();
     let mut pids = Vec::new();
     let mut fetch: Option<tokio::task::JoinHandle<Result<Value, String>>> = None;
-    let mut scope: Option<tokio::task::JoinHandle<bool>> = None;
+    let mut scope: Option<tokio::task::JoinHandle<Option<bool>>> = None;
     let mut allowed = false;
     let mut checked_scope = false;
     let mut ended = false;
@@ -252,7 +280,23 @@ async fn run(
         };
         tokio::select! {
             command = commands.recv() => match command {
-                Some(Some(next)) => { settings = next; dirty = true; },
+                Some(Command::Settings(next)) => { settings = next; dirty = true; },
+                Some(Command::Phase(active)) => {
+                    next_process = Instant::now();
+                    next_fetch = next_process;
+                    if active {
+                        fast_until = next_process + Duration::from_secs(30);
+                        ended = false;
+                        if data.is_none() { checked_scope = false; }
+                    } else {
+                        fast_until = next_process;
+                        ended = true;
+                        data = None;
+                        renderer.take();
+                        if let Some(task) = fetch.take() { task.abort(); }
+                        if let Some(task) = scope.take() { task.abort(); }
+                    }
+                },
                 _ => return,
             },
             _ = tokio::time::sleep(delay) => {},
@@ -261,8 +305,15 @@ async fn run(
             renderer.pump();
         }
         let now = Instant::now();
+        // Briefly retry loading resources quickly; normal in-game reads stay at 1 Hz.
+        let starting = now < fast_until && data.is_none();
         if now >= next_process {
-            next_process = now + Duration::from_secs(3);
+            next_process = now
+                + if starting {
+                    Duration::from_millis(250)
+                } else {
+                    Duration::from_secs(3)
+                };
             let current = crate::windows::process::matching(&["League of Legends.exe"])
                 .unwrap_or_default()
                 .into_iter()
@@ -289,22 +340,38 @@ async fn run(
         if pids.is_empty() {
             continue;
         }
-        if !checked_scope && scope.is_none() && now >= next_fetch {
+        if !ended && !checked_scope && scope.is_none() && now >= next_fetch {
             scope = Some(tokio::spawn(async {
                 crate::runes::overlay_game_session()
                     .await
                     .ok()
-                    .is_some_and(|session| model::supported_session(&session))
+                    .and_then(|session| session_scope(&session))
             }));
         }
         if scope.as_ref().is_some_and(|task| task.is_finished()) {
-            allowed = scope.take().unwrap().await.unwrap_or(false);
-            checked_scope = allowed;
+            let supported = scope.take().unwrap().await.ok().flatten();
+            allowed = supported == Some(true);
+            checked_scope = supported.is_some();
+            if supported == Some(false) {
+                fast_until = now;
+            }
             // Fail closed, but retry a client that was still loading.
-            next_fetch = now + Duration::from_secs(if allowed { 0 } else { 3 });
+            next_fetch = now
+                + if allowed {
+                    Duration::ZERO
+                } else if starting {
+                    Duration::from_millis(250)
+                } else {
+                    Duration::from_secs(3)
+                };
         }
         if allowed && !ended && fetch.is_none() && now >= next_fetch {
-            next_fetch = now + Duration::from_secs(1);
+            next_fetch = now
+                + if starting {
+                    Duration::from_millis(250)
+                } else {
+                    Duration::from_secs(1)
+                };
             if client.is_none() {
                 match live_client::LiveClient::new() {
                     Ok(created) => client = Some(std::sync::Arc::new(created)),
@@ -392,6 +459,25 @@ async fn run(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn loading_scope_retries_but_known_unsupported_games_do_not() {
+        use serde_json::json;
+        assert_eq!(session_scope(&json!({})), None);
+        assert_eq!(session_scope(&json!({"map":{"id":11}})), None);
+        assert_eq!(
+            session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":420}}})),
+            Some(true)
+        );
+        assert_eq!(
+            session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":0}}})),
+            Some(false)
+        );
+        assert_eq!(
+            session_scope(&json!({"map":{"id":12},"gameData":{"queue":{"id":450}}})),
+            Some(false)
+        );
+    }
 
     #[test]
     fn disabled_and_empty_settings_never_create_a_worker() {
