@@ -66,7 +66,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
       : !picks.length ? <p className="fa-panel-empty">{loaded.message || "No suggestions for this role and rank."}</p>
       : <div className="cs-pick-grid">{picks.map(pick => <button key={pick.championId} className="cs-pick" aria-pressed={pick.championId === hovered} disabled={!!pending} onClick={() => void hover(pick.championId)}
         title={`${pick.name}: ${fmtPct(pick.winPct)} over ${pick.games.toLocaleString()} games`}>
-        <NearViewport className="cs-pick-art"><ChampionArt id={pick.championId} name={pick.name} /></NearViewport>
+        <NearViewport className="cs-pick-art"><ChampionArt id={pick.championId} name={pick.name} kind="loading" /></NearViewport>
         <span className="cs-pick-copy"><strong>{pick.name}</strong><b>{fmtPct(pick.winPct)} <small>WR</small></b><small>{pick.games.toLocaleString()} games</small>{pick.flex && <span className="cs-flex">Flex</span>}</span>
         {pick.championId === pending && <span className="cs-pick-state">Hovering…</span>}
         {pick.championId === hovered && pending !== pick.championId && <span className="cs-pick-state">Hovered</span>}

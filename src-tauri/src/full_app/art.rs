@@ -12,6 +12,8 @@ const ASSET_PREFIX: &str = "/lol-game-data/assets/";
 pub enum Kind {
     Splash,
     Tile,
+    /// The tall loading-screen portrait (~308x560, ~60 KB).
+    Loading,
 }
 
 impl Kind {
@@ -19,6 +21,7 @@ impl Kind {
         match kind {
             "splash" => Some(Kind::Splash),
             "tile" => Some(Kind::Tile),
+            "loading" => Some(Kind::Loading),
             _ => None,
         }
     }
@@ -27,6 +30,7 @@ impl Kind {
         match self {
             Kind::Splash => "splash",
             Kind::Tile => "tile",
+            Kind::Loading => "loading",
         }
     }
 
@@ -34,6 +38,7 @@ impl Kind {
         match self {
             Kind::Splash => "splashPath",
             Kind::Tile => "tilePath",
+            Kind::Loading => "loadScreenPath",
         }
     }
 }
@@ -121,6 +126,7 @@ mod tests {
         assert_eq!(file_name(0, Kind::Tile), None);
         assert_eq!(file_name(-3, Kind::Tile), None);
         assert_eq!(Kind::parse("tile"), Some(Kind::Tile));
+        assert_eq!(file_name(103, Kind::Loading).as_deref(), Some("loading-103.jpg"));
         assert_eq!(Kind::parse("../splash"), None);
     }
 

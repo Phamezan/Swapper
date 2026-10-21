@@ -18,7 +18,7 @@
 .cs-slot { position: relative; min-width: 0; height: 196px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: linear-gradient(160deg, var(--fa-raised), var(--fa-side)); isolation: isolate; }
 .cs-slot-art { position: absolute; inset: 0; display: grid; place-items: center; color: var(--text-muted); z-index: -1; }
 .cs-slot-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(11 11 13 / .12), transparent 30%, rgb(11 11 13 / .45) 58%, #101013 100%); }
-.cs-slot-art .fa-card-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; border-radius: 0; }
+.cs-slot-art .fa-card-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; border-radius: 0; }
 .cs-slot-art .champion-icon, .cs-slot-art .champion-icon-fallback { width: 48px; height: 48px; border-radius: 8px; }
 .cs-slot-placeholder { display: grid; place-items: center; width: 100%; height: 100%; padding-bottom: 20px; color: rgb(179 179 187 / .25); }
 .cs-slot-role { position: absolute; top: 9px; left: 9px; display: grid; place-items: center; width: 27px; height: 27px; border-radius: 5px; background: rgb(11 11 13 / .72); color: #d4d4da; }
@@ -66,22 +66,22 @@
 .cs-picks .fa-section-heading { flex-wrap: wrap; align-items: center; gap: 16px; }
 .cs-picks .fa-section-heading h3 { font-size: 19px; letter-spacing: -.025em; }
 .cs-picks .fa-section-heading p { font-size: 12px; }
-.cs-pick-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.fa-frame .cs-pick { position: relative; display: grid; min-width: 0; padding: 0; overflow: hidden; border: 1px solid var(--fa-line); border-radius: var(--fa-radius-sm); background: var(--fa-panel-2); color: var(--text-primary); text-align: left; box-shadow: none; }
+.cs-pick-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.fa-frame .cs-pick { position: relative; display: block; aspect-ratio: 11 / 19; min-width: 0; padding: 0; overflow: hidden; border: 1px solid var(--fa-line); border-radius: var(--fa-radius-sm); background: var(--fa-panel-2); color: var(--text-primary); text-align: left; box-shadow: none; }
 .fa-frame .cs-pick:hover:not(:disabled) { border-color: var(--fa-line-3); transform: translateY(-2px); }
 .fa-frame .cs-pick:disabled { cursor: progress; }
 .fa-frame .cs-pick[aria-pressed="true"] { border-color: var(--fa-you); box-shadow: 0 0 0 1px var(--fa-you) inset; }
 /* Art is the client's 380 px square tile (sharp down to ~380 device px wide);
    the bottom fades into the card so the name sits on one surface. */
-.cs-pick-art { position: relative; display: grid; place-items: center; height: 132px; overflow: hidden; background: var(--fa-raised); }
-.cs-pick-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, var(--fa-panel-2)); pointer-events: none; }
-.cs-pick-art .fa-card-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; transition: transform var(--fa-base) ease-out; }
+.cs-pick-art { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; background: var(--fa-raised); }
+.cs-pick-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 48%, rgb(11 11 13 / .78) 74%, #0e0e11 100%); pointer-events: none; }
+.cs-pick-art .fa-card-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; transition: transform var(--fa-base) ease-out; }
 .fa-frame .cs-pick:hover:not(:disabled) .fa-card-art { transform: scale(1.04); }
 /* Until the tile loads (or without League), the small square icon stays at its own size. */
 .cs-pick-art .champion-icon, .cs-pick-art .champion-icon-fallback { width: 56px; height: 56px; border-radius: var(--fa-radius-sm); box-shadow: 0 0 0 1px var(--fa-line-3); }
-.cs-pick-copy { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 5px 8px; margin-top: -10px; padding: 0 12px 13px; }
-.cs-pick-copy strong { overflow: hidden; font-size: 15px; white-space: nowrap; text-overflow: ellipsis; }
-.cs-pick-copy b { color: var(--text-primary); font-size: 13px; font-weight: 550; font-variant-numeric: tabular-nums; }
+.cs-pick-copy { position: absolute; inset: auto 0 0; display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 8px; padding: 0 12px 12px; }
+.cs-pick-copy strong { overflow: hidden; font-size: 16px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; text-overflow: ellipsis; text-shadow: 0 1px 6px rgb(0 0 0 / .7); }
+.cs-pick-copy b { color: var(--fa-win); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .cs-pick-copy > small { grid-column: 1 / -1; font-size: 11px; color: var(--text-muted); }
 .cs-pick-copy b small { color: var(--text-muted); font-size: 9px; font-weight: 450; }
 .cs-flex { justify-self: start; grid-column: 1 / -1; margin-top: 4px; padding: 1px 7px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); color: var(--text-secondary); font-size: 10.5px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
@@ -133,7 +133,6 @@
 .fa-build-grid .fa-skill-priority { margin-bottom: 14px; }
 
 @container draft (max-width: 1040px) {
-  .cs-pick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .cs-planning { grid-template-columns: minmax(0, 1fr) 260px; }
 }
 @container draft (max-width: 850px) {
@@ -147,7 +146,6 @@
   .cs-slot-copy > small { font-size: 10px; }
   .cs-slot-state { font-size: 8px; letter-spacing: .04em; }
   .cs-draft-clock > strong { font-size: 28px; }
-  .cs-pick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cs-preview { position: sticky; top: 16px; }
 }
 @container draft (max-width: 620px) {

@@ -86,7 +86,7 @@ mockIPC(async (cmd, args) => {
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
     case "champion_icon": return `${DD}/${VERSION}/img/champion/${key(a.id)}.png`;
     // The app's tiles are the client's 380 px splash tiles; Data Dragon's are the same crops.
-    case "champion_art": return `${DD}/img/champion/${a.kind === "splash" ? "splash" : "tiles"}/${key(a.id)}_0.jpg`;
+    case "champion_art": return `${DD}/img/champion/${a.kind === "splash" ? "splash" : a.kind === "loading" ? "loading" : "tiles"}/${key(a.id)}_0.jpg`;
     case "item_icon": return `${DD}/${VERSION}/img/item/${a.id}.png`;
     case "spell_icon": return `${DD}/${VERSION}/img/spell/${({ 4: "SummonerFlash", 12: "SummonerTeleport", 11: "SummonerSmite", 14: "SummonerDot" } as Record<number, string>)[a.id] ?? "SummonerFlash"}.png`;
     case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct], i) => ({ championId: id, name: CHAMPIONS[id][0], tier, winPct, pickPct: 9 - i * .5, banPct: 4 + i % 3, games: 24000 - i * 1200 })) };

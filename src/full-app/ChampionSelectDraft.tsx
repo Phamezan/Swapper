@@ -55,7 +55,7 @@ function Slot({ member, name, laner }: { member: DraftMember; name?: string; lan
   const state = member.local ? "Your pick" : laner ? "Your matchup" : hovering ? "Hovering" : "";
   const classes = ["cs-slot", member.local && "is-you", hovering && "is-hover", laner && "is-laner", !member.championId && "is-empty"].filter(Boolean).join(" ");
   return <article className={classes} aria-label={[name || "Not picked", role, state, member.locked ? "locked in" : ""].filter(Boolean).join(" · ")}>
-    <NearViewport className="cs-slot-art">{member.championId ? <ChampionArt id={member.championId} name={name ?? `Champion ${member.championId}`} /> : <span className="cs-slot-placeholder">{slug ? <RoleIcon role={slug} size={32} mode="desktop" /> : <Crosshair size={28} strokeWidth={1.2} aria-hidden />}</span>}</NearViewport>
+    <NearViewport className="cs-slot-art">{member.championId ? <ChampionArt id={member.championId} name={name ?? `Champion ${member.championId}`} kind="loading" /> : <span className="cs-slot-placeholder">{slug ? <RoleIcon role={slug} size={32} mode="desktop" /> : <Crosshair size={28} strokeWidth={1.2} aria-hidden />}</span>}</NearViewport>
     <span className="cs-slot-role" title={role}>{slug ? <RoleIcon role={slug} size={16} mode="desktop" /> : <Crosshair size={15} strokeWidth={1.5} aria-hidden />}</span>
     {member.locked && <LockKeyhole className="cs-slot-locked" size={13} aria-label="Locked in" />}
     <span className="cs-slot-copy">{state && <span className="cs-slot-state">{state}</span>}<strong>{member.championId ? name ?? "Champion" : "Not picked"}</strong><small>{role}</small></span>

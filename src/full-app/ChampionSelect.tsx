@@ -15,7 +15,7 @@ import { DraftBand } from "./ChampionSelectDraft";
 import { ChampionArt } from "./MatchupStrip";
 import { NearViewport } from "./NearViewport";
 import { LockIn, PickSuggestions } from "./ChampionSelectPicks";
-import { enemyLaner, pageMode, takenIds, type Draft } from "./champ-select-model";
+import { enemyLaner, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
 import { Picker, RankPicker, RolePicker } from "./Picker";
 import "./champ-select.css";
 
@@ -47,7 +47,15 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
     else setDraft(null);
     return () => { live = false; void stop.then(unlisten => unlisten()); };
   }, [view?.phase]);
-  const enemyId = draft ? enemyLaner(draft.value, view?.position ?? "") : view?.enemyChampionId ?? 0;
+  const [lastRole, setLastRole] = useState(() => { try { return localStorage.getItem("cs-role") || "mid"; } catch { return "mid"; } });
+  const assigned = roleSlug(draft?.value.allies.find(member => member.local)?.position ?? "");
+  const role = view?.position || assigned || lastRole;
+  const changeRole = (next: string) => {
+    setLastRole(next);
+    try { localStorage.setItem("cs-role", next); } catch { /* preference only */ }
+    props.onPositionChange(next);
+  };
+  const enemyId = draft ? enemyLaner(draft.value, role) : view?.enemyChampionId ?? 0;
   useEffect(() => {
     let live = true; setItems(null); setOverview(null); setError("");
     if (view?.championId) {
@@ -75,11 +83,11 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
       <div className="fa-draft-controls cs-toolbar">
         <h2>{championName || "Choose your champion"}{enemyName && <small> vs {enemyName}</small>}</h2>
         {matchup?.stats && <span className="cs-matchup-chip" title={`${matchup.stats.games.toLocaleString()} games`}>{fmtPct(matchup.stats.winPct)} in this lane</span>}
-        <RolePicker value={view.position} onChange={props.onPositionChange} /><RankPicker value={view.tier} onChange={props.onTierChange} />
+        <RolePicker value={role} onChange={changeRole} /><RankPicker value={view.tier} onChange={props.onTierChange} />
         {mode === "build" && (["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
       </div>
       {mode === "planning" ? <div className="cs-planning">
-        <PickSuggestions role={view.position} tier={view.tier} enemyId={enemyId} enemyName={enemyName} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} />
+        <PickSuggestions role={role} tier={view.tier} enemyId={enemyId} enemyName={enemyName} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} />
         <BuildPreview championId={view.championId} name={championName} build={build} />
       </div> : <>
         <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} liveView={view} matchup={matchup}

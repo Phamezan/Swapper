@@ -7,8 +7,8 @@ import { fmtDelta, fmtPct, type ChampionCountersView, type DuoListView } from ".
 import { useChampionArt } from "./art";
 import { artWindow, matchupRows, stripOrder } from "./buildLogic";
 
-export function ChampionArt({ id, name }: { id: number; name: string }) {
-  const art = useChampionArt(id, "tile");
+export function ChampionArt({ id, name, kind = "tile" }: { id: number; name: string; kind?: "tile" | "loading" }) {
+  const art = useChampionArt(id, kind);
   return art ? <img className="fa-card-art" src={art} alt="" loading="lazy" /> : <ChampionIcon id={id} name={name} mode="desktop" />;
 }
 const laneName = (lane: string) => ({ top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" } as Record<string, string>)[lane] ?? lane;
