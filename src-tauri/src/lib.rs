@@ -1576,6 +1576,7 @@ pub fn run() {
             full_app::open_full_app,
             full_app::window_ready,
             full_app::dashboard_snapshot,
+            full_app::bench::dashboard_benchmarks,
             full_app::art::champion_art,
             full_app::ui_data::full_app_rune_catalog,
             full_app::ui_data::full_app_draft,

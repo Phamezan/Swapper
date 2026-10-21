@@ -206,3 +206,59 @@ fn role_records_count_wins_per_estimated_role() {
     assert_eq!(roles[0], RoleRecord { role: "top".into(), wins: 1, games: 1 });
     assert_eq!(roles[4].games, 0);
 }
+
+fn line(ally: bool, role: &str, me: bool) -> Player {
+    Player {
+        champion_id: 1,
+        riot_id: String::new(),
+        me,
+        ally,
+        role: role.into(),
+        kills: 0,
+        deaths: 0,
+        assists: 0,
+        cs: 0,
+        damage: 0,
+        gold: 0,
+        vision: 0,
+        items: vec![],
+    }
+}
+
+fn lobby(own: &str, enemies: [&str; 5]) -> Vec<Player> {
+    let mut players = vec![line(true, own, true)];
+    players.extend(["top", "jungle", "adc", "support", "mid"].iter().filter(|r| **r != own).take(4).map(|r| line(true, r, false)));
+    players.extend(enemies.iter().map(|r| line(false, r, false)));
+    players
+}
+
+#[test]
+fn lane_opponent_needs_exactly_one_player_in_the_role_on_each_side() {
+    let roles = ["top", "jungle", "mid", "adc", "support"];
+    assert_eq!(lane_opponent(&lobby("mid", roles)), Some(7));
+    assert_eq!(lane_opponent(&lobby("support", roles)), Some(9));
+    // Two enemy mids (a lane swap or an odd pick) and no enemy mid at all.
+    assert_eq!(lane_opponent(&lobby("mid", ["top", "mid", "mid", "adc", "support"])), None);
+    assert_eq!(lane_opponent(&lobby("mid", ["top", "jungle", "top", "adc", "support"])), None);
+    // A teammate in the same role makes the user's own role uncertain.
+    let mut players = lobby("mid", roles);
+    players[1].role = "mid".into();
+    assert_eq!(lane_opponent(&players), None);
+    // Remakes or missing participants.
+    assert_eq!(lane_opponent(&lobby("mid", roles)[..9]), None);
+}
+
+#[test]
+fn players_list_own_team_first_with_riot_ids() {
+    let mut value = fixture();
+    value["participantIdentities"][0]["player"]["gameName"] = json!("Own");
+    value["participantIdentities"][0]["player"]["tagLine"] = json!("EUW");
+    value["participants"][0]["teamId"] = json!(200);
+    let g = game(&value, &player()).unwrap();
+    assert_eq!(g.players.len(), 10);
+    assert_eq!(g.players[0].riot_id, "Own#EUW");
+    assert!(g.players[0].me && g.players.iter().take(6).all(|p| p.ally));
+    assert_eq!(g.players[0].cs, 180);
+    // Every fixture player reads as mid, so the opponent is ambiguous.
+    assert_eq!(g.opponent, None);
+}

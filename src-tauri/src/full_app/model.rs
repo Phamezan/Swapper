@@ -56,6 +56,31 @@ pub struct Game {
     /// Solo/Duo LP gained or lost, when Swapper recorded the rank around it.
     #[serde(default)]
     pub lp_change: Option<i64>,
+    /// All ten players (own team first), for the expanded match row and the
+    /// lane-opponent comparison. Empty for snapshots cached before this field.
+    #[serde(default)]
+    pub players: Vec<Player>,
+    /// Index into `players` of the lane opponent, when it is unambiguous.
+    #[serde(default)]
+    pub opponent: Option<u8>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct Player {
+    pub champion_id: i64,
+    pub riot_id: String,
+    pub me: bool,
+    pub ally: bool,
+    pub role: String,
+    pub kills: u64,
+    pub deaths: u64,
+    pub assists: u64,
+    pub cs: u64,
+    pub damage: u64,
+    pub gold: u64,
+    pub vision: u64,
+    pub items: Vec<i64>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -251,7 +276,79 @@ pub fn game(value: &Value, player: &Summoner) -> Option<Game> {
         role: role(own).into(),
         placement: placement(participants, own),
         lp_change: None,
+        opponent: None,
+        players: Vec::new(),
     })
+    .map(|mut game| {
+        (game.players, game.opponent) = players(value, own);
+        game
+    })
+}
+
+/// Every player's line, own team first, and the index of the one enemy who
+/// shares the user's estimated role. Two teammates or two enemies in that
+/// role (lane swaps, odd picks) leave the opponent unknown.
+fn players(value: &Value, own: &Value) -> (Vec<Player>, Option<u8>) {
+    let Some(participants) = value["participants"].as_array() else {
+        return (Vec::new(), None);
+    };
+    let identities = value["participantIdentities"].as_array();
+    let riot_id = |id: &Value| -> String {
+        identities
+            .and_then(|all| all.iter().find(|i| i["participantId"] == *id))
+            .map(|i| {
+                let p = &i["player"];
+                let name = p["gameName"].as_str().unwrap_or("");
+                match p["tagLine"].as_str().filter(|t| !t.is_empty() && !name.is_empty()) {
+                    Some(tag) => format!("{name}#{tag}"),
+                    None => name.to_string(),
+                }
+            })
+            .unwrap_or_default()
+    };
+    let mut ordered: Vec<&Value> = participants.iter().collect();
+    ordered.sort_by_key(|p| p["teamId"] != own["teamId"]);
+    let lines: Vec<Player> = ordered
+        .iter()
+        .map(|p| {
+            let s = &p["stats"];
+            let n = |key: &str| s[key].as_u64().unwrap_or(0);
+            Player {
+                champion_id: p["championId"].as_i64().unwrap_or(0),
+                riot_id: riot_id(&p["participantId"]),
+                me: p["participantId"] == own["participantId"],
+                ally: p["teamId"] == own["teamId"],
+                role: role(p).into(),
+                kills: n("kills"),
+                deaths: n("deaths"),
+                assists: n("assists"),
+                cs: n("totalMinionsKilled") + n("neutralMinionsKilled"),
+                damage: n("totalDamageDealtToChampions"),
+                gold: n("goldEarned"),
+                vision: n("visionScore"),
+                items: (0..7).map(|i| s[format!("item{i}")].as_i64().unwrap_or(0)).collect(),
+            }
+        })
+        .collect();
+    (lines.clone(), lane_opponent(&lines))
+}
+
+pub fn lane_opponent(players: &[Player]) -> Option<u8> {
+    let me = players.iter().find(|p| p.me)?;
+    let same = |ally: bool| {
+        players
+            .iter()
+            .enumerate()
+            .filter(move |(_, p)| p.ally == ally && p.role == me.role)
+    };
+    if players.len() != 10 || same(true).count() != 1 {
+        return None;
+    }
+    let mut enemies = same(false);
+    match (enemies.next(), enemies.next()) {
+        (Some((i, _)), None) => Some(i as u8),
+        _ => None,
+    }
 }
 
 const SMITE: i64 = 11;

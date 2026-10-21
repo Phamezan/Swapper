@@ -2,6 +2,7 @@
 //! webview is never created and every entry point opens this window instead.
 //! No window or data task exists until it is opened; closing destroys it.
 pub mod art;
+pub(crate) mod bench;
 pub(crate) mod cards;
 pub(crate) mod lp;
 pub mod ui_data;
@@ -365,7 +366,10 @@ async fn fresh(previous: Option<&Snapshot>) -> Result<Snapshot, String> {
             if let Some(game) = cached
                 .and_then(|s| s.games.iter().find(|g| g.id == id))
                 .filter(|g| {
-                    g.metrics[1].is_some() && g.metrics[4].is_some() && !g.items.is_empty()
+                    g.metrics[1].is_some()
+                        && g.metrics[4].is_some()
+                        && !g.items.is_empty()
+                        && !g.players.is_empty()
                 })
             {
                 return Some(game.clone());

@@ -1008,7 +1008,7 @@ impl LolalyticsClient {
     }
 
     /// The HTML of one lolalytics page.
-    pub(super) async fn page(&self, url: String) -> Result<String, ProviderError> {
+    pub(crate) async fn page(&self, url: String) -> Result<String, ProviderError> {
         let response = self
             .client
             .get(url)
