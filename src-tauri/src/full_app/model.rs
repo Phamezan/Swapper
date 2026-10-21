@@ -35,6 +35,24 @@ pub struct Game {
     pub deaths: u64,
     pub assists: u64,
     pub metrics: [Option<f64>; 6],
+    /// Seven slots, trinket last; 0 is an empty slot. Empty for snapshots
+    /// cached before these fields existed.
+    #[serde(default)]
+    pub items: Vec<i64>,
+    #[serde(default)]
+    pub spells: Vec<i64>,
+    #[serde(default)]
+    pub keystone: i64,
+    #[serde(default)]
+    pub cs: u64,
+    #[serde(default)]
+    pub level: u64,
+    /// "top", "jungle", "mid", "adc" or "support", estimated (see `role`).
+    #[serde(default)]
+    pub role: String,
+    /// 1-10 among all players by `placement`; 0 when unknown.
+    #[serde(default)]
+    pub placement: u8,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -54,10 +72,19 @@ pub struct Champion {
     pub kda: f64,
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct RoleRecord {
+    pub role: String,
+    pub wins: usize,
+    pub games: usize,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Summary {
     pub metrics: Vec<Metric>,
     pub champions: Vec<Champion>,
+    #[serde(default)]
+    pub roles: Vec<RoleRecord>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -178,10 +205,11 @@ pub fn game(value: &Value, player: &Summoner) -> Option<Game> {
     let damage = stats["totalDamageDealtToChampions"]
         .as_u64()
         .map(|n| n as f64);
-    let cs = stats["totalMinionsKilled"]
+    let total_cs = stats["totalMinionsKilled"]
         .as_u64()
         .zip(stats["neutralMinionsKilled"].as_u64())
-        .map(|(lane, jungle)| (lane + jungle) as f64 / minutes);
+        .map(|(lane, jungle)| lane + jungle);
+    let cs = total_cs.map(|n| n as f64 / minutes);
     Some(Game {
         id: value["gameId"].as_u64()?,
         queue: match value["queueId"].as_u64()? {
@@ -207,7 +235,80 @@ pub fn game(value: &Value, player: &Summoner) -> Option<Game> {
                 .map(|(n, total)| 100.0 * n / total),
             stats["visionScore"].as_u64().map(|n| n as f64 / minutes),
         ],
+        items: (0..7)
+            .map(|i| stats[format!("item{i}")].as_i64().unwrap_or(0))
+            .collect(),
+        spells: ["spell1Id", "spell2Id"]
+            .iter()
+            .map(|key| own[*key].as_i64().unwrap_or(0))
+            .collect(),
+        keystone: stats["perk0"].as_i64().unwrap_or(0),
+        cs: total_cs.unwrap_or(0),
+        level: stats["champLevel"].as_u64().unwrap_or(0),
+        role: role(own).into(),
+        placement: placement(participants, own),
     })
+}
+
+const SMITE: i64 = 11;
+/// The support quest item line (World Atlas and its upgrades).
+const SUPPORT_ITEMS: [i64; 5] = [3865, 3866, 3867, 3869, 3877];
+
+/// The client's `timeline.lane` is unreliable (mid laners often read as
+/// JUNGLE), so Smite and the support item decide first, then the lane.
+pub fn role(participant: &Value) -> &'static str {
+    let stats = &participant["stats"];
+    let has_smite = ["spell1Id", "spell2Id"]
+        .iter()
+        .any(|key| participant[*key].as_i64() == Some(SMITE));
+    let support_item = (0..7).any(|i| {
+        stats[format!("item{i}")]
+            .as_i64()
+            .is_some_and(|id| SUPPORT_ITEMS.contains(&id))
+    });
+    let timeline = &participant["timeline"];
+    match (has_smite, support_item, timeline["lane"].as_str()) {
+        (true, _, _) => "jungle",
+        (_, true, _) => "support",
+        (_, _, Some("TOP")) => "top",
+        (_, _, Some("BOTTOM")) if timeline["role"] == "SUPPORT" || timeline["role"] == "DUO_SUPPORT" => "support",
+        (_, _, Some("BOTTOM")) => "adc",
+        _ => "mid",
+    }
+}
+
+/// Rank among all ten players by a simple score: KDA, damage to champions,
+/// CS and vision, each relative to the game's best, weighted 35/35/15/15.
+pub fn placement(participants: &[Value], own: &Value) -> u8 {
+    let line = |p: &Value| -> Option<[f64; 4]> {
+        let s = &p["stats"];
+        let (k, d, a) = (s["kills"].as_u64()?, s["deaths"].as_u64()?, s["assists"].as_u64()?);
+        Some([
+            (k + a) as f64 / d.max(1) as f64,
+            s["totalDamageDealtToChampions"].as_u64()? as f64,
+            (s["totalMinionsKilled"].as_u64()? + s["neutralMinionsKilled"].as_u64()?) as f64,
+            s["visionScore"].as_u64()? as f64,
+        ])
+    };
+    let Some(lines) = participants.iter().map(line).collect::<Option<Vec<_>>>() else {
+        return 0;
+    };
+    let Some(mine) = line(own) else { return 0 };
+    if lines.len() != 10 {
+        return 0;
+    }
+    let best: Vec<f64> = (0..4)
+        .map(|i| lines.iter().map(|l| l[i]).fold(0.0, f64::max))
+        .collect();
+    let score = |l: &[f64; 4]| -> f64 {
+        [0.35, 0.35, 0.15, 0.15]
+            .iter()
+            .enumerate()
+            .map(|(i, w)| if best[i] > 0.0 { w * l[i] / best[i] } else { 0.0 })
+            .sum()
+    };
+    let own_score = score(&mine);
+    1 + lines.iter().filter(|l| score(l) > own_score + 1e-9).count() as u8
 }
 
 pub fn summarize(games: &[Game]) -> Summary {
@@ -251,7 +352,22 @@ pub fn summarize(games: &[Game]) -> Summary {
         .collect();
     champions.sort_by_key(|c| (std::cmp::Reverse(c.wins + c.losses), c.id));
     champions.truncate(5);
-    Summary { metrics, champions }
+    let roles = ["top", "jungle", "mid", "adc", "support"]
+        .into_iter()
+        .map(|role| {
+            let played: Vec<_> = games.iter().filter(|g| g.role == role).collect();
+            RoleRecord {
+                role: role.into(),
+                wins: played.iter().filter(|g| g.win).count(),
+                games: played.len(),
+            }
+        })
+        .collect();
+    Summary {
+        metrics,
+        champions,
+        roles,
+    }
 }
 
 pub fn summaries(games: &[Game]) -> BTreeMap<String, Summary> {

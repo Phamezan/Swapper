@@ -1561,6 +1561,7 @@ pub fn run() {
             full_app::open_full_app,
             full_app::window_ready,
             full_app::dashboard_snapshot,
+            full_app::art::champion_art,
             overlay::get_overlay_settings,
             overlay::set_overlay_settings,
             get_state,

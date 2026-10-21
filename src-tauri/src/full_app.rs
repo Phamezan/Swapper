@@ -1,6 +1,7 @@
 //! Optional Fullsized App. When on, it replaces the tray flyout: the flyout
 //! webview is never created and every entry point opens this window instead.
 //! No window or data task exists until it is opened; closing destroys it.
+pub mod art;
 mod model;
 pub mod routing;
 
@@ -176,7 +177,10 @@ pub fn open(app: &tauri::AppHandle, destination: Option<&str>) -> Result<(), Str
     .inner_size(1280.0, 820.0)
     .min_inner_size(1100.0, 700.0)
     .resizable(true)
-    .decorations(true)
+    // Swapper draws its own title bar (drag region, history, search, window
+    // buttons); Windows keeps the resize border and shadow.
+    .decorations(false)
+    .shadow(true)
     .center()
     // Shown by `window_ready` once painted: no blank frame, and no close
     // request lands while WebView2 is still initializing (it is ignored then).
@@ -311,7 +315,9 @@ async fn fresh(previous: Option<&Snapshot>) -> Result<Snapshot, String> {
             let id = row["gameId"].as_u64()?;
             if let Some(game) = cached
                 .and_then(|s| s.games.iter().find(|g| g.id == id))
-                .filter(|g| g.metrics[1].is_some() && g.metrics[4].is_some())
+                .filter(|g| {
+                    g.metrics[1].is_some() && g.metrics[4].is_some() && !g.items.is_empty()
+                })
             {
                 return Some(game.clone());
             }

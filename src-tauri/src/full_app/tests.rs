@@ -131,3 +131,78 @@ fn parses_solo_rank_and_summoner_variants() {
         None
     );
 }
+
+#[test]
+fn reads_build_and_estimates_role_from_smite_and_support_item() {
+    let mut value = fixture();
+    let own = &mut value["participants"][0];
+    own["spell1Id"] = json!(4);
+    own["spell2Id"] = json!(11);
+    own["stats"]["perk0"] = json!(8010);
+    own["stats"]["champLevel"] = json!(16);
+    own["stats"]["item0"] = json!(3071);
+    own["stats"]["item6"] = json!(3364);
+    own["timeline"] = json!({"lane": "MIDDLE", "role": "SOLO"});
+    let g = game(&value, &player()).unwrap();
+    assert_eq!(g.items, vec![3071, 0, 0, 0, 0, 0, 3364]);
+    assert_eq!(g.spells, vec![4, 11]);
+    assert_eq!((g.keystone, g.level, g.cs), (8010, 16, 180));
+    assert_eq!(g.role, "jungle");
+
+    let lane = |lane: &str, role: &str, item: i64| {
+        role_of(&json!({"spell1Id": 4, "spell2Id": 14, "stats": {"item0": item},
+            "timeline": {"lane": lane, "role": role}}))
+    };
+    assert_eq!(lane("JUNGLE", "NONE", 0), "mid", "mislabelled mid laner without Smite");
+    assert_eq!(lane("BOTTOM", "CARRY", 0), "adc");
+    assert_eq!(lane("BOTTOM", "SUPPORT", 0), "support");
+    assert_eq!(lane("JUNGLE", "NONE", 3877), "support", "support item wins over lane");
+    assert_eq!(lane("TOP", "SOLO", 0), "top");
+}
+
+fn role_of(value: &Value) -> &'static str {
+    role(value)
+}
+
+#[test]
+fn placement_ranks_all_ten_and_needs_complete_stats() {
+    let mut value = fixture();
+    // Everyone is equal: all share first place.
+    let g = game(&value, &player()).unwrap();
+    assert_eq!(g.placement, 1);
+    value["participants"][3]["stats"]["kills"] = json!(20);
+    value["participants"][3]["stats"]["totalDamageDealtToChampions"] = json!(40000);
+    assert_eq!(game(&value, &player()).unwrap().placement, 2);
+    value["participants"][0]["stats"]["deaths"] = json!(12);
+    value["participants"][0]["stats"]["totalDamageDealtToChampions"] = json!(1000);
+    assert_eq!(game(&value, &player()).unwrap().placement, 10);
+    value["participants"][7]["stats"]
+        .as_object_mut()
+        .unwrap()
+        .remove("visionScore");
+    assert_eq!(game(&value, &player()).unwrap().placement, 0);
+}
+
+#[test]
+fn snapshots_cached_before_build_fields_still_load() {
+    let old = json!({"id": 1, "queue": "solo", "championId": 103, "createdAt": 5, "duration": 1200,
+        "win": true, "kills": 1, "deaths": 1, "assists": 1, "metrics": [null, null, null, null, null, null]});
+    let g: Game = serde_json::from_value(old).unwrap();
+    assert!(g.items.is_empty() && g.role.is_empty() && g.placement == 0);
+}
+
+#[test]
+fn role_records_count_wins_per_estimated_role() {
+    let mut games = vec![];
+    for (role, win) in [("mid", true), ("mid", false), ("top", true)] {
+        let mut g = game(&fixture(), &player()).unwrap();
+        g.role = role.into();
+        g.win = win;
+        games.push(g);
+    }
+    let roles = summarize(&games).roles;
+    assert_eq!(roles.len(), 5);
+    assert_eq!(roles[2], RoleRecord { role: "mid".into(), wins: 1, games: 2 });
+    assert_eq!(roles[0], RoleRecord { role: "top".into(), wins: 1, games: 1 });
+    assert_eq!(roles[4].games, 0);
+}
