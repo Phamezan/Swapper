@@ -35,3 +35,14 @@ export type AccountCard = { rank: Snapshot["rank"]; wins: number; losses: number
 export type DashboardView = { snapshot: Snapshot | null; cards: Record<string, AccountCard>; stale: boolean; message: string | null };
 /** One blind pick from the `recommended_picks` command, best first. */
 export type RecommendedPick = { championId: number; winRate: number; games: number; flex: boolean };
+
+export type MatchDetailPlayer = {
+  participantId: number; teamId: number; championId: number; riotId: string; me: boolean; role: string;
+  level: number | null; spells: number[]; perks: number[]; keystone: number | null; secondaryStyle: number | null;
+  kills: number | null; deaths: number | null; assists: number | null; cs: number | null;
+  damage: number | null; gold: number | null; vision: number | null; damageTaken: number | null;
+  wardsPlaced: number | null; wardsKilled: number | null; items: number[];
+  placement: number | null; score: number | null; rank: Snapshot["rank"]; rankLoaded: boolean;
+};
+export type MatchDetailTeam = { teamId: number; win: boolean | null; objectives: { label: string; kills: number }[] };
+export type MatchDetailView = { game: Game; players: MatchDetailPlayer[]; teams: MatchDetailTeam[] };

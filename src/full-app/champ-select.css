@@ -179,3 +179,44 @@
 
 .cs-tab-badge { display: inline-grid; place-items: center; min-width: 18px; height: 18px; margin-left: 6px; padding: 0 5px; border-radius: 99px; background: var(--fa-loss); color: #fff; font-size: 10.5px; font-weight: 750; line-height: 1; }
 .cs-slot.is-seat .cs-slot-placeholder, .cs-slot.is-seat .cs-slot-role { opacity: .55; }
+
+/* Shared build browser: list remains alongside the selected build. */
+.cs-build-browser { display: grid; grid-template-columns: 238px minmax(0, 1fr); gap: 18px; align-items: start; }
+.cs-build-content { min-width: 0; }
+.cs-build-list { position: sticky; top: 16px; max-height: calc(100vh - 110px); overflow-y: auto; padding: 16px 10px; border: 1px solid var(--fa-line); border-radius: var(--fa-radius-sm); background: var(--fa-panel); scrollbar-width: thin; }
+.cs-build-list h3 { display: flex; align-items: baseline; justify-content: space-between; margin: 0 6px 10px; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--text-secondary); }
+.cs-build-list h3:not(:first-child) { margin-top: 24px; }
+.cs-build-list h3 small { font-size: 10px; text-transform: none; letter-spacing: 0; color: var(--text-muted); font-weight: 400; }
+.cs-build-entries { display: grid; gap: 6px; }
+.fa-frame .cs-build-entries > button { display: grid; gap: 5px; width: 100%; min-width: 0; padding: 12px 10px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: var(--text-primary); text-align: left; }
+.fa-frame .cs-build-entries > button:hover { background: var(--fa-raised); }
+.fa-frame .cs-build-entries > button[aria-pressed="true"] { border-color: color-mix(in srgb, var(--fa-you) 35%, transparent); background: color-mix(in srgb, var(--fa-you) 7%, var(--fa-panel)); box-shadow: inset 2px 0 var(--fa-you); }
+.cs-build-entries strong { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; font-weight: 600; }
+.cs-build-entries small { font-size: 11px; color: var(--text-muted); }
+.cs-build-entries small b { float: right; color: var(--fa-win); }
+.cs-build-icons { display: flex; gap: 5px; min-height: 27px; margin-top: 4px; }
+.cs-build-icons img, .cs-build-icons :is(.rune-icon-fallback, .item-icon-fallback) { width: 27px; height: 27px; border-radius: 4px; }
+.cs-build-icons > :first-child { margin-right: 5px; }
+.cs-build-list > p { margin: 10px 6px; font-size: 12px; color: var(--text-secondary); }
+.fa-frame .cs-load-pros { width: 100%; margin-top: 8px; font-size: 12px; }
+.cs-build-selected { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; padding: 3px 0 0; }
+.cs-build-selected strong { font-size: 18px; font-weight: 600; }
+.cs-build-selected small { font-size: 12px; color: var(--text-muted); }
+.cs-build-content .cs-apply-bar { margin-top: 12px; }
+.cs-build-content .cs-auto-apply { margin-left: 0; }
+.cs-build-browser .cs-build-grid { border-radius: var(--fa-radius-sm); grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+.cs-build-browser .cs-build-grid > div { padding: 20px 16px; }
+.cs-build-browser .fa-rune-page { gap: 16px; }
+.cs-build-browser .fa-rune-row { gap: 8px; margin-bottom: 16px; }
+.fa-frame .cs-build-browser .fa-rune-row > button { width: 31px; height: 31px; }
+.cs-build-browser .fa-rune-row img, .cs-build-browser .fa-rune-row .rune-icon-fallback { width: 29px; height: 29px; }
+.fa-frame .cs-build-browser .fa-rune-row:first-of-type > button { width: 36px; height: 36px; }
+.cs-build-browser .fa-rune-row:first-of-type img { width: 34px; height: 34px; }
+.cs-build-browser .cs-skill-row { grid-template-columns: 18px repeat(18, minmax(12px, 1fr)); gap: 2px; }
+.cs-build-browser .cs-skill-row > b { font-size: 9px; }
+.cs-build-browser .cs-skill-area { gap: 20px; }
+@media (max-width: 1250px) {
+  .cs-build-browser { grid-template-columns: 214px minmax(0, 1fr); gap: 12px; }
+  .cs-build-browser .cs-build-grid { grid-template-columns: 1fr; grid-template-areas: "runes" "skill" "items"; }
+  .cs-build-browser .cs-build-grid > div + div { border-left: 0; border-top: 1px solid var(--fa-line); }
+}

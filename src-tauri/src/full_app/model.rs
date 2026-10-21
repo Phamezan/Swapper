@@ -381,6 +381,13 @@ pub fn role(participant: &Value) -> &'static str {
 /// Rank among all ten players by a simple score: KDA, damage to champions,
 /// CS and vision, each relative to the game's best, weighted 35/35/15/15.
 pub fn placement(participants: &[Value], own: &Value) -> u8 {
+    let Some(scores) = performance_scores(participants) else { return 0 };
+    let Some(index) = participants.iter().position(|p| p["participantId"] == own["participantId"]) else { return 0 };
+    1 + scores.iter().filter(|score| **score > scores[index] + 1e-7).count() as u8
+}
+
+/// The same weighted score as placement, exposed on a 0–100 scale.
+pub fn performance_scores(participants: &[Value]) -> Option<Vec<f64>> {
     let line = |p: &Value| -> Option<[f64; 4]> {
         let s = &p["stats"];
         let (k, d, a) = (s["kills"].as_u64()?, s["deaths"].as_u64()?, s["assists"].as_u64()?);
@@ -391,12 +398,9 @@ pub fn placement(participants: &[Value], own: &Value) -> u8 {
             s["visionScore"].as_u64()? as f64,
         ])
     };
-    let Some(lines) = participants.iter().map(line).collect::<Option<Vec<_>>>() else {
-        return 0;
-    };
-    let Some(mine) = line(own) else { return 0 };
+    let lines = participants.iter().map(line).collect::<Option<Vec<_>>>()?;
     if lines.len() != 10 {
-        return 0;
+        return None;
     }
     let best: Vec<f64> = (0..4)
         .map(|i| lines.iter().map(|l| l[i]).fold(0.0, f64::max))
@@ -408,8 +412,7 @@ pub fn placement(participants: &[Value], own: &Value) -> u8 {
             .map(|(i, w)| if best[i] > 0.0 { w * l[i] / best[i] } else { 0.0 })
             .sum()
     };
-    let own_score = score(&mine);
-    1 + lines.iter().filter(|l| score(l) > own_score + 1e-9).count() as u8
+    Some(lines.iter().map(|line| (score(line) * 100.0).clamp(0.0, 100.0)).collect())
 }
 
 pub fn summarize(games: &[Game]) -> Summary {

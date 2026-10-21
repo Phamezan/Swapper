@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
@@ -7,17 +7,17 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
-import { fmtPct, selectionFromPreset, selectionFromProBuild, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard } from "../runes/types";
-import type { ChampionBuild, ItemsImported, KeystoneBuildView, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
+import { fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard } from "../runes/types";
+import type { ChampionBuild, ItemsImported, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
 import { overviewSelection, spellLayout } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
 import { NearViewport } from "./NearViewport";
 import { Picker } from "./Picker";
+import { mergeProPage, proVariant, type BuildVariant as Variant } from "./champ-select-pro";
 import "./champ-select.css";
 
 export type RuneCatalog = { trees: RuneTree[]; shards: RuneRow[] };
 type Ability = { key: string; name: string; icon: string | null };
-type Variant = { label: string; selection: Selection | null; items: KeystoneBuildView; spells: number[]; order: string | null; winPct: number | null; games: number };
 type Section = keyof ApplyStatus;
 /** The auto-apply setting, shown inline on the champion select page. */
 export type AutoApply = { checked: boolean; disabled: boolean; onChange: (enabled: boolean) => void };
@@ -36,6 +36,9 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const [notice, setNotice] = useState("");
   const [imported, setImported] = useState<string | null>(null);
   const [proOpen, setProOpen] = useState(false);
+  const [proLoading, setProLoading] = useState(false);
+  const proRequest = useRef(0);
+  const proBusy = useRef(false);
   const [pros, setPros] = useState<ProBuildsView | null>(null);
   const [pro, setPro] = useState<ProBuild | null>(null);
   const [proError, setProError] = useState("");
@@ -56,6 +59,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
     setDetails(null); setVariantIndex(0); setPro(null); setPros(null); setProOpen(false); setNotice(""); setCustom(null);
+    proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
     setImported(null);
   }, [championId, lane, tier, sourceKey]);
   useEffect(() => {
@@ -64,14 +68,20 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       .then(value => { if (live) setDetails(value); }).catch(() => {});
     return () => { live = false; };
   }, [championId, lane, tier, sourceKey, catalog]);
-  useEffect(() => {
-    if (!proOpen) return;
-    let live = true;
+  useEffect(() => () => { proRequest.current++; }, []);
+  const loadPros = async (page: number) => {
+    if (proBusy.current) return;
+    const request = ++proRequest.current;
+    proBusy.current = true; setProLoading(true);
     setProError("");
-    void invoke<ProBuildsView>("get_pro_builds", { championId, position: lane, page: 1, isOtp: false })
-      .then(value => { if (live) setPros(value); }).catch(error => { if (live) setProError(String(error)); });
-    return () => { live = false; };
-  }, [proOpen, championId, lane]);
+    try {
+      const value = await invoke<ProBuildsView>("get_pro_builds", { championId, position: lane, page, isOtp: false });
+      if (request !== proRequest.current) return;
+      if (value.unavailable) throw new Error(value.message || "Pro builds unavailable. Try again.");
+      setPros(previous => mergeProPage(page === 1 ? null : previous, value));
+    } catch (error) { if (request === proRequest.current) setProError(String(error)); }
+    finally { if (request === proRequest.current) { proBusy.current = false; setProLoading(false); } }
+  };
 
   if (!build) return <section className="fa-card fa-build-empty"><h3>Build unavailable</h3><p>Try another role or rank. Recommendations appear when the provider has a build for this pick.</p></section>;
   const variants: Variant[] = [{ label: "Most played", selection, items: details ?? build.items, spells: build.spells, order: build.skillOrder, winPct: (details ?? build.items).coreWinPct, games: (details ?? build.items).coreGames }];
@@ -82,7 +92,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   if (matchup?.preset && matchup.build && !matchup.fallback) {
     variants.push({ label: `vs ${matchup.enemyName}`, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
   }
-  const chosen: Variant = pro ? { label: pro.proName, selection: selectionFromProBuild(pro), items: { ...build.items, items: pro.completedItems, starters: [], options: [], coreLen: pro.completedItems.length, coreGames: 0, coreWinPct: null, skillPriority: null }, spells: pro.spells, order: pro.skillOrder.join(""), winPct: null, games: 1 } : variants[variantIndex] ?? variants[0];
+  const chosen: Variant = pro ? proVariant(pro) : variants[variantIndex] ?? variants[0];
   const chosenSelection = custom ?? chosen.selection;
   const complete = !!chosenSelection && chosenSelection.primaryRunes.length === 3 && chosenSelection.secondaryRunes.length === 2 && chosenSelection.shards.length === 3;
   const inSelect = client?.phase === "ChampSelect" && client.championId === championId;
@@ -93,7 +103,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const ready: ApplyStatus = { runes: inSelect && complete, spells: inSelect && chosen.spells.length === 2, items: itemIds.length > 0 };
   const boots = chosen.items.items.filter(item => /boots|greaves|treads|shoes|steelcaps|soulmarch/i.test(item.name));
   const order = maxOrder(chosen.order, chosen.items.skillPriority);
-  const showTab = (index: number | null) => { setPro(null); setProOpen(index === null); if (index !== null) setVariantIndex(index); setCustom(null); };
+  const showTab = (index: number) => { setPro(null); setVariantIndex(index); setCustom(null); setNotice(""); };
 
   const apply = async (section: Section | "all") => {
     setBusy(section); setNotice("");
@@ -116,12 +126,26 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const allDone = (!ready.runes || status.runes) && (!ready.spells || status.spells) && (!ready.items || status.items);
   const sections: [Section, string][] = [["runes", "Runes"], ["spells", "Spells"], ["items", "Item set"]];
 
-  return <div className="fa-build-section">
-    <div className="fa-build-tabs" role="group" aria-label="Build variant">{variants.map((variant, index) => <button key={variant.label} aria-pressed={!proOpen && index === variantIndex} onClick={() => showTab(index)}>
-      <span className="fa-item-line">{variant.items.items.slice(0, 2).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</span><span><strong>{variant.label}</strong><small>{variant.games.toLocaleString()} games</small></span><b>{fmtPct(variant.winPct)}</b>
-    </button>)}
-      <button aria-pressed={proOpen} onClick={() => showTab(null)}><span><strong>Pro builds</strong><small>{pro ? `${pro.proName} · ${pro.patch}` : "Recent pro games"}</small></span></button>
-    </div>
+  return <div className="fa-build-section cs-build-browser">
+    <aside className="cs-build-list" aria-label="Browse builds">
+      <h3>Builds</h3><div className="cs-build-entries">{variants.map((variant, index) => <button disabled={!!busy} key={variant.label} aria-pressed={!pro && index === variantIndex} onClick={() => showTab(index)}>
+        <strong>{variant.label}</strong><small>{variant.games.toLocaleString()} games <b>{fmtPct(variant.winPct)}</b></small>
+        <NearViewport className="cs-build-icons">{variant.selection && <RuneIcon id={variant.selection.keystone} mode="desktop" />}{variant.items.items.slice(0, 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</NearViewport>
+      </button>)}</div>
+      <h3>Pro builds <small>Recent matches</small></h3>
+      {!proOpen && <button className="fa-secondary cs-load-pros" onClick={() => { setProOpen(true); void loadPros(1); }}>Browse pro builds</button>}
+      {proOpen && <><div className="cs-build-entries">{pros?.matches.map(match => <button disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); setNotice(""); }}>
+        <strong>{match.proName}<b className={match.win ? "up" : "down"}>{match.win ? "W" : "L"}</b></strong>
+        <small>{[match.team, match.league].filter(Boolean).join(" · ")}</small><small>{match.playedAgo} · {match.kills}/{match.deaths}/{match.assists}</small>
+        <NearViewport className="cs-build-icons"><RuneIcon id={match.keystone} mode="desktop" />{proVariant(match).items.items.slice(0, 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</NearViewport>
+      </button>)}</div>
+      {pros?.stale && <CachedBadge stale updatedAt={pros.updatedAt} />}
+      {proError && <p role="alert">{proError}</p>}
+      {proLoading ? <p role="status">Loading pro builds…</p> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
+        : pros && !pros.matches.length ? <p>No recent pro builds for this role.</p> : pros?.hasMore ? <button className="fa-text-button cs-load-pros" onClick={() => void loadPros(pros.page + 1)}>Load more</button> : null}</>}
+    </aside>
+    <div className="cs-build-content">
+    <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s build` : chosen.label}</strong><small>{pro ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `${name} · ${lane}`}</small></div>
     <div className="cs-apply-bar" aria-label="Apply to League Client">
       {sections.map(([key, label]) => <span key={key} className={`cs-apply-chip${status[key] ? " is-done" : ""}`}>
         {status[key] ? <><Check size={14} aria-hidden /><strong>{label}</strong><small>{key === "runes" ? "Applied" : key === "items" ? "Added" : "Set"}</small></>
@@ -131,14 +155,13 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       <button className="fa-primary" disabled={!!busy || allDone || !(ready.runes || ready.spells || ready.items)} onClick={() => void apply("all")}><Check size={16} />{busy === "all" ? "Applying…" : allDone ? "All applied" : "Apply all"}</button>
     </div>
     {notice && <p className="fa-notice" role="status">{notice}</p>}
-    {proOpen && <div className="fa-pro-grid">{proError ? <p role="alert">{proError}</p> : !pros ? <p role="status">Loading pro builds…</p> : !pros.matches.length ? <p>No recent pro builds for this role.</p> : pros.matches.slice(0, 8).map(match => <button className="fa-pro-card" key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); }}><strong>{match.proName} <small>{match.team}</small></strong><span>{match.kills} / {match.deaths} / {match.assists} · {match.win ? "Win" : "Loss"} · {match.playedAgo}</span><span className="fa-item-line">{match.finalItems.slice(0, 6).map((item, index) => <ItemIcon key={index} {...item} mode="desktop" />)}</span></button>)}</div>}
-    {proOpen && !pro ? null : <section className="fa-card fa-build-grid cs-build-grid">
-      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom rune page" : "Rune page"}</h4>{custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{build.runes && [build.runes.keystone, ...build.runes.primaryRunes, ...build.runes.secondaryRunes, ...build.runes.shards].map(id => <RuneIcon key={id} id={id} mode="desktop" />)}</div>}</div>
+    <section className="fa-card fa-build-grid cs-build-grid">
+      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom rune page" : "Rune page"}</h4>{custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{chosenSelection && [chosenSelection.keystone, ...chosenSelection.primaryRunes, ...chosenSelection.secondaryRunes, ...chosenSelection.shards].map((id, index) => <RuneIcon key={index} id={id} mode="desktop" />)}</div>}</div>
       <div className="fa-item-area"><h4>Item build</h4>
         <h5>Starting items</h5><div className="fa-item-line">{chosen.items.starters.map(item => <span className="fa-item-stack" key={item.id}><ItemIcon {...item} mode="desktop" />{item.count > 1 && <b>×{item.count}</b>}</span>)}{!chosen.items.starters.length && <small>Not reported</small>}</div>
         {boots.length > 0 && <><h5>Boots</h5><div className="fa-item-line">{boots.map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</div></>}
-        <h5>Core path <small>{fmtPct(chosen.items.coreWinPct)} · {chosen.items.coreGames.toLocaleString()} games</small></h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<ItemIcon {...item} mode="desktop" /></span>)}</div>
-        <h5>Later items <small>Popular choices for each slot</small></h5><div className="fa-item-line">{chosen.items.items.slice(chosen.items.coreLen || 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</div>
+        <h5>Core path <small>{pro ? "Played in this match" : `${fmtPct(chosen.items.coreWinPct)} · ${chosen.items.coreGames.toLocaleString()} games`}</small></h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<ItemIcon {...item} mode="desktop" /></span>)}</div>
+        <h5>Later items <small>{pro ? "Completed in this match" : "Popular choices for each slot"}</small></h5><div className="fa-item-line">{chosen.items.items.slice(chosen.items.coreLen || 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</div>
         {chosen.items.options.length > 0 && <><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <span key={`${item.id}-${item.slot}`} title={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${item.games.toLocaleString()} games`}><ItemIcon {...item} mode="desktop" /></span>)}</div></>}
         {chosen.items.stale && <CachedBadge stale updatedAt={chosen.items.updatedAt} />}
       </div>
@@ -147,7 +170,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         {order.length ? <div className="fa-skill-priority" aria-label={`Max order ${order.join(", ")}`}>{order.map((key, index) => <span key={key}>{index > 0 && <ChevronRight size={14} />}<AbilityBadge ability={abilities.find(ability => ability.key === key)} skill={key} /></span>)}</div> : <p>Max order unavailable</p>}
         {chosen.order ? <SkillOrderGrid order={chosen.order} abilities={abilities} /> : <p>Level order unavailable</p>}</div>
       </div>
-    </section>}
+    </section>
+    </div>
   </div>;
 }
 

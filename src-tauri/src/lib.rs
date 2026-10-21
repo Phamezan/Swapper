@@ -1,4 +1,6 @@
 mod full_app;
+#[path = "full_app/match_detail.rs"]
+mod match_detail;
 mod hotkey;
 mod identity;
 mod korean_font;
@@ -1576,6 +1578,7 @@ pub fn run() {
             full_app::open_full_app,
             full_app::window_ready,
             full_app::dashboard_snapshot,
+            match_detail::full_app_match_detail,
             full_app::bench::dashboard_benchmarks,
             full_app::art::champion_art,
             full_app::ui_data::full_app_rune_catalog,
