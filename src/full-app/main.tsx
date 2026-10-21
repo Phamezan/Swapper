@@ -2,7 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } fro
 import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { BarChart3, Crosshair, LayoutDashboard, Settings, Swords, Users } from "lucide-react";
+import { BarChart3, Crosshair, LayoutDashboard, Radio, Settings, Swords, Users } from "lucide-react";
 import { BrandIcon } from "../components/BrandIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { RankCrest } from "../runes/RankCrest";
@@ -10,6 +10,8 @@ import type { ChampionOption } from "../runes/types";
 import type { DashboardView } from "./types";
 import { Dashboard, crestSlug, splitRiotId, titleCase } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
+import { useInGame } from "./LiveGameData";
+import { LIVE_PAGE, enterLive, leaveLive, showInNav } from "./LiveGameModel";
 import FlyoutApp from "../App";
 import type { AppState, FullAppBridge, View } from "../App";
 import "./dashboard.css";
@@ -19,20 +21,22 @@ import { SettingsPage } from "./SettingsPage";
 import { ChampionSelect } from "./ChampionSelect";
 
 const Champions = lazy(() => import("./Champions"));
-type Page = "Dashboard" | "Tier list & Builds" | "Matchups";
+const LiveGame = lazy(() => import("./LiveGame"));
+type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups";
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
 const appViews: Record<AppPage, View> = { Accounts: "accounts", "Champion select": "runes", Settings: "settings" };
 const appPageOf = (view: View): AppPage => view === "runes" ? "Champion select" : view === "settings" ? "Settings" : "Accounts";
 const groups: { label: string; items: [Location, typeof LayoutDashboard][] }[] = [
-  { label: "Overview", items: [["Dashboard", LayoutDashboard]] },
+  { label: "Overview", items: [["Dashboard", LayoutDashboard], ["Live Game", Radio]] },
   { label: "Champions", items: [["Tier list & Builds", BarChart3], ["Matchups", Swords], ["Champion select", Crosshair]] },
   { label: "Swapper", items: [["Accounts", Users], ["Settings", Settings]] },
 ];
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 const subtitles: Record<Page, string> = {
   Dashboard: "Your recent Summoner’s Rift games, rank and form",
+  "Live Game": "Everyone in your current game: rank, recent form and live stats",
   "Tier list & Builds": "The strongest picks per role and rank, with builds and counters",
   Matchups: "How your champion fares into a lane opponent",
 };
@@ -52,6 +56,22 @@ function App() {
     if (target in appViews) { setPage("app"); setRequest({ view: appViews[target as AppPage] }); }
     else setPage(target as Page);
   }, []);
+
+  // A running game switches to Live Game; its end restores the earlier page.
+  const inGame = useInGame();
+  const liveReturn = useRef<Location | null>(null);
+  useEffect(() => {
+    if (inGame) {
+      const next = enterLive(currentRef.current, liveReturn.current, returnTo.current);
+      liveReturn.current = next.returnTo as Location;
+      returnTo.current = null;
+      go(next.page as Location);
+    } else if (liveReturn.current) {
+      const back = leaveLive(currentRef.current, liveReturn.current);
+      liveReturn.current = null;
+      if (back) go(back as Location);
+    }
+  }, [inGame, go]);
 
   // Back/forward over visited pages, browser style.
   const [history, setHistory] = useState<{ stack: Location[]; index: number }>({ stack: ["Dashboard"], index: 0 });
@@ -117,7 +137,7 @@ function App() {
       if (lastPhase.current !== payload.phase) { lastPhase.current = payload.phase; void refresh(); }
     }) : Promise.resolve(() => {});
     // Tray menu destinations (Add Account, Settings, ...) are App views.
-    const navigate = isTauri() ? listen("navigate", () => setPage("app")) : Promise.resolve(() => {});
+    const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => setPage(payload === "live" ? LIVE_PAGE : "app")) : Promise.resolve(() => {});
     if (isTauri()) void invoke<ChampionOption[]>("get_champion_list").then(list => { if (mounted.current) setChampions(list); }).catch(() => {});
     void refresh();
     return () => {
@@ -128,21 +148,23 @@ function App() {
     };
   }, []);
   const openChampion = (champion: ChampionOption) => { setFocus({ champion }); go("Tier list & Builds"); };
+  const championNames = useMemo(() => new Map(champions.map(c => [c.id, c.name])), [champions]);
   const snapshot = view?.snapshot;
   const rank = snapshot?.rank;
   const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? "League Client");
   return <div className="fa-frame">
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
-      onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages}
+      onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} />
     <div className="dashboard-shell">
       <aside className="sidebar dash-scope">
         <nav aria-label="Swapper pages">
           {groups.map(group => <div className="nav-group" key={group.label}>
             <p className="nav-label">{group.label}</p>
-            {group.items.map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}>
+            {group.items.filter(([label]) => showInNav(label, inGame)).map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}>
               <Icon size={17} aria-hidden />{label}
               {label === "Champion select" && inChampSelect && <span className="live-dot" title="Champion select is live" />}
+              {label === LIVE_PAGE && <span className="live-dot" title="A game is running" />}
             </button>)}
           </div>)}
         </nav>
@@ -165,6 +187,7 @@ function App() {
         {page === "Dashboard"
           ? snapshot ? <Dashboard snapshot={snapshot} region={region} onOpenChampion={(id, name) => openChampion({ id, name })} />
             : <section className="empty"><BrandIcon size={52} /><h2>{loading ? "Connecting to League Client…" : "Sign in to League Client"}</h2><p>Your recent Rift games and Solo/Duo rank appear here once League Client is open.</p></section>
+          : page === "Live Game" ? <Suspense fallback={<p role="status" className="loading-line">Loading Live Game…</p>}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<p role="status" className="loading-line">Loading champion tools…</p>}>
               <Champions key={page} matchups={page === "Matchups"} focus={page === "Matchups" ? null : focus} />
             </Suspense>}

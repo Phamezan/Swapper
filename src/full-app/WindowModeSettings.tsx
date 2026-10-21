@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { Switch } from "@/components/ui/switch";
+import { LiveGameSettings } from "./LiveGameSettings";
 
 type WindowSettings = { fullApp: boolean; lowMemory: boolean };
 
@@ -34,6 +35,7 @@ export function WindowModeSettings() {
       </div>
       <Switch id="full-app-switch" checked={settings?.fullApp ?? false} disabled={disabled} onCheckedChange={value => void change("set_full_app_enabled", value)} aria-label="Fullsized App" />
     </div>
+    {settings?.fullApp && <LiveGameSettings />}
     {settings && !settings.fullApp && <div className="setting-row">
       <div className="setting-copy">
         <label htmlFor="low-memory-switch">Low memory mode</label>

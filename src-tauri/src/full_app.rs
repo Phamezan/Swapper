@@ -3,7 +3,7 @@
 //! No window or data task exists until it is opened; closing destroys it.
 pub mod art;
 pub mod ui_data;
-mod model;
+pub(crate) mod model;
 pub mod routing;
 
 use base64::Engine;
@@ -25,6 +25,9 @@ pub struct Runtime {
     /// also means the window was created and has not reported ready yet.
     pending_flyout: Mutex<Option<String>>,
     pending_full: Mutex<Option<String>>,
+    /// The full app being created should appear minimized without taking
+    /// focus (Live Game auto-open while a game has the foreground).
+    background: std::sync::atomic::AtomicBool,
 }
 
 impl Runtime {
@@ -35,6 +38,7 @@ impl Runtime {
             gate: tokio::sync::Mutex::new(()),
             pending_flyout: Mutex::new(None),
             pending_full: Mutex::new(None),
+            background: Default::default(),
         }
     }
 }
@@ -143,10 +147,32 @@ pub fn sync_menu(app: &tauri::AppHandle) -> Result<(), String> {
 /// Opens or focuses the Fullsized App. `destination` is a flyout view name
 /// ("accounts", "add", "settings", ...) the app navigates to.
 pub fn open(app: &tauri::AppHandle, destination: Option<&str>) -> Result<(), String> {
+    open_window(app, destination, false)
+}
+
+/// Creates the Fullsized App minimized and never activated, so it waits in the
+/// taskbar and Alt+Tab while a game keeps the foreground. An existing window
+/// is left alone.
+pub fn open_in_background(app: &tauri::AppHandle, destination: &str) -> Result<(), String> {
+    if app.get_webview_window(LABEL).is_some() {
+        return Ok(());
+    }
+    open_window(app, Some(destination), true)
+}
+
+fn open_window(
+    app: &tauri::AppHandle,
+    destination: Option<&str>,
+    background: bool,
+) -> Result<(), String> {
     if !enabled(app) {
         return Err("Turn on Fullsized App in Settings first.".into());
     }
     let runtime = app.state::<Runtime>();
+    // A user's open while a background window is still loading shows it normally.
+    runtime
+        .background
+        .store(background, std::sync::atomic::Ordering::Relaxed);
     if let Some(window) = app.get_webview_window(LABEL) {
         {
             let mut pending = runtime.pending_full.lock().map_err(|e| e.to_string())?;
@@ -183,6 +209,7 @@ pub fn open(app: &tauri::AppHandle, destination: Option<&str>) -> Result<(), Str
     .decorations(false)
     .shadow(true)
     .center()
+    .focused(!background)
     // Shown by `window_ready` once painted: no blank frame, and no close
     // request lands while WebView2 is still initializing (it is ignored then).
     .visible(false);
@@ -247,12 +274,29 @@ pub async fn window_ready(app: tauri::AppHandle, window: tauri::WebviewWindow) {
         if let Some(destination) = destination.filter(|d| !d.is_empty()) {
             let _ = app.emit_to(LABEL, "navigate", destination);
         }
-        let _ = window.show();
-        let _ = window.set_focus();
+        if runtime
+            .background
+            .swap(false, std::sync::atomic::Ordering::Relaxed)
+        {
+            show_minimized_without_focus(&window);
+        } else {
+            let _ = window.show();
+            let _ = window.set_focus();
+        }
         // Opening during champion select lands on the champion select page.
         let status = crate::runes::current_status().await;
         let _ = app.emit_to(LABEL, "champ_select", status);
     }
+}
+
+/// `SW_SHOWMINNOACTIVE`: in the taskbar and Alt+Tab, not on screen, and the
+/// foreground window (the game) keeps focus. Never topmost.
+fn show_minimized_without_focus(window: &tauri::WebviewWindow) {
+    use windows_sys::Win32::UI::WindowsAndMessaging::{ShowWindow, SW_SHOWMINNOACTIVE};
+    if let Ok(hwnd) = window.hwnd() {
+        unsafe { ShowWindow(hwnd.0 as _, SW_SHOWMINNOACTIVE) };
+    }
+    crate::set_flyout_memory(window, true);
 }
 
 #[derive(Serialize)]

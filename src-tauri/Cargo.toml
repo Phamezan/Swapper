@@ -15,6 +15,11 @@ edition = "2021"
 name = "swapper_lib"
 crate-type = ["rlib"]
 
+[features]
+# Lets a release build render Live Game from SWAPPER_LIVE_FIXTURE (for
+# measurements without a running game). Debug builds always can.
+live-fixture = []
+
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
