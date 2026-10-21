@@ -95,3 +95,12 @@ test("the timer counts down from when the draft was read", () => {
   assert.equal(secondsLeft({ phase: "BAN_PICK", remainingMs: 2000 }, 0, 9000), 0);
   assert.equal(secondsLeft(null, 0, 0), null);
 });
+
+test("champion search ignores case and punctuation, prefers prefix matches and skips taken", async () => {
+  const { searchChampions } = await import("./champ-select-model.ts");
+  const names = new Map([[1, "Kai'Sa"], [2, "Kayle"], [3, "Ahri"], [4, "Rek'Sai"], [5, "Kayn"]]);
+  assert.deepEqual(searchChampions(names, "kai", new Set()).map(c => c.name), ["Kai'Sa"]);
+  assert.deepEqual(searchChampions(names, "sa", new Set()).map(c => c.name), ["Kai'Sa", "Rek'Sai"]);
+  assert.deepEqual(searchChampions(names, "ka", new Set([5])).map(c => c.name), ["Kai'Sa", "Kayle"]);
+  assert.deepEqual(searchChampions(names, "  ", new Set()), []);
+});

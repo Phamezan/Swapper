@@ -169,3 +169,10 @@
   .fa-build-grid.cs-build-grid { grid-template-columns: 1fr; grid-template-areas: "runes" "skill" "items"; }
   .fa-build-grid.cs-build-grid > div + div { border-left: 0; border-top: 1px solid var(--fa-line); }
 }
+
+.cs-picks-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.cs-search { display: flex; align-items: center; gap: 8px; width: 220px; height: 36px; padding: 0 10px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: var(--fa-panel-2); color: var(--text-muted); }
+.cs-search:focus-within { border-color: var(--fa-you); }
+.cs-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font: inherit; font-size: 13px; }
+.fa-frame .cs-search button { display: grid; place-items: center; padding: 2px; border: 0; background: none; color: var(--text-muted); cursor: pointer; }
+.fa-frame .cs-search input:focus-visible { outline: none; }

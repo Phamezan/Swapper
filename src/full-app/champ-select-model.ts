@@ -99,3 +99,14 @@ export function secondsLeft(timer: Draft["timer"], readAt: number, now: number):
   if (!timer || timer.remainingMs <= 0) return null;
   return Math.max(0, Math.ceil((timer.remainingMs - (now - readAt)) / 1000));
 }
+
+const searchKey = (text: string) => text.toLowerCase().replace(/[^a-z0-9]/g, "");
+/** Champions whose name matches `query` (ignoring case, spaces and punctuation),
+ *  names starting with it first, minus taken ones. */
+export function searchChampions(names: Map<number, string>, query: string, taken: Set<number>, limit = 16): { championId: number; name: string }[] {
+  const q = searchKey(query);
+  if (!q) return [];
+  return [...names].filter(([id, name]) => !taken.has(id) && searchKey(name).includes(q))
+    .sort(([, a], [, b]) => Number(!searchKey(a).startsWith(q)) - Number(!searchKey(b).startsWith(q)) || a.localeCompare(b))
+    .slice(0, limit).map(([championId, name]) => ({ championId, name }));
+}
