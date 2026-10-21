@@ -231,7 +231,7 @@ pub fn next_skill(level: u64, ranks: [u64; 4], priority: &str) -> Option<char> {
 
 pub fn supported(data: &Value) -> bool {
     data["gameData"]["mapNumber"] == 11
-        && data["gameData"]["gameMode"] == "CLASSIC"
+        && matches!(data["gameData"]["gameMode"].as_str(), Some("CLASSIC" | "PRACTICETOOL"))
         && data["activePlayer"]["level"]
             .as_u64()
             .is_some_and(|level| level > 0)
@@ -263,12 +263,17 @@ pub fn cached_priority(cache: &Value, champion: &str, lane: &str, tier: &str) ->
         .map(str::to_owned)
 }
 
+/// Summoner's Rift normal, ranked and quickplay games, plus practice tool so the
+/// overlay can be tried without a real game.
 pub fn supported_session(session: &Value) -> bool {
+    let practice = session["gameData"]["queue"]["gameMode"] == "PRACTICETOOL"
+        || session["map"]["gameMode"] == "PRACTICETOOL";
     session["map"]["id"] == 11
-        && matches!(
-            session["gameData"]["queue"]["id"].as_u64(),
-            Some(400 | 420 | 430 | 440 | 490)
-        )
+        && (practice
+            || matches!(
+                session["gameData"]["queue"]["id"].as_i64(),
+                Some(400 | 420 | 430 | 440 | 490)
+            ))
         && session["gameClient"]["isSpectating"] != true
 }
 
@@ -405,6 +410,14 @@ mod tests {
         assert!(!supported_session(
             &json!({"map":{"id":11},"gameData":{"queue":{"id":420}},"gameClient":{"isSpectating":true}})
         ));
+        // Practice tool is a custom game (queue id -1) in its own game mode.
+        let practice = json!({"map":{"id":11,"gameMode":"PRACTICETOOL"},"gameData":{"queue":{"id":-1,"gameMode":"PRACTICETOOL"}}});
+        assert!(supported_session(&practice));
+        data["events"]["Events"] = json!([]);
+        data["gameData"]["gameMode"] = json!("PRACTICETOOL");
+        assert!(supported(&data));
+        data["gameData"]["gameMode"] = json!("ARAM");
+        assert!(!supported(&data));
     }
 
     #[test]

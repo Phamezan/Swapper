@@ -246,7 +246,8 @@ fn display(
 
 fn session_scope(session: &Value) -> Option<bool> {
     session["map"]["id"].as_u64().filter(|id| *id > 0)?;
-    session["gameData"]["queue"]["id"].as_u64()?;
+    // Custom games such as practice tool report queue id -1.
+    session["gameData"]["queue"]["id"].as_i64()?;
     Some(model::supported_session(session))
 }
 
