@@ -448,6 +448,7 @@ pub async fn dashboard_snapshot(
             let previous = tokio::task::spawn_blocking(read_cache).await.unwrap_or(None);
             match fresh(previous.as_ref()).await {
                 Ok(snapshot) => {
+                    crate::runes::blind::preload(&app, &snapshot);
                     let bytes = serde_json::to_vec(&snapshot).ok();
                     let saved = tokio::task::spawn_blocking(move || {
                         if let (Some(path), Some(bytes)) = (cache_path(), bytes) {
