@@ -103,16 +103,19 @@ test("Apply all reports a spell failure", async () => {
   button(h, "Apply all").props.onClick(); await h.flush();
   assert.match(textOf(h.tree()), /Spells rejected/);
 });
-test("equivalent parent build objects preserve editing; a changed source resets it", async () => {
+test("equivalent parent build objects preserve rune edits; a changed source resets them", async () => {
   const { h, props } = panel(); await h.flush();
-  button(h, "Edit runes").props.onClick(); h.render();
-  assert.ok(button(h, "Done"));
+  // Clicking a rune edits the page directly; Reset appears once it differs.
+  const page = nodes(h.tree()).find(n => n.props?.catalog && n.props?.selection);
+  assert.ok(page?.props.onChange, "runes are editable without an edit mode");
+  page.props.onChange({ ...page.props.selection, keystone: 8010 }); h.render();
+  assert.ok(button(h, "Reset"));
   const before = h.calls.filter(c => c.name === "get_keystone_build").length;
   h.render({ ...props, build: structuredClone(props.build) }); await h.flush();
-  assert.ok(button(h, "Done"), "equivalent source discarded editing");
+  assert.ok(button(h, "Reset"), "equivalent source discarded rune edits");
   assert.equal(h.calls.filter(c => c.name === "get_keystone_build").length, before);
   h.render({ ...props, build: { ...props.build, spells: [4, 14] } }); await h.flush();
-  assert.ok(button(h, "Edit runes"));
+  assert.equal(button(h, "Reset"), undefined);
 });
 test("draft events update taken picks and enemy build context without a local view change", async () => {
   const view = fixtureView("hover"), draft = fixtureDraft("hover");

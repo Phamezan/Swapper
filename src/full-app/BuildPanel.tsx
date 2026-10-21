@@ -39,7 +39,6 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const [pros, setPros] = useState<ProBuildsView | null>(null);
   const [pro, setPro] = useState<ProBuild | null>(null);
   const [proError, setProError] = useState("");
-  const [editing, setEditing] = useState(false);
   const [custom, setCustom] = useState<Selection | null>(null);
   useEffect(() => {
     let live = true;
@@ -56,7 +55,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const selection = overviewSelection(build, catalog?.trees ?? []);
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
-    setDetails(null); setVariantIndex(0); setPro(null); setPros(null); setProOpen(false); setNotice(""); setCustom(null); setEditing(false);
+    setDetails(null); setVariantIndex(0); setPro(null); setPros(null); setProOpen(false); setNotice(""); setCustom(null);
     setImported(null);
   }, [championId, lane, tier, sourceKey]);
   useEffect(() => {
@@ -94,7 +93,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const ready: ApplyStatus = { runes: inSelect && complete, spells: inSelect && chosen.spells.length === 2, items: itemIds.length > 0 };
   const boots = chosen.items.items.filter(item => /boots|greaves|treads|shoes|steelcaps|soulmarch/i.test(item.name));
   const order = maxOrder(chosen.order, chosen.items.skillPriority);
-  const showTab = (index: number | null) => { setPro(null); setProOpen(index === null); if (index !== null) setVariantIndex(index); setCustom(null); setEditing(false); };
+  const showTab = (index: number | null) => { setPro(null); setProOpen(index === null); if (index !== null) setVariantIndex(index); setCustom(null); };
 
   const apply = async (section: Section | "all") => {
     setBusy(section); setNotice("");
@@ -134,7 +133,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     {notice && <p className="fa-notice" role="status">{notice}</p>}
     {proOpen && <div className="fa-pro-grid">{proError ? <p role="alert">{proError}</p> : !pros ? <p role="status">Loading pro builds…</p> : !pros.matches.length ? <p>No recent pro builds for this role.</p> : pros.matches.slice(0, 8).map(match => <button className="fa-pro-card" key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); }}><strong>{match.proName} <small>{match.team}</small></strong><span>{match.kills} / {match.deaths} / {match.assists} · {match.win ? "Win" : "Loss"} · {match.playedAgo}</span><span className="fa-item-line">{match.finalItems.slice(0, 6).map((item, index) => <ItemIcon key={index} {...item} mode="desktop" />)}</span></button>)}</div>}
     {proOpen && !pro ? null : <section className="fa-card fa-build-grid cs-build-grid">
-      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom rune page" : "Rune page"}</h4><button className="fa-text-button" disabled={!chosenSelection || !!busy} aria-pressed={editing} onClick={() => setEditing(!editing)}>{editing ? "Done" : "Edit runes"}</button></div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={editing ? setCustom : undefined} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{build.runes && [build.runes.keystone, ...build.runes.primaryRunes, ...build.runes.secondaryRunes, ...build.runes.shards].map(id => <RuneIcon key={id} id={id} mode="desktop" />)}</div>}</div>
+      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom rune page" : "Rune page"}</h4>{custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{build.runes && [build.runes.keystone, ...build.runes.primaryRunes, ...build.runes.secondaryRunes, ...build.runes.shards].map(id => <RuneIcon key={id} id={id} mode="desktop" />)}</div>}</div>
       <div className="fa-item-area"><h4>Item build</h4>
         <h5>Starting items</h5><div className="fa-item-line">{chosen.items.starters.map(item => <span className="fa-item-stack" key={item.id}><ItemIcon {...item} mode="desktop" />{item.count > 1 && <b>×{item.count}</b>}</span>)}{!chosen.items.starters.length && <small>Not reported</small>}</div>
         {boots.length > 0 && <><h5>Boots</h5><div className="fa-item-line">{boots.map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</div></>}
