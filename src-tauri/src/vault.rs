@@ -76,8 +76,13 @@ impl Account {
 
 #[derive(Default, Clone, Serialize, Deserialize)]
 pub struct Config {
+    /// Fullsized App replaces the tray flyout. Off by default.
     #[serde(default)]
-    pub dashboard_window: bool,
+    pub full_app: bool,
+    /// Destroy the hidden flyout's webview. `None` means the default
+    /// (`full_app::routing::LOW_MEMORY_DEFAULT`) has never been changed.
+    #[serde(default)]
+    pub low_memory_mode: Option<bool>,
     #[serde(default)]
     pub overlay: crate::overlay::Settings,
     pub accounts: Vec<Account>,

@@ -49,6 +49,8 @@ export function PairedDevices({ staleSince = null }: Props) {
     if (!native) return;
     let live = true;
     const load = () => {
+      // The hidden flyout keeps this tab mounted; refresh only while visible.
+      if (document.hidden) return;
       invoke<PairedDevice[]>("list_paired_lan_devices")
         .then((next) => {
           if (!live) return;

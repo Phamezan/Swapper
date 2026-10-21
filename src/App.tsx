@@ -21,7 +21,6 @@ import { UpdateBanner } from "./settings/UpdateSection";
 import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "./runes/types";
 import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
-import { DashboardLauncher } from "./dashboard/Launcher";
 import type { SettingsTab } from "./settings/SettingsView";
 import "./App.css";
 
@@ -108,7 +107,15 @@ type ChampSelectStatus = {
   position: string;
   locked: boolean;
 };
-type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings" | "runes" | "champions";
+export type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings" | "runes" | "champions";
+/** Lets the Fullsized App host this component as its Accounts, Champion select
+ *  and Settings pages. The flyout passes nothing. */
+export type FullAppBridge = {
+  /** A new object navigates once, e.g. from the sidebar. */
+  request: { view: View } | null;
+  onViewChange: (view: View) => void;
+  onChampSelectChange: (active: boolean) => void;
+};
 
 const emptyRemote: RemoteStatus = {
   enabled: false, state: "disabled", address: null, tailscaleAddress: null,
@@ -150,7 +157,7 @@ function IdentityCard({ identity }: { identity: DetectedIdentity }) {
   );
 }
 
-function App() {
+function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
   const [data, setData] = useState<AppState>(empty);
   const [view, setView] = useState<View>("accounts");
   const [inChampSelect, setInChampSelect] = useState(false);
@@ -197,6 +204,8 @@ function App() {
   const [runeSession, setRuneSession] = useState(0);
   const lastPhase = useRef("");
   const native = isTauri();
+  const onChampSelectChange = useRef(fullApp?.onChampSelectChange);
+  onChampSelectChange.current = fullApp?.onChampSelectChange;
 
   useEffect(() => {
     if (!native) return;
@@ -254,10 +263,20 @@ function App() {
         invoke<AppState>("get_state").then(sync).catch(() => {});
       }),
     ]);
+    // Listeners exist now; a newly created window is shown (and sent its
+    // destination) only after this.
+    void unlisteners.then(() => invoke("window_ready")).catch(() => {});
     return () => {
       unlisteners.then((fns) => fns.forEach((unlisten) => unlisten()));
     };
   }, [native]);
+
+  useEffect(() => { fullApp?.onViewChange(view); }, [view]);
+  useEffect(() => {
+    if (!fullApp?.request) return;
+    navigate(fullApp.request.view);
+    if (fullApp.request.view === "runes") void loadRunes();
+  }, [fullApp?.request]);
 
   function sync(next: AppState) {
     setData(next);
@@ -592,6 +611,9 @@ function App() {
     const inGame = isGamePhase(payload.phase);
     if (isGamePhase(lastPhase.current) && !inGame) setRuneSession((id) => id + 1);
     setInChampSelect(payload.phase === "ChampSelect");
+    if ((payload.phase === "ChampSelect") !== (lastPhase.current === "ChampSelect")) {
+      onChampSelectChange.current?.(payload.phase === "ChampSelect");
+    }
     if (payload.phase === "ChampSelect") {
       if (runeChampion.current !== payload.championId) runePosition.current = undefined;
       if (lastPhase.current !== "ChampSelect") setView("runes");
@@ -821,8 +843,8 @@ function App() {
   const switchLabel = toolsOpen ? "Switch to accounts" : "Switch to champion lookup";
 
   return (
-    <div className="shell dark">
-      <header className="topbar">
+    <div className={`shell dark${fullApp ? " full-app-embedded" : ""}`}>
+      {!fullApp && <header className="topbar">
         <button type="button" className={`brand-button mode-${brandMode}`} aria-label={switchLabel} title={switchLabel} onClick={() => {
           setModeSpin((spin) => spin + 180);
           navigate(otherMode);
@@ -842,8 +864,7 @@ function App() {
           </span>
         </button>
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
-      </header>
-      <DashboardLauncher />
+      </header>}
 
       <main className={`main-panel${view === "settings" ? " settings-panel" : ""}${toolsOpen ? " runes-panel-host" : ""}`}>
         {view === "accounts" ? (

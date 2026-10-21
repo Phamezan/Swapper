@@ -1,17 +1,28 @@
-//! Optional desktop dashboard. No window or data task exists until explicitly opened.
+//! Optional Fullsized App. When on, it replaces the tray flyout: the flyout
+//! webview is never created and every entry point opens this window instead.
+//! No window or data task exists until it is opened; closing destroys it.
 mod model;
+pub mod routing;
 
 use base64::Engine;
 use futures_util::{stream, StreamExt};
 use model::Snapshot;
 use serde::Serialize;
 use serde_json::Value;
+use std::sync::Mutex;
 use tauri::{Emitter, Manager};
+
+pub const LABEL: &str = "full_app";
+pub const FLYOUT: &str = "main";
 
 pub struct Runtime {
     menu: tauri::menu::Menu<tauri::Wry>,
     cancel: tokio::sync::watch::Sender<u64>,
     gate: tokio::sync::Mutex<()>,
+    /// Destination each window shows once its page reports ready. `Some`
+    /// also means the window was created and has not reported ready yet.
+    pending_flyout: Mutex<Option<String>>,
+    pending_full: Mutex<Option<String>>,
 }
 
 impl Runtime {
@@ -20,6 +31,8 @@ impl Runtime {
             menu,
             cancel: tokio::sync::watch::channel(0).0,
             gate: tokio::sync::Mutex::new(()),
+            pending_flyout: Mutex::new(None),
+            pending_full: Mutex::new(None),
         }
     }
 }
@@ -30,118 +43,211 @@ pub fn cancel(app: &tauri::AppHandle) {
         .send_modify(|epoch| *epoch += 1);
 }
 
-pub fn enabled(app: &tauri::AppHandle) -> bool {
+fn settings(app: &tauri::AppHandle) -> routing::WindowSettings {
     app.state::<crate::AppState>()
         .config
         .lock()
-        .map(|c| c.dashboard_window)
-        .unwrap_or(false)
+        .map(|c| routing::WindowSettings::from_config(&c))
+        .unwrap_or_default()
 }
 
-/// The dashboard is read-only; account switching and settings commands stay in the flyout.
-pub fn allowed_command(command: &str) -> bool {
-    matches!(
-        command,
-        "dashboard_snapshot"
-            | "get_champion_list"
-            | "get_tier_list"
-            | "get_champion_overview"
-            | "get_champion_counters"
-            | "get_matchup"
-            | "champion_icon"
-            | "rune_icon"
-            | "spell_icon"
-            | "item_icon"
-            | "rank_icon"
-            | "role_icon"
-    )
+pub fn enabled(app: &tauri::AppHandle) -> bool {
+    settings(app).full_app
+}
+
+pub fn low_memory(app: &tauri::AppHandle) -> bool {
+    settings(app).low_memory
 }
 
 #[tauri::command]
-pub fn dashboard_enabled(app: tauri::AppHandle) -> bool {
-    enabled(&app)
+pub fn window_settings(app: tauri::AppHandle) -> routing::WindowSettings {
+    settings(&app)
 }
 
+fn save_setting(
+    app: &tauri::AppHandle,
+    change: impl Fn(&mut crate::vault::Config),
+) -> Result<(), String> {
+    let state = app.state::<crate::AppState>();
+    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let previous = config.clone();
+    change(&mut config);
+    if let Err(error) = crate::vault::save(&config) {
+        *config = previous;
+        return Err(error);
+    }
+    Ok(())
+}
+
+fn clear(pending: &Mutex<Option<String>>) {
+    if let Ok(mut pending) = pending.lock() {
+        *pending = None;
+    }
+}
+
+/// Async so window creation and destruction never run inside a synchronous
+/// IPC handler (WebView2 deadlocks there).
 #[tauri::command]
-pub fn set_dashboard_enabled(
+pub async fn set_full_app_enabled(
     app: tauri::AppHandle,
     enabled: bool,
     window: tauri::WebviewWindow,
 ) -> Result<(), String> {
-    if window.label() != "main" {
-        return Err("Change dashboard settings from the tray flyout.".into());
+    if !routing::window_may_invoke(window.label()) {
+        return Err("Change this setting from Swapper's Settings.".into());
     }
-    {
-        let state = app.state::<crate::AppState>();
-        let mut config = state.config.lock().map_err(|e| e.to_string())?;
-        let previous = config.dashboard_window;
-        config.dashboard_window = enabled;
-        if let Err(error) = crate::vault::save(&config) {
-            config.dashboard_window = previous;
-            return Err(error);
-        }
-    }
-    if !enabled {
-        cancel(&app);
-        if let Some(window) = app.get_webview_window("dashboard") {
-            window.destroy().map_err(|e| e.to_string())?;
-        }
-    }
+    save_setting(&app, |c| c.full_app = enabled)?;
     sync_menu(&app)?;
-    let _ = app.emit_to("main", "dashboard_enabled", enabled);
+    let _ = app.emit("window_settings", settings(&app));
+    let runtime = app.state::<Runtime>();
+    if enabled {
+        if let Some(flyout) = app.get_webview_window(FLYOUT) {
+            flyout.destroy().map_err(|e| e.to_string())?;
+        }
+        clear(&runtime.pending_flyout);
+        open(&app, None)
+    } else {
+        cancel(&app);
+        if let Some(full) = app.get_webview_window(LABEL) {
+            full.destroy().map_err(|e| e.to_string())?;
+        }
+        clear(&runtime.pending_full);
+        crate::show_flyout(&app, "settings");
+        Ok(())
+    }
+}
+
+#[tauri::command]
+pub fn set_low_memory_mode(app: tauri::AppHandle, enabled: bool) -> Result<(), String> {
+    save_setting(&app, |c| c.low_memory_mode = Some(enabled))?;
+    let _ = app.emit("window_settings", settings(&app));
     Ok(())
 }
 
 pub fn sync_menu(app: &tauri::AppHandle) -> Result<(), String> {
     let runtime = app.state::<Runtime>();
     let menu = &runtime.menu;
-    if let Some(item) = menu.get("dashboard") {
+    if let Some(item) = menu.get(LABEL) {
         menu.remove(&item).map_err(|e| e.to_string())?;
     }
     if enabled(app) {
-        let item =
-            tauri::menu::MenuItem::with_id(app, "dashboard", "Open dashboard", true, None::<&str>)
-                .map_err(|e| e.to_string())?;
+        let item = tauri::menu::MenuItem::with_id(app, LABEL, "Open Swapper", true, None::<&str>)
+            .map_err(|e| e.to_string())?;
         menu.insert(&item, 0).map_err(|e| e.to_string())?;
     }
     Ok(())
 }
 
-pub fn open(app: &tauri::AppHandle) -> Result<(), String> {
+/// Opens or focuses the Fullsized App. `destination` is a flyout view name
+/// ("accounts", "add", "settings", ...) the app navigates to.
+pub fn open(app: &tauri::AppHandle, destination: Option<&str>) -> Result<(), String> {
     if !enabled(app) {
-        return Err("Enable Dashboard window in Settings first.".into());
+        return Err("Turn on Fullsized App in Settings first.".into());
     }
-    if let Some(window) = app.get_webview_window("dashboard") {
+    let runtime = app.state::<Runtime>();
+    if let Some(window) = app.get_webview_window(LABEL) {
+        {
+            let mut pending = runtime.pending_full.lock().map_err(|e| e.to_string())?;
+            if pending.is_some() {
+                // Still loading; `window_ready` shows it at the latest destination.
+                if let Some(destination) = destination {
+                    *pending = Some(destination.to_string());
+                }
+                return Ok(());
+            }
+        }
+        if let Some(destination) = destination {
+            let _ = app.emit_to(LABEL, "navigate", destination);
+        }
         window.unminimize().map_err(|e| e.to_string())?;
         window.show().map_err(|e| e.to_string())?;
         return window.set_focus().map_err(|e| e.to_string());
     }
-    // A separate WebView2 environment lets its renderer/browser processes exit on close.
-    let data = app
-        .path()
-        .app_local_data_dir()
-        .map_err(|e| e.to_string())?
-        .join("dashboard-webview");
-    tauri::WebviewWindowBuilder::new(
+    *runtime.pending_full.lock().map_err(|e| e.to_string())? =
+        Some(destination.unwrap_or_default().to_string());
+    // Shares the flyout's WebView2 environment (default data directory), which
+    // requires identical browser arguments; they come from the flyout config.
+    let mut builder = tauri::WebviewWindowBuilder::new(
         app,
-        "dashboard",
-        tauri::WebviewUrl::App("dashboard.html".into()),
+        LABEL,
+        tauri::WebviewUrl::App("full-app.html".into()),
     )
-    .title("Swapper · Dashboard")
+    .title("Swapper")
     .inner_size(1280.0, 820.0)
     .min_inner_size(1100.0, 700.0)
     .resizable(true)
     .decorations(true)
     .center()
-    .data_directory(data)
-    .build()
-    .map_err(|e| e.to_string())?;
+    // Shown by `window_ready` once painted: no blank frame, and no close
+    // request lands while WebView2 is still initializing (it is ignored then).
+    .visible(false);
+    if let Some(args) = flyout_config(app).and_then(|c| c.additional_browser_args) {
+        builder = builder.additional_browser_args(&args);
+    }
+    if let Err(error) = builder.build() {
+        clear(&runtime.pending_full);
+        return Err(error.to_string());
+    }
     Ok(())
 }
 
+pub fn flyout_config(app: &tauri::AppHandle) -> Option<tauri::utils::config::WindowConfig> {
+    app.config()
+        .app
+        .windows
+        .iter()
+        .find(|w| w.label == FLYOUT)
+        .cloned()
+}
+
+/// Records that a flyout was just created and is waiting for its page; it is
+/// shown at `destination` (if any) once the page reports ready.
+pub fn expect_flyout(app: &tauri::AppHandle, destination: Option<&str>) {
+    if let Ok(mut pending) = app.state::<Runtime>().pending_flyout.lock() {
+        *pending = Some(destination.unwrap_or_default().to_string());
+    }
+}
+
+/// While a created flyout has not reported ready, a show request only
+/// updates where it lands. Returns whether the request was deferred.
+pub fn defer_flyout(app: &tauri::AppHandle, destination: &str) -> bool {
+    let runtime = app.state::<Runtime>();
+    let Ok(mut pending) = runtime.pending_flyout.lock() else {
+        return false;
+    };
+    if pending.is_none() {
+        return false;
+    }
+    *pending = Some(destination.to_string());
+    true
+}
+
 #[tauri::command]
-pub async fn open_dashboard(app: tauri::AppHandle) -> Result<(), String> {
-    open(&app)
+pub async fn open_full_app(app: tauri::AppHandle) -> Result<(), String> {
+    open(&app, None)
+}
+
+/// Called by a page once its event listeners exist, so a destination sent now
+/// is never lost. A newly created flyout is shown only at this point.
+#[tauri::command]
+pub async fn window_ready(app: tauri::AppHandle, window: tauri::WebviewWindow) {
+    let runtime = app.state::<Runtime>();
+    if window.label() == FLYOUT {
+        let destination = runtime.pending_flyout.lock().ok().and_then(|mut p| p.take());
+        if let Some(destination) = destination.filter(|d| !d.is_empty()) {
+            crate::show_flyout(&app, &destination);
+        }
+    } else if window.label() == LABEL {
+        let destination = runtime.pending_full.lock().ok().and_then(|mut p| p.take());
+        if let Some(destination) = destination.filter(|d| !d.is_empty()) {
+            let _ = app.emit_to(LABEL, "navigate", destination);
+        }
+        let _ = window.show();
+        let _ = window.set_focus();
+        // Opening during champion select lands on the champion select page.
+        let status = crate::runes::current_status().await;
+        let _ = app.emit_to(LABEL, "champ_select", status);
+    }
 }
 
 #[derive(Serialize)]
@@ -263,8 +369,8 @@ pub async fn dashboard_snapshot(
     app: tauri::AppHandle,
     window: tauri::WebviewWindow,
 ) -> Result<View, String> {
-    if window.label() != "dashboard" || !enabled(&app) {
-        return Err("The dashboard is closed or disabled.".into());
+    if window.label() != LABEL || !enabled(&app) {
+        return Err("Fullsized App is closed or disabled.".into());
     }
     let runtime = app.state::<Runtime>();
     let mut cancelled = runtime.cancel.subscribe();
@@ -319,36 +425,5 @@ mod tests {
         std::fs::write(&path, vec![b' '; 512 * 1024 + 1]).unwrap();
         assert!(read_cache_at(&path).is_none());
         std::fs::remove_file(path).unwrap();
-    }
-
-    #[test]
-    fn dashboard_only_allows_read_only_commands() {
-        for command in [
-            "dashboard_snapshot",
-            "get_tier_list",
-            "get_matchup",
-            "champion_icon",
-        ] {
-            assert!(super::allowed_command(command));
-        }
-        for command in [
-            "switch_account",
-            "get_state",
-            "set_dashboard_enabled",
-            "apply_rune_page",
-            "open_riot",
-        ] {
-            assert!(!super::allowed_command(command));
-        }
-    }
-
-    #[test]
-    fn dashboard_defaults_off_for_old_settings() {
-        let config: crate::vault::Config = serde_json::from_value(serde_json::json!({
-            "accounts": [], "active_id": null, "use_deceive": false,
-            "riot_exe": null, "deceive_exe": null
-        }))
-        .unwrap();
-        assert!(!config.dashboard_window);
     }
 }

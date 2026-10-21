@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
@@ -8,15 +8,49 @@ import { CachedBadge } from "../runes/CachedBadge";
 import { fmtAgo } from "../runes/types";
 import type { DashboardView, Snapshot } from "./types";
 import { sparkline } from "./sparkline";
+import FlyoutApp from "../App";
+import type { FullAppBridge, View } from "../App";
 import "./dashboard.css";
 
 const Champions = lazy(() => import("./Champions"));
 const pages = ["Dashboard", "Tier list & Builds", "Matchups"] as const;
+type Page = typeof pages[number];
+// Pages hosted by the flyout's own App component, and the App view each opens.
+const appPages = [["Accounts", "accounts", "@"], ["Champion select", "runes", "◎"], ["Settings", "settings", "⚙"]] as const;
+type AppPage = typeof appPages[number][0];
+const appPageOf = (view: View): AppPage => view === "runes" ? "Champion select" : view === "settings" ? "Settings" : "Accounts";
 const metricLabels = ["KDA", "Kill participation", "CS / min", "Damage / min", "Damage share", "Vision / min"];
 const queueLabels: Record<string, string> = { all: "All", solo: "Solo", flex: "Flex", normal: "Normal" };
 
 function App() {
-  const [page, setPage] = useState<typeof pages[number]>("Dashboard");
+  const [page, setPage] = useState<Page | "app">("Dashboard");
+  const [appView, setAppView] = useState<View>("accounts");
+  const [request, setRequest] = useState<FullAppBridge["request"]>(null);
+  const current: Page | AppPage = page === "app" ? appPageOf(appView) : page;
+  const currentRef = useRef(current);
+  currentRef.current = current;
+  // Where champion select interrupted the user; restored when it ends.
+  const returnTo = useRef<Page | AppPage | null>(null);
+  function go(target: Page | AppPage) {
+    const app = appPages.find(([label]) => label === target);
+    if (app) { setPage("app"); setRequest({ view: app[1] }); }
+    else setPage(target as Page);
+  }
+  const bridge = useMemo<FullAppBridge>(() => ({
+    request,
+    onViewChange: setAppView,
+    onChampSelectChange: active => {
+      if (active) {
+        // App switches itself to its champion select view.
+        returnTo.current = currentRef.current;
+        setPage("app");
+        return;
+      }
+      const back = returnTo.current;
+      returnTo.current = null;
+      if (back && currentRef.current === "Champion select") go(back === "Champion select" ? "Accounts" : back);
+    },
+  }), [request]);
   const [view, setView] = useState<DashboardView | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -42,24 +76,31 @@ function App() {
     const stop = isTauri() ? listen<{ phase: string }>("champ_select", ({ payload }) => {
       if (lastPhase.current !== payload.phase) { lastPhase.current = payload.phase; void refresh(); }
     }) : Promise.resolve(() => {});
+    // Tray menu destinations (Add Account, Settings, ...) are App views.
+    const navigate = isTauri() ? listen("navigate", () => setPage("app")) : Promise.resolve(() => {});
     void refresh();
-    return () => { mounted.current = false; window.removeEventListener("focus", focus); void stop.then(unlisten => unlisten()); };
+    return () => {
+      void navigate.then(unlisten => unlisten()); mounted.current = false; window.removeEventListener("focus", focus); void stop.then(unlisten => unlisten()); };
   }, []);
   const snapshot = view?.snapshot;
   const rank = snapshot?.rank;
   return <div className="dashboard-shell">
-    <aside className="sidebar">
+    <aside className="sidebar dash-scope">
       <div className="brand"><BrandIcon size={34} /><strong>Swapper</strong><small>LEAGUE COMPANION</small></div>
-      <nav aria-label="Dashboard pages">{pages.map((label, i) => <button key={label} aria-current={page === label ? "page" : undefined} onClick={() => setPage(label)}><span aria-hidden>{["◫", "≡", "⇄"][i]}</span>{label}</button>)}</nav>
+      <nav aria-label="Swapper pages">
+        {pages.map((label, i) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}><span aria-hidden>{["◫", "≡", "⇄"][i]}</span>{label}</button>)}
+        {appPages.map(([label, , icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}><span aria-hidden>{icon}</span>{label}</button>)}
+      </nav>
       <div className="sidebar-foot"><Avatar snapshot={snapshot} /><div><strong>{snapshot?.summoner.riotId ?? "League Client"}</strong><small>{rank ? `${rank.tier} ${rank.division} · ${rank.lp} LP` : "Unranked"}</small></div></div>
     </aside>
-    <main className="dashboard-main">
+    <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
+    {page !== "app" && <main className="dashboard-main dash-scope">
       <header className="page-heading"><div><p className="eyebrow">SUMMONER’S RIFT</p><h1>{page}</h1></div><div className="refresh"><small>{snapshot ? `Updated ${fmtAgo(snapshot.fetchedAt)}` : "Signed-in account only"}</small><button onClick={() => void refresh()} disabled={loading}>{loading ? "Refreshing…" : "Refresh"}</button></div></header>
       {view?.stale && <div className="notice" role="status">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last snapshot of {snapshot.summoner.riotId}. </> : null}{view.message}</div>}
       {error && <div className="notice" role="alert">{error}</div>}
       {page === "Dashboard" ? snapshot ? <Overview snapshot={snapshot} /> : <section className="empty"><BrandIcon size={52} /><h2>{loading ? "Connecting to League Client…" : "Your next game starts here"}</h2><p>Sign in to League Client to see your recent Rift games and Solo/Duo rank.</p></section>
         : <Suspense fallback={<p role="status">Loading champion tools…</p>}><Champions key={page} matchups={page === "Matchups"} /></Suspense>}
-    </main>
+    </main>}
   </div>;
 }
 

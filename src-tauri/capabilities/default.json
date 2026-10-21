@@ -1,8 +1,8 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Capability for the main window",
-  "windows": ["main"],
+  "description": "Capability for the flyout and the Fullsized App",
+  "windows": ["main", "full_app"],
   "permissions": [
     "core:default",
     "notification:default",

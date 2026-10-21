@@ -1,4 +1,4 @@
-mod dashboard;
+mod full_app;
 mod hotkey;
 mod identity;
 mod korean_font;
@@ -1247,7 +1247,7 @@ async fn apply_rune_page(
 
 #[tauri::command]
 fn hide_flyout(app: tauri::AppHandle) -> Result<(), String> {
-    hide_main(&app.get_webview_window("main").ok_or("Flyout is unavailable")?)
+    hide_main(&app.get_webview_window(full_app::FLYOUT).ok_or("Flyout is unavailable")?)
 }
 
 /// Windows fades popup windows in and out; the flyout should appear and vanish
@@ -1271,7 +1271,9 @@ fn disable_window_transitions(window: &tauri::WebviewWindow) {
 
 /// Tells WebView2 how much memory the flyout may keep. While it sits hidden in
 /// the tray, Low lets WebView2 release most of its caches; Normal comes back
-/// before it is shown again.
+/// before it is shown again. Hiding the window alone leaves the page
+/// "visible", so the controller is hidden too: the page sees
+/// `document.hidden` and its timers and frames are throttled.
 fn set_flyout_memory(window: &tauri::WebviewWindow, low: bool) {
     let _ = window.with_webview(move |webview| unsafe {
         use webview2_com::Microsoft::Web::WebView2::Win32::{
@@ -1279,6 +1281,7 @@ fn set_flyout_memory(window: &tauri::WebviewWindow, low: bool) {
             COREWEBVIEW2_MEMORY_USAGE_TARGET_LEVEL_NORMAL,
         };
         use windows_core::Interface;
+        let _ = webview.controller().SetIsVisible(!low);
         let Ok(core) = webview.controller().CoreWebView2() else {
             return;
         };
@@ -1293,11 +1296,27 @@ fn set_flyout_memory(window: &tauri::WebviewWindow, low: bool) {
 }
 
 /// Every way the flyout hides goes through here, so it always drops to the
-/// low memory target.
+/// low memory target, or in low memory mode releases its webview entirely.
 fn hide_main(window: &tauri::WebviewWindow) -> Result<(), String> {
+    if full_app::low_memory(window.app_handle()) {
+        return window.destroy().map_err(|e| e.to_string());
+    }
     let result = window.hide().map_err(|e| e.to_string());
     set_flyout_memory(window, true);
     result
+}
+
+/// Creates the hidden flyout from its `tauri.conf.json` entry (`create:
+/// false`). It is shown at `destination` once its page reports ready.
+fn create_flyout(app: &tauri::AppHandle, destination: Option<&str>) -> Result<(), String> {
+    let config = full_app::flyout_config(app).ok_or("Flyout window config is missing")?;
+    full_app::expect_flyout(app, destination);
+    let window = tauri::WebviewWindowBuilder::from_config(app, &config)
+        .and_then(|builder| builder.build())
+        .map_err(|e| e.to_string())?;
+    disable_window_transitions(&window);
+    set_flyout_memory(&window, true);
+    Ok(())
 }
 
 #[tauri::command]
@@ -1320,24 +1339,41 @@ fn open_windows_network_settings() -> Result<(), String> {
     }
 }
 
-fn show_flyout(app: &tauri::AppHandle, destination: &str) {
-    if let Some(window) = app.get_webview_window("main") {
-        let _ = window.as_ref().window().move_window(Position::TrayCenter);
-        let _ = app.emit("navigate", destination);
-        set_flyout_memory(&window, false);
-        let _ = window.show();
-        let _ = window.set_focus();
+/// Every entry point (tray, hotkey, menu, second launch) comes through here.
+/// Fullsized App mode opens that window instead; a missing flyout (low memory
+/// mode) is created and shown once its page is ready.
+pub(crate) fn show_flyout(app: &tauri::AppHandle, destination: &str) {
+    if full_app::enabled(app) {
+        let _ = full_app::open(app, Some(destination));
+        return;
     }
+    if full_app::defer_flyout(app, destination) {
+        return;
+    }
+    let Some(window) = app.get_webview_window(full_app::FLYOUT) else {
+        let _ = create_flyout(app, Some(destination));
+        return;
+    };
+    let _ = window.as_ref().window().move_window(Position::TrayCenter);
+    let _ = app.emit_to(full_app::FLYOUT, "navigate", destination);
+    set_flyout_memory(&window, false);
+    let _ = window.show();
+    let _ = window.set_focus();
 }
 
 // The flyout stays open until the tray icon or the close button hides it, so a
 // tray left-click toggles by visibility rather than focus (clicking the tray
 // moves focus away before the event arrives). Only the Up event toggles once.
+// The Fullsized App is only focused, keeping whatever page it shows.
 fn toggle_flyout(app: &tauri::AppHandle) {
-    let Some(window) = app.get_webview_window("main") else {
+    if full_app::enabled(app) {
+        let _ = full_app::open(app, None);
         return;
-    };
-    if window.is_visible().unwrap_or(false) {
+    }
+    let visible = app
+        .get_webview_window(full_app::FLYOUT)
+        .filter(|window| window.is_visible().unwrap_or(false));
+    if let Some(window) = visible {
         let _ = hide_main(&window);
     } else {
         show_flyout(app, "accounts");
@@ -1371,7 +1407,6 @@ pub fn run() {
         });
     }
     let config = vault::load().expect("Swapper settings could not be loaded");
-    let launched_at_startup = std::env::args().any(|arg| arg == AUTOSTART_ARG);
     tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, args, _cwd| {
             // With the deep-link feature the second instance's arguments were
@@ -1381,7 +1416,11 @@ pub fn run() {
             let has_link = args.iter().any(|arg| arg.starts_with("swapper://"));
             let is_autostart = args.iter().any(|arg| arg == AUTOSTART_ARG);
             if !has_link && !is_autostart {
-                show_flyout(app, "accounts");
+                if full_app::enabled(app) {
+                    let _ = full_app::open(app, None);
+                } else {
+                    show_flyout(app, "accounts");
+                }
             }
         }))
         .setup(move |app| {
@@ -1412,9 +1451,6 @@ pub fn run() {
                 hotkey_active: AtomicBool::new(false),
             });
             overlay::init(app.handle())?;
-            if let Some(window) = app.get_webview_window("main") {
-                disable_window_transitions(&window);
-            }
             let auto_enable = remote.clone();
             std::thread::spawn(move || {
                 if auto_enable.status().enabled {
@@ -1468,7 +1504,7 @@ pub fn run() {
                     "edit" => show_flyout(app, "edit"),
                     "remove" => show_flyout(app, "remove"),
                     "settings" => show_flyout(app, "settings"),
-                    "dashboard" => { let _ = dashboard::open(app); },
+                    full_app::LABEL => { let _ = full_app::open(app, None); },
                     "exit" => exit_app(app),
                     _ => {}
                 })
@@ -1484,28 +1520,23 @@ pub fn run() {
                     }
                 })
                 .build(app)?;
-            app.manage(dashboard::Runtime::new(menu.clone()));
-            dashboard::sync_menu(app.handle())?;
+            app.manage(full_app::Runtime::new(menu.clone()));
+            full_app::sync_menu(app.handle())?;
             // Windows starts Swapper through the autostart entry with --autostart.
-            // A login launch must never open the flyout, so keep the window hidden
-            // and leave the tray icon as the only entry point. The window already
-            // starts hidden (tauri.conf.json `visible: false`); this guard keeps
-            // that intent explicit if a future change adds a startup show.
-            if let Some(window) = app.get_webview_window("main") {
-                if launched_at_startup {
-                    let _ = hide_main(&window);
-                } else if !window.is_visible().unwrap_or(false) {
-                    // The window starts hidden; start it on the low target too.
-                    set_flyout_memory(&window, true);
-                }
+            // Startup never shows a window, so a login launch leaves the tray
+            // icon as the only entry point. The flyout is created hidden on the
+            // low memory target, and only in plain flyout mode: Fullsized App
+            // and low memory mode create their window on first open.
+            if full_app::window_settings(app.handle().clone()).create_flyout_at_startup() {
+                create_flyout(app.handle(), None)?;
             }
             Ok(())
         })
         .on_window_event(|window, event| {
-            if window.label() == "dashboard" && matches!(event, WindowEvent::Destroyed) {
-                dashboard::cancel(window.app_handle());
+            if window.label() == full_app::LABEL && matches!(event, WindowEvent::Destroyed) {
+                full_app::cancel(window.app_handle());
             }
-            if window.label() != "main" { return; }
+            if window.label() != full_app::FLYOUT { return; }
             if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
                 match window.app_handle().get_webview_window(window.label()) {
@@ -1519,17 +1550,17 @@ pub fn run() {
             }
         })
         .invoke_handler(|invoke| {
-            if invoke.message.webview_ref().label() == "dashboard"
-                && !dashboard::allowed_command(invoke.message.command())
-            {
-                invoke.resolver.reject("This command is not available in the dashboard.");
+            if !full_app::routing::window_may_invoke(invoke.message.webview_ref().label()) {
+                invoke.resolver.reject("This window cannot call Swapper commands.");
                 return true;
             }
             let handler: fn(tauri::ipc::Invoke<tauri::Wry>) -> bool = tauri::generate_handler![
-            dashboard::dashboard_enabled,
-            dashboard::set_dashboard_enabled,
-            dashboard::open_dashboard,
-            dashboard::dashboard_snapshot,
+            full_app::window_settings,
+            full_app::set_full_app_enabled,
+            full_app::set_low_memory_mode,
+            full_app::open_full_app,
+            full_app::window_ready,
+            full_app::dashboard_snapshot,
             overlay::get_overlay_settings,
             overlay::set_overlay_settings,
             get_state,
@@ -1597,11 +1628,13 @@ pub fn run() {
         })
         .build(tauri::generate_context!())
         .expect("Could not start Swapper")
-        .run(|_app, event| {
+        .run(|_app, event| match event {
+            // Closing the last window (Fullsized App, or the flyout in low
+            // memory mode) leaves Swapper in the tray; only exit_app quits.
+            tauri::RunEvent::ExitRequested { code: None, api, .. } => api.prevent_exit(),
             // Never leave the Korean font patcher running once Swapper exits.
-            if let tauri::RunEvent::Exit = event {
-                korean_font::stop();
-            }
+            tauri::RunEvent::Exit => korean_font::stop(),
+            _ => {}
         });
 }
 

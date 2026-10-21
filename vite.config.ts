@@ -16,7 +16,7 @@ export default defineConfig(() => ({
       input: {
         main: path.resolve(import.meta.dirname, "index.html"),
         remote: path.resolve(import.meta.dirname, "remote.html"),
-        dashboard: path.resolve(import.meta.dirname, "dashboard.html"),
+        "full-app": path.resolve(import.meta.dirname, "full-app.html"),
       },
     },
   },

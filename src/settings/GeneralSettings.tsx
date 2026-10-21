@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { HotkeySetting } from "./HotkeySetting";
 import { NotificationSettings } from "./NotificationSettings";
-import { DashboardLauncher } from "../dashboard/Launcher";
+import { WindowModeSettings } from "../full-app/WindowModeSettings";
 
 type Props = {
   useDeceive: boolean;
@@ -71,7 +71,7 @@ export function GeneralSettings({
 
   return (
     <>
-      <DashboardLauncher setting />
+      <WindowModeSettings />
       <div className="setting-row">
         <div className="setting-copy">
           <label htmlFor="startup-switch">Start on startup</label>
