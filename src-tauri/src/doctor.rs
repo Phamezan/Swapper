@@ -26,6 +26,7 @@ pub const CHECK_SESSION: &str = "session";
 pub const CHECK_OPGG: &str = "opgg";
 pub const CHECK_LOLALYTICS: &str = "lolalytics";
 pub const CHECK_PROBUILDS: &str = "probuilds";
+pub const CHECK_UGG_STATS: &str = "ugg-stats";
 pub const CHECK_REMOTE: &str = "remote";
 pub const CHECK_TAILSCALE: &str = "tailscale";
 pub const CHECK_DECEIVE: &str = "deceive";
@@ -177,6 +178,7 @@ async fn run_all(context: &DoctorContext) -> Vec<DoctorCheck> {
         opgg,
         lolalytics,
         probuilds,
+        ugg_stats,
         remote,
         tailscale,
         deceive,
@@ -189,6 +191,7 @@ async fn run_all(context: &DoctorContext) -> Vec<DoctorCheck> {
         run_one(context, CHECK_OPGG),
         run_one(context, CHECK_LOLALYTICS),
         run_one(context, CHECK_PROBUILDS),
+        run_one(context, CHECK_UGG_STATS),
         run_one(context, CHECK_REMOTE),
         run_one(context, CHECK_TAILSCALE),
         run_one(context, CHECK_DECEIVE),
@@ -202,6 +205,7 @@ async fn run_all(context: &DoctorContext) -> Vec<DoctorCheck> {
         opgg,
         lolalytics,
         probuilds,
+        ugg_stats,
         remote,
         tailscale,
         deceive,
@@ -220,6 +224,7 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
             guarded(id, check_provider(id, crate::runes::lolalytics::BASE_URL)).await
         }
         CHECK_PROBUILDS => guarded(id, check_provider(id, crate::runes::probuilds::ENDPOINT)).await,
+        CHECK_UGG_STATS => guarded(id, check_ugg_stats()).await,
         CHECK_REMOTE | CHECK_TAILSCALE => {
             let remote = context.remote.clone();
             let check = async move {
@@ -526,6 +531,13 @@ async fn check_provider(id: &str, url: &str) -> DoctorCheck {
     }
 }
 
+async fn check_ugg_stats() -> DoctorCheck {
+    match crate::runes::ugg::probe().await {
+        Ok(()) => DoctorCheck::ok(CHECK_UGG_STATS, "Champion statistics are reachable."),
+        Err(error) => DoctorCheck::warn(CHECK_UGG_STATS, error.message(crate::runes::provider::DataKind::ChampionStats)),
+    }
+}
+
 /// Classifies a provider's HTTP answer. API roots legitimately answer 400 or
 /// 404 (the u.gg endpoint is POST-only), so other client errors still count as
 /// available; an outright block (403/429) or a server-side outage (5xx) does not.
@@ -663,6 +675,7 @@ fn label(id: &str) -> &'static str {
         CHECK_OPGG => "OP.GG",
         CHECK_LOLALYTICS => "Lolalytics",
         CHECK_PROBUILDS => "ProBuildStats / U.GG",
+        CHECK_UGG_STATS => "U.GG champion stats",
         CHECK_REMOTE => "LAN Remote Control",
         CHECK_TAILSCALE => "Tailscale",
         CHECK_DECEIVE => "Deceive",
@@ -945,6 +958,7 @@ mod tests {
             CHECK_OPGG,
             CHECK_LOLALYTICS,
             CHECK_PROBUILDS,
+            CHECK_UGG_STATS,
             CHECK_REMOTE,
             CHECK_TAILSCALE,
             CHECK_DECEIVE,

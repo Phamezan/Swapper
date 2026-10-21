@@ -1,6 +1,6 @@
-//! Per-champion matchup tables from lolalytics' `/counters/` pages.
+//! Per-champion matchup tables from u.gg, with lolalytics as fallback.
 //!
-//! The page holds the same Qwik state as the build page. Its `counters` list has
+//! The fallback page holds the same Qwik state as the build page. Its `counters` list has
 //! one row per opposing champion: `vsWr` is THIS champion's win rate into that
 //! opponent, `n` the games, `allWr` the opponent's overall win rate. The page's
 //! `d1` equals `vsWr - allWr` on every row of a real page (checked); `d2` is
@@ -169,6 +169,18 @@ fn last_good() -> &'static LastGoodCache<Counters> {
 /// negative-cached, concurrent misses share one request, and a failed fetch
 /// serves the persisted last-good table.
 pub async fn load(
+    champion_slug: &str,
+    champion_id: i64,
+    lane: Option<&str>,
+    tier: &str,
+) -> Result<Option<Sourced<Counters>>, RuneError> {
+    super::ugg::prefer(
+        super::ugg::counters(champion_id, lane, tier).await,
+        load_lolalytics(champion_slug, champion_id, lane, tier),
+    ).await
+}
+
+async fn load_lolalytics(
     champion_slug: &str,
     champion_id: i64,
     lane: Option<&str>,

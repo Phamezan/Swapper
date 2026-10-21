@@ -1,6 +1,6 @@
-//! The lolalytics tier list for one lane and rank bracket.
+//! A lane tier list scored from u.gg stats, with lolalytics as fallback.
 //!
-//! The Qwik state holds one dictionary keyed by champion id (the same ids as
+//! The fallback's Qwik state holds one dictionary keyed by champion id (the same ids as
 //! the page's `champId` slug map, checked for all 173 champions of a real page)
 //! whose values are row objects `{rank, tier, wr, pr, br, games, ...}`. A row
 //! with `rank` 0 is not ranked in this lane.
@@ -47,14 +47,13 @@ pub const PRIOR_GAMES: f64 = 3000.0;
 /// Pick-rate weight in the blended score; win rate gets the rest. One of the
 /// calibration knobs.
 pub const POP_WEIGHT: f64 = 0.45;
-/// Score floor for each tier, best first. A score at or above the first floor is
-/// `S+`; below every floor is `D`. Calibrated against the live emerald_plus
-/// middle list (97 kept rows): S+ is the top few so 1.5 would leave it empty,
-/// and -0.45 splits the large middle more evenly between C and D.
-const TIER_THRESHOLDS: [(&str, f64); 5] =
-    [("S+", 1.3), ("S", 1.0), ("A", 0.5), ("B", 0.0), ("C", -0.45)];
+/// u.gg tier lists exclude lanes accounting for less than 5% of a champion's games.
+pub const MIN_ROLE_SHARE: f64 = 0.05;
 /// Our tier labels, indexed by the numeric `tier`.
 const TIER_LABELS: [&str; 6] = ["S+", "S", "A", "B", "C", "D"];
+/// Cumulative percentages for S+, S, A, B and C; remaining rows are D.
+/// Boundaries round up, and tied scores share their first row's better tier.
+const TIER_CUMULATIVE_PERCENT: [usize; 5] = [3, 10, 30, 60, 85];
 const LAST_GOOD_MAX_ENTRIES: usize = 32;
 const LAST_GOOD_MAX_BYTES: usize = 1024 * 1024;
 
@@ -87,7 +86,7 @@ pub fn tier_label(tier: u8) -> &'static str {
 
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct TierList {
-    /// Rows ordered by tier, then win rate (best first).
+    /// Rows ordered by blended score, best first.
     pub rows: Vec<TierRow>,
     /// Which patch this is, and whether the previous one was blended in.
     #[serde(default)]
@@ -177,9 +176,18 @@ fn score_rows(rows: &mut [TierRow]) {
     let stats: Vec<(f64, f64, u64)> = rows.iter().map(|row| (row.win_pct, row.pick_pct, row.games)).collect();
     for (row, score) in rows.iter_mut().zip(scores(&stats, POP_WEIGHT)) {
         row.score = score;
-        row.tier = tier_index(score);
     }
     rows.sort_by(|left, right| right.score.total_cmp(&left.score));
+    label_rows(rows);
+}
+
+/// Also relabel persisted results from before percentile tiers without
+/// changing their already sorted order, scores, statistics or freshness.
+fn label_rows(rows: &mut [TierRow]) {
+    let tiers = percentile_tiers(rows.iter().map(|row| row.score));
+    for (row, tier) in rows.iter_mut().zip(tiers) {
+        row.tier = tier;
+    }
 }
 
 /// One score per `(win %, pick %, games)`: the win rate shrunk toward the
@@ -226,13 +234,25 @@ fn zscores(values: &[f64]) -> Vec<f64> {
     values.iter().map(|value| (value - mean) / stdev).collect()
 }
 
-/// The tier index for a score: the first label whose floor it reaches, or the
-/// last label (`D`) below every floor.
-pub(super) fn tier_index(score: f64) -> u8 {
-    TIER_THRESHOLDS
-        .iter()
-        .position(|(_, floor)| score >= *floor)
-        .unwrap_or(TIER_LABELS.len() - 1) as u8
+/// Tiers for scores already sorted best-first. A tied run uses its first
+/// position, so ties crossing a percentile boundary keep the better tier.
+pub(super) fn percentile_tiers(scores: impl ExactSizeIterator<Item = f64>) -> Vec<u8> {
+    let n = scores.len();
+    let mut first = 0;
+    let mut previous = None;
+    scores
+        .enumerate()
+        .map(|(index, score)| {
+            if previous != Some(score) {
+                first = index;
+                previous = Some(score);
+            }
+            TIER_CUMULATIVE_PERCENT
+                .iter()
+                .position(|percent| first < (n * percent).div_ceil(100))
+                .unwrap_or(TIER_LABELS.len() - 1) as u8
+        })
+        .collect()
 }
 
 /// The champion dictionary: many entries whose values are row objects.
@@ -293,6 +313,14 @@ fn last_good() -> &'static LastGoodCache<TierList> {
 
 /// One lane's tier list, cached like [`super::counters::load`].
 pub async fn load(lane: &str, tier: &str) -> Result<Option<Sourced<TierList>>, RuneError> {
+    let mut found = super::ugg::prefer(super::ugg::tier_list(lane, tier).await, load_lolalytics(lane, tier)).await?;
+    if let Some(found) = found.as_mut() {
+        label_rows(&mut found.value.rows);
+    }
+    Ok(found)
+}
+
+pub(super) async fn load_lolalytics(lane: &str, tier: &str) -> Result<Option<Sourced<TierList>>, RuneError> {
     let key = tierlist_cache_key(lane, tier);
     if let Some(cached) = cached(&key) {
         return Ok(cached);
@@ -420,9 +448,7 @@ mod tests {
         assert_eq!(ids, vec![62, 31, 11]);
         assert!(list.rows[0].score > list.rows[1].score);
         assert!(list.rows[1].score > list.rows[2].score);
-        assert_eq!(list.rows[0].label(), "S");
-        // A three-row list spreads the scores wide, so the tail lands in C/D.
-        assert!(["A", "B", "C", "D"].contains(&list.rows[1].label()));
+        assert_eq!(list.rows.iter().map(TierRow::label).collect::<Vec<_>>(),vec!["S+","B","C"]);
         assert_eq!(list.rows[1].games, 27107);
         assert_eq!(list.rows[1].ban_pct, 7.3);
     }
@@ -463,24 +489,52 @@ mod tests {
     }
 
     #[test]
-    fn score_thresholds_map_to_the_six_tier_labels() {
+    fn percentile_boundaries_map_to_the_six_tier_labels() {
         let label = |tier| TierRow { tier, ..TierRow::default() }.label();
         assert_eq!(
             (label(0), label(1), label(2), label(3), label(4), label(5), label(99)),
             ("S+", "S", "A", "B", "C", "D", "")
         );
-        assert_eq!(
-            (
-                tier_index(2.0),
-                tier_index(1.3),
-                tier_index(1.0),
-                tier_index(0.5),
-                tier_index(0.0),
-                tier_index(-0.45),
-                tier_index(-1.0),
-            ),
-            (0, 0, 1, 2, 3, 4, 5)
-        );
+        for (n,expected) in [(87,[3,6,18,26,21,13]),(45,[2,3,9,13,12,6])] {
+            let mut counts = [0usize;6];
+            for tier in percentile_tiers((0..n).map(|i|(n-i) as f64)) { counts[tier as usize] += 1; }
+            assert_eq!(counts,expected,"n={n}");
+        }
+    }
+
+    #[test]
+    fn equal_scores_share_the_better_percentile_tier() {
+        let mut scores: Vec<f64> = (0..100).map(|i|(100-i) as f64).collect();
+        for boundary in [3,10,30,60,85] { scores[boundary] = scores[boundary-1]; }
+        let tiers = percentile_tiers(scores.into_iter());
+        for (boundary,expected) in [(3,0),(10,1),(30,2),(60,3),(85,4)] {
+            assert_eq!(tiers[boundary],expected);
+            assert_eq!(tiers[boundary],tiers[boundary-1]);
+        }
+        assert_eq!(percentile_tiers(std::iter::repeat_n(0.0,87)),vec![0;87]);
+    }
+
+    #[test]
+    fn empty_and_single_row_lists_are_safe() {
+        assert!(percentile_tiers(std::iter::empty()).is_empty());
+        assert_eq!(percentile_tiers(std::iter::once(0.0)),vec![0]);
+        assert_eq!(percentile_tiers(std::iter::once(-10.0)),vec![0]);
+    }
+
+    #[test]
+    fn relabeling_cached_rows_keeps_scores_order_and_stats() {
+        let mut rows = vec![raw(3,53.0,5.0,1000),raw(2,52.0,4.0,2000),raw(1,51.0,3.0,3000)];
+        for (row,score) in rows.iter_mut().zip([2.0,1.0,-10.0]) {
+            row.score = score;
+            row.tier = 5;
+        }
+        let before = rows.clone();
+        label_rows(&mut rows);
+        assert_eq!(rows.iter().map(TierRow::label).collect::<Vec<_>>(),vec!["S+","B","C"]);
+        for (mut old,new) in before.into_iter().zip(rows) {
+            old.tier = new.tier;
+            assert_eq!(old,new);
+        }
     }
 
     #[test]

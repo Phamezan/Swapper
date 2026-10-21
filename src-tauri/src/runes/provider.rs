@@ -1,7 +1,8 @@
 //! Provider identity, failure classification and the last-successful boundary.
 //!
 //! Swapper reads rune recommendations from op.gg, item builds from lolalytics
-//! and pro games from probuildstats/u.gg. The feature layer should not need to
+//! and champion statistics from u.gg (lolalytics fallback), plus pro games from
+//! probuildstats/u.gg. The feature layer should not need to
 //! name those websites directly, so each fetch crosses this small seam: a
 //! [`Sourced`] value carries the domain data plus which [`Provider`] produced
 //! it, whether it is stale, and when it was fetched.
@@ -21,16 +22,18 @@ pub enum DataKind {
     ItemBuild,
     /// Lane matchup builds (lolalytics).
     Matchup,
-    /// A champion's matchup table (lolalytics).
+    /// A champion's matchup table (u.gg, lolalytics fallback).
     Counters,
-    /// A champion's overview page (lolalytics).
+    /// A champion's overview (u.gg stats, lolalytics builds/fallback).
     Overview,
-    /// A lane tier list (lolalytics).
+    /// A lane tier list (u.gg, lolalytics fallback).
     TierList,
     /// Pros' solo-queue games (probuildstats/u.gg).
     ProBuilds,
     /// Bot lane duo list (u.gg).
     Duos,
+    /// Versioned u.gg champion-level aggregates, shared by the Champion screens.
+    ChampionStats,
 }
 
 impl DataKind {
@@ -45,6 +48,7 @@ impl DataKind {
             Self::TierList => "tier-lists",
             Self::ProBuilds => "pro-builds",
             Self::Duos => "bot-duos",
+            Self::ChampionStats => "ugg-champion-stats",
         }
     }
 
@@ -59,6 +63,7 @@ impl DataKind {
             Self::TierList => "Tier lists",
             Self::ProBuilds => "Pro builds",
             Self::Duos => "Bot lane duos",
+            Self::ChampionStats => "Champion statistics",
         }
     }
 }

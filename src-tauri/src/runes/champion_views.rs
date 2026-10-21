@@ -22,7 +22,7 @@ use super::view::{self, KeystoneBuildView};
 pub struct TierRowView {
     pub champion_id: i64,
     pub name: String,
-    /// lolalytics' tier label, "S+" to "D-".
+    /// Swapper's percentile tier label, "S+" to "D".
     pub tier: String,
     pub win_pct: f64,
     pub pick_pct: f64,
@@ -377,6 +377,25 @@ mod tests {
         let view = build_overview(22, Some(Sourced::fresh(overview(), Provider::Lolalytics)), None, &HashMap::new());
         let stats = view.stats.expect("stats");
         assert!(stats.tier.is_none() && stats.rank.is_none() && stats.rank_total.is_none());
+    }
+
+    #[test]
+    fn overview_placement_matches_the_percentile_tier_list() {
+        let names: HashMap<_,_> = (1..=45).map(|id|(id,format!("Champion {id}"))).collect();
+        let rows = (1..=45).map(|id| {
+            let mut row = row(id,5);
+            row.win_pct = 40.0 + id as f64 * 0.2;
+            row
+        }).collect();
+        let list = tierlist::blend_tierlist(TierList {rows,patch:None},None,"emerald_plus",Default::default());
+        let shown = build_tier_list(Some(Sourced::fresh(list.clone(),Provider::Ugg)),&names);
+        for (index,row) in shown.rows.iter().enumerate() {
+            let placed = placement(&list,row.champion_id,&names);
+            let view = build_overview(row.champion_id,Some(Sourced::fresh(overview(),Provider::Ugg)),placed,&HashMap::new());
+            let stats = view.stats.unwrap();
+            assert_eq!(stats.tier.as_deref(),Some(row.tier.as_str()));
+            assert_eq!((stats.rank,stats.rank_total),(Some(index as u32+1),Some(45)));
+        }
     }
 
     fn overview() -> Overview {

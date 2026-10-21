@@ -62,6 +62,16 @@ pub async fn matchup_view(
         .await
         .ok()
         .flatten();
+    if found.is_none() {
+        if let Some(stats) = super::ugg::matchup_stats(champion_id, enemy_id, lane, tier).await {
+            let mut view = fallback_view(enemy_id, enemy_name, Some(MatchupStatsView {
+                win_pct: stats.value.win_pct, avg_win_pct: stats.value.avg_win_pct,
+                delta: stats.value.delta(), games: stats.value.games, patch: stats.value.patch,
+            }));
+            view.stale = stats.stale;
+            return Some(view);
+        }
+    }
     let catalog = data::catalog().await.ok();
     let item_names = items::names().await;
     Some(build_view(

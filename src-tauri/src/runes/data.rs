@@ -509,6 +509,26 @@ pub async fn matchup(
     lane: &str,
     tier: &str,
 ) -> Result<Option<Sourced<Matchup>>, RuneError> {
+    let mut found = matchup_lolalytics(champion_slug, enemy_slug, champion_id, enemy_id, lane, tier).await?;
+    if let Some(found) = found.as_mut() {
+        if let Some(stats) = super::ugg::matchup_stats(champion_id, enemy_id, lane, tier).await {
+            if !stats.stale || found.stale {
+                found.value.stats = stats.value;
+                found.stale |= stats.stale;
+            }
+        }
+    }
+    Ok(found)
+}
+
+async fn matchup_lolalytics(
+    champion_slug: &str,
+    enemy_slug: &str,
+    champion_id: i64,
+    enemy_id: i64,
+    lane: &str,
+    tier: &str,
+) -> Result<Option<Sourced<Matchup>>, RuneError> {
     let key = lolalytics::vs_cache_key(champion_slug, enemy_slug, lane, tier);
     if let Some(cached) = cached_matchup(&key) {
         return cached;

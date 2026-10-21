@@ -41,6 +41,7 @@ pub mod spells;
 pub mod stats;
 pub mod teams;
 pub mod tierlist;
+pub mod ugg;
 pub mod view;
 pub mod watch;
 

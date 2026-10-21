@@ -1,5 +1,5 @@
-//! A champion's overview from its lolalytics build page: tier, win/pick/ban
-//! rates, lane rank, patch, damage split, and the most common build.
+//! A champion's overview: u.gg win/pick/ban rates and games, with lolalytics
+//! supplying damage and the most common build, and all stats when u.gg fails.
 //!
 //! The counters page carries none of the rank or tier fields, so the plain
 //! build page (no keystone filter) is read instead. It is the same Qwik state
@@ -192,6 +192,43 @@ pub async fn load(
     lane: Option<&str>,
     tier: &str,
 ) -> Result<Option<Sourced<Overview>>, RuneError> {
+    let stats = super::ugg::overview(champion_id, lane, tier).await;
+    // The build, runes, damage and skill order still come from the same
+    // lolalytics page/cache. A build outage must not hide available stats.
+    let details_lane = stats.as_ref().map(|s| s.value.lane.as_str()).or(lane);
+    let details = load_lolalytics(champion_slug, champion_id, details_lane, tier).await;
+    merge_sources(stats, details)
+}
+
+fn merge_sources(
+    stats: Option<Sourced<Overview>>,
+    details: Result<Option<Sourced<Overview>>, RuneError>,
+) -> Result<Option<Sourced<Overview>>, RuneError> {
+    if let Some(mut stats) = stats {
+        if let Ok(Some(details)) = &details {
+            if stats.stale && !details.stale {
+                return Ok(Some(details.clone()));
+            }
+            stats.value.damage = details.value.damage.clone();
+            stats.value.build = details.value.build.clone();
+            stats.value.runes = details.value.runes.clone();
+            stats.value.spells = details.value.spells;
+            stats.value.skill_order = details.value.skill_order.clone();
+            // Build consumers use this metadata to decide whether to trust it.
+            stats.stale |= details.stale;
+            stats.fetched_at = details.fetched_at;
+        }
+        return Ok(Some(stats));
+    }
+    details
+}
+
+async fn load_lolalytics(
+    champion_slug: &str,
+    champion_id: i64,
+    lane: Option<&str>,
+    tier: &str,
+) -> Result<Option<Sourced<Overview>>, RuneError> {
     let key = overview_cache_key(champion_slug, lane, tier);
     if let Some(cached) = cached(&key) {
         return Ok(cached);
@@ -271,6 +308,29 @@ fn stale(key: &str) -> Option<Sourced<Overview>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn ugg_stats_replace_only_stats_and_missing_or_stale_stats_fall_back() {
+        let details = Overview {
+            lane: "middle".into(),
+            stats: OverviewStats { win_pct: 53.0, games: 1234, ..Default::default() },
+            build: Some(KeystoneBuild { items: vec![3118,3020,4645], ..Default::default() }),
+            skill_order: Some("QWE".into()),
+            ..Default::default()
+        };
+        let stats = Overview { lane:"middle".into(), stats:OverviewStats { win_pct:51.0,games:1000,..Default::default() },..Default::default() };
+        let found = merge_sources(Some(Sourced::fresh(stats.clone(),Provider::Ugg)),Ok(Some(Sourced::fresh(details.clone(),Provider::Lolalytics)))).unwrap().unwrap();
+        assert_eq!((found.value.stats.win_pct,found.value.stats.games,found.provider),(51.0,1000,Provider::Ugg));
+        assert_eq!(found.value.build,details.build);
+        assert_eq!(found.value.skill_order,details.skill_order);
+        let found = merge_sources(None,Ok(Some(Sourced::fresh(details.clone(),Provider::Lolalytics)))).unwrap().unwrap();
+        assert_eq!(found.value,details);
+        let found = merge_sources(Some(Sourced::stale(stats.clone(),Provider::Ugg,0)),Ok(Some(Sourced::fresh(details.clone(),Provider::Lolalytics)))).unwrap().unwrap();
+        assert_eq!(found.value,details);
+        let found = merge_sources(Some(Sourced::fresh(stats,Provider::Ugg)),Ok(None)).unwrap().unwrap();
+        assert_eq!(found.value.stats.win_pct,51.0);
+        assert!(found.value.build.is_none());
+    }
 
     /// A trimmed Ahri (103) build page, numbers from a real one. Index 0 is
     /// the page object, 1 the damage object, 2 the pick/win summary.
