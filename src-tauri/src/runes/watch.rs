@@ -65,25 +65,36 @@ pub struct ChampSelectEvent {
     pub locked: bool,
 }
 
+fn replace_draft(last: &mut Option<crate::full_app::ui_data::Draft>, next: Option<crate::full_app::ui_data::Draft>) -> bool {
+    if *last == next { return false; }
+    *last = next;
+    true
+}
+
 /// Polls champion select and emits `champ_select` events, applying the top
 /// preset once per champion when the auto-apply setting is on.
 pub fn spawn_watch(app: tauri::AppHandle) {
     tauri::async_runtime::spawn(async move {
         let mut last: Option<ChampSelectEvent> = None;
+        let mut last_draft = None;
         // The last gameflow phase, so lifecycle notifications fire once per
         // transition instead of per poll.
         let mut last_phase: Option<String> = None;
         let mut interval = IDLE_INTERVAL;
         loop {
             tokio::time::sleep(interval).await;
-            let (phase, context) = match super::rune_context().await {
-                Ok(super::RuneContext { phase, context }) => (phase, context),
+            let (phase, context, draft) = match super::rune_context().await {
+                Ok(super::RuneContext { phase, context, draft }) => (phase, context, draft),
                 Err(_) => {
                     // League is not connected; keep backing off. last_phase is
                     // kept, so a reconnect cannot re-fire an old transition.
                     // The Korean font patcher is stopped so a closed client
                     // cannot leave it stranded.
                     crate::korean_font::observe(&app, "Offline");
+                    crate::live_game::observe(&app, "Offline");
+                    if replace_draft(&mut last_draft, None) {
+                        let _ = app.emit("draft_changed", &last_draft);
+                    }
                     interval = IDLE_INTERVAL;
                     continue;
                 }
@@ -96,6 +107,9 @@ pub fn spawn_watch(app: tauri::AppHandle) {
             } else {
                 IDLE_INTERVAL
             };
+            if replace_draft(&mut last_draft, draft) {
+                let _ = app.emit("draft_changed", &last_draft);
+            }
             crate::lifecycle::observe(&app, last_phase.as_deref(), &phase);
             crate::korean_font::observe(&app, &phase);
             crate::live_game::observe(&app, &phase);
@@ -152,7 +166,7 @@ pub fn spawn_watch(app: tauri::AppHandle) {
 /// does not leave the user waiting for the next watcher poll. Returns the
 /// applied page when an apply happened.
 pub async fn auto_apply_current(app: &tauri::AppHandle) -> Option<AppliedView> {
-    let super::RuneContext { phase, context } = super::rune_context().await.ok()?;
+    let super::RuneContext { phase, context, .. } = super::rune_context().await.ok()?;
     if phase != "ChampSelect" {
         return None;
     }
@@ -256,7 +270,7 @@ async fn persist_page_id(app: &tauri::AppHandle, id: i64) {
 /// The champion-select state the flyout uses to decide whether to show runes.
 pub async fn current_status() -> ChampSelectEvent {
     match super::rune_context().await {
-        Ok(super::RuneContext { phase, context }) => {
+        Ok(super::RuneContext { phase, context, .. }) => {
             let mut event = ChampSelectEvent {
                 phase,
                 champion_id: 0,
@@ -292,6 +306,31 @@ pub async fn current_status() -> ChampSelectEvent {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn draft_events_follow_other_players_bans_and_timer_without_duplicates() {
+        let base = serde_json::json!({"localPlayerCellId": 0,
+            "myTeam": [{"cellId": 0, "championId": 103}, {"cellId": 1, "championId": 0}],
+            "theirTeam": [{"cellId": 5, "championId": 0}], "actions": [],
+            "timer": {"phase": "BAN_PICK", "adjustedTimeLeftInPhase": 20000}});
+        let draft = |v: &serde_json::Value| Some(crate::full_app::ui_data::draft_from(v));
+        let mut last = None;
+        assert!(replace_draft(&mut last, draft(&base)));
+        assert!(!replace_draft(&mut last, draft(&base)));
+        let mut next = base.clone(); next["theirTeam"][0]["championId"] = serde_json::json!(238);
+        assert!(replace_draft(&mut last, draft(&next)));
+        next["myTeam"][1]["championId"] = serde_json::json!(266);
+        assert!(replace_draft(&mut last, draft(&next)));
+        next["actions"] = serde_json::json!([[{"type": "ban", "championId": 11, "completed": true}]]);
+        assert!(replace_draft(&mut last, draft(&next)));
+        next["timer"]["phase"] = serde_json::json!("FINALIZATION");
+        assert!(replace_draft(&mut last, draft(&next)));
+        next["timer"]["adjustedTimeLeftInPhase"] = serde_json::json!(18000);
+        assert!(replace_draft(&mut last, draft(&next)));
+        assert!(!replace_draft(&mut last, draft(&next)));
+        assert!(replace_draft(&mut last, None));
+        assert!(!replace_draft(&mut last, None));
+    }
 
     #[test]
     fn enabling_while_already_locked_applies_once() {

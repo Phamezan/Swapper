@@ -30,32 +30,50 @@ export function useLiveGame(refreshLive: boolean) {
   useEffect(() => {
     if (!isTauri()) { setLoaded(true); return; }
     let live = true;
-    const stop = listen<LiveGameView>("live_game", ({ payload }) => {
-      if (live) setView(current => (!current || current.gameId === payload.gameId ? payload : current));
-    });
-    void invoke<LiveGameView | null>("live_game_view")
-      .then(next => { if (live) { setView(next); setError(""); } })
-      .catch(reason => { if (live) setError(String(reason)); })
-      .finally(() => { if (live) setLoaded(true); });
-    return () => { live = false; void stop.then(unlisten => unlisten()); };
-  }, []);
-  useEffect(() => {
-    if (!refreshLive || !isTauri()) return;
-    let live = true;
+    let active = false;
+    let stateReceived = false;
+    let generation = 0;
     let timer: number | undefined;
-    const read = () => void invoke<LiveGameView | null>("live_game_live")
-      .then(next => { if (live && next) setView(next); })
-      .catch(() => {}); // Loading screen or game closing: keep what is shown.
-    const sync = () => {
-      window.clearInterval(timer);
-      timer = undefined;
-      if (document.visibilityState !== "visible") return;
-      read();
-      timer = window.setInterval(read, LIVE_REFRESH_MS);
+    const visible = () => document.visibilityState === "visible";
+    const readLive = () => {
+      const started = generation;
+      void invoke<LiveGameView | null>("live_game_live")
+        .then(next => { if (live && active && visible() && started === generation) setView(next); })
+        .catch(() => {});
     };
-    sync();
+    const sync = () => {
+      window.clearInterval(timer); timer = undefined;
+      const started = ++generation;
+      if (!active) { setView(null); setError(""); setLoaded(true); return; }
+      if (!visible()) return;
+      void invoke<LiveGameView | null>("live_game_view")
+        .then(next => {
+          if (!live || !active || !visible() || started !== generation) return;
+          setView(next); setError("");
+        })
+        .catch(reason => { if (live && started === generation) setError(String(reason)); })
+        .finally(() => {
+          if (!live || started !== generation) return;
+          setLoaded(true);
+          if (refreshLive && active && visible()) { readLive(); timer = window.setInterval(readLive, LIVE_REFRESH_MS); }
+        });
+    };
+    const stop = listen<LiveGameView>("live_game", ({ payload }) => {
+      if (live && active && visible()) setView(current => (!current || current.gameId === payload.gameId ? payload : current));
+    });
+    const state = listen<boolean>("live_game_state", ({ payload }) => {
+      stateReceived = true;
+      if (live) { active = payload; sync(); }
+    });
+    void state.then(() => invoke<boolean>("live_game_active")).then(value => {
+      if (live && !stateReceived) { active = value; sync(); }
+    }).catch(() => {});
     document.addEventListener("visibilitychange", sync);
-    return () => { live = false; window.clearInterval(timer); document.removeEventListener("visibilitychange", sync); };
+    return () => {
+      live = false; generation++; window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", sync);
+      void stop.then(unlisten => unlisten()); void state.then(unlisten => unlisten());
+    };
   }, [refreshLive]);
   return { view, error, loaded };
 }

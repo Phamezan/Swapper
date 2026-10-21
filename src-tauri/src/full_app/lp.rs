@@ -9,6 +9,33 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
+use std::sync::Mutex;
+
+static HISTORY: Mutex<()> = Mutex::new(());
+
+/// Identity and switch generation captured before reading any account data.
+pub struct AccountRead {
+    guard: crate::SwitchGuard,
+    epoch: u64,
+}
+
+impl AccountRead {
+    pub fn begin(app: &tauri::AppHandle) -> Result<Self, String> {
+        use tauri::Manager;
+        let guard = app.state::<crate::AppState>().switch_guard.clone();
+        let epoch = guard.epoch();
+        if guard.is_switching() { return Err("League account is changing.".into()); }
+        Ok(Self { epoch, guard })
+    }
+
+    fn verify(&self, puuid: &str, verified: &Value) -> Result<(), String> {
+        if puuid.is_empty() || verified["puuid"].as_str() != Some(puuid)
+            || self.guard.is_switching() || self.guard.epoch() != self.epoch {
+            return Err("League account changed; refresh the dashboard.".into());
+        }
+        Ok(())
+    }
+}
 
 const MAX_POINTS: usize = 500;
 const MAX_FILE_BYTES: u64 = 4 * 1024 * 1024;
@@ -42,7 +69,13 @@ fn load(path: &Path) -> History {
 
 /// Appends `rank` for `puuid` unless it equals the last point. Returns the
 /// account's points, oldest first.
+#[cfg(test)]
 fn record_at(path: &Path, puuid: &str, rank: Rank, at: u64) -> Vec<Point> {
+    let _guard = HISTORY.lock().unwrap_or_else(|e| e.into_inner());
+    record_unlocked(path, puuid, rank, at)
+}
+
+fn record_unlocked(path: &Path, puuid: &str, rank: Rank, at: u64) -> Vec<Point> {
     let mut history = load(path);
     let points = history.entry(puuid.to_string()).or_default();
     if points.last().map(|p| &p.rank) != Some(&rank) {
@@ -50,31 +83,36 @@ fn record_at(path: &Path, puuid: &str, rank: Rank, at: u64) -> Vec<Point> {
         let excess = points.len().saturating_sub(MAX_POINTS);
         points.drain(..excess);
         if let Ok(bytes) = serde_json::to_vec(&history) {
-            let pending = path.with_extension("tmp");
+            let pending = path.with_extension(format!("{}.tmp", uuid::Uuid::new_v4()));
             if let Some(parent) = path.parent() {
                 let _ = std::fs::create_dir_all(parent);
             }
             if std::fs::write(&pending, bytes).is_ok() {
                 let _ = std::fs::rename(&pending, path);
             }
+            let _ = std::fs::remove_file(&pending);
         }
     }
     history.remove(puuid).unwrap_or_default()
 }
 
-pub fn record(puuid: &str, rank: Option<Rank>) -> Vec<Point> {
-    let Some(path) = path() else {
-        return Vec::new();
-    };
-    match rank {
-        Some(rank) => record_at(
-            &path,
-            puuid,
-            rank,
-            crate::runes::provider::now_ms().max(0) as u64,
-        ),
-        None => load(&path).remove(puuid).unwrap_or_default(),
-    }
+fn record_verified_at(path: &Path, account: &AccountRead, puuid: &str, verified: &Value, rank: Option<Rank>) -> Result<Vec<Point>, String> {
+    let _guard = HISTORY.lock().unwrap_or_else(|e| e.into_inner());
+    account.verify(puuid, verified)?;
+    Ok(match rank {
+        Some(rank) => record_unlocked(path, puuid, rank, crate::runes::provider::now_ms().max(0) as u64),
+        None => load(path).remove(puuid).unwrap_or_default(),
+    })
+}
+
+pub async fn record_current(client: &crate::runes::Lcu, account: AccountRead, puuid: String, rank: Option<Rank>) -> Result<Vec<Point>, String> {
+    let verified = crate::runes::lcu_get::<Value>(client, "/lol-summoner/v1/current-summoner")
+        .await.map_err(|e| e.to_string())?;
+    account.verify(&puuid, &verified)?;
+    tokio::task::spawn_blocking(move || {
+        let Some(path) = path() else { return Ok(Vec::new()); };
+        record_verified_at(&path, &account, &puuid, &verified, rank)
+    }).await.map_err(|e| e.to_string())?
 }
 
 /// LP on one ladder: 100 per division, apex tiers share the top base.
@@ -118,21 +156,22 @@ pub fn annotate(games: &mut [Game], points: &[Point]) {
 /// Records the signed-in account's rank shortly after a game ends. Ranked
 /// stats update a little after the end screen, so it reads twice; unchanged
 /// reads add nothing.
-pub async fn record_after_game() {
+pub async fn record_after_game(app: tauri::AppHandle) {
     for delay in [20, 90] {
         tokio::time::sleep(std::time::Duration::from_secs(delay)).await;
+        let Ok(account) = AccountRead::begin(&app) else { continue; };
         let Ok(client) = crate::runes::lcu().await else {
             continue;
         };
-        let (Ok(summoner), Ok(ranked)) = tokio::join!(
-            crate::runes::lcu_get::<Value>(&client, "/lol-summoner/v1/current-summoner"),
-            crate::runes::lcu_get::<Value>(&client, "/lol-ranked/v1/current-ranked-stats"),
-        ) else {
+        let Ok(summoner) = crate::runes::lcu_get::<Value>(&client, "/lol-summoner/v1/current-summoner").await else {
+            continue;
+        };
+        let Ok(ranked) = crate::runes::lcu_get::<Value>(&client, "/lol-ranked/v1/current-ranked-stats").await else {
             continue;
         };
         if let Some(puuid) = summoner["puuid"].as_str().filter(|p| !p.is_empty()) {
             let (puuid, rank) = (puuid.to_string(), super::model::rank(&ranked));
-            let _ = tokio::task::spawn_blocking(move || record(&puuid, rank)).await;
+            let _ = record_current(&client, account, puuid, rank).await;
         }
     }
 }
@@ -140,6 +179,47 @@ pub async fn record_after_game() {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn changed_identity_or_switch_generation_never_writes_lp() {
+        let path = std::env::temp_dir().join(format!("lp-identity-{}.json", uuid::Uuid::new_v4()));
+        let guard = crate::SwitchGuard::new();
+        let account = AccountRead { epoch: guard.epoch(), guard: guard.clone() };
+        let rank = Some(rank("GOLD", "II", 10, 1, 1));
+        let other = serde_json::json!({"puuid": "fixture-b"});
+        let rejected = record_verified_at(&path, &account, "fixture-a", &other, rank.clone());
+        assert!(!path.exists(), "mixed-account rank was persisted");
+        assert!(rejected.is_err());
+        let same = serde_json::json!({"puuid": "fixture-a"});
+        let lease = guard.acquire().unwrap();
+        assert!(record_verified_at(&path, &account, "fixture-a", &same, rank.clone()).is_err());
+        drop(lease);
+        assert!(record_verified_at(&path, &account, "fixture-a", &same, rank.clone()).is_err());
+        assert!(!path.exists(), "read spanning a completed switch was persisted");
+        let account = AccountRead { epoch: guard.epoch(), guard };
+        assert_eq!(record_verified_at(&path, &account, "fixture-a", &same, rank).unwrap().len(), 1);
+        std::fs::remove_file(path).unwrap();
+    }
+
+    #[test]
+    fn concurrent_lp_writers_preserve_every_account() {
+        let path = std::env::temp_dir().join(format!("lp-concurrent-{}.json", uuid::Uuid::new_v4()));
+        let barrier = std::sync::Arc::new(std::sync::Barrier::new(16));
+        std::thread::scope(|scope| {
+            for i in 0..16 {
+                let (path, barrier) = (&path, barrier.clone());
+                scope.spawn(move || {
+                    barrier.wait();
+                    let guard = crate::SwitchGuard::new();
+                    let account = AccountRead { epoch: guard.epoch(), guard };
+                    let puuid = format!("fixture-{i}");
+                    record_verified_at(path, &account, &puuid, &serde_json::json!({"puuid": puuid}), Some(rank("GOLD", "II", 10, 1, 1))).unwrap();
+                });
+            }
+        });
+        assert_eq!(load(&path).len(), 16);
+        std::fs::remove_file(path).unwrap();
+    }
 
     fn rank(tier: &str, division: &str, lp: u64, wins: u64, losses: u64) -> Rank {
         Rank {

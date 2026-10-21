@@ -68,7 +68,7 @@ pub async fn full_app_rune_catalog() -> Result<RuneCatalog, String> {
     })
 }
 
-#[derive(Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftMember {
     champion_id: i64,
@@ -78,14 +78,14 @@ pub struct DraftMember {
     locked: bool,
 }
 
-#[derive(Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct DraftTimer {
     phase: String,
     remaining_ms: i64,
 }
 
-#[derive(Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct Draft {
     allies: Vec<DraftMember>,
     enemies: Vec<DraftMember>,
@@ -93,7 +93,7 @@ pub struct Draft {
     timer: Option<DraftTimer>,
 }
 
-fn draft_from(value: &Value) -> Draft {
+pub(crate) fn draft_from(value: &Value) -> Draft {
     let local = value["localPlayerCellId"].as_i64();
     let picks = || {
         value["actions"]

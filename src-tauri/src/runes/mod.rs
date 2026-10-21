@@ -369,6 +369,7 @@ async fn lcu_send(
 // ---------------------------------------------------------------------------
 
 struct RuneContext {
+    draft: Option<crate::full_app::ui_data::Draft>,
     phase: String,
     context: Option<session::ChampSelectContext>,
 }
@@ -380,13 +381,16 @@ async fn rune_context() -> Result<RuneContext, RuneError> {
         return Ok(RuneContext {
             phase,
             context: None,
+            draft: None,
         });
     }
     let text = lcu_get_text(&lcu, SESSION_PATH).await?;
+    let draft = serde_json::from_str(&text).ok().map(|value| crate::full_app::ui_data::draft_from(&value));
     let Some(mut context) = session::parse_champ_select(&text)? else {
         return Ok(RuneContext {
             phase,
             context: None,
+            draft,
         });
     };
     if let Ok(gameflow) = lcu_get_text(&lcu, GAMEFLOW_PATH).await {
@@ -405,6 +409,7 @@ async fn rune_context() -> Result<RuneContext, RuneError> {
     Ok(RuneContext {
         phase,
         context: Some(context),
+        draft,
     })
 }
 

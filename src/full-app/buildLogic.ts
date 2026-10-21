@@ -1,5 +1,13 @@
 import type { ChampionBuild, ChampionCountersView, CounterRow, RuneTree, Selection } from "../runes/types";
 
+/** Match the client's recommended-spell layout: keep Flash on its current key. */
+export function spellLayout(recommended: number[], current: number[]): number[] {
+  if (recommended.length !== 2) return recommended;
+  const target = current.indexOf(4), have = recommended.indexOf(4);
+  const flip = target >= 0 && have >= 0 ? target !== have : recommended[0] === current[1] || recommended[1] === current[0];
+  return flip ? [recommended[1], recommended[0]] : recommended;
+}
+
 /** Both lists use the searched champion's perspective. Deduplicate before sorting. */
 export function matchupRows(view: ChampionCountersView | null): CounterRow[] {
   const unique = new Map<number, CounterRow>();

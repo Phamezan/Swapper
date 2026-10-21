@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type ComponentProps } from "react";
 import { invoke } from "@tauri-apps/api/core";
+import { listen } from "@tauri-apps/api/event";
 import { Crosshair } from "lucide-react";
 import type { RunesPanel } from "../runes/RunesPanel";
 import type { ChampionBuild, KeystoneBuildView, ChampionOverviewView, MatchupView } from "../runes/types";
@@ -34,23 +35,33 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   }, []);
   useEffect(() => {
     let live = true;
-    if (view?.phase === "ChampSelect") void invoke<Draft>("full_app_draft").then(value => { if (live) setDraft({ value, at: Date.now() }); }).catch(() => { if (live) setDraft(null); });
+    let received = false;
+    const stop = listen<Draft | null>("draft_changed", ({ payload }) => {
+      received = true;
+      if (live) setDraft(payload ? { value: payload, at: Date.now() } : null);
+    });
+    if (view?.phase === "ChampSelect") void stop.then(() => invoke<Draft>("full_app_draft")).then(value => { if (live && !received) setDraft({ value, at: Date.now() }); }).catch(() => { if (live && !received) setDraft(null); });
     else setDraft(null);
-    return () => { live = false; };
-  }, [view]);
-  const enemyId = view?.enemyChampionId || enemyLaner(draft?.value ?? null, view?.position ?? "");
+    return () => { live = false; void stop.then(unlisten => unlisten()); };
+  }, [view?.phase]);
+  const enemyId = draft ? enemyLaner(draft.value, view?.position ?? "") : view?.enemyChampionId ?? 0;
   useEffect(() => {
-    let live = true; setItems(null); setOverview(null); setMatchup(null); setError("");
+    let live = true; setItems(null); setOverview(null); setError("");
     if (view?.championId) {
       if (preset) void props.onLoadBuild(view.championId, view.position, view.tier, preset.keystone, selectionFromPreset(preset)).then(value => { if (live) setItems(value); }).catch(reason => { if (live) setError(String(reason)); });
       void props.championApi.overview(view.championId, view.position, view.tier).then(value => { if (live) setOverview(value); }).catch(reason => { if (live) setError(String(reason)); });
-      if (enemyId) void props.onLoadMatchup(view.championId, enemyId, view.position, view.tier).then(value => { if (live) setMatchup(value); }).catch(() => {});
     }
     return () => { live = false; };
-  }, [view?.championId, view?.position, view?.tier, enemyId, preset?.keystone]);
+  }, [view?.championId, view?.position, view?.tier, preset?.keystone]);
+  useEffect(() => {
+    let live = true; setMatchup(null);
+    if (view?.championId && enemyId) void props.onLoadMatchup(view.championId, enemyId, view.position, view.tier)
+      .then(value => { if (live) setMatchup(value); }).catch(() => {});
+    return () => { live = false; };
+  }, [view?.championId, view?.position, view?.tier, enemyId]);
   const taken = useMemo(() => takenIds(draft?.value ?? null), [draft]);
-  const build: ChampionBuild | null = preset && items ? { runes: preset, spells: preset.spells, items, skillOrder: items.skillOrder ?? overview?.build?.skillOrder ?? null } : overview?.build ?? null;
-  const enemyName = view?.enemyChampionName || names.get(enemyId) || "";
+  const build = useMemo<ChampionBuild | null>(() => preset && items ? { runes: preset, spells: preset.spells, items, skillOrder: items.skillOrder ?? overview?.build?.skillOrder ?? null } : overview?.build ?? null, [preset, items, overview?.build]);
+  const enemyName = names.get(enemyId) || (enemyId === view?.enemyChampionId ? view.enemyChampionName : "") || "";
   const championName = view?.championName || names.get(view?.championId ?? 0) || "";
 
   return <div className="fa-draft-page dash-scope">

@@ -9,7 +9,7 @@ import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
 import { fmtPct, selectionFromPreset, selectionFromProBuild, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard } from "../runes/types";
 import type { ChampionBuild, ItemsImported, KeystoneBuildView, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
-import { overviewSelection } from "./buildLogic";
+import { overviewSelection, spellLayout } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
 import { NearViewport } from "./NearViewport";
 import { Picker } from "./Picker";
@@ -54,13 +54,17 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   }, [championId]);
   useEffect(() => { if (liveView) setClient(liveView); }, [liveView]);
   const selection = overviewSelection(build, catalog?.trees ?? []);
+  const sourceKey = JSON.stringify(build);
+  useEffect(() => {
+    setDetails(null); setVariantIndex(0); setPro(null); setPros(null); setProOpen(false); setNotice(""); setCustom(null); setEditing(false);
+    setImported(null);
+  }, [championId, lane, tier, sourceKey]);
   useEffect(() => {
     let live = true;
-    setDetails(null); setVariantIndex(0); setPro(null); setPros(null); setProOpen(false); setNotice(""); setCustom(null); setEditing(false);
     if (build?.runes) void invoke<PresetBuildView | null>("get_keystone_build", { championId, position: lane, tier, keystone: build.runes.keystone, mostPlayed: selection })
       .then(value => { if (live) setDetails(value); }).catch(() => {});
     return () => { live = false; };
-  }, [championId, lane, tier, build, catalog]);
+  }, [championId, lane, tier, sourceKey, catalog]);
   useEffect(() => {
     if (!proOpen) return;
     let live = true;
@@ -85,7 +89,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const inSelect = client?.phase === "ChampSelect" && client.championId === championId;
   const itemIds = chosen.items.items.map(item => item.id);
   const itemsKey = itemSetKey(championId, itemIds);
-  const status = applyStatus(client, championId, complete ? chosenSelection : null, chosen.spells, itemsKey, imported);
+  const chosenSpells = spellLayout(chosen.spells, [client?.spells.spell1Id ?? 0, client?.spells.spell2Id ?? 0]);
+  const status = applyStatus(client, championId, complete ? chosenSelection : null, chosenSpells, itemsKey, imported);
   const ready: ApplyStatus = { runes: inSelect && complete, spells: inSelect && chosen.spells.length === 2, items: itemIds.length > 0 };
   const boots = chosen.items.items.filter(item => /boots|greaves|treads|shoes|steelcaps|soulmarch/i.test(item.name));
   const order = maxOrder(chosen.order, chosen.items.skillPriority);
@@ -102,8 +107,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         setClient(current);
         if (current.phase !== "ChampSelect" || current.championId !== championId) throw new Error(`Select ${name} in League Client before applying this build.`);
       }
-      if (runes) await invoke("apply_rune_page", { selection: chosenSelection, presetIndex: null, spells: spells ? chosen.spells : null, position: lane, enemyChampionId: null, highestWin: false });
-      else if (spells) for (const [index, slot] of (["d", "f"] as const).entries()) await invoke("apply_spell", { slot, spellId: chosen.spells[index] });
+      if (runes) await invoke("apply_rune_page", { selection: chosenSelection, presetIndex: null, spells: null, position: lane, enemyChampionId: null, highestWin: false });
+      if (spells) for (const [index, slot] of (["d", "f"] as const).entries()) await invoke("apply_spell", { slot, spellId: chosenSpells[index] });
       if (items) { await invoke("import_item_build", { championId, championName: name, items: itemIds }); setImported(itemsKey); }
       if (runes || spells) setClient(await invoke<RunesView>("get_runes"));
     } catch (error) { setNotice(String(error)); }
@@ -138,7 +143,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         {chosen.items.options.length > 0 && <><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <span key={`${item.id}-${item.slot}`} title={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${item.games.toLocaleString()} games`}><ItemIcon {...item} mode="desktop" /></span>)}</div></>}
         {chosen.items.stale && <CachedBadge stale updatedAt={chosen.items.updatedAt} />}
       </div>
-      <div className="fa-spell-area cs-skill-area"><div><h4>Summoner spells</h4><div className="fa-spells">{chosen.spells.map((id, index) => <span key={index}><SpellIcon id={id} mode="desktop" /><kbd>{index ? "F" : "D"}</kbd></span>)}</div></div>
+      <div className="fa-spell-area cs-skill-area"><div><h4>Summoner spells</h4><div className="fa-spells">{chosenSpells.map((id, index) => <span key={index}><SpellIcon id={id} mode="desktop" /><kbd>{index ? "F" : "D"}</kbd></span>)}</div></div>
         <div><h4>Skill order</h4>
         {order.length ? <div className="fa-skill-priority" aria-label={`Max order ${order.join(", ")}`}>{order.map((key, index) => <span key={key}>{index > 0 && <ChevronRight size={14} />}<AbilityBadge ability={abilities.find(ability => ability.key === key)} skill={key} /></span>)}</div> : <p>Max order unavailable</p>}
         {chosen.order ? <SkillOrderGrid order={chosen.order} abilities={abilities} /> : <p>Level order unavailable</p>}</div>

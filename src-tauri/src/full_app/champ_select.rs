@@ -16,11 +16,11 @@ pub async fn full_app_lock_in(champion_id: i64) -> Result<(), String> {
     let session: Value = crate::runes::lcu_get(&client, "/lol-champ-select/v1/session")
         .await
         .map_err(|e| e.to_string())?;
-    lock_ready(&session, champion_id)?;
-    crate::remote::lock_champion().await
+    let expected = lock_ready(&session, champion_id)?;
+    crate::remote::lock_confirmed_pick(expected).await
 }
 
-fn lock_ready(session: &Value, champion_id: i64) -> Result<(), String> {
+fn lock_ready(session: &Value, champion_id: i64) -> Result<crate::remote::PickConfirmation, String> {
     if session["timer"]["phase"] != "BAN_PICK" {
         return Err("Wait for your pick turn to lock in.".into());
     }
@@ -43,7 +43,12 @@ fn lock_ready(session: &Value, champion_id: i64) -> Result<(), String> {
     if action["championId"].as_i64() != Some(champion_id) || champion_id <= 0 {
         return Err("Your hovered champion changed. Check it and try again.".into());
     }
-    Ok(())
+    Ok(crate::remote::PickConfirmation {
+        game_id: session["gameId"].as_i64().ok_or("Draft identity is unavailable.")?,
+        cell_id: local.ok_or("Your draft slot is unavailable.")?,
+        action_id: action["id"].as_i64().ok_or("Pick action is unavailable.")?,
+        champion_id,
+    })
 }
 
 #[cfg(test)]
@@ -52,9 +57,9 @@ mod tests {
     use serde_json::json;
 
     fn session(phase: &str, kind: &str, champion: i64, in_progress: bool) -> Value {
-        json!({"localPlayerCellId": 3, "timer": {"phase": phase}, "actions": [[
+        json!({"gameId": 42, "localPlayerCellId": 3, "timer": {"phase": phase}, "actions": [[
             {"actorCellId": 1, "type": "pick", "championId": 99, "completed": false, "isInProgress": true},
-            {"actorCellId": 3, "type": kind, "championId": champion, "completed": false, "isInProgress": in_progress}
+            {"id": 7, "actorCellId": 3, "type": kind, "championId": champion, "completed": false, "isInProgress": in_progress}
         ]]})
     }
 
