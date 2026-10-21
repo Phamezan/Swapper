@@ -1,0 +1,107 @@
+/* Champion select page (Fullsized App): draft band, planning and build modes.
+   Uses the full-app tokens from full-app.css; no blur, no looping animation. */
+
+/* ---------- Draft band ---------- */
+.cs-band { display: grid; gap: 12px; padding: 14px 18px 16px; }
+.cs-band-head { display: grid; grid-template-columns: 1fr auto auto 1fr; align-items: center; gap: 14px; }
+.cs-band-label { font-size: var(--fa-label); font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.cs-band-label.is-ally { color: var(--fa-champ); }
+.cs-band-label.is-enemy { color: var(--fa-loss); text-align: right; }
+.cs-bans { display: flex; gap: 4px; }
+.cs-bans > span { width: 24px; height: 24px; overflow: hidden; border-radius: 6px; filter: grayscale(1); opacity: .6; }
+.cs-bans img, .cs-bans .champion-icon-fallback { display: block; width: 24px; height: 24px; }
+.cs-timer { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); background: rgb(11 11 13 / .5); color: var(--text-secondary); font-size: 12px; font-weight: 600; }
+.cs-timer b { min-width: 3ch; color: var(--text-primary); font-variant-numeric: tabular-nums; font-size: 13px; text-align: right; }
+.cs-teams { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.cs-team { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.cs-slot { min-width: 0; }
+.cs-slot-art { position: relative; display: grid; place-items: center; height: 76px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: var(--fa-frame); color: var(--text-muted); transition: opacity var(--fa-base), border-color var(--fa-base); }
+.cs-slot-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; border-radius: 0; }
+.cs-slot-copy { display: grid; margin-top: 6px; min-width: 0; }
+.cs-slot-copy strong { overflow: hidden; font-size: 12.5px; font-weight: 650; white-space: nowrap; text-overflow: ellipsis; }
+.cs-slot-copy small { font-size: 10.5px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+.cs-slot.is-empty .cs-slot-copy strong { color: var(--text-muted); font-weight: 500; }
+.cs-slot.is-hover .cs-slot-art { border-style: dashed; border-color: var(--fa-line-3); }
+.cs-slot.is-hover .cs-slot-art img { opacity: .55; }
+.cs-slot.is-hover small { color: var(--text-secondary); }
+.cs-slot.is-you .cs-slot-art { border-color: var(--fa-you); box-shadow: 0 0 0 1px var(--fa-you) inset; }
+.cs-slot.is-you small { color: var(--fa-you); }
+.cs-slot.is-laner .cs-slot-art { border-color: rgb(233 194 122 / .7); }
+.cs-slot.is-laner small { color: var(--fa-gold); }
+.cs-band.is-small { gap: 10px; padding: 12px 16px; }
+.cs-band.is-small .cs-slot-art { height: 46px; }
+.cs-band.is-small .cs-slot-copy { margin-top: 4px; }
+
+/* ---------- Toolbar ---------- */
+.cs-toolbar h2 small { margin-left: 6px; color: var(--text-secondary); font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+.cs-matchup-chip { padding: 6px 11px; border: 1px solid rgb(233 194 122 / .35); border-radius: var(--fa-radius-xs); background: rgb(233 194 122 / .08); color: var(--fa-gold); font-size: var(--fa-small); font-weight: 650; font-variant-numeric: tabular-nums; }
+
+/* ---------- Planning mode ---------- */
+.cs-planning { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; gap: 20px; }
+.cs-picks .fa-section-heading { flex-wrap: wrap; }
+.cs-pick-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.fa-frame .cs-pick { position: relative; display: grid; min-width: 0; padding: 0; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius); background: var(--fa-panel-2); color: var(--text-primary); text-align: left; }
+.fa-frame .cs-pick:hover:not(:disabled) { border-color: var(--fa-line-3); transform: translateY(-1px); }
+.fa-frame .cs-pick:disabled { cursor: progress; }
+.fa-frame .cs-pick[aria-pressed="true"] { border-color: var(--fa-you); box-shadow: 0 0 0 1px var(--fa-you) inset; }
+.cs-pick-art { display: grid; place-items: center; height: 100px; overflow: hidden; background: var(--fa-frame); }
+.cs-pick-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.cs-pick-copy { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 8px; padding: 10px 12px 12px; }
+.cs-pick-copy strong { overflow: hidden; font-size: 15px; white-space: nowrap; text-overflow: ellipsis; }
+.cs-pick-copy b { color: var(--fa-win); font-size: 18px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.cs-pick-copy small { grid-column: 1 / -1; font-size: 12px; }
+.cs-flex { justify-self: start; grid-column: 1 / -1; margin-top: 4px; padding: 1px 7px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); color: var(--text-secondary); font-size: 10.5px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+.cs-pick-state { position: absolute; top: 8px; left: 8px; padding: 2px 8px; border-radius: var(--fa-radius-xs); background: var(--fa-you); color: var(--fa-you-ink); font-size: 11px; font-weight: 700; }
+.cs-lock { display: grid; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid var(--fa-line); }
+.cs-lock > span { color: var(--text-secondary); font-size: var(--fa-small); }
+.cs-lock strong { color: var(--text-primary); }
+.cs-lock > div { display: flex; gap: 8px; }
+.cs-lock button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; flex: 1; min-height: 36px !important; padding: 6px 14px !important; }
+.cs-lock .fa-notice { margin: 0 !important; }
+.cs-preview { display: grid; gap: 14px; padding: 20px; }
+.cs-preview h3 { font-size: 16px; }
+.cs-preview-row { display: grid; gap: 7px; }
+.cs-preview-row small { font-size: var(--fa-label); font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.cs-preview-row small b { margin-left: 6px; color: var(--fa-win); letter-spacing: 0; }
+.cs-preview-row > span { display: flex; flex-wrap: wrap; gap: 6px; }
+.cs-preview-row img, .cs-preview-row :is(.rune-icon-fallback, .spell-icon-fallback, .item-icon-fallback) { display: block; width: 30px; height: 30px; border-radius: var(--fa-radius-xs); }
+
+/* ---------- Build mode: apply status ---------- */
+.cs-apply-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 14px; }
+.cs-apply-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 4px 6px 4px 12px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: var(--fa-panel); font-size: var(--fa-small); }
+.cs-apply-chip small { padding-right: 6px; font-size: 12px; }
+.cs-apply-chip.is-done { border-color: rgb(95 207 180 / .35); background: rgb(95 207 180 / .08); color: var(--fa-win); }
+.cs-apply-chip.is-done small { color: var(--fa-win); }
+.cs-auto-apply { display: inline-flex; align-items: center; gap: 9px; margin-left: auto; color: var(--text-secondary); font-size: var(--fa-small); }
+.cs-apply-bar .fa-primary { display: inline-flex; align-items: center; gap: 7px; }
+
+/* ---------- Build mode: skill order grid ---------- */
+.cs-skill-grid { display: grid; gap: 3px; overflow-x: auto; padding-bottom: 2px; }
+.cs-skill-row { display: grid; grid-template-columns: 22px repeat(18, 18px); gap: 3px; }
+.cs-skill-row > span { display: grid; place-items: center; color: var(--text-secondary); font-size: 11px; font-weight: 700; }
+.cs-skill-row > span.is-ultimate { color: var(--fa-gold); }
+.cs-skill-row > b { display: grid; place-items: center; height: 20px; border-radius: 4px; background: var(--fa-panel-2); font-size: 10px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cs-skill-row > b.is-filled { background: rgb(197 227 158 / .2); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .55); color: var(--fa-you-strong); }
+.cs-skill-row > b.is-ultimate { background: rgb(233 194 122 / .18); box-shadow: inset 0 0 0 1px rgb(233 194 122 / .55); color: var(--fa-gold); }
+.fa-build-grid .fa-skill-priority { margin-bottom: 14px; }
+
+@media (max-width: 1250px) {
+  .cs-pick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cs-planning { grid-template-columns: minmax(0, 1fr) 260px; }
+}
+@media (max-width: 1100px) {
+  .cs-teams, .cs-planning { grid-template-columns: 1fr; }
+  .cs-band-head { grid-template-columns: 1fr auto; }
+  .cs-band-label.is-enemy, .cs-bans { display: none; }
+}
+
+/* ---------- Build grid: runes left; spells + skill order above items right ---------- */
+.fa-build-grid.cs-build-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: "runes skill" "runes items"; grid-template-rows: auto 1fr; }
+.cs-build-grid > .fa-rune-area { grid-area: runes; }
+.cs-build-grid > .cs-skill-area { grid-area: skill; display: flex; flex-wrap: wrap; gap: 20px 40px; }
+.cs-build-grid > .fa-item-area { grid-area: items; border-top: 1px solid var(--fa-line); }
+.cs-skill-area .fa-spells { margin-bottom: 0; }
+@media (max-width: 1100px) {
+  .fa-build-grid.cs-build-grid { grid-template-columns: 1fr; grid-template-areas: "runes" "skill" "items"; }
+  .fa-build-grid.cs-build-grid > div + div { border-left: 0; border-top: 1px solid var(--fa-line); }
+}

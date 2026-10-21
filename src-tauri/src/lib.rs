@@ -1580,6 +1580,7 @@ pub fn run() {
             full_app::art::champion_art,
             full_app::ui_data::full_app_rune_catalog,
             full_app::ui_data::full_app_draft,
+            full_app::champ_select::full_app_hover_champion, full_app::champ_select::full_app_lock_in,
             full_app::ui_data::full_app_abilities,
             full_app::ui_data::full_app_matchups,
             overlay::get_overlay_settings,

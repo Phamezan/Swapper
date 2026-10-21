@@ -21,6 +21,17 @@ pub(crate) fn network_settings_page() -> &'static str {
     network::settings_page()
 }
 
+/// The full app's champion select hovers and locks with the remote's actions.
+pub(crate) async fn prepick_champion(champion_id: i64) -> Result<(), String> {
+    control::prepick_champion(champion_id)
+        .await
+        .map_err(|e| e.message)
+}
+
+pub(crate) async fn lock_champion() -> Result<(), String> {
+    control::lock_champion().await.map_err(|e| e.message)
+}
+
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
     mutex.lock().unwrap_or_else(|e| e.into_inner())
 }

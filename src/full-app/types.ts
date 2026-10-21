@@ -33,3 +33,5 @@ export type Snapshot = {
 /** Last saved rank and recent record of a saved account (key: account id). */
 export type AccountCard = { rank: Snapshot["rank"]; wins: number; losses: number; lastPlayed: number; updatedAt: number };
 export type DashboardView = { snapshot: Snapshot | null; cards: Record<string, AccountCard>; stale: boolean; message: string | null };
+/** One blind pick from the `recommended_picks` command, best first. */
+export type RecommendedPick = { championId: number; winRate: number; games: number; flex: boolean };

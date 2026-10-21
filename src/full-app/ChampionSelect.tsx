@@ -1,59 +1,93 @@
-import { useEffect, useState, type ComponentProps } from "react";
+import { useEffect, useMemo, useState, type ComponentProps } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Crosshair, LockKeyhole } from "lucide-react";
+import { Crosshair } from "lucide-react";
 import type { RunesPanel } from "../runes/RunesPanel";
-import type { KeystoneBuildView, ChampionOverviewView, MatchupView } from "../runes/types";
+import type { ChampionBuild, KeystoneBuildView, ChampionOverviewView, MatchupView } from "../runes/types";
 import { fmtPct, selectionFromPreset } from "../runes/types";
-import { Switch } from "../components/ui/switch";
+import { ItemIcon } from "../runes/ItemIcon";
+import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { BuildPanel } from "./BuildPanel";
-import { ChampionArt } from "./MatchupStrip";
-import { NearViewport } from "./NearViewport";
+import { CooldownSheet } from "./CooldownSheet";
+import { DraftBand } from "./ChampionSelectDraft";
+import { LockIn, PickSuggestions } from "./ChampionSelectPicks";
+import { enemyLaner, pageMode, takenIds, type Draft } from "./champ-select-model";
 import { Picker, RankPicker, RolePicker } from "./Picker";
+import "./champ-select.css";
 
-type Draft = { allies: { championId: number; position: string; local: boolean }[]; enemies: { championId: number; position: string; local: boolean }[]; bans: number[] };
+/** Planning mode before your pick is locked in (suggestions large, build
+ *  small), build mode after (build large). The mode follows the live draft. */
 export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const view = props.view;
-  const [draft, setDraft] = useState<Draft | null>(null);
-  const [index, setIndex] = useState(0);
+  const mode = pageMode(view);
+  const [draft, setDraft] = useState<{ value: Draft; at: number } | null>(null);
+  const [names, setNames] = useState<Map<number, string>>(new Map());
   const [items, setItems] = useState<KeystoneBuildView | null>(null);
   const [overview, setOverview] = useState<ChampionOverviewView | null>(null);
   const [matchup, setMatchup] = useState<MatchupView | null>(null);
   const [error, setError] = useState("");
-  const preset = view?.presets[index] ?? view?.presets[0];
-  useEffect(() => { setIndex(0); }, [view?.championId, view?.position, view?.tier]);
+  const preset = view?.presets[0];
   useEffect(() => {
     let live = true;
-    if (view?.phase === "ChampSelect") void invoke<Draft>("full_app_draft").then(value => { if (live) setDraft(value); }).catch(() => { if (live) setDraft(null); });
+    void props.championApi.list().then(list => { if (live) setNames(new Map(list.map(champion => [champion.id, champion.name]))); }).catch(() => {});
+    return () => { live = false; };
+  }, []);
+  useEffect(() => {
+    let live = true;
+    if (view?.phase === "ChampSelect") void invoke<Draft>("full_app_draft").then(value => { if (live) setDraft({ value, at: Date.now() }); }).catch(() => { if (live) setDraft(null); });
     else setDraft(null);
     return () => { live = false; };
   }, [view]);
+  const enemyId = view?.enemyChampionId || enemyLaner(draft?.value ?? null, view?.position ?? "");
   useEffect(() => {
     let live = true; setItems(null); setOverview(null); setMatchup(null); setError("");
     if (view?.championId) {
       if (preset) void props.onLoadBuild(view.championId, view.position, view.tier, preset.keystone, selectionFromPreset(preset)).then(value => { if (live) setItems(value); }).catch(reason => { if (live) setError(String(reason)); });
       void props.championApi.overview(view.championId, view.position, view.tier).then(value => { if (live) setOverview(value); }).catch(reason => { if (live) setError(String(reason)); });
-      if (view.enemyChampionId) void props.onLoadMatchup(view.championId, view.enemyChampionId, view.position, view.tier).then(value => { if (live) setMatchup(value); }).catch(() => {});
+      if (enemyId) void props.onLoadMatchup(view.championId, enemyId, view.position, view.tier).then(value => { if (live) setMatchup(value); }).catch(() => {});
     }
     return () => { live = false; };
-  }, [view?.championId, view?.position, view?.tier, view?.enemyChampionId, preset?.keystone]);
-  const active = view?.phase === "ChampSelect";
-  const build = preset && items ? { runes: preset, spells: preset.spells, items, skillOrder: items.skillOrder ?? overview?.build?.skillOrder ?? null } : overview?.build ?? null;
+  }, [view?.championId, view?.position, view?.tier, enemyId, preset?.keystone]);
+  const taken = useMemo(() => takenIds(draft?.value ?? null), [draft]);
+  const build: ChampionBuild | null = preset && items ? { runes: preset, spells: preset.spells, items, skillOrder: items.skillOrder ?? overview?.build?.skillOrder ?? null } : overview?.build ?? null;
+  const enemyName = view?.enemyChampionName || names.get(enemyId) || "";
+  const championName = view?.championName || names.get(view?.championId ?? 0) || "";
+
   return <div className="fa-draft-page dash-scope">
-    <header className="page-heading"><div><h1>Champion select</h1><p>{active ? "Your team, your matchup, your next move." : "Your draft companion. Ready when you are."}</p></div><span className="fa-status-pill">{active ? "LIVE DRAFT" : "WAITING FOR DRAFT"}</span></header>
+    <header className="page-heading"><div><h1>Champion select</h1><p>{mode === "build" ? "Locked in. Set up your build before the Rift." : mode === "planning" ? "Pick suggestions for your lane. Click to hover, then lock in." : "Your draft companion. Ready when you are."}</p></div><span className={`fa-status-pill${mode !== "idle" ? " is-live" : ""}`}>{mode === "build" ? "BUILD" : mode === "planning" ? "PLANNING" : "WAITING FOR DRAFT"}</span></header>
     {props.error && <p className="fa-notice" role="alert">{props.error}</p>}{error && <p className="fa-notice" role="alert">{error}</p>}
-    {!active ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting to champion select…" : "Your next game starts here"}</h2><p>Enter champion select in League Client. Your team’s picks, revealed opponents and recommended build will appear automatically.</p><div className="fa-draft-placeholder-team">{["TOP", "JUNGLE", "MID", "BOT", "SUPPORT"].map(role => <span key={role}><Crosshair size={20} /><small>{role}</small></span>)}</div></section> : <>
-      <section className="fa-draft-teams">{([['allies', 'Your team'], ['enemies', 'Opponents']] as const).map(([key, title]) => <div className="fa-card fa-team" key={key}><h3>{title}</h3><div className="fa-team-line">{(draft?.[key] ?? Array.from({ length: 5 }, () => ({ championId: 0, position: "", local: false }))).map((member, i) => <div className={`fa-team-member${member.local ? " is-you" : ""}`} key={i}><NearViewport className="fa-team-art">{member.championId ? <ChampionArt id={member.championId} name={`Champion ${member.championId}`} /> : <LockKeyhole size={24} />}</NearViewport><small>{member.local ? "YOU" : member.position || "Unrevealed"}</small></div>)}</div></div>)}</section>
-      {!!draft?.bans.length && <div className="fa-draft-bans"><span>Banned</span>{draft.bans.map((id, i) => <NearViewport key={`${id}-${i}`}><ChampionArt id={id} name={`Banned champion ${id}`} /></NearViewport>)}</div>}
-      <div className="fa-draft-controls"><h2>{view.championName || "Choose your champion"}</h2><RolePicker value={view.position} onChange={props.onPositionChange} /><RankPicker value={view.tier} onChange={props.onTierChange} /><label>Auto-apply<Switch aria-label="Auto-apply runes" checked={view.autoApply} disabled={props.busy} onCheckedChange={props.onToggleAutoApply} /></label></div>
-      {matchup && <section className="fa-card fa-draft-matchup"><Crosshair size={24} /><div><h3>Lane matchup · {view.championName} vs {matchup.enemyName}</h3><p>{matchup.stats ? `${fmtPct(matchup.stats.winPct)} win rate across ${matchup.stats.games.toLocaleString()} games` : "Waiting for enough matchup games"}{matchup.fallback ? " · General build recommended" : ""}</p></div></section>}
-      {view.championId > 0 && <>
-        <div className="fa-draft-controls">{view.presets.length > 1 && <Picker label="Rune preset" value={String(index)} options={view.presets.map((preset, i) => ({ value: String(i), label: `${preset.title} · ${fmtPct(preset.winPct)}` }))} onChange={value => setIndex(Number(value))} />}
-          {(["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
-        </div>
-        <BuildPanel championId={view.championId} name={view.championName} lane={view.position} tier={view.tier} build={build} liveView={view} />
+    {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting to champion select…" : "Your next game starts here"}</h2><p>Enter champion select in League Client. Your team’s picks, revealed opponents and recommended build will appear automatically.</p><div className="fa-draft-placeholder-team">{["TOP", "JUNGLE", "MID", "BOT", "SUPPORT"].map(role => <span key={role}><Crosshair size={20} /><small>{role}</small></span>)}</div></section> : <>
+      <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyId={enemyId} small={mode === "build"} />
+      <div className="fa-draft-controls cs-toolbar">
+        <h2>{championName || "Choose your champion"}{enemyName && <small> vs {enemyName}</small>}</h2>
+        {matchup?.stats && <span className="cs-matchup-chip" title={`${matchup.stats.games.toLocaleString()} games`}>{fmtPct(matchup.stats.winPct)} in this lane</span>}
+        <RolePicker value={view.position} onChange={props.onPositionChange} /><RankPicker value={view.tier} onChange={props.onTierChange} />
+        {mode === "build" && (["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
+      </div>
+      {mode === "planning" ? <div className="cs-planning">
+        <PickSuggestions role={view.position} tier={view.tier} enemyId={enemyId} enemyName={enemyName} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} />
+        <BuildPreview championId={view.championId} name={championName} build={build} />
+      </div> : <>
+        <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} liveView={view} matchup={matchup}
+          autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
+        {enemyId > 0 && <CooldownSheet championId={enemyId} />}
       </>}
       {props.shopNotice && <p className="fa-notice" role="status">{props.shopNotice.message}</p>}
     </>}
   </div>;
+}
+
+/** Planning mode's small build: what the hovered champion would run. */
+function BuildPreview({ championId, name, build: value }: { championId: number; name: string; build: ChampionBuild | null }) {
+  return <aside className="fa-card cs-preview" aria-label="Build preview">
+    <LockIn championId={championId} name={name} />
+    <h3>{name ? `${name} build` : "Build preview"}</h3>
+    {!championId ? <p>Hover a champion to preview its runes, spells and core items. The full build opens when you lock in.</p>
+      : !value ? <p role="status">Loading build…</p> : <>
+        {value.runes && <div className="cs-preview-row"><small>Runes</small><span>{[value.runes.keystone, ...value.runes.primaryRunes, ...value.runes.secondaryRunes].map(id => <RuneIcon key={id} id={id} mode="desktop" />)}</span></div>}
+        <div className="cs-preview-row"><small>Spells</small><span>{value.spells.map((id, index) => <SpellIcon key={index} id={id} mode="desktop" />)}</span></div>
+        <div className="cs-preview-row"><small>Core <b>{fmtPct(value.items.coreWinPct)}</b></small><span>{value.items.items.slice(0, value.items.coreLen || 3).map((item, index) => <ItemIcon key={`${item.id}-${index}`} {...item} mode="desktop" />)}</span></div>
+        <p className="fa-data-note">Full runes, skill order and item paths open after lock-in.</p>
+      </>}
+  </aside>;
 }

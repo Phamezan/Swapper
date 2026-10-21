@@ -74,6 +74,15 @@ pub struct DraftMember {
     champion_id: i64,
     position: String,
     local: bool,
+    /// The pick is completed; otherwise `champion_id` is a hover or pick intent.
+    locked: bool,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DraftTimer {
+    phase: String,
+    remaining_ms: i64,
 }
 
 #[derive(Serialize)]
@@ -81,22 +90,41 @@ pub struct Draft {
     allies: Vec<DraftMember>,
     enemies: Vec<DraftMember>,
     bans: Vec<i64>,
+    timer: Option<DraftTimer>,
 }
 
 fn draft_from(value: &Value) -> Draft {
     let local = value["localPlayerCellId"].as_i64();
+    let picks = || {
+        value["actions"]
+            .as_array()
+            .into_iter()
+            .flatten()
+            .filter_map(Value::as_array)
+            .flatten()
+            .filter(|action| action["type"] == "pick")
+    };
     let members = |field: &str| {
         value[field]
             .as_array()
             .into_iter()
             .flatten()
             .map(|member| DraftMember {
-                champion_id: member["championId"].as_i64().unwrap_or(0).max(0),
+                champion_id: Some(member["championId"].as_i64().unwrap_or(0))
+                    .filter(|id| *id > 0)
+                    .or(member["championPickIntent"].as_i64())
+                    .unwrap_or(0)
+                    .max(0),
                 position: member["assignedPosition"]
                     .as_str()
                     .unwrap_or("")
                     .to_string(),
                 local: field == "myTeam" && local.is_some() && member["cellId"].as_i64() == local,
+                locked: picks().any(|action| {
+                    action["completed"] == true
+                        && member["cellId"].as_i64().is_some()
+                        && action["actorCellId"] == member["cellId"]
+                }),
             })
             .collect()
     };
@@ -110,10 +138,18 @@ fn draft_from(value: &Value) -> Draft {
         .filter_map(|action| action["championId"].as_i64())
         .filter(|id| *id > 0)
         .collect();
+    let timer = value["timer"]["phase"].as_str().map(|phase| DraftTimer {
+        phase: phase.to_string(),
+        remaining_ms: value["timer"]["adjustedTimeLeftInPhase"]
+            .as_i64()
+            .unwrap_or(0)
+            .max(0),
+    });
     Draft {
         allies: members("myTeam"),
         enemies: members("theirTeam"),
         bans,
+        timer,
     }
 }
 
@@ -222,6 +258,14 @@ mod tests {
         assert_eq!(draft.enemies.len(), 2);
         assert_eq!(draft.enemies[0].champion_id, 0);
         assert_eq!(draft.bans, vec![222]);
+        assert!(draft.timer.is_none());
+        let hovering = draft_from(
+            &json!({"localPlayerCellId": 1, "timer": {"phase": "BAN_PICK", "adjustedTimeLeftInPhase": 21500}, "myTeam": [{"cellId":1,"championId":0,"championPickIntent":103},{"cellId":2,"championId":64}], "actions":[[{"type":"pick","actorCellId":2,"completed":true,"championId":64},{"type":"pick","actorCellId":1,"completed":false,"championId":0}]]}),
+        );
+        assert_eq!(hovering.allies[0].champion_id, 103);
+        assert!(!hovering.allies[0].locked);
+        assert!(hovering.allies[1].locked);
+        assert_eq!(hovering.timer.as_ref().map(|t| t.remaining_ms), Some(21500));
         assert!(draft_from(&json!({"myTeam":[{}]}))
             .allies
             .iter()
