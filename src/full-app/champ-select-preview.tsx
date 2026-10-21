@@ -59,7 +59,9 @@ mockIPC(async (cmd, args) => {
     case "get_runes": return current();
     case "full_app_draft": return fixtureDraft(fixture);
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
-    case "champion_icon": case "champion_art": return `${DD}/${VERSION}/img/champion/${CHAMPIONS[a.id]?.[1] ?? "Aatrox"}.png`;
+    case "champion_icon": return `${DD}/${VERSION}/img/champion/${CHAMPIONS[a.id]?.[1] ?? "Aatrox"}.png`;
+    // Same crops as the client's art: 380 px tiles and the centred splash.
+    case "champion_art": return `${DD}/img/champion/${a.kind === "splash" ? "splash" : "tiles"}/${CHAMPIONS[a.id]?.[1] ?? "Aatrox"}_0.jpg`;
     case "item_icon": return `${DD}/${VERSION}/img/item/${a.id}.png`;
     case "spell_icon": return `${DD}/${VERSION}/img/spell/${SPELLS[a.id] ?? "SummonerFlash"}.png`;
     case "rune_icon": await ready; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("no icon");

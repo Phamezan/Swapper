@@ -95,39 +95,45 @@ export function formatStat(value: number, digits: number, unit = "") {
 }
 
 type Split = { yes: Game[]; no: Game[] };
-const rate = (games: Game[]) => Math.round(100 * games.filter(g => g.win).length / games.length);
-const record = (games: Game[]) => `${games.filter(g => g.win).length}/${games.length}`;
+/** Wins, games and rounded win rate of one side of a pattern. */
+export type WinRecord = { wins: number; games: number; rate: number };
+/** A win-rate pattern: how often you win when `condition` holds, and when `other` does. */
+export type Insight = { condition: string; other: string; yes: WinRecord; no: WinRecord; gap: number };
+const record = (games: Game[]): WinRecord => {
+  const wins = games.filter(g => g.win).length;
+  return { wins, games: games.length, rate: Math.round(100 * wins / games.length) };
+};
 
 /** Up to three factual win-rate patterns, strongest first. A pattern needs
  *  four games on each side and a 20-point gap (15 for kill participation). */
-export function insights(games: Game[], championName: (id: number) => string): string[] {
-  const found: { gap: number; text: string }[] = [];
-  const consider = ({ yes, no }: Split, minGap: number, text: (a: string, b: string) => string) => {
-    if (yes.length < MIN_GROUP || no.length < MIN_GROUP) return;
-    const gap = Math.abs(rate(yes) - rate(no));
-    if (gap >= minGap) found.push({ gap, text: text(`${rate(yes)}% (${record(yes)})`, `${rate(no)}% (${record(no)})`) });
+export function insights(games: Game[], championName: (id: number) => string): Insight[] {
+  const found: Insight[] = [];
+  const consider = (split: Split, minGap: number, condition: string, other: string) => {
+    if (split.yes.length < MIN_GROUP || split.no.length < MIN_GROUP) return;
+    const [yes, no] = [record(split.yes), record(split.no)];
+    const gap = Math.abs(yes.rate - no.rate);
+    if (gap >= minGap) found.push({ condition, other, yes, no, gap });
   };
   const split = (test: (g: Game) => boolean | null): Split => {
     const known = games.filter(g => test(g) !== null);
     return { yes: known.filter(g => test(g)), no: known.filter(g => !test(g)) };
   };
-  consider(split(g => g.deaths <= 5), MIN_GAP, (a, b) => `You win ${a} when you die 5 or fewer times, ${b} otherwise.`);
+  consider(split(g => g.deaths <= 5), MIN_GAP, "Die 5 or fewer times", "Die 6 or more times");
   consider(split(g => {
     const p = me(g), o = opponent(g);
     return p && o ? p.cs > o.cs : null;
-  }), MIN_GAP, (a, b) => `You win ${a} when you out-farm your lane opponent, ${b} when you don't.`);
+  }), MIN_GAP, "Out-farm your lane opponent", "Don't out-farm them");
   consider(split(g => {
     const p = me(g), kp = p ? teamShare(g, p, "kp") : null;
     return kp == null ? null : kp >= 50;
-  }), MIN_KP_GAP, (a, b) => `You win ${a} with 50%+ kill participation, ${b} below it.`);
+  }), MIN_KP_GAP, "50%+ kill participation", "Below 50%");
   const byChampion = new Map<number, Game[]>();
   for (const g of games) byChampion.set(g.championId, [...(byChampion.get(g.championId) ?? []), g]);
   for (const [id, played] of byChampion) {
     if (played.length < MIN_GROUP) continue;
-    consider({ yes: played, no: games.filter(g => g.championId !== id) }, MIN_GAP,
-      (a, b) => `You win ${a} on ${championName(id)}, ${b} on other champions.`);
+    consider({ yes: played, no: games.filter(g => g.championId !== id) }, MIN_GAP, `On ${championName(id)}`, "Other champions");
   }
-  return found.sort((a, b) => b.gap - a.gap).slice(0, 3).map(f => f.text);
+  return found.sort((a, b) => b.gap - a.gap).slice(0, 3);
 }
 
 /** The Solo/Duo bracket label for a tier, matching the benchmark brackets. */

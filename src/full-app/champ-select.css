@@ -40,15 +40,21 @@
 .cs-planning { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; gap: 20px; }
 .cs-picks .fa-section-heading { flex-wrap: wrap; }
 .cs-pick-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.fa-frame .cs-pick { position: relative; display: grid; min-width: 0; padding: 0; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius); background: var(--fa-panel-2); color: var(--text-primary); text-align: left; }
-.fa-frame .cs-pick:hover:not(:disabled) { border-color: var(--fa-line-3); transform: translateY(-1px); }
+.fa-frame .cs-pick { position: relative; display: grid; min-width: 0; padding: 0; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius); background: var(--fa-panel-2); color: var(--text-primary); text-align: left; box-shadow: var(--fa-shadow); }
+.fa-frame .cs-pick:hover:not(:disabled) { border-color: var(--fa-line-3); transform: translateY(-2px); box-shadow: 0 14px 30px -16px rgb(0 0 0 / .9); }
 .fa-frame .cs-pick:disabled { cursor: progress; }
-.fa-frame .cs-pick[aria-pressed="true"] { border-color: var(--fa-you); box-shadow: 0 0 0 1px var(--fa-you) inset; }
-.cs-pick-art { display: grid; place-items: center; height: 100px; overflow: hidden; background: var(--fa-frame); }
-.cs-pick-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
-.cs-pick-copy { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 8px; padding: 10px 12px 12px; }
+.fa-frame .cs-pick[aria-pressed="true"] { border-color: var(--fa-you); box-shadow: 0 0 0 1px var(--fa-you) inset, 0 12px 28px -16px rgb(197 227 158 / .55); }
+/* Art is the client's 380 px square tile (sharp down to ~380 device px wide);
+   the bottom fades into the card so the name sits on one surface. */
+.cs-pick-art { position: relative; display: grid; place-items: center; height: 120px; overflow: hidden; background: radial-gradient(70% 90% at 50% 30%, var(--fa-raised), var(--fa-frame)); }
+.cs-pick-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, var(--fa-panel-2)); pointer-events: none; }
+.cs-pick-art .fa-card-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; transition: transform var(--fa-base) ease-out; }
+.fa-frame .cs-pick:hover:not(:disabled) .fa-card-art { transform: scale(1.04); }
+/* Until the tile loads (or without League), the small square icon stays at its own size. */
+.cs-pick-art .champion-icon, .cs-pick-art .champion-icon-fallback { width: 56px; height: 56px; border-radius: var(--fa-radius-sm); box-shadow: 0 0 0 1px var(--fa-line-3); }
+.cs-pick-copy { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 8px; margin-top: -14px; padding: 0 12px 12px; }
 .cs-pick-copy strong { overflow: hidden; font-size: 15px; white-space: nowrap; text-overflow: ellipsis; }
-.cs-pick-copy b { color: var(--fa-win); font-size: 18px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.cs-pick-copy b { color: var(--fa-win); font-size: 20px; font-weight: 750; font-variant-numeric: tabular-nums; }
 .cs-pick-copy small { grid-column: 1 / -1; font-size: 12px; }
 .cs-flex { justify-self: start; grid-column: 1 / -1; margin-top: 4px; padding: 1px 7px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); color: var(--text-secondary); font-size: 10.5px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
 .cs-pick-state { position: absolute; top: 8px; left: 8px; padding: 2px 8px; border-radius: var(--fa-radius-xs); background: var(--fa-you); color: var(--fa-you-ink); font-size: 11px; font-weight: 700; }

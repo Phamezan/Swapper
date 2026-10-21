@@ -41,16 +41,17 @@ test("insights need four games a side and a 20 point gap, strongest first", () =
     ...Array.from({ length: 4 }, () => game({ deaths: 9, win: false, cs: 100 })),
   ];
   const lines = insights(games, names);
-  assert.equal(lines[0], "You win 100% (6/6) when you die 5 or fewer times, 0% (0/4) otherwise.");
+  assert.deepEqual(lines[0], { condition: "Die 5 or fewer times", other: "Die 6 or more times", yes: { wins: 6, games: 6, rate: 100 }, no: { wins: 0, games: 4, rate: 0 }, gap: 100 });
   assert.ok(lines.length <= 3);
+  assert.ok(lines.every((l, i) => i === 0 || l.gap <= lines[i - 1].gap));
   // Three games on one side are not enough.
-  assert.deepEqual(insights(games.slice(0, 9), names).filter(l => l.includes("die")), []);
+  assert.deepEqual(insights(games.slice(0, 9), names).filter(l => l.condition.includes("Die")), []);
   // A 10-point gap is not a pattern.
   const even = [
     ...Array.from({ length: 10 }, (_, i) => game({ deaths: 2, win: i < 6 })),
     ...Array.from({ length: 10 }, (_, i) => game({ deaths: 9, win: i < 5 })),
   ];
-  assert.deepEqual(insights(even, names).filter(l => l.includes("die")), []);
+  assert.deepEqual(insights(even, names).filter(l => l.condition.includes("Die")), []);
 });
 
 test("tier labels match the benchmark brackets", () => {

@@ -10,7 +10,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
-import { benchKey, defaultQueue, formatStat, insights, MIN_COMPARED, opponent, tierLabel, tiles } from "./dashboardModel";
+import { benchKey, defaultQueue, formatStat, insights, MIN_COMPARED, opponent, tierLabel, tiles, type WinRecord } from "./dashboardModel";
 import type { AccountCard, Bench, Game, Player, Snapshot } from "./types";
 export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
 const roleLabels: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
@@ -159,14 +159,30 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
         <small>{wins}W {games.length - wins}L</small>
       </div>
     </div>
-    <div className="tiles">{rows.map(tile => <article key={tile.key} className="tile">
+    <div className="tiles">{rows.map(tile => <article key={tile.key} className={`tile${!tile.versus ? "" : tile.versus.delta >= 0 ? " is-up" : " is-down"}`}>
       <small>{tile.label}</small>
       <strong>{tile.value == null ? "–" : formatStat(tile.value, tile.digits, tile.unit)}</strong>
       {tile.versus ? <p title={`Your average and theirs over the same ${tile.versus.games} games`}>vs {tile.versus.label} {formatStat(tile.versus.value, tile.digits, tile.unit)} <b className={tile.versus.delta >= 0 ? "up" : "down"}>{signed(tile.versus.delta, tile.digits, tile.unit)}</b></p>
         : <p>{games.length < MIN_COMPARED ? `${games.length} ${games.length === 1 ? "game" : "games"}` : "Not enough comparable games"}</p>}
     </article>)}</div>
-    {lines.length > 0 && <ul className="insights">{lines.map(line => <li key={line}>{line}</li>)}</ul>}
+    {lines.length > 0 && <ul className="insights" aria-label="Win-rate patterns">{lines.map(line => {
+      const better = line.yes.rate >= line.no.rate;
+      return <li key={line.condition} className={`insight ${better ? "leans-yes" : "leans-no"}`}>
+        <InsightSide label={line.condition} record={line.yes} up={better} />
+        <span className="insight-gap" title="Difference in win rate">{line.gap}<small>pt</small></span>
+        <InsightSide label={line.other} record={line.no} up={!better} />
+      </li>;
+    })}</ul>}
   </section>;
+}
+
+function InsightSide({ label, record, up }: { label: string; record: WinRecord; up: boolean }) {
+  return <div className={`insight-side ${up ? "up" : "down"}`}>
+    <b>{record.rate}<i>%</i></b>
+    <span>{label}</span>
+    <small>{record.wins}/{record.games} won</small>
+    <i className="insight-meter" style={{ "--rate": `${record.rate}%` } as CSSProperties} aria-hidden />
+  </div>;
 }
 
 function MatchRow({ game, name, onOpen }: { game: Game; name: (id: number) => string; onOpen: () => void }) {

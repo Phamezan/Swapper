@@ -218,9 +218,23 @@ body { margin: 0; background: #09090b; }
 .tile strong { font-size: 26px; font-weight: 650; letter-spacing: -.02em; line-height: 1.15; }
 :where(.dash-scope) .tile p { font-size: 11.5px; }
 .tile p b { margin-left: 2px; font-weight: 650; }
-:where(.dash-scope) .insights { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
-.insights li { position: relative; padding-left: 16px; font-size: 13px; color: var(--text-secondary); }
-.insights li::before { content: ""; position: absolute; left: 2px; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--fa-you); }
+/* Insights: each pattern is a versus card, the two win rates big on either
+   side; the better side's colour tints the card from its own edge. */
+:where(.dash-scope) .insights { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.insight { --lean: var(--fa-win); position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; gap: 14px; padding: 16px 18px 15px; border: 1px solid var(--fa-line-2); border-radius: 11px; background: linear-gradient(100deg, color-mix(in srgb, var(--lean) 13%, transparent), transparent 52%), linear-gradient(180deg, var(--fa-raised, #28282e), var(--fa-panel-2) 70%); }
+.insight.leans-no { background: linear-gradient(260deg, color-mix(in srgb, var(--lean) 13%, transparent), transparent 52%), linear-gradient(180deg, var(--fa-raised, #28282e), var(--fa-panel-2) 70%); }
+.insight::before { content: ""; position: absolute; top: 0; left: 0; right: 50%; height: 2px; background: linear-gradient(90deg, var(--lean), transparent); }
+.insight.leans-no::before { left: 50%; right: 0; background: linear-gradient(270deg, var(--lean), transparent); }
+.insight-side { min-width: 0; display: grid; gap: 3px; }
+.insight-side + .insight-gap + .insight-side { justify-items: end; text-align: right; }
+.insight-side b { font-size: 34px; font-weight: 750; letter-spacing: -.035em; line-height: 1; }
+.insight-side.down b { color: var(--fa-loss); opacity: .9; }
+.insight-side > span { margin-top: 4px; color: var(--text-primary); font-size: 13px; font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
+:where(.dash-scope) .insight-side small { color: var(--text-muted); font-size: 11.5px; }
+.insight-meter { width: 100%; height: 4px; margin-top: 6px; border-radius: 99px; background: linear-gradient(90deg, currentColor var(--rate), rgb(255 255 255 / .08) var(--rate)); }
+.insight-side + .insight-gap + .insight-side .insight-meter { background: linear-gradient(270deg, currentColor var(--rate), rgb(255 255 255 / .08) var(--rate)); }
+.insight-gap { align-self: center; display: grid; justify-items: center; padding: 6px 9px; border: 1px solid var(--fa-line-2); border-radius: 9px; background: rgb(11 11 13 / .55); color: var(--text-primary); font-size: 15px; font-weight: 750; line-height: 1.1; }
+:where(.dash-scope) .insight-gap small { color: var(--text-muted); font-size: 10px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
 
 .dash-columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; align-items: start; }
 @media (min-width: 1760px) { .dash-columns { grid-template-columns: minmax(0, 1fr) 330px; } }
