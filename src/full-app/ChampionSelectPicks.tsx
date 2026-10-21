@@ -5,15 +5,15 @@ import { fmtPct, type ChampionCountersView, type TierListView } from "../runes/t
 import type { RecommendedPick } from "./types";
 import { ChampionArt } from "./MatchupStrip";
 import { NearViewport } from "./NearViewport";
-import { counterPicks, defaultTab, metaPicks, recommendedSuggestions, searchChampions, type Suggestion, type SuggestionTab } from "./champ-select-model";
+import { allChampions, counterPicks, defaultTab, recommendedSuggestions, searchChampions, type Suggestion, type SuggestionTab } from "./champ-select-model";
 
 type Loaded = { key: string; picks: Suggestion[] | null; message: string };
-const TABS: [SuggestionTab, string][] = [["counters", "Counters"], ["recommended", "Recommended"], ["meta", "Meta"]];
+const TABS: [SuggestionTab, string][] = [["all", "All"], ["recommended", "Recommended"], ["counters", "Counters"]];
 
 /** Planning mode: pick suggestions. A click hovers the champion in the client;
  *  locking in takes a second, confirming click. */
-export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, hovered, tierList }: {
-  role: string; tier: string; enemyId: number; enemyName: string; taken: Set<number>; names: Map<number, string>;
+export function PickSuggestions({ role, tier, enemyId, enemyName, enemyCount, taken, names, hovered, tierList }: {
+  role: string; tier: string; enemyId: number; enemyName: string; enemyCount: number; taken: Set<number>; names: Map<number, string>;
   hovered: number; tierList: (position: string, tier: string) => Promise<TierListView>;
 }) {
   // The default follows the enemy laner until the user picks a tab.
@@ -42,12 +42,12 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
       .then(view => done(counterPicks(view.beats, new Set(), 24))).catch(reason => done(null, String(reason)));
     else if (tab === "recommended") void invoke<RecommendedPick[]>("recommended_picks", { role, tier })
       .then(picks => done(recommendedSuggestions(picks, names, new Set()))).catch(reason => done(null, String(reason)));
-    else void tierList(role, tier).then(view => done(metaPicks(view.rows, new Set(), 24))).catch(reason => done(null, String(reason)));
+    else void tierList(role, tier).then(view => done(allChampions(names, view.rows, new Set()))).catch(() => done(allChampions(names, [], new Set())));
     return () => { live = false; };
   }, [key]);
 
   // Cached lists keep every champion; bans and locks are filtered per render.
-  const picks = (loaded?.key === key ? loaded.picks ?? [] : []).filter(pick => !taken.has(pick.championId)).slice(0, 8)
+  const picks = (loaded?.key === key ? loaded.picks ?? [] : []).filter(pick => !taken.has(pick.championId)).slice(0, tab === "all" ? undefined : 8)
     .map(pick => ({ ...pick, name: names.get(pick.championId) ?? pick.name }));
   // Typing searches every champion; win rates show when the current tab has them.
   const known = new Map((loaded?.key === key ? loaded.picks ?? [] : []).map(pick => [pick.championId, pick]));
@@ -58,7 +58,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
     catch (reason) { setNotice(String(reason)); }
     finally { setPending(0); }
   };
-  const subtitle = tab === "counters" ? `Your win rate into ${enemyName || "the enemy laner"}` : tab === "recommended" ? "Safe blind picks for your role and rank" : "Strongest picks this patch for your role";
+  const subtitle = tab === "counters" ? `Your win rate into ${enemyName || "the enemy laner"}` : tab === "recommended" ? "Safe blind picks for your role and rank" : "Every champion, A to Z";
 
   return <section className="fa-card cs-picks">
     <div className="fa-section-heading">
@@ -66,7 +66,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
       <div className="cs-picks-tools">
         <label className="cs-search"><Search size={15} aria-hidden /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search champion" aria-label="Search champion" />
           {query && <button aria-label="Clear search" onClick={() => setQuery("")}><X size={14} /></button>}</label>
-        <div className="fa-seg" role="group" aria-label="Suggestions">{TABS.map(([value, label]) => <button key={value} aria-pressed={tab === value && !query} onClick={() => { setChosenTab(value); setQuery(""); }}>{label}</button>)}</div>
+        <div className="fa-seg" role="group" aria-label="Suggestions">{TABS.map(([value, label]) => <button key={value} aria-pressed={tab === value && !query} onClick={() => { setChosenTab(value); setQuery(""); }}>{label}{value === "counters" && enemyCount > 0 && <span className="cs-tab-badge" title={`${enemyCount} enemy ${enemyCount === 1 ? "pick" : "picks"} revealed`}>{enemyCount}</span>}</button>)}</div>
       </div>
     </div>
     {notice && <p className="fa-notice" role="alert">{notice}</p>}
@@ -81,7 +81,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, taken, names, 
 type Card = Partial<Suggestion> & { championId: number; name: string };
 
 function PickCard({ pick, hovered, pending, onHover }: { pick: Card; hovered: number; pending: number; onHover: (id: number) => void }) {
-  const stats = pick.winPct != null && pick.games != null;
+  const stats = pick.winPct != null && !Number.isNaN(pick.winPct) && !!pick.games;
   return <button className="cs-pick" aria-pressed={pick.championId === hovered} disabled={!!pending} onClick={() => onHover(pick.championId)}
     title={stats ? `${pick.name}: ${fmtPct(pick.winPct!)} over ${pick.games!.toLocaleString()} games` : pick.name}>
     <NearViewport className="cs-pick-art"><ChampionArt id={pick.championId} name={pick.name} kind="loading" /></NearViewport>

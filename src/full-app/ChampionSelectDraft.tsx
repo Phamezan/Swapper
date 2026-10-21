@@ -34,7 +34,7 @@ export function DraftBand({ draft, readAt, names, enemyId, small }: { draft: Dra
         return <div className={`cs-team is-${side}`} key={side} aria-label={side === "allies" ? "Your team's picks" : "Enemy team's picks"}>
           {Array.from({ length: Math.max(5, members.length) }, (_, index) => {
             const member = members[index] ?? empty;
-            return <Slot key={index} member={member} name={names.get(member.championId)} laner={side === "enemies" && member.championId > 0 && member.championId === enemyId} />;
+            return <Slot key={index} member={member} seat={SEATS[index] ?? ""} name={names.get(member.championId)} laner={side === "enemies" && member.championId > 0 && member.championId === enemyId} />;
           })}
         </div>;
       })}
@@ -48,12 +48,16 @@ export function DraftBand({ draft, readAt, names, enemyId, small }: { draft: Dra
   </section>;
 }
 
-function Slot({ member, name, laner }: { member: DraftMember; name?: string; laner: boolean }) {
+// Practice tool and blind pick give no positions: show each seat's usual role, dimmed.
+const SEATS = ["top", "jungle", "mid", "adc", "support"];
+
+function Slot({ member, seat, name, laner }: { member: DraftMember; seat: string; name?: string; laner: boolean }) {
   const hovering = member.championId > 0 && !member.locked;
-  const slug = roleSlug(member.position);
-  const role = ROLE_LABELS[slug] ?? "Role pending";
+  const known = roleSlug(member.position);
+  const slug = known || seat;
+  const role = ROLE_LABELS[slug] ?? "";
   const state = member.local ? "Your pick" : laner ? "Your matchup" : hovering ? "Hovering" : "";
-  const classes = ["cs-slot", member.local && "is-you", hovering && "is-hover", laner && "is-laner", !member.championId && "is-empty"].filter(Boolean).join(" ");
+  const classes = ["cs-slot", !known && "is-seat", member.local && "is-you", hovering && "is-hover", laner && "is-laner", !member.championId && "is-empty"].filter(Boolean).join(" ");
   return <article className={classes} aria-label={[name || "Not picked", role, state, member.locked ? "locked in" : ""].filter(Boolean).join(" · ")}>
     <NearViewport className="cs-slot-art">{member.championId ? <ChampionArt id={member.championId} name={name ?? `Champion ${member.championId}`} kind="loading" /> : <span className="cs-slot-placeholder">{slug ? <RoleIcon role={slug} size={32} mode="desktop" /> : <Crosshair size={28} strokeWidth={1.2} aria-hidden />}</span>}</NearViewport>
     <span className="cs-slot-role" title={role}>{slug ? <RoleIcon role={slug} size={16} mode="desktop" /> : <Crosshair size={15} strokeWidth={1.5} aria-hidden />}</span>

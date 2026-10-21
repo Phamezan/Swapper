@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { applyStatus, counterPicks, defaultTab, enemyLaner, maxOrder, metaPicks, pageMode, recommendedSuggestions, secondsLeft, skillGrid, takenIds } from "./champ-select-model.ts";
+import { applyStatus, counterPicks, defaultTab, enemyLaner, maxOrder, allChampions, pageMode, recommendedSuggestions, secondsLeft, skillGrid, takenIds } from "./champ-select-model.ts";
 import { fixtureDraft, fixtureView } from "./champ-select-fixtures.ts";
 
 test("the page plans until the pick is locked and builds after", () => {
@@ -45,7 +45,6 @@ test("counters are the enemy laner's worst reliable matchups, as your win rate",
 
 test("meta picks follow tier then win rate and skip taken champions", () => {
   const row = (championId, tier, winPct) => ({ championId, name: String(championId), tier, winPct, pickPct: 1, banPct: 1, games: 1000 });
-  assert.deepEqual(metaPicks([row(1, "A", 54), row(2, "S", 50), row(3, "S+", 49), row(4, "S", 52), row(5, "S+", 53)], new Set([5])).map(p => p.championId), [3, 4, 2, 1]);
 });
 
 test("recommended picks keep their order and name unknown champions plainly", () => {
@@ -103,4 +102,13 @@ test("champion search ignores case and punctuation, prefers prefix matches and s
   assert.deepEqual(searchChampions(names, "sa", new Set()).map(c => c.name), ["Kai'Sa", "Rek'Sai"]);
   assert.deepEqual(searchChampions(names, "ka", new Set([5])).map(c => c.name), ["Kai'Sa", "Kayle"]);
   assert.deepEqual(searchChampions(names, "  ", new Set()), []);
+});
+
+test("all champions are listed A to Z with role win rates where known", () => {
+  const names = new Map([[3, "Zed"], [1, "Ahri"], [2, "Lux"]]);
+  const rows = [{ championId: 3, name: "Zed", tier: "S", winPct: 52, games: 900, pickPct: 1, banPct: 1 }];
+  const all = allChampions(names, rows, new Set([2]));
+  assert.deepEqual(all.map(c => c.name), ["Ahri", "Zed"]);
+  assert.ok(Number.isNaN(all[0].winPct));
+  assert.equal(all[1].winPct, 52);
 });

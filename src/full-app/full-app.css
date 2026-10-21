@@ -79,7 +79,8 @@ body { background: #0b0b0d; }
 .fa-frame .full-app-embedded { background: transparent; }
 .fa-frame .dashboard-main { padding: 30px clamp(22px, 2.6vw, 44px) 48px; scrollbar-color: var(--fa-line-2) transparent; }
 .fa-frame .full-app-embedded .main-panel { max-width: none; padding: 30px clamp(22px, 2.6vw, 44px) 24px; }
-.fa-frame .full-app-embedded .main-panel.runes-panel-host { max-width: none; }
+/* The flyout pins its champion select in a fixed-height panel; the full app scrolls the page. */
+.fa-frame .full-app-embedded .main-panel.runes-panel-host { max-width: none; display: block; overflow-y: auto; }
 .fa-frame .full-app-embedded .footer { background: var(--fa-side); border-top-color: var(--fa-line); }
 
 /* ---------- Type ---------- */

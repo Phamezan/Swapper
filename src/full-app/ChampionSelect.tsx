@@ -87,7 +87,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
         {mode === "build" && (["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
       </div>
       {mode === "planning" ? <div className="cs-planning">
-        <PickSuggestions role={role} tier={view.tier} enemyId={enemyId} enemyName={enemyName} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} />
+        <PickSuggestions role={role} tier={view.tier} enemyId={enemyId} enemyName={enemyName} enemyCount={draft?.value.enemies.filter(member => member.championId > 0).length ?? 0} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} />
         <BuildPreview championId={view.championId} name={championName} build={build} />
       </div> : <>
         <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} liveView={view} matchup={matchup}
