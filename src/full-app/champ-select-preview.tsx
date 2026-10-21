@@ -45,7 +45,7 @@ const listeners = new Set<() => void>();
 const current = (): RunesView => ({ ...fixtureView(fixture), applied, spells });
 const change = (next: FixtureName) => { fixture = next; applied = fixtureView(next).applied; spells = fixtureView(next).spells; listeners.forEach(listener => listener()); void emit("draft_changed", fixtureDraft(next)); };
 let catalog: { trees: RuneTree[]; shards: { kind: string; label: string; runes: { id: number; name: string; winPct: null; pickPct: null; play: number }[] }[] } | null = null;
-const runeIcons = new Map<number, string>();
+const runeIcons = new Map<number, string>(Object.entries({ 5008: "AdaptiveForce", 5005: "AttackSpeed", 5007: "CDRScaling", 5010: "MovementSpeed", 5001: "HealthPlus", 5011: "HealthScaling", 5013: "Tenacity" }).map(([id, name]) => [Number(id), `${DD}/img/perk-images/StatMods/StatMods${name}Icon.png`]));
 const ready = fetch(`${DD}/${VERSION}/data/en_US/runesReforged.json`).then(r => r.json()).then((trees: { id: number; name: string; slots: { runes: { id: number; name: string; icon: string }[] }[] }[]) => {
   const rune = (r: { id: number; name: string; icon: string }) => { runeIcons.set(r.id, `${DD}/img/${r.icon}`); return { id: r.id, name: r.name, winPct: null, pickPct: null, play: 0 }; };
   catalog = {
@@ -76,7 +76,17 @@ mockIPC(async (cmd, args) => {
     case "full_app_matchups": return { championId: a.championId, championName: "Darius", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null, beats: counters.map(([id, winPct, games]) => ({ championId: id, name: CHAMPIONS[id][0], winPct, delta: winPct - 50.4, games, lowSample: false })) };
     case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct]) => ({ championId: id, name: CHAMPIONS[id as number][0], tier, winPct, pickPct: 6, banPct: 3, games: 20000 })) };
     case "recommended_picks": return tiers.slice(0, 8).map(([championId, , winRate]) => ({ championId, winRate, games: 20000, flex: championId === 875 }));
-    case "get_pro_builds": return { championId: 266, position: "top", role: "top", page: 1, hasMore: false, unavailable: false, message: null, stale: false, updatedAt: null, matches: [1, 2, 3, 4].map(i => ({ matchId: i, proName: `Pro player ${String.fromCharCode(64 + i)}`, team: `Team ${i}`, league: "LCK", region: "KR", role: "top", roleLabel: "Top", win: i % 2 === 1, playedAgo: `${i * 3}h ago`, patch: "16.21", ...page(8000, 8010, [9111, 9104, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), kills: 4 + i, deaths: 2, assists: 6, spells: [4, 12], finalItems: [6692, 3053, 3071, 3047, 6333, 3026].map(item), completedItems: [6692, 3053, 3071, 6333].map(item), skillOrder: ORDER.split(""), itemPath: [] })) };
+    case "get_pro_builds": {
+      if (new URLSearchParams(location.search).has("pro-error")) throw new Error("Preview: pro provider unavailable");
+      const proPage = a.page ?? 1;
+      return { championId: 266, position: "top", role: "top", page: proPage, hasMore: proPage === 1, unavailable: false, message: null, stale: false, updatedAt: null,
+        matches: new URLSearchParams(location.search).has("pro-empty") ? [] : [1, 2, 3, 4].map(n => { const i = n + (proPage - 1) * 4; return {
+          matchId: i, proName: `Pro player ${String.fromCharCode(64 + i)}`, team: `Team ${i}`, league: "LCK", region: "KR", role: "top", roleLabel: "Top", win: i % 2 === 1, playedAgo: `${i * 3}h ago`, patch: "16.21",
+          ...page(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104], [5005, 5008, 5001]), kills: 4 + i, deaths: 2, assists: 6, spells: [4, 12],
+          finalItems: [6610, 3053, 3071, 3047, 6333, 3026].map(item), completedItems: [6610, 3053, 3071, 6333].map(item), skillOrder: "QWEQQRQEQERWEEWRWW".split(""),
+          itemPath: [{ minute: 0, items: [{ ...item(1055), count: 1 }, { ...item(2003), count: 1 }] }], otp: false,
+        }; }) };
+    }
     case "full_app_hover_champion": change(a.championId === 266 ? "hover" : fixture); return null;
     case "full_app_lock_in": change("locked"); return null;
     case "apply_rune_page": applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;

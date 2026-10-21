@@ -1,6 +1,6 @@
-import { Fragment, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
-import { ChevronDown } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import type { Account } from "../App";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { ItemIcon } from "../runes/ItemIcon";
@@ -11,7 +11,7 @@ import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
 import { benchKey, defaultQueue, formatStat, insights, MIN_COMPARED, opponent, tierLabel, tiles, tone, type WinRecord } from "./dashboardModel";
-import type { AccountCard, Bench, Game, Player, Snapshot } from "./types";
+import type { AccountCard, Bench, Game, Snapshot } from "./types";
 export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
 const roleLabels: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 
@@ -54,6 +54,7 @@ type Props = {
   snapshot: Snapshot; region: string | null; accounts: Account[]; activeId: string | null;
   cards: Record<string, AccountCard>; phase: string; busy: boolean;
   onSwitch: (id: string) => void; onOpenLive: () => void; onOpenChampion: (id: number, name: string) => void;
+  onOpenMatch: (game: Game) => void;
 };
 
 export function Dashboard(props: Props) {
@@ -79,7 +80,7 @@ export function Dashboard(props: Props) {
       <section className="panel matches-panel" aria-labelledby="matches-title">
         <div className="panel-head"><h2 id="matches-title">Match history</h2><small>{games.length} {games.length === 1 ? "game" : "games"} · {queue === "all" ? "all queues" : queueLabels[queue]}</small></div>
         {!games.length ? <p className="panel-empty">No {queueLabels[queue]} games in your latest 20 matches.</p>
-          : <ol className="match-list">{games.map(game => <MatchRow key={game.id} game={game} name={name} onOpen={() => onOpenChampion(game.championId, name(game.championId))} />)}</ol>}
+          : <ol className="match-list">{games.map(game => <MatchRow key={game.id} game={game} name={name} onOpen={() => props.onOpenMatch(game)} />)}</ol>}
       </section>
       <section className="panel" aria-labelledby="champions-title">
         <div className="panel-head"><h2 id="champions-title">Your champions &amp; roles</h2><small>{queueLabels[queue]}</small></div>
@@ -196,17 +197,16 @@ function InsightSide({ label, record, up }: { label: string; record: WinRecord; 
 function MatchRow({ game, name, onOpen }: { game: Game; name: (id: number) => string; onOpen: () => void }) {
   const ratio = (game.kills + game.assists) / Math.max(1, game.deaths);
   const [row, seen] = useSeen<HTMLLIElement>();
-  const [open, setOpen] = useState(false);
   const opp = opponent(game);
   const csDiff = opp ? game.cs - opp.cs : null;
-  return <li ref={row} className={`match-row ${game.win ? "is-win" : "is-loss"}${open ? " is-open" : ""}`}>
+  return <li ref={row} className={`match-row ${game.win ? "is-win" : "is-loss"}`} onClick={onOpen}>
     <div className="match-meta">
       <strong>{game.win ? "Victory" : "Defeat"}</strong>
       <span>{queueLabels[game.queue]}{game.lpChange != null &&
         <b className={game.lpChange >= 0 ? "up" : "down"}> {game.lpChange >= 0 ? "+" : "−"}{Math.abs(game.lpChange)} LP</b>}</span>
       <small>{fmtAgo(game.createdAt)} · {clock(game.duration)}</small>
     </div>
-    <button className="match-champ" onClick={onOpen} title={`Open ${name(game.championId)} build`}>
+    <button className="match-champ" onClick={event => { event.stopPropagation(); onOpen(); }} title={`Open ${name(game.championId)} match details`}>
       <ChampionIcon id={game.championId} name={name(game.championId)} mode="desktop" />
       {game.level > 0 && <b>{game.level}</b>}
     </button>
@@ -229,22 +229,6 @@ function MatchRow({ game, name, onOpen }: { game: Game; name: (id: number) => st
     <div className={`placement${game.placement === 1 ? " is-mvp" : ""}`} title="Rank among all 10 players by KDA, damage, CS and vision">
       {game.placement ? <><b>#{game.placement}</b><small>{game.placement === 1 ? "MVP" : "place"}</small></> : <small>–</small>}
     </div>
-    <button className="match-expand" aria-expanded={open} disabled={!game.players.length} onClick={() => setOpen(!open)} title={game.players.length ? "Show all players" : "Refresh to load players"}><ChevronDown size={16} /></button>
-    {open && <MatchPlayers game={game} name={name} />}
+    <button className="match-expand" onClick={event => { event.stopPropagation(); onOpen(); }} aria-label={`Open ${name(game.championId)} match details`} title="Open match details"><ChevronRight size={16} /></button>
   </li>;
-}
-
-function MatchPlayers({ game, name }: { game: Game; name: (id: number) => string }) {
-  const teams: [string, Player[]][] = [[game.win ? "Your team · Victory" : "Your team · Defeat", game.players.filter(p => p.ally)], [game.win ? "Enemy team · Defeat" : "Enemy team · Victory", game.players.filter(p => !p.ally)]];
-  return <div className="match-players">{teams.map(([label, players], t) => <Fragment key={label}>
-    <p className={`match-team ${(t === 0) === game.win ? "up" : "down"}`}>{label}</p>
-    {players.map((p, i) => <div key={i} className={`match-player${p.me ? " is-me" : ""}`}>
-      <ChampionIcon id={p.championId} name={name(p.championId)} mode="desktop" />
-      <span className="player-name">{p.riotId || name(p.championId)}</span>
-      <span>{p.kills}/{p.deaths}/{p.assists}</span>
-      <span>{p.damage.toLocaleString("en-US")} dmg</span>
-      <span>{p.cs} CS</span>
-      <span className="player-items">{p.items.map((id, j) => <ItemIcon key={j} id={id} mode="desktop" />)}</span>
-    </div>)}
-  </Fragment>)}</div>;
 }

@@ -3,9 +3,17 @@
 // /src/full-app/full-app-preview.html (?live=1 starts a fixture game). Art comes
 // from Data Dragon; names and Riot IDs are invented. Never part of the app build.
 import { mockIPC, mockWindows } from "@tauri-apps/api/mocks";
+import { emit } from "@tauri-apps/api/event";
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
 const VERSION = "16.21.1";
+const runeIcons = new Map<number, string>();
+const runeReady = fetch(`${DD}/${VERSION}/data/en_US/runesReforged.json`).then(r => r.json()).then((trees: { id: number; icon: string; slots: { runes: { id: number; icon: string }[] }[] }[]) => {
+  for (const tree of trees) {
+    runeIcons.set(tree.id, `${DD}/img/${tree.icon}`);
+    for (const slot of tree.slots) for (const rune of slot.runes) runeIcons.set(rune.id, `${DD}/img/${rune.icon}`);
+  }
+}).catch(() => {});
 const CHAMPIONS: Record<number, [string, string]> = {
   266: ["Aatrox", "Aatrox"], 122: ["Darius", "Darius"], 103: ["Ahri", "Ahri"], 64: ["Lee Sin", "LeeSin"], 222: ["Jinx", "Jinx"],
   157: ["Yasuo", "Yasuo"], 777: ["Yone", "Yone"], 875: ["Sett", "Sett"], 902: ["Milio", "Milio"], 67: ["Vayne", "Vayne"],
@@ -82,6 +90,25 @@ mockIPC(async (cmd, args) => {
   switch (cmd) {
     case "get_state": return state;
     case "dashboard_snapshot": return { snapshot, cards, stale: false, message: null };
+    case "full_app_match_detail": {
+      if (new URLSearchParams(location.search).has("detail-error")) throw new Error("Preview: match details unavailable");
+      const match = games.find(g => g.id === a.gameId) ?? games[0];
+      const detail = { game: match, teams: [100, 200].map((teamId, i) => ({ teamId, win: i === 0 ? match.win : !match.win,
+        objectives: [{ label: "Dragons", kills: i ? 1 : 3 }, { label: "Heralds", kills: i ? 0 : 1 }, { label: "Grubs", kills: i ? 2 : 4 }, { label: "Barons", kills: i ? 0 : 1 }, { label: "Towers", kills: i ? 3 : 9 }] })),
+        players: match.players.map((p, i) => ({ ...p, riotId: p.me ? "You#•••" : `Player ${i}#•••`, participantId: i + 1, teamId: i < 5 ? 100 : 200,
+          level: 18 - i % 4, spells: [4, p.role === "jungle" ? 11 : p.role === "support" ? 14 : 12],
+          perks: [8010, 9111, 9104, 8299, 8444, 8242], keystone: 8010, secondaryStyle: 8400,
+          placement: [2, 3, 1, 4, 5, 6, 7, 8, 9, 10][i], score: [86, 82, 96, 74, 67, 60, 53, 46, 39, 32][i],
+          rank: i === 9 ? null : rank(RANKS[i][0], RANKS[i][1]), rankLoaded: i !== 9,
+          damageTaken: 21000 + i * 1400, wardsPlaced: 9 + i, wardsKilled: i + 1 })) };
+      if (new URLSearchParams(location.search).has("slow-ranks")) {
+        await emit("match_detail", { ...detail, players: detail.players.map(player => ({ ...player, rank: null, rankLoaded: false })) });
+        await new Promise(resolve => setTimeout(resolve, 1500));
+      }
+      return detail;
+    }
+    case "rank_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/${a.tier}.svg`;
+    case "rune_icon": await runeReady; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("Preview rune icon unavailable");
     case "dashboard_benchmarks": return Object.fromEntries((a.picks as [number, string][]).map(([id, role]) => [`${id}|${role}`, { kills: 5, deaths: 5, assists: 6, damage: 21000, gold: 11000, cs: 185, games: 9000 }]));
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
     case "champion_icon": return `${DD}/${VERSION}/img/champion/${key(a.id)}.png`;

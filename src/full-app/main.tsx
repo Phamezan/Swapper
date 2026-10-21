@@ -7,7 +7,7 @@ import { BrandIcon } from "../components/BrandIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { RankCrest } from "../runes/RankCrest";
 import type { ChampionOption } from "../runes/types";
-import type { DashboardView } from "./types";
+import type { DashboardView, Game } from "./types";
 import { Dashboard, crestSlug, splitRiotId, titleCase } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
 import { useInGame } from "./LiveGameData";
@@ -22,7 +22,9 @@ import { ChampionSelect } from "./ChampionSelect";
 
 const Champions = lazy(() => import("./Champions"));
 const LiveGame = lazy(() => import("./LiveGame"));
-type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups";
+const MatchDetail = lazy(() => import("./MatchDetail"));
+type MatchLocation = `Match:${number}`;
+type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | MatchLocation;
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
@@ -34,7 +36,7 @@ const groups: { label: string; items: [Location, typeof LayoutDashboard][] }[] =
   { label: "Swapper", items: [["Accounts", Users], ["Settings", Settings]] },
 ];
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
-const subtitles: Record<Page, string> = {
+const subtitles: Record<Exclude<Page, MatchLocation>, string> = {
   Dashboard: "Your recent Summoner’s Rift games, rank and form",
   "Live Game": "Everyone in your current game: rank, recent form and live stats",
   "Tier list & Builds": "The strongest picks per role and rank, with builds and counters",
@@ -42,6 +44,7 @@ const subtitles: Record<Page, string> = {
 };
 
 function App() {
+  const visitedMatches = useRef(new Map<number, Game>());
   const [page, setPage] = useState<Page | "app">("Dashboard");
   const [appView, setAppView] = useState<View>("accounts");
   const [request, setRequest] = useState<FullAppBridge["request"]>(null);
@@ -155,6 +158,8 @@ function App() {
   const championNames = useMemo(() => new Map(champions.map(c => [c.id, c.name])), [champions]);
   const snapshot = view?.snapshot;
   const rank = snapshot?.rank;
+  const matchId = page.startsWith("Match:") ? Number(page.slice(6)) : null;
+  const selectedMatch = matchId == null ? null : visitedMatches.current.get(matchId) ?? snapshot?.games.find(game => game.id === matchId);
   const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? "League Client");
   return <div className="fa-frame">
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
@@ -183,7 +188,7 @@ function App() {
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
         <header className="page-heading">
-          <div><h1>{page}</h1><p>{subtitles[page]}</p></div>
+          <div><h1>{matchId != null ? "Match detail" : page}</h1><p>{matchId != null ? "The full story of your Rift game" : subtitles[page as keyof typeof subtitles]}</p></div>
           {page === "Dashboard" && snapshot && <small className="updated">{view?.stale ? "Showing saved stats" : `Updated ${fmtAgoShort(snapshot.fetchedAt)}`}</small>}
         </header>
         {view?.stale && page === "Dashboard" && <div className="notice" role="status">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</div>}
@@ -192,8 +197,10 @@ function App() {
           ? snapshot ? <Dashboard snapshot={snapshot} region={region} accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null}
               cards={view?.cards ?? {}} phase={phase} busy={false} onOpenLive={() => go(LIVE_PAGE)}
               onSwitch={id => { setPage("app"); setRequest({ view: "accounts", switchId: id }); }}
-              onOpenChampion={(id, name) => openChampion({ id, name })} />
+              onOpenChampion={(id, name) => openChampion({ id, name })}
+              onOpenMatch={game => { visitedMatches.current.set(game.id, game); go(`Match:${game.id}`); }} />
             : <section className="empty"><BrandIcon size={52} /><h2>{loading ? "Connecting to League Client…" : "Sign in to League Client"}</h2><p>Your recent Rift games and Solo/Duo rank appear here once League Client is open.</p></section>
+          : selectedMatch ? <Suspense fallback={<p role="status" className="loading-line">Loading match details…</p>}><MatchDetail key={selectedMatch.id} game={selectedMatch} names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => go("Dashboard")} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<p role="status" className="loading-line">Loading Live Game…</p>}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<p role="status" className="loading-line">Loading champion tools…</p>}>
               <Champions key={page} matchups={page === "Matchups"} focus={page === "Matchups" ? null : focus} />
