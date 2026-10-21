@@ -41,7 +41,12 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
     const node = strip.current;
     if (!node) return;
     let frame = 0;
-    const update = () => { frame = 0; setRange(artWindow(node.scrollLeft, node.clientWidth, CARD_STEP, rows.length, 3)); };
+    // Re-render only when the window of loaded art actually moves.
+    const update = () => {
+      frame = 0;
+      const next = artWindow(node.scrollLeft, node.clientWidth, CARD_STEP, rows.length, 3);
+      setRange(current => current[0] === next[0] && current[1] === next[1] ? current : next);
+    };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
     // A vertical wheel scrolls the strip sideways until it reaches an end, then the page.
     const onWheel = (event: WheelEvent) => {
@@ -49,7 +54,8 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       const max = node.scrollWidth - node.clientWidth;
       if ((event.deltaY < 0 && node.scrollLeft <= 0) || (event.deltaY > 0 && node.scrollLeft >= max - 1)) return;
       event.preventDefault();
-      node.scrollBy({ left: event.deltaY * 1.5, behavior: "smooth" });
+      // Instant, not smooth: a new smooth scroll per wheel tick cancels the last one and crawls.
+      node.scrollLeft += event.deltaY * (event.deltaMode === 1 ? 40 : 2.5);
     };
     update();
     node.addEventListener("scroll", onScroll, { passive: true });

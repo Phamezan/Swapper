@@ -257,18 +257,18 @@ body { background: #0b0b0d; }
 .fa-rune-page { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .fa-rune-tree > strong { display: block; margin-bottom: 14px; color: var(--text-primary); font-size: 13px; font-weight: 700; text-align: center; letter-spacing: .04em; }
 .fa-rune-tree > .fa-picker { width: 100%; min-height: 32px; margin-bottom: 12px; padding: 5px 8px; font-size: 12px; }
-.fa-rune-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 12px; }
-.fa-frame .fa-rune-row > button { width: 32px; height: 32px; min-width: 0; padding: 0; border: 1px solid transparent; border-radius: 50%; background: rgb(11 11 13 / .6); opacity: .32; filter: grayscale(1); }
+.fa-rune-row { display: flex; justify-content: center; gap: 14px; margin-bottom: 14px; }
+.fa-frame .fa-rune-row > button { width: 44px; height: 44px; min-width: 0; padding: 0; border: 1px solid transparent; border-radius: 50%; background: rgb(11 11 13 / .6); opacity: .32; filter: grayscale(1); }
 .fa-frame .fa-rune-row > button:not(:disabled):hover { opacity: .75; filter: none; }
 .fa-frame .fa-rune-row > button:disabled { cursor: default; opacity: .3; }
 .fa-frame .fa-rune-row > button.is-chosen, .fa-frame .fa-rune-row > button.is-chosen:disabled { opacity: 1; filter: none; border-color: var(--fa-gold); background: rgb(240 198 116 / .12); }
-.fa-rune-row img, .fa-rune-row .rune-icon-fallback { display: block; width: 30px; height: 30px; }
-.fa-rune-row:first-of-type > button { width: 40px; height: 40px; }
-.fa-rune-row:first-of-type img { width: 38px; height: 38px; }
+.fa-rune-row img, .fa-rune-row .rune-icon-fallback { display: block; width: 42px; height: 42px; }
+.fa-rune-row:first-of-type > button { width: 56px; height: 56px; }
+.fa-rune-row:first-of-type img { width: 54px; height: 54px; }
 .fa-shards { margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--fa-line); }
 .fa-shards .fa-rune-row { margin-bottom: 7px; }
-.fa-frame .fa-shards .fa-rune-row > button { width: 24px; height: 24px; }
-.fa-shards img { width: 22px; height: 22px; }
+.fa-frame .fa-shards .fa-rune-row > button { width: 30px; height: 30px; }
+.fa-shards img { width: 28px; height: 28px; }
 .fa-rune-fallback img { display: inline-block; width: 30px; height: 30px; }
 .fa-spells { display: flex; gap: 14px; margin-bottom: 26px; }
 .fa-spells > span { position: relative; }
@@ -435,10 +435,10 @@ body { background: #0b0b0d; }
   .fa-build-grid > div { padding: 18px; }
   .fa-rune-page { gap: 10px; }
   .fa-rune-row { gap: 6px; }
-  .fa-frame .fa-rune-row > button { width: 27px; height: 27px; }
-  .fa-rune-row img { width: 25px; height: 25px; }
-  .fa-rune-row:first-of-type > button { width: 32px; height: 32px; }
-  .fa-rune-row:first-of-type img { width: 30px; height: 30px; }
+  .fa-frame .fa-rune-row > button { width: 36px; height: 36px; }
+  .fa-rune-row img { width: 34px; height: 34px; }
+  .fa-rune-row:first-of-type > button { width: 46px; height: 46px; }
+  .fa-rune-row:first-of-type img { width: 44px; height: 44px; }
   .fa-stat-strip strong { font-size: 26px; }
   .fa-settings-layout { grid-template-columns: 170px minmax(0, 1fr); gap: 22px; }
   .fa-overlay-grid, .fa-pro-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
