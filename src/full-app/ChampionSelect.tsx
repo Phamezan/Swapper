@@ -17,6 +17,9 @@ import { NearViewport } from "./NearViewport";
 import { LockIn, PickSuggestions } from "./ChampionSelectPicks";
 import { enemyLaner, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
 import { Picker, RankPicker, RolePicker } from "./Picker";
+import { PageHeader } from "./ui/PageHeader";
+import { Notice, Skeleton } from "./ui/States";
+import { fmtCount } from "./ui/format";
 import "./champ-select.css";
 
 /** Planning mode before your pick is locked in (suggestions large, build
@@ -76,13 +79,13 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const championName = view?.championName || names.get(view?.championId ?? 0) || "";
 
   return <div className="fa-draft-page dash-scope">
-    <header className="page-heading cs-page-heading"><div><h1>Champion select</h1><p>{mode === "build" ? "Runes, spells and items for your locked-in champion." : mode === "planning" ? "Live picks, bans and recommendations for your lane." : "Your next draft appears here."}</p></div><span className={`fa-status-pill${mode !== "idle" ? " is-live" : ""}`}>{mode === "build" ? "Locked in" : mode === "planning" ? "Live draft" : "Waiting for draft"}</span></header>
-    {props.error && <p className="fa-notice" role="alert">{props.error}</p>}{error && <p className="fa-notice" role="alert">{error}</p>}
+    <PageHeader title="Champion select" actions={<span className={`fa-status-pill${mode !== "idle" ? " is-live" : ""}`}>{mode === "build" ? "Locked in" : mode === "planning" ? "Live draft" : "Waiting for draft"}</span>} />
+    {props.error && <Notice tone="error">{props.error}</Notice>}{error && <Notice tone="error">{error}</Notice>}
     {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting to champion select…" : "Waiting for game to start"}</h2><div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section> : <>
       <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyId={enemyId} small={mode === "build"} />
       <div className="fa-draft-controls cs-toolbar">
         <h2>{championName || "Choose your champion"}{enemyName && <small> vs {enemyName}</small>}</h2>
-        {matchup?.stats && <span className="cs-matchup-chip" title={`${matchup.stats.games.toLocaleString()} games`}>{fmtPct(matchup.stats.winPct)} in this lane</span>}
+        {matchup?.stats && <span className="cs-matchup-chip" title={`${fmtCount(matchup.stats.games)} games`}>{fmtPct(matchup.stats.winPct)} in this lane</span>}
         <RolePicker value={role} onChange={changeRole} /><RankPicker value={view.tier} onChange={props.onTierChange} />
         {mode === "build" && (["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
       </div>
@@ -94,7 +97,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
           autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
         {enemyId > 0 && <CooldownSheet championId={enemyId} />}
       </>}
-      {props.shopNotice && <p className="fa-notice" role="status">{props.shopNotice.message}</p>}
+      {props.shopNotice && <Notice>{props.shopNotice.message}</Notice>}
     </>}
   </div>;
 }
@@ -109,7 +112,7 @@ function BuildPreview({ championId, name, build: value }: { championId: number; 
     <LockIn championId={championId} name={name} />
     <div className="cs-preview-body">
     {!championId ? <p>Hover a champion to preview its runes, spells and core items. The full build opens when you lock in.</p>
-      : !value ? <p role="status">Loading build…</p> : <>
+      : !value ? <Skeleton label="Loading build" rows={4} /> : <>
         {value.runes && <div className="cs-preview-row"><small>Runes</small><span>{[value.runes.keystone, ...value.runes.primaryRunes, ...value.runes.secondaryRunes].map(id => <RuneIcon key={id} id={id} mode="desktop" />)}</span></div>}
         <div className="cs-preview-row"><small>Spells</small><span>{value.spells.map((id, index) => <SpellIcon key={index} id={id} mode="desktop" />)}</span></div>
         <div className="cs-preview-row"><small>Core <b>{fmtPct(value.items.coreWinPct)}</b></small><span>{value.items.items.slice(0, value.items.coreLen || 3).map((item, index) => <ItemIcon key={`${item.id}-${index}`} {...item} mode="desktop" />)}</span></div>

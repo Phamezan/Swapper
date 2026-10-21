@@ -1,0 +1,58 @@
+/* Shared Fullsized App components (see README.md). Tokens: --ui-* in theme.css.
+   Static paint only: no backdrop-filter and no looping animation here, because
+   these render inside scrolling pages and repeat in lists. */
+
+/* ---------- Page header: one row, ~40px ---------- */
+.ui-page-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 40px; margin: 0 0 18px; }
+.ui-page-title { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.ui-page-title h1 { margin: 0; overflow: hidden; color: var(--ui-text-1); font-size: 24px; font-weight: 750; letter-spacing: -.03em; line-height: 1.2; white-space: nowrap; text-overflow: ellipsis; }
+.ui-crumbs { display: flex; align-items: center; gap: 6px; flex: none; color: var(--ui-text-3); }
+.ui-crumbs > span, .ui-crumbs > button { color: var(--ui-text-2); font: inherit; font-size: 15px; font-weight: 550; }
+.ui-crumbs > button { padding: 4px 6px; margin: 0 -6px; border: 0; border-radius: var(--ui-radius-xs); background: transparent; cursor: pointer; transition: background-color var(--ui-fast) var(--ui-ease), color var(--ui-fast) var(--ui-ease); }
+.ui-crumbs > button:hover { background: var(--ui-hover); color: var(--ui-text-1); }
+.ui-page-actions { display: flex; align-items: center; gap: 10px; flex: none; color: var(--ui-text-3); font-size: var(--ui-caption); }
+
+/* ---------- Cards and sections (G4) ---------- */
+.ui-card { border: 1px solid; border-color: var(--ui-line-2) var(--ui-line-1) var(--ui-line-1); border-radius: var(--ui-radius-md); background: var(--ui-card-fill); box-shadow: var(--ui-elev-1); }
+.ui-card.is-raised { box-shadow: var(--ui-elev-2); border-top-color: var(--ui-line-3); }
+.ui-well { border: 1px solid var(--ui-line-1); border-radius: var(--ui-radius-sm); background: rgb(255 255 255 / .025); }
+.ui-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.ui-section-head > :first-child { margin: 0; color: var(--ui-text-1); font-size: 16px; font-weight: 650; letter-spacing: -.01em; }
+.ui-section-head > small { color: var(--ui-text-3); font-size: var(--ui-caption); }
+
+/* ---------- Interaction (G7) ---------- */
+.ui-row, .ui-lift { transition: background-color var(--ui-fast) var(--ui-ease), border-color var(--ui-fast) var(--ui-ease), box-shadow var(--ui-base) var(--ui-ease), transform var(--ui-base) var(--ui-ease); }
+.ui-row { cursor: pointer; }
+.ui-row:hover { background-color: var(--ui-hover); }
+.ui-row:active { background-color: var(--ui-press); }
+.ui-lift:hover { transform: translateY(-2px); border-color: var(--ui-line-3); box-shadow: var(--ui-elev-2); }
+.ui-lift:active { transform: translateY(0); }
+:is(.ui-row, .ui-lift):focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+
+/* ---------- Slot: item / spell / rune / champion frame (G5) ---------- */
+.ui-slot { --slot: 28px; position: relative; display: inline-grid; place-items: center; flex: none; width: var(--slot); height: var(--slot); overflow: hidden; border: 1px solid var(--ui-line-2); border-radius: max(4px, calc(var(--slot) * .2)); background: linear-gradient(180deg, rgb(255 255 255 / .05), rgb(255 255 255 / .015)), var(--ui-surface-0); box-shadow: var(--ui-inner-hi); }
+.ui-slot > img, .ui-slot > span { display: block; width: 100%; height: 100%; border: 0; border-radius: 0; object-fit: cover; background: none; }
+/* Empty: a framed, recessed square, not a black hole. */
+.ui-slot.is-empty { border-color: var(--ui-line-1); background: rgb(255 255 255 / .025); box-shadow: inset 0 1px 3px rgb(0 0 0 / .35); }
+.ui-slot.is-rune { border-radius: 50%; border-color: transparent; background: rgb(0 0 0 / .3); box-shadow: none; }
+.ui-slot.is-rune > img { object-fit: contain; }
+.ui-slot.is-trinket { border-radius: 50%; }
+
+/* ---------- States (G6) ---------- */
+.ui-skeleton { display: grid; gap: 8px; }
+.ui-skeleton > span { height: var(--row, 44px); border-radius: var(--ui-radius-sm); background: linear-gradient(90deg, rgb(255 255 255 / .045), rgb(255 255 255 / .075) 50%, rgb(255 255 255 / .045)); }
+.ui-skeleton > span:nth-child(3n + 2) { width: 86%; }
+.ui-skeleton > span:nth-child(3n) { width: 64%; }
+.ui-empty { display: grid; justify-items: center; gap: 8px; padding: 64px 24px; text-align: center; }
+.ui-empty-icon { display: grid; place-items: center; margin-bottom: 6px; padding: 14px; border: 1px solid var(--ui-brand-line); border-radius: var(--ui-radius-md); background: var(--ui-brand-tint); color: var(--ui-brand); }
+.ui-empty h2 { margin: 0; color: var(--ui-text-1); font-size: var(--ui-title); font-weight: 700; letter-spacing: -.02em; }
+.ui-empty p { max-width: 460px; margin: 0; color: var(--ui-text-2); font-size: var(--ui-label); line-height: 1.55; }
+.ui-notice { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; padding: 10px 14px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: rgb(255 255 255 / .035); color: var(--ui-text-2); font-size: var(--ui-label); line-height: 1.45; }
+.ui-notice > svg { flex: none; color: var(--ui-champ); }
+.ui-notice > span { flex: 1; min-width: 0; }
+.ui-notice.is-warn { border-color: rgb(229 180 92 / .3); background: rgb(229 180 92 / .07); }
+.ui-notice.is-warn > svg { color: var(--ui-warn); }
+.ui-notice.is-error { border-color: rgb(239 143 137 / .35); background: rgb(239 143 137 / .07); color: var(--ui-text-1); }
+.ui-notice.is-error > svg { color: var(--ui-loss); }
+
+@media (prefers-reduced-motion: reduce) { .ui-row, .ui-lift { transition: none; } .ui-lift:hover { transform: none; } }

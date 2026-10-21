@@ -14,6 +14,9 @@ import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "
 import { NearViewport } from "./NearViewport";
 import { Picker } from "./Picker";
 import { mergeProPage, proVariant, type BuildVariant as Variant } from "./champ-select-pro";
+import { Slot } from "./ui/Slot";
+import { Notice, Skeleton } from "./ui/States";
+import { fmtCount } from "./ui/format";
 import "./champ-select.css";
 
 export type RuneCatalog = { trees: RuneTree[]; shards: RuneRow[] };
@@ -129,7 +132,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   return <div className="fa-build-section cs-build-browser">
     <aside className="cs-build-list" aria-label="Browse builds">
       <h3>Builds</h3><div className="cs-build-entries">{variants.map((variant, index) => <button disabled={!!busy} key={variant.label} aria-pressed={!pro && index === variantIndex} onClick={() => showTab(index)}>
-        <strong>{variant.label}</strong><small>{variant.games.toLocaleString()} games <b>{fmtPct(variant.winPct)}</b></small>
+        <strong>{variant.label}</strong><small>{fmtCount(variant.games)} games <b>{fmtPct(variant.winPct)}</b></small>
         <NearViewport className="cs-build-icons">{variant.selection && <RuneIcon id={variant.selection.keystone} mode="desktop" />}{variant.items.items.slice(0, 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</NearViewport>
       </button>)}</div>
       <h3>Pro builds <small>Recent matches</small></h3>
@@ -141,7 +144,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       </button>)}</div>
       {pros?.stale && <CachedBadge stale updatedAt={pros.updatedAt} />}
       {proError && <p role="alert">{proError}</p>}
-      {proLoading ? <p role="status">Loading pro builds…</p> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
+      {proLoading ? <Skeleton label="Loading pro builds" rows={3} height={52} /> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
         : pros && !pros.matches.length ? <p>No recent pro builds for this role.</p> : pros?.hasMore ? <button className="fa-text-button cs-load-pros" onClick={() => void loadPros(pros.page + 1)}>Load more</button> : null}</>}
     </aside>
     <div className="cs-build-content">
@@ -154,15 +157,15 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       {autoApply && <label className="cs-auto-apply">Auto-apply<Switch aria-label="Auto-apply runes" checked={autoApply.checked} disabled={autoApply.disabled} onCheckedChange={autoApply.onChange} /></label>}
       <button className="fa-primary" disabled={!!busy || allDone || !(ready.runes || ready.spells || ready.items)} onClick={() => void apply("all")}><Check size={16} />{busy === "all" ? "Applying…" : allDone ? "All applied" : "Apply all"}</button>
     </div>
-    {notice && <p className="fa-notice" role="status">{notice}</p>}
+    {notice && <Notice>{notice}</Notice>}
     <section className="fa-card fa-build-grid cs-build-grid">
       <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom rune page" : "Rune page"}</h4>{custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{chosenSelection && [chosenSelection.keystone, ...chosenSelection.primaryRunes, ...chosenSelection.secondaryRunes, ...chosenSelection.shards].map((id, index) => <RuneIcon key={index} id={id} mode="desktop" />)}</div>}</div>
       <div className="fa-item-area"><h4>Item build</h4>
-        <h5>Starting items</h5><div className="fa-item-line">{chosen.items.starters.map(item => <span className="fa-item-stack" key={item.id}><ItemIcon {...item} mode="desktop" />{item.count > 1 && <b>×{item.count}</b>}</span>)}{!chosen.items.starters.length && <small>Not reported</small>}</div>
-        {boots.length > 0 && <><h5>Boots</h5><div className="fa-item-line">{boots.map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</div></>}
-        <h5>Core path <small>{pro ? "Played in this match" : `${fmtPct(chosen.items.coreWinPct)} · ${chosen.items.coreGames.toLocaleString()} games`}</small></h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<ItemIcon {...item} mode="desktop" /></span>)}</div>
-        <h5>Later items <small>{pro ? "Completed in this match" : "Popular choices for each slot"}</small></h5><div className="fa-item-line">{chosen.items.items.slice(chosen.items.coreLen || 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</div>
-        {chosen.items.options.length > 0 && <><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <span key={`${item.id}-${item.slot}`} title={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${item.games.toLocaleString()} games`}><ItemIcon {...item} mode="desktop" /></span>)}</div></>}
+        <h5>Starting items</h5><div className="fa-item-line">{chosen.items.starters.map(item => <span className="fa-item-stack" key={item.id}><Slot kind="item" id={item.id} label={item.name} size={38} />{item.count > 1 && <b>×{item.count}</b>}</span>)}{!chosen.items.starters.length && <small>Not reported</small>}</div>
+        {boots.length > 0 && <><h5>Boots</h5><div className="fa-item-line">{boots.map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={38} />)}</div></>}
+        <h5>Core path <small>{pro ? "Played in this match" : `${fmtPct(chosen.items.coreWinPct)} · ${fmtCount(chosen.items.coreGames)} games`}</small></h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<Slot kind="item" id={item.id} label={item.name} size={48} /></span>)}</div>
+        <h5>Later items <small>{pro ? "Completed in this match" : "Popular choices for each slot"}</small></h5><div className="fa-item-line">{chosen.items.items.slice(chosen.items.coreLen || 3).map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={38} />)}</div>
+        {chosen.items.options.length > 0 && <><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <span key={`${item.id}-${item.slot}`} title={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${fmtCount(item.games)} games`}><Slot kind="item" id={item.id} size={38} /></span>)}</div></>}
         {chosen.items.stale && <CachedBadge stale updatedAt={chosen.items.updatedAt} />}
       </div>
       <div className="fa-spell-area cs-skill-area"><div><h4>Summoner spells</h4><div className="fa-spells">{chosenSpells.map((id, index) => <span key={index}><SpellIcon id={id} mode="desktop" /><kbd>{index ? "F" : "D"}</kbd></span>)}</div></div>

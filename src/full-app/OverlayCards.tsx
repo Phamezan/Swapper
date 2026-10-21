@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Switch } from "../components/ui/switch";
 import { Picker } from "./Picker";
+import { Skeleton } from "./ui/States";
 
 type Settings = { enabled: boolean; gold: boolean; objectives: boolean; skills: boolean; goldHotkey: number };
 const widgets = [
@@ -27,7 +28,7 @@ export function OverlayCards() {
   }
   return <div className="fa-overlay-settings">
     {error && <p role="alert">{error}</p>}
-    {!settings ? <p role="status">Loading overlay settings…</p> : <>
+    {!settings ? <Skeleton label="Loading overlay settings" rows={3} height={64} /> : <>
       <div className="setting-row"><div className="setting-copy"><strong>In-game overlay</strong><p>Use Borderless or Windowed mode in League’s video settings.</p></div><Switch aria-label="In-game overlay" checked={settings.enabled} disabled={busy} onCheckedChange={enabled => void update({ enabled })} /></div>
       <div className="fa-overlay-grid">{widgets.map(widget => <article className="fa-overlay-card" key={widget.key}>
         <div className={`fa-overlay-preview is-${widget.key}`}><img src="/overlay-fixture.png" alt={`${widget.title} preview from Swapper's native overlay fixture`} loading="lazy" /><small>PREVIEW</small></div>

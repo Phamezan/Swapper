@@ -28,7 +28,7 @@ Move away from the current blue/navy-dominant appearance toward a neutral, graph
 
 Green should function as a recognizable brand accent, not a decorative glow applied everywhere.
 
-Avoid large blue gradients, cyan-tinted backgrounds, purple ambient lighting, or excessive neon effects.
+Avoid large blue gradients, cyan-tinted backgrounds, purple ambient lighting, or excessive neon effects. The only ambient light is a faint graphite glow with a hint of brand green in one corner (see §4a).
 
 The interface should still feel premium when all artwork is temporarily removed.
 
@@ -72,15 +72,27 @@ Avoid introducing a separate visual theme for each feature.
 
 **Cards**
 - Subtle surface separation and borders.
-- Minimal elevation and shadows.
-- No unnecessary nested containers.
-- Use gradients only when they improve depth or artwork readability.
+- Three elevation levels (card, raised/hero, popover); shadows stay soft and layered.
+- No unnecessary nested containers; a card inside a card is a flat "well", never a second shadow.
+- Gradients follow §4a: soft top-light fills and hairlines, artwork scrims, brand green only on accents.
 
 **Typography**
 - Modern, highly legible sans-serif.
 - Strong contrast between headings, values, labels, and metadata.
 - Avoid decorative gaming fonts.
 - Numbers should be particularly easy to scan.
+
+**Translucency and gradients (§4a)**
+
+Subtle gradients and transparency are part of the premium feel, within these rules:
+
+- *Layered translucent chrome.* Title bar, sidebar, popovers, menus, the command palette and tooltips are frosted: a translucent fill (`--ui-chrome`, `--ui-popover`) with `backdrop-filter: var(--ui-blur)` (blur + saturate) over the frame's ambient backdrop.
+- *Ambient canvas.* The frame is graphite with a very soft brand-green light in the top-left corner; the page canvas is a slightly translucent inset sheet over it. No blue or purple ambient light.
+- *Cards.* Semi-transparent fill that is a few percent lighter at the top (`--ui-card-fill`), a 1px inner top highlight, a hairline brighter on top than at the sides and bottom, and a layered shadow per elevation (`--ui-elev-1..3`).
+- *Accents.* The brand-green gradient (`--ui-brand-gradient`) only on primary buttons, the active nav item and key highlights such as the LP bar.
+- *Performance.* `backdrop-filter` only on fixed chrome and transient popovers, never on list rows, cards inside scroll containers or anything repeated. Gradients are static; nothing animates a gradient or loops. The WebView runs with `--disable-gpu`, so this is a hard rule.
+
+Tokens live in `src/theme.css` (`--ui-*`); the shared components are listed in `src/full-app/ui/README.md`.
 
 **Icons**
 - Consistent line icon family.
@@ -124,11 +136,11 @@ A successful interaction should feel deliberate and satisfying rather than flash
 ## 7. What to Avoid
 
 - Generic dark-blue SaaS dashboard aesthetics.
-- Excessive glassmorphism and neon gaming effects.
+- Glassmorphism beyond §4a (frosted content cards, blur on anything that scrolls) and neon gaming effects.
 - Making the UI resemble a League of Legends client skin.
 - Copying DPM's visual identity directly.
 - Excessively dense grids of identical metric cards.
-- Overusing gradients to create artificial depth.
+- Gradients beyond §4a: no animated gradients, no colourful backgrounds, brand green only on accents.
 - Introducing additional UI libraries purely for visual decoration.
 - Reworking existing functionality or navigation without a clear usability benefit.
 

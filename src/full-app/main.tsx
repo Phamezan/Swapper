@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
@@ -19,6 +19,8 @@ import "./full-app.css";
 import { AccountCards } from "./AccountCards";
 import { SettingsPage } from "./SettingsPage";
 import { ChampionSelect } from "./ChampionSelect";
+import { PageHeader } from "./ui/PageHeader";
+import { EmptyState, Notice, Skeleton } from "./ui/States";
 
 const Champions = lazy(() => import("./Champions"));
 const LiveGame = lazy(() => import("./LiveGame"));
@@ -36,12 +38,8 @@ const groups: { label: string; items: [Location, typeof LayoutDashboard][] }[] =
   { label: "Swapper", items: [["Accounts", Users], ["Settings", Settings]] },
 ];
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
-const subtitles: Record<Exclude<Page, MatchLocation>, string> = {
-  Dashboard: "Your recent Summoner’s Rift games, rank and form",
-  "Live Game": "Everyone in your current game: rank, recent form and live stats",
-  "Tier list & Builds": "The strongest picks per role and rank, with builds and counters",
-  Matchups: "How your champion fares into a lane opponent",
-};
+// Apex tiers have no division and no 100 LP ceiling, so no progress bar.
+const apexTiers = new Set(["MASTER", "GRANDMASTER", "CHALLENGER"]);
 
 function App() {
   const visitedMatches = useRef(new Map<number, Game>());
@@ -91,8 +89,11 @@ function App() {
     go(history.stack[index]);
   };
 
+  const [view, setView] = useState<DashboardView | null>(null);
+  const signedIn = view && !view.stale ? view.snapshot?.summoner.riotId ?? null : null;
   const bridge = useMemo<FullAppBridge>(() => ({
     request,
+    signedIn,
     Accounts: AccountCards,
     Settings: SettingsPage,
     Runes: ChampionSelect,
@@ -109,9 +110,8 @@ function App() {
       returnTo.current = null;
       if (back && currentRef.current === "Champion select") go(back === "Champion select" ? "Accounts" : back);
     },
-  }), [request, go]);
+  }), [request, go, signedIn]);
 
-  const [view, setView] = useState<DashboardView | null>(null);
   const [region, setRegion] = useState<string | null>(null);
   const [accounts, setAccounts] = useState<AppState | null>(null);
   const [phase, setPhase] = useState("");
@@ -161,6 +161,7 @@ function App() {
   const matchId = page.startsWith("Match:") ? Number(page.slice(6)) : null;
   const selectedMatch = matchId == null ? null : visitedMatches.current.get(matchId) ?? snapshot?.games.find(game => game.id === matchId);
   const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? "League Client");
+  const lpBar = rank && !apexTiers.has(rank.tier) ? Math.max(0, Math.min(100, rank.lp)) : null;
   return <div className="fa-frame">
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
@@ -182,27 +183,28 @@ function App() {
           <span className="profile-copy">
             <strong><span className="riot-name">{gameName}</span><span className="riot-tag">{tag}</span></strong>
             <small>{rank && <RankCrest tier={crestSlug(rank.tier)} size={16} mode="desktop" />}{rank ? `${titleCase(rank.tier)} ${rank.division} · ${rank.lp} LP` : snapshot ? "Unranked" : "Not signed in"}</small>
+            {lpBar != null && <span className="profile-lp" role="img" aria-label={`${rank!.lp} of 100 LP to the next division`}><i style={{ "--lp": `${lpBar}%` } as CSSProperties} /></span>}
           </span>
         </button>
       </aside>
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
-        <header className="page-heading">
-          <div><h1>{matchId != null ? "Match detail" : page}</h1><p>{matchId != null ? "The full story of your Rift game" : subtitles[page as keyof typeof subtitles]}</p></div>
-          {page === "Dashboard" && snapshot && <small className="updated">{view?.stale ? "Showing saved stats" : `Updated ${fmtAgoShort(snapshot.fetchedAt)}`}</small>}
-        </header>
-        {view?.stale && page === "Dashboard" && <div className="notice" role="status">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</div>}
-        {error && <div className="notice" role="alert">{error}</div>}
+        {selectedMatch ? <PageHeader crumbs={[{ label: "Dashboard", onClick: () => go("Dashboard") }]}
+            title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
+          : <PageHeader title={matchId != null ? "Match detail" : page}
+            actions={page === "Dashboard" && snapshot && <small className="updated">{view?.stale ? "Showing saved stats" : `Updated ${fmtAgoShort(snapshot.fetchedAt)}`}</small>} />}
+        {view?.stale && page === "Dashboard" && <Notice tone="warn">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</Notice>}
+        {error && <Notice tone="error">{error}</Notice>}
         {page === "Dashboard"
           ? snapshot ? <Dashboard snapshot={snapshot} region={region} accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null}
               cards={view?.cards ?? {}} phase={phase} busy={false} onOpenLive={() => go(LIVE_PAGE)}
               onSwitch={id => { setPage("app"); setRequest({ view: "accounts", switchId: id }); }}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { visitedMatches.current.set(game.id, game); go(`Match:${game.id}`); }} />
-            : <section className="empty"><BrandIcon size={52} /><h2>{loading ? "Connecting to League Client…" : "Sign in to League Client"}</h2><p>Your recent Rift games and Solo/Duo rank appear here once League Client is open.</p></section>
-          : selectedMatch ? <Suspense fallback={<p role="status" className="loading-line">Loading match details…</p>}><MatchDetail key={selectedMatch.id} game={selectedMatch} names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => go("Dashboard")} /></Suspense>
-          : page === "Live Game" ? <Suspense fallback={<p role="status" className="loading-line">Loading Live Game…</p>}><LiveGame championNames={championNames} /></Suspense>
-          : <Suspense fallback={<p role="status" className="loading-line">Loading champion tools…</p>}>
+            : <EmptyState icon={<BrandIcon size={40} />} title={loading ? "Connecting to League Client…" : "Sign in to League Client"}>Your recent Rift games and Solo/Duo rank appear here once League Client is open.</EmptyState>
+          : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={selectedMatch.id} game={selectedMatch} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
+          : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
+          : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page} matchups={page === "Matchups"} focus={page === "Matchups" ? null : focus} />
             </Suspense>}
       </main>}

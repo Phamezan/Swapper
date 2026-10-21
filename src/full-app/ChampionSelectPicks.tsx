@@ -5,6 +5,8 @@ import { fmtPct, type ChampionCountersView, type TierListView } from "../runes/t
 import type { RecommendedPick } from "./types";
 import { ChampionArt } from "./MatchupStrip";
 import { NearViewport } from "./NearViewport";
+import { Notice, Skeleton } from "./ui/States";
+import { fmtCount } from "./ui/format";
 import { allChampions, counterPicks, defaultTab, recommendedSuggestions, searchChampions, type Suggestion, type SuggestionTab } from "./champ-select-model";
 
 type Loaded = { key: string; picks: Suggestion[] | null; message: string };
@@ -69,10 +71,10 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, enemyCount, ta
         <div className="fa-seg" role="group" aria-label="Suggestions">{TABS.map(([value, label]) => <button key={value} aria-pressed={tab === value && !query} onClick={() => { setChosenTab(value); setQuery(""); }}>{label}{value === "counters" && enemyCount > 0 && <span className="cs-tab-badge" title={`${enemyCount} enemy ${enemyCount === 1 ? "pick" : "picks"} revealed`}>{enemyCount}</span>}</button>)}</div>
       </div>
     </div>
-    {notice && <p className="fa-notice" role="alert">{notice}</p>}
+    {notice && <Notice tone="error">{notice}</Notice>}
     {query.trim() ? !found.length ? <p className="fa-panel-empty">No champion matches "{query.trim()}".</p>
       : <div className="cs-pick-grid">{found.map(pick => <PickCard key={pick.championId} pick={pick} hovered={hovered} pending={pending} onHover={hover} />)}</div>
-      : !loaded || loaded.key !== key ? <p className="fa-panel-empty" role="status">Loading suggestions…</p>
+      : !loaded || loaded.key !== key ? <Skeleton label="Loading suggestions" rows={3} height={64} />
       : !picks.length ? <p className="fa-panel-empty">{loaded.message || "No suggestions for this role and rank."}</p>
       : <div className="cs-pick-grid">{picks.map(pick => <PickCard key={pick.championId} pick={pick} hovered={hovered} pending={pending} onHover={hover} />)}</div>}
   </section>;
@@ -83,9 +85,9 @@ type Card = Partial<Suggestion> & { championId: number; name: string };
 function PickCard({ pick, hovered, pending, onHover }: { pick: Card; hovered: number; pending: number; onHover: (id: number) => void }) {
   const stats = pick.winPct != null && !Number.isNaN(pick.winPct) && !!pick.games;
   return <button className="cs-pick" aria-pressed={pick.championId === hovered} disabled={!!pending} onClick={() => onHover(pick.championId)}
-    title={stats ? `${pick.name}: ${fmtPct(pick.winPct!)} over ${pick.games!.toLocaleString()} games` : pick.name}>
+    title={stats ? `${pick.name}: ${fmtPct(pick.winPct!)} over ${fmtCount(pick.games!)} games` : pick.name}>
     <NearViewport className="cs-pick-art"><ChampionArt id={pick.championId} name={pick.name} kind="loading" /></NearViewport>
-    <span className="cs-pick-copy"><strong>{pick.name}</strong>{stats && <><b>{fmtPct(pick.winPct!)} <small>WR</small></b><small>{pick.games!.toLocaleString()} games</small></>}{pick.flex && <span className="cs-flex">Flex</span>}</span>
+    <span className="cs-pick-copy"><strong>{pick.name}</strong>{stats && <><b>{fmtPct(pick.winPct!)} <small>WR</small></b><small>{fmtCount(pick.games!)} games</small></>}{pick.flex && <span className="cs-flex">Flex</span>}</span>
     {pick.championId === pending && <span className="cs-pick-state">Hovering…</span>}
     {pick.championId === hovered && pending !== pick.championId && <span className="cs-pick-state">Hovered</span>}
   </button>;
@@ -106,6 +108,6 @@ export function LockIn({ championId, name }: { championId: number; name: string 
   return <div className="cs-lock">
     {confirming ? <><span>Lock in <strong>{name}</strong>? You cannot change it afterwards.</span><div><button className="fa-secondary" onClick={() => setConfirming(false)}>Cancel</button><button className="fa-primary" disabled={busy} onClick={() => void lock()}><LockKeyhole size={14} />{busy ? "Locking…" : "Confirm"}</button></div></>
       : <><span>{championId ? <>Ready to play <strong>{name}</strong>?</> : "Choose a champion to lock in."}</span><div><button className="fa-primary" disabled={!championId} onClick={() => setConfirming(true)}><LockKeyhole size={14} />Lock in</button></div></>}
-    {notice && <p className="fa-notice" role="alert">{notice}</p>}
+    {notice && <Notice tone="error">{notice}</Notice>}
   </div>;
 }

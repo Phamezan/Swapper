@@ -41,3 +41,80 @@
   --stat-ban: #f2a19d;
   --focus: #ffffff;
 }
+
+/* ---------- Swapper UI tokens (one vocabulary for every Fullsized App page) ----------
+   New names only: the flyout keeps reading the --surface-* / --text-* set above,
+   and the Fullsized App maps its older --fa-* and shadcn names onto these
+   (full-app.css). See src/full-app/ui/README.md and docs/visual-identity.md. */
+:root {
+  /* Surfaces, darkest to brightest: frame, canvas, card, raised. */
+  --ui-surface-0: #0b0b0d;
+  --ui-surface-1: #131316;
+  --ui-surface-2: #19191d;
+  --ui-surface-3: #202025;
+  --ui-surface-hover: #28282e;
+  /* Translucent variants: chrome and popovers sit on a blurred backdrop, cards on the ambient canvas. */
+  --ui-chrome: rgb(13 13 16 / .72);
+  --ui-popover: rgb(30 30 35 / .84);
+  --ui-card: rgb(27 27 31 / .78);
+  --ui-card-top: rgb(36 36 41 / .82);
+  --ui-scrim: rgb(11 11 13 / .62);
+  --ui-well: rgb(8 8 10 / .45);
+  /* Lines and highlights */
+  --ui-line-1: rgb(255 255 255 / .07);
+  --ui-line-2: rgb(255 255 255 / .11);
+  --ui-line-3: rgb(255 255 255 / .18);
+  --ui-highlight: rgb(255 255 255 / .06);
+  /* Text: primary, secondary, muted (muted still passes 4.5:1 on cards). */
+  --ui-text-1: #f2f2f4;
+  --ui-text-2: #b6b6be;
+  --ui-text-3: #8d8d97;
+  /* Brand */
+  --ui-brand: #c5e39e;
+  --ui-brand-strong: #d6eeb5;
+  --ui-brand-ink: #15200d;
+  --ui-brand-tint: rgb(197 227 158 / .12);
+  --ui-brand-line: rgb(197 227 158 / .45);
+  --ui-brand-gradient: linear-gradient(180deg, #d4eeae, #b3d886);
+  --ui-brand-gradient-hover: linear-gradient(180deg, #e0f5c3, #c2e299);
+  /* Semantic and data */
+  --ui-win: #5fcfb4;
+  --ui-loss: #ef8f89;
+  --ui-warn: #e5b45c;
+  --ui-gold: #e9c27a;
+  --ui-champ: #a9bfd8;
+  --ui-tier-splus: #f0b45a;
+  --ui-tier-s: #b98cff;
+  --ui-tier-a: #6fd29a;
+  --ui-tier-b: #74a9ff;
+  --ui-tier-c: #9aaec4;
+  --ui-tier-d: #e08f8a;
+  /* Geometry */
+  --ui-radius-xs: 6px;
+  --ui-radius-sm: 8px;
+  --ui-radius-md: 12px;
+  --ui-radius-lg: 16px;
+  /* Elevation: 1 cards, 2 raised cards and heroes, 3 popovers and menus. */
+  --ui-inner-hi: inset 0 1px 0 var(--ui-highlight);
+  --ui-elev-1: var(--ui-inner-hi), 0 1px 2px rgb(0 0 0 / .3), 0 8px 20px -14px rgb(0 0 0 / .7);
+  --ui-elev-2: var(--ui-inner-hi), 0 2px 4px rgb(0 0 0 / .3), 0 16px 32px -18px rgb(0 0 0 / .85);
+  --ui-elev-3: var(--ui-inner-hi), 0 4px 10px rgb(0 0 0 / .35), 0 24px 60px -12px rgb(0 0 0 / .7);
+  /* Fills: a few % lighter at the top; the hairline is brighter at the top too. */
+  --ui-card-fill: linear-gradient(180deg, var(--ui-card-top), var(--ui-card) 140px);
+  --ui-card-edge: linear-gradient(180deg, rgb(255 255 255 / .12), rgb(255 255 255 / .05) 60%);
+  /* Blur: fixed chrome and popovers only, never inside scrolling content. */
+  --ui-blur: blur(18px) saturate(1.4);
+  /* Motion */
+  --ui-fast: 120ms;
+  --ui-base: 180ms;
+  --ui-ease: cubic-bezier(.2, .7, .2, 1);
+  --ui-hover: rgb(255 255 255 / .05);
+  --ui-press: rgb(255 255 255 / .08);
+  --ui-focus: 0 0 0 2px var(--ui-surface-1), 0 0 0 4px var(--ui-brand);
+  /* Type scale (readable text never below 12px). */
+  --ui-display: 30px;
+  --ui-title: 20px;
+  --ui-body: 14.5px;
+  --ui-label: 13px;
+  --ui-caption: 12px;
+}

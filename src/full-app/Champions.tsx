@@ -13,6 +13,8 @@ import { TIER_OPTIONS, fmtPct, tierClass } from "../runes/types";
 import type { ChampionOption, ChampionOverviewView, ChampionCountersView, TierListView, TierRow, MatchupView } from "../runes/types";
 import { useChampionArt } from "./art";
 import { autoRows, mainRoles, ROLES, type AutoRow } from "./championsModel";
+import { Notice, Skeleton } from "./ui/States";
+import { fmtCount } from "./ui/format";
 import "../runes/runes.css";
 
 const lanes = [["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const;
@@ -120,31 +122,31 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
         <ChampionPicker label="Opponent" value={enemy} champions={champions.filter(c => c.id !== selected?.id)} onChange={setEnemy} />
       </> : !selected && <label className="search-pill"><Search size={14} aria-hidden /><input placeholder="Search champion" aria-label="Search champion" value={query} onChange={e => setQuery(e.target.value)} /></label>}
     </div>
-    {error && <p className="notice" role="alert">{error}</p>}
+    {error && <Notice tone="error">{error}</Notice>}
     {selected && <section className="selected-champion">
       <ChampionHeader champion={selected} lane={role} tier={tier} onBack={() => setSelected(null)} backLabel={matchups ? "Clear champion" : "Back to tier list"} patch={overview?.stats?.patch}>{inHeader && filters}</ChampionHeader>
       {matchups && enemy > 0 && enemy !== selected.id && (detail ? <section className="matchup-banner" aria-label="Matchup">
         <div className="matchup-heading"><span className="matchup-portraits"><ChampionIcon id={selected.id} name={selected.name} mode="desktop" /><b>VS</b><ChampionIcon id={enemy} name={detail.enemyName} mode="desktop" /></span><div className="matchup-title"><strong>{selected.name} vs {detail.enemyName}</strong><small>{laneLabel(role)} · {tierLabel(tier)}</small></div></div>
-        {detail.stats ? <div className="matchup-stat-tiles"><div><small>Your win rate</small><div><strong>{fmtPct(detail.stats.winPct)}</strong><span className={detail.stats.delta >= 0 ? "up" : "down"}> {detail.stats.delta >= 0 ? "+" : ""}{detail.stats.delta.toFixed(1)} vs average</span></div></div><div><small>{detail.stats.games.toLocaleString()} matchup games</small><div><strong>{fmtPct(detail.stats.avgWinPct)}</strong><span> champion average</span></div></div></div> : <p>Not enough games for this matchup yet.</p>}
+        {detail.stats ? <div className="matchup-stat-tiles"><div><small>Your win rate</small><div><strong>{fmtPct(detail.stats.winPct)}</strong><span className={detail.stats.delta >= 0 ? "up" : "down"}> {detail.stats.delta >= 0 ? "+" : ""}{detail.stats.delta.toFixed(1)} vs average</span></div></div><div><small>{fmtCount(detail.stats.games)} matchup games</small><div><strong>{fmtPct(detail.stats.avgWinPct)}</strong><span> champion average</span></div></div></div> : <p>Not enough games for this matchup yet.</p>}
         <p className="runes-note">{detail.fallback ? "General build: the matchup sample is missing or too small." : "Recommended build for this matchup"}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly />
-      </section> : <p role="status" className="loading-line">Loading matchup…</p>)}
+      </section> : <Skeleton label="Loading matchup" rows={2} height={72} />)}
       {loading && !overview ? <TableSkeleton /> : overview?.stats ? <>
         <div className={`fa-stat-strip ${tierClass(overview.stats.tier ?? "")}`}>
           <div><strong className="fa-tier-big">{overview.stats.tier ?? "–"}</strong><small>Tier</small></div>
           <div><strong>{overview.stats.rank ?? "–"}{overview.stats.rank ? <i> / {overview.stats.rankTotal}</i> : null}</strong><small>Lane rank</small></div>
           {([["Win rate", overview.stats.winPct], ["Pick rate", overview.stats.pickPct], ["Ban rate", overview.stats.banPct]] as const).map(([label, value]) => <div key={label}><strong><StatPct value={value} /></strong><small>{label}</small></div>)}
-          <div><strong>{overview.stats.games.toLocaleString()}</strong><small>Games</small></div>
+          <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
         </div>
-      </> : <p className="notice">No statistics available for this role and rank.</p>}
+      </> : <Notice>No statistics available for this role and rank.</Notice>}
       <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} />
       {counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
       <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={setEnemy} />
-      {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${detail.stats.games.toLocaleString()} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
+      {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${fmtCount(detail.stats.games)} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
     </section>}
     {!selected && (matchups ? <section className="empty"><h2>Pick your lane matchup</h2><p>Choose your champion and an opponent to see the matchup win rate, build and counters.</p></section> : <>
       {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map(row => <button className="fa-featured-pick" key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>Leading {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b></span></button>)}</div>}
       {list?.stale && <CachedBadge stale updatedAt={list.updatedAt} />}
-      {list?.unavailable ? <p className="notice">The tier list is unavailable right now. Try another role or rank.</p> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
+      {list?.unavailable ? <Notice tone="warn">The tier list is unavailable right now. Try another role or rank.</Notice> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
         <table className="tier-table">
           <thead><tr>{columns.map(([key, label]) => <th key={label} aria-sort={key && key === sort ? (key === "rank" ? "ascending" : "descending") : undefined}>
             {key ? <button className={key === sort ? "is-sorted" : undefined} onClick={() => setSort(key)}>{label}</button> : label}</th>)}</tr></thead>
@@ -166,7 +168,7 @@ function TierLine({ row, rank, lane, average, onOpen }: { row: TierRow; rank: nu
     <td className="col-wr"><strong>{fmtPct(row.winPct)}</strong><small className={delta >= 0 ? "up" : "down"} title="Compared with this role’s average">{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></td>
     <td className="col-num">{fmtPct(row.pickPct)}</td>
     <td className="col-num ban">{fmtPct(row.banPct)}</td>
-    <td className="col-num muted">{row.games.toLocaleString()}</td>
+    <td className="col-num muted">{fmtCount(row.games)}</td>
   </tr>;
 }
 

@@ -1,5 +1,4 @@
 .md-page { display: grid; gap: 16px; min-width: 0; font-variant-numeric: tabular-nums; }
-.fa-frame .md-back { display: inline-flex; align-items: center; gap: 7px; justify-self: start; padding: 0; font-size: 12px; }
 .md-header { border: 1px solid var(--fa-line-2); border-top: 2px solid var(--fa-win); border-radius: var(--fa-radius-sm); background: var(--fa-panel); overflow: hidden; }
 .md-header.is-loss { border-top-color: var(--fa-loss); }
 .md-header-main { display: flex; align-items: center; gap: 13px; padding: 22px 24px; }
@@ -43,7 +42,7 @@
 .md-placement { text-align: center; font-size: 10px; color: var(--text-muted); }
 .md-placement.is-best { color: var(--fa-gold); font-weight: 700; }
 .md-items { display: flex; flex-wrap: wrap; gap: 2px; }
-.md-items img, .md-items .item-icon-fallback { width: 23px; height: 23px; border-radius: 3px; }
+.md-items .ui-slot { --slot: 23px; border-radius: 4px; }
 .md-items > :last-child { margin-left: 3px; }
 .md-kda, .md-farm { display: grid; gap: 4px; }
 .md-kda strong, .md-farm strong { font-size: 12px; font-weight: 600; }
@@ -71,4 +70,4 @@
 .md-extra strong { font-size: 13px; font-weight: 550; }
 .md-extra small { font-size: 10px; }
 .md-rank-note { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
-@media (max-width: 1350px) { .md-scoreboard { grid-template-columns: 30px 36px 16px 18px minmax(115px, 1fr) 105px 112px 49px 80px 34px; gap: 7px; } .md-items img, .md-items .item-icon-fallback { width: 22px; height: 22px; } .md-objectives { gap: 7px; } }
+@media (max-width: 1350px) { .md-scoreboard { grid-template-columns: 30px 36px 16px 18px minmax(115px, 1fr) 105px 112px 49px 80px 34px; gap: 7px; } .md-items .ui-slot { --slot: 22px; } .md-objectives { gap: 7px; } }

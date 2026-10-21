@@ -3,6 +3,7 @@ import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ArrowRight, Check, MoreHorizontal, Plus, ShieldCheck, Wrench } from "lucide-react";
 import type { Account } from "../App";
+import { Notice } from "./ui/States";
 
 export type AccountCardsProps = {
   accounts: Account[]; activeId: string | null; switchingId: string | null; repairableId: string | null; busy: boolean;
@@ -16,7 +17,7 @@ export function AccountCards(props: AccountCardsProps) {
     catch (reason) { props.onError(reason); }
   };
   return <div className="fa-accounts dash-scope">
-    {notice && <p className="fa-notice" role="status">{notice}</p>}
+    {notice && <Notice>{notice}</Notice>}
     <div className="fa-launcher-intro"><span><ShieldCheck size={20} /> Saved sessions</span><p>Pick an account. Swapper takes care of the sign-in.</p><small>{props.accounts.length} saved · {props.activeId ? "1 active" : "No active session"}</small></div>
     <div className="fa-account-grid">{props.accounts.map(account => {
       const active = props.activeId === account.id;

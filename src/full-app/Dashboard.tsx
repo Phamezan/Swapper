@@ -3,7 +3,6 @@ import { invoke, isTauri } from "@tauri-apps/api/core";
 import { ChevronRight } from "lucide-react";
 import type { Account } from "../App";
 import { ChampionIcon } from "../runes/ChampionIcon";
-import { ItemIcon } from "../runes/ItemIcon";
 import { RankCrest } from "../runes/RankCrest";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RuneIcon } from "../runes/RuneIcon";
@@ -12,6 +11,8 @@ import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
 import { benchKey, defaultQueue, formatStat, insights, MIN_COMPARED, opponent, tierLabel, tiles, tone, type WinRecord } from "./dashboardModel";
 import type { AccountCard, Bench, Game, Snapshot } from "./types";
+import { Slot } from "./ui/Slot";
+import { fmtCompact } from "./ui/format";
 export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
 const roleLabels: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 
@@ -46,8 +47,8 @@ function useSeen<T extends Element>() {
 }
 
 const pct = (wins: number, games: number) => (games ? Math.round(100 * wins / games) : 0);
-// Five-digit stats (damage) as 22.4k so the big tile number fits.
-const big = (value: number, digits: number, unit: string) => value >= 10000 ? `${(value / 1000).toFixed(1)}k` : formatStat(value, digits, unit);
+// Large stats (damage) as 22.4k so the big tile number fits.
+const big = (value: number, digits: number, unit: string) => value >= 1000 ? fmtCompact(value) : formatStat(value, digits, unit);
 const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 
 type Props = {
@@ -87,7 +88,7 @@ export function Dashboard(props: Props) {
         {!summary.champions.length ? <p className="panel-empty">Play a game to see champion results.</p> : <ul className="champ-perf">
           {summary.champions.map(c => {
             const total = c.wins + c.losses;
-            return <li key={c.id}><button onClick={() => onOpenChampion(c.id, name(c.id))} title={`Open ${name(c.id)} build`}>
+            return <li key={c.id}><button className="ui-row" onClick={() => onOpenChampion(c.id, name(c.id))} title={`Open ${name(c.id)} build`}>
               <ChampionIcon id={c.id} name={name(c.id)} mode="desktop" />
               <span className="champ-perf-copy"><strong>{name(c.id)}</strong><small>{c.kda.toFixed(2)} KDA · {total} {total === 1 ? "game" : "games"}</small></span>
               <span className="champ-perf-rate"><b className={pct(c.wins, total) >= 50 ? "up" : "down"}>{pct(c.wins, total)}%</b><small>{c.wins}W {c.losses}L</small><i style={{ "--rate": `${pct(c.wins, total)}%` } as CSSProperties} aria-hidden /></span>
@@ -224,7 +225,7 @@ function MatchRow({ game, name, onOpen }: { game: Game; name: (id: number) => st
     </div>
     <div className="match-items" aria-label="Items">
       {!game.items.length ? <small>Refresh to load items</small>
-        : game.items.map((id, i) => seen ? <ItemIcon key={i} id={id} mode="desktop" className={i === 6 ? "is-trinket" : undefined} /> : <span key={i} className={i === 6 ? "is-trinket" : undefined} />)}
+        : game.items.map((id, i) => <Slot key={i} kind="item" id={id} pending={!seen} className={i === 6 ? "is-trinket" : undefined} />)}
     </div>
     <div className={`placement${game.placement === 1 ? " is-mvp" : ""}`} title="Rank among all 10 players by KDA, damage, CS and vision">
       {game.placement ? <><b>#{game.placement}</b><small>{game.placement === 1 ? "MVP" : "place"}</small></> : <small>–</small>}

@@ -1,9 +1,7 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { ArrowLeft } from "lucide-react";
 import { ChampionIcon } from "../runes/ChampionIcon";
-import { ItemIcon } from "../runes/ItemIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { RankCrest } from "../runes/RankCrest";
@@ -11,14 +9,17 @@ import { fmtAgo } from "../runes/types";
 import { crestSlug, queueLabels, splitRiotId, titleCase } from "./Dashboard";
 import { percent, placementLabel, teamTotals } from "./MatchDetailModel";
 import type { Game, MatchDetailPlayer as Player, MatchDetailView, Snapshot } from "./types";
+import { Slot } from "./ui/Slot";
+import { Notice, Skeleton } from "./ui/States";
+import { fmtCompact, fmtCount } from "./ui/format";
 import "./MatchDetail.css";
 
-const stat = (value: number | null | undefined, digits = 0) => value == null ? "–" : value.toLocaleString("en-US", { maximumFractionDigits: digits, minimumFractionDigits: digits });
-const compact = (value: number | null | undefined) => value == null ? "–" : value >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value);
+const stat = (value: number | null | undefined, digits = 0) => value == null ? "–" : digits ? value.toFixed(digits) : fmtCount(value);
+const compact = (value: number | null | undefined) => value == null ? "–" : fmtCompact(value);
 const kda = (p: Player) => p.kills == null || p.deaths == null || p.assists == null ? null : (p.kills + p.assists) / Math.max(1, p.deaths);
 const participation = (p: Player, total: number | null) => percent(p.kills != null && p.assists != null ? p.kills + p.assists : null, total);
 
-export default function MatchDetail({ game, names, onBack }: { game: Game; names: Snapshot["championNames"]; onBack: () => void }) {
+export default function MatchDetail({ game, names }: { game: Game; names: Snapshot["championNames"] }) {
   const [detail, setDetail] = useState<MatchDetailView | null>(null);
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
@@ -47,7 +48,6 @@ export default function MatchDetail({ game, names, onBack }: { game: Game; names
     [stat(own?.vision), "Vision score"],
   ];
   return <div className="md-page">
-    <button className="fa-text-button md-back" onClick={onBack}><ArrowLeft size={15} />Back to Dashboard</button>
     <section className={`md-header ${match.win ? "is-win" : "is-loss"}`} aria-label="Your match performance">
       <div className="md-header-main"><div className="md-champion"><ChampionIcon id={match.championId} name={name(match.championId)} mode="desktop" /><b>{own?.level ?? match.level}</b></div>
         <div className="md-spells">{(own?.spells ?? match.spells).map((id, i) => <SpellIcon id={id} key={i} mode="desktop" />)}</div>
@@ -58,14 +58,14 @@ export default function MatchDetail({ game, names, onBack }: { game: Game; names
       </div>
       <div className="md-stat-strip">{stats.map(([value, label]) => <div key={label}><strong>{value}</strong><small>{label}</small></div>)}</div>
     </section>
-    {error ? <div className="fa-notice" role="alert">{error} <button className="fa-text-button" onClick={() => setAttempt(n => n + 1)}>Retry</button></div>
-      : !detail ? <p className="loading-line" role="status">Loading match details and player ranks…</p> : <>
+    {error ? <Notice tone="error" action={<button className="fa-text-button" onClick={() => setAttempt(n => n + 1)}>Retry</button>}>{error}</Notice>
+      : !detail ? <Skeleton label="Loading match details and player ranks" rows={5} height={66} /> : <>
         <div className="md-tabs" role="tablist" aria-label="Match views">{["Scoreboard", "Loadout", "Details"].map((label, index, tabs) => <button key={label} id={`md-tab-${label}`} role="tab" tabIndex={tab === label ? 0 : -1} aria-selected={tab === label} aria-controls="md-panel" onClick={() => setTab(label)} onKeyDown={event => {
           const next = event.key === "ArrowRight" ? (index + 1) % tabs.length : event.key === "ArrowLeft" ? (index + tabs.length - 1) % tabs.length : event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : null;
           if (next != null) { event.preventDefault(); setTab(tabs[next]); document.getElementById(`md-tab-${tabs[next]}`)?.focus(); }
         }}>{label}</button>)}</div>
-        {detail.players.some(p => !p.rankLoaded) && <p className="md-rank-note">{rankPending ? "Loading current Solo/Duo ranks…" : "Some current Solo/Duo ranks are unavailable. Available match statistics are shown below."}</p>}
-        {detail.players.length !== 10 && <p className="md-rank-note">League Client returned {detail.players.length} of 10 players for this match. Some team statistics and performance scores are unavailable.</p>}
+        {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading current Solo/Duo ranks…" : "Some current Solo/Duo ranks are unavailable. Available match statistics are shown below."}</Notice>}
+        {detail.players.length !== 10 && <Notice tone="warn">League Client returned {detail.players.length} of 10 players for this match. Some team statistics and performance scores are unavailable.</Notice>}
         <div id="md-panel" role="tabpanel" aria-labelledby={`md-tab-${tab}`}>
         {detail.teams.map(team => {
           const players = detail.players.filter(p => p.teamId === team.teamId);
@@ -100,7 +100,7 @@ export default function MatchDetail({ game, names, onBack }: { game: Game; names
 
 function Identity({ value }: { value: string }) { const [name, tag] = splitRiotId(value); return <>{name}<span className="riot-tag">{tag}</span></>; }
 function Rank({ player }: { player: Player }) { return <span className="md-rank" title="Current Solo/Duo rank">{player.rank ? <><RankCrest tier={crestSlug(player.rank.tier)} size={17} mode="desktop" />{titleCase(player.rank.tier)} {player.rank.division}</> : player.rankLoaded ? "Unranked" : "Rank unavailable"}</span>; }
-function Items({ ids }: { ids: number[] }) { return <div className="md-items" aria-label="Final items">{ids.map((id, i) => <ItemIcon id={id} key={i} mode="desktop" />)}</div>; }
+function Items({ ids }: { ids: number[] }) { return <div className="md-items" aria-label="Final items">{ids.map((id, i) => <Slot kind="item" id={id} key={i} className={i === 6 ? "is-trinket" : undefined} />)}</div>; }
 function Score({ value }: { value: number | null }) {
   return <span className={`md-score${value != null && value >= 70 ? " is-high" : ""}`} title="Performance score relative to the match" aria-label={`Performance score ${value == null ? "unavailable" : `${Math.round(value)} out of 100`}`}>
     <svg viewBox="0 0 40 40" aria-hidden><circle cx="20" cy="20" r="17" /><circle cx="20" cy="20" r="17" pathLength="100" strokeDasharray={`${value ?? 0} 100`} /></svg><b>{value == null ? "–" : Math.round(value)}</b>

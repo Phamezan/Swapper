@@ -22,6 +22,7 @@ import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionAp
 import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
 import { LiveGameCompact } from "./full-app/LiveGameCompact";
+import { PageHeader } from "./full-app/ui/PageHeader";
 import type { SettingsTab } from "./settings/SettingsView";
 import type { AccountCardsProps } from "./full-app/AccountCards";
 import "./App.css";
@@ -118,6 +119,9 @@ export type FullAppBridge = {
   Settings?: ComponentType<ComponentProps<typeof SettingsView>>;
   /** A new object navigates once, e.g. from the sidebar. */
   request: { view: View; switchId?: string } | null;
+  /** Riot ID League Client is signed in with (null when unknown), so the status
+   *  bar agrees with the Dashboard even when the login did not go through Swapper. */
+  signedIn?: string | null;
   onViewChange: (view: View) => void;
   onChampSelectChange: (active: boolean) => void;
 };
@@ -776,13 +780,19 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
   const matchingDetectedAccount = detectedPrompt ? savedWithRiotId(detectedPrompt) : null;
   const visibleDetectedPrompt = detectedPrompt && !matchingDetectedAccount ? detectedPrompt : null;
   const displayedActiveId = detectedPrompt ? null : data.activeId;
+  const pageTitle = view === "add" ? "Add account" : view === "settings" ? "Settings" : view === "edit" ? "Edit accounts" : view === "repair" ? "Repair account" : "Remove account";
   const footerUnsaved = Boolean(detectedPrompt && !matchingDetectedAccount);
+  // The saved account Swapper switched to, else whoever League Client reports
+  // (a login made outside Swapper is still a login).
+  const clientName = fullApp?.signedIn ? data.accounts.find((account) => account.riotId?.toLowerCase() === fullApp.signedIn!.toLowerCase())?.name ?? fullApp.signedIn.split("#")[0] : null;
   const footerText = footerUnsaved
     ? "Unsaved account detected"
     : active
       ? `Logged in as ${active.name}`
-      : "Not logged in";
-  const footerLoggedIn = !footerUnsaved && Boolean(active);
+      : clientName
+        ? `Signed in as ${clientName}`
+        : "Not logged in";
+  const footerLoggedIn = !footerUnsaved && Boolean(active || clientName);
   const conflictingSavedAccount = detect.phase === "found" && detect.savedAccountId === null
     ? savedWithRiotId(detect.identity) : null;
   const saveDetected = (identity: DetectedIdentity, key: string, after?: () => void) =>
@@ -879,10 +889,10 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
       <main className={`main-panel${view === "settings" ? " settings-panel" : ""}${toolsOpen ? " runes-panel-host" : ""}`}>
         {view === "accounts" ? (
           <>
-            <div className="panel-heading">
+            {fullApp ? <PageHeader title="Accounts" /> : <div className="panel-heading">
               <div><p className="eyebrow">{data.accounts.length === 0 ? "GET STARTED" : "READY TO PLAY"}</p><h1>Your accounts</h1></div>
               <button className="icon-button" aria-label="Settings" title="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings size={19} /></button>
-            </div>
+            </div>}
             {data.remote.lanReconnectNeeded && (
               <div className="reconnect-banner" role="status">
                 <CircleAlert size={16} />
@@ -998,10 +1008,10 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
           />
         ) : (
           <>
-            <div className="panel-heading compact">
+            {fullApp ? <PageHeader title={pageTitle} crumbs={view === "settings" ? undefined : [{ label: "Accounts", onClick: () => navigate("accounts") }]} /> : <div className="panel-heading compact">
               <button className="icon-button back-button" aria-label="Back to accounts" onClick={() => navigate("accounts")}><ArrowLeft size={17} /></button>
-              <div><p className="eyebrow">SWAPPER</p><h1>{view === "add" ? "Add account" : view === "settings" ? "Settings" : view === "edit" ? "Edit accounts" : view === "repair" ? "Repair account" : "Remove account"}</h1></div>
-            </div>
+              <div><p className="eyebrow">SWAPPER</p><h1>{pageTitle}</h1></div>
+            </div>}
 
             {view === "repair" && <RepairPanel
               account={data.accounts.find((account) => account.id === repairingId)}

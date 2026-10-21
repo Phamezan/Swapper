@@ -1,6 +1,7 @@
 // Dev-only preview of the Fullsized App (Dashboard, Tier list, Matchups, Live
 // Game) from fixtures with a mocked Tauri IPC: `npm run dev`, then open
-// /src/full-app/full-app-preview.html (?live=1 starts a fixture game). Art comes
+// /src/full-app/full-app-preview.html (?live=1 starts a fixture game; ?no-active
+// signs League Client in without a Swapper-tracked account). Art comes
 // from Data Dragon; names and Riot IDs are invented. Never part of the app build.
 import { mockIPC, mockWindows } from "@tauri-apps/api/mocks";
 import { emit } from "@tauri-apps/api/event";
@@ -53,7 +54,7 @@ const snapshot = {
 };
 const account = (id: string, name: string, icon: number) => ({ id, name, riotId: `${name}#DEMO`, nickname: null, platform: "EUW1", region: "EUW", profileIconId: icon, iconDataUrl: `${DD}/${VERSION}/img/profileicon/${icon}.png` });
 const state = {
-  accounts: [account("a", "Swapper Demo", 5367), account("b", "Alt Account", 4658), account("c", "Smurf Two", 29)], activeId: "a", isSwitching: false,
+  accounts: [account("a", "Swapper Demo", 5367), account("b", "Alt Account", 4658), account("c", "Smurf Two", 29)], activeId: new URLSearchParams(location.search).has("no-active") ? null : "a", isSwitching: false,
   useDeceive: false, riotExe: null, riotDetected: false, deceiveDetected: false, autoApplyTopPreset: false, runeTier: "emerald_plus",
   applySpellsWithRunes: true, importItemsWithRunes: true, hotkey: null, hotkeyActive: false, notificationsEnabled: true, readyCheckNotifications: true,
   koreanFont: false, ltkInstalled: false,

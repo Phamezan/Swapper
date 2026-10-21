@@ -4,18 +4,8 @@
    work: green for you (profile, accounts, wins of form), blue for champions.
    Element rules are scoped with :where(.dash-scope) (zero specificity) so the
    hosted flyout App and the shared runes components keep their own styles. */
+/* Tokens: --ui-* in theme.css, aliased as --fa-* in full-app.css. */
 .fa-frame {
-  --fa-frame: #09090b;
-  --fa-canvas: #101012;
-  --fa-panel: #17171a;
-  --fa-panel-2: #1e1e22;
-  --fa-line: #26262b;
-  --fa-line-2: #34343a;
-  --fa-you: var(--brand-green);
-  --fa-champ: var(--brand-champions);
-  --fa-win: var(--positive);
-  --fa-loss: var(--danger);
-  --fa-radius: 14px;
   height: 100vh;
   display: grid;
   grid-template-rows: 40px minmax(0, 1fr);
@@ -26,7 +16,7 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: #09090b; }
+body { margin: 0; background: var(--ui-surface-0); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .spin { animation: fa-spin 1s linear infinite; }
 @keyframes fa-spin { to { transform: rotate(360deg); } }
@@ -34,7 +24,7 @@ body { margin: 0; background: #09090b; }
 :where(.dash-scope) button, :where(.dash-scope) input, :where(.dash-scope) select { font: inherit; color: inherit; }
 :where(.dash-scope) button { cursor: pointer; }
 :where(.dash-scope) button:disabled { opacity: .45; cursor: default; }
-:where(.fa-frame) :focus-visible { outline: 2px solid var(--fa-champ); outline-offset: 2px; }
+:where(.fa-frame) :focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 :where(.dash-scope) small, :where(.dash-scope) p { color: var(--text-muted); }
 :where(.dash-scope) h1, :where(.dash-scope) h2, :where(.dash-scope) h3, :where(.dash-scope) p { margin: 0; }
 :where(.dash-scope) .up { color: var(--fa-win); }
@@ -148,14 +138,14 @@ body { margin: 0; background: #09090b; }
 .match-cs { display: grid; gap: 2px; }
 .match-cs strong { font-size: 13.5px; font-weight: 600; }
 .match-items { display: flex; gap: 3px; justify-self: end; }
-.match-items img, .match-items > span { width: 26px; height: 26px; border-radius: 6px; display: block; background: var(--fa-panel); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .04); }
+.match-items .ui-slot { --slot: 26px; border-radius: 6px; }
 .match-items .is-trinket { margin-left: 4px; border-radius: 50%; }
 .placement { justify-self: end; display: grid; justify-items: center; min-width: 44px; padding: 5px 6px; border-radius: 9px; background: var(--fa-panel); }
 .placement b { font-size: 14px; font-weight: 700; }
 .placement small { font-size: 10px; }
 .placement.is-mvp { background: color-mix(in srgb, var(--fa-you) 16%, transparent); color: var(--fa-you); }
 .placement.is-mvp small { color: var(--fa-you); }
-@media (max-width: 1240px) { .match-row { grid-template-columns: 84px 50px 46px 100px 62px 100px minmax(0, 1fr) 44px 24px; gap: 10px; } .match-items img, .match-items > span { width: 23px; height: 23px; } }
+@media (max-width: 1240px) { .match-row { grid-template-columns: 84px 50px 46px 100px 62px 100px minmax(0, 1fr) 44px 24px; gap: 10px; } .match-items .ui-slot { --slot: 23px; } }
 
 /* Side column */
 :where(.dash-scope) .rank-copy p { font-size: 12.5px; color: var(--text-secondary); }

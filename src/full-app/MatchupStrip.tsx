@@ -5,6 +5,8 @@ import { ChampionIcon } from "../runes/ChampionIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { fmtDelta, fmtPct, type ChampionCountersView, type DuoListView } from "../runes/types";
 import { useChampionArt } from "./art";
+import { Notice, Skeleton } from "./ui/States";
+import { fmtCount } from "./ui/format";
 import { artWindow, matchupRows, stripOrder } from "./buildLogic";
 
 export function ChampionArt({ id, name, kind = "tile" }: { id: number; name: string; kind?: "tile" | "loading" }) {
@@ -94,17 +96,17 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       <div ref={strip} className="fa-matchup-strip" role="list" aria-label={`Matchups as ${name}, best to worst. Use the arrow keys to move between opponents.`} onKeyDown={onKey}>
         {rows.map((row, index) => <div role="listitem" className={`fa-matchup-slot${index === flip && index > 0 ? " is-flip" : ""}${index === noisy && index > 0 ? " is-noisy" : ""}`} data-label={index === noisy && index > 0 ? "Small sample" : undefined} key={row.championId}>
           <button className={`fa-matchup-card${row.lowSample ? " is-low-sample" : ""} ${row.delta >= 0 ? "is-good" : "is-bad"}`} onClick={() => onPick(row.championId)}
-            title={`${row.name}: ${fmtPct(row.winPct)} win rate over ${row.games.toLocaleString()} games${row.lowSample ? " (small sample)" : ""}`}>
+            title={`${row.name}: ${fmtPct(row.winPct)} win rate over ${fmtCount(row.games)} games${row.lowSample ? " (small sample)" : ""}`}>
             <span className="fa-art-wrap">{near && index >= range[0] && index <= range[1] && <ChampionArt id={row.championId} name={row.name} />}</span>
-            <span className="fa-matchup-copy"><strong>{row.name}</strong><b className={row.delta >= 0 ? "up" : "down"}>{fmtDelta(row.delta)}<i>%</i></b><small>{row.games.toLocaleString()} games</small><span className="fa-lane-tag"><RoleIcon role={lane} size={12} mode="desktop" />{row.lowSample ? "Low sample" : laneName(lane)}</span></span>
+            <span className="fa-matchup-copy"><strong>{row.name}</strong><b className={row.delta >= 0 ? "up" : "down"}>{fmtDelta(row.delta)}<i>%</i></b><small>{fmtCount(row.games)} games</small><span className="fa-lane-tag"><RoleIcon role={lane} size={12} mode="desktop" />{row.lowSample ? "Low sample" : laneName(lane)}</span></span>
           </button>
         </div>)}
       </div>
-      {!rows.length && <p className="fa-panel-empty">{!counters ? "Loading matchups…" : q ? `No opponent matches “${query}”.` : "No matchup data for this role and rank."}</p>}
-    </> : <div className="fa-synergy-grid">{error && <p role="alert">{error}</p>}{!duos && !error && <p role="status">Loading bot-lane pairs…</p>}{duos && duos.rows.filter(row => row.adcId === championId || row.supportId === championId).map(row => {
+      {!rows.length && (!counters ? <Skeleton label="Loading matchups" rows={1} height={228} /> : <p className="fa-panel-empty">{q ? `No opponent matches “${query}”.` : "No matchup data for this role and rank."}</p>)}
+    </> : <div className="fa-synergy-grid">{error && <Notice tone="error">{error}</Notice>}{!duos && !error && <Skeleton label="Loading bot-lane pairs" rows={2} height={64} />}{duos && duos.rows.filter(row => row.adcId === championId || row.supportId === championId).map(row => {
       const id = row.adcId === championId ? row.supportId : row.adcId;
       const partner = row.adcId === championId ? row.supportName : row.adcName;
-      return <article className="fa-synergy" key={id}><ChampionIcon id={id} name={partner} mode="desktop" /><strong>{partner}</strong><b>{fmtPct(row.winPct)}</b><small>{row.games.toLocaleString()} games together</small></article>;
+      return <article className="fa-synergy" key={id}><ChampionIcon id={id} name={partner} mode="desktop" /><strong>{partner}</strong><b>{fmtPct(row.winPct)}</b><small>{fmtCount(row.games)} games together</small></article>;
     })}{duos && !duos.rows.some(row => row.adcId === championId || row.supportId === championId) && <p>No bot-lane pair data for this champion.</p>}</div>}
   </section>;
 }

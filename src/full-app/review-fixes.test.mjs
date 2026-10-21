@@ -5,6 +5,7 @@ import ts from "typescript";
 import * as runeTypes from "../runes/types.ts";
 import * as model from "./champ-select-model.ts";
 import * as buildLogic from "./buildLogic.ts";
+import * as format from "./ui/format.ts";
 import { fixtureView, fixtureDraft } from "./champ-select-fixtures.ts";
 
 // Execute the actual components with deterministic hooks and command/event boundaries.
@@ -50,7 +51,7 @@ function harness(file, exportName, commands = {}, visibility = "visible") {
     react: hooks, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke, isTauri: () => true },
     "@tauri-apps/api/event": { listen: async (name, fn) => { handlers.set(name, fn); return () => handlers.delete(name); } },
-    "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic,
+    "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./ui/format": format,
   };
   const code = ts.transpileModule(readFileSync(new URL(file, import.meta.url), "utf8"), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 },
