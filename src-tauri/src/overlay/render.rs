@@ -9,6 +9,7 @@ use windows_sys::Win32::Graphics::GdiPlus::{self as gp, *};
 use windows_sys::Win32::System::LibraryLoader::GetModuleHandleW;
 use windows_sys::Win32::UI::WindowsAndMessaging::*;
 
+use super::icons;
 use super::model::{DisplayData, Gold, Objective};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -462,7 +463,22 @@ impl Surface {
         };
         self.arc(ring_rect, 360.0, TRACK, 2.5 * s)?;
         self.arc(ring_rect, 360.0 * elapsed(objective), color, 2.5 * s)?;
-        self.text(ring_rect, &objective.label[..1], self.small, color)?;
+        let inset = ring * 0.12;
+        let mask = match objective.label {
+            "Baron" => &icons::BARON,
+            "Elder" => &icons::ELDER,
+            _ => &icons::DRAGON,
+        };
+        self.icon(
+            RectF {
+                X: ring_rect.X + inset,
+                Y: ring_rect.Y + inset,
+                Width: ring - 2.0 * inset,
+                Height: ring - 2.0 * inset,
+            },
+            mask,
+            color,
+        )?;
         let up = objective.seconds == 0;
         let label = if up {
             "UP".to_string()
@@ -563,6 +579,35 @@ impl Surface {
                 sweep,
             )
         })
+    }
+
+    /// Draws an alpha mask from `icons` tinted with `color`.
+    fn icon(&self, rect: RectF, mask: &[u8; icons::SIZE * icons::SIZE], color: u32) -> Result<(), String> {
+        let rgb = color & 0x00FF_FFFF;
+        let pixels: Vec<u32> = mask.iter().map(|alpha| (u32::from(*alpha) << 24) | rgb).collect();
+        unsafe {
+            let mut image = null_mut();
+            // PixelFormat32bppARGB (straight alpha); GDI+ premultiplies when drawing.
+            status(GdipCreateBitmapFromScan0(
+                icons::SIZE as i32,
+                icons::SIZE as i32,
+                icons::SIZE as i32 * 4,
+                0x0026_200A,
+                pixels.as_ptr().cast_mut().cast(),
+                &mut image,
+            ))?;
+            GdipSetInterpolationMode(self.graphics, InterpolationModeHighQualityBicubic);
+            let result = status(GdipDrawImageRect(
+                self.graphics,
+                image.cast(),
+                rect.X,
+                rect.Y,
+                rect.Width,
+                rect.Height,
+            ));
+            GdipDisposeImage(image.cast());
+            result
+        }
     }
 
     fn circle(&self, x: f32, y: f32, size: f32, color: u32) -> Result<(), String> {
@@ -713,12 +758,12 @@ fn widgets(width: i32, height: i32, data: &DisplayData) -> Vec<Widget> {
         ));
     }
     let (pill, gap) = (112.0 * s, 8.0 * s);
-    let start = (w - data.objectives.len() as f32 * (pill + gap) + gap) / 2.0;
+    let start = w - data.objectives.len() as f32 * (pill + gap) - 6.0 * s;
     for (i, objective) in data.objectives.iter().enumerate() {
         widgets.push(Widget::Objective(
             RectF {
                 X: start + i as f32 * (pill + gap),
-                Y: h * 0.055,
+                Y: h * 0.048,
                 Width: pill,
                 Height: 36.0 * s,
             },

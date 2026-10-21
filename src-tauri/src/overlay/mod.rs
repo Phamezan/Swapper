@@ -1,3 +1,4 @@
+mod icons;
 pub(crate) mod live_client;
 mod model;
 #[cfg(test)]
@@ -190,25 +191,46 @@ pub fn set_overlay_settings(
     Ok(settings)
 }
 
-fn read_priority(data: &Value, tier: &str) -> Option<String> {
+/// The active player's champion and lane ("" in practice tool), or `None` for
+/// champions whose rank systems need champion-specific rules. Never guess.
+fn priority_subject(data: &Value) -> Option<(String, String)> {
     let player = model::active_player(data)?;
     let champion = player["rawChampionName"]
         .as_str()
         .and_then(|name| name.strip_prefix("game_character_displayname_"))
         .or_else(|| player["championName"].as_str())?;
-    // Nonstandard rank systems need champion-specific rules. Never guess.
     if ["Aphelios", "Elise", "Jayce", "Karma", "Nidalee", "Udyr"]
         .iter()
         .any(|name| champion.eq_ignore_ascii_case(name))
     {
         return None;
     }
+    Some((champion.to_string(), player["position"].as_str().unwrap_or("").to_string()))
+}
+
+/// Skill priority from the build cache the champion pages already filled.
+fn read_priority(data: &Value, tier: &str) -> Option<String> {
+    let (champion, lane) = priority_subject(data)?;
     let path = crate::runes::cache::cache_path(crate::runes::provider::DataKind::ItemBuild)?;
     if std::fs::metadata(&path).ok()?.len() > 2 * 1024 * 1024 {
         return None;
     }
     let cache: Value = serde_json::from_slice(&std::fs::read(path).ok()?).ok()?;
-    model::cached_priority(&cache, champion, player["position"].as_str()?, tier)
+    model::cached_priority(&cache, &champion, &lane, tier)
+}
+
+/// One lolalytics request when the cache has nothing (practice tool, or a
+/// champion never opened): without a lane it answers for the champion's main lane.
+async fn fetch_priority(champion: String, lane: String, tier: String) -> Option<String> {
+    let slug = crate::runes::lolalytics::champion_slug(&champion)?;
+    let tier = crate::runes::lolalytics::tier_slug(&tier);
+    let lane = crate::runes::lolalytics::lane(&lane).map(|lane| format!("&lane={lane}")).unwrap_or_default();
+    let client = crate::runes::lolalytics::LolalyticsClient::new().ok()?;
+    let body = client
+        .page(format!("https://a1.lolalytics.com/mega/?ep=build-full&v=1&c={slug}{lane}&tier={tier}&queue=ranked&region=all"))
+        .await
+        .ok()?;
+    model::fetched_priority(&serde_json::from_str(&body).ok()?)
 }
 
 fn display(
@@ -268,6 +290,7 @@ async fn run(
     let mut data = None;
     let mut priority = None;
     let mut read_cache = false;
+    let mut lookup: Option<tokio::task::JoinHandle<Option<String>>> = None;
     let mut prepared = model::DisplayData::default();
     let mut dirty = true;
     let mut renderer: Option<render::Renderer> = None;
@@ -325,6 +348,9 @@ async fn run(
                 data = None;
                 priority = None;
                 read_cache = false;
+                if let Some(task) = lookup.take() {
+                    task.abort();
+                }
                 allowed = false;
                 checked_scope = false;
                 ended = false;
@@ -412,8 +438,17 @@ async fn run(
                         .unwrap_or_else(|| tier.clone());
                     priority = read_priority(current, &current_tier);
                     read_cache = true;
+                    if priority.is_none() {
+                        if let Some((champion, lane)) = priority_subject(current) {
+                            lookup = Some(tokio::spawn(fetch_priority(champion, lane, current_tier)));
+                        }
+                    }
                 }
             }
+        }
+        if lookup.as_ref().is_some_and(|task| task.is_finished()) {
+            priority = lookup.take().unwrap().await.ok().flatten();
+            dirty = true;
         }
         // 20 Hz state sampling while a game process exists. No global hook,
         // key capture or swallowing; no bitmap work unless visible data changes.

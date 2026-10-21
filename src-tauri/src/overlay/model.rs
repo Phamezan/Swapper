@@ -263,6 +263,14 @@ pub fn cached_priority(cache: &Value, champion: &str, lane: &str, tier: &str) ->
         .map(str::to_owned)
 }
 
+/// lolalytics `build-full`'s most picked skill priority ("QWE").
+pub fn fetched_priority(root: &Value) -> Option<String> {
+    let id = root["summary"]["pick"]["skillpriority"]["id"].as_str()?.to_ascii_uppercase();
+    let mut keys: Vec<char> = id.chars().collect();
+    keys.sort_unstable();
+    (keys == ['E', 'Q', 'W']).then_some(id)
+}
+
 /// Summoner's Rift normal, ranked and quickplay games, plus practice tool so the
 /// overlay can be tried without a real game.
 pub fn supported_session(session: &Value) -> bool {
@@ -418,6 +426,15 @@ mod tests {
         assert!(supported(&data));
         data["gameData"]["gameMode"] = json!("ARAM");
         assert!(!supported(&data));
+    }
+
+    #[test]
+    fn fetched_priority_accepts_only_a_full_qwe_order() {
+        let root = |id: &str| json!({"summary":{"pick":{"skillpriority":{"id":id}}}});
+        assert_eq!(fetched_priority(&root("QWE")).as_deref(), Some("QWE"));
+        assert_eq!(fetched_priority(&root("ewq")).as_deref(), Some("EWQ"));
+        assert_eq!(fetched_priority(&root("QQE")), None);
+        assert_eq!(fetched_priority(&json!({})), None);
     }
 
     #[test]
