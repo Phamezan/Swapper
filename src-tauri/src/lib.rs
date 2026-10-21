@@ -1419,6 +1419,7 @@ pub fn run() {
                 }
             });
             runes::spawn_watch(app.handle().clone());
+            lifecycle::spawn_session_refresh(app.handle().clone());
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;

@@ -192,43 +192,50 @@ fn launch_selected(config: &Config, bundled_deceive: &Path) -> Result<(), String
     }
 }
 
-/// Decides whether the active account's saved session snapshot may be
-/// overwritten with the live Riot session.
-///
-/// Must run while Riot Client is still alive, before `stop_clients`.
-///
-/// * `Ok(Some(identity))` — the live PUUID matches the saved account, so the
-///   refresh is safe.
-/// * `Ok(None)` — identity cannot be verified (no live session, no active
-///   account, or Riot Client is unavailable). The refresh must be
-///   skipped; saved sessions are never overwritten blind.
-/// * `Err` — the live login belongs to a different account. The caller must
-///   stop before touching any saved session.
+/// A live API identity is authoritative; a captured session subject is the
+/// fallback when Riot Client cannot identify a login. Unknown ownership skips.
 fn verified_live_identity(
     config: &Config,
     detection: &Detection,
-) -> Result<Option<DetectedIdentity>, String> {
-    let Some(active_id) = config.active_id else {
-        return Ok(None);
+    snapshot: Option<&vault::Snapshot>,
+) -> Result<bool, String> {
+    let Some(active) = config
+        .active_id
+        .and_then(|id| config.accounts.iter().find(|a| a.id == id))
+    else {
+        return Ok(false);
     };
-    if !vault::live_session_exists()? {
-        return Ok(None);
-    }
-    let Detection::Identified(identity) = detection else {
-        return Ok(None);
-    };
-    let Some(active) = config.accounts.iter().find(|a| a.id == active_id) else {
-        return Ok(None);
-    };
-    // A pre-PUUID vault cannot prove which Riot login created it. Leave it
-    // untouched until the user saves a newly identified account separately.
     if active.puuid.is_none() {
-        return Ok(None);
+        return Ok(false);
     }
-    if !identity_safe_for(active, identity) {
+    let safe = match detection {
+        Detection::Identified(identity) => identity_safe_for(active, identity),
+        _ => {
+            let Some(puuid) = snapshot.and_then(vault::Snapshot::puuid) else {
+                return Ok(false);
+            };
+            active.puuid.as_deref() == Some(puuid.as_str())
+        }
+    };
+    if !safe {
         return Err(mismatch_message(active));
     }
-    Ok(Some(identity.clone()))
+    Ok(true)
+}
+
+/// Refuse an ownership mismatch before stopping any clients. Closed clients
+/// have no API identity, so inspect a capture without modifying the live files.
+fn verify_before_stop(config: &Config, detection: &Detection) -> Result<(), String> {
+    if config.active_id.is_none() || !vault::live_session_exists()? {
+        return Ok(());
+    }
+    let snapshot = if matches!(detection, Detection::Identified(_)) {
+        None
+    } else {
+        Some(vault::capture()?)
+    };
+    verified_live_identity(config, detection, snapshot.as_ref())?;
+    Ok(())
 }
 
 /// Pure policy for `verified_live_identity`: may `identity` be written into
@@ -247,54 +254,54 @@ fn mismatch_message(account: &Account) -> String {
     )
 }
 
-/// Overwrites the active account's saved session with the live session, but
-/// only when `verified` carries a live identity that already passed
-/// `verified_live_identity`. When identity could not be verified the saved
-/// session is left untouched.
-fn refresh_active(
-    config: &mut Config,
-    verified: Option<&DetectedIdentity>,
-) -> Result<(), String> {
-    refresh_active_with_snapshot(config, verified, None)
+/// Refresh through one save path, verifying ownership against the capture that
+/// will actually be saved. Returns false when ownership cannot be established.
+pub(crate) fn refresh_active(config: &mut Config, detection: &Detection) -> Result<bool, String> {
+    refresh_active_with_snapshot(config, detection, None)
 }
 
-/// Variant of `refresh_active` that reuses an already-captured live snapshot
-/// (e.g. from the rollback capture pass) instead of reading the disk a second time.
 fn refresh_active_with_snapshot(
     config: &mut Config,
-    verified: Option<&DetectedIdentity>,
+    detection: &Detection,
     snapshot: Option<&vault::Snapshot>,
-) -> Result<(), String> {
-    let (Some(active), Some(identity)) = (config.active_id, verified) else {
-        return Ok(());
-    };
-    if !vault::live_session_exists()? {
-        return Ok(());
+) -> Result<bool, String> {
+    if config.active_id.is_none() {
+        return Ok(false);
     }
     let owned;
     let fresh = match snapshot {
         Some(s) => s,
         None => {
+            if !vault::live_session_exists()? {
+                return Ok(false);
+            }
             owned = vault::capture()?;
             &owned
         }
     };
+    if !verified_live_identity(config, detection, Some(fresh))? {
+        return Ok(false);
+    }
+    let active = config.active_id.unwrap();
+    let index = config
+        .accounts
+        .iter()
+        .position(|a| a.id == active)
+        .ok_or("Active account is missing from Swapper settings")?;
     let new_vault = vault::save_snapshot(fresh)?;
-    let Some(index) = config.accounts.iter().position(|a| a.id == active) else {
-        vault::remove_snapshot(new_vault)?;
-        return Err("Active account is missing from Swapper settings".into());
-    };
     let previous = config.accounts[index].clone();
     let old_vault = previous.vault_id;
-    identity::apply_identity(&mut config.accounts[index], identity);
+    if let Detection::Identified(identity) = detection {
+        identity::apply_identity(&mut config.accounts[index], identity);
+    }
     config.accounts[index].vault_id = new_vault;
     if let Err(e) = vault::save(config) {
         config.accounts[index] = previous;
-        vault::remove_snapshot(new_vault)?;
+        let _ = vault::remove_snapshot(new_vault);
         return Err(e);
     }
     let _ = vault::remove_snapshot(old_vault);
-    Ok(())
+    Ok(true)
 }
 
 pub fn open_riot(config: &Config) -> Result<(), String> {
@@ -310,9 +317,9 @@ pub fn begin_add(config: &mut Config, detection: &Detection) -> Result<(), Strin
     let riot = riot_path(config).ok_or("Riot Client was not found. Set its path in Settings.")?;
     // Verify the live identity while Riot Client is still running, so a
     // manual Riot login change can never corrupt the active account's vault.
-    let verified = verified_live_identity(config, detection)?;
+    verify_before_stop(config, detection)?;
     stop_clients().map_err(|error| error.message())?;
-    refresh_active(config, verified.as_ref())?;
+    refresh_active(config, detection)?;
     vault::clear_live()?;
     let previous_active = config.active_id;
     config.active_id = None;
@@ -472,7 +479,7 @@ pub fn switch_account(
     }
     // Verify the live identity before Riot Client is closed, so a manual
     // Riot login change can never overwrite another account's saved session.
-    let verified = verified_live_identity(config, detection)?;
+    verify_before_stop(config, detection)?;
     let pre_ms = t_pre.elapsed();
 
     let t_stop = Instant::now();
@@ -485,7 +492,7 @@ pub fn switch_account(
     } else {
         None
     };
-    refresh_active_with_snapshot(config, verified.as_ref(), previous.as_ref())?;
+    refresh_active_with_snapshot(config, detection, previous.as_ref())?;
     let capture_ms = t_capture.elapsed();
 
     let t_restore = Instant::now();
@@ -624,8 +631,104 @@ pub fn save_settings(
 }
 
 #[cfg(test)]
-mod tests {
+pub(crate) mod tests {
     use super::*;
+
+    pub(crate) fn session_fixture(root: &Path) -> (Config, vault::Snapshot) {
+        let puuid = "00000000-0000-0000-0000-000000000001";
+        let active = account(Some(puuid));
+        let mut config = Config {
+            active_id: Some(active.id),
+            accounts: vec![active],
+            ..Config::default()
+        };
+        config.accounts[0].vault_id =
+            vault::save_snapshot(&vault::Snapshot { entries: vec![] }).unwrap();
+        let bytes = vault::test_session_yaml(puuid);
+        let path = root.join("Riot Games/Riot Client/Data/RiotGamesPrivateSettings.yaml");
+        std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+        std::fs::write(path, &bytes).unwrap();
+        let snapshot = vault::Snapshot {
+            entries: vec![vault::Entry {
+                relative: "client/private.yaml".into(),
+                bytes,
+            }],
+        };
+        (config, snapshot)
+    }
+
+    #[test]
+    fn closed_client_refresh_saves_matching_snapshot() {
+        vault::with_test_data(|root| {
+            let (mut config, snapshot) = session_fixture(root);
+            let old = config.accounts[0].vault_id;
+            refresh_active_with_snapshot(&mut config, &Detection::NotRunning, Some(&snapshot))
+                .unwrap();
+            assert_ne!(config.accounts[0].vault_id, old);
+            let saved = vault::read_snapshot(config.accounts[0].vault_id).unwrap();
+            assert_eq!(saved.entries[0].bytes, snapshot.entries[0].bytes);
+            assert_eq!(config.accounts[0].game_name.as_deref(), Some("Example"));
+        });
+    }
+
+    #[test]
+    fn closed_client_refresh_refuses_different_and_skips_unreadable_subject() {
+        vault::with_test_data(|root| {
+            let (mut config, mut snapshot) = session_fixture(root);
+            let old = config.accounts[0].vault_id;
+            config.accounts[0].puuid = Some("00000000-0000-0000-0000-000000000002".into());
+            assert!(refresh_active_with_snapshot(
+                &mut config,
+                &Detection::NotRunning,
+                Some(&snapshot)
+            )
+            .is_err());
+            assert_eq!(config.accounts[0].vault_id, old);
+            snapshot.entries[0].bytes = b"unreadable: [yaml".to_vec();
+            refresh_active_with_snapshot(&mut config, &Detection::NotRunning, Some(&snapshot))
+                .unwrap();
+            assert_eq!(config.accounts[0].vault_id, old);
+        });
+    }
+
+    #[test]
+    fn live_identity_remains_authoritative_and_legacy_accounts_stay_untouched() {
+        vault::with_test_data(|root| {
+            let (mut config, snapshot) = session_fixture(root);
+            let old = config.accounts[0].vault_id;
+            let mismatch = Detection::Identified(identity("00000000-0000-0000-0000-000000000002"));
+            assert!(refresh_active_with_snapshot(&mut config, &mismatch, Some(&snapshot)).is_err());
+            assert_eq!(config.accounts[0].vault_id, old);
+            let matching =
+                Detection::Identified(identity(config.accounts[0].puuid.as_deref().unwrap()));
+            let unreadable = vault::Snapshot { entries: vec![] };
+            assert!(verified_live_identity(&config, &matching, Some(&unreadable)).unwrap());
+            for detection in [Detection::NotReady, Detection::Unavailable] {
+                assert!(verified_live_identity(&config, &detection, Some(&snapshot)).unwrap());
+            }
+            config.accounts[0].puuid = None;
+            assert!(!refresh_active_with_snapshot(
+                &mut config,
+                &Detection::NotRunning,
+                Some(&snapshot)
+            )
+            .unwrap());
+            assert!(
+                !refresh_active_with_snapshot(&mut config, &matching, Some(&snapshot)).unwrap()
+            );
+            assert_eq!(config.accounts[0].vault_id, old);
+        });
+    }
+
+    #[test]
+    fn closed_client_preflight_refuses_mismatch_before_any_vault_change() {
+        vault::with_test_data(|root| {
+            let (mut config, _) = session_fixture(root);
+            assert!(verify_before_stop(&config, &Detection::NotRunning).is_ok());
+            config.accounts[0].puuid = Some("00000000-0000-0000-0000-000000000002".into());
+            assert!(verify_before_stop(&config, &Detection::NotRunning).is_err());
+        });
+    }
 
     fn identity(puuid: &str) -> DetectedIdentity {
         DetectedIdentity {
@@ -696,10 +799,10 @@ mod tests {
         };
         let snapshot = vault::Snapshot { entries: vec![] };
         // No active account set: skips cleanly without touching vault or erroring
-        assert!(refresh_active_with_snapshot(&mut config, Some(&identity("PUUID-A")), Some(&snapshot)).is_ok());
+        assert!(refresh_active_with_snapshot(&mut config, &Detection::Identified(identity("PUUID-A")), Some(&snapshot)).is_ok());
 
-        // Unverified identity (None): skips cleanly
+        // Neither a live identity nor a readable offline subject: skips cleanly.
         config.active_id = Some(active.id);
-        assert!(refresh_active_with_snapshot(&mut config, None, Some(&snapshot)).is_ok());
+        assert!(refresh_active_with_snapshot(&mut config, &Detection::NotRunning, Some(&snapshot)).is_ok());
     }
 }
