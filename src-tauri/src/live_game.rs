@@ -12,7 +12,7 @@ use futures_util::{stream, StreamExt};
 use model::View;
 use serde_json::Value;
 use std::collections::{BTreeMap, HashMap};
-use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant};
 use tauri::{Emitter, Manager};
@@ -27,6 +27,7 @@ const LIVE_MIN_INTERVAL: Duration = Duration::from_millis(2500);
 #[derive(Default)]
 pub struct Runtime {
     in_game: AtomicBool,
+    generation: AtomicU64,
     /// The current game's view; `None` outside a game. Cleared at game end.
     view: Mutex<Option<View>>,
     live: Mutex<LiveState>,
@@ -36,6 +37,22 @@ pub struct Runtime {
 struct LiveState {
     at: Option<Instant>,
     client: Option<Arc<crate::overlay::live_client::LiveClient>>,
+}
+
+impl Runtime {
+    fn set_active(&self, active: bool) -> bool {
+        if self.in_game.swap(active, Ordering::SeqCst) == active { return false; }
+        self.generation.fetch_add(1, Ordering::SeqCst);
+        if !active {
+            *lock(&self.view) = None;
+            *lock(&self.live) = LiveState::default();
+        }
+        true
+    }
+
+    fn is_current(&self, generation: u64) -> bool {
+        self.in_game.load(Ordering::SeqCst) && self.generation.load(Ordering::SeqCst) == generation
+    }
 }
 
 fn lock<T>(mutex: &Mutex<T>) -> std::sync::MutexGuard<'_, T> {
@@ -72,13 +89,11 @@ fn set_active(app: &tauri::AppHandle, active: bool) {
     let Some(rt) = app.try_state::<Runtime>() else {
         return;
     };
-    if rt.in_game.swap(active, Ordering::Relaxed) == active {
+    if !rt.set_active(active) {
         return;
     }
     let _ = app.emit("live_game_state", active);
     if !active {
-        *lock(&rt.view) = None;
-        *lock(&rt.live) = LiveState::default();
         return;
     }
     if auto_open(app) && crate::full_app::enabled(app) {
@@ -130,6 +145,8 @@ async fn champion_names() -> BTreeMap<i64, String> {
 #[tauri::command]
 pub async fn live_game_view(app: tauri::AppHandle) -> Result<Option<View>, String> {
     let rt = app.state::<Runtime>();
+    let generation = rt.generation.load(Ordering::SeqCst);
+    if !rt.is_current(generation) { return Ok(None); }
     let session = source::session().await?;
     if !model::in_game(session["phase"].as_str().unwrap_or("")) {
         return Ok(None);
@@ -144,6 +161,7 @@ pub async fn live_game_view(app: tauri::AppHandle) -> Result<Option<View>, Strin
     };
     {
         let mut current = lock(&rt.view);
+        if !rt.is_current(generation) { return Ok(None); }
         // A concurrent call may have built it while this one awaited.
         if let Some(existing) = current.as_ref().filter(|v| v.game_id == game_id) {
             return Ok(Some(existing.clone()));
@@ -207,6 +225,8 @@ async fn fetch_players(app: tauri::AppHandle, game_id: u64) {
 #[tauri::command]
 pub async fn live_game_live(app: tauri::AppHandle) -> Result<Option<View>, String> {
     let rt = app.state::<Runtime>();
+    let generation = rt.generation.load(Ordering::SeqCst);
+    if !rt.is_current(generation) { return Ok(None); }
     if lock(&rt.view).is_none() {
         // Opened during the loading screen, before the session had a game.
         return live_game_view(app.clone()).await;
@@ -229,6 +249,7 @@ pub async fn live_game_live(app: tauri::AppHandle) -> Result<Option<View>, Strin
         .map(|(id, name)| (name.to_lowercase(), id))
         .collect();
     let mut view = lock(&rt.view);
+    if !rt.is_current(generation) { return Ok(None); }
     if let Some(view) = view.as_mut() {
         model::merge_live(view, &data, &ids);
     }
@@ -237,6 +258,30 @@ pub async fn live_game_live(app: tauri::AppHandle) -> Result<Option<View>, Strin
 
 /// Champion damage types never change within a patch; one read per champion.
 static DAMAGE: Mutex<Option<HashMap<i64, String>>> = Mutex::new(None);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn losing_client_clears_live_state_and_invalidates_pending_reads() {
+        let rt = Runtime::default();
+        assert!(rt.set_active(model::in_game("InProgress")));
+        let generation = rt.generation.load(Ordering::SeqCst);
+        let session = serde_json::json!({"phase": "InProgress", "gameData": {"gameId": 42,
+            "teamOne": [{"championId": 103, "puuid": "fixture-a"}], "teamTwo": []}});
+        *lock(&rt.view) = model::from_session(&session, "fixture-a", &BTreeMap::new());
+        assert!(lock(&rt.view).is_some());
+        lock(&rt.live).at = Some(Instant::now());
+        assert!(rt.set_active(model::in_game("Offline")));
+        assert!(lock(&rt.view).is_none());
+        assert!(lock(&rt.live).at.is_none());
+        assert!(!rt.is_current(generation));
+        assert!(!rt.set_active(false));
+        assert!(rt.set_active(true));
+        assert!(!rt.is_current(generation), "old reads cannot repopulate after reconnect");
+    }
+}
 
 mod source {
     use super::*;

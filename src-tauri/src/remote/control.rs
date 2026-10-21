@@ -122,6 +122,14 @@ struct ChampionAction {
     kind: String,
 }
 
+#[derive(Debug, Clone, Copy)]
+pub(crate) struct PickConfirmation {
+    pub game_id: i64,
+    pub cell_id: i64,
+    pub action_id: i64,
+    pub champion_id: i64,
+}
+
 impl ChampionSession {
     fn current_action(&self) -> Option<&ChampionAction> {
         if self.timer.phase != "BAN_PICK" {
@@ -510,7 +518,14 @@ pub async fn prepick_champion(champion_id: i64) -> Result<(), ActionError> {
 }
 
 pub async fn lock_champion() -> Result<(), ActionError> {
-    let (client, endpoint, session) = champion_select().await?;
+    lock_champion_checked(None).await
+}
+
+pub(crate) async fn lock_confirmed_pick(expected: PickConfirmation) -> Result<(), ActionError> {
+    lock_champion_checked(Some(expected)).await
+}
+
+fn lock_patch(session: &ChampionSession, expected: Option<PickConfirmation>) -> Result<(String, serde_json::Value), ActionError> {
     let action = session
         .current_action()
         .ok_or_else(|| ActionError::conflict("It is not your pick or ban turn."))?;
@@ -519,15 +534,31 @@ pub async fn lock_champion() -> Result<(), ActionError> {
             "Select a champion before confirming.",
         ));
     }
+    if let Some(expected) = expected {
+        if session.game_id != expected.game_id
+            || session.local_player_cell_id != expected.cell_id
+            || action.id != expected.action_id
+            || action.champion_id != expected.champion_id
+            || action.kind != "pick"
+            || !action.is_in_progress
+        {
+            return Err(ActionError::conflict("Your pick changed. Check it and try again."));
+        }
+    }
+    Ok((format!("{SESSION_PATH}/actions/{}", action.id), serde_json::json!({
+        "championId": action.champion_id, "completed": true
+    })))
+}
+
+async fn lock_champion_checked(expected: Option<PickConfirmation>) -> Result<(), ActionError> {
+    let (client, endpoint, session) = champion_select().await?;
+    let (path, body) = lock_patch(&session, expected)?;
     write(
         &client,
         &endpoint,
         Method::PATCH,
-        &format!("{SESSION_PATH}/actions/{}", action.id),
-        Some(serde_json::json!({
-            "championId": action.champion_id,
-            "completed": true
-        })),
+        &path,
+        Some(body),
     )
     .await
 }
@@ -535,6 +566,27 @@ pub async fn lock_champion() -> Result<(), ActionError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn confirmed_pick_patch_rejects_changes_on_the_write_session() {
+        let original = serde_json::json!({"gameId": 42, "localPlayerCellId": 3,
+            "timer": {"phase": "BAN_PICK"}, "actions": [[{"id": 7, "actorCellId": 3,
+                "championId": 103, "type": "pick", "completed": false, "isInProgress": true}]]});
+        let expected = PickConfirmation { game_id: 42, cell_id: 3, action_id: 7, champion_id: 103 };
+        let session = serde_json::from_value(original.clone()).unwrap();
+        let (path, body) = lock_patch(&session, Some(expected)).ok().unwrap();
+        assert!(path.ends_with("/7"));
+        assert_eq!(body["championId"], 103);
+        for (field, value) in [("championId", serde_json::json!(238)), ("id", serde_json::json!(8)),
+            ("type", serde_json::json!("ban")), ("isInProgress", serde_json::json!(false))] {
+            let mut changed = original.clone(); changed["actions"][0][0][field] = value;
+            assert!(lock_patch(&serde_json::from_value(changed).unwrap(), Some(expected)).is_err(), "accepted {field}");
+        }
+        let mut changed = original.clone(); changed["gameId"] = serde_json::json!(43);
+        assert!(lock_patch(&serde_json::from_value(changed).unwrap(), Some(expected)).is_err());
+        let mut ban = original; ban["actions"][0][0]["type"] = serde_json::json!("ban");
+        assert!(lock_patch(&serde_json::from_value(ban).unwrap(), None).is_ok(), "phone still confirms bans");
+    }
 
     #[test]
     fn queue_time_only_uses_a_live_search_elapsed_seconds() {

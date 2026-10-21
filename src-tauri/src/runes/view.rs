@@ -516,7 +516,7 @@ pub async fn view(
     requested_position: Option<&str>,
 ) -> RunesView {
     let (phase, context) = match super::rune_context().await {
-        Ok(super::RuneContext { phase, context }) => (phase, context),
+        Ok(super::RuneContext { phase, context, .. }) => (phase, context),
         Err(error) => {
             return RunesView::empty(
                 "Unavailable".into(),

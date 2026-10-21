@@ -282,7 +282,7 @@ pub async fn apply_selection(
     apply_spells: bool,
 ) -> Result<AppliedView, RuneError> {
     let (_, context) = match super::rune_context().await {
-        Ok(super::RuneContext { phase, context }) => (phase, context),
+        Ok(super::RuneContext { phase, context, .. }) => (phase, context),
         Err(error) => return Err(error),
     };
     let Some(mut context) = context else {
@@ -323,7 +323,7 @@ pub async fn import_preset_items(
     highest_win: bool,
 ) -> Result<Option<String>, RuneError> {
     let (_, context) = match super::rune_context().await {
-        Ok(super::RuneContext { phase, context }) => (phase, context),
+        Ok(super::RuneContext { phase, context, .. }) => (phase, context),
         Err(error) => return Err(error),
     };
     let Some(mut context) = context else {

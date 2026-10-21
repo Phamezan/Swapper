@@ -335,7 +335,8 @@ fn read_cache_at(path: &std::path::Path) -> Option<Snapshot> {
     (snapshot.games.len() <= 20 && !snapshot.summoner.puuid.is_empty()).then_some(snapshot)
 }
 
-async fn fresh(previous: Option<&Snapshot>) -> Result<Snapshot, String> {
+async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Snapshot, String> {
+    let account = lp::AccountRead::begin(app)?;
     let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
     let current: Value = crate::runes::lcu_get(&client, "/lol-summoner/v1/current-summoner")
         .await
@@ -391,11 +392,6 @@ async fn fresh(previous: Option<&Snapshot>) -> Result<Snapshot, String> {
     .await;
     games.sort_by_key(|g| std::cmp::Reverse(g.created_at));
     let rank = model::rank(&ranked);
-    let (puuid, recorded) = (summoner.puuid.clone(), rank.clone());
-    let points = tokio::task::spawn_blocking(move || lp::record(&puuid, recorded))
-        .await
-        .unwrap_or_default();
-    lp::annotate(&mut games, &points);
     if let Some(id) = current["profileIconId"].as_u64() {
         if let Ok(bytes) = crate::runes::lcu_get_bytes(
             &client,
@@ -409,18 +405,14 @@ async fn fresh(previous: Option<&Snapshot>) -> Result<Snapshot, String> {
             ));
         }
     }
-    // Never publish a mixed snapshot if the account changed during the requests.
-    let verify: Value = crate::runes::lcu_get(&client, "/lol-summoner/v1/current-summoner")
-        .await
-        .map_err(|e| e.to_string())?;
-    if verify["puuid"].as_str() != Some(&summoner.puuid) {
-        return Err("League account changed; refresh the dashboard.".into());
-    }
     let champion_names = crate::runes::champion_list()
         .await
         .into_iter()
         .map(|c| (c.id, c.name))
         .collect();
+    // Verify both identity and switch generation before LP can be persisted.
+    let points = lp::record_current(&client, account, summoner.puuid.clone(), rank.clone()).await?;
+    lp::annotate(&mut games, &points);
     Ok(Snapshot {
         champion_names,
         summoner,
@@ -446,7 +438,7 @@ pub async fn dashboard_snapshot(
         result = async {
             let _guard = runtime.gate.lock().await;
             let previous = tokio::task::spawn_blocking(read_cache).await.unwrap_or(None);
-            match fresh(previous.as_ref()).await {
+            match fresh(&app, previous.as_ref()).await {
                 Ok(snapshot) => {
                     crate::runes::blind::preload(&app, &snapshot);
                     let bytes = serde_json::to_vec(&snapshot).ok();

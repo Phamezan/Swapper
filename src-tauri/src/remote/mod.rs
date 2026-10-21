@@ -28,8 +28,10 @@ pub(crate) async fn prepick_champion(champion_id: i64) -> Result<(), String> {
         .map_err(|e| e.message)
 }
 
-pub(crate) async fn lock_champion() -> Result<(), String> {
-    control::lock_champion().await.map_err(|e| e.message)
+pub(crate) use control::PickConfirmation;
+
+pub(crate) async fn lock_confirmed_pick(expected: PickConfirmation) -> Result<(), String> {
+    control::lock_confirmed_pick(expected).await.map_err(|e| e.message)
 }
 
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
