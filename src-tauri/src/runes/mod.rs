@@ -14,6 +14,7 @@
 
 pub mod apply;
 mod asset_cache;
+pub mod blind;
 pub mod cache;
 pub mod champion_views;
 pub mod champion_icon;

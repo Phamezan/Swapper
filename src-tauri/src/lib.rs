@@ -1634,6 +1634,7 @@ pub fn run() {
             get_champion_overview,
             get_tier_list,
             get_duo_list,
+            runes::blind::recommended_picks,
             get_champion_list,
             champion_icon,
             import_item_build,
