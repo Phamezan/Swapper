@@ -1,4 +1,4 @@
-mod live_client;
+pub(crate) mod live_client;
 mod model;
 #[cfg(test)]
 mod probe;

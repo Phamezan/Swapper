@@ -3,6 +3,7 @@ mod hotkey;
 mod identity;
 mod korean_font;
 mod lifecycle;
+mod live_game;
 mod lcu;
 mod remote;
 mod notify;
@@ -1367,7 +1368,8 @@ pub(crate) fn show_flyout(app: &tauri::AppHandle, destination: &str) {
 // The Fullsized App is only focused, keeping whatever page it shows.
 fn toggle_flyout(app: &tauri::AppHandle) {
     if full_app::enabled(app) {
-        let _ = full_app::open(app, None);
+        // During a game the tray opens the full app on Live Game.
+        let _ = full_app::open(app, live_game::is_active(app).then_some("live"));
         return;
     }
     let visible = app
@@ -1457,6 +1459,7 @@ pub fn run() {
                     auto_enable.set_enabled(true);
                 }
             });
+            live_game::init(app.handle());
             runes::spawn_watch(app.handle().clone());
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
@@ -1536,6 +1539,13 @@ pub fn run() {
             if window.label() == full_app::LABEL && matches!(event, WindowEvent::Destroyed) {
                 full_app::cancel(window.app_handle());
             }
+            // A minimized full app reports `document.hidden` (Live Game stops
+            // reading the Live Client) and drops to WebView2's low memory target.
+            if window.label() == full_app::LABEL && matches!(event, WindowEvent::Resized(_)) {
+                if let Some(webview) = window.app_handle().get_webview_window(full_app::LABEL) {
+                    set_flyout_memory(&webview, webview.is_minimized().unwrap_or(false));
+                }
+            }
             if window.label() != full_app::FLYOUT { return; }
             if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
@@ -1558,6 +1568,11 @@ pub fn run() {
             full_app::window_settings,
             full_app::set_full_app_enabled,
             full_app::set_low_memory_mode,
+            live_game::live_game_view,
+            live_game::live_game_live,
+            live_game::live_game_active,
+            live_game::live_game_auto_open,
+            live_game::set_live_game_auto_open,
             full_app::open_full_app,
             full_app::window_ready,
             full_app::dashboard_snapshot,

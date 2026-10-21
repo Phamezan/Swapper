@@ -21,6 +21,7 @@ import { UpdateBanner } from "./settings/UpdateSection";
 import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "./runes/types";
 import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
+import { LiveGameCompact } from "./full-app/LiveGameCompact";
 import type { SettingsTab } from "./settings/SettingsView";
 import "./App.css";
 
@@ -882,6 +883,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               </div>
             )}
             <UpdateBanner onOpenSettings={() => navigate("settings")} />
+            {!fullApp && <LiveGameCompact />}
             {visibleDetectedPrompt && (
               <section className="detected-prompt">
                 <strong className="detected-title">Signed-in account detected</strong>

@@ -85,6 +85,10 @@ pub struct Config {
     pub low_memory_mode: Option<bool>,
     #[serde(default)]
     pub overlay: crate::overlay::Settings,
+    /// Create the Fullsized App (minimized, unfocused) on Live Game when a
+    /// game starts. Off by default.
+    #[serde(default)]
+    pub live_game_auto_open: bool,
     pub accounts: Vec<Account>,
     pub active_id: Option<Uuid>,
     pub use_deceive: bool,

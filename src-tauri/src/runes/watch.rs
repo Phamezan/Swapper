@@ -98,6 +98,7 @@ pub fn spawn_watch(app: tauri::AppHandle) {
             };
             crate::lifecycle::observe(&app, last_phase.as_deref(), &phase);
             crate::korean_font::observe(&app, &phase);
+            crate::live_game::observe(&app, &phase);
             last_phase = Some(phase.clone());
             let mut event = ChampSelectEvent {
                 phase: phase.clone(),
