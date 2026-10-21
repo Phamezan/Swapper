@@ -39,9 +39,9 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
   - [ ] Team comp v1: damage balance + bot duo synergy
   - [ ] Background preload once per patch (2 main roles, your bracket, trickled, never in game); measure cost
   - [ ] Sanity test list (Aatrox, Jayce, Ahri, Vladimir, Ezreal, Tristana, Nautilus/Leona/Rell/Rakan good; Nami bad)
-- [ ] **Insight lines redesign** (Dashboard): the plain grey sentences are easy to miss. Make them eye-catching
+- [x] **Insight lines redesign** (Dashboard): the plain grey sentences are easy to miss. Make them eye-catching
       (e.g. the two win rates as big numbers side by side, a small bar, a coloured accent) while keeping the counts.
-- [ ] **Visual polish pass** across the Fullsized App: a bit more flashy, modern and clean. Explore gradients where they
+- [x] **Visual polish pass** (first pass merged, 69f33e8) across the Fullsized App: a bit more flashy, modern and clean. Explore gradients where they
       add depth (panels, tiles, account strip, buttons) within `docs/visual-identity.md`; do it after the champ select redesign.
 - [x] **Cooldown cheat sheet on the Live Game page** (click only) (click/hover an enemy) — same component as champ select
 
@@ -49,7 +49,7 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
       fetches two (current + previous patch); reqwest has no `gzip` feature. Enable gzip and/or fetch only what is shown.
 - [ ] **u.gg matchup inversion fix (d4773a3) must also reach `main`**: counters/matchup win rates from u.gg were the
       opponent's. Cherry-pick or land with the merge; old cached tables refresh on their own.
-- [ ] Champ select polish: pick-card champion art is blurry (small portraits stretched); use splash/loading art.
+- [x] Champ select polish: pick-card champion art is blurry (small portraits stretched); use splash/loading art.
 - [ ] Cooldown sheet: form-switching champions (Jayce, Elise, Nidalee) show one form; odd rank counts are a hand-kept list.
 
 ## 2. Verify in a real game (never tested live)
@@ -61,7 +61,7 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
 - [ ] Live Game auto-open setting: window opens minimized without stealing focus from a fullscreen/borderless game
 
 ## 3. Review and ship
-- [ ] Fresh reviewer session (different context) on `feat/full-app-ui` vs `main` before merging
+- [x] Fresh reviewer session (Codex) on `feat/full-app-ui` vs `main`: 8 findings, all fixed with tests (6b517aa)
 - [ ] Merge into `main` — another session works on `main` ("Winrate build tabs"); expect conflicts in `App.tsx` / `src/runes/*`
 - [ ] Release notes + version bump (see `docs/RELEASING.md`); README feature list (Fullsized App, overlay, Live Game)
 
