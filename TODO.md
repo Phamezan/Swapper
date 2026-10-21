@@ -38,6 +38,10 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
   - [ ] Team comp v1: damage balance + bot duo synergy
   - [ ] Background preload once per patch (2 main roles, your bracket, trickled, never in game); measure cost
   - [ ] Sanity test list (Aatrox, Jayce, Ahri, Vladimir, Ezreal, Tristana, Nautilus/Leona/Rell/Rakan good; Nami bad)
+- [ ] **Insight lines redesign** (Dashboard): the plain grey sentences are easy to miss. Make them eye-catching
+      (e.g. the two win rates as big numbers side by side, a small bar, a coloured accent) while keeping the counts.
+- [ ] **Visual polish pass** across the Fullsized App: a bit more flashy, modern and clean. Explore gradients where they
+      add depth (panels, tiles, account strip, buttons) within `docs/visual-identity.md`; do it after the champ select redesign.
 - [ ] **Cooldown cheat sheet on the Live Game page** (click/hover an enemy) — same component as champ select
 
 ## 2. Verify in a real game (never tested live)
