@@ -206,7 +206,7 @@ async fn discover_endpoint() -> Result<LcuEndpoint, RuneError> {
 /// Resolves the shared client and a cached endpoint, discovering only when the
 /// cache is empty or stale. The returned [`Lcu`] is a cheap snapshot; a stale
 /// endpoint is retried by [`Lcu::send`].
-async fn lcu() -> Result<Lcu, RuneError> {
+pub(crate) async fn lcu() -> Result<Lcu, RuneError> {
     let client = lcu_client()?.clone();
     let endpoint = match cached_endpoint() {
         Some(endpoint) => endpoint,
@@ -312,13 +312,13 @@ async fn lcu_get_text(lcu: &Lcu, path: &str) -> Result<String, RuneError> {
         .map_err(|_| RuneError::unavailable("League Client response was unreadable."))
 }
 
-async fn lcu_get<T: for<'de> Deserialize<'de>>(lcu: &Lcu, path: &str) -> Result<T, RuneError> {
+pub(crate) async fn lcu_get<T: for<'de> Deserialize<'de>>(lcu: &Lcu, path: &str) -> Result<T, RuneError> {
     let text = lcu_get_text(lcu, path).await?;
     serde_json::from_str(&text)
         .map_err(|_| RuneError::unavailable("League Client sent an unexpected response."))
 }
 
-async fn lcu_get_bytes(lcu: &Lcu, path: &str) -> Result<Vec<u8>, RuneError> {
+pub(crate) async fn lcu_get_bytes(lcu: &Lcu, path: &str) -> Result<Vec<u8>, RuneError> {
     let response = lcu.send(Method::GET, path, None).await?;
     let response = response
         .error_for_status()

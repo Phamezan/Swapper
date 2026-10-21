@@ -76,6 +76,8 @@ impl Account {
 
 #[derive(Default, Clone, Serialize, Deserialize)]
 pub struct Config {
+    #[serde(default)]
+    pub dashboard_window: bool,
     pub accounts: Vec<Account>,
     pub active_id: Option<Uuid>,
     pub use_deceive: bool,

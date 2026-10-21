@@ -21,6 +21,7 @@ import { UpdateBanner } from "./settings/UpdateSection";
 import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "./runes/types";
 import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
+import { DashboardLauncher } from "./dashboard/Launcher";
 import type { SettingsTab } from "./settings/SettingsView";
 import "./App.css";
 
@@ -842,6 +843,7 @@ function App() {
         </button>
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
       </header>
+      <DashboardLauncher />
 
       <main className={`main-panel${view === "settings" ? " settings-panel" : ""}${toolsOpen ? " runes-panel-host" : ""}`}>
         {view === "accounts" ? (

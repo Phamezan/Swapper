@@ -1,3 +1,4 @@
+mod dashboard;
 mod hotkey;
 mod identity;
 mod korean_font;
@@ -1465,6 +1466,7 @@ pub fn run() {
                     "edit" => show_flyout(app, "edit"),
                     "remove" => show_flyout(app, "remove"),
                     "settings" => show_flyout(app, "settings"),
+                    "dashboard" => { let _ = dashboard::open(app); },
                     "exit" => exit_app(app),
                     _ => {}
                 })
@@ -1480,6 +1482,8 @@ pub fn run() {
                     }
                 })
                 .build(app)?;
+            app.manage(dashboard::Runtime::new(menu.clone()));
+            dashboard::sync_menu(app.handle())?;
             // Windows starts Swapper through the autostart entry with --autostart.
             // A login launch must never open the flyout, so keep the window hidden
             // and leave the tray icon as the only entry point. The window already
@@ -1496,6 +1500,10 @@ pub fn run() {
             Ok(())
         })
         .on_window_event(|window, event| {
+            if window.label() == "dashboard" && matches!(event, WindowEvent::Destroyed) {
+                dashboard::cancel(window.app_handle());
+            }
+            if window.label() != "main" { return; }
             if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
                 match window.app_handle().get_webview_window(window.label()) {
@@ -1508,7 +1516,18 @@ pub fn run() {
                 }
             }
         })
-        .invoke_handler(tauri::generate_handler![
+        .invoke_handler(|invoke| {
+            if invoke.message.webview_ref().label() == "dashboard"
+                && !dashboard::allowed_command(invoke.message.command())
+            {
+                invoke.resolver.reject("This command is not available in the dashboard.");
+                return true;
+            }
+            let handler: fn(tauri::ipc::Invoke<tauri::Wry>) -> bool = tauri::generate_handler![
+            dashboard::dashboard_enabled,
+            dashboard::set_dashboard_enabled,
+            dashboard::open_dashboard,
+            dashboard::dashboard_snapshot,
             get_state,
             open_riot,
             begin_add,
@@ -1569,7 +1588,9 @@ pub fn run() {
             doctor::run_doctor,
             doctor::run_doctor_check,
             doctor::doctor_report
-        ])
+            ];
+            handler(invoke)
+        })
         .build(tauri::generate_context!())
         .expect("Could not start Swapper")
         .run(|_app, event| {
