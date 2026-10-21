@@ -1,6 +1,7 @@
 //! Optional Fullsized App. When on, it replaces the tray flyout: the flyout
 //! webview is never created and every entry point opens this window instead.
 //! No window or data task exists until it is opened; closing destroys it.
+pub mod abilities;
 pub mod art;
 pub mod champ_select;
 pub(crate) mod bench;

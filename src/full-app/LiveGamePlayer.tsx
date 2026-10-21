@@ -5,14 +5,16 @@ import { RankCrest } from "../runes/RankCrest";
 import { RoleIcon } from "../runes/RoleIcon";
 import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
+import { CooldownSheet } from "./CooldownSheet";
 import { clock, crestSlug, kda, pct, rankLabel, splitRiotId, type Player, type Rank } from "./LiveGameModel";
 
 const queueNames: Record<string, string> = { solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
 
 /** A compact profile of one player in the game: rank cards and the recent
- *  games already fetched for the Live Game page (no extra requests). */
-export function LiveGamePlayer({ player: p, championNames, onClose }: {
-  player: Player; championNames: Map<number, string>; onClose: () => void;
+ *  games already fetched for the Live Game page, and for an enemy their
+ *  ability and summoner spell cooldowns (one local game-data read). */
+export function LiveGamePlayer({ player: p, championNames, enemy, onClose }: {
+  player: Player; championNames: Map<number, string>; enemy: boolean; onClose: () => void;
 }) {
   const art = useChampionArt(p.championId, "tile");
   const panel = useRef<HTMLElement>(null);
@@ -39,6 +41,7 @@ export function LiveGamePlayer({ player: p, championNames, onClose }: {
         <RankCard label="Ranked Solo/Duo" rank={p.solo} />
         <RankCard label="Ranked Flex" rank={p.flex} />
       </div>
+      {enemy && <CooldownSheet championId={p.championId} spells={p.spells} />}
       {h && h.form.games > 0 && <dl className="lg-facts">
         <div><dt>Latest {h.form.games}</dt><dd className={pct(h.form.wins, h.form.games) >= 50 ? "up" : "down"}>{pct(h.form.wins, h.form.games)}%</dd></div>
         <div><dt>KDA</dt><dd>{kda(h.form).toFixed(2)}</dd></div>

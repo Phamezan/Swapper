@@ -1,0 +1,1682 @@
+{
+ "60": {
+  "id": 60,
+  "name": "Elise",
+  "passive": {
+   "name": "Spider Queen",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/ElisePassive.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "Neurotoxin / Venomous Bite",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseHumanQ.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     615,
+     615,
+     615,
+     615,
+     615,
+     615
+    ],
+    "costCoefficients": [
+     80,
+     85,
+     90,
+     95,
+     100,
+     105
+    ],
+    "cooldownCoefficients": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Volatile Spiderling / Skittering Frenzy",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseHumanW.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     950,
+     950,
+     950,
+     950,
+     950,
+     950
+    ],
+    "costCoefficients": [
+     60,
+     70,
+     80,
+     90,
+     100,
+     110
+    ],
+    "cooldownCoefficients": [
+     12,
+     12,
+     12,
+     12,
+     12,
+     12
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Cocoon / Rappel",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseHumanE.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     1075,
+     1075,
+     1075,
+     1075,
+     1075,
+     1075
+    ],
+    "costCoefficients": [
+     50,
+     50,
+     50,
+     50,
+     50,
+     50
+    ],
+    "cooldownCoefficients": [
+     12,
+     11.5,
+     11,
+     10.5,
+     10,
+     10
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "Spider Form",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Elise/HUD/Icons2D/EliseR.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     20,
+     20,
+     20,
+     20,
+     20,
+     20
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     3,
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ },
+ "84": {
+  "id": 84,
+  "name": "Akali",
+  "passive": {
+   "name": "Assassin's Mark",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akali/HUD/Icons2D/Akali_P.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "Five Point Strike",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akali/HUD/Icons2D/Akali_Q.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     550,
+     550,
+     550,
+     550,
+     550,
+     550
+    ],
+    "costCoefficients": [
+     110,
+     100,
+     90,
+     80,
+     70,
+     60
+    ],
+    "cooldownCoefficients": [
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Twilight Shroud",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akali/HUD/Icons2D/Akali_W.png",
+    "cost": "<font color='#E1D939'>Restores @EnergyRestore@ Energy</font>",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     350,
+     350,
+     350,
+     350,
+     350,
+     350
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     20,
+     19,
+     18,
+     17,
+     16,
+     16
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Shuriken Flip",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akali/HUD/Icons2D/Akali_E.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     825,
+     825,
+     825,
+     825,
+     825,
+     825
+    ],
+    "costCoefficients": [
+     30,
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    "cooldownCoefficients": [
+     16,
+     14.5,
+     13,
+     11.5,
+     10,
+     8.5
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "Perfect Execution",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Akali/HUD/Icons2D/Akali_R.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     675,
+     675,
+     675,
+     675,
+     675,
+     675
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     120,
+     90,
+     60,
+     60,
+     60,
+     60
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ },
+ "103": {
+  "id": 103,
+  "name": "Ahri",
+  "passive": {
+   "name": "Essence Theft",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_Passive.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "Orb of Deception",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_Q.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     970,
+     970,
+     970,
+     970,
+     970,
+     970
+    ],
+    "costCoefficients": [
+     55,
+     65,
+     75,
+     85,
+     95,
+     95
+    ],
+    "cooldownCoefficients": [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Fox-Fire",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_W.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     700,
+     700,
+     700,
+     700,
+     700,
+     700
+    ],
+    "costCoefficients": [
+     30,
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    "cooldownCoefficients": [
+     9,
+     8,
+     7,
+     6,
+     5,
+     4
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Charm",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_E.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     975,
+     975,
+     975,
+     975,
+     975,
+     975
+    ],
+    "costCoefficients": [
+     60,
+     60,
+     60,
+     60,
+     60,
+     60
+    ],
+    "cooldownCoefficients": [
+     12,
+     12,
+     12,
+     12,
+     12,
+     12
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "Spirit Rush",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Ahri/HUD/Icons2D/Icons_Ahri_R.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     450,
+     450,
+     450,
+     450,
+     450,
+     450
+    ],
+    "costCoefficients": [
+     100,
+     100,
+     100,
+     100,
+     100,
+     100
+    ],
+    "cooldownCoefficients": [
+     140,
+     120,
+     100,
+     100,
+     100,
+     100
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ },
+ "126": {
+  "id": 126,
+  "name": "Jayce",
+  "passive": {
+   "name": "Hextech Capacitor",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jayce/HUD/Icons2D/JayceP_Melee.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "To the Skies! / Shock Blast",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jayce/HUD/Icons2D/JayceQ_Melee.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     600,
+     600,
+     600,
+     600,
+     600,
+     600
+    ],
+    "costCoefficients": [
+     40,
+     40,
+     40,
+     40,
+     40,
+     40
+    ],
+    "cooldownCoefficients": [
+     16,
+     14,
+     12,
+     10,
+     8,
+     6
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Lightning Field / Hyper Charge",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jayce/HUD/Icons2D/JayceW_Melee.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     285,
+     285,
+     285,
+     285,
+     285,
+     285
+    ],
+    "costCoefficients": [
+     40,
+     40,
+     40,
+     40,
+     40,
+     40
+    ],
+    "cooldownCoefficients": [
+     10,
+     10,
+     10,
+     10,
+     10,
+     10
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Thundering Blow / Acceleration Gate",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jayce/HUD/Icons2D/JayceE_Melee.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     240,
+     240,
+     240,
+     240,
+     240,
+     240
+    ],
+    "costCoefficients": [
+     55,
+     55,
+     55,
+     55,
+     55,
+     55
+    ],
+    "cooldownCoefficients": [
+     20,
+     18,
+     16,
+     14,
+     12,
+     10
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "Mercury Cannon / Mercury Hammer",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jayce/HUD/Icons2D/JayceR_Ranged.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     600,
+     600,
+     600,
+     600,
+     600,
+     600
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ },
+ "136": {
+  "id": 136,
+  "name": "Aurelion Sol",
+  "passive": {
+   "name": "Cosmic Creator",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolP.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "Breath of Light",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolQ.png",
+    "cost": "@ManaCostPerSecond@ Mana per second",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     750,
+     750,
+     750,
+     750,
+     750,
+     750
+    ],
+    "costCoefficients": [
+     30,
+     35,
+     40,
+     45,
+     50,
+     55
+    ],
+    "cooldownCoefficients": [
+     3,
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Astral Flight",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolW1.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     1500,
+     1500,
+     1500,
+     1500,
+     1500,
+     1500
+    ],
+    "costCoefficients": [
+     50,
+     55,
+     60,
+     65,
+     70,
+     70
+    ],
+    "cooldownCoefficients": [
+     22,
+     20,
+     18,
+     16,
+     14,
+     12
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Singularity",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolE.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     750,
+     750,
+     750,
+     750,
+     750,
+     750
+    ],
+    "costCoefficients": [
+     90,
+     90,
+     90,
+     90,
+     90,
+     90
+    ],
+    "cooldownCoefficients": [
+     12,
+     12,
+     12,
+     12,
+     12,
+     12
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "Falling Star / The Skies Descend",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/AurelionSol/HUD/Icons2D/AurelionSolR1.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     1250,
+     1250,
+     1250,
+     1250,
+     1250,
+     1250
+    ],
+    "costCoefficients": [
+     100,
+     100,
+     100,
+     100,
+     100,
+     100
+    ],
+    "cooldownCoefficients": [
+     120,
+     110,
+     100,
+     100,
+     100,
+     100
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ },
+ "202": {
+  "id": 202,
+  "name": "Jhin",
+  "passive": {
+   "name": "Whisper",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jhin/HUD/Icons2D/Jhin_P.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "Dancing Grenade",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jhin/HUD/Icons2D/Jhin_Q.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     550,
+     550,
+     550,
+     550,
+     550,
+     550
+    ],
+    "costCoefficients": [
+     40,
+     45,
+     50,
+     55,
+     60,
+     65
+    ],
+    "cooldownCoefficients": [
+     7,
+     6.5,
+     6,
+     5.5,
+     5,
+     5
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Deadly Flourish",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jhin/HUD/Icons2D/Jhin_W.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     3000,
+     3000,
+     3000,
+     3000,
+     3000,
+     3000
+    ],
+    "costCoefficients": [
+     50,
+     55,
+     60,
+     65,
+     70,
+     75
+    ],
+    "cooldownCoefficients": [
+     12,
+     12,
+     12,
+     12,
+     12,
+     12
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Captive Audience",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jhin/HUD/Icons2D/Jhin_E.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     750,
+     750,
+     750,
+     750,
+     750,
+     750
+    ],
+    "costCoefficients": [
+     30,
+     30,
+     30,
+     30,
+     30,
+     30
+    ],
+    "cooldownCoefficients": [
+     2,
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      24,
+      21.5,
+      19,
+      16.5,
+      14,
+      13
+     ],
+     "maxAmmo": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "Curtain Call",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Jhin/HUD/Icons2D/Jhin_R.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     25000,
+     25000,
+     25000,
+     25000,
+     25000,
+     25000
+    ],
+    "costCoefficients": [
+     100,
+     100,
+     100,
+     100,
+     100,
+     100
+    ],
+    "cooldownCoefficients": [
+     120,
+     105,
+     90,
+     0,
+     0,
+     0
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ },
+ "238": {
+  "id": 238,
+  "name": "Zed",
+  "passive": {
+   "name": "Contempt for the Weak",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zed/HUD/Icons2D/ZedP.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "Razor Shuriken",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zed/HUD/Icons2D/ZedQ.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     900,
+     900,
+     900,
+     900,
+     900,
+     900
+    ],
+    "costCoefficients": [
+     75,
+     70,
+     65,
+     60,
+     55,
+     50
+    ],
+    "cooldownCoefficients": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Living Shadow",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zed/HUD/Icons2D/ZedW.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     650,
+     650,
+     650,
+     650,
+     650,
+     650
+    ],
+    "costCoefficients": [
+     40,
+     35,
+     30,
+     25,
+     20,
+     15
+    ],
+    "cooldownCoefficients": [
+     20,
+     19,
+     18,
+     17,
+     16,
+     16
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Shadow Slash",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zed/HUD/Icons2D/ZedE.png",
+    "cost": "@Cost@ @AbilityResourceName@",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     290,
+     290,
+     290,
+     290,
+     290,
+     290
+    ],
+    "costCoefficients": [
+     40,
+     40,
+     40,
+     40,
+     40,
+     40
+    ],
+    "cooldownCoefficients": [
+     5,
+     4.5,
+     4,
+     3.5,
+     3,
+     3
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "Death Mark",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Zed/HUD/Icons2D/ZedR.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     625,
+     625,
+     625,
+     625,
+     625,
+     625
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     120,
+     110,
+     100,
+     100,
+     100,
+     100
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ },
+ "266": {
+  "id": 266,
+  "name": "Aatrox",
+  "passive": {
+   "name": "Deathbringer Stance",
+   "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Aatrox/HUD/Icons2D/Aatrox_Passive.png"
+  },
+  "spells": [
+   {
+    "spellKey": "q",
+    "name": "The Darkin Blade",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Aatrox/HUD/Icons2D/Aatrox_Q.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     25000,
+     25000,
+     25000,
+     25000,
+     25000,
+     25000
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     14,
+     12,
+     10,
+     8,
+     6,
+     4
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "w",
+    "name": "Infernal Chains",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Aatrox/HUD/Icons2D/Aatrox_W.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     825,
+     825,
+     825,
+     825,
+     825,
+     825
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     18,
+     16.5,
+     15,
+     13.5,
+     12,
+     12
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "e",
+    "name": "Umbral Dash",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Aatrox/HUD/Icons2D/Aatrox_E.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     25000,
+     25000,
+     25000,
+     25000,
+     25000,
+     25000
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     9,
+     8,
+     7,
+     6,
+     5,
+     4
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   },
+   {
+    "spellKey": "r",
+    "name": "World Ender",
+    "abilityIconPath": "/lol-game-data/assets/ASSETS/Characters/Aatrox/HUD/Icons2D/Aatrox_R.png",
+    "cost": "No Cost",
+    "cooldown": "@Cooldown@s %i:cooldown%",
+    "range": [
+     25000,
+     25000,
+     25000,
+     25000,
+     25000,
+     25000
+    ],
+    "costCoefficients": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cooldownCoefficients": [
+     120,
+     100,
+     80,
+     80,
+     80,
+     80
+    ],
+    "ammo": {
+     "ammoRechargeTime": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "maxAmmo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "maxLevel": 0
+   }
+  ]
+ }
+}
