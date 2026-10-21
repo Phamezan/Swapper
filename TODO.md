@@ -26,7 +26,7 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
   - [x] LP recording after each game, per account (Solo/Duo; `full_app/lp.rs`, `lp-history.json`) + LP chip on match rows
   - [x] Per-account rank/record cache for the account cards (`full_app/cards.rs`, `account-cards.json`, `cards` in the dashboard view)
   - [ ] Empty/thin-data states
-- [ ] **Champion select redesign** — `docs/specs/champion-select.md`
+- [x] **Champion select redesign** (merged; not yet tried in a real champ select) — `docs/specs/champion-select.md`
   - [ ] Planning mode / build mode, auto-switch on lock-in; compact draft band (no win %, no radar)
   - [ ] Tabs: Counters / Recommended / Meta; click = hover in client, Lock in with confirmation
   - [ ] Build tabs (most played, highest WR, vs enemy laner, pro builds), full rune trees, 1–18 skill grid, items
@@ -42,7 +42,14 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
       (e.g. the two win rates as big numbers side by side, a small bar, a coloured accent) while keeping the counts.
 - [ ] **Visual polish pass** across the Fullsized App: a bit more flashy, modern and clean. Explore gradients where they
       add depth (panels, tiles, account strip, buttons) within `docs/visual-identity.md`; do it after the champ select redesign.
-- [ ] **Cooldown cheat sheet on the Live Game page** (click/hover an enemy) — same component as champ select
+- [x] **Cooldown cheat sheet on the Live Game page** (click only) (click/hover an enemy) — same component as champ select
+
+- [ ] **Network cost of existing champion data**: u.gg per-champion matchup files are ~3 MB each and `ugg::counters`
+      fetches two (current + previous patch); reqwest has no `gzip` feature. Enable gzip and/or fetch only what is shown.
+- [ ] **u.gg matchup inversion fix (d4773a3) must also reach `main`**: counters/matchup win rates from u.gg were the
+      opponent's. Cherry-pick or land with the merge; old cached tables refresh on their own.
+- [ ] Champ select polish: pick-card champion art is blurry (small portraits stretched); use splash/loading art.
+- [ ] Cooldown sheet: form-switching champions (Jayce, Elise, Nidalee) show one form; odd rank counts are a hand-kept list.
 
 ## 2. Verify in a real game (never tested live)
 - [ ] **Overlay gold estimate**: check whether Live Client `items[].price` is the full item cost or only the combine cost.
