@@ -5,6 +5,8 @@ pub struct DisplayData {
     pub gold: Option<Gold>,
     pub objectives: Vec<Objective>,
     pub skill: Option<char>,
+    /// The game's own level-up arrow for `skill` (client x, y, width, height).
+    pub arrow: Option<[i32; 4]>,
 }
 
 /// Held-item value per team, rounded to whole gold so redraws only happen on change.
@@ -196,6 +198,16 @@ pub fn objectives(data: &Value) -> Vec<Objective> {
             period: period as u64,
         })
         .collect()
+}
+
+/// Which of Q, W, E, R the game shows a level-up arrow for: a point to spend,
+/// basic abilities up to rank 5 and half the level (rounded up), R at 6/11/16.
+pub fn levelable(level: u64, ranks: [u64; 4]) -> [bool; 4] {
+    if ranks.iter().sum::<u64>() >= level {
+        return [false; 4];
+    }
+    let ultimate = [6, 11, 16].into_iter().filter(|gate| level >= *gate).count() as u64;
+    [0, 1, 2, 3].map(|i| if i == 3 { ranks[3] < ultimate } else { ranks[i] < 5 && ranks[i] < level.div_ceil(2) })
 }
 
 pub fn next_skill(level: u64, ranks: [u64; 4], priority: &str) -> Option<char> {
@@ -426,6 +438,16 @@ mod tests {
         assert!(supported(&data));
         data["gameData"]["gameMode"] = json!("ARAM");
         assert!(!supported(&data));
+    }
+
+    #[test]
+    fn level_up_arrows_follow_the_game_rules() {
+        assert_eq!(levelable(1, [0, 0, 0, 0]), [true, true, true, false]);
+        // Level 3 with Q at 2: Q is capped at half the level (2), W and E stay open.
+        assert_eq!(levelable(3, [2, 0, 0, 0]), [false, true, true, false]);
+        assert_eq!(levelable(6, [3, 1, 1, 0]), [false, true, true, true]);
+        // No point to spend, no arrows.
+        assert_eq!(levelable(2, [1, 1, 0, 0]), [false; 4]);
     }
 
     #[test]

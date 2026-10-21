@@ -1,3 +1,4 @@
+mod arrows;
 mod icons;
 pub(crate) mod live_client;
 mod model;
@@ -263,7 +264,14 @@ fn display(
             Vec::new()
         },
         skill,
+        arrow: None,
     }
+}
+
+fn skill_ranks(data: &Value) -> Option<(u64, [u64; 4])> {
+    let ranks = ['Q', 'W', 'E', 'R']
+        .map(|key| data["activePlayer"]["abilities"][key.to_string()]["abilityLevel"].as_u64());
+    Some((data["activePlayer"]["level"].as_u64()?, [ranks[0]?, ranks[1]?, ranks[2]?, ranks[3]?]))
 }
 
 fn session_scope(session: &Value) -> Option<bool> {
@@ -291,6 +299,8 @@ async fn run(
     let mut priority = None;
     let mut read_cache = false;
     let mut lookup: Option<tokio::task::JoinHandle<Option<String>>> = None;
+    let mut arrow: Option<[i32; 4]> = None;
+    let mut next_scan = Instant::now();
     let mut prepared = model::DisplayData::default();
     let mut dirty = true;
     let mut renderer: Option<render::Renderer> = None;
@@ -464,6 +474,20 @@ async fn run(
             if !held {
                 visible.gold = None;
             }
+            // Find the game's own level-up arrows a few times a second, only while
+            // a skill point is waiting; the hint is drawn on the matching arrow.
+            match visible.skill.and_then(|skill| Some((skill, skill_ranks(data)?))) {
+                Some((skill, (level, ranks))) if now >= next_scan => {
+                    next_scan = now + Duration::from_millis(400);
+                    let shown = model::levelable(level, ranks);
+                    let keys: Vec<char> = ['Q', 'W', 'E', 'R'].into_iter().zip(shown).filter(|(_, on)| *on).map(|(key, _)| key).collect();
+                    let found = arrows::find(bounds, keys.len());
+                    arrow = keys.iter().position(|key| *key == skill).and_then(|i| found.get(i)).map(|a| [a.x, a.y, a.width, a.height]);
+                }
+                Some(_) => {}
+                None => arrow = None,
+            }
+            visible.arrow = arrow;
             if visible == model::DisplayData::default() {
                 if let Some(renderer) = renderer.as_mut() {
                     renderer.hide();

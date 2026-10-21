@@ -125,6 +125,8 @@ impl Renderer {
             if renderer.hwnd.is_null() {
                 return Err("Could not create overlay window".into());
             }
+            // Keep the overlay out of screen captures, so the arrow finder never sees its own drawing.
+            SetWindowDisplayAffinity(renderer.hwnd, WDA_EXCLUDEFROMCAPTURE);
         }
         std::result::Result::Ok(renderer)
     }
@@ -260,7 +262,6 @@ struct Surface {
 
 // ARGB palette, matched to Swapper's dark theme and DPM's widget colours.
 const PANEL: u32 = 0xE6101522;
-const PANEL_DIM: u32 = 0xB0101522;
 const EDGE: u32 = 0x33FFFFFF;
 const TRACK: u32 = 0x40FFFFFF;
 const TEXT: u32 = 0xFFE9ECF4;
@@ -269,12 +270,9 @@ const BLUE: u32 = 0xFF6E9BFF;
 const RED: u32 = 0xFFFF6B7A;
 const GOLD: u32 = 0xFFE3B45C;
 const ACCENT: u32 = 0xFF7C83FD;
-const ACCENT_FILL: u32 = 0xE62A2F6B;
 
 const GOLD_BOX: f32 = 44.0;
 const LANE_BADGE: f32 = 26.0;
-const SKILL_SIZE: f32 = 40.0;
-const CHEVRONS: f32 = 24.0;
 
 impl Surface {
     fn new(width: i32, height: i32) -> Result<Self, String> {
@@ -375,7 +373,7 @@ impl Surface {
             match widget {
                 Widget::Gold(rect, gold) => self.gold(rect, gold)?,
                 Widget::Objective(rect, objective) => self.objective(rect, objective)?,
-                Widget::Skill(rect, key, selected) => self.skill(rect, key, selected)?,
+                Widget::Arrow(rect) => self.arrow(rect)?,
             }
         }
         // Flush before GDI consumes the same DIB memory.
@@ -497,25 +495,22 @@ impl Surface {
         )
     }
 
-    fn skill(&self, rect: RectF, key: char, selected: bool) -> Result<(), String> {
+    /// Lights up the game's own level-up arrow: a soft glow and bright chevrons on top of it.
+    fn arrow(&self, rect: RectF) -> Result<(), String> {
         let s = self.scale;
-        let square = RectF {
-            Y: rect.Y + rect.Height - SKILL_SIZE * s,
-            Height: SKILL_SIZE * s,
-            ..rect
+        let glow = RectF {
+            X: rect.X - 6.0 * s,
+            Y: rect.Y - 5.0 * s,
+            Width: rect.Width + 12.0 * s,
+            Height: rect.Height + 10.0 * s,
         };
-        let key = key.to_string();
-        if !selected {
-            self.rounded(square, 6.0 * s, PANEL_DIM, Some((EDGE, 1.0 * s)))?;
-            return self.text(square, &key, self.medium, MUTED);
-        }
-        self.rounded(square, 6.0 * s, ACCENT_FILL, Some((ACCENT, 2.0 * s)))?;
-        self.text(square, &key, self.medium, TEXT)?;
-        // Two stacked chevrons above the square, like DPM's level-up hint.
-        let mid = square.X + square.Width / 2.0;
-        for (i, alpha) in [(0.0, 0xFF000000u32), (1.0, 0x80000000)] {
-            let base = square.Y - 5.0 * s - i * 9.0 * s;
-            self.triangle(mid, base, 9.0 * s, 7.0 * s, (ACCENT & 0x00FFFFFF) | alpha)?;
+        self.rounded(glow, 6.0 * s, (ACCENT & 0x00FF_FFFF) | 0x5500_0000, Some((ACCENT, 1.5 * s)))?;
+        let mid = rect.X + rect.Width / 2.0;
+        let half = rect.Width / 2.0;
+        let tall = (rect.Height * 0.55).max(4.0 * s);
+        for (i, alpha) in [(0.0, 0xFF00_0000u32), (1.0, 0x9900_0000)] {
+            let base = rect.Y + rect.Height - i * tall * 0.9;
+            self.triangle(mid, base, half, tall, (ACCENT & 0x00FF_FFFF) | alpha)?;
         }
         std::result::Result::Ok(())
     }
@@ -738,7 +733,7 @@ fn short(value: i64, signed: bool) -> String {
 enum Widget {
     Gold(RectF, Gold),
     Objective(RectF, Objective),
-    Skill(RectF, char, bool),
+    Arrow(RectF),
 }
 
 fn widgets(width: i32, height: i32, data: &DisplayData) -> Vec<Widget> {
@@ -770,21 +765,13 @@ fn widgets(width: i32, height: i32, data: &DisplayData) -> Vec<Widget> {
             *objective,
         ));
     }
-    if let Some(skill) = data.skill {
-        let (size, gap) = (SKILL_SIZE * s, 8.0 * s);
-        let left = (w - 4.0 * size - 3.0 * gap) / 2.0;
-        for (i, key) in ['Q', 'W', 'E', 'R'].into_iter().enumerate() {
-            widgets.push(Widget::Skill(
-                RectF {
-                    X: left + i as f32 * (size + gap),
-                    Y: h * 0.86 - CHEVRONS * s,
-                    Width: size,
-                    Height: size + CHEVRONS * s,
-                },
-                key,
-                skill == key,
-            ));
-        }
+    if let (Some(_), Some([x, y, aw, ah])) = (data.skill, data.arrow) {
+        widgets.push(Widget::Arrow(RectF {
+            X: x as f32,
+            Y: y as f32,
+            Width: aw as f32,
+            Height: ah as f32,
+        }));
     }
     widgets
 }
@@ -813,6 +800,7 @@ mod tests {
                 },
             ],
             skill: Some('R'),
+            arrow: Some([60, 120, 20, 8]),
         }
     }
 
@@ -826,18 +814,12 @@ mod tests {
             (3840, 2160),
         ] {
             let widgets = widgets(width, height, &sample());
-            assert_eq!(widgets.len(), 7);
-            assert_eq!(
-                widgets
-                    .iter()
-                    .filter(|w| matches!(w, Widget::Skill(_, _, true)))
-                    .count(),
-                1
-            );
+            assert_eq!(widgets.len(), 4);
+            assert_eq!(widgets.iter().filter(|w| matches!(w, Widget::Arrow(_))).count(), 1);
             for widget in widgets {
                 let (Widget::Gold(rect, _)
                 | Widget::Objective(rect, _)
-                | Widget::Skill(rect, _, _)) = widget;
+                | Widget::Arrow(rect)) = widget;
                 assert!(rect.X >= 0.0 && rect.Y >= 0.0);
                 assert!(
                     rect.X + rect.Width <= width as f32 && rect.Y + rect.Height <= height as f32
@@ -875,6 +857,7 @@ mod tests {
             gold: super::super::model::gold(&data),
             objectives: super::super::model::objectives(&data),
             skill: Some('R'),
+            arrow: Some([600, 600, 20, 8]),
         };
         let bounds = Bounds {
             x: -10000,
@@ -934,6 +917,7 @@ mod tests {
             gold: super::super::model::gold(&fixture),
             objectives: super::super::model::objectives(&fixture),
             skill: Some('R'),
+            arrow: Some([600, 600, 20, 8]),
         };
         let bounds = Bounds {
             x: 0,
