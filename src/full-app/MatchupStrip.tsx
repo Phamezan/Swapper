@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { fmtDelta, fmtPct, type ChampionCountersView, type DuoListView } from "../runes/types";
@@ -29,6 +29,8 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
   const noisy = rows.findIndex(row => row.lowSample);
   const strip = useRef<HTMLDivElement>(null);
   const [range, setRange] = useState<[number, number]>([0, 12]);
+  // Which ends of the strip have more cards behind them; drives the edge fades and arrows.
+  const [edge, setEdge] = useState({ left: false, right: false });
   // Art also waits until the strip itself is near the page viewport.
   const [near, setNear] = useState(false);
   useEffect(() => {
@@ -48,6 +50,8 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       frame = 0;
       const next = artWindow(node.scrollLeft, node.clientWidth, CARD_STEP, rows.length, 3);
       setRange(current => current[0] === next[0] && current[1] === next[1] ? current : next);
+      const more = { left: node.scrollLeft > 1, right: node.scrollLeft < node.scrollWidth - node.clientWidth - 1 };
+      setEdge(current => current.left === more.left && current.right === more.right ? current : more);
     };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
     // A vertical wheel scrolls the strip sideways until it reaches an end, then the page.
@@ -67,6 +71,7 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
     return () => { cancelAnimationFrame(frame); node.removeEventListener("scroll", onScroll); node.removeEventListener("wheel", onWheel); resize.disconnect(); };
   }, [rows.length, tab]);
 
+  const slide = (direction: -1 | 1) => strip.current?.scrollBy({ left: direction * strip.current.clientWidth * 0.8, behavior: "smooth" });
   const onKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
     const cards = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>(".fa-matchup-card"));
@@ -93,6 +98,9 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       </div>
     </div>
     {tab === "matchups" ? <>
+      <div className="fa-strip-frame" data-left={edge.left} data-right={edge.right}>
+      <button className="fa-strip-arrow is-left" aria-label="Scroll matchups left" tabIndex={-1} onClick={() => slide(-1)}><ChevronLeft size={20} /></button>
+      <button className="fa-strip-arrow is-right" aria-label="Scroll matchups right" tabIndex={-1} onClick={() => slide(1)}><ChevronRight size={20} /></button>
       <div ref={strip} className="fa-matchup-strip" role="list" aria-label={`Matchups as ${name}, best to worst. Use the arrow keys to move between opponents.`} onKeyDown={onKey}>
         {rows.map((row, index) => <div role="listitem" className={`fa-matchup-slot${index === flip && index > 0 ? " is-flip" : ""}${index === noisy && index > 0 ? " is-noisy" : ""}`} data-label={index === noisy && index > 0 ? "Small sample" : undefined} key={row.championId}>
           <button className={`fa-matchup-card${row.lowSample ? " is-low-sample" : ""} ${row.delta >= 0 ? "is-good" : "is-bad"}`} onClick={() => onPick(row.championId)}
@@ -101,6 +109,7 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
             <span className="fa-matchup-copy"><strong>{row.name}</strong><b className={row.delta >= 0 ? "up" : "down"}>{fmtDelta(row.delta)}<i>%</i></b><small>{fmtCount(row.games)} games</small><span className="fa-lane-tag"><RoleIcon role={lane} size={12} mode="desktop" />{row.lowSample ? "Low sample" : laneName(lane)}</span></span>
           </button>
         </div>)}
+      </div>
       </div>
       {!rows.length && (!counters ? <Skeleton label="Loading matchups" rows={1} height={228} /> : <p className="fa-panel-empty">{q ? `No opponent matches “${query}”.` : "No matchup data for this role and rank."}</p>)}
     </> : <div className="fa-synergy-grid">{error && <Notice tone="error">{error}</Notice>}{!duos && !error && <Skeleton label="Loading bot-lane pairs" rows={2} height={64} />}{duos && duos.rows.filter(row => row.adcId === championId || row.supportId === championId).map(row => {

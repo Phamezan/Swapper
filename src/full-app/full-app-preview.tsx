@@ -85,6 +85,28 @@ const liveView = {
   })),
 };
 
+// ---- uibuilds: champion page, matchups and build workspace mocks (preview only) ----
+const SHARD_ROWS = [[5008, 5005, 5007], [5008, 5010, 5001], [5011, 5013, 5001]];
+const shardIcon: Record<number, string> = { 5008: "AdaptiveForce", 5005: "AttackSpeed", 5007: "CDRScaling", 5010: "MovementSpeed", 5001: "HealthPlus", 5011: "HealthScaling", 5013: "Tenacity" };
+for (const [id, name] of Object.entries(shardIcon)) runeIcons.set(Number(id), `${DD}/img/perk-images/StatMods/StatMods${name}Icon.png`);
+let runeCatalog: unknown = null;
+const catalogReady = fetch(`${DD}/${VERSION}/data/en_US/runesReforged.json`).then(r => r.json()).then((trees: { id: number; name: string; slots: { runes: { id: number; name: string }[] }[] }[]) => {
+  const rune = (r: { id: number; name: string }) => ({ id: r.id, name: r.name, winPct: null, pickPct: null, play: 0 });
+  runeCatalog = {
+    trees: trees.map(tree => ({ id: tree.id, name: tree.name, keystones: tree.slots[0].runes.map(rune), rows: tree.slots.slice(1).map((slot, i) => ({ kind: "row", label: `Row ${i + 1}`, runes: slot.runes.map(rune) })) })),
+    shards: SHARD_ROWS.map((row, i) => ({ kind: "shard", label: `Shard ${i + 1}`, runes: row.map(id => ({ id, name: `Shard ${id}`, winPct: null, pickPct: null, play: 0 })) })),
+  };
+}).catch(() => {});
+const ITEM_NAMES: Record<number, string> = { 1055: "Doran's Blade", 2003: "Health Potion", 3047: "Plated Steelcaps", 3111: "Mercury's Treads", 6692: "Eclipse", 3053: "Sterak's Gage", 3071: "Black Cleaver", 6333: "Death's Dance", 3156: "Maw of Malmortius", 3065: "Spirit Visage", 3026: "Guardian Angel", 6610: "Sundered Sky" };
+const named = (id: number) => ({ id, name: ITEM_NAMES[id] ?? "Item" });
+const SKILLS = "QEWQQRQEQERWEEWRWW";
+const buildOf = (ids: number[], winPct: number, games: number, order: string) => ({
+  starters: [{ ...named(1055), count: 1 }, { ...named(2003), count: 1 }], items: ids.map(named),
+  options: [[6333, 4, 53.1, 4200], [3156, 4, 52.4, 1900], [3065, 5, 54, 2100], [3026, 6, 55.2, 1500]].map(([id, slot, wr, g]) => ({ ...named(id), slot, winPct: wr, games: g })),
+  games, coreGames: Math.round(games / 3), coreLen: 3, coreWinPct: winPct, stale: false, updatedAt: null, skillPriority: null, skillOrder: order,
+});
+const runePage = (primaryPageId: number, keystone: number, primaryRunes: number[], secondaryPageId: number, secondaryRunes: number[]) => ({ primaryPageId, keystone, primaryRunes, secondaryPageId, secondaryRunes, shards: [5005, 5008, 5001] });
+// ---- end uibuilds mocks ----
 mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
@@ -120,6 +142,18 @@ mockIPC(async (cmd, args) => {
     case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct], i) => ({ championId: id, name: CHAMPIONS[id][0], tier, winPct, pickPct: 9 - i * .5, banPct: 4 + i % 3, games: 24000 - i * 1200 })) };
     case "full_app_matchups": return { championId: a.championId, championName: CHAMPIONS[a.championId]?.[0] ?? "Aatrox", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null,
       beats: tiers.filter(([id]) => id !== a.championId).map(([id], i) => ({ championId: id, name: CHAMPIONS[id][0], winPct: 54 - i * .8, delta: 3.6 - i * .8, games: 3000 - i * 150, lowSample: i > 11 })) };
+    // ---- uibuilds cases ----
+    case "get_champion_overview": return { championId: a.championId, position: a.position, unavailable: false, damage: null,
+      stats: { tier: "S+", rank: 1, rankTotal: 58, winPct: 52.6, pickPct: 9, banPct: 4, games: 24000, patch: "16.21" },
+      build: { runes: runePage(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347]), spells: [4, 12], items: buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), skillOrder: SKILLS } };
+    case "get_keystone_build": return { ...buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), highestWin: { preset: { index: 1, title: "Grasp", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: buildOf([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
+    case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: buildOf([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
+    case "full_app_rune_catalog": await catalogReady; if (runeCatalog) return runeCatalog; throw new Error("Rune catalog unavailable");
+    case "full_app_abilities": return ["Q", "W", "E", "R"].map(k => ({ key: k, name: `Ability ${k}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${k}.png` }));
+    case "get_runes": return { phase: "None", championId: 0, championName: "", position: "top", presets: [], trees: [], shards: [], applied: null, autoApply: false, importItems: true, canApply: false, locked: false, spells: { spell1Id: 4, spell2Id: 12, available: [], applyWithRunes: true }, enemies: [], enemySlots: 5 };
+    case "get_pro_builds": return { championId: 266, position: "top", role: "top", page: 1, hasMore: false, unavailable: false, message: null, stale: false, updatedAt: null, matches: [1, 2, 3].map(i => ({ matchId: i, proName: `Pro player ${String.fromCharCode(64 + i)}`, team: `Team ${i}`, league: "LCK", region: "KR", role: "top", roleLabel: "Top", win: i % 2 === 1, playedAgo: `${i * 3}h ago`, patch: "16.21", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), kills: 4 + i, deaths: 2, assists: 6, spells: [4, 12], finalItems: [6610, 3053, 3071, 3047, 6333, 3026].map(named), completedItems: [6610, 3053, 3071, 6333].map(named), skillOrder: SKILLS.split(""), itemPath: [], otp: false })) };
+    case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
+    // ---- end uibuilds cases ----
     case "live_game_active": return live;
     case "live_game_view": case "live_game_live": return live ? liveView : null;
     default: throw new Error(`Not mocked: ${cmd}`);

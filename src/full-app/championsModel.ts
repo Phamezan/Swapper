@@ -26,3 +26,18 @@ export function autoRows(lists: Record<string, TierRow[]>): AutoRow[] {
   const tierIndex = (tier: string) => { const i = TIER_ORDER.indexOf(tier); return i < 0 ? TIER_ORDER.length : i; };
   return rows.sort((a, b) => tierIndex(a.tier) - tierIndex(b.tier) || b.winPct - a.winPct);
 }
+
+/** The champions played most in recent games, each with the role it was played in most. */
+export function mostPlayed(games: { championId: number; role: string }[], limit = 3): { championId: number; role: string; games: number }[] {
+  const byChampion = new Map<number, Map<string, number>>();
+  for (const { championId, role } of games) {
+    const roles = byChampion.get(championId) ?? new Map<string, number>();
+    roles.set(role, (roles.get(role) ?? 0) + 1);
+    byChampion.set(championId, roles);
+  }
+  return [...byChampion]
+    .map(([championId, roles]) => ({ championId, games: [...roles.values()].reduce((a, b) => a + b, 0), role: [...roles].sort((a, b) => b[1] - a[1])[0][0] }))
+    .sort((a, b) => b.games - a.games || a.championId - b.championId)
+    .slice(0, limit)
+    .map(pick => ({ ...pick, role: (ROLES as readonly string[]).includes(pick.role) ? pick.role : "auto" }));
+}

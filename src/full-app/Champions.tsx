@@ -1,26 +1,30 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Search, Star } from "lucide-react";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { BuildPanel } from "./BuildPanel";
 import { MatchupStrip, ChampionArt } from "./MatchupStrip";
 import { RankPicker, ChampionPicker } from "./Picker";
-import { NearViewport } from "./NearViewport";
+import { NearEnd, NearViewport } from "./NearViewport";
 import { PresetBuild } from "../runes/PresetBuild";
 import { CachedBadge } from "../runes/CachedBadge";
 import { RoleIcon } from "../runes/RoleIcon";
 import { TIER_OPTIONS, fmtPct, tierClass } from "../runes/types";
 import type { ChampionOption, ChampionOverviewView, ChampionCountersView, TierListView, TierRow, MatchupView } from "../runes/types";
 import { useChampionArt } from "./art";
-import { autoRows, mainRoles, ROLES, type AutoRow } from "./championsModel";
+import { autoRows, mainRoles, mostPlayed, ROLES, type AutoRow } from "./championsModel";
+import type { DashboardView } from "./types";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
 import "../runes/runes.css";
+import "./champions.css";
 
 const lanes = [["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const;
 const laneLabel = (lane: string) => lane === "auto" ? "Auto" : lanes.find(([value]) => value === lane)?.[1] ?? lane;
 const tierLabel = (tier: string) => TIER_OPTIONS.find(option => option.value === tier)?.label ?? tier;
 const loadMatchup = (championId: number, enemyChampionId: number, position: string, tier: string) => invoke<MatchupView | null>("get_matchup", { championId, enemyChampionId, position, tier });
+// The tier list renders this many rows at first, then more as the page is scrolled.
+const ROW_STEP = 40;
 type SortKey = "rank" | "winPct" | "pickPct" | "banPct" | "games";
 const columns: [SortKey | null, string][] = [["rank", "Rank"], [null, "Champion"], [null, "Role"], [null, "Tier"], ["winPct", "Win rate"], ["pickPct", "Pick rate"], ["banPct", "Ban rate"], ["games", "Games"]];
 
@@ -42,6 +46,8 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
   const [counters, setCounters] = useState<ChampionCountersView | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [limit, setLimit] = useState(ROW_STEP);
+  const [recent, setRecent] = useState<{ championId: number; role: string }[]>([]);
   // The five role tier lists share one cached u.gg file per rank, so loading all of them is cheap.
   const loadRoleLists = (forTier: string) => {
     let lists = roleLists.current.get(forTier);
@@ -63,6 +69,13 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
     void invoke<ChampionOption[]>("get_champion_list").then(value => { if (live) setChampions(value); }).catch(reason => { if (live) setError(String(reason)); });
     return () => { live = false; };
   }, []);
+  // Quick picks on the Matchups page come from the champions in the player's own recent games.
+  useEffect(() => {
+    if (!matchups) return;
+    let live = true;
+    void invoke<DashboardView>("dashboard_snapshot").then(view => { if (live) setRecent(mostPlayed(view.snapshot?.games ?? [])); }).catch(() => {});
+    return () => { live = false; };
+  }, [matchups]);
   useEffect(() => {
     let live = true; setList(null); setError("");
     if (!matchups && lane === "auto") void loadRoleLists(tier).then(lists => { if (live) setList({ rows: autoRows(lists), unavailable: !Object.values(lists).some(rows => rows.length), stale: false, updatedAt: null }); });
@@ -102,6 +115,9 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
     const filtered = ranked.filter(({ row }) => row.name.toLowerCase().includes(q));
     return sort === "rank" ? filtered : [...filtered].sort((a, b) => b.row[sort] - a.row[sort]);
   }, [list, query, sort]);
+  useEffect(() => setLimit(ROW_STEP), [list, query, sort]);
+  // Pick and ban bars are drawn against the highest rate in the list.
+  const peak = useMemo(() => ({ pick: Math.max(1, ...(list?.rows ?? []).map(row => row.pickPct)), ban: Math.max(1, ...(list?.rows ?? []).map(row => row.banPct)) }), [list]);
 
   // A champion page carries its own filters in its header, like a game client's champion screen.
   const inHeader = !!selected && !matchups;
@@ -125,10 +141,14 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
     {error && <Notice tone="error">{error}</Notice>}
     {selected && <section className="selected-champion">
       <ChampionHeader champion={selected} lane={role} tier={tier} onBack={() => setSelected(null)} backLabel={matchups ? "Clear champion" : "Back to tier list"} patch={overview?.stats?.patch}>{inHeader && filters}</ChampionHeader>
-      {matchups && enemy > 0 && enemy !== selected.id && (detail ? <section className="matchup-banner" aria-label="Matchup">
-        <div className="matchup-heading"><span className="matchup-portraits"><ChampionIcon id={selected.id} name={selected.name} mode="desktop" /><b>VS</b><ChampionIcon id={enemy} name={detail.enemyName} mode="desktop" /></span><div className="matchup-title"><strong>{selected.name} vs {detail.enemyName}</strong><small>{laneLabel(role)} · {tierLabel(tier)}</small></div></div>
-        {detail.stats ? <div className="matchup-stat-tiles"><div><small>Your win rate</small><div><strong>{fmtPct(detail.stats.winPct)}</strong><span className={detail.stats.delta >= 0 ? "up" : "down"}> {detail.stats.delta >= 0 ? "+" : ""}{detail.stats.delta.toFixed(1)} vs average</span></div></div><div><small>{fmtCount(detail.stats.games)} matchup games</small><div><strong>{fmtPct(detail.stats.avgWinPct)}</strong><span> champion average</span></div></div></div> : <p>Not enough games for this matchup yet.</p>}
-        <p className="runes-note">{detail.fallback ? "General build: the matchup sample is missing or too small." : "Recommended build for this matchup"}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly />
+      {matchups && enemy > 0 && enemy !== selected.id && (detail ? <section className="matchup-banner fa-versus" aria-label="Matchup">
+        <VersusSide id={selected.id} name={selected.name} label="Your champion" />
+        <div className="fa-versus-stat">
+          {detail.stats ? <><small>{selected.name} win rate</small><strong>{fmtPct(detail.stats.winPct)}</strong><span>{fmtCount(detail.stats.games)} games · {laneLabel(role)}</span><span className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} pts vs average</span></>
+            : <><small>{laneLabel(role)} · {tierLabel(tier)}</small><span>Not enough games for this matchup yet.</span></>}
+        </div>
+        <VersusSide id={enemy} name={detail.enemyName} label="Your opponent" end />
+        {detail.fallback && <p className="runes-note">General build: the matchup sample is missing or too small.</p>}
       </section> : <Skeleton label="Loading matchup" rows={2} height={72} />)}
       {loading && !overview ? <TableSkeleton /> : overview?.stats ? <>
         <div className={`fa-stat-strip ${tierClass(overview.stats.tier ?? "")}`}>
@@ -138,27 +158,35 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
           <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
         </div>
       </> : <Notice>No statistics available for this role and rank.</Notice>}
-      <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} />
+      <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} matchup={matchups ? detail : null} preferMatchup={matchups} />
       {counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
       <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={setEnemy} />
       {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${fmtCount(detail.stats.games)} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
     </section>}
-    {!selected && (matchups ? <section className="empty"><h2>Pick your lane matchup</h2><p>Choose your champion and an opponent to see the matchup win rate, build and counters.</p></section> : <>
+    {!selected && (matchups ? <section className="fa-matchup-empty">
+      <h2>Pick your lane matchup</h2>
+      <p>Choose your champion and an opponent to compare the lane, then prepare a build for that pairing.</p>
+      {recent.length > 0 && <><h3>Start with your champions</h3><div className="fa-quick-picks">{recent.map(pick => {
+        const champion = champions.find(c => c.id === pick.championId);
+        return champion && <button key={pick.championId} className="fa-quick-pick" onClick={() => { setLane(pick.role); void open(champion, pick.role); }}><NearViewport className="fa-featured-art"><ChampionArt id={pick.championId} name={champion.name} /></NearViewport><span><strong>{champion.name}</strong><small>{pick.role === "auto" ? "Most played" : `${laneLabel(pick.role)} lane`}</small></span></button>;
+      })}</div></>}
+    </section> : <>
       {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map(row => <button className="fa-featured-pick" key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>Leading {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b></span></button>)}</div>}
       {list?.stale && <CachedBadge stale updatedAt={list.updatedAt} />}
       {list?.unavailable ? <Notice tone="warn">The tier list is unavailable right now. Try another role or rank.</Notice> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
         <table className="tier-table">
           <thead><tr>{columns.map(([key, label]) => <th key={label} aria-sort={key && key === sort ? (key === "rank" ? "ascending" : "descending") : undefined}>
             {key ? <button className={key === sort ? "is-sorted" : undefined} onClick={() => setSort(key)}>{label}</button> : label}</th>)}</tr></thead>
-          <tbody>{rows.map(({ row, rank }) => <TierLine key={row.championId} row={row} rank={rank} lane={(row as Partial<AutoRow>).role ?? lane} average={averages.get((row as Partial<AutoRow>).role ?? lane) ?? 0} onOpen={() => void open({ id: row.championId, name: row.name })} />)}</tbody>
+          <tbody>{rows.slice(0, limit).map(({ row, rank }) => <TierLine key={row.championId} row={row} rank={rank} lane={(row as Partial<AutoRow>).role ?? lane} average={averages.get((row as Partial<AutoRow>).role ?? lane) ?? 0} peak={peak} onOpen={() => void open({ id: row.championId, name: row.name })} />)}</tbody>
         </table>
+        {limit < rows.length && <NearEnd onNear={() => setLimit(current => current + ROW_STEP)} />}
         {!rows.length && <p className="panel-empty">No champion matches “{query}”.</p>}
       </div>}
     </>)}
   </div>;
 }
 
-function TierLine({ row, rank, lane, average, onOpen }: { row: TierRow; rank: number; lane: string; average: number; onOpen: () => void }) {
+function TierLine({ row, rank, lane, average, peak, onOpen }: { row: TierRow; rank: number; lane: string; average: number; peak: { pick: number; ban: number }; onOpen: () => void }) {
   const delta = row.winPct - average;
   return <tr onClick={onOpen}>
     <td className="col-rank">{rank}</td>
@@ -166,10 +194,18 @@ function TierLine({ row, rank, lane, average, onOpen }: { row: TierRow; rank: nu
     <td className="col-role"><RoleIcon role={lane} size={18} mode="desktop" /></td>
     <td><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span></td>
     <td className="col-wr"><strong>{fmtPct(row.winPct)}</strong><small className={delta >= 0 ? "up" : "down"} title="Compared with this role’s average">{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></td>
-    <td className="col-num">{fmtPct(row.pickPct)}</td>
-    <td className="col-num ban">{fmtPct(row.banPct)}</td>
+    <td className="col-num"><RateBar value={row.pickPct} peak={peak.pick} /></td>
+    <td className="col-num ban"><RateBar value={row.banPct} peak={peak.ban} /></td>
     <td className="col-num muted">{fmtCount(row.games)}</td>
   </tr>;
+}
+
+function RateBar({ value, peak }: { value: number; peak: number }) {
+  return <><span>{fmtPct(value)}</span><i className="fa-rate-bar" style={{ "--rate": `${Math.min(100, (value / peak) * 100)}%` } as CSSProperties} aria-hidden /></>;
+}
+
+function VersusSide({ id, name, label, end }: { id: number; name: string; label: string; end?: boolean }) {
+  return <div className={`fa-versus-side${end ? " is-end" : ""}`}><NearViewport className="fa-versus-art"><ChampionArt id={id} name={name} /></NearViewport><span><small>{label}</small><strong>{name}</strong></span></div>;
 }
 
 function TableSkeleton() {

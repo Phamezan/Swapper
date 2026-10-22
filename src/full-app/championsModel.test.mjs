@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { autoRows, mainRoles } from "./championsModel.ts";
+import { autoRows, mainRoles, mostPlayed } from "./championsModel.ts";
 
 const row = (championId, tier, winPct, games) => ({ championId, name: `C${championId}`, tier, winPct, games, pickPct: 1, banPct: 1 });
 const lists = {
@@ -20,4 +20,13 @@ test("a champion's main role is the role with the most games", () => {
 test("auto rows list each champion once at its main role, strongest tier first", () => {
   const rows = autoRows(lists);
   assert.deepEqual(rows.map(r => [r.championId, r.role]), [[64, "jungle"], [266, "top"], [103, "mid"], [1, "top"]]);
+});
+
+test("mostPlayed ranks champions by games and keeps each one's main role", () => {
+  const games = [266, 266, 266, 64, 64, 103].map((championId, i) => ({ championId, role: i === 2 ? "jungle" : championId === 64 ? "jungle" : "top" }));
+  assert.deepEqual(mostPlayed(games, 2), [{ championId: 266, role: "top", games: 3 }, { championId: 64, role: "jungle", games: 2 }]);
+});
+
+test("mostPlayed falls back to auto when the role is unknown", () => {
+  assert.equal(mostPlayed([{ championId: 1, role: "" }])[0].role, "auto");
 });
