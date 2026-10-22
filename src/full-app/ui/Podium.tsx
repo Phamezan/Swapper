@@ -41,7 +41,7 @@ export function Podium({ who, connected, open, crest, disabled }: {
         {rank && crest && <RankCrest tier={crest} size={40} mode="desktop" />}
         <span className="podium-rank-copy">
           <b>{rank ? rankLabel(rank) : who.unranked ? "Unranked" : "Not signed in"}</b>
-          {rank && <span className="podium-lptext"><b>{rank.lp} LP</b>{lp != null && " to next division"}</span>}
+          {rank && <span className="podium-lptext"><b>{rank.lp} LP</b></span>}
         </span>
       </span>
       {lp != null && <span className="podium-lp" role="img" aria-label={`${rank!.lp} of 100 LP to the next division`}><i style={{ width: `${lp}%` }} /></span>}
