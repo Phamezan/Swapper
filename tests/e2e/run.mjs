@@ -123,7 +123,8 @@ const setup = "/src/onboarding/onboarding-preview.html";
 async function navigate(url, selector) {
   const result = await page.cdp.send("Page.navigate", { url: origin + url });
   assert.ok(!result.errorText, result.errorText);
-  await page.visible(selector);
+  // A cold Vite start can take longer than one poll window on the first page.
+  await page.visible(selector).catch(() => page.visible(selector));
 }
 
 async function shell() {
