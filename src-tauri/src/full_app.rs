@@ -11,6 +11,7 @@ pub(crate) mod lp;
 pub mod ui_data;
 pub(crate) mod model;
 pub mod routing;
+pub mod search;
 
 use base64::Engine;
 use futures_util::{stream, StreamExt};

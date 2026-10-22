@@ -290,6 +290,8 @@ pub fn run() {
                 full_app::window_ready,
                 full_app::dashboard_snapshot,
                 match_detail::full_app_match_detail,
+                full_app::search::full_app_search_players,
+                full_app::search::full_app_player_profile,
                 full_app::bench::dashboard_benchmarks,
                 full_app::art::champion_art,
                 full_app::ui_data::full_app_rune_catalog,

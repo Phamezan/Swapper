@@ -202,11 +202,25 @@ fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
 #[derive(Default)]
 struct Cache {
     owner: String,
-    matches: BTreeMap<u64, Detail>,
+    matches: BTreeMap<(u64, String), Detail>,
     ranks: BTreeMap<String, Option<model::Rank>>,
 }
 
 static CACHE: OnceLock<tokio::sync::Mutex<Cache>> = OnceLock::new();
+
+pub(crate) fn cached_games() -> Vec<model::Game> {
+    CACHE
+        .get()
+        .and_then(|cache| cache.try_lock().ok())
+        .map(|cache| {
+            cache
+                .matches
+                .values()
+                .map(|detail| detail.game.clone())
+                .collect()
+        })
+        .unwrap_or_default()
+}
 
 async fn get(client: &crate::runes::Lcu, path: &str) -> Result<Value, String> {
     tokio::time::timeout(Duration::from_secs(4), crate::runes::lcu_get(client, path))
@@ -220,6 +234,7 @@ pub async fn full_app_match_detail(
     app: tauri::AppHandle,
     window: tauri::WebviewWindow,
     game_id: u64,
+    riot_id: Option<String>,
 ) -> Result<Detail, String> {
     if window.label() != full_app::LABEL || !full_app::enabled(&app) {
         return Err("Fullsized App is closed or disabled.".into());
@@ -235,14 +250,51 @@ pub async fn full_app_match_detail(
             ..Default::default()
         };
     }
-    if let Some(detail) = cache.matches.get(&game_id) {
+    let perspective = riot_id.unwrap_or_else(|| owner.riot_id.clone());
+    if perspective.len() > 128 || perspective.chars().any(char::is_control) {
+        return Err("Invalid player name.".into());
+    }
+    let key = (game_id, perspective.to_lowercase());
+    if let Some(detail) = cache.matches.get(&key) {
         return Ok(detail.clone());
     }
     let value = get(&client, &format!("/lol-match-history/v1/games/{game_id}")).await?;
     if value["gameId"].as_u64() != Some(game_id) {
         return Err("League Client returned another match.".into());
     }
-    let mut detail = parse(&value, &owner)?;
+    let selected = value["participantIdentities"]
+        .as_array()
+        .and_then(|identities| {
+            identities.iter().find_map(|i| {
+                let player = &i["player"];
+                let name = player["gameName"]
+                    .as_str()
+                    .filter(|s| !s.is_empty())
+                    .or_else(|| player["summonerName"].as_str())?;
+                let tag = player["tagLine"].as_str().unwrap_or("");
+                let id = if tag.is_empty() {
+                    name.to_string()
+                } else {
+                    format!("{name}#{tag}")
+                };
+                id.eq_ignore_ascii_case(&perspective)
+                    .then(|| model::Summoner {
+                        puuid: player["puuid"].as_str().unwrap_or_default().into(),
+                        summoner_id: player["summonerId"].as_u64().unwrap_or(0),
+                        riot_id: id,
+                        level: 0,
+                        icon: None,
+                    })
+            })
+        });
+    let summoner = if perspective.eq_ignore_ascii_case(&owner.riot_id) {
+        &owner
+    } else {
+        selected
+            .as_ref()
+            .ok_or("This player is not in the match details.")?
+    };
+    let mut detail = parse(&value, summoner)?;
     // Paint the scoreboard before remote rank lookups finish.
     let _ = app.emit_to(full_app::LABEL, "match_detail", &detail);
     let identities = value["participantIdentities"]
@@ -293,7 +345,7 @@ pub async fn full_app_match_detail(
     if cache.ranks.len() > 200 {
         cache.ranks.clear();
     }
-    cache.matches.insert(game_id, detail.clone());
+    cache.matches.insert(key, detail.clone());
     Ok(detail)
 }
 

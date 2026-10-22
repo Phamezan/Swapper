@@ -253,6 +253,99 @@ async function main() {
   await check("Sidebar Accounts", () => nav("Accounts", ".fa-account-card"));
   await check("Sidebar Settings", () => nav("Settings", ".fa-settings-content"));
   await check("Sidebar Dashboard", () => nav("Dashboard", ".match-row"));
+  // Search owns these scenarios; all identities are invented preview fixtures.
+  async function key(key, modifiers = 0) {
+    const code = { Enter: 13, Escape: 27, ArrowDown: 40 }[key] ?? 0;
+    await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key, modifiers, windowsVirtualKeyCode: code });
+    await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key, modifiers, windowsVirtualKeyCode: code });
+  }
+  const searchInput = '.palette input';
+  await check('Palette icons, groups, focus and empty results', async () => {
+    await page.evaluate("document.querySelector('.title-search').focus()");
+    await key('k', 2);
+    await page.visible('.palette');
+    await page.text('.palette h3', 'Pages');
+    assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.palette input')).outlineStyle"), 'none');
+    assert.ok(await page.evaluate("document.querySelector('.palette-nav-icon svg') !== null"));
+    await page.type(searchInput, 'nothing-will-match');
+    await page.text('.palette-empty', 'No results found');
+    assert.equal(await page.evaluate("document.querySelector('.palette input').getAttribute('aria-activedescendant')"), null);
+    await key('ArrowDown');
+    await key('Escape');
+    await page.visible('.title-search:focus');
+  });
+  await check('Palette champion selection and local recents', async () => {
+    await page.click('.title-search');
+    await page.type(searchInput, 'Ahri');
+    await page.visible('.palette-option .champion-icon');
+    await key('Enter');
+    await page.text('.champion-hero h2', 'Ahri');
+    await page.click('.title-search');
+    await page.text('.palette h3', 'Recent');
+    await page.click('.palette-hint button', 'Clear recent');
+    assert.equal(await page.evaluate("document.querySelector('[role=group][aria-label=Recent]')"), null);
+    await key('Escape');
+  });
+  await check('Palette player profile, match details and back', async () => {
+    await nav('Dashboard', '.match-row');
+    await page.click('.title-search');
+    await page.type(searchInput, 'Player 1#DEMO');
+    await page.visible('.palette-option .search-profile-icon');
+    await page.text('.palette-player-copy', 'Played with you');
+    await key('Enter');
+    await page.text('.player-identity h2', 'Player 1#DEMO');
+    assert.equal(await page.evaluate("document.querySelector('.palette')"), null);
+    await page.visible('.player-games .match-row');
+    await page.text('.player-ranks', 'Solo/Duo');
+    await page.text('.player-ranks', 'Flex');
+    await page.click('.player-games .match-champ');
+    await page.visible('.md-team');
+    await page.click('.ui-crumbs button', 'Player profile');
+    await page.visible('.player-identity');
+    await page.click('.player-back');
+    await page.text('.ui-page-header h1', 'Dashboard');
+  });
+  await check('Palette no-client saved players and keyboard across groups', async () => {
+    await navigate(`${fullApp}?stale`, '.match-row');
+    await page.click('.title-search');
+    await page.type(searchInput, 'Player 5');
+    await page.text('.palette-player-copy', 'Played against you');
+    await page.text('.palette-player-status', 'Open League Client');
+    await key('Enter');
+    await page.text('.player-page .ui-notice', 'Open League Client');
+    await page.visible('.player-games .match-row');
+    await page.click('.title-search');
+    const recentCount = await page.evaluate("document.querySelectorAll('.palette [role=group][aria-label=Recent] [role=option]').length");
+    for (let i = 0; i < recentCount; i++) await key('ArrowDown');
+    await key('Enter');
+    await page.text('.ui-page-header h1', 'Dashboard');
+    await page.click('.title-search');
+    await page.click('.palette-hint button', 'Clear recent');
+    await key('Escape');
+    await navigate(fullApp, '.match-row');
+  });
+  await check('Player partial data keeps games and offers retry', async () => {
+    await navigate(`${fullApp}?search-partial`, '.match-row');
+    await page.click('.title-search');
+    await page.type(searchInput, 'Player 1#DEMO');
+    await page.visible('.palette-player-copy');
+    await key('Enter');
+    await page.text('.player-page .ui-notice', 'Some profile data could not be loaded');
+    await page.visible('.player-games .match-row');
+    await page.visible('.player-page .ui-notice button:not(:disabled)');
+  });
+  await check('Player lookup failure keeps saved rows and offers retry', async () => {
+    await navigate(`${fullApp}?search-error`, '.match-row');
+    await page.click('.title-search');
+    await page.type(searchInput, 'Player 1#DEMO');
+    await page.visible('.palette-player-copy');
+    await key('Enter');
+    await page.text('.player-page .ui-notice', 'This profile is unavailable');
+    await page.visible('.player-games .match-row');
+    await page.click('.player-page .ui-notice button', 'Try again');
+    await page.visible('.player-page .ui-notice button:not(:disabled)');
+    await navigate(fullApp, '.match-row');
+  });
   await check("Profile podium opens account picker", async () => {
     await page.click(".profile-podium");
     await page.visible('[role="dialog"][aria-label="Switch account"]');

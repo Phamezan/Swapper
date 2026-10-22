@@ -27,8 +27,9 @@ import { EmptyState, Notice, Skeleton } from "./ui/States";
 const Champions = lazy(() => import("./Champions"));
 const LiveGame = lazy(() => import("./LiveGame"));
 const MatchDetail = lazy(() => import("./MatchDetail"));
-type MatchLocation = `Match:${number}`;
-type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | MatchLocation;
+const PlayerPage = lazy(() => import('./PlayerPage'));
+type MatchLocation = `Match:${number}` | `Match:${number}:${string}`;
+type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | MatchLocation | `Player:${string}`;
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
@@ -42,7 +43,7 @@ const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 
 function App() {
-  const visitedMatches = useRef(new Map<number, Game>());
+  const visitedMatches = useRef(new Map<string, Game>());
   const [page, setPage] = useState<Page | "app">("Dashboard");
   const [appView, setAppView] = useState<View>("accounts");
   const [request, setRequest] = useState<FullAppBridge["request"]>(null);
@@ -167,8 +168,11 @@ function App() {
   const championNames = useMemo(() => new Map(champions.map(c => [c.id, c.name])), [champions]);
   const snapshot = view?.snapshot;
   const rank = snapshot?.rank;
-  const matchId = page.startsWith("Match:") ? Number(page.slice(6)) : null;
-  const selectedMatch = matchId == null ? null : visitedMatches.current.get(matchId) ?? snapshot?.games.find(game => game.id === matchId);
+  const matchParts = page.startsWith('Match:') ? page.split(':') : null;
+  const matchId = matchParts ? Number(matchParts[1]) : null;
+  const matchPlayer = matchParts?.[2] ? decodeURIComponent(matchParts[2]) : undefined;
+  const playerId = page.startsWith('Player:') ? page.slice(7) : null;
+  const selectedMatch = matchId == null ? null : visitedMatches.current.get(page) ?? snapshot?.games.find(game => game.id === matchId);
   const activeAccount = accounts?.accounts.find(account => account.id === accounts.activeId);
   const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? activeAccount?.riotId ?? "");
   const who: PodiumIdentity = {
@@ -186,7 +190,8 @@ function App() {
   return <div className="fa-frame" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
-      onPickChampion={openChampion} onPickPage={page => go(page as Location)} />
+      onPickChampion={openChampion} onPickPage={page => go(page as Location)} snapshot={snapshot}
+      onPickPlayer={riotId => go(`Player:${riotId}`)} />
     <div className="dashboard-shell">
       <aside className="sidebar dash-scope">
         <Podium who={who} connected={connected} open={pickerOpen} onToggle={() => setPickerOpen(open => !open)} crest={rank ? crestSlug(rank.tier) : null} />
@@ -210,18 +215,21 @@ function App() {
       <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
-        {selectedMatch ? <PageHeader crumbs={[{ label: "Dashboard", onClick: () => go("Dashboard") }]}
+        {selectedMatch ? <PageHeader crumbs={[{ label: matchPlayer ? 'Player profile' : "Dashboard", onClick: () => matchPlayer ? travel(-1) : go("Dashboard") }]}
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
-          : <PageHeader title={matchId != null ? "Match detail" : pageLabel(page)}
+          : <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "Dashboard"
           ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} onOpenLive={() => go(LIVE_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
-              onOpenMatch={game => { visitedMatches.current.set(game.id, game); go(`Match:${game.id}`); }} />
+              onOpenMatch={game => { const target = `Match:${game.id}` as const; visitedMatches.current.set(target, game); go(target); }} />
             : loading ? <DashboardSkeleton />
             : <EmptyState icon={<BrandIcon size={40} />} title="Sign in to League Client">Open League Client to see your games and rank.</EmptyState>
-          : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={selectedMatch.id} game={selectedMatch} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
+          : playerId != null ? <Suspense fallback={<Skeleton label="Loading player profile" rows={4} height={64} />}><PlayerPage key={playerId} riotId={playerId} snapshot={snapshot}
+              names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => travel(-1)}
+              onOpenMatch={game => { const target = `Match:${game.id}:${encodeURIComponent(playerId)}` as const; visitedMatches.current.set(target, game); go(target); }} /></Suspense>
+          : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page} matchups={page === "Matchups"} focus={page === "Matchups" ? null : focus} />

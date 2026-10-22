@@ -117,6 +117,31 @@ mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
   switch (cmd) {
+    // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
+    case 'full_app_search_players': {
+      const connected = !params.has('stale') && !params.has('disconnected');
+      if (params.has('search-slow')) await new Promise(resolve => setTimeout(resolve, 1000));
+      const q = String(a.query).trim().toLowerCase();
+      const saved = snapshot.games.flatMap(g => g.players.filter(p => !p.me && p.riotId.toLowerCase().startsWith(q)).map(p => ({ riotId: p.riotId,
+        icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: null, ally: p.ally, lastPlayed: g.createdAt })));
+      const players = [...new Map(saved.reverse().map(p => [p.riotId, p])).values()].slice(0, 8).map(p => ({ ...p, live: false }));
+      if (connected && q === 'demo player#test') players.unshift({ riotId: 'Demo Player#TEST', icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: null, ally: false, lastPlayed: 0, live: true });
+      return { connected, players, message: connected ? q.includes('#') && !players.length ? 'No player found for that Riot ID.' : null : 'Open League Client to load a profile. Showing saved players only.' };
+    }
+    case 'full_app_player_profile': {
+      const { profileGame } = await import('./playerModel');
+      if (params.has('search-slow')) await new Promise(resolve => setTimeout(resolve, 1000));
+      if (params.has('search-error')) throw new Error('Preview profile unavailable');
+      const live = !params.has('stale') && !params.has('disconnected');
+      const riotId = String(a.riotId);
+      return { player: { riotId, icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: live ? 184 : null, ally: true, lastPlayed: games[0]?.createdAt ?? null },
+        solo: live ? rank('EMERALD', 'II') : null, flex: live ? rank('PLATINUM', 'IV') : null,
+        games: (riotId === 'Demo Player#TEST' ? games : games.map(g => profileGame(g, riotId)).filter((g): g is NonNullable<typeof g> => g !== null))
+          .map(g => live ? { ...g, spells: [4, g.role === 'jungle' ? 11 : 12], keystone: 8010, level: 16, placement: 3,
+            opponent: g.players.findIndex(p => !p.ally && p.role === g.role) } : g), live, fetchedAt: snapshot.fetchedAt,
+        message: params.has('search-partial') ? 'Some profile data could not be loaded. Try again shortly.' : null };
+    }
+    // ---- end search fixtures ----
     case "get_state": return shellState.has("empty-accounts") ? { ...state, accounts: [], activeId: null } : state;
     // uishell preview states: ?disconnected (no client), ?stale (saved stats), ?empty-accounts handled in get_state above.
     case "dashboard_snapshot":
@@ -126,8 +151,10 @@ mockIPC(async (cmd, args) => {
       return { snapshot, cards, stale: (shellState.has("stale") || params.has("stale")), message: (shellState.has("stale") || params.has("stale")) ? "League Client is not running." : null };
     case "full_app_match_detail": {
       if (new URLSearchParams(location.search).has("detail-error")) throw new Error("Preview: match details unavailable");
-      const match = games.find(g => g.id === a.gameId) ?? games[0];
-      const detail = { game: match, teams: [100, 200].map((teamId, i) => ({ teamId, win: i === 0 ? match.win : !match.win,
+      const original = games.find(g => g.id === a.gameId) ?? games[0];
+      const { profileGame } = await import('./playerModel');
+      const match = a.riotId ? profileGame(original, String(a.riotId)) ?? original : original;
+      const detail = { game: match, teams: [100, 200].map((teamId, i) => ({ teamId, win: i === 0 ? original.win : !original.win,
         objectives: [{ label: "Dragons", kills: i ? 1 : 3 }, { label: "Heralds", kills: i ? 0 : 1 }, { label: "Grubs", kills: i ? 2 : 4 }, { label: "Barons", kills: i ? 0 : 1 }, { label: "Towers", kills: i ? 3 : 9 }] })),
         players: match.players.map((p, i) => ({ ...p, riotId: p.me ? "You#•••" : `Player ${i}#•••`, participantId: i + 1, teamId: i < 5 ? 100 : 200,
           level: 18 - i % 4, spells: [4, p.role === "jungle" ? 11 : p.role === "support" ? 14 : 12],
