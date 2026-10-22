@@ -10,6 +10,7 @@ import { isGamePhase, shopNoticeFrom } from "../runes/types";
 import type { SettingsTab } from "../settings/SettingsView";
 import { useSettingsVersion } from "../settingsEvents";
 import type { AppState, RemoteStatus, DetectOutcome, DetectState, DetectedIdentity, ChampSelectStatus, View, FullAppBridge } from "./types";
+import type { DeceivePrompt } from "../settings/DeceiveRestartNotice";
 import { riotIdOf } from "./IdentityCard";
 
 const emptyRemote: RemoteStatus = {
@@ -51,7 +52,7 @@ export function useAppController(fullApp?: FullAppBridge) {
   const [repairingId, setRepairingId] = useState<string | null>(null);
   const [accountMenu, setAccountMenu] = useState<{ id: string; x: number; y: number } | null>(null);
   const [useDeceive, setUseDeceive] = useState(false);
-  const [deceivePrompt, setDeceivePrompt] = useState<"ask" | "defer" | null>(null);
+  const [deceivePrompt, setDeceivePrompt] = useState<DeceivePrompt | null>(null);
   const [koreanFont, setKoreanFont] = useState(false);
   const [ltkInstalling, setLtkInstalling] = useState(false);
   const [ltkInstallError, setLtkInstallError] = useState<string | null>(null);
@@ -692,8 +693,10 @@ export function useAppController(fullApp?: FullAppBridge) {
     });
     if (!native) return;
     void invoke<AppState>("get_state").then(sync).catch(showError);
-    if (!saved || !data.activeId) return;
+    if (!saved) return;
     const plan = await invoke<string>("restart_plan").catch(() => "save");
+    // Without a saved session Swapper can't sign the client back in, so the user restarts it.
+    if (!data.activeId) { if (plan !== "save") setDeceivePrompt("unsaved"); return; }
     if (plan === "restart") void switchToAccount(data.activeId);
     else if (plan === "ask" || plan === "defer") setDeceivePrompt(plan);
   };
