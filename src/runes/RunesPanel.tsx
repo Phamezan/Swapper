@@ -10,14 +10,11 @@ import { CachedBadge } from "./CachedBadge";
 import { RuneEditor } from "./RuneEditor";
 import { RankPicker } from "./RankPicker";
 import {
-  RunesView,
   ProBuild,
   ProBuildsView,
   PresetBuildView,
   MatchupView,
-  ChampionApi,
   Selection,
-  ShopNotice,
   LOW_SAMPLE_GAMES,
   fmtExactGames,
   fmtPct,
@@ -28,6 +25,9 @@ import {
   selectionFromApplied,
   sameSelection,
 } from "./types";
+import { SwordsIcon, CrowdIcon, TrophyIcon, PencilIcon, CheckIcon, ResetIcon, Spinner } from "./RunesPanelIcons";
+import type { RunesPanelProps } from "./RunesPanelProps";
+import { proEmptyMessage, positionLabels, runeRoles, modeLabels, defaultSelection } from "./runesPanelModel";
 import "./runes.css";
 
 type RuneScreen = "presets" | "pro" | "editor" | "champion";
@@ -38,171 +38,6 @@ let rememberedScreen: { championId: number; screen: RuneScreen } = {
   championId: -1,
   screen: "presets",
 };
-
-function SwordsIcon() {
-  return (
-    <svg className="rune-preset-swords" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M14.5 17.5 3 6V3h3l11.5 11.5" /><path d="m13 19 6-6" /><path d="m16 16 4 4" /><path d="m19 21 2-2" />
-      <path d="M9.5 6.5 14 2h3v3l-4.5 4.5" /><path d="m5 13 6 6" /><path d="m8 16-4 4" /><path d="m3 19 2 2" />
-    </svg>
-  );
-}
-
-const lineIcon = { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
-
-function CrowdIcon() {
-  return (
-    <svg className="preset-tab-icon" {...lineIcon}>
-      <circle cx="9" cy="8" r="3.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0" /><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6" />
-    </svg>
-  );
-}
-
-function TrophyIcon() {
-  return (
-    <svg className="preset-tab-icon" {...lineIcon}>
-      <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z" /><path d="M17 5h3v2a4 4 0 0 1-4 4M7 5H4v2a4 4 0 0 0 4 4" />
-    </svg>
-  );
-}
-
-function PencilIcon() {
-  return (
-    <svg {...lineIcon} width={14} height={14} strokeWidth={2.2}>
-      <path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
-    </svg>
-  );
-}
-
-function CheckIcon({ size = 15 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
-function ResetIcon({ size = 14 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1" />
-      <path d="M3 4v5h5" />
-    </svg>
-  );
-}
-
-function Spinner() {
-  return <span className="runes-spinner" aria-hidden />;
-}
-
-type Props = {
-  mode: "desktop" | "remote";
-  view: RunesView | null;
-  loading: boolean;
-  busy: boolean;
-  error: string | null;
-  /** Shop-import result from the `items_imported` event;
-   *  separate from the rune-apply confirmation, which is the applied badge. */
-  shopNotice?: ShopNotice | null;
-  onApply: (
-    selection: Selection,
-    presetIndex: number | null,
-    spells: number[] | null,
-    enemyChampionId?: number | null,
-    highestWin?: boolean,
-  ) => void | Promise<void>;
-  onToggleAutoApply: (enabled: boolean) => void;
-  onToggleSpellsWithRunes: (enabled: boolean) => void;
-  onToggleImportItems: (enabled: boolean) => void;
-  onPickSpell: (slot: "d" | "f", spellId: number) => void;
-  onPositionChange: (position: string) => void;
-  onImportItems: (
-    championId: number,
-    championName: string,
-    items: number[],
-  ) => Promise<void>;
-  /** Loads one page of pros' solo-queue games for the champion and role. */
-  onLoadProBuilds: (
-    championId: number,
-    position: string,
-    page: number,
-    otp: boolean,
-  ) => Promise<ProBuildsView>;
-  /** Loads the 6-item build for one preset's keystone, from lolalytics. */
-  onLoadBuild: (
-    championId: number,
-    position: string,
-    tier: string,
-    keystone: number,
-    mostPlayed?: Selection,
-  ) => Promise<PresetBuildView | null>;
-  /** Loads the lane matchup build against the enemy laner, from lolalytics. */
-  onLoadMatchup: (
-    championId: number,
-    enemyChampionId: number,
-    position: string,
-    tier: string,
-  ) => Promise<MatchupView | null>;
-  /** Loaders for the Champion tab. */
-  championApi: ChampionApi;
-  onTierChange: (tier: string) => void;
-  /** Changes when a game ends, so the Champion tab drops its search. */
-  sessionKey: string;
-};
-
-/** Names the champion and role when there are no pro games, so it reads as
- *  "nobody plays this role" rather than a failed load. */
-function proEmptyMessage(championName: string, position: string, otp: boolean): string | undefined {
-  const role = position && position !== "none" ? positionLabels[position] : undefined;
-  if (!championName || !role) return undefined;
-  const who = otp ? "one-trick" : "pro";
-  return `No recent ${who} games for ${championName} as ${role} — try another role.`;
-}
-
-const positionLabels: Record<string, string> = {
-  top: "Top",
-  jungle: "Jungle",
-  mid: "Mid",
-  adc: "Bot",
-  support: "Support",
-  none: "No role",
-};
-
-const runeRoles = [
-  { value: "top", label: "Top" },
-  { value: "jungle", label: "Jungle" },
-  { value: "mid", label: "Mid" },
-  { value: "adc", label: "Bot" },
-  { value: "support", label: "Support" },
-] as const;
-
-const modeLabels: Record<string, string> = {
-  ranked: "Ranked",
-  aram: "ARAM",
-  arena: "Arena",
-};
-
-function defaultSelection(view: RunesView): Selection | null {
-  const primary = view.trees[0];
-  if (!primary || primary.keystones.length === 0) return null;
-  const secondary = view.trees.find((tree) => tree.id !== primary.id);
-  if (!secondary) return null;
-  const primaryRunes = primary.rows
-    .map((row) => row.runes[0]?.id)
-    .filter((id): id is number => id !== undefined);
-  const secondaryRunes = secondary.rows
-    .map((row) => row.runes[0]?.id)
-    .filter((id): id is number => id !== undefined)
-    .slice(0, 2);
-  return {
-    primaryPageId: primary.id,
-    secondaryPageId: secondary.id,
-    keystone: primary.keystones[0].id,
-    primaryRunes,
-    secondaryRunes,
-    shards: view.shards.map((row) => row.runes[0]?.id ?? 0),
-  };
-}
 
 export function RunesPanel({
   mode,
@@ -224,7 +59,7 @@ export function RunesPanel({
   championApi,
   onTierChange,
   sessionKey,
-}: Props) {
+}: RunesPanelProps) {
   const [screen, setScreen] = useState<RuneScreen>("presets");
   const [selection, setSelection] = useState<Selection | null>(null);
   const [proView, setProView] = useState<ProBuildsView | null>(null);

@@ -1,0 +1,246 @@
+/* Summoner-spell slots in the runes header. */
+.runes-head-right { display: flex; align-items: center; gap: 8px; flex: none; }
+.runes-spells { display: flex; align-items: center; gap: 5px; }
+
+.rune-spell-slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface-panel);
+}
+.rune-spell-slot:disabled { opacity: 0.55; }
+.rune-spell-slot .spell-icon, .rune-spell-slot .spell-icon-fallback { width: 26px; height: 26px; }
+
+.rune-spell-key {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  min-width: 13px;
+  padding: 0 3px;
+  border-radius: 5px;
+  color: var(--text-primary);
+  background: var(--surface-raised);
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 13px;
+  text-align: center;
+}
+
+.runes-remote .rune-spell-slot { width: 46px; height: 46px; }
+.runes-remote .rune-spell-slot .spell-icon,
+.runes-remote .rune-spell-slot .spell-icon-fallback { width: 34px; height: 34px; }
+.runes-remote .rune-spell-key { min-width: 15px; font-size: 10px; line-height: 15px; }
+
+.rune-preset-spell { width: 18px !important; height: 18px !important; border-radius: 5px; }
+
+/* Spell picker: a modal sheet over the panel. */
+.runes-spell-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+.runes-spell-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 14px 15px calc(14px + env(safe-area-inset-bottom));
+  border: 1px solid var(--line-subtle);
+  border-radius: 16px 16px 0 0;
+  background: var(--surface-header);
+}
+.runes-desktop .runes-spell-sheet { max-height: calc(100% - 24px); margin: 12px; border-radius: 12px; }
+.runes-spell-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.runes-spell-sheet-head strong { font-size: 13px; font-weight: 750; }
+.runes-spell-sheet-head button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 650;
+}
+.runes-spell-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.rune-spell-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 4px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  background: var(--surface-panel);
+}
+.rune-spell-option .spell-icon, .rune-spell-option .spell-icon-fallback { width: 38px; height: 38px; }
+.rune-spell-option span { max-width: 100%; overflow: hidden; font-size: 9px; font-weight: 650; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.rune-spell-option.is-active { border-color: #d8b25a; color: var(--text-primary); background: #2a2413; }
+.runes-remote .rune-spell-option { min-height: 78px; }
+
+/* Item icons, shared by the per-keystone build rows and the pro cards. */
+.item-icon { display: block; border-radius: 5px; background: var(--surface-raised); object-fit: cover; }
+.item-icon-fallback { display: inline-block; border-radius: 5px; background: var(--surface-raised); }
+
+/* The 6-item build on each preset card, from lolalytics. */
+.preset-build-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.preset-skill-priority {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.preset-skill-key {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  color: var(--text-primary);
+  background: var(--surface-raised);
+  font-size: 10px;
+  font-weight: 750;
+}
+.preset-skill-key:first-child { color: #fff; border-color: #1d4ed8; background: #1d4ed8; }
+.preset-skill-sep { color: var(--text-muted); font-size: 11px; }
+.runes-remote .preset-skill-key { width: 22px; height: 22px; font-size: 12px; }
+.preset-build {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  gap: 4px;
+  min-width: 0;
+  margin-top: 0;
+}
+.preset-build .item-icon, .preset-build .item-icon-fallback { width: 24px; height: 24px; border-radius: 6px; }
+.preset-build-skeleton {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--surface-raised) 25%, var(--surface-hover) 50%, var(--surface-raised) 75%);
+  background-size: 200% 100%;
+  animation: preset-build-shimmer 1.2s ease-in-out infinite;
+}
+@keyframes preset-build-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* Rank picker: a popover under the trigger on the desktop flyout, a bottom
+   sheet on the phone. */
+.rank-picker { position: relative; display: inline-flex; }
+.rank-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 9px 0 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--text-primary);
+  background: var(--surface-panel);
+  font-size: 12px;
+  font-weight: 650;
+}
+.rank-trigger:hover:not(:disabled) { background: var(--surface-hover); }
+.rank-trigger:disabled { opacity: 0.55; }
+.rank-trigger-label { white-space: nowrap; }
+
+.rank-crest { display: block; flex: none; object-fit: contain; }
+.rank-crest-fallback { display: inline-block; flex: none; border-radius: 50%; background: var(--surface-raised); }
+
+.rank-backdrop { position: fixed; inset: 0; z-index: 14; border: 0; background: transparent; cursor: default; }
+.rank-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 208px;
+  padding: 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface-header);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+.rank-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+.rank-option.is-active { background: var(--surface-hover); }
+.rank-option.is-selected { color: var(--text-primary); }
+.rank-option-label { flex: 1; }
+.rank-option-games { color: var(--text-muted); font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.rank-option-check { flex: none; color: #52dfa6; }
+
+.rank-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+.rank-sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 14px 15px calc(14px + env(safe-area-inset-bottom));
+  border: 1px solid var(--line-subtle);
+  border-radius: 16px 16px 0 0;
+  background: var(--surface-header);
+}
+.rank-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.rank-sheet-head strong { font-size: 13px; font-weight: 750; }
+.rank-sheet-head button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 650;
+}
+.rank-sheet-list { display: flex; flex-direction: column; gap: 4px; }
+.rank-sheet .rank-option { min-height: 44px; font-size: 14px; }
+
+.runes-remote .rank-trigger { min-height: 44px; font-size: 14px; }
+.runes-remote .rank-option-games { font-size: 12px; }
+.runes-remote .preset-build .item-icon,
+.runes-remote .preset-build .item-icon-fallback,
+.runes-remote .preset-build-skeleton { width: 28px; height: 28px; }
+

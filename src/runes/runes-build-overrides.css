@@ -1,0 +1,46 @@
+/* Build card: runes and boxed spells, then starter/core items and skill keycaps. */
+.rune-preset.is-tailored { border-color: color-mix(in srgb, var(--brand-champions) 45%, transparent); }
+.rune-preset-copy strong { white-space: normal; }
+.rune-preset-icons { gap: 3px; }
+.rune-preset-icons .rune-preset-keystone { width: 28px; height: 28px; }
+.rune-preset-icons .rune-preset-shard { width: 14px !important; height: 14px !important; }
+.rune-preset-divider { margin: 0 1px; }
+.preset-spell-box { margin-left: auto; display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-raised); }
+.preset-build > span:has(.item-icon), .preset-build > span:has(.item-icon-fallback) { display: inline-flex; align-items: center; gap: 2px; }
+.preset-build > span > small { font-size: 9px; color: var(--text-secondary); }
+.matchup-build-link { align-self: flex-start; border: 0; padding: 4px 0; background: transparent; color: var(--text-muted); font: inherit; font-size: 11px; text-align: left; text-decoration: underline; text-underline-offset: 2px; }
+.matchup-build-link:hover { color: var(--text-primary); }
+
+/* Segmented switch shared by Pros/OTPs and Champions/Duos. */
+.matchup-toggle { display: flex; gap: 4px; padding: 3px; border: 1px solid var(--line-subtle); border-radius: 9px; background: var(--surface-base); }
+.matchup-toggle button {
+  flex: 1;
+  min-width: 0;
+  min-height: 28px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.matchup-toggle button:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-hover); }
+.matchup-toggle button.is-active { color: var(--action-text); background: var(--action-fill); }
+.matchup-toggle button:disabled { opacity: 0.45; }
+.runes-remote .matchup-toggle button { min-height: 40px; font-size: 13px; }
+
+/* Applied state on a preset card, and the core | later-items divider. */
+.preset-build-divider { width: 1px; height: 18px; margin: 0 2px; background: var(--line-strong); }
+
+/* Card stats: exact games under the title, win rate large on the right. */
+.rune-preset-head { align-items: flex-start; }
+.rune-preset-games { display: inline-flex; align-items: center; gap: 5px; font-variant-numeric: tabular-nums; font-size: 12px !important; }
+.rune-preset-swords { flex: none; color: var(--text-muted); }
+.rune-preset-wr { flex: none; font-size: 22px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.rune-preset-wr.wr-high { color: var(--wr-high); }
+.rune-preset-wr.wr-good { color: var(--wr-good); }
+.rune-preset-wr.wr-mid { color: var(--wr-mid); }
+.rune-preset-wr.wr-low { color: var(--wr-low); }
