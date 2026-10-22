@@ -4,8 +4,8 @@ import { createPortal } from 'react-dom';
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { Copy, Minus, Square, X } from "lucide-react";
-import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon, BackIcon, ForwardIcon, RefreshIcon, SearchIcon } from "./ui/icons";
-import { BrandIcon } from "../components/BrandIcon";
+import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon, BackIcon, ForwardIcon, RefreshIcon, SearchIcon, SwitchIcon } from "./ui/icons";
+
 import { ChampionIcon } from "../runes/ChampionIcon";
 import type { ChampionOption } from "../runes/types";
 import { ProfileIcon } from './ProfileIcon';
@@ -56,7 +56,7 @@ export function TitleBar(props: Props) {
   }, [native]);
   const win = native ? getCurrentWindow() : null;
   return <header className="title-bar" data-tauri-drag-region>
-    <div className="title-brand" data-tauri-drag-region><BrandIcon size={20} /><span data-tauri-drag-region>Swapper</span></div>
+    <div className="title-brand" data-tauri-drag-region><SwitchIcon size={30} /><span>Swapper</span></div>
     <div className="title-nav">
       <button className="title-icon" aria-label="Back" title="Back (Alt+←)" disabled={!props.canBack} onClick={props.onBack}><BackIcon size={16} /></button>
       <button className="title-icon" aria-label="Forward" title="Forward (Alt+→)" disabled={!props.canForward} onClick={props.onForward}><ForwardIcon size={16} /></button>

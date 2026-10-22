@@ -1,60 +1,106 @@
-/* App shell: sidebar podium, navigation, status line, account picker, switching overlay.
+/* App shell: Dossier sidebar band, account dropdown, switching overlay.
    Only the fixed sidebar and the picker popover blur; nothing here sits in a scrolling list. */
 
-/* ---------- Podium: who is signed in ---------- */
-.fa-frame .sidebar { gap: 22px; padding: 14px 12px 14px; }
-.fa-frame .profile-podium { position: relative; display: block; flex: none; padding: 38px 0 0; border: 0; border-radius: 14px; background: none; color: inherit; text-align: center; cursor: pointer; }
-.podium-portrait { position: absolute; top: 0; left: 50%; z-index: 1; width: 70px; height: 70px; display: grid; place-items: center; padding: 4px; border: 1px solid rgb(197 227 158 / .5); border-radius: 19px; background: var(--ui-surface-1); box-shadow: 0 6px 18px rgb(0 0 0 / .4); transform: translateX(-50%); }
-.podium-portrait > img { width: 100%; height: 100%; border-radius: 14px; object-fit: cover; }
-.podium-region { position: absolute; bottom: -5px; left: 50%; padding: 1px 7px; border-radius: 4px; background: var(--ui-brand); color: var(--ui-brand-ink); font-size: 12px; font-weight: 750; line-height: 16px; transform: translateX(-50%); }
-/* Connection: a dot on the portrait, green when League Client is connected, amber when not. */
-.podium-dot { position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; border-radius: 50%; background: var(--ui-win); box-shadow: 0 0 0 3px var(--ui-surface-1), 0 0 10px rgb(95 207 180 / .55); }
-.podium-dot.is-off { background: #ffbe55; box-shadow: 0 0 0 3px var(--ui-surface-1); }
-.podium-base { display: block; padding: 44px 10px 0; border: 1px solid; border-color: rgb(197 227 158 / .3) var(--ui-line-2) var(--ui-line-2); border-radius: 14px; background: radial-gradient(ellipse at 50% 0, rgb(197 227 158 / .09), transparent 75%), linear-gradient(180deg, var(--ui-surface-3), var(--ui-surface-2)); box-shadow: var(--ui-elev-1); transition: border-color var(--ui-fast) var(--ui-ease); }
-.profile-podium:hover .podium-base, .profile-podium.is-open .podium-base { border-color: var(--ui-brand-line); }
-.profile-podium:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 3px; }
-.podium-base > strong { display: block; overflow: hidden; color: var(--ui-text-1); font-size: 17px; font-weight: 730; letter-spacing: -.02em; text-overflow: ellipsis; white-space: nowrap; }
-.podium-tag { display: block; margin-top: 3px; color: var(--ui-text-3); font-size: var(--ui-caption); }
-.podium-rank { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 11px 0 8px; color: var(--ui-text-1); font-size: var(--ui-label); font-weight: 600; }
-.podium-rank > span { color: var(--ui-text-2); font-weight: 450; }
-.podium-lp { display: block; height: 4px; margin: 0 2px 12px; overflow: hidden; border-radius: 99px; background: rgb(255 255 255 / .08); }
-.podium-lp > i { display: block; height: 100%; border-radius: inherit; background: var(--ui-brand-gradient); }
-.podium-switch { display: flex; align-items: center; justify-content: space-between; margin: 0 -10px; padding: 10px 14px; border-top: 1px solid var(--ui-line-1); border-radius: 0 0 14px 14px; color: var(--ui-text-2); font-size: var(--ui-label); font-weight: 550; transition: color var(--ui-fast), background-color var(--ui-fast); }
-.podium-switch > svg { color: var(--ui-brand); }
-.profile-podium:hover .podium-switch, .profile-podium.is-open .podium-switch { background: var(--ui-brand-tint); color: var(--ui-text-1); }
+/* ---------- Sidebar identity and its account selector ---------- */
+.fa-frame .sidebar { position: relative; z-index: 6; gap: 16px; padding: 14px 12px 16px; }
+.podium-wrap { position: relative; flex: none; }
+.fa-frame .profile-podium { position: relative; display: block; width: 100%; padding: 24px 14px 0; color: var(--ui-text-1); text-align: left; }
+.podium-hero { position: absolute; inset: -14px -12px 0; pointer-events: none; background-image: var(--ambient-art); background-size: cover; background-position: center 18%; opacity: .32; mask-image: linear-gradient(180deg, #000, transparent 88%); }
+.podium-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ui-surface-0), transparent 70%); }
+.podium-band { position: relative; display: grid; justify-items: center; gap: 12px; }
+.podium-portrait { position: relative; width: 80px; height: 80px; display: grid; place-items: center; border: 2px solid var(--ui-brand); border-radius: var(--ui-radius-lg); background: var(--ui-surface-3); box-shadow: 0 8px 20px rgb(0 0 0 / .25); }
+.podium-portrait > img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+.podium-level { position: absolute; left: 50%; bottom: -9px; padding: 1px 8px; border: 2px solid var(--ui-surface-2); border-radius: 99px; background: var(--ui-brand); color: var(--ui-brand-ink); font-size: var(--ui-caption); font-weight: 750; line-height: 18px; transform: translateX(-50%); white-space: nowrap; }
+.podium-dot { position: absolute; top: -3px; right: -3px; width: 12px; height: 12px; border-radius: 50%; background: var(--ui-win); box-shadow: 0 0 0 3px var(--ui-surface-2); }
+.podium-dot.is-off { background: var(--ui-warn); }
+.podium-copy { min-width: 0; width: 100%; text-align: center; }
+.podium-copy > strong { display: block; overflow: hidden; color: var(--ui-text-1); font-size: 21px; font-weight: 750; letter-spacing: -.02em; line-height: 26px; text-overflow: ellipsis; white-space: nowrap; }
+.podium-tagpart { color: var(--ui-text-2); font-size: 15px; font-weight: 500; }
+.podium-standing { position: relative; display: grid; gap: 10px; min-height: 72px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--ui-line-1); }
+.podium-rank { display: flex; align-items: center; gap: 10px; min-width: 0; min-height: 40px; color: var(--ui-text-1); }
+.podium-rank > :is(.rank-crest, .rank-crest-fallback) { flex: none; }
+.podium-rank-copy { display: grid; min-width: 0; gap: 2px; }
+.podium-rank-copy > b { font-size: 15px; font-weight: 650; line-height: 20px; overflow-wrap: anywhere; }
+.podium-lp { display: block; width: 100%; height: 6px; overflow: hidden; border-radius: 99px; background: rgb(255 255 255 / .14); }
+.podium-lp > i { display: block; height: 100%; border-radius: inherit; background: var(--ui-brand-gradient, var(--ui-brand)); }
+.podium-lptext { color: var(--ui-text-2); font-size: var(--ui-caption); line-height: 16px; }
+.podium-lptext b { color: var(--ui-brand); font-weight: 650; }
+.podium-switch { position: relative; display: flex; align-items: center; gap: 12px; width: calc(100% + 28px); height: 40px; margin: 16px -14px 0; padding: 0 13px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: rgb(255 255 255 / .035); color: var(--ui-text-2); font: inherit; font-size: var(--ui-label); font-weight: 500; text-align: left; cursor: pointer; transition: background-color var(--ui-fast), border-color var(--ui-fast), color var(--ui-fast); }
+.podium-switch:hover, .podium-switch[aria-expanded="true"] { border-color: var(--ui-line-3); background: var(--ui-surface-hover); color: var(--ui-text-1); }
+.podium-switch:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+.podium-chev { flex: none; margin-left: auto; display: grid; place-items: center; color: var(--ui-text-3); }
+.podium-chev svg { transform: rotate(90deg); transition: transform var(--ui-base, 180ms) var(--ui-ease, ease); }
+.podium-chev.is-open svg { transform: rotate(-90deg); }
 
-/* ---------- Navigation: flat list, groups only as spacing ---------- */
-.fa-frame .sidebar nav { gap: 0; padding-top: 0; }
-.fa-frame .sidebar .nav-group { gap: 4px; }
-.fa-frame .sidebar .nav-group + .nav-group { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--ui-line-1); }
-.fa-frame .sidebar nav button { height: 42px; gap: 12px; padding: 0 12px; border: 1px solid transparent; font-size: var(--ui-body); font-weight: 500; }
+/* ---------- Navigation: badges for patch and live draft ---------- */
+.fa-frame .sidebar nav { flex: 1; min-height: 0; align-content: start; gap: 0; padding: 2px 0; overflow-y: auto; scrollbar-width: thin; }
+.fa-frame .sidebar .nav-group { gap: 8px; }
+.fa-frame .sidebar .nav-group + .nav-group { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--ui-line-1); }
+.fa-frame .sidebar nav button { height: 56px; gap: 10px; padding: 0 11px; border: 1px solid transparent; font-size: 15.5px; font-weight: 500; white-space: nowrap; }
+.fa-frame .sidebar nav button > svg { flex: none; width: 22px; height: 22px; }
+.fa-frame .sidebar nav button:focus-visible { outline-offset: -3px; }
 .fa-frame .sidebar nav button[aria-current="page"] { border-color: rgb(197 227 158 / .26); background: var(--ui-brand-tint); box-shadow: none; font-weight: 600; }
 .fa-frame .sidebar nav button[aria-current="page"]::before { display: none; }
-.fa-frame .sidebar nav button[aria-current="page"]:not(:has(.live-dot))::after { content: ""; width: 5px; height: 5px; margin-left: auto; border-radius: 50%; background: var(--ui-brand); }
+.nav-badge { flex: none; margin-left: auto; display: inline-flex; align-items: center; gap: 5px; padding: 3px 6px; border: 1px solid var(--ui-line-2); border-radius: 999px; font-size: var(--ui-caption); font-weight: 650; line-height: 16px; white-space: nowrap; }
+.nav-badge.patch { background: #ece9e2; border-color: #ece9e2; color: #141a1b; }
+.nav-badge.patch::after { content: attr(data-label); }
+.nav-badge.live { background: rgb(229 72 77 / .13); border-color: #e5484d; color: #fff; }
+.nav-badge.live i { width: 6px; height: 6px; border-radius: 50%; background: #ff5a5f; }
+button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a1b; }
 
-/* ---------- Status: one line, only for a problem or something in progress ---------- */
-.podium-status { display: flex; align-items: center; gap: 9px; margin-top: auto; padding: 10px 12px; border: 1px solid var(--ui-line-2); border-left: 3px solid var(--tone); border-radius: var(--ui-radius-sm); background: linear-gradient(90deg, color-mix(in srgb, var(--tone) 9%, transparent), transparent 55%), var(--ui-card); color: var(--ui-text-1); font-size: 13px; line-height: 1.35; }
-.podium-status > i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--tone); box-shadow: 0 0 8px var(--tone); }
-.podium-status.is-warn { --tone: #ffbe55; }
-.podium-status.is-busy { --tone: var(--ui-brand); }
-
-/* ---------- Account picker (popover from the podium) ---------- */
-.account-picker { position: fixed; left: 230px; top: 92px; z-index: 55; width: 340px; padding: 8px; border: 1px solid; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2); border-radius: var(--ui-radius-md); background: linear-gradient(180deg, rgb(255 255 255 / .05), transparent 120px), var(--ui-popover); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur); box-shadow: var(--ui-elev-3); }
-.account-picker h4 { margin: 0; padding: 6px 10px 8px; color: var(--ui-text-3); font-size: var(--ui-caption); font-weight: 600; }
-.picker-row { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 9px 10px; border-radius: 10px; }
-.picker-row:hover { background: var(--ui-hover); }
-.picker-row.is-current { background: var(--ui-brand-tint); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .22); }
-.picker-row > img, .picker-initial { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--ui-line-2); border-radius: 10px; background: var(--ui-surface-3); object-fit: cover; font-weight: 700; }
-.picker-copy { display: grid; min-width: 0; gap: 2px; }
-.picker-copy b { overflow: hidden; color: var(--ui-text-1); font-size: var(--ui-body); font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
-.picker-copy small { overflow: hidden; color: var(--ui-text-2); font-size: var(--ui-label); text-overflow: ellipsis; white-space: nowrap; }
-.picker-tag { color: var(--ui-brand); font-size: var(--ui-label); font-weight: 600; }
-.picker-empty { margin: 0; padding: 14px 10px; color: var(--ui-text-2); font-size: var(--ui-label); }
-.picker-foot { display: flex; justify-content: space-between; margin-top: 6px; padding: 8px 4px 0; border-top: 1px solid var(--ui-line-1); }
+/* ---------- Account popover, positioned from the selector by Radix ---------- */
+.account-picker { z-index: 55; display: flex; flex-direction: column; width: 336px; max-width: calc(100vw - 24px); max-height: min(480px, var(--radix-popover-content-available-height)); overflow: hidden; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-2); color: var(--ui-text-1); box-shadow: var(--ui-elev-3); font-family: inherit; }
+.account-picker:focus-visible { outline: none; }
+.picker-search { flex: none; display: flex; align-items: center; gap: 8px; margin: 12px 12px 4px; padding: 7px 10px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: rgb(255 255 255 / .035); color: var(--ui-text-3); }
+.picker-search:focus-within { border-color: var(--ui-line-3); background: rgb(255 255 255 / .07); }
+.picker-search input { flex: 1; min-width: 0; border: 0; outline: none; background: none; color: var(--ui-text-1); font: inherit; font-size: 12.5px; }
+.picker-search input:focus, .picker-search input:focus-visible { outline: none; box-shadow: none; }
+.picker-list { flex: 1; min-height: 0; padding: 6px 0; overflow-y: auto; scrollbar-width: thin; }
+.picker-row { display: grid; grid-template-columns: 42px minmax(0, 1fr) 16px; align-items: center; gap: 12px; width: 100%; min-height: 70px; padding: 10px 16px; border: 0; background: transparent; color: var(--ui-text-1); font: inherit; text-align: left; cursor: pointer; transition: background-color var(--ui-fast); }
+.picker-meta { display: flex; flex-wrap: wrap; align-items: center; column-gap: 9px; row-gap: 2px; margin-top: 3px; color: var(--ui-text-3); font-size: 12.5px; line-height: 18px; }
+.picker-meta > span { min-width: 0; overflow-wrap: anywhere; }
+.picker-tier { display: inline-flex; align-items: center; gap: 4px; color: var(--ui-text-2); font-weight: 500; white-space: nowrap; }
+.picker-tier > :is(.rank-crest, .rank-crest-fallback) { flex: none; }
+.picker-row:hover:not(:disabled) { background: var(--ui-surface-hover); }
+.picker-row:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: -3px; background: var(--ui-surface-hover); }
+.picker-row.is-current { background: rgb(255 255 255 / .025); }
+.picker-row.is-current:disabled { opacity: 1; }
+.picker-row:disabled { cursor: default; }
+.picker-row > img, .picker-initial { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--ui-line-2); border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; font-weight: 700; }
+.picker-copy { min-width: 0; }
+.picker-copy > b { display: block; overflow: hidden; color: var(--ui-text-1); font-size: 15.5px; font-weight: 600; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+.picker-check { display: grid; place-items: center; color: var(--ui-brand); }
+.picker-empty { margin: 0; padding: 14px 16px; color: var(--ui-text-2); font-size: var(--ui-label); }
+.picker-foot { flex: none; padding: 12px 0 6px; border-top: 1px solid var(--ui-line-1); }
+.picker-foot > p { margin: 0; padding: 0 16px 10px; color: var(--ui-text-3); font-size: var(--ui-label); line-height: 1.5; }
+.picker-foot > button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 42px; padding: 8px 16px; border: 0; background: transparent; color: var(--ui-text-1); font: inherit; font-size: var(--ui-body); font-weight: 550; text-align: left; cursor: pointer; }
+.picker-foot > button:hover, .picker-foot > button:focus-visible { background: var(--ui-surface-hover); }
+.picker-foot > button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: -3px; }
 .fa-frame :is(.fa-primary, .fa-secondary).is-compact { min-height: 32px; padding: 5px 14px; }
 
+/* Keep the dossier airy on tall windows, then tighten its rhythm before links need to scroll.
+   The account popover uses the available viewport space independently. */
+@media (max-height: 940px) {
+  .fa-frame .profile-podium { padding-top: 20px; }
+  .podium-band { gap: 10px; }
+  .podium-standing { margin-top: 16px; padding-top: 12px; }
+  .fa-frame .sidebar .nav-group { gap: 6px; }
+  .fa-frame .sidebar .nav-group + .nav-group { margin-top: 14px; padding-top: 14px; }
+  .fa-frame .sidebar nav button { height: 54px; }
+}
+@media (max-height: 800px) {
+  .fa-frame .sidebar { gap: 12px; padding-top: 10px; padding-bottom: 10px; }
+  .fa-frame .profile-podium { padding-top: 14px; }
+  .podium-portrait { width: 64px; height: 64px; border-radius: var(--ui-radius-md); }
+  .podium-standing { min-height: 62px; margin-top: 16px; padding-top: 10px; gap: 8px; }
+  .podium-rank { min-height: 36px; }
+  .podium-switch { height: 36px; margin-top: 10px; }
+  .fa-frame .sidebar .nav-group + .nav-group { margin-top: 12px; padding-top: 12px; }
+  .fa-frame .sidebar nav button { height: 48px; }
+}
+
 /* ---------- Switching accounts: the page dims, one card says what is happening ---------- */
-.switch-overlay { position: absolute; inset: 0 0 0 218px; z-index: 40; display: grid; place-items: start center; padding-top: 96px; background: var(--ui-scrim); }
+.switch-overlay { position: absolute; inset: 0 0 0 260px; z-index: 40; display: grid; place-items: start center; padding-top: 96px; background: var(--ui-scrim); }
 .switching-card { width: min(460px, 86%); padding: 24px 26px; }
 .switching-card .who { display: flex; align-items: center; gap: 16px; }
 .switching-card .who > img, .switching-card .picker-initial { width: 56px; height: 56px; flex: none; border-radius: 14px; }

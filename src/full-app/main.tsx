@@ -1,6 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
+import { Popover } from "radix-ui";
 import { listen } from "@tauri-apps/api/event";
 import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
@@ -120,6 +121,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [patch, setPatch] = useState<string | null>(null);
   // The switch flow reports no stages, only started / done / failed.
   const [switching, setSwitching] = useState<{ id: string; name: string } | null>(null);
   const fetching = useRef(false);
@@ -155,6 +157,7 @@ function App() {
       listen("switch_failed", () => setSwitching(null)),
     ]) : Promise.resolve([]);
     if (isTauri()) void invoke<ChampionOption[]>("get_champion_list").then(list => { if (mounted.current) setChampions(list); }).catch(() => {});
+    if (isTauri()) void invoke<string | null>("get_current_patch").then(p => { if (mounted.current) setPatch(p); }).catch(() => {});
     void refresh();
     return () => {
       mounted.current = false;
@@ -182,7 +185,6 @@ function App() {
   };
   // Connected = the client reported who is signed in (not saved stats, not an error).
   const connected = Boolean(signedIn) && !error;
-  const clientProblem = !loading && !connected && isTauri();
   // The most played champion's splash is the ambient light behind every page.
   const ambient = useChampionArt(snapshot?.summaries.all?.champions[0]?.id, "splash");
   const switchingAccount = switching ? accounts?.accounts.find(account => account.id === switching.id) : undefined;
@@ -194,23 +196,22 @@ function App() {
       onPickPlayer={riotId => go(`Player:${riotId}`)} />
     <div className="dashboard-shell">
       <aside className="sidebar dash-scope">
-        <Podium who={who} connected={connected} open={pickerOpen} onToggle={() => setPickerOpen(open => !open)} crest={rank ? crestSlug(rank.tier) : null} />
+        <Popover.Root open={pickerOpen} onOpenChange={setPickerOpen}>
+          <div className="podium-wrap"><Podium who={who} connected={connected} open={pickerOpen} crest={rank ? crestSlug(rank.tier) : null} disabled={Boolean(switching)} />
+            {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
+              onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} />}
+          </div>
+        </Popover.Root>
         <nav aria-label="Swapper pages">
           {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
             {group.items.filter(([label]) => showInNav(label, inGame)).map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}>
               <Icon size={19} aria-hidden />{pageLabel(label)}
-              {label === "Champion select" && inChampSelect && <span className="live-dot" title="Draft is live" />}
-              {label === LIVE_PAGE && <span className="live-dot" title="A game is running" />}
+              {label === "Tier list & Builds" && patch && <span className="nav-badge patch" data-label={`PATCH ${patch}`} title={`Patch ${patch}`} />}
+              {label === "Champion select" && inChampSelect && <span className="nav-badge live"><i aria-hidden />LIVE</span>}
             </button>)}
           </div>)}
         </nav>
-        {/* Saved stats are shown as normal data (the portrait dot says the client is closed);
-            the line only appears while switching or when there is nothing saved to show. */}
-        {(switching || (clientProblem && !snapshot)) && <p className={`podium-status ${switching ? "is-busy" : "is-warn"}`} role="status"><i aria-hidden />
-          {switching ? `Switching to ${switching.name}…` : "Open League Client for stats."}</p>}
       </aside>
-      {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
-        onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} onAdd={() => { setPickerOpen(false); setPage("app"); setRequest({ view: "add" }); }} onClose={() => setPickerOpen(false)} />}
       {switching && <SwitchOverlay account={switchingAccount} name={switching.name} />}
       <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>

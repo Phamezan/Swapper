@@ -414,11 +414,20 @@ async function main() {
     await page.visible('.player-page .ui-notice button:not(:disabled)');
     await navigate(fullApp, '.match-row');
   });
-  await check("Profile podium opens account picker", async () => {
-    await page.click(".profile-podium");
+  await check("Sidebar selector opens flat account picker", async () => {
+    await page.click(".podium-switch");
     await page.visible('[role="dialog"][aria-label="Switch account"]');
     assert.equal(await page.evaluate("document.querySelectorAll('.picker-row').length"), 3);
-    await page.visible('.profile-podium[aria-expanded="true"]');
+    await page.visible('.podium-switch[aria-expanded="true"]');
+    await page.text('.picker-row.is-current .picker-tier', 'Emerald II');
+    await page.text('.picker-copy', 'Alt Account');
+    assert.equal(await page.evaluate("document.querySelectorAll('.account-picker h2, .picker-group').length"), 0);
+    await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await page.wait("!document.querySelector('.account-picker')");
+    assert.equal(await page.evaluate("document.activeElement.classList.contains('podium-switch')"), true);
+    await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await page.click('.podium-switch');
+    await page.visible('.account-picker');
     await audit();
     await screenshot("account-picker");
     await page.click(".picker-foot button", "Manage accounts");

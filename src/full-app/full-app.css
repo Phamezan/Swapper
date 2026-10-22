@@ -510,7 +510,6 @@ body { background: var(--ui-surface-0); }
 .fa-frame .full-app-embedded .detected-prompt { border-color: var(--ui-line-2); border-left: 3px solid var(--ui-brand); background: linear-gradient(90deg, var(--ui-brand-tint), transparent 38%), var(--ui-card); box-shadow: var(--ui-elev-1); }
 
 /* ---------- Revision 3: title bar chip, search palette ---------- */
-.fa-frame .title-brand { width: 190px; margin-left: -2px; padding: 5px 11px; border: 1px solid var(--ui-line-2); border-radius: 10px; background: var(--ui-card); box-shadow: var(--ui-inner-hi); font-size: 14.5px; }
 .fa-frame .title-search { font-size: var(--ui-label); }
 .fa-frame .title-search kbd, .palette kbd { font-size: var(--ui-caption); }
 .palette li { font-size: var(--ui-body); }
