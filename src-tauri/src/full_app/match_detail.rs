@@ -34,6 +34,7 @@ pub struct Player {
     score: Option<f64>,
     rank: Option<model::Rank>,
     rank_loaded: bool,
+    stats: BTreeMap<String, Value>,
 }
 
 #[derive(Clone, Serialize)]
@@ -55,6 +56,132 @@ pub struct Detail {
     game: model::Game,
     players: Vec<Player>,
     teams: Vec<Team>,
+    timeline: Option<Timeline>,
+}
+
+fn extract_stats(stats: &Value) -> BTreeMap<String, Value> {
+    stats
+        .as_object()
+        .into_iter()
+        .flatten()
+        .filter(|(_, value)| value.is_number() || value.is_boolean())
+        .map(|(key, value)| (key.clone(), value.clone()))
+        .collect()
+}
+
+#[derive(Clone, Serialize)]
+pub struct Timeline {
+    frames: Vec<TimelineFrame>,
+    events: Vec<TimelineEvent>,
+}
+
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TimelineFrame {
+    timestamp: u64,
+    gold_diff: i64,
+}
+
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TimelineEvent {
+    timestamp: u64,
+    team_id: u64,
+    label: String,
+}
+
+fn timeline_from_participants(value: &Value, participants: &[Value]) -> Option<Timeline> {
+    let sides: BTreeMap<_, _> = participants
+        .iter()
+        .filter_map(|p| Some((p["participantId"].as_u64()?, p["teamId"].as_u64()?)))
+        .collect();
+    if sides.len() != 10
+        || sides.values().filter(|&&side| side == 100).count() != 5
+        || sides.values().filter(|&&side| side == 200).count() != 5
+    {
+        return None;
+    }
+    let source = value["frames"].as_array()?;
+    let frames: Vec<_> = source
+        .iter()
+        .map(|frame| {
+            let mut totals = [0i64; 2];
+            for (&id, &side) in &sides {
+                let p = &frame["participantFrames"][id.to_string()];
+                if p["participantId"].as_u64() != Some(id) {
+                    return None;
+                }
+                let gold = p["totalGold"].as_i64().filter(|gold| *gold >= 0)?;
+                let index = usize::from(side == 200);
+                totals[index] = totals[index].checked_add(gold)?;
+            }
+            Some(TimelineFrame {
+                timestamp: frame["timestamp"].as_u64()?,
+                gold_diff: totals[0].checked_sub(totals[1])?,
+            })
+        })
+        .collect::<Option<Vec<_>>>()?;
+    if frames.len() < 2
+        || frames
+            .windows(2)
+            .any(|pair| pair[0].timestamp >= pair[1].timestamp)
+    {
+        return None;
+    }
+    let start = frames.first()?.timestamp;
+    let end = frames.last()?.timestamp;
+    let mut events: Vec<_> = source
+        .iter()
+        .filter_map(|f| f["events"].as_array())
+        .flatten()
+        .filter_map(|event| {
+            let timestamp = event["timestamp"]
+                .as_u64()
+                .filter(|time| *time >= start && *time <= end)?;
+            let (label, team_id) = match event["type"].as_str()? {
+                "BUILDING_KILL" => {
+                    let label = match event["buildingType"].as_str()? {
+                        "TOWER_BUILDING" => "Tower",
+                        "INHIBITOR_BUILDING" => "Inhibitor",
+                        _ => return None,
+                    };
+                    // The building's teamId is the side that LOST it, even for minion kills.
+                    let team = match event["teamId"].as_u64()? {
+                        100 => 200,
+                        200 => 100,
+                        _ => return None,
+                    };
+                    (label, team)
+                }
+                "ELITE_MONSTER_KILL" => {
+                    let label = match event["monsterType"].as_str()? {
+                        "DRAGON" => "Dragon",
+                        "BARON_NASHOR" => "Baron",
+                        "RIFTHERALD" => "Herald",
+                        "HORDE" => "Grub",
+                        _ => return None,
+                    };
+                    let team = event["killerTeamId"]
+                        .as_u64()
+                        .filter(|team| *team == 100 || *team == 200)
+                        .or_else(|| {
+                            event["killerId"]
+                                .as_u64()
+                                .and_then(|id| sides.get(&id).copied())
+                        })?;
+                    (label, team)
+                }
+                _ => return None,
+            };
+            Some(TimelineEvent {
+                timestamp,
+                team_id,
+                label: label.into(),
+            })
+        })
+        .collect();
+    events.sort_by_key(|event| event.timestamp);
+    Some(Timeline { frames, events })
 }
 
 fn objectives(team: &Value) -> Vec<Objective> {
@@ -64,6 +191,7 @@ fn objectives(team: &Value) -> Vec<Objective> {
         ("Grubs", "hordeKills", "horde"),
         ("Barons", "baronKills", "baron"),
         ("Towers", "towerKills", "tower"),
+        ("Inhibitors", "inhibitorKills", "inhibitor"),
     ]
     .into_iter()
     .filter_map(|(label, legacy, nested)| {
@@ -163,6 +291,7 @@ fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
                 score,
                 rank: None,
                 rank_loaded: false,
+                stats: extract_stats(s),
             })
         })
         .collect();
@@ -196,6 +325,7 @@ fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
         game,
         players,
         teams,
+        timeline: None,
     })
 }
 
@@ -314,7 +444,7 @@ pub async fn full_app_match_detail(
         .filter(|id| !cache.ranks.contains_key(*id))
         .map(str::to_string)
         .collect();
-    let ranks: Vec<_> = stream::iter(pending.into_iter().map(|puuid| {
+    let rank_requests = stream::iter(pending.into_iter().map(|puuid| {
         let client = &client;
         async move {
             let rank = get(client, &format!("/lol-ranked/v1/ranked-stats/{puuid}")).await;
@@ -322,8 +452,14 @@ pub async fn full_app_match_detail(
         }
     }))
     .buffer_unordered(3)
-    .collect()
-    .await;
+    .collect::<Vec<_>>();
+    let timeline_path = format!("/lol-match-history/v1/game-timelines/{game_id}");
+    let (ranks, timeline) = tokio::join!(rank_requests, get(&client, &timeline_path));
+    detail.timeline = timeline.ok().and_then(|timeline| {
+        value["participants"]
+            .as_array()
+            .and_then(|participants| timeline_from_participants(&timeline, participants))
+    });
     for (puuid, result) in ranks {
         if let Ok(value) = result {
             cache.ranks.insert(puuid, model::rank(&value));
@@ -353,6 +489,61 @@ pub async fn full_app_match_detail(
 mod tests {
     use super::*;
     use serde_json::json;
+
+    #[test]
+    fn stat_extraction_preserves_zero_false_and_unknown_numeric_fields_only() {
+        let stats = extract_stats(
+            &json!({"kills": 0, "firstBloodKill": false, "newStat": 12.5,
+            "missing": null, "text": "private", "object": {"x": 1}}),
+        );
+        assert_eq!(stats.len(), 3);
+        assert_eq!(stats["kills"], 0);
+        assert_eq!(stats["firstBloodKill"], false);
+        assert_eq!(stats["newStat"], 12.5);
+    }
+
+    #[test]
+    fn timeline_uses_explicit_team_membership_and_damaged_building_side() {
+        let participants: Vec<_> = (1..=10)
+            .map(|id| {
+                json!({"participantId": id,
+            "teamId": if id % 2 == 0 {100} else {200}})
+            })
+            .collect();
+        let frame = |timestamp, blue_gold, red_gold| {
+            let entries: serde_json::Map<String, Value> = (1..=10).map(|id| (id.to_string(),
+                json!({"participantId": id, "totalGold": if id % 2 == 0 {blue_gold} else {red_gold}}))).collect();
+            json!({"timestamp": timestamp, "participantFrames": entries, "events": []})
+        };
+        let mut value = json!({"frames": [frame(0, 500, 500), frame(60000, 1500, 1000)]});
+        value["frames"][1]["events"] = json!([
+            {"type": "BUILDING_KILL", "timestamp": 30000, "teamId": 100, "killerId": 0, "buildingType": "TOWER_BUILDING"},
+            {"type": "ELITE_MONSTER_KILL", "timestamp": 40000, "killerId": 2, "teamId": 0, "monsterType": "DRAGON"},
+            {"type": "ELITE_MONSTER_KILL", "timestamp": 45000, "killerId": 0, "teamId": 0, "monsterType": "DRAGON"}
+        ]);
+        let timeline = timeline_from_participants(&value, &participants).unwrap();
+        assert_eq!(timeline.frames[0].gold_diff, 0);
+        assert_eq!(timeline.frames[1].gold_diff, 2500);
+        assert_eq!(timeline.events.len(), 2);
+        assert_eq!(timeline.events[0].team_id, 200);
+        assert_eq!(timeline.events[1].team_id, 100);
+        let mut invalid = value.clone();
+        invalid["frames"][1]["timestamp"] = json!(0);
+        assert!(timeline_from_participants(&invalid, &participants).is_none());
+        invalid = value.clone();
+        invalid["frames"][1]["participantFrames"]["2"]["totalGold"] = json!(-1);
+        assert!(timeline_from_participants(&invalid, &participants).is_none());
+        invalid = value.clone();
+        invalid["frames"][1]["participantFrames"]["2"]["participantId"] = json!(3);
+        assert!(timeline_from_participants(&invalid, &participants).is_none());
+        value["frames"][1]["participantFrames"]
+            .as_object_mut()
+            .unwrap()
+            .remove("2");
+        assert!(timeline_from_participants(&value, &participants).is_none());
+        assert!(timeline_from_participants(&value, &participants[..9]).is_none());
+        assert!(timeline_from_participants(&json!({"frames": []}), &participants).is_none());
+    }
 
     #[test]
     fn objectives_keep_observed_zeroes_but_skip_unknowns() {
@@ -417,6 +608,9 @@ mod tests {
         assert_eq!(detail.players[0].secondary_style, Some(8200));
         assert_eq!(detail.players[0].gold, None);
         assert_eq!(detail.players[0].wards_placed, None);
+        assert_eq!(detail.players[0].stats["kills"], 2);
+        assert!(!detail.players[0].stats.contains_key("goldEarned"));
+        assert!(detail.timeline.is_none());
         assert_eq!(detail.teams[0].win, Some(true));
         assert_eq!(detail.teams[1].win, Some(false));
         assert!(detail.teams[1].objectives.is_empty());

@@ -1,4 +1,129 @@
-import type { MatchDetailPlayer } from "./types";
+import type { MatchDetailPlayer, MatchDetailTeam, MatchDetailView } from "./types";
+
+export type StatValue = number | boolean | null;
+export type MatchPlayer = MatchDetailPlayer & { stats?: Record<string, number | boolean> };
+export type Timeline = { frames: { timestamp: number; goldDiff: number }[]; events: { timestamp: number; teamId: number; label: string }[] };
+export type MatchView = Omit<MatchDetailView, "players"> & { players: MatchPlayer[]; timeline?: Timeline | null };
+type Direction = "high" | "low" | "none";
+export type StatRow = { key: string; label: string; values: StatValue[]; leaders: number[]; format?: "ratio" | "time" };
+export type StatGroup = { label: string; rows: StatRow[] };
+
+/** No leader can be claimed when a value is missing or everyone is equal. */
+export function bestValues(values: StatValue[], direction: Direction): number[] {
+  if (direction === "none" || values.length < 2 || values.some(v => v == null)) return [];
+  const numbers = values.map(Number);
+  if (numbers.every(v => v === numbers[0])) return [];
+  const best = direction === "low" ? Math.min(...numbers) : Math.max(...numbers);
+  return numbers.flatMap((v, i) => v === best ? [i] : []);
+}
+
+type Definition = [key: string, label: string, direction?: Direction, format?: StatRow["format"]];
+const STAT_GROUPS: [string, Definition[]][] = [
+  ["Combat", [
+    ["kills", "Kills"], ["deaths", "Deaths", "low"], ["assists", "Assists"], ["kda", "KDA", "high", "ratio"],
+    ["largestKillingSpree", "Largest killing spree"], ["killingSprees", "Killing sprees"], ["largestMultiKill", "Largest multi kill"],
+    ["doubleKills", "Double kills"], ["tripleKills", "Triple kills"], ["quadraKills", "Quadra kills"], ["pentaKills", "Penta kills"], ["unrealKills", "Unreal kills"],
+    ["totalTimeCrowdControlDealt", "Crowd control score"], ["timeCCingOthers", "Time crowd controlling others", "high", "time"],
+    ["firstBloodKill", "First blood"], ["firstBloodAssist", "First blood assist"], ["longestTimeSpentLiving", "Longest time alive", "high", "time"], ["champLevel", "Champion level"],
+  ]],
+  ["Damage dealt", [
+    ["totalDamageDealtToChampions", "Total damage to champions"], ["physicalDamageDealtToChampions", "Physical damage to champions"],
+    ["magicDamageDealtToChampions", "Magic damage to champions"], ["trueDamageDealtToChampions", "True damage to champions"],
+    ["totalDamageDealt", "Total damage dealt"], ["physicalDamageDealt", "Physical damage dealt"], ["magicDamageDealt", "Magic damage dealt"], ["trueDamageDealt", "True damage dealt"],
+    ["largestCriticalStrike", "Largest critical strike"], ["damageDealtToTurrets", "Damage to turrets"], ["damageDealtToObjectives", "Damage to objectives"],
+  ]],
+  ["Damage taken & healed", [
+    ["totalDamageTaken", "Total damage taken"], ["physicalDamageTaken", "Physical damage taken"], ["magicalDamageTaken", "Magic damage taken"], ["trueDamageTaken", "True damage taken"],
+    ["damageSelfMitigated", "Damage self mitigated"], ["totalHeal", "Healing done"], ["totalUnitsHealed", "Units healed"],
+    ["totalHealsOnTeammates", "Healing on teammates"], ["totalDamageShieldedOnTeammates", "Shielding on teammates"],
+  ]],
+  ["Vision", [["visionScore", "Vision score"], ["wardsPlaced", "Wards placed"], ["wardsKilled", "Wards destroyed"],
+    ["visionWardsBoughtInGame", "Control wards bought"], ["sightWardsBoughtInGame", "Sight wards bought"]]],
+  ["Income", [["goldEarned", "Gold earned"], ["goldSpent", "Gold spent"], ["totalMinionsKilled", "Lane minions killed"],
+    ["neutralMinionsKilled", "Jungle monsters killed"], ["neutralMinionsKilledTeamJungle", "Own jungle monsters"], ["neutralMinionsKilledEnemyJungle", "Enemy jungle monsters"], ["totalCs", "Total CS"]]],
+  ["Objectives", [["turretKills", "Turret kills"], ["turretTakedowns", "Turret takedowns"], ["inhibitorKills", "Inhibitor kills"], ["inhibitorTakedowns", "Inhibitor takedowns"],
+    ["firstTowerKill", "First tower"], ["firstTowerAssist", "First tower assist"], ["firstInhibitorKill", "First inhibitor"], ["firstInhibitorAssist", "First inhibitor assist"]]],
+];
+const humanize = (key: string) => {
+  const text = key.replace(/([a-z\d])([A-Z])/g, "$1 $2").replace(/(\D)(\d)/g, "$1 $2");
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+};
+
+export function buildStatGroups(players: Pick<MatchPlayer, "stats">[]): StatGroup[] {
+  const keys = new Set(players.flatMap(p => Object.keys(p.stats ?? {})));
+  if (keys.has("kills") && keys.has("deaths") && keys.has("assists")) keys.add("kda");
+  if (keys.has("totalMinionsKilled") && keys.has("neutralMinionsKilled")) keys.add("totalCs");
+  const row = ([key, label, direction = "high", format]: Definition): StatRow => {
+    const values = players.map(({ stats: s = {} }): StatValue => {
+      const n = (key: string) => typeof s[key] === "number" && Number.isFinite(s[key]) ? s[key] as number : null;
+      if (key === "kda") { const k = n("kills"), d = n("deaths"), a = n("assists"); return k == null || d == null || a == null ? null : (k + a) / Math.max(1, d); }
+      if (key === "totalCs") { const lane = n("totalMinionsKilled"), jungle = n("neutralMinionsKilled"); return lane == null || jungle == null ? null : lane + jungle; }
+      return typeof s[key] === "boolean" ? s[key] : n(key);
+    });
+    return { key, label, values, leaders: bestValues(values, direction), format };
+  };
+  const groups = STAT_GROUPS.map(([label, definitions]) => ({ label, rows: definitions.filter(([key]) => keys.delete(key)).map(row) }));
+  // Keep even new/mode-specific client fields visible, without guessing which value is better.
+  const remaining = [...keys].sort();
+  const loadout = remaining.filter(key => /^(perk|item\d|playerAugment|roleBoundItem)/.test(key));
+  groups.push({ label: "Loadout data", rows: loadout.map(key => row([key, humanize(key), "none"])) });
+  groups.push({ label: "Other client stats", rows: remaining.filter(key => !loadout.includes(key) && key !== "participantId").map(key => row([key, humanize(key), "none"])) });
+  return groups.filter(group => group.rows.length > 0);
+}
+
+export function filterStatGroups(groups: StatGroup[], search: string): StatGroup[] {
+  const query = search.trim().toLowerCase();
+  if (!query) return groups;
+  return groups.map(g => ({ ...g, rows: g.rows.filter(r => `${g.label} ${r.label} ${r.key}`.toLowerCase().includes(query)) })).filter(g => g.rows.length);
+}
+
+export type ComparisonRow = { label: string; values: [number | null, number | null] };
+export function comparisonRows(players: Pick<MatchPlayer, "teamId" | "kills" | "gold" | "damage" | "vision">[], teams: MatchDetailTeam[]): ComparisonRow[] {
+  const rows: ComparisonRow[] = ([ ["Kills", "kills"], ["Gold earned", "gold"], ["Damage to champions", "damage"], ["Vision score", "vision"] ] as const).map(([label, key]) => ({ label,
+    values: [100, 200].map(id => { const team = players.filter(p => p.teamId === id); return team.length === 5 && team.every(p => p[key] != null) ? team.reduce((sum, p) => sum + p[key]!, 0) : null; }) as ComparisonRow["values"],
+  }));
+  for (const label of ["Towers", "Dragons", "Barons", "Heralds", "Grubs", "Inhibitors"]) {
+    const values = [100, 200].map(id => teams.find(t => t.teamId === id)?.objectives.find(o => o.label === label)?.kills ?? null) as ComparisonRow["values"];
+    if (values.some(v => v != null)) rows.push({ label, values });
+  }
+  return rows;
+}
+
+export function matchFacts(players: Pick<MatchPlayer, "teamId" | "me" | "kills" | "gold" | "damage" | "vision">[], teams: MatchDetailTeam[]) {
+  const own = players.find(p => p.me);
+  if (!own) return [];
+  const rows = comparisonRows(players, teams), index = own.teamId === 100 ? 0 : 1, other = 1 - index;
+  const gold = rows.find(r => r.label === "Gold earned")!.values;
+  const towers = rows.find(r => r.label === "Towers")?.values;
+  const facts: { value: string; label: string; detail: string }[] = [];
+  if (gold[index] != null && gold[other] != null) {
+    const diff = gold[index]! - gold[other]!;
+    facts.push({value: `${diff > 0 ? "+" : diff < 0 ? "−" : ""}${Math.abs(diff).toLocaleString("en-US")}`, label: "Team gold at the finish", detail: diff === 0 ? "Both teams earned the same gold" : `Your team earned ${diff > 0 ? "more" : "less"} gold`});
+  }
+  if (towers && towers[index] != null && towers[other] != null) facts.push({ value: `${towers[index]} : ${towers[other]}`, label: "Towers taken", detail: "Your team : opponents" });
+  const totalDamage = rows.find(r => r.label === "Damage to champions")!.values[index];
+  const share = percent(own.damage, totalDamage);
+  if (share != null) facts.push({ value: `${Math.round(share)}%`, label: "Your share of team damage", detail: "Damage dealt to champions" });
+  if (facts.length < 3 && own.vision != null) facts.push({value: String(own.vision), label: "Your vision score", detail: "Reported by League Client"});
+  return facts.slice(0, 3);
+}
+
+export function timelineChart(timeline: Timeline) {
+  const frames = timeline.frames;
+  if (frames.length < 2) return null;
+  const start = frames[0].timestamp, duration = frames[frames.length - 1].timestamp - start;
+  if (duration <= 0) return null;
+  const limit = Math.max(1000, Math.ceil(Math.max(...frames.map(f => Math.abs(f.goldDiff))) / 1000) * 1000);
+  const point = (timestamp: number, goldDiff: number) => ({ x: (timestamp - start) / duration * 100, y: 50 - goldDiff / limit * 50 });
+  const points = frames.map(f => ({...f, ...point(f.timestamp, f.goldDiff)}));
+  const events = timeline.events.filter(e => e.timestamp >= start && e.timestamp <= start + duration).map(event => {
+    const right = frames.findIndex(f => f.timestamp >= event.timestamp);
+    const b = frames[right], a = frames[Math.max(0, right - 1)];
+    const fraction = b.timestamp === a.timestamp ? 0 : (event.timestamp - a.timestamp) / (b.timestamp - a.timestamp);
+    return { ...event, ...point(event.timestamp, a.goldDiff + (b.goldDiff - a.goldDiff) * fraction) };
+  });
+  return { points, events, limit, start, duration };
+}
 
 export function placementLabel(placement: number | null, win: boolean | null, bestOnTeam: boolean): string {
   if (placement == null || placement < 1) return "–";
