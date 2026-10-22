@@ -66,16 +66,44 @@ test("tier labels match the benchmark brackets", () => {
   assert.equal(tierLabel(undefined), "all ranks");
 });
 
-test("today sums the games since local midnight and only the LP it knows", () => {
-  const now = new Date(2026, 5, 10, 21, 0).getTime();
-  const at = (h, extra = {}) => ({ ...game(), createdAt: new Date(2026, 5, 10, h).getTime(), duration: 1800, ...extra });
-  const result = today([at(19, { lpChange: 21 }), at(18, { win: false, lpChange: -18 }), at(17, { lpChange: null }), { ...at(0), createdAt: new Date(2026, 5, 9, 23).getTime() }], now);
-  assert.deepEqual([result.games, result.wins, result.losses, result.lp, result.seconds], [3, 2, 1, 3, 5400]);
-  assert.equal(result.since, new Date(2026, 5, 10, 17).getTime());
-  assert.deepEqual(today([], now), { games: 0, wins: 0, losses: 0, lp: null, seconds: 0, since: null });
-  assert.equal(today([at(19)], now).lp, null);
+const NOW = new Date(2026, 5, 10, 21, 0).getTime();
+const hour = h => new Date(2026, 5, 10, h).getTime();
+const played = (h, extra = {}) => ({ ...game(), createdAt: hour(h), duration: 1800, ...extra });
+const rank = (tier, division, lp) => ({ tier, division, lp, wins: 0, losses: 0 });
+const rec = (h, tier, division, lp) => ({ at: hour(h), tier, division, lp, wins: 0, losses: 0 });
+
+test("today counts the games since local midnight", () => {
+  const result = today([played(19), played(18, { win: false }), played(17), { ...played(0), createdAt: new Date(2026, 5, 9, 23).getTime() }], NOW);
+  assert.deepEqual([result.games, result.wins, result.losses, result.seconds], [3, 2, 1, 5400]);
+  assert.equal(result.since, hour(17));
+  assert.deepEqual(today([], NOW), { games: 0, wins: 0, losses: 0, lp: null, seconds: 0, since: null });
   assert.equal(playTime(6720), "1h 52m");
   assert.equal(playTime(2640), "44m");
+});
+
+test("today's LP is the ladder change since the last record before the first game", () => {
+  const games = [played(19, { win: false }), played(18, { win: false }), played(17, { win: false })];
+  // 1-3 style day: unrecorded per-game LP no longer matters, only the ladder.
+  const history = [rec(9, "GOLD", "II", 50), rec(16, "GOLD", "II", 60), rec(18, "GOLD", "II", 42), rec(20, "GOLD", "II", 30)];
+  assert.equal(today(games, NOW, rank("GOLD", "II", 30), history).lp, -30);
+  // Promotion Diamond IV 90 -> Diamond III 10, demotion the other way.
+  assert.equal(today(games, NOW, rank("DIAMOND", "III", 10), [rec(16, "DIAMOND", "IV", 90)]).lp, 20);
+  assert.equal(today(games, NOW, rank("DIAMOND", "IV", 90), [rec(16, "DIAMOND", "III", 10)]).lp, -20);
+  // Apex LP is not capped: Master 0 -> Grandmaster 340 is +340.
+  assert.equal(today(games, NOW, rank("GRANDMASTER", "", 340), [rec(16, "MASTER", "", 0)]).lp, 340);
+  assert.equal(today(games, NOW, rank("MASTER", "", 80), [rec(16, "DIAMOND", "I", 70)]).lp, 110);
+  // The live rank wins over a newer-looking record.
+  assert.equal(today(games, NOW, rank("GOLD", "II", 70), history).lp, 10);
+});
+
+test("today's LP is a dash without a baseline, a rank or a ranked game", () => {
+  const solo = [played(19)];
+  assert.equal(today(solo, NOW, rank("GOLD", "II", 30), []).lp, null);
+  assert.equal(today(solo, NOW, rank("GOLD", "II", 30), [{ ...rec(9, "GOLD", "II", 50), at: hour(18) - 36e5 * 40 }]).lp, -20);
+  assert.equal(today(solo, NOW, null, [rec(9, "GOLD", "II", 50)]).lp, null);
+  assert.equal(today([played(19, { queue: "normal" })], NOW, rank("GOLD", "II", 30), [rec(9, "GOLD", "II", 50)]).lp, null);
+  // Only a record from today, after the first game, still serves as the baseline.
+  assert.equal(today(solo, NOW, rank("GOLD", "II", 30), [rec(20, "GOLD", "II", 50)]).lp, -20);
 });
 
 test("rank progress counts LP to the next division and skips apex tiers", () => {

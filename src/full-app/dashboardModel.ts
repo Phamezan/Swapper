@@ -153,15 +153,28 @@ export function tierLabel(tier: string | undefined) {
 
 export type Today = { games: number; wins: number; losses: number; lp: number | null; seconds: number; since: number | null };
 
-/** The session summary: every game since local midnight, any queue. LP is the
- *  sum of the changes Swapper could attribute (null when none was recorded). */
-export function today(games: Game[], now: number): Today {
+const APEX = ["MASTER", "GRANDMASTER", "CHALLENGER"];
+const onLadder = (tier: string) => LADDER.includes(tier) || APEX.includes(tier);
+
+/** Today's net LP: ladder score now (the live `rank`) minus the score at the last
+ *  record before today's first Solo/Duo game, else the first record of today.
+ *  Null without a ranked game today, a current rank or such a baseline: never a partial sum. */
+function lpToday(played: Game[], midnight: number, rank: Snapshot["rank"], history: LpPoint[]) {
+  const first = Math.min(...played.filter(g => g.queue === "solo").map(g => g.createdAt));
+  if (!rank || !onLadder(rank.tier) || !Number.isFinite(first)) return null;
+  const points = history.filter(p => onLadder(p.tier)).sort((a, b) => a.at - b.at);
+  const base = points.filter(p => p.at < first).pop() ?? points.find(p => p.at >= midnight);
+  return base ? ladderScore(rank) - ladderScore(base) : null;
+}
+
+/** The session summary: every game since local midnight, any queue. LP covers
+ *  Solo/Duo only, taken from the recorded LP history (see `lpToday`). */
+export function today(games: Game[], now: number, rank: Snapshot["rank"] = null, history: LpPoint[] = []): Today {
   const midnight = new Date(now).setHours(0, 0, 0, 0);
   const played = games.filter(g => g.createdAt >= midnight);
-  const known = played.filter(g => g.lpChange != null);
   return {
     games: played.length, wins: played.filter(g => g.win).length, losses: played.filter(g => !g.win).length,
-    lp: known.length ? sum(known.map(g => g.lpChange!)) : null,
+    lp: lpToday(played, midnight, rank, history),
     seconds: sum(played.map(g => g.duration)),
     since: played.length ? Math.min(...played.map(g => g.createdAt)) : null,
   };
