@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Search, Star } from "lucide-react";
+import { Star } from "lucide-react";
+import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { BuildPanel } from "./BuildPanel";
 import { MatchupStrip, ChampionArt } from "./MatchupStrip";
@@ -146,7 +147,7 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
         <ChampionPicker label="Your champion" value={selected?.id ?? 0} champions={champions} onChange={id => { void open(champions.find(c => c.id === id) ?? null); if (enemy === id) setEnemy(0); }} />
         <span className="versus">vs</span>
         <ChampionPicker label="Opponent" value={enemy} champions={champions.filter(c => c.id !== selected?.id)} onChange={setEnemy} />
-      </> : !selected && <label className="search-pill"><Search size={14} aria-hidden /><input placeholder="Search champion" aria-label="Search champion" value={query} onChange={e => setQuery(e.target.value)} /></label>}
+      </> : !selected && <label className="search-pill"><SearchIcon size={14} aria-hidden /><input placeholder="Search champion" aria-label="Search champion" value={query} onChange={e => setQuery(e.target.value)} /></label>}
     </div>
     {error && <Notice tone="error">{error}</Notice>}
     {selected && <section className="selected-champion">

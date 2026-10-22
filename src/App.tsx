@@ -6,9 +6,12 @@ import {
   disable as disableAutostart, enable as enableAutostart, isEnabled as isAutostartEnabled,
 } from "@tauri-apps/plugin-autostart";
 import {
-  ArrowLeft, ArrowRight, Check, ChevronRight, CircleAlert, LoaderCircle,
-  Pencil, Plus, RefreshCw, Settings, Trash2, Wrench, X,
+  ArrowRight, ChevronRight, LoaderCircle,
+  Pencil, Trash2, Wrench, X,
 } from "lucide-react";
+import {
+  AddAccountIcon, AddIcon, BackIcon, CheckIcon, ErrorIcon, InfoIcon, RefreshIcon, SettingsIcon, WarningIcon,
+} from "./full-app/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { BrandIcon } from "@/components/BrandIcon";
@@ -892,11 +895,11 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
           <>
             {fullApp ? <PageHeader title="Accounts" /> : <div className="panel-heading">
               <div><p className="eyebrow">{data.accounts.length === 0 ? "Get started" : "Ready to play"}</p><h1>Accounts</h1></div>
-              <button className="icon-button" aria-label="Settings" title="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings size={19} /></button>
+              <button className="icon-button" aria-label="Settings" title="Settings" disabled={isBusy} onClick={() => navigate("settings")}><SettingsIcon size={19} /></button>
             </div>}
             {data.remote.lanReconnectNeeded && (
               <div className="reconnect-banner" role="status">
-                <CircleAlert size={16} />
+                <WarningIcon size={16} />
                 <span>PC address changed. Reconnect your phone.</span>
                 <button type="button" className="reconnect-banner-action" onClick={showRemoteQr}>Show QR</button>
                 <button type="button" className="reconnect-dismiss" aria-label="Dismiss reconnect notice" onClick={dismissReconnect}><X size={14} /></button>
@@ -909,7 +912,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                 <strong className="detected-title">Signed-in account detected</strong>
                 <IdentityCard identity={visibleDetectedPrompt} />
                 <Button className="primary-action" disabled={isBusy} onClick={() => saveDetected(visibleDetectedPrompt, "save-detected", () => setDetectedPrompt(null))}>
-                  {busy === "save-detected" ? <LoaderCircle className="spin" size={16} /> : <Check size={16} />} Save Account
+                  {busy === "save-detected" ? <LoaderCircle className="spin" size={16} /> : <CheckIcon size={16} />} Save Account
                 </Button>
               </section>
             )}
@@ -919,7 +922,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               onRemove={id => { navigate("remove"); setPendingRemove(id); }} /> : <div className="account-list">
               {data.accounts.length === 0 ? (
                 <div className="empty-state">
-                  <div className="empty-symbol"><Plus size={22} /></div>
+                  <div className="empty-symbol"><AddIcon size={22} /></div>
                   <h2>No accounts yet</h2>
                   <p>Sign in through Riot Client, then save it here.</p>
                   <Button disabled={isBusy} onClick={() => navigate("add")}>Add first account <ArrowRight size={15} /></Button>
@@ -961,7 +964,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                     {isThisSwitching || busy === `switch-${account.id}` ? (
                       <LoaderCircle className="spin" size={20} />
                     ) : isActive ? (
-                      <span className="active-indicator"><Check size={14} /></span>
+                      <span className="active-indicator"><CheckIcon size={14} /></span>
                     ) : (
                       <ChevronRight size={20} className="row-chevron" />
                     )}
@@ -969,7 +972,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                 );
               })}
             </div>}
-            {!AccountsSurface && data.accounts.length > 0 && <Button variant="outline" className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><Plus size={17} /> Add account</Button>}
+            {!AccountsSurface && data.accounts.length > 0 && <Button variant="outline" className="add-inline" disabled={isBusy} onClick={() => navigate("add")}><AddAccountIcon size={17} /> Add account</Button>}
           </>
         ) : view === "champions" ? (
           <div className="runes-panel runes-desktop">
@@ -1010,7 +1013,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
         ) : (
           <>
             {fullApp ? <PageHeader title={pageTitle} crumbs={view === "settings" ? undefined : [{ label: "Accounts", onClick: () => navigate("accounts") }]} /> : <div className="panel-heading compact">
-              <button className="icon-button back-button" aria-label="Back to accounts" onClick={() => navigate("accounts")}><ArrowLeft size={17} /></button>
+              <button className="icon-button back-button" aria-label="Back to accounts" onClick={() => navigate("accounts")}><BackIcon size={17} /></button>
               <div><p className="eyebrow">Swapper</p><h1>{pageTitle}</h1></div>
             </div>}
 
@@ -1048,7 +1051,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                   <h2>Account detected</h2>
                   <IdentityCard identity={detect.identity} />
                   <Button className="primary-action" disabled={busy !== null} onClick={() => saveDetected(detect.identity, "save", () => navigate("accounts"))}>
-                    {busy === "save" ? <LoaderCircle className="spin" size={16} /> : <Check size={16} />} Save Account
+                    {busy === "save" ? <LoaderCircle className="spin" size={16} /> : <CheckIcon size={16} />} Save Account
                   </Button>
                   <button className="text-action" onClick={() => setAddStage("signIn")}>Use a different account</button>
                 </> : detect.phase === "found" ? <>
@@ -1056,14 +1059,14 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                   <p>This Riot account is already saved in Swapper.</p>
                   <IdentityCard identity={detect.identity} />
                   <Button className="primary-action" disabled={busy !== null} onClick={() => saveDetected(detect.identity, "update", () => navigate("accounts"))}>
-                    {busy === "update" ? <LoaderCircle className="spin" size={16} /> : <RefreshCw size={16} />} Update Saved Account
+                    {busy === "update" ? <LoaderCircle className="spin" size={16} /> : <RefreshIcon size={16} />} Update Saved Account
                   </Button>
                   <button className="text-action" onClick={() => setAddStage("signIn")}>Use a different account</button>
                 </> : detect.phase === "failed" ? <>
                   <h2>Could not read account identity</h2>
                   <p>Open Riot Client, sign in, then try again.</p>
                   <Button className="primary-action" disabled={busy !== null} onClick={() => { setError(null); setDetectRound((round) => round + 1); }}>
-                    <RefreshCw size={16} /> Try Again
+                    <RefreshIcon size={16} /> Try Again
                   </Button>
                   <button className="text-action" onClick={() => setAddStage("signIn")}>Back to sign-in</button>
                 </> : detect.phase === "waiting" && detect.reason === "noClient" ? <>
@@ -1094,7 +1097,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                   <CreateShortcutButton accountId={account.id} accountName={account.name} disabled={busy !== null} onError={showError} />
                 )}
                 {view === "edit" ? editing === account.id
-                  ? <button className="icon-button" aria-label={`Save nickname for ${account.name}`} onClick={() => action("nickname", () => invoke<AppState>("set_nickname", { id: account.id, name }), () => setEditing(null))}><Check size={17} /></button>
+                  ? <button className="icon-button" aria-label={`Save nickname for ${account.name}`} onClick={() => action("nickname", () => invoke<AppState>("set_nickname", { id: account.id, name }), () => setEditing(null))}><CheckIcon size={17} /></button>
                   : <button className="icon-button" aria-label={`Set a nickname for ${account.name}`} onClick={() => { setEditing(account.id); setName(account.nickname ?? ""); }}><Pencil size={16} /></button>
                   : <button className="icon-button danger-icon" aria-label={`Remove ${account.name}`} onClick={() => setPendingRemove(account.id)}><Trash2 size={16} /></button>}
                 {pendingRemove === account.id && view === "remove" && <div className="remove-confirm"><span>Remove this saved session?</span><Button size="sm" variant="destructive" disabled={busy !== null} onClick={() => action("remove", () => invoke<AppState>("remove_account", { id: account.id }), () => setPendingRemove(null))}>Remove</Button><Button size="sm" variant="ghost" onClick={() => setPendingRemove(null)}>Cancel</Button></div>}
@@ -1152,9 +1155,9 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
         <button role="menuitem" onClick={() => navigate("add")}>Add account</button>
       </div>}
 
-      {!native && !error && <div className="error-banner" role="status"><CircleAlert size={16} /><span>Browser preview only. Account actions need the Windows tray app.</span></div>}
+      {!native && !error && <div className="error-banner" role="status"><InfoIcon size={16} /><span>Browser preview only. Account actions need the Windows tray app.</span></div>}
       <PairingNotice />
-      {error && <div className="error-banner" role="alert"><CircleAlert size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair account</Button>}<button aria-label="Dismiss error" onClick={() => { setRepairableId(null); setError(null); }}><X size={14} /></button></div>}
+      {error && <div className="error-banner" role="alert"><ErrorIcon size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair account</Button>}<button aria-label="Dismiss error" onClick={() => { setRepairableId(null); setError(null); }}><X size={14} /></button></div>}
       {/* The Fullsized App shows status in its sidebar podium instead. */}
       {!fullApp && <footer className="footer"><span className="footer-status"><span className={footerLoggedIn ? "status-dot good" : "status-dot idle"} /> {footerText}</span><span className="footer-mode">{data.useDeceive ? "DECEIVE" : "RIOT CLIENT"}</span></footer>}
     </div>

@@ -258,7 +258,7 @@ body { margin: 0; background: var(--ui-surface-0); }
 .today-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
 .today-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 4px; padding: 2px 16px; border-left: 1px solid var(--ui-line-1); }
 .today-stats > div:first-child { padding-left: 0; border-left: 0; }
-.today-stats dd { margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -.03em; line-height: 1.05; }
+.today-stats dd { margin: 0; white-space: nowrap; font-size: clamp(24px, 2.3vw, 34px); font-weight: 700; letter-spacing: -.03em; line-height: 1.05; }
 .today-stats dt { font-size: 13px; color: var(--ui-text-3); }
 .rank-body { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 28px; }
 .lp-bar { height: 8px; border-radius: 99px; background: rgb(255 255 255 / .08); overflow: hidden; }

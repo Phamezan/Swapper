@@ -2,7 +2,8 @@ import { pageLabel } from "./ui/pageNames";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { ChevronLeft, ChevronRight, Copy, Minus, RefreshCw, Search, Square, X } from "lucide-react";
+import { Copy, Minus, Square, X } from "lucide-react";
+import { BackIcon, ForwardIcon, RefreshIcon, SearchIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import type { ChampionOption } from "../runes/types";
@@ -48,12 +49,12 @@ export function TitleBar(props: Props) {
   return <header className="title-bar" data-tauri-drag-region>
     <div className="title-brand" data-tauri-drag-region><BrandIcon size={20} /><span data-tauri-drag-region>Swapper</span></div>
     <div className="title-nav">
-      <button className="title-icon" aria-label="Back" title="Back (Alt+←)" disabled={!props.canBack} onClick={props.onBack}><ChevronLeft size={16} /></button>
-      <button className="title-icon" aria-label="Forward" title="Forward (Alt+→)" disabled={!props.canForward} onClick={props.onForward}><ChevronRight size={16} /></button>
-      <button className="title-icon" aria-label="Refresh stats" title="Refresh stats" disabled={props.refreshing} onClick={props.onRefresh}><RefreshCw size={14} className={props.refreshing ? "spin" : undefined} /></button>
+      <button className="title-icon" aria-label="Back" title="Back (Alt+←)" disabled={!props.canBack} onClick={props.onBack}><BackIcon size={16} /></button>
+      <button className="title-icon" aria-label="Forward" title="Forward (Alt+→)" disabled={!props.canForward} onClick={props.onForward}><ForwardIcon size={16} /></button>
+      <button className="title-icon" aria-label="Refresh stats" title="Refresh stats" disabled={props.refreshing} onClick={props.onRefresh}><RefreshIcon size={14} className={props.refreshing ? "spin" : undefined} /></button>
     </div>
     <button className="title-search" onClick={() => setOpen(true)} aria-label="Search champions and pages">
-      <Search size={14} aria-hidden /><span>Search champions and pages</span><kbd>Ctrl</kbd><kbd>K</kbd>
+      <SearchIcon size={14} aria-hidden /><span>Search champions and pages</span><kbd>Ctrl</kbd><kbd>K</kbd>
     </button>
     <div className="title-spacer" data-tauri-drag-region />
     {win && <div className="window-buttons">
@@ -88,7 +89,7 @@ function Palette({ champions, pages, onPickChampion, onPickPage, onClose }: Prop
   };
   return <div className="palette-backdrop" onPointerDown={event => { if (event.target === event.currentTarget) onClose(); }}>
     <div className="palette" role="dialog" aria-label="Search">
-      <label className="palette-input"><Search size={16} aria-hidden />
+      <label className="palette-input"><SearchIcon size={16} aria-hidden />
         <input ref={input} value={query} placeholder="Champion or page…" aria-label="Search champions and pages"
           role="combobox" aria-expanded aria-controls="palette-results" aria-activedescendant={results[active] ? `palette-${active}` : undefined}
           onChange={event => setQuery(event.target.value)}

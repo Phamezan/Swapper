@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { LockKeyhole, Search, X } from "lucide-react";
+import { LockKeyhole, X } from "lucide-react";
+import { SearchIcon } from "./ui/icons";
 import { fmtPct, type ChampionCountersView, type TierListView } from "../runes/types";
 import type { RecommendedPick } from "./types";
 import { ChampionArt } from "./MatchupStrip";
@@ -66,7 +67,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, enemyCount, ta
     <div className="fa-section-heading">
       <div><h3>Pick suggestions</h3><p>{subtitle}</p></div>
       <div className="cs-picks-tools">
-        <label className="cs-search"><Search size={15} aria-hidden /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search champion" aria-label="Search champion" />
+        <label className="cs-search"><SearchIcon size={15} aria-hidden /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search champion" aria-label="Search champion" />
           {query && <button aria-label="Clear search" onClick={() => setQuery("")}><X size={14} /></button>}</label>
         <div className="fa-seg" role="group" aria-label="Suggestions">{TABS.map(([value, label]) => <button key={value} aria-pressed={tab === value && !query} onClick={() => { setChosenTab(value); setQuery(""); }}>{label}{value === "counters" && enemyCount > 0 && <span className="cs-tab-badge" title={`${enemyCount} enemy ${enemyCount === 1 ? "pick" : "picks"} revealed`}>{enemyCount}</span>}</button>)}</div>
       </div>

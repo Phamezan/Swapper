@@ -1,7 +1,8 @@
 import { DropdownMenu } from "radix-ui";
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { ArrowRight, Check, MoreHorizontal, Plus, ShieldCheck, Wrench } from "lucide-react";
+import { Check, MoreHorizontal, ShieldCheck, Wrench } from "lucide-react";
+import { AddAccountIcon, SwitchIcon } from "./ui/icons";
 import type { Account } from "../App";
 import { Notice } from "./ui/States";
 
@@ -37,8 +38,8 @@ export function AccountCards(props: AccountCardsProps) {
         </div>
         <div className="fa-account-identity">{account.iconDataUrl ? <img src={account.iconDataUrl} alt="" loading="lazy" /> : <span className="fa-account-initial">{account.name[0]?.toUpperCase()}</span>}<span><h2>{account.name}</h2><p>{account.riotId ?? "Riot ID unavailable"}</p></span></div>
         <div className="fa-account-meta"><span>Region<strong>{account.region ?? account.platform ?? "Unknown"}</strong></span><span>Session<strong>{switching ? "Switching…" : active ? "In use" : "Saved securely"}</strong></span></div>
-        <button className="fa-secondary fa-switch" disabled={props.busy || active} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : active ? "Currently signed in" : "Switch account"}{!active && <ArrowRight size={16} aria-hidden />}</button>
+        <button className="fa-secondary fa-switch" disabled={props.busy || active} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : active ? "Currently signed in" : "Switch account"}{!active && <SwitchIcon size={16} />}</button>
       </article>;
-    })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><Plus size={22} aria-hidden /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.</span></span></button></div>
+    })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><AddAccountIcon size={22} /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.</span></span></button></div>
   </div>;
 }

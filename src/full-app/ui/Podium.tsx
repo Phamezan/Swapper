@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ArrowLeftRight, Plus } from "lucide-react";
+import { AddAccountIcon, SwitchIcon } from "./icons";
 import type { Account } from "../../App";
 import { BrandIcon } from "../../components/BrandIcon";
 import { RankCrest } from "../../runes/RankCrest";
@@ -35,7 +35,7 @@ export function Podium({ who, connected, open, onToggle, crest }: {
         {rank ? <>{title(rank.tier)} {rank.division}<span>· {rank.lp} LP</span></> : <span>{who.unranked ? "Unranked" : "Not signed in"}</span>}
       </span>
       {lp != null && <span className="podium-lp" role="img" aria-label={`${rank!.lp} of 100 LP to the next division`}><i style={{ width: `${lp}%` }} /></span>}
-      <span className="podium-switch">Switch account <ArrowLeftRight size={15} aria-hidden /></span>
+      <span className="podium-switch">Switch account <SwitchIcon size={16} /></span>
     </span>
   </button>;
 }
@@ -78,7 +78,7 @@ export function AccountPicker({ accounts, activeId, cards, disabled, onSwitch, o
     {!accounts.length && <p className="picker-empty">No saved accounts yet.</p>}
     <div className="picker-foot">
       <button type="button" className="fa-text-button" onClick={onManage}>Manage accounts</button>
-      <button type="button" className="fa-text-button" onClick={onAdd}><Plus size={14} aria-hidden /> Add account</button>
+      <button type="button" className="fa-text-button" onClick={onAdd}><AddAccountIcon size={15} /> Add account</button>
     </div>
   </div>;
 }

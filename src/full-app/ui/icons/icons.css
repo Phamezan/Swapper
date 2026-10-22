@@ -1,0 +1,5 @@
+/* Swapper icon set (see README.md). Icons inherit currentColor; the duotone layer only shows when active. */
+.sw-icon { flex: none; }
+.sw-icon .ic-duo { fill: currentColor; fill-opacity: 0; transition: fill-opacity var(--ui-fast, 120ms) ease; }
+[aria-current="page"] > .sw-icon, .sw-icon.is-active { color: var(--ui-brand, #c5e39e); }
+[aria-current="page"] > .sw-icon .ic-duo, .sw-icon.is-active .ic-duo { fill-opacity: .22; }

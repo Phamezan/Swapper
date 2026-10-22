@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type ComponentProps } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { Crosshair } from "lucide-react";
+import { DraftIcon } from "./ui/icons";
 import type { RunesPanel } from "../runes/RunesPanel";
 import type { ChampionBuild, KeystoneBuildView, ChampionOverviewView, MatchupView } from "../runes/types";
 import { fmtPct, selectionFromPreset } from "../runes/types";
@@ -81,7 +81,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   return <div className="fa-draft-page dash-scope">
     <PageHeader title="Draft" actions={mode !== "idle" && <span className="fa-status-pill is-live">{mode === "build" ? "Locked in" : "Live draft"}</span>} />
     {props.error && <Notice tone="error">{props.error}</Notice>}{error && <Notice tone="error">{error}</Notice>}
-    {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting…" : "Waiting for draft"}</h2><div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section> : <>
+    {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><DraftIcon size={52} strokeWidth={1.25} /></div><h2>{props.loading ? "Connecting…" : "Waiting for draft"}</h2><div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section> : <>
       <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyId={enemyId} small={mode === "build"} />
       <div className="fa-draft-controls cs-toolbar">
         <h2>{championName || "Choose your champion"}{enemyName && <small> vs {enemyName}</small>}</h2>
