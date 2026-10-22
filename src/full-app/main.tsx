@@ -4,7 +4,6 @@ import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
-import { CachedBadge } from "../runes/CachedBadge";
 import type { ChampionOption } from "../runes/types";
 import type { DashboardView, Game } from "./types";
 import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
@@ -200,8 +199,10 @@ function App() {
             </button>)}
           </div>)}
         </nav>
-        {(switching || clientProblem) && <p className={`podium-status ${switching ? "is-busy" : "is-warn"}`} role="status"><i aria-hidden />
-          {switching ? `Switching to ${switching.name}…` : view?.stale ? "League Client offline. Showing saved stats." : "Open League Client for stats."}</p>}
+        {/* Saved stats are shown as normal data (the portrait dot says the client is closed);
+            the line only appears while switching or when there is nothing saved to show. */}
+        {(switching || (clientProblem && !snapshot)) && <p className={`podium-status ${switching ? "is-busy" : "is-warn"}`} role="status"><i aria-hidden />
+          {switching ? `Switching to ${switching.name}…` : "Open League Client for stats."}</p>}
       </aside>
       {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
         onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} onAdd={() => { setPickerOpen(false); setPage("app"); setRequest({ view: "add" }); }} onClose={() => setPickerOpen(false)} />}
@@ -212,11 +213,10 @@ function App() {
         {selectedMatch ? <PageHeader crumbs={[{ label: "Dashboard", onClick: () => go("Dashboard") }]}
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
           : <PageHeader title={matchId != null ? "Match detail" : pageLabel(page)}
-            actions={page === "Dashboard" && snapshot && !view?.stale && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
-        {view?.stale && page === "Dashboard" && <Notice tone="warn">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</Notice>}
+            actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "Dashboard"
-          ? snapshot ? <Dashboard snapshot={snapshot} stale={view?.stale} phase={phase} onOpenLive={() => go(LIVE_PAGE)}
+          ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} onOpenLive={() => go(LIVE_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { visitedMatches.current.set(game.id, game); go(`Match:${game.id}`); }} />
             : loading ? <DashboardSkeleton />
