@@ -2,7 +2,8 @@ import type { MatchDetailPlayer } from "./types";
 
 export function placementLabel(placement: number | null, win: boolean | null, bestOnTeam: boolean): string {
   if (placement == null || placement < 1) return "–";
-  if (placement === 1 && win === true && bestOnTeam) return "MVP";
+  // Each game has one MVP (best on the winning team) and one ACE (best on the losing team), whatever their overall place.
+  if (win === true && bestOnTeam) return "MVP";
   if (win === false && bestOnTeam) return "ACE";
   return `${placement}${placement === 1 ? "st" : placement === 2 ? "nd" : placement === 3 ? "rd" : "th"}`;
 }

@@ -38,6 +38,7 @@ pub mod prefetch;
 pub mod probuilds;
 pub mod provider;
 pub mod ranks;
+pub mod objectives;
 pub mod roles;
 pub mod session;
 pub mod spells;

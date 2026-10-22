@@ -185,6 +185,18 @@ pub(crate) async fn item_icon(id: i64) -> Result<String, String> {
     ))
 }
 
+/// A match-history objective icon (dragon, baron, ...) as a data URL; only listed names are served.
+#[tauri::command]
+pub(crate) async fn objective_icon(name: String) -> Result<String, String> {
+    let bytes = runes::objectives::icon(&name)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
 #[tauri::command]
 pub(crate) async fn rank_icon(tier: String) -> Result<String, String> {
     let bytes = runes::ranks::icon(&tier)

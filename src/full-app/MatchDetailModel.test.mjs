@@ -5,6 +5,7 @@ import { barWidth, placementLabel, scoreTone, teamAverageDamage, teamTotals, per
 test('placement labels include MVP, losing-team ACE and correct ordinals', () => {
   assert.equal(placementLabel(1, true, true), 'MVP');
   assert.equal(placementLabel(2, false, true), 'ACE');
+  assert.equal(placementLabel(2, true, true), 'MVP', "the winning team's best is MVP even when a loser scored higher");
   assert.equal(placementLabel(2, null, true), '2nd');
   assert.deepEqual([1, 2, 3, 4, 10, null].map(p => placementLabel(p, true, false)), ['1st', '2nd', '3rd', '4th', '10th', '–']);
 });

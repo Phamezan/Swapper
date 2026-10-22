@@ -346,6 +346,7 @@ pub fn run() {
                 commands::runes::spell_icon,
                 commands::runes::item_icon,
                 commands::runes::rank_icon,
+                commands::runes::objective_icon,
                 commands::runes::team_icon,
                 commands::runes::apply_spell,
                 commands::runes::get_pro_builds,

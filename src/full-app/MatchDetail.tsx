@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
-import { Bug, Castle, Crown, Eye, Flame, type LucideIcon } from "lucide-react";
+import { ObjectiveIcon } from "./ObjectiveIcon";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { ChampionIcon } from "../runes/ChampionIcon";
@@ -18,7 +18,6 @@ import "./MatchDetail.css";
 const stat = (value: number | null | undefined, digits = 0) => value == null ? "–" : digits ? value.toFixed(digits) : fmtCount(value);
 const compact = (value: number | null | undefined) => value == null ? "–" : fmtCompact(value);
 const kda = (p: Player) => p.kills == null || p.deaths == null || p.assists == null ? null : (p.kills + p.assists) / Math.max(1, p.deaths);
-const OBJECTIVE_ICONS: Record<string, LucideIcon> = { Dragons: Flame, Heralds: Eye, Grubs: Bug, Barons: Crown, Towers: Castle };
 const ITEM_SLOTS = 7;
 const participation = (p: Player, total: number | null) => percent(p.kills != null && p.assists != null ? p.kills + p.assists : null, total);
 
@@ -84,8 +83,7 @@ export default function MatchDetail({ game, names }: { game: Game; names: Snapsh
           return <section className={`md-team ${team.teamId === 100 ? "is-blue" : "is-red"} ${team.win === true ? "is-win" : team.win === false ? "is-loss" : ""}`} key={team.teamId} aria-label={`${team.teamId === 100 ? "Blue" : "Red"} team`}>
             <header><strong>{team.win == null ? "Result unavailable" : team.win ? "Victory" : "Defeat"}</strong><span>{team.teamId === 100 ? "Blue side" : "Red side"}</span>
               <div className="md-objectives">{team.objectives.map(o => {
-                const Icon = OBJECTIVE_ICONS[o.label];
-                return <span key={o.label} title={o.label} aria-label={`${o.kills} ${o.label}`}>{Icon ? <Icon size={16} aria-hidden /> : o.label}<b>{o.kills}</b></span>;
+                return <span key={o.label} title={o.label} aria-label={`${o.kills} ${o.label}`}><ObjectiveIcon label={o.label} side={team.teamId} /><b>{o.kills}</b></span>;
               })}</div>
               <span className="md-team-total"><b>{stat(total.kills)} / {stat(total.deaths)} / {stat(total.assists)}</b> KDA <b>{compact(total.gold)}</b> gold</span>
             </header>

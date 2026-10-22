@@ -30,6 +30,7 @@ pub(crate) enum Kind {
     Role,
     Rank,
     Team,
+    Objective,
 }
 
 impl Kind {
@@ -38,12 +39,13 @@ impl Kind {
             Kind::Role => "role",
             Kind::Rank => "rank",
             Kind::Team => "team",
+            Kind::Objective => "objective",
         }
     }
 
     fn extension(self) -> &'static str {
         match self {
-            Kind::Team => "png",
+            Kind::Team | Kind::Objective => "png",
             _ => "svg",
         }
     }
@@ -62,6 +64,7 @@ impl Kind {
             )
             .then(|| name.to_string()),
             Kind::Team => team_stem(name),
+            Kind::Objective => super::objectives::FILES.contains(&name).then(|| name.to_string()),
         }
     }
 }
