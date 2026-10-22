@@ -29,6 +29,7 @@ import { PageHeader } from "./full-app/ui/PageHeader";
 import { RiotClientIcon } from "./riotIcon";
 import type { SettingsTab } from "./settings/SettingsView";
 import type { AccountCardsProps } from "./full-app/AccountCards";
+import { OnboardingGate } from "./onboarding/Onboarding";
 import "./App.css";
 
 export type Account = {
@@ -1156,6 +1157,8 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
       </div>}
 
       {!native && !error && <div className="error-banner" role="status"><InfoIcon size={16} /><span>Browser preview only. Account actions need the Windows tray app.</span></div>}
+      {/* The Fullsized App mounts its own, once, around this embedded copy. */}
+      {!fullApp && <OnboardingGate />}
       <PairingNotice />
       {error && <div className="error-banner" role="alert"><ErrorIcon size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair account</Button>}<button aria-label="Dismiss error" onClick={() => { setRepairableId(null); setError(null); }}><X size={14} /></button></div>}
       {/* The Fullsized App shows status in its sidebar podium instead. */}

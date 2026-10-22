@@ -1,0 +1,59 @@
+/* First-run setup. Works in the 400x640 flyout and the Fullsized App; tokens are the shared --ui-* set. */
+.ob-scrim { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 12px; background: var(--ui-scrim, rgb(8 8 10 / .72)); }
+.ob-card {
+  display: flex; flex-direction: column; gap: 14px; width: min(560px, 100%); max-height: 100%; padding: 20px;
+  border: 1px solid var(--ui-line-2, #323236); border-radius: var(--ui-radius-lg, 16px);
+  background: var(--ui-surface-2, #19191d); box-shadow: var(--ui-elev-3, 0 24px 60px rgb(0 0 0 / .5)); color: var(--ui-text-1, #f5f5f6);
+}
+.ob-card header, .ob-card footer { display: flex; align-items: center; gap: 10px; flex: none; }
+.ob-card header small { margin-left: auto; color: var(--ui-text-3, #93939c); font-size: 12px; }
+.ob-steps { display: flex; gap: 6px; margin: 0 0 0 6px; padding: 0; list-style: none; }
+.ob-steps li { width: 28px; height: 4px; border-radius: 2px; background: var(--ui-line-2, #323236); transition: background var(--ui-base, 180ms); }
+.ob-steps li.is-done, .ob-steps li.is-current { background: var(--ui-brand, #c5e39e); }
+.ob-steps li.is-done { opacity: .5; }
+.ob-card h2 { margin: 0; font-size: 20px; font-weight: 650; outline: none; }
+.ob-body { display: flex; flex-direction: column; gap: 2px; min-height: 0; overflow-y: auto; }
+.ob-note { margin: 0; color: var(--ui-text-2, #b9b9bf); font-size: 14px; }
+
+.ob-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 6px; }
+.ob-choice {
+  display: flex; flex-direction: column; gap: 6px; padding: 10px; text-align: left; font: inherit; color: inherit; cursor: pointer;
+  border: 1px solid var(--ui-line-2, #323236); border-radius: var(--ui-radius-md, 12px); background: var(--ui-surface-1, #131316);
+  transition: border-color var(--ui-fast, 120ms), background var(--ui-fast, 120ms);
+}
+.ob-choice:hover { background: var(--ui-surface-hover, #28282e); }
+.ob-choice[aria-checked="true"] { border-color: var(--ui-brand, #c5e39e); background: var(--ui-brand-tint, rgb(197 227 158 / .08)); }
+.ob-choice:focus-visible { outline: 2px solid var(--ui-brand, #c5e39e); outline-offset: 2px; }
+.ob-choice strong { font-size: 14px; font-weight: 600; }
+.ob-choice span { color: var(--ui-text-2, #b9b9bf); font-size: 13px; line-height: 1.4; }
+.ob-choice svg { width: 100%; height: auto; max-height: 64px; }
+.ob-art-bg { fill: var(--ui-surface-0, #0b0b0d); stroke: var(--ui-line-2, #323236); }
+.ob-art-line { fill: var(--ui-line-2, #323236); }
+.ob-art-on { fill: var(--ui-brand, #c5e39e); fill-opacity: .85; }
+
+.ob-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--ui-line-1, #232327); }
+.ob-row:last-child { border-bottom: 0; }
+.ob-row label { display: block; font-size: 14px; font-weight: 550; cursor: pointer; }
+.ob-row p { margin: 3px 0 0; color: var(--ui-text-2, #b9b9bf); font-size: 13px; line-height: 1.45; }
+.ob-preview { position: relative; height: 130px; margin-bottom: 6px; overflow: hidden; flex: none; border: 1px solid var(--ui-line-1, #232327); border-radius: var(--ui-radius-md, 12px); background: radial-gradient(circle at 50% 40%, #202025, #0b0b0d); }
+.ob-preview img { position: absolute; top: -72px; left: calc(50% - 640px); width: 1280px; height: 720px; max-width: none; }
+.ob-preview small { position: absolute; right: 10px; bottom: 8px; padding: 2px 7px; border-radius: 5px; background: rgb(11 11 13 / .7); font-size: 12px; }
+.ob-error { margin-top: 8px; padding: 8px 12px; border-left: 3px solid var(--ui-error, #ff7d76); border-radius: var(--ui-radius-xs, 6px); background: var(--ui-card, rgb(27 27 31 / .78)); }
+.ob-error p { margin: 0; font-size: 13px; }
+
+.ob-card footer { justify-content: flex-end; padding-top: 4px; }
+.ob-card footer > span { flex: 1; }
+.ob-card footer > .ob-skip, .ob-card footer > button:first-child:not(:last-child) { margin-right: auto; }
+.ob-confirm p { flex: 1 1 100%; margin: 0; font-size: 13px; color: var(--ui-text-2, #b9b9bf); }
+.ob-confirm { flex-wrap: wrap; }
+
+@media (max-width: 460px) {
+  .ob-card { padding: 16px; gap: 12px; }
+  .ob-choices { grid-template-columns: 1fr; }
+  .ob-choice { display: grid; grid-template-columns: 72px 1fr; column-gap: 12px; align-items: center; }
+  .ob-choice svg { grid-row: span 2; }
+}
+@media (prefers-reduced-motion: reduce) { .ob-card *, .ob-choice { transition: none !important; animation: none !important; } }
+
+/* Secondary controls stay quiet sentence case; only Next / Done / Skip setup (confirm) are actions. */
+.ob-card .ob-quiet { text-transform: none; letter-spacing: 0; font-weight: 600; font-size: 13px; }

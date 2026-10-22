@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { HotkeySetting } from "./HotkeySetting";
 import { NotificationSettings } from "./NotificationSettings";
+import { RUN_EVENT } from "../onboarding/onboardingModel";
 import { WindowModeSettings } from "../full-app/WindowModeSettings";
 
 type Props = {
@@ -122,6 +123,14 @@ export function GeneralSettings({
           <Button variant="outline" onMouseDown={(e) => e.preventDefault()} onClick={onBrowseRiotPath}>Browse…</Button>
         </div>
       )}
+
+      <div className="setting-row">
+        <div className="setting-copy">
+          <strong>Setup</strong>
+          <p>Choose again how you use Swapper, the overlay and the extras.</p>
+        </div>
+        <Button variant="outline" onClick={() => window.dispatchEvent(new Event(RUN_EVENT))}>Run setup again</Button>
+      </div>
 
       <HotkeySetting hotkey={hotkey} active={hotkeyActive} disabled={busy} onSet={onSetHotkey} />
 

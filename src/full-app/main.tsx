@@ -12,6 +12,7 @@ import { TitleBar } from "./TitleBar";
 import { useInGame } from "./LiveGameData";
 import { LIVE_PAGE, enterLive, leaveLive, showInNav } from "./LiveGameModel";
 import FlyoutApp from "../App";
+import { OnboardingGate } from "../onboarding/Onboarding";
 import type { AppState, FullAppBridge, View } from "../App";
 import "./dashboard.css";
 import "./full-app.css";
@@ -205,6 +206,7 @@ function App() {
       {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
         onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} onAdd={() => { setPickerOpen(false); setPage("app"); setRequest({ view: "add" }); }} onClose={() => setPickerOpen(false)} />}
       {switching && <SwitchOverlay account={switchingAccount} name={switching.name} />}
+      <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
         {selectedMatch ? <PageHeader crumbs={[{ label: "Dashboard", onClick: () => go("Dashboard") }]}
