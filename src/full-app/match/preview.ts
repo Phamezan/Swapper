@@ -44,7 +44,13 @@ export function matchDetailFixture(game: Game, ranks: Snapshot["rank"][], params
       perks: [8010, 9111, 9104, 8299, 8444, 8242], keystone: 8010, secondaryStyle: 8400,
       placement: params.has("detail-missing") || params.has("detail-partial") ? null : [2, 3, 1, 4, 5, 6, 7, 8, 9, 10][i],
       score: params.has("detail-missing") || params.has("detail-partial") ? null : [86, 82, 96, 74, 67, 60, 53, 46, 39, 32][i],
-      rank: ranks[i] ?? null, rankLoaded: true, gold, vision: params.has("detail-missing") && i === 2 ? null : vision,
+      // ---- matchdetail: current queue rank and LP, including fallback/unknown states ----
+      rank: params.has("detail-unranked") && i === 1 ? null : {
+        ...ranks[i]!, ...(i === 1 ? {tier: "MASTER", division: "I", lp: 200} : i === 2 ? {tier: "DIAMOND", division: "II", lp: 45} : {}),
+        queue: game.queue === "flex" && !(params.has("detail-rank-fallback") && i === 2) ? "Flex" as const : "Solo/Duo" as const,
+        ...(params.has("detail-rank-missing-lp") && i === 3 ? {lp: null} : {}),
+      }, rankLoaded: true, gold, vision: params.has("detail-missing") && i === 2 ? null : vision,
+      // ---- end matchdetail current ranks ----
       damageTaken: stats.totalDamageTaken as number, wardsPlaced: 9 + i, wardsKilled: i + 1, stats };
   });
   const finalDiff = players.reduce((sum, p) => sum + (p.teamId === 100 ? p.gold : -p.gold), 0);

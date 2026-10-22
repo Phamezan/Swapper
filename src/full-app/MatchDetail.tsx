@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { ObjectiveIcon } from "./ObjectiveIcon";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
@@ -8,7 +8,7 @@ import { RankCrest } from "../runes/RankCrest";
 import { fmtAgo } from "../runes/types";
 import { crestSlug, queueLabels, splitRiotId, titleCase } from "./Dashboard";
 import { useChampionArt } from "./art";
-import { barWidth, matchFacts, percent, placementLabel, scoreTone, teamAverageDamage, teamTotals, type MatchPlayer as Player, type MatchView } from "./MatchDetailModel";
+import { barWidth, matchFacts, percent, placementLabel, rankLabel, scoreTone, teamAverageDamage, teamTotals, type MatchPlayer as Player, type MatchView } from "./MatchDetailModel";
 import type { Game, Snapshot } from "./types";
 import { Comparison } from "./match/Comparison";
 import { Stats } from "./match/Stats";
@@ -30,10 +30,29 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
   const [rankPending, setRankPending] = useState(true);
-  const [tab, setTab] = useState("Scoreboard");
+  const [tab, setTab] = useState("Overview");
+  const tabBar = useRef<HTMLDivElement>(null);
+  const scrollRequest = useRef<{ scroller: HTMLElement; top: number } | null>(null);
+  const selectTab = (label: string) => {
+    if (label === tab) return;
+    const scroller = tabBar.current?.closest<HTMLElement>(".dashboard-main");
+    if (scroller && tabBar.current) {
+      const bounds = tabBar.current.getBoundingClientRect(), viewport = scroller.getBoundingClientRect();
+      if (bounds.top < viewport.top || bounds.bottom > viewport.bottom) {
+        scrollRequest.current = { scroller, top: scroller.scrollTop + bounds.top - viewport.top };
+      }
+    }
+    setTab(label);
+  };
+  useLayoutEffect(() => {
+    const request = scrollRequest.current;
+    scrollRequest.current = null;
+    if (request) request.scroller.scrollTo({ top: request.top, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }, [tab]);
   const splash = useChampionArt(game.championId, "splash");
   useEffect(() => {
-    let live = true; setDetail(null); setError(""); setRankPending(true); setTab("Scoreboard");
+    let live = true; setDetail(null); setError(""); setRankPending(true); setTab("Overview");
+    scrollRequest.current = null;
     const expected = riotId ?? game.players.find(p => p.me)?.riotId;
     const stop = listen<MatchView>("match_detail", ({ payload }) => {
       if (live && payload.game.id === game.id && (!expected || payload.players.some(p => p.me && p.riotId.toLowerCase() === expected.toLowerCase()))) setDetail(payload);
@@ -45,15 +64,19 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
   }, [game.id, riotId, attempt]);
   const match = detail?.game ?? game;
   const own = detail?.players.find(p => p.me);
-  const ownTeam = detail?.players.filter(p => p.teamId === own?.teamId) ?? [];
-  const ownLabel = own ? placementLabel(own.placement, detail?.teams.find(t => t.teamId === own.teamId)?.win ?? null, own === bestOf(ownTeam)) : "–";
+  const teamRows = useMemo(() => detail?.teams.map(team => {
+    const players = detail.players.filter(p => p.teamId === team.teamId);
+    return { team, players, total: teamTotals(players), best: bestOf(players), average: teamAverageDamage(players) };
+  }) ?? [], [detail]);
+  const ownTeam = teamRows.find(row => row.team.teamId === own?.teamId);
+  const ownLabel = own ? placementLabel(own.placement, ownTeam?.team.win ?? null, own === ownTeam?.best) : "–";
   const name = (id: number) => names[id] ?? `Champion ${id}`;
   const duration = `${Math.floor(match.duration / 60)}:${String(match.duration % 60).padStart(2, "0")}`;
   const minutes = match.duration / 60;
   const facts = useMemo(() => detail ? matchFacts(detail.players, detail.teams) : [], [detail]);
-  const tabs = ["Scoreboard", "Loadout", "Stats", ...(detail?.timeline ? ["Graphs"] : [])];
-  return <div className="md-page">
-    <section className={`md-header ${match.win ? "is-win" : "is-loss"}`} aria-label="Your match performance">
+  const tabs = ["Overview", "Scoreboard", "Loadout", "Stats", ...(detail?.timeline ? ["Graphs"] : [])];
+  const maxDamage = useMemo(() => Math.max(1, ...(detail?.players.map(p => p.damage ?? 0) ?? [])), [detail]);
+  const hero = <section className={`md-header ${match.win ? "is-win" : "is-loss"}`} aria-label="Your match performance">
       {splash && <img className="md-art" src={splash} alt="" draggable={false} loading="lazy" />}
       <div className="md-header-main">
         <div className="md-story"><div className="md-match-meta"><span>{queueLabels[match.queue] ?? match.queue}</span><span>{duration}</span><span>{fmtAgo(match.createdAt)}</span></div>
@@ -65,24 +88,26 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
         </div>
       </div>
       {facts.length > 0 && <Facts facts={facts} />}
-    </section>
+    </section>;
+  return <div className="md-page">
+    <header className="md-context" aria-label="Match summary">
+      <ChampionIcon id={match.championId} name={name(match.championId)} mode="desktop" />
+      <strong>{name(match.championId)}</strong><b className={match.win ? "is-win" : "is-loss"}>{match.win ? "Victory" : "Defeat"}</b>
+      <span>{queueLabels[match.queue] ?? match.queue}</span><span>{duration}</span>
+      <time dateTime={new Date(match.createdAt).toISOString()} title={new Date(match.createdAt).toLocaleString()}>{new Date(match.createdAt).toLocaleDateString()}</time>
+    </header>
     {error ? <Notice tone="error" action={<button className="fa-text-button" onClick={() => setAttempt(n => n + 1)}>Retry</button>}>{error}</Notice>
       : !detail ? <Skeleton label="Loading match details and player ranks" rows={5} height={66} /> : <>
-        <div className="md-tabs" role="tablist" aria-label="Match views">{tabs.map((label, index) => <button key={label} id={`md-tab-${label}`} role="tab" tabIndex={tab === label ? 0 : -1} aria-selected={tab === label} aria-controls="md-panel" onClick={() => setTab(label)} onKeyDown={event => {
+        <div ref={tabBar} className="md-tabs" role="tablist" aria-label="Match views">{tabs.map((label, index) => <button key={label} id={`md-tab-${label}`} role="tab" tabIndex={tab === label ? 0 : -1} aria-selected={tab === label} aria-controls="md-panel" onClick={() => selectTab(label)} onKeyDown={event => {
           const next = event.key === "ArrowRight" ? (index + 1) % tabs.length : event.key === "ArrowLeft" ? (index + tabs.length - 1) % tabs.length : event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : null;
-          if (next != null) { event.preventDefault(); setTab(tabs[next]); document.getElementById(`md-tab-${tabs[next]}`)?.focus(); }
+          if (next != null) { event.preventDefault(); selectTab(tabs[next]); document.getElementById(`md-tab-${tabs[next]}`)?.focus({ preventScroll: true }); }
         }}>{label}</button>)}</div>
-        {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading ranks…" : "Some Solo/Duo ranks are unavailable."}</Notice>}
+        {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading ranks…" : "Some player ranks are unavailable."}</Notice>}
         {detail.players.length !== 10 && <Notice tone="warn">League Client returned {detail.players.length} of 10 players for this match. Some team statistics and performance scores are unavailable.</Notice>}
         <div id="md-panel" role="tabpanel" aria-labelledby={`md-tab-${tab}`}>
-        {tab === "Stats" ? <Stats players={detail.players} name={name} /> : tab === "Graphs" && detail.timeline ? <Timeline data={detail.timeline} players={detail.players} name={name} /> : <>
-        {tab === "Scoreboard" && <Comparison players={detail.players} teams={detail.teams} />}
-        {detail.teams.map(team => {
-          const players = detail.players.filter(p => p.teamId === team.teamId);
-          const total = teamTotals(players);
-          const best = bestOf(players);
-          const average = teamAverageDamage(players);
-          const maxDamage = Math.max(1, ...detail.players.map(p => p.damage ?? 0));
+        {tab === "Overview" ? <div className="md-overview">{hero}<Comparison players={detail.players} teams={detail.teams} /></div>
+        : tab === "Stats" ? <Stats players={detail.players} name={name} /> : tab === "Graphs" && detail.timeline ? <Timeline data={detail.timeline} players={detail.players} name={name} /> : <>
+        {teamRows.map(({ team, players, total, best, average }) => {
           return <section className={`md-team ${team.teamId === 100 ? "is-blue" : "is-red"} ${team.win === true ? "is-win" : team.win === false ? "is-loss" : ""}`} key={team.teamId} aria-label={`${team.teamId === 100 ? "Blue" : "Red"} team`}>
             <header><strong>{team.win == null ? "Result unavailable" : team.win ? "Victory" : "Defeat"}</strong><span>{team.teamId === 100 ? "Blue side" : "Red side"}</span>
               <div className="md-objectives">{team.objectives.map(o => {
@@ -90,12 +115,13 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
               })}</div>
               <span className="md-team-total"><b>{stat(total.kills)} / {stat(total.deaths)} / {stat(total.assists)}</b> KDA <b>{compact(total.gold)}</b> gold</span>
             </header>
+            <div className="md-team-scroll" role="region" aria-label={`${team.teamId === 100 ? "Blue" : "Red"} team ${tab.toLowerCase()}`} tabIndex={0}>
             {tab === "Scoreboard" && <div className="md-player md-scoreboard md-cols" aria-hidden><span /><span className="md-cols-player">Player</span><span>Items</span><span>K / D / A</span><span>CS</span><span>Damage</span><span>Score</span></div>}
             {players.map(p => <div className={`md-player${p.me ? " is-me" : ""} md-${tab.toLowerCase()}`} key={p.participantId}>
               {tab === "Scoreboard" && <Placement label={placementLabel(p.placement, team.win, p === best)} />}
               <div className="md-champion"><ChampionIcon id={p.championId} name={name(p.championId)} mode="desktop" />{p.level != null && <b>{p.level}</b>}</div>
               {tab === "Scoreboard" && <><div className="md-spells">{p.spells.map((id, i) => <SpellIcon id={id} key={i} mode="desktop" />)}</div><div className="md-perks">{[p.keystone, p.secondaryStyle].filter((id): id is number => !!id).map((id, i) => <Slot kind="rune" id={id} key={i} size={20} />)}</div></>}
-              <div className="md-identity"><strong><Identity value={p.riotId || name(p.championId)} />{p.me && <small className="md-you">You</small>}</strong><small><Rank player={p} />{name(p.championId)}</small></div>
+              <div className="md-identity"><strong title={p.riotId || name(p.championId)}><Identity value={p.riotId || name(p.championId)} />{p.me && <small className="md-you">You</small>}</strong><small><Rank player={p} />{name(p.championId)}</small></div>
               {tab === "Scoreboard" ? <>
                 <Items ids={p.items} />
                 <div className="md-kda"><strong>{stat(p.kills)} / <em>{stat(p.deaths)}</em> / {stat(p.assists)}</strong><small>{stat(kda(p), 2)} KDA · {stat(participation(p, total.kills))}% KP</small></div>
@@ -106,17 +132,21 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
               </> : <>
                 <div className="md-spells is-row" aria-label="Summoner spells">{p.spells.map((id, i) => <Slot kind="spell" id={id} key={i} size={26} />)}</div>
                 <Runes player={p} /><Items ids={p.items} /></>}
-            </div>)}
+            </div>)}</div>
           </section>;
         })}</>}
         </div>
-        {(tab === "Scoreboard" || tab === "Loadout") && <p className="md-rank-note">Score: KDA 35%, damage 35%, CS 15%, vision 15%, vs this game’s best. Ranks are current Solo/Duo.</p>}
+        {(tab === "Scoreboard" || tab === "Loadout") && <p className="md-rank-note">Score: KDA 35%, damage 35%, CS 15%, vision 15%, vs this game’s best.</p>}
       </>}
   </div>;
 }
 
 function Identity({ value }: { value: string }) { const [name, tag] = splitRiotId(value); return <>{name}<span className="riot-tag">{tag}</span></>; }
-function Rank({ player }: { player: Player }) { return <span className="md-rank" title="Current Solo/Duo rank">{player.rank ? <><RankCrest tier={crestSlug(player.rank.tier)} size={17} mode="desktop" />{titleCase(player.rank.tier)} {player.rank.division}</> : player.rankLoaded ? "Unranked" : "Rank unavailable"}</span>; }
+function Rank({ player }: { player: Player }) {
+  const label = rankLabel(player.rank, player.rankLoaded);
+  const current = player.rank ? `Current ${player.rank.queue ?? "Solo/Duo"} rank` : "Current rank";
+  return <span className="md-rank" title={current} aria-label={`${current}: ${label}`}>{player.rank && <RankCrest tier={crestSlug(player.rank.tier)} size={20} mode="desktop" />}{label}</span>;
+}
 /** Best performer of a team by placement, the MVP (winners) or ACE (losers). */
 function bestOf(players: Player[]) {
   return [...players].filter(p => p.placement != null).sort((a, b) => a.placement! - b.placement! || a.participantId - b.participantId)[0];
