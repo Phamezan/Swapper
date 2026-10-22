@@ -130,6 +130,18 @@ pub struct Config {
     /// patches League's in-game UI while a game runs.
     #[serde(default)]
     pub korean_font: bool,
+    /// First-run setup state. `Some(false)` only for a genuinely new install
+    /// (see `load`); `None` or `Some(true)` never shows it.
+    #[serde(default)]
+    pub onboarded: Option<bool>,
+}
+
+impl Config {
+    /// Whether the first-run setup should open by itself. A saved account always
+    /// means an existing user, whatever the flag says.
+    pub fn onboarding_pending(&self) -> bool {
+        self.onboarded == Some(false) && self.accounts.is_empty()
+    }
 }
 
 #[derive(Serialize, Deserialize)]
@@ -190,10 +202,14 @@ pub fn remove_profile_icon(account_id: Uuid) -> Result<(), String> {
 pub fn load() -> Result<Config, String> {
     let path = data_root()?.join("state.json");
     if !path.exists() {
-        return Ok(Config::default());
+        return Ok(Config { onboarded: Some(false), ..Config::default() });
     }
     let bytes = fs::read(path).map_err(|e| e.to_string())?;
-    serde_json::from_slice(&bytes).map_err(|e| format!("Cannot read Swapper settings: {e}"))
+    let mut config: Config =
+        serde_json::from_slice(&bytes).map_err(|e| format!("Cannot read Swapper settings: {e}"))?;
+    // Settings saved before the setup existed belong to an existing user.
+    config.onboarded.get_or_insert(true);
+    Ok(config)
 }
 
 pub fn save(config: &Config) -> Result<(), String> {
@@ -687,5 +703,15 @@ mod tests {
         let restored: Config = serde_json::from_str(&json).unwrap();
         assert_eq!(restored.notifications_enabled, Some(true));
         assert_eq!(restored.ready_check_notifications, Some(false));
+    }
+
+    #[test]
+    fn onboarding_is_pending_only_for_a_new_install_without_accounts() {
+        let legacy: Config = serde_json::from_str(r#"{"accounts":[],"use_deceive":false}"#).unwrap();
+        assert!(!legacy.onboarding_pending());
+        let fresh = Config { onboarded: Some(false), ..Config::default() };
+        assert!(fresh.onboarding_pending());
+        let done = Config { onboarded: Some(true), ..Config::default() };
+        assert!(!done.onboarding_pending());
     }
 }

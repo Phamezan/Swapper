@@ -980,6 +980,23 @@ fn set_ready_check_notifications(
     ))
 }
 
+/// Whether the first-run setup should open: true only for a new install.
+#[tauri::command]
+fn onboarding_pending(state: State<'_, AppState>) -> Result<bool, String> {
+    Ok(state.config.lock().map_err(|e| e.to_string())?.onboarding_pending())
+}
+
+/// Marks the first-run setup finished or skipped, so it never opens by itself again.
+#[tauri::command]
+fn set_onboarded(state: State<'_, AppState>) -> Result<(), String> {
+    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut saved = config.clone();
+    saved.onboarded = Some(true);
+    vault::save(&saved)?;
+    *config = saved;
+    Ok(())
+}
+
 /// Persists the Korean font toggle and, when turned on mid-game, starts the
 /// patcher now instead of waiting for the watcher's next poll. Turning it off
 /// stops the patcher immediately.
@@ -1643,6 +1660,8 @@ pub fn run() {
             allow_lan_firewall,
             set_ready_check_notifications,
             set_korean_font,
+            onboarding_pending,
+            set_onboarded,
             korean_font::install_ltk_manager,
             korean_font::open_ltk_website,
             get_runes,
