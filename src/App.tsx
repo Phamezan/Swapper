@@ -32,6 +32,7 @@ import type { AccountCardsProps } from "./full-app/AccountCards";
 import { OnboardingGate } from "./onboarding/Onboarding";
 import { useSettingsVersion } from "./settingsEvents";
 import "./App.css";
+import "./flyout.css";
 
 export type Account = {
   id: string;
@@ -872,9 +873,12 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
   const brandMode = toolsOpen ? "champions" : "accounts";
   const otherMode = toolsOpen ? "accounts" : inChampSelect ? "runes" : "champions";
   const switchLabel = toolsOpen ? "Switch to accounts" : "Switch to champion lookup";
+  // Runes, champions and settings wear the Fullsized App's identity (flyout.css); the accounts screens keep the original look.
+  const themed = !fullApp && (toolsOpen || view === "settings");
+  const modeName = (mode: string) => themed ? mode[0].toUpperCase() + mode.slice(1) : mode.toUpperCase();
 
   return (
-    <div className={`shell dark${fullApp ? " full-app-embedded" : ""}`}>
+    <div className={`shell dark${fullApp ? " full-app-embedded" : ""}${themed ? " flyout-themed" : ""}`}>
       {!fullApp && <header className="topbar">
         <button type="button" className={`brand-button mode-${brandMode}`} aria-label={switchLabel} title={switchLabel} onClick={() => {
           setModeSpin((spin) => spin + 180);
@@ -891,7 +895,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
           </span>
           <span className="brand-copy">
             <strong>{brandMode === "accounts" ? "Swapper" : "Champions"}{toolsOpen && inChampSelect && <i className="brand-live-dot" aria-label="Live champion select" />}</strong>
-            <span>⇄ <span className={`mode-${toolsOpen ? "accounts" : "champions"}`}>{toolsOpen ? "ACCOUNTS" : "CHAMPIONS"}</span></span>
+            <span>⇄ <span className={`mode-${toolsOpen ? "accounts" : "champions"}`}>{modeName(toolsOpen ? "accounts" : "champions")}</span></span>
           </span>
         </button>
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>

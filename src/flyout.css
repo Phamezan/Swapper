@@ -1,0 +1,144 @@
+/* The tray flyout in the Fullsized App's identity (docs/visual-identity.md): graphite surfaces, Swapper green,
+   elevation-1 cards, sentence case, 13px+ type. Applies to runes, champion select and settings only:
+   everything is scoped to `.shell.flyout-themed` (App.tsx), so the accounts screens and the Fullsized App
+   (`.full-app-embedded`, never `.flyout-themed`) keep their own looks. Most of it is the old token names
+   remapped onto the shared --ui-* tokens, so runes.css and the settings css pick the new look up unchanged. */
+.shell.flyout-themed {
+  --surface-base: var(--ui-surface-1); --surface-header: var(--ui-surface-0); --surface-panel: var(--ui-surface-2); --surface-raised: var(--ui-surface-3);
+  --surface-hover: var(--ui-surface-hover); --surface-avatar: #303037; --line-subtle: var(--ui-line-2); --line-strong: var(--ui-line-3);
+  --background: var(--ui-surface-1); --card: var(--ui-surface-2); --popover: var(--ui-surface-3); --muted: var(--ui-surface-3);
+  --secondary: var(--ui-surface-3); --accent: var(--ui-surface-hover); --border: var(--ui-line-2); --input: var(--ui-line-3); --ring: var(--ui-brand);
+  --text-primary: var(--ui-text-1); --text-secondary: var(--ui-text-2); --text-muted: var(--ui-text-3);
+  --brand-green: var(--ui-brand); --brand-ink: var(--ui-brand-ink); --brand-champions: var(--ui-champ);
+  --positive: var(--ui-win); --danger: var(--ui-loss); --warning: var(--ui-warn); --focus: var(--ui-brand);
+  --action-fill: var(--ui-brand); --action-hover: var(--ui-brand-strong); --action-text: var(--ui-brand-ink);
+  --tier-splus: var(--ui-tier-splus); --tier-s: var(--ui-tier-s); --tier-a: var(--ui-tier-a);
+  --tier-b: var(--ui-tier-b); --tier-c: var(--ui-tier-c); --tier-d: var(--ui-tier-d);
+  font-size: var(--ui-label);
+  font-variant-numeric: tabular-nums;
+  background: radial-gradient(420px 260px at 0% 0%, rgb(197 227 158 / .075), transparent 70%), var(--ui-surface-1);
+}
+
+/* ---------- Header and navigation ---------- */
+.flyout-themed .topbar { min-height: 52px; background: var(--ui-surface-0); border-bottom: 1px solid var(--ui-line-1); }
+.flyout-themed .brand-button { height: 38px; gap: 10px; padding: 0 12px 0 6px; border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-card-fill); box-shadow: var(--ui-elev-1); color: var(--text-primary); }
+.flyout-themed .brand-button:hover { background: var(--ui-surface-hover); border-color: var(--ui-line-3); }
+.flyout-themed .brand-icon { width: 26px; height: 26px; border-radius: 7px; background: var(--ui-brand-tint); color: var(--ui-brand); }
+.flyout-themed .brand-copy { gap: 1px; }
+.flyout-themed .brand-copy strong { color: var(--text-primary); font-size: var(--ui-label); font-weight: 650; letter-spacing: 0; line-height: 1.15; }
+.flyout-themed .brand-copy span { color: var(--text-muted); font-size: var(--ui-caption); font-weight: 500; letter-spacing: 0; line-height: 1.15; }
+.flyout-themed .brand-copy span[class^="mode-"] { color: var(--ui-brand); }
+.flyout-themed .brand-live-dot { background: var(--ui-brand); box-shadow: 0 0 0 3px var(--ui-brand-tint); }
+.flyout-themed .icon-button { border-radius: var(--ui-radius-xs); }
+.flyout-themed .icon-button:hover { background: var(--ui-hover); }
+.flyout-themed .footer { display: none; }
+.flyout-themed .main-panel { padding: 16px 16px 12px; }
+
+/* ---------- Buttons, inputs, toggles ---------- */
+.flyout-themed button[data-slot="button"] { border-radius: var(--ui-radius-sm); font-size: var(--ui-label); font-weight: 650; letter-spacing: 0; text-transform: none; }
+.flyout-themed button[data-slot="button"][data-variant="default"] { border: 1px solid #d8f0b9; background: var(--ui-brand-gradient); color: var(--ui-brand-ink); box-shadow: inset 0 1px rgb(255 255 255 / .5); }
+.flyout-themed button[data-slot="button"][data-variant="default"]:hover:not(:disabled) { background: var(--ui-brand-gradient-hover); }
+.flyout-themed button[data-slot="button"][data-variant="outline"] { border-color: var(--ui-line-2); background: var(--ui-hover); box-shadow: var(--ui-inner-hi); }
+.flyout-themed button[data-slot="button"][data-variant="outline"]:hover:not(:disabled) { border-color: var(--ui-line-3); background: var(--ui-press); }
+.flyout-themed button:focus-visible, .flyout-themed input:focus-visible, .flyout-themed select:focus-visible, .flyout-themed summary:focus-visible { outline: 0; box-shadow: var(--ui-focus); }
+.flyout-themed .settings-content input, .flyout-themed .runes-panel input[type="text"], .flyout-themed .runes-panel input[type="search"] { border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-well); font-size: var(--ui-label); }
+.flyout-themed [data-slot="switch"][data-state="checked"] { background: var(--ui-brand); }
+.flyout-themed [data-slot="switch"][data-state="unchecked"] { background: var(--ui-line-3); }
+
+/* ---------- Banners: neutral glass, coloured left edge ---------- */
+.flyout-themed :is(.error-banner, .pairing-notice) { --tone: var(--ui-info); align-items: center; gap: 10px; margin: 0 16px 10px; padding: 10px 12px; border: 1px solid var(--ui-line-2); border-left: 3px solid var(--tone); border-radius: var(--ui-radius-sm); background: linear-gradient(90deg, color-mix(in srgb, var(--tone) 9%, transparent), transparent 38%), var(--ui-card); box-shadow: var(--ui-elev-1); color: var(--text-primary); font-size: var(--ui-label); line-height: 1.4; }
+.flyout-themed .error-banner { --tone: var(--ui-error); }
+.flyout-themed .error-banner > svg { color: var(--tone); }
+.flyout-themed :is(.error-banner, .pairing-notice) > button:not(.repair-banner-action) { color: var(--text-muted); }
+.flyout-themed :is(.error-banner, .pairing-notice) > button:not(.repair-banner-action):hover { color: var(--text-primary); }
+
+/* ---------- Settings ---------- */
+.flyout-themed .panel-heading.compact { gap: 8px; margin-bottom: 12px; }
+.flyout-themed .panel-heading .eyebrow { display: none; }
+.flyout-themed .panel-heading h1 { margin: 0; font-size: var(--ui-title); font-weight: 700; letter-spacing: -.01em; }
+.flyout-themed .back-button { margin-left: -6px; }
+.flyout-themed .settings-tabbar { background: transparent; }
+.flyout-themed .settings-tabs, .flyout-themed .segmented, .flyout-themed .remote-transport { border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-well); }
+.flyout-themed .settings-tab, .flyout-themed .segmented button, .flyout-themed .remote-transport button { border-radius: var(--ui-radius-xs); font-size: var(--ui-label); font-weight: 600; letter-spacing: 0; text-transform: none; }
+.flyout-themed .settings-tab { height: 30px; }
+.flyout-themed .segmented button { height: 28px; padding: 0 14px; }
+.flyout-themed .remote-transport button { height: 28px; }
+.flyout-themed .settings-tab[aria-selected="true"], .flyout-themed .segmented button.is-on, .flyout-themed .remote-transport button.is-active { color: var(--ui-text-1); background: var(--ui-surface-3); box-shadow: var(--ui-inner-hi), inset 0 -2px var(--ui-brand); }
+.flyout-themed .settings-content { margin: 0 -16px; padding: 0 12px 16px 16px; }
+.flyout-themed .setting-row { padding: 12px 0; border-color: var(--ui-line-1); }
+.flyout-themed .setting-row strong, .flyout-themed .setting-copy > label { font-size: var(--ui-label); font-weight: 600; }
+.flyout-themed .setting-row p { font-size: var(--ui-caption); }
+.flyout-themed .setting-select, .flyout-themed .hotkey-trigger { border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-well); font-size: var(--ui-label); }
+.flyout-themed .hotkey-trigger.is-recording { border-color: var(--ui-brand-line); }
+.flyout-themed .remote-qr-panel, .flyout-themed .paired-device { border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-card-fill); box-shadow: var(--ui-elev-1); }
+.flyout-themed .paired-devices { border-color: var(--ui-line-1); }
+.flyout-themed .paired-devices-head strong, .flyout-themed .paired-device-copy strong { font-size: var(--ui-label); }
+.flyout-themed .update-section, .flyout-themed .doctor-section, .flyout-themed .remote-advanced { border-color: var(--ui-line-1); }
+.flyout-themed :is(.update-actions, .doctor-actions) button { font-size: var(--ui-caption); }
+
+/* ---------- Runes and champion select ---------- */
+.flyout-themed .runes-panel { gap: 12px; }
+.flyout-themed .runes-title p, .flyout-themed .runes-champ { color: var(--text-secondary); font-size: var(--ui-caption); font-weight: 500; letter-spacing: 0; text-transform: none; }
+.flyout-themed .runes-title h2 { font-size: var(--ui-title); font-weight: 700; letter-spacing: -.01em; }
+.flyout-themed .rune-spell-key { font-size: var(--ui-caption); }
+/* Cards: the shared elevation-1 recipe. */
+.flyout-themed :is(.rune-preset, .pro-card, .matchup-banner, .counter-card, .tier-row, .overview, .runes-tier-empty, .runes-spell-sheet, .rank-sheet-body) { border-color: var(--ui-line-2) var(--ui-line-1) var(--ui-line-1); border-radius: var(--ui-radius-md); background: var(--ui-card-fill); box-shadow: var(--ui-elev-1); }
+.flyout-themed :is(.matchup-stat-tiles > div, .preset-spell-box) { border-radius: var(--ui-radius-sm); background: var(--ui-well); }
+.flyout-themed .matchup-picker-row button, .flyout-themed .matchup-picker-tbd { border-radius: var(--ui-radius-md); }
+.flyout-themed :is(.rune-preset, .tier-row, .counter-card):hover:not([aria-disabled="true"]) { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
+.flyout-themed .rune-preset.is-highest-win { border-color: var(--ui-line-2); }
+.flyout-themed .rune-preset:hover:not([aria-disabled="true"]), .flyout-themed .rune-preset:focus-visible { border-color: var(--ui-line-3); box-shadow: var(--ui-elev-2); }
+.flyout-themed .runes-presets .rune-preset.is-active, .flyout-themed .runes-presets .rune-preset.is-active:hover:not([aria-disabled="true"]) { border-color: var(--ui-brand-line); box-shadow: var(--ui-elev-1), inset 0 0 0 1px var(--ui-brand-line); }
+.flyout-themed .pro-card.is-active { border-color: var(--ui-brand-line); background: linear-gradient(90deg, var(--ui-brand-tint), transparent 60%), var(--ui-card-fill); }
+.flyout-themed .rune-preset-copy small, .flyout-themed .pro-card-copy small, .flyout-themed .pro-card-meta, .flyout-themed .matchup-stat-tiles small, .flyout-themed .matchup-title small, .flyout-themed .matchup-loading, .flyout-themed .runes-note, .flyout-themed .runes-auto, .flyout-themed .runes-reset, .flyout-themed .pro-card-toggle { font-size: var(--ui-caption); }
+.flyout-themed .matchup-stat-tiles small { letter-spacing: 0; }
+.flyout-themed :is(.pro-card-region, .pro-card-otp, .pro-card-result, .team-logo-fallback, .pro-card-kda, .pro-card-items-label, .rune-low) { font-size: var(--ui-caption); letter-spacing: 0; text-transform: none; }
+.flyout-themed .pro-card-items-label { font-weight: 600; }
+.flyout-themed :is(.matchup-lane-tag, .matchup-portraits b, .matchup-difficulty, .matchup-delta, .matchup-build-link, .corner-badge, .rune-preset-edit i, .cached-badge, .runes-source) { font-size: var(--ui-caption); letter-spacing: 0; text-transform: none; }
+.flyout-themed .matchup-lane-tag { background: var(--ui-brand); }
+.flyout-themed .pro-more, .flyout-themed .pro-retry, .flyout-themed .pro-card-apply { font-size: var(--ui-label); }
+.flyout-themed .runes-note { color: var(--text-secondary); }
+.flyout-themed .runes-auto-note, .flyout-themed .runes-import-note { color: var(--ui-brand); }
+/* Tabs and the role picker: quiet well, selected = raised with a green edge (as in settings). */
+.flyout-themed .runes-tabs, .flyout-themed .runes-role-picker, .flyout-themed .matchup-toggle, .flyout-themed .pro-otp-toggle { border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-well); }
+.flyout-themed .runes-tabs > button { min-height: 32px; border-radius: var(--ui-radius-xs); font-size: var(--ui-label); font-weight: 600; }
+.flyout-themed .runes-tabs > button.is-active, .flyout-themed .preset-build-tabs > button.is-active { color: var(--ui-text-1); background: var(--ui-surface-3); box-shadow: var(--ui-inner-hi), inset 0 -2px var(--ui-brand); }
+.flyout-themed .preset-build-tabs em { background: var(--ui-surface-hover); font-weight: 700; }
+.flyout-themed .preset-build-tabs > button.is-active em, .flyout-themed .preset-build-tabs > button.is-active:last-child em { background: var(--ui-brand); color: var(--ui-brand-ink); }
+.flyout-themed .runes-role-picker button.is-active { color: var(--ui-brand); background: var(--ui-brand-tint); box-shadow: inset 0 0 0 1px var(--ui-brand-line); }
+.flyout-themed .runes-source.is-fallback { color: var(--ui-brand); background: var(--ui-brand-tint); }
+.flyout-themed .matchup-toggle button, .flyout-themed .pro-otp-toggle button { font-size: var(--ui-caption); letter-spacing: 0; text-transform: none; }
+/* Actions: Apply is a real action (bold uppercase, brand gradient); the rest read as quiet buttons. */
+.flyout-themed :is(.runes-apply, .pro-card-apply) { border: 1px solid #d8f0b9; border-radius: var(--ui-radius-sm); background: var(--ui-brand-gradient); color: var(--ui-brand-ink); font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; box-shadow: inset 0 1px rgb(255 255 255 / .5); }
+.flyout-themed :is(.runes-apply, .pro-card-apply):hover:not(:disabled) { background: var(--ui-brand-gradient-hover); }
+.flyout-themed :is(.runes-apply, .pro-card-apply):disabled { background: var(--ui-surface-3); border-color: var(--ui-line-2); color: var(--text-muted); box-shadow: none; opacity: 1; }
+.flyout-themed :is(.runes-reset, .pro-card-toggle, .runes-back, .overview-toggle) { border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); }
+.flyout-themed .runes-auto input[role="switch"]:checked { border-color: var(--ui-brand-line); background: var(--ui-brand); }
+.flyout-themed .runes-auto input[role="switch"]:checked::after { background: var(--ui-brand-ink); }
+.flyout-themed .rune-stats-toggle input { accent-color: var(--ui-brand); }
+.flyout-themed .rank-option-check { color: var(--ui-brand); }
+.flyout-themed .rune-orb.is-on .rune-orb-win { color: var(--ui-brand); }
+.flyout-themed .rune-spell-option.is-active { border-color: var(--ui-brand-line); background: var(--ui-brand-tint); }
+.flyout-themed .runes-alert { --tone: var(--ui-error); border: 1px solid var(--ui-line-2); border-left: 3px solid var(--tone); border-radius: var(--ui-radius-sm); background: linear-gradient(90deg, color-mix(in srgb, var(--tone) 9%, transparent), transparent 38%), var(--ui-card); box-shadow: var(--ui-elev-1); color: var(--text-primary); font-size: var(--ui-label); }
+/* Champion lookup */
+.flyout-themed .champion-search input { border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-well); font-size: var(--ui-label); }
+.flyout-themed .champion-tab > p, .flyout-themed .tier-list-note { font-size: var(--ui-label); }
+.flyout-themed .stat-blk i { font-size: var(--ui-caption); font-weight: 500; letter-spacing: 0; text-transform: none; }
+.flyout-themed :is(.stat-note, .counter-card small, .counter-card-name, .overview-toggle, .wr-stack small, .wr-stack span, .overview-note) { font-size: var(--ui-caption); }
+.flyout-themed .counter-card-name { font-size: var(--ui-label); }
+.flyout-themed .stat-blk.is-big > span { border-radius: var(--ui-radius-sm); background: var(--ui-well); }
+.flyout-themed .matchup-toggle button.is-active { color: var(--ui-text-1); background: var(--ui-surface-3); box-shadow: var(--ui-inner-hi), inset 0 -2px var(--ui-brand); }
+.flyout-themed .tier-row > .tier-text { font-size: var(--ui-label); }
+.flyout-themed .matchup-stat-tiles small { text-transform: none; }
+.flyout-themed .field-label { margin: 12px 0 6px; font-size: var(--ui-label); font-weight: 600; letter-spacing: 0; text-transform: none; }
+.flyout-themed :is(.rune-head-label small, .rune-keystones-label) { color: var(--text-secondary); font-size: var(--ui-caption); font-weight: 500; letter-spacing: 0; text-transform: none; }
+.flyout-themed .rune-head-label strong { font-size: var(--ui-label); }
+.flyout-themed :is(.rune-stats-toggle, .rune-orb-win, .rune-orb-meta) { font-size: var(--ui-caption); }
+.flyout-themed .counter-strip h3 { font-size: 15px; font-weight: 650; letter-spacing: 0; }
+.flyout-themed .counter-strip > p:not(.runes-note) { font-size: var(--ui-caption); }
+.flyout-themed .team-logo-fallback { font-size: var(--ui-caption) !important; } /* inline size-based font from TeamLogo.tsx */
+.flyout-themed .tier-list > p, .flyout-themed .tier-list h3 { font-size: var(--ui-caption); }
+.flyout-themed .tier-list h3 { font-size: 15px; font-weight: 650; letter-spacing: 0; }
+.flyout-themed [data-slot="switch"][data-state="unchecked"] { background: var(--ui-surface-hover); box-shadow: inset 0 0 0 1px var(--ui-line-2); }
+.flyout-themed [data-slot="switch"][data-state="unchecked"] [data-slot="switch-thumb"] { background: var(--ui-text-2); }
+.flyout-themed .settings-content > p:not([class]) { margin: 10px 0 0; color: var(--text-secondary); font-size: var(--ui-caption); line-height: 1.5; }
