@@ -47,7 +47,7 @@ pub struct Game {
     pub cs: u64,
     #[serde(default)]
     pub level: u64,
-    /// "top", "jungle", "mid", "adc" or "support", estimated (see `role`).
+    /// Estimated team assignment; empty when the match cannot be placed.
     #[serde(default)]
     pub role: String,
     /// 1-10 among all players by `placement`; 0 when unknown.
@@ -284,13 +284,18 @@ pub fn game(value: &Value, player: &Summoner) -> Option<Game> {
     })
     .map(|mut game| {
         (game.players, game.opponent) = players(value, own);
+        if let Some(assigned) = game.players.iter().find(|p| p.me && !p.role.is_empty()) {
+            game.role = assigned.role.clone();
+        } else if !has_smite(own) && !support_item(own)
+            && !matches!(own["timeline"]["lane"].as_str(), Some("TOP" | "MIDDLE" | "BOTTOM")) {
+            // Partial history rows can carry an explicit role hint, but no opponent.
+            game.role.clear();
+        }
         game
     })
 }
 
-/// Every player's line, own team first, and the index of the one enemy who
-/// shares the user's estimated role. Two teammates or two enemies in that
-/// role (lane swaps, odd picks) leave the opponent unknown.
+/// Every player's line, own team first, using one assignment for each team.
 fn players(value: &Value, own: &Value) -> (Vec<Player>, Option<u8>) {
     let Some(participants) = value["participants"].as_array() else {
         return (Vec::new(), None);
@@ -309,11 +314,12 @@ fn players(value: &Value, own: &Value) -> (Vec<Player>, Option<u8>) {
             })
             .unwrap_or_default()
     };
-    let mut ordered: Vec<&Value> = participants.iter().collect();
-    ordered.sort_by_key(|p| p["teamId"] != own["teamId"]);
+    let roles = assigned_roles(value);
+    let mut ordered: Vec<_> = participants.iter().enumerate().collect();
+    ordered.sort_by_key(|(_, p)| p["teamId"] != own["teamId"]);
     let lines: Vec<Player> = ordered
         .iter()
-        .map(|p| {
+        .map(|(index, p)| {
             let s = &p["stats"];
             let n = |key: &str| s[key].as_u64().unwrap_or(0);
             Player {
@@ -321,7 +327,7 @@ fn players(value: &Value, own: &Value) -> (Vec<Player>, Option<u8>) {
                 riot_id: riot_id(&p["participantId"]),
                 me: p["participantId"] == own["participantId"],
                 ally: p["teamId"] == own["teamId"],
-                role: role(p).into(),
+                role: roles[*index].into(),
                 kills: n("kills"),
                 deaths: n("deaths"),
                 assists: n("assists"),
@@ -333,7 +339,8 @@ fn players(value: &Value, own: &Value) -> (Vec<Player>, Option<u8>) {
             }
         })
         .collect();
-    (lines.clone(), lane_opponent(&lines))
+    let opponent = lane_opponent(&lines);
+    (lines, opponent)
 }
 
 pub fn lane_opponent(players: &[Player]) -> Option<u8> {
@@ -344,7 +351,8 @@ pub fn lane_opponent(players: &[Player]) -> Option<u8> {
             .enumerate()
             .filter(move |(_, p)| p.ally == ally && p.role == me.role)
     };
-    if players.len() != 10 || same(true).count() != 1 {
+    if players.len() != 10 || !me.ally || !ROLES.contains(&me.role.as_str())
+        || players.iter().filter(|p| p.ally).count() != 5 || same(true).count() != 1 {
         return None;
     }
     let mut enemies = same(false);
@@ -355,21 +363,72 @@ pub fn lane_opponent(players: &[Player]) -> Option<u8> {
 }
 
 const SMITE: i64 = 11;
-/// The support quest item line (World Atlas and its upgrades).
-const SUPPORT_ITEMS: [i64; 5] = [3865, 3866, 3867, 3869, 3877];
+const ROLES: [&str; 5] = ["top", "jungle", "mid", "adc", "support"];
+/// Verified against the client's items.json, including historical quest lines.
+const SUPPORT_ITEMS: [i64; 20] = [3850, 3851, 3853, 3854, 3855, 3857, 3858, 3859, 3860, 3862, 3863, 3864,
+    3865, 3866, 3867, 3869, 3870, 3871, 3876, 3877];
+
+fn has_smite(p: &Value) -> bool {
+    ["spell1Id", "spell2Id"].iter().any(|key| p[*key].as_i64() == Some(SMITE))
+}
+
+fn support_item(p: &Value) -> bool {
+    (0..7).any(|i| p["stats"][format!("item{i}")].as_i64().is_some_and(|id| SUPPORT_ITEMS.contains(&id)))
+}
+
+/// Smite and quest items anchor the assignment; only the three solo/carry slots
+/// compete for lane hints. CS/gold break ties when the client reports NONE.
+pub fn assigned_roles(value: &Value) -> Vec<&'static str> {
+    let Some(all) = value["participants"].as_array() else { return vec![] };
+    let mut roles = vec![""; all.len()];
+    if !eligible(value) || all.len() != 10 || all.iter().any(|p| p["stats"]["gameEndedInEarlySurrender"] == true) {
+        return roles;
+    }
+    let n = |i: usize, key: &str| all[i]["stats"][key].as_u64().unwrap_or(0) as f64;
+    let cs = |i| n(i, "totalMinionsKilled") + n(i, "neutralMinionsKilled");
+    for team_id in [100, 200] {
+        let team: Vec<_> = (0..all.len()).filter(|&i| all[i]["teamId"] == team_id).collect();
+        if team.len() != 5 || team.iter().any(|&i| all[i]["championId"].as_i64().unwrap_or(0) <= 0
+            || all[i]["stats"]["totalMinionsKilled"].as_u64().is_none()) {
+            return vec![""; all.len()];
+        }
+        let jungle = *team.iter().max_by_key(|&&i| (
+            has_smite(&all[i]),
+            all[i]["stats"]["neutralMinionsKilled"].as_u64().unwrap_or(0),
+            all[i]["timeline"]["lane"] == "JUNGLE",
+        )).expect("five players");
+        roles[jungle] = "jungle";
+        let support_score = |i: usize| {
+            let hint = matches!(all[i]["timeline"]["role"].as_str(), Some("SUPPORT" | "DUO_SUPPORT"));
+            // Quest items dominate; low farming plus vision/assists survive sold items.
+            if support_item(&all[i]) { -100_000.0 } else { cs(i) * 3.0 - n(i, "visionScore") - n(i, "assists") * 2.0 - if hint { 80.0 } else { 0.0 } }
+        };
+        let support = *team.iter().filter(|&&i| i != jungle)
+            .min_by(|&&a, &&b| support_score(a).total_cmp(&support_score(b))).expect("four non-junglers");
+        roles[support] = "support";
+        let remaining: Vec<_> = team.into_iter().filter(|&i| i != jungle && i != support).collect();
+        let score = |i: usize, slot: usize| {
+            let lane = all[i]["timeline"]["lane"].as_str().unwrap_or("");
+            let hint = match (slot, lane) { (0, "TOP") | (1, "MIDDLE" | "MID") | (2, "BOTTOM" | "BOT") => 120.0, _ => 0.0 };
+            hint + (slot + 1) as f64 * (cs(i) * 0.04 + n(i, "goldEarned") * 0.0004)
+        };
+        let orders = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+        let best = orders.iter().max_by(|a, b| {
+            let total = |order: &[usize; 3]| (0..3).map(|slot| score(remaining[order[slot]], slot)).sum::<f64>();
+            total(a).total_cmp(&total(b))
+        }).expect("six assignments");
+        for (slot, role) in ["top", "mid", "adc"].iter().enumerate() {
+            roles[remaining[best[slot]]] = role;
+        }
+    }
+    roles
+}
 
 /// The client's `timeline.lane` is unreliable (mid laners often read as
 /// JUNGLE), so Smite and the support item decide first, then the lane.
 pub fn role(participant: &Value) -> &'static str {
-    let stats = &participant["stats"];
-    let has_smite = ["spell1Id", "spell2Id"]
-        .iter()
-        .any(|key| participant[*key].as_i64() == Some(SMITE));
-    let support_item = (0..7).any(|i| {
-        stats[format!("item{i}")]
-            .as_i64()
-            .is_some_and(|id| SUPPORT_ITEMS.contains(&id))
-    });
+    let has_smite = has_smite(participant);
+    let support_item = support_item(participant);
     let timeline = &participant["timeline"];
     match (has_smite, support_item, timeline["lane"].as_str()) {
         (true, _, _) => "jungle",

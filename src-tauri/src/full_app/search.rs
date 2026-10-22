@@ -35,6 +35,8 @@ pub struct Search {
 #[serde(rename_all = "camelCase")]
 pub struct Profile {
     player: Player,
+    #[serde(default)]
+    region: Option<String>,
     solo: Option<model::Rank>,
     flex: Option<model::Rank>,
     games: Vec<model::Game>,
@@ -401,6 +403,7 @@ fn saved_profile(snapshot: Option<&model::Snapshot>, profiles: Vec<Profile>, id:
         },
         solo: None,
         flex: None,
+        region: None,
         games,
         live: false,
         fetched_at: snapshot.map_or(0, |s| s.fetched_at),
@@ -444,6 +447,8 @@ fn perspective(game: &model::Game, id: &str) -> Option<model::Game> {
         other.me = other.riot_id.eq_ignore_ascii_case(id);
         other.ally = other.ally == p.ally;
     }
+    game.opponent = model::lane_opponent(&game.players);
+    game.metrics[0] = Some((p.kills + p.assists) as f64 / p.deaths.max(1) as f64);
     Some(game)
 }
 
@@ -483,10 +488,11 @@ pub async fn full_app_player_profile(
         "/lol-match-history/v1/products/lol/{}/matches?begIndex=0&endIndex=19",
         summoner.puuid
     );
-    let (ranked, history, icon) = tokio::join!(
+    let (ranked, history, icon, region) = tokio::join!(
         get(&client, &rank_path),
         get(&client, &history_path),
-        icon(&client, &value)
+        icon(&client, &value),
+        get(&client, "/riotclient/region-locale")
     );
     let history_rows = history
         .as_ref()
@@ -530,7 +536,7 @@ pub async fn full_app_player_profile(
     let mut games: Vec<_> = games.into_values().collect();
     games.sort_by_key(|g| std::cmp::Reverse(g.created_at));
     games.truncate(20);
-    let profile = Profile { player: player(&summoner, icon), solo: ranked.as_ref().ok().and_then(model::rank), flex: ranked.as_ref().ok().and_then(flex_rank),
+    let profile = Profile { player: player(&summoner, icon), region: region.ok().and_then(|r| r["region"].as_str().map(str::to_string)), solo: ranked.as_ref().ok().and_then(model::rank), flex: ranked.as_ref().ok().and_then(flex_rank),
         games, live: true, fetched_at: crate::runes::provider::now_ms(), message: incomplete.then(|| "Some profile data could not be loaded. Saved games may be shown; try again shortly.".into()) };
     let cached = profile.clone();
     let _ = tokio::task::spawn_blocking(move || save(cached)).await;
@@ -541,6 +547,50 @@ pub async fn full_app_player_profile(
 mod tests {
     use super::*;
     use serde_json::json;
+    #[tokio::test]
+    #[ignore = "Requires League Client; read-only GETs, sanitised aggregate counts only."]
+    async fn live_lcu_opponent_coverage() {
+        let client = crate::runes::lcu().await.expect("Client unavailable");
+        let current = get(&client, "/lol-summoner/v1/current-summoner").await.expect("Summoner unavailable");
+        let me = model::summoner(&current).expect("Summoner schema");
+        let history = get(&client, &format!("/lol-match-history/v1/products/lol/{}/matches?begIndex=0&endIndex=19", me.puuid)).await.expect("History unavailable");
+        let rows = history["games"]["games"].as_array().expect("History rows");
+        let (mut eligible, mut before, mut after, mut perspectives, mut viewed_after) = (0, 0, 0, 0, 0);
+        for row in rows.iter().take(20) {
+            let id = row["gameId"].as_u64().expect("Game id");
+            let value = get(&client, &format!("/lol-match-history/v1/games/{id}")).await.expect("Game unavailable");
+            let Some(game) = model::game(&value, &me) else { continue };
+            eligible += 1;
+            after += usize::from(game.opponent.is_some());
+            let all = value["participants"].as_array().expect("Participants");
+            let own_id = value["participantIdentities"].as_array().unwrap().iter().find(|i| i["player"]["puuid"] == me.puuid).unwrap()["participantId"].clone();
+            let own = all.iter().find(|p| p["participantId"] == own_id).unwrap();
+            let old_role = |p: &Value| {
+                if ["spell1Id", "spell2Id"].iter().any(|k| p[*k] == 11) { return "jungle"; }
+                if (0..7).any(|i| p["stats"][format!("item{i}")].as_i64().is_some_and(|id| [3865, 3866, 3867, 3869, 3877].contains(&id))) { return "support"; }
+                match p["timeline"]["lane"].as_str() {
+                    Some("TOP") => "top",
+                    Some("BOTTOM") if matches!(p["timeline"]["role"].as_str(), Some("SUPPORT" | "DUO_SUPPORT")) => "support",
+                    Some("BOTTOM") => "adc",
+                    _ => "mid",
+                }
+            };
+            let old = old_role(own);
+            before += usize::from(all.iter().filter(|p| p["teamId"] == own["teamId"] && old_role(p) == old).count() == 1
+                && all.iter().filter(|p| p["teamId"] != own["teamId"] && old_role(p) == old).count() == 1);
+            for p in game.players.iter().filter(|p| !p.me && !p.riot_id.is_empty()) {
+                let viewed = perspective(&game, &p.riot_id).expect("Perspective");
+                perspectives += 1;
+                viewed_after += usize::from(viewed.opponent.is_some());
+                assert!(viewed.players.iter().find(|p| p.me).unwrap().ally);
+                assert!(viewed.opponent.is_none_or(|i| !viewed.players[i as usize].ally));
+            }
+        }
+        println!("Read-only sample: {} recent games; {} eligible Rift games; opponents before {before}/{eligible}, after {after}/{eligible}; searched perspectives after {viewed_after}/{perspectives}.", rows.len().min(20), eligible);
+        assert!(eligible > 0);
+        assert_eq!(after, eligible);
+    }
+
     #[tokio::test]
     #[ignore = "Requires League Client; only GETs, no persistence or player logs."]
     async fn live_lcu_contract() {
@@ -664,6 +714,19 @@ mod tests {
         assert_eq!(hits.len(), 1);
         assert_eq!(hits[0].ally, Some(true));
         assert_eq!(hits[0].last_played, Some(2000));
+    }
+    #[test]
+    fn saved_opponents_follow_the_selected_players_role_and_team() {
+        let roles = ["top", "jungle", "mid", "adc", "support"];
+        let players: Vec<_> = (0..10).map(|i| json!({"riotId":format!("Player {i}#TEST"),"championId":i+1,"me":i==0,"ally":i<5,
+            "role":roles[i%5],"kills":2,"deaths":1,"assists":4,"cs":120,"damage":1000,"gold":5000,"vision":10,"items":[]})).collect();
+        let game: model::Game = serde_json::from_value(json!({"id":1,"queue":"solo","championId":1,"createdAt":1,"duration":1200,
+            "win":true,"kills":2,"deaths":1,"assists":4,"metrics":[6,60,6,null,null,null],"players":players,"opponent":5})).unwrap();
+        let viewed = perspective(&game, "Player 8#TEST").unwrap();
+        assert_eq!(viewed.role, "adc");
+        assert_eq!(viewed.opponent, Some(3));
+        assert!(!viewed.players[3].ally);
+        assert_eq!(viewed.metrics[0], Some(6.0));
     }
     #[test]
     fn corrupt_or_oversized_profile_cache_is_ignored() {

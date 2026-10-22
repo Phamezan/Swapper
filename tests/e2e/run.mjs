@@ -494,6 +494,29 @@ async function main() {
     await page.visible('.player-games .match-row');
     await page.text('.player-ranks', 'Solo/Duo');
     await page.text('.player-ranks', 'Flex');
+    // ---- profile round9: aggregates, progressive history and responsive layout ----
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-metric').length"), 5);
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-champions li').length"), 3);
+    await page.text('.player-champions', '12 loaded games');
+    await page.text('.player-together', '12 games');
+    await page.text('.player-roles', 'Jungle');
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-games .match-row').length"), 10);
+    for (const [width, height] of [[1920, 1080], [1440, 900], [1280, 820]]) {
+      await page.cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+      await page.settle();
+      assert.deepEqual(await page.evaluate(`(${horizontalOverflow.toString()})()`), []);
+      assert.equal(await page.evaluate("document.querySelector('.player-layout').getBoundingClientRect().width <= document.querySelector('.dashboard-main').clientWidth"), true);
+      const columns = await page.evaluate("getComputedStyle(document.querySelector('.player-layout')).gridTemplateColumns.split(' ').length");
+      assert.equal(columns, width >= 1440 ? 2 : 1);
+    }
+    await page.click('.player-more');
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-games .match-row').length"), 12);
+    assert.equal(await page.evaluate("document.querySelector('.player-more')"), null);
+    await page.click('.player-together li:first-child button');
+    await page.text('.player-identity h2', 'Player 2#DEMO');
+    await page.click('.player-back');
+    await page.text('.player-identity h2', 'Player 1#DEMO');
+    // ---- end profile checks ----
     await page.click('.player-games .match-champ');
     // ---- matchdetail: player-perspective match also opens Overview ----
     await page.visible('.md-comparison');

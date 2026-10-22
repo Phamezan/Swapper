@@ -164,6 +164,87 @@ fn role_of(value: &Value) -> &'static str {
     role(value)
 }
 
+fn role_fixture() -> Value {
+    let mut value = fixture();
+    for (index, p) in value["participants"].as_array_mut().unwrap().iter_mut().enumerate() {
+        let slot = index % 5;
+        p["timeline"] = json!({"lane": (["TOP", "JUNGLE", "MIDDLE", "MIDDLE", "MIDDLE"][slot]), "role":"NONE"});
+        p["spell1Id"] = json!(4);
+        p["spell2Id"] = json!(if slot == 1 { 11 } else { 14 });
+        p["stats"]["totalMinionsKilled"] = json!(([190, 20, 210, 230, 18][slot]));
+        p["stats"]["neutralMinionsKilled"] = json!(if slot == 1 { 140 } else { 0 });
+        p["stats"]["goldEarned"] = json!(([11000, 10000, 12000, 14000, 7500][slot]));
+        p["stats"]["visionScore"] = json!(if slot == 4 { 65 } else { 15 });
+        p["stats"]["item0"] = json!(if slot == 4 { 3870 } else { 0 });
+    }
+    value["participants"][3]["championId"] = json!(145);
+    value["participants"][8]["championId"] = json!(236);
+    value["participants"][9]["championId"] = json!(267);
+    value["participantIdentities"].as_array_mut().unwrap().push(json!({"participantId":4,"player":{"puuid":"adc","summonerId":44}}));
+    value
+}
+
+#[test]
+fn kaisa_faces_lucian_instead_of_nami_with_mislabelled_bot_lanes() {
+    let value = role_fixture();
+    let mut adc = player();
+    adc.puuid = "adc".into();
+    let g = game(&value, &adc).unwrap();
+    assert_eq!(g.role, "adc");
+    assert_eq!(g.players[g.opponent.unwrap() as usize].champion_id, 236);
+    assert_eq!(g.players[9].role, "support");
+}
+
+#[test]
+fn support_upgrades_and_absent_lane_hints_still_assign_each_role_once() {
+    let catalog: Value = serde_json::from_str(include_str!("profile-support-items.json")).unwrap();
+    for item in catalog.as_array().unwrap() {
+        let mut value = role_fixture();
+        for p in value["participants"].as_array_mut().unwrap() {
+            p["timeline"] = json!({"lane":"NONE","role":"NONE"});
+        }
+        value["participants"][4]["stats"]["item0"] = item["id"].clone();
+        let roles = assigned_roles(&value);
+        assert_eq!(roles[4], "support", "catalog item {}", item["id"]);
+        assert_eq!(roles[1], "jungle");
+        for team in roles.chunks(5) {
+            let mut actual = team.to_vec();
+            actual.sort_unstable();
+            assert_eq!(actual, ["adc", "jungle", "mid", "support", "top"]);
+        }
+    }
+    let mut value = role_fixture();
+    value["participants"][4]["stats"]["item0"] = json!(0);
+    value["participants"][4]["timeline"]["lane"] = json!("NONE");
+    assert_eq!(assigned_roles(&value)[4], "support", "low-CS support without a quest item");
+}
+
+#[test]
+fn lane_swaps_use_observed_lanes_and_non_rift_games_have_no_assignment() {
+    let mut value = role_fixture();
+    value["participants"][0]["timeline"]["lane"] = json!("BOTTOM");
+    value["participants"][3]["timeline"]["lane"] = json!("TOP");
+    let roles = assigned_roles(&value);
+    assert_eq!((roles[0], roles[3]), ("adc", "top"));
+    value["queueId"] = json!(450);
+    value["mapId"] = json!(12);
+    assert!(assigned_roles(&value).iter().all(|r| r.is_empty()));
+    assert!(game(&value, &player()).is_none());
+    value = role_fixture();
+    value["gameDuration"] = json!(100);
+    assert!(assigned_roles(&value).iter().all(|r| r.is_empty()));
+}
+
+#[test]
+fn partial_history_keeps_only_explicit_role_hints_and_never_an_opponent() {
+    let mut value = role_fixture();
+    value["participants"].as_array_mut().unwrap().truncate(1);
+    assert_eq!(game(&value, &player()).unwrap().role, "top");
+    assert_eq!(game(&value, &player()).unwrap().opponent, None);
+    value["participants"][0]["timeline"]["lane"] = json!("NONE");
+    assert_eq!(game(&value, &player()).unwrap().role, "");
+}
+
 #[test]
 fn placement_ranks_all_ten_and_needs_complete_stats() {
     let mut value = fixture();

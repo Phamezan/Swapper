@@ -40,7 +40,9 @@ function game(i: number) {
   const [kills, deaths, assists] = win ? [7 + i % 4, 2 + i % 3, 6 + i % 5] : [3 + i % 3, 7 + i % 2, 4 + i % 3];
   const cs = win ? 210 + i * 3 : 160 + i * 2;
   const players = [...ALLY, ...ENEMY].map((id, p) => ({
-    championId: p === 0 ? championId : id, riotId: p === 0 ? "Swapper Demo#EUW" : `Player ${p}#DEMO`, me: p === 0, ally: p < 5, role: ROLES[p % 5],
+    // ---- profile round9: varied, invented champion history for the searched teammate ----
+    championId: p === 0 ? championId : p === 1 ? [64, 64, 24, 64, 11, 64, 24, 11, 64, 24, 64, 11][i] : id, riotId: p === 0 ? "Swapper Demo#EUW" : `Player ${p}#DEMO`, me: p === 0, ally: p < 5, role: ROLES[p % 5],
+    // ---- end profile champion history ----
     kills: p === 0 ? kills : 2 + p % 4, deaths: p === 0 ? deaths : 3 + p % 3, assists: p === 0 ? assists : 4 + p % 5,
     cs: p === 0 ? cs : p === 5 ? (win ? 175 : 205) : 120 + p * 9, damage: p === 0 ? (win ? 26000 : 17000) : 9000 + p * 1300, gold: 9000, vision: 18 + p,
     items: [6692, 3053, 3071, 3047, 6333, 0, 3340],
@@ -137,11 +139,19 @@ mockIPC(async (cmd, args) => {
       if (params.has('search-error')) throw new Error('Preview profile unavailable');
       const live = !params.has('stale') && !params.has('disconnected');
       const riotId = String(a.riotId);
-      return { player: { riotId, icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: live ? 184 : null, ally: true, lastPlayed: games[0]?.createdAt ?? null },
+      return { region: live ? 'EUW' : null, player: { riotId, icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: live ? 184 : null, ally: true, lastPlayed: games[0]?.createdAt ?? null },
         solo: live ? rank('EMERALD', 'II') : null, flex: live ? rank('PLATINUM', 'IV') : null,
         games: (riotId === 'Demo Player#TEST' ? games : games.map(g => profileGame(g, riotId)).filter((g): g is NonNullable<typeof g> => g !== null))
-          .map(g => live ? { ...g, spells: [4, g.role === 'jungle' ? 11 : 12], keystone: 8010, level: 16, placement: 3,
-            opponent: g.players.findIndex(p => !p.ally && p.role === g.role) } : g), live, fetchedAt: snapshot.fetchedAt,
+          // ---- profile round9: metrics from the fixture's observed participant totals ----
+          .map(g => {
+            const me = g.players.find(p => p.me), team = g.players.filter(p => p.ally), minutes = g.duration / 60;
+            const kills = team.reduce((sum, p) => sum + p.kills, 0), damage = team.reduce((sum, p) => sum + p.damage, 0);
+            return live && me ? { ...g, spells: [4, g.role === 'jungle' ? 11 : 12], keystone: 8010, level: 16, placement: 3,
+              metrics: [(g.kills + g.assists) / Math.max(1, g.deaths), kills ? Math.min(100, 100 * (g.kills + g.assists) / kills) : null,
+                g.cs / minutes, me.damage / minutes, damage ? 100 * me.damage / damage : null, me.vision / minutes],
+              opponent: g.players.findIndex(p => !p.ally && p.role === g.role) } : g;
+          }), live, fetchedAt: snapshot.fetchedAt,
+          // ---- end profile metrics ----
         message: params.has('search-partial') ? 'Some profile data could not be loaded. Try again shortly.' : null };
     }
     // ---- end search fixtures ----

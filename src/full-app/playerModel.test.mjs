@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readRecents, remember, matchesPrefix, profileGame } from './playerModel.ts';
+import { readRecents, remember, matchesPrefix, profileGame, profileStats } from './playerModel.ts';
 
 test('recent searches are validated, deduplicated, bounded and reorder on selection', () => {
   let recent = [];
@@ -13,6 +13,55 @@ test('recent searches are validated, deduplicated, bounded and reorder on select
   assert.deepEqual(readRecents(' '.repeat(8193)), []);
   assert.deepEqual(readRecents(JSON.stringify([null, { kind: 'page' }, { kind: 'player', riotId: '' } ])), []);
   assert.deepEqual(readRecents(JSON.stringify(recent)), recent);
+});
+
+const sample = (id, championId, win, kills = 4, deaths = 2, assists = 6) => ({
+  id, championId, win, kills, deaths, assists, createdAt: id * 1000, duration: 1200,
+  role: 'adc', metrics: [5, 50, 6, 500, 25, 1], players: [
+    { riotId: 'Target#TEST', me: true, ally: true },
+    { riotId: id % 2 ? 'Friend#TEST' : 'friend#test', ally: true },
+    { riotId: 'Enemy#TEST', ally: false },
+    { riotId: 'Once#TEST', ally: id === 1 },
+  ],
+});
+
+test('profile aggregates top three by games, combined KDA, allies and observed averages', () => {
+  const games = [sample(1, 145, true), sample(2, 145, false, 10, 0, 2), sample(3, 236, true), sample(4, 222, false), sample(5, 103, true)];
+  const stats = profileStats(games);
+  assert.equal(stats.games, 5);
+  assert.equal(stats.wins, 3);
+  assert.deepEqual(stats.champions.map(c => c.id), [145, 103, 236]);
+  assert.equal(stats.champions[0].kda, 11);
+  assert.deepEqual([stats.champions[0].wins, stats.champions[0].losses], [1, 1]);
+  assert.equal(stats.playedWith.length, 1);
+  assert.equal(stats.playedWith[0].games, 5);
+  assert.equal(stats.playedWith[0].wins, 3);
+  assert.equal(stats.metrics[1].average, 50);
+  assert.deepEqual(stats.roles, [{ role: 'adc', games: 5, wins: 3 }]);
+});
+
+test('missing metrics stay absent, trends preserve chronology and duplicate games do not inflate a profile', () => {
+  const first = { ...sample(1, 145, true), metrics: [null, 40, null, null, null, null], role: '' };
+  const last = { ...sample(2, 145, false), metrics: [null, 60, NaN, Infinity, null, null] };
+  const stats = profileStats([last, first, first]);
+  assert.equal(stats.games, 2);
+  assert.deepEqual(stats.metrics[1].points, [40, 60]);
+  assert.equal(stats.metrics[1].average, 50);
+  assert.equal(stats.metrics[2].average, null);
+  assert.equal(stats.metrics[3].average, null);
+  assert.equal(profileStats([]).metrics[0].average, null);
+  assert.deepEqual(profileStats([]).playedWith, []);
+});
+
+test('a saved profile recomputes the opposing role from the selected player perspective', () => {
+  const roles = ['top', 'jungle', 'mid', 'adc', 'support'];
+  const players = Array.from({ length: 10 }, (_, i) => ({ riotId: `Player ${i}#TEST`, championId: i + 1, me: i === 0, ally: i < 5, role: roles[i % 5], kills: 2, deaths: 1, assists: 4, cs: 120 }));
+  const g = { ...sample(1, 1, true), players, opponent: 5 };
+  const result = profileGame(g, 'Player 8#TEST');
+  assert.equal(result.role, 'adc');
+  assert.equal(result.opponent, 3);
+  assert.equal(result.metrics[0], 6);
+  assert.equal(result.metrics[1], 60);
 });
 
 test('saved player matching is a trimmed, case-insensitive name prefix', () => {
