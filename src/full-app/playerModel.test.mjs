@@ -53,6 +53,12 @@ test('missing metrics stay absent, trends preserve chronology and duplicate game
   assert.deepEqual(profileStats([]).playedWith, []);
 });
 
+test('played-with icons come from the profile cache without inventing missing icons', () => {
+  const stats = profileStats([sample(1, 145, true), sample(2, 145, false)], { 'friend#test': 'data:image/jpeg;base64,AA==' });
+  assert.equal(stats.playedWith[0].icon, 'data:image/jpeg;base64,AA==');
+  assert.equal(profileStats([sample(1, 145, true), sample(2, 145, false)]).playedWith[0].icon, null);
+});
+
 test('a saved profile recomputes the opposing role from the selected player perspective', () => {
   const roles = ['top', 'jungle', 'mid', 'adc', 'support'];
   const players = Array.from({ length: 10 }, (_, i) => ({ riotId: `Player ${i}#TEST`, championId: i + 1, me: i === 0, ally: i < 5, role: roles[i % 5], kills: 2, deaths: 1, assists: 4, cs: 120 }));

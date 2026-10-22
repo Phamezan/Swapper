@@ -10,6 +10,7 @@ const LIMIT: usize = 8;
 const CLOSED: &str = "Open League Client to load a profile. Showing saved players only.";
 static GATE: OnceLock<tokio::sync::Semaphore> = OnceLock::new();
 static CACHE_GATE: OnceLock<std::sync::Mutex<()>> = OnceLock::new();
+static ICON_CACHE: OnceLock<std::sync::Mutex<BTreeMap<u64, String>>> = OnceLock::new();
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -37,12 +38,44 @@ pub struct Profile {
     player: Player,
     #[serde(default)]
     region: Option<String>,
-    solo: Option<model::Rank>,
+    solo: Option<ProfileRank>,
     flex: Option<model::Rank>,
+    #[serde(default)]
+    profile_icons: BTreeMap<String, String>,
     games: Vec<model::Game>,
     live: bool,
     fetched_at: i64,
     message: Option<String>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct ProfileRank {
+    #[serde(flatten)]
+    rank: model::Rank,
+    #[serde(default)]
+    record_available: bool,
+}
+
+fn profile_rank(value: &Value) -> Option<ProfileRank> {
+    model::rank_with_record(value).map(|(rank, record_available)| ProfileRank {
+        rank,
+        record_available,
+    })
+}
+
+fn participant_icons(detail: &Value) -> BTreeMap<String, u64> {
+    detail["participantIdentities"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .filter_map(|identity| {
+            let player = &identity["player"];
+            let name = player["gameName"].as_str().filter(|s| !s.is_empty())?;
+            let tag = player["tagLine"].as_str().filter(|s| !s.is_empty())?;
+            Some((format!("{name}#{tag}").to_lowercase(), player["profileIcon"].as_u64()?))
+        })
+        .collect()
 }
 
 fn riot_id(value: &str) -> Result<(&str, &str), String> {
@@ -248,6 +281,10 @@ async fn lookup(
 
 async fn icon(client: &crate::runes::Lcu, value: &Value) -> Option<String> {
     let id = value["profileIconId"].as_u64()?;
+    let cache = ICON_CACHE.get_or_init(Default::default);
+    if let Some(data) = cache.lock().ok()?.get(&id) {
+        return Some(data.clone());
+    }
     let bytes = tokio::time::timeout(
         Duration::from_secs(4),
         crate::runes::lcu_get_bytes(
@@ -258,12 +295,19 @@ async fn icon(client: &crate::runes::Lcu, value: &Value) -> Option<String> {
     .await
     .ok()?
     .ok()?;
-    (bytes.len() <= 128 * 1024).then(|| {
+    let data = (bytes.len() <= 128 * 1024).then(|| {
         format!(
             "data:image/jpeg;base64,{}",
             base64::engine::general_purpose::STANDARD.encode(bytes)
         )
-    })
+    })?;
+    if let Ok(mut cache) = cache.lock() {
+        if cache.len() >= 64 {
+            cache.clear();
+        }
+        cache.insert(id, data.clone());
+    }
+    Some(data)
 }
 
 fn player(summoner: &model::Summoner, icon: Option<String>) -> Player {
@@ -275,20 +319,6 @@ fn player(summoner: &model::Summoner, icon: Option<String>) -> Player {
         last_played: None,
         live: true,
     }
-}
-
-fn flex_rank(ranked: &Value) -> Option<model::Rank> {
-    let queue = ranked["queueMap"]["RANKED_FLEX_SR"]
-        .as_object()
-        .map(|_| ranked["queueMap"]["RANKED_FLEX_SR"].clone())
-        .or_else(|| {
-            ranked["queues"]
-                .as_array()?
-                .iter()
-                .find(|q| q["queueType"] == "RANKED_FLEX_SR")
-                .cloned()
-        })?;
-    model::rank(&serde_json::json!({"queueMap": {"RANKED_SOLO_5x5": queue}}))
 }
 
 fn check(app: &tauri::AppHandle, window: &tauri::WebviewWindow) -> Result<(), String> {
@@ -377,6 +407,7 @@ fn saved_profile(snapshot: Option<&model::Snapshot>, profiles: Vec<Profile>, id:
         profile.live = false;
         profile.player.live = false;
         profile.message = None;
+        profile.flex = None;
         return profile;
     }
     let mut games = BTreeMap::new();
@@ -403,6 +434,7 @@ fn saved_profile(snapshot: Option<&model::Snapshot>, profiles: Vec<Profile>, id:
         },
         solo: None,
         flex: None,
+        profile_icons: BTreeMap::new(),
         region: None,
         games,
         live: false,
@@ -488,7 +520,7 @@ pub async fn full_app_player_profile(
         "/lol-match-history/v1/products/lol/{}/matches?begIndex=0&endIndex=19",
         summoner.puuid
     );
-    let (ranked, history, icon, region) = tokio::join!(
+    let (ranked, history, profile_icon, region) = tokio::join!(
         get(&client, &rank_path),
         get(&client, &history_path),
         icon(&client, &value),
@@ -516,7 +548,8 @@ pub async fn full_app_player_profile(
                         .await
                         .ok()
                         .filter(|d| d["gameId"].as_u64() == Some(id));
-                    model::game(detail.as_ref().unwrap_or(&row), summoner)
+                    let detail = detail.as_ref().unwrap_or(&row);
+                    model::game(detail, summoner).map(|game| (game, participant_icons(detail)))
                 }
             }),
     )
@@ -527,7 +560,13 @@ pub async fn full_app_player_profile(
     .await;
     let history_incomplete = history_rows.is_none() || games.len() < expected;
     incomplete |= history_incomplete;
-    let mut games: BTreeMap<_, _> = games.into_iter().map(|g| (g.id, g)).collect();
+    let mut icon_ids = BTreeMap::new();
+    let mut observed = games;
+    observed.sort_by_key(|(game, _)| game.created_at);
+    for (_, icons) in &observed {
+        icon_ids.extend(icons.iter().map(|(id, icon)| (id.clone(), *icon)));
+    }
+    let mut games: BTreeMap<_, _> = observed.into_iter().map(|(g, _)| (g.id, g)).collect();
     if history_incomplete {
         for game in saved.games {
             games.entry(game.id).or_insert(game);
@@ -536,7 +575,34 @@ pub async fn full_app_player_profile(
     let mut games: Vec<_> = games.into_values().collect();
     games.sort_by_key(|g| std::cmp::Reverse(g.created_at));
     games.truncate(20);
-    let profile = Profile { player: player(&summoner, icon), region: region.ok().and_then(|r| r["region"].as_str().map(str::to_string)), solo: ranked.as_ref().ok().and_then(model::rank), flex: ranked.as_ref().ok().and_then(flex_rank),
+    let mut recurring = BTreeMap::<String, usize>::new();
+    for game in &games {
+        for p in game.players.iter().filter(|p| p.ally && !p.me) {
+            *recurring.entry(p.riot_id.to_lowercase()).or_default() += 1;
+        }
+    }
+    let icons = stream::iter(
+        recurring.into_iter()
+            .filter(|(_, count)| *count >= 2)
+            .filter_map(|(id, _)| icon_ids.get(&id).copied().map(|icon_id| (id, icon_id)))
+            .map(|(id, icon_id)| {
+                let client = &client;
+                async move {
+                    icon(client, &serde_json::json!({"profileIconId": icon_id}))
+                        .await
+                        .map(|data| (id, data))
+                }
+            }),
+    )
+    .buffer_unordered(3)
+    .take_until(tokio::time::sleep(Duration::from_secs(4)))
+    .filter_map(|icon| async move { icon })
+    .collect::<BTreeMap<_, _>>()
+    .await;
+    let mut profile_icons = saved.profile_icons;
+    profile_icons.extend(icons);
+    // Sampled other-player Flex records returned explicit zero losses; omit this queue.
+    let profile = Profile { player: player(&summoner, profile_icon), region: region.ok().and_then(|r| r["region"].as_str().map(str::to_string)), solo: ranked.as_ref().ok().and_then(profile_rank), flex: None, profile_icons,
         games, live: true, fetched_at: crate::runes::provider::now_ms(), message: incomplete.then(|| "Some profile data could not be loaded. Saved games may be shown; try again shortly.".into()) };
     let cached = profile.clone();
     let _ = tokio::task::spawn_blocking(move || save(cached)).await;
@@ -648,11 +714,33 @@ mod tests {
         assert!(!prefix("Player", ""));
     }
     #[test]
-    fn queue_parsing_keeps_solo_and_flex_separate() {
+    fn profile_rank_ignores_flex_in_both_queue_shapes() {
         let value = json!({"queueMap":{"RANKED_SOLO_5x5":{"tier":"GOLD","division":"II","leaguePoints":41},"RANKED_FLEX_SR":{"tier":"SILVER","division":"I","leaguePoints":12}}});
         assert_eq!(model::rank(&value).unwrap().tier, "GOLD");
-        assert_eq!(flex_rank(&value).unwrap().lp, 12);
-        assert!(flex_rank(&json!({})).is_none());
+        assert_eq!(profile_rank(&value).unwrap().rank.tier, "GOLD");
+        assert!(profile_rank(&json!({"queues":[{"queueType":"RANKED_FLEX_SR","tier":"SILVER","wins":151,"losses":0}]})).is_none());
+        assert!(profile_rank(&json!({})).is_none());
+    }
+    #[test]
+    fn profile_rank_never_fabricates_a_missing_record() {
+        for record in [json!({"wins":151}), json!({"losses":12}), json!({}), json!({"wins":151,"losses":null}), json!({"wins":151,"losses":-1})] {
+            let mut queue = json!({"tier":"GOLD","division":"II","leaguePoints":41});
+            queue.as_object_mut().unwrap().extend(record.as_object().unwrap().clone());
+            let rank = profile_rank(&json!({"queueMap":{"RANKED_SOLO_5x5":queue}})).unwrap();
+            assert_eq!(rank.rank.lp, 41);
+            assert!(!rank.record_available);
+        }
+        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"GOLD","wins":12,"losses":0}]})).unwrap();
+        assert!(rank.record_available);
+        assert_eq!(rank.rank.losses, 0);
+    }
+
+    #[test]
+    fn participant_icons_only_keep_observed_ids() {
+        let detail = json!({"participantIdentities":[{"player":{"gameName":"Friend","tagLine":"TEST","profileIcon":29}},{"player":{"gameName":"Missing","tagLine":"TEST"}}]});
+        let icons = participant_icons(&detail);
+        assert_eq!(icons.get("friend#test"), Some(&29));
+        assert!(!icons.contains_key("missing#test"));
     }
     #[test]
     fn recent_profiles_are_bounded_and_move_to_front() {

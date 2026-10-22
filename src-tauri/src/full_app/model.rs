@@ -155,6 +155,10 @@ pub fn summoner(value: &Value) -> Option<Summoner> {
 }
 
 pub fn rank(value: &Value) -> Option<Rank> {
+    rank_with_record(value).map(|(rank, _)| rank)
+}
+
+pub fn rank_with_record(value: &Value) -> Option<(Rank, bool)> {
     let queue = value["queueMap"]["RANKED_SOLO_5x5"]
         .as_object()
         .map(|_| &value["queueMap"]["RANKED_SOLO_5x5"])
@@ -168,17 +172,21 @@ pub fn rank(value: &Value) -> Option<Rank> {
     if tier.is_empty() || tier == "NONE" || tier == "UNRANKED" {
         return None;
     }
-    Some(Rank {
-        tier,
-        division: queue["division"]
-            .as_str()
-            .filter(|s| *s != "NA")
-            .unwrap_or("")
-            .into(),
-        lp: queue["leaguePoints"].as_u64().unwrap_or(0),
-        wins: queue["wins"].as_u64().unwrap_or(0),
-        losses: queue["losses"].as_u64().unwrap_or(0),
-    })
+    let record_available = queue["wins"].as_u64().is_some() && queue["losses"].as_u64().is_some();
+    Some((
+        Rank {
+            tier,
+            division: queue["division"]
+                .as_str()
+                .filter(|s| *s != "NA")
+                .unwrap_or("")
+                .into(),
+            lp: queue["leaguePoints"].as_u64().unwrap_or(0),
+            wins: queue["wins"].as_u64().unwrap_or(0),
+            losses: queue["losses"].as_u64().unwrap_or(0),
+        },
+        record_available,
+    ))
 }
 
 pub fn eligible(value: &Value) -> bool {

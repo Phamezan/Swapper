@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState, type CSSProperties } from 'react';
 import { invoke } from '@tauri-apps/api/core';
+import { ArrowDownRight, ArrowUpRight, Crosshair, Eye, Flame, Minus, Swords, Wheat } from 'lucide-react';
 import { BackIcon } from './ui/icons';
 import { ProfileIcon } from './ProfileIcon';
-import { queueLabels, splitRiotId, titleCase } from './Dashboard';
+import { queueLabels, RoleStrip, splitRiotId, titleCase } from './Dashboard';
 import { EmptyState, Notice, Skeleton } from './ui/States';
 import { RankCrest } from '../runes/RankCrest';
 import { ChampionIcon } from '../runes/ChampionIcon';
@@ -14,33 +15,46 @@ import { profileGame, profileStats, type PlayerProfile } from './playerModel';
 import './PlayerPage.css';
 
 const roleNames: Record<string, string> = { top: 'Top', jungle: 'Jungle', mid: 'Mid', adc: 'Bot', support: 'Support' };
-const metrics = [['KDA', 2, ''], ['Kill participation', 0, '%'], ['CS / min', 1, ''], ['Damage / min', 0, ''], ['Vision / min', 2, '']] as const;
+const metrics = [['KDA', 2, '', Swords, '--ui-champ'], ['Kill participation', 0, '%', Crosshair, '--ui-win'], ['CS / min', 1, '', Wheat, '--ui-gold'], ['Damage / min', 0, '', Flame, '--ui-loss'], ['Vision / min', 2, '', Eye, '--ui-tier-s']] as const;
 const metricIndexes = [0, 1, 2, 3, 5];
 const rate = (wins: number, games: number) => games ? `${Math.round(100 * wins / games)}%` : '–';
 
 function Trend({ points, average }: { points: number[]; average: number | null }) {
+  const fill = useId();
   if (average == null || points.length < 2) return <span className="player-trend-empty">{points.length ? 'One observed game' : 'No observed data'}</span>;
   const min = Math.min(...points), max = Math.max(...points);
   const y = (v: number) => 30 - (max === min ? 12 : (v - min) / (max - min) * 24);
+  const line = points.map((v, i) => `${4 + i * 152 / (points.length - 1)},${y(v)}`).join(' ');
   return <svg className="player-trend" viewBox="0 0 160 36" preserveAspectRatio="none" role="img" aria-label={`${points.length} games, oldest to newest; dashed line is their average`}>
-    <line x1="0" y1={y(average)} x2="160" y2={y(average)} className="player-trend-average" />
-    <polyline points={points.map((v, i) => `${i * 160 / (points.length - 1)},${y(v)}`).join(' ')} />
+    <defs><linearGradient id={fill} x1="0" y1="0" x2="0" y2="1"><stop stopColor="currentColor" stopOpacity=".24" /><stop offset="1" stopColor="currentColor" stopOpacity="0" /></linearGradient></defs>
+    <polygon points={`4,36 ${line} 156,36`} fill={`url(#${fill})`} />
+    <line x1="4" y1={y(average)} x2="156" y2={y(average)} className="player-trend-average" />
+    <polyline points={line} />
+    <circle cx="156" cy={y(points[points.length - 1])} r="2.8" fill="currentColor" />
   </svg>;
 }
 
+function RecordBar({ wins, games }: { wins: number; games: number }) {
+  return <div className="player-record-bar" aria-hidden="true"><i style={{ width: `${games ? 100 * wins / games : 0}%` }} /></div>;
+}
+
 function Ranks({ profile, loading }: { profile: PlayerProfile | null; loading: boolean }) {
+  const rank = profile?.solo;
+  const record = rank?.recordAvailable === true;
   return <section className="player-ranks panel" aria-labelledby="player-ranks-title">
     <div className="panel-head"><h2 id="player-ranks-title">Ranked standing</h2></div>
-    {(['solo', 'flex'] as const).map(queue => {
-      const rank = profile?.[queue];
-      return <div className="player-rank" key={queue}>
-        <RankCrest tier={rank ? crestForTier(rank.tier) : 'unranked'} size={64} mode="desktop" />
-        <div><small>{queue === 'solo' ? 'Solo/Duo' : 'Flex'}</small>
+    <div className="player-rank">
+        <RankCrest tier={rank ? crestForTier(rank.tier) : 'unranked'} size={88} mode="desktop" />
+        <div><small>Solo/Duo</small>
           <strong>{rank ? `${titleCase(rank.tier)} ${rank.division}`.trim() : loading ? 'Loading…' : profile?.live && !profile.message ? 'Unranked' : 'Unavailable'}</strong>
-          {rank && <><p><b>{rank.lp} LP</b><span>{rate(rank.wins, rank.wins + rank.losses)} win rate</span></p><small>{rank.wins}W · {rank.losses}L</small></>}
+          {rank && <p><b>{rank.lp} <small>LP</small></b></p>}
         </div>
-      </div>;
-    })}
+    </div>
+    {rank && <div className="player-rank-progress">
+      {rank.division && <><div className="player-lp-caption"><span>Division progress</span><span>{rank.lp} / 100 LP</span></div><meter min={0} max={100} value={Math.min(100, rank.lp)} aria-label="LP toward next division" /></>}
+      {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div><RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
+        : <p className="player-record-unavailable">Season record unavailable</p>}
+    </div>}
   </section>;
 }
 
@@ -63,8 +77,11 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
   }, [riotId, attempt]);
   const saved = useMemo(() => (snapshot?.games ?? []).map(game => profileGame(game, riotId)).filter((g): g is Game => g !== null), [snapshot, riotId]);
   const games = useMemo(() => [...new Map((profile?.games ?? saved).map(g => [g.id, g])).values()].sort((a, b) => b.createdAt - a.createdAt), [profile, saved]);
-  const stats = useMemo(() => profileStats(games), [games]);
+  const stats = useMemo(() => profileStats(games, profile?.profileIcons), [games, profile?.profileIcons]);
   const splash = useChampionArt(stats.champions[0]?.id, 'splash');
+  const secondSplash = useChampionArt(stats.champions[1]?.id, 'splash');
+  const thirdSplash = useChampionArt(stats.champions[2]?.id, 'splash');
+  const championArt = [splash, secondSplash, thirdSplash];
   const player = profile?.player ?? { riotId, icon: null, level: null };
   const [name, tag] = splitRiotId(player.riotId);
   const championName = (id: number) => names[id] ?? `Champion ${id}`;
@@ -94,14 +111,18 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
       </div>
       <section className="player-performance panel" aria-labelledby="player-performance-title">
         <div className="panel-head"><h2 id="player-performance-title">Performance</h2><small>{stats.games} loaded games · per-game averages</small></div>
-        <div className="player-metrics">{metrics.map(([label, digits, unit], i) => {
+        <div className="player-metrics">{metrics.map(([label, digits, unit, Icon, accent], i) => {
           const metric = stats.metrics[metricIndexes[i]];
-          return <div className="player-metric" key={label}>
-            <span>{label}</span><strong>{metric.average == null ? '–' : metric.average.toFixed(digits)}<small>{metric.average == null ? '' : unit}</small></strong>
+          const delta = metric.delta == null ? null : Number(metric.delta.toFixed(digits));
+          const trend = delta == null || delta === 0 ? 'flat' : delta > 0 ? 'up' : 'down';
+          const Arrow = trend === 'up' ? ArrowUpRight : trend === 'down' ? ArrowDownRight : Minus;
+          return <div className={`player-metric trend-${trend}`} key={label} style={{ '--metric-accent': `var(${accent})` } as CSSProperties}>
+            <span className="player-metric-icon"><Icon size={19} aria-hidden="true" /></span>
+            <span className="player-metric-label">{label}</span><strong>{metric.average == null ? '–' : metric.average.toFixed(digits)}<small>{metric.average == null ? '' : unit}</small></strong>
             <Trend points={metric.points} average={metric.average} />
-            <small title={`Recent five loaded games versus the ${metric.samples}-game observed average`}>
-              {metric.samples ? `Last 5: ${metric.delta != null && metric.delta > 0 ? '+' : ''}${metric.delta?.toFixed(digits) ?? '–'}${unit} vs avg` : 'Unavailable in these games'}
-            </small><small className="player-coverage">{metric.samples}/{stats.games} games observed</small>
+            <span className="player-metric-delta" title={`Recent five loaded games versus the ${metric.samples}-game observed average`}>
+              {delta != null ? <><Arrow size={16} aria-hidden="true" />{delta > 0 ? '+' : ''}{delta.toFixed(digits)}{unit} <small>vs avg</small></> : 'Unavailable in these games'}
+            </span><small className="player-coverage">Last 5 · {metric.samples}/{stats.games} observed</small>
           </div>;
         })}</div>
       </section>
@@ -109,24 +130,24 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
         <Ranks profile={profile} loading={loading} />
         <section className="player-champions panel" aria-labelledby="player-champions-title">
           <div className="panel-head"><h2 id="player-champions-title">Top champions</h2><small>{stats.games} loaded games</small></div>
-          {stats.champions.length ? <ol>{stats.champions.map(c => <li key={c.id}>
-            <ChampionIcon id={c.id} name={championName(c.id)} mode="desktop" />
+          {stats.champions.length ? <ol>{stats.champions.map((c, i) => <li key={c.id}>
+            {championArt[i] && <img className="player-champion-art" src={championArt[i]!} alt="" loading="lazy" />}
             <div><strong>{championName(c.id)}</strong><small>{c.games} games · {c.kda.toFixed(2)} KDA</small></div>
-            <div className="player-champion-record"><b>{rate(c.wins, c.games)}</b><small>{c.wins}W · {c.losses}L</small></div>
+            <div className="player-champion-record"><b className={c.wins >= c.losses ? 'up' : 'down'}>{rate(c.wins, c.games)}</b><small>{c.wins}W · {c.losses}L</small></div>
+            <RecordBar wins={c.wins} games={c.games} />
           </li>)}</ol> : <p className="player-empty-copy">Champion performance appears after games load.</p>}
         </section>
         <section className="player-together panel" aria-labelledby="player-together-title">
           <div className="panel-head"><h2 id="player-together-title">Played with</h2><small>2+ games together</small></div>
           {stats.playedWith.length ? <ul>{stats.playedWith.map(p => <li key={p.riotId.toLowerCase()}><button onClick={() => onOpenPlayer(p.riotId)}>
-            <span><strong>{splitRiotId(p.riotId)[0]}</strong><small>{splitRiotId(p.riotId)[1]} · {p.games} games</small></span>
-            <span><b>{rate(p.wins, p.games)}</b><small>{p.wins}W · {p.games - p.wins}L</small></span>
+            <ProfileIcon player={p} size={40} />
+            <span className="player-together-name"><strong>{splitRiotId(p.riotId)[0]}</strong><small>{splitRiotId(p.riotId)[1]} · {p.games} games</small></span>
+            <span className="player-together-record"><b className={p.wins * 2 >= p.games ? 'up' : 'down'}>{rate(p.wins, p.games)}</b><small>{p.wins}W · {p.games - p.wins}L</small><RecordBar wins={p.wins} games={p.games} /></span>
           </button></li>)}</ul> : <p className="player-empty-copy">No recurring teammates in these {stats.games} games.</p>}
         </section>
         <section className="player-roles panel" aria-labelledby="player-roles-title">
           <div className="panel-head"><h2 id="player-roles-title">Role split</h2><small>Estimated · {knownRoles}/{stats.games} games</small></div>
-          {stats.roles.length ? stats.roles.map(role => <div className="player-role" key={role.role}><span>{roleNames[role.role]}</span>
-            <meter min={0} max={Math.max(1, stats.games)} value={role.games} aria-label={`${roleNames[role.role]}: ${role.games} of ${stats.games} games`} />
-            <b>{rate(role.games, stats.games)}</b><small>{role.games} games</small></div>) : <p className="player-empty-copy">Not enough Rift data to place roles.</p>}
+          <RoleStrip roles={stats.roles} />
         </section>
       </aside>
       {loading && !games.length ? <div className="player-games"><Skeleton label="Loading player games" rows={5} height={54} /></div> : <section className="panel player-games" aria-labelledby="player-games-title">
