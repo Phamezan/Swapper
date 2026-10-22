@@ -1,0 +1,77 @@
+/* Build workspace (champion page, Matchups, champion select): runes, spells and skill order on top, items in
+   buy order as one full-width row, one apply bar, the builds / pro list on the left.
+   Scoped under `.fa-frame .fa-build-section` so it wins over full-app.css and champ-select.css. */
+
+.fa-frame .fa-build-section { --build-pad: 22px; }
+
+/* ---------- Quiet labels ---------- */
+.fa-frame .fa-build-section :is(.fa-build-grid h4, .fa-item-area h5, .cs-build-list h3, .cs-apply-chip small) { text-transform: none; letter-spacing: 0; }
+.fa-frame .fa-build-section .fa-build-grid h4 { margin-bottom: 12px; color: var(--text-primary); font-size: 13.5px; font-weight: 650; }
+.fa-frame .fa-build-section .fa-item-area h5 { margin: 0 0 8px; color: var(--text-secondary); font-size: 13px; font-weight: 600; }
+.fa-frame .fa-build-section .fa-item-area h5 small { font-size: 12px; }
+.fa-frame .fa-build-section .fa-rune-hint { font-size: 13px; color: var(--text-muted); }
+
+/* ---------- Builds / pro builds list ---------- */
+.fa-frame .fa-build-section.cs-build-browser { grid-template-columns: 236px minmax(0, 1fr); gap: 20px; }
+.fa-frame .fa-build-section .cs-build-list { padding: 14px 8px; border-color: var(--ui-line-1); border-radius: var(--fa-radius); background: var(--ui-card-fill); }
+.fa-frame .fa-build-section .cs-build-list h3 { margin: 0 8px 8px; color: var(--text-secondary); font-size: 13px; font-weight: 600; }
+.fa-frame .fa-build-section .cs-build-list h3 small { font-size: 12px; }
+.fa-frame .fa-build-section .cs-build-entries > button { padding: 10px; border-radius: var(--fa-radius-sm); }
+.fa-frame .fa-build-section .cs-build-entries > button[aria-pressed="true"] { border-color: var(--ui-brand-line); background: linear-gradient(90deg, rgb(197 227 158 / .1), rgb(197 227 158 / .02)); box-shadow: inset 2px 0 var(--fa-you); }
+.fa-frame .fa-build-section .cs-build-entries strong { font-size: 14px; }
+.fa-frame .fa-build-section .cs-build-entries small { font-size: 13px; }
+.fa-frame .fa-build-section .cs-build-entries strong b { padding: 1px 7px; border-radius: 99px; font-size: 12px; font-weight: 700; background: rgb(255 255 255 / .06); }
+.fa-frame .fa-build-section .cs-build-entries strong b.up { color: var(--fa-win); background: rgb(95 207 180 / .12); }
+.fa-frame .fa-build-section .cs-build-entries strong b.down { color: var(--fa-loss); background: rgb(239 143 137 / .12); }
+.fa-frame .fa-build-section .cs-build-icons { gap: 4px; }
+.fa-frame .fa-build-section .cs-build-list > p { font-size: 13px; }
+.fa-frame .fa-build-section .cs-load-pros { font-size: 13px; }
+
+/* ---------- Header and apply bar ---------- */
+.fa-frame .fa-build-section .cs-build-selected strong { font-size: 20px; }
+.fa-frame .fa-build-section .cs-build-selected small { font-size: 13px; }
+.fa-frame .fa-build-section .cs-apply-bar { gap: 8px; margin: 10px 0 14px; }
+.fa-frame .fa-build-section .cs-apply-chip { min-height: 36px; padding: 3px 4px 3px 12px; border-color: var(--ui-line-2); background: rgb(255 255 255 / .03); font-size: 13px; }
+.fa-frame .fa-build-section .cs-apply-chip > strong { font-weight: 600; }
+.fa-frame .fa-build-section .cs-apply-chip small { padding-right: 6px; font-size: 13px; }
+.fa-frame .fa-build-section .cs-apply-chip.is-done { border-color: rgb(197 227 158 / .35); background: rgb(197 227 158 / .07); color: var(--fa-you); }
+.fa-frame .fa-build-section .cs-apply-chip.is-done small { color: var(--fa-you); }
+.fa-frame .fa-build-section .cs-apply-chip.is-failed { border-color: rgb(239 143 137 / .45); }
+.fa-frame .fa-build-section .cs-apply-chip.is-failed small { color: var(--fa-loss); }
+.fa-frame .fa-build-section .cs-apply-chip .fa-text-button { font-size: 13px; }
+/* Apply all is the one real action: bold uppercase, pushed to the right of the bar. */
+.fa-frame .fa-build-section .cs-apply-bar .fa-primary { margin-left: auto; min-height: 38px; padding: 8px 18px; font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+.fa-frame .fa-build-section .cs-auto-apply { margin-left: 8px; font-size: 13px; }
+.fa-frame .fa-build-section .cs-build-content > .ui-notice b { font-weight: 650; }
+.fa-frame .fa-build-section .cs-build-content > .ui-notice .fa-secondary { min-height: 34px; padding: 5px 14px; font-size: 13px; }
+
+/* ---------- Workspace: runes | spells + skill order, then the item row ---------- */
+.fa-frame .fa-build-section .cs-build-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "runes skill" "items items"; grid-template-rows: auto; border-radius: var(--fa-radius); }
+.fa-frame .fa-build-section .cs-build-grid > div { padding: var(--build-pad); }
+.fa-frame .fa-build-section .cs-build-grid > .fa-item-area { grid-area: items; border-top: 1px solid var(--ui-line-1); border-left: 0; }
+.fa-frame .fa-build-section .cs-build-grid > .cs-skill-area { grid-area: skill; flex-direction: column; flex-wrap: nowrap; gap: 20px; }
+.fa-frame .fa-build-section .fa-spells { gap: 12px; margin-bottom: 0; }
+.fa-frame .fa-build-section .cs-skill-row { grid-template-columns: 20px repeat(18, minmax(12px, 1fr)); gap: 3px; }
+.fa-frame .fa-build-section .cs-skill-row > span { font-size: 12px; }
+.fa-frame .fa-build-section .cs-skill-row > b { height: 21px; font-size: 11px; }
+.fa-frame .fa-build-section .cs-skill-row > b.is-filled { background: rgb(197 227 158 / .16); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .5); }
+.fa-frame .fa-build-section .fa-rune-page { gap: 20px; }
+.fa-frame .fa-build-section .fa-rune-tree > strong { color: var(--text-primary); font-size: 13.5px; letter-spacing: 0; }
+.fa-frame .fa-build-section .fa-rune-row { margin-bottom: 14px; }
+
+/* Items: Starting, Boots, Core, Later, Situational, one row in buy order. */
+.cs-items { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 18px 0; }
+.cs-items > section { min-width: 0; padding: 0 24px; border-left: 1px solid var(--ui-line-1); }
+.cs-items > section:first-child { padding-left: 0; border-left: 0; }
+.fa-frame .fa-build-section .cs-items .fa-item-line { min-height: 0; gap: 6px; }
+.fa-frame .fa-build-section .cs-items .fa-item-path { gap: 6px; flex-wrap: nowrap; }
+.fa-frame .fa-build-section .cs-items .fa-item-path > span { gap: 6px; }
+.fa-frame .fa-build-section .fa-item-area > h4 { margin-bottom: 14px; }
+@media (max-width: 1250px) {
+  .fa-frame .fa-build-section.cs-build-browser { grid-template-columns: 214px minmax(0, 1fr); gap: 14px; }
+  .fa-frame .fa-build-section .cs-build-grid { grid-template-columns: 1fr; grid-template-areas: "runes" "skill" "items"; }
+  .fa-frame .fa-build-section .cs-build-grid > div + div { border-left: 0; border-top: 1px solid var(--ui-line-1); }
+  .cs-items > section { padding: 0 16px; }
+}
+.cs-items > section { padding: 0 18px; }
+.cs-items h5 small { display: block; margin: 2px 0 0; }

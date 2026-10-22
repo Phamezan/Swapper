@@ -1,6 +1,6 @@
 // Dev-only preview of the champion select page from fixtures, with a mocked
 // Tauri IPC: `npm run dev`, then open /src/full-app/champ-select-preview.html
-// (?fixture=planning|hover|locked|locked-blind). Never part of the app build.
+// (?fixture=planning|hover|locked|locked-blind; add &rune-fail to make Apply fail). Never part of the app build.
 // Icons and the rune catalog come from Data Dragon; everything else is fixture
 // data, and hover/lock/apply only change the fixture, never a League client.
 import { useEffect, useState } from "react";
@@ -39,7 +39,7 @@ const counters = [[67, 46.1, 2400], [133, 46.8, 1300], [17, 47.2, 3100], [85, 47
 const tiers = [[266, "S+", 51.6], [24, "S", 51.4], [875, "S+", 52.2], [86, "S", 51.1], [58, "A", 50.6], [164, "S", 50.9], [82, "A", 51.0], [516, "A", 50.4], [897, "B", 49.2], [54, "A", 51.3], [122, "S", 50.8]];
 
 let fixture: FixtureName = (new URLSearchParams(location.search).get("fixture") as FixtureName) || "planning";
-let applied: RunesView["applied"] = fixtureView(fixture).applied;
+let applied: RunesView["applied"] = new URLSearchParams(location.search).has("rune-fail") ? null : fixtureView(fixture).applied;
 let spells = fixtureView(fixture).spells;
 const listeners = new Set<() => void>();
 const current = (): RunesView => ({ ...fixtureView(fixture), applied, spells });
@@ -89,7 +89,7 @@ mockIPC(async (cmd, args) => {
     }
     case "full_app_hover_champion": change(a.championId === 266 ? "hover" : fixture); return null;
     case "full_app_lock_in": change("locked"); return null;
-    case "apply_rune_page": applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;
+    case "apply_rune_page": if (new URLSearchParams(location.search).has("rune-fail")) throw new Error("Your rune pages are full (25 of 25). Delete a page in League Client, then try again."); applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;
     case "apply_spell": spells = a.slot === "d" ? { ...spells, spell1Id: a.spellId } : { ...spells, spell2Id: a.spellId }; return null;
     case "import_item_build": return null;
     default: throw new Error(`Not mocked: ${cmd}`);

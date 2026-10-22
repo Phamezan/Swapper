@@ -220,3 +220,26 @@
   .cs-build-browser .cs-build-grid { grid-template-columns: 1fr; grid-template-areas: "runes" "skill" "items"; }
   .cs-build-browser .cs-build-grid > div + div { border-left: 0; border-top: 1px solid var(--fa-line); }
 }
+
+/* ---------- Visual identity pass: quiet labels, 12px floor, grouped toolbar ---------- */
+.fa-draft-page .fa-status-pill { padding: 6px 12px; font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.fa-draft-page .cs-band-label { font-size: 13px; }
+.fa-draft-page .cs-band-phase, .fa-draft-page .cs-band-foot, .fa-draft-page .cs-bans > small { font-size: 12.5px; }
+.fa-draft-page .cs-slot-state { font-size: 12px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.fa-draft-page .cs-slot-copy > small, .fa-draft-page .cs-draft-clock > span { font-size: 12px; }
+.fa-draft-page .cs-band.is-small .cs-slot-state, .fa-draft-page .cs-band.is-small .cs-slot-copy > small { font-size: 12px; }
+.fa-draft-page .cs-slot-copy strong { text-shadow: 0 1px 6px rgb(0 0 0 / .8); }
+.fa-draft-page .cs-slot.is-you { box-shadow: 0 0 0 1px rgb(197 227 158 / .35), 0 10px 24px -14px rgb(0 0 0 / .9); }
+.fa-draft-page .cs-preview .cs-preview-identity > small { font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.fa-draft-page .cs-preview-identity > span, .fa-draft-page .cs-preview-row small, .fa-draft-page .cs-pick-copy > small, .fa-draft-page .cs-picks .fa-section-heading p { font-size: 13px; }
+.fa-draft-page .cs-pick-copy b small { font-size: 12px; }
+.fa-draft-page .cs-flex { font-size: 12px; letter-spacing: 0; text-transform: none; }
+.fa-draft-page .cs-picks .fa-section-heading h3 { font-size: 18px; }
+.fa-draft-page .fa-draft-placeholder-team small { font-size: 12px; font-weight: 550; letter-spacing: 0; }
+.fa-draft-page .fa-draft-empty p { font-size: 14px; }
+.fa-draft-page .fa-draft-empty h2 { font-size: 28px; }
+/* Context (the matchup result) sits apart from the controls (role, rank, spells). */
+.fa-draft-page .cs-toolbar { align-items: center; }
+.fa-draft-page .cs-toolbar h2 { margin-right: auto; }
+.fa-draft-page .cs-matchup-chip { margin-right: 6px; padding: 6px 12px; font-size: 13px; }
+.fa-draft-page .cs-toolbar .fa-picker { min-height: 38px; }

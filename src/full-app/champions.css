@@ -1,0 +1,111 @@
+/* Tier list, champion page and Matchups. Every rule is scoped under `.fa-frame .champion-tools` so it wins
+   over full-app.css whatever the import order. Quiet sentence case for labels and filters, 13px minimum
+   for useful text. */
+
+/* ---------- Quiet labels ---------- */
+.fa-frame .champion-tools :is(.fa-eyebrow, .fa-stat-strip small, .tier-table th, .fa-featured-pick small) { text-transform: none; letter-spacing: 0; }
+.fa-frame .champion-tools .fa-eyebrow { font-size: 13px !important; font-weight: 550; }
+.fa-frame .champion-tools .fa-stat-strip small { font-size: 13px; font-weight: 500; }
+.fa-frame .champion-tools .tier-table th { height: 40px; font-size: 13px; font-weight: 550; }
+.fa-frame .champion-tools .tier-table th button { font: inherit; letter-spacing: inherit; text-transform: none; }
+.fa-frame .champion-tools .tool-bar { align-items: center; }
+
+/* ---------- Leading picks: a scrim keeps the text off the face ---------- */
+.fa-frame .champion-tools .fa-featured-picks { gap: 14px; margin-bottom: 14px; }
+.fa-frame .champion-tools .fa-featured-pick { min-height: 128px; padding: 16px 20px; align-items: flex-end; }
+/* The art sits in the right 58%; the scrim is solid under the text and only fades out past it. */
+.fa-frame .champion-tools .fa-featured-art { inset: 0 0 0 42%; opacity: 1; -webkit-mask-image: linear-gradient(90deg, transparent, #000 38%); mask-image: linear-gradient(90deg, transparent, #000 38%); }
+.fa-frame .champion-tools .fa-featured-art img { object-position: 62% 18%; }
+.fa-frame .champion-tools .fa-featured-pick::after { background: linear-gradient(90deg, rgb(15 15 18 / .96) 0 40%, rgb(15 15 18 / .55) 62%, transparent 100%), linear-gradient(0deg, rgb(11 11 13 / .6), transparent 55%); }
+.fa-frame .champion-tools .fa-featured-pick strong { font-size: 24px; }
+.fa-frame .champion-tools .fa-featured-pick small { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+.fa-frame .champion-tools .fa-featured-pick .fa-tier { top: 14px; left: 18px; min-width: 32px; height: 28px; font-size: 15px; }
+.fa-frame .champion-tools .fa-featured-pick > span:last-child { padding-top: 40px; }
+
+/* ---------- Tier table: denser, with a delta chip and rate bars ---------- */
+.fa-frame .champion-tools .tier-table td { padding: 6px 14px; font-size: 14px; }
+.fa-frame .champion-tools .tier-table tbody tr { cursor: pointer; transition: background-color var(--ui-fast) var(--ui-ease); }
+.fa-frame .champion-tools .tier-table tbody tr:hover { background: linear-gradient(90deg, rgb(197 227 158 / .09), rgb(255 255 255 / .035) 55%, transparent); box-shadow: inset 2px 0 var(--fa-you); }
+.fa-frame .champion-tools .tier-table .col-rank { width: 56px; }
+.fa-frame .champion-tools .tier-champ strong { font-size: 14.5px; }
+.fa-frame .champion-tools .fa-tier-portrait, .fa-frame .champion-tools .tier-champ .champion-icon { width: 36px; height: 36px; border-radius: 9px; }
+.fa-frame .champion-tools .fa-tier { min-width: 30px; height: 26px; font-size: 14px; }
+.fa-frame .champion-tools .col-wr { white-space: nowrap; }
+.fa-frame .champion-tools .col-wr small { margin-left: 8px; padding: 1px 7px; border-radius: 99px; font-size: 12px; font-weight: 600; background: rgb(255 255 255 / .05); }
+.fa-frame .champion-tools .col-wr small.up { background: rgb(95 207 180 / .12); }
+.fa-frame .champion-tools .col-wr small.down { background: rgb(239 143 137 / .12); }
+.fa-frame .champion-tools .col-num { min-width: 120px; }
+.fa-frame .champion-tools .col-num > span { display: block; font-weight: 600; }
+.fa-frame .champion-tools .col-num.ban { color: var(--text-primary); }
+.fa-rate-bar { display: block; width: 76px; height: 3px; margin-top: 5px; border-radius: 99px; background: rgb(255 255 255 / .08); overflow: hidden; }
+.fa-rate-bar::after { content: ""; display: block; width: var(--rate); height: 100%; border-radius: inherit; background: var(--fa-you); }
+.fa-frame .champion-tools .ban .fa-rate-bar::after { background: var(--fa-loss); }
+.fa-frame .champion-tools .tier-table-wrap .skeleton-row { height: 52px; }
+
+/* ---------- Champion page: slimmer hero, quiet stat strip ---------- */
+.fa-frame .champion-tools .champion-hero { min-height: 176px; padding: 16px 24px 18px; }
+.fa-frame .champion-tools .champion-hero-title { margin-top: 12px; gap: 18px; }
+.fa-frame .champion-tools .champion-hero-title > .champion-icon, .fa-frame .champion-tools .champion-hero-title > .champion-icon-fallback { width: 76px; height: 76px; box-shadow: 0 0 0 1px var(--ui-line-3), 0 12px 30px -10px rgb(0 0 0 / .9); }
+.fa-frame .champion-tools .champion-hero-title h2 { font-size: 38px; }
+.fa-frame .champion-tools .back-to-list { font-size: 13px; }
+.fa-frame .champion-tools .fa-hero-abilities { margin-top: 8px; }
+.fa-frame .champion-tools .fa-hero-abilities > span { width: 32px; height: 32px; }
+.fa-frame .champion-tools .fa-stat-strip { background: none; border-color: transparent; box-shadow: none; }
+.fa-frame .champion-tools .fa-stat-strip > div { padding: 14px 10px 16px; }
+.fa-frame .champion-tools .fa-stat-strip strong { font-size: 30px; font-weight: 700; }
+
+/* ---------- Matchups: empty state and the selected matchup ---------- */
+.fa-matchup-empty { display: grid; justify-items: center; gap: 10px; padding: 56px 24px 24px; text-align: center; }
+.fa-frame .fa-matchup-empty h2 { font-size: 30px; font-weight: 750; letter-spacing: -.03em; }
+.fa-frame .fa-matchup-empty p { max-width: 460px; font-size: 14.5px; }
+.fa-frame .fa-matchup-empty h3 { margin-top: 18px; color: var(--text-primary); font-size: 14px; font-weight: 650; }
+.fa-quick-picks { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.fa-frame .fa-quick-pick { position: relative; isolation: isolate; display: flex; align-items: flex-end; width: 190px; height: 144px; padding: 14px 16px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius); background: var(--fa-panel-2); color: var(--text-primary); text-align: left; cursor: pointer; box-shadow: var(--fa-shadow); }
+.fa-frame .fa-quick-pick:hover { border-color: var(--fa-line-3); transform: translateY(-2px); }
+.fa-frame .fa-quick-pick .fa-featured-art { inset: 0; -webkit-mask-image: none; mask-image: none; }
+.fa-frame .fa-quick-pick::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgb(11 11 13 / .92), rgb(11 11 13 / .25) 70%); }
+.fa-quick-pick > span:last-child { display: grid; gap: 2px; }
+.fa-frame .fa-quick-pick strong { font-size: 22px; font-weight: 750; letter-spacing: -.02em; }
+.fa-frame .fa-quick-pick small { font-size: 13px; color: var(--text-secondary); }
+/* Selected matchup: your champion, the lane result, the opponent. */
+.fa-frame .champion-tools .fa-versus { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(190px, auto) minmax(0, 1fr); align-items: stretch; gap: 0; padding: 0; overflow: hidden; border-color: transparent; background: none; box-shadow: none; }
+.fa-versus-side { position: relative; isolation: isolate; display: flex; align-items: flex-end; min-height: 150px; padding: 18px 22px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius); background: var(--fa-panel); }
+.fa-versus-side.is-end { justify-content: flex-end; text-align: right; }
+.fa-versus-art { position: absolute; z-index: -1; inset: 0; }
+.fa-versus-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.fa-versus-side::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgb(11 11 13 / .88), rgb(11 11 13 / .2) 75%); }
+.fa-versus-side > span { display: grid; gap: 2px; }
+.fa-versus-side small { font-size: 13px; color: var(--text-secondary); }
+.fa-versus-side strong { font-size: 30px; font-weight: 750; letter-spacing: -.03em; line-height: 1.1; }
+.fa-versus-stat { display: grid; align-content: center; justify-items: center; gap: 4px; padding: 0 22px; text-align: center; }
+.fa-versus-stat small { font-size: 13px; color: var(--text-secondary); }
+.fa-versus-stat strong { font-size: 44px; font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+.fa-versus-stat span { font-size: 13px; color: var(--text-secondary); }
+.fa-versus-stat span.up { color: var(--fa-win); }
+.fa-versus-stat span.down { color: var(--fa-loss); }
+.fa-versus > .runes-note { grid-column: 1 / -1; margin-top: 10px; }
+
+/* ---------- Matchup strip: edge fades and arrows instead of a native scrollbar ---------- */
+.fa-strip-frame { position: relative; }
+.fa-frame .champion-tools .fa-matchup-strip { scrollbar-width: none; padding: 4px 2px 6px; }
+.fa-frame .champion-tools .fa-matchup-strip::-webkit-scrollbar { display: none; }
+/* The fades are plain gradients over the strip's ends (no blur, nothing repainted on scroll). */
+.fa-strip-frame::before, .fa-strip-frame::after { content: ""; position: absolute; z-index: 1; top: 0; bottom: 0; width: 72px; pointer-events: none; opacity: 0; transition: opacity var(--ui-base) var(--ui-ease); }
+.fa-strip-frame::before { left: -1px; background: linear-gradient(90deg, #17171b, transparent); }
+.fa-strip-frame::after { right: -1px; background: linear-gradient(270deg, #17171b, transparent); }
+.fa-strip-frame[data-left="true"]::before, .fa-strip-frame[data-right="true"]::after { opacity: 1; }
+.fa-frame .fa-strip-arrow { position: absolute; z-index: 2; top: 50%; display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid var(--fa-line-3); border-radius: 50%; background: rgb(24 24 28 / .94); color: var(--text-primary); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(-50%); box-shadow: 0 6px 18px -6px rgb(0 0 0 / .9); }
+.fa-frame .fa-strip-arrow:hover { background: var(--fa-raised); border-color: var(--fa-you); }
+.fa-strip-arrow.is-left { left: 6px; }
+.fa-strip-arrow.is-right { right: 6px; }
+.fa-strip-frame[data-left="true"] .is-left, .fa-strip-frame[data-right="true"] .is-right { opacity: 1; pointer-events: auto; }
+.fa-frame .champion-tools .fa-matchups { padding: 20px 22px; }
+.fa-frame .champion-tools .fa-matchup-copy > small { font-size: 12px; }
+.fa-frame .champion-tools .fa-lane-tag { font-size: 12px; text-transform: none; letter-spacing: 0; }
+.fa-frame .champion-tools .fa-matchup-slot.is-noisy::before { font-size: 12px; letter-spacing: 0; text-transform: none; }
+@media (max-width: 1100px) {
+  .fa-frame .champion-tools .fa-featured-picks { grid-template-columns: 1fr; }
+  .fa-frame .champion-tools .fa-versus { grid-template-columns: 1fr; }
+  .fa-versus-stat { padding: 14px 0; }
+}
+.fa-frame .champion-tools .col-wr :is(strong, small) { display: inline-block; vertical-align: middle; }
