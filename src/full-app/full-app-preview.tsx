@@ -55,7 +55,7 @@ const summary = { metrics: [], roles: ROLES.map((role, i) => ({ role, wins: i ==
   champions: [{ id: 266, wins: 5, losses: 1, kda: 4.12 }, { id: 122, wins: 1, losses: 2, kda: 2.05 }, { id: 875, wins: 0, losses: 2, kda: 1.4 }, { id: 24, wins: 1, losses: 0, kda: 5.5 }] };
 const snapshot = {
   championNames: names, summoner: { riotId: "Swapper Demo#EUW", level: 287, icon: `${DD}/${VERSION}/img/profileicon/5367.png` },
-  rank: { tier: "EMERALD", division: "II", lp: 64, wins: 88, losses: 71 }, fetchedAt: now - (params.has("stale") ? 72e5 : 120000), games, lpHistory: params.has("empty") ? [] : lpHistory,
+  rank: { tier: "EMERALD", division: "II", lp: 64, wins: 88, losses: 71 }, fetchedAt: now - (params.has("stale") ? 72e5 : 120000), games, lpHistory: params.has("empty") || params.has("no-baseline") ? [] : lpHistory, // --- todaylp: ?no-baseline shows "–" for today's LP ---
   summaries: { all: summary, solo: summary, flex: summary, normal: { ...summary, champions: [] } },
 };
 const account = (id: string, name: string, icon: number) => ({ id, name, riotId: `${name}#DEMO`, nickname: null, platform: "EUW1", region: "EUW", profileIconId: icon, iconDataUrl: `${DD}/${VERSION}/img/profileicon/${icon}.png` });

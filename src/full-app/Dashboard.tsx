@@ -10,7 +10,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { benchKey, defaultQueue, deltaText, formatStat, insights, lpTrend, MIN_COMPARED, opponent, playTime, rankProgress, sparkline, tierLabel, tiles, today, tone, type WinRecord } from "./dashboardModel";
-import type { AccountCard, Bench, Game, Snapshot } from "./types";
+import type { AccountCard, Bench, Game, LpPoint, Snapshot } from "./types";
 import { Slot } from "./ui/Slot";
 import { EmptyState, Skeleton } from "./ui/States";
 import { fmtCompact } from "./ui/format";
@@ -85,7 +85,7 @@ export function Dashboard(props: Props) {
   useEffect(() => { document.querySelector(".match-row.is-last")?.scrollIntoView({ block: "nearest" }); }, []);
   return <div className={`dash-v2${stale ? " is-stale" : ""}`}>
     <div className="dash-top">
-      <TodayCard games={snapshot.games} live={inGamePhases.has(props.phase)} onOpenLive={props.onOpenLive} />
+      <TodayCard games={snapshot.games} rank={snapshot.rank} history={snapshot.lpHistory} live={inGamePhases.has(props.phase)} onOpenLive={props.onOpenLive} />
       <RankCard snapshot={snapshot} stale={stale} />
     </div>
     <Performance games={games} queue={queue} onQueue={setQueue} benches={benches} tier={tier} name={name} />
@@ -139,8 +139,8 @@ function NoMatches({ queue, hasOthers, onShowAll }: { queue: string; hasOthers: 
 
 const inGamePhases = new Set(["GameStart", "InProgress", "Reconnect"]);
 
-function TodayCard({ games, live, onOpenLive }: { games: Game[]; live: boolean; onOpenLive: () => void }) {
-  const day = today(games, Date.now());
+function TodayCard({ games, rank, history, live, onOpenLive }: { games: Game[]; rank: Snapshot["rank"]; history?: LpPoint[]; live: boolean; onOpenLive: () => void }) {
+  const day = today(games, Date.now(), rank, history);
   const since = day.since == null ? "no games yet" : `since ${new Date(day.since).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   const none = day.games === 0;
   return <section className="panel today-card" aria-label="Today">
@@ -148,7 +148,7 @@ function TodayCard({ games, live, onOpenLive }: { games: Game[]; live: boolean; 
     <dl className="today-stats">
       <div><dt>{day.games === 1 ? "game" : "games"}</dt><dd>{day.games}</dd></div>
       <div><dt>wins–losses</dt><dd>{none ? "–" : <><span className="up">{day.wins}</span>–<span className="down">{day.losses}</span></>}</dd></div>
-      <div title={day.lp == null ? "No LP change was recorded for today's games" : "Recorded Solo/Duo LP changes"}>
+      <div title={day.lp == null ? "No Solo/Duo LP change could be worked out for today" : "Ranked Solo/Duo only, from your recorded LP"}>
         <dt>{day.lp != null && day.lp < 0 ? "LP lost" : "LP gained"}</dt><dd className={day.lp == null ? "" : day.lp >= 0 ? "up" : "down"}>{day.lp == null ? "–" : `${day.lp >= 0 ? "+" : "−"}${Math.abs(day.lp)}`}</dd></div>
       <div><dt>played</dt><dd>{none ? "–" : playTime(day.seconds)}</dd></div>
     </dl>
