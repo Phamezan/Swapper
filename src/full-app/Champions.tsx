@@ -151,14 +151,17 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
     </div>
     {error && <Notice tone="error">{error}</Notice>}
     {selected && <section className="selected-champion">
-      <ChampionHeader champion={selected} lane={role} tier={tier} onBack={() => setSelected(null)} backLabel={matchups ? "Clear champion" : "Back to tier list"} patch={overview?.stats?.patch}>{inHeader && filters}</ChampionHeader>
+      {/* On Matchups the versus banner is the hero once both champions are picked; the pickers above change or clear them. */}
+      {!(matchups && enemy > 0 && enemy !== selected.id) && <ChampionHeader champion={selected} lane={role} tier={tier} onBack={() => setSelected(null)} backLabel={matchups ? "Clear champion" : "Back to tier list"} patch={overview?.stats?.patch}>{inHeader && filters}</ChampionHeader>}
       {matchups && enemy > 0 && enemy !== selected.id && (detail ? <section className="matchup-banner fa-versus" aria-label="Matchup">
         <VersusSide id={selected.id} name={selected.name} label="Your champion" />
         <div className="fa-versus-stat">
-          {detail.stats ? <><small>{selected.name} win rate</small><strong>{fmtPct(detail.stats.winPct)}</strong><span>{fmtCount(detail.stats.games)} games · {laneLabel(role)}</span><span className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} pts vs average</span></>
+          {detail.stats ? <><small>{selected.name} win rate</small><strong className={detail.stats.winPct >= 50 ? "up" : "down"}>{fmtPct(detail.stats.winPct)}</strong>
+            <span className="fa-versus-bar" role="img" aria-label={`${selected.name} ${fmtPct(detail.stats.winPct)}, ${detail.enemyName} ${fmtPct(100 - detail.stats.winPct)}`}><i style={{ width: `${detail.stats.winPct}%` }} /></span>
+            <span>{fmtCount(detail.stats.games)} games · {laneLabel(role)} · <b className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} vs avg</b></span></>
             : <><small>{laneLabel(role)} · {tierLabel(tier)}</small><span>Too few games.</span></>}
         </div>
-        <VersusSide id={enemy} name={detail.enemyName} label="Your opponent" end />
+        <VersusSide id={enemy} name={detail.enemyName} label="Opponent" end />
         {detail.fallback && <p className="runes-note">General build: too few matchup games.</p>}
       </section> : <Skeleton label="Loading matchup" rows={2} height={72} />)}
       {loading && !overview ? <TableSkeleton /> : overview?.stats ? <>

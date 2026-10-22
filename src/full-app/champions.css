@@ -109,3 +109,22 @@
   .fa-versus-stat { padding: 14px 0; }
 }
 .fa-frame .champion-tools .col-wr :is(strong, small) { display: inline-block; vertical-align: middle; }
+
+/* ---------- Versus banner: one card, each splash fading in from its side toward a dark centre ---------- */
+.fa-frame .champion-tools .fa-versus { grid-template-columns: minmax(0, 1fr) minmax(240px, auto) minmax(0, 1fr); min-height: 168px; border: 1px solid var(--ui-line-2); border-top-color: var(--ui-line-3); border-radius: var(--fa-radius); background: var(--ui-surface-1); box-shadow: var(--ui-elev-2); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side { min-height: 0; padding: 22px 28px; border: 0; border-radius: 0; background: none; align-items: center; }
+.fa-frame .champion-tools .fa-versus .fa-versus-art { -webkit-mask-image: linear-gradient(90deg, #000 30%, transparent 98%); mask-image: linear-gradient(90deg, #000 30%, transparent 98%); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side.is-end .fa-versus-art { -webkit-mask-image: linear-gradient(270deg, #000 30%, transparent 98%); mask-image: linear-gradient(270deg, #000 30%, transparent 98%); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side::after { background: linear-gradient(90deg, rgb(11 11 13 / .78), rgb(11 11 13 / .25) 60%, transparent); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side.is-end::after { background: linear-gradient(270deg, rgb(11 11 13 / .78), rgb(11 11 13 / .25) 60%, transparent); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side small { color: var(--ui-text-2); font-size: 13px; }
+.fa-frame .champion-tools .fa-versus .fa-versus-side strong { font-size: 34px; text-shadow: 0 2px 18px rgb(0 0 0 / .6); }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat { gap: 6px; padding: 18px 26px; }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat strong { font-size: 48px; }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat strong.up { color: var(--fa-win); }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat strong.down { color: var(--fa-loss); }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat b { font-weight: 650; }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat b.up { color: var(--fa-win); }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat b.down { color: var(--fa-loss); }
+.fa-versus-bar { display: block; width: 200px; height: 6px; margin: 2px 0 4px; overflow: hidden; border-radius: 3px; background: rgb(239 143 137 / .55); }
+.fa-versus-bar i { display: block; height: 100%; border-radius: 3px 0 0 3px; background: var(--ui-win); box-shadow: 1px 0 0 var(--ui-surface-1); }
