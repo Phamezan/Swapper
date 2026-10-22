@@ -207,11 +207,6 @@
 .cs-build-browser .cs-build-grid { border-radius: var(--fa-radius-sm); grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
 .cs-build-browser .cs-build-grid > div { padding: 20px 16px; }
 .cs-build-browser .fa-rune-page { gap: 16px; }
-.cs-build-browser .fa-rune-row { gap: 8px; margin-bottom: 16px; }
-.fa-frame .cs-build-browser .fa-rune-row > button { width: 31px; height: 31px; }
-.cs-build-browser .fa-rune-row img, .cs-build-browser .fa-rune-row .rune-icon-fallback { width: 29px; height: 29px; }
-.fa-frame .cs-build-browser .fa-rune-row:first-of-type > button { width: 36px; height: 36px; }
-.cs-build-browser .fa-rune-row:first-of-type img { width: 34px; height: 34px; }
 .cs-build-browser .cs-skill-row { grid-template-columns: 18px repeat(18, minmax(12px, 1fr)); gap: 2px; }
 .cs-build-browser .cs-skill-row > b { font-size: 9px; }
 .cs-build-browser .cs-skill-area { gap: 20px; }
