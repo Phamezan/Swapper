@@ -4,6 +4,7 @@ import { listen } from "@tauri-apps/api/event";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import { ItemIcon } from "../runes/ItemIcon";
 import { RuneIcon } from "../runes/RuneIcon";
+import { TeamLogo } from "../runes/TeamLogo";
 import { SpellIcon } from "../runes/SpellIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
@@ -44,7 +45,6 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   // The last apply that failed: which section and the reason the client or Swapper gave.
   const [failed, setFailed] = useState<{ section: Section | "all"; message: string } | null>(null);
   const [imported, setImported] = useState<string | null>(null);
-  const [proOpen, setProOpen] = useState(false);
   const [proLoading, setProLoading] = useState(false);
   const proRequest = useRef(0);
   const proBusy = useRef(false);
@@ -67,7 +67,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const selection = overviewSelection(build, catalog?.trees ?? []);
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
-    setDetails(null); setChosenIndex(null); setPro(null); setPros(null); setProOpen(false); setNotice(""); setFailed(null); setCustom(null);
+    setDetails(null); setChosenIndex(null); setPro(null); setPros(null); setNotice(""); setFailed(null); setCustom(null);
     proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
     setImported(null);
   }, [championId, lane, tier, sourceKey]);
@@ -77,6 +77,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       .then(value => { if (live) setDetails(value); }).catch(() => {});
     return () => { live = false; };
   }, [championId, lane, tier, sourceKey, catalog]);
+  useEffect(() => { void loadPros(1); }, [championId, lane, tier, sourceKey]);
   useEffect(() => () => { proRequest.current++; }, []);
   const loadPros = async (page: number) => {
     if (proBusy.current) return;
@@ -139,21 +140,23 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
 
   return <div className="fa-build-section cs-build-browser">
     <aside className="cs-build-list" aria-label="Browse builds">
-      <h3>Builds</h3><div className="cs-build-entries">{variants.map((variant, index) => <button disabled={!!busy} key={variant.label} aria-pressed={!pro && index === variantIndex} onClick={() => showTab(index)}>
-        <strong>{variant.label}</strong><small>{fmtCount(variant.games)} games <b>{fmtPct(variant.winPct)}</b></small>
-        <NearViewport className="cs-build-icons">{variant.selection && <RuneIcon id={variant.selection.keystone} mode="desktop" />}{variant.items.items.slice(0, 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</NearViewport>
+      <h3>Builds</h3><div className="cs-build-entries">{variants.map((variant, index) => <button className="cs-build-row" disabled={!!busy} key={variant.label} aria-pressed={!pro && index === variantIndex} onClick={() => showTab(index)}>
+        <span className="cs-row-text"><strong>{variant.label}</strong><small>{fmtCount(variant.games)} games</small></span>
+        <BuildIcons keystone={variant.selection?.keystone} secondary={variant.selection?.secondaryPageId} items={variant.items.items} />
+        <b className="cs-row-chip">{fmtPct(variant.winPct)}</b>
       </button>)}</div>
       <h3>Pro builds <small>Recent matches</small></h3>
-      {!proOpen && <button className="fa-secondary cs-load-pros" onClick={() => { setProOpen(true); void loadPros(1); }}>Browse pro builds</button>}
-      {proOpen && <><div className="cs-build-entries">{pros?.matches.map(match => <button disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); setNotice(""); setFailed(null); }}>
-        <strong>{match.proName}<b className={match.win ? "up" : "down"}>{match.win ? "W" : "L"}</b></strong>
-        <small>{[match.team, match.league].filter(Boolean).join(" · ")}</small><small>{match.playedAgo} · {match.kills}/{match.deaths}/{match.assists}</small>
-        <NearViewport className="cs-build-icons"><RuneIcon id={match.keystone} mode="desktop" />{proVariant(match).items.items.slice(0, 3).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</NearViewport>
+      <div className="cs-build-entries">{pros?.matches.map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); setNotice(""); setFailed(null); }}
+        title={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}>
+        <TeamLogo team={match.team} size={30} mode="desktop" className="cs-row-logo" />
+        <span className="cs-row-text"><strong>{match.proName}</strong><small>{match.playedAgo}</small></span>
+        <BuildIcons keystone={match.keystone} secondary={match.secondaryPageId} items={proVariant(match).items.items} />
+        <b className={`cs-row-chip ${match.win ? "up" : "down"}`}>{match.win ? "W" : "L"}</b>
       </button>)}</div>
       {pros?.stale && <CachedBadge stale updatedAt={pros.updatedAt} />}
       {proError && <p role="alert">{proError}</p>}
-      {proLoading ? <Skeleton label="Loading pro builds" rows={3} height={52} /> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
-        : pros && !pros.matches.length ? <p>No recent pro builds for this role.</p> : pros?.hasMore ? <button className="fa-text-button cs-load-pros" onClick={() => void loadPros(pros.page + 1)}>Load more</button> : null}</>}
+      {proLoading ? <Skeleton label="Loading pro builds" rows={4} height={46} /> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
+        : pros && !pros.matches.length ? <p>No recent pro builds for this role.</p> : pros?.hasMore ? <button className="fa-text-button cs-load-pros" onClick={() => void loadPros(pros.page + 1)}>Load more</button> : null}
     </aside>
     <div className="cs-build-content">
     <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s build` : chosen.label}</strong><small>{pro ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `${name} · ${lane}`}</small></div>
@@ -216,4 +219,12 @@ export function RunePage({ catalog, selection, onChange }: { catalog: RuneCatalo
 }
 function RuneRowDisplay({ row, selected, onPick }: { row: RuneRow["runes"]; selected: number[]; onPick?: (id: number) => void }) {
   return <div className="fa-rune-row">{row.map(rune => <button type="button" disabled={!onPick} key={rune.id} className={selected.includes(rune.id) ? "is-chosen" : ""} title={rune.name} aria-label={rune.name} aria-pressed={selected.includes(rune.id)} onClick={() => onPick?.(rune.id)}><NearViewport><RuneIcon id={rune.id} mode="desktop" /></NearViewport></button>)}</div>;
+}
+
+/** Keystone with its secondary tree, then the first two core items, like a pro build card. */
+function BuildIcons({ keystone, secondary, items }: { keystone?: number; secondary?: number; items: { id: number; name: string; icon?: string }[] }) {
+  return <NearViewport className="cs-build-icons">
+    {keystone ? <span className="cs-row-runes"><RuneIcon id={keystone} mode="desktop" />{secondary ? <RuneIcon id={secondary} mode="desktop" className="cs-row-sub" /> : null}</span> : null}
+    {items.slice(0, 2).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}
+  </NearViewport>;
 }
