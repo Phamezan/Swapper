@@ -102,3 +102,13 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
   buttons) and cut to the fewest words; review icon choices for nav and actions.
   Done 2026-10-22: text pass (`feat/copy`), own icon set (`feat/icons`, `src/full-app/ui/icons/`), first-run setup
   (`feat/onboarding`, `src/onboarding/`), offline game data (`feat/offline`, `runes/game_data.rs`).
+
+## Engineering health (2026-10-22)
+- [x] Flaky updater test fixed (no `Instant` subtraction).
+- [x] `npm run test:e2e`: 26-check smoke suite over the previews (no new deps; headless Edge over CDP).
+- [x] Provider contract tests on recorded responses (12 fixtures), live canaries (`cargo test --lib -- --ignored canary`),
+      per-source health in Swapper Doctor; fixed lolalytics matchup-build parsing (site format changed).
+- [x] Large files split: lib.rs 1769→384 (+ commands/*, state.rs, flyout.rs), remote/*, windows/process, overlay/render,
+      lolalytics/ugg/view, App.tsx 1181→159 (+ src/app/*), RunesPanel, runes.css (pixel-identical).
+- [ ] Left as is: `runes/data.rs` (849), `src/remote/RemoteApp.tsx` (800) — no natural split.
+- [ ] `blind.rs` `build-full` parser has no fresh recorded-response contract test (older fixture only).
