@@ -14,7 +14,7 @@ function format(value: StatValue, kind: StatRow["format"]) {
 
 export function Stats({ players, name }: { players: MatchPlayer[]; name: (id: number) => string }) {
   const [search, setSearch] = useState("");
-  const [collapsed, setCollapsed] = useState(new Set(["Loadout data", "Other client stats"]));
+  const [collapsed, setCollapsed] = useState(new Set<string>());
   const columns = useMemo(() => [...players].sort((a, b) => a.teamId - b.teamId || a.participantId - b.participantId), [players]);
   const groups = useMemo(() => buildStatGroups(columns), [columns]);
   const filtered = useMemo(() => filterStatGroups(groups, search), [groups, search]);
@@ -25,7 +25,7 @@ export function Stats({ players, name }: { players: MatchPlayer[]; name: (id: nu
       <div><h2>Player statistics</h2><p>Row leaders are marked · Higher totals, fewer deaths · “–” means unavailable</p></div>
       <label className="md-stat-search"><SearchIcon size={18} /><input type="search" placeholder="Search a stat" aria-label="Search a stat" value={search} onChange={e => setSearch(e.target.value)} /></label>
     </header>
-    <div className="md-stats-meta" aria-live="polite"><span>{count} {count === 1 ? "stat" : "stats"}{search.trim() ? ` matching “${search.trim()}”` : " from League Client"}</span><span className="md-own-key">Your column</span></div>
+    <div className="md-stats-meta" aria-live="polite"><span>{count} {count === 1 ? "stat" : "stats"}{search.trim() ? ` matching “${search.trim()}”` : ` across ${groups.length} groups`}</span><span className="md-own-key">Your column</span></div>
     <div className="md-stats-scroll" tabIndex={0} role="region" aria-label="Player statistics table">
       <table className="md-stats-table">
         <caption className="md-sr-only">Stats grouped by team. Tied leaders share a highlight. Uniform or incomplete rows have no leader.</caption>

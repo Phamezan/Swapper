@@ -228,11 +228,17 @@ async function main() {
     await screenshot("match-detail");
     // ---- matchdetail: comparison, loadout, searchable stats and timeline graph ----
     assert.equal(await page.evaluate("document.querySelectorAll('.md-compare-row').length"), 10);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-fact').length"), 3);
+    assert.equal(await page.evaluate("document.querySelector('.md-tower-reading span.is-blue').textContent"), 'Your team');
+    assert.ok(await page.evaluate("document.querySelector('.md-share-ring').getAttribute('aria-label').includes('damage to champions')"));
     await page.click('#md-tab-Loadout');
     await page.visible('.md-runes');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-player .md-items .ui-slot').length"), 70);
     await page.click('#md-tab-Stats');
     await page.visible('.md-stats-table');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-stats-group').length"), 6);
+    assert.equal(await page.evaluate("document.querySelector('#md-group-Loadout-data, #md-group-Other-client-stats')"), null);
+    await page.text('.md-stats-meta', 'across 6 groups');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-stats-portraits th:not(:first-child)').length"), 10);
     assert.equal(await page.evaluate("document.querySelectorAll('.md-stats-portraits .is-me').length"), 1);
     assert.ok(await page.evaluate("document.querySelectorAll('.md-stats-table .is-best').length > 0"));
@@ -250,11 +256,24 @@ async function main() {
     }
     await page.click('#md-tab-Graphs');
     await page.visible('.md-chart polyline');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 14);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-kill-marker').length"), 4);
+    await page.click('.md-event-filters button', 'Objectives');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 6);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-kill-marker').length"), 0);
+    await page.click('.md-event-filters button', 'Kills');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 8);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-chart-event').length"), 0);
+    await page.click('.md-event-filters button', 'All');
     await page.click('.md-chart-select input');
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Home', code: 'Home' });
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Home', code: 'Home' });
     await page.text('.md-chart-reading', 'Teams even');
+    await page.visible('.md-timeline-popover');
+    await page.text('.md-timeline-popover', '2,500');
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 39 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 39 });
+    await page.text('.md-timeline-popover time', '1:00');
     await page.click('#md-tab-Scoreboard');
     // ---- end matchdetail tabs ----
     await page.click('.ui-crumbs button', "Dashboard");

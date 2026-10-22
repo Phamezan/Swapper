@@ -2,7 +2,8 @@ import type { MatchDetailPlayer, MatchDetailTeam, MatchDetailView } from "./type
 
 export type StatValue = number | boolean | null;
 export type MatchPlayer = MatchDetailPlayer & { stats?: Record<string, number | boolean> };
-export type Timeline = { frames: { timestamp: number; goldDiff: number }[]; events: { timestamp: number; teamId: number; label: string }[] };
+export type TimelineEvent = { timestamp: number; teamId: number; label: string; killerId?: number; victimId?: number };
+export type Timeline = { frames: { timestamp: number; goldDiff: number; blueGold?: number; redGold?: number }[]; events: TimelineEvent[] };
 export type MatchView = Omit<MatchDetailView, "players"> & { players: MatchPlayer[]; timeline?: Timeline | null };
 type Direction = "high" | "low" | "none";
 export type StatRow = { key: string; label: string; values: StatValue[]; leaders: number[]; format?: "ratio" | "time" };
@@ -44,10 +45,6 @@ const STAT_GROUPS: [string, Definition[]][] = [
   ["Objectives", [["turretKills", "Turret kills"], ["turretTakedowns", "Turret takedowns"], ["inhibitorKills", "Inhibitor kills"], ["inhibitorTakedowns", "Inhibitor takedowns"],
     ["firstTowerKill", "First tower"], ["firstTowerAssist", "First tower assist"], ["firstInhibitorKill", "First inhibitor"], ["firstInhibitorAssist", "First inhibitor assist"]]],
 ];
-const humanize = (key: string) => {
-  const text = key.replace(/([a-z\d])([A-Z])/g, "$1 $2").replace(/(\D)(\d)/g, "$1 $2");
-  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
-};
 
 export function buildStatGroups(players: Pick<MatchPlayer, "stats">[]): StatGroup[] {
   const keys = new Set(players.flatMap(p => Object.keys(p.stats ?? {})));
@@ -63,11 +60,6 @@ export function buildStatGroups(players: Pick<MatchPlayer, "stats">[]): StatGrou
     return { key, label, values, leaders: bestValues(values, direction), format };
   };
   const groups = STAT_GROUPS.map(([label, definitions]) => ({ label, rows: definitions.filter(([key]) => keys.delete(key)).map(row) }));
-  // Keep even new/mode-specific client fields visible, without guessing which value is better.
-  const remaining = [...keys].sort();
-  const loadout = remaining.filter(key => /^(perk|item\d|playerAugment|roleBoundItem)/.test(key));
-  groups.push({ label: "Loadout data", rows: loadout.map(key => row([key, humanize(key), "none"])) });
-  groups.push({ label: "Other client stats", rows: remaining.filter(key => !loadout.includes(key) && key !== "participantId").map(key => row([key, humanize(key), "none"])) });
   return groups.filter(group => group.rows.length > 0);
 }
 
@@ -89,22 +81,28 @@ export function comparisonRows(players: Pick<MatchPlayer, "teamId" | "kills" | "
   return rows;
 }
 
-export function matchFacts(players: Pick<MatchPlayer, "teamId" | "me" | "kills" | "gold" | "damage" | "vision">[], teams: MatchDetailTeam[]) {
+export type MatchFact = { value: string; label: string; detail: string; teamId: number } & (
+  { kind: "gold" | "towers"; values: [number, number] } |
+  { kind: "damage"; share: number; damage: number; teamDamage: number } |
+  { kind: "vision" }
+);
+export function matchFacts(players: Pick<MatchPlayer, "teamId" | "me" | "kills" | "gold" | "damage" | "vision">[], teams: MatchDetailTeam[]): MatchFact[] {
   const own = players.find(p => p.me);
   if (!own) return [];
   const rows = comparisonRows(players, teams), index = own.teamId === 100 ? 0 : 1, other = 1 - index;
   const gold = rows.find(r => r.label === "Gold earned")!.values;
   const towers = rows.find(r => r.label === "Towers")?.values;
-  const facts: { value: string; label: string; detail: string }[] = [];
+  const facts: MatchFact[] = [];
+  const teamId = own.teamId;
   if (gold[index] != null && gold[other] != null) {
     const diff = gold[index]! - gold[other]!;
-    facts.push({value: `${diff > 0 ? "+" : diff < 0 ? "−" : ""}${Math.abs(diff).toLocaleString("en-US")}`, label: "Team gold at the finish", detail: diff === 0 ? "Both teams earned the same gold" : `Your team earned ${diff > 0 ? "more" : "less"} gold`});
+    facts.push({kind: "gold", teamId, values: [gold[index]!, gold[other]!], value: `${diff > 0 ? "+" : diff < 0 ? "−" : ""}${Math.abs(diff).toLocaleString("en-US")}`, label: "Gold at the finish", detail: diff === 0 ? "Teams even" : `Your team ${diff > 0 ? "ahead" : "behind"}`});
   }
-  if (towers && towers[index] != null && towers[other] != null) facts.push({ value: `${towers[index]} : ${towers[other]}`, label: "Towers taken", detail: "Your team : opponents" });
+  if (towers && towers[index] != null && towers[other] != null) facts.push({ kind: "towers", teamId, values: [towers[index]!, towers[other]!], value: `${towers[index]} : ${towers[other]}`, label: "Towers taken", detail: "Your team : enemy" });
   const totalDamage = rows.find(r => r.label === "Damage to champions")!.values[index];
   const share = percent(own.damage, totalDamage);
-  if (share != null) facts.push({ value: `${Math.round(share)}%`, label: "Your share of team damage", detail: "Damage dealt to champions" });
-  if (facts.length < 3 && own.vision != null) facts.push({value: String(own.vision), label: "Your vision score", detail: "Reported by League Client"});
+  if (share != null) facts.push({ kind: "damage", teamId, share, damage: own.damage!, teamDamage: totalDamage!, value: `${Math.round(share)}%`, label: "Your damage share", detail: "Damage to champions" });
+  if (facts.length < 3 && own.vision != null) facts.push({kind: "vision", teamId, value: String(own.vision), label: "Your vision score", detail: "Reported by League Client"});
   return facts.slice(0, 3);
 }
 
@@ -123,6 +121,38 @@ export function timelineChart(timeline: Timeline) {
     return { ...event, ...point(event.timestamp, a.goldDiff + (b.goldDiff - a.goldDiff) * fraction) };
   });
   return { points, events, limit, start, duration };
+}
+
+type TimelineParticipant = Pick<MatchPlayer, "participantId" | "teamId" | "championId" | "me">;
+export type TimelineKill = TimelineEvent & { kind: "kill"; killer: TimelineParticipant; victim: TimelineParticipant };
+export type ResolvedTimelineEvent = TimelineKill | (TimelineEvent & { kind: "objective"; objective: string });
+const objectiveLabels: Record<string, string> = { Dragon: "Dragons", Baron: "Barons", Herald: "Heralds", Grub: "Grubs", Tower: "Towers", Inhibitor: "Inhibitors" };
+
+export function resolveTimelineEvents<T extends TimelineEvent>(events: T[], players: TimelineParticipant[]): (T & ResolvedTimelineEvent)[] {
+  const participants = new Map(players.filter(p => p.championId > 0).map(p => [p.participantId, p]));
+  const result: (T & ResolvedTimelineEvent)[] = [];
+  for (const event of events) {
+    if (event.killerId != null || event.victimId != null) {
+      const killer = participants.get(event.killerId!), victim = participants.get(event.victimId!);
+      if (!killer || !victim || killer.teamId === victim.teamId) continue;
+      result.push({ ...event, kind: "kill", teamId: killer.teamId, killer, victim });
+    } else if (objectiveLabels[event.label] && [100, 200].includes(event.teamId)) {
+      result.push({ ...event, kind: "objective", objective: objectiveLabels[event.label] });
+    }
+  }
+  return result.sort((a, b) => a.timestamp - b.timestamp);
+}
+
+/** A fight spans at most 30 seconds; later kills start another cluster. */
+export function groupKillEvents(events: ResolvedTimelineEvent[]) {
+  const clusters: { timestamp: number; events: TimelineKill[] }[] = [];
+  for (const event of events) {
+    if (event.kind !== "kill") continue;
+    const last = clusters[clusters.length - 1];
+    if (last && event.timestamp - last.timestamp <= 30000) last.events.push(event);
+    else clusters.push({ timestamp: event.timestamp, events: [event] });
+  }
+  return clusters;
 }
 
 export function placementLabel(placement: number | null, win: boolean | null, bestOnTeam: boolean): string {

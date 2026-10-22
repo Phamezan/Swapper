@@ -13,6 +13,7 @@ import type { Game, Snapshot } from "./types";
 import { Comparison } from "./match/Comparison";
 import { Stats } from "./match/Stats";
 import { Timeline } from "./match/Timeline";
+import { Facts } from "./match/Facts";
 import { Slot } from "./ui/Slot";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCompact, fmtCount } from "./ui/format";
@@ -59,11 +60,11 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
           <div className="md-outcome"><h2>{match.win ? "Victory" : "Defeat"}</h2>{ownLabel !== "–" && <Placement label={ownLabel} long />}</div>
           <div className="md-hero-champion"><ChampionIcon id={match.championId} name={name(match.championId)} mode="desktop" /><strong>{name(match.championId)}</strong><span>Level {own?.level ?? match.level} · {titleCase(own?.role ?? match.role)}</span></div>
         </div>
-        <div className="md-your-game"><span>Your contribution</span><strong>{own ? stat(own.kills) : match.kills}<i> / </i><em>{own ? stat(own.deaths) : match.deaths}</em><i> / </i>{own ? stat(own.assists) : match.assists}</strong>
+        <div className="md-your-game"><span>Your contribution{own && <> · <b className={own.teamId === 100 ? "is-blue" : "is-red"}>{own.teamId === 100 ? "Blue" : "Red"} side</b></>}</span><strong>{own ? stat(own.kills) : match.kills}<i> / </i><em>{own ? stat(own.deaths) : match.deaths}</em><i> / </i>{own ? stat(own.assists) : match.assists}</strong>
           <div><span>{stat(own ? kda(own) : match.metrics[0], 2)} KDA</span><span>{stat(own ? own.cs : match.cs)} CS</span>{own?.score != null && <span className="md-hero-score">Score <b>{Math.round(own.score)}</b><small>/100</small></span>}</div>
         </div>
       </div>
-      {facts.length > 0 && <div className="md-match-facts" aria-label="The match at a glance">{facts.map(fact => <div key={fact.label}><strong>{fact.value}</strong><span>{fact.label}</span><small>{fact.detail}</small></div>)}</div>}
+      {facts.length > 0 && <Facts facts={facts} />}
     </section>
     {error ? <Notice tone="error" action={<button className="fa-text-button" onClick={() => setAttempt(n => n + 1)}>Retry</button>}>{error}</Notice>
       : !detail ? <Skeleton label="Loading match details and player ranks" rows={5} height={66} /> : <>
@@ -74,7 +75,7 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
         {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading ranks…" : "Some Solo/Duo ranks are unavailable."}</Notice>}
         {detail.players.length !== 10 && <Notice tone="warn">League Client returned {detail.players.length} of 10 players for this match. Some team statistics and performance scores are unavailable.</Notice>}
         <div id="md-panel" role="tabpanel" aria-labelledby={`md-tab-${tab}`}>
-        {tab === "Stats" ? <Stats players={detail.players} name={name} /> : tab === "Graphs" && detail.timeline ? <Timeline data={detail.timeline} /> : <>
+        {tab === "Stats" ? <Stats players={detail.players} name={name} /> : tab === "Graphs" && detail.timeline ? <Timeline data={detail.timeline} players={detail.players} name={name} /> : <>
         {tab === "Scoreboard" && <Comparison players={detail.players} teams={detail.teams} />}
         {detail.teams.map(team => {
           const players = detail.players.filter(p => p.teamId === team.teamId);

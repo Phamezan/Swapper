@@ -3,8 +3,10 @@ import type { MatchView } from "../MatchDetailModel";
 
 // Synthetic preview only. Field names were verified against the running client.
 export function matchDetailFixture(game: Game, ranks: Snapshot["rank"][], params: URLSearchParams): MatchView {
+  const side = (id: number) => params.has("detail-red") ? 300 - id : id;
   const players = game.players.map((p, i) => {
-    const gold = i < 5 ? 13600 - i * 720 : 11200 - (i - 5) * 520;
+    const leading = (i < 5) === game.win;
+    const gold = leading ? 13600 - i % 5 * 720 : 11200 - i % 5 * 520;
     const damage = p.damage ?? 0, vision = p.role === "support" ? 64 + i : p.vision;
     const jungle = p.role === "jungle" ? Math.min(p.cs ?? 0, 170) : 12;
     const stats: Record<string, number | boolean> = {
@@ -36,7 +38,7 @@ export function matchDetailFixture(game: Game, ranks: Snapshot["rank"][], params
     }
     p.items.forEach((id, n) => { stats[`item${n}`] = id; });
     if (params.has("detail-missing") && i === 2) delete stats.visionScore;
-    return { ...p, riotId: p.me ? "You#•••" : `Player ${i}#•••`, participantId: i + 1, teamId: i < 5 ? 100 : 200,
+    return { ...p, riotId: p.me ? "You#•••" : `Player ${i}#•••`, participantId: i + 1, teamId: side(i < 5 ? 100 : 200),
       level: 18 - i % 4, spells: [4, p.role === "jungle" ? 11 : p.role === "support" ? 14 : 12],
       perks: [8010, 9111, 9104, 8299, 8444, 8242], keystone: 8010, secondaryStyle: 8400,
       placement: params.has("detail-missing") || params.has("detail-partial") ? null : [2, 3, 1, 4, 5, 6, 7, 8, 9, 10][i],
@@ -45,17 +47,27 @@ export function matchDetailFixture(game: Game, ranks: Snapshot["rank"][], params
       damageTaken: stats.totalDamageTaken as number, wardsPlaced: 9 + i, wardsKilled: i + 1, stats };
   });
   const finalDiff = players.reduce((sum, p) => sum + (p.teamId === 100 ? p.gold : -p.gold), 0);
-  const frames = Array.from({ length: 26 }, (_, i) => ({timestamp: Math.round(game.duration * 1000 * i / 25),
-    goldDiff: i === 0 ? 0 : i === 25 ? finalDiff : Math.round(-1700 * Math.sin(i / 5) + finalDiff * (i / 25) ** 2)}));
-  return { game, players: params.has("detail-partial") ? players.slice(0, 8) : players,
-    teams: [100, 200].map((teamId, i) => ({teamId, win: i === 0 ? game.win : !game.win,
-      objectives: params.has("detail-partial") ? [] : [{label: "Dragons", kills: i ? 1 : 3}, {label: "Heralds", kills: i ? 0 : 1}, {label: "Grubs", kills: i ? 2 : 4}, {label: "Barons", kills: i ? 0 : 1}, {label: "Towers", kills: i ? 3 : 9}, {label: "Inhibitors", kills: i ? 0 : 1}] })),
-    timeline: params.has("no-timeline") || params.has("detail-partial") ? null : {frames, events: [
+  const finalGold = players.reduce((sum, p) => sum + p.gold, 0);
+  const frames = Array.from({ length: 26 }, (_, i) => {
+    const goldDiff = i === 0 ? 0 : i === 25 ? finalDiff : Math.round(-1700 * Math.sin(i / 5) + finalDiff * (i / 25) ** 2);
+    const blueGold = Math.round((5000 + (finalGold - 5000) * i / 25 + goldDiff) / 2);
+    return {timestamp: Math.round(game.duration * 1000 * i / 25), goldDiff, blueGold, redGold: blueGold - goldDiff};
+  });
+  const partial = params.has("detail-partial") || params.has("detail-partial-own");
+  const kills = params.has("timeline-objectives-only") ? [] : [
+    [380000, 1, 6], [421000, 7, 1], [434000, 2, 7], [446000, 3, 8],
+    [785000, 1, 6], [798000, 8, 2], [1248000, 1, 9], [1268000, 10, 3],
+  ].map(([timestamp, killerId, victimId]) => ({ timestamp, killerId, victimId, teamId: players[killerId - 1].teamId, label: "Champion kill" }));
+  return { game, players: params.has("detail-partial-own") ? players.filter((_, i) => i !== 4) : params.has("detail-partial") ? players.slice(0, 8) : players,
+    teams: [100, 200].map((teamId, i) => ({teamId: side(teamId), win: i === 0 ? game.win : !game.win,
+      objectives: partial ? [] : [{label: "Dragons", kills: i ? 1 : 3}, {label: "Heralds", kills: i ? 0 : 1}, {label: "Grubs", kills: i ? 2 : 4}, {label: "Barons", kills: i ? 0 : 1}, {label: "Towers", kills: (i === 0) === game.win ? 9 : 3}, {label: "Inhibitors", kills: i ? 0 : 1}] })),
+    timeline: params.has("no-timeline") || partial ? null : {frames, events: [
       {timestamp: Math.round(game.duration * 1000 * .28), teamId: 200, label: "Dragon"},
       {timestamp: Math.round(game.duration * 1000 * .4), teamId: 100, label: "Tower"},
       {timestamp: Math.round(game.duration * 1000 * .52), teamId: 100, label: "Dragon"},
       {timestamp: Math.round(game.duration * 1000 * .66), teamId: 100, label: "Tower"},
       {timestamp: Math.round(game.duration * 1000 * .83), teamId: 100, label: "Baron"},
       {timestamp: Math.round(game.duration * 1000 * .9), teamId: 100, label: "Inhibitor"},
-    ]} };
+    ].map(event => ({ ...event, teamId: side(event.teamId) })).concat(kills).sort((a, b) => a.timestamp - b.timestamp),
+    } };
 }
