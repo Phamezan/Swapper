@@ -51,6 +51,7 @@ export function useAppController(fullApp?: FullAppBridge) {
   const [repairingId, setRepairingId] = useState<string | null>(null);
   const [accountMenu, setAccountMenu] = useState<{ id: string; x: number; y: number } | null>(null);
   const [useDeceive, setUseDeceive] = useState(false);
+  const [deceivePrompt, setDeceivePrompt] = useState<"ask" | "defer" | null>(null);
   const [koreanFont, setKoreanFont] = useState(false);
   const [ltkInstalling, setLtkInstalling] = useState(false);
   const [ltkInstallError, setLtkInstallError] = useState<string | null>(null);
@@ -680,6 +681,27 @@ export function useAppController(fullApp?: FullAppBridge) {
     if (native) void invoke<AppState>("get_state").then(sync).catch(showError);
   };
 
+  // Deceive only takes effect on the next client launch, so a running client is restarted
+  // through the normal switch onto the signed-in account (the backend decides when that is safe).
+  const changeDeceive = async (checked: boolean) => {
+    setDeceivePrompt(null);
+    let saved = false;
+    await action("settings", async () => {
+      await invoke("save_settings", { useDeceive: checked, riotExe: configuredPath() });
+      saved = true;
+    });
+    if (!native) return;
+    void invoke<AppState>("get_state").then(sync).catch(showError);
+    if (!saved || !data.activeId) return;
+    const plan = await invoke<string>("restart_plan").catch(() => "save");
+    if (plan === "restart") void switchToAccount(data.activeId);
+    else if (plan === "ask" || plan === "defer") setDeceivePrompt(plan);
+  };
+  const restartClientNow = () => {
+    setDeceivePrompt(null);
+    if (data.activeId) void switchToAccount(data.activeId);
+  };
+
   const changeRiotPathMode = (mode: "auto" | "manual") => {
     if (mode === "manual") {
       setPathMode("manual");
@@ -749,7 +771,7 @@ export function useAppController(fullApp?: FullAppBridge) {
     setRemote, showRemoteQr, dismissReconnect, setStartOnStartupSetting, action, navigate, isBusy,
     openAccountMenu, menuAccount, switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId,
     pageTitle, footerText, footerLoggedIn, conflictingSavedAccount, saveDetected, manualPath,
-    configuredPath, applySettings, changeRiotPathMode, commitRiotPath, applyHotkey, browseRiotPath,
+    configuredPath, applySettings, changeDeceive, deceivePrompt, setDeceivePrompt, restartClientNow, changeRiotPathMode, commitRiotPath, applyHotkey, browseRiotPath,
     toolsOpen, brandMode, otherMode, switchLabel, themed, modeName,
   };
 }

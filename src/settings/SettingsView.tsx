@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useRef } from "react";
 import type { AppState } from "../App";
 import { GeneralSettings } from "./GeneralSettings";
@@ -23,6 +24,7 @@ type Props = {
   onTabChange: (tab: SettingsTab) => void;
   useDeceive: boolean;
   onUseDeceiveChange: (checked: boolean) => void;
+  deceiveNotice?: ReactNode;
   startOnStartup: boolean;
   onStartOnStartupChange: (enabled: boolean) => void;
   manualPath: boolean;
@@ -113,6 +115,7 @@ export function SettingsView(props: Props) {
         {tab === "general" && <GeneralSettings
           useDeceive={props.useDeceive}
           onUseDeceiveChange={props.onUseDeceiveChange}
+          deceiveNotice={props.deceiveNotice}
           startOnStartup={props.startOnStartup}
           onStartOnStartupChange={props.onStartOnStartupChange}
           manualPath={props.manualPath}

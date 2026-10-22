@@ -34,8 +34,16 @@ fn should_notify(event: LifecycleEvent, enabled: bool, ready_check_enabled: bool
     enabled && (event == LifecycleEvent::ChampSelectStarted || ready_check_enabled)
 }
 
+/// Whether `event` brings the Fullsized App to the front. `transition` fires
+/// once per champion select, so the window is raised once and never again if
+/// the user switches away. The window's own `champ_select` handling routes it
+/// to the Champion select page.
+fn raises_full_app(event: LifecycleEvent, full_app_enabled: bool) -> bool {
+    full_app_enabled && event == LifecycleEvent::ChampSelectStarted
+}
+
 /// Phases during which a game is running or wrapping up.
-fn in_game(phase: &str) -> bool {
+pub(crate) fn in_game(phase: &str) -> bool {
     matches!(
         phase,
         "InProgress" | "Reconnect" | "WaitingForStats" | "PreEndOfGame"
@@ -62,6 +70,9 @@ pub fn observe(app: &AppHandle, previous: Option<&str>, current: &str) {
     let Some(event) = transition(previous, current) else {
         return;
     };
+    if raises_full_app(event, crate::full_app::enabled(app)) {
+        let _ = crate::full_app::open(app, None);
+    }
     use tauri::Manager;
     let Some(state) = app.try_state::<crate::AppState>() else {
         return;
@@ -125,6 +136,22 @@ mod tests {
         );
         assert_eq!(transition(None, "ChampSelect"), Some(LifecycleEvent::ChampSelectStarted));
         assert_eq!(transition(Some("ChampSelect"), "ChampSelect"), None);
+    }
+
+    #[test]
+    fn only_a_new_champ_select_raises_the_full_app() {
+        let raised = |previous, current, on| {
+            transition(previous, current).is_some_and(|event| raises_full_app(event, on))
+        };
+        assert!(raised(Some("ReadyCheck"), "ChampSelect", true));
+        assert!(raised(None, "ChampSelect", true));
+        assert!(!raised(Some("ReadyCheck"), "ChampSelect", false));
+        // Polls inside the same champion select, other phases and ready checks stay quiet.
+        assert!(!raised(Some("ChampSelect"), "ChampSelect", true));
+        assert!(!raised(Some("Lobby"), "ReadyCheck", true));
+        assert!(!raised(Some("ChampSelect"), "InProgress", true));
+        // A dodge followed by a new champion select raises again.
+        assert!(raised(Some("None"), "ChampSelect", true));
     }
 
     #[test]

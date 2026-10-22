@@ -1,3 +1,4 @@
+import { DeceiveRestartNotice } from "./settings/DeceiveRestartNotice";
 import { invoke } from "@tauri-apps/api/core";
 import { Wrench, X } from "lucide-react";
 import { BackIcon, ErrorIcon, InfoIcon } from "./full-app/ui/icons";
@@ -30,7 +31,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
     loadProBuilds, loadKeystoneBuild, loadMatchup, championApi, setAutoApply, setRuneTier,
     setNotifications, setReadyCheckNotifications, setKoreanFontSetting, installLtkManager, setRemote,
     setStartOnStartupSetting, navigate, startRepair, pageTitle, footerText, footerLoggedIn, manualPath,
-    configuredPath, applySettings, changeRiotPathMode, commitRiotPath, applyHotkey, browseRiotPath,
+    changeDeceive, deceivePrompt, setDeceivePrompt, restartClientNow, changeRiotPathMode, commitRiotPath, applyHotkey, browseRiotPath,
     toolsOpen, brandMode, otherMode, switchLabel, themed, modeName,
   } = controller;
 
@@ -111,7 +112,8 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               tab={settingsTab}
               onTabChange={setSettingsTab}
               useDeceive={useDeceive}
-              onUseDeceiveChange={(checked) => void applySettings({ useDeceive: checked, riotExe: configuredPath() })}
+              onUseDeceiveChange={(checked) => void changeDeceive(checked)}
+              deceiveNotice={<DeceiveRestartNotice prompt={deceivePrompt} onRestart={restartClientNow} onDismiss={() => setDeceivePrompt(null)} />}
               startOnStartup={startOnStartup}
               onStartOnStartupChange={(enabled) => void setStartOnStartupSetting(enabled)}
               manualPath={manualPath}

@@ -318,8 +318,27 @@ async function main() {
     await page.text('[aria-label="Matchup"]', "47.6");
   });
   await check("Sidebar Draft", () => nav("Draft", ".fa-draft-empty"));
-  await check("Sidebar Accounts", () => nav("Accounts", ".fa-account-card"));
+  await check("Sidebar Accounts", async () => {
+    await nav("Accounts", ".fa-account-card");
+    await page.text('.fa-account-card.is-active .fa-restart', 'Restart client');
+  });
   await check("Sidebar Settings", () => nav("Settings", ".fa-settings-content"));
+  // Deceive only applies after a client restart; the backend plan decides (mocked via ?restart=).
+  await check("Deceive toggle restarts the client", async () => {
+    await page.click('#deceive-switch');
+    await page.text('.switch-overlay h2', 'Restarting client');
+    await page.wait("!document.querySelector('.switch-overlay')");
+    for (const [plan, text, screenshotName] of [["ask", "Restart the client now", "deceive-confirm"], ["defer", "applies after the game", "deceive-deferred"]]) {
+      await navigate(`${fullApp}?restart=${plan}`, ".nav-group");
+      await nav("Settings", ".fa-settings-content");
+      await page.click('#deceive-switch');
+      await page.text('.deceive-notice', text);
+      assert.equal(await page.evaluate("document.querySelector('.switch-overlay') === null"), true);
+      await screenshot(screenshotName);
+      await screenshot(screenshotName, 1440, 900);
+    }
+    await navigate(fullApp, ".nav-group");
+  });
   await check("Sidebar Dashboard", () => nav("Dashboard", ".match-row"));
   // Search owns these scenarios; all identities are invented preview fixtures.
   async function key(key, modifiers = 0) {
@@ -430,6 +449,16 @@ async function main() {
     await page.visible('.account-picker');
     await audit();
     await screenshot("account-picker");
+    await screenshot("account-picker", 1440, 900);
+    // Switching onto the signed-in account restarts the client (same backend path as the tray flyout).
+    await page.text('.picker-restart', 'Restart client');
+    assert.equal(await page.evaluate("document.querySelectorAll('.picker-row.is-current + .picker-restart').length"), 1);
+    await page.click('.picker-restart');
+    await page.text('.switch-overlay h2', 'Restarting client');
+    await screenshot("restart-overlay");
+    await page.wait("!document.querySelector('.switch-overlay')");
+    await page.click('.podium-switch');
+    await page.visible('.account-picker');
     await page.click(".picker-foot button", "Manage accounts");
     await page.visible(".fa-account-card");
   });

@@ -67,6 +67,12 @@ pub(crate) fn ensure_no_game() -> Result<(), ProcessStateError> {
     }
 }
 
+/// Whether any Riot client process is running; an unreadable process table
+/// counts as not running, so a settings change never restarts on a guess.
+pub(crate) fn client_running() -> bool {
+    process::any_running(CLIENTS).unwrap_or(false)
+}
+
 /// Stop every Riot client process so the accounts can be swapped.
 ///
 /// The game check is part of the same snapshot that collects the kill

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { CircleHelp, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,8 @@ import { WindowModeSettings } from "../full-app/WindowModeSettings";
 type Props = {
   useDeceive: boolean;
   onUseDeceiveChange: (checked: boolean) => void;
+  /** Restart prompt rendered under the Deceive row. */
+  deceiveNotice?: ReactNode;
   startOnStartup: boolean;
   onStartOnStartupChange: (enabled: boolean) => void;
   /** True once the user picks Manual, or when a custom path is configured. */
@@ -43,6 +45,7 @@ type Props = {
 export function GeneralSettings({
   useDeceive,
   onUseDeceiveChange,
+  deceiveNotice,
   startOnStartup,
   onStartOnStartupChange,
   manualPath,
@@ -90,6 +93,7 @@ export function GeneralSettings({
         </div>
         <Switch id="deceive-switch" checked={useDeceive} disabled={busy} onCheckedChange={onUseDeceiveChange} aria-label="Launch through Deceive" />
       </div>
+      {deceiveNotice}
 
       <div className="setting-row">
         <div className="setting-copy">

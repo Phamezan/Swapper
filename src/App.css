@@ -307,3 +307,8 @@ button[data-slot="button"].add-inline:hover { border-color: var(--line-strong); 
 .primary-action.riot-launch { background: linear-gradient(180deg, #f2213d, #d0001f); border: 1px solid #ff5a6e; color: #fff; box-shadow: inset 0 1px rgb(255 255 255 / .28), 0 8px 22px -12px rgb(235 0 41 / .7); }
 .primary-action.riot-launch:hover:not(:disabled) { background: linear-gradient(180deg, #ff3550, #e0002a); }
 .riot-client-icon { width: 18px; height: 18px; border-radius: 4px; flex: none; }
+
+/* clientctl: restart prompt under the Deceive switch (neutral glass, coloured left edge) */
+.deceive-notice { display: grid; gap: 10px; margin: 2px 0 10px; padding: 12px 14px; border: 1px solid var(--line-subtle); border-left: 3px solid #c5e39e; border-radius: 8px; background: rgb(255 255 255 / .04); font-size: 13px; line-height: 1.5; }
+.deceive-notice p { margin: 0; }
+.deceive-notice div { display: flex; gap: 8px; }

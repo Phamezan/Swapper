@@ -207,6 +207,16 @@ mockIPC(async (cmd, args) => {
     case "get_runes": return { phase: "None", championId: 0, championName: "", position: "top", presets: [], trees: [], shards: [], applied: null, autoApply: false, importItems: true, canApply: false, locked: false, spells: { spell1Id: 4, spell2Id: 12, available: [], applyWithRunes: true }, enemies: [], enemySlots: 5 };
     case "get_pro_builds": return { championId: 266, position: "top", role: "top", page: 1, hasMore: false, unavailable: false, message: null, stale: false, updatedAt: null, matches: [1, 2, 3].map(i => ({ matchId: i, proName: `Pro player ${String.fromCharCode(64 + i)}`, team: `Team ${i}`, league: "LCK", region: "KR", role: "top", roleLabel: "Top", win: i % 2 === 1, playedAgo: `${i * 3}h ago`, patch: "16.21", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), kills: 4 + i, deaths: 2, assists: 6, spells: [4, 12], finalItems: [6610, 3053, 3071, 3047, 6333, 3026].map(named), completedItems: [6610, 3053, 3071, 6333].map(named), skillOrder: SKILLS.split(""), itemPath: [], otp: false })) };
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
+    // --- clientctl preview block: restart client / Deceive restart (?restart=ask|defer|save|restart) ---
+    case "save_settings": return state;
+    case "restart_plan": return new URLSearchParams(location.search).get("restart") ?? "restart";
+    case "switch_account": {
+      const account = state.accounts.find(x => x.id === a.id);
+      setTimeout(() => void emit("switch_started", { id: a.id, name: account?.name ?? "" }), 0);
+      setTimeout(() => void emit("switch_done", { id: a.id, view: state }), 500);
+      return null;
+    }
+    // ---- end clientctl cases ----
     // ---- end uibuilds cases ----
     case "live_game_active": return live;
     case "live_game_view": case "live_game_live": return live ? liveView : null;
