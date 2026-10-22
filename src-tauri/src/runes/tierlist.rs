@@ -157,7 +157,7 @@ fn parse_tierlist_with_min(html: &str, min_games: u64) -> Option<TierList> {
 }
 
 /// The unscored rows of a tier list page with at least `min_games` games.
-fn parse_rows(html: &str, min_games: u64) -> Option<Vec<TierRow>> {
+pub(super) fn parse_rows(html: &str, min_games: u64) -> Option<Vec<TierRow>> {
     let state: Qwik = serde_json::from_str(lolalytics::qwik_json(html)?).ok()?;
     let objs = &state.objs;
     let table = objs.iter().find(|entry| is_row_table(entry, objs))?;
@@ -294,7 +294,8 @@ impl LolalyticsClient {
         patch: Option<&str>,
     ) -> Result<Option<TierList>, ProviderError> {
         let body = self.page(tierlist_url(lane, tier, patch)).await?;
-        Ok(parse_rows(&body, 0).map(|rows| TierList { rows, patch: None }))
+        let rows = lolalytics::checked(&body, "tier list page", true, parse_rows(&body, 0));
+        Ok(rows.map(|rows| TierList { rows, patch: None }))
     }
 }
 

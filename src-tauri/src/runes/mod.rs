@@ -23,6 +23,7 @@ pub mod duos;
 pub mod counters_view;
 pub mod data;
 pub(crate) mod game_data;
+pub mod health;
 pub mod items;
 pub mod item_sets;
 pub mod lolalytics;
@@ -46,6 +47,8 @@ pub mod tierlist;
 pub mod ugg;
 pub mod view;
 pub mod watch;
+#[cfg(test)]
+mod contract_tests;
 
 use std::collections::{HashMap, HashSet};
 use std::fmt;

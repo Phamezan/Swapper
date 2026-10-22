@@ -432,7 +432,24 @@ impl OpggClient {
         )
     }
 
+    /// [`Self::fetch`] with its outcome recorded for Swapper Doctor.
     pub async fn champion_data(
+        &self,
+        region: &str,
+        mode: &str,
+        champion_id: i64,
+        position: &str,
+        tier: &str,
+        version: Option<&str>,
+    ) -> Result<ChampionData, ProviderError> {
+        let found = self
+            .fetch(region, mode, champion_id, position, tier, version)
+            .await;
+        super::health::record(super::health::Source::Opgg, "champion data", &found);
+        found
+    }
+
+    async fn fetch(
         &self,
         region: &str,
         mode: &str,

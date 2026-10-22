@@ -18,6 +18,7 @@ use tokio::time::timeout;
 
 use crate::identity::{self, Detection};
 use crate::remote::RemoteState;
+use crate::runes::health::{self, Source};
 use crate::{riot, updater, vault};
 
 pub const CHECK_RIOT_CLIENT: &str = "riot-client";
@@ -219,12 +220,22 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
         CHECK_RIOT_CLIENT => guarded(id, check_riot_client()).await,
         CHECK_LEAGUE_CLIENT => guarded(id, check_league_client()).await,
         CHECK_SESSION => guarded(id, check_session(context)).await,
-        CHECK_OPGG => guarded(id, check_provider(id, &opgg_probe_url())).await,
-        CHECK_LOLALYTICS => {
-            guarded(id, check_provider(id, crate::runes::lolalytics::BASE_URL)).await
-        }
-        CHECK_PROBUILDS => guarded(id, check_provider(id, crate::runes::probuilds::ENDPOINT)).await,
-        CHECK_UGG_STATS => guarded(id, check_ugg_stats()).await,
+        CHECK_OPGG => with_health(
+            guarded(id, check_provider(id, &opgg_probe_url())).await,
+            health::get(Source::Opgg).state(),
+        ),
+        CHECK_LOLALYTICS => with_health(
+            guarded(id, check_provider(id, crate::runes::lolalytics::BASE_URL)).await,
+            health::get(Source::Lolalytics).state(),
+        ),
+        CHECK_PROBUILDS => with_health(
+            guarded(id, check_provider(id, crate::runes::probuilds::ENDPOINT)).await,
+            health::get(Source::ProBuilds).state(),
+        ),
+        CHECK_UGG_STATS => with_health(
+            guarded(id, check_ugg_stats()).await,
+            health::get(Source::UggStats).state(),
+        ),
         CHECK_REMOTE | CHECK_TAILSCALE => {
             let remote = context.remote.clone();
             let check = async move {
@@ -535,6 +546,22 @@ async fn check_ugg_stats() -> DoctorCheck {
     match crate::runes::ugg::probe().await {
         Ok(()) => DoctorCheck::ok(CHECK_UGG_STATS, "Champion statistics are reachable."),
         Err(error) => DoctorCheck::warn(CHECK_UGG_STATS, error.message(crate::runes::provider::DataKind::ChampionStats)),
+    }
+}
+
+/// A site that answers the probe can still have changed what it sends: when
+/// this session's last real fetch from it failed to parse, say so. A fresh
+/// probe failure, or a session that has not used the site, keeps the probe's line.
+fn with_health(check: DoctorCheck, state: health::State) -> DoctorCheck {
+    match state {
+        health::State::FormatChanged(parser) if check.status == DoctorStatus::Ok => {
+            DoctorCheck::warn(
+                &check.id,
+                "Reachable, but the site changed its data format. Some stats may be missing or out of date until Swapper is updated.",
+            )
+            .with_detail(format!("Unreadable: {parser}"))
+        }
+        _ => check,
     }
 }
 
@@ -916,6 +943,24 @@ mod tests {
         assert!(report.contains("[ok]"));
         assert!(report.contains("[warn]"));
         assert!(report.contains("132 ms"));
+    }
+
+    #[test]
+    fn a_reachable_site_whose_data_stopped_parsing_warns() {
+        let reachable = DoctorCheck::ok(CHECK_LOLALYTICS, "Reachable.");
+        let changed = with_health(
+            reachable.clone(),
+            health::State::FormatChanged("counters page"),
+        );
+        assert_eq!(changed.status, DoctorStatus::Warn);
+        assert!(changed.message.contains("changed its data format"));
+        assert_eq!(changed.detail.as_deref(), Some("Unreadable: counters page"));
+        for state in [health::State::Ok, health::State::Unused, health::State::Unreachable] {
+            assert_eq!(with_health(reachable.clone(), state).status, DoctorStatus::Ok);
+        }
+        let down = DoctorCheck::error(CHECK_LOLALYTICS, "Could not connect.");
+        let kept = with_health(down, health::State::FormatChanged("counters page"));
+        assert_eq!((kept.status, kept.message.as_str()), (DoctorStatus::Error, "Could not connect."));
     }
 
     #[test]

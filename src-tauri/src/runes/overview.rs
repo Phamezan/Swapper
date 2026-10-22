@@ -166,7 +166,7 @@ impl LolalyticsClient {
         let body = self
             .page(overview_url(champion_slug, lane, tier, patch))
             .await?;
-        Ok(parse_overview(&body, champion_id))
+        Ok(lolalytics::checked(&body, "champion page", false, parse_overview(&body, champion_id)))
     }
 }
 

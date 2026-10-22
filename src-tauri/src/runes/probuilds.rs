@@ -428,7 +428,7 @@ impl ProBuildsClient {
         json!({ "query": QUERY, "variables": variables })
     }
 
-    pub async fn matches(
+    async fn fetch(
         &self,
         champion_id: i64,
         role: Option<&str>,
@@ -450,6 +450,19 @@ impl ProBuildsClient {
             .await
             .map_err(|_| ProviderError::Unavailable)?;
         parse(&body)
+    }
+
+    /// [`Self::fetch`] with its outcome recorded for Swapper Doctor.
+    pub async fn matches(
+        &self,
+        champion_id: i64,
+        role: Option<&str>,
+        page: u32,
+        is_otp: bool,
+    ) -> Result<Vec<ProMatch>, ProviderError> {
+        let found = self.fetch(champion_id, role, page, is_otp).await;
+        super::health::record(super::health::Source::ProBuilds, "pro match list", &found);
+        found
     }
 }
 

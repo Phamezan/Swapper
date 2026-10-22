@@ -151,7 +151,7 @@ impl LolalyticsClient {
         let body = self
             .page(counters_url(champion_slug, lane, tier, patch))
             .await?;
-        Ok(parse_counters(&body, champion_id))
+        Ok(lolalytics::checked(&body, "counters page", false, parse_counters(&body, champion_id)))
     }
 }
 

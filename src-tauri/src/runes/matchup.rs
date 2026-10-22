@@ -253,7 +253,7 @@ impl lolalytics::LolalyticsClient {
         let body = self
             .page(lolalytics::vs_url(champion_slug, enemy_slug, lane, tier, patch))
             .await?;
-        Ok(parse_matchup(&body, champion_id, enemy_id))
+        Ok(lolalytics::checked(&body, "matchup page", false, parse_matchup(&body, champion_id, enemy_id)))
     }
 }
 

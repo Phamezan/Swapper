@@ -15,6 +15,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 use super::cache::{self, LastGoodCache};
+use super::health::{self, Source};
 use super::patch::{self, blend_rate};
 use super::provider::{DataKind, Provider, Sourced};
 use super::tierlist::{percentile_tiers, scores};
@@ -222,7 +223,7 @@ async fn load_lolalytics(tier: &str) -> Option<Sourced<DuoList>> {
 
 /// Lolalytics' Synergy tab loads this table from its build-team dataset.
 /// Each support row is [id, win %, delta, normalized delta, pick %, games].
-fn parse_lolalytics(root: &Value, adc_id: i64) -> Option<Vec<Duo>> {
+pub(super) fn parse_lolalytics(root: &Value, adc_id: i64) -> Option<Vec<Duo>> {
     let rows = root.get("team")?.get("support")?.as_array()?;
     let rows: Vec<Duo> = rows
         .iter()
@@ -266,7 +267,12 @@ async fn fetch_lolalytics(patch: &str, tier: &str) -> Option<DuoList> {
         async move {
             let _permit = super::data::keystone_fetches().acquire().await.ok()?;
             let body = client.page(format!("https://a1.lolalytics.com/mega/?ep=build-team&v=1&patch={patch}&c={slug}&lane=bottom&tier={}&queue=ranked&region=all", super::lolalytics::tier_slug(tier))).await.ok()?;
-            parse_lolalytics(&serde_json::from_str::<Value>(&body).ok()?, id)
+            let rows = serde_json::from_str::<Value>(&body).ok().and_then(|root| parse_lolalytics(&root, id));
+            match rows {
+                Some(_) => health::ok(Source::Lolalytics),
+                None => health::format_changed(Source::Lolalytics, "build-team synergy"),
+            }
+            rows
         }
     }).buffer_unordered(4).filter_map(|rows| async { rows }).collect::<Vec<_>>().await.into_iter().flatten().collect();
     (!duos.is_empty()).then_some(DuoList { duos })
