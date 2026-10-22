@@ -7,7 +7,7 @@ import { BrandIcon } from "../components/BrandIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import type { ChampionOption } from "../runes/types";
 import type { DashboardView, Game } from "./types";
-import { Dashboard, crestSlug, splitRiotId } from "./Dashboard";
+import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
 import { useInGame } from "./LiveGameData";
 import { LIVE_PAGE, enterLive, leaveLive, showInNav } from "./LiveGameModel";
@@ -213,12 +213,10 @@ function App() {
         {view?.stale && page === "Dashboard" && <Notice tone="warn">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</Notice>}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "Dashboard"
-          ? snapshot ? <Dashboard snapshot={snapshot} region={region} accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null}
-              cards={view?.cards ?? {}} phase={phase} busy={false} onOpenLive={() => go(LIVE_PAGE)}
-              onSwitch={switchTo}
+          ? snapshot ? <Dashboard snapshot={snapshot} stale={view?.stale} phase={phase} onOpenLive={() => go(LIVE_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { visitedMatches.current.set(game.id, game); go(`Match:${game.id}`); }} />
-            : loading ? <Skeleton label="Connecting to League Client" rows={6} height={76} />
+            : loading ? <DashboardSkeleton />
             : <EmptyState icon={<BrandIcon size={40} />} title="Sign in to League Client">Your recent Rift games and Solo/Duo rank appear here once League Client is open.</EmptyState>
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={selectedMatch.id} game={selectedMatch} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
