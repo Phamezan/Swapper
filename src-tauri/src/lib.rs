@@ -13,6 +13,7 @@ mod overlay;
 mod doctor;
 mod repair;
 mod riot;
+mod riot_icon;
 mod riot_client;
 mod runes;
 mod updater;
@@ -414,6 +415,13 @@ fn get_state(state: State<'_, AppState>) -> Result<AppView, String> {
         state.switch_guard.is_switching(),
         state.hotkey_active.load(Ordering::SeqCst),
     ))
+}
+
+/// The installed Riot Client's icon for the "Open Riot Client" button, or none.
+#[tauri::command]
+async fn riot_client_icon(state: State<'_, AppState>) -> Result<Option<riot_icon::IconPixels>, String> {
+    let path = riot::riot_path(&*state.config.lock().map_err(|e| e.to_string())?);
+    Ok(path.and_then(|path| riot_icon::icon(&path, 64)))
 }
 
 #[tauri::command]
@@ -1592,6 +1600,7 @@ pub fn run() {
             overlay::set_overlay_settings,
             get_state,
             open_riot,
+            riot_client_icon,
             begin_add,
             detect_account_identity,
             complete_add,

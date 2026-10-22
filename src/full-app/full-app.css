@@ -562,3 +562,5 @@ body { background: var(--ui-surface-0); }
 .fa-frame .full-app-embedded .remove-confirm span { font-size: var(--ui-label); }
 .fa-frame .full-app-embedded .remove-confirm button { height: 32px; padding: 0 12px; font-size: var(--ui-label); }
 .fa-frame .full-app-embedded .support-text { max-width: none; font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .primary-action.riot-launch[data-slot="button"] { border-color: #ff5a6e; background: linear-gradient(180deg, #f2213d, #d0001f); color: #fff; box-shadow: inset 0 1px rgb(255 255 255 / .28), 0 8px 22px -12px rgb(235 0 41 / .7); }
+.fa-frame .full-app-embedded .primary-action.riot-launch[data-slot="button"]:hover:not(:disabled) { background: linear-gradient(180deg, #ff3550, #e0002a); }

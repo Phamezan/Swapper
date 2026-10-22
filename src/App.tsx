@@ -23,6 +23,7 @@ import { isGamePhase, shopNoticeFrom } from "./runes/types";
 import { SettingsView } from "./settings/SettingsView";
 import { LiveGameCompact } from "./full-app/LiveGameCompact";
 import { PageHeader } from "./full-app/ui/PageHeader";
+import { RiotClientIcon } from "./riotIcon";
 import type { SettingsTab } from "./settings/SettingsView";
 import type { AccountCardsProps } from "./full-app/AccountCards";
 import "./App.css";
@@ -1029,10 +1030,10 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                 <span className="step-number">01</span>
                 <h2>Sign in to Riot Client</h2>
                 <p>Use the official Riot Client and turn on “Stay signed in”. Swapper never asks for your password. League does not need to be open.</p>
-                <Button className="primary-action" disabled={busy !== null} onClick={() => action("launch", async () => {
+                <Button className="primary-action riot-launch" disabled={busy !== null} onClick={() => action("launch", async () => {
                   return data.accounts.length > 0 ? invoke<AppState>("begin_add") : invoke<void>("open_riot");
                 }, () => setAddStage("identify"))}>
-                  {busy === "launch" ? <LoaderCircle className="spin" size={16} /> : <ArrowRight size={16} />}
+                  {busy === "launch" ? <LoaderCircle className="spin" size={16} /> : <RiotClientIcon />}
                   {data.accounts.length > 0 ? "Sign in to another account" : "Open Riot Client"}
                 </Button>
                 <button className="text-action" onClick={() => setAddStage("identify")}>Already signed in? Detect account</button>

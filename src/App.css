@@ -302,3 +302,8 @@ button[data-slot="button"].add-inline:hover { border-color: var(--line-strong); 
 .remote-discovery-help { width: 100%; color: var(--text-secondary); font-size: 12px; }
 .remote-discovery-help summary { cursor: pointer; padding: 4px 0; }
 .remote-discovery-help p { max-width: none; margin-top: 6px; text-align: left; overflow-wrap: anywhere; }
+
+/* The button that opens Riot Client wears Riot's red; its icon is read from the installed client. */
+.primary-action.riot-launch { background: linear-gradient(180deg, #f2213d, #d0001f); border: 1px solid #ff5a6e; color: #fff; box-shadow: inset 0 1px rgb(255 255 255 / .28), 0 8px 22px -12px rgb(235 0 41 / .7); }
+.primary-action.riot-launch:hover:not(:disabled) { background: linear-gradient(180deg, #ff3550, #e0002a); }
+.riot-client-icon { width: 18px; height: 18px; border-radius: 4px; flex: none; }
