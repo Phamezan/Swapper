@@ -125,6 +125,9 @@ pub struct Snapshot {
     pub fetched_at: i64,
     pub games: Vec<Game>,
     pub summaries: BTreeMap<String, Summary>,
+    /// Recorded Solo/Duo rank points, oldest first; empty for older caches.
+    #[serde(default)]
+    pub lp_history: Vec<super::lp::Point>,
 }
 
 pub fn summoner(value: &Value) -> Option<Summoner> {

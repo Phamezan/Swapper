@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
-import { placementLabel, teamTotals, percent } from './MatchDetailModel.ts';
+import { barWidth, placementLabel, scoreTone, teamAverageDamage, teamTotals, percent } from './MatchDetailModel.ts';
 
 test('placement labels include MVP, losing-team ACE and correct ordinals', () => {
   assert.equal(placementLabel(1, true, true), 'MVP');
@@ -20,4 +20,11 @@ test('ratios guard missing and zero team totals', () => {
   assert.equal(percent(null, 10), null);
   assert.equal(percent(3, 10), 30);
   assert.equal(percent(12, 10), 100);
+});
+test('score tone, team damage average and bar width never invent values', () => {
+  assert.deepEqual([null, 86, 70, 69, 45, 44].map(scoreTone), ['none', 'high', 'high', 'mid', 'mid', 'low']);
+  assert.equal(teamAverageDamage([10, 20, 30, 40, 50].map(damage => ({ damage }))), 30);
+  assert.equal(teamAverageDamage([10, 20, 30, 40].map(damage => ({ damage }))), null);
+  assert.equal(teamAverageDamage([10, 20, 30, 40, null].map(damage => ({ damage }))), null);
+  assert.deepEqual([barWidth(50, 200), barWidth(null, 200), barWidth(5, 0), barWidth(300, 200)], [25, 0, 0, 100]);
 });

@@ -1,6 +1,7 @@
 // Pure Dashboard logic: queue default, the five comparison tiles and the
 // insight lines. Kept free of React so node:test can cover it.
-import type { Bench, Game, Player } from "./types";
+import { fmtCompact } from "./ui/format.ts";
+import type { Bench, Game, LpPoint, Player, Snapshot } from "./types";
 
 /** Fewer comparable games than this and a tile shows only the user's value. */
 export const MIN_COMPARED = 4;
@@ -148,4 +149,78 @@ export function tierLabel(tier: string | undefined) {
   const t = (tier ?? "").toUpperCase();
   if (["MASTER", "GRANDMASTER", "CHALLENGER"].includes(t)) return "Master+";
   return t && t !== "NONE" ? t.charAt(0) + t.slice(1).toLowerCase() : "all ranks";
+}
+
+export type Today = { games: number; wins: number; losses: number; lp: number | null; seconds: number; since: number | null };
+
+/** The session summary: every game since local midnight, any queue. LP is the
+ *  sum of the changes Swapper could attribute (null when none was recorded). */
+export function today(games: Game[], now: number): Today {
+  const midnight = new Date(now).setHours(0, 0, 0, 0);
+  const played = games.filter(g => g.createdAt >= midnight);
+  const known = played.filter(g => g.lpChange != null);
+  return {
+    games: played.length, wins: played.filter(g => g.win).length, losses: played.filter(g => !g.win).length,
+    lp: known.length ? sum(known.map(g => g.lpChange!)) : null,
+    seconds: sum(played.map(g => g.duration)),
+    since: played.length ? Math.min(...played.map(g => g.createdAt)) : null,
+  };
+}
+
+/** 1h 52m, or 48m under an hour. */
+export function playTime(seconds: number) {
+  const minutes = Math.round(seconds / 60);
+  return minutes >= 60 ? `${Math.floor(minutes / 60)}h ${String(minutes % 60).padStart(2, "0")}m` : `${minutes}m`;
+}
+
+const LADDER = ["IRON", "BRONZE", "SILVER", "GOLD", "PLATINUM", "EMERALD", "DIAMOND"];
+const DIVISIONS = ["IV", "III", "II", "I"];
+const title = (tier: string) => tier.charAt(0) + tier.slice(1).toLowerCase();
+
+/** Ladder position in LP, mirroring `score` in lp.rs: 100 per division, apex tiers share the top base. */
+export function ladderScore(rank: Pick<LpPoint, "tier" | "division" | "lp">) {
+  const tier = LADDER.indexOf(rank.tier);
+  const division = Math.max(0, DIVISIONS.indexOf(rank.division));
+  return (tier < 0 ? LADDER.length * 400 : tier * 400 + division * 100) + rank.lp;
+}
+
+export type Progress = { lp: number; next: string | null; toNext: number | null };
+/** LP bar to the next division. Apex tiers have no division to climb to.
+ *  shortcut: Diamond I reads "Master" with a 100 LP bar, the real cut-off moves daily. */
+export function rankProgress(rank: NonNullable<Snapshot["rank"]>): Progress {
+  const tier = LADDER.indexOf(rank.tier);
+  if (tier < 0) return { lp: rank.lp, next: null, toNext: null };
+  const division = DIVISIONS.indexOf(rank.division);
+  const next = division < 3 ? `${title(rank.tier)} ${DIVISIONS[division + 1]}`
+    : tier < LADDER.length - 1 ? `${title(LADDER[tier + 1])} IV` : "Master";
+  return { lp: rank.lp, next, toNext: Math.max(0, 100 - rank.lp) };
+}
+
+export type LpTrend = { scores: number[]; games: number };
+const TREND_POINTS = 20;
+/** The recent LP line; null below two points, where there is nothing to draw. */
+export function lpTrend(points: LpPoint[] | undefined): LpTrend | null {
+  const recent = (points ?? []).slice(-TREND_POINTS);
+  if (recent.length < 2) return null;
+  const [first, last] = [recent[0], recent[recent.length - 1]];
+  return { scores: recent.map(ladderScore), games: last.wins + last.losses - first.wins - first.losses };
+}
+
+/** SVG polyline points for `scores` in a width x height box, with `pad` px inside. */
+export function sparkline(scores: number[], width: number, height: number, pad = 3) {
+  const [low, high] = [Math.min(...scores), Math.max(...scores)];
+  const span = high - low || 1;
+  return scores.map((value, i) =>
+    `${(pad + i * (width - 2 * pad) / (scores.length - 1)).toFixed(1)},${(height - pad - (value - low) / span * (height - 2 * pad)).toFixed(1)}`).join(" ");
+}
+
+/** How a tile compares with its reference: points for percentages, percent otherwise. */
+export function deltaText(tile: Tile) {
+  const versus = tile.versus;
+  if (!versus) return null;
+  const sign = versus.delta >= 0 ? "+" : "−";
+  const reference = versus.value >= 1000 ? fmtCompact(versus.value) : formatStat(versus.value, tile.digits, tile.unit);
+  if (tile.unit === "%") return `${sign}${Math.abs(Math.round(versus.delta))} pts vs ${versus.label} ${reference}`;
+  if (!versus.value) return `vs ${versus.label} ${reference}`;
+  return `${sign}${Math.abs(Math.round(100 * versus.delta / versus.value))}% vs ${versus.label} ${reference}`;
 }

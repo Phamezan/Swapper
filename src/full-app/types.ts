@@ -29,7 +29,10 @@ export type Snapshot = {
   summoner: { riotId: string; level: number; icon: string | null };
   rank: { tier: string; division: string; lp: number; wins: number; losses: number } | null;
   fetchedAt: number; games: Game[]; summaries: Record<string, Summary>;
+  /** Solo/Duo rank points Swapper recorded, oldest first; absent in older caches. */
+  lpHistory?: LpPoint[];
 };
+export type LpPoint = { at: number; tier: string; division: string; lp: number; wins: number; losses: number };
 /** Last saved rank and recent record of a saved account (key: account id). */
 export type AccountCard = { rank: Snapshot["rank"]; wins: number; losses: number; lastPlayed: number; updatedAt: number };
 export type DashboardView = { snapshot: Snapshot | null; cards: Record<string, AccountCard>; stale: boolean; message: string | null };

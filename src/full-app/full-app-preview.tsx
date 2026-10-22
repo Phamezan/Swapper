@@ -44,12 +44,16 @@ function game(i: number) {
     metrics: [null, null, cs / ((1500 + i * 70) / 60)], items: [6692, 3053, 3071, 3047, 6333, 0, 3340], spells: [4, 12], keystone: 8010, cs, level: 16,
     role: "top", placement: win ? 1 + i % 3 : 5 + i % 4, lpChange: i % 5 === 4 ? null : win ? 21 : -18, players, opponent: 5 };
 }
-const games = Array.from({ length: 12 }, (_, i) => game(i));
+const params = new URLSearchParams(location.search);
+// --- uidash states: ?empty (no games at all), ?no-solo (only Normal games), ?stale (saved snapshot), ?slow (snapshot takes 6 s) ---
+const games = params.has("empty") ? [] : Array.from({ length: 12 }, (_, i) => game(i)).map(g => params.has("no-solo") ? { ...g, queue: "normal", lpChange: null } : g);
+const lpHistory = [[1, 2, 40, 70, 60], [1, 2, 62, 71, 60], [1, 2, 44, 71, 61], [1, 2, 71, 72, 61], [1, 1, 20, 73, 61], [1, 1, 41, 74, 61], [1, 1, 23, 74, 62], [1, 2, 64, 75, 62]]
+  .map(([, , lp, wins, losses], i) => ({ at: now - (8 - i) * 36e5, tier: "EMERALD", division: "II", lp, wins, losses }));
 const summary = { metrics: [], roles: ROLES.map((role, i) => ({ role, wins: i === 0 ? 7 : i === 2 ? 1 : 0, games: i === 0 ? 10 : i === 2 ? 2 : 0 })),
   champions: [{ id: 266, wins: 5, losses: 1, kda: 4.12 }, { id: 122, wins: 1, losses: 2, kda: 2.05 }, { id: 875, wins: 0, losses: 2, kda: 1.4 }, { id: 24, wins: 1, losses: 0, kda: 5.5 }] };
 const snapshot = {
   championNames: names, summoner: { riotId: "Swapper Demo#EUW", level: 287, icon: `${DD}/${VERSION}/img/profileicon/5367.png` },
-  rank: { tier: "EMERALD", division: "II", lp: 64, wins: 88, losses: 71 }, fetchedAt: now - 120000, games,
+  rank: { tier: "EMERALD", division: "II", lp: 64, wins: 88, losses: 71 }, fetchedAt: now - (params.has("stale") ? 72e5 : 120000), games, lpHistory: params.has("empty") ? [] : lpHistory,
   summaries: { all: summary, solo: summary, flex: summary, normal: { ...summary, champions: [] } },
 };
 const account = (id: string, name: string, icon: number) => ({ id, name, riotId: `${name}#DEMO`, nickname: null, platform: "EUW1", region: "EUW", profileIconId: icon, iconDataUrl: `${DD}/${VERSION}/img/profileicon/${icon}.png` });
@@ -90,7 +94,9 @@ mockIPC(async (cmd, args) => {
   const a = (args ?? {}) as Record<string, any>;
   switch (cmd) {
     case "get_state": return state;
-    case "dashboard_snapshot": return { snapshot, cards, stale: false, message: null };
+    case "dashboard_snapshot":
+      if (params.has("slow")) await new Promise(resolve => setTimeout(resolve, 6000));
+      return { snapshot, cards, stale: params.has("stale"), message: params.has("stale") ? "League Client isn't running." : null };
     case "full_app_match_detail": {
       if (new URLSearchParams(location.search).has("detail-error")) throw new Error("Preview: match details unavailable");
       const match = games.find(g => g.id === a.gameId) ?? games[0];
