@@ -456,8 +456,9 @@ mod tests {
         let now = Instant::now();
         assert!(check_due(None, now), "the very first check is always due");
         assert!(!check_due(Some(now), now));
-        // A check ten minutes back is far inside the six-hour interval.
-        assert!(!check_due(Some(now - Duration::from_secs(10 * 60)), now));
+        // A check ten minutes back is far inside the six-hour interval. (Only add to `now`:
+        // `Instant` counts from boot on Windows, so subtracting panics right after startup.)
+        assert!(!check_due(Some(now), now + Duration::from_secs(10 * 60)));
         assert!(check_due(Some(now), now + CHECK_INTERVAL));
     }
 
