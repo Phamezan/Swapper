@@ -45,10 +45,7 @@ const LAN_LAST_SEEN_SAVE_INTERVAL: Duration = Duration::from_secs(60);
 const LAN_DEVICE_CONNECTED_WINDOW: Duration = Duration::from_secs(45);
 
 pub(super) fn paired_devices_path() -> Result<PathBuf, String> {
-    let root = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
-    Ok(PathBuf::from(root)
-        .join("Swapper")
-        .join("lan-paired-devices.bin"))
+    Ok(crate::vault::data_root()?.join("lan-paired-devices.bin"))
 }
 
 pub(super) fn load_paired_devices_at(path: &Path) -> Result<Vec<PairedLanDevice>, String> {

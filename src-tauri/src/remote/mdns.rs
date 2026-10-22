@@ -135,8 +135,7 @@ pub fn installation_id_from(raw: Option<&str>) -> String {
 }
 
 fn installation_id_path() -> Result<PathBuf, String> {
-    let root = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
-    Ok(PathBuf::from(root).join("Swapper").join("installation-id"))
+    Ok(crate::vault::data_root()?.join("installation-id"))
 }
 
 /// Loads the persisted installation id, creating and saving a new one the

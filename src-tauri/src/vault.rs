@@ -155,7 +155,12 @@ pub struct Snapshot {
     pub entries: Vec<Entry>,
 }
 
+/// Swapper's own data folder. `SWAPPER_DATA_DIR` overrides it so an isolated test build
+/// keeps its data apart while Riot paths still use the real `LOCALAPPDATA`.
 pub(crate) fn data_root() -> Result<PathBuf, String> {
+    if let Some(dir) = std::env::var_os("SWAPPER_DATA_DIR") {
+        return Ok(PathBuf::from(dir));
+    }
     let local = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
     Ok(PathBuf::from(local).join("Swapper"))
 }

@@ -140,10 +140,7 @@ struct OwnedRoute {
 }
 
 fn route_claim_path() -> Result<PathBuf, String> {
-    let root = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
-    Ok(PathBuf::from(root)
-        .join("Swapper")
-        .join("remote-route.json"))
+    Ok(crate::vault::data_root()?.join("remote-route.json"))
 }
 
 fn load_route_claim_at(path: &Path) -> Result<Option<OwnedRoute>, String> {

@@ -87,8 +87,7 @@ const MAX_FILE_BYTES: u64 = 512 * 1024;
 /// The on-disk path for a cacheable asset, or `None` when `name` may not be
 /// cached or `LOCALAPPDATA` is unavailable (the cache is then skipped).
 pub(crate) fn path(kind: Kind, name: &str) -> Option<PathBuf> {
-    let root = std::env::var_os("LOCALAPPDATA")?;
-    path_in(Path::new(&root), kind, name)
+    path_in(&crate::vault::data_root().ok()?, kind, name)
 }
 
 /// Builds the path under an explicit root. Split out so a test can pin the
@@ -96,8 +95,7 @@ pub(crate) fn path(kind: Kind, name: &str) -> Option<PathBuf> {
 fn path_in(root: &Path, kind: Kind, name: &str) -> Option<PathBuf> {
     let stem = kind.file_stem(name)?;
     Some(
-        root.join("Swapper")
-            .join("icons")
+        root.join("icons")
             .join(kind.folder())
             .join(format!("{stem}.{}", kind.extension())),
     )
@@ -188,7 +186,7 @@ mod tests {
         assert_eq!(traversing.file_name().unwrap(), "secret.png");
         assert_eq!(
             traversing.parent().unwrap(),
-            root.join("Swapper").join("icons").join("team")
+            root.join("icons").join("team")
         );
         assert_eq!(
             path_in(root, Kind::Team, "..\\..\\secret").unwrap().file_name().unwrap(),

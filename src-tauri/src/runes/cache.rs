@@ -31,10 +31,9 @@ const WRAPPER_LEN: usize = 14;
 /// The per-kind cache path under the Swapper data folder, or `None` when
 /// `LOCALAPPDATA` is unavailable (the cache then stays in memory only).
 pub fn cache_path(kind: DataKind) -> Option<PathBuf> {
-    let root = std::env::var_os("LOCALAPPDATA")?;
     Some(
-        PathBuf::from(root)
-            .join("Swapper")
+        crate::vault::data_root()
+            .ok()?
             .join("runes-cache")
             .join(format!("{}.json", kind.key())),
     )
