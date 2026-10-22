@@ -1,6 +1,8 @@
 # Swapper
 
-Swapper is a free Windows tray app for switching between saved Riot Client sign-ins. It uses the official Riot Client for sign-in and never asks for your password. In champion select it sets your runes, summoner spells and item build in one click, and its phone remote follows League's queue and champion select over your private local network or Tailscale.
+Swapper is a free Windows app for League of Legends. It switches between saved Riot Client sign-ins without asking for your password, and in champion select it sets your runes, summoner spells and item build in one click. The **Fullsized App** adds a stats dashboard, match details with graphs and a kill map, a tier list with builds and matchups, a live draft helper and player search. An optional in-game overlay and a phone remote round it off.
+
+Use it as a small tray flyout, as the Fullsized App, or both. The first launch asks which you prefer; **Settings → General → Run setup again** changes it later.
 
 ## Download
 
@@ -13,6 +15,21 @@ https://github.com/user-attachments/assets/0b5bcc1b-b6f0-492a-853b-2f47ef7b6417
 A 26-second tour of v0.4 (also as an [MP4 file](docs/media/swapper-v0.4.mp4)). The account names are samples.
 
 ## Features
+
+**Fullsized App**
+
+- **Dashboard**: your rank and LP progress, today's games, wins and LP, your form over the last games, KDA, CS, damage and kill participation compared with players at your rank, and your recent games. Saved stats stay readable when League Client is closed.
+- **Match details**: an overview with the facts that decided the game and a team comparison, a scoreboard with each player's rank, every loadout, a full stats table for all ten players, and graphs: the gold difference over time, both teams' objectives and kills on one time axis, and a kill map you can filter by player.
+- **Tier list & Builds**: the strongest champions per role and rank, and for each champion its runes, spells, skill order, item build, pro builds and matchups. Apply runes, spells and the item set to the client in one click. Hover an ability to see its cooldowns, costs and range.
+- **Matchups**: pick your champion and the enemy to see the win rate and the matchup build; your champion pool comes from your mastery.
+- **Champion select (Draft)**: a live view of both teams and bans with pick suggestions, your matchup and the recommended build. The window comes to the front when champion select starts.
+- **Search** (`Ctrl+K`): champions, pages and players. A player's page shows their rank and recent games, read from your League Client.
+- **Live game**: both teams with ranks while you are in a game.
+- Restart Riot Client on the current account from the account menu, for example when the client misbehaves. Turning **Launch through Deceive** on or off restarts the client so the change applies, and asks first in champion select.
+
+**In-game overlay**
+
+- Optional overlay with the gold difference (hold a key to show it), objective timers and a skill level-up reminder. It reads League's local game data and draws a separate window; it does not inject into or read the game's memory. Needs Borderless or Windowed mode.
 
 **Accounts**
 
@@ -85,6 +102,7 @@ Swapper reads the local Riot and League clients to identify a signed-in account 
 - The **Pro builds** tab reads [probuildstats](https://probuildstats.com) / [u.gg](https://u.gg) (same company) through their public, **unofficial** GraphQL endpoint for pros' solo-queue games (`src-tauri/src/runes/probuilds.rs`). Swapper sends at most one request per champion per champion select, cached, with a short timeout; the endpoint is undocumented and can change or be unavailable. Swapper is not affiliated with probuildstats or u.gg. No pro images are hotlinked; only names, teams and leagues are shown as text.
 - [Deceive v1.18.0](https://github.com/molenzwiebel/Deceive/releases/tag/v1.18.0) is bundled as an **unmodified, separate executable**. Deceive is GPL-3.0 licensed; its [license](src-tauri/resources/Deceive-LICENSE.txt) and [source information](src-tauri/resources/Deceive-SOURCE.txt) ship with Swapper. Swapper does not claim authorship of Deceive.
 - The optional **Korean font** uses the Korean Font mod by **SSI6**, fixed by **Frosted Fire**; its fonts belong to their owners, and Swapper does not claim authorship of the mod. The WAD overlay is built with League Toolkit's [ltk_fantome](https://crates.io/crates/ltk_fantome) and [ltk_overlay](https://crates.io/crates/ltk_overlay) crates (Apache-2.0) and applied by [LTK Manager](https://github.com/LeagueToolkit/ltk-manager)'s signed patcher. Swapper requires LTK Manager (Swapper can install it from Settings → General) and does not bundle the patcher.
+- Champion art, objective icons and the Summoner's Rift minimap come from League's own client assets, via the running League Client or [CommunityDragon](https://communitydragon.org) when it is closed, and are cached on disk. Swapper is not affiliated with CommunityDragon.
 - [Accshift](https://github.com/klNuno/accshift) was another reference for Riot session paths; it is not bundled.
 
 Swapper's own source code is licensed under the [MIT License](LICENSE). That license does not relicense Deceive, Riot-owned content, or other third-party software.
@@ -98,7 +116,7 @@ npm ci
 npm run tauri dev
 ```
 
-`npm run build` checks and bundles the frontend. See [docs/RELEASING.md](docs/RELEASING.md) for publishing a release. `cargo test --manifest-path src-tauri/Cargo.toml --locked` runs native tests. To make a Windows installer locally, run `npm run tauri -- build`; a release also needs a manual test with Riot Client and multiple accounts.
+`npm run build` checks and bundles the frontend. `node --test src/full-app/*.test.mjs src/onboarding/*.test.mjs` runs the frontend unit tests and `npm run test:e2e` runs the end-to-end checks against the preview pages with mocked data. `node tests/perf/scroll.mjs` measures scroll frame times. Set `SWAPPER_DATA_DIR` to keep a test build's own data out of `%LOCALAPPDATA%\Swapper`; Riot paths are unaffected. See [docs/RELEASING.md](docs/RELEASING.md) for publishing a release. `cargo test --manifest-path src-tauri/Cargo.toml --locked` runs native tests. To make a Windows installer locally, run `npm run tauri -- build`; a release also needs a manual test with Riot Client and multiple accounts.
 
 During `npm run tauri dev`, the phone page is proxied to the Vite dev server instead of being served from the bundled `dist/` assets, so it stays in step with the desktop UI on every reload. Release builds serve the bundled assets as usual.
 
