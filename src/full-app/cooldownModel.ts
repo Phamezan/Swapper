@@ -3,6 +3,7 @@ export type Ability = {
   key: string;
   name: string;
   iconPath: string | null;
+  description?: string;
   cooldowns: number[];
   costs: number[];
   ranges: number[];
@@ -12,7 +13,7 @@ export type Ability = {
 export type Summoner = { id: number; name: string; cooldown: number };
 export type Abilities = {
   championId: number;
-  passive: { name: string; iconPath: string | null };
+  passive: { name: string; iconPath: string | null; description?: string };
   spells: Ability[];
   summoners: Summoner[];
 };

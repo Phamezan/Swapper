@@ -47,6 +47,7 @@ pub struct Abilities {
 pub struct Passive {
     pub name: String,
     pub icon_path: Option<String>,
+    pub description: String,
 }
 
 /// One of Q/W/E/R. Every list holds one value per rank; `costs` and `ranges`
@@ -57,6 +58,8 @@ pub struct Ability {
     pub key: String,
     pub name: String,
     pub icon_path: Option<String>,
+    /// The game data's short plain description (markup stripped).
+    pub description: String,
     pub cooldowns: Vec<f64>,
     pub costs: Vec<f64>,
     pub ranges: Vec<f64>,
@@ -95,6 +98,28 @@ fn icon_path(value: &Value) -> Option<String> {
 /// Only plain game-data asset paths may be fetched from the LCU.
 fn valid_asset(path: &str) -> bool {
     path.starts_with("/lol-game-data/assets/") && !path.contains("..") && !path.contains('\\')
+}
+
+/// The game data's description as plain text: tags dropped (`<br>` becomes a space),
+/// whitespace collapsed, capped so a malformed file cannot flood a tooltip.
+fn plain(value: &Value) -> String {
+    const MAX_CHARS: usize = 400;
+    let raw = value.as_str().unwrap_or("").replace("<br>", " ");
+    let mut text = String::with_capacity(raw.len());
+    let mut in_tag = false;
+    for c in raw.chars() {
+        match c {
+            '<' => in_tag = true,
+            '>' if in_tag => in_tag = false,
+            _ if !in_tag => text.push(c),
+            _ => {}
+        }
+    }
+    let text = text.split_whitespace().collect::<Vec<_>>().join(" ");
+    match text.char_indices().nth(MAX_CHARS) {
+        Some((cut, _)) => format!("{}…", text[..cut].trim_end()),
+        None => text,
+    }
 }
 
 fn numbers(value: &Value, count: usize) -> Vec<f64> {
@@ -139,6 +164,7 @@ fn ability(champion_id: i64, key: &str, spell: &Value) -> Ability {
         key: key.to_string(),
         name: spell["name"].as_str().unwrap_or("").to_string(),
         icon_path: icon_path(spell),
+        description: plain(&spell["description"]),
         cooldowns: numbers(&spell["cooldownCoefficients"], count),
         costs,
         ranges,
@@ -169,6 +195,7 @@ pub fn parse(champion_id: i64, champion: &Value) -> Abilities {
                 .unwrap_or("")
                 .to_string(),
             icon_path: icon_path(&champion["passive"]),
+            description: plain(&champion["passive"]["description"]),
         },
         spells,
         summoners: Vec::new(),
@@ -243,6 +270,15 @@ pub async fn ability_icon(path: String) -> Result<String, String> {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn descriptions_are_plain_capped_text() {
+        let raw = serde_json::json!("After killing 9 minions, Ahri heals.<br>After a <b>takedown</b>   she heals more.");
+        assert_eq!(super::plain(&raw), "After killing 9 minions, Ahri heals. After a takedown she heals more.");
+        assert_eq!(super::plain(&serde_json::json!(null)), "");
+        let long = super::plain(&serde_json::json!("x ".repeat(500)));
+        assert!(long.chars().count() <= 401 && long.ends_with('…'));
+    }
+
     use super::*;
 
     /// Trimmed real payloads (Ahri, Jhin, Zed, Jayce, Akali, Aurelion Sol, Aatrox, Elise)

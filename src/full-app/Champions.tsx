@@ -1,3 +1,4 @@
+import { AbilityHover } from "./AbilityHover";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Star } from "lucide-react";
@@ -248,7 +249,7 @@ function ChampionHeader({ champion, lane, tier, patch, onBack, backLabel, childr
       <p className="fa-eyebrow"><RoleIcon role={lane} size={14} mode="desktop" /> {laneLabel(lane)} · {tierLabel(tier)}{patch ? ` · Patch ${patch}` : ""}</p>
       <h2>{champion.name}</h2>
       <p className="fa-hero-sub">Build, runes, counters</p>
-      {abilities.length > 0 && <div className="fa-hero-abilities">{abilities.map(ability => <span key={ability.key} title={ability.name}>{ability.icon && <img src={ability.icon} alt="" />}<kbd>{ability.key}</kbd></span>)}</div>}
+      {abilities.length > 0 && <div className="fa-hero-abilities">{abilities.map(ability => <AbilityHover key={ability.key} championId={champion.id} abilityKey={ability.key} icon={ability.icon}><span>{ability.icon && <img src={ability.icon} alt="" />}<kbd>{ability.key}</kbd></span></AbilityHover>)}</div>}
     </div></div>
     {children && <div className="fa-hero-filters">{children}</div>}
   </header>;

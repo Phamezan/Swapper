@@ -14,6 +14,7 @@ import type { ChampionBuild, ItemsImported, MatchupView, PresetBuildView, ProBui
 import { overviewSelection, spellLayout } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
 import { NearViewport } from "./NearViewport";
+import { AbilityHover } from "./AbilityHover";
 import { Picker } from "./Picker";
 import { mergeProPage, proVariant, type BuildVariant as Variant } from "./champ-select-pro";
 import { Slot } from "./ui/Slot";
@@ -178,7 +179,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom rune page" : "Rune page"}</h4>{custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{chosenSelection && [chosenSelection.keystone, ...chosenSelection.primaryRunes, ...chosenSelection.secondaryRunes, ...chosenSelection.shards].map((id, index) => <RuneIcon key={index} id={id} mode="desktop" />)}</div>}</div>
       <div className="fa-spell-area cs-skill-area"><div><h4>Summoner spells</h4><div className="fa-spells">{chosenSpells.map((id, index) => <span key={index}><SpellIcon id={id} mode="desktop" /><kbd>{index ? "F" : "D"}</kbd></span>)}</div></div>
         <div><h4>Skill order</h4>
-        {order.length ? <div className="fa-skill-priority" aria-label={`Max order ${order.join(", ")}`}>{order.map((key, index) => <span key={key}>{index > 0 && <ChevronRight size={14} />}<AbilityBadge ability={abilities.find(ability => ability.key === key)} skill={key} /></span>)}</div> : <p>Max order unavailable</p>}
+        {order.length ? <div className="fa-skill-priority" aria-label={`Max order ${order.join(", ")}`}>{order.map((key, index) => <span key={key}>{index > 0 && <ChevronRight size={14} />}<AbilityBadge championId={championId} ability={abilities.find(ability => ability.key === key)} skill={key} /></span>)}</div> : <p>Max order unavailable</p>}
         {chosen.order ? <SkillOrderGrid order={chosen.order} abilities={abilities} /> : <p>Level order unavailable</p>}</div>
       </div>
       {/* Items run in buy order as one full-width row. */}
@@ -194,8 +195,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   </div>;
 }
 
-function AbilityBadge({ ability, skill }: { ability?: Ability; skill: string }) {
-  return <span className="fa-ability" title={ability?.name ?? skill}>{ability?.icon && <img src={ability.icon} alt={ability.name} loading="lazy" />}<kbd>{skill}</kbd></span>;
+function AbilityBadge({ championId, ability, skill }: { championId: number; ability?: Ability; skill: string }) {
+  return <AbilityHover championId={championId} abilityKey={skill} icon={ability?.icon}><span className="fa-ability">{ability?.icon && <img src={ability.icon} alt={ability.name} loading="lazy" />}<kbd>{skill}</kbd></span></AbilityHover>;
 }
 
 function SkillOrderGrid({ order, abilities }: { order: string; abilities: Ability[] }) {
