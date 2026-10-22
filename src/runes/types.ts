@@ -587,3 +587,6 @@ export function selectShard(selection: Selection, rowIndex: number, runeId: numb
   shards[rowIndex] = runeId;
   return { ...selection, shards };
 }
+
+/** Shard ids repeat across rows (adaptive force, health), so a pick belongs to its row only. */
+export const shardChosen = (selection: Selection, rowIndex: number, runeId: number) => selection.shards[rowIndex] === runeId;

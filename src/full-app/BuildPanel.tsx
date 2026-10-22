@@ -9,7 +9,7 @@ import { TeamLogo } from "../runes/TeamLogo";
 import { SpellIcon } from "../runes/SpellIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
-import { fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard } from "../runes/types";
+import { fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen } from "../runes/types";
 import type { ChampionBuild, ItemsImported, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
 import { overviewSelection, spellLayout } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
@@ -216,7 +216,7 @@ export function RunePage({ catalog, selection, onChange }: { catalog: RuneCatalo
     return <div className="fa-rune-tree" key={id}>{onChange ? <Picker label={index ? "Secondary tree" : "Primary tree"} value={String(id)} options={catalog.trees.filter(tree => tree.id !== (index ? selection.primaryPageId : selection.secondaryPageId)).map(tree => ({ value: String(tree.id), label: tree.name }))} onChange={value => {
       const next = catalog.trees.find(tree => tree.id === Number(value))!;
       onChange(index ? { ...selection, secondaryPageId: next.id, secondaryRunes: next.rows.slice(0, 2).map(row => row.runes[0].id) } : { ...selection, primaryPageId: next.id, keystone: next.keystones[0].id, primaryRunes: next.rows.map(row => row.runes[0].id) });
-    }} /> : <strong>{tree.name}</strong>}{index === 0 && <RuneRowDisplay row={tree.keystones} selected={selected} onPick={onChange ? id => onChange({ ...selection, keystone: id }) : undefined} />}{tree.rows.map((row, rowIndex) => <RuneRowDisplay key={rowIndex} row={row.runes} selected={selected} onPick={onChange ? id => onChange(index ? toggleSecondary(selection, tree, id) : togglePrimary(selection, tree, id)) : undefined} />)}{index === 1 && <div className="fa-shards">{catalog.shards.map((row, index) => <RuneRowDisplay key={index} row={row.runes} selected={selection.shards} onPick={onChange ? id => onChange(selectShard(selection, index, id)) : undefined} />)}</div>}</div>;
+    }} /> : <strong>{tree.name}</strong>}{index === 0 && <RuneRowDisplay row={tree.keystones} selected={selected} onPick={onChange ? id => onChange({ ...selection, keystone: id }) : undefined} />}{tree.rows.map((row, rowIndex) => <RuneRowDisplay key={rowIndex} row={row.runes} selected={selected} onPick={onChange ? id => onChange(index ? toggleSecondary(selection, tree, id) : togglePrimary(selection, tree, id)) : undefined} />)}{index === 1 && <div className="fa-shards">{catalog.shards.map((row, index) => <RuneRowDisplay key={index} row={row.runes} selected={row.runes.filter(rune => shardChosen(selection, index, rune.id)).map(rune => rune.id)} onPick={onChange ? id => onChange(selectShard(selection, index, id)) : undefined} />)}</div>}</div>;
   })}</div>;
 }
 function RuneRowDisplay({ row, selected, onPick }: { row: RuneRow["runes"]; selected: number[]; onPick?: (id: number) => void }) {

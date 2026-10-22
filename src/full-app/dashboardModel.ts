@@ -11,6 +11,9 @@ const MIN_KP_GAP = 15;
 
 export const benchKey = (game: Game) => `${game.championId}|${game.role}`;
 
+/** Games newest first, whatever order the snapshot arrived in. */
+export const newestFirst = (games: Game[]) => [...games].sort((a, b) => b.createdAt - a.createdAt);
+
 export function defaultQueue(games: Game[]) {
   return games.filter(g => g.queue === "solo").length >= 5 ? "solo" : "all";
 }

@@ -185,7 +185,7 @@ function App() {
   };
   // Connected = the client reported who is signed in (not saved stats, not an error).
   const connected = Boolean(signedIn) && !error;
-  // The most played champion's splash is the ambient light behind every page.
+  // The most played champion's splash is the sidebar profile's backdrop only; the canvas has its own neutral ambient.
   const ambient = useChampionArt(snapshot?.summaries.all?.champions[0]?.id, "splash");
   const switchingAccount = switching ? accounts?.accounts.find(account => account.id === switching.id) : undefined;
   const switchTo = (id: string) => { setPickerOpen(false); setPage("app"); setRequest({ view: "accounts", switchId: id }); };
