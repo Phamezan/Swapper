@@ -30,3 +30,11 @@ test("mostPlayed ranks champions by games and keeps each one's main role", () =>
 test("mostPlayed falls back to auto when the role is unknown", () => {
   assert.equal(mostPlayed([{ championId: 1, role: "" }])[0].role, "auto");
 });
+
+test('the champion pool puts recent picks first, then mastery by last played, without duplicates', async () => {
+  const { championPool } = await import('./championsModel.ts');
+  const recent = [{ championId: 1, role: 'top' }];
+  const mastery = [{ championId: 2, lastPlayed: 5 }, { championId: 1, lastPlayed: 9 }, { championId: 3, lastPlayed: 7 }];
+  assert.deepEqual(championPool(recent, mastery), [{ championId: 1, role: 'top' }, { championId: 3, role: 'auto' }, { championId: 2, role: 'auto' }]);
+  assert.equal(championPool(recent, mastery, 2).length, 2);
+});

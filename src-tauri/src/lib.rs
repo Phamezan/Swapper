@@ -300,6 +300,7 @@ pub fn run() {
                 full_app::abilities::champion_abilities,
                 full_app::abilities::ability_icon,
                 full_app::ui_data::full_app_matchups,
+                full_app::ui_data::full_app_champion_pool,
                 overlay::get_overlay_settings,
                 overlay::set_overlay_settings,
                 commands::settings::get_state,

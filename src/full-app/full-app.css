@@ -574,3 +574,6 @@ body { background: var(--ui-surface-0); }
 .fa-frame .fa-rune-page .fa-rune-row > button { box-sizing: border-box; width: var(--rune); height: var(--rune); }
 .fa-frame .fa-rune-page .fa-rune-row img, .fa-frame .fa-rune-page .fa-rune-row .rune-icon-fallback { width: 100%; height: 100%; }
 .fa-frame .fa-rune-page .fa-rune-row > button > * { display: block; width: 100%; height: 100%; }
+/* The rank grid's options set their own background, so they need their own hover and selected states. */
+.fa-picker-popover.is-grid .fa-picker-option:hover:not(:disabled) { background: rgb(255 255 255 / .1); border-color: var(--ui-line-3); }
+.fa-picker-popover.is-grid .fa-picker-option[aria-pressed="true"] { background: var(--ui-brand-tint); border-color: var(--ui-brand-line); }

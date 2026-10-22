@@ -41,3 +41,11 @@ export function mostPlayed(games: { championId: number; role: string }[], limit 
     .slice(0, limit)
     .map(pick => ({ ...pick, role: (ROLES as readonly string[]).includes(pick.role) ? pick.role : "auto" }));
 }
+
+/** The champion pool for quick picks: champions from recent games first (they carry the role played), then the rest of
+ *  the top mastery champions, most recently played first, as "auto" (their main role is resolved on open). */
+export function championPool(recent: { championId: number; role: string }[], mastery: { championId: number; lastPlayed: number }[], limit = 10): { championId: number; role: string }[] {
+  const seen = new Set(recent.map(pick => pick.championId));
+  const rest = [...mastery].sort((a, b) => b.lastPlayed - a.lastPlayed).filter(pick => !seen.has(pick.championId)).map(pick => ({ championId: pick.championId, role: "auto" }));
+  return [...recent, ...rest].slice(0, limit);
+}

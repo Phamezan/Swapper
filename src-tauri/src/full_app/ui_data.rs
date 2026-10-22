@@ -285,3 +285,58 @@ mod tests {
         }
     }
 }
+
+/// One champion in the signed-in player's pool, from League Client's champion mastery (read-only).
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PoolChampion {
+    pub champion_id: i64,
+    pub points: i64,
+    /// Epoch ms of the last game on this champion (0 when unknown).
+    pub last_played: i64,
+}
+
+/// The most-played champions (by mastery points), at most `limit`. Empty when the client is closed.
+pub fn pool_from_mastery(value: &Value, limit: usize) -> Vec<PoolChampion> {
+    let mut pool: Vec<PoolChampion> = value
+        .as_array()
+        .into_iter()
+        .flatten()
+        .filter_map(|entry| {
+            Some(PoolChampion {
+                champion_id: entry["championId"].as_i64().filter(|id| *id > 0)?,
+                points: entry["championPoints"].as_i64().unwrap_or(0),
+                last_played: entry["lastPlayTime"].as_i64().unwrap_or(0),
+            })
+        })
+        .collect();
+    pool.sort_by(|a, b| b.points.cmp(&a.points));
+    pool.truncate(limit);
+    pool
+}
+
+#[tauri::command]
+pub async fn full_app_champion_pool() -> Result<Vec<PoolChampion>, String> {
+    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
+    let mastery: Value = crate::runes::lcu_get(&client, "/lol-champion-mastery/v1/local-player/champion-mastery")
+        .await
+        .map_err(|e| e.to_string())?;
+    Ok(pool_from_mastery(&mastery, 12))
+}
+
+#[cfg(test)]
+mod pool_tests {
+    #[test]
+    fn pool_is_top_mastery_with_last_played() {
+        let value = serde_json::json!([
+            {"championId": 266, "championPoints": 900, "lastPlayTime": 5},
+            {"championId": 103, "championPoints": 5000, "lastPlayTime": 9},
+            {"championId": 0, "championPoints": 99999},
+            {"championId": 86, "championPoints": 10}
+        ]);
+        let pool = super::pool_from_mastery(&value, 2);
+        assert_eq!(pool.iter().map(|c| c.champion_id).collect::<Vec<_>>(), vec![103, 266]);
+        assert_eq!(pool[0].last_played, 9);
+        assert!(super::pool_from_mastery(&serde_json::json!({}), 5).is_empty());
+    }
+}

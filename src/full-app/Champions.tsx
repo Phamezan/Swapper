@@ -14,7 +14,7 @@ import { RoleIcon } from "../runes/RoleIcon";
 import { TIER_OPTIONS, fmtPct, tierClass } from "../runes/types";
 import type { ChampionOption, ChampionOverviewView, ChampionCountersView, TierListView, TierRow, MatchupView } from "../runes/types";
 import { useChampionArt } from "./art";
-import { autoRows, mainRoles, mostPlayed, ROLES, type AutoRow } from "./championsModel";
+import { autoRows, championPool, mainRoles, mostPlayed, ROLES, type AutoRow } from "./championsModel";
 import type { DashboardView } from "./types";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
@@ -84,7 +84,11 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
   useEffect(() => {
     if (!matchups) return;
     let live = true;
-    void invoke<DashboardView>("dashboard_snapshot").then(view => { if (live) setRecent(mostPlayed(view.snapshot?.games ?? [], 6)); }).catch(() => {});
+    // Recent games give roles; League Client's mastery fills in the rest of the pool (empty while the client is closed).
+    void Promise.all([
+      invoke<DashboardView>("dashboard_snapshot").then(view => mostPlayed(view.snapshot?.games ?? [], 6)).catch(() => []),
+      invoke<{ championId: number; lastPlayed: number }[]>("full_app_champion_pool").catch(() => []),
+    ]).then(([recent, mastery]) => { if (live) setRecent(championPool(recent, mastery)); });
     return () => { live = false; };
   }, [matchups]);
   useEffect(() => {
@@ -183,7 +187,7 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
       <p>Choose your champion and an opponent.</p>
       {recent.length > 0 && <><h3>Your champions</h3><div className="fa-quick-picks">{recent.map(pick => {
         const champion = champions.find(c => c.id === pick.championId);
-        return champion && <button key={pick.championId} className="fa-quick-pick" onClick={() => { setLane(pick.role); void open(champion, pick.role); }}><NearViewport className="fa-featured-art"><ChampionArt id={pick.championId} name={champion.name} /></NearViewport><span><strong>{champion.name}</strong><small>{pick.role === "auto" ? "Most played" : `${laneLabel(pick.role)} lane`}</small></span></button>;
+        return champion && <button key={pick.championId} className="fa-quick-pick" onClick={() => { setLane(pick.role); void open(champion, pick.role); }}><NearViewport className="fa-featured-art"><ChampionArt id={pick.championId} name={champion.name} /></NearViewport><span><strong>{champion.name}</strong><small>{pick.role === "auto" ? "Your pool" : `${laneLabel(pick.role)} lane`}</small></span></button>;
       })}</div></>}
     </section> : <>
       {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map(row => <button className="fa-featured-pick" key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>Leading {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b></span></button>)}</div>}
