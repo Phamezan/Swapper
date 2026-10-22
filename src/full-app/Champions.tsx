@@ -179,7 +179,14 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
       </> : <Notice>No stats for this role and rank.</Notice>}
       <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} matchup={matchups ? detail : null} preferMatchup={matchups} />
       {counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
-      <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={setEnemy} />
+      <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={matchups ? setEnemy : id => {
+        // On a champion page a matchup card opens that champion's page, in the same lane; on Matchups it picks the opponent.
+        const champion = champions.find(c => c.id === id);
+        if (!champion) return;
+        setEnemy(0);
+        void open(champion, role);
+        document.querySelector(".dashboard-main")?.scrollTo({ top: 0, behavior: "smooth" });
+      }} />
       {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${fmtCount(detail.stats.games)} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
     </section>}
     {!selected && (matchups ? <section className="fa-matchup-empty">
