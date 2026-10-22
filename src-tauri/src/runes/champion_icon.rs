@@ -1,5 +1,5 @@
-//! Champion portraits from the League client's game data, for the Champion
-//! tab. Cached for the session; concurrent requests for one id share a fetch.
+//! Champion portraits from the League client's game data (or its offline
+//! copies, see [`super::game_data`]), for the Champion tab. Cached for the session; concurrent requests for one id share a fetch.
 
 use std::sync::OnceLock;
 
@@ -24,9 +24,8 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
     if let Some(bytes) = super::shared().champion_icons.get(&id) {
         return Ok(bytes.clone());
     }
-    let lcu = super::lcu().await?;
     let path = format!("/lol-game-data/assets/v1/champion-icons/{id}.png");
-    let bytes = super::lcu_get_bytes(&lcu, &path).await?;
+    let bytes = super::game_data::bytes(&path).await?;
     super::shared().champion_icons.insert(id, bytes.clone());
     Ok(bytes)
 }

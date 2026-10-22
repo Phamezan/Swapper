@@ -191,11 +191,9 @@ async fn load(champion_id: i64) -> Result<Abilities, String> {
     if let Some(found) = cache().get(&champion_id) {
         return Ok(found.clone());
     }
-    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
-    let champion: Value = crate::runes::lcu_get(
-        &client,
-        &format!("/lol-game-data/assets/v1/champions/{champion_id}.json"),
-    )
+    let champion: Value = crate::runes::game_data::json(&format!(
+        "/lol-game-data/assets/v1/champions/{champion_id}.json"
+    ))
     .await
     .map_err(|e| e.to_string())?;
     let parsed = parse(champion_id, &champion);
@@ -231,8 +229,7 @@ pub async fn ability_icon(path: String) -> Result<String, String> {
     if !valid_asset(&path) {
         return Err("Not a game-data icon.".into());
     }
-    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
-    let bytes = crate::runes::lcu_get_bytes(&client, &path)
+    let bytes = crate::runes::game_data::bytes(&path)
         .await
         .map_err(|e| e.to_string())?;
     if bytes.len() > MAX_ICON_BYTES || !bytes.starts_with(b"\x89PNG\r\n\x1a\n") {

@@ -22,6 +22,7 @@ pub mod counters;
 pub mod duos;
 pub mod counters_view;
 pub mod data;
+pub(crate) mod game_data;
 pub mod items;
 pub mod item_sets;
 pub mod lolalytics;
@@ -98,6 +99,9 @@ const MAX_ICON_BYTES: usize = 512 * 1024;
 /// How long a discovered LCU endpoint is trusted before it is re-discovered.
 /// A League restart is also picked up sooner by the retry in [`Lcu::send`].
 const LCU_ENDPOINT_TTL: Duration = Duration::from_secs(10);
+/// How long a failed discovery is trusted, so a burst of loads with League
+/// closed runs one process snapshot instead of one each.
+const LCU_MISS_TTL: Duration = Duration::from_secs(2);
 
 /// A failure that carries enough meaning for the HTTP layer to pick a status.
 #[derive(Debug, Clone)]
@@ -156,6 +160,7 @@ static LCU_CLIENT: OnceLock<Client> = OnceLock::new();
 /// The last discovered endpoint, valid for [`LCU_ENDPOINT_TTL`]. Discovery runs
 /// a Toolhelp process snapshot, so it must not happen on every request.
 static LCU_ENDPOINT: Mutex<Option<(Instant, LcuEndpoint)>> = Mutex::new(None);
+static LCU_MISS: Mutex<Option<Instant>> = Mutex::new(None);
 
 pub(crate) struct Lcu {
     client: Client,
@@ -201,11 +206,14 @@ fn invalidate_endpoint() {
 }
 
 async fn discover_endpoint() -> Result<LcuEndpoint, RuneError> {
-    tokio::task::spawn_blocking(lcu::discover)
-        .await
-        .ok()
-        .flatten()
-        .ok_or_else(|| RuneError::unavailable("League Client is not connected."))
+    let not_connected = || RuneError::unavailable("League Client is not connected.");
+    let miss = || LCU_MISS.lock().unwrap_or_else(|error| error.into_inner());
+    if miss().is_some_and(|at| at.elapsed() < LCU_MISS_TTL) {
+        return Err(not_connected());
+    }
+    let found = tokio::task::spawn_blocking(lcu::discover).await.ok().flatten();
+    *miss() = found.is_none().then(Instant::now);
+    found.ok_or_else(not_connected)
 }
 
 /// Resolves the shared client and a cached endpoint, discovering only when the
@@ -530,11 +538,9 @@ struct Shared {
     /// Team slugs the CDN 404'd on, so a missing logo is not refetched all
     /// session. An outage is not cached here.
     team_icon_misses: HashSet<String>,
-    /// The item catalog, its id-to-icon-path index and its id-to-name map, plus
-    /// the CommunityDragon mirror used when the LCU is unreachable.
+    /// The item catalog, its id-to-icon-path index and its id-to-name map.
     items: Option<(Instant, Arc<items::Catalog>)>,
     item_icons: HashMap<i64, Vec<u8>>,
-    item_fallback: Option<(Instant, Arc<items::Catalog>)>,
     /// The summoner-spell catalog and its icons.
     spells: Option<(Instant, Vec<spells::Spell>)>,
     spell_icons: HashMap<i64, Vec<u8>>,
@@ -568,7 +574,6 @@ fn shared() -> MutexGuard<'static, Shared> {
                 team_icons: HashMap::new(),
                 team_icon_misses: HashSet::new(),
                 items: None,
-                item_fallback: None,
                 item_icons: HashMap::new(),
                 spells: None,
                 spell_icons: HashMap::new(),

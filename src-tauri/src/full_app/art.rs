@@ -1,5 +1,5 @@
 //! Champion splash and tile art for the Fullsized App, read from the League
-//! client's game data and kept on disk (`%LOCALAPPDATA%\Swapper\art`), so the
+//! client's game data (CommunityDragon when it is closed) and kept on disk (`%LOCALAPPDATA%\Swapper\art`), so the
 //! CSP stays local-only and a restart without League still shows the art.
 use base64::Engine;
 use serde_json::Value;
@@ -72,13 +72,12 @@ static ART_FETCHES: tokio::sync::Semaphore = tokio::sync::Semaphore::const_new(4
 
 async fn fetch(id: i64, kind: Kind) -> Result<Vec<u8>, String> {
     let _permit = ART_FETCHES.acquire().await.map_err(|e| e.to_string())?;
-    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
     let champion: Value =
-        crate::runes::lcu_get(&client, &format!("/lol-game-data/assets/v1/champions/{id}.json"))
+        crate::runes::game_data::json(&format!("/lol-game-data/assets/v1/champions/{id}.json"))
             .await
             .map_err(|e| e.to_string())?;
     let path = base_skin_path(&champion, kind).ok_or("Champion art is unavailable.")?;
-    let bytes = crate::runes::lcu_get_bytes(&client, &path)
+    let bytes = crate::runes::game_data::fetch_bytes(&path)
         .await
         .map_err(|e| e.to_string())?;
     is_jpeg(&bytes)

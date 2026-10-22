@@ -1,14 +1,13 @@
 //! The League client's item catalog and item icons.
 //!
 //! The list comes from the client's own `/lol-game-data/assets/v1/items.json`;
-//! the icon for an item is the `iconPath` in that file, fetched through the same
-//! LCU proxy as the rune and spell icons. When the client is not reachable the
-//! CommunityDragon mirror of the same game data is used instead, so the phone
-//! page still gets item art.
+//! the icon for an item is the `iconPath` in that file. Both go through
+//! [`super::game_data`], so with the client closed they come from the disk copy
+//! or CommunityDragon; Data Dragon is the last resort for an icon.
 //!
 //! Only a numeric item id ever reaches this module: the icon route takes an
 //! `i64`, and every path built here starts from the client's own `iconPath`
-//! (`/lol-game-data/assets/...`) or the mirrored copy of it.
+//! (`/lol-game-data/assets/...`).
 
 use std::collections::HashMap;
 use std::sync::{Arc, OnceLock};
@@ -20,11 +19,6 @@ use super::RuneError;
 
 /// The client's game-data item file.
 const ITEMS_PATH: &str = "/lol-game-data/assets/v1/items.json";
-/// The CommunityDragon mirror of the client's game-data plugin. The client's
-/// `/lol-game-data/assets/` prefix maps to `.../rcp-be-lol-game-data/global/default/`.
-const CDRAGON_BASE: &str =
-    "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default";
-const CDRAGON_ITEMS: &str = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json";
 const LCU_ASSET_PREFIX: &str = "/lol-game-data/assets/";
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(4);
 
@@ -84,16 +78,6 @@ fn lcu_asset_path(icon_path: &str) -> Option<String> {
     Some(path.to_string())
 }
 
-/// The CommunityDragon URL mirroring an LCU asset path. CommunityDragon lower
-/// cases its paths, so `ASSETS/Items/Icons2D/...` becomes `assets/items/icons2d/...`.
-fn cdragon_asset_url(icon_path: &str) -> Option<String> {
-    let relative = icon_path.trim().strip_prefix(LCU_ASSET_PREFIX)?;
-    if relative.is_empty() || relative.contains("..") {
-        return None;
-    }
-    Some(format!("{CDRAGON_BASE}/{}", relative.to_ascii_lowercase()))
-}
-
 /// The item catalog, indexed for O(1) icon-path and name lookups so an icon
 /// request never clones the whole list to find one entry.
 #[derive(Default)]
@@ -145,8 +129,7 @@ pub async fn catalog() -> Result<Arc<Catalog>, RuneError> {
             return Ok(Arc::clone(catalog));
         }
     }
-    let lcu = super::lcu().await?;
-    let text = super::lcu_get_text(&lcu, ITEMS_PATH).await?;
+    let text = super::game_data::text(ITEMS_PATH).await?;
     let catalog = Arc::new(Catalog::build(parse(&text)?));
     super::shared().items = Some((Instant::now(), Arc::clone(&catalog)));
     Ok(catalog)
@@ -158,42 +141,6 @@ pub async fn names() -> Arc<HashMap<i64, String>> {
         Ok(catalog) => catalog.names(),
         Err(_) => Arc::new(HashMap::new()),
     }
-}
-
-/// The CommunityDragon mirror of the item file, cached, used only when the LCU
-/// is unreachable.
-async fn cdragon_catalog() -> Result<Arc<Catalog>, RuneError> {
-    if let Some((at, catalog)) = super::shared().item_fallback.as_ref() {
-        if at.elapsed() < super::CATALOG_TTL {
-            return Ok(Arc::clone(catalog));
-        }
-    }
-    let _guard = catalog_lock().lock().await;
-    if let Some((at, catalog)) = super::shared().item_fallback.as_ref() {
-        if at.elapsed() < super::CATALOG_TTL {
-            return Ok(Arc::clone(catalog));
-        }
-    }
-    let client = reqwest::Client::builder()
-        .connect_timeout(REQUEST_TIMEOUT)
-        .timeout(REQUEST_TIMEOUT)
-        .build()
-        .map_err(|_| RuneError::unavailable("Could not create the item client."))?;
-    let response = client
-        .get(CDRAGON_ITEMS)
-        .send()
-        .await
-        .map_err(|_| RuneError::unavailable("Could not load item data."))?;
-    if !response.status().is_success() {
-        return Err(RuneError::unavailable("Could not load item data."));
-    }
-    let body = response
-        .text()
-        .await
-        .map_err(|_| RuneError::unavailable("Could not load item data."))?;
-    let catalog = Arc::new(Catalog::build(parse(&body)?));
-    super::shared().item_fallback = Some((Instant::now(), Arc::clone(&catalog)));
-    Ok(catalog)
 }
 
 /// The PNG bytes for an item icon, cached in memory. Only a positive numeric id
@@ -215,16 +162,14 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
         Ok(catalog) => catalog.icon_path(id).map(str::to_string),
         Err(_) => None,
     };
-    let bytes = match path {
-        Some(path) => {
-            let lcu = super::lcu().await?;
-            super::lcu_get_bytes(&lcu, &path).await?
-        }
-        None => match from_cdragon(id).await {
-            Ok(bytes) => bytes,
-            // CommunityDragon's raw host has outages; Riot's own CDN covers them.
-            Err(_) => from_ddragon(id).await?,
-        },
+    let from_game_data = match path {
+        Some(path) => super::game_data::bytes(&path).await,
+        None => Err(RuneError::not_found("Unknown item.")),
+    };
+    let bytes = match from_game_data {
+        Ok(bytes) => bytes,
+        // CommunityDragon's raw host has outages; Riot's own CDN covers them.
+        Err(_) => from_ddragon(id).await?,
     };
     super::shared().item_icons.insert(id, bytes.clone());
     Ok(bytes)
@@ -261,35 +206,6 @@ async fn from_ddragon(id: i64) -> Result<Vec<u8>, RuneError> {
         .get(format!(
             "https://ddragon.leagueoflegends.com/cdn/{version}/img/item/{id}.png"
         ))
-        .send()
-        .await
-        .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
-    if !response.status().is_success() {
-        return Err(RuneError::not_found("That item icon is unavailable."));
-    }
-    let bytes = response
-        .bytes()
-        .await
-        .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
-    if bytes.is_empty() || bytes.len() > super::MAX_ICON_BYTES {
-        return Err(RuneError::not_found("That item icon is unavailable."));
-    }
-    Ok(bytes.to_vec())
-}
-
-async fn from_cdragon(id: i64) -> Result<Vec<u8>, RuneError> {
-    let catalog = cdragon_catalog().await?;
-    let path = catalog
-        .icon_path(id)
-        .ok_or_else(|| RuneError::not_found("Unknown item."))?;
-    let url = cdragon_asset_url(path).ok_or_else(|| RuneError::not_found("Unknown item."))?;
-    let client = reqwest::Client::builder()
-        .connect_timeout(REQUEST_TIMEOUT)
-        .timeout(REQUEST_TIMEOUT)
-        .build()
-        .map_err(|_| RuneError::unavailable("Could not create the item client."))?;
-    let response = client
-        .get(&url)
         .send()
         .await
         .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
@@ -352,18 +268,6 @@ mod tests {
         assert!(lcu_asset_path("https://example.com/evil.png").is_none());
         assert!(lcu_asset_path("/lol-game-data/assets/../secret").is_none());
         assert!(lcu_asset_path("").is_none());
-    }
-
-    #[test]
-    fn mirrors_an_asset_path_to_community_dragon_in_lower_case() {
-        assert_eq!(
-            cdragon_asset_url("/lol-game-data/assets/ASSETS/Items/Icons2D/1001_Class_T1_BootsofSpeed.png")
-                .as_deref(),
-            Some("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/1001_class_t1_bootsofspeed.png")
-        );
-        assert!(cdragon_asset_url("/somewhere/else/1001.png").is_none());
-        assert!(cdragon_asset_url("/lol-game-data/assets/../secret.png").is_none());
-        assert!(cdragon_asset_url("").is_none());
     }
 
     #[test]

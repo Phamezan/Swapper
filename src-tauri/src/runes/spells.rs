@@ -161,8 +161,7 @@ pub async fn catalog() -> Result<Vec<Spell>, RuneError> {
     if let Some(spells) = cached_spells() {
         return Ok(spells);
     }
-    let lcu = super::lcu().await?;
-    let text = super::lcu_get_text(&lcu, SPELLS_PATH).await?;
+    let text = super::game_data::text(SPELLS_PATH).await?;
     let spells = parse(&text)?;
     super::shared().spells = Some((Instant::now(), spells.clone()));
     Ok(spells)
@@ -212,8 +211,7 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
         .map(|spell| spell.icon_path.clone())
         .filter(|path| path.starts_with("/lol-game-data/assets/") && !path.contains(".."))
         .ok_or_else(|| RuneError::not_found("Unknown summoner spell."))?;
-    let lcu = super::lcu().await?;
-    let bytes = super::lcu_get_bytes(&lcu, &path).await?;
+    let bytes = super::game_data::bytes(&path).await?;
     super::shared().spell_icons.insert(id, bytes.clone());
     Ok(bytes)
 }

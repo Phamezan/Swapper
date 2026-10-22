@@ -136,9 +136,8 @@ pub async fn catalog() -> Result<perks::PerkCatalog, RuneError> {
     if let Some(catalog) = cached_catalog() {
         return Ok(catalog);
     }
-    let lcu = super::lcu().await?;
-    let perks_json = super::lcu_get_text(&lcu, PERKS_PATH).await?;
-    let styles_json = super::lcu_get_text(&lcu, PERKSTYLES_PATH).await?;
+    let perks_json = super::game_data::text(PERKS_PATH).await?;
+    let styles_json = super::game_data::text(PERKSTYLES_PATH).await?;
     let catalog = perks::PerkCatalog::new(
         perks::parse_perks(&perks_json)?,
         perks::parse_styles(&styles_json)?,
@@ -163,8 +162,7 @@ pub async fn champion_names() -> Result<HashMap<i64, String>, RuneError> {
     if let Some(names) = cached_champion_names() {
         return Ok(names);
     }
-    let lcu = super::lcu().await?;
-    let text = super::lcu_get_text(&lcu, CHAMPIONS_PATH).await?;
+    let text = super::game_data::text(CHAMPIONS_PATH).await?;
     let names = session::parse_champion_summary(&text)?;
     super::shared().names = Some((Instant::now(), names.clone()));
     Ok(names)
@@ -804,8 +802,7 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
     let path = catalog
         .asset_path(id)
         .ok_or_else(|| RuneError::not_found("Unknown rune."))?;
-    let lcu = super::lcu().await?;
-    let bytes = super::lcu_get_bytes(&lcu, &path).await?;
+    let bytes = super::game_data::bytes(&path).await?;
     super::shared().icons.insert(id, bytes.clone());
     Ok(bytes)
 }

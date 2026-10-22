@@ -196,11 +196,9 @@ pub async fn full_app_abilities(champion_id: i64) -> Result<Vec<Ability>, String
     if let Some(abilities) = cached {
         return Ok(abilities);
     }
-    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
-    let champion: Value = crate::runes::lcu_get(
-        &client,
-        &format!("/lol-game-data/assets/v1/champions/{champion_id}.json"),
-    )
+    let champion: Value = crate::runes::game_data::json(&format!(
+        "/lol-game-data/assets/v1/champions/{champion_id}.json"
+    ))
     .await
     .map_err(|e| e.to_string())?;
     let mut abilities = Vec::new();
@@ -212,7 +210,7 @@ pub async fn full_app_abilities(champion_id: i64) -> Result<Vec<Ability>, String
         .enumerate()
     {
         let icon = match ability_path(spell) {
-            Some(asset) => crate::runes::lcu_get_bytes(&client, asset)
+            Some(asset) => crate::runes::game_data::fetch_bytes(asset)
                 .await
                 .ok()
                 .filter(|bytes| {
