@@ -2,9 +2,10 @@
    neutral surfaces: green marks you, colour stays on data (ranks, win/loss,
    damage mix) and art. Team sides are a thin muted line, never a wash. */
 .lg { display: grid; gap: 16px; }
-.lg-bar .lg-queue { height: 22px; display: inline-flex; align-items: center; padding: 0 9px; border: 1px solid var(--fa-line-2); border-radius: 8px; background: var(--fa-panel); color: var(--text-secondary); font-size: 11.5px; font-weight: 600; }
+.lg-bar .lg-queue { height: 26px; display: inline-flex; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid rgb(197 227 158 / .4); border-radius: 8px; background: var(--ui-brand-tint); color: var(--ui-brand-strong); font-size: var(--ui-label); font-weight: 600; }
+.lg-bar .lg-queue::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ui-brand); box-shadow: 0 0 8px var(--ui-brand); }
 .lg-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.lg-bar small { color: var(--text-muted); font-size: 12px; }
+.lg-bar small { color: var(--text-muted); font-size: var(--ui-label); }
 .lg-clock { font-size: 15px; font-weight: 650; color: var(--text-primary); }
 
 .lg-team { --side: #7d8fa8; overflow: hidden; container-type: inline-size; border-radius: 12px; }
@@ -14,8 +15,10 @@
 .lg-team-kills { font-size: 15px; color: var(--side); }
 .lg-avg { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary); }
 .lg-avg small { font-weight: 450; }
-.lg-dmg { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; }
+.lg-dmg { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
 .lg-dmg i { width: 120px; height: 6px; border-radius: 99px; background: linear-gradient(90deg, #f0a35e 0 var(--ad), #8fa7ff var(--ad) 100%); }
+.lg-dmg small, .lg-avg small { font-size: 12px; }
+.lg-kda i, .lg-row strong i { font-size: 12px; }
 .lg-dmg small:first-child { color: #f0a35e; }
 .lg-dmg small:last-child { color: #8fa7ff; }
 
@@ -23,18 +26,18 @@
 .lg-cols, .lg-row { display: grid; grid-template-columns: 112px minmax(140px, 1.4fr) 168px 92px 120px 104px 60px minmax(190px, 1.2fr); align-items: center; gap: 10px; padding: 0 16px; }
 .lg-cols > span:first-child { grid-column: span 2; }
 .lg-cols > span:last-child { text-align: right; }
-.lg-cols { height: 30px; color: var(--text-muted); font-size: 10.5px; font-weight: 600; font-variant: all-small-caps; letter-spacing: .08em; }
+.lg-cols { height: 30px; color: var(--text-muted); font-size: 12px; font-weight: 600;  }
 :where(.dash-scope) .lg-row { width: 100%; min-height: 58px; border: 0; border-radius: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .12s; }
 :where(.dash-scope) .lg-row:hover { background: var(--fa-panel-2); }
 .lg-row.is-self { background: linear-gradient(90deg, color-mix(in srgb, var(--fa-you) 11%, transparent), color-mix(in srgb, var(--fa-you) 3%, transparent) 60%); box-shadow: inset 3px 0 0 var(--fa-you); }
 .lg-row.is-dead .lg-portrait img { filter: grayscale(1) brightness(.6); }
 .lg-row > span { min-width: 0; }
-.lg-row small { display: block; font-size: 11.5px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lg-row small { display: block; font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lg-row strong { font-size: 13px; font-weight: 620; white-space: nowrap; }
 
 .lg-champ { display: flex; align-items: center; gap: 4px; }
 .lg-portrait { position: relative; flex: none; }
-.lg-portrait b { position: absolute; right: -4px; bottom: -4px; min-width: 18px; padding: 0 4px; border: 2px solid var(--fa-panel); border-radius: 99px; background: var(--fa-panel-2); font-size: 10px; line-height: 14px; text-align: center; }
+.lg-portrait b { position: absolute; right: -4px; bottom: -4px; min-width: 18px; padding: 0 4px; border: 2px solid var(--fa-panel); border-radius: 99px; background: var(--fa-panel-2); font-size: 12px; line-height: 14px; text-align: center; }
 .lg-stack { display: grid; gap: 3px; }
 .lg-stack img, .lg-stack > span { width: 18px; height: 18px; border-radius: 4px; display: block; background: var(--fa-panel-2); }
 .lg-runes img, .lg-runes > span { border-radius: 50%; background: rgb(0 0 0 / .35); }
@@ -42,9 +45,9 @@
 
 .lg-name strong { display: flex; align-items: baseline; overflow: hidden; }
 .lg-name .riot-name { overflow: hidden; text-overflow: ellipsis; }
-.lg-you { margin-left: 7px; padding: 0 6px; border-radius: 5px; background: color-mix(in srgb, var(--fa-you) 18%, transparent); color: var(--fa-you); font-size: 10.5px; font-style: normal; font-weight: 650; }
+.lg-you { margin-left: 7px; padding: 0 6px; border-radius: 5px; background: color-mix(in srgb, var(--fa-you) 18%, transparent); color: var(--fa-you); font-size: 12px; font-style: normal; font-weight: 650; }
 .lg-badges { display: flex; gap: 4px; margin-top: 3px; overflow: hidden; }
-.lg-badge { flex: none; padding: 1px 6px; border-radius: 5px; background: var(--fa-panel-2); color: var(--text-secondary); font-size: 10.5px; font-weight: 600; white-space: nowrap; }
+.lg-badge { flex: none; padding: 1px 6px; border-radius: 5px; background: var(--fa-panel-2); color: var(--text-secondary); font-size: 12px; font-weight: 600; white-space: nowrap; }
 .lg-badge.is-streak-win { background: color-mix(in srgb, var(--fa-win) 16%, transparent); color: var(--fa-win); }
 .lg-badge.is-streak-loss { background: color-mix(in srgb, var(--fa-loss) 16%, transparent); color: var(--fa-loss); }
 .lg-badge.is-new-champ, .lg-badge.is-off-role { background: color-mix(in srgb, #f0c060 16%, transparent); color: #f0c060; }
@@ -57,9 +60,9 @@
 .lg-kda { display: grid; text-align: right; }
 .lg-kda i { font-style: normal; color: var(--text-muted); font-weight: 400; }
 .lg-kda em { font-style: normal; color: var(--fa-loss); }
-.lg-items { display: flex; gap: 2px; }
-.lg-items img, .lg-items > span { width: 22px; height: 22px; border-radius: 5px; display: block; background: var(--fa-panel-2); }
-.lg-items .is-trinket { margin-left: 3px; border-radius: 50%; }
+/* Items: one row, six slots and the trinket, always seven frames so rows line up (shared Slot). */
+.lg-items { --slot: 26px; display: flex; gap: 3px; }
+.lg-items .is-trinket { margin-left: 4px; }
 
 .lg-skel, .lg-skel-bar { color: var(--text-muted); }
 .lg-skel-bar { display: block; width: 110px; height: 10px; border-radius: 99px; background: var(--fa-panel-2); }
@@ -70,7 +73,7 @@
 @container (max-width: 1120px) {
   .lg-cols, .lg-row { grid-template-columns: 112px minmax(120px, 1.2fr) 170px 116px 96px 58px minmax(184px, 1fr); }
   .lg-flex { display: none !important; }
-  .lg-items img, .lg-items > span { width: 20px; height: 20px; }
+  .lg-items { --slot: 22px; }
 }
 @container (max-width: 900px) {
   .lg-cols, .lg-row { grid-template-columns: 112px minmax(120px, 1.4fr) 150px 116px 96px minmax(64px, auto); }
@@ -90,12 +93,12 @@
 .lg-rank-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .lg-rank-card { position: relative; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--fa-line); border-radius: 12px; background: var(--fa-panel-2); overflow: hidden; }
 .lg-rank-card strong { display: block; font-size: 14px; }
-.lg-rank-card p { margin: 2px 0 0; font-size: 11.5px; }
+.lg-rank-card p { margin: 2px 0 0; font-size: 12px; }
 .lg-rank-card > i { position: absolute; left: 0; bottom: 0; height: 3px; width: var(--rate); background: var(--fa-win); }
 .lg-rank-card.is-unranked { opacity: .7; }
 .lg-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 0; margin-bottom: 0; }
 .lg-facts div { padding: 9px 10px; border-radius: 10px; background: var(--fa-panel-2); }
-.lg-facts dt { color: var(--text-muted); font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lg-facts dt { color: var(--text-muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lg-facts dd { margin: 3px 0 0; display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 650; }
 .lg-badge-list { margin-top: 0; margin-bottom: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 12px; color: var(--text-secondary); }
 .lg-badge-list li { display: flex; align-items: center; gap: 8px; }
@@ -105,7 +108,7 @@
 .lg-recent li.is-loss { box-shadow: inset 3px 0 0 var(--fa-loss); }
 .lg-recent .champion-icon, .lg-recent .champion-icon-fallback { width: 32px; height: 32px; border-radius: 8px; }
 .lg-recent strong { display: block; font-size: 12.5px; }
-.lg-recent small { display: block; font-size: 11px; color: var(--text-muted); }
+.lg-recent small { display: block; font-size: 12px; color: var(--text-muted); }
 .lg-recent i { font-style: normal; color: var(--text-muted); }
 .lg-recent em { font-style: normal; color: var(--fa-loss); }
 .lg-recent li.is-win > span:nth-child(2) strong { color: var(--fa-win); }

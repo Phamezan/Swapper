@@ -5,10 +5,9 @@ import { listen } from "@tauri-apps/api/event";
 import { BarChart3, Crosshair, LayoutDashboard, Radio, Settings, Swords, Users } from "lucide-react";
 import { BrandIcon } from "../components/BrandIcon";
 import { CachedBadge } from "../runes/CachedBadge";
-import { RankCrest } from "../runes/RankCrest";
 import type { ChampionOption } from "../runes/types";
 import type { DashboardView, Game } from "./types";
-import { Dashboard, crestSlug, splitRiotId, titleCase } from "./Dashboard";
+import { Dashboard, crestSlug, splitRiotId } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
 import { useInGame } from "./LiveGameData";
 import { LIVE_PAGE, enterLive, leaveLive, showInNav } from "./LiveGameModel";
@@ -20,6 +19,8 @@ import { AccountCards } from "./AccountCards";
 import { SettingsPage } from "./SettingsPage";
 import { ChampionSelect } from "./ChampionSelect";
 import { PageHeader } from "./ui/PageHeader";
+import { AccountPicker, Podium, SwitchOverlay, type PodiumIdentity } from "./ui/Podium";
+import { useChampionArt } from "./art";
 import { EmptyState, Notice, Skeleton } from "./ui/States";
 
 const Champions = lazy(() => import("./Champions"));
@@ -38,8 +39,6 @@ const groups: { label: string; items: [Location, typeof LayoutDashboard][] }[] =
   { label: "Swapper", items: [["Accounts", Users], ["Settings", Settings]] },
 ];
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
-// Apex tiers have no division and no 100 LP ceiling, so no progress bar.
-const apexTiers = new Set(["MASTER", "GRANDMASTER", "CHALLENGER"]);
 
 function App() {
   const visitedMatches = useRef(new Map<number, Game>());
@@ -118,6 +117,9 @@ function App() {
   const [champions, setChampions] = useState<ChampionOption[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [pickerOpen, setPickerOpen] = useState(false);
+  // The switch flow reports no stages, only started / done / failed.
+  const [switching, setSwitching] = useState<{ id: string; name: string } | null>(null);
   const fetching = useRef(false);
   const mounted = useRef(false);
   const queued = useRef(false);
@@ -145,12 +147,18 @@ function App() {
     }) : Promise.resolve(() => {});
     // Tray menu destinations (Add Account, Settings, ...) are App views.
     const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => setPage(payload === "live" ? LIVE_PAGE : "app")) : Promise.resolve(() => {});
+    const switches = isTauri() ? Promise.all([
+      listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching(payload); }),
+      listen("switch_done", () => { setSwitching(null); void refresh(); }),
+      listen("switch_failed", () => setSwitching(null)),
+    ]) : Promise.resolve([]);
     if (isTauri()) void invoke<ChampionOption[]>("get_champion_list").then(list => { if (mounted.current) setChampions(list); }).catch(() => {});
     void refresh();
     return () => {
       mounted.current = false;
       window.removeEventListener("focus", focusRefresh);
       void navigate.then(unlisten => unlisten());
+      void switches.then(stops => stops.forEach(unlisten => unlisten()));
       void stop.then(unlisten => unlisten());
     };
   }, []);
@@ -160,33 +168,42 @@ function App() {
   const rank = snapshot?.rank;
   const matchId = page.startsWith("Match:") ? Number(page.slice(6)) : null;
   const selectedMatch = matchId == null ? null : visitedMatches.current.get(matchId) ?? snapshot?.games.find(game => game.id === matchId);
-  const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? "League Client");
-  const lpBar = rank && !apexTiers.has(rank.tier) ? Math.max(0, Math.min(100, rank.lp)) : null;
-  return <div className="fa-frame">
+  const activeAccount = accounts?.accounts.find(account => account.id === accounts.activeId);
+  const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? activeAccount?.riotId ?? "");
+  const who: PodiumIdentity = {
+    name: gameName || activeAccount?.name || "League Client", tag: tag.slice(1) || null,
+    icon: snapshot?.summoner.icon ?? activeAccount?.iconDataUrl ?? null, level: snapshot?.summoner.level ?? null,
+    region, rank: rank ?? null, unranked: Boolean(snapshot),
+  };
+  // Connected = the client reported who is signed in (not saved stats, not an error).
+  const connected = Boolean(signedIn) && !error;
+  const clientProblem = !loading && !connected && isTauri();
+  // The most played champion's splash is the ambient light behind every page.
+  const ambient = useChampionArt(snapshot?.summaries.all?.champions[0]?.id, "splash");
+  const switchingAccount = switching ? accounts?.accounts.find(account => account.id === switching.id) : undefined;
+  const switchTo = (id: string) => { setPickerOpen(false); setPage("app"); setRequest({ view: "accounts", switchId: id }); };
+  return <div className="fa-frame" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} />
     <div className="dashboard-shell">
       <aside className="sidebar dash-scope">
+        <Podium who={who} connected={connected} open={pickerOpen} onToggle={() => setPickerOpen(open => !open)} crest={rank ? crestSlug(rank.tier) : null} />
         <nav aria-label="Swapper pages">
-          {groups.map(group => <div className="nav-group" key={group.label}>
-            <p className="nav-label">{group.label}</p>
+          {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
             {group.items.filter(([label]) => showInNav(label, inGame)).map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}>
-              <Icon size={17} aria-hidden />{label}
+              <Icon size={19} aria-hidden />{label}
               {label === "Champion select" && inChampSelect && <span className="live-dot" title="Champion select is live" />}
               {label === LIVE_PAGE && <span className="live-dot" title="A game is running" />}
             </button>)}
           </div>)}
         </nav>
-        <button className="profile-card" onClick={() => go("Dashboard")} title="Open dashboard">
-          <span className="profile-avatar">{snapshot?.summoner.icon ? <img src={snapshot.summoner.icon} alt="" /> : <BrandIcon size={26} />}{snapshot && <b>{snapshot.summoner.level}</b>}</span>
-          <span className="profile-copy">
-            <strong><span className="riot-name">{gameName}</span><span className="riot-tag">{tag}</span></strong>
-            <small>{rank && <RankCrest tier={crestSlug(rank.tier)} size={16} mode="desktop" />}{rank ? `${titleCase(rank.tier)} ${rank.division} · ${rank.lp} LP` : snapshot ? "Unranked" : "Not signed in"}</small>
-            {lpBar != null && <span className="profile-lp" role="img" aria-label={`${rank!.lp} of 100 LP to the next division`}><i style={{ "--lp": `${lpBar}%` } as CSSProperties} /></span>}
-          </span>
-        </button>
+        {(switching || clientProblem) && <p className={`podium-status ${switching ? "is-busy" : "is-warn"}`} role="status"><i aria-hidden />
+          {switching ? `Switching to ${switching.name}…` : view?.stale ? "League Client isn't connected. Showing saved stats." : "Open League Client to see your stats."}</p>}
       </aside>
+      {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
+        onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} onAdd={() => { setPickerOpen(false); setPage("app"); setRequest({ view: "add" }); }} onClose={() => setPickerOpen(false)} />}
+      {switching && <SwitchOverlay account={switchingAccount} name={switching.name} />}
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
         {selectedMatch ? <PageHeader crumbs={[{ label: "Dashboard", onClick: () => go("Dashboard") }]}
@@ -198,10 +215,11 @@ function App() {
         {page === "Dashboard"
           ? snapshot ? <Dashboard snapshot={snapshot} region={region} accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null}
               cards={view?.cards ?? {}} phase={phase} busy={false} onOpenLive={() => go(LIVE_PAGE)}
-              onSwitch={id => { setPage("app"); setRequest({ view: "accounts", switchId: id }); }}
+              onSwitch={switchTo}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { visitedMatches.current.set(game.id, game); go(`Match:${game.id}`); }} />
-            : <EmptyState icon={<BrandIcon size={40} />} title={loading ? "Connecting to League Client…" : "Sign in to League Client"}>Your recent Rift games and Solo/Duo rank appear here once League Client is open.</EmptyState>
+            : loading ? <Skeleton label="Connecting to League Client" rows={6} height={76} />
+            : <EmptyState icon={<BrandIcon size={40} />} title="Sign in to League Client">Your recent Rift games and Solo/Duo rank appear here once League Client is open.</EmptyState>
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={selectedMatch.id} game={selectedMatch} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>

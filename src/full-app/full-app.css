@@ -70,39 +70,32 @@ body { background: var(--ui-surface-0); }
 .fa-frame .title-search:hover { border-color: var(--fa-line-3); background: rgb(255 255 255 / .07); }
 .fa-frame .title-icon:hover:not(:disabled), .fa-frame .window-buttons button:hover { background: var(--ui-press); }
 .fa-frame .window-buttons .window-close:hover { background: #c42b1c; }
-.fa-frame .sidebar { padding: 10px 12px 14px; background: var(--ui-chrome); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur); }
-.fa-frame .nav-label { padding-left: 12px; color: var(--text-muted); font-size: var(--ui-caption); font-weight: 650; letter-spacing: .12em; text-transform: uppercase; font-variant: normal; }
-.fa-frame .sidebar nav { gap: 20px; }
+.fa-frame .sidebar { background: var(--ui-chrome); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur); }
 .fa-frame .sidebar nav button { height: 40px; font-size: var(--fa-body); color: var(--text-secondary); border-radius: var(--fa-radius-sm); transition: background-color var(--ui-fast), color var(--ui-fast); }
 .fa-frame .sidebar nav button:hover { background: var(--ui-hover); color: var(--text-primary); }
 .fa-frame .sidebar nav button[aria-current="page"] { color: #fff; background: linear-gradient(90deg, rgb(197 227 158 / .16), rgb(197 227 158 / .03) 70%, transparent), rgb(255 255 255 / .03); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .16), var(--ui-inner-hi); }
 .fa-frame .sidebar nav button[aria-current="page"]::before { left: -12px; background: var(--ui-brand-gradient); box-shadow: 0 0 10px rgb(197 227 158 / .45); }
-.fa-frame .profile-card { padding: 11px; border-color: var(--fa-line-2) var(--fa-line) var(--fa-line); border-radius: var(--fa-radius); background: linear-gradient(180deg, rgb(255 255 255 / .06), rgb(255 255 255 / .02)); box-shadow: var(--ui-elev-1); transition: border-color var(--ui-fast), background-color var(--ui-fast); }
-.fa-frame .profile-card:hover { border-color: var(--fa-line-3); background-color: var(--ui-hover); }
-.fa-frame .profile-avatar b, .fa-frame .hero-avatar b { border-color: var(--fa-frame); background: var(--fa-raised); color: var(--text-primary); }
-/* Profile card: name and tag may wrap rather than truncate; LP bar under the rank. */
-.fa-frame .profile-copy { flex: 1; gap: 4px; }
-.fa-frame .profile-copy strong { display: flex; flex-wrap: wrap; column-gap: 1px; white-space: normal; font-size: 13.5px; line-height: 1.25; overflow-wrap: anywhere; }
-.fa-frame .profile-copy small { font-size: var(--ui-caption); }
-.fa-frame .profile-lp { display: block; height: 4px; border-radius: 99px; background: rgb(255 255 255 / .08); overflow: hidden; }
-.fa-frame .profile-lp > i { display: block; height: 100%; width: var(--lp); border-radius: inherit; background: var(--ui-brand-gradient); }
 
 /* The canvas: an inset sheet, slightly translucent over the frame, with its own
    faint top-left light. The background sits on the scroller itself, so it never repaints on scroll. */
 .fa-frame .dashboard-main, .fa-frame .full-app-embed {
   border-color: var(--fa-line-2) transparent transparent var(--fa-line-2);
-  background: radial-gradient(1100px 420px at 0% 0%, rgb(197 227 158 / .045), transparent 70%), linear-gradient(180deg, rgb(23 23 27 / .94), rgb(19 19 22 / .97) 320px);
+  /* Ambient art: the splash fills the top 340px; fades and a solid sheet below it keep it out of the content. */
+  background:
+    linear-gradient(90deg, rgb(19 19 22 / .96), rgb(19 19 22 / .55) 45%, transparent 85%) top / 100% 340px no-repeat,
+    linear-gradient(0deg, rgb(19 19 22), transparent 75%) top / 100% 340px no-repeat,
+    linear-gradient(rgb(19 19 22 / .38), rgb(19 19 22 / .38)) top / 100% 340px no-repeat,
+    linear-gradient(rgb(19 19 22), rgb(19 19 22)) 0 340px / 100% 100% no-repeat,
+    var(--ambient-art, none) center -50px / 100% auto no-repeat,
+    radial-gradient(1100px 420px at 0% 0%, rgb(197 227 158 / .045), transparent 70%), linear-gradient(180deg, rgb(23 23 27 / .94), rgb(19 19 22 / .97) 320px);
   box-shadow: inset 0 1px 0 var(--ui-highlight);
 }
 .fa-frame .full-app-embedded { background: transparent; }
+.dashboard-shell { position: relative; }
 .fa-frame .dashboard-main { padding: 22px clamp(22px, 2.6vw, 44px) 48px; scrollbar-color: var(--fa-line-2) transparent; }
 .fa-frame .full-app-embedded .main-panel { max-width: none; padding: 22px clamp(22px, 2.6vw, 44px) 24px; }
 /* The flyout pins its champion select in a fixed-height panel; the full app scrolls the page. */
 .fa-frame .full-app-embedded .main-panel.runes-panel-host { max-width: none; display: block; overflow-y: auto; }
-/* Status bar: quiet chrome, no debug look. */
-.fa-frame .full-app-embedded .footer { min-height: 30px; padding: 0 18px; background: transparent; border-top-color: var(--fa-line); color: var(--text-muted); font-size: var(--ui-caption); }
-.fa-frame .full-app-embedded .footer-status { max-width: 420px; }
-.fa-frame .full-app-embedded .footer-mode { font-size: var(--ui-caption); font-weight: 600; letter-spacing: .08em; color: var(--text-muted); }
 
 /* ---------- Type ---------- */
 .fa-frame .page-heading { margin-bottom: 26px; align-items: flex-end; }
@@ -116,7 +109,7 @@ body { background: var(--ui-surface-0); }
 .fa-frame .up { color: var(--fa-win); }
 .fa-frame .down { color: var(--fa-loss); }
 .fa-frame strong i, .fa-frame b i { font-style: normal; font-size: .58em; font-weight: 500; opacity: .62; margin-left: 1px; letter-spacing: 0; }
-.fa-eyebrow { display: flex; align-items: center; gap: 7px; font-size: var(--fa-label) !important; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary) !important; }
+.fa-eyebrow { display: flex; align-items: center; gap: 7px; font-size: var(--fa-label) !important; font-weight: 600; color: var(--text-secondary) !important; }
 .fa-frame .fa-data-note { color: var(--text-muted); font-size: 12px; }
 
 /* ---------- Controls ---------- */
@@ -128,10 +121,10 @@ body { background: var(--ui-surface-0); }
 .fa-frame button:not(:disabled):active { transform: translateY(1px); }
 .fa-frame button:disabled { cursor: not-allowed; }
 .fa-primary, .fa-secondary, .fa-picker, .fa-icon-button, .fa-text-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; font: inherit; white-space: nowrap; }
-.fa-frame .fa-primary { min-height: 40px; padding: 9px 18px; border: 1px solid #d8f0b9; border-radius: var(--fa-radius-sm); background: var(--ui-brand-gradient); color: #13230d; font-weight: 700; box-shadow: inset 0 1px rgb(255 255 255 / .5), 0 8px 20px -12px rgb(197 227 158 / .55); }
+.fa-frame .fa-primary { min-height: 40px; padding: 9px 18px; font-size: 12.5px; letter-spacing: .07em; text-transform: uppercase; border: 1px solid #d8f0b9; border-radius: var(--fa-radius-sm); background: var(--ui-brand-gradient); color: #13230d; font-weight: 750; box-shadow: inset 0 1px rgb(255 255 255 / .5), 0 8px 20px -12px rgb(197 227 158 / .55); }
 .fa-frame .fa-primary:hover:not(:disabled) { background: var(--ui-brand-gradient-hover); box-shadow: inset 0 1px rgb(255 255 255 / .55), 0 10px 24px -10px rgb(197 227 158 / .6); }
 .fa-frame .fa-primary:disabled { opacity: 1; background: var(--fa-panel-2); border-color: var(--fa-line-2); color: var(--text-muted); box-shadow: none; }
-.fa-frame .fa-secondary, .fa-frame .fa-picker { min-height: 40px; padding: 8px 14px; border: 1px solid; border-color: var(--fa-line-3) var(--fa-line-2) var(--fa-line-2); border-radius: var(--fa-radius-sm); background: linear-gradient(180deg, rgb(255 255 255 / .07), rgb(255 255 255 / .025)); color: var(--text-primary); font-weight: 600; box-shadow: var(--fa-shadow); }
+.fa-frame .fa-secondary, .fa-frame .fa-picker { min-height: 40px; padding: 8px 14px; border: 1px solid; border-color: var(--fa-line-3) var(--fa-line-2) var(--fa-line-2); border-radius: var(--fa-radius-sm); background: linear-gradient(180deg, rgb(255 255 255 / .07), rgb(255 255 255 / .025)); color: var(--text-primary); font-size: var(--ui-label); font-weight: 600; box-shadow: var(--fa-shadow); }
 .fa-frame .fa-secondary:hover:not(:disabled), .fa-frame .fa-picker:hover:not(:disabled), .fa-frame .fa-picker[data-state="open"] { border-color: var(--fa-line-3); background: linear-gradient(180deg, rgb(255 255 255 / .1), rgb(255 255 255 / .045)); }
 .fa-frame .fa-picker { padding-left: 10px; }
 .fa-frame .fa-picker > svg:last-child { color: var(--text-muted); }
@@ -154,7 +147,7 @@ body { background: var(--ui-surface-0); }
 .fa-picker-popover, .fa-account-menu, .palette-backdrop .palette, .ui-popover { border: 1px solid; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2); background: linear-gradient(180deg, rgb(255 255 255 / .05), transparent 120px), var(--ui-popover); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur); box-shadow: var(--ui-elev-3); color: var(--text-primary); }
 .fa-picker-popover { z-index: 60; width: 290px; padding: 10px; border-radius: var(--fa-radius); }
 .palette-backdrop { background: rgb(0 0 0 / .42); }
-.fa-picker-label { margin: 0; padding: 4px 6px 10px; color: var(--text-muted); font-size: var(--ui-caption); font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.fa-picker-label { margin: 0; padding: 4px 6px 10px; color: var(--text-muted); font-size: var(--ui-caption); font-weight: 600; }
 .fa-picker-options { max-height: 360px; overflow-y: auto; display: grid; gap: 4px; scrollbar-width: thin; scrollbar-color: var(--fa-line-2) transparent; }
 .fa-picker-option { position: relative; display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 6px 10px; border: 1px solid transparent; border-radius: var(--fa-radius-sm); background: transparent; color: var(--text-primary); font: inherit; font-size: 13.5px; text-align: left; cursor: pointer; }
 .fa-picker-option { transition: background-color var(--ui-fast) var(--ui-ease), border-color var(--ui-fast) var(--ui-ease); }
@@ -193,8 +186,7 @@ body { background: var(--ui-surface-0); }
 .fa-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
 .fa-section-heading p { margin-top: 4px; font-size: var(--fa-small); }
 .fa-actions { display: flex; align-items: center; gap: 10px; }
-.fa-notice { margin-bottom: 12px !important; padding: 10px 14px; border: 1px solid var(--ui-line-2); border-radius: var(--fa-radius-sm); background: rgb(255 255 255 / .035); color: var(--text-primary) !important; font-size: var(--ui-label); }
-.fa-frame .notice { border-color: var(--fa-line-2); background: rgb(255 255 255 / .035); }
+.fa-notice, .fa-frame .notice { --tone: var(--ui-info); margin-bottom: 12px !important; padding: 10px 14px; border: 1px solid var(--ui-line-2); border-left: 3px solid var(--tone); border-radius: var(--fa-radius-sm); background: linear-gradient(90deg, color-mix(in srgb, var(--tone) 9%, transparent), transparent 38%), var(--ui-card); box-shadow: var(--ui-elev-1); color: var(--text-primary); font-size: var(--ui-label); }
 .fa-frame .skeleton-row { background: linear-gradient(90deg, rgb(255 255 255 / .045), rgb(255 255 255 / .075) 50%, rgb(255 255 255 / .045)); }
 
 /* ---------- Dashboard ---------- */
@@ -373,7 +365,8 @@ body { background: var(--ui-surface-0); }
 /* ---------- Accounts (launcher) ---------- */
 .fa-accounts { display: grid; gap: 22px; }
 .fa-launcher-intro { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 4px 0 0; }
-.fa-launcher-intro > span { display: flex; align-items: center; gap: 8px; color: var(--fa-you); font-weight: 650; }
+.fa-launcher-intro > p { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--text-secondary); font-size: var(--fa-small); }
+.fa-launcher-intro > p > svg { color: var(--fa-you); }
 .fa-launcher-intro > small { margin-left: auto; font-size: var(--fa-small); }
 .fa-account-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; }
 .fa-account-card { position: relative; isolation: isolate; overflow: hidden; padding: 22px; }
@@ -382,7 +375,7 @@ body { background: var(--ui-surface-0); }
 .fa-account-card.is-active { border-color: rgb(197 227 158 / .55); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .25), var(--fa-shadow); }
 .fa-account-card.is-active::before { background: linear-gradient(180deg, var(--fa-you-tint), transparent); }
 .fa-account-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-.fa-account-state { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); background: rgb(11 11 13 / .45); color: var(--text-secondary); font-size: 11px; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+.fa-account-state { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); background: rgb(11 11 13 / .45); color: var(--text-secondary); font-size: var(--ui-label); font-weight: 550; }
 .fa-account-state.is-active { border-color: rgb(197 227 158 / .45); color: var(--fa-you); background: rgb(197 227 158 / .1); }
 .fa-account-identity { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
 .fa-account-identity img, .fa-account-initial { display: grid; place-items: center; width: 84px; height: 84px; flex: none; border: 2px solid var(--fa-line-3); border-radius: var(--fa-radius); background: linear-gradient(140deg, var(--fa-raised), var(--fa-panel)); font-size: 32px; font-weight: 750; box-shadow: 0 10px 24px -12px rgb(0 0 0 / .9); }
@@ -390,14 +383,15 @@ body { background: var(--ui-surface-0); }
 .fa-account-identity h2 { font-size: 24px; font-weight: 750; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .fa-account-identity p { margin-top: 4px; font-size: var(--fa-small); overflow-wrap: anywhere; }
 .fa-account-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; padding-top: 16px; border-top: 1px solid var(--fa-line); }
-.fa-account-meta span { display: grid; gap: 4px; color: var(--text-muted); font-size: 11px; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
-.fa-account-meta strong { color: var(--text-primary); font-size: 14px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.fa-account-meta span { display: grid; gap: 4px; color: var(--text-muted); font-size: var(--ui-label); }
+.fa-account-meta strong { color: var(--text-primary); font-size: var(--fa-body); font-weight: 600; }
 .fa-account-card > button { width: 100%; min-height: 44px; }
-.fa-frame .fa-add-account { min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 26px; border: 1px dashed var(--fa-line-3); border-radius: var(--fa-radius); background: radial-gradient(70% 60% at 50% 0%, rgb(197 227 158 / .08), transparent 70%), rgb(25 25 29 / .5); color: var(--text-secondary); }
-.fa-frame .fa-add-account svg { padding: 14px; width: 60px; height: 60px; border: 1px solid rgb(197 227 158 / .4); border-radius: var(--fa-radius); background: rgb(197 227 158 / .1); color: var(--fa-you); }
-.fa-frame .fa-add-account:hover:not(:disabled) { border-color: var(--fa-you); background: radial-gradient(70% 60% at 50% 0%, rgb(197 227 158 / .14), transparent 70%), rgb(25 25 29 / .7); }
-.fa-add-account strong { color: var(--text-primary); font-size: 18px; }
-.fa-add-account span { font-size: var(--fa-small); line-height: 1.6; text-align: center; }
+.fa-frame .fa-add-account { grid-column: 1 / -1; min-height: 0; display: flex; align-items: center; justify-content: flex-start; gap: 16px; padding: 18px 22px; border: 1px dashed var(--fa-line-3); border-radius: var(--fa-radius); background: rgb(255 255 255 / .02); color: inherit; text-align: left; cursor: pointer; }
+.fa-frame .fa-add-account svg { flex: none; width: 42px; height: 42px; padding: 10px; border: 1px solid rgb(197 227 158 / .4); border-radius: var(--fa-radius-sm); background: var(--ui-brand-tint); color: var(--fa-you); }
+.fa-frame .fa-add-account:hover:not(:disabled) { border-color: var(--fa-you); background: var(--ui-brand-tint); }
+.fa-add-copy { display: grid; gap: 3px; }
+.fa-add-account strong { color: var(--text-primary); font-size: var(--fa-body); font-weight: 650; }
+.fa-add-account span { font-size: var(--fa-small); line-height: 1.5; }
 .fa-account-menu { z-index: 60; min-width: 236px; padding: 6px; border-radius: 12px; font-size: 13.5px; }
 .fa-account-menu [role="menuitem"] { padding: 10px 12px; border-radius: 8px; outline: 0; cursor: pointer; }
 .fa-account-menu [data-highlighted] { background: rgb(255 255 255 / .14); outline: 0 !important; }
@@ -429,8 +423,8 @@ body { background: var(--ui-surface-0); }
 .fa-overlay-card { overflow: hidden; border: 1px solid var(--fa-line); border-radius: var(--fa-radius); background: var(--fa-card-bg); box-shadow: var(--fa-shadow); }
 .fa-overlay-preview { position: relative; height: 170px; overflow: hidden; border-bottom: 1px solid var(--fa-line); background: radial-gradient(circle at 1px 1px, rgb(255 255 255 / .12) 1px, transparent 0) 0 0 / 14px 14px, radial-gradient(circle at 50% 40%, #202025, #0b0b0d); }
 .fa-overlay-preview img { position: absolute; left: calc(50% - 640px); width: 1280px; height: 720px; max-width: none; }
-.fa-overlay-preview.is-gold img { top: -72px; } .fa-overlay-preview.is-objectives img { top: 60px; } .fa-overlay-preview.is-skills img { top: -550px; }
-.fa-overlay-preview small { position: absolute; right: 12px; bottom: 10px; padding: 2px 7px; border-radius: 5px; background: rgb(11 11 13 / .7); font-size: 9.5px; letter-spacing: .12em; }
+.fa-overlay-preview.is-gold img { top: -72px; } .fa-overlay-preview.is-objectives img { top: 60px; } 
+.fa-overlay-preview small { position: absolute; right: 12px; bottom: 10px; padding: 2px 7px; border-radius: 5px; background: rgb(11 11 13 / .7); font-size: var(--ui-caption); }
 .fa-overlay-copy { padding: 18px 20px 20px; }
 .fa-overlay-copy > div { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .fa-overlay-copy h3 { font-size: 16px; }
@@ -506,3 +500,63 @@ body { background: var(--ui-surface-0); }
 
 .fa-frame .fa-rune-row > button:not(:disabled) { cursor: pointer; }
 :where(.dash-scope) .fa-rune-hint { color: var(--text-muted); font-size: 11.5px; }
+
+/* ---------- Revision 3: banners and notices of the hosted flyout pages ----------
+   Same recipe as .ui-notice: neutral glass, tone in the left edge and the icon only. */
+.fa-frame .full-app-embedded :is(.error-banner, .reconnect-banner, .pairing-notice, .update-banner) { --tone: var(--ui-info); align-items: center; gap: 12px; margin: 0 0 14px; padding: 11px 14px; border: 1px solid var(--ui-line-2); border-left: 3px solid var(--tone); border-radius: var(--fa-radius-sm); background: linear-gradient(90deg, color-mix(in srgb, var(--tone) 9%, transparent), transparent 38%), var(--ui-card); box-shadow: var(--ui-elev-1); color: var(--text-secondary); font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .error-banner { --tone: var(--ui-error); color: var(--text-primary); }
+.fa-frame .full-app-embedded .reconnect-banner { --tone: var(--ui-warn); }
+.fa-frame .full-app-embedded :is(.error-banner, .reconnect-banner) > svg { color: var(--tone); }
+.fa-frame .full-app-embedded :is(.error-banner, .reconnect-banner) > button:not(.repair-banner-action) { color: var(--text-muted); }
+.fa-frame .full-app-embedded .reconnect-banner > span { color: var(--text-primary); font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .reconnect-banner-action { height: 30px; font-size: var(--ui-label); font-weight: 600; text-transform: none; letter-spacing: 0; }
+.fa-frame .full-app-embedded .detected-prompt { border-color: var(--ui-line-2); border-left: 3px solid var(--ui-brand); background: linear-gradient(90deg, var(--ui-brand-tint), transparent 38%), var(--ui-card); box-shadow: var(--ui-elev-1); }
+
+/* ---------- Revision 3: title bar chip, search palette ---------- */
+.fa-frame .title-brand { width: 190px; margin-left: -2px; padding: 5px 11px; border: 1px solid var(--ui-line-2); border-radius: 10px; background: var(--ui-card); box-shadow: var(--ui-inner-hi); font-size: 14.5px; }
+.fa-frame .title-search { font-size: var(--ui-label); }
+.fa-frame .title-search kbd, .palette kbd { font-size: var(--ui-caption); }
+.palette li { font-size: var(--ui-body); }
+.palette li small { font-size: var(--ui-caption); }
+.palette li[aria-selected="true"] { background: var(--ui-brand-tint); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .22); }
+.palette-page-dot { background: var(--ui-brand-tint) !important; box-shadow: inset 0 0 0 1px rgb(197 227 158 / .3); }
+
+/* Account cards: the switch button is a real action (bold uppercase); the rest of the card reads quietly. */
+.fa-frame .fa-switch { font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+.fa-frame .fa-switch:hover:not(:disabled) { border-color: var(--ui-brand-line); color: var(--ui-brand-strong); }
+.fa-frame .fa-switch:disabled { background: none; box-shadow: none; color: var(--text-muted); font-size: var(--ui-label); font-weight: 600; letter-spacing: 0; text-transform: none; }
+
+/* ---------- Revision 3: Settings (quiet tab list, sentence-case labels, readable rows) ---------- */
+.fa-settings-tabs { padding: 0; border: 0; background: none; box-shadow: none; }
+.fa-frame .fa-settings-tabs .settings-tab { min-height: 40px; font-size: var(--ui-body); font-weight: 500; letter-spacing: 0; text-transform: none; }
+.fa-frame .fa-settings-tabs .settings-tab[aria-selected="true"] { color: var(--ui-text-1); background: var(--ui-surface-3); border-color: var(--ui-line-2); box-shadow: inset 3px 0 var(--fa-you); font-weight: 600; }
+.fa-settings-heading h2 { font-size: var(--ui-title); }
+.fa-frame .field-label { margin: 0 0 8px; color: var(--text-secondary); font-size: var(--ui-label); font-weight: 600; letter-spacing: 0; text-transform: lowercase; }
+.fa-frame .field-label::first-letter { text-transform: uppercase; }
+.fa-frame .fa-settings-group :is(.setting-copy p, .field-hint, .detect-status, small) { font-size: var(--ui-label); }
+.fa-frame .fa-settings-group .segmented button { height: 30px; font-size: var(--ui-label); }
+.fa-skill-hint { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ---------- Revision 3: account sub-pages (add, manage, remove, repair) ----------
+   The flyout's stepper becomes one centered card; text meets the 13px floor and the real actions are bold uppercase. */
+.fa-frame .full-app-embedded :is(.add-flow, .manage-list) { width: min(560px, 100%); margin: 28px auto 0; }
+.fa-frame .full-app-embedded .add-flow { padding: 26px 28px 22px; border: 1px solid; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2); border-radius: var(--fa-radius); background: var(--ui-card-fill); box-shadow: var(--ui-elev-2); }
+.fa-frame .full-app-embedded .flow-progress-item { font-size: var(--ui-label); font-weight: 550; }
+.fa-frame .full-app-embedded .flow-progress-item.is-active { color: var(--ui-brand); }
+.fa-frame .full-app-embedded .add-stage h2 { font-size: var(--ui-title); }
+.fa-frame .full-app-embedded .add-stage p { max-width: none; font-size: var(--ui-body); }
+.fa-frame .full-app-embedded .step-number { width: 32px; height: 32px; border-color: rgb(197 227 158 / .4); border-radius: 9px; background: var(--ui-brand-tint); color: var(--ui-brand); font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .text-action { min-height: 34px; font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .detect-status { font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .identity-copy small { font-size: var(--ui-label); letter-spacing: 0; }
+.fa-frame .full-app-embedded .primary-action[data-slot="button"] { height: 44px; border: 1px solid #d8f0b9; background: var(--ui-brand-gradient); color: var(--ui-brand-ink); font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+.fa-frame .full-app-embedded .primary-action[data-slot="button"]:hover:not(:disabled) { background: var(--ui-brand-gradient-hover); }
+.fa-frame .full-app-embedded .manage-row { min-height: 64px; padding: 10px 14px; border: 1px solid var(--ui-line-2); border-radius: var(--fa-radius-sm); background: var(--ui-card); box-shadow: var(--ui-elev-1); }
+.fa-frame .full-app-embedded .manage-avatar { width: 40px; height: 40px; }
+.fa-frame .full-app-embedded .manage-copy strong { font-size: var(--ui-body); }
+.fa-frame .full-app-embedded .manage-copy small { font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .manage-row input { height: 38px; font-size: var(--ui-body); }
+.fa-frame .full-app-embedded .remove-confirm { gap: 8px; }
+.fa-frame .full-app-embedded .remove-confirm span { font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .remove-confirm button { height: 32px; padding: 0 12px; font-size: var(--ui-label); }
+.fa-frame .full-app-embedded .support-text { max-width: none; font-size: var(--ui-label); }

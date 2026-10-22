@@ -18,7 +18,7 @@ export function AccountCards(props: AccountCardsProps) {
   };
   return <div className="fa-accounts dash-scope">
     {notice && <Notice>{notice}</Notice>}
-    <div className="fa-launcher-intro"><span><ShieldCheck size={20} /> Saved sessions</span><p>Pick an account. Swapper takes care of the sign-in.</p><small>{props.accounts.length} saved · {props.activeId ? "1 active" : "No active session"}</small></div>
+    <div className="fa-launcher-intro"><p><ShieldCheck size={16} aria-hidden /> Saved sessions · Pick an account. Swapper takes care of the sign-in.</p><small>{props.accounts.length} saved · {props.activeId ? "1 active" : "No active session"}</small></div>
     <div className="fa-account-grid">{props.accounts.map(account => {
       const active = props.activeId === account.id;
       const switching = props.switchingId === account.id;
@@ -37,8 +37,8 @@ export function AccountCards(props: AccountCardsProps) {
         </div>
         <div className="fa-account-identity">{account.iconDataUrl ? <img src={account.iconDataUrl} alt="" loading="lazy" /> : <span className="fa-account-initial">{account.name[0]?.toUpperCase()}</span>}<span><h2>{account.name}</h2><p>{account.riotId ?? "Riot ID unavailable"}</p></span></div>
         <div className="fa-account-meta"><span>Region<strong>{account.region ?? account.platform ?? "Unknown"}</strong></span><span>Session<strong>{switching ? "Switching…" : active ? "In use" : "Saved securely"}</strong></span></div>
-        <button className={active ? "fa-secondary" : "fa-primary"} disabled={props.busy || active} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : active ? "Currently playing" : "Switch account"}{!active && <ArrowRight size={16} />}</button>
+        <button className="fa-secondary fa-switch" disabled={props.busy || active} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : active ? "Currently signed in" : "Switch account"}{!active && <ArrowRight size={16} aria-hidden />}</button>
       </article>;
-    })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><Plus size={30} /><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.<br />Keep your sessions ready here.</span></button></div>
+    })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><Plus size={22} aria-hidden /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client. Keep your sessions ready here.</span></span></button></div>
   </div>;
 }

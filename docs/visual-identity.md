@@ -1,178 +1,87 @@
-# Swapper — Visual Identity Brief
+# Swapper: visual identity
 
-## 1. Design Vision
+How the Fullsized App looks and why. Tokens: `src/theme.css` (`--ui-*`). Shared pieces: `src/full-app/ui/README.md`.
+The design direction came from the owner's wireframes (Wireframer, project `swapper-premium`); where a wireframe and the
+app's real behaviour disagree, the real behaviour wins and is restyled.
 
-Swapper should feel like a **premium desktop companion for League of Legends**, combining account management, champion tools, performance insights, and client utilities in one cohesive application.
+**One line:** a graphite League companion with one green accent, quiet type, and champion art for ambient colour.
 
-The visual identity should be recognizable without relying on League artwork or the Swapper logo.
+## 1. Principles
 
-**Core identity:** Modern, refined, responsive, game-adjacent.
+- **Graphite, not blue.** Neutral near-black surfaces in four layers (frame, canvas, card, raised). No blue, purple or neon ambient light.
+- **Swapper green `#c5e39e` is the brand and the action accent.** Primary actions, selection, focus, the active account, the LP bar. It is not a decoration and not a chart colour.
+- **Champion art supplies ambient colour.** The most played champion's splash fills the top of every page canvas, faded left and down so it never competes with content. Without art the page is still finished.
+- **Colour means something.** Win/loss, tiers, ranks and data keep their own colours; warnings, errors and info use the three alert tones below.
+- **Controlled density.** Hierarchy comes from size, alignment and spacing, not from putting every figure in its own card.
 
-**Design keywords:** Graphite, restrained, crisp, confident, cohesive, tactile.
+## 2. Type rules
 
-**Guiding principle:**
-> Swapper should combine the polish of a premium desktop application with the personality of a gaming companion, without becoming an overly decorative esports dashboard.
+1. **Bold uppercase is for real actions only** (Switch account, Open Riot Client, Save account, Apply all, Start League, Replace). It is 12.5px, weight 750, `.07em` tracking. Everything else is quiet sentence case: filters, tabs, dropdowns, section labels, secondary links, table headers. **No ALL-CAPS eyebrow labels.**
+2. **Readable floor.** 13–14px for useful supporting information, 12px only for genuinely secondary metadata (timestamps, counts, kbd hints). Nothing under 12px, including decorative separators.
+3. Outfit throughout. Page title 24px/750, section title 16px/650, body 14.5px, label 13px, caption 12px. Numbers use tabular figures.
 
-## 2. Visual Direction
+Tokens: `--ui-title 20`, `--ui-body 14.5`, `--ui-label 13`, `--ui-caption 12`.
 
-### Dark Graphite + Signature Green
+## 3. Surfaces and elevation
 
-Move away from the current blue/navy-dominant appearance toward a neutral, graphite-based interface.
+- **Frame** `--ui-surface-0` carries a faint brand-green light in its top-left corner. **Canvas** is an inset sheet over it. **Cards** (`--ui-card-fill`) are a few percent lighter at the top, with a brighter top hairline and a 1px inner highlight.
+- Elevation 1 cards, 2 raised cards and heroes, 3 popovers and menus. A card inside a card is a flat well, never a second shadow.
+- Radii 6/8/12/16 (`--ui-radius-*`). Lines `--ui-line-1..3`.
+- **Translucency, with limits.** Title bar, sidebar, account picker, menus, the Ctrl+K palette and tooltips are frosted (`--ui-chrome`, `--ui-popover`, `--ui-blur`). `backdrop-filter` is never used on anything that scrolls or repeats. No animated gradients; the only looping motion is the indeterminate bar of the switching card, which stops under `prefers-reduced-motion`. The window runs with `--disable-gpu`, so paint stays static.
 
-- **Background:** Near-black, neutral graphite.
-- **Elevated surfaces:** Slightly lighter charcoal.
-- **Borders:** Thin, low-contrast neutral gray.
-- **Primary accent:** Swapper's existing signature green.
-- **Typography:** Off-white primary text, neutral gray secondary text.
-- **Semantic colors:** Muted red, amber, and green where appropriate.
+## 4. Banners and alerts
 
-Green should function as a recognizable brand accent, not a decorative glow applied everywhere.
+Neutral glass surface (`--ui-card`), a 3px left edge in the tone, a faint glow from the left and an icon tile in the tone. **Never a tinted fill**: a low-alpha amber over graphite turns muddy brown.
 
-Avoid large blue gradients, cyan-tinted backgrounds, purple ambient lighting, or excessive neon effects. The only ambient light is a faint graphite glow with a hint of brand green in one corner (see §4a).
+| Tone | Colour | Token |
+|---|---|---|
+| Warning | `#ffbe55` | `--ui-warn` |
+| Error | `#ff7d76` | `--ui-error` |
+| Info | `#8fd0e6` | `--ui-info` |
 
-The interface should still feel premium when all artwork is temporarily removed.
+`Notice` (ui components) and the hosted flyout banners (`error-banner`, `reconnect-banner`, `pairing-notice`) share this recipe.
 
-## 3. Layout & Composition
+## 5. The shell
 
-Retain the established desktop application structure:
+- **Title bar:** brand chip, back/forward/refresh, search (`Ctrl+K`), window buttons. Translucent chrome.
+- **Sidebar:** the **profile podium** at the top (portrait with the region badge and a connection dot, name and tag, level, rank crest, LP bar, "Switch account"), then a flat navigation list. Groups are separated by a hairline and spacing, with no group captions. The active page has a green tint, a thin green border and a dot.
+- **No status footer.** The podium shows who is signed in. A **dot on the portrait** shows the client is connected (green) or not (amber). A **one-line sidebar status** appears only for a problem ("League Client isn't connected. Showing saved stats.", "Open League Client to see your stats.") or something in progress ("Switching to X…"), with an amber or green left edge.
+- **Account picker:** the podium opens a frosted popover with the saved accounts (rank and last played from the saved cards), a quiet Switch button on the others, "Manage accounts" and "Add account". Esc or an outside click closes it. It calls the same switch path as the Dashboard and Accounts page.
+- **Switching accounts:** the page dims and one card names the target account. The switch flow reports only started, done and failed, so the progress bar is honestly indeterminate.
+- **Ambient art** sits on the canvas background itself (static, so scrolling never repaints it).
 
-- Compact application title bar with navigation and search.
-- Persistent sidebar navigation.
-- Spacious main content region.
-- Modular cards and clearly defined content groups.
+## 6. Everyday states
 
-Aim for **controlled information density**: enough information to make the app useful, without feeling cluttered.
+Designed with the same care as the full pages:
 
-### Dashboard
+- **Loading:** `Skeleton` rows shaped like the content, static.
+- **Empty:** `EmptyState`, a dashed card with an icon, a title and what to do next.
+- **Client disconnected:** amber portrait dot plus the sidebar status line; stale pages keep their saved data and say so.
+- **Switching accounts:** the dimmed page and the switching card.
+- **Failed actions:** an error `Notice` or flyout banner with the reason and, where one exists, the action (Repair account).
 
-Keep performance statistics, ranked information, recent matches, and champion performance. These are legitimate parts of Swapper's expanded feature set.
+## 7. Pages
 
-However, avoid treating every piece of information as an equally important card.
+- **Accounts:** three-up cards (identity, region, session, the Switch account action); the active card has a green edge and a quiet disabled "Currently signed in". "Add another account" is a compact dashed row. The add, edit, remove and repair flows are a centered card with the same type rules.
+- **Settings:** a quiet tab list, then settings rows in a card. Overlay settings show widget previews; the **Skill level-up** preview is drawn as the game draws it: a graphite box with a green double chevron and three green diamonds above, not Q W E R keys.
+- **Live Game:** two team cards, one row per player; items are always six slots and the trinket as framed slots (empty slots are framed, not blank); the queue and clock sit in a green status chip.
+- **Items in match views:** one row, 6 slots + trinket, fixed slots, framed empty slots (`Slot`).
 
-Establish clear visual hierarchy through size, alignment, spacing, and typography.
+## 8. Motion
 
-### Account Management
+Quick and quiet: 120–180ms colour and border transitions, a 2px lift on clickable cards, no spectacle. Reduced motion removes lifts and the switching bar's movement.
 
-Make account identity and switching particularly recognizable through profile imagery, active session indicators, and prominent primary actions.
+## 9. What to avoid
 
-The current active account should be identifiable at a glance.
+- Blue or purple ambient light, neon glows, glass on scrolling content.
+- ALL-CAPS labels that are not actions; text under 12px.
+- Tinted alert fills.
+- Making the UI a League client skin or copying another stats app's identity.
+- New UI libraries for decoration, or animated gradients.
 
-### Champion Tools
+## 10. Where it lives
 
-Tier lists, builds, matchups, and champion select should share the same visual system as the dashboard and account management.
-
-Avoid introducing a separate visual theme for each feature.
-
-## 4. Component Language
-
-**Geometry**
-- Moderately rounded corners, approximately 8–12px.
-- Consistent radii and spacing throughout the application.
-- Clean rectangular surfaces rather than excessively pill-shaped components.
-
-**Cards**
-- Subtle surface separation and borders.
-- Three elevation levels (card, raised/hero, popover); shadows stay soft and layered.
-- No unnecessary nested containers; a card inside a card is a flat "well", never a second shadow.
-- Gradients follow §4a: soft top-light fills and hairlines, artwork scrims, brand green only on accents.
-
-**Typography**
-- Modern, highly legible sans-serif.
-- Strong contrast between headings, values, labels, and metadata.
-- Avoid decorative gaming fonts.
-- Numbers should be particularly easy to scan.
-
-**Translucency and gradients (§4a)**
-
-Subtle gradients and transparency are part of the premium feel, within these rules:
-
-- *Layered translucent chrome.* Title bar, sidebar, popovers, menus, the command palette and tooltips are frosted: a translucent fill (`--ui-chrome`, `--ui-popover`) with `backdrop-filter: var(--ui-blur)` (blur + saturate) over the frame's ambient backdrop.
-- *Ambient canvas.* The frame is graphite with a very soft brand-green light in the top-left corner; the page canvas is a slightly translucent inset sheet over it. No blue or purple ambient light.
-- *Cards.* Semi-transparent fill that is a few percent lighter at the top (`--ui-card-fill`), a 1px inner top highlight, a hairline brighter on top than at the sides and bottom, and a layered shadow per elevation (`--ui-elev-1..3`).
-- *Accents.* The brand-green gradient (`--ui-brand-gradient`) only on primary buttons, the active nav item and key highlights such as the LP bar.
-- *Performance.* `backdrop-filter` only on fixed chrome and transient popovers, never on list rows, cards inside scroll containers or anything repeated. Gradients are static; nothing animates a gradient or loops. The WebView runs with `--disable-gpu`, so this is a hard rule.
-
-Tokens live in `src/theme.css` (`--ui-*`); the shared components are listed in `src/full-app/ui/README.md`.
-
-**Icons**
-- Consistent line icon family.
-- Uniform stroke weights and sizing.
-- Reserve filled icons for intentional emphasis.
-
-**Artwork**
-- Champion splash art and profile icons provide personality.
-- Artwork should complement the interface, not define its entire aesthetic.
-- Apply consistent overlays to maintain readable foreground content.
-
-## 5. Color Hierarchy
-
-Follow these priorities:
-
-1. **Neutral surfaces:** Define the overall application environment.
-2. **Signature green:** Primary actions, selected navigation, focus, and brand-related emphasis.
-3. **Semantic colors:** Errors, warnings, readiness, and other meaningful application states.
-4. **Data visualization colors:** Distinguish data series and positive/negative trends independently of brand identity.
-
-Do not make every chart green simply because green is the brand color.
-
-Color must communicate meaning, not merely decoration.
-
-## 6. Motion & Interaction
-
-Swapper should feel quick and responsive.
-
-- Subtle hover and focus feedback.
-- Smooth navigation transitions.
-- Responsive account switching interactions.
-- Clear loading, pending, success, and error states.
-- Restrained transitions, generally around 120–250ms.
-
-Prioritize **interaction clarity over visual spectacle**.
-
-Avoid excessive glow, animated gradients, perpetual movement, or unnecessarily elaborate transitions.
-
-A successful interaction should feel deliberate and satisfying rather than flashy.
-
-## 7. What to Avoid
-
-- Generic dark-blue SaaS dashboard aesthetics.
-- Glassmorphism beyond §4a (frosted content cards, blur on anything that scrolls) and neon gaming effects.
-- Making the UI resemble a League of Legends client skin.
-- Copying DPM's visual identity directly.
-- Excessively dense grids of identical metric cards.
-- Gradients beyond §4a: no animated gradients, no colourful backgrounds, brand green only on accents.
-- Introducing additional UI libraries purely for visual decoration.
-- Reworking existing functionality or navigation without a clear usability benefit.
-
-## 8. Implementation Scope
-
-This is a **visual identity refinement**, not a full application redesign.
-
-Preserve existing features, information architecture, and functional behavior unless a specific change materially improves usability.
-
-Prioritize:
-
-1. Establishing cohesive design tokens for surfaces, typography, borders, spacing, and colors.
-2. Refining shared components such as cards, buttons, navigation, and controls.
-3. Applying the design system consistently to the current dashboard.
-4. Extending the same language across remaining application pages.
-5. Introducing subtle interaction polish where it provides meaningful feedback.
-
-Avoid unnecessary abstractions or complex animation systems.
-
-## 9. Success Criteria
-
-The visual refresh succeeds when:
-
-- Swapper no longer feels predominantly blue.
-- The application has a recognizable green-led identity.
-- Screens feel like parts of one cohesive product.
-- Dashboard information remains easy to scan.
-- Account management feels like a first-class feature.
-- Gaming artwork provides character without overwhelming the UI.
-- The result feels distinctive from DPM while retaining comparable polish.
-- The design remains maintainable and straightforward to implement.
-
-**Final design statement:**
-
-> Swapper is a refined, graphite-dark League companion with a distinctive green identity, deliberate information hierarchy, and responsive desktop interactions. It balances the utility of professional software with the personality of a gaming application.
+- Tokens and type scale: `src/theme.css`. Mappings from older names (`--fa-*`, shadcn): top of `src/full-app/full-app.css`.
+- Shell components: `src/full-app/ui/Podium.tsx` (podium, account picker, switching overlay) and `shell.css`.
+- Shared components: `PageHeader`, `Slot`, `Skeleton`, `EmptyState`, `Notice` in `src/full-app/ui/`.
+- The "Revision 3" blocks at the end of `full-app.css` restyle the hosted flyout pages (banners, settings, account sub-pages) without touching the flyout itself, whose look is unchanged.

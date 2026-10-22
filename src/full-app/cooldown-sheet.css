@@ -4,16 +4,16 @@
 .cd-sheet.is-empty small { color: var(--text-muted); font-size: 12px; }
 .cd-sheet header { display: flex; align-items: baseline; gap: 8px; }
 .cd-sheet h4 { margin: 0; font-size: 13px; color: var(--text-secondary); }
-.cd-sheet header small { color: var(--text-muted); font-size: 11px; }
+.cd-sheet header small { color: var(--text-muted); font-size: 12px; }
 .cd-sheet ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
 .cd-sheet li { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 5px 10px 5px 6px; border-radius: 9px; background: var(--fa-panel-2); }
 .cd-sheet li > span { min-width: 0; }
 .cd-sheet strong { display: block; font-size: 12.5px; font-weight: 620; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.cd-sheet li small { display: block; font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cd-sheet li small { display: block; font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cd-time { font-size: 12.5px; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--text-primary); white-space: nowrap; }
 .cd-icon { position: relative; width: 32px; height: 32px; }
 .cd-icon img, .cd-icon i { display: block; width: 32px; height: 32px; border-radius: 7px; background: var(--fa-raised); }
-.cd-icon kbd { position: absolute; right: -4px; bottom: -4px; min-width: 15px; padding: 0 3px; border: 2px solid var(--fa-panel-2); border-radius: 5px; background: var(--fa-panel); color: var(--text-secondary); font-size: 9.5px; font-weight: 650; line-height: 12px; text-align: center; }
+.cd-icon kbd { position: absolute; right: -4px; bottom: -4px; min-width: 15px; padding: 0 3px; border: 2px solid var(--fa-panel-2); border-radius: 5px; background: var(--fa-panel); color: var(--text-secondary); font-size: 12px; font-weight: 650; line-height: 12px; text-align: center; }
 .cd-summoners li { grid-template-columns: 24px minmax(0, 1fr) auto; padding: 4px 10px 4px 8px; }
 .cd-summoners img, .cd-summoners .spell-icon-fallback { display: block; width: 22px; height: 22px; border-radius: 5px; background: var(--fa-raised); }
 .cd-sheet.is-compact li { padding-top: 3px; padding-bottom: 3px; }

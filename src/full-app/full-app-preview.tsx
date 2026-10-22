@@ -26,6 +26,8 @@ const key = (id: number) => CHAMPIONS[id]?.[1] ?? "Aatrox";
 const names = Object.fromEntries(Object.entries(CHAMPIONS).map(([id, [name]]) => [id, name]));
 const now = Date.now();
 const live = new URLSearchParams(location.search).has("live");
+// --- uishell preview block: shell states (?disconnected, ?stale, ?empty-accounts, ?switching) ---
+const shellState = new URLSearchParams(location.search);
 
 const ROLES = ["top", "jungle", "mid", "adc", "support"];
 const ALLY = [266, 64, 103, 222, 412], ENEMY = [122, 11, 238, 81, 89];
@@ -89,8 +91,12 @@ mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
   switch (cmd) {
-    case "get_state": return state;
-    case "dashboard_snapshot": return { snapshot, cards, stale: false, message: null };
+    case "get_state": return shellState.has("empty-accounts") ? { ...state, accounts: [], activeId: null } : state;
+    // uishell preview states: ?disconnected (no client), ?stale (saved stats), ?empty-accounts handled in get_state above.
+    case "dashboard_snapshot":
+      if (shellState.has("loading")) await new Promise(resolve => setTimeout(resolve, 600000));
+      if (shellState.has("disconnected")) return { snapshot: null, cards, stale: false, message: null };
+      return { snapshot, cards, stale: shellState.has("stale"), message: shellState.has("stale") ? "League Client is not running." : null };
     case "full_app_match_detail": {
       if (new URLSearchParams(location.search).has("detail-error")) throw new Error("Preview: match details unavailable");
       const match = games.find(g => g.id === a.gameId) ?? games[0];
@@ -120,6 +126,16 @@ mockIPC(async (cmd, args) => {
     case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct], i) => ({ championId: id, name: CHAMPIONS[id][0], tier, winPct, pickPct: 9 - i * .5, banPct: 4 + i % 3, games: 24000 - i * 1200 })) };
     case "full_app_matchups": return { championId: a.championId, championName: CHAMPIONS[a.championId]?.[0] ?? "Aatrox", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null,
       beats: tiers.filter(([id]) => id !== a.championId).map(([id], i) => ({ championId: id, name: CHAMPIONS[id][0], winPct: 54 - i * .8, delta: 3.6 - i * .8, games: 3000 - i * 150, lowSample: i > 11 })) };
+    // --- uishell preview block: Settings pages ---
+    case "window_settings": return { fullApp: true, lowMemory: false };
+    case "live_game_auto_open": return true;
+    case "plugin:autostart|is_enabled": return true;
+    case "get_overlay_settings": return { enabled: true, gold: true, objectives: true, skills: true, goldHotkey: 9 };
+    case "set_overlay_settings": return a.settings;
+    case "list_paired_lan_devices": return [];
+    case "probe_remote": return state.remote;
+    case "begin_repair": return null;
+    case "doctor_report": return null;
     case "live_game_active": return live;
     case "live_game_view": case "live_game_live": return live ? liveView : null;
     default: throw new Error(`Not mocked: ${cmd}`);
@@ -128,4 +144,7 @@ mockIPC(async (cmd, args) => {
 mockWindows("full-app");
 (globalThis as { isTauri?: boolean }).isTauri = true;
 
-void import("./main");
+void import("./main").then(() => {
+  // ?switching: the switch flow only reports started/done/failed, so that is all the preview fakes.
+  if (shellState.has("switching")) setTimeout(() => void emit("switch_started", { id: "b", name: "Alt Account" }), 1200);
+});

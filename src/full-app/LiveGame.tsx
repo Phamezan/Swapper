@@ -1,6 +1,5 @@
 import { useState, type CSSProperties } from "react";
 import { ChampionIcon } from "../runes/ChampionIcon";
-import { ItemIcon } from "../runes/ItemIcon";
 import { RankCrest } from "../runes/RankCrest";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RuneIcon } from "../runes/RuneIcon";
@@ -9,6 +8,7 @@ import { BrandIcon } from "../components/BrandIcon";
 import { useLiveGame } from "./LiveGameData";
 import { clock, crestSlug, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary } from "./LiveGameModel";
 import { LiveGamePlayer } from "./LiveGamePlayer";
+import { Slot } from "./ui/Slot";
 import "./live-game.css";
 
 const roleNames: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
@@ -118,7 +118,7 @@ function Row({ player: p, onOpen }: { player: Player; onOpen: () => void }) {
       </span>
       <span className="lg-live">{p.live ? <>
         <span className="lg-kda"><strong>{p.live.kills} <i>/</i> <em>{p.live.deaths}</em> <i>/</i> {p.live.assists}</strong><small>{p.live.cs} CS</small></span>
-        <span className="lg-items">{p.live.items.map((id, i) => <ItemIcon key={i} id={id} mode="desktop" className={i === 6 ? "is-trinket" : undefined} />)}</span>
+        <span className="lg-items">{Array.from({ length: 7 }, (_, i) => <Slot key={i} kind="item" id={p.live!.items[i]} className={i === 6 ? "is-trinket" : undefined} />)}</span>
       </> : null}</span>
     </button>
   </li>;

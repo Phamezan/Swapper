@@ -3,7 +3,7 @@
 Shared pieces for every Fullsized App page. Tokens are `--ui-*` in `src/theme.css`;
 the older `--fa-*`, `--surface-*`, `--text-*`, `--tier-*` and shadcn names are aliases
 of them (top of `full-app.css`), so old code keeps working. New code reads `--ui-*`.
-Rules for translucency and gradients: `docs/visual-identity.md` §4a.
+Identity, type rules and banner recipe: `docs/visual-identity.md`.
 
 ## Components
 
@@ -14,6 +14,9 @@ Rules for translucency and gradients: `docs/visual-identity.md` §4a.
 | `Skeleton` | `States.tsx` | `label` (screen reader), `rows?`, `height?` | Static placeholder rows for loading states. No shimmer. |
 | `EmptyState` | `States.tsx` | `title`, `icon?`, `children?` (text), `action?` | Centered "nothing here yet" message for a page or card. |
 | `Notice` | `States.tsx` | `tone?: "info" \| "warn" \| "error"`, `children`, `action?` | Inline notice row with icon. `error` is `role="alert"`, the rest `role="status"`. |
+| `Podium` | `Podium.tsx` | `who`, `connected`, `open`, `onToggle`, `crest` | Sidebar profile podium (portrait, connection dot, rank, LP). Shell only. |
+| `AccountPicker` | `Podium.tsx` | `accounts`, `activeId`, `cards`, `disabled`, `onSwitch`, `onManage`, `onAdd`, `onClose` | Popover from the podium. Shell only. |
+| `SwitchOverlay` | `Podium.tsx` | `account`, `name` | Dimmed page with the switching card (indeterminate bar). Shell only. |
 | `fmtCount`, `fmtCompact` | `format.ts` | `value: number` | Numbers: counts as `183,275` (en-US on every locale), large stats as `22.4k` / `1.2M`. |
 
 ## Classes (`ui.css`)
@@ -31,4 +34,13 @@ Rules for translucency and gradients: `docs/visual-identity.md` §4a.
 - Data `--ui-win`, `--ui-loss`, `--ui-warn`, `--ui-gold`, `--ui-champ`, tiers `--ui-tier-splus..d`.
 - Radii `--ui-radius-xs/sm/md/lg` (6/8/12/16). Elevation `--ui-elev-1..3`, `--ui-inner-hi`. Fills `--ui-card-fill`.
 - Blur `--ui-blur` (fixed chrome and popovers only). Motion `--ui-fast` 120ms, `--ui-base` 180ms, `--ui-ease`; `--ui-hover`, `--ui-press`.
+- Alerts `--ui-warn` #ffbe55, `--ui-error` #ff7d76, `--ui-info` #8fd0e6: only as a left edge, glow and icon (`--tone`), never a fill.
 - Type `--ui-display` 30, `--ui-title` 20, `--ui-body` 14.5, `--ui-label` 13, `--ui-caption` 12 (minimum for readable text). Stats use tabular numerals (set on the frame).
+
+## Rules every page follows
+
+- Bold uppercase only for real actions (`.fa-primary`, `.fa-switch`, `.primary-action`). Filters, tabs, dropdowns, labels: sentence case. No ALL-CAPS eyebrows.
+- Text is 13–14px for useful information, 12px for secondary metadata, never smaller.
+- Alerts use `Notice` (or the same recipe: `--tone` left edge on `--ui-card`). No tinted fills.
+- No status footer: the sidebar podium and its status line carry status.
+- Ambient art is `--ambient-art` on the frame (set by the shell); pages need nothing.
