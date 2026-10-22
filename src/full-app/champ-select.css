@@ -225,6 +225,19 @@
 .fa-draft-page .cs-band.is-small .cs-slot-state, .fa-draft-page .cs-band.is-small .cs-slot-copy > small { font-size: 12px; }
 .fa-draft-page .cs-slot-copy strong { text-shadow: 0 1px 6px rgb(0 0 0 / .8); }
 .fa-draft-page .cs-slot.is-you { box-shadow: 0 0 0 1px rgb(197 227 158 / .35), 0 10px 24px -14px rgb(0 0 0 / .9); }
+/* Draft page: taller cards that grow with the window (220px at 1280x820, 320px cap), larger names. */
+@container draft (min-width: 850px) {
+  .fa-draft-page .cs-band:not(.is-small) .cs-slot { height: clamp(220px, 28vh, 320px); }
+  .fa-draft-page .cs-band:not(.is-small) .cs-slot-copy { inset: auto 12px 14px; }
+  .fa-draft-page .cs-band:not(.is-small) .cs-slot-copy strong { font-size: 15px; }
+  .fa-draft-page .cs-band:not(.is-small) .cs-slot-role { width: 30px; height: 30px; }
+  .fa-draft-page .cs-draft-clock > strong { font-size: 42px; }
+}
+@container draft (min-width: 1400px) {
+  .fa-draft-page .cs-band:not(.is-small) .cs-slot-copy strong { font-size: 19px; }
+  .fa-draft-page .cs-band:not(.is-small) .cs-slot-state, .fa-draft-page .cs-band:not(.is-small) .cs-slot-copy > small { font-size: 14px; }
+  .fa-draft-page .cs-band:not(.is-small) .cs-slot-copy strong:is(:empty) { font-size: 16px; }
+}
 .fa-draft-page .cs-preview .cs-preview-identity > small { font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none; }
 .fa-draft-page .cs-preview-identity > span, .fa-draft-page .cs-preview-row small, .fa-draft-page .cs-pick-copy > small, .fa-draft-page .cs-picks .fa-section-heading p { font-size: 13px; }
 .fa-draft-page .cs-pick-copy b small { font-size: 12px; }

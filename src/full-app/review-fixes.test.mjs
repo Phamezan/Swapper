@@ -170,3 +170,12 @@ test("a visible active game keeps retrying when its initial view is still loadin
   assert.equal(h.timers.size, 1);
   assert.equal(h.tree().view.gameId, 1);
 });
+
+test("a shard that appears in two rows is chosen only in its own row", async () => {
+  const { shardChosen } = await import("../runes/types.ts");
+  const hecarim = { shards: [5008, 5001, 5011] }; // adaptive offense, health flex, health scaling defense
+  assert.equal(shardChosen(hecarim, 0, 5008), true);
+  assert.equal(shardChosen(hecarim, 1, 5008), false);
+  assert.equal(shardChosen(hecarim, 1, 5001), true);
+  assert.equal(shardChosen(hecarim, 2, 5001), false);
+});

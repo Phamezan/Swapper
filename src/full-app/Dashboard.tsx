@@ -9,7 +9,7 @@ import { RoleIcon } from "../runes/RoleIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
-import { benchKey, defaultQueue, deltaText, formatStat, insights, lpTrend, MIN_COMPARED, opponent, playTime, rankProgress, sparkline, tierLabel, tiles, today, tone, type WinRecord } from "./dashboardModel";
+import { benchKey, defaultQueue, deltaText, formatStat, insights, lpTrend, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, sparkline, tierLabel, tiles, today, tone, type WinRecord } from "./dashboardModel";
 import type { AccountCard, Bench, Game, LpPoint, Snapshot } from "./types";
 import { Slot } from "./ui/Slot";
 import { EmptyState, Skeleton } from "./ui/States";
@@ -69,7 +69,7 @@ export function Dashboard(props: Props) {
   const { snapshot, onOpenChampion, stale = false } = props;
   const [queue, setQueue] = useState(() => defaultQueue(snapshot.games));
   const [benches, setBenches] = useState<Record<string, Bench>>({});
-  const games = snapshot.games.filter(game => queue === "all" || game.queue === queue);
+  const games = newestFirst(snapshot.games).filter(game => queue === "all" || game.queue === queue);
   const summary = snapshot.summaries[queue] ?? snapshot.summaries.all;
   const name = (id: number) => snapshot.championNames[id] ?? `Champion ${id}`;
   const tier = snapshot.rank?.tier ?? "";
@@ -182,7 +182,6 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
   games: Game[]; queue: string; onQueue: (queue: string) => void; benches: Record<string, Bench>; tier: string; name: (id: number) => string;
 }) {
   const rows = tiles(games, benches, tierLabel(tier), name);
-  const oldestFirst = [...games].reverse();
   const wins = games.filter(g => g.win).length;
   return <section className="panel performance" aria-labelledby="performance-title">
     <div className="performance-head">
@@ -190,8 +189,8 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
       <div className="fa-seg" role="group" aria-label="Queue">
         {Object.entries(queueLabels).map(([value, label]) => <button key={value} aria-pressed={queue === value} onClick={() => onQueue(value)}>{label}</button>)}
       </div>
-      <div className="wl-strip" aria-label={`${wins} wins, ${games.length - wins} losses, oldest first`}>
-        {oldestFirst.map(g => <span key={g.id} className={g.win ? "is-win" : "is-loss"} title={`${g.win ? "Win" : "Loss"} · ${name(g.championId)} · ${g.kills}/${g.deaths}/${g.assists} · ${fmtAgo(g.createdAt)}`}>
+      <div className="wl-strip" aria-label={`${wins} wins, ${games.length - wins} losses, newest first`}>
+        {games.map(g => <span key={g.id} className={g.win ? "is-win" : "is-loss"} title={`${g.win ? "Win" : "Loss"} · ${name(g.championId)} · ${g.kills}/${g.deaths}/${g.assists} · ${fmtAgo(g.createdAt)}`}>
           <ChampionIcon id={g.championId} name={name(g.championId)} mode="desktop" /></span>)}
         <small>{wins}W {games.length - wins}L</small>
       </div>

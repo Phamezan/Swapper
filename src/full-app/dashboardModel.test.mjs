@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { defaultQueue, deltaText, insights, ladderScore, lpTrend, playTime, rankProgress, sparkline, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
+import { defaultQueue, deltaText, insights, ladderScore, lpTrend, newestFirst, playTime, rankProgress, sparkline, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
 
 const line = (over = {}) => ({ championId: 1, riotId: "", me: false, ally: true, role: "mid", kills: 2, deaths: 2, assists: 2, cs: 150, damage: 10000, gold: 0, vision: 10, items: [], ...over });
 function game({ win = true, deaths = 3, cs = 200, oppCs = 150, champion = 103, queue = "solo", opponent = 7, kills = 5, assists = 5 } = {}) {
@@ -129,4 +129,10 @@ test("tile deltas read in points for percentages and in percent otherwise", () =
   assert.equal(deltaText(tile("", 203, 185, "Emerald avg")), "+10% vs Emerald avg 185");
   assert.equal(deltaText(tile("", 150, 200)), "−25% vs lane opp. 200");
   assert.equal(deltaText({ unit: "", digits: 0, versus: null }), null);
+});
+
+test("game lists are newest first whatever order they arrive in", () => {
+  const games = [{ id: 1, createdAt: 10 }, { id: 3, createdAt: 30 }, { id: 2, createdAt: 20 }];
+  assert.deepEqual(newestFirst(games).map(g => g.id), [3, 2, 1]);
+  assert.deepEqual(games.map(g => g.id), [1, 3, 2]);
 });
