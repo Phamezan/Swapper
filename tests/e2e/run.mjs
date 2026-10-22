@@ -226,9 +226,58 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelectorAll('.md-player:not([aria-hidden])').length"), 10);
     await audit();
     await screenshot("match-detail");
+    // ---- matchdetail: comparison, loadout, searchable stats and timeline graph ----
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-compare-row').length"), 10);
+    await page.click('#md-tab-Loadout');
+    await page.visible('.md-runes');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-player .md-items .ui-slot').length"), 70);
+    await page.click('#md-tab-Stats');
+    await page.visible('.md-stats-table');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-stats-portraits th:not(:first-child)').length"), 10);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-stats-portraits .is-me').length"), 1);
+    assert.ok(await page.evaluate("document.querySelectorAll('.md-stats-table .is-best').length > 0"));
+    await page.click('.md-stats-group button[aria-controls="md-group-Combat"]');
+    assert.equal(await page.evaluate("document.querySelector('#md-group-Combat').hidden"), true);
+    await page.evaluate("document.querySelector('.md-stats-scroll').scrollTop = 300");
+    await page.settle();
+    assert.ok(await page.evaluate("Math.abs(document.querySelector('.md-stats-sides th').getBoundingClientRect().top - document.querySelector('.md-stats-scroll').getBoundingClientRect().top) < 2"), 'stats header stays inside its scrolling card');
+    await page.evaluate("document.querySelector('.md-stats-scroll').scrollTop = 0");
+    await page.type('.md-stat-search input', 'vision');
+    await page.wait("document.querySelectorAll('.md-stats-table tbody:not(.md-stats-group) tr').length === 5", 'five vision stats');
+    for (const [width, height] of [[1440, 900], [2560, 1440], [1280, 820]]) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+      await audit();
+    }
+    await page.click('#md-tab-Graphs');
+    await page.visible('.md-chart polyline');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 6);
+    await page.click('.md-chart-select input');
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Home', code: 'Home' });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Home', code: 'Home' });
+    await page.text('.md-chart-reading', 'Teams even');
+    await page.click('#md-tab-Scoreboard');
+    // ---- end matchdetail tabs ----
     await page.click('.ui-crumbs button', "Dashboard");
     await page.visible(".match-row.is-last");
   });
+  // ---- matchdetail: unavailable timeline and absent stats never become fake zeroes ----
+  await check('Match stats with unavailable fields and timeline', async () => {
+    await navigate(fullApp + '?no-timeline&detail-missing', '.match-row');
+    await page.click('.match-champ');
+    await page.visible('.md-team');
+    assert.equal(await page.evaluate("document.querySelector('#md-tab-Graphs')"), null);
+    await page.click('#md-tab-Stats');
+    await page.type('.md-stat-search input', 'visionScore');
+    await page.wait("document.querySelectorAll('.md-stats-table tbody:not(.md-stats-group) tr').length === 1", 'vision score only');
+    assert.equal(await page.evaluate("document.querySelector('.md-stats-table tbody:not(.md-stats-group) tr td:nth-of-type(3)').textContent"), '–');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-stats-table .is-best').length"), 0);
+    await page.type('.md-stat-search input', 'no-such-stat');
+    await page.visible('.md-stats-empty');
+    await page.click('.md-stats-empty button');
+    await page.wait("document.querySelectorAll('.md-stats-table tbody:not(.md-stats-group) tr').length > 40", 'search cleared');
+    await navigate(fullApp, '.match-row');
+  });
+  // ---- end matchdetail missing data ----
   await check("Sidebar Tierlist", () => nav("Tierlist", ".tier-table tbody tr"));
   await check("Tierlist champion overview and build", async () => {
     await page.click(".tier-champ", "Aatrox");

@@ -5,6 +5,9 @@
 // from Data Dragon; names and Riot IDs are invented. Never part of the app build.
 import { mockIPC, mockWindows } from "@tauri-apps/api/mocks";
 import { emit } from "@tauri-apps/api/event";
+// ---- matchdetail: rich match fixture (preview only) ----
+import { matchDetailFixture } from "./match/preview";
+// ---- end matchdetail import ----
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
 const VERSION = "16.21.1";
@@ -124,23 +127,21 @@ mockIPC(async (cmd, args) => {
       if (shellState.has("loading")) await new Promise(resolve => setTimeout(resolve, 600000));
       if (shellState.has("disconnected")) return { snapshot: null, cards, stale: false, message: null };
       return { snapshot, cards, stale: (shellState.has("stale") || params.has("stale")), message: (shellState.has("stale") || params.has("stale")) ? "League Client is not running." : null };
+    // ---- matchdetail: stats and timeline states ----
     case "full_app_match_detail": {
       if (new URLSearchParams(location.search).has("detail-error")) throw new Error("Preview: match details unavailable");
       const match = games.find(g => g.id === a.gameId) ?? games[0];
-      const detail = { game: match, teams: [100, 200].map((teamId, i) => ({ teamId, win: i === 0 ? match.win : !match.win,
-        objectives: [{ label: "Dragons", kills: i ? 1 : 3 }, { label: "Heralds", kills: i ? 0 : 1 }, { label: "Grubs", kills: i ? 2 : 4 }, { label: "Barons", kills: i ? 0 : 1 }, { label: "Towers", kills: i ? 3 : 9 }] })),
-        players: match.players.map((p, i) => ({ ...p, riotId: p.me ? "You#•••" : `Player ${i}#•••`, participantId: i + 1, teamId: i < 5 ? 100 : 200,
-          level: 18 - i % 4, spells: [4, p.role === "jungle" ? 11 : p.role === "support" ? 14 : 12],
-          perks: [8010, 9111, 9104, 8299, 8444, 8242], keystone: 8010, secondaryStyle: 8400,
-          placement: [2, 3, 1, 4, 5, 6, 7, 8, 9, 10][i], score: [86, 82, 96, 74, 67, 60, 53, 46, 39, 32][i],
-          rank: i === 9 ? null : rank(RANKS[i][0], RANKS[i][1]), rankLoaded: i !== 9,
-          damageTaken: 21000 + i * 1400, wardsPlaced: 9 + i, wardsKilled: i + 1 })) };
+      const detail = matchDetailFixture(match, RANKS.map(([tier, division]) => rank(tier, division)), params);
       if (new URLSearchParams(location.search).has("slow-ranks")) {
         await emit("match_detail", { ...detail, players: detail.players.map(player => ({ ...player, rank: null, rankLoaded: false })) });
         await new Promise(resolve => setTimeout(resolve, 1500));
       }
       return detail;
     }
+    case "objective_icon": return a.name === "grub"
+      ? "https://raw.communitydragon.org/latest/game/assets/ux/minimap/icons/grub.png"
+      : `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/${a.name}.png`;
+    // ---- end matchdetail cases ----
     case "rank_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/${a.tier}.svg`;
     case "rune_icon": await runeReady; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("Preview rune icon unavailable");
     case "dashboard_benchmarks": return Object.fromEntries((a.picks as [number, string][]).map(([id, role]) => [`${id}|${role}`, { kills: 5, deaths: 5, assists: 6, damage: 21000, gold: 11000, cs: 185, games: 9000 }]));
