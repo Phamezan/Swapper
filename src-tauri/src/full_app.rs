@@ -1,6 +1,7 @@
 //! Optional Fullsized App. When on, it replaces the tray flyout: the flyout
 //! webview is never created and every entry point opens this window instead.
-//! No window or data task exists until it is opened; closing destroys it.
+//! No window or data task exists until it is opened; closing hides it (low
+//! memory mode destroys it instead).
 pub mod abilities;
 pub mod art;
 pub mod champ_select;
@@ -194,6 +195,7 @@ fn open_window(
         }
         window.unminimize().map_err(|e| e.to_string())?;
         window.show().map_err(|e| e.to_string())?;
+        crate::set_flyout_memory(&window, false);
         return window.set_focus().map_err(|e| e.to_string());
     }
     *runtime.pending_full.lock().map_err(|e| e.to_string())? =
@@ -285,6 +287,8 @@ pub async fn window_ready(app: tauri::AppHandle, window: tauri::WebviewWindow) {
         {
             show_minimized_without_focus(&window);
         } else {
+            // A new window opens maximized; after that it keeps whatever size the user chose.
+            let _ = window.maximize();
             let _ = window.show();
             let _ = window.set_focus();
         }

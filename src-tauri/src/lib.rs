@@ -1285,7 +1285,7 @@ fn disable_window_transitions(window: &tauri::WebviewWindow) {
 /// before it is shown again. Hiding the window alone leaves the page
 /// "visible", so the controller is hidden too: the page sees
 /// `document.hidden` and its timers and frames are throttled.
-fn set_flyout_memory(window: &tauri::WebviewWindow, low: bool) {
+pub(crate) fn set_flyout_memory(window: &tauri::WebviewWindow, low: bool) {
     let _ = window.with_webview(move |webview| unsafe {
         use webview2_com::Microsoft::Web::WebView2::Win32::{
             ICoreWebView2_19, COREWEBVIEW2_MEMORY_USAGE_TARGET_LEVEL_LOW,
@@ -1555,6 +1555,18 @@ pub fn run() {
                 if let Some(webview) = window.app_handle().get_webview_window(full_app::LABEL) {
                     set_flyout_memory(&webview, webview.is_minimized().unwrap_or(false));
                 }
+            }
+            // Closing the full app hides it, so the tray reopens it instantly; low memory
+            // mode still releases the webview. Hidden, it sits on the low memory target.
+            if window.label() == full_app::LABEL && !full_app::low_memory(window.app_handle()) {
+                if let WindowEvent::CloseRequested { api, .. } = event {
+                    api.prevent_close();
+                    let _ = window.hide();
+                    if let Some(webview) = window.app_handle().get_webview_window(full_app::LABEL) {
+                        set_flyout_memory(&webview, true);
+                    }
+                }
+                return;
             }
             if window.label() != full_app::FLYOUT { return; }
             if let WindowEvent::CloseRequested { api, .. } = event {
