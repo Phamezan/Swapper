@@ -322,6 +322,8 @@ fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
         .as_array()
         .ok_or("Match identities unavailable.")?;
     let scores = model::performance_scores(participants);
+    // Same per-team assignment as the history rows, so labels and lane opponents agree.
+    let roles = model::assigned_roles(value);
     let players: Vec<_> = participants
         .iter()
         .enumerate()
@@ -360,7 +362,12 @@ fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
                 champion_id: p["championId"].as_i64()?,
                 riot_id,
                 me,
-                role: model::role(p).into(),
+                role: roles
+                    .get(index)
+                    .copied()
+                    .filter(|role| !role.is_empty())
+                    .unwrap_or_else(|| model::role(p))
+                    .into(),
                 level: n("champLevel"),
                 spells: ["spell1Id", "spell2Id"]
                     .iter()
