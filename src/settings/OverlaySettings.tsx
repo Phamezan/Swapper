@@ -1,3 +1,4 @@
+import { useSettingsVersion } from "../settingsEvents";
 import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Switch } from "@/components/ui/switch";
@@ -12,6 +13,7 @@ type Settings = {
 
 export function OverlaySettings() {
   const [settings, setSettings] = useState<Settings | null>(null);
+  const settingsVersion = useSettingsVersion();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
@@ -21,7 +23,7 @@ export function OverlaySettings() {
       reason => { if (mounted) setError(String(reason)); },
     );
     return () => { mounted = false; };
-  }, []);
+  }, [settingsVersion]);
 
   async function update(change: Partial<Settings>) {
     if (!settings || busy) return;

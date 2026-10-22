@@ -1,3 +1,4 @@
+import { useSettingsVersion } from "../settingsEvents";
 import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Switch } from "../components/ui/switch";
@@ -23,13 +24,14 @@ function SkillHint() {
 
 export function OverlayCards() {
   const [settings, setSettings] = useState<Settings | null>(null);
+  const settingsVersion = useSettingsVersion();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
     let live = true;
     void invoke<Settings>("get_overlay_settings").then(value => { if (live) setSettings(value); }).catch(reason => { if (live) setError(String(reason)); });
     return () => { live = false; };
-  }, []);
+  }, [settingsVersion]);
   async function update(change: Partial<Settings>) {
     if (!settings || busy) return;
     setBusy(true); setError("");

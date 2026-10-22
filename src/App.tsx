@@ -30,6 +30,7 @@ import { RiotClientIcon } from "./riotIcon";
 import type { SettingsTab } from "./settings/SettingsView";
 import type { AccountCardsProps } from "./full-app/AccountCards";
 import { OnboardingGate } from "./onboarding/Onboarding";
+import { useSettingsVersion } from "./settingsEvents";
 import "./App.css";
 
 export type Account = {
@@ -223,6 +224,11 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
   const native = isTauri();
   const onChampSelectChange = useRef(fullApp?.onChampSelectChange);
   onChampSelectChange.current = fullApp?.onChampSelectChange;
+  const settingsVersion = useSettingsVersion();
+  // Settings changed elsewhere (first-run setup): reload what this window shows.
+  useEffect(() => {
+    if (native && settingsVersion > 0) invoke<AppState>("get_state").then(sync).catch(() => {});
+  }, [settingsVersion]);
 
   useEffect(() => {
     if (!native) return;
@@ -326,7 +332,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
       .then((enabled) => { if (live) setStartOnStartup(enabled); })
       .catch(showError);
     return () => { live = false; };
-  }, [native, view]);
+  }, [native, view, settingsVersion]);
 
   // Passive detection while the Add Account view waits for a Riot login.
   // Only runs while this stage is open; stops as soon as an account appears.

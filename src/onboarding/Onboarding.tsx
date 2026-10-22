@@ -1,13 +1,30 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { disable as disableAutostart, enable as enableAutostart, isEnabled as isAutostartEnabled } from "@tauri-apps/plugin-autostart";
+import { QRCodeSVG } from "qrcode.react";
 import { BrandIcon } from "../components/BrandIcon";
+import { announceSettingsChanged } from "../settingsEvents";
 import { Button } from "../components/ui/button";
 import { Switch } from "../components/ui/switch";
 import { RUN_EVENT, STEP_TITLES, changedKeys, clampStep, type Choices } from "./onboardingModel";
 import "./onboarding.css";
 
 type OverlaySettings = { enabled: boolean; gold: boolean; objectives: boolean; skills: boolean; goldHotkey: number };
+type Pairing = { busy: boolean; url: string | null; error: string; firewall: boolean };
+type RemoteStatus = { lanAddress: string | null; lanFirewallNeeded: boolean; lanMessage: string | null; state: string };
+
+/** Waits for the LAN service after it starts, then mints a pairing link, or says the firewall step is needed. */
+async function pairingUrl(): Promise<Omit<Pairing, "busy">> {
+  for (let attempt = 0; attempt < 12; attempt++) {
+    const remote = (await invoke<{ remote: RemoteStatus }>("get_state")).remote;
+    if (remote.lanAddress) return { url: await invoke<string>("create_lan_pairing_url"), error: "", firewall: false };
+    if (remote.lanFirewallNeeded) return { url: null, error: "", firewall: true };
+    if (attempt === 11) throw new Error(remote.lanMessage ?? "Remote Control could not start.");
+    await new Promise(resolve => setTimeout(resolve, 400));
+  }
+  throw new Error("Remote Control could not start.");
+}
+
 type Snapshot = { choices: Choices; overlay: OverlaySettings | null; riotExe: string | null; ltkInstalled: boolean };
 
 const BROWSER_SNAPSHOT: Snapshot = {
@@ -72,6 +89,8 @@ export function Onboarding({ onClose }: { onClose: () => void }) {
   const [confirmSkip, setConfirmSkip] = useState(false);
   const [saving, setSaving] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
+  // Remote Control is applied the moment it is switched on, so the pairing code can show right here.
+  const [pairing, setPairing] = useState<Pairing>({ busy: false, url: null, error: "", firewall: false });
   const dialog = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
 
@@ -94,7 +113,33 @@ export function Onboarding({ onClose }: { onClose: () => void }) {
     setSaving(true);
     const failed = await save(snapshot, choices);
     setSaving(false);
+    announceSettingsChanged();
     if (failed.length) setErrors(failed); else onClose();
+  };
+  const showPairing = async () => {
+    setPairing({ busy: true, url: null, error: "", firewall: false });
+    try { setPairing({ ...(await pairingUrl()), busy: false }); }
+    catch (reason) { setPairing({ busy: false, url: null, error: String(reason).replace(/^Error: /, ""), firewall: false }); }
+  };
+  const toggleRemote = async (on: boolean) => {
+    set({ remote: on });
+    if (!isTauri()) return;
+    setPairing({ busy: on, url: null, error: "", firewall: false });
+    try {
+      await invoke("set_remote_enabled", { enabled: on });
+      // Already saved: Done must not toggle it again.
+      setSnapshot(current => current && { ...current, choices: { ...current.choices, remote: on } });
+      announceSettingsChanged();
+      if (on) await showPairing();
+    } catch (reason) {
+      setPairing({ busy: false, url: null, error: String(reason).replace(/^Error: /, ""), firewall: false });
+    }
+  };
+  // Only on this click does Windows ask for firewall permission, as in Settings → Remote.
+  const allowFirewall = async () => {
+    setPairing(current => ({ ...current, busy: true }));
+    try { await invoke("allow_lan_firewall"); await showPairing(); }
+    catch (reason) { setPairing({ busy: false, url: null, error: String(reason).replace(/^Error: /, ""), firewall: true }); }
   };
   // Esc asks before skipping; Tab stays inside the dialog.
   const onKeyDown = (event: React.KeyboardEvent) => {
@@ -137,7 +182,15 @@ export function Onboarding({ onClose }: { onClose: () => void }) {
           <Row id="ob-korean" title="Korean font" checked={choices.koreanFont} disabled={!snapshot?.ltkInstalled} onChange={koreanFont => set({ koreanFont })}>
             Use at your own risk: changes League's game files while it runs.{!snapshot?.ltkInstalled && " Install LTK Manager in Settings → General first."}
           </Row>
-          <Row id="ob-remote" title="Remote Control" checked={choices.remote} onChange={remote => set({ remote })}>Draft from your phone. Pair it in Settings → Remote.</Row>
+          <Row id="ob-remote" title="Remote Control" checked={choices.remote} disabled={pairing.busy} onChange={remote => void toggleRemote(remote)}>Draft from your phone.</Row>
+          {choices.remote && (pairing.url || pairing.busy || pairing.error || pairing.firewall) && <div className="ob-pair" role="status">
+            {pairing.url ? <><div className="ob-qr"><QRCodeSVG value={pairing.url} size={132} level="M" marginSize={3} bgColor="#ffffff" fgColor="#18181b" title="Phone pairing QR code" /></div>
+              <p><strong>Scan with your phone</strong>On the same Wi-Fi as this PC. Single use, expires in 5 minutes. More options in Settings → Remote.</p></>
+              : pairing.busy ? <p>Starting Remote Control…</p>
+              : pairing.firewall ? <><p><strong>Allow Swapper in Windows Firewall</strong>Phones on your Wi-Fi need it. Windows asks once.{pairing.error && <span className="ob-pair-error"> {pairing.error}</span>}</p>
+                <Button variant="outline" className="ob-quiet" onClick={() => void allowFirewall()}>Allow</Button></>
+              : <p className="ob-pair-error">{pairing.error} Pair later in Settings → Remote.</p>}
+          </div>}
         </>}
         {failedToSave && <div className="ob-error" role="alert">{errors.map(error => <p key={error}>{error}</p>)}</div>}
       </div>
