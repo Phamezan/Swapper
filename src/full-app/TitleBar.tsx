@@ -1,3 +1,4 @@
+import { pageLabel } from "./ui/pageNames";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -71,7 +72,7 @@ function Palette({ champions, pages, onPickChampion, onPickPage, onClose }: Prop
   useEffect(() => { input.current?.focus(); }, []);
   const results = useMemo<Result[]>(() => {
     const q = query.trim().toLowerCase();
-    const pageHits = pages.filter(page => !q || page.toLowerCase().includes(q)).map(page => ({ kind: "page", page }) as Result);
+    const pageHits = pages.filter(page => !q || pageLabel(page).toLowerCase().includes(q) || page.toLowerCase().includes(q)).map(page => ({ kind: "page", page }) as Result);
     const championHits = q ? champions
       .filter(c => c.name.toLowerCase().includes(q))
       .sort((a, b) => Number(!a.name.toLowerCase().startsWith(q)) - Number(!b.name.toLowerCase().startsWith(q)))
@@ -103,7 +104,7 @@ function Palette({ champions, pages, onPickChampion, onPickPage, onClose }: Prop
           onPointerEnter={() => setActive(i)} onClick={() => pick(result)}>
           {result.kind === "champion"
             ? <><ChampionIcon id={result.champion.id} name={result.champion.name} mode="desktop" /><span>{result.champion.name}</span><small>Build and counters</small></>
-            : <><span className="palette-page-dot" aria-hidden /><span>{result.page}</span><small>Page</small></>}
+            : <><span className="palette-page-dot" aria-hidden /><span>{pageLabel(result.page)}</span><small>Page</small></>}
         </li>)}
         {!results.length && <li className="palette-empty">No champion or page matches “{query}”.</li>}
       </ul>

@@ -85,3 +85,18 @@ Worker handoffs (untracked, in each worktree under `C:\Users\Pham2\.herdr\worktr
 - Live Game auto-open setting **off** by default (~142 MB during a game).
 - No DLL injection into League (Vanguard); overlay works in Borderless/Windowed only.
 - Codex quota fits one codex worker; extra workers are Claude Opus 5.5.
+
+## Next (owner requests, 2026-10-22)
+- [ ] **Offline mode: images and data without League Client.** DPM works with the client closed; we lose icons and data
+  because rune/item/champion/spell art and names come from the LCU (`rune_icon`, `full_app_rune_catalog`, champion
+  names, item names). Plan: a disk cache of every LCU asset/data we fetch (bytes + catalogs, keyed by patch) under
+  `%LOCALAPPDATA%\Swapper\` and a CommunityDragon/Data Dragon fallback for anything not cached yet, so pages render
+  with the client closed. A plain file cache (like `runes-cache/`, `art/`) is enough; no database engine needed unless
+  queries appear. Show stale data as dated, never as live.
+- [ ] **First-run setup, 3 steps** (shown once after install, reachable later from Settings):
+  1. How to use Swapper: Fullsized App or tray flyout (+ start on startup).
+  2. In game: overlay on/off and its widgets (gold, objectives, skill hint).
+  3. Extras: Deceive, Korean font, Remote Control (phone pairing), each off by default with one line of what it does.
+- [ ] **Minimal text and icons pass.** Done so far: "Champion select" → "Draft", "Tier list & Builds" → "Tierlist",
+  idle Draft page just says "Waiting for draft". Next: go through every page's copy (subtitles, hints, empty states,
+  buttons) and cut to the fewest words; review icon choices for nav and actions.

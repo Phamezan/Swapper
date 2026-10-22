@@ -25,7 +25,7 @@ export function DraftBand({ draft, readAt, names, enemyId, small }: { draft: Dra
   return <section className={`fa-card cs-band${small ? " is-small" : ""}`} aria-label="Draft">
     <div className="cs-band-head">
       <span className="cs-band-label is-ally">Your team</span>
-      <span className="cs-band-phase"><span className="cs-live-dot" />{PHASES[draft?.timer?.phase ?? ""] ?? "Champion select"}</span>
+      <span className="cs-band-phase"><span className="cs-live-dot" />{PHASES[draft?.timer?.phase ?? ""] ?? "Draft"}</span>
       <span className="cs-band-label is-enemy">Enemy team</span>
     </div>
     <div className="cs-teams">

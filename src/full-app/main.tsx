@@ -19,6 +19,7 @@ import { AccountCards } from "./AccountCards";
 import { SettingsPage } from "./SettingsPage";
 import { ChampionSelect } from "./ChampionSelect";
 import { PageHeader } from "./ui/PageHeader";
+import { pageLabel } from "./ui/pageNames";
 import { AccountPicker, Podium, SwitchOverlay, type PodiumIdentity } from "./ui/Podium";
 import { useChampionArt } from "./art";
 import { EmptyState, Notice, Skeleton } from "./ui/States";
@@ -192,8 +193,8 @@ function App() {
         <nav aria-label="Swapper pages">
           {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
             {group.items.filter(([label]) => showInNav(label, inGame)).map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}>
-              <Icon size={19} aria-hidden />{label}
-              {label === "Champion select" && inChampSelect && <span className="live-dot" title="Champion select is live" />}
+              <Icon size={19} aria-hidden />{pageLabel(label)}
+              {label === "Champion select" && inChampSelect && <span className="live-dot" title="Draft is live" />}
               {label === LIVE_PAGE && <span className="live-dot" title="A game is running" />}
             </button>)}
           </div>)}
@@ -208,7 +209,7 @@ function App() {
       {page !== "app" && <main className="dashboard-main dash-scope">
         {selectedMatch ? <PageHeader crumbs={[{ label: "Dashboard", onClick: () => go("Dashboard") }]}
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
-          : <PageHeader title={matchId != null ? "Match detail" : page}
+          : <PageHeader title={matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">{view?.stale ? "Showing saved stats" : `Updated ${fmtAgoShort(snapshot.fetchedAt)}`}</small>} />}
         {view?.stale && page === "Dashboard" && <Notice tone="warn">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</Notice>}
         {error && <Notice tone="error">{error}</Notice>}

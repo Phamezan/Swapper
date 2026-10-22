@@ -79,9 +79,9 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const championName = view?.championName || names.get(view?.championId ?? 0) || "";
 
   return <div className="fa-draft-page dash-scope">
-    <PageHeader title="Champion select" actions={<span className={`fa-status-pill${mode !== "idle" ? " is-live" : ""}`}>{mode === "build" ? "Locked in" : mode === "planning" ? "Live draft" : "Waiting for draft"}</span>} />
+    <PageHeader title="Draft" actions={mode !== "idle" && <span className="fa-status-pill is-live">{mode === "build" ? "Locked in" : "Live draft"}</span>} />
     {props.error && <Notice tone="error">{props.error}</Notice>}{error && <Notice tone="error">{error}</Notice>}
-    {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting to champion select…" : "Ready for your next pick"}</h2>{!props.loading && <p>Champion select appears here when your draft starts. Until then, browse builds and lane matchups from the sidebar.</p>}<div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section> : <>
+    {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><Crosshair size={52} /></div><h2>{props.loading ? "Connecting…" : "Waiting for draft"}</h2><div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section> : <>
       <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyId={enemyId} small={mode === "build"} />
       <div className="fa-draft-controls cs-toolbar">
         <h2>{championName || "Choose your champion"}{enemyName && <small> vs {enemyName}</small>}</h2>
