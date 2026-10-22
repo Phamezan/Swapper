@@ -221,18 +221,34 @@ async function main() {
   }
   await check("Dashboard match opens and returns", async () => {
     await page.click(".match-champ");
-    await page.visible(".md-page .md-team");
+    // ---- matchdetail: Overview is the default; context stays above every tab ----
+    await page.visible(".md-page .md-comparison");
     await page.text(".ui-page-header h1", "Victory");
-    assert.equal(await page.evaluate("document.querySelectorAll('.md-player:not([aria-hidden])').length"), 10);
+    assert.equal(await page.evaluate("document.querySelector('#md-tab-Overview').getAttribute('aria-selected')"), 'true');
+    assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.md-tabs button')].map(el => el.textContent)"), ['Overview', 'Scoreboard', 'Loadout', 'Stats', 'Graphs']);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-team').length"), 0);
+    await page.text('.md-context', 'Solo/Duo');
+    // ---- end matchdetail default ----
     await audit();
     await screenshot("match-detail");
     // ---- matchdetail: comparison, loadout, searchable stats and timeline graph ----
-    assert.equal(await page.evaluate("document.querySelectorAll('.md-compare-row').length"), 10);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-compare-row').length"), 4);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-objective-count').length"), 6);
     assert.equal(await page.evaluate("document.querySelectorAll('.md-fact').length"), 3);
     assert.equal(await page.evaluate("document.querySelector('.md-tower-reading span.is-blue').textContent"), 'Your team');
     assert.ok(await page.evaluate("document.querySelector('.md-share-ring').getAttribute('aria-label').includes('damage to champions')"));
-    await page.click('#md-tab-Loadout');
+    await page.click('#md-tab-Scoreboard');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-player:not([aria-hidden])').length"), 10);
+    await page.text('.md-rank', 'Master 200 LP');
+    await page.text('.md-rank', 'Diamond II 45 LP');
+    assert.ok(await page.evaluate("document.querySelector('.md-rank').getAttribute('aria-label').startsWith('Current Solo/Duo rank:')"));
+    assert.equal(await page.evaluate("document.querySelector('.md-header, .md-comparison')"), null);
+    // Switching visible tabs preserves position; offscreen tabs return to the scroller's top.
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTop = 0");
+    const visibleScroll = await page.evaluate("document.querySelector('.dashboard-main').scrollTop");
+    await page.evaluate("document.querySelector('#md-tab-Loadout').click()");
     await page.visible('.md-runes');
+    assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollTop"), visibleScroll);
     assert.equal(await page.evaluate("document.querySelectorAll('.md-player .md-items .ui-slot').length"), 70);
     await page.click('#md-tab-Stats');
     await page.visible('.md-stats-table');
@@ -250,7 +266,7 @@ async function main() {
     await page.evaluate("document.querySelector('.md-stats-scroll').scrollTop = 0");
     await page.type('.md-stat-search input', 'vision');
     await page.wait("document.querySelectorAll('.md-stats-table tbody:not(.md-stats-group) tr').length === 5", 'five vision stats');
-    for (const [width, height] of [[1440, 900], [2560, 1440], [1280, 820]]) {
+    for (const [width, height] of [[1440, 900], [1920, 1080], [2560, 1440], [1280, 820]]) {
       await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
       await audit();
     }
@@ -278,16 +294,39 @@ async function main() {
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 39 });
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 39 });
     await page.text('.md-timeline-popover', 'at 1:00');
-    await page.click('#md-tab-Scoreboard');
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTop = 10000; document.querySelector('#md-tab-Scoreboard').click()");
+    await page.wait("Math.abs(document.querySelector('.md-tabs').getBoundingClientRect().top - document.querySelector('.dashboard-main').getBoundingClientRect().top) < 2", 'offscreen tabs return to viewport top');
+    await cdp.send('Emulation.setEmulatedMedia', {features: [{name: 'prefers-reduced-motion', value: 'reduce'}]});
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTop = 10000; document.querySelector('#md-tab-Graphs').click()");
+    await page.wait("Math.abs(document.querySelector('.md-tabs').getBoundingClientRect().top - document.querySelector('.dashboard-main').getBoundingClientRect().top) < 2", 'reduced-motion tab position');
+    // Keyboard activation keeps focus on the selected tab without a second browser scroll.
+    await page.evaluate("document.querySelector('#md-tab-Graphs').focus({preventScroll: true})");
+    await key('Home');
+    await page.wait("document.querySelector('#md-tab-Overview').getAttribute('aria-selected') === 'true'", 'Home selects Overview');
+    await key('ArrowRight');
+    await page.wait("document.querySelector('#md-tab-Scoreboard').getAttribute('aria-selected') === 'true'", 'ArrowRight selects Scoreboard');
+    await cdp.send('Emulation.setEmulatedMedia', {features: []});
+    for (const [width, height] of [[1280, 820], [1920, 1080], [2560, 1440]]) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', {width, height, deviceScaleFactor: 1, mobile: false});
+      await audit();
+      assert.ok(await page.evaluate("parseFloat(getComputedStyle(document.querySelector('.md-rank')).fontSize) >= 14"));
+      assert.ok(await page.evaluate("parseFloat(getComputedStyle(document.querySelector('.md-identity > strong')).fontSize) >= 15"));
+    }
+    await cdp.send('Emulation.setDeviceMetricsOverride', {width: 1280, height: 820, deviceScaleFactor: 1, mobile: false});
     // ---- end matchdetail tabs ----
     await page.click('.ui-crumbs button', "Dashboard");
     await page.visible(".match-row.is-last");
   });
   // ---- matchdetail: unavailable timeline and absent stats never become fake zeroes ----
+  // A row from the previous Dashboard can still be visible before navigation commits.
+  async function matchPreview(query = '') {
+    await navigate(fullApp + query, '.match-row');
+    await page.wait(`location.search === ${JSON.stringify(query)} && document.readyState === 'complete'`, 'match preview navigation committed');
+  }
   await check('Match stats with unavailable fields and timeline', async () => {
-    await navigate(fullApp + '?no-timeline&detail-missing', '.match-row');
+    await matchPreview('?no-timeline&detail-missing');
     await page.click('.match-champ');
-    await page.visible('.md-team');
+    await page.visible('.md-comparison');
     assert.equal(await page.evaluate("document.querySelector('#md-tab-Graphs')"), null);
     await page.click('#md-tab-Stats');
     await page.type('.md-stat-search input', 'visionScore');
@@ -298,10 +337,10 @@ async function main() {
     await page.visible('.md-stats-empty');
     await page.click('.md-stats-empty button');
     await page.wait("document.querySelectorAll('.md-stats-table tbody:not(.md-stats-group) tr').length > 40", 'search cleared');
-    await navigate(fullApp, '.match-row');
+    await matchPreview();
   });
   await check('Match graphs: dense lanes, kill map, player filters and keyboard', async () => {
-    await navigate(fullApp + '?timeline-long', '.match-row');
+    await matchPreview('?timeline-long');
     await page.click('.match-champ');
     await page.click('#md-tab-Graphs');
     await page.visible('.md-map-dot');
@@ -335,13 +374,36 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 90);
     await page.click('.md-event-expand button');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 12);
-    await navigate(fullApp + '?timeline-long&timeline-no-positions', '.match-row');
+    await matchPreview('?timeline-long&timeline-no-positions');
     await page.click('.match-champ');
     await page.click('#md-tab-Graphs');
     await page.visible('.md-event-lane');
     assert.equal(await page.evaluate("document.querySelector('.md-kill-map')"), null);
     assert.equal(await page.evaluate("document.querySelectorAll('.md-lane-mark.is-kill').length"), 24);
-    await navigate(fullApp, '.match-row');
+    await matchPreview();
+  });
+  await check('Match current ranks: Flex, fallback, unranked and missing LP', async () => {
+    await matchPreview('?detail-flex&detail-rank-fallback&detail-unranked&detail-rank-missing-lp');
+    await page.click('.match-champ');
+    await page.click('#md-tab-Scoreboard');
+    await page.text('.md-context', 'Flex');
+    const ranks = await page.evaluate("[...document.querySelectorAll('.md-rank')].map(el => ({label: el.textContent, title: el.title}))");
+    assert.equal(ranks[0].title, 'Current Flex rank');
+    assert.equal(ranks[1].label, 'Unranked');
+    assert.equal(ranks[2].title, 'Current Solo/Duo rank');
+    assert.equal(ranks[2].label, 'Diamond II 45 LP');
+    assert.ok(!ranks[3].label.includes('LP'), 'missing LP stays missing');
+    await page.click('.ui-crumbs button', 'Dashboard');
+    await page.click('.match-row:nth-child(2) .match-champ');
+    await page.wait("document.querySelector('#md-tab-Overview').getAttribute('aria-selected') === 'true'", 'another match resets Overview');
+    await matchPreview('?slow-ranks');
+    await page.click('.match-champ');
+    await page.visible('#md-tab-Overview');
+    await page.text('.ui-notice', 'Loading ranks');
+    await page.click('#md-tab-Scoreboard');
+    await page.text('.md-rank', 'Rank unavailable');
+    await page.text('.md-rank', 'Master 200 LP');
+    await matchPreview();
   });
   // ---- end matchdetail missing data ----
   await check("Sidebar Tierlist", () => nav("Tierlist", ".tier-table tbody tr"));
@@ -433,7 +495,9 @@ async function main() {
     await page.text('.player-ranks', 'Solo/Duo');
     await page.text('.player-ranks', 'Flex');
     await page.click('.player-games .match-champ');
-    await page.visible('.md-team');
+    // ---- matchdetail: player-perspective match also opens Overview ----
+    await page.visible('.md-comparison');
+    // ---- end matchdetail player perspective ----
     await page.click('.ui-crumbs button', 'Player profile');
     await page.visible('.player-identity');
     await page.click('.player-back');

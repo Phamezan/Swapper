@@ -1,10 +1,18 @@
 import type { MatchDetailPlayer, MatchDetailTeam, MatchDetailView } from "./types";
 
 export type StatValue = number | boolean | null;
-export type MatchPlayer = MatchDetailPlayer & { stats?: Record<string, number | boolean> };
+export type MatchRank = { tier: string; division: string; lp: number | null; queue?: "Solo/Duo" | "Flex" };
+export type MatchPlayer = Omit<MatchDetailPlayer, "rank"> & { rank: MatchRank | null; stats?: Record<string, number | boolean> };
 export type TimelineEvent = { timestamp: number; teamId: number; label: string; killerId?: number; victimId?: number; position?: { x: number; y: number } };
 export type Timeline = { frames: { timestamp: number; goldDiff: number; blueGold?: number; redGold?: number }[]; events: TimelineEvent[] };
 export type MatchView = Omit<MatchDetailView, "players"> & { players: MatchPlayer[]; timeline?: Timeline | null };
+
+export function rankLabel(rank: MatchRank | null, loaded: boolean): string {
+  if (!rank) return loaded ? "Unranked" : "Rank unavailable";
+  const tier = rank.tier.toUpperCase();
+  const division = ["MASTER", "GRANDMASTER", "CHALLENGER"].includes(tier) || rank.division === "NA" ? "" : rank.division;
+  return [tier.charAt(0) + tier.slice(1).toLowerCase(), division, rank.lp == null ? "" : `${rank.lp} LP`].filter(Boolean).join(" ");
+}
 type Direction = "high" | "low" | "none";
 export type StatRow = { key: string; label: string; values: StatValue[]; leaders: number[]; format?: "ratio" | "time" };
 export type StatGroup = { label: string; rows: StatRow[] };

@@ -32,9 +32,68 @@ pub struct Player {
     items: Vec<i64>,
     placement: Option<u8>,
     score: Option<f64>,
-    rank: Option<model::Rank>,
+    rank: Option<MatchRank>,
     rank_loaded: bool,
     stats: BTreeMap<String, Value>,
+}
+
+#[derive(Clone, Serialize)]
+struct MatchRank {
+    tier: String,
+    division: String,
+    lp: Option<u64>,
+    queue: &'static str,
+}
+
+fn rank_for_match(value: &Value, game_queue: &str) -> Option<MatchRank> {
+    let solo = ("RANKED_SOLO_5x5", "Solo/Duo");
+    let flex = ("RANKED_FLEX_SR", "Flex");
+    let queues = if game_queue == "flex" {
+        [flex, solo]
+    } else {
+        [solo, flex]
+    };
+    queues.into_iter().find_map(|(key, queue)| {
+        let ranked = value["queueMap"][key]
+            .as_object()
+            .map(|_| &value["queueMap"][key])
+            .or_else(|| {
+                value["queues"]
+                    .as_array()?
+                    .iter()
+                    .find(|q| q["queueType"] == key)
+            })?;
+        let tier = ranked["tier"].as_str()?;
+        if !matches!(
+            tier,
+            "IRON"
+                | "BRONZE"
+                | "SILVER"
+                | "GOLD"
+                | "PLATINUM"
+                | "EMERALD"
+                | "DIAMOND"
+                | "MASTER"
+                | "GRANDMASTER"
+                | "CHALLENGER"
+        ) {
+            return None;
+        }
+        let division = if matches!(tier, "MASTER" | "GRANDMASTER" | "CHALLENGER") {
+            ""
+        } else {
+            ranked["division"]
+                .as_str()
+                .filter(|d| matches!(*d, "I" | "II" | "III" | "IV"))
+                .unwrap_or("")
+        };
+        Some(MatchRank {
+            tier: tier.into(),
+            division: division.into(),
+            lp: ranked["leaguePoints"].as_u64(),
+            queue,
+        })
+    })
 }
 
 #[derive(Clone, Serialize)]
@@ -380,7 +439,8 @@ fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
 struct Cache {
     owner: String,
     matches: BTreeMap<(u64, String), Detail>,
-    ranks: BTreeMap<String, Option<model::Rank>>,
+    // Solo/Duo and Flex choices, including their fallbacks; keep only display data.
+    ranks: BTreeMap<String, [Option<MatchRank>; 2]>,
 }
 
 static CACHE: OnceLock<tokio::sync::Mutex<Cache>> = OnceLock::new();
@@ -513,7 +573,13 @@ pub async fn full_app_match_detail(
     });
     for (puuid, result) in ranks {
         if let Ok(value) = result {
-            cache.ranks.insert(puuid, model::rank(&value));
+            cache.ranks.insert(
+                puuid,
+                [
+                    rank_for_match(&value, "solo"),
+                    rank_for_match(&value, "flex"),
+                ],
+            );
         }
     }
     for player in &mut detail.players {
@@ -522,7 +588,7 @@ pub async fn full_app_match_detail(
             .find(|i| i["participantId"] == player.participant_id)
             .and_then(|i| i["player"]["puuid"].as_str());
         if let Some(rank) = puuid.and_then(|id| cache.ranks.get(id)) {
-            player.rank = rank.clone();
+            player.rank = rank[usize::from(detail.game.queue == "flex")].clone();
             player.rank_loaded = true;
         }
     }
@@ -540,6 +606,47 @@ pub async fn full_app_match_detail(
 mod tests {
     use super::*;
     use serde_json::json;
+
+    #[test]
+    fn current_rank_uses_match_queue_and_preserves_lp() {
+        let value = json!({"queueMap": {
+            "RANKED_SOLO_5x5": {"tier": "MASTER", "division": "I", "leaguePoints": 200},
+            "RANKED_FLEX_SR": {"tier": "DIAMOND", "division": "II", "leaguePoints": 45}
+        }});
+        let solo = serde_json::to_value(rank_for_match(&value, "solo")).unwrap();
+        assert_eq!(solo["tier"], "MASTER");
+        assert_eq!(solo["division"], "");
+        assert_eq!(solo["lp"], 200);
+        assert_eq!(solo["queue"], "Solo/Duo");
+        let flex = serde_json::to_value(rank_for_match(&value, "flex")).unwrap();
+        assert_eq!(flex["tier"], "DIAMOND");
+        assert_eq!(flex["division"], "II");
+        assert_eq!(flex["lp"], 45);
+        assert_eq!(flex["queue"], "Flex");
+        assert_eq!(
+            serde_json::to_value(rank_for_match(&value, "normal")).unwrap(),
+            solo
+        );
+    }
+
+    #[test]
+    fn current_rank_falls_back_across_queue_shapes_without_inventing_lp() {
+        let queue = json!({"queueType": "RANKED_FLEX_SR", "tier": "GOLD", "division": "IV", "leaguePoints": 0});
+        let mut value =
+            json!({"queues": [queue], "queueMap": {"RANKED_SOLO_5x5": {"tier": "UNRANKED"}}});
+        let fallback = serde_json::to_value(rank_for_match(&value, "solo")).unwrap();
+        assert_eq!(fallback["queue"], "Flex");
+        assert_eq!(fallback["lp"], 0);
+        for missing in [json!(null), json!(-1), json!("45")] {
+            value["queues"][0]["leaguePoints"] = missing;
+            assert!(serde_json::to_value(rank_for_match(&value, "flex")).unwrap()["lp"].is_null());
+        }
+        for tier in ["NONE", "UNRANKED", "", "INVALID"] {
+            value["queues"][0]["tier"] = json!(tier);
+            assert!(rank_for_match(&value, "solo").is_none());
+        }
+        assert!(rank_for_match(&json!({}), "solo").is_none());
+    }
 
     #[test]
     fn stat_extraction_preserves_zero_false_and_unknown_numeric_fields_only() {

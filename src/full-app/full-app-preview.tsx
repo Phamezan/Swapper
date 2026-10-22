@@ -157,10 +157,13 @@ mockIPC(async (cmd, args) => {
       if (new URLSearchParams(location.search).has("detail-error")) throw new Error("Preview: match details unavailable");
       const original = games.find(g => g.id === a.gameId) ?? games[0];
       const { profileGame } = await import('./playerModel');
-      const match = a.riotId ? profileGame(original, String(a.riotId)) ?? original : original;
+      let match = a.riotId ? profileGame(original, String(a.riotId)) ?? original : original;
+      if (params.has("detail-flex")) match = {...match, queue: "flex"};
       const detail = matchDetailFixture(match, RANKS.map(([tier, division]) => rank(tier, division)), params);
       if (new URLSearchParams(location.search).has("slow-ranks")) {
-        await emit("match_detail", { ...detail, players: detail.players.map(player => ({ ...player, rank: null, rankLoaded: false })) });
+        await emit("match_detail", { ...detail, players: detail.players.map(player => ({ ...player,
+          riotId: player.me ? match.players.find(p => p.me)?.riotId ?? player.riotId : player.riotId,
+          rank: null, rankLoaded: false })) });
         await new Promise(resolve => setTimeout(resolve, 1500));
       }
       return detail;

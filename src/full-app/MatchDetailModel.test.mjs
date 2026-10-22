@@ -1,7 +1,17 @@
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
-import { barWidth, placementLabel, scoreTone, teamAverageDamage, teamTotals, percent } from './MatchDetailModel.ts';
+import { barWidth, placementLabel, rankLabel, scoreTone, teamAverageDamage, teamTotals, percent } from './MatchDetailModel.ts';
 import { bestValues, buildStatGroups, comparisonRows, filterStatGroups, matchFacts, timelineChart, resolveTimelineEvents, groupKillEvents, timelineLanes, mapPosition, filterTimelineEvents } from './MatchDetailModel.ts';
+
+test('current rank labels include observed LP and hide apex divisions', () => {
+  assert.equal(rankLabel({tier: 'MASTER', division: 'I', lp: 200}, true), 'Master 200 LP');
+  assert.equal(rankLabel({tier: 'DIAMOND', division: 'II', lp: 45}, true), 'Diamond II 45 LP');
+  assert.equal(rankLabel({tier: 'GRANDMASTER', division: 'NA', lp: 0}, true), 'Grandmaster 0 LP');
+  assert.equal(rankLabel({tier: 'CHALLENGER', division: '', lp: 1200}, true), 'Challenger 1200 LP');
+  assert.equal(rankLabel({tier: 'GOLD', division: 'IV', lp: null}, true), 'Gold IV');
+  assert.equal(rankLabel(null, true), 'Unranked');
+  assert.equal(rankLabel(null, false), 'Rank unavailable');
+});
 
 test('row leaders share ties, prefer fewer deaths, and never rank unknown or uniform rows', () => {
   assert.deepEqual(bestValues([4, 9, 9, 0], 'high'), [1, 2]);
