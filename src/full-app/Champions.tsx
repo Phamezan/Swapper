@@ -73,7 +73,7 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
   useEffect(() => {
     if (!matchups) return;
     let live = true;
-    void invoke<DashboardView>("dashboard_snapshot").then(view => { if (live) setRecent(mostPlayed(view.snapshot?.games ?? [])); }).catch(() => {});
+    void invoke<DashboardView>("dashboard_snapshot").then(view => { if (live) setRecent(mostPlayed(view.snapshot?.games ?? [], 6)); }).catch(() => {});
     return () => { live = false; };
   }, [matchups]);
   useEffect(() => {
