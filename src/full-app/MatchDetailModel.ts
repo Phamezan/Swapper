@@ -2,7 +2,7 @@ import type { MatchDetailPlayer, MatchDetailTeam, MatchDetailView } from "./type
 
 export type StatValue = number | boolean | null;
 export type MatchPlayer = MatchDetailPlayer & { stats?: Record<string, number | boolean> };
-export type TimelineEvent = { timestamp: number; teamId: number; label: string; killerId?: number; victimId?: number };
+export type TimelineEvent = { timestamp: number; teamId: number; label: string; killerId?: number; victimId?: number; position?: { x: number; y: number } };
 export type Timeline = { frames: { timestamp: number; goldDiff: number; blueGold?: number; redGold?: number }[]; events: TimelineEvent[] };
 export type MatchView = Omit<MatchDetailView, "players"> & { players: MatchPlayer[]; timeline?: Timeline | null };
 type Direction = "high" | "low" | "none";
@@ -143,16 +143,54 @@ export function resolveTimelineEvents<T extends TimelineEvent>(events: T[], play
   return result.sort((a, b) => a.timestamp - b.timestamp);
 }
 
-/** A fight spans at most 30 seconds; later kills start another cluster. */
+/** Keep each team's fight within ten seconds of its first kill, without chaining. */
 export function groupKillEvents(events: ResolvedTimelineEvent[]) {
-  const clusters: { timestamp: number; events: TimelineKill[] }[] = [];
+  const clusters: { timestamp: number; teamId: number; events: TimelineKill[] }[] = [];
+  const latest = new Map<number, (typeof clusters)[number]>();
   for (const event of events) {
     if (event.kind !== "kill") continue;
-    const last = clusters[clusters.length - 1];
-    if (last && event.timestamp - last.timestamp <= 30000) last.events.push(event);
-    else clusters.push({ timestamp: event.timestamp, events: [event] });
+    const last = latest.get(event.teamId);
+    if (last && event.timestamp - last.timestamp <= 10000) last.events.push(event);
+    else {
+      const cluster = { timestamp: event.timestamp, teamId: event.teamId, events: [event] };
+      clusters.push(cluster);
+      latest.set(event.teamId, cluster);
+    }
   }
   return clusters;
+}
+
+export type EventFilter = "Key moments" | "All" | "Objectives" | "Kills";
+export const personalKill = (event: ResolvedTimelineEvent) => event.kind === "kill" && (event.killer.me || event.victim.me);
+
+export function filterTimelineEvents(events: ResolvedTimelineEvent[], filter: EventFilter, participantId: number | null = null) {
+  const multiKills = new Set(groupKillEvents(events).flatMap(cluster => cluster.events.filter(event =>
+    cluster.events.filter(other => other.killerId === event.killerId).length > 1)));
+  return events.filter(event => {
+    if (event.kind === "objective") return filter !== "Kills";
+    if (participantId != null && event.killerId !== participantId && event.victimId !== participantId) return false;
+    return filter === "All" || filter === "Kills" || (filter === "Key moments" && (personalKill(event) || multiKills.has(event)));
+  });
+}
+
+export function timelineLanes(events: ResolvedTimelineEvent[]) {
+  const kills = groupKillEvents(events);
+  return [100, 200].map(teamId => {
+    const marks: { timestamp: number; events: ResolvedTimelineEvent[] }[] = kills.filter(c => c.teamId === teamId);
+    // Grubs and simultaneous matching objectives share an icon, with every event in its tooltip.
+    for (const event of events) {
+      if (event.kind !== "objective" || event.teamId !== teamId) continue;
+      const previous = marks.find(mark => mark.events[0].kind === "objective" && mark.events[0].label === event.label && event.timestamp - mark.timestamp <= 10000);
+      if (previous) previous.events.push(event);
+      else marks.push({timestamp: event.timestamp, events: [event]});
+    }
+    return {teamId, marks: marks.sort((a, b) => a.timestamp - b.timestamp)};
+  });
+}
+
+export function mapPosition(position?: { x: number; y: number } | null) {
+  if (!position || ![position.x, position.y].every(n => Number.isFinite(n) && n >= 0 && n <= 15000)) return null;
+  return {x: position.x / 150, y: 100 - position.y / 150};
 }
 
 export function placementLabel(placement: number | null, win: boolean | null, bestOnTeam: boolean): string {
