@@ -3,7 +3,8 @@ import type { Game, Snapshot } from './types';
 
 export type PlayerHit = { riotId: string; icon: string | null; level: number | null; ally: boolean | null; lastPlayed: number | null; live?: boolean };
 export type PlayerSearch = { connected: boolean; players: PlayerHit[]; message: string | null };
-export type PlayerProfile = { player: PlayerHit; region?: string | null; solo: Snapshot['rank']; flex: Snapshot['rank']; games: Game[]; live: boolean; fetchedAt: number; message: string | null };
+export type ProfileRank = NonNullable<Snapshot['rank']> & { recordAvailable?: boolean };
+export type PlayerProfile = { player: PlayerHit; region?: string | null; solo: ProfileRank | null; flex: Snapshot['rank']; profileIcons?: Record<string, string>; games: Game[]; live: boolean; fetchedAt: number; message: string | null };
 export type Recent = { kind: 'champion'; champion: ChampionOption } | { kind: 'player'; riotId: string };
 export const RECENT_KEY = 'swapper.search.recents.v1';
 const key = (item: Recent) => item.kind === 'champion' ? `c:${item.champion.id}` : `p:${item.riotId.toLowerCase()}`;
@@ -37,7 +38,7 @@ export function profileGame(game: Game, riotId: string): Game | null {
       game.duration > 0 ? player.cs / (game.duration / 60) : null, null, null, null], opponent, players };
 }
 
-export function profileStats(loaded: Game[]) {
+export function profileStats(loaded: Game[], profileIcons: Record<string, string> = {}) {
   const games = [...new Map(loaded.map(game => [game.id, game])).values()].sort((a, b) => a.createdAt - b.createdAt);
   const champions = new Map<number, { id: number; games: number; wins: number; losses: number; kills: number; deaths: number; assists: number }>();
   const together = new Map<string, { riotId: string; games: number; wins: number }>();
@@ -64,7 +65,8 @@ export function profileStats(loaded: Game[]) {
     games: games.length, wins: games.filter(g => g.win).length,
     champions: [...champions.values()].sort((a, b) => b.games - a.games || b.wins - a.wins || a.id - b.id).slice(0, 3)
       .map(c => ({ ...c, kda: (c.kills + c.assists) / Math.max(1, c.deaths) })),
-    playedWith: [...together.values()].filter(p => p.games >= 2).sort((a, b) => b.games - a.games || b.wins - a.wins || a.riotId.localeCompare(b.riotId)),
+    playedWith: [...together.values()].filter(p => p.games >= 2).sort((a, b) => b.games - a.games || b.wins - a.wins || a.riotId.localeCompare(b.riotId))
+      .map(p => ({ ...p, icon: profileIcons[p.riotId.toLowerCase()] ?? null })),
     roles: [...roles.values()].sort((a, b) => b.games - a.games || a.role.localeCompare(b.role)),
     metrics: Array.from({ length: 6 }, (_, index) => {
       const points = games.map(game => game.metrics[index]).filter((v): v is number => v != null && Number.isFinite(v));

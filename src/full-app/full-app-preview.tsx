@@ -42,6 +42,9 @@ function game(i: number) {
   const players = [...ALLY, ...ENEMY].map((id, p) => ({
     // ---- profile round9: varied, invented champion history for the searched teammate ----
     championId: p === 0 ? championId : p === 1 ? [64, 64, 24, 64, 11, 64, 24, 11, 64, 24, 64, 11][i] : id, riotId: p === 0 ? "Swapper Demo#EUW" : `Player ${p}#DEMO`, me: p === 0, ally: p < 5, role: ROLES[p % 5],
+    // ---- profile2: observed participant icons (invented identities) ----
+    profileIcon: [5367, 29, 4658, 7, 23, 29, 7, 23, 4658, 5367][p],
+    // ---- end profile2 icons ----
     // ---- end profile champion history ----
     kills: p === 0 ? kills : 2 + p % 4, deaths: p === 0 ? deaths : 3 + p % 3, assists: p === 0 ? assists : 4 + p % 5,
     cs: p === 0 ? cs : p === 5 ? (win ? 175 : 205) : 120 + p * 9, damage: p === 0 ? (win ? 26000 : 17000) : 9000 + p * 1300, gold: 9000, vision: 18 + p,
@@ -140,7 +143,10 @@ mockIPC(async (cmd, args) => {
       const live = !params.has('stale') && !params.has('disconnected');
       const riotId = String(a.riotId);
       return { region: live ? 'EUW' : null, player: { riotId, icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: live ? 184 : null, ally: true, lastPlayed: games[0]?.createdAt ?? null },
-        solo: live ? rank('EMERALD', 'II') : null, flex: live ? rank('PLATINUM', 'IV') : null,
+        // ---- profile2: honest rank records and cached participant portraits ----
+        solo: live ? { ...rank('EMERALD', 'II'), recordAvailable: !params.has('profile-no-record') } : null, flex: null,
+        profileIcons: Object.fromEntries(games.flatMap(g => g.players.map(p => [p.riotId.toLowerCase(), `${DD}/${VERSION}/img/profileicon/${p.profileIcon}.png`]))),
+        // ---- end profile2 rank and portraits ----
         games: (riotId === 'Demo Player#TEST' ? games : games.map(g => profileGame(g, riotId)).filter((g): g is NonNullable<typeof g> => g !== null))
           // ---- profile round9: metrics from the fixture's observed participant totals ----
           .map(g => {
@@ -150,7 +156,10 @@ mockIPC(async (cmd, args) => {
               metrics: [(g.kills + g.assists) / Math.max(1, g.deaths), kills ? Math.min(100, 100 * (g.kills + g.assists) / kills) : null,
                 g.cs / minutes, me.damage / minutes, damage ? 100 * me.damage / damage : null, me.vision / minutes],
               opponent: g.players.findIndex(p => !p.ally && p.role === g.role) } : g;
-          }), live, fetchedAt: snapshot.fetchedAt,
+          })
+          // ---- profile2: missing estimated roles retain the shared empty state ----
+          .map(g => params.has('profile-no-roles') ? { ...g, role: '' } : g), live, fetchedAt: snapshot.fetchedAt,
+          // ---- end profile2 role fixture ----
           // ---- end profile metrics ----
         message: params.has('search-partial') ? 'Some profile data could not be loaded. Try again shortly.' : null };
     }

@@ -10,7 +10,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { benchKey, defaultQueue, deltaText, formatStat, insights, lpTrend, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, sparkline, tierLabel, tiles, today, tone, type WinRecord } from "./dashboardModel";
-import type { AccountCard, Bench, Game, LpPoint, Snapshot } from "./types";
+import type { AccountCard, Bench, Game, LpPoint, RoleRecord, Snapshot } from "./types";
 import { Slot } from "./ui/Slot";
 import { EmptyState, Skeleton } from "./ui/States";
 import { fmtCompact } from "./ui/format";
@@ -48,6 +48,19 @@ function useSeen<T extends Element>() {
 }
 
 const pct = (wins: number, games: number) => (games ? Math.round(100 * wins / games) : 0);
+
+export function RoleStrip({ roles }: { roles: RoleRecord[] }) {
+  return <div className="role-strip" aria-label="Win rate by role (estimated from spells, items and lane)">
+    {Object.entries(roleLabels).map(([role, label]) => {
+      const r = roles.find(r => r.role === role) ?? { role, games: 0, wins: 0 };
+      return <div key={role} className={r.games ? "" : "is-empty"} title={`${label}: ${r.wins}W ${r.games - r.wins}L`}>
+        <RoleIcon role={role} size={18} mode="desktop" />
+        <b className={!r.games ? "" : pct(r.wins, r.games) >= 50 ? "up" : "down"}>{r.games ? `${pct(r.wins, r.games)}%` : "–"}</b>
+        <small>{r.games} {r.games === 1 ? "game" : "games"}</small>
+      </div>;
+    })}
+  </div>;
+}
 // Large stats (damage) as 22.4k so the big tile number fits.
 const big = (value: number, digits: number, unit: string) => value >= 1000 ? fmtCompact(value) : formatStat(value, digits, unit);
 const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
@@ -107,13 +120,7 @@ export function Dashboard(props: Props) {
             </button></li>;
           })}
         </ul>}
-        <div className="role-strip" aria-label="Win rate by role (estimated from spells, items and lane)">
-          {summary.roles.map(r => <div key={r.role} className={r.games ? "" : "is-empty"} title={`${roleLabels[r.role]}: ${r.wins}W ${r.games - r.wins}L`}>
-            <RoleIcon role={r.role} size={18} mode="desktop" />
-            <b className={!r.games ? "" : pct(r.wins, r.games) >= 50 ? "up" : "down"}>{r.games ? `${pct(r.wins, r.games)}%` : "–"}</b>
-            <small>{r.games} {r.games === 1 ? "game" : "games"}</small>
-          </div>)}
-        </div>
+        <RoleStrip roles={summary.roles} />
       </section>
     </div>
     <Insights games={games} name={name} />

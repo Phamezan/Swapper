@@ -493,14 +493,19 @@ async function main() {
     await page.text('.player-identity h2', 'Player 1#DEMO');
     assert.equal(await page.evaluate("document.querySelector('.palette')"), null);
     await page.visible('.player-games .match-row');
+    // ---- profile2: shared roles, honest rank and cached teammate portraits ----
     await page.text('.player-ranks', 'Solo/Duo');
-    await page.text('.player-ranks', 'Flex');
+    assert.equal(await page.evaluate("document.querySelector('.player-ranks').textContent.includes('Flex')"), false);
     // ---- profile round9: aggregates, progressive history and responsive layout ----
     assert.equal(await page.evaluate("document.querySelectorAll('.player-metric').length"), 5);
     assert.equal(await page.evaluate("document.querySelectorAll('.player-champions li').length"), 3);
     await page.text('.player-champions', '12 loaded games');
     await page.text('.player-together', '12 games');
-    await page.text('.player-roles', 'Jungle');
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-roles .role-strip > div').length"), 5);
+    assert.equal(await page.evaluate("document.querySelector('.player-roles [title=\"Jungle: 7W 5L\"] b').textContent"), '58%');
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-roles .is-empty').length"), 4);
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-together img.search-profile-icon').length"), 4);
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-champion-art').length"), 3);
     assert.equal(await page.evaluate("document.querySelectorAll('.player-games .match-row').length"), 10);
     for (const [width, height] of [[1920, 1080], [1440, 900], [1280, 820]]) {
       await page.cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
@@ -517,7 +522,7 @@ async function main() {
     await page.text('.player-identity h2', 'Player 2#DEMO');
     await page.click('.player-back');
     await page.text('.player-identity h2', 'Player 1#DEMO');
-    // ---- end profile checks ----
+    // ---- end profile2 checks ----
     await page.click('.player-games .match-champ');
     // ---- matchdetail: player-perspective match also opens Overview ----
     await page.visible('.md-comparison');
@@ -546,6 +551,27 @@ async function main() {
     await key('Escape');
     await navigate(fullApp, '.match-row');
   });
+  // ---- profile2: shared role tooltips/empty states and missing season record ----
+  await check('Player missing record keeps tier and LP with five empty roles', async () => {
+    await navigate(fullApp + '?profile-no-record&profile-no-roles', '.match-row');
+    await page.click('.title-search');
+    await page.type(searchInput, 'Player 1#DEMO');
+    await key('Enter');
+    await page.visible('.player-games .match-row');
+    await page.text('.player-ranks', 'Emerald II');
+    await page.text('.player-ranks', '40');
+    await page.text('.player-ranks', 'Season record unavailable');
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-rank-record').length"), 0);
+    assert.equal(await page.evaluate("document.querySelector('.player-ranks').textContent.includes('win rate')"), false);
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-roles .is-empty').length"), 5);
+    assert.equal(await page.evaluate("document.querySelector('.player-roles [title=\"Jungle: 0W 0L\"] b').textContent"), '–');
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-roles meter').length"), 0);
+    await page.click('.player-back');
+    assert.equal(await page.evaluate("document.querySelectorAll('.role-strip > div').length"), 5);
+    assert.equal(await page.evaluate("document.querySelector('.role-strip [title=\"Top: 7W 3L\"] b').textContent"), '70%');
+  });
+  // ---- end profile2 missing data checks ----
+
   await check('Player partial data keeps games and offers retry', async () => {
     await navigate(`${fullApp}?search-partial`, '.match-row');
     await page.click('.title-search');
