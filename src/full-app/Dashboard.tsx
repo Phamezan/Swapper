@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
-import { ChevronRight, Swords } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import { MatchupsIcon } from "./ui/icons";
 import type { Account } from "../App";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { RankCrest } from "../runes/RankCrest";
@@ -130,7 +131,7 @@ export function DashboardSkeleton() {
 
 function NoMatches({ queue, hasOthers, onShowAll }: { queue: string; hasOthers: boolean; onShowAll: () => void }) {
   const filtered = queue !== "all" && hasOthers;
-  return <EmptyState icon={<Swords size={22} />} title={filtered ? `No ${queueLabels[queue]} games in your latest 20 matches` : "No matches yet"}
+  return <EmptyState icon={<MatchupsIcon size={22} />} title={filtered ? `No ${queueLabels[queue]} games in your latest 20 matches` : "No matches yet"}
     action={filtered ? <button className="fa-text-button" onClick={onShowAll}>Show all queues</button> : undefined}>
     Finished games show up here a minute after the end screen.{filtered && " Games from the other queues are under their own filters."}
   </EmptyState>;

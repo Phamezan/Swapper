@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { CheckIcon } from "./ui/icons";
 import { ItemIcon } from "../runes/ItemIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { TeamLogo } from "../runes/TeamLogo";
@@ -164,12 +165,12 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       {sections.map(([key, label]) => {
         const didFail = failed?.section === key;
         return <span key={key} className={`cs-apply-chip${status[key] ? " is-done" : ""}${didFail ? " is-failed" : ""}`}>
-          {status[key] ? <><Check size={14} aria-hidden /><strong>{label}</strong><small>{key === "runes" ? "Applied" : key === "items" ? "Added" : "Set"}</small></>
+          {status[key] ? <><CheckIcon size={14} aria-hidden /><strong>{label}</strong><small>{key === "runes" ? "Applied" : key === "items" ? "Added" : "Set"}</small></>
             : <><strong>{label}</strong>{didFail && <small>Failed</small>}<button className="fa-text-button" disabled={!ready[key] || !!busy} title={ready[key] ? `Apply ${label.toLowerCase()} to League Client` : `Select ${name} in champion select to apply`} onClick={() => void apply(key)}>{busy === key ? "Applying…" : didFail ? "Retry" : "Apply"}</button></>}
         </span>;
       })}
       {autoApply && <label className="cs-auto-apply">Auto-apply<Switch aria-label="Auto-apply runes" checked={autoApply.checked} disabled={autoApply.disabled} onCheckedChange={autoApply.onChange} /></label>}
-      <button className="fa-primary" disabled={!!busy || allDone || !(ready.runes || ready.spells || ready.items)} onClick={() => void apply("all")}><Check size={16} />{busy === "all" ? "Applying…" : allDone ? "All applied" : "Apply all"}</button>
+      <button className="fa-primary" disabled={!!busy || allDone || !(ready.runes || ready.spells || ready.items)} onClick={() => void apply("all")}><CheckIcon size={16} />{busy === "all" ? "Applying…" : allDone ? "All applied" : "Apply all"}</button>
     </div>
     {failed && <Notice tone="error" action={<button className="fa-secondary" disabled={!!busy} onClick={() => void apply(failed.section)}>Try again</button>}><b>{failed.section === "all" ? "Couldn’t apply the build." : `Couldn’t apply ${sections.find(([key]) => key === failed.section)?.[1].toLowerCase()}.`}</b> {failed.message}</Notice>}
     {notice && <Notice>{notice}</Notice>}

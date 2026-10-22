@@ -2,7 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type
 import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { BarChart3, Crosshair, LayoutDashboard, Radio, Settings, Swords, Users } from "lucide-react";
+import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import type { ChampionOption } from "../runes/types";
@@ -34,10 +34,10 @@ type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
 const appViews: Record<AppPage, View> = { Accounts: "accounts", "Champion select": "runes", Settings: "settings" };
 const appPageOf = (view: View): AppPage => view === "runes" ? "Champion select" : view === "settings" ? "Settings" : "Accounts";
-const groups: { label: string; items: [Location, typeof LayoutDashboard][] }[] = [
-  { label: "Overview", items: [["Dashboard", LayoutDashboard], ["Live Game", Radio]] },
-  { label: "Champions", items: [["Tier list & Builds", BarChart3], ["Matchups", Swords], ["Champion select", Crosshair]] },
-  { label: "Swapper", items: [["Accounts", Users], ["Settings", Settings]] },
+const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
+  { label: "Overview", items: [["Dashboard", DashboardIcon], ["Live Game", LiveGameIcon]] },
+  { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["Champion select", DraftIcon]] },
+  { label: "Swapper", items: [["Accounts", AccountsIcon], ["Settings", SettingsIcon]] },
 ];
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 

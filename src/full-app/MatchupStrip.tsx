@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { BackIcon, ForwardIcon, SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { fmtDelta, fmtPct, type ChampionCountersView, type DuoListView } from "../runes/types";
@@ -98,14 +98,14 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       <div><h3>Matchups as {name}</h3><p>{counters ? `${reliable.length} ${laneName(lane).toLowerCase()} opponents with ${MIN_STRIP_GAMES}+ games, ` : ""}{toughest ? "toughest first" : "best first"} · win rate versus {name}’s average</p></div>
       <div className="fa-actions">
         {tab === "matchups" && <div className="fa-seg" role="group" aria-label="Order"><button aria-pressed={!toughest} onClick={() => setToughest(false)}>Best</button><button aria-pressed={toughest} onClick={() => setToughest(true)}>Toughest</button></div>}
-        {tab === "matchups" && <label className="fa-strip-search"><Search size={14} aria-hidden /><input aria-label="Find opponent" placeholder="Find opponent" value={query} onChange={event => setQuery(event.target.value)} /></label>}
+        {tab === "matchups" && <label className="fa-strip-search"><SearchIcon size={14} aria-hidden /><input aria-label="Find opponent" placeholder="Find opponent" value={query} onChange={event => setQuery(event.target.value)} /></label>}
         {["adc", "support"].includes(lane) && <div className="fa-seg"><button aria-pressed={tab === "matchups"} onClick={() => setTab("matchups")}>Matchups</button><button aria-pressed={tab === "synergies"} onClick={() => setTab("synergies")}>Synergies</button></div>}
       </div>
     </div>
     {tab === "matchups" ? <>
       <div className="fa-strip-frame" data-left={edge.left} data-right={edge.right}>
-      <button className="fa-strip-arrow is-left" aria-label="Scroll matchups left" tabIndex={-1} onClick={() => slide(-1)}><ChevronLeft size={20} /></button>
-      <button className="fa-strip-arrow is-right" aria-label="Scroll matchups right" tabIndex={-1} onClick={() => slide(1)}><ChevronRight size={20} /></button>
+      <button className="fa-strip-arrow is-left" aria-label="Scroll matchups left" tabIndex={-1} onClick={() => slide(-1)}><BackIcon size={20} /></button>
+      <button className="fa-strip-arrow is-right" aria-label="Scroll matchups right" tabIndex={-1} onClick={() => slide(1)}><ForwardIcon size={20} /></button>
       <div ref={strip} className="fa-matchup-strip" role="list" aria-label={`Matchups as ${name}, ${toughest ? "toughest" : "best"} first. Use the arrow keys to move between opponents.`} onKeyDown={onKey}>
         {rows.map((row, index) => <div role="listitem" className={`fa-matchup-slot${index === flip && index > 0 ? " is-flip" : ""}${index === noisy && index > 0 ? " is-noisy" : ""}`} data-label={index === noisy && index > 0 ? "Small sample" : undefined} key={row.championId}>
           <button className={`fa-matchup-card${row.lowSample ? " is-low-sample" : ""} ${row.delta >= 0 ? "is-good" : "is-bad"}`} onClick={() => onPick(row.championId)}

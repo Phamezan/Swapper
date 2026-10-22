@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Popover } from "radix-ui";
-import { Check, ChevronDown, Search } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
+import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { RankCrest } from "../runes/RankCrest";
 import { RoleIcon } from "../runes/RoleIcon";
@@ -30,7 +31,7 @@ export function Picker({ label, value, options, onChange, grid = false, searchab
       buttons[next].focus();
     }}>
       <p className="fa-picker-label">{label}</p>
-      {searchable && <label className="fa-picker-search"><Search size={15} /><input aria-label={`Search ${label.toLowerCase()}`} placeholder="Search champions…" value={query} onChange={e => setQuery(e.target.value)} /></label>}
+      {searchable && <label className="fa-picker-search"><SearchIcon size={15} /><input aria-label={`Search ${label.toLowerCase()}`} placeholder="Search champions…" value={query} onChange={e => setQuery(e.target.value)} /></label>}
       <div className="fa-picker-options" role="group" aria-label={label}>{visible.map(option => <button type="button" className="fa-picker-option" key={option.value} disabled={option.disabled} aria-pressed={value === option.value} onClick={() => { onChange(option.value); setOpen(false); }}>
         {option.icon && <NearViewport className="fa-option-icon">{option.icon}</NearViewport>}<span>{option.label}</span>{value === option.value && <Check size={13} className="fa-picker-check" />}
       </button>)}</div>

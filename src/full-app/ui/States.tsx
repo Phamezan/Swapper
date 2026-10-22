@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { CircleAlert, Info, TriangleAlert } from "lucide-react";
+import { ErrorIcon, InfoIcon, WarningIcon } from "./icons";
 import "./ui.css";
 
 /** Static placeholder blocks (no shimmer: nothing loops) with a screen-reader label. */
@@ -19,7 +19,7 @@ export function EmptyState({ icon, title, children, action }: { icon?: ReactNode
   </section>;
 }
 
-const icons = { info: Info, warn: TriangleAlert, error: CircleAlert };
+const icons = { info: InfoIcon, warn: WarningIcon, error: ErrorIcon };
 
 /** Inline notice row: icon, text, optional action. Errors are announced (role alert). */
 export function Notice({ tone = "info", children, action }: { tone?: keyof typeof icons; children: ReactNode; action?: ReactNode }) {
