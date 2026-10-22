@@ -31,7 +31,7 @@ const handlers: typeof extra = {
   update_status: () => ({ kind: "upToDate", version: "0.9.0" }), run_doctor: () => [], set_remote_enabled: () => state,
   set_notifications_enabled: () => state, set_ready_check_notifications: () => state, set_auto_apply_top_preset: () => state,
   set_apply_spells_with_runes: () => state, set_import_items_with_runes: () => state, set_korean_font: () => state, set_rune_tier: () => state,
-  probe_remote: () => state.remote, save_settings: () => state, set_hotkey: () => state, create_lan_pairing_url: () => "http://192.168.1.20:7878/pair?x=1",
+  restart_plan: () => "restart" /* clientctl */, probe_remote: () => state.remote, save_settings: () => state, set_hotkey: () => state, create_lan_pairing_url: () => "http://192.168.1.20:7878/pair?x=1",
   get_champion_overview: (a) => ({ championId: a.championId, position: "top", unavailable: false, damage: { physical: 62, magic: 31, trueDamage: 7 },
     stats: { tier: "S+", rank: 1, rankTotal: 58, winPct: 52.6, avgWinPct: 50.1, delta: 2.5, pickPct: 9, banPct: 4, games: 24000, patch: "16.21" }, build: null }),
   get_champion_counters: (a) => ({ championId: a.championId, championName: "Aatrox", position: "top", unavailable: false, stale: false, updatedAt: null,

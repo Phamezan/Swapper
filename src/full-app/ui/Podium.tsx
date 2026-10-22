@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Popover } from "radix-ui";
-import { CheckIcon, ForwardIcon, SearchIcon, SettingsIcon, SwitchIcon } from "./icons";
+import { CheckIcon, ForwardIcon, RefreshIcon, SearchIcon, SettingsIcon, SwitchIcon } from "./icons";
 import type { Account } from "../../App";
 import { BrandIcon } from "../../components/BrandIcon";
 import { RankCrest } from "../../runes/RankCrest";
@@ -75,7 +75,7 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
           const [gameName, tag] = account.riotId?.split("#") ?? [];
           const name = account.nickname || gameName || account.name;
           const region = account.region ?? account.platform;
-          return <button type="button" className={`picker-row${isCurrent ? " is-current" : ""}`} key={account.id} disabled={disabled || isCurrent} onClick={() => onSwitch(account.id)}>
+          return <Fragment key={account.id}><button type="button" className={`picker-row${isCurrent ? " is-current" : ""}`} disabled={disabled || isCurrent} onClick={() => onSwitch(account.id)}>
             {account.iconDataUrl ? <img src={account.iconDataUrl} alt="" loading="lazy" /> : <span className="picker-initial">{name[0]?.toUpperCase()}</span>}
             <span className="picker-copy"><b>{name}</b>
               <span className="picker-meta">
@@ -84,7 +84,9 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
               </span>
             </span>
             {isCurrent && <span className="picker-check" aria-label="Current account"><CheckIcon size={16} /></span>}
-          </button>;
+          </button>
+          {/* Switching to the signed-in account restarts the client with it (same as the tray flyout). */}
+          {isCurrent && <button type="button" className="picker-restart" disabled={disabled} onClick={() => onSwitch(account.id)}><RefreshIcon size={15} aria-hidden />Restart client</button>}</Fragment>;
       })}
       {!shown.length && <p className="picker-empty">{accounts.length ? "No matches." : "No saved accounts yet."}</p>}
     </div>
@@ -96,12 +98,12 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
 }
 
 /** Dims the page while a switch runs. The switch flow reports no stages, so the bar is an honest indeterminate one. */
-export function SwitchOverlay({ account, name }: { account: Account | undefined; name: string }) {
+export function SwitchOverlay({ account, name, restart }: { account: Account | undefined; name: string; restart?: boolean }) {
   return <div className="switch-overlay" role="status" aria-live="polite">
     <div className="switching-card ui-card is-raised">
       <div className="who">
         {account?.iconDataUrl ? <img src={account.iconDataUrl} alt="" /> : <span className="picker-initial">{name[0]?.toUpperCase()}</span>}
-        <div><h2>Switching to {name}</h2><p>Signing in through Riot Client.</p></div>
+        <div><h2>{restart ? "Restarting client" : `Switching to ${name}`}</h2><p>{restart ? `Signing ${name} back in through Riot Client.` : "Signing in through Riot Client."}</p></div>
       </div>
       <div className="switch-bar" aria-hidden><i /></div>
     </div>

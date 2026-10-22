@@ -1,3 +1,4 @@
+mod client_restart;
 mod commands;
 mod doctor;
 mod flyout;
@@ -337,6 +338,7 @@ pub fn run() {
                 commands::settings::set_notifications_enabled,
                 commands::remote::allow_lan_firewall,
                 commands::settings::set_ready_check_notifications,
+                client_restart::restart_plan,
                 commands::settings::set_korean_font,
                 commands::settings::onboarding_pending,
                 commands::settings::set_onboarded,

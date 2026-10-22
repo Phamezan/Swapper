@@ -123,7 +123,8 @@ function App() {
   const [pickerOpen, setPickerOpen] = useState(false);
   const [patch, setPatch] = useState<string | null>(null);
   // The switch flow reports no stages, only started / done / failed.
-  const [switching, setSwitching] = useState<{ id: string; name: string } | null>(null);
+  const [switching, setSwitching] = useState<{ id: string; name: string; restart: boolean } | null>(null);
+  const activeIdRef = useRef<string | null>(null);
   const fetching = useRef(false);
   const mounted = useRef(false);
   const queued = useRef(false);
@@ -152,7 +153,8 @@ function App() {
     // Tray menu destinations (Add Account, Settings, ...) are App views.
     const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => setPage(payload === "live" ? LIVE_PAGE : "app")) : Promise.resolve(() => {});
     const switches = isTauri() ? Promise.all([
-      listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching(payload); }),
+      // Switching onto the signed-in account is a client restart.
+      listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching({ ...payload, restart: payload.id === activeIdRef.current }); }),
       listen("switch_done", () => { setSwitching(null); void refresh(); }),
       listen("switch_failed", () => setSwitching(null)),
     ]) : Promise.resolve([]);
@@ -187,6 +189,7 @@ function App() {
   const connected = Boolean(signedIn) && !error;
   // The most played champion's splash is the ambient light behind every page.
   const ambient = useChampionArt(snapshot?.summaries.all?.champions[0]?.id, "splash");
+  activeIdRef.current = accounts?.activeId ?? null;
   const switchingAccount = switching ? accounts?.accounts.find(account => account.id === switching.id) : undefined;
   const switchTo = (id: string) => { setPickerOpen(false); setPage("app"); setRequest({ view: "accounts", switchId: id }); };
   return <div className="fa-frame" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
@@ -212,7 +215,7 @@ function App() {
           </div>)}
         </nav>
       </aside>
-      {switching && <SwitchOverlay account={switchingAccount} name={switching.name} />}
+      {switching && <SwitchOverlay account={switchingAccount} name={switching.name} restart={switching.restart} />}
       <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
