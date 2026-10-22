@@ -128,3 +128,12 @@
 .fa-frame .champion-tools .fa-versus .fa-versus-stat b.down { color: var(--fa-loss); }
 .fa-versus-bar { display: block; width: 200px; height: 6px; margin: 2px 0 4px; overflow: hidden; border-radius: 3px; background: rgb(239 143 137 / .55); }
 .fa-versus-bar i { display: block; height: 100%; border-radius: 3px 0 0 3px; background: var(--ui-win); box-shadow: 1px 0 0 var(--ui-surface-1); }
+/* The tile art is a face-centred square: show it square (never stretched across the wide side), anchored to the
+   outer edge with the face in the card's band, fading toward the centre. */
+.fa-frame .champion-tools .fa-versus .fa-versus-art { inset: auto; top: 50%; left: 0; width: min(360px, 100%); aspect-ratio: 1; height: auto; transform: translateY(-42%); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side.is-end .fa-versus-art { left: auto; right: 0; }
+.fa-frame .champion-tools .fa-versus .fa-versus-art img { object-fit: cover; object-position: 50% 50%; }
+.fa-frame .champion-tools .fa-versus .fa-versus-art { -webkit-mask-image: linear-gradient(90deg, #000 45%, transparent); mask-image: linear-gradient(90deg, #000 45%, transparent); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side.is-end .fa-versus-art { -webkit-mask-image: linear-gradient(270deg, #000 45%, transparent); mask-image: linear-gradient(270deg, #000 45%, transparent); }
+.fa-frame .champion-tools .fa-versus .fa-versus-side > span { position: relative; z-index: 1; }
+.fa-frame .champion-tools .fa-versus .fa-versus-side { padding-left: 32px; padding-right: 32px; }
