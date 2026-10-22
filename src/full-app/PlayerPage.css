@@ -1,0 +1,14 @@
+.player-page { gap: 18px; }
+.player-back { display: inline-flex; gap: 8px; align-items: center; align-self: flex-start; color: var(--ui-text-2); background: transparent; border: 0; padding: 4px 0; font-size: 13px; cursor: pointer; }
+.player-hero { display: flex; align-items: center; gap: 20px; padding: 24px; }
+.player-hero > .search-profile-icon { border-radius: var(--ui-radius-md); }
+.player-identity { min-width: 0; }
+.player-identity h2 { margin: 0 0 6px; font-size: 24px; overflow-wrap: anywhere; }
+.player-identity p { margin: 0 0 6px; color: var(--ui-text-2); font-size: 14px; }
+.player-identity small, .player-ranks small { color: var(--ui-text-3); font-size: 12px; }
+.player-ranks { display: flex; gap: 28px; margin-left: auto; }
+.player-ranks > div { display: flex; align-items: center; gap: 12px; min-width: 126px; }
+.player-ranks span { display: flex; flex-direction: column; gap: 5px; }
+.player-ranks strong { font-size: 14px; font-weight: 600; }
+.player-ranks .rank-crest { width: 46px; height: 52px; object-fit: contain; }
+.player-games { width: 100%; min-width: 0; }

@@ -237,7 +237,7 @@ function InsightSide({ label, record, up }: { label: string; record: WinRecord; 
 
 const ITEM_SLOTS = 7;
 
-function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id: number) => string; isLast: boolean; onOpen: () => void }) {
+export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id: number) => string; isLast: boolean; onOpen: () => void }) {
   const ratio = (game.kills + game.assists) / Math.max(1, game.deaths);
   const [row, seen] = useSeen<HTMLLIElement>();
   const opp = opponent(game);
