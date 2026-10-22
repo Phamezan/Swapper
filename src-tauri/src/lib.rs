@@ -357,6 +357,7 @@ pub fn run() {
                 commands::runes::get_matchup,
                 commands::runes::get_champion_counters,
                 commands::runes::get_champion_overview,
+                commands::runes::get_current_patch,
                 commands::runes::get_tier_list,
                 commands::runes::get_duo_list,
                 runes::blind::recommended_picks,

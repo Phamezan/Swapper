@@ -172,6 +172,7 @@ mockIPC(async (cmd, args) => {
     case "rank_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/${a.tier}.svg`;
     case "rune_icon": await runeReady; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("Preview rune icon unavailable");
     case "dashboard_benchmarks": return Object.fromEntries((a.picks as [number, string][]).map(([id, role]) => [`${id}|${role}`, { kills: 5, deaths: 5, assists: 6, damage: 21000, gold: 11000, cs: 185, games: 9000 }]));
+    case "get_current_patch": return "16.21";
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
     case "champion_icon": return `${DD}/${VERSION}/img/champion/${key(a.id)}.png`;
     // The app's tiles are the client's 380 px splash tiles; Data Dragon's are the same crops.

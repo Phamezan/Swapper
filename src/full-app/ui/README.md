@@ -14,8 +14,8 @@ Identity, type rules and banner recipe: `docs/visual-identity.md`.
 | `Skeleton` | `States.tsx` | `label` (screen reader), `rows?`, `height?` | Static placeholder rows for loading states. No shimmer. |
 | `EmptyState` | `States.tsx` | `title`, `icon?`, `children?` (text), `action?` | Centered "nothing here yet" message for a page or card. |
 | `Notice` | `States.tsx` | `tone?: "info" \| "warn" \| "error"`, `children`, `action?` | Inline notice row with icon. `error` is `role="alert"`, the rest `role="status"`. |
-| `Podium` | `Podium.tsx` | `who`, `connected`, `open`, `onToggle`, `crest` | Sidebar profile podium (portrait, connection dot, rank, LP). Shell only. |
-| `AccountPicker` | `Podium.tsx` | `accounts`, `activeId`, `cards`, `disabled`, `onSwitch`, `onManage`, `onAdd`, `onClose` | Popover from the podium. Shell only. |
+| `Podium` | `Podium.tsx` | `who`, `connected`, `open`, `crest`, `disabled` | Sidebar identity and its separate account selector. Render inside a controlled Radix `Popover.Root`. Shell only. |
+| `AccountPicker` | `Podium.tsx` | `accounts`, `activeId`, `activeRank`, `cards`, `disabled`, `onSwitch`, `onManage` | Flat account list anchored to the selector, with a check on the current account. Shell only. |
 | `SwitchOverlay` | `Podium.tsx` | `account`, `name` | Dimmed page with the switching card (indeterminate bar). Shell only. |
 | `fmtCount`, `fmtCompact` | `format.ts` | `value: number` | Numbers: counts as `183,275` (en-US on every locale), large stats as `22.4k` / `1.2M`. |
 

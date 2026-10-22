@@ -43,10 +43,10 @@ Neutral glass surface (`--ui-card`), a 3px left edge in the tone, a faint glow f
 
 ## 5. The shell
 
-- **Title bar:** brand chip, back/forward/refresh, search (`Ctrl+K`), window buttons. Translucent chrome.
-- **Sidebar:** the **profile podium** at the top (portrait with the region badge and a connection dot, name and tag, level, rank crest, LP bar, "Switch account"), then a flat navigation list. Groups are separated by a hairline and spacing, with no group captions. The active page has a green tint, a thin green border and a dot.
+- **Title bar:** the Swapper icon and a prominent wordmark form a brand section in the top-left corner, above the sidebar and outside the profile artwork. Back/forward/refresh, search (`Ctrl+K`) and window buttons follow. Translucent chrome.
+- **Sidebar:** an integrated profile at the top, with the portrait centered and the player's name and tag together on one centered line. Rank and LP sit below. The profile has no separate outer card border. A distinct **Switch account** button sits at its foot; only that button opens the account picker. The flat navigation list follows, with groups separated by a hairline and spacing. The active page has a green tint and a thin green border.
 - **No status footer.** The podium shows who is signed in. A **dot on the portrait** shows the client is connected (green) or not (amber). A **one-line sidebar status** appears only for a problem ("League Client isn't connected. Showing saved stats.", "Open League Client to see your stats.") or something in progress ("Switching to X…"), with an amber or green left edge.
-- **Account picker:** the podium opens a frosted popover with the saved accounts (rank and last played from the saved cards), a quiet Switch button on the others, "Manage accounts" and "Add account". Esc or an outside click closes it. It calls the same switch path as the Dashboard and Accounts page.
+- **Account picker:** a popover anchored directly to **Switch account**, with one flat account list and no subsection headings. Each row shows a portrait, name, tag, region and rank; the current row has a check. A footer links to **Manage accounts**, where accounts can be added. Long lists have a filter and scroll within the available window height. Esc returns focus to the selector; an outside click closes the popover. It calls the same switch path as the Accounts page.
 - **Switching accounts:** the page dims and one card names the target account. The switch flow reports only started, done and failed, so the progress bar is honestly indeterminate.
 - **Ambient art** sits on the canvas background itself (static, so scrolling never repaints it).
 

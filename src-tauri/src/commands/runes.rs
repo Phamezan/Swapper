@@ -288,6 +288,12 @@ pub(crate) async fn get_champion_overview(
     runes::champion_overview_view(champion_id, position.as_deref(), &tier).await
 }
 
+/// The current game patch, for the sidebar badge.
+#[tauri::command]
+pub(crate) async fn get_current_patch() -> Option<String> {
+    runes::patch::patches().await.map(|patches| patches.current)
+}
+
 /// The strongest champions for a role and rank bracket, from lolalytics.
 #[tauri::command]
 pub(crate) async fn get_tier_list(position: String, tier: String) -> runes::TierListView {
