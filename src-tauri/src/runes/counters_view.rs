@@ -27,7 +27,9 @@ pub struct CounterRowView {
     /// `win_pct` minus the opponent's overall win rate.
     pub delta: f64,
     pub games: u64,
-    /// Under [`MIN_MATCHUP_GAMES`]: shown greyed out, below the rest.
+    /// The previous patch's games behind a blended `win_pct` (early in a patch).
+    pub prev_games: u64,
+    /// Under [`MIN_MATCHUP_GAMES`] counting both patches: shown greyed out, below the rest.
     pub low_sample: bool,
 }
 
@@ -161,7 +163,8 @@ fn row_view(row: &CounterRow, names: &HashMap<i64, String>) -> CounterRowView {
         win_pct: row.vs_win_pct,
         delta: row.vs_win_pct - row.all_win_pct,
         games: row.games,
-        low_sample: row.games < MIN_MATCHUP_GAMES,
+        prev_games: row.prev_games,
+        low_sample: row.games + row.prev_games < MIN_MATCHUP_GAMES,
     }
 }
 
@@ -205,7 +208,7 @@ mod tests {
             champion_id: id,
             vs_win_pct: vs,
             games,
-            all_win_pct: 50.0,
+            all_win_pct: 50.0, prev_games: 0,
         }
     }
 
@@ -288,11 +291,11 @@ mod tests {
     fn a_blended_view_keeps_current_games_and_blends_the_rate() {
         let now = Counters {
             lane: "middle".into(),
-            rows: vec![CounterRow { champion_id: 2, vs_win_pct: 47.0, games: 300, all_win_pct: 50.0 }],
+            rows: vec![CounterRow { champion_id: 2, vs_win_pct: 47.0, games: 300, all_win_pct: 50.0 , prev_games: 0}],
             patch: None,
         };
         let prev = Counters {
-            rows: vec![CounterRow { champion_id: 2, vs_win_pct: 52.0, games: 9000, all_win_pct: 50.0 }],
+            rows: vec![CounterRow { champion_id: 2, vs_win_pct: 52.0, games: 9000, all_win_pct: 50.0 , prev_games: 0}],
             ..now.clone()
         };
         let info = crate::runes::patch::PatchInfo { patch: "16.20".into(), previous: Some("16.19".into()) };

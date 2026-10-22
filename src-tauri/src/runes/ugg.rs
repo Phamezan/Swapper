@@ -292,7 +292,7 @@ fn parse_counters(root: &Value, lane: &str, list: &TierList) -> Option<Counters>
                 champion_id,
                 vs_win_pct,
                 games,
-                all_win_pct: opponent.win_pct,
+                all_win_pct: opponent.win_pct, prev_games: 0,
             })
         })
         .collect();

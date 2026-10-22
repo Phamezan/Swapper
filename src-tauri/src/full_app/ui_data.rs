@@ -35,7 +35,8 @@ pub async fn full_app_matchups(
             win_pct: row.vs_win_pct,
             delta: row.vs_win_pct - row.all_win_pct,
             games: row.games,
-            low_sample: row.games < crate::runes::matchup::MIN_MATCHUP_GAMES,
+            prev_games: row.prev_games,
+            low_sample: row.games + row.prev_games < crate::runes::matchup::MIN_MATCHUP_GAMES,
         })
         .collect();
     Ok(crate::runes::ChampionCountersView {

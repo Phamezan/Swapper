@@ -104,9 +104,9 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       <div ref={strip} className="fa-matchup-strip" role="list" aria-label={`Matchups as ${name}, best to worst. Use the arrow keys to move between opponents.`} onKeyDown={onKey}>
         {rows.map((row, index) => <div role="listitem" className={`fa-matchup-slot${index === flip && index > 0 ? " is-flip" : ""}${index === noisy && index > 0 ? " is-noisy" : ""}`} data-label={index === noisy && index > 0 ? "Small sample" : undefined} key={row.championId}>
           <button className={`fa-matchup-card${row.lowSample ? " is-low-sample" : ""} ${row.delta >= 0 ? "is-good" : "is-bad"}`} onClick={() => onPick(row.championId)}
-            title={`${row.name}: ${fmtPct(row.winPct)} win rate over ${fmtCount(row.games)} games${row.lowSample ? " (small sample)" : ""}`}>
+            title={`${row.name}: ${fmtPct(row.winPct)} win rate over ${fmtCount(row.games)} games this patch${row.prevGames ? ` and ${fmtCount(row.prevGames)} last patch` : ""}${row.lowSample ? " (small sample)" : ""}`}>
             <span className="fa-art-wrap">{near && index >= range[0] && index <= range[1] && <ChampionArt id={row.championId} name={row.name} />}</span>
-            <span className="fa-matchup-copy"><strong>{row.name}</strong><b className={row.delta >= 0 ? "up" : "down"}>{fmtDelta(row.delta)}<i>%</i></b><small>{fmtCount(row.games)} games</small><span className="fa-lane-tag"><RoleIcon role={lane} size={12} mode="desktop" />{row.lowSample ? "Low sample" : laneName(lane)}</span></span>
+            <span className="fa-matchup-copy"><strong>{row.name}</strong><b className={row.delta >= 0 ? "up" : "down"}>{fmtDelta(row.delta)}<i>%</i></b><small>{fmtCount(row.games + (row.prevGames ?? 0))} games</small><span className="fa-lane-tag"><RoleIcon role={lane} size={12} mode="desktop" />{row.lowSample ? "Low sample" : laneName(lane)}</span></span>
           </button>
         </div>)}
       </div>

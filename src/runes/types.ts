@@ -139,7 +139,9 @@ export type CounterRow = {
   /** `winPct` minus the opponent's overall win rate. */
   delta: number;
   games: number;
-  /** Under 100 games: shown greyed out, below the rest. */
+  /** Early in a patch: the previous patch's games behind the blended `winPct`. */
+  prevGames?: number;
+  /** Under 100 games across both patches: shown greyed out, below the rest. */
   lowSample: boolean;
 };
 

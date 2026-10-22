@@ -41,7 +41,7 @@ export function counterPicks(rows: CounterRow[], taken: Set<number>, limit = 8):
   return rows.filter(row => !row.lowSample && !taken.has(row.championId))
     .sort((a, b) => a.winPct - b.winPct || b.games - a.games)
     .slice(0, limit)
-    .map(row => ({ championId: row.championId, name: row.name, winPct: 100 - row.winPct, games: row.games }));
+    .map(row => ({ championId: row.championId, name: row.name, winPct: 100 - row.winPct, games: row.games + (row.prevGames ?? 0) }));
 }
 
 /** Every champion A to Z, with the role's win rate where the tier list has one. */

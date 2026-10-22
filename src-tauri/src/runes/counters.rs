@@ -30,6 +30,9 @@ pub struct CounterRow {
     pub games: u64,
     /// The opponent's overall win rate.
     pub all_win_pct: f64,
+    /// The previous patch's games behind a blended rate (0 when nothing was blended).
+    #[serde(default)]
+    pub prev_games: u64,
 }
 
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
@@ -57,6 +60,7 @@ pub fn blend_counters(now: Counters, prev: Option<&Counters>, info: PatchInfo) -
             Some(other) => CounterRow {
                 vs_win_pct: blend_rate(row.vs_win_pct, row.games, other.vs_win_pct),
                 all_win_pct: blend_rate(row.all_win_pct, row.games, other.all_win_pct),
+                prev_games: other.games,
                 ..row.clone()
             },
             None => row.clone(),
@@ -66,7 +70,7 @@ pub fn blend_counters(now: Counters, prev: Option<&Counters>, info: PatchInfo) -
         prev.rows
             .iter()
             .filter(|other| !now.rows.iter().any(|row| row.champion_id == other.champion_id))
-            .map(|other| CounterRow { games: 0, ..other.clone() }),
+            .map(|other| CounterRow { games: 0, prev_games: other.games, ..other.clone() }),
     );
     Counters {
         rows,
@@ -129,7 +133,7 @@ fn row(value: &Value) -> Option<CounterRow> {
         champion_id,
         vs_win_pct: value.get("vsWr").and_then(number)?,
         games: value.get("n").and_then(as_u64)?,
-        all_win_pct: value.get("allWr").and_then(number)?,
+        all_win_pct: value.get("allWr").and_then(number)?, prev_games: 0,
     })
 }
 
@@ -291,7 +295,7 @@ mod tests {
                 champion_id: 48,
                 vs_win_pct: 58.72,
                 games: 109,
-                all_win_pct: 49.29,
+                all_win_pct: 49.29, prev_games: 0,
             }
         );
         // d1 is vsWr - allWr, which is what the UI computes from the row.
@@ -328,7 +332,7 @@ mod tests {
     }
 
     fn row(champion_id: i64, vs: f64, games: u64, all: f64) -> CounterRow {
-        CounterRow { champion_id, vs_win_pct: vs, games, all_win_pct: all }
+        CounterRow { champion_id, vs_win_pct: vs, games, all_win_pct: all, prev_games: 0 }
     }
 
     fn info() -> PatchInfo {
@@ -348,6 +352,7 @@ mod tests {
         let first = blended.rows.iter().find(|r| r.champion_id == 48).unwrap();
         assert!((first.vs_win_pct - 51.0).abs() < 1e-9);
         assert_eq!(first.games, 0, "displayed games are the current patch's");
+        assert_eq!(first.prev_games, 9000, "the previous patch's games back the blended rate");
         assert!(blended.patch.unwrap().previous.is_some());
     }
 
