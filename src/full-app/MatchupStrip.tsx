@@ -7,7 +7,7 @@ import { fmtDelta, fmtPct, type ChampionCountersView, type DuoListView } from ".
 import { useChampionArt } from "./art";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
-import { artWindow, matchupRows, stripOrder } from "./buildLogic";
+import { artWindow, stripRows, MIN_STRIP_GAMES } from "./buildLogic";
 
 export function ChampionArt({ id, name, kind = "tile" }: { id: number; name: string; kind?: "tile" | "loading" }) {
   const art = useChampionArt(id, kind);
@@ -22,12 +22,16 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
   const [duos, setDuos] = useState<DuoListView | null>(null);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
+  // Toughest first answers "who counters this champion?".
+  const [toughest, setToughest] = useState(false);
   const q = query.trim().toLowerCase();
-  const rows = stripOrder(matchupRows(counters)).filter(row => row.name.toLowerCase().includes(q));
-  // Where the deltas cross zero: the first opponent this pick does worse into.
-  const flip = rows.findIndex(row => row.delta < 0 && !row.lowSample);
+  const reliable = stripRows(counters, toughest);
+  const rows = reliable.filter(row => row.name.toLowerCase().includes(q));
+  // Where the deltas cross zero: the first opponent on the other side of even.
+  const flip = rows.findIndex(row => toughest ? row.delta >= 0 : row.delta < 0);
   const noisy = rows.findIndex(row => row.lowSample);
   const strip = useRef<HTMLDivElement>(null);
+  useEffect(() => { if (strip.current) strip.current.scrollLeft = 0; }, [toughest]);
   const [range, setRange] = useState<[number, number]>([0, 12]);
   // Which ends of the strip have more cards behind them; drives the edge fades and arrows.
   const [edge, setEdge] = useState({ left: false, right: false });
@@ -91,8 +95,9 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
 
   return <section className="fa-card fa-matchups">
     <div className="fa-section-heading">
-      <div><h3>Matchups as {name}</h3><p>{counters ? `${matchupRows(counters).length} ${laneName(lane).toLowerCase()} opponents, ` : ""}best to worst · win rate versus {name}’s average</p></div>
+      <div><h3>Matchups as {name}</h3><p>{counters ? `${reliable.length} ${laneName(lane).toLowerCase()} opponents with ${MIN_STRIP_GAMES}+ games, ` : ""}{toughest ? "toughest first" : "best first"} · win rate versus {name}’s average</p></div>
       <div className="fa-actions">
+        {tab === "matchups" && <div className="fa-seg" role="group" aria-label="Order"><button aria-pressed={!toughest} onClick={() => setToughest(false)}>Best</button><button aria-pressed={toughest} onClick={() => setToughest(true)}>Toughest</button></div>}
         {tab === "matchups" && <label className="fa-strip-search"><Search size={14} aria-hidden /><input aria-label="Find opponent" placeholder="Find opponent" value={query} onChange={event => setQuery(event.target.value)} /></label>}
         {["adc", "support"].includes(lane) && <div className="fa-seg"><button aria-pressed={tab === "matchups"} onClick={() => setTab("matchups")}>Matchups</button><button aria-pressed={tab === "synergies"} onClick={() => setTab("synergies")}>Synergies</button></div>}
       </div>
@@ -101,7 +106,7 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       <div className="fa-strip-frame" data-left={edge.left} data-right={edge.right}>
       <button className="fa-strip-arrow is-left" aria-label="Scroll matchups left" tabIndex={-1} onClick={() => slide(-1)}><ChevronLeft size={20} /></button>
       <button className="fa-strip-arrow is-right" aria-label="Scroll matchups right" tabIndex={-1} onClick={() => slide(1)}><ChevronRight size={20} /></button>
-      <div ref={strip} className="fa-matchup-strip" role="list" aria-label={`Matchups as ${name}, best to worst. Use the arrow keys to move between opponents.`} onKeyDown={onKey}>
+      <div ref={strip} className="fa-matchup-strip" role="list" aria-label={`Matchups as ${name}, ${toughest ? "toughest" : "best"} first. Use the arrow keys to move between opponents.`} onKeyDown={onKey}>
         {rows.map((row, index) => <div role="listitem" className={`fa-matchup-slot${index === flip && index > 0 ? " is-flip" : ""}${index === noisy && index > 0 ? " is-noisy" : ""}`} data-label={index === noisy && index > 0 ? "Small sample" : undefined} key={row.championId}>
           <button className={`fa-matchup-card${row.lowSample ? " is-low-sample" : ""} ${row.delta >= 0 ? "is-good" : "is-bad"}`} onClick={() => onPick(row.championId)}
             title={`${row.name}: ${fmtPct(row.winPct)} win rate over ${fmtCount(row.games)} games this patch${row.prevGames ? ` and ${fmtCount(row.prevGames)} last patch` : ""}${row.lowSample ? " (small sample)" : ""}`}>
@@ -111,7 +116,7 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
         </div>)}
       </div>
       </div>
-      {!rows.length && (!counters ? <Skeleton label="Loading matchups" rows={1} height={228} /> : <p className="fa-panel-empty">{q ? `No opponent matches “${query}”.` : "No matchup data for this role and rank."}</p>)}
+      {!rows.length && (!counters ? <Skeleton label="Loading matchups" rows={1} height={228} /> : <p className="fa-panel-empty">{q ? `No opponent matches “${query}”.` : `No opponent with ${MIN_STRIP_GAMES}+ games for this role and rank yet.`}</p>)}
     </> : <div className="fa-synergy-grid">{error && <Notice tone="error">{error}</Notice>}{!duos && !error && <Skeleton label="Loading bot-lane pairs" rows={2} height={64} />}{duos && duos.rows.filter(row => row.adcId === championId || row.supportId === championId).map(row => {
       const id = row.adcId === championId ? row.supportId : row.adcId;
       const partner = row.adcId === championId ? row.supportName : row.adcName;

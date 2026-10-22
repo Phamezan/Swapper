@@ -17,6 +17,15 @@ export function matchupRows(view: ChampionCountersView | null): CounterRow[] {
   return [...unique.values()].sort((a, b) => b.delta - a.delta || b.games - a.games || a.name.localeCompare(b.name));
 }
 
+/** Opponents with fewer games (both patches together) are noise in the strip, not matchups. */
+export const MIN_STRIP_GAMES = 300;
+
+/** The champion page's matchup strip: reliable opponents only, best first, or toughest first. */
+export function stripRows(view: ChampionCountersView | null, toughestFirst = false): CounterRow[] {
+  const rows = matchupRows(view).filter(row => row.games + (row.prevGames ?? 0) >= MIN_STRIP_GAMES);
+  return toughestFirst ? rows.reverse() : rows;
+}
+
 /** Indices of strip cards whose art should be mounted: the cards in view plus
  *  `overscan` on each side. Cards are a fixed `step` apart (width + gap). */
 export function artWindow(scrollLeft: number, viewport: number, step: number, count: number, overscan = 6): [number, number] {
