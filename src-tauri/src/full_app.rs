@@ -414,6 +414,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     let points = lp::record_current(&client, account, summoner.puuid.clone(), rank.clone()).await?;
     lp::annotate(&mut games, &points);
     Ok(Snapshot {
+        lp_history: points,
         champion_names,
         summoner,
         rank,
@@ -480,6 +481,7 @@ mod tests {
             games: vec![],
             summaries: model::summaries(&[]),
             champion_names: Default::default(),
+            lp_history: vec![],
         };
         std::fs::write(&path, serde_json::to_vec(&snapshot).unwrap()).unwrap();
         let cached = read_cache_at(&path).unwrap();
