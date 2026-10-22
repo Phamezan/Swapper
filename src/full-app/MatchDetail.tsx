@@ -71,7 +71,7 @@ export default function MatchDetail({ game, names }: { game: Game; names: Snapsh
           const next = event.key === "ArrowRight" ? (index + 1) % tabs.length : event.key === "ArrowLeft" ? (index + tabs.length - 1) % tabs.length : event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : null;
           if (next != null) { event.preventDefault(); setTab(tabs[next]); document.getElementById(`md-tab-${tabs[next]}`)?.focus(); }
         }}>{label}</button>)}</div>
-        {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading current Solo/Duo ranks…" : "Some current Solo/Duo ranks are unavailable. Available match statistics are shown below."}</Notice>}
+        {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading ranks…" : "Some Solo/Duo ranks are unavailable."}</Notice>}
         {detail.players.length !== 10 && <Notice tone="warn">League Client returned {detail.players.length} of 10 players for this match. Some team statistics and performance scores are unavailable.</Notice>}
         <div id="md-panel" role="tabpanel" aria-labelledby={`md-tab-${tab}`}>
         {detail.teams.map(team => {
@@ -109,7 +109,7 @@ export default function MatchDetail({ game, names }: { game: Game; names: Snapsh
             </div>)}
           </section>;
         })}</div>
-        <p className="md-rank-note">Score: KDA 35%, champion damage 35%, CS 15%, vision 15%, relative to this match’s best. Ranks are current Solo/Duo ranks.</p>
+        <p className="md-rank-note">Score: KDA 35%, damage 35%, CS 15%, vision 15%, vs this game’s best. Ranks are current Solo/Duo.</p>
       </>}
   </div>;
 }

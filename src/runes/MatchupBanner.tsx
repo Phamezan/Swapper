@@ -39,14 +39,14 @@ type PickerProps = {
 export function EnemyPicker({ mode, enemies, slots, laner, selected, disabled, onSelect }: PickerProps) {
   return (
     <div className="matchup-picker" role="group" aria-label="Choose your lane opponent">
-      <small>ENEMY TEAM · TAP YOUR LANE OPPONENT</small>
+      <small>Enemy team · tap your lane opponent</small>
       <div className="matchup-picker-row">
         {enemies.map((enemy) => (
           <button key={enemy.id} type="button" className={enemy.id === selected ? "is-active" : selected > 0 ? "is-dimmed" : ""}
             aria-label={`Lane opponent: ${enemy.name}`} aria-pressed={enemy.id === selected} disabled={disabled} onClick={() => onSelect(enemy.id)}>
             <ChampionIcon id={enemy.id} name={enemy.name} mode={mode} />
             <small>{enemy.name}</small>
-            {enemy.id === laner && <span className="matchup-lane-tag">LANE</span>}
+            {enemy.id === laner && <span className="matchup-lane-tag">Lane</span>}
           </button>
         ))}
         {Array.from({ length: Math.max(0, slots - enemies.length) }, (_, index) => (
@@ -86,16 +86,16 @@ export function MatchupBanner({ mode, matchup, championId, championName, lane, r
           <span className={`matchup-difficulty is-${difficulty?.toLowerCase()}`}>{difficulty}</span>
         </div>
         <div className="matchup-stat-tiles">
-          <div><small>YOUR WIN RATE</small><div><strong>{fmtPct(stats.winPct)}</strong> <span className={`matchup-delta ${stats.delta >= 0 ? "is-up" : "is-down"}`}>{fmtDelta(stats.delta)} vs avg</span></div></div>
+          <div><small>Your win rate</small><div><strong>{fmtPct(stats.winPct)}</strong> <span className={`matchup-delta ${stats.delta >= 0 ? "is-up" : "is-down"}`}>{fmtDelta(stats.delta)} vs avg</span></div></div>
           <div><small>{championName.toUpperCase()} AVERAGE</small><div><strong>{fmtPct(stats.avgWinPct)}</strong></div></div>
         </div>
       </>}
       {!usable ? <p className="runes-note">{stats
-        ? `Only ${stats.games} games for this matchup, showing the general build.`
+        ? `Only ${stats.games} games. Showing the general build.`
         : `No ${lane.toLowerCase()} data vs ${enemyName}. Showing the general build.`}</p>
-        : changes === null ? <p className="runes-note">Lane comparison unavailable until both builds are loaded.</p>
-        : changes.length === 0 ? <p className="runes-note">Nothing changes in lane: same spells, start and boots as usual.</p>
-        : <div className="matchup-high-value"><small>HIGH VALUE IN THIS MATCHUP</small><div>{changes.map((item) => (
+        : changes === null ? <p className="runes-note">Lane comparison needs both builds.</p>
+        : changes.length === 0 ? <p className="runes-note">No lane changes.</p>
+        : <div className="matchup-high-value"><small>High value in this matchup</small><div>{changes.map((item) => (
           <span key={`${item.kind}-${item.id}`}>{item.kind === "spell" ? <SpellIcon id={item.id} mode={mode} /> : <ItemIcon id={item.id} name={item.name} mode={mode} />}{item.name}</span>
         ))}</div></div>}
     </section>

@@ -227,11 +227,11 @@ body { background: var(--ui-surface-0); }
 .fa-featured-pick > span:last-child { display: grid; gap: 4px; }
 .fa-featured-pick strong { font-size: 26px; font-weight: 750; letter-spacing: -.02em; }
 .fa-featured-pick b { color: var(--fa-win); font-size: 18px; font-weight: 700; }
-.fa-featured-pick small { font-size: var(--fa-label); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); }
+.fa-featured-pick small { font-size: var(--fa-label); font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--text-secondary); }
 .fa-featured-pick b small { text-transform: none; letter-spacing: 0; font-weight: 500; }
 .fa-frame .fa-featured-pick .fa-tier { position: absolute; top: 16px; left: 18px; min-width: 40px; height: 34px; font-size: 17px; }
 .fa-frame .tier-table-wrap { overflow: clip; }
-.fa-frame .tier-table th { top: -30px; height: 44px; background: var(--fa-panel-2); border-color: var(--fa-line); color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+.fa-frame .tier-table th { top: -30px; height: 44px; background: var(--fa-panel-2); border-color: var(--fa-line); color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: 0; text-transform: none; }
 .fa-frame .tier-table td { padding: 10px 16px; border-color: rgb(255 255 255 / .05); font-size: var(--fa-body); }
 .fa-frame .tier-table tbody tr:hover { background: linear-gradient(90deg, rgb(197 227 158 / .08), rgb(255 255 255 / .04) 45%); }
 .fa-frame .tier-table .col-rank { font-weight: 650; color: var(--text-muted); }
@@ -265,7 +265,7 @@ body { background: var(--ui-surface-0); }
 .fa-stat-strip > div:last-child { border-right: 0; }
 .fa-stat-strip strong { font-size: var(--fa-stat); font-weight: 750; letter-spacing: -.03em; line-height: 1.1; }
 .fa-stat-strip .fa-tier-big { color: var(--strip, var(--text-primary)); }
-.fa-stat-strip small { font-size: var(--fa-label); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.fa-stat-strip small { font-size: var(--fa-label); font-weight: 600; letter-spacing: 0; text-transform: none; }
 
 /* Build */
 .fa-build-section { min-width: 0; }
@@ -283,7 +283,7 @@ body { background: var(--ui-surface-0); }
 .fa-build-grid > div { min-width: 0; padding: 26px; }
 .fa-build-grid > div + div { border-left: 1px solid var(--fa-line); }
 .fa-rune-area { min-width: 0; }
-.fa-build-grid h4 { margin-bottom: 14px; color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.fa-build-grid h4 { margin-bottom: 14px; color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: 0; text-transform: none; }
 .fa-rune-area > .fa-section-heading, .fa-item-area > .fa-section-heading { margin-bottom: 14px; }
 .fa-rune-area > .fa-section-heading h4, .fa-item-area > .fa-section-heading h4 { margin: 0; }
 .fa-rune-page { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -314,7 +314,7 @@ body { background: var(--ui-surface-0); }
 .fa-skill-levels small { font-size: 9.5px; }
 .fa-skill-levels b { display: grid; place-items: center; width: 22px; height: 24px; border-radius: 5px; background: var(--fa-panel-2); box-shadow: inset 0 0 0 1px var(--fa-line-2); font-size: 11.5px; }
 .fa-skill-levels .is-ultimate { background: rgb(240 198 116 / .18); box-shadow: inset 0 0 0 1px rgb(240 198 116 / .55); color: var(--fa-gold); }
-.fa-item-area h5 { margin: 16px 0 9px; color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.fa-item-area h5 { margin: 16px 0 9px; color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: 0; text-transform: none; }
 .fa-item-area h5 small { margin-left: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0; text-transform: none; }
 .fa-item-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 30px; }
 .fa-item-line .ui-slot, .fa-item-path .ui-slot { border-color: var(--fa-line-3); border-radius: var(--fa-radius-sm); }
@@ -451,14 +451,14 @@ body { background: var(--ui-surface-0); }
 .fa-team-member { text-align: center; }
 .fa-team-art { display: grid; place-items: center; height: 150px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: var(--fa-frame); color: var(--text-muted); }
 .fa-team-art img { width: 100%; height: 150px; border-radius: 0; object-fit: cover; }
-.fa-team-member small { display: block; margin-top: 8px; font-size: 10.5px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+.fa-team-member small { display: block; margin-top: 8px; font-size: 10.5px; font-weight: 650; letter-spacing: 0; text-transform: none; }
 .fa-team-member.is-you .fa-team-art { border-color: var(--fa-you); }
 .fa-team-member.is-you small { color: var(--fa-you); }
 .fa-draft-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .fa-draft-controls h2 { margin-right: auto; font-size: 28px; font-weight: 750; letter-spacing: -.03em; }
 .fa-draft-controls > label { display: flex; align-items: center; gap: 10px; margin-left: auto; color: var(--text-secondary); }
 .fa-draft-matchup { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-color: rgb(240 198 116 / .35); background: linear-gradient(90deg, rgb(240 198 116 / .1), transparent 60%), var(--fa-card-bg); color: var(--fa-gold); }
-.fa-draft-bans { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+.fa-draft-bans { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: var(--fa-label); font-weight: 650; letter-spacing: 0; text-transform: none; }
 .fa-draft-bans > div { width: 32px; height: 32px; overflow: hidden; border-radius: 7px; filter: grayscale(1); opacity: .65; }
 .fa-draft-bans img { width: 32px; height: 32px; object-fit: cover; }
 
@@ -494,7 +494,7 @@ body { background: var(--ui-surface-0); }
 .fa-frame .selected-champion { grid-template-columns: minmax(0, 1fr); }
 .fa-frame .selected-champion > *, .fa-frame .champion-tools > * { min-width: 0; }
 .fa-matchup-slot.is-noisy { margin-left: 34px; }
-.fa-matchup-slot.is-noisy::before { content: attr(data-label); position: absolute; left: -30px; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); color: var(--text-muted); font-size: 10.5px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.fa-matchup-slot.is-noisy::before { content: attr(data-label); position: absolute; left: -30px; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); color: var(--text-muted); font-size: 10.5px; font-weight: 650; letter-spacing: 0; text-transform: none; white-space: nowrap; }
 
 /* Navigation: pages fade in once on entry (180 ms), nothing loops. */
 @keyframes fa-enter { from { opacity: 0; transform: translateY(4px); } }

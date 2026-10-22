@@ -110,7 +110,7 @@ export function SettingsPage(props: Props) {
         aria-labelledby={`settings-tab-${tab}`}
         tabIndex={0}
       >
-        <header className="fa-settings-heading"><h2>{TABS.find(item => item.id === tab)?.label}</h2><p>{({general: "Make Swapper fit the way you play.", runes: "Your preferences for every champion select.", overlay: "Useful information, right where you play.", remote: "Take champion select with you on your phone.", about: "Updates, diagnostics and application details."})[tab]}</p></header>
+        <header className="fa-settings-heading"><h2>{TABS.find(item => item.id === tab)?.label}</h2><p>{({general: "Startup, Riot Client and alerts", runes: "Applied every draft", overlay: "In-game info", remote: "Draft from your phone", about: "Updates and diagnostics"})[tab]}</p></header>
         <div className={`fa-settings-group fa-settings-${tab}`}>
         {tab === "general" && <GeneralSettings
           useDeceive={props.useDeceive}

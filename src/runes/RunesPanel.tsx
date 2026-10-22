@@ -434,7 +434,7 @@ export function RunesPanel({
           ) : (
             <div className="runes-empty">
               <h2>Runes</h2>
-              <p>{view?.message ?? "Waiting for champion select."}</p>
+              <p>{view?.message ?? "Waiting for draft."}</p>
             </div>
           )}
         </div>
@@ -741,7 +741,7 @@ export function RunesPanel({
               </div>
             ) : shownPresets.length === 0 ? (
               <p className="runes-note">
-                {view.canApply ? "No presets for this role yet." : "No recommendations available. You can still build a page in the Editor."}
+                {view.canApply ? "No presets for this role yet." : "No recommendations. Build a page in the Editor."}
               </p>
             ) : null}
             {view.enemySlots > 0 && view.position !== "none" && (

@@ -13,7 +13,7 @@ export function LiveGameCompact() {
 
 function Card() {
   const { view } = useLiveGame(false);
-  if (!view) return <section className="lgc" aria-label="Live game"><h2><i className="lgc-dot" />Live game</h2><p className="lgc-wait">Waiting for the game to load…</p></section>;
+  if (!view) return <section className="lgc" aria-label="Live game"><h2><i className="lgc-dot" />Live game</h2><p className="lgc-wait">Loading game…</p></section>;
   return <section className="lgc" aria-label="Live game">
     <h2><i className="lgc-dot" />Live game<small>{view.queue}</small></h2>
     <div className="lgc-teams">

@@ -88,7 +88,7 @@ export function TierList({ mode, position, tier, onLoad, onLoadDuos, onPick }: P
   return (
     <section className="tier-list" aria-label="Tier list">
       <h3>{duos ? "Bot lane duos" : "Tier list"}</h3>
-      <p>Search a champion, or tap one below.</p>
+      <p>Search or tap a champion.</p>
       {toggle}
       {view?.list.stale && <CachedBadge stale updatedAt={view.list.updatedAt} />}
       {!view

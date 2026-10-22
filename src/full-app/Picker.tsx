@@ -34,7 +34,7 @@ export function Picker({ label, value, options, onChange, grid = false, searchab
       <div className="fa-picker-options" role="group" aria-label={label}>{visible.map(option => <button type="button" className="fa-picker-option" key={option.value} disabled={option.disabled} aria-pressed={value === option.value} onClick={() => { onChange(option.value); setOpen(false); }}>
         {option.icon && <NearViewport className="fa-option-icon">{option.icon}</NearViewport>}<span>{option.label}</span>{value === option.value && <Check size={13} className="fa-picker-check" />}
       </button>)}</div>
-      {!visible.length && <p className="fa-picker-label">No matching champions.</p>}
+      {!visible.length && <p className="fa-picker-label">No champions found.</p>}
     </Popover.Content></Popover.Portal>
   </Popover.Root>;
 }

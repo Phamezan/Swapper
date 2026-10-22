@@ -90,13 +90,13 @@ export function Dashboard(props: Props) {
     <Performance games={games} queue={queue} onQueue={setQueue} benches={benches} tier={tier} name={name} />
     <div className="dash-columns">
       <section className="panel matches-panel" aria-labelledby="matches-title">
-        <div className="panel-head"><h2 id="matches-title">Match history</h2><small>{games.length} {games.length === 1 ? "game" : "games"} · {queue === "all" ? "all queues" : queueLabels[queue]}</small></div>
+        <div className="panel-head"><h2 id="matches-title">Recent games</h2><small>{games.length} {games.length === 1 ? "game" : "games"} · {queue === "all" ? "all queues" : queueLabels[queue]}</small></div>
         {!games.length ? <NoMatches queue={queue} hasOthers={snapshot.games.length > 0} onShowAll={() => setQueue("all")} />
           : <ol className="match-list">{games.map(game => <MatchRow key={game.id} game={game} name={name} isLast={game.id === lastOpenedMatch} onOpen={() => openMatch(game)} />)}</ol>}
       </section>
       <section className="panel" aria-labelledby="champions-title">
-        <div className="panel-head"><h2 id="champions-title">Your champions &amp; roles</h2><small>{queueLabels[queue]}</small></div>
-        {!summary.champions.length ? <p className="panel-empty">Your champions and roles appear after you play a game in this queue.</p> : <ul className="champ-perf">
+        <div className="panel-head"><h2 id="champions-title">Champions &amp; roles</h2><small>{queueLabels[queue]}</small></div>
+        {!summary.champions.length ? <p className="panel-empty">Play a game in this queue to see champions.</p> : <ul className="champ-perf">
           {summary.champions.map(c => {
             const total = c.wins + c.losses;
             return <li key={c.id}><button className="ui-row" onClick={() => onOpenChampion(c.id, name(c.id))} title={`Open ${name(c.id)} build`}>
@@ -130,9 +130,9 @@ export function DashboardSkeleton() {
 
 function NoMatches({ queue, hasOthers, onShowAll }: { queue: string; hasOthers: boolean; onShowAll: () => void }) {
   const filtered = queue !== "all" && hasOthers;
-  return <EmptyState icon={<Swords size={22} />} title={filtered ? `No ${queueLabels[queue]} games in your latest 20 matches` : "No matches yet"}
+  return <EmptyState icon={<Swords size={22} />} title={filtered ? `No ${queueLabels[queue]} games in your latest 20` : "No games yet"}
     action={filtered ? <button className="fa-text-button" onClick={onShowAll}>Show all queues</button> : undefined}>
-    Finished games show up here a minute after the end screen.{filtered && " Games from the other queues are under their own filters."}
+    Games appear a minute after the end screen.
   </EmptyState>;
 }
 
@@ -143,7 +143,7 @@ function TodayCard({ games, live, onOpenLive }: { games: Game[]; live: boolean; 
   const since = day.since == null ? "no games yet" : `since ${new Date(day.since).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   const none = day.games === 0;
   return <section className="panel today-card" aria-label="Today">
-    <div className="card-head"><h2>Today</h2><small>{since}</small>{live && <button className="fa-primary live-button" onClick={onOpenLive}>Open Live Game</button>}</div>
+    <div className="card-head"><h2>Today</h2><small>{since}</small>{live && <button className="fa-primary live-button" onClick={onOpenLive}>Open live game</button>}</div>
     <dl className="today-stats">
       <div><dt>{day.games === 1 ? "game" : "games"}</dt><dd>{day.games}</dd></div>
       <div><dt>wins–losses</dt><dd>{none ? "–" : <><span className="up">{day.wins}</span>–<span className="down">{day.losses}</span></>}</dd></div>
@@ -173,7 +173,7 @@ function RankCard({ snapshot, stale }: { snapshot: Snapshot; stale: boolean }) {
         <svg viewBox="0 0 150 40" aria-hidden><polyline points={sparkline(trend.scores, 150, 40)} /></svg>
         <figcaption><span>{trend.games > 0 ? `${trend.games} ${trend.games === 1 ? "game" : "games"} ago` : "earlier"}</span><span>now</span></figcaption>
       </figure>}
-    </div> : <p className="rank-empty">Finish your Solo/Duo placements to see rank progress.</p>}
+    </div> : <p className="rank-empty">Finish placements to see progress.</p>}
   </section>;
 }
 

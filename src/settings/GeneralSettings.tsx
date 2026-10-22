@@ -76,7 +76,7 @@ export function GeneralSettings({
         <div className="setting-copy">
           <label htmlFor="startup-switch">Start on startup</label>
           <button className="info-button" aria-label="About Start on startup" aria-expanded={openInfo === "startup"} onClick={() => toggle("startup")}><Info size={13} /></button>
-          {openInfo === "startup" && <p>Launch Swapper with Windows. It starts in the tray, without opening the flyout.</p>}
+          {openInfo === "startup" && <p>Launch with Windows, in the tray.</p>}
         </div>
         <Switch id="startup-switch" checked={startOnStartup} disabled={busy} onCheckedChange={onStartOnStartupChange} aria-label="Start on startup" />
       </div>
@@ -85,7 +85,7 @@ export function GeneralSettings({
         <div className="setting-copy">
           <label htmlFor="deceive-switch">Launch through Deceive</label>
           <button className="info-button" aria-label="About Launch through Deceive" aria-expanded={openInfo === "deceive"} onClick={() => toggle("deceive")}><Info size={13} /></button>
-          {openInfo === "deceive" && <p>Start League with Deceive’s offline presence. Included with Swapper.</p>}
+          {openInfo === "deceive" && <p>Start League with Deceive’s offline presence.</p>}
         </div>
         <Switch id="deceive-switch" checked={useDeceive} disabled={busy} onCheckedChange={onUseDeceiveChange} aria-label="Launch through Deceive" />
       </div>
@@ -110,7 +110,7 @@ export function GeneralSettings({
           : <Button variant="outline" disabled={ltkInstalling} onClick={onInstallLtk}>{ltkInstalling ? "Installing…" : "Install"}</Button>}
       </div>
 
-      <p className="field-label">RIOT CLIENT PATH</p>
+      <p className="field-label">Riot Client path</p>
       <div className="segmented" role="group" aria-label="Riot Client path">
         <button type="button" className={manualPath ? "" : "is-on"} aria-pressed={!manualPath} onClick={() => onPathModeChange("auto")}>Auto</button>
         <button type="button" className={manualPath ? "is-on" : ""} aria-pressed={manualPath} onClick={() => onPathModeChange("manual")}>Manual</button>

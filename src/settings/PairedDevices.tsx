@@ -124,7 +124,7 @@ export function PairedDevices({ staleSince = null }: Props) {
       {error && <p className="remote-transport-message">{error}</p>}
       {!error && devices.length === 0 && (
         <p className="remote-transport-message">
-          Show the QR code and scan it on a phone to pair a device.
+          Scan the QR code on a phone to pair.
         </p>
       )}
       {devices.map((device) => (

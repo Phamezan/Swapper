@@ -89,7 +89,7 @@ export function SwitchOverlay({ account, name }: { account: Account | undefined;
     <div className="switching-card ui-card is-raised">
       <div className="who">
         {account?.iconDataUrl ? <img src={account.iconDataUrl} alt="" /> : <span className="picker-initial">{name[0]?.toUpperCase()}</span>}
-        <div><h2>Switching to {name}</h2><p>Signing in through Riot Client. This can take a few seconds.</p></div>
+        <div><h2>Switching to {name}</h2><p>Signing in through Riot Client.</p></div>
       </div>
       <div className="switch-bar" aria-hidden><i /></div>
     </div>

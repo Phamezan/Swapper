@@ -95,7 +95,7 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
 
   return <section className="fa-card fa-matchups">
     <div className="fa-section-heading">
-      <div><h3>Matchups as {name}</h3><p>{counters ? `${reliable.length} ${laneName(lane).toLowerCase()} opponents with ${MIN_STRIP_GAMES}+ games, ` : ""}{toughest ? "toughest first" : "best first"} · win rate versus {name}’s average</p></div>
+      <div><h3>Matchups as {name}</h3><p>{counters ? `${reliable.length} ${laneName(lane).toLowerCase()} opponents, ${MIN_STRIP_GAMES}+ games · ` : ""}{toughest ? "toughest" : "best"} first · win rate vs {name}’s average</p></div>
       <div className="fa-actions">
         {tab === "matchups" && <div className="fa-seg" role="group" aria-label="Order"><button aria-pressed={!toughest} onClick={() => setToughest(false)}>Best</button><button aria-pressed={toughest} onClick={() => setToughest(true)}>Toughest</button></div>}
         {tab === "matchups" && <label className="fa-strip-search"><Search size={14} aria-hidden /><input aria-label="Find opponent" placeholder="Find opponent" value={query} onChange={event => setQuery(event.target.value)} /></label>}
@@ -116,7 +116,7 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
         </div>)}
       </div>
       </div>
-      {!rows.length && (!counters ? <Skeleton label="Loading matchups" rows={1} height={228} /> : <p className="fa-panel-empty">{q ? `No opponent matches “${query}”.` : `No opponent with ${MIN_STRIP_GAMES}+ games for this role and rank yet.`}</p>)}
+      {!rows.length && (!counters ? <Skeleton label="Loading matchups" rows={1} height={228} /> : <p className="fa-panel-empty">{q ? `No opponent matches “${query}”.` : `No opponent with ${MIN_STRIP_GAMES}+ games here yet.`}</p>)}
     </> : <div className="fa-synergy-grid">{error && <Notice tone="error">{error}</Notice>}{!duos && !error && <Skeleton label="Loading bot-lane pairs" rows={2} height={64} />}{duos && duos.rows.filter(row => row.adcId === championId || row.supportId === championId).map(row => {
       const id = row.adcId === championId ? row.supportId : row.adcId;
       const partner = row.adcId === championId ? row.supportName : row.adcName;

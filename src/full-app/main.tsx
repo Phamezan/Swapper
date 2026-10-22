@@ -200,7 +200,7 @@ function App() {
           </div>)}
         </nav>
         {(switching || clientProblem) && <p className={`podium-status ${switching ? "is-busy" : "is-warn"}`} role="status"><i aria-hidden />
-          {switching ? `Switching to ${switching.name}…` : view?.stale ? "League Client isn't connected. Showing saved stats." : "Open League Client to see your stats."}</p>}
+          {switching ? `Switching to ${switching.name}…` : view?.stale ? "League Client offline. Showing saved stats." : "Open League Client for stats."}</p>}
       </aside>
       {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
         onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} onAdd={() => { setPickerOpen(false); setPage("app"); setRequest({ view: "add" }); }} onClose={() => setPickerOpen(false)} />}
@@ -210,15 +210,15 @@ function App() {
         {selectedMatch ? <PageHeader crumbs={[{ label: "Dashboard", onClick: () => go("Dashboard") }]}
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
           : <PageHeader title={matchId != null ? "Match detail" : pageLabel(page)}
-            actions={page === "Dashboard" && snapshot && <small className="updated">{view?.stale ? "Showing saved stats" : `Updated ${fmtAgoShort(snapshot.fetchedAt)}`}</small>} />}
-        {view?.stale && page === "Dashboard" && <Notice tone="warn">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Last saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</Notice>}
+            actions={page === "Dashboard" && snapshot && !view?.stale && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
+        {view?.stale && page === "Dashboard" && <Notice tone="warn">{snapshot ? <><CachedBadge stale updatedAt={snapshot.fetchedAt} /> Saved stats for {snapshot.summoner.riotId}. </> : null}{view.message}</Notice>}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "Dashboard"
           ? snapshot ? <Dashboard snapshot={snapshot} stale={view?.stale} phase={phase} onOpenLive={() => go(LIVE_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { visitedMatches.current.set(game.id, game); go(`Match:${game.id}`); }} />
             : loading ? <DashboardSkeleton />
-            : <EmptyState icon={<BrandIcon size={40} />} title="Sign in to League Client">Your recent Rift games and Solo/Duo rank appear here once League Client is open.</EmptyState>
+            : <EmptyState icon={<BrandIcon size={40} />} title="Sign in to League Client">Open League Client to see your games and rank.</EmptyState>
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={selectedMatch.id} game={selectedMatch} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>

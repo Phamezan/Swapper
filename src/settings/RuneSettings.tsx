@@ -35,7 +35,7 @@ export function RuneSettings({
         <div className="setting-copy">
           <label htmlFor="auto-runes-switch">Auto-apply recommended runes</label>
           <button className="info-button" aria-label="About Auto-apply recommended runes" aria-expanded={openInfo === "runes"} onClick={() => toggle("runes")}><Info size={13} /></button>
-          {openInfo === "runes" && <p>When your champion locks in during champion select, Swapper applies the recommended rune page shown on the runes screen. Off by default.</p>}
+          {openInfo === "runes" && <p>Applies the recommended rune page when you lock in. Off by default.</p>}
         </div>
         <Switch id="auto-runes-switch" checked={autoApply} disabled={busy} onCheckedChange={onAutoApplyChange} aria-label="Auto-apply recommended runes" />
       </div>
@@ -44,7 +44,7 @@ export function RuneSettings({
         <div className="setting-copy">
           <label htmlFor="spells-switch">Apply spells with runes</label>
           <button className="info-button" aria-label="About Apply summoner spells with runes" aria-expanded={openInfo === "spells"} onClick={() => toggle("spells")}><Info size={13} /></button>
-          {openInfo === "spells" && <p>Set recommended summoner spells when you apply a preset or pro build, manually or through auto-apply. Works even when auto-apply is off. Flash stays on the key you already use.</p>}
+          {openInfo === "spells" && <p>Sets recommended summoner spells with a preset or pro build, even with auto-apply off. Flash keeps your key.</p>}
         </div>
         <Switch id="spells-switch" checked={applySpells} disabled={busy} onCheckedChange={onApplySpellsChange} aria-label="Apply spells with runes" />
       </div>
@@ -53,7 +53,7 @@ export function RuneSettings({
         <div className="setting-copy">
           <label htmlFor="items-switch">Import item build</label>
           <button className="info-button" aria-label="About Import item build" aria-expanded={openInfo === "items"} onClick={() => toggle("items")}><Info size={13} /></button>
-          {openInfo === "items" && <p>Add the preset's item build to the League shop when you apply runes, manually or through auto-apply. Works even when auto-apply is off. Swapper keeps only one of its item sets and removes it after the game; your own sets are never touched.</p>}
+          {openInfo === "items" && <p>Adds the preset's items to the League shop with runes, even with auto-apply off. Only one Swapper set is kept and removed after the game; your sets are never touched.</p>}
         </div>
         <Switch id="items-switch" checked={importItems} disabled={busy} onCheckedChange={onImportItemsChange} aria-label="Import item build" />
       </div>
@@ -62,7 +62,7 @@ export function RuneSettings({
         <div className="setting-copy">
           <label htmlFor="rune-tier">Use builds from</label>
           <button className="info-button" aria-label="About the rune rank filter" aria-expanded={openInfo === "tier"} onClick={() => toggle("tier")}><Info size={13} /></button>
-          {openInfo === "tier" && <p>Swapper loads rune statistics for this rank bracket from op.gg. A narrower bracket has fewer games, so the numbers can get thin.</p>}
+          {openInfo === "tier" && <p>Stats for this rank bracket from op.gg. Narrower brackets have fewer games.</p>}
         </div>
         <select
           id="rune-tier"

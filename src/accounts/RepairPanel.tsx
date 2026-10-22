@@ -44,7 +44,7 @@ export function RepairPanel({ account, onDone, onCancel }: RepairPanelProps) {
         if (outcome.state === "unavailable") {
           setPhase({
             kind: "failed",
-            problem: "Could not read account identity. Make sure Riot Client is open and signed in.",
+            problem: "Can’t read the account. Open Riot Client and sign in.",
           });
           return;
         }
@@ -86,21 +86,21 @@ export function RepairPanel({ account, onDone, onCancel }: RepairPanelProps) {
         {phase.kind === "failed" ? <>
           <h2>Could not repair the account</h2>
           <p>{phase.problem}</p>
-          <Button className="primary-action" onClick={retry}><RefreshCw size={16} /> Try Again</Button>
+          <Button className="primary-action" onClick={retry}><RefreshCw size={16} /> Try again</Button>
           <button className="text-action" onClick={onCancel}>Back to accounts</button>
         </> : phase.kind === "saving" ? <>
         <h2>Replacing the saved session…</h2>
-        <p>Verifying the signed-in account and saving a fresh session for {name}. The account stays in place — nothing is duplicated or removed.</p>
+        <p>Saving a fresh session for {name}. Nothing is duplicated or removed.</p>
           <div className="detect-status"><LoaderCircle className="spin" size={14} /> Working…</div>
           <button className="text-action" onClick={onCancel}>Cancel</button>
         </> : phase.reason === "noClient" ? <>
           <h2>Open Riot Client</h2>
-          <p>Sign in to {name} with “Stay signed in”. Swapper detects the sign-in and replaces the account’s saved session automatically.</p>
+          <p>Sign in to {name} with “Stay signed in”. Swapper detects it automatically.</p>
           <div className="detect-status"><LoaderCircle className="spin" size={14} /> Looking for Riot Client…</div>
           <button className="text-action" onClick={onCancel}>Cancel</button>
         </> : <>
           <h2>Waiting for the {name} sign-in…</h2>
-          <p>Keep Riot Client open while you finish signing in to {name}. If a different account is signed in, sign out first — Swapper only replaces the session when the sign-in matches.</p>
+          <p>Keep Riot Client open and sign in to {name}. If another account is signed in, sign out first.</p>
           <div className="detect-status"><LoaderCircle className="spin" size={14} /> Watching for your account…</div>
           <button className="text-action" onClick={onCancel}>Cancel</button>
         </>}

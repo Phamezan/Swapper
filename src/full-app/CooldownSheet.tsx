@@ -24,7 +24,7 @@ export function CooldownSheet({ championId, spells, compact }: { championId: num
   }, [championId, spellKey]);
 
   if (championId <= 0) return null;
-  if (!sheet) return <section className="cd-sheet is-empty"><small>{failed ? "Ability data is unavailable while League is closed." : "Loading abilities…"}</small></section>;
+  if (!sheet) return <section className="cd-sheet is-empty"><small>{failed ? "Abilities need League open." : "Loading abilities…"}</small></section>;
   return <section className={`cd-sheet${compact ? " is-compact" : ""}`} aria-label="Ability cooldowns">
     <header><h4>Cooldowns</h4><small>Base cooldowns, no ability haste</small></header>
     <ul>

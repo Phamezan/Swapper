@@ -18,13 +18,13 @@ export function AccountCards(props: AccountCardsProps) {
   };
   return <div className="fa-accounts dash-scope">
     {notice && <Notice>{notice}</Notice>}
-    <div className="fa-launcher-intro"><p><ShieldCheck size={16} aria-hidden /> Saved sessions · Pick an account. Swapper takes care of the sign-in.</p><small>{props.accounts.length} saved · {props.activeId ? "1 active" : "No active session"}</small></div>
+    <div className="fa-launcher-intro"><p><ShieldCheck size={16} aria-hidden /> Pick an account to sign in.</p><small>{props.accounts.length} saved · {props.activeId ? "1 active" : "No active session"}</small></div>
     <div className="fa-account-grid">{props.accounts.map(account => {
       const active = props.activeId === account.id;
       const switching = props.switchingId === account.id;
       const repair = props.repairableId === account.id;
       return <article className={`fa-card fa-account-card${active ? " is-active" : ""}`} key={account.id}>
-        <div className="fa-account-top"><span className={`fa-account-state${active ? " is-active" : ""}`}>{active ? <><Check size={12} /> Active session</> : repair ? <><Wrench size={12} /> Needs repair</> : "Ready to launch"}</span>
+        <div className="fa-account-top"><span className={`fa-account-state${active ? " is-active" : ""}`}>{active ? <><Check size={12} /> Active session</> : repair ? <><Wrench size={12} /> Needs repair</> : "Ready"}</span>
           <DropdownMenu.Root><DropdownMenu.Trigger className="fa-icon-button" disabled={props.busy} aria-label={`Actions for ${account.name}`}><MoreHorizontal size={20} /></DropdownMenu.Trigger>
             <DropdownMenu.Portal><DropdownMenu.Content className="fa-account-menu" align="end" sideOffset={6}>
               <DropdownMenu.Item onSelect={() => props.onRename(account)}>Rename account</DropdownMenu.Item>
@@ -39,6 +39,6 @@ export function AccountCards(props: AccountCardsProps) {
         <div className="fa-account-meta"><span>Region<strong>{account.region ?? account.platform ?? "Unknown"}</strong></span><span>Session<strong>{switching ? "Switching…" : active ? "In use" : "Saved securely"}</strong></span></div>
         <button className="fa-secondary fa-switch" disabled={props.busy || active} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : active ? "Currently signed in" : "Switch account"}{!active && <ArrowRight size={16} aria-hidden />}</button>
       </article>;
-    })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><Plus size={22} aria-hidden /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client. Keep your sessions ready here.</span></span></button></div>
+    })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><Plus size={22} aria-hidden /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.</span></span></button></div>
   </div>;
 }

@@ -94,8 +94,7 @@ export function UpdateSection() {
           </button>
           {openInfo && (
             <p>
-              Swapper checks GitHub for new releases after startup and about every
-              six hours. Updating restarts Swapper; saved accounts stay.
+              Checks GitHub at startup and every ~6 hours. Updating restarts Swapper; accounts stay.
             </p>
           )}
         </div>
@@ -117,7 +116,7 @@ export function UpdateSection() {
 
       {snapshot.state === "notConfigured" && (
         <p className="support-text">
-          Swapper {snapshot.currentVersion} · update checking is not configured in this build.
+          Swapper {snapshot.currentVersion} · updates not configured in this build.
         </p>
       )}
       {snapshot.state === "checking" && (
@@ -136,7 +135,7 @@ export function UpdateSection() {
         </div>
       )}
       {snapshot.state === "installing" && (
-        <div className="setting-status"><LoaderCircle className="spin" size={13} /> Downloading and installing the update. Swapper restarts when it finishes…</div>
+        <div className="setting-status"><LoaderCircle className="spin" size={13} /> Installing update. Swapper restarts after…</div>
       )}
       {snapshot.state === "failed" && (
         <div className="setting-status update-failed">

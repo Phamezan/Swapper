@@ -176,7 +176,7 @@ export function HotkeySetting({ hotkey, active, disabled, onSet }: HotkeySetting
             aria-expanded={infoOpen}
             onClick={() => setInfoOpen((open) => !open)}
           ><Info size={13} /></button>
-          {infoOpen && <p>Open or hide the Swapper flyout from anywhere with a keyboard combination. Select Change to record a new shortcut. Off by default.</p>}
+          {infoOpen && <p>Open or hide the flyout from anywhere. Off by default.</p>}
         </div>
         <Switch
           id="hotkey-switch"
@@ -199,7 +199,7 @@ export function HotkeySetting({ hotkey, active, disabled, onSet }: HotkeySetting
           </button>
           {recording && <span className="hotkey-hint">Press the keys to use. Esc cancels.</span>}
           {hotkey !== null && !active && !recording && (
-            <span className="hotkey-status">Another application is using this shortcut. Record a different one.</span>
+            <span className="hotkey-status">Shortcut in use by another app. Pick a different one.</span>
           )}
           {status && <span className="hotkey-status" role="alert">{status}</span>}
         </div>

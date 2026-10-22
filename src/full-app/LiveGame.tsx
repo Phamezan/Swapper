@@ -24,15 +24,15 @@ export default function LiveGame({ championNames }: { championNames: Map<number,
   if (!view) {
     return <section className="empty lg-empty">
       <BrandIcon size={52} />
-      <h2>{loaded ? "Waiting for the game to load…" : "Reading the game…"}</h2>
-      <p>{error || "Players appear here once League has loaded the match."}</p>
+      <h2>{loaded ? "Loading game…" : "Reading game…"}</h2>
+      <p>{error || "Players appear once the game loads."}</p>
     </section>;
   }
   return <div className="lg">
     <div className="lg-bar">
       <span className="lg-queue">{view.queue || "Custom game"}</span>
       {view.gameTime !== null && <span className="lg-clock" title="Game time">{clock(view.gameTime)}</span>}
-      <small>{fetched < view.players.length ? `Loading players ${fetched}/${view.players.length}…` : "Ranks and form from each player's latest 20 Rift games"}</small>
+      <small>{fetched < view.players.length ? `Loading players ${fetched}/${view.players.length}…` : "Rank and form: latest 20 Rift games"}</small>
     </div>
     {(["blue", "red"] as const).map(side => <Team key={side} side={side} summary={view[side]}
       players={view.players.filter(p => p.side === side)} live={view.gameTime !== null} onOpen={setSelected} />)}

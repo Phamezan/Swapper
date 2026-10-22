@@ -19,10 +19,10 @@ export function LiveGameSettings() {
   }
   return <div className="setting-row">
     <div className="setting-copy">
-      <label htmlFor="live-game-open-switch">Open Live Game when the game starts</label>
-      <p>Swapper opens minimized on Live Game without taking focus from League, ready when you Alt+Tab.</p>
+      <label htmlFor="live-game-open-switch">Open live game on game start</label>
+      <p>Opens minimized, without taking focus.</p>
       {error && <p role="alert">{error}</p>}
     </div>
-    <Switch id="live-game-open-switch" checked={enabled ?? false} disabled={enabled === null} onCheckedChange={value => void change(value)} aria-label="Open Live Game when the game starts" />
+    <Switch id="live-game-open-switch" checked={enabled ?? false} disabled={enabled === null} onCheckedChange={value => void change(value)} aria-label="Open live game on game start" />
   </div>;
 }

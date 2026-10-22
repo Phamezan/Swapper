@@ -269,8 +269,8 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
         // arrival; offer the same Repair Account action as a failed switch.
         setRepairableId(payload.id);
         showError(payload.mismatch
-          ? `Riot Client signed in to a different account than ${payload.name}. Use Repair Account to fix it.`
-          : `The saved session for ${payload.name} has expired. Use Repair Account to sign in again.`);
+          ? `Riot Client signed in to a different account than ${payload.name}. Use Repair account to fix it.`
+          : `The saved session for ${payload.name} has expired. Use Repair account to sign in again.`);
       }),
       listen("lan_reconnect_changed", () => {
         invoke<AppState>("get_state").then(sync).catch(() => {});
@@ -891,13 +891,13 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
         {view === "accounts" ? (
           <>
             {fullApp ? <PageHeader title="Accounts" /> : <div className="panel-heading">
-              <div><p className="eyebrow">{data.accounts.length === 0 ? "GET STARTED" : "READY TO PLAY"}</p><h1>Your accounts</h1></div>
+              <div><p className="eyebrow">{data.accounts.length === 0 ? "Get started" : "Ready to play"}</p><h1>Accounts</h1></div>
               <button className="icon-button" aria-label="Settings" title="Settings" disabled={isBusy} onClick={() => navigate("settings")}><Settings size={19} /></button>
             </div>}
             {data.remote.lanReconnectNeeded && (
               <div className="reconnect-banner" role="status">
                 <CircleAlert size={16} />
-                <span>Your phone needs to reconnect — your PC's network address changed.</span>
+                <span>PC address changed. Reconnect your phone.</span>
                 <button type="button" className="reconnect-banner-action" onClick={showRemoteQr}>Show QR</button>
                 <button type="button" className="reconnect-dismiss" aria-label="Dismiss reconnect notice" onClick={dismissReconnect}><X size={14} /></button>
               </div>
@@ -921,7 +921,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                 <div className="empty-state">
                   <div className="empty-symbol"><Plus size={22} /></div>
                   <h2>No accounts yet</h2>
-                  <p>Sign in through Riot Client once, then save that session here.</p>
+                  <p>Sign in through Riot Client, then save it here.</p>
                   <Button disabled={isBusy} onClick={() => navigate("add")}>Add first account <ArrowRight size={15} /></Button>
                 </div>
               ) : data.accounts.map((account, index) => {
@@ -1011,7 +1011,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
           <>
             {fullApp ? <PageHeader title={pageTitle} crumbs={view === "settings" ? undefined : [{ label: "Accounts", onClick: () => navigate("accounts") }]} /> : <div className="panel-heading compact">
               <button className="icon-button back-button" aria-label="Back to accounts" onClick={() => navigate("accounts")}><ArrowLeft size={17} /></button>
-              <div><p className="eyebrow">SWAPPER</p><h1>{pageTitle}</h1></div>
+              <div><p className="eyebrow">Swapper</p><h1>{pageTitle}</h1></div>
             </div>}
 
             {view === "repair" && <RepairPanel
@@ -1029,7 +1029,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               {addStage === "signIn" ? <section className="add-stage">
                 <span className="step-number">01</span>
                 <h2>Sign in to Riot Client</h2>
-                <p>Use the official Riot Client and turn on “Stay signed in”. Swapper never asks for your password. League does not need to be open.</p>
+                <p>Turn on “Stay signed in” in Riot Client. Swapper never asks for your password.</p>
                 <Button className="primary-action riot-launch" disabled={busy !== null} onClick={() => action("launch", async () => {
                   return data.accounts.length > 0 ? invoke<AppState>("begin_add") : invoke<void>("open_riot");
                 }, () => setAddStage("identify"))}>
@@ -1041,7 +1041,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                 <span className="step-number">02</span>
                 {detect.phase === "found" && conflictingSavedAccount ? <>
                   <h2>Account name already saved</h2>
-                  <p>A saved account has this Riot ID, but its account identifier differs. Swapper cannot safely save another copy or update the saved session automatically.</p>
+                  <p>A saved account has this Riot ID but a different identifier. Swapper can’t safely save a copy or update it.</p>
                   <IdentityCard identity={detect.identity} />
                   <button className="text-action" onClick={() => navigate("accounts")}>Back to accounts</button>
                 </> : detect.phase === "found" && detect.savedAccountId === null ? <>
@@ -1061,25 +1061,25 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
                   <button className="text-action" onClick={() => setAddStage("signIn")}>Use a different account</button>
                 </> : detect.phase === "failed" ? <>
                   <h2>Could not read account identity</h2>
-                  <p>Make sure Riot Client is open and signed in, then try again.</p>
+                  <p>Open Riot Client, sign in, then try again.</p>
                   <Button className="primary-action" disabled={busy !== null} onClick={() => { setError(null); setDetectRound((round) => round + 1); }}>
                     <RefreshCw size={16} /> Try Again
                   </Button>
                   <button className="text-action" onClick={() => setAddStage("signIn")}>Back to sign-in</button>
                 </> : detect.phase === "waiting" && detect.reason === "noClient" ? <>
                   <h2>Open Riot Client</h2>
-                  <p>Sign in to Riot Client with “Stay signed in”. Swapper will detect your account automatically.</p>
+                  <p>Sign in with “Stay signed in”. Swapper detects the account automatically.</p>
                   <div className="detect-status"><LoaderCircle className="spin" size={14} /> Looking for Riot Client…</div>
                 </> : <>
                   <h2>Waiting for Riot sign-in…</h2>
-                  <p>Keep Riot Client open while it finishes signing in. Swapper will detect your account automatically.</p>
+                  <p>Keep Riot Client open. Swapper detects the account automatically.</p>
                   <div className="detect-status"><LoaderCircle className="spin" size={14} /> Watching for your account…</div>
                 </>}
               </section>}
             </div>}
 
             {(view === "edit" || view === "remove") && <div className="manage-list">
-              {data.accounts.length === 0 && <p className="support-text">There are no saved accounts yet.</p>}
+              {data.accounts.length === 0 && <p className="support-text">No saved accounts.</p>}
               {data.accounts.map((account) => <div className="manage-row" key={account.id}>
                 {account.iconDataUrl
                   ? <img className="manage-avatar account-avatar-image" src={account.iconDataUrl} alt="" />
@@ -1154,7 +1154,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
 
       {!native && !error && <div className="error-banner" role="status"><CircleAlert size={16} /><span>Browser preview only. Account actions need the Windows tray app.</span></div>}
       <PairingNotice />
-      {error && <div className="error-banner" role="alert"><CircleAlert size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair Account</Button>}<button aria-label="Dismiss error" onClick={() => { setRepairableId(null); setError(null); }}><X size={14} /></button></div>}
+      {error && <div className="error-banner" role="alert"><CircleAlert size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair account</Button>}<button aria-label="Dismiss error" onClick={() => { setRepairableId(null); setError(null); }}><X size={14} /></button></div>}
       {/* The Fullsized App shows status in its sidebar podium instead. */}
       {!fullApp && <footer className="footer"><span className="footer-status"><span className={footerLoggedIn ? "status-dot good" : "status-dot idle"} /> {footerText}</span><span className="footer-mode">{data.useDeceive ? "DECEIVE" : "RIOT CLIENT"}</span></footer>}
     </div>

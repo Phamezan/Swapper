@@ -30,7 +30,7 @@ export function WindowModeSettings() {
     <div className="setting-row">
       <div className="setting-copy">
         <label htmlFor="full-app-switch">Fullsized App</label>
-        <p>Use a full window instead of the tray flyout for accounts, champion select, stats and builds.</p>
+        <p>Full window instead of the tray flyout.</p>
         {error && <p role="alert">{error}</p>}
       </div>
       <Switch id="full-app-switch" checked={settings?.fullApp ?? false} disabled={disabled} onCheckedChange={value => void change("set_full_app_enabled", value)} aria-label="Fullsized App" />
@@ -39,7 +39,7 @@ export function WindowModeSettings() {
     {settings && !settings.fullApp && <div className="setting-row">
       <div className="setting-copy">
         <label htmlFor="low-memory-switch">Low memory mode</label>
-        <p>Release the flyout's memory while it is hidden. Reopening takes a moment longer.</p>
+        <p>Frees the flyout's memory while hidden. Reopens slower.</p>
       </div>
       <Switch id="low-memory-switch" checked={settings.lowMemory} disabled={disabled} onCheckedChange={value => void change("set_low_memory_mode", value)} aria-label="Low memory mode" />
     </div>}

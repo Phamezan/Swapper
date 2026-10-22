@@ -93,7 +93,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     finally { if (request === proRequest.current) { proBusy.current = false; setProLoading(false); } }
   };
 
-  if (!build) return <section className="fa-card fa-build-empty"><h3>Build unavailable</h3><p>Try another role or rank. Recommendations appear when the provider has a build for this pick.</p></section>;
+  if (!build) return <section className="fa-card fa-build-empty"><h3>Build unavailable</h3><p>Try another role or rank.</p></section>;
   const variants: Variant[] = [{ label: "Most played", selection, items: details ?? build.items, spells: build.spells, order: build.skillOrder, winPct: (details ?? build.items).coreWinPct, games: (details ?? build.items).coreGames }];
   if (details?.highestWin && !details.highestWinMatchesPick) {
     const high = details.highestWin;

@@ -38,8 +38,8 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, enemyCount, ta
       if (live) setLoaded(value);
     };
     setLoaded(null);
-    if (!role || role === "none") done(null, "Choose your role to see suggestions.");
-    else if (tab === "counters" && !enemyId) done(null, "Counters appear once your lane opponent is revealed.");
+    if (!role || role === "none") done(null, "Choose your role.");
+    else if (tab === "counters" && !enemyId) done(null, "Waiting for your lane opponent.");
     else if (tab === "counters") void invoke<ChampionCountersView>("full_app_matchups", { championId: enemyId, position: role, tier })
       .then(view => done(counterPicks(view.beats, new Set(), 24))).catch(reason => done(null, String(reason)));
     else if (tab === "recommended") void invoke<RecommendedPick[]>("recommended_picks", { role, tier })
@@ -60,7 +60,7 @@ export function PickSuggestions({ role, tier, enemyId, enemyName, enemyCount, ta
     catch (reason) { setNotice(String(reason)); }
     finally { setPending(0); }
   };
-  const subtitle = tab === "counters" ? `Your win rate into ${enemyName || "the enemy laner"}` : tab === "recommended" ? "Safe blind picks for your role and rank" : "Every champion, A to Z";
+  const subtitle = tab === "counters" ? `Your win rate into ${enemyName || "the enemy laner"}` : tab === "recommended" ? "Safe blind picks for your role" : "Every champion, A to Z";
 
   return <section className="fa-card cs-picks">
     <div className="fa-section-heading">
@@ -106,8 +106,8 @@ export function LockIn({ championId, name }: { championId: number; name: string 
     finally { setBusy(false); setConfirming(false); }
   };
   return <div className="cs-lock">
-    {confirming ? <><span>Lock in <strong>{name}</strong>? You cannot change it afterwards.</span><div><button className="fa-secondary" onClick={() => setConfirming(false)}>Cancel</button><button className="fa-primary" disabled={busy} onClick={() => void lock()}><LockKeyhole size={14} />{busy ? "Locking…" : "Confirm"}</button></div></>
-      : <><span>{championId ? <>Ready to play <strong>{name}</strong>?</> : "Choose a champion to lock in."}</span><div><button className="fa-primary" disabled={!championId} onClick={() => setConfirming(true)}><LockKeyhole size={14} />Lock in</button></div></>}
+    {confirming ? <><span>Lock in <strong>{name}</strong>? This can’t be undone.</span><div><button className="fa-secondary" onClick={() => setConfirming(false)}>Cancel</button><button className="fa-primary" disabled={busy} onClick={() => void lock()}><LockKeyhole size={14} />{busy ? "Locking…" : "Confirm"}</button></div></>
+      : <><span>{championId ? <>Lock in <strong>{name}</strong>?</> : "Choose a champion."}</span><div><button className="fa-primary" disabled={!championId} onClick={() => setConfirming(true)}><LockKeyhole size={14} />Lock in</button></div></>}
     {notice && <Notice tone="error">{notice}</Notice>}
   </div>;
 }

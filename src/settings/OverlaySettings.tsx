@@ -56,8 +56,8 @@ export function OverlaySettings() {
           {Array.from({ length: 12 }, (_, i) => <option key={i} value={112 + i}>F{i + 1}</option>)}
         </select>
       </div>
-      <p>Use Borderless or Windowed in League's video settings. Exclusive Fullscreen is unsupported.</p>
-      <p>Gold is an estimate of held items, excluding unspent gold and consumed or sold items. Skill hints use Swapper's latest cached max order for your champion, role and rank bracket; open a build in champion select first. Champions with unusual ability ranks are omitted.</p>
+      <p>Needs Borderless or Windowed mode. Exclusive Fullscreen is unsupported.</p>
+      <p>Gold estimates held items only, not unspent gold or consumed or sold items. Skill hints need a cached build for your champion, role and rank: open a build in draft first. Champions with unusual ability ranks are omitted.</p>
     </>}
   </>;
 }

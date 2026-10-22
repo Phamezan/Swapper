@@ -155,10 +155,10 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
         <VersusSide id={selected.id} name={selected.name} label="Your champion" />
         <div className="fa-versus-stat">
           {detail.stats ? <><small>{selected.name} win rate</small><strong>{fmtPct(detail.stats.winPct)}</strong><span>{fmtCount(detail.stats.games)} games · {laneLabel(role)}</span><span className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} pts vs average</span></>
-            : <><small>{laneLabel(role)} · {tierLabel(tier)}</small><span>Not enough games for this matchup yet.</span></>}
+            : <><small>{laneLabel(role)} · {tierLabel(tier)}</small><span>Too few games.</span></>}
         </div>
         <VersusSide id={enemy} name={detail.enemyName} label="Your opponent" end />
-        {detail.fallback && <p className="runes-note">General build: the matchup sample is missing or too small.</p>}
+        {detail.fallback && <p className="runes-note">General build: too few matchup games.</p>}
       </section> : <Skeleton label="Loading matchup" rows={2} height={72} />)}
       {loading && !overview ? <TableSkeleton /> : overview?.stats ? <>
         <div className={`fa-stat-strip ${tierClass(overview.stats.tier ?? "")}`}>
@@ -167,23 +167,23 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
           {([["Win rate", overview.stats.winPct], ["Pick rate", overview.stats.pickPct], ["Ban rate", overview.stats.banPct]] as const).map(([label, value]) => <div key={label}><strong><StatPct value={value} /></strong><small>{label}</small></div>)}
           <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
         </div>
-      </> : <Notice>No statistics available for this role and rank.</Notice>}
+      </> : <Notice>No stats for this role and rank.</Notice>}
       <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} matchup={matchups ? detail : null} preferMatchup={matchups} />
       {counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
       <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={setEnemy} />
       {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${fmtCount(detail.stats.games)} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
     </section>}
     {!selected && (matchups ? <section className="fa-matchup-empty">
-      <h2>Pick your lane matchup</h2>
-      <p>Choose your champion and an opponent to compare the lane, then prepare a build for that pairing.</p>
-      {recent.length > 0 && <><h3>Start with your champions</h3><div className="fa-quick-picks">{recent.map(pick => {
+      <h2>Pick a matchup</h2>
+      <p>Choose your champion and an opponent.</p>
+      {recent.length > 0 && <><h3>Your champions</h3><div className="fa-quick-picks">{recent.map(pick => {
         const champion = champions.find(c => c.id === pick.championId);
         return champion && <button key={pick.championId} className="fa-quick-pick" onClick={() => { setLane(pick.role); void open(champion, pick.role); }}><NearViewport className="fa-featured-art"><ChampionArt id={pick.championId} name={champion.name} /></NearViewport><span><strong>{champion.name}</strong><small>{pick.role === "auto" ? "Most played" : `${laneLabel(pick.role)} lane`}</small></span></button>;
       })}</div></>}
     </section> : <>
       {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map(row => <button className="fa-featured-pick" key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>Leading {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b></span></button>)}</div>}
       {list?.stale && <CachedBadge stale updatedAt={list.updatedAt} />}
-      {list?.unavailable ? <Notice tone="warn">The tier list is unavailable right now. Try another role or rank.</Notice> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
+      {list?.unavailable ? <Notice tone="warn">Tier list unavailable. Try another role or rank.</Notice> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
         <table className="tier-table">
           <thead><tr>{columns.map(([key, label]) => <th key={label} aria-sort={key && key === sort ? (key === "rank" ? "ascending" : "descending") : undefined}>
             {key ? <button className={key === sort ? "is-sorted" : undefined} onClick={() => setSort(key)}>{label}</button> : label}</th>)}</tr></thead>
@@ -243,7 +243,7 @@ function ChampionHeader({ champion, lane, tier, patch, onBack, backLabel, childr
     <div className="champion-hero-title"><ChampionIcon id={champion.id} name={champion.name} mode="desktop" /><div>
       <p className="fa-eyebrow"><RoleIcon role={lane} size={14} mode="desktop" /> {laneLabel(lane)} · {tierLabel(tier)}{patch ? ` · Patch ${patch}` : ""}</p>
       <h2>{champion.name}</h2>
-      <p className="fa-hero-sub">Build, runes and counters</p>
+      <p className="fa-hero-sub">Build, runes, counters</p>
       {abilities.length > 0 && <div className="fa-hero-abilities">{abilities.map(ability => <span key={ability.key} title={ability.name}>{ability.icon && <img src={ability.icon} alt="" />}<kbd>{ability.key}</kbd></span>)}</div>}
     </div></div>
     {children && <div className="fa-hero-filters">{children}</div>}

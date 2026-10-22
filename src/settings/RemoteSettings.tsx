@@ -130,11 +130,11 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
         <div className="setting-copy">
           <label htmlFor="remote-switch">Remote Control</label>
           <button className="info-button" aria-label="About Remote Control" aria-expanded={openInfo} onClick={() => setOpenInfo((open) => !open)}><Info size={13} /></button>
-          {openInfo && <p>Open the existing League remote on your phone over a trusted private Wi-Fi network or your Tailscale network.</p>}
+          {openInfo && <p>Control League from your phone over private Wi-Fi or Tailscale.</p>}
         </div>
         <Switch id="remote-switch" checked={remote.enabled} onCheckedChange={toggle} aria-label="Remote Control" />
       </div>
-      {remote.state === "starting" && <div className="setting-status"><LoaderCircle className="spin" size={13} /> Starting the remote service…</div>}
+      {remote.state === "starting" && <div className="setting-status"><LoaderCircle className="spin" size={13} /> Starting…</div>}
       {remote.enabled && <>
         <div className="remote-transport-row">
           <div className="remote-transport" role="group" aria-label="Remote Control transport">
@@ -143,18 +143,18 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
           </div>
           <span className="remote-transport-help">
             <button type="button" className="info-button remote-transport-info" aria-label="About LAN and Tailscale" aria-describedby="remote-transport-tooltip"><Info size={13} /></button>
-            <span id="remote-transport-tooltip" className="remote-transport-tooltip" role="tooltip">LAN connects over your local Wi-Fi or Ethernet and works without Tailscale. It uses HTTP and requires a trusted Private Windows network. Tailscale uses your Tailscale network over HTTPS; Tailscale must be connected on your PC and phone.</span>
+            <span id="remote-transport-tooltip" className="remote-transport-tooltip" role="tooltip">LAN: local Wi-Fi or Ethernet over HTTP, on a trusted Private Windows network. Tailscale: HTTPS over your Tailscale network, connected on PC and phone.</span>
           </span>
         </div>
         {transport === "lan" ? (
           <>
-            {remote.lanReconnectNeeded && <p className="remote-reconnect-message" role="status">Your phone needs to reconnect — your PC's network address changed. Scan the new QR code below.</p>}
+            {remote.lanReconnectNeeded && <p className="remote-reconnect-message" role="status">PC address changed. Scan the new QR code to reconnect.</p>}
             <div className="setting-status"><span className={`remote-status-dot ${remote.lanAddress ? "is-good" : "is-bad"}`} />Local network · {remote.lanAddress ? "Ready" : "Unavailable"}</div>
             {remote.lanAddress ? <>
               <div className="remote-address"><Button className="remote-qr-toggle" disabled={qrBusy} aria-controls="remote-qr-panel" aria-expanded={showQr} onClick={() => void toggleQr()}>{qrBusy ? <LoaderCircle className="spin" size={15} /> : <QrCode size={15} />}{showQr ? "Hide pairing code" : "Pair a phone"}</Button></div>
               {showQr && qrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
                 <div className="remote-qr-image"><QRCodeSVG value={qrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="LAN pairing QR code" /></div>
-                <p>Scan with your phone camera on the same private Wi-Fi. This single-use link expires in five minutes.</p>
+                <p>Scan on the same private Wi-Fi. Single-use, expires in 5 minutes.</p>
                 <div className="remote-address">
                   <Input readOnly value={qrUrl} aria-label="Phone pairing link" onFocus={(e) => e.currentTarget.select()} />
                   <Button variant="outline" onClick={() => void copyAddress(qrUrl)}>{copied ? "Copied" : "Copy link"}</Button>
@@ -162,7 +162,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
                 {remote.localAddress && <details className="remote-discovery-help"><summary>Keeping your phone connected</summary><p>After pairing, iPhone users can switch to {remote.localAddress} from the phone page to reconnect when the PC's IP changes. Android browsers cannot open .local addresses; use the QR code again if the PC's address changes.</p></details>}
               </div>}
             </> : remote.lanFirewallNeeded ? <>
-              <p className="remote-transport-message">Phones on this Private network need Windows Firewall to let Swapper in. Windows will ask once, for Swapper.</p>
+              <p className="remote-transport-message">Windows Firewall must let Swapper in. Windows asks once.</p>
               <div className="remote-address">
                 <Button variant="outline" disabled={allowing} onClick={() => { setAllowing(true); void onAllowFirewall().finally(() => setAllowing(false)); }}>
                   {allowing && <LoaderCircle className="spin" size={15} />} Allow on private networks
@@ -186,14 +186,14 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
             </div>
             {showQr && qrUrl && <div id="remote-qr-panel" className="remote-qr-panel">
               <div className="remote-qr-image"><QRCodeSVG value={qrUrl} size={176} level="M" marginSize={4} bgColor="#ffffff" fgColor="#18181b" title="Tailscale remote address QR code" /></div>
-              <p>Scan with a phone connected to your Tailscale network.</p>
+              <p>Scan on a phone connected to Tailscale.</p>
             </div>}
           </> : <>
             <div className="setting-status"><span className="remote-status-dot is-bad" />Tailscale · {remote.tailscaleInstalled ? "Not connected" : "Not installed"}</div>
             <p className="remote-transport-message">{!remote.tailscaleInstalled
-              ? "Install Tailscale to use this transport. LAN remains available on a Private network."
+              ? "Install Tailscale to use it. LAN still works on a Private network."
               : !remote.tailscaleRunning
-                ? "Connect Tailscale on this PC and your phone to use this transport."
+                ? "Connect Tailscale on this PC and your phone."
                 : remote.message ?? "Tailscale Serve could not be started."}</p>
           </>
         )}
@@ -202,7 +202,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
           {remote.lanAddress && <details className="remote-advanced" onToggle={(event) => { if (!event.currentTarget.open) setPendingReset(false); }}>
             <summary>Advanced</summary>
             {pendingReset ? <div className="remote-reset-confirm" role="group" aria-label="Confirm reset LAN access">
-              <p>This disconnects every paired phone and invalidates existing pairing links. Each phone will need to pair again.</p>
+              <p>Unpairs every phone and voids pairing links. Each phone must pair again.</p>
               <Button variant="outline" className="remote-reset" disabled={qrBusy} onClick={() => void resetLanAccess()}>{qrBusy ? "Resetting…" : "Reset and unpair all"}</Button>
               <Button variant="ghost" disabled={qrBusy} onClick={() => setPendingReset(false)}>Cancel</Button>
             </div> : <Button variant="ghost" className="remote-reset" onClick={() => setPendingReset(true)}>Reset LAN access…</Button>}

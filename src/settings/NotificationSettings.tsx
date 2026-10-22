@@ -26,7 +26,7 @@ export function NotificationSettings({
         <div className="setting-copy">
           <label htmlFor="notifications-switch">Notifications</label>
           <button className="info-button" aria-label="About Notifications" aria-expanded={openInfo === "notifications"} onClick={() => toggle("notifications")}><Info size={13} /></button>
-          {openInfo === "notifications" && <p>Get a Windows notification when a ready check starts and when champion select begins. They use the default notification sound.</p>}
+          {openInfo === "notifications" && <p>Windows notification when a ready check starts and when draft begins.</p>}
         </div>
         <Switch id="notifications-switch" checked={notifications} disabled={busy} onCheckedChange={onNotificationsChange} aria-label="Notifications" />
       </div>
@@ -35,7 +35,7 @@ export function NotificationSettings({
         <div className="setting-copy">
           <label htmlFor="ready-check-switch">Ready-check alerts</label>
           <button className="info-button" aria-label="About Ready-check alerts" aria-expanded={openInfo === "ready-check"} onClick={() => toggle("ready-check")}><Info size={13} /></button>
-          {openInfo === "ready-check" && <p>Requires Notifications to be on. Notify when a match is found so you can accept before the check expires. Turn off to keep only the champion select notification.</p>}
+          {openInfo === "ready-check" && <p>Needs Notifications on. Alerts when a game is found so you can accept in time.</p>}
         </div>
         <Switch id="ready-check-switch" checked={readyCheck} disabled={busy || !notifications} onCheckedChange={onReadyCheckChange} aria-label="Ready-check alerts" />
       </div>

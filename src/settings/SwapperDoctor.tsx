@@ -101,7 +101,7 @@ export function SwapperDoctor({ remoteTransport }: { remoteTransport: "lan" | "t
   if (!native) {
     return (
       <section className="doctor-section" aria-label="Connection checks">
-        <p className="support-text">Connection checks are available in the Windows tray app.</p>
+        <p className="support-text">Available in the Windows tray app.</p>
       </section>
     );
   }
@@ -121,8 +121,7 @@ export function SwapperDoctor({ remoteTransport }: { remoteTransport: "lan" | "t
           </button>
           {openInfo && (
             <p>
-              Checks the clients, providers and connections Swapper depends on. Nothing
-              identifiable is collected, and copied diagnostics are sanitized. Run checks first to enable Copy diagnostics.
+              Checks what Swapper depends on. Nothing identifiable is collected; copied diagnostics are sanitized.
             </p>
           )}
         </div>
@@ -151,7 +150,7 @@ export function SwapperDoctor({ remoteTransport }: { remoteTransport: "lan" | "t
         <div className="doctor-note"><LoaderCircle className="spin" size={13} /> Running checks…</div>
       )}
       {state.phase === "failed" && (
-        <div className="doctor-note">The checks could not run. Run them again.</div>
+        <div className="doctor-note">Checks failed. Run again.</div>
       )}
       {state.phase === "done" && (
         <div className="doctor-list">

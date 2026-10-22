@@ -107,11 +107,11 @@ function BuildPreview({ championId, name, build: value }: { championId: number; 
   return <aside className="fa-card cs-preview" aria-label="Build preview">
     <div className={`cs-preview-hero${!championId ? " is-empty" : ""}`}>
       {championId > 0 && <NearViewport className="cs-preview-art"><ChampionArt id={championId} name={name} /></NearViewport>}
-      <div className="cs-preview-identity"><small>Your pick</small><h3>{name || "Choose a champion"}</h3><span>{championId ? "Recommended build" : "Preview its build before locking in"}</span></div>
+      <div className="cs-preview-identity"><small>Your pick</small><h3>{name || "Choose a champion"}</h3><span>{championId ? "Recommended build" : "Preview before locking in"}</span></div>
     </div>
     <LockIn championId={championId} name={name} />
     <div className="cs-preview-body">
-    {!championId ? <p>Hover a champion to preview its runes, spells and core items. The full build opens when you lock in.</p>
+    {!championId ? <p>Hover a champion to preview its build.</p>
       : !value ? <Skeleton label="Loading build" rows={4} /> : <>
         {value.runes && <div className="cs-preview-row"><small>Runes</small><span>{[value.runes.keystone, ...value.runes.primaryRunes, ...value.runes.secondaryRunes].map(id => <RuneIcon key={id} id={id} mode="desktop" />)}</span></div>}
         <div className="cs-preview-row"><small>Spells</small><span>{value.spells.map((id, index) => <SpellIcon key={index} id={id} mode="desktop" />)}</span></div>

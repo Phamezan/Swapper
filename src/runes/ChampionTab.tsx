@@ -291,7 +291,7 @@ export function ChampionTab({
           )}
           <CardStrip
             title="Toughest matchups"
-            subtitle={`These champions counter ${champion?.name ?? ""}`}
+            subtitle={`Counters of ${champion?.name ?? ""}`}
             tone="loss"
             rows={data?.bestInto}
             loading={loading}
