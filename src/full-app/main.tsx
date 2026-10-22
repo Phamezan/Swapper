@@ -231,7 +231,7 @@ function App() {
             : loading ? <DashboardSkeleton />
             : <EmptyState icon={<BrandIcon size={40} />} title="Sign in to League Client">Open League Client to see your games and rank.</EmptyState>
           : playerId != null ? <Suspense fallback={<Skeleton label="Loading player profile" rows={4} height={64} />}><PlayerPage key={playerId} riotId={playerId} snapshot={snapshot}
-              names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => travel(-1)}
+              names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => travel(-1)} onOpenPlayer={riotId => go(`Player:${riotId}`)}
               onOpenMatch={game => { const target = `Match:${game.id}:${encodeURIComponent(playerId)}` as const; visitedMatches.current.set(target, game); go(target); }} /></Suspense>
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
