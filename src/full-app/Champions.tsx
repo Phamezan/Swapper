@@ -64,6 +64,15 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
     setRole(next); setSelected(champion);
   };
   useEffect(() => { if (focus) void open(focus.champion); }, [focus]);
+  // Hovering a row starts its downloads; the backend caches them, so the click finds them ready.
+  const prefetched = useRef(new Set<string>());
+  const prefetch = (championId: number, role: string) => {
+    const key = `${championId}|${role}|${tier}`;
+    if (role === "auto" || prefetched.current.has(key)) return;
+    prefetched.current.add(key);
+    void invoke("get_champion_overview", { championId, position: role, tier }).catch(() => {});
+    void invoke("full_app_matchups", { championId, position: role, tier }).catch(() => {});
+  };
   useEffect(() => {
     let live = true;
     void invoke<ChampionOption[]>("get_champion_list").then(value => { if (live) setChampions(value); }).catch(reason => { if (live) setError(String(reason)); });
@@ -86,10 +95,11 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
     let live = true; setOverview(null); setCounters(null); setError("");
     if (selected) {
       setLoading(true);
-      void Promise.all([
-        invoke<ChampionOverviewView>("get_champion_overview", { championId: selected.id, position: role, tier }),
-        invoke<ChampionCountersView>("full_app_matchups", { championId: selected.id, position: role, tier }),
-      ]).then(([overview, counters]) => { if (live) { setOverview(overview); setCounters(counters); } }).catch(reason => { if (live) setError(String(reason)); }).finally(() => { if (live) setLoading(false); });
+      // The build shows as soon as it arrives; the matchup strip fills in on its own.
+      void invoke<ChampionOverviewView>("get_champion_overview", { championId: selected.id, position: role, tier })
+        .then(overview => { if (live) setOverview(overview); }).catch(reason => { if (live) setError(String(reason)); }).finally(() => { if (live) setLoading(false); });
+      void invoke<ChampionCountersView>("full_app_matchups", { championId: selected.id, position: role, tier })
+        .then(counters => { if (live) setCounters(counters); }).catch(reason => { if (live) setError(String(reason)); });
     }
     return () => { live = false; };
   }, [selected, role, tier]);
@@ -177,7 +187,7 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
         <table className="tier-table">
           <thead><tr>{columns.map(([key, label]) => <th key={label} aria-sort={key && key === sort ? (key === "rank" ? "ascending" : "descending") : undefined}>
             {key ? <button className={key === sort ? "is-sorted" : undefined} onClick={() => setSort(key)}>{label}</button> : label}</th>)}</tr></thead>
-          <tbody>{rows.slice(0, limit).map(({ row, rank }) => <TierLine key={row.championId} row={row} rank={rank} lane={(row as Partial<AutoRow>).role ?? lane} average={averages.get((row as Partial<AutoRow>).role ?? lane) ?? 0} peak={peak} onOpen={() => void open({ id: row.championId, name: row.name })} />)}</tbody>
+          <tbody>{rows.slice(0, limit).map(({ row, rank }) => <TierLine key={row.championId} row={row} rank={rank} lane={(row as Partial<AutoRow>).role ?? lane} average={averages.get((row as Partial<AutoRow>).role ?? lane) ?? 0} peak={peak} onOpen={() => void open({ id: row.championId, name: row.name })} onIntent={() => prefetch(row.championId, (row as Partial<AutoRow>).role ?? lane)} />)}</tbody>
         </table>
         {limit < rows.length && <NearEnd onNear={() => setLimit(current => current + ROW_STEP)} />}
         {!rows.length && <p className="panel-empty">No champion matches “{query}”.</p>}
@@ -186,9 +196,11 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
   </div>;
 }
 
-function TierLine({ row, rank, lane, average, peak, onOpen }: { row: TierRow; rank: number; lane: string; average: number; peak: { pick: number; ban: number }; onOpen: () => void }) {
+function TierLine({ row, rank, lane, average, peak, onOpen, onIntent }: { row: TierRow; rank: number; lane: string; average: number; peak: { pick: number; ban: number }; onOpen: () => void; onIntent: () => void }) {
   const delta = row.winPct - average;
-  return <tr onClick={onOpen}>
+  // A short dwell, so sweeping the pointer across the table does not start a download per row.
+  const dwell = useRef<number>(0);
+  return <tr onClick={onOpen} onPointerEnter={() => { dwell.current = window.setTimeout(onIntent, 120); }} onPointerLeave={() => window.clearTimeout(dwell.current)} onFocus={onIntent}>
     <td className="col-rank">{rank}</td>
     <td><button className="tier-champ" onClick={event => { event.stopPropagation(); onOpen(); }}><NearViewport className="fa-tier-portrait"><ChampionIcon id={row.championId} name={row.name} mode="desktop" /></NearViewport><strong>{row.name}</strong></button></td>
     <td className="col-role"><RoleIcon role={lane} size={18} mode="desktop" /></td>

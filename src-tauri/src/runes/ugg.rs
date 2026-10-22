@@ -611,11 +611,15 @@ pub async fn overview(champion: i64, lane: Option<&str>, tier: &str) -> Option<S
     };
     let versions = versions().await?;
     let patches = patch_names(&versions.value)?;
-    let now = raw_list(&versions, &patches.current, lane, tier, false).await;
-    let prev = match &patches.previous {
-        Some(patch) => raw_list(&versions, patch, lane, tier, true).await,
-        None => None,
-    };
+    let (now, prev) = tokio::join!(
+        raw_list(&versions, &patches.current, lane, tier, false),
+        async {
+            match &patches.previous {
+                Some(patch) => raw_list(&versions, patch, lane, tier, true).await,
+                None => None,
+            }
+        }
+    );
     overview_from_lists(champion, lane, now, prev, patches)
 }
 
@@ -679,16 +683,11 @@ async fn raw_counters(
     tier: &str,
     historical: bool,
 ) -> Option<Sourced<Counters>> {
-    let list = raw_list(versions, patch, lane, tier, historical).await?;
-    let found = dataset(
-        versions,
-        "matchups",
-        patch,
-        tier,
-        Some(champion),
-        historical,
-    )
-    .await?;
+    let (list, found) = tokio::join!(
+        raw_list(versions, patch, lane, tier, historical),
+        dataset(versions, "matchups", patch, tier, Some(champion), historical),
+    );
+    let (list, found) = (list?, found?);
     Some(Sourced {
         value: parse_counters(&found.value, lane, &list.value)?,
         provider: Provider::Ugg,
@@ -704,11 +703,16 @@ pub async fn counters(champion: i64, lane: Option<&str>, tier: &str) -> Option<S
     };
     let versions = versions().await?;
     let patches = patch_names(&versions.value)?;
-    let now = raw_counters(&versions, &patches.current, champion, lane, tier, false).await;
-    let prev = match &patches.previous {
-        Some(patch) => raw_counters(&versions, patch, champion, lane, tier, true).await,
-        None => None,
-    };
+    // This patch and the previous one are independent downloads: fetch them together.
+    let (now, prev) = tokio::join!(
+        raw_counters(&versions, &patches.current, champion, lane, tier, false),
+        async {
+            match &patches.previous {
+                Some(patch) => raw_counters(&versions, patch, champion, lane, tier, true).await,
+                None => None,
+            }
+        }
+    );
     let source = now.as_ref().or(prev.as_ref())?;
     Some(Sourced {
         value: counters::blend_counters(

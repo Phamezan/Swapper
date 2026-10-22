@@ -1053,8 +1053,13 @@ async fn pro_page(champion_id: i64, position: &str, page: u32, is_otp: bool) -> 
 async fn mixed_pages(champion_id: i64, position: &str, page: u32) -> Result<ProPage, super::RuneError> {
     let first = (page - 1) * PRO_API_PAGES_PER_PAGE + 1;
     let mut out = ProPage { matches: Vec::new(), has_more: true, stale: false, fetched_at: None };
-    for api_page in first..first + PRO_API_PAGES_PER_PAGE {
-        let sourced = match data::pro_builds(champion_id, position, api_page, false).await {
+    // The API pages are independent requests: fetch them together, then read them in order.
+    let pages = futures_util::future::join_all(
+        (first..first + PRO_API_PAGES_PER_PAGE).map(|api_page| data::pro_builds(champion_id, position, api_page, false)),
+    )
+    .await;
+    for (api_page, result) in (first..).zip(pages) {
+        let sourced = match result {
             Ok(sourced) => sourced,
             Err(error) if api_page == first => return Err(error),
             Err(_) => break,
