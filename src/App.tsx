@@ -875,10 +875,11 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
   const switchLabel = toolsOpen ? "Switch to accounts" : "Switch to champion lookup";
   // Runes, champions and settings wear the Fullsized App's identity (flyout.css); the accounts screens keep the original look.
   const themed = !fullApp && (toolsOpen || view === "settings");
-  const modeName = (mode: string) => themed ? mode[0].toUpperCase() + mode.slice(1) : mode.toUpperCase();
+  // The top bar wears the new identity on every flyout screen, accounts included, so it does not change look between screens.
+  const modeName = (mode: string) => fullApp ? mode.toUpperCase() : mode[0].toUpperCase() + mode.slice(1);
 
   return (
-    <div className={`shell dark${fullApp ? " full-app-embedded" : ""}${themed ? " flyout-themed" : ""}`}>
+    <div className={`shell dark${fullApp ? " full-app-embedded" : " flyout-topbar"}${themed ? " flyout-themed" : ""}`}>
       {!fullApp && <header className="topbar">
         <button type="button" className={`brand-button mode-${brandMode}`} aria-label={switchLabel} title={switchLabel} onClick={() => {
           setModeSpin((spin) => spin + 180);

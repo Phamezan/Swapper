@@ -19,18 +19,18 @@
   background: radial-gradient(420px 260px at 0% 0%, rgb(197 227 158 / .075), transparent 70%), var(--ui-surface-1);
 }
 
-/* ---------- Header and navigation ---------- */
-.flyout-themed .topbar { min-height: 52px; background: var(--ui-surface-0); border-bottom: 1px solid var(--ui-line-1); }
-.flyout-themed .brand-button { height: 38px; gap: 10px; padding: 0 12px 0 6px; border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-card-fill); box-shadow: var(--ui-elev-1); color: var(--text-primary); }
-.flyout-themed .brand-button:hover { background: var(--ui-surface-hover); border-color: var(--ui-line-3); }
-.flyout-themed .brand-icon { width: 26px; height: 26px; border-radius: 7px; background: var(--ui-brand-tint); color: var(--ui-brand); }
-.flyout-themed .brand-copy { gap: 1px; }
-.flyout-themed .brand-copy strong { color: var(--text-primary); font-size: var(--ui-label); font-weight: 650; letter-spacing: 0; line-height: 1.15; }
-.flyout-themed .brand-copy span { color: var(--text-muted); font-size: var(--ui-caption); font-weight: 500; letter-spacing: 0; line-height: 1.15; }
-.flyout-themed .brand-copy span[class^="mode-"] { color: var(--ui-brand); }
-.flyout-themed .brand-live-dot { background: var(--ui-brand); box-shadow: 0 0 0 3px var(--ui-brand-tint); }
-.flyout-themed .icon-button { border-radius: var(--ui-radius-xs); }
-.flyout-themed .icon-button:hover { background: var(--ui-hover); }
+/* ---------- Header and navigation (every flyout screen, accounts included) ---------- */
+.flyout-topbar .topbar { min-height: 52px; background: var(--ui-surface-0); border-bottom: 1px solid var(--ui-line-1); }
+.flyout-topbar .brand-button { height: 38px; gap: 10px; padding: 0 12px 0 6px; border-color: var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-card-fill); box-shadow: var(--ui-elev-1); color: var(--text-primary); }
+.flyout-topbar .brand-button:hover { background: var(--ui-surface-hover); border-color: var(--ui-line-3); }
+.flyout-topbar .brand-icon { width: 26px; height: 26px; border-radius: 7px; background: var(--ui-brand-tint); color: var(--ui-brand); }
+.flyout-topbar .brand-copy { gap: 1px; }
+.flyout-topbar .brand-copy strong { color: var(--text-primary); font-size: var(--ui-label); font-weight: 650; letter-spacing: 0; line-height: 1.15; }
+.flyout-topbar .brand-copy span { color: var(--text-muted); font-size: var(--ui-caption); font-weight: 500; letter-spacing: 0; line-height: 1.15; }
+.flyout-topbar .brand-copy span[class^="mode-"] { color: var(--ui-brand); }
+.flyout-topbar .brand-live-dot { background: var(--ui-brand); box-shadow: 0 0 0 3px var(--ui-brand-tint); }
+.flyout-topbar .icon-button { border-radius: var(--ui-radius-xs); }
+.flyout-topbar .icon-button:hover { background: var(--ui-hover); }
 .flyout-themed .footer { display: none; }
 .flyout-themed .main-panel { padding: 16px 16px 12px; }
 
