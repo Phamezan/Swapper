@@ -27,7 +27,7 @@ Tokens: `--ui-title 20`, `--ui-body 14.5`, `--ui-label 13`, `--ui-caption 12`.
 - **Frame** `--ui-surface-0` carries a faint brand-green light in its top-left corner. **Canvas** is an inset sheet over it. **Cards** (`--ui-card-fill`) are a few percent lighter at the top, with a brighter top hairline and a 1px inner highlight.
 - Elevation 1 cards, 2 raised cards and heroes, 3 popovers and menus. A card inside a card is a flat well, never a second shadow.
 - Radii 6/8/12/16 (`--ui-radius-*`). Lines `--ui-line-1..3`.
-- **Translucency, with limits.** Title bar, sidebar, account picker, menus, the Ctrl+K palette and tooltips are frosted (`--ui-chrome`, `--ui-popover`, `--ui-blur`). `backdrop-filter` is never used on anything that scrolls or repeats. No animated gradients; the only looping motion is the indeterminate bar of the switching card, which stops under `prefers-reduced-motion`. The window runs with `--disable-gpu`, so paint stays static.
+- **Translucency, with limits.** Title bar, sidebar, account picker, menus, the Ctrl+K palette and tooltips are frosted (`--ui-chrome`, `--ui-popover`, `--ui-blur`). `backdrop-filter` is never used on anything that scrolls or repeats. No animated gradients; the only looping motion is the indeterminate bar of the switching card, which stops under `prefers-reduced-motion`. The window runs with GPU compositing (smooth scrolling at high refresh rates); keep paint static anyway.
 
 ## 4. Banners and alerts
 
