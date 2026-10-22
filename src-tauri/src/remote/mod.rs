@@ -3,19 +3,24 @@ mod handoff;
 mod lcu;
 mod mdns;
 pub(crate) mod network;
+mod pairing;
 mod server;
+mod service;
 mod tailscale;
 
 use std::fs;
 use std::path::{Path, PathBuf};
-use std::sync::mpsc;
-use std::sync::{Arc, Mutex, MutexGuard, Weak};
+use std::sync::{Arc, Mutex, MutexGuard};
 use std::thread;
-use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
+use std::time::Instant;
 
 use serde::Serialize;
-use tauri::{AppHandle, Emitter};
-use tokio::sync::{broadcast, oneshot};
+use tauri::AppHandle;
+use tokio::sync::broadcast;
+
+pub use pairing::PairedDeviceView;
+use pairing::{load_paired_devices_at, paired_devices_path, LanAccess};
+use service::{maintain, Service, FIREWALL_NEEDED_MESSAGE};
 
 pub(crate) fn network_settings_page() -> &'static str {
     network::settings_page()
@@ -31,16 +36,14 @@ pub(crate) async fn prepick_champion(champion_id: i64) -> Result<(), String> {
 pub(crate) use control::PickConfirmation;
 
 pub(crate) async fn lock_confirmed_pick(expected: PickConfirmation) -> Result<(), String> {
-    control::lock_confirmed_pick(expected).await.map_err(|e| e.message)
+    control::lock_confirmed_pick(expected)
+        .await
+        .map_err(|e| e.message)
 }
 
 fn lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
     mutex.lock().unwrap_or_else(|e| e.into_inner())
 }
-
-// How long shutdown waits for the axum service thread to stop before letting
-// the process exit without it.
-const SERVICE_STOP_TIMEOUT: Duration = Duration::from_secs(2);
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -130,261 +133,6 @@ struct Inner {
     epoch: u64,
 }
 
-struct Service {
-    port: u16,
-    lan: Option<LanEndpoint>,
-    lan_message: Option<String>,
-    /// True while the mDNS service for this LAN endpoint is registered.
-    advertising: bool,
-    /// The address the service intended to serve on, even if binding or the
-    /// firewall check later failed. Used to notice interface/profile changes
-    /// without repeatedly restarting when LAN cannot start.
-    lan_target: Option<std::net::Ipv4Addr>,
-    shutdown: Option<oneshot::Sender<()>>,
-    join: Option<thread::JoinHandle<()>>,
-}
-
-#[derive(Clone)]
-struct LanEndpoint {
-    address: std::net::Ipv4Addr,
-    port: u16,
-}
-
-struct ServiceInfo {
-    port: u16,
-    lan: Option<LanEndpoint>,
-    lan_message: Option<String>,
-    advertising: bool,
-    lan_target: Option<std::net::Ipv4Addr>,
-}
-
-struct LanAccess {
-    pairing_token: Option<(String, Instant)>,
-    devices: Vec<PairedLanDevice>,
-    storage_available: bool,
-    last_seen_saved_at: Instant,
-    /// One-time tokens letting a paired phone copy its cookie to `.local`.
-    handoff: handoff::HandoffTokens,
-}
-
-#[derive(Clone, serde::Serialize, serde::Deserialize)]
-struct PairedLanDevice {
-    id: uuid::Uuid,
-    credential: String,
-    name: String,
-    paired_at: u64,
-    last_seen: u64,
-    /// In-memory only: the last authorized request or WebSocket check, used to
-    /// show whether a paired device is currently connected.
-    #[serde(skip)]
-    last_activity: Option<Instant>,
-}
-
-/// The serialized shape sent to the frontend. It deliberately omits the
-/// credential so paired device passwords never leave the backend.
-#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize)]
-#[serde(rename_all = "camelCase")]
-pub struct PairedDeviceView {
-    pub id: String,
-    pub name: String,
-    pub paired_at: u64,
-    pub last_seen: u64,
-    pub connected: bool,
-}
-
-const MAX_LAN_DEVICE_STORE_BYTES: usize = 1024 * 1024;
-const LAN_LAST_SEEN_SAVE_INTERVAL: Duration = Duration::from_secs(60);
-// A phone is reported as connected while it keeps hitting Swapper: the remote
-// page's WebSocket re-checks its session every second.
-const LAN_DEVICE_CONNECTED_WINDOW: Duration = Duration::from_secs(45);
-// Keep a paired phone's saved address usable after Swapper restarts.
-const LAN_REMOTE_PORT: u16 = 38127;
-
-fn paired_devices_path() -> Result<PathBuf, String> {
-    let root = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
-    Ok(PathBuf::from(root)
-        .join("Swapper")
-        .join("lan-paired-devices.bin"))
-}
-
-fn load_paired_devices_at(path: &Path) -> Result<Vec<PairedLanDevice>, String> {
-    match fs::metadata(path) {
-        Ok(metadata) if metadata.len() > MAX_LAN_DEVICE_STORE_BYTES as u64 => {
-            return Err("Paired LAN device store is too large".into());
-        }
-        Ok(_) => {}
-        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(Vec::new()),
-        Err(error) => return Err(format!("Could not read paired LAN devices: {error}")),
-    }
-    let encrypted = match fs::read(path) {
-        Ok(bytes) => bytes,
-        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(Vec::new()),
-        Err(error) => return Err(format!("Could not read paired LAN devices: {error}")),
-    };
-    if encrypted.len() > MAX_LAN_DEVICE_STORE_BYTES {
-        return Err("Paired LAN device store is too large".into());
-    }
-    let plain = crate::vault::unprotect_local_data(&encrypted)
-        .map_err(|_| "Could not unlock paired LAN devices for this Windows user".to_string())?;
-    if plain.len() > MAX_LAN_DEVICE_STORE_BYTES {
-        return Err("Paired LAN device store is too large".into());
-    }
-    let devices: Vec<PairedLanDevice> = serde_json::from_slice(&plain)
-        .map_err(|_| "Paired LAN device store is invalid".to_string())?;
-    if devices.iter().any(|device| {
-        device.credential.len() != 32
-            || !device
-                .credential
-                .bytes()
-                .all(|byte| byte.is_ascii_hexdigit())
-            || device.name.len() > 32
-    }) {
-        return Err("Paired LAN device store contains invalid entries".into());
-    }
-    Ok(devices)
-}
-
-fn save_paired_devices_at(path: &Path, devices: &[PairedLanDevice]) -> Result<(), String> {
-    let plain = serde_json::to_vec(devices).map_err(|_| "Could not encode paired LAN devices")?;
-    if plain.len() > MAX_LAN_DEVICE_STORE_BYTES {
-        return Err("Paired LAN device store is too large".into());
-    }
-    let encrypted = crate::vault::protect_local_data(&plain)
-        .map_err(|_| "Could not protect paired LAN devices for this Windows user")?;
-    let parent = path
-        .parent()
-        .ok_or("Invalid paired LAN device store path")?;
-    fs::create_dir_all(parent)
-        .map_err(|error| format!("Could not create Swapper data folder: {error}"))?;
-    let pending = parent.join(format!("lan-paired-devices-{}.tmp", uuid::Uuid::new_v4()));
-    if let Err(error) = fs::write(&pending, encrypted) {
-        let _ = fs::remove_file(&pending);
-        return Err(format!("Could not write paired LAN devices: {error}"));
-    }
-    if let Err(error) = fs::rename(&pending, path) {
-        let _ = fs::remove_file(&pending);
-        return Err(format!("Could not save paired LAN devices: {error}"));
-    }
-    Ok(())
-}
-
-fn clear_paired_devices_at(path: &Path) -> Result<(), String> {
-    match fs::remove_file(path) {
-        Ok(()) => Ok(()),
-        Err(error) if error.kind() == std::io::ErrorKind::NotFound => Ok(()),
-        Err(remove_error) => save_paired_devices_at(path, &[])
-            .map_err(|_| format!("Could not clear saved paired LAN devices: {remove_error}")),
-    }
-}
-
-fn unix_timestamp() -> u64 {
-    SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .unwrap_or_default()
-        .as_secs()
-}
-
-/// Trims and caps a device name to the 32-byte store limit without splitting a
-/// multi-byte character.
-fn sanitize_device_name(raw: &str) -> String {
-    let mut name = String::new();
-    for character in raw.trim().chars() {
-        if name.len() + character.len_utf8() > 32 {
-            break;
-        }
-        name.push(character);
-    }
-    name
-}
-
-fn device_view(device: &PairedLanDevice) -> PairedDeviceView {
-    PairedDeviceView {
-        id: device.id.to_string(),
-        name: device.name.clone(),
-        paired_at: device.paired_at,
-        last_seen: device.last_seen,
-        connected: device
-            .last_activity
-            .is_some_and(|at| at.elapsed() < LAN_DEVICE_CONNECTED_WINDOW),
-    }
-}
-
-fn ensure_lan_storage(access: &LanAccess) -> Result<(), String> {
-    if access.storage_available {
-        Ok(())
-    } else {
-        Err(
-            "Saved LAN devices could not be opened. Use Reset LAN Access in Swapper Settings first."
-                .into(),
-        )
-    }
-}
-
-fn apply_revoke(devices: &mut Vec<PairedLanDevice>, id: &str) -> Result<(), String> {
-    let Some(index) = devices
-        .iter()
-        .position(|device| device.id.to_string() == id)
-    else {
-        return Err("That paired device is no longer paired.".into());
-    };
-    devices.remove(index);
-    Ok(())
-}
-
-/// Renames one device and returns the name that was stored, after the same
-/// 32-byte sanitizing the backend applies. A failure leaves the list unchanged.
-fn apply_rename(devices: &mut [PairedLanDevice], id: &str, name: &str) -> Result<String, String> {
-    let name = sanitize_device_name(name);
-    if name.is_empty() {
-        return Err("Enter a name for this device.".into());
-    }
-    let Some(device) = devices
-        .iter_mut()
-        .find(|device| device.id.to_string() == id)
-    else {
-        return Err("That paired device is no longer paired.".into());
-    };
-    device.name = name.clone();
-    Ok(name)
-}
-
-/// The address change that makes paired phones need to scan the QR again, if
-/// any. Only a private-to-different-private move counts: startup (`None` to an
-/// address), LAN turning on or off (`None` on either side), and an unchanged
-/// address all return `None`.
-fn lan_reconnect_change(
-    previous: Option<std::net::Ipv4Addr>,
-    next: Option<std::net::Ipv4Addr>,
-) -> Option<(std::net::Ipv4Addr, std::net::Ipv4Addr)> {
-    let (previous, next) = (previous?, next?);
-    if previous == next || !previous.is_private() || !next.is_private() {
-        return None;
-    }
-    Some((previous, next))
-}
-
-/// Drops devices last seen before `since`, returning how many were removed.
-fn apply_remove_stale(devices: &mut Vec<PairedLanDevice>, since: u64) -> usize {
-    let before = devices.len();
-    devices.retain(|device| device.last_seen >= since);
-    before - devices.len()
-}
-
-/// Constant-time comparison of two credentials so a paired device's secret
-/// cannot be discovered by timing. The length check only reveals the length,
-/// which the store already fixes at 32 hex characters.
-fn constant_time_eq(left: &str, right: &str) -> bool {
-    let (left, right) = (left.as_bytes(), right.as_bytes());
-    if left.len() != right.len() {
-        return false;
-    }
-    let mut difference = 0u8;
-    for (a, b) in left.iter().zip(right) {
-        difference |= a ^ b;
-    }
-    difference == 0
-}
-
 #[derive(Clone, serde::Serialize, serde::Deserialize)]
 struct OwnedRoute {
     dns_name: String,
@@ -393,7 +141,9 @@ struct OwnedRoute {
 
 fn route_claim_path() -> Result<PathBuf, String> {
     let root = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
-    Ok(PathBuf::from(root).join("Swapper").join("remote-route.json"))
+    Ok(PathBuf::from(root)
+        .join("Swapper")
+        .join("remote-route.json"))
 }
 
 fn load_route_claim_at(path: &Path) -> Result<Option<OwnedRoute>, String> {
@@ -402,7 +152,9 @@ fn load_route_claim_at(path: &Path) -> Result<Option<OwnedRoute>, String> {
             .map(Some)
             .map_err(|e| format!("Could not read Swapper's Tailscale route record: {e}")),
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(None),
-        Err(e) => Err(format!("Could not read Swapper's Tailscale route record: {e}")),
+        Err(e) => Err(format!(
+            "Could not read Swapper's Tailscale route record: {e}"
+        )),
     }
 }
 
@@ -410,16 +162,25 @@ fn save_route_claim_at(path: &Path, claim: &OwnedRoute) -> Result<(), String> {
     let parent = path.parent().ok_or("Invalid Tailscale route record path")?;
     fs::create_dir_all(parent).map_err(|e| e.to_string())?;
     let pending = parent.join(format!("remote-route-{}.tmp", uuid::Uuid::new_v4()));
-    fs::write(&pending, serde_json::to_vec(claim).map_err(|e| e.to_string())?)
-        .map_err(|e| e.to_string())?;
+    fs::write(
+        &pending,
+        serde_json::to_vec(claim).map_err(|e| e.to_string())?,
+    )
+    .map_err(|e| e.to_string())?;
     if let Err(e) = fs::rename(&pending, path) {
         let _ = fs::remove_file(&pending);
-        return Err(format!("Could not save Swapper's Tailscale route record: {e}"));
+        return Err(format!(
+            "Could not save Swapper's Tailscale route record: {e}"
+        ));
     }
     Ok(())
 }
 
-fn route_is_available(route: &tailscale::RootRoute, dns_name: &str, owned: Option<&OwnedRoute>) -> bool {
+fn route_is_available(
+    route: &tailscale::RootRoute,
+    dns_name: &str,
+    owned: Option<&OwnedRoute>,
+) -> bool {
     match route {
         tailscale::RootRoute::Vacant => true,
         tailscale::RootRoute::Proxy(target) => owned.is_some_and(|owned| {
@@ -507,262 +268,6 @@ impl RemoteCore {
         let _ = Self::ensure_service(self);
         self.reconcile();
         Ok(())
-    }
-
-    pub(crate) fn pair_lan_device(
-        &self,
-        token: &str,
-        name: &str,
-    ) -> Result<Option<String>, String> {
-        let mut access = lock(&self.lan_access);
-        if !access.storage_available {
-            return Err(
-                "Saved LAN devices could not be opened. Use Reset LAN Access in Swapper Settings before pairing again."
-                    .into(),
-            );
-        }
-        let valid = access
-            .pairing_token
-            .as_ref()
-            .is_some_and(|(expected, expires)| Instant::now() <= *expires && expected == token);
-        if !valid {
-            return Ok(None);
-        }
-        access.pairing_token = None;
-        let credential = new_secret();
-        let now = unix_timestamp();
-        let name = sanitize_device_name(name);
-        let name = if name.is_empty() { "Phone".to_string() } else { name };
-        access.devices.push(PairedLanDevice {
-            id: uuid::Uuid::new_v4(),
-            credential: credential.clone(),
-            name,
-            paired_at: now,
-            last_seen: now,
-            last_activity: Some(Instant::now()),
-        });
-        let save_result =
-            paired_devices_path().and_then(|path| save_paired_devices_at(&path, &access.devices));
-        if let Err(error) = save_result {
-            access.devices.pop();
-            return Err(error);
-        }
-        access.last_seen_saved_at = Instant::now();
-        let view = device_view(access.devices.last().expect("just paired a device"));
-        drop(access);
-        // Let the desktop notice the new device without waiting for a refresh.
-        let _ = self.app.emit("lan_device_paired", view);
-        let _ = self.app.emit("lan_devices_changed", ());
-        // A phone paired again, so the "reconnect" call to action is done.
-        self.clear_lan_reconnect_after_pair();
-        Ok(Some(credential))
-    }
-
-    /// Serialized paired devices for Settings. Never includes credentials.
-    pub fn paired_devices(&self) -> Vec<PairedDeviceView> {
-        lock(&self.lan_access)
-            .devices
-            .iter()
-            .map(device_view)
-            .collect()
-    }
-
-    /// Revokes one paired device. The reduced list is saved first, so a failed
-    /// save leaves the device paired; only after a successful save is it swapped
-    /// into memory, which rejects that device's requests immediately.
-    pub fn revoke_paired_device(&self, id: &str) -> Result<(), String> {
-        let mut access = lock(&self.lan_access);
-        ensure_lan_storage(&access)?;
-        let mut next = access.devices.clone();
-        apply_revoke(&mut next, id)?;
-        save_paired_devices_at(&paired_devices_path()?, &next)?;
-        access.devices = next;
-        access.last_seen_saved_at = Instant::now();
-        drop(access);
-        let _ = self.app.emit("lan_devices_changed", ());
-        Ok(())
-    }
-
-    /// Renames a paired device and returns the stored name the frontend should
-    /// display, so it never has to guess the backend's 32-byte sanitizing.
-    pub fn rename_paired_device(&self, id: &str, name: &str) -> Result<String, String> {
-        let mut access = lock(&self.lan_access);
-        ensure_lan_storage(&access)?;
-        let mut next = access.devices.clone();
-        let stored = apply_rename(&mut next, id, name)?;
-        save_paired_devices_at(&paired_devices_path()?, &next)?;
-        access.devices = next;
-        access.last_seen_saved_at = Instant::now();
-        drop(access);
-        let _ = self.app.emit("lan_devices_changed", ());
-        Ok(stored)
-    }
-
-    /// Removes paired devices last seen before `since`, so one action can clear
-    /// the phones that still hold a cookie for the old LAN address.
-    pub(crate) fn remove_stale_lan_devices(&self) -> Result<usize, String> {
-        let Some(since) = self.status().lan_reconnect_since else {
-            return Ok(0);
-        };
-        let mut access = lock(&self.lan_access);
-        ensure_lan_storage(&access)?;
-        let mut next = access.devices.clone();
-        let removed = apply_remove_stale(&mut next, since);
-        if removed == 0 {
-            return Ok(0);
-        }
-        save_paired_devices_at(&paired_devices_path()?, &next)?;
-        access.devices = next;
-        access.last_seen_saved_at = Instant::now();
-        drop(access);
-        let _ = self.app.emit("lan_devices_changed", ());
-        Ok(removed)
-    }
-
-    /// Clears the reconnect flag once a phone pairs again. The address-change
-    /// time is kept so the paired devices list can still offer to remove the
-    /// phones that never came back.
-    fn clear_lan_reconnect_after_pair(&self) {
-        if !self.status().lan_reconnect_needed {
-            return;
-        }
-        self.apply(|status| {
-            status.lan_reconnect_needed = false;
-            status.lan_reconnect_old_address = None;
-            status.lan_reconnect_new_address = None;
-        });
-        let _ = self.app.emit("lan_reconnect_changed", ());
-        crate::refresh_tray_tooltip(&self.app);
-    }
-
-    /// Hides the reconnect banner and forgets the change time, at the user's
-    /// request. Any still-paired old devices stay paired.
-    pub(crate) fn dismiss_lan_reconnect(&self) {
-        self.apply(|status| {
-            status.lan_reconnect_needed = false;
-            status.lan_reconnect_old_address = None;
-            status.lan_reconnect_new_address = None;
-            status.lan_reconnect_since = None;
-        });
-        let _ = self.app.emit("lan_reconnect_changed", ());
-        crate::refresh_tray_tooltip(&self.app);
-    }
-
-    /// Records that the LAN address changed while phones were paired, and tells
-    /// the desktop (toast, tray, flyout) once per change.
-    fn record_lan_reconnect(&self, previous: std::net::Ipv4Addr, next: std::net::Ipv4Addr) {
-        if lock(&self.lan_access).devices.is_empty() {
-            return;
-        }
-        let next_text = next.to_string();
-        let changed = {
-            let inner = lock(&self.inner);
-            !inner.status.lan_reconnect_needed
-                || inner.status.lan_reconnect_new_address.as_deref() != Some(next_text.as_str())
-        };
-        if !changed {
-            return;
-        }
-        let since = unix_timestamp();
-        self.apply(|status| {
-            status.lan_reconnect_needed = true;
-            status.lan_reconnect_old_address = Some(previous.to_string());
-            status.lan_reconnect_new_address = Some(next_text);
-            status.lan_reconnect_since = Some(since);
-        });
-        let _ = self.app.emit("lan_reconnect_changed", ());
-        crate::notify::lan_reconnect_needed(&self.app);
-        crate::refresh_tray_tooltip(&self.app);
-    }
-
-    pub(crate) fn has_lan_session(&self, session: &str) -> bool {
-        let mut access = lock(&self.lan_access);
-        let Some(index) = access
-            .devices
-            .iter()
-            .position(|device| constant_time_eq(&device.credential, session))
-        else {
-            return false;
-        };
-        access.devices[index].last_activity = Some(Instant::now());
-        let now = unix_timestamp();
-        if now.saturating_sub(access.devices[index].last_seen)
-            >= LAN_LAST_SEEN_SAVE_INTERVAL.as_secs()
-        {
-            access.devices[index].last_seen = now;
-            if access.last_seen_saved_at.elapsed() >= LAN_LAST_SEEN_SAVE_INTERVAL {
-                if let Ok(path) = paired_devices_path() {
-                    // Last-seen writes are best effort; they must not interrupt
-                    // an already paired phone's request or WebSocket.
-                    let _ = save_paired_devices_at(&path, &access.devices);
-                }
-                access.last_seen_saved_at = Instant::now();
-            }
-        }
-        true
-    }
-
-    /// Mints a one-time token that lets an already paired phone move its
-    /// credential cookie from the IP origin to the stable `.local` hostname.
-    /// The token is bound to the calling device; a revoked device's token
-    /// simply stops resolving to a credential.
-    pub(crate) fn mint_lan_handoff(&self, session: &str) -> Result<String, String> {
-        let mut access = lock(&self.lan_access);
-        let Some(device_id) = access
-            .devices
-            .iter()
-            .find(|device| constant_time_eq(&device.credential, session))
-            .map(|device| device.id.to_string())
-        else {
-            return Err("This device is not paired.".into());
-        };
-        Ok(access
-            .handoff
-            .mint(&device_id, Instant::now(), handoff::HANDOFF_TTL))
-    }
-
-    /// Consumes a handoff token and returns the paired device's credential so
-    /// the caller can set the same cookie on the `.local` origin. Returns
-    /// `None` for unknown, expired, used, or revoked-device tokens.
-    pub(crate) fn consume_lan_handoff(&self, token: &str) -> Option<String> {
-        let mut access = lock(&self.lan_access);
-        let device_id = access.handoff.consume(token, Instant::now())?;
-        access
-            .devices
-            .iter()
-            .find(|device| device.id.to_string() == device_id)
-            .map(|device| device.credential.clone())
-    }
-
-    pub(crate) fn create_lan_pairing_url(&self) -> Result<String, String> {
-        let address = self.status().lan_address.ok_or_else(|| {
-            "LAN Remote Control is not available on a private network.".to_string()
-        })?;
-        let token = new_secret();
-        lock(&self.lan_access).pairing_token =
-            Some((token.clone(), Instant::now() + Duration::from_secs(300)));
-        Ok(format!("{address}/pair?token={token}"))
-    }
-
-    pub(crate) fn reset_lan_access(&self) -> Result<(), String> {
-        let mut access = lock(&self.lan_access);
-        // Revoke sessions in memory before touching disk, so active HTTP and
-        // WebSocket requests are rejected immediately.
-        access.devices.clear();
-        access.pairing_token = None;
-        access.handoff = handoff::HandoffTokens::default();
-        let result = paired_devices_path().and_then(|path| clear_paired_devices_at(&path));
-        access.storage_available = result.is_ok();
-        access.last_seen_saved_at = Instant::now();
-        drop(access);
-        let _ = self.app.emit("lan_devices_changed", ());
-        // LAN access is reset from scratch, so no phone is waiting to re-pair.
-        self.dismiss_lan_reconnect();
-        result
-    }
-
-    fn clear_lan_pairing_token(&self) {
-        lock(&self.lan_access).pairing_token = None;
     }
 
     pub fn subscribe(&self) -> broadcast::Receiver<RemoteStatus> {
@@ -959,68 +464,6 @@ impl RemoteCore {
         }
     }
 
-    fn stop_service(&self) {
-        let taken = lock(&self.service).take();
-        let Some(mut service) = taken else {
-            return;
-        };
-        if let Some(shutdown) = service.shutdown.take() {
-            let _ = shutdown.send(());
-        }
-        if let Some(join) = service.join.take() {
-            let deadline = Instant::now() + SERVICE_STOP_TIMEOUT;
-            while !join.is_finished() && Instant::now() < deadline {
-                thread::sleep(Duration::from_millis(10));
-            }
-            if join.is_finished() {
-                let _ = join.join();
-            }
-        }
-    }
-
-    fn ensure_service(core: &Arc<Self>) -> Result<(), String> {
-        {
-            let mut guard = lock(&core.service);
-            let alive = guard
-                .as_ref()
-                .is_some_and(|service| service.join.as_ref().is_some_and(|join| !join.is_finished()));
-            if alive {
-                return Ok(());
-            }
-            *guard = None;
-        }
-        let (ready_tx, ready_rx) = mpsc::sync_channel(1);
-        let (shutdown_tx, shutdown_rx) = oneshot::channel();
-        let thread_core = core.clone();
-        let join = thread::Builder::new()
-            .name("swapper-remote".into())
-            .spawn(move || service_thread(thread_core, ready_tx, shutdown_rx))
-            .map_err(|e| format!("Could not start the remote service: {e}"))?;
-        let info = match ready_rx.recv_timeout(Duration::from_secs(30)) {
-            Ok(Ok(info)) => info,
-            Ok(Err(err)) => {
-                let _ = shutdown_tx.send(());
-                let _ = join.join();
-                return Err(err);
-            }
-            Err(_) => {
-                let _ = shutdown_tx.send(());
-                let _ = join.join();
-                return Err("The remote service did not start in time.".into());
-            }
-        };
-        *lock(&core.service) = Some(Service {
-            port: info.port,
-            lan: info.lan,
-            lan_message: info.lan_message,
-            advertising: info.advertising,
-            lan_target: info.lan_target,
-            shutdown: Some(shutdown_tx),
-            join: Some(join),
-        });
-        Ok(())
-    }
-
     fn reconcile(&self) {
         let epoch = lock(&self.inner).epoch;
         let (port, lan_address, lan_message, local_address) = {
@@ -1070,7 +513,9 @@ impl RemoteCore {
                     status.message = None;
                 } else {
                     status.state = RemoteState::NotInstalled;
-                    status.message = lan_message.clone().or_else(|| Some("Tailscale is not installed and LAN access is unavailable.".into()));
+                    status.message = lan_message.clone().or_else(|| {
+                        Some("Tailscale is not installed and LAN access is unavailable.".into())
+                    });
                 }
             });
             return;
@@ -1108,15 +553,14 @@ impl RemoteCore {
                             status.message = None;
                         } else {
                             status.state = RemoteState::Disconnected;
-                            status.message = lan_message.clone().or(Some("Tailscale is not connected.".into()));
+                            status.message = lan_message
+                                .clone()
+                                .or(Some("Tailscale is not connected.".into()));
                         }
                     });
                     return;
                 }
-                let address = ts
-                    .dns_name
-                    .as_deref()
-                    .and_then(tailscale::address_for);
+                let address = ts.dns_name.as_deref().and_then(tailscale::address_for);
                 let Some(address) = address else {
                     self.apply_if_current(epoch, |status| {
                         status.tailscale_installed = true;
@@ -1210,186 +654,6 @@ impl RemoteCore {
             }
         }
     }
-
-}
-
-fn new_secret() -> String {
-    uuid::Uuid::new_v4().simple().to_string()
-}
-
-/// Shown instead of prompting when the firewall rule is missing.
-const FIREWALL_NEEDED_MESSAGE: &str = "LAN access needs permission in Windows Firewall. Choose Allow on private networks.";
-
-fn service_thread(
-    core: Arc<RemoteCore>,
-    ready: mpsc::SyncSender<Result<ServiceInfo, String>>,
-    shutdown: oneshot::Receiver<()>,
-) {
-    let runtime = match tokio::runtime::Builder::new_current_thread().enable_all().build() {
-        Ok(runtime) => runtime,
-        Err(err) => {
-            let _ = ready.send(Err(format!("Could not start the remote service: {err}")));
-            return;
-        }
-    };
-    runtime.block_on(async move {
-        let listener = match tokio::net::TcpListener::bind(("127.0.0.1", 0)).await {
-            Ok(listener) => listener,
-            Err(err) => {
-                let _ = ready.send(Err(format!(
-                    "Could not listen for remote connections: {err}"
-                )));
-                return;
-            }
-        };
-        let port = match listener.local_addr() {
-            Ok(addr) => addr.port(),
-            Err(err) => {
-                let _ = ready.send(Err(format!(
-                    "Could not read the remote service address: {err}"
-                )));
-                return;
-            }
-        };
-        let mut lan_listener = None;
-        let (lan, lan_message, lan_target): (
-            Option<LanEndpoint>,
-            Option<String>,
-            Option<std::net::Ipv4Addr>,
-        ) = match network::default_interface() {
-            Err(error) => (None, Some(error), None),
-            Ok(None) => (None, Some("No active Ethernet or Wi-Fi interface with a private IPv4 default route was found.".into()), None),
-            Ok(Some(interface)) => match network::is_private_profile(&interface.adapter_id) {
-                Err(error) => (None, Some(error), None),
-                Ok(false) => (None, Some("LAN access is off because the active Windows network is not set to Private.".into()), None),
-                // Checked before binding: listening without a rule would make
-                // Windows pop its own firewall prompt on startup.
-                Ok(true) if !network::private_app_allowed() => {
-                    (None, Some(FIREWALL_NEEDED_MESSAGE.into()), Some(interface.address))
-                }
-                Ok(true) => {
-                    let target = Some(interface.address);
-                    match tokio::net::TcpListener::bind((interface.address, LAN_REMOTE_PORT)).await {
-                        Err(error) => (None, Some(format!(
-                            "Could not listen on {} ({}:{LAN_REMOTE_PORT}): {error}",
-                            interface.name,
-                            interface.address
-                        )), target),
-                        Ok(listener) => match listener.local_addr() {
-                            Err(error) => (None, Some(format!("Could not read the LAN listener address: {error}")), target),
-                            Ok(address) => {
-                                let endpoint = LanEndpoint {
-                                    address: interface.address,
-                                    port: address.port(),
-                                };
-                                lan_listener = Some(listener);
-                                (Some(endpoint), None, target)
-                            }
-                        },
-                    }
-                }
-            },
-        };
-        // Advertise only when Remote Control is enabled and a private LAN
-        // endpoint is actually serving. A failed daemon just means no
-        // discovery; the IP-based flow is untouched.
-        let target = mdns::advertise_target(
-            core.installation_id.is_some(),
-            lan.as_ref().map(|endpoint| (endpoint.address, endpoint.port)),
-        );
-        let advertiser = match (core.installation_id.as_deref(), target) {
-            (Some(id), Some((address, port))) => {
-                mdns::Advertiser::start(id, address, port).ok()
-            }
-            _ => None,
-        };
-        let advertising = advertiser.is_some();
-        // Hold the advertiser for the lifetime of the service thread so the
-        // records are withdrawn when this listener stops.
-        let _advertiser = advertiser;
-        let _ = ready.send(Ok(ServiceInfo { port, lan, lan_message, advertising, lan_target }));
-        tokio::spawn(lcu::watch(core.clone()));
-        let router = server::router(core.clone());
-        let lan_router = server::lan_router(core);
-        let mut shutdown = shutdown;
-        let _ = tokio::select! {
-            result = async move {
-                if let Some(lan_listener) = lan_listener {
-                    let lan_service = lan_router.into_make_service_with_connect_info::<std::net::SocketAddr>();
-                    let (local_result, lan_result) = tokio::join!(axum::serve(listener, router), axum::serve(lan_listener, lan_service));
-                    local_result.map_err(|error| error.to_string())?;
-                    lan_result.map_err(|error| error.to_string())?;
-                    Ok::<(), String>(())
-                } else {
-                    axum::serve(listener, router).await.map_err(|error| error.to_string())
-                }
-            } => result,
-            _ = &mut shutdown => Ok(()),
-        };
-    });
-}
-
-fn maintain(weak: Weak<RemoteCore>) {
-    loop {
-        thread::sleep(Duration::from_secs(30));
-        let Some(core) = weak.upgrade() else {
-            return;
-        };
-        let (enabled, state, crashed) = {
-            let inner = lock(&core.inner);
-            let crashed = lock(&core.service).as_ref().is_some_and(|service| {
-                service
-                    .join
-                    .as_ref()
-                    .is_some_and(|join| join.is_finished())
-            });
-            (inner.status.enabled, inner.status.state, crashed)
-        };
-        if !enabled {
-            // Keep the maintainer alive for a later Settings toggle.
-            continue;
-        }
-        // The LAN interface (or its Windows profile) can change while Swapper
-        // runs: a DHCP lease change, a Wi-Fi/Ethernet switch, or a Private to
-        // Public toggle. Restart the service so the listener rebinds and mDNS
-        // re-advertises the new address, or withdraws entirely when LAN stops.
-        // The probe runs outside the service lock, which must stay cheap.
-        let desired_lan = desired_lan_address();
-        let previous_lan = lock(&core.service)
-            .as_ref()
-            .map(|service| service.lan_target);
-        let lan_changed = previous_lan.is_some_and(|target| target != desired_lan);
-        let unhealthy = crashed
-            || lan_changed
-            || matches!(
-                state,
-                RemoteState::NotInstalled | RemoteState::Disconnected | RemoteState::Failed
-            );
-        if !unhealthy {
-            continue;
-        }
-        let _ops = lock(&core.ops);
-        if lan_changed {
-            // A paired phone's cookie is bound to the old address, so flag the
-            // change before the service drops the old listener.
-            if let Some((previous, next)) = lan_reconnect_change(previous_lan.flatten(), desired_lan) {
-                core.record_lan_reconnect(previous, next);
-            }
-            core.stop_service();
-        }
-        let _ = RemoteCore::ensure_service(&core);
-        core.reconcile();
-    }
-}
-
-/// The LAN address Remote Control should currently be serving, or `None` when
-/// there is no usable interface or the active network is not Private.
-fn desired_lan_address() -> Option<std::net::Ipv4Addr> {
-    let interface = network::default_interface().ok().flatten()?;
-    network::is_private_profile_cached(&interface.adapter_id)
-        .ok()
-        .filter(|private| *private)
-        .map(|_| interface.address)
 }
 
 #[cfg(test)]
@@ -1397,38 +661,11 @@ mod route_recovery_tests {
     use super::*;
 
     #[test]
-    fn paired_lan_credentials_are_encrypted_and_reloadable() {
-        let directory =
-            std::env::temp_dir().join(format!("swapper-lan-test-{}", uuid::Uuid::new_v4()));
-        let path = directory.join("lan-paired-devices.bin");
-        let credential = new_secret();
-        let device = PairedLanDevice {
-            id: uuid::Uuid::new_v4(),
-            credential: credential.clone(),
-            name: "iPhone".into(),
-            paired_at: 123,
-            last_seen: 456,
-            last_activity: None,
-        };
-
-        save_paired_devices_at(&path, std::slice::from_ref(&device)).unwrap();
-        let stored = fs::read(&path).unwrap();
-        assert!(!String::from_utf8_lossy(&stored).contains(&credential));
-
-        let restored = load_paired_devices_at(&path).unwrap();
-        assert_eq!(restored.len(), 1);
-        assert_eq!(restored[0].credential, credential);
-        assert_eq!(restored[0].name, "iPhone");
-        assert_eq!(restored[0].last_seen, 456);
-
-        clear_paired_devices_at(&path).unwrap();
-        assert!(load_paired_devices_at(&path).unwrap().is_empty());
-        fs::remove_dir_all(directory).unwrap();
-    }
-
-    #[test]
     fn a_recorded_route_can_be_replaced_after_restart() {
-        let claim = OwnedRoute { dns_name: "pc.tail.ts.net".into(), port: 1234 };
+        let claim = OwnedRoute {
+            dns_name: "pc.tail.ts.net".into(),
+            port: 1234,
+        };
         assert!(route_is_available(
             &tailscale::RootRoute::Proxy(tailscale::proxy_target(1234)),
             "pc.tail.ts.net",
@@ -1448,124 +685,22 @@ mod route_recovery_tests {
 
     #[test]
     fn route_claim_survives_a_new_process() {
-        let path = std::env::temp_dir().join(format!("swapper-route-test-{}.json", uuid::Uuid::new_v4()));
-        let claim = OwnedRoute { dns_name: "pc.tail.ts.net".into(), port: 1234 };
+        let path =
+            std::env::temp_dir().join(format!("swapper-route-test-{}.json", uuid::Uuid::new_v4()));
+        let claim = OwnedRoute {
+            dns_name: "pc.tail.ts.net".into(),
+            port: 1234,
+        };
         save_route_claim_at(&path, &claim).unwrap();
         let restored = load_route_claim_at(&path).unwrap().unwrap();
         assert_eq!(restored.dns_name, claim.dns_name);
         assert_eq!(restored.port, claim.port);
-        let replacement = OwnedRoute { dns_name: claim.dns_name, port: 5678 };
+        let replacement = OwnedRoute {
+            dns_name: claim.dns_name,
+            port: 5678,
+        };
         save_route_claim_at(&path, &replacement).unwrap();
         assert_eq!(load_route_claim_at(&path).unwrap().unwrap().port, 5678);
         std::fs::remove_file(path).unwrap();
-    }
-
-    fn device(name: &str) -> PairedLanDevice {
-        PairedLanDevice {
-            id: uuid::Uuid::new_v4(),
-            credential: new_secret(),
-            name: name.into(),
-            paired_at: 1,
-            last_seen: 1,
-            last_activity: None,
-        }
-    }
-
-    #[test]
-    fn device_views_never_expose_credentials() {
-        let device = device("iPhone");
-        let json = serde_json::to_string(&device_view(&device)).unwrap();
-        assert!(!json.contains(&device.credential));
-        assert!(!json.contains("credential"));
-        assert!(json.contains("\"name\":\"iPhone\""));
-    }
-
-    #[test]
-    fn connected_devices_are_reported_from_recent_activity() {
-        let mut device = device("iPhone");
-        assert!(!device_view(&device).connected);
-        device.last_activity = Some(Instant::now());
-        assert!(device_view(&device).connected);
-    }
-
-    #[test]
-    fn revoke_and_rename_update_a_device_list() {
-        let first = device("iPhone");
-        let second = device("Android phone");
-        let mut devices = vec![first.clone(), second.clone()];
-
-        apply_rename(&mut devices, &first.id.to_string(), "  My phone  ").unwrap();
-        assert_eq!(devices[0].name, "My phone");
-        assert_eq!(
-            apply_rename(&mut devices, &second.id.to_string(), "Android phone").unwrap(),
-            "Android phone"
-        );
-
-        apply_revoke(&mut devices, &first.id.to_string()).unwrap();
-        assert_eq!(devices.len(), 1);
-        assert_eq!(devices[0].id, second.id);
-
-        assert!(apply_revoke(&mut devices, &first.id.to_string()).is_err());
-        assert!(apply_rename(&mut devices, &second.id.to_string(), "   ").is_err());
-    }
-
-    #[test]
-    fn credentials_are_compared_constant_time() {
-        assert!(constant_time_eq("abc123", "abc123"));
-        assert!(!constant_time_eq("abc123", "abc124"));
-        assert!(!constant_time_eq("abc123", "abc12"));
-        assert!(!constant_time_eq("", "a"));
-        assert!(constant_time_eq("", ""));
-    }
-
-    #[test]
-    fn device_names_are_capped_to_32_bytes_without_splitting() {
-        assert_eq!(sanitize_device_name("  iPhone  "), "iPhone");
-        assert_eq!(sanitize_device_name(&"x".repeat(40)).len(), 32);
-        // "é" is two bytes, so only 16 fit in the 32-byte cap.
-        let capped = sanitize_device_name(&"é".repeat(20));
-        assert_eq!(capped.len(), 32);
-        assert_eq!(capped.chars().count(), 16);
-    }
-
-    #[test]
-    fn a_private_address_change_needs_a_reconnect() {
-        let old = "192.168.1.20".parse().unwrap();
-        let new = "192.168.1.77".parse().unwrap();
-        assert_eq!(lan_reconnect_change(Some(old), Some(new)), Some((old, new)));
-    }
-
-    #[test]
-    fn startup_and_lan_toggling_do_not_need_a_reconnect() {
-        let address = "10.0.0.5".parse().unwrap();
-        // Startup, or LAN coming on from nothing.
-        assert_eq!(lan_reconnect_change(None, Some(address)), None);
-        // LAN turning off.
-        assert_eq!(lan_reconnect_change(Some(address), None), None);
-        // Nothing moved.
-        assert_eq!(lan_reconnect_change(Some(address), Some(address)), None);
-        assert_eq!(lan_reconnect_change(None, None), None);
-    }
-
-    #[test]
-    fn only_private_addresses_need_a_reconnect() {
-        let private = "192.168.4.8".parse().unwrap();
-        let public = "8.8.8.8".parse().unwrap();
-        assert_eq!(lan_reconnect_change(Some(private), Some(public)), None);
-        assert_eq!(lan_reconnect_change(Some(public), Some(private)), None);
-    }
-
-    #[test]
-    fn removing_stale_devices_keeps_recent_ones() {
-        let mut stale = device("Old phone");
-        stale.last_seen = 100;
-        let mut fresh = device("Current phone");
-        fresh.last_seen = 900;
-        let since = 500;
-        let mut devices = vec![stale, fresh];
-        assert_eq!(apply_remove_stale(&mut devices, since), 1);
-        assert_eq!(devices.len(), 1);
-        assert_eq!(devices[0].name, "Current phone");
-        assert_eq!(apply_remove_stale(&mut devices, since), 0);
     }
 }
