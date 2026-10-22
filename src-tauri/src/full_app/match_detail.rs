@@ -94,9 +94,27 @@ pub struct TimelineEvent {
     killer_id: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     victim_id: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    position: Option<TimelinePosition>,
 }
 
-fn timeline_from_participants(value: &Value, participants: &[Value]) -> Option<Timeline> {
+#[derive(Clone, Serialize)]
+struct TimelinePosition {
+    x: u64,
+    y: u64,
+}
+
+fn timeline_position(value: &Value) -> Option<TimelinePosition> {
+    let x = value["x"].as_u64().filter(|x| *x <= 15000)?;
+    let y = value["y"].as_u64().filter(|y| *y <= 15000)?;
+    Some(TimelinePosition { x, y })
+}
+
+fn timeline_from_participants(
+    value: &Value,
+    participants: &[Value],
+    map_id: u64,
+) -> Option<Timeline> {
     let sides: BTreeMap<_, _> = participants
         .iter()
         .filter_map(|p| Some((p["participantId"].as_u64()?, p["teamId"].as_u64()?)))
@@ -159,6 +177,9 @@ fn timeline_from_participants(value: &Value, participants: &[Value]) -> Option<T
                     label: "Champion kill".into(),
                     killer_id: Some(killer_id),
                     victim_id: Some(victim_id),
+                    position: (map_id == 11)
+                        .then(|| timeline_position(&event["position"]))
+                        .flatten(),
                 });
             }
             let (label, team_id) = match event["type"].as_str()? {
@@ -202,6 +223,7 @@ fn timeline_from_participants(value: &Value, participants: &[Value]) -> Option<T
                 label: label.into(),
                 killer_id: None,
                 victim_id: None,
+                position: None,
             })
         })
         .collect();
@@ -481,9 +503,13 @@ pub async fn full_app_match_detail(
     let timeline_path = format!("/lol-match-history/v1/game-timelines/{game_id}");
     let (ranks, timeline) = tokio::join!(rank_requests, get(&client, &timeline_path));
     detail.timeline = timeline.ok().and_then(|timeline| {
-        value["participants"]
-            .as_array()
-            .and_then(|participants| timeline_from_participants(&timeline, participants))
+        value["participants"].as_array().and_then(|participants| {
+            timeline_from_participants(
+                &timeline,
+                participants,
+                value["mapId"].as_u64().unwrap_or(0),
+            )
+        })
     });
     for (puuid, result) in ranks {
         if let Ok(value) = result {
@@ -545,12 +571,12 @@ mod tests {
             {"type": "BUILDING_KILL", "timestamp": 30000, "teamId": 100, "killerId": 0, "buildingType": "TOWER_BUILDING"},
             {"type": "ELITE_MONSTER_KILL", "timestamp": 40000, "killerId": 2, "teamId": 0, "monsterType": "DRAGON"},
             {"type": "ELITE_MONSTER_KILL", "timestamp": 45000, "killerId": 0, "teamId": 0, "monsterType": "DRAGON"},
-            {"type": "CHAMPION_KILL", "timestamp": 50000, "killerId": 2, "victimId": 1},
+            {"type": "CHAMPION_KILL", "timestamp": 50000, "killerId": 2, "victimId": 1, "position": {"x": 2443, "y": 12747}},
             {"type": "CHAMPION_KILL", "timestamp": 51000, "killerId": 0, "victimId": 1},
             {"type": "CHAMPION_KILL", "timestamp": 52000, "killerId": 2, "victimId": 99},
             {"type": "CHAMPION_KILL", "timestamp": 53000, "killerId": 2, "victimId": 4}
         ]);
-        let timeline = timeline_from_participants(&value, &participants).unwrap();
+        let timeline = timeline_from_participants(&value, &participants, 11).unwrap();
         assert_eq!(timeline.frames[0].gold_diff, 0);
         assert_eq!(timeline.frames[1].gold_diff, 2500);
         assert_eq!(timeline.events.len(), 3);
@@ -562,23 +588,45 @@ mod tests {
         assert_eq!(serialized["events"][2]["killerId"], 2);
         assert_eq!(serialized["events"][2]["victimId"], 1);
         assert_eq!(serialized["events"][2]["teamId"], 100);
+        assert_eq!(
+            serialized["events"][2]["position"],
+            json!({"x": 2443, "y": 12747})
+        );
+        let other_map = timeline_from_participants(&value, &participants, 12).unwrap();
+        assert_eq!(other_map.events.len(), 3);
+        assert!(other_map
+            .events
+            .iter()
+            .all(|event| event.position.is_none()));
+        for position in [
+            json!(null),
+            json!({"x": -1, "y": 2}),
+            json!({"x": 1}),
+            json!({"x": 15001, "y": 1}),
+        ] {
+            let mut missing = value.clone();
+            missing["frames"][1]["events"][3]["position"] = position;
+            let parsed = timeline_from_participants(&missing, &participants, 11).unwrap();
+            let serialized = serde_json::to_value(parsed).unwrap();
+            assert!(serialized["events"][2].get("position").is_none());
+        }
         assert!(serialized["events"][0].get("killerId").is_none());
         let mut invalid = value.clone();
         invalid["frames"][1]["timestamp"] = json!(0);
-        assert!(timeline_from_participants(&invalid, &participants).is_none());
+        assert!(timeline_from_participants(&invalid, &participants, 11).is_none());
         invalid = value.clone();
         invalid["frames"][1]["participantFrames"]["2"]["totalGold"] = json!(-1);
-        assert!(timeline_from_participants(&invalid, &participants).is_none());
+        assert!(timeline_from_participants(&invalid, &participants, 11).is_none());
         invalid = value.clone();
         invalid["frames"][1]["participantFrames"]["2"]["participantId"] = json!(3);
-        assert!(timeline_from_participants(&invalid, &participants).is_none());
+        assert!(timeline_from_participants(&invalid, &participants, 11).is_none());
         value["frames"][1]["participantFrames"]
             .as_object_mut()
             .unwrap()
             .remove("2");
-        assert!(timeline_from_participants(&value, &participants).is_none());
-        assert!(timeline_from_participants(&value, &participants[..9]).is_none());
-        assert!(timeline_from_participants(&json!({"frames": []}), &participants).is_none());
+        assert!(timeline_from_participants(&value, &participants, 11).is_none());
+        assert!(timeline_from_participants(&value, &participants[..9], 11).is_none());
+        assert!(timeline_from_participants(&json!({"frames": []}), &participants, 11).is_none());
     }
 
     #[test]

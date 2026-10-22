@@ -256,24 +256,28 @@ async function main() {
     }
     await page.click('#md-tab-Graphs');
     await page.visible('.md-chart polyline');
-    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 14);
-    assert.equal(await page.evaluate("document.querySelectorAll('.md-kill-marker').length"), 4);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 10);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-lane-mark.is-kill').length"), 8);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-chart .md-chart-event, .md-kill-track').length"), 0);
     await page.click('.md-event-filters button', 'Objectives');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 6);
-    assert.equal(await page.evaluate("document.querySelectorAll('.md-kill-marker').length"), 0);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-lane-mark.is-kill').length"), 8);
     await page.click('.md-event-filters button', 'Kills');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 8);
     assert.equal(await page.evaluate("document.querySelectorAll('.md-chart-event').length"), 0);
     await page.click('.md-event-filters button', 'All');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 12);
+    await page.click('.md-event-expand button');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 14);
     await page.click('.md-chart-select input');
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Home', code: 'Home' });
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Home', code: 'Home' });
     await page.text('.md-chart-reading', 'Teams even');
     await page.visible('.md-timeline-popover');
-    await page.text('.md-timeline-popover', '2,500');
+    await page.text('.md-timeline-popover', 'Teams even at 0:00');
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 39 });
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 39 });
-    await page.text('.md-timeline-popover time', '1:00');
+    await page.text('.md-timeline-popover', 'at 1:00');
     await page.click('#md-tab-Scoreboard');
     // ---- end matchdetail tabs ----
     await page.click('.ui-crumbs button', "Dashboard");
@@ -294,6 +298,49 @@ async function main() {
     await page.visible('.md-stats-empty');
     await page.click('.md-stats-empty button');
     await page.wait("document.querySelectorAll('.md-stats-table tbody:not(.md-stats-group) tr').length > 40", 'search cleared');
+    await navigate(fullApp, '.match-row');
+  });
+  await check('Match graphs: dense lanes, kill map, player filters and keyboard', async () => {
+    await navigate(fullApp + '?timeline-long', '.match-row');
+    await page.click('.match-champ');
+    await page.click('#md-tab-Graphs');
+    await page.visible('.md-map-dot');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-map-dot').length"), 72);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-frame-dot').length"), 35);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-champion-filters button').length"), 10);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-lane').length"), 2);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-lane-mark.is-kill').length"), 24);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 12);
+    assert.equal(await page.evaluate("document.querySelector('.md-event-filters button').getAttribute('aria-pressed')"), 'true');
+    await page.click('.md-champion-filters button.is-me');
+    const personal = await page.evaluate("document.querySelectorAll('.md-map-dot').length");
+    assert.ok(personal > 0 && personal < 72);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-map-dot:not(.is-personal)').length"), 0);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-lane-mark.is-kill:not(.is-personal)').length"), 0);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-lane-mark.is-objective').length"), 18);
+    for (const [width, height] of [[1440, 900], [2560, 1440], [1280, 820]]) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', {width, height, deviceScaleFactor: 1, mobile: false});
+      assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.md-graphs-layout')).gridTemplateColumns.split(' ').length"), width >= 1440 ? 2 : 1);
+      await audit();
+    }
+    await page.evaluate("document.querySelector('.md-lane-mark.is-kill').focus()");
+    await page.visible('#md-event-tooltip');
+    assert.equal(await page.evaluate("document.querySelectorAll('#md-event-tooltip .md-kill-portrait').length > 0"), true);
+    await cdp.send('Input.dispatchKeyEvent', {type: 'keyDown', key: 'Escape', code: 'Escape'});
+    await page.wait("document.querySelector('#md-event-tooltip') === null", 'event tooltip dismissed');
+    await page.click('.md-map-filter-heading button');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-map-dot').length"), 72);
+    await page.click('.md-event-filters button', 'All');
+    await page.click('.md-event-expand button');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 90);
+    await page.click('.md-event-expand button');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 12);
+    await navigate(fullApp + '?timeline-long&timeline-no-positions', '.match-row');
+    await page.click('.match-champ');
+    await page.click('#md-tab-Graphs');
+    await page.visible('.md-event-lane');
+    assert.equal(await page.evaluate("document.querySelector('.md-kill-map')"), null);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-lane-mark.is-kill').length"), 24);
     await navigate(fullApp, '.match-row');
   });
   // ---- end matchdetail missing data ----

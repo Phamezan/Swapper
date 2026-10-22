@@ -1,8 +1,9 @@
 import type { Game, Snapshot } from "../types";
-import type { MatchView } from "../MatchDetailModel";
+import type { MatchView, TimelineEvent } from "../MatchDetailModel";
 
 // Synthetic preview only. Field names were verified against the running client.
 export function matchDetailFixture(game: Game, ranks: Snapshot["rank"][], params: URLSearchParams): MatchView {
+  if (params.has("timeline-long")) game = {...game, duration: 34 * 60};
   const side = (id: number) => params.has("detail-red") ? 300 - id : id;
   const players = game.players.map((p, i) => {
     const leading = (i < 5) === game.win;
@@ -48,20 +49,33 @@ export function matchDetailFixture(game: Game, ranks: Snapshot["rank"][], params
   });
   const finalDiff = players.reduce((sum, p) => sum + (p.teamId === 100 ? p.gold : -p.gold), 0);
   const finalGold = players.reduce((sum, p) => sum + p.gold, 0);
-  const frames = Array.from({ length: 26 }, (_, i) => {
-    const goldDiff = i === 0 ? 0 : i === 25 ? finalDiff : Math.round(-1700 * Math.sin(i / 5) + finalDiff * (i / 25) ** 2);
-    const blueGold = Math.round((5000 + (finalGold - 5000) * i / 25 + goldDiff) / 2);
-    return {timestamp: Math.round(game.duration * 1000 * i / 25), goldDiff, blueGold, redGold: blueGold - goldDiff};
+  const minutes = params.has("timeline-long") ? 34 : 25;
+  const frames = Array.from({ length: minutes + 1 }, (_, i) => {
+    const goldDiff = i === 0 ? 0 : i === minutes ? finalDiff : Math.round(-1700 * Math.sin(i / 5) + finalDiff * (i / minutes) ** 2);
+    const blueGold = Math.round((5000 + (finalGold - 5000) * i / minutes + goldDiff) / 2);
+    return {timestamp: Math.round(game.duration * 1000 * i / minutes), goldDiff, blueGold, redGold: blueGold - goldDiff};
   });
   const partial = params.has("detail-partial") || params.has("detail-partial-own");
   const kills = params.has("timeline-objectives-only") ? [] : [
     [380000, 1, 6], [421000, 7, 1], [434000, 2, 7], [446000, 3, 8],
     [785000, 1, 6], [798000, 8, 2], [1248000, 1, 9], [1268000, 10, 3],
   ].map(([timestamp, killerId, victimId]) => ({ timestamp, killerId, victimId, teamId: players[killerId - 1].teamId, label: "Champion kill" }));
+  // ---- matchdetail graphs: dense, synthetic 34-minute fixture (72 kills + 18 objectives) ----
+  const longEvents: TimelineEvent[] = Array.from({length: 72}, (_, i) => {
+    const fight = Math.floor(i / 3), red = fight % 3 === 0;
+    const killerId = (fight % 5) + (red ? 6 : 1), victimId = (i % 5) + (red ? 1 : 6);
+    const locations = [[2200, 12200], [7200, 7600], [12400, 2500], [10800, 5200], [4800, 10200], [6400, 4700]];
+    const [x, y] = locations[fight % locations.length];
+    return {timestamp: 90000 + fight * 80000 + i % 3 * 4000, killerId, victimId,
+      teamId: players[killerId - 1].teamId, label: "Champion kill",
+      ...(params.has("timeline-no-positions") ? {} : {position: {x: x + (i * 127 % 1400), y: y + (i * 233 % 1200)}})};
+  });
+  for (let i = 0; i < 18; i++) longEvents.push({timestamp: 250000 + i * 97000, teamId: side(i % 4 === 0 ? 200 : 100), label: ["Dragon", "Tower", "Grub", "Herald", "Tower", "Baron"][i % 6]});
+  // ---- end matchdetail graphs fixture ----
   return { game, players: params.has("detail-partial-own") ? players.filter((_, i) => i !== 4) : params.has("detail-partial") ? players.slice(0, 8) : players,
     teams: [100, 200].map((teamId, i) => ({teamId: side(teamId), win: i === 0 ? game.win : !game.win,
       objectives: partial ? [] : [{label: "Dragons", kills: i ? 1 : 3}, {label: "Heralds", kills: i ? 0 : 1}, {label: "Grubs", kills: i ? 2 : 4}, {label: "Barons", kills: i ? 0 : 1}, {label: "Towers", kills: (i === 0) === game.win ? 9 : 3}, {label: "Inhibitors", kills: i ? 0 : 1}] })),
-    timeline: params.has("no-timeline") || partial ? null : {frames, events: [
+    timeline: params.has("no-timeline") || partial ? null : {frames, events: params.has("timeline-long") ? longEvents.sort((a, b) => a.timestamp - b.timestamp) : [
       {timestamp: Math.round(game.duration * 1000 * .28), teamId: 200, label: "Dragon"},
       {timestamp: Math.round(game.duration * 1000 * .4), teamId: 100, label: "Tower"},
       {timestamp: Math.round(game.duration * 1000 * .52), teamId: 100, label: "Dragon"},

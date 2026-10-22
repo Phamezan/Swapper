@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
 import { barWidth, placementLabel, scoreTone, teamAverageDamage, teamTotals, percent } from './MatchDetailModel.ts';
-import { bestValues, buildStatGroups, comparisonRows, filterStatGroups, matchFacts, timelineChart, resolveTimelineEvents, groupKillEvents } from './MatchDetailModel.ts';
+import { bestValues, buildStatGroups, comparisonRows, filterStatGroups, matchFacts, timelineChart, resolveTimelineEvents, groupKillEvents, timelineLanes, mapPosition, filterTimelineEvents } from './MatchDetailModel.ts';
 
 test('row leaders share ties, prefer fewer deaths, and never rank unknown or uniform rows', () => {
   assert.deepEqual(bestValues([4, 9, 9, 0], 'high'), [1, 2]);
@@ -104,13 +104,33 @@ test('timeline resolves kills through participant IDs and skips unknown or allie
   assert.deepEqual(hiddenChampion, []);
 });
 
-test('kill clusters group a fight within thirty seconds without chaining the entire match', () => {
+test('kill clusters stay on the killing team and span at most ten seconds without chaining', () => {
   const players = [{participantId: 1, teamId: 100, championId: 266, me: true}, {participantId: 6, teamId: 200, championId: 122, me: false}];
-  const events = resolveTimelineEvents([60000, 72000, 90000, 91000, 160000].map(timestamp => ({timestamp, teamId: 100, label: 'Champion kill', killerId: 1, victimId: 6})), players);
+  const events = resolveTimelineEvents([60000, 65000, 70000, 71000, 160000].map(timestamp => ({timestamp, teamId: 100, label: 'Champion kill', killerId: 1, victimId: 6})), players);
+  events.splice(1, 0, resolveTimelineEvents([{timestamp: 62000, killerId: 6, victimId: 1}], players)[0]);
   const clusters = groupKillEvents(events);
-  assert.deepEqual(clusters.map(c => c.events.length), [3, 1, 1]);
-  assert.deepEqual(clusters.map(c => c.timestamp), [60000, 91000, 160000]);
+  assert.deepEqual(clusters.map(c => c.events.length), [3, 1, 1, 1]);
+  assert.deepEqual(clusters.map(c => c.teamId), [100, 200, 100, 100]);
+  assert.deepEqual(clusters.map(c => c.timestamp), [60000, 62000, 71000, 160000]);
   assert.deepEqual(groupKillEvents([]), []);
+});
+
+test('lanes and filters use participant IDs, retain objectives and identify actual multi-kills', () => {
+  const players = [1, 2, 6, 7].map(id => ({participantId: id, teamId: id < 6 ? 100 : 200, championId: 100 + id, me: id === 1}));
+  const kills = [[1000, 2, 6], [9000, 2, 7], [10000, 6, 1], [30000, 7, 2]].map(([timestamp, killerId, victimId]) => ({timestamp, killerId, victimId}));
+  const events = resolveTimelineEvents([...kills, {timestamp: 15000, teamId: 200, label: 'Dragon'}], players);
+  assert.deepEqual(timelineLanes(events).map(l => [l.teamId, l.marks.length]), [[100, 1], [200, 3]]);
+  assert.deepEqual(filterTimelineEvents(events, 'Key moments').map(e => e.timestamp), [1000, 9000, 10000, 15000]);
+  assert.deepEqual(filterTimelineEvents(events, 'All', 6).map(e => e.timestamp), [1000, 10000, 15000]);
+  assert.deepEqual(filterTimelineEvents(events, 'Kills', 1).map(e => e.timestamp), [10000]);
+  assert.deepEqual(filterTimelineEvents(events, 'Objectives', 1).map(e => e.timestamp), [15000]);
+});
+
+test('map coordinates invert y and reject missing, invalid or out-of-bounds positions', () => {
+  assert.deepEqual(mapPosition({x: 0, y: 15000}), {x: 0, y: 0});
+  assert.deepEqual(mapPosition({x: 7500, y: 3750}), {x: 50, y: 75});
+  assert.deepEqual(mapPosition({x: 15000, y: 0}), {x: 100, y: 100});
+  for (const position of [undefined, null, {x: -1, y: 3}, {x: NaN, y: 1}, {x: 1, y: Infinity}, {x: 16000, y: 3}]) assert.equal(mapPosition(position), null);
 });
 
 test('placement labels include MVP, losing-team ACE and correct ordinals', () => {
