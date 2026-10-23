@@ -119,7 +119,8 @@ pub(crate) fn complete(config: &mut Config, id: Uuid, identity: &DetectedIdentit
 
 /// How long a switched-in account is watched for a dead-on-arrival session,
 /// and how often it is probed in that window.
-const WATCH_WINDOW: Duration = Duration::from_secs(45);
+const WATCH_WINDOW: Duration = Duration::from_secs(90);
+const RELAUNCH_EXTENSION: Duration = Duration::from_secs(60);
 const WATCH_INTERVAL: Duration = Duration::from_secs(5);
 
 /// One identity probe after a switch, or the watch window running out.
@@ -163,25 +164,19 @@ fn observe(detection: &Detection, expected_puuid: &str) -> SessionObservation {
 /// Pure policy for the post-switch watch: what does this sequence of
 /// observations say about the switched-in session?
 ///
-/// The first decisive observation wins. Before Riot Client has answered at
-/// least once, "not running" or "unreadable" only means it is still booting;
-/// afterwards they mean the client is gone and the watch stops quietly. An
-/// expired verdict requires the client to have been seen sitting at its
-/// login screen up to the end of the window — a client that never appeared
-/// raises no alarm.
+/// Only a signed-in identity ends the watch early. Restarts and API failures
+/// can recover. At the deadline, offer Repair only if the latest probe actually
+/// saw the login screen; an absent/unreadable client is not proof of expiry.
 fn expiry_verdict(observations: &[SessionObservation]) -> SessionVerdict {
-    let mut client_seen = false;
+    let mut at_login = false;
     for observation in observations {
         match observation {
             SessionObservation::SignedIn => return SessionVerdict::Silent,
             SessionObservation::SignedInAsDifferent => return SessionVerdict::Mismatch,
-            SessionObservation::AtLogin => client_seen = true,
-            SessionObservation::ClientGone | SessionObservation::Unreadable if client_seen => {
-                return SessionVerdict::Silent;
-            }
-            SessionObservation::ClientGone | SessionObservation::Unreadable => {}
+            SessionObservation::AtLogin => at_login = true,
+            SessionObservation::ClientGone | SessionObservation::Unreadable => at_login = false,
             SessionObservation::WindowEnded => {
-                return if client_seen {
+                return if at_login {
                     SessionVerdict::Expired
                 } else {
                     SessionVerdict::Silent
@@ -190,6 +185,30 @@ fn expiry_verdict(observations: &[SessionObservation]) -> SessionVerdict {
         }
     }
     SessionVerdict::KeepWatching
+}
+
+/// A client seen, then gone, then present again gets one bounded extension.
+/// Initial startup is not a relaunch, and repeated restarts cannot extend it
+/// beyond 150 seconds.
+fn watch_window(observations: &[SessionObservation]) -> Duration {
+    let mut client_seen = false;
+    let mut gone_after_seen = false;
+    for observation in observations {
+        match observation {
+            SessionObservation::ClientGone => gone_after_seen |= client_seen,
+            SessionObservation::AtLogin
+            | SessionObservation::Unreadable
+            | SessionObservation::SignedIn
+            | SessionObservation::SignedInAsDifferent => {
+                if gone_after_seen {
+                    return WATCH_WINDOW + RELAUNCH_EXTENSION;
+                }
+                client_seen = true;
+            }
+            SessionObservation::WindowEnded => break,
+        }
+    }
+    WATCH_WINDOW
 }
 
 #[derive(Clone, Serialize)]
@@ -214,13 +233,13 @@ pub(crate) fn spawn_session_watch(
     epoch: Arc<AtomicU64>,
 ) {
     tauri::async_runtime::spawn(async move {
-        let deadline = Instant::now() + WATCH_WINDOW;
+        let started = Instant::now();
         let mut observations = Vec::new();
         loop {
             if epoch.load(Ordering::SeqCst) != watch_epoch {
                 return;
             }
-            if Instant::now() >= deadline {
+            if started.elapsed() >= watch_window(&observations) {
                 observations.push(SessionObservation::WindowEnded);
             } else {
                 // The cheap probe (no League enrichment) is enough: only the
@@ -234,7 +253,10 @@ pub(crate) fn spawn_session_watch(
                 observations.push(observe(&detection, &expected_puuid));
             }
             match expiry_verdict(&observations) {
-                SessionVerdict::KeepWatching => tokio::time::sleep(WATCH_INTERVAL).await,
+                SessionVerdict::KeepWatching => {
+                    let remaining = watch_window(&observations).saturating_sub(started.elapsed());
+                    tokio::time::sleep(WATCH_INTERVAL.min(remaining)).await;
+                }
                 SessionVerdict::Silent => return,
                 SessionVerdict::Expired => {
                     notify_session_expired(&app, account_id, &account_name, false);
@@ -381,8 +403,57 @@ mod tests {
 
     #[test]
     fn a_client_that_closes_mid_watch_raises_no_alarm() {
-        assert!(matches!(expiry_verdict(&[AtLogin, ClientGone]), Silent));
+        assert!(matches!(expiry_verdict(&[AtLogin, ClientGone]), KeepWatching));
         assert!(matches!(expiry_verdict(&[AtLogin, ClientGone, WindowEnded]), Silent));
+    }
+
+    #[test]
+    fn a_restart_is_not_decisive_and_the_latest_observation_controls_expiry() {
+        assert!(matches!(
+            expiry_verdict(&[AtLogin, ClientGone, AtLogin, WindowEnded]),
+            Expired
+        ));
+        assert!(matches!(
+            expiry_verdict(&[AtLogin, Unreadable]),
+            KeepWatching
+        ));
+        assert!(matches!(
+            expiry_verdict(&[AtLogin, Unreadable, WindowEnded]),
+            Silent
+        ));
+        assert!(matches!(
+            expiry_verdict(&[AtLogin, ClientGone, SignedIn]),
+            Silent
+        ));
+        assert!(matches!(
+            expiry_verdict(&[AtLogin, ClientGone, SignedInAsDifferent]),
+            Mismatch
+        ));
+    }
+
+    #[test]
+    fn relaunch_extends_the_watch_once_and_initial_startup_does_not() {
+        assert_eq!(watch_window(&[]), Duration::from_secs(90));
+        assert_eq!(
+            watch_window(&[ClientGone, AtLogin]),
+            Duration::from_secs(90)
+        );
+        assert_eq!(
+            watch_window(&[AtLogin, Unreadable, AtLogin]),
+            Duration::from_secs(90)
+        );
+        assert_eq!(
+            watch_window(&[AtLogin, ClientGone, AtLogin]),
+            Duration::from_secs(150)
+        );
+        assert_eq!(
+            watch_window(&[AtLogin, ClientGone, Unreadable]),
+            Duration::from_secs(150)
+        );
+        assert_eq!(
+            watch_window(&[AtLogin, ClientGone, AtLogin, ClientGone, AtLogin]),
+            Duration::from_secs(150)
+        );
     }
 
     #[test]

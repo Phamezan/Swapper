@@ -156,6 +156,7 @@ pub fn run() {
             live_game::init(app.handle());
             runes::spawn_watch(app.handle().clone());
             client_health::spawn(app.handle().clone());
+            lifecycle::spawn_session_refresh(app.handle().clone());
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;

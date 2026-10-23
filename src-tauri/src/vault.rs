@@ -1,3 +1,4 @@
+use base64::Engine;
 use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::{Component, Path, PathBuf};
@@ -158,6 +159,10 @@ pub struct Snapshot {
 /// Swapper's own data folder. `SWAPPER_DATA_DIR` overrides it so an isolated test build
 /// keeps its data apart while Riot paths still use the real `LOCALAPPDATA`.
 pub(crate) fn data_root() -> Result<PathBuf, String> {
+    #[cfg(test)]
+    if let Some(root) = TEST_LOCAL_ROOT.with(|root| root.borrow().clone()) {
+        return Ok(root.join("Swapper"));
+    }
     if let Some(dir) = std::env::var_os("SWAPPER_DATA_DIR") {
         return Ok(PathBuf::from(dir));
     }
@@ -356,6 +361,10 @@ fn crypt(input: &[u8], encrypt: bool) -> Result<Vec<u8>, String> {
 }
 
 fn local_riot_root() -> Result<PathBuf, String> {
+    #[cfg(test)]
+    if let Some(root) = TEST_LOCAL_ROOT.with(|root| root.borrow().clone()) {
+        return Ok(root.join("Riot Games"));
+    }
     let local = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is unavailable")?;
     Ok(PathBuf::from(local).join("Riot Games"))
 }
@@ -383,6 +392,76 @@ const DIRS: &[(&str, &str)] = &[
     ("Riot Client/Data/Sessions", "client/sessions"),
     ("Riot Client/Data/Cookies", "client/cookies"),
 ];
+
+/// The persisted Riot Client ID token's subject identifies its session owner.
+/// This is local ownership evidence, not signature validation or proof that the
+/// token is still accepted by Riot. Never log the token, claims, or subject.
+fn session_puuid(bytes: &[u8]) -> Option<String> {
+    let doc: serde_yaml_ng::Value = serde_yaml_ng::from_slice(bytes).ok()?;
+    let token = doc["psl"]["authorization"]["riot-client"]["id_token"].as_str()?;
+    let mut parts = token.split('.');
+    let (Some(header), Some(payload), Some(signature), None) =
+        (parts.next(), parts.next(), parts.next(), parts.next())
+    else {
+        return None;
+    };
+    if header.is_empty() || payload.is_empty() || signature.is_empty() {
+        return None;
+    }
+    let claims = base64::engine::general_purpose::URL_SAFE_NO_PAD
+        .decode(payload)
+        .or_else(|_| base64::engine::general_purpose::URL_SAFE.decode(payload))
+        .ok()?;
+    let claims: serde_json::Value = serde_json::from_slice(&claims).ok()?;
+    Uuid::parse_str(claims.get("sub")?.as_str()?)
+        .ok()
+        .map(|id| id.to_string())
+}
+
+#[cfg(test)]
+pub(crate) fn test_session_yaml(puuid: &str) -> Vec<u8> {
+    let claims = base64::engine::general_purpose::URL_SAFE_NO_PAD
+        .encode(serde_json::json!({"sub": puuid}).to_string());
+    format!("psl:\n  authorization:\n    riot-client:\n      id_token: 'e30.{claims}.fake-signature'\n      refresh_token: fake-refresh\n").into_bytes()
+}
+
+impl Snapshot {
+    pub(crate) fn puuid(&self) -> Option<String> {
+        // The modern file is authoritative, even when signed out or malformed.
+        let entry = self
+            .entries
+            .iter()
+            .find(|e| e.relative == "client/private.yaml")
+            .or_else(|| {
+                self.entries
+                    .iter()
+                    .find(|e| e.relative == "client/legacy-private.yaml")
+            })?;
+        session_puuid(&entry.bytes)
+    }
+}
+
+#[cfg(test)]
+thread_local! {
+    static TEST_LOCAL_ROOT: std::cell::RefCell<Option<PathBuf>> = const { std::cell::RefCell::new(None) };
+}
+
+/// Isolates filesystem tests without changing the process-wide environment.
+#[cfg(test)]
+pub(crate) fn with_test_data<T>(test: impl FnOnce(&Path) -> T) -> T {
+    struct Cleanup(PathBuf);
+    impl Drop for Cleanup {
+        fn drop(&mut self) {
+            TEST_LOCAL_ROOT.with(|root| *root.borrow_mut() = None);
+            let _ = fs::remove_dir_all(&self.0);
+        }
+    }
+    let root = std::env::temp_dir().join(format!("swapper-session-test-{}", Uuid::new_v4()));
+    fs::create_dir_all(&root).unwrap();
+    let _cleanup = Cleanup(root.clone());
+    TEST_LOCAL_ROOT.with(|slot| *slot.borrow_mut() = Some(root.clone()));
+    test(&root)
+}
 
 pub fn live_session_exists() -> Result<bool, String> {
     let root = local_riot_root()?;
@@ -583,6 +662,60 @@ pub fn restore(snapshot: &Snapshot) -> Result<(), String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn reads_the_observed_riot_client_id_token_subject() {
+        use base64::Engine;
+        let puuid = "00000000-0000-0000-0000-000000000001";
+        let claims = base64::engine::general_purpose::URL_SAFE_NO_PAD
+            .encode(format!(r#"{{"sub":"{puuid}"}}"#));
+        let yaml = format!("psl:\n  authorization:\n    riot-client:\n      id_token: 'e30.{claims}.fake-signature'\n");
+        assert_eq!(session_puuid(yaml.as_bytes()).as_deref(), Some(puuid));
+    }
+
+    #[test]
+    fn offline_puuid_requires_a_valid_id_token_at_the_observed_path() {
+        let puuid = "00000000-0000-0000-0000-000000000001";
+        assert_eq!(
+            session_puuid(&test_session_yaml(puuid)).as_deref(),
+            Some(puuid)
+        );
+        for input in [
+            b"riot-login: {persist: {session: null}}".as_slice(),
+            b"psl: [broken",
+            b"cookies: [{name: sub, value: '00000000-0000-0000-0000-000000000001'}]",
+            b"psl: {authorization: {riot-client: {id_token: 'not-a-jwt'}}}",
+            b"psl: {authorization: {riot-client: {id_token: 'e30.@@.signature'}}}",
+            b"psl: {authorization: {riot-client: {id_token: 'e30.e30.signature'}}}",
+            b"psl: {authorization: {riot-client: {id_token: 'e30.bm90LWpzb24.signature'}}}",
+            b"psl: {authorization: {riot-client: {id_token: 'e30.e30.signature.extra'}}}",
+        ] {
+            assert_eq!(session_puuid(input), None);
+        }
+        assert_eq!(session_puuid(&test_session_yaml("not-a-uuid")), None);
+        let missing_subject = test_session_yaml(puuid);
+        let wrong_path = String::from_utf8(missing_subject)
+            .unwrap()
+            .replace("riot-client:", "other-client:");
+        assert_eq!(session_puuid(wrong_path.as_bytes()), None);
+    }
+
+    #[test]
+    fn modern_session_is_authoritative_over_a_stale_legacy_subject() {
+        let legacy = Entry {
+            relative: "client/legacy-private.yaml".into(),
+            bytes: test_session_yaml("00000000-0000-0000-0000-000000000001"),
+        };
+        let mut snapshot = Snapshot {
+            entries: vec![legacy],
+        };
+        assert!(snapshot.puuid().is_some());
+        snapshot.entries.push(Entry {
+            relative: "client/private.yaml".into(),
+            bytes: b"riot-login: {persist: {session: null}}".to_vec(),
+        });
+        assert!(snapshot.puuid().is_none());
+    }
     #[test]
     fn accepts_only_bounded_image_data_urls_for_profile_icons() {
         assert!(valid_profile_icon_data_url("data:image/png;base64,AA=="));
