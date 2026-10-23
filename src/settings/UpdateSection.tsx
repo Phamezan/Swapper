@@ -94,7 +94,7 @@ export function UpdateSection() {
           </button>
           {openInfo && (
             <p>
-              Checks GitHub at startup and every ~6 hours. Updating restarts Swapper; accounts stay.
+              Checks GitHub at startup and every hour. Updating restarts Swapper; accounts stay.
             </p>
           )}
         </div>

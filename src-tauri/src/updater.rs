@@ -23,8 +23,9 @@ use tauri_plugin_updater::{Error as UpdaterError, UpdaterExt};
 /// The signing key a release build must replace. While this placeholder is in
 /// tauri.conf.json, update checking is disabled for the whole app.
 pub const PUBKEY_PLACEHOLDER: &str = "REPLACE_WITH_UPDATER_PUBLIC_KEY";
-/// How often a scheduled check runs while Swapper is up.
-pub const CHECK_INTERVAL: Duration = Duration::from_secs(6 * 60 * 60);
+/// How often a scheduled check runs while Swapper is up. Short enough that an
+/// "update available" banner does not keep naming an older release for long.
+pub const CHECK_INTERVAL: Duration = Duration::from_secs(60 * 60);
 /// How often the scheduler reconsiders whether a check is due — a check that
 /// was skipped during a switch happens at the next tick, not a full interval later.
 const SCHEDULE_TICK: Duration = Duration::from_secs(10 * 60);
