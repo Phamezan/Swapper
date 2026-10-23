@@ -10,7 +10,7 @@ Download the Windows installer from the [latest GitHub release](https://github.c
 
 ## Demo
 
-[Watch the v1.0 tour (MP4, 25 seconds)](docs/media/swapper-v1.0.mp4): account switching and champion select in the tray flyout, then the Fullsized App's Dashboard, match graphs and kill map, builds, search and a player profile. All accounts and players are samples.
+[Watch the v1.0 tour (MP4, 27 seconds)](docs/media/swapper-v1.0.mp4): account switching and champion select in the tray flyout, then the Fullsized App's Dashboard, match graphs and kill map, tier list, champion builds, search and a player profile. All accounts and players are samples.
 
 ## Features
 
