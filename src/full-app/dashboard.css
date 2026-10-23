@@ -36,6 +36,7 @@ body { margin: 0; background: var(--ui-surface-0); }
 .title-brand { display: flex; align-items: center; flex: none; gap: 10px; width: 234px; color: var(--ui-text-1); font-weight: 750; font-size: 24px; letter-spacing: -.025em; line-height: 1; }
 .title-brand > * { pointer-events: none; }
 .title-brand svg { display: block; color: var(--ui-brand); }
+.title-version { align-self: flex-end; margin-bottom: 2px; color: var(--ui-text-3); font-size: 12px; font-weight: 600; letter-spacing: 0; }
 .title-nav { display: flex; gap: 2px; }
 .title-icon { width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 7px; background: transparent; color: var(--text-secondary); }
 .title-icon:hover:not(:disabled) { background: var(--fa-panel-2); color: var(--text-primary); }

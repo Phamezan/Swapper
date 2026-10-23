@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from 'react-dom';
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { getVersion } from "@tauri-apps/api/app";
 import { Copy, Minus, Square, X } from "lucide-react";
 import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon, BackIcon, ForwardIcon, RefreshIcon, SearchIcon, SwitchIcon } from "./ui/icons";
 
@@ -38,6 +39,8 @@ export function TitleBar(props: Props) {
   const [open, setOpen] = useState(false);
   const [maximized, setMaximized] = useState(false);
   const native = isTauri();
+  const [version, setVersion] = useState<string | null>(null);
+  useEffect(() => { if (native) void getVersion().then(setVersion).catch(() => {}); }, [native]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") { event.preventDefault(); setOpen(true); }
@@ -57,7 +60,7 @@ export function TitleBar(props: Props) {
   }, [native]);
   const win = native ? getCurrentWindow() : null;
   return <header className="title-bar" data-tauri-drag-region>
-    <div className="title-brand" data-tauri-drag-region><SwitchIcon size={30} /><span>Swapper</span></div>
+    <div className="title-brand" data-tauri-drag-region><SwitchIcon size={30} /><span>Swapper</span>{version && <small className="title-version">v{version}</small>}</div>
     <div className="title-nav">
       <button className="title-icon" aria-label="Back" title="Back (Alt+←)" disabled={!props.canBack} onClick={props.onBack}><BackIcon size={16} /></button>
       <button className="title-icon" aria-label="Forward" title="Forward (Alt+→)" disabled={!props.canForward} onClick={props.onForward}><ForwardIcon size={16} /></button>
