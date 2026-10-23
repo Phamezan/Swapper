@@ -11,6 +11,10 @@ use uuid::Uuid;
 use crate::windows::process::SnapshotError;
 
 const USERINFO_PATH: &str = "/rso-auth/v1/authorization/userinfo";
+const LAUNCH_LEAGUE_PATH: &str = "/product-launcher/v1/products/league_of_legends/patchlines/live";
+/// How long a switch waits for Riot Client to sign in before giving up on starting League.
+const LAUNCH_WAIT: Duration = Duration::from_secs(60);
+const LAUNCH_POLL: Duration = Duration::from_secs(1);
 
 struct Endpoint {
     port: u16,
@@ -116,6 +120,23 @@ fn discover() -> Result<Option<Endpoint>, SnapshotError> {
         .map(|_| endpoint))
 }
 
+/// A request to the local Riot Client API, signed with the lockfile password.
+fn request(endpoint: &Endpoint, method: reqwest::Method, path: &str) -> Option<reqwest::RequestBuilder> {
+    let client = reqwest::Client::builder()
+        .danger_accept_invalid_certs(true)
+        .connect_timeout(Duration::from_secs(2))
+        .timeout(Duration::from_secs(4))
+        .build()
+        .ok()?;
+    let auth =
+        base64::engine::general_purpose::STANDARD.encode(format!("riot:{}", endpoint.password));
+    Some(
+        client
+            .request(method, format!("https://127.0.0.1:{}{path}", endpoint.port))
+            .header(reqwest::header::AUTHORIZATION, format!("Basic {auth}")),
+    )
+}
+
 pub async fn detect() -> RiotProbe {
     let endpoint = match tokio::task::spawn_blocking(discover).await {
         Ok(Ok(Some(endpoint))) => endpoint,
@@ -124,25 +145,10 @@ pub async fn detect() -> RiotProbe {
         // than claiming the client is gone.
         Ok(Err(_)) | Err(_) => return RiotProbe::Unavailable,
     };
-    let client = match reqwest::Client::builder()
-        .danger_accept_invalid_certs(true)
-        .connect_timeout(Duration::from_secs(2))
-        .timeout(Duration::from_secs(4))
-        .build()
-    {
-        Ok(client) => client,
-        Err(_) => return RiotProbe::Unavailable,
+    let Some(request) = request(&endpoint, reqwest::Method::GET, USERINFO_PATH) else {
+        return RiotProbe::Unavailable;
     };
-    let auth =
-        base64::engine::general_purpose::STANDARD.encode(format!("riot:{}", endpoint.password));
-    let response = client
-        .get(format!(
-            "https://127.0.0.1:{}{USERINFO_PATH}",
-            endpoint.port
-        ))
-        .header(reqwest::header::AUTHORIZATION, format!("Basic {auth}"))
-        .send()
-        .await;
+    let response = request.send().await;
     let response = match response {
         Ok(response) => response,
         Err(_) => return RiotProbe::Unavailable,
@@ -158,6 +164,40 @@ pub async fn detect() -> RiotProbe {
             .map(RiotProbe::Identified)
             .unwrap_or(RiotProbe::NotReady),
         Err(_) => RiotProbe::Unavailable,
+    }
+}
+
+/// Riot Client ignores `--launch-product` ("Auto-launch is disabled" in its log),
+/// so after a switch wait for it to sign in, then ask it to start League.
+/// Stops when League is already up, the wait runs out, or `cancelled` says
+/// another account action started.
+pub async fn launch_league_when_signed_in(cancelled: impl Fn() -> bool) {
+    let started = std::time::Instant::now();
+    while started.elapsed() < LAUNCH_WAIT && !cancelled() {
+        let league_up = tokio::task::spawn_blocking(|| {
+            crate::windows::process::any_running(&["LeagueClient.exe", "LeagueClientUx.exe"])
+                .unwrap_or(false)
+        })
+        .await
+        .unwrap_or(false);
+        if league_up {
+            return;
+        }
+        if matches!(detect().await, RiotProbe::Identified(_)) && !cancelled() {
+            let endpoint = tokio::task::spawn_blocking(discover)
+                .await
+                .ok()
+                .and_then(Result::ok)
+                .flatten();
+            let sent = match endpoint.and_then(|e| request(&e, reqwest::Method::POST, LAUNCH_LEAGUE_PATH)) {
+                Some(request) => request.send().await.is_ok_and(|r| r.status().is_success()),
+                None => false,
+            };
+            if sent {
+                return;
+            }
+        }
+        tokio::time::sleep(LAUNCH_POLL).await;
     }
 }
 

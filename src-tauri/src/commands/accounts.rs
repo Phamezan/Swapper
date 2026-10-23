@@ -251,6 +251,12 @@ pub(crate) fn start_switch(
                         view: updated_view,
                     },
                 );
+                if let Some(app_state) = app.try_state::<AppState>() {
+                    let epoch = app_state.switch_guard.epoch_handle();
+                    tauri::async_runtime::spawn(crate::riot_client::launch_league_when_signed_in(
+                        move || epoch.load(Ordering::SeqCst) != watch_epoch,
+                    ));
+                }
                 // Watch in the background for a session that was dead on
                 // arrival; the watch cancels itself when any other account
                 // action starts. Accounts saved without a PUUID cannot be
