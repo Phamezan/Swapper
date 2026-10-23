@@ -10,9 +10,7 @@ Download the Windows installer from the [latest GitHub release](https://github.c
 
 ## Demo
 
-https://github.com/user-attachments/assets/0b5bcc1b-b6f0-492a-853b-2f47ef7b6417
-
-A 26-second tour of v0.4 (also as an [MP4 file](docs/media/swapper-v0.4.mp4)). The account names are samples.
+[Watch the v1.0 tour (MP4, 58 seconds)](docs/media/swapper-v1.0.mp4): the tray flyout, then the Fullsized App's Dashboard, match graphs and kill map, builds, search and a player profile. All accounts and players are samples.
 
 ## Features
 
