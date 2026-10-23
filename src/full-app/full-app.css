@@ -64,6 +64,84 @@
 .fa-frame { font-size: var(--fa-body); background: radial-gradient(900px 520px at 0% 0%, rgb(197 227 158 / .075), transparent 65%), radial-gradient(1000px 700px at 100% 100%, rgb(255 255 255 / .025), transparent 60%), var(--ui-surface-0); }
 body { background: var(--ui-surface-0); }
 
+/* Look prototype: the one ambient plane is a sibling of the scrollers. Its
+   image filter is static and composited; no card samples a moving backdrop. */
+.fa-frame[data-look] .dashboard-shell { isolation: isolate; }
+.fa-frame[data-look] .ui-ambient { position: absolute; inset: 0 0 0 260px; z-index: -1; overflow: hidden; pointer-events: none; background: var(--ui-canvas-fill); }
+.fa-frame[data-look] .ui-ambient > img { position: absolute; inset: calc(-3 * var(--ui-ambient-blur)); width: calc(100% + 6 * var(--ui-ambient-blur)); height: calc(100% + 6 * var(--ui-ambient-blur)); object-fit: cover; object-position: 65% 35%; opacity: var(--ui-ambient-opacity); filter: blur(var(--ui-ambient-blur)) saturate(var(--ui-ambient-saturation)); transform: translateZ(0); }
+.fa-frame[data-look] .ui-ambient::after { content: ''; position: absolute; inset: 0; background: var(--ui-ambient-scrim); }
+.fa-frame[data-look] .ui-ambient:not(:has(> img:not([hidden])))::after { display: none; }
+.fa-frame[data-look] .dashboard-shell :is(.dashboard-main, .full-app-embed) { background: transparent; }
+.fa-frame[data-look] .dashboard-shell :is(.panel, .ui-card, .fa-card, .tier-table-wrap, .md-header, .md-team, .fa-settings-group, .fa-settings-tabs, .fa-overlay-card, .fa-stat-strip, .cs-build-list) {
+  background: var(--ui-card-fill);
+  border-color: var(--ui-line-2);
+  border-top-color: var(--ui-line-3);
+  box-shadow: var(--ui-elev-1);
+}
+.fa-frame[data-look] .dashboard-shell :is(.matches-panel, .player-games) { --ui-card-accent: var(--ui-champ); --ui-section-icon: var(--ui-history-icon); }
+.fa-frame[data-look] .dashboard-shell :is(.performance, .player-performance) { --ui-card-accent: var(--ui-win); --ui-section-icon: var(--ui-chart-icon); }
+.fa-frame[data-look] .dashboard-shell :is(.rank-card, .player-ranks) { --ui-card-accent: var(--ui-gold); --ui-section-icon: var(--ui-rank-icon); }
+.fa-frame[data-look] .dashboard-shell :is(.today-card, .player-champions) { --ui-card-accent: var(--ui-brand); }
+.fa-frame[data-look] .dashboard-shell :is(.panel-head, .card-head, .performance-head, .fa-section-heading) { border-bottom-color: var(--ui-line-1); }
+.fa-frame[data-look] .dashboard-shell :is(.panel-head, .card-head, .performance-head) > h2 { display: flex; align-items: center; gap: var(--ui-heading-gap); }
+.fa-frame[data-look] .dashboard-shell :is(.panel-head, .performance-head) > h2::before,
+.fa-frame[data-look] .dashboard-shell .md-comparison > header > h2::before,
+.fa-frame[data-look] .dashboard-shell .fa-build-grid h4::before,
+.fa-frame[data-look] .dashboard-shell .today-card .card-head > h2::before,
+.fa-frame[data-look] .dashboard-shell .rank-card .card-head > h2:only-child::before { content: ''; flex: none; width: 18px; height: 18px; background: var(--ui-card-accent); mask: var(--ui-section-icon) center / contain no-repeat; }
+.fa-frame[data-look] .dashboard-shell :is(.panel-head, .card-head, .performance-head) > h2 { color: var(--ui-text-1); }
+.fa-frame[data-look] .dashboard-shell :is(.md-comparison > header > h2, .fa-build-grid h4) { display: flex; align-items: center; gap: var(--ui-heading-gap); }
+.fa-frame[data-look] .dashboard-shell :is(.rank-card, .player-ranks, .md-header, .cs-build-grid) { --ui-hero-glow: 0 10px 34px -23px color-mix(in srgb, var(--ui-card-accent) 50%, transparent); border-top-color: color-mix(in srgb, var(--ui-card-accent) 55%, var(--ui-line-2)); box-shadow: var(--ui-elev-2), var(--ui-hero-glow); }
+.fa-frame[data-look] .md-header.is-win { --ui-card-accent: var(--ui-win); }
+.fa-frame[data-look] .md-header.is-loss { --ui-card-accent: var(--ui-loss); }
+.fa-frame[data-look] .cs-build-grid { --ui-card-accent: var(--ui-brand); }
+.fa-frame[data-look] .dashboard-shell .cs-build-list { box-shadow: var(--ui-inner-hi); }
+.fa-frame[data-look] .dashboard-shell .cs-build-entries > button[aria-pressed="true"] { border-color: var(--ui-brand-line); box-shadow: inset 2px 0 var(--ui-brand); }
+.fa-frame[data-look] .dashboard-shell .champion-hero .fa-seg { background: var(--ui-control-on-art); }
+.fa-frame[data-look] .dashboard-shell .player-champions li::after { background: var(--ui-art-shade); }
+.fa-frame[data-look] .dashboard-shell .role-strip > .is-empty { opacity: 1; }
+.fa-frame[data-look] .dashboard-shell .role-strip > .is-empty :is(svg, img) { opacity: .4; }
+.fa-frame[data-look] .md-your-game i { opacity: 1; }
+
+/* Pass 2: leave the artwork exposed; protect the text at its own position. */
+.fa-frame[data-look^="glass-"] .dashboard-shell :is(.ui-page-header, .md-context, .cs-build-selected, .fa-settings-heading) { background: var(--ui-region-fill); border-radius: var(--ui-radius-md); padding: 12px var(--ui-card-pad); }
+.fa-frame[data-look^="glass-"] .dashboard-shell .fa-versus-stat { background: var(--ui-region-fill); }
+.fa-frame[data-look^="glass-"] .dashboard-shell :is(.tool-bar .fa-picker, .fa-hero-filters .fa-picker, .cs-apply-chip, .md-tabs) { background: var(--ui-control-on-art); }
+.fa-frame[data-look^="glass-"] .dashboard-shell .champion-hero .hero-art { width: 100%; opacity: 1; mask-image: var(--ui-hero-fade); -webkit-mask-image: var(--ui-hero-fade); }
+.fa-frame[data-look^="glass-"] .dashboard-shell .champion-hero::after { background: linear-gradient(90deg, rgb(9 9 13 / .92) 0 22%, rgb(9 9 13 / .42) 40%, transparent 65%), linear-gradient(0deg, var(--ui-card), transparent 60%); }
+.fa-frame[data-look^="glass-"] .dashboard-shell .player-hero-art { opacity: 1; }
+.fa-frame[data-look^="glass-"] .dashboard-shell .player-hero::after { background: linear-gradient(90deg, rgb(9 9 13 / .92) 0 30%, rgb(9 9 13 / .4) 48%, transparent 70%), linear-gradient(0deg, rgb(9 9 13 / .92) 0 24%, transparent 70%); }
+.fa-frame[data-look^="glass-"] .dashboard-shell .md-art { inset: 0; width: 100%; opacity: 1; z-index: -2; mask-image: var(--ui-hero-fade); }
+.fa-frame[data-look^="glass-"] .dashboard-shell .md-header::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgb(9 9 13 / .94) 0 27%, transparent 43% 64%, rgb(9 9 13 / .94) 88%); }
+.fa-frame[data-look] .dashboard-shell .champion-hero .fa-picker { background: var(--ui-control-on-art); }
+.fa-frame[data-look] strong i { opacity: 1; }
+
+/* Dense data is opaque; artwork and decorative cards keep the glass fill. */
+.fa-frame[data-look] .dashboard-shell :is(.today-card, .performance, .dash-columns > .panel, .matches-panel, .md-team, .md-stats, .md-comparison, .md-fact, .tier-table-wrap, .fa-stat-strip, .cs-build-list, .cs-build-grid, .player-performance, .player-ranks, .player-games, .player-together, .player-roles, .fa-settings-group, .lg-team) { background: var(--ui-surface-2); }
+.fa-frame[data-look] .dashboard-shell :is(.md-stats-table, .tier-table) { background: var(--ui-surface-2); }
+.fa-frame[data-look] .dashboard-shell :is(.md-stats-table thead th, .tier-table th) { background: var(--ui-surface-2); }
+.fa-frame[data-look] .dashboard-shell .md-stats-table thead th.is-me { background: color-mix(in srgb, var(--ui-brand) 6%, var(--ui-surface-2)); }
+.fa-frame[data-look] .dashboard-shell .md-tabs { padding: 4px var(--ui-card-pad) 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); }
+.fa-frame[data-look] .dashboard-shell .player-back { justify-self: start; padding: 8px 12px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-surface-2); }
+.fa-frame[data-look] .dashboard-shell .panel-head { padding: var(--ui-card-pad) var(--ui-card-pad) 14px; }
+.fa-frame[data-look] .dashboard-shell .dash-v2 :is(.match-list, .champ-perf) { padding: 0 var(--ui-card-pad) var(--ui-card-pad); }
+.fa-frame[data-look] .dashboard-shell .md-fact { padding: var(--ui-card-pad); }
+.fa-frame[data-look] .dashboard-shell .cs-build-list { padding: var(--ui-card-pad) calc(var(--ui-card-pad) - 10px); }
+.fa-frame[data-look] .dashboard-shell .cs-build-list h3 { margin-inline: 10px; }
+.fa-frame[data-look] .dashboard-shell .fa-stat-strip { padding: 4px 12px; }
+.fa-frame[data-look] .dashboard-shell .dash-v2 .performance { padding: var(--ui-card-pad); gap: 18px; border: 1px solid var(--ui-line-2); box-shadow: var(--ui-elev-1); }
+.fa-frame[data-look] .dashboard-shell .tiles { padding: 18px 0; }
+.fa-frame[data-look] .dashboard-shell .dash-v2 .tile { justify-items: center; text-align: center; padding: 4px 16px; }
+.fa-frame[data-look] .dashboard-shell .rank-card { --ui-card-accent: var(--ui-rank-tone); background: radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--ui-rank-tone) 18%, transparent), transparent 75%), var(--ui-surface-2); }
+.fa-frame[data-look] .dashboard-shell .rank-card .card-head { display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; gap: 6px 18px; }
+.fa-frame[data-look] .dashboard-shell .rank-card .card-head > :is(.rank-crest, .rank-crest-fallback) { grid-row: span 2; }
+.fa-frame[data-look] .dashboard-shell .rank-card .card-head h2 { font-size: 28px; }
+.fa-frame[data-look] .dashboard-shell .rank-card .rank-lp { font-size: 24px; color: var(--ui-text-1); }
+.fa-frame[data-look] .dashboard-shell .rank-card .card-head small { grid-column: 2 / -1; margin: 0; font-size: 14px; }
+.fa-frame[data-look] .dashboard-shell .rank-card .card-head:not(:has(.rank-crest, .rank-crest-fallback)) { grid-template-columns: minmax(0, 1fr); }
+.fa-frame[data-look] .dashboard-shell .rank-card .card-head:not(:has(.rank-crest, .rank-crest-fallback)) small { grid-column: 1; }
+.fa-frame[data-look] .dashboard-shell .rank-progress > p { flex-wrap: wrap; gap: 6px 18px; font-size: 15px; }
+
 /* ---------- Frame, title bar, sidebar (fixed chrome: the only blurred surfaces besides popovers) ---------- */
 .fa-frame .title-bar { z-index: 2; background: var(--ui-chrome); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur); border-bottom: 0; }
 .fa-frame .title-search { height: 30px; background: rgb(255 255 255 / .04); border-color: var(--fa-line-2); border-radius: var(--fa-radius-sm); box-shadow: var(--ui-inner-hi); transition: border-color var(--ui-fast), background-color var(--ui-fast); }
@@ -177,7 +255,6 @@ body { background: var(--ui-surface-0); }
 .fa-frame .md-header { border-top: 2px solid var(--fa-win); }
 .fa-frame .md-header.is-loss { border-top-color: var(--fa-loss); }
 /* Cards nested inside a card are wells: flat, no second shadow. */
-.fa-frame .insight { border-color: var(--ui-line-1); background: linear-gradient(180deg, rgb(255 255 255 / .045), rgb(255 255 255 / .015)); box-shadow: var(--ui-inner-hi); }
 .fa-card { padding: 24px; }
 .fa-frame .panel-head { padding: 18px 20px 14px; }
 .fa-frame .panel-head h2, .fa-frame .performance-head h2 { font-size: 16px; font-weight: 650; letter-spacing: -.01em; }

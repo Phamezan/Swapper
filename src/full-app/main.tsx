@@ -9,6 +9,7 @@ import type { ChampionOption } from "../runes/types";
 import type { DashboardView, Game } from "./types";
 import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
+import { locationTrail } from './locationTrail';
 import { useInGame } from "./LiveGameData";
 import { LIVE_PAGE, enterLive, leaveLive, showInNav } from "./LiveGameModel";
 import FlyoutApp from "../App";
@@ -23,7 +24,10 @@ import { PageHeader } from "./ui/PageHeader";
 import { pageLabel } from "./ui/pageNames";
 import { AccountPicker, Podium, SwitchOverlay, type PodiumIdentity } from "./ui/Podium";
 import { useChampionArt } from "./art";
+import { AmbientArt, AmbientArtContext, useAmbientArt } from './AmbientArt';
+import { contextualChampion, sidebarChampion, type AmbientChampions } from './lookModel';
 import { EmptyState, Notice, Skeleton } from "./ui/States";
+import { useRestartClient } from "./restartClient";
 
 const Champions = lazy(() => import("./Champions"));
 const LiveGame = lazy(() => import("./LiveGame"));
@@ -44,12 +48,17 @@ const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 
 function App() {
+  const [ambientIds, setAmbientIds] = useState<AmbientChampions>({ champion: null, player: null, draft: null });
+  const publishAmbient = useCallback((kind: keyof AmbientChampions, id: number | null) => {
+    setAmbientIds(ids => ids[kind] === id ? ids : { ...ids, [kind]: id });
+  }, []);
   const visitedMatches = useRef(new Map<string, Game>());
   const [page, setPage] = useState<Page | "app">("Dashboard");
   const [appView, setAppView] = useState<View>("accounts");
   const [request, setRequest] = useState<FullAppBridge["request"]>(null);
   const [inChampSelect, setInChampSelect] = useState(false);
-  const [focus, setFocus] = useState<{ champion: ChampionOption } | null>(null);
+  const [focus, setFocus] = useState<{ champion: ChampionOption | null } | null>(null);
+  const [locationChampion, setLocationChampion] = useState<ChampionOption | null>(null);
   const current: Location = page === "app" ? appPageOf(appView) : page;
   const currentRef = useRef(current);
   currentRef.current = current;
@@ -93,9 +102,11 @@ function App() {
 
   const [view, setView] = useState<DashboardView | null>(null);
   const signedIn = view && !view.stale ? view.snapshot?.summoner.riotId ?? null : null;
+  const restartFn = useRef(() => {});
   const bridge = useMemo<FullAppBridge>(() => ({
     request,
     signedIn,
+    onRestart: () => restartFn.current(),
     Accounts: AccountCards,
     Settings: SettingsPage,
     Runes: ChampionSelect,
@@ -125,6 +136,8 @@ function App() {
   // The switch flow reports no stages, only started / done / failed.
   const [switching, setSwitching] = useState<{ id: string; name: string; restart: boolean } | null>(null);
   const activeIdRef = useRef<string | null>(null);
+  // Backend watch: League Client runs but its API or window stopped answering.
+  const [clientStuck, setClientStuck] = useState(false);
   const fetching = useRef(false);
   const mounted = useRef(false);
   const queued = useRef(false);
@@ -158,6 +171,8 @@ function App() {
       listen("switch_done", () => { setSwitching(null); void refresh(); }),
       listen("switch_failed", () => setSwitching(null)),
     ]) : Promise.resolve([]);
+    const health = isTauri() ? listen<string>("client_health", ({ payload }) => setClientStuck(payload !== "ok")) : Promise.resolve(() => {});
+    if (isTauri()) void invoke<string>("client_health").then(state => { if (mounted.current) setClientStuck(state !== "ok"); }).catch(() => {});
     if (isTauri()) void invoke<ChampionOption[]>("get_champion_list").then(list => { if (mounted.current) setChampions(list); }).catch(() => {});
     if (isTauri()) void invoke<string | null>("get_current_patch").then(p => { if (mounted.current) setPatch(p); }).catch(() => {});
     void refresh();
@@ -166,6 +181,7 @@ function App() {
       window.removeEventListener("focus", focusRefresh);
       void navigate.then(unlisten => unlisten());
       void switches.then(stops => stops.forEach(unlisten => unlisten()));
+      void health.then(unlisten => unlisten());
       void stop.then(unlisten => unlisten());
     };
   }, []);
@@ -187,22 +203,37 @@ function App() {
   };
   // Connected = the client reported who is signed in (not saved stats, not an error).
   const connected = Boolean(signedIn) && !error;
-  // The most played champion's splash is the sidebar profile's backdrop only; the canvas has its own neutral ambient.
-  const ambient = useChampionArt(snapshot?.summaries.all?.champions[0]?.id, "splash");
+  // Keep the sidebar's profile art distinct from the contextual canvas when another champion is available.
+  const mainChampion = contextualChampion(current, ambientIds, selectedMatch?.championId ?? null);
+  const pageArt = useAmbientArt(mainChampion);
+  const profileChampions = snapshot?.summaries.all?.champions;
+  const ambient = useChampionArt(sidebarChampion(profileChampions?.[0]?.id, profileChampions?.[1]?.id, mainChampion), "splash");
   activeIdRef.current = accounts?.activeId ?? null;
   const switchingAccount = switching ? accounts?.accounts.find(account => account.id === switching.id) : undefined;
   const switchTo = (id: string) => { setPickerOpen(false); setPage("app"); setRequest({ view: "accounts", switchId: id }); };
-  return <div className="fa-frame" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
+  // Every restart entry point (picker, Accounts card, Ctrl+K, status offer) comes through here.
+  const { request: restartClient, dialog: restartDialog } = useRestartClient(() => {
+    const id = activeIdRef.current;
+    if (id) switchTo(id);
+    return Boolean(id);
+  });
+  restartFn.current = () => void restartClient();
+  return <AmbientArtContext.Provider value={publishAmbient}><div className="fa-frame" data-look="glass-context" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
+      trail={locationTrail(current, { champion: locationChampion?.name, matchPlayer, match: selectedMatch ? {
+        champion: snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? 'Match', win: selectedMatch.win,
+      } : null })} onPickLocation={target => { setFocus({ champion: null }); go(target as Location); }}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} snapshot={snapshot}
-      onPickPlayer={riotId => go(`Player:${riotId}`)} />
+      onPickPlayer={riotId => go(`Player:${riotId}`)} onRestart={() => void restartClient()} />
     <div className="dashboard-shell">
+      <AmbientArt src={pageArt} />
       <aside className="sidebar dash-scope">
         <Popover.Root open={pickerOpen} onOpenChange={setPickerOpen}>
-          <div className="podium-wrap"><Podium who={who} connected={connected} open={pickerOpen} crest={rank ? crestSlug(rank.tier) : null} disabled={Boolean(switching)} />
+          <div className="podium-wrap"><Podium who={who} connected={connected} open={pickerOpen} crest={rank ? crestSlug(rank.tier) : null} disabled={Boolean(switching)}
+            trouble={clientStuck && !switching && !inGame} onRestart={() => void restartClient()} onOpenProfile={who.tag ? () => go(`Player:${who.name}#${who.tag}`) : undefined} />
             {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
-              onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} />}
+              onSwitch={switchTo} onRestart={() => { setPickerOpen(false); void restartClient(); }} onManage={() => { setPickerOpen(false); go("Accounts"); }} />}
           </div>
         </Popover.Root>
         <nav aria-label="Swapper pages">
@@ -215,11 +246,12 @@ function App() {
           </div>)}
         </nav>
       </aside>
+      {restartDialog}
       {switching && <SwitchOverlay account={switchingAccount} name={switching.name} restart={switching.restart} />}
       <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
-        {selectedMatch ? <PageHeader crumbs={[{ label: matchPlayer ? 'Player profile' : "Dashboard", onClick: () => matchPlayer ? travel(-1) : go("Dashboard") }]}
+        {selectedMatch ? <PageHeader
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
           : <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
@@ -236,11 +268,11 @@ function App() {
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
-              <Champions key={page} matchups={page === "Matchups"} focus={page === "Matchups" ? null : focus} />
+              <Champions key={page} matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion ? null : focus} onSelectionChange={setLocationChampion} />
             </Suspense>}
       </main>}
     </div>
-  </div>;
+  </div></AmbientArtContext.Provider>;
 }
 
 function fmtAgoShort(at: number) {

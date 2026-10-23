@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type ComponentProps } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { DraftIcon } from "./ui/icons";
+import { useAmbientChampion } from './AmbientArt';
 import type { RunesPanel } from "../runes/RunesPanel";
 import type { ChampionBuild, KeystoneBuildView, ChampionOverviewView, MatchupView } from "../runes/types";
 import { fmtPct, selectionFromPreset } from "../runes/types";
@@ -26,6 +27,7 @@ import "./champ-select.css";
  *  small), build mode after (build large). The mode follows the live draft. */
 export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const view = props.view;
+  useAmbientChampion('draft', view?.championId);
   const mode = pageMode(view);
   const [draft, setDraft] = useState<{ value: Draft; at: number } | null>(null);
   const [names, setNames] = useState<Map<number, string>>(new Map());

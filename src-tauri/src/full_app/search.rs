@@ -55,12 +55,27 @@ struct ProfileRank {
     rank: model::Rank,
     #[serde(default)]
     record_available: bool,
+    /// Set to "ugg" when the record came from u.gg instead of the League Client.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    record_source: Option<String>,
+}
+
+/// Fills a missing client record from u.gg; the client's tier and LP are kept.
+async fn fill_record(rank: &mut ProfileRank, riot_id: &str, region: Option<&str>) {
+    let (Some(region), Ok((name, tag))) = (region, self::riot_id(riot_id)) else { return };
+    if let Some((wins, losses)) = crate::runes::ugg_record::lookup_solo(name, tag, region, &rank.rank.tier).await {
+        rank.rank.wins = wins;
+        rank.rank.losses = losses;
+        rank.record_available = true;
+        rank.record_source = Some("ugg".into());
+    }
 }
 
 fn profile_rank(value: &Value) -> Option<ProfileRank> {
     model::rank_with_record(value).map(|(rank, record_available)| ProfileRank {
         rank,
         record_available,
+        record_source: None,
     })
 }
 
@@ -602,7 +617,12 @@ pub async fn full_app_player_profile(
     let mut profile_icons = saved.profile_icons;
     profile_icons.extend(icons);
     // Sampled other-player Flex records returned explicit zero losses; omit this queue.
-    let profile = Profile { player: player(&summoner, profile_icon), region: region.ok().and_then(|r| r["region"].as_str().map(str::to_string)), solo: ranked.as_ref().ok().and_then(profile_rank), flex: None, profile_icons,
+    let region = region.ok().and_then(|r| r["region"].as_str().map(str::to_string));
+    let mut solo = ranked.as_ref().ok().and_then(profile_rank);
+    if let Some(rank) = solo.as_mut().filter(|r| !r.record_available) {
+        fill_record(rank, &summoner.riot_id, region.as_deref()).await;
+    }
+    let profile = Profile { player: player(&summoner, profile_icon), region, solo, flex: None, profile_icons,
         games, live: true, fetched_at: crate::runes::provider::now_ms(), message: incomplete.then(|| "Some profile data could not be loaded. Saved games may be shown; try again shortly.".into()) };
     let cached = profile.clone();
     let _ = tokio::task::spawn_blocking(move || save(cached)).await;
@@ -730,9 +750,14 @@ mod tests {
             assert_eq!(rank.rank.lp, 41);
             assert!(!rank.record_available);
         }
-        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"GOLD","wins":12,"losses":0}]})).unwrap();
+        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"GOLD","wins":6,"losses":0}]})).unwrap();
         assert!(rank.record_available);
         assert_eq!(rank.rank.losses, 0);
+        // A long season with no recorded loss is the client's missing-losses gap (seen as 265W 0L).
+        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"EMERALD","wins":265,"losses":0}]})).unwrap();
+        assert!(!rank.record_available);
+        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"MASTER","wins":103,"losses":83}]})).unwrap();
+        assert!(rank.record_available);
     }
 
     #[test]

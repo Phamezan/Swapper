@@ -72,6 +72,12 @@ pub fn lockfile_candidates() -> Vec<PathBuf> {
     candidates
 }
 
+/// Whether a League lockfile exists; a file stat only, no process scan.
+pub fn lockfile_present() -> bool {
+    lock(&LOCKFILE_PATH).iter().any(|path| path.is_file())
+        || lockfile_candidates().iter().any(|path| path.is_file())
+}
+
 pub fn discover() -> Option<LcuEndpoint> {
     if let Some(path) = lock(&LOCKFILE_PATH).clone() {
         if let Some(endpoint) = read_at(&path) {

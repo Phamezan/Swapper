@@ -50,6 +50,7 @@ function harness(file, exportName, commands = {}, visibility = "visible") {
   const modules = {
     react: hooks, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke, isTauri: () => true },
+    "./AmbientArt": { useAmbientChampion: () => {} },
     "@tauri-apps/api/event": { listen: async (name, fn) => { handlers.set(name, fn); return () => handlers.delete(name); } },
     "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./ui/format": format,
   };

@@ -8,7 +8,7 @@ import { Notice } from "./ui/States";
 
 export type AccountCardsProps = {
   accounts: Account[]; activeId: string | null; switchingId: string | null; repairableId: string | null; busy: boolean;
-  onSwitch: (id: string) => void; onAdd: () => void; onRename: (account: Account) => void;
+  onSwitch: (id: string) => void; onRestart?: () => void; onAdd: () => void; onRename: (account: Account) => void;
   onRemove: (id: string) => void; onRepair: (id: string) => void; onError: (reason: unknown) => void;
 };
 export function AccountCards(props: AccountCardsProps) {
@@ -40,7 +40,7 @@ export function AccountCards(props: AccountCardsProps) {
         <div className="fa-account-meta"><span>Region<strong>{account.region ?? account.platform ?? "Unknown"}</strong></span><span>Session<strong>{switching ? "Switching…" : active ? "In use" : "Saved securely"}</strong></span></div>
         <button className="fa-secondary fa-switch" disabled={props.busy || active} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : active ? "Currently signed in" : "Switch account"}{!active && <SwitchIcon size={16} />}</button>
         {/* Switching to the signed-in account restarts the client with it (same as the tray flyout). */}
-        {active && <button className="fa-secondary fa-restart" disabled={props.busy} onClick={() => props.onSwitch(account.id)}>Restart client</button>}
+        {active && <button className="fa-secondary fa-restart" disabled={props.busy} onClick={() => (props.onRestart ?? (() => props.onSwitch(account.id)))()}>Restart client</button>}
       </article>;
     })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><AddAccountIcon size={22} /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.</span></span></button></div>
   </div>;

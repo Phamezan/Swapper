@@ -9,6 +9,7 @@ import { RankCrest } from '../runes/RankCrest';
 import { ChampionIcon } from '../runes/ChampionIcon';
 import { crestForTier } from './buildLogic';
 import { useChampionArt } from './art';
+import { useAmbientChampion } from './AmbientArt';
 import { fmtAgo } from '../runes/types';
 import type { Game, Snapshot } from './types';
 import { profileGame, profileStats, type PlayerProfile } from './playerModel';
@@ -52,7 +53,7 @@ function Ranks({ profile, loading }: { profile: PlayerProfile | null; loading: b
     </div>
     {rank && <div className="player-rank-progress">
       {rank.division && <><div className="player-lp-caption"><span>Division progress</span><span>{rank.lp} / 100 LP</span></div><meter min={0} max={100} value={Math.min(100, rank.lp)} aria-label="LP toward next division" /></>}
-      {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div><RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
+      {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div>{rank.recordSource === 'ugg' && <small className="player-record-source" title="Your League Client didn't return this player's season record.">via u.gg</small>}<RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
         : <p className="player-record-unavailable">Season record unavailable</p>}
     </div>}
   </section>;
@@ -79,6 +80,7 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
   const games = useMemo(() => [...new Map((profile?.games ?? saved).map(g => [g.id, g])).values()].sort((a, b) => b.createdAt - a.createdAt), [profile, saved]);
   const stats = useMemo(() => profileStats(games, profile?.profileIcons), [games, profile?.profileIcons]);
   const splash = useChampionArt(stats.champions[0]?.id, 'splash');
+  useAmbientChampion('player', stats.champions[0]?.id);
   const secondSplash = useChampionArt(stats.champions[1]?.id, 'splash');
   const thirdSplash = useChampionArt(stats.champions[2]?.id, 'splash');
   const championArt = [splash, secondSplash, thirdSplash];

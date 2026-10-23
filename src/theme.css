@@ -120,3 +120,51 @@
   --ui-label: 13px;
   --ui-caption: 12px;
 }
+
+/* Temporary Fullsized App look prototype. Scoped so tray surfaces stay unchanged. */
+.fa-frame[data-look] {
+  --ui-card-pad: 22px;
+  --ui-heading-gap: 10px;
+  --ui-region-fill: linear-gradient(90deg, rgb(9 9 13 / .76), rgb(9 9 13 / .5) 55%, rgb(9 9 13 / .76));
+  --ui-rank-tone: var(--ui-brand);
+  --ui-text-2: #c4c4cd;
+  --ui-text-3: #b1b1bd;
+  --ui-card-accent: var(--ui-champ);
+  --ui-control-on-art: rgb(8 8 10 / .78);
+  --ui-art-shade: linear-gradient(90deg, rgb(18 18 20 / .92), rgb(18 18 20 / .80) 65%, rgb(18 18 20 / .86));
+  --ui-ambient-blur: 10px;
+  --ui-ambient-opacity: 1;
+  --ui-ambient-saturation: .9;
+  --ui-ambient-scrim: rgb(13 13 16 / .55);
+  --ui-hero-fade: linear-gradient(180deg, #000 45%, transparent 100%);
+  --ui-canvas-fill: radial-gradient(900px 380px at 10% 0%, rgb(197 227 158 / .085), transparent 70%), radial-gradient(760px 360px at 95% 0%, rgb(120 160 205 / .06), transparent 70%), linear-gradient(180deg, #17171b, #131316 320px);
+  --ui-section-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16M4 12h16M4 19h10'/%3E%3C/svg%3E");
+  --ui-history-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11a9 9 0 1 1 3 8M3 5v6h6m3-4v5l3 2'/%3E%3C/svg%3E");
+  --ui-chart-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M4 20h16M7 15v-4m5 4V5m5 10V8'/%3E%3C/svg%3E");
+  --ui-rank-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.7' stroke-linejoin='round'%3E%3Cpath d='m12 3 8 4v6l-8 8-8-8V7zM8 10l4 4 4-4'/%3E%3C/svg%3E");
+}
+.fa-frame[data-look^="glass-"] {
+  --ui-card: rgb(25 25 30 / .48);
+  --ui-card-top: rgb(39 39 45 / .54);
+  --ui-text-2: #dedee6;
+  --ui-text-3: #c8c8d2;
+  --ui-win: #80e6c9;
+  --ui-loss: #ffb4a7;
+  --ui-champ: #bed4ef;
+  --ui-gold: #f4d390;
+  --ui-line-1: rgb(255 255 255 / .15);
+  --ui-line-2: rgb(255 255 255 / .27);
+  --ui-line-3: rgb(255 255 255 / .44);
+  --ui-highlight: rgb(255 255 255 / .22);
+  --ui-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='white' opacity='.025' filter='url(%23n)' d='M0 0h96v96H0z'/%3E%3C/svg%3E");
+  --ui-card-fill: var(--ui-grain), linear-gradient(180deg, var(--ui-card-top), var(--ui-card) 180px);
+}
+.fa-frame[data-look] .rank-card[data-tier="iron"] { --ui-rank-tone: #aaa29b; }
+.fa-frame[data-look] .rank-card[data-tier="bronze"] { --ui-rank-tone: #c39171; }
+.fa-frame[data-look] .rank-card[data-tier="silver"] { --ui-rank-tone: #b8c5d0; }
+.fa-frame[data-look] .rank-card:is([data-tier="gold"], [data-tier="challenger"]) { --ui-rank-tone: var(--ui-gold); }
+.fa-frame[data-look] .rank-card[data-tier="platinum"] { --ui-rank-tone: #8ad4cf; }
+.fa-frame[data-look] .rank-card[data-tier="emerald"] { --ui-rank-tone: var(--ui-win); }
+.fa-frame[data-look] .rank-card[data-tier="diamond"] { --ui-rank-tone: var(--ui-champ); }
+.fa-frame[data-look] .rank-card[data-tier="master"] { --ui-rank-tone: #c6a1e9; }
+.fa-frame[data-look] .rank-card[data-tier="grandmaster"] { --ui-rank-tone: var(--ui-loss); }

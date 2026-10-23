@@ -7,7 +7,10 @@
 .fa-frame .profile-podium { position: relative; display: block; width: 100%; padding: 24px 14px 0; color: var(--ui-text-1); text-align: left; }
 .podium-hero { position: absolute; inset: -14px -12px 0; pointer-events: none; background-image: var(--ambient-art); background-size: cover; background-position: center 18%; opacity: .32; mask-image: linear-gradient(180deg, #000, transparent 88%); }
 .podium-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ui-surface-0), transparent 70%); }
-.podium-band { position: relative; display: grid; justify-items: center; gap: 12px; }
+.podium-band { position: relative; display: grid; justify-items: center; gap: 12px; width: 100%; padding: 4px 0; border: 0; border-radius: var(--ui-radius-md); background: none; color: inherit; font: inherit; cursor: pointer; }
+.podium-band:disabled { cursor: default; }
+.podium-band:not(:disabled):hover .podium-copy strong { color: var(--ui-brand); }
+.podium-band:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 .podium-portrait { position: relative; width: 80px; height: 80px; display: grid; place-items: center; border: 2px solid var(--ui-brand); border-radius: var(--ui-radius-lg); background: var(--ui-surface-3); box-shadow: 0 8px 20px rgb(0 0 0 / .25); }
 .podium-portrait > img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
 .podium-level { position: absolute; left: 50%; bottom: -9px; padding: 1px 8px; border: 2px solid var(--ui-surface-2); border-radius: 99px; background: var(--ui-brand); color: var(--ui-brand-ink); font-size: var(--ui-caption); font-weight: 750; line-height: 18px; transform: translateX(-50%); white-space: nowrap; }
@@ -71,10 +74,30 @@ button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a
 .picker-copy > b { display: block; overflow: hidden; color: var(--ui-text-1); font-size: 15.5px; font-weight: 600; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
 .picker-check { display: grid; place-items: center; color: var(--ui-brand); }
 .picker-empty { margin: 0; padding: 14px 16px; color: var(--ui-text-2); font-size: var(--ui-label); }
-.picker-restart { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 34px; padding: 4px 16px 8px 70px; border: 0; background: transparent; color: var(--ui-text-2); font: inherit; font-size: var(--ui-label); cursor: pointer; }
-.picker-restart:hover:not(:disabled), .picker-restart:focus-visible { color: var(--ui-brand); }
-.picker-restart:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: -3px; }
+.picker-restart { display: flex; align-items: center; gap: 12px; width: calc(100% - 24px); margin: 2px 12px 10px; padding: 9px 12px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: rgb(255 255 255 / .035); color: var(--ui-text-1); font: inherit; text-align: left; cursor: pointer; transition: background-color var(--ui-fast), border-color var(--ui-fast); }
+.picker-restart > svg { flex: none; color: var(--ui-text-2); }
+.picker-restart > span { min-width: 0; }
+.picker-restart b { display: block; font-size: var(--ui-body); font-weight: 600; line-height: 20px; }
+.picker-restart:hover:not(:disabled) { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
+.picker-restart:hover:not(:disabled) > svg, .picker-restart:focus-visible > svg { color: var(--ui-brand); }
+.picker-restart:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 .picker-restart:disabled { cursor: default; opacity: .5; }
+
+/* ---------- League Client isn't responding: a neutral banner with a warning edge ---------- */
+.podium-status { position: relative; display: grid; gap: 8px; margin-top: 14px; padding: 10px 12px 10px 14px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-card); color: var(--ui-text-1); font-size: var(--ui-label); line-height: 18px; }
+.podium-status::before { content: ""; position: absolute; inset: -1px auto -1px -1px; width: 3px; border-radius: var(--ui-radius-sm) 0 0 var(--ui-radius-sm); background: var(--ui-warn); }
+.podium-status button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 32px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-xs); background: rgb(255 255 255 / .05); color: var(--ui-text-1); font: inherit; font-weight: 600; cursor: pointer; }
+.podium-status button:hover:not(:disabled) { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
+.podium-status button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+.podium-status button:disabled { cursor: default; opacity: .5; }
+
+/* ---------- Restart confirmation ---------- */
+.restart-scrim { position: absolute; inset: 0; z-index: 60; background: var(--ui-scrim); }
+.fa-frame .restart-dialog { position: absolute; z-index: 61; top: 120px; left: 50%; width: min(440px, calc(100% - 32px)); padding: 22px 24px; border: 1px solid var(--ui-line-2); background: var(--ui-surface-2); transform: translateX(-50%); }
+.restart-dialog h2 { margin: 0 0 6px; font-size: var(--ui-title); font-weight: 600; }
+.restart-dialog p { margin: 0; color: var(--ui-text-2); font-size: var(--ui-body); line-height: 1.5; }
+.restart-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+.restart-dialog:focus-visible { outline: none; }
 .picker-foot { flex: none; padding: 12px 0 6px; border-top: 1px solid var(--ui-line-1); }
 .picker-foot > p { margin: 0; padding: 0 16px 10px; color: var(--ui-text-3); font-size: var(--ui-label); line-height: 1.5; }
 .picker-foot > button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 42px; padding: 8px 16px; border: 0; background: transparent; color: var(--ui-text-1); font: inherit; font-size: var(--ui-body); font-weight: 550; text-align: left; cursor: pointer; }

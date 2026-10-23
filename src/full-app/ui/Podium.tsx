@@ -18,15 +18,17 @@ export type PodiumIdentity = {
 };
 
 /** Sidebar identity, with a separate account selector anchored at its foot. */
-export function Podium({ who, connected, open, crest, disabled }: {
+export function Podium({ who, connected, open, crest, disabled, trouble, onRestart, onOpenProfile }: {
   who: PodiumIdentity; connected: boolean; open: boolean; crest: string | null; disabled: boolean;
+  /** League Client is running but not answering; offers a restart. */
+  trouble?: boolean; onRestart?: () => void; onOpenProfile?: () => void;
 }) {
   const { rank } = who;
   const lp = rank && !apexTiers.has(rank.tier) ? Math.max(0, Math.min(100, rank.lp)) : null;
   const label = `${who.name}${who.tag ? `#${who.tag}` : ""}${rank ? `, ${rankLabel(rank)}, ${rank.lp} LP` : ""}. ${connected ? "League Client connected." : "League Client not connected."}`;
   return <section className="profile-podium" aria-label={label}>
     <span className="podium-hero" aria-hidden />
-    <span className="podium-band">
+    <button type="button" className="podium-band" onClick={onOpenProfile} disabled={!onOpenProfile} title="Open your profile">
       <span className="podium-portrait">
         {who.icon ? <img src={who.icon} alt="" /> : <BrandIcon size={40} />}
         {who.level != null && <span className="podium-level">Lv {who.level}</span>}
@@ -35,7 +37,7 @@ export function Podium({ who, connected, open, crest, disabled }: {
       <span className="podium-copy">
         <strong>{who.name}{who.tag && <span className="podium-tagpart">#{who.tag}</span>}</strong>
       </span>
-    </span>
+    </button>
     <span className="podium-standing">
       <span className="podium-rank">
         {rank && crest && <RankCrest tier={crest} size={40} mode="desktop" />}
@@ -46,6 +48,8 @@ export function Podium({ who, connected, open, crest, disabled }: {
       </span>
       {lp != null && <span className="podium-lp" role="img" aria-label={`${rank!.lp} of 100 LP to the next division`}><i style={{ width: `${lp}%` }} /></span>}
     </span>
+    {trouble && <div className="podium-status" role="status"><span>League Client isn't responding</span>
+      <button type="button" disabled={disabled} onClick={onRestart}><RefreshIcon size={14} aria-hidden />Restart client</button></div>}
     <Popover.Trigger asChild>
       <button type="button" className="podium-switch" disabled={disabled}>
         <SwitchIcon size={17} aria-hidden /><span>Switch account</span>
@@ -56,9 +60,9 @@ export function Podium({ who, connected, open, crest, disabled }: {
 }
 
 /** Account rows keep identity and rank together; Popover owns placement and dismissal. */
-export function AccountPicker({ accounts, activeId, activeRank, cards, disabled, onSwitch, onManage }: {
+export function AccountPicker({ accounts, activeId, activeRank, cards, disabled, onSwitch, onRestart, onManage }: {
   accounts: Account[]; activeId: string | null; cards: Record<string, AccountCard>; disabled: boolean;
-  activeRank: Snapshot["rank"]; onSwitch: (id: string) => void; onManage: () => void;
+  activeRank: Snapshot["rank"]; onSwitch: (id: string) => void; onRestart: () => void; onManage: () => void;
 }) {
   const [query, setQuery] = useState("");
   const needle = query.trim().toLowerCase();
@@ -85,8 +89,8 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
             </span>
             {isCurrent && <span className="picker-check" aria-label="Current account"><CheckIcon size={16} /></span>}
           </button>
-          {/* Switching to the signed-in account restarts the client with it (same as the tray flyout). */}
-          {isCurrent && <button type="button" className="picker-restart" disabled={disabled} onClick={() => onSwitch(account.id)}><RefreshIcon size={15} aria-hidden />Restart client</button>}</Fragment>;
+          {isCurrent && <button type="button" className="picker-restart" disabled={disabled} onClick={onRestart}><RefreshIcon size={18} aria-hidden />
+            <span><b>Restart client</b></span></button>}</Fragment>;
       })}
       {!shown.length && <p className="picker-empty">{accounts.length ? "No matches." : "No saved accounts yet."}</p>}
     </div>

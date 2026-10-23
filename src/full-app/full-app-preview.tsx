@@ -57,6 +57,11 @@ function game(i: number) {
 const params = new URLSearchParams(location.search);
 // --- uidash states: ?empty (no games at all), ?no-solo (only Normal games), ?stale (saved snapshot), ?slow (snapshot takes 6 s) ---
 const games = params.has("empty") ? [] : Array.from({ length: 12 }, (_, i) => game(i)).map(g => params.has("no-solo") ? { ...g, queue: "normal", lpChange: null } : g);
+// ---- locbar: deliberately oversized invented ID to exercise middle-segment truncation ----
+if (params.has('locbar-long')) for (const game of games) for (const player of game.players) {
+  if (player.riotId === 'Player 1#DEMO') player.riotId = 'A very long invented player name for checking the location bar#DEMO';
+}
+// ---- end locbar long trail fixture ----
 const lpHistory = [[1, 2, 40, 70, 60], [1, 2, 62, 71, 60], [1, 2, 44, 71, 61], [1, 2, 71, 72, 61], [1, 1, 20, 73, 61], [1, 1, 41, 74, 61], [1, 1, 23, 74, 62], [1, 2, 64, 75, 62]]
   .map(([, , lp, wins, losses], i) => ({ at: now - (8 - i) * 36e5, tier: "EMERALD", division: "II", lp, wins, losses }));
 const summary = { metrics: [], roles: ROLES.map((role, i) => ({ role, wins: i === 0 ? 7 : i === 2 ? 1 : 0, games: i === 0 ? 10 : i === 2 ? 2 : 0 })),
@@ -124,7 +129,16 @@ const runePage = (primaryPageId: number, keystone: number, primaryRunes: number[
 mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
+  // ---- glass: exercise contextual draft art inside the real shell (?glass-draft) ----
+  if (shellState.has('glass-draft') && (cmd === 'get_runes' || cmd === 'full_app_draft')) {
+    const { fixtureView, fixtureDraft } = await import('./champ-select-fixtures');
+    return cmd === 'get_runes' ? fixtureView('locked') : fixtureDraft('locked');
+  }
+  // ---- end glass draft fixture ----
   switch (cmd) {
+    // ---- locbar: keep the existing version label visible in browser evidence ----
+    case 'plugin:app|version': return '1.0.0';
+    // ---- end locbar version fixture ----
     // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
     case 'full_app_search_players': {
       const connected = !params.has('stale') && !params.has('disconnected');
@@ -144,7 +158,7 @@ mockIPC(async (cmd, args) => {
       const riotId = String(a.riotId);
       return { region: live ? 'EUW' : null, player: { riotId, icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: live ? 184 : null, ally: true, lastPlayed: games[0]?.createdAt ?? null },
         // ---- profile2: honest rank records and cached participant portraits ----
-        solo: live ? { ...rank('EMERALD', 'II'), recordAvailable: !params.has('profile-no-record') } : null, flex: null,
+        solo: live ? { ...rank('EMERALD', 'II'), recordAvailable: !params.has('profile-no-record'), ...(params.has('profile-ugg-record') && { recordSource: 'ugg' }) } : null, flex: null,
         profileIcons: Object.fromEntries(games.flatMap(g => g.players.map(p => [p.riotId.toLowerCase(), `${DD}/${VERSION}/img/profileicon/${p.profileIcon}.png`]))),
         // ---- end profile2 rank and portraits ----
         games: (riotId === 'Demo Player#TEST' ? games : games.map(g => profileGame(g, riotId)).filter((g): g is NonNullable<typeof g> => g !== null))
@@ -191,13 +205,21 @@ mockIPC(async (cmd, args) => {
       ? "https://raw.communitydragon.org/latest/game/assets/ux/minimap/icons/grub.png"
       : `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/${a.name}.png`;
     // ---- end matchdetail cases ----
-    case "rank_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/${a.tier}.svg`;
+    // ---- glass: normalize the preview bracket just like the backend (no *_plus asset exists) ----
+    case "rank_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/${String(a.tier).replace(/_plus$/, '').replace(/^all$/, 'unranked')}.svg`;
+    // ---- end glass rank fixture ----
     case "rune_icon": await runeReady; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("Preview rune icon unavailable");
     case "dashboard_benchmarks": return Object.fromEntries((a.picks as [number, string][]).map(([id, role]) => [`${id}|${role}`, { kills: 5, deaths: 5, assists: 6, damage: 21000, gold: 11000, cs: 185, games: 9000 }]));
     case "get_current_patch": return "16.21";
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
     case "champion_icon": return `${DD}/${VERSION}/img/champion/${key(a.id)}.png`;
     // The app's tiles are the client's 380 px splash tiles; Data Dragon's are the same crops.
+    // ---- glass: neutral client artwork (preview only; same allow-list as Rust) ----
+    case 'ambient_background':
+      if (a.name !== 'client') throw new Error('Unknown ambient background.');
+      if (shellState.has('art-offline')) throw new Error('Preview artwork offline.');
+      return 'https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/day1-background.jpg';
+    // ---- end glass ----
     case "champion_art": return `${DD}/img/champion/${a.kind === "splash" ? "splash" : a.kind === "loading" ? "loading" : "tiles"}/${key(a.id)}_0.jpg`;
     case "item_icon": return `${DD}/${VERSION}/img/item/${a.id}.png`;
     case "spell_icon": return `${DD}/${VERSION}/img/spell/${({ 4: "SummonerFlash", 12: "SummonerTeleport", 11: "SummonerSmite", 14: "SummonerDot" } as Record<number, string>)[a.id] ?? "SummonerFlash"}.png`;
@@ -231,6 +253,7 @@ mockIPC(async (cmd, args) => {
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     // --- clientctl preview block: restart client / Deceive restart (?restart=ask|defer|save|restart) ---
     case "save_settings": return state;
+    case "client_health": return new URLSearchParams(location.search).get("client") ?? "ok"; // ?client=hung|dead
     case "restart_plan": return new URLSearchParams(location.search).get("restart") ?? "restart";
     case "switch_account": {
       const account = state.accounts.find(x => x.id === a.id);

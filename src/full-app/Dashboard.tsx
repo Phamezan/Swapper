@@ -9,7 +9,7 @@ import { RoleIcon } from "../runes/RoleIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
-import { benchKey, defaultQueue, deltaText, formatStat, insights, lpTrend, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, sparkline, tierLabel, tiles, today, tone, type WinRecord } from "./dashboardModel";
+import { benchKey, defaultQueue, deltaText, formatStat, lpTrend, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, sparkline, tierLabel, tiles, today, tone } from "./dashboardModel";
 import type { AccountCard, Bench, Game, LpPoint, RoleRecord, Snapshot } from "./types";
 import { Slot } from "./ui/Slot";
 import { EmptyState, Skeleton } from "./ui/States";
@@ -123,7 +123,6 @@ export function Dashboard(props: Props) {
         <RoleStrip roles={summary.roles} />
       </section>
     </div>
-    <Insights games={games} name={name} />
   </div>;
 }
 
@@ -167,9 +166,9 @@ function RankCard({ snapshot, stale }: { snapshot: Snapshot; stale: boolean }) {
   const trend = lpTrend(snapshot.lpHistory);
   const progress = rank && rankProgress(rank);
   const total = rank ? rank.wins + rank.losses : 0;
-  return <section className="panel rank-card" aria-label="Ranked progress">
+  return <section className="panel rank-card" data-tier={crestSlug(rank?.tier)} aria-label="Ranked progress">
     <div className="card-head">{rank ? <>
-      <RankCrest tier={crestSlug(rank.tier)} size={26} mode="desktop" />
+      <RankCrest tier={crestSlug(rank.tier)} size={84} mode="desktop" />
       <h2>{`${titleCase(rank.tier)} ${rank.division}`.trim()}</h2><b className="rank-lp">{rank.lp} LP</b></> : <h2>Unranked</h2>}
       <small>Ranked Solo/Duo{stale && ` · saved ${fmtAgo(snapshot.fetchedAt)}`}</small></div>
     {rank ? <div className="rank-body">
@@ -213,32 +212,6 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
       </article>;
     })}</div>
   </section>;
-}
-
-function Insights({ games, name }: { games: Game[]; name: (id: number) => string }) {
-  const lines = games.length >= 5 ? insights(games, name) : [];
-  if (!lines.length) return null;
-  return <section aria-label="Win-rate patterns">
-    {lines.length > 0 && <ul className="insights">{lines.map(line => {
-      const better = line.yes.rate >= line.no.rate;
-      return <li key={line.topic + line.condition} className="insight">
-        <p className="insight-topic">{line.topic}<small>Win rate</small></p>
-        <div className="insight-sides">
-          <InsightSide label={line.condition} record={line.yes} up={better} />
-          <InsightSide label={line.other} record={line.no} up={!better} />
-        </div>
-      </li>;
-    })}</ul>}
-  </section>;
-}
-
-function InsightSide({ label, record, up }: { label: string; record: WinRecord; up: boolean }) {
-  return <div className={`insight-side ${up ? "up" : "down"}`}>
-    <span>{label}</span>
-    <b>{record.rate}<i>%</i></b>
-    <small>{record.wins}W {record.games - record.wins}L</small>
-    <i className="insight-meter" style={{ "--rate": `${record.rate}%` } as CSSProperties} aria-hidden />
-  </div>;
 }
 
 const ITEM_SLOTS = 7;

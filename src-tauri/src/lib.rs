@@ -1,3 +1,4 @@
+mod client_health;
 mod client_restart;
 mod commands;
 mod doctor;
@@ -154,6 +155,7 @@ pub fn run() {
             });
             live_game::init(app.handle());
             runes::spawn_watch(app.handle().clone());
+            client_health::spawn(app.handle().clone());
             app.handle().plugin(tauri_plugin_positioner::init())?;
             app.handle().plugin(tauri_plugin_notification::init())?;
             app.handle().plugin(tauri_plugin_dialog::init())?;
@@ -191,8 +193,9 @@ pub fn run() {
             let edit = MenuItem::with_id(app, "edit", "Edit Account", true, None::<&str>)?;
             let remove = MenuItem::with_id(app, "remove", "Remove Account", true, None::<&str>)?;
             let settings = MenuItem::with_id(app, "settings", "Settings", true, None::<&str>)?;
+            let restart = MenuItem::with_id(app, "restart", "Restart client", true, None::<&str>)?;
             let exit = MenuItem::with_id(app, "exit", "Exit", true, None::<&str>)?;
-            let menu = Menu::with_items(app, &[&add, &edit, &remove, &settings, &exit])?;
+            let menu = Menu::with_items(app, &[&add, &edit, &remove, &settings, &restart, &exit])?;
             TrayIconBuilder::with_id(TRAY_ID)
                 .icon(app.default_window_icon().expect("Missing app icon").clone())
                 .tooltip(DEFAULT_TRAY_TOOLTIP)
@@ -203,6 +206,7 @@ pub fn run() {
                     "edit" => show_flyout(app, "edit"),
                     "remove" => show_flyout(app, "remove"),
                     "settings" => show_flyout(app, "settings"),
+                    "restart" => client_restart::tray_restart(app),
                     full_app::LABEL => {
                         let _ = full_app::open(app, None);
                     }
@@ -295,6 +299,7 @@ pub fn run() {
                 full_app::search::full_app_player_profile,
                 full_app::bench::dashboard_benchmarks,
                 full_app::art::champion_art,
+                full_app::art::ambient_background,
                 full_app::ui_data::full_app_rune_catalog,
                 full_app::ui_data::full_app_draft,
                 full_app::champ_select::full_app_hover_champion,
@@ -339,6 +344,7 @@ pub fn run() {
                 commands::remote::allow_lan_firewall,
                 commands::settings::set_ready_check_notifications,
                 client_restart::restart_plan,
+                client_health::client_health,
                 commands::settings::set_korean_font,
                 commands::settings::onboarding_pending,
                 commands::settings::set_onboarded,

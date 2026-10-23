@@ -46,7 +46,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
               </section>
             )}
             {AccountsSurface ? <AccountsSurface accounts={data.accounts} activeId={displayedActiveId} switchingId={switchingAccountId} repairableId={repairableId} busy={isBusy}
-              onSwitch={id => void switchToAccount(id)} onAdd={() => navigate("add")} onRepair={startRepair} onError={showError}
+              onSwitch={id => void switchToAccount(id)} onRestart={fullApp?.onRestart} onAdd={() => navigate("add")} onRepair={startRepair} onError={showError}
               onRename={account => { navigate("edit"); setEditing(account.id); setName(account.nickname ?? ""); }}
               onRemove={id => { navigate("remove"); setPendingRemove(id); }} /> : <div className="account-list">
               {data.accounts.length === 0 ? (

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { defaultQueue, deltaText, insights, ladderScore, lpTrend, newestFirst, playTime, rankProgress, sparkline, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
+import { defaultQueue, deltaText, ladderScore, lpTrend, newestFirst, playTime, rankProgress, sparkline, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
 
 const line = (over = {}) => ({ championId: 1, riotId: "", me: false, ally: true, role: "mid", kills: 2, deaths: 2, assists: 2, cs: 150, damage: 10000, gold: 0, vision: 10, items: [], ...over });
 function game({ win = true, deaths = 3, cs = 200, oppCs = 150, champion = 103, queue = "solo", opponent = 7, kills = 5, assists = 5 } = {}) {
@@ -33,25 +33,6 @@ test("tiles compare with the champion benchmark, else the lane opponent, else no
   assert.equal(tiles(games.slice(0, 3), bench, "Diamond", names)[1].versus, null);
   const ambiguous = games.map(g => ({ ...g, opponent: null }));
   assert.equal(tiles(ambiguous, {}, "Diamond", names)[1].versus, null);
-});
-
-test("insights need four games a side and a 20 point gap, strongest first", () => {
-  const games = [
-    ...Array.from({ length: 6 }, () => game({ deaths: 2, win: true })),
-    ...Array.from({ length: 4 }, () => game({ deaths: 9, win: false, cs: 100 })),
-  ];
-  const lines = insights(games, names);
-  assert.deepEqual(lines[0], { topic: "Deaths", condition: "5 or fewer", other: "6 or more", yes: { wins: 6, games: 6, rate: 100 }, no: { wins: 0, games: 4, rate: 0 }, gap: 100 });
-  assert.ok(lines.length <= 3);
-  assert.ok(lines.every((l, i) => i === 0 || l.gap <= lines[i - 1].gap));
-  // Three games on one side are not enough.
-  assert.deepEqual(insights(games.slice(0, 9), names).filter(l => l.topic === "Deaths"), []);
-  // A 10-point gap is not a pattern.
-  const even = [
-    ...Array.from({ length: 10 }, (_, i) => game({ deaths: 2, win: i < 6 })),
-    ...Array.from({ length: 10 }, (_, i) => game({ deaths: 9, win: i < 5 })),
-  ];
-  assert.deepEqual(insights(even, names).filter(l => l.topic === "Deaths"), []);
 });
 
 test("values within 5% of their reference read as even", () => {

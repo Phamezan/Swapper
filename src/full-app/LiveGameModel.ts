@@ -25,6 +25,9 @@ export type LiveGameView = {
 };
 
 export const pct = (wins: number, games: number) => (games ? Math.round(100 * wins / games) : 0);
+/** The client sometimes reports 0 losses for other players; many wins and no loss is that gap, not a record
+ *  (same rule as `ZERO_LOSS_WIN_LIMIT` in Rust). */
+export const hasRecord = (rank: Rank) => rank.losses > 0 || rank.wins < 10;
 export const kda = (f: Pick<Form, "kills" | "deaths" | "assists">) => (f.kills + f.assists) / Math.max(1, f.deaths);
 export const titleCase = (text: string) => text.charAt(0) + text.slice(1).toLowerCase();
 export const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;

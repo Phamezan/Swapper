@@ -3,7 +3,7 @@ import type { Game, Snapshot } from './types';
 
 export type PlayerHit = { riotId: string; icon: string | null; level: number | null; ally: boolean | null; lastPlayed: number | null; live?: boolean };
 export type PlayerSearch = { connected: boolean; players: PlayerHit[]; message: string | null };
-export type ProfileRank = NonNullable<Snapshot['rank']> & { recordAvailable?: boolean };
+export type ProfileRank = NonNullable<Snapshot['rank']> & { recordAvailable?: boolean; recordSource?: 'ugg' };
 export type PlayerProfile = { player: PlayerHit; region?: string | null; solo: ProfileRank | null; flex: Snapshot['rank']; profileIcons?: Record<string, string>; games: Game[]; live: boolean; fetchedAt: number; message: string | null };
 export type Recent = { kind: 'champion'; champion: ChampionOption } | { kind: 'player'; riotId: string };
 export const RECENT_KEY = 'swapper.search.recents.v1';

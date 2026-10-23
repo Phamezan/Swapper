@@ -33,8 +33,8 @@ use windows_sys::Win32::System::Threading::{
     OpenProcess, TerminateProcess, WaitForMultipleObjects, PROCESS_TERMINATE,
 };
 use windows_sys::Win32::UI::WindowsAndMessaging::{
-    EnumWindows, GetWindow, GetWindowThreadProcessId, IsWindowVisible, PostMessageW, GW_OWNER,
-    SC_CLOSE, WM_CLOSE, WM_SYSCOMMAND,
+    EnumWindows, GetWindow, GetWindowThreadProcessId, IsHungAppWindow, IsWindowVisible,
+    PostMessageW, GW_OWNER, SC_CLOSE, WM_CLOSE, WM_SYSCOMMAND,
 };
 
 const CREATE_NO_WINDOW: u32 = 0x0800_0000;
@@ -287,6 +287,63 @@ pub fn count_top_level_windows(pid: u32) -> usize {
 /// were reached; `0` means the graceful phase should be skipped entirely.
 pub fn post_wm_close(pids: &[u32]) -> usize {
     pids.iter().map(|&pid| visit(pid, true)).sum()
+}
+
+struct HungProbe<'a> {
+    pids: &'a [u32],
+    hung: bool,
+}
+
+unsafe extern "system" fn visit_hung(hwnd: HWND, lparam: LPARAM) -> BOOL {
+    let probe = &mut *(lparam as *mut HungProbe);
+    let mut owner_pid = 0u32;
+    GetWindowThreadProcessId(hwnd, &mut owner_pid);
+    if probe.pids.contains(&owner_pid)
+        && GetWindow(hwnd, GW_OWNER).is_null()
+        && IsWindowVisible(hwnd) != 0
+        && IsHungAppWindow(hwnd) != 0
+    {
+        probe.hung = true;
+    }
+    TRUE
+}
+
+/// Whether Windows reports a visible top-level window of any of `pids` as not
+/// responding. A pure OS query: nothing is sent to or read from the process.
+pub fn has_hung_window(pids: &[u32]) -> bool {
+    let mut probe = HungProbe { pids, hung: false };
+    unsafe { EnumWindows(Some(visit_hung), &mut probe as *mut HungProbe as LPARAM) };
+    probe.hung
+}
+
+/// How long a process has been running, from its creation time.
+pub fn process_age(pid: u32) -> Option<Duration> {
+    use windows_sys::Win32::Foundation::FILETIME;
+    use windows_sys::Win32::System::Threading::{
+        GetProcessTimes, PROCESS_QUERY_LIMITED_INFORMATION,
+    };
+    /// 100 ns ticks between 1601-01-01 (FILETIME) and 1970-01-01 (Unix).
+    const EPOCH_GAP_TICKS: u64 = 116_444_736_000_000_000;
+    let zero = FILETIME { dwLowDateTime: 0, dwHighDateTime: 0 };
+    let (mut created, mut exit, mut kernel, mut user) = (zero, zero, zero, zero);
+    let ok = unsafe {
+        let handle = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, 0, pid);
+        if handle.is_null() {
+            return None;
+        }
+        let ok = GetProcessTimes(handle, &mut created, &mut exit, &mut kernel, &mut user);
+        CloseHandle(handle);
+        ok
+    };
+    if ok == 0 {
+        return None;
+    }
+    let ticks = (u64::from(created.dwHighDateTime) << 32) | u64::from(created.dwLowDateTime);
+    let started = Duration::from_nanos(ticks.checked_sub(EPOCH_GAP_TICKS)? * 100);
+    let now = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .ok()?;
+    now.checked_sub(started)
 }
 
 /// Wait until every PID has exited, returning as soon as the last one does.

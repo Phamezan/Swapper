@@ -216,6 +216,13 @@ async function main() {
   await cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
 
   await check("Dashboard preview", async () => { await navigate(fullApp, ".match-row"); await shell(); });
+  await check('Location bar shows Dashboard and keeps empty title space draggable', async () => {
+    await page.text('nav[aria-label="Location"] [aria-current="page"]', 'Dashboard');
+    await page.text('.title-version', 'v1.0.0');
+    assert.equal(await page.evaluate("document.querySelector('.title-location').hasAttribute('data-tauri-drag-region')"), false);
+    assert.equal(await page.evaluate("document.querySelector('.title-spacer').hasAttribute('data-tauri-drag-region')"), true);
+    assert.ok(await page.evaluate("document.querySelector('.title-spacer').getBoundingClientRect().width >= 32"));
+  });
   if (capture) {
     await screenshot("dashboard-evidence", 1440, 900);
     await cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
@@ -225,6 +232,9 @@ async function main() {
     // ---- matchdetail: Overview is the default; context stays above every tab ----
     await page.visible(".md-page .md-comparison");
     await page.text(".ui-page-header h1", "Victory");
+    await page.text('.location-trail button', 'Dashboard');
+    await page.text('.location-trail [aria-current="page"]', 'Aatrox · Victory');
+    assert.equal(await page.evaluate("document.querySelector('.ui-crumbs')"), null);
     assert.equal(await page.evaluate("document.querySelector('#md-tab-Overview').getAttribute('aria-selected')"), 'true');
     assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.md-tabs button')].map(el => el.textContent)"), ['Overview', 'Scoreboard', 'Loadout', 'Stats', 'Graphs']);
     assert.equal(await page.evaluate("document.querySelectorAll('.md-team').length"), 0);
@@ -315,7 +325,7 @@ async function main() {
     }
     await cdp.send('Emulation.setDeviceMetricsOverride', {width: 1280, height: 820, deviceScaleFactor: 1, mobile: false});
     // ---- end matchdetail tabs ----
-    await page.click('.ui-crumbs button', "Dashboard");
+    await page.click('.location-trail button', "Dashboard");
     await page.visible(".match-row.is-last");
   });
   // ---- matchdetail: unavailable timeline and absent stats never become fake zeroes ----
@@ -394,7 +404,7 @@ async function main() {
     assert.equal(ranks[2].title, 'Current Solo/Duo rank');
     assert.equal(ranks[2].label, 'Diamond II 45 LP');
     assert.ok(!ranks[3].label.includes('LP'), 'missing LP stays missing');
-    await page.click('.ui-crumbs button', 'Dashboard');
+    await page.click('.location-trail button', 'Dashboard');
     await page.click('.match-row:nth-child(2) .match-champ');
     await page.wait("document.querySelector('#md-tab-Overview').getAttribute('aria-selected') === 'true'", 'another match resets Overview');
     await matchPreview('?slow-ranks');
@@ -411,11 +421,14 @@ async function main() {
   await check("Tierlist champion overview and build", async () => {
     await page.click(".tier-champ", "Aatrox");
     await page.text(".champion-hero h2", "Aatrox");
+    await page.text('.location-trail button', 'Tierlist');
+    await page.text('.location-trail [aria-current="page"]', 'Aatrox');
     await page.visible(".fa-build-section");
     await audit();
     await screenshot("champion-overview");
-    await page.click(".back-to-list");
+    await page.click('.location-trail button', 'Tierlist');
     await page.visible(".tier-table tbody tr");
+    await page.text('.location-trail [aria-current="page"]', 'Tierlist');
   });
   await check("Sidebar Matchups", () => nav("Matchups", ".fa-matchup-empty"));
   await check("Matchups chooses both champions", async () => {
@@ -452,32 +465,57 @@ async function main() {
   await check("Sidebar Dashboard", () => nav("Dashboard", ".match-row"));
   // Search owns these scenarios; all identities are invented preview fixtures.
   async function key(key, modifiers = 0) {
-    const code = { Enter: 13, Escape: 27, ArrowDown: 40 }[key] ?? 0;
+    const code = { Enter: 13, Escape: 27, ArrowDown: 40, ArrowUp: 38, ArrowLeft: 37, ArrowRight: 39, Tab: 9 }[key] ?? 0;
     await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key, modifiers, windowsVirtualKeyCode: code });
     await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key, modifiers, windowsVirtualKeyCode: code });
   }
-  const searchInput = '.palette input';
+  const searchInput = '.title-location input';
+  await check('Location search opens in place by pill click, Esc and blur leave search', async () => {
+    const locationBox = () => page.evaluate("JSON.stringify(document.querySelector('.title-location').getBoundingClientRect().toJSON())");
+    const before = await locationBox();
+    // The current segment and empty pill area belong to the Search button.
+    const label = await page.evaluate("(() => { const r = document.querySelector('.location-trail [aria-current=\"page\"]').getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; })()");
+    await cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', ...label, button: 'left', clickCount: 1 });
+    await cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...label, button: 'left', clickCount: 1 });
+    await page.visible('input[role="combobox"]:focus');
+    assert.equal(await locationBox(), before);
+    assert.equal(await page.evaluate("document.querySelector('.title-location input').getAttribute('aria-controls')"), 'palette-results');
+    const anchor = await page.evaluate("({input: document.querySelector('.title-location').getBoundingClientRect().bottom, results: document.querySelector('.palette').getBoundingClientRect().top})");
+    assert.ok(anchor.results > anchor.input && anchor.results - anchor.input < 12);
+    await key('Escape');
+    await page.visible('.location-search-button:focus');
+    await page.text('.location-trail [aria-current="page"]', 'Dashboard');
+    await key('k', 2);
+    await page.visible(searchInput);
+    await page.evaluate("document.querySelector('nav[aria-label=\"Swapper pages\"] button').focus()");
+    await page.wait("!document.querySelector('.palette')", 'blur closes search');
+    assert.equal(await page.evaluate("document.activeElement.closest('nav').getAttribute('aria-label')"), 'Swapper pages');
+    await page.click('.location-search-button');
+    await page.click('nav[aria-label="Swapper pages"] button', 'Dashboard');
+    await page.wait("!document.querySelector('.palette')", 'outside click closes search');
+  });
   await check('Palette icons, groups, focus and empty results', async () => {
-    await page.evaluate("document.querySelector('.title-search').focus()");
+    await page.evaluate("document.querySelector('.location-search-button').focus()");
     await key('k', 2);
     await page.visible('.palette');
     await page.text('.palette h3', 'Pages');
-    assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.palette input')).outlineStyle"), 'none');
+    assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.title-location input')).outlineStyle"), 'none');
     assert.ok(await page.evaluate("document.querySelector('.palette-nav-icon svg') !== null"));
     await page.type(searchInput, 'nothing-will-match');
     await page.text('.palette-empty', 'No results found');
-    assert.equal(await page.evaluate("document.querySelector('.palette input').getAttribute('aria-activedescendant')"), null);
+    assert.equal(await page.evaluate("document.querySelector('.title-location input').getAttribute('aria-activedescendant')"), null);
     await key('ArrowDown');
     await key('Escape');
-    await page.visible('.title-search:focus');
+    await page.visible('.location-search-button:focus');
   });
   await check('Palette champion selection and local recents', async () => {
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     await page.type(searchInput, 'Ahri');
     await page.visible('.palette-option .champion-icon');
     await key('Enter');
     await page.text('.champion-hero h2', 'Ahri');
-    await page.click('.title-search');
+    await page.text('.location-trail [aria-current="page"]', 'Ahri');
+    await page.click('.location-search-button');
     await page.text('.palette h3', 'Recent');
     await page.click('.palette-hint button', 'Clear recent');
     assert.equal(await page.evaluate("document.querySelector('[role=group][aria-label=Recent]')"), null);
@@ -485,12 +523,14 @@ async function main() {
   });
   await check('Palette player profile, match details and back', async () => {
     await nav('Dashboard', '.match-row');
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     await page.type(searchInput, 'Player 1#DEMO');
     await page.visible('.palette-option .search-profile-icon');
     await page.text('.palette-player-copy', 'Played with you');
     await key('Enter');
     await page.text('.player-identity h2', 'Player 1#DEMO');
+    await page.text('.location-trail button', 'Player');
+    await page.text('.location-trail [aria-current="page"]', 'Player 1#DEMO');
     assert.equal(await page.evaluate("document.querySelector('.palette')"), null);
     await page.visible('.player-games .match-row');
     // ---- profile2: shared roles, honest rank and cached teammate portraits ----
@@ -526,27 +566,72 @@ async function main() {
     await page.click('.player-games .match-champ');
     // ---- matchdetail: player-perspective match also opens Overview ----
     await page.visible('.md-comparison');
+    await page.text('.location-trail button', 'Player 1#DEMO');
+    await page.text('.location-trail [aria-current="page"]', 'Lee Sin · Victory');
     // ---- end matchdetail player perspective ----
-    await page.click('.ui-crumbs button', 'Player profile');
+    await page.click('.location-trail button', 'Player 1#DEMO');
     await page.visible('.player-identity');
-    await page.click('.player-back');
-    await page.text('.ui-page-header h1', 'Dashboard');
+    await nav('Dashboard', '.match-row');
+  });
+  await check('Location history supports compact buttons and Alt left/right', async () => {
+    await nav('Accounts', '.fa-account-card');
+    await key('ArrowLeft', 1);
+    await page.text('.location-trail [aria-current="page"]', 'Dashboard');
+    await key('ArrowRight', 1);
+    await page.text('.location-trail [aria-current="page"]', 'Accounts');
+    await page.click('button[aria-label="Back"]');
+    await page.text('.location-trail [aria-current="page"]', 'Dashboard');
+    await page.click('button[aria-label="Forward"]');
+    await page.text('.location-trail [aria-current="page"]', 'Accounts');
+    await nav('Dashboard', '.match-row');
+  });
+  await check('Long location trails truncate the middle, keep their tooltip and respect reduced motion', async () => {
+    await navigate(`${fullApp}?locbar-long`, '.match-row');
+    await page.click('.location-search-button');
+    await page.type(searchInput, 'A very long');
+    await page.visible('.palette-player-copy');
+    await key('Enter');
+    await page.visible('.player-games .match-row');
+    await page.click('.player-games .match-champ');
+    await page.visible('.md-comparison');
+    await page.text('.location-trail [aria-current="page"]', 'Lee Sin · Victory');
+    for (const [width, height] of [[1920, 1080], [1280, 820]]) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+      const trail = await page.evaluate(`(() => {
+        const view = document.querySelector('.location-view'), middle = view.querySelector('li:nth-child(2) button');
+        return { tooltip: view.title, label: middle.textContent, clipped: middle.scrollWidth > middle.clientWidth,
+          ellipsis: getComputedStyle(middle).textOverflow,
+          fits: view.querySelector('ol').getBoundingClientRect().right < view.querySelector('kbd').getBoundingClientRect().left };
+      })()`);
+      assert.equal(trail.tooltip, `Player › ${trail.label} › Lee Sin · Victory`);
+      assert.equal(trail.clipped, true);
+      assert.equal(trail.ellipsis, 'ellipsis');
+      assert.equal(trail.fits, true);
+    }
+    await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+    assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.location-trail')).animationName"), 'none');
+    await key('k', 2);
+    await page.visible(searchInput);
+    assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.location-search')).animationName"), 'none');
+    await key('Escape');
+    await cdp.send('Emulation.setEmulatedMedia', { features: [] });
+    await navigate(fullApp, '.match-row');
   });
   await check('Palette no-client saved players and keyboard across groups', async () => {
     await navigate(`${fullApp}?stale`, '.match-row');
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     await page.type(searchInput, 'Player 5');
     await page.text('.palette-player-copy', 'Played against you');
     await page.text('.palette-player-status', 'Open League Client');
     await key('Enter');
     await page.text('.player-page .ui-notice', 'Open League Client');
     await page.visible('.player-games .match-row');
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     const recentCount = await page.evaluate("document.querySelectorAll('.palette [role=group][aria-label=Recent] [role=option]').length");
     for (let i = 0; i < recentCount; i++) await key('ArrowDown');
     await key('Enter');
     await page.text('.ui-page-header h1', 'Dashboard');
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     await page.click('.palette-hint button', 'Clear recent');
     await key('Escape');
     await navigate(fullApp, '.match-row');
@@ -554,7 +639,7 @@ async function main() {
   // ---- profile2: shared role tooltips/empty states and missing season record ----
   await check('Player missing record keeps tier and LP with five empty roles', async () => {
     await navigate(fullApp + '?profile-no-record&profile-no-roles', '.match-row');
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     await page.type(searchInput, 'Player 1#DEMO');
     await key('Enter');
     await page.visible('.player-games .match-row');
@@ -571,10 +656,22 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelector('.role-strip [title=\"Top: 7W 3L\"] b').textContent"), '70%');
   });
   // ---- end profile2 missing data checks ----
+  // ---- record: u.gg season-record fallback (mock resolves it) ----
+  await check('Player record from the u.gg fallback shows a source label', async () => {
+    await navigate(fullApp + '?profile-ugg-record', '.match-row');
+    await page.click('.location-search-button');
+    await page.type(searchInput, 'Player 1#DEMO');
+    await key('Enter');
+    await page.visible('.player-games .match-row');
+    await page.text('.player-ranks', 'win rate');
+    await page.text('.player-record-source', 'via u.gg');
+    assert.equal(await page.evaluate("document.querySelector('.player-record-source').title"), "Your League Client didn't return this player's season record.");
+  });
+  // ---- end record checks ----
 
   await check('Player partial data keeps games and offers retry', async () => {
     await navigate(`${fullApp}?search-partial`, '.match-row');
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     await page.type(searchInput, 'Player 1#DEMO');
     await page.visible('.palette-player-copy');
     await key('Enter');
@@ -584,7 +681,7 @@ async function main() {
   });
   await check('Player lookup failure keeps saved rows and offers retry', async () => {
     await navigate(`${fullApp}?search-error`, '.match-row');
-    await page.click('.title-search');
+    await page.click('.location-search-button');
     await page.type(searchInput, 'Player 1#DEMO');
     await page.visible('.palette-player-copy');
     await key('Enter');
@@ -622,6 +719,61 @@ async function main() {
     await page.visible('.account-picker');
     await page.click(".picker-foot button", "Manage accounts");
     await page.visible(".fa-account-card");
+  });
+  // Every restart entry point asks the backend plan first (mocked via ?restart=); the status offer is mocked via ?client=.
+  await check("Picker restart action explains itself and is guarded", async () => {
+    await navigate(`${fullApp}?restart=ask`, ".nav-group");
+    await page.click(".podium-switch");
+    await page.evaluate("document.querySelector('.picker-restart').focus()");
+    await screenshot("restart-picker-action", 1920, 1080);
+    await page.click('.picker-restart');
+    await page.text('.restart-dialog h2', 'Restart during champion select?');
+    assert.equal(await page.evaluate("document.querySelector('.switch-overlay') === null"), true);
+    await screenshot("restart-confirm", 1920, 1080);
+    await page.click('.restart-dialog .fa-primary', 'Restart anyway');
+    await page.text('.switch-overlay h2', 'Restarting client');
+    await page.wait("!document.querySelector('.switch-overlay')");
+    await navigate(`${fullApp}?restart=defer`, ".nav-group");
+    await page.click(".podium-switch");
+    await page.click('.picker-restart');
+    await page.text('.restart-dialog h2', "Can't restart during a game");
+    assert.equal(await page.evaluate("document.querySelector('.restart-dialog .fa-primary') === null"), true);
+    await page.click('.restart-dialog button', 'OK');
+    await page.wait("!document.querySelector('.restart-dialog')");
+    assert.equal(await page.evaluate("document.querySelector('.switch-overlay') === null"), true);
+    await navigate(`${fullApp}?restart=ask`, ".nav-group");
+    await nav("Accounts", ".fa-account-card");
+    await page.click('.fa-account-card.is-active .fa-restart');
+    await page.text('.restart-dialog h2', 'Restart during champion select?');
+    await page.click('.restart-dialog button', 'Cancel');
+    await navigate(fullApp, ".nav-group");
+  });
+  await check("Ctrl+K palette restarts the client", async () => {
+    await page.evaluate("document.querySelector('.location-search-button').focus()");
+    await key('k', 2);
+    await page.visible('.palette');
+    await page.type(searchInput, 'restart');
+    await page.text('.palette-option', 'Restart client');
+    await screenshot("restart-palette", 1920, 1080);
+    await key('Enter');
+    await page.text('.switch-overlay h2', 'Restarting client');
+    await page.wait("!document.querySelector('.switch-overlay')");
+  });
+  await check("Not-responding status offers a guarded restart", async () => {
+    await navigate(fullApp, ".nav-group");
+    assert.equal(await page.evaluate("document.querySelector('.podium-status') === null"), true);
+    for (const state of ["hung", "dead"]) {
+      await navigate(`${fullApp}?client=${state}&restart=ask`, ".podium-status");
+      await page.text('.podium-status', "League Client isn't responding");
+      if (state === "hung") await screenshot("restart-not-responding", 1920, 1080);
+      await page.click('.podium-status button', 'Restart client');
+      await page.text('.restart-dialog h2', 'Restart during champion select?');
+      await page.click('.restart-dialog button', 'Cancel');
+    }
+    // Hidden while Swapper is switching.
+    await navigate(`${fullApp}?client=hung&switching`, ".switch-overlay");
+    assert.equal(await page.evaluate("document.querySelector('.podium-status') === null"), true);
+    await navigate(fullApp, ".nav-group");
   });
 
   for (const [query, selector, expected] of [
