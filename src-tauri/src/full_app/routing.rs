@@ -3,7 +3,7 @@ use serde::Serialize;
 
 /// Low memory mode when the user has never changed it. Off: in a release
 /// build reopening a destroyed flyout took ~417 ms (median, tray idle), above
-/// the ~400 ms budget; see HANDOFF-phase1.md.
+/// the ~400 ms budget.
 pub const LOW_MEMORY_DEFAULT: bool = false;
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Serialize)]
