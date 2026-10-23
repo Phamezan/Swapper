@@ -218,7 +218,7 @@ async function main() {
   await check("Dashboard preview", async () => { await navigate(fullApp, ".match-row"); await shell(); });
   await check('Location bar shows Dashboard and keeps empty title space draggable', async () => {
     await page.text('nav[aria-label="Location"] [aria-current="page"]', 'Dashboard');
-    await page.text('.title-version', 'v1.0.0');
+    await page.text('.title-version', 'v1.0.2');
     assert.equal(await page.evaluate("document.querySelector('.title-location').hasAttribute('data-tauri-drag-region')"), false);
     assert.equal(await page.evaluate("document.querySelector('.title-spacer').hasAttribute('data-tauri-drag-region')"), true);
     assert.ok(await page.evaluate("document.querySelector('.title-spacer').getBoundingClientRect().width >= 32"));
