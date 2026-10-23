@@ -159,11 +159,6 @@
   --ui-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='white' opacity='.025' filter='url(%23n)' d='M0 0h96v96H0z'/%3E%3C/svg%3E");
   --ui-card-fill: var(--ui-grain), linear-gradient(180deg, var(--ui-card-top), var(--ui-card) 180px);
 }
-.fa-frame[data-look="solid-accent"] {
-  --ui-card: #1b1b1f;
-  --ui-card-top: #242429;
-  --ui-card-fill: linear-gradient(180deg, var(--ui-card-top), var(--ui-card) 140px);
-}
 .fa-frame[data-look] .rank-card[data-tier="iron"] { --ui-rank-tone: #aaa29b; }
 .fa-frame[data-look] .rank-card[data-tier="bronze"] { --ui-rank-tone: #c39171; }
 .fa-frame[data-look] .rank-card[data-tier="silver"] { --ui-rank-tone: #b8c5d0; }

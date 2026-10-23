@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { invoke, isTauri } from '@tauri-apps/api/core';
 import { loadIcon } from '../runes/iconLoader';
 import { useChampionArt } from './art';
-import type { AmbientChampions, Look } from './lookModel';
+import type { AmbientChampions } from './lookModel';
 
 export const AmbientArtContext = createContext<(kind: keyof AmbientChampions, id: number | null) => void>(() => {});
 
@@ -15,10 +15,10 @@ export function useAmbientChampion(kind: keyof AmbientChampions, id: number | nu
   }, [kind, id, publish]);
 }
 
-export function useAmbientArt(look: Look, championId: number | null) {
+export function useAmbientArt(championId: number | null) {
   const splash = useChampionArt(championId, 'splash');
   const [neutral, setNeutral] = useState<string | null>(null);
-  const needsNeutral = look !== 'solid-accent' && !splash;
+  const needsNeutral = !splash;
   useEffect(() => {
     if (!needsNeutral || !isTauri()) return;
     let active = true;
@@ -26,7 +26,7 @@ export function useAmbientArt(look: Look, championId: number | null) {
       .then(src => { if (active) setNeutral(src); }).catch(() => {});
     return () => { active = false; };
   }, [needsNeutral]);
-  return look === 'solid-accent' ? null : splash || neutral;
+  return splash || neutral;
 }
 
 export function AmbientArt({ src }: { src: string | null }) {

@@ -113,8 +113,6 @@ body { background: var(--ui-surface-0); }
 .fa-frame[data-look^="glass-"] .dashboard-shell .player-hero::after { background: linear-gradient(90deg, rgb(9 9 13 / .92) 0 30%, rgb(9 9 13 / .4) 48%, transparent 70%), linear-gradient(0deg, rgb(9 9 13 / .92) 0 24%, transparent 70%); }
 .fa-frame[data-look^="glass-"] .dashboard-shell .md-art { inset: 0; width: 100%; opacity: 1; z-index: -2; mask-image: var(--ui-hero-fade); }
 .fa-frame[data-look^="glass-"] .dashboard-shell .md-header::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgb(9 9 13 / .94) 0 27%, transparent 43% 64%, rgb(9 9 13 / .94) 88%); }
-.fa-frame[data-look] .look-preview-row { gap: 18px; flex-wrap: wrap; }
-.fa-frame[data-look] .look-preview-row .fa-picker { min-width: 200px; }
 .fa-frame[data-look] .dashboard-shell .champion-hero .fa-picker { background: var(--ui-control-on-art); }
 .fa-frame[data-look] strong i { opacity: 1; }
 

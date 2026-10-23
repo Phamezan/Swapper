@@ -25,8 +25,7 @@ import { pageLabel } from "./ui/pageNames";
 import { AccountPicker, Podium, SwitchOverlay, type PodiumIdentity } from "./ui/Podium";
 import { useChampionArt } from "./art";
 import { AmbientArt, AmbientArtContext, useAmbientArt } from './AmbientArt';
-import { contextualChampion, persistLook, readLook, sidebarChampion, type AmbientChampions, type Look } from './lookModel';
-import { LookContext } from './LookPreview';
+import { contextualChampion, sidebarChampion, type AmbientChampions } from './lookModel';
 import { EmptyState, Notice, Skeleton } from "./ui/States";
 import { useRestartClient } from "./restartClient";
 
@@ -49,12 +48,6 @@ const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 
 function App() {
-  const [look, setLook] = useState(() => readLook(location.search, () => localStorage.getItem('swapper.look')));
-  const changeLook = useCallback((next: Look) => {
-    setLook(next);
-    persistLook(next, value => localStorage.setItem('swapper.look', value));
-  }, []);
-  const lookControl = useMemo(() => ({ look, changeLook }), [look, changeLook]);
   const [ambientIds, setAmbientIds] = useState<AmbientChampions>({ champion: null, player: null, draft: null });
   const publishAmbient = useCallback((kind: keyof AmbientChampions, id: number | null) => {
     setAmbientIds(ids => ids[kind] === id ? ids : { ...ids, [kind]: id });
@@ -211,8 +204,8 @@ function App() {
   // Connected = the client reported who is signed in (not saved stats, not an error).
   const connected = Boolean(signedIn) && !error;
   // Keep the sidebar's profile art distinct from the contextual canvas when another champion is available.
-  const mainChampion = contextualChampion(look, current, ambientIds, selectedMatch?.championId ?? null);
-  const pageArt = useAmbientArt(look, mainChampion);
+  const mainChampion = contextualChampion(current, ambientIds, selectedMatch?.championId ?? null);
+  const pageArt = useAmbientArt(mainChampion);
   const profileChampions = snapshot?.summaries.all?.champions;
   const ambient = useChampionArt(sidebarChampion(profileChampions?.[0]?.id, profileChampions?.[1]?.id, mainChampion), "splash");
   activeIdRef.current = accounts?.activeId ?? null;
@@ -225,7 +218,7 @@ function App() {
     return Boolean(id);
   });
   restartFn.current = () => void restartClient();
-  return <LookContext.Provider value={lookControl}><AmbientArtContext.Provider value={publishAmbient}><div className="fa-frame" data-look={look} style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
+  return <AmbientArtContext.Provider value={publishAmbient}><div className="fa-frame" data-look="glass-context" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
       trail={locationTrail(current, { champion: locationChampion?.name, matchPlayer, match: selectedMatch ? {
         champion: snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? 'Match', win: selectedMatch.win,
@@ -279,7 +272,7 @@ function App() {
             </Suspense>}
       </main>}
     </div>
-  </div></AmbientArtContext.Provider></LookContext.Provider>;
+  </div></AmbientArtContext.Provider>;
 }
 
 function fmtAgoShort(at: number) {

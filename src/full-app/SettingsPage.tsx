@@ -6,7 +6,6 @@ import { FullRuneSettings as RuneSettings } from "./FullRuneSettings";
 import { OverlayCards as OverlaySettings } from "./OverlayCards";
 import { RemoteSettings } from "../settings/RemoteSettings";
 import { AboutSettings } from "../settings/AboutSettings";
-import { LookPreview } from './LookPreview';
 
 const TABS = [
   { id: "general", label: "General" },
@@ -115,7 +114,6 @@ export function SettingsPage(props: Props) {
       >
         <header className="fa-settings-heading"><h2>{TABS.find(item => item.id === tab)?.label}</h2><p>{({general: "Startup, Riot Client and alerts", runes: "Applied every draft", overlay: "In-game info", remote: "Draft from your phone", about: "Updates and diagnostics"})[tab]}</p></header>
         <div className={`fa-settings-group fa-settings-${tab}`}>
-        {tab === 'general' && <LookPreview />}
         {tab === "general" && <GeneralSettings
           useDeceive={props.useDeceive}
           onUseDeceiveChange={props.onUseDeceiveChange}
