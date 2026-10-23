@@ -165,7 +165,7 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
               return <div className="palette-option" key={result.kind === 'page' ? result.page : result.kind === 'action' ? RESTART_ACTION : result.kind === 'champion' ? result.champion.id : result.player.riotId} id={`palette-${i}`} role="option" aria-selected={i === active}
                 onPointerEnter={() => setActive(i)} onClick={() => pick(result)}>
                 {result.kind === 'champion' ? <><ChampionIcon id={result.champion.id} name={result.champion.name} mode="desktop" /><span>{result.champion.name}</span><small>Build and counters</small></>
-                  : result.kind === 'action' ? <><span className="palette-nav-icon"><Icon size={19} aria-hidden /></span><span>{RESTART_ACTION}</span><small>Restarts Riot Client signed in as you</small></>
+                  : result.kind === 'action' ? <><span className="palette-nav-icon"><Icon size={19} aria-hidden /></span><span>{RESTART_ACTION}</span></>
                   : result.kind === 'page' ? <><span className="palette-nav-icon"><Icon size={19} aria-hidden /></span><span>{pageLabel(result.page)}</span><small>Page</small></>
                   : <><ProfileIcon player={result.player} /><span className="palette-player-copy">{result.player.riotId}<small>{result.player.lastPlayed && result.player.ally != null ? `${result.player.ally ? 'Played with you' : 'Played against you'} · ${fmtAgo(result.player.lastPlayed)}` : group === 'Recent' ? 'Recent search' : result.player.live ? 'League Client' : 'Saved profile'}</small></span>{result.player.level != null && <small>Level {result.player.level}</small>}</>}
               </div>;

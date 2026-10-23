@@ -639,7 +639,6 @@ async function main() {
   await check("Picker restart action explains itself and is guarded", async () => {
     await navigate(`${fullApp}?restart=ask`, ".nav-group");
     await page.click(".podium-switch");
-    await page.text('.picker-restart small', 'Restarts Riot Client signed in as you');
     await page.evaluate("document.querySelector('.picker-restart').focus()");
     await screenshot("restart-picker-action", 1920, 1080);
     await page.click('.picker-restart');

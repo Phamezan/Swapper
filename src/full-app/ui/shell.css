@@ -78,7 +78,6 @@ button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a
 .picker-restart > svg { flex: none; color: var(--ui-text-2); }
 .picker-restart > span { min-width: 0; }
 .picker-restart b { display: block; font-size: var(--ui-body); font-weight: 600; line-height: 20px; }
-.picker-restart small { display: block; color: var(--ui-text-3); font-size: var(--ui-label); line-height: 18px; }
 .picker-restart:hover:not(:disabled) { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
 .picker-restart:hover:not(:disabled) > svg, .picker-restart:focus-visible > svg { color: var(--ui-brand); }
 .picker-restart:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }

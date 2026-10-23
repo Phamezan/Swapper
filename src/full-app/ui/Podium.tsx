@@ -90,7 +90,7 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
             {isCurrent && <span className="picker-check" aria-label="Current account"><CheckIcon size={16} /></span>}
           </button>
           {isCurrent && <button type="button" className="picker-restart" disabled={disabled} onClick={onRestart}><RefreshIcon size={18} aria-hidden />
-            <span><b>Restart client</b><small>Restarts Riot Client signed in as you</small></span></button>}</Fragment>;
+            <span><b>Restart client</b></span></button>}</Fragment>;
       })}
       {!shown.length && <p className="picker-empty">{accounts.length ? "No matches." : "No saved accounts yet."}</p>}
     </div>
