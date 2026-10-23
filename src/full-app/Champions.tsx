@@ -181,7 +181,7 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
           <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
         </div>
       </> : <Notice>No stats for this role and rank.</Notice>}
-      <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} matchup={matchups ? detail : null} preferMatchup={matchups} />
+      <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} matchups={matchups && detail ? [detail] : []} preferMatchup={matchups} />
       {counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
       <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={matchups ? setEnemy : id => {
         // On a champion page a matchup card opens that champion's page, in the same lane; on Matchups it picks the opponent.

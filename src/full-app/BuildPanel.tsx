@@ -30,10 +30,10 @@ const PRO_STEP = 8;
 /** The auto-apply setting, shown inline on the champion select page. */
 export type AutoApply = { checked: boolean; disabled: boolean; onChange: (enabled: boolean) => void };
 
-export function BuildPanel({ championId, name, lane, tier, build, liveView, matchup, preferMatchup, autoApply }: {
+export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply }: {
   championId: number; name: string; lane: string; tier: string; build: ChampionBuild | null; liveView?: RunesView | null;
-  /** The lane matchup; adds a "vs <enemy>" tab when it has its own build. */
-  matchup?: MatchupView | null; autoApply?: AutoApply;
+  /** The lane matchup, or each possible one; adds a "vs <enemy>" tab for each with its own build. */
+  matchups?: MatchupView[]; autoApply?: AutoApply;
   /** Open on the matchup build instead of the most played one, when there is one. */
   preferMatchup?: boolean;
 }) {
@@ -104,8 +104,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     const high = details.highestWin;
     variants.push({ label: "Highest win rate", selection: selectionFromPreset(high.preset), items: high.build, spells: high.preset.spells, order: high.build.skillOrder ?? null, winPct: high.build.coreWinPct, games: high.build.coreGames });
   }
-  if (matchup?.preset && matchup.build && !matchup.fallback) {
-    variants.push({ label: `vs ${matchup.enemyName}`, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
+  for (const matchup of matchups) {
+    if (matchup.preset && matchup.build && !matchup.fallback) variants.push({ label: `vs ${matchup.enemyName}`, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
   }
   const matchupIndex = variants.findIndex(variant => variant.label.startsWith("vs "));
   const variantIndex = chosenIndex ?? (preferMatchup && matchupIndex > 0 ? matchupIndex : 0);

@@ -5,6 +5,7 @@ import ts from "typescript";
 import * as runeTypes from "../runes/types.ts";
 import * as model from "./champ-select-model.ts";
 import * as buildLogic from "./buildLogic.ts";
+import * as championsModel from "./championsModel.ts";
 import * as format from "./ui/format.ts";
 import { fixtureView, fixtureDraft } from "./champ-select-fixtures.ts";
 
@@ -52,7 +53,7 @@ function harness(file, exportName, commands = {}, visibility = "visible") {
     "@tauri-apps/api/core": { invoke, isTauri: () => true },
     "./AmbientArt": { useAmbientChampion: () => {} },
     "@tauri-apps/api/event": { listen: async (name, fn) => { handlers.set(name, fn); return () => handlers.delete(name); } },
-    "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./ui/format": format,
+    "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./championsModel": championsModel, "./ui/format": format,
   };
   const code = ts.transpileModule(readFileSync(new URL(file, import.meta.url), "utf8"), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 },
@@ -123,7 +124,7 @@ test("draft events update taken picks and enemy build context without a local vi
   const view = fixtureView("hover"), draft = fixtureDraft("hover");
   let buildReads = 0;
   const h = harness("./ChampionSelect.tsx", "ChampionSelect", { full_app_draft: draft });
-  h.render({ view, championApi: { list: async () => [], overview: async () => null }, onLoadBuild: async () => { buildReads++; return null; }, onLoadMatchup: async () => null }); await h.flush();
+  h.render({ view, championApi: { list: async () => [], overview: async () => null, tierList: async () => ({ rows: [] }) }, onLoadBuild: async () => { buildReads++; return null; }, onLoadMatchup: async () => null }); await h.flush();
   const before = buildReads;
   const next = { ...draft, bans: [...draft.bans, 11], enemies: [{ championId: 238, position: "top", locked: true }] };
   await h.emit("draft_changed", next);

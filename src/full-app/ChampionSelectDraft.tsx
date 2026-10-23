@@ -11,7 +11,7 @@ const ROLE_LABELS: Record<string, string> = { top: "Top", jungle: "Jungle", mid:
 const PHASES: Record<string, string> = { PLANNING: "Declare intent", BAN_PICK: "Picks & bans", FINALIZATION: "Finalizing", GAME_STARTING: "Game starting" };
 
 /** Both teams' picks and hovers, your slot highlighted, bans and the phase timer. */
-export function DraftBand({ draft, readAt, names, enemyId, small }: { draft: Draft | null; readAt: number; names: Map<number, string>; enemyId: number; small: boolean }) {
+export function DraftBand({ draft, readAt, names, enemyIds, mainRoles, small }: { draft: Draft | null; readAt: number; names: Map<number, string>; enemyIds: number[]; mainRoles?: Map<number, string>; small: boolean }) {
   const [now, setNow] = useState(() => Date.now());
   const running = !!draft?.timer && draft.timer.remainingMs > 0;
   // One tick a second, only while a draft timer is counting down.
@@ -35,7 +35,7 @@ export function DraftBand({ draft, readAt, names, enemyId, small }: { draft: Dra
         return <div className={`cs-team is-${side}`} key={side} aria-label={side === "allies" ? "Your team's picks" : "Enemy team's picks"}>
           {Array.from({ length: Math.max(5, members.length) }, (_, index) => {
             const member = members[index] ?? empty;
-            return <Slot key={index} member={member} seat={SEATS[index] ?? ""} name={names.get(member.championId)} laner={side === "enemies" && member.championId > 0 && member.championId === enemyId} />;
+            return <Slot key={index} member={member} seat={(side === "enemies" && mainRoles?.get(member.championId)) || SEATS[index] || ""} name={names.get(member.championId)} laner={side === "enemies" && enemyIds.includes(member.championId) ? (enemyIds.length > 1 ? "Possible matchup" : "Your matchup") : ""} />;
           })}
         </div>;
       })}
@@ -49,16 +49,16 @@ export function DraftBand({ draft, readAt, names, enemyId, small }: { draft: Dra
   </section>;
 }
 
-// Practice tool and blind pick give no positions: show each seat's usual role, dimmed.
+// Practice tool, blind pick and ranked enemies give no positions: show the champion's usual role (enemies) or the seat's, dimmed.
 const SEATS = ["top", "jungle", "mid", "adc", "support"];
 
-function Slot({ member, seat, name, laner }: { member: DraftMember; seat: string; name?: string; laner: boolean }) {
+function Slot({ member, seat, name, laner }: { member: DraftMember; seat: string; name?: string; laner: string }) {
   const hovering = member.championId > 0 && !member.locked;
   const known = roleSlug(member.position);
   const slug = known || seat;
   const role = ROLE_LABELS[slug] ?? "";
-  const state = member.local ? "Your pick" : laner ? "Your matchup" : hovering ? "Hovering" : "";
-  const classes = ["cs-slot", !known && "is-seat", member.local && "is-you", hovering && "is-hover", laner && "is-laner", !member.championId && "is-empty"].filter(Boolean).join(" ");
+  const state = member.local ? "Your pick" : laner || (hovering ? "Hovering" : "");
+  const classes = ["cs-slot", !known && "is-seat", member.local && "is-you", hovering && "is-hover", !!laner && "is-laner", !member.championId && "is-empty"].filter(Boolean).join(" ");
   return <article className={classes} aria-label={[name || "Not picked", role, state, member.locked ? "locked in" : ""].filter(Boolean).join(" · ")}>
     <NearViewport className="cs-slot-art">{member.championId ? <ChampionArt id={member.championId} name={name ?? `Champion ${member.championId}`} kind="loading" /> : <span className="cs-slot-placeholder">{slug ? <RoleIcon role={slug} size={32} mode="desktop" /> : <DraftIcon size={28} strokeWidth={1.2} aria-hidden />}</span>}</NearViewport>
     <span className="cs-slot-role" title={role}>{slug ? <RoleIcon role={slug} size={16} mode="desktop" /> : <DraftIcon size={15} strokeWidth={1.5} aria-hidden />}</span>

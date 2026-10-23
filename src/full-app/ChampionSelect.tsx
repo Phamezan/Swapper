@@ -4,7 +4,7 @@ import { listen } from "@tauri-apps/api/event";
 import { DraftIcon } from "./ui/icons";
 import { useAmbientChampion } from './AmbientArt';
 import type { RunesPanel } from "../runes/RunesPanel";
-import type { ChampionBuild, KeystoneBuildView, ChampionOverviewView, MatchupView } from "../runes/types";
+import type { ChampionBuild, KeystoneBuildView, ChampionOverviewView, MatchupView, TierRow } from "../runes/types";
 import { fmtPct, selectionFromPreset } from "../runes/types";
 import { ItemIcon } from "../runes/ItemIcon";
 import { RuneIcon } from "../runes/RuneIcon";
@@ -16,7 +16,8 @@ import { DraftBand } from "./ChampionSelectDraft";
 import { ChampionArt } from "./MatchupStrip";
 import { NearViewport } from "./NearViewport";
 import { LockIn, PickSuggestions } from "./ChampionSelectPicks";
-import { enemyLaner, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
+import { enemyLaners, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
+import { mainRoles, ROLES } from "./championsModel";
 import { Picker, RankPicker, RolePicker } from "./Picker";
 import { PageHeader } from "./ui/PageHeader";
 import { Notice, Skeleton } from "./ui/States";
@@ -33,7 +34,8 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const [names, setNames] = useState<Map<number, string>>(new Map());
   const [items, setItems] = useState<KeystoneBuildView | null>(null);
   const [overview, setOverview] = useState<ChampionOverviewView | null>(null);
-  const [matchup, setMatchup] = useState<MatchupView | null>(null);
+  const [roleLists, setRoleLists] = useState<Record<string, TierRow[]>>({});
+  const [matchups, setMatchups] = useState<MatchupView[]>([]);
   const [error, setError] = useState("");
   const preset = view?.presets[0];
   useEffect(() => {
@@ -60,7 +62,20 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
     try { localStorage.setItem("cs-role", next); } catch { /* preference only */ }
     props.onPositionChange(next);
   };
-  const enemyId = draft ? enemyLaner(draft.value, role) : view?.enemyChampionId ?? 0;
+  const tier = view?.tier;
+  // Who plays each role, to find your laner when ranked hides enemy positions. The backend caches the lists.
+  useEffect(() => {
+    if (!tier) return;
+    let live = true;
+    void Promise.all(ROLES.map(r => props.championApi.tierList(r, tier).then(view => [r, view.rows] as const).catch(() => [r, []] as const)))
+      .then(entries => { if (live) setRoleLists(Object.fromEntries(entries)); });
+    return () => { live = false; };
+  }, [tier]);
+  const mains = useMemo(() => mainRoles(roleLists), [roleLists]);
+  const enemyIds = draft ? enemyLaners(draft.value, role, roleLists[role]) : view?.enemyChampionId ? [view.enemyChampionId] : [];
+  // One known laner drives counters and cooldowns; several candidates each get a build tab to choose from.
+  const enemyId = enemyIds.length === 1 ? enemyIds[0] : 0;
+  const enemyKey = enemyIds.join(",");
   useEffect(() => {
     let live = true; setItems(null); setOverview(null); setError("");
     if (view?.championId) {
@@ -70,24 +85,26 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
     return () => { live = false; };
   }, [view?.championId, view?.position, view?.tier, preset?.keystone]);
   useEffect(() => {
-    let live = true; setMatchup(null);
-    if (view?.championId && enemyId) void props.onLoadMatchup(view.championId, enemyId, view.position, view.tier)
-      .then(value => { if (live) setMatchup(value); }).catch(() => {});
+    let live = true; setMatchups([]);
+    if (view?.championId) void Promise.all(enemyIds.map(id => props.onLoadMatchup(view.championId, id, view.position, view.tier).catch(() => null)))
+      .then(values => { if (live) setMatchups(values.filter((value): value is MatchupView => !!value)); });
     return () => { live = false; };
-  }, [view?.championId, view?.position, view?.tier, enemyId]);
+  }, [view?.championId, view?.position, view?.tier, enemyKey]);
   const taken = useMemo(() => takenIds(draft?.value ?? null), [draft]);
   const build = useMemo<ChampionBuild | null>(() => preset && items ? { runes: preset, spells: preset.spells, items, skillOrder: items.skillOrder ?? overview?.build?.skillOrder ?? null } : overview?.build ?? null, [preset, items, overview?.build]);
-  const enemyName = names.get(enemyId) || (enemyId === view?.enemyChampionId ? view.enemyChampionName : "") || "";
+  const enemyNameOf = (id: number) => names.get(id) || (id === view?.enemyChampionId ? view.enemyChampionName : "") || "";
+  const enemyName = enemyId ? enemyNameOf(enemyId) : "";
+  const enemyNames = enemyIds.map(enemyNameOf).filter(Boolean).join(" or ");
   const championName = view?.championName || names.get(view?.championId ?? 0) || "";
 
   return <div className="fa-draft-page dash-scope">
     <PageHeader title="Draft" actions={mode !== "idle" && <span className="fa-status-pill is-live">{mode === "build" ? "Locked in" : "Live draft"}</span>} />
     {props.error && <Notice tone="error">{props.error}</Notice>}{error && <Notice tone="error">{error}</Notice>}
     {!view || mode === "idle" ? <section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><DraftIcon size={52} strokeWidth={1.25} /></div><h2>{props.loading ? "Connecting…" : "Waiting for draft"}</h2><div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section> : <>
-      <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyId={enemyId} small={mode === "build"} />
+      <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyIds={enemyIds} mainRoles={mains} small={mode === "build"} />
       <div className="fa-draft-controls cs-toolbar">
-        <h2>{championName || "Choose your champion"}{enemyName && <small> vs {enemyName}</small>}</h2>
-        {matchup?.stats && <span className="cs-matchup-chip" title={`${fmtCount(matchup.stats.games)} games`}>{fmtPct(matchup.stats.winPct)} in this lane</span>}
+        <h2>{championName || "Choose your champion"}{enemyNames && <small> vs {enemyNames}</small>}</h2>
+        {enemyId > 0 && matchups[0]?.stats && <span className="cs-matchup-chip" title={`${fmtCount(matchups[0].stats.games)} games`}>{fmtPct(matchups[0].stats.winPct)} in this lane</span>}
         <RolePicker value={role} onChange={changeRole} /><RankPicker value={view.tier} onChange={props.onTierChange} />
         {mode === "build" && (["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
       </div>
@@ -95,7 +112,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
         <PickSuggestions role={role} tier={view.tier} enemyId={enemyId} enemyName={enemyName} enemyCount={draft?.value.enemies.filter(member => member.championId > 0).length ?? 0} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} />
         <BuildPreview championId={view.championId} name={championName} build={build} />
       </div> : <>
-        <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} liveView={view} matchup={matchup}
+        <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} liveView={view} matchups={matchups}
           autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
         {enemyId > 0 && <CooldownSheet championId={enemyId} />}
       </>}

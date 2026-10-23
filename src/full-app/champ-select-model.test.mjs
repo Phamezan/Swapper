@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { applyStatus, counterPicks, defaultTab, enemyLaner, maxOrder, allChampions, pageMode, recommendedSuggestions, secondsLeft, skillGrid, takenIds } from "./champ-select-model.ts";
+import { applyStatus, counterPicks, defaultTab, enemyLaners, maxOrder, allChampions, pageMode, recommendedSuggestions, secondsLeft, skillGrid, takenIds } from "./champ-select-model.ts";
 import { fixtureDraft, fixtureView } from "./champ-select-fixtures.ts";
 
 test("the page plans until the pick is locked and builds after", () => {
@@ -21,14 +21,19 @@ test("suggestions default to counters only when the enemy laner is known", () =>
 });
 
 test("the enemy laner is the revealed enemy in your role, or the only one in blind pick", () => {
-  assert.equal(enemyLaner(fixtureDraft("locked"), "top"), 122);
-  assert.equal(enemyLaner(fixtureDraft("locked"), "mid"), 103);
-  assert.equal(enemyLaner(fixtureDraft("locked"), "jungle"), 0);
-  assert.equal(enemyLaner(fixtureDraft("locked-blind"), "top"), 0);
-  assert.equal(enemyLaner(null, "top"), 0);
+  assert.deepEqual(enemyLaners(fixtureDraft("locked"), "top"), [122]);
+  assert.deepEqual(enemyLaners(fixtureDraft("locked"), "mid"), [103]);
+  assert.deepEqual(enemyLaners(fixtureDraft("locked"), "jungle"), []);
+  assert.deepEqual(enemyLaners(fixtureDraft("locked-blind"), "top"), []);
+  assert.deepEqual(enemyLaners(null, "top"), []);
   const blind = { allies: [], bans: [], timer: null, enemies: [{ championId: 7, position: "", local: false, locked: true }] };
-  assert.equal(enemyLaner(blind, ""), 7);
-  assert.equal(enemyLaner({ ...blind, enemies: [...blind.enemies, { championId: 8, position: "", local: false, locked: true }] }, ""), 0);
+  assert.deepEqual(enemyLaners(blind, ""), [7]);
+  assert.deepEqual(enemyLaners({ ...blind, enemies: [...blind.enemies, { championId: 8, position: "", local: false, locked: true }] }, ""), []);
+  // Ranked: no enemy positions, so every enemy who plays your role (1%+ of its games) is a candidate, likeliest first.
+  const ranked = { ...blind, enemies: [18, 203, 201, 84].map(championId => ({ championId, position: "", local: false, locked: true })) };
+  const row = (championId, pickPct) => ({ championId, name: "", tier: "A", winPct: 50, pickPct, banPct: 0, games: 1000 });
+  assert.deepEqual(enemyLaners(ranked, "jungle", [row(18, 1.2), row(203, 6), row(84, 0.4), row(99, 9)]), [203, 18]);
+  assert.deepEqual(enemyLaners(ranked, "jungle"), []);
 });
 
 test("bans and other locked picks cannot be suggested, your own hover can", () => {

@@ -23,11 +23,20 @@ const LCU_ROLES: Record<string, string> = { top: "top", jungle: "jungle", middle
 /** LCU `assignedPosition` ("middle", "utility") to Swapper's role slug ("mid", "support"). */
 export const roleSlug = (position: string) => LCU_ROLES[position.trim().toLowerCase()] ?? "";
 
-/** The revealed enemy in your lane: same role, or the only revealed enemy in blind pick. 0 when unknown. */
-export function enemyLaner(draft: Draft | null, role: string): number {
+/** Below this share of a role's games a champion does not play it (as `FLEX_MIN_PICK_PCT` in blind.rs). */
+const MIN_ROLE_PICK_PCT = 1;
+
+/** The revealed enemies who may be in your lane: the one in your role, or the only revealed enemy in blind pick.
+ *  Ranked hides enemy positions, so then it is every enemy who plays your role in `roleRows` (your role's tier list),
+ *  likeliest first, for you to choose between. Empty when unknown. */
+export function enemyLaners(draft: Draft | null, role: string, roleRows: TierRow[] = []): number[] {
   const revealed = (draft?.enemies ?? []).filter(member => member.championId > 0);
-  if (role && role !== "none") return revealed.find(member => roleSlug(member.position) === role)?.championId ?? 0;
-  return revealed.length === 1 && !revealed[0].position ? revealed[0].championId : 0;
+  if (!role || role === "none") return revealed.length === 1 && !revealed[0].position ? [revealed[0].championId] : [];
+  const assigned = revealed.find(member => roleSlug(member.position) === role)?.championId;
+  if (assigned) return [assigned];
+  const unplaced = new Set(revealed.filter(member => !member.position).map(member => member.championId));
+  return roleRows.filter(row => unplaced.has(row.championId) && row.pickPct >= MIN_ROLE_PICK_PCT)
+    .sort((a, b) => b.pickPct - a.pickPct).map(row => row.championId);
 }
 
 /** Banned and locked champions, which can no longer be hovered. */
