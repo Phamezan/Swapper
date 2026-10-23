@@ -37,6 +37,15 @@ pub fn switch_failed(app: &AppHandle, account: &str, use_deceive: bool, failure:
         .show();
 }
 
+pub fn restart_skipped(app: &AppHandle, reason: &str) {
+    let _ = app
+        .notification()
+        .builder()
+        .title("Restart client")
+        .body(reason)
+        .show();
+}
+
 // Both lifecycle notifications use the notification's default sound.
 pub fn ready_check_started(app: &AppHandle) {
     let _ = app

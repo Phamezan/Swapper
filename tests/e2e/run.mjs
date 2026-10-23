@@ -635,6 +635,62 @@ async function main() {
     await page.click(".picker-foot button", "Manage accounts");
     await page.visible(".fa-account-card");
   });
+  // Every restart entry point asks the backend plan first (mocked via ?restart=); the status offer is mocked via ?client=.
+  await check("Picker restart action explains itself and is guarded", async () => {
+    await navigate(`${fullApp}?restart=ask`, ".nav-group");
+    await page.click(".podium-switch");
+    await page.text('.picker-restart small', 'Restarts Riot Client signed in as you');
+    await page.evaluate("document.querySelector('.picker-restart').focus()");
+    await screenshot("restart-picker-action", 1920, 1080);
+    await page.click('.picker-restart');
+    await page.text('.restart-dialog h2', 'Restart during champion select?');
+    assert.equal(await page.evaluate("document.querySelector('.switch-overlay') === null"), true);
+    await screenshot("restart-confirm", 1920, 1080);
+    await page.click('.restart-dialog .fa-primary', 'Restart anyway');
+    await page.text('.switch-overlay h2', 'Restarting client');
+    await page.wait("!document.querySelector('.switch-overlay')");
+    await navigate(`${fullApp}?restart=defer`, ".nav-group");
+    await page.click(".podium-switch");
+    await page.click('.picker-restart');
+    await page.text('.restart-dialog h2', "Can't restart during a game");
+    assert.equal(await page.evaluate("document.querySelector('.restart-dialog .fa-primary') === null"), true);
+    await page.click('.restart-dialog button', 'OK');
+    await page.wait("!document.querySelector('.restart-dialog')");
+    assert.equal(await page.evaluate("document.querySelector('.switch-overlay') === null"), true);
+    await navigate(`${fullApp}?restart=ask`, ".nav-group");
+    await nav("Accounts", ".fa-account-card");
+    await page.click('.fa-account-card.is-active .fa-restart');
+    await page.text('.restart-dialog h2', 'Restart during champion select?');
+    await page.click('.restart-dialog button', 'Cancel');
+    await navigate(fullApp, ".nav-group");
+  });
+  await check("Ctrl+K palette restarts the client", async () => {
+    await page.evaluate("document.querySelector('.title-search').focus()");
+    await key('k', 2);
+    await page.visible('.palette');
+    await page.type(searchInput, 'restart');
+    await page.text('.palette-option', 'Restart client');
+    await screenshot("restart-palette", 1920, 1080);
+    await key('Enter');
+    await page.text('.switch-overlay h2', 'Restarting client');
+    await page.wait("!document.querySelector('.switch-overlay')");
+  });
+  await check("Not-responding status offers a guarded restart", async () => {
+    await navigate(fullApp, ".nav-group");
+    assert.equal(await page.evaluate("document.querySelector('.podium-status') === null"), true);
+    for (const state of ["hung", "dead"]) {
+      await navigate(`${fullApp}?client=${state}&restart=ask`, ".podium-status");
+      await page.text('.podium-status', "League Client isn't responding");
+      if (state === "hung") await screenshot("restart-not-responding", 1920, 1080);
+      await page.click('.podium-status button', 'Restart client');
+      await page.text('.restart-dialog h2', 'Restart during champion select?');
+      await page.click('.restart-dialog button', 'Cancel');
+    }
+    // Hidden while Swapper is switching.
+    await navigate(`${fullApp}?client=hung&switching`, ".switch-overlay");
+    assert.equal(await page.evaluate("document.querySelector('.podium-status') === null"), true);
+    await navigate(fullApp, ".nav-group");
+  });
 
   for (const [query, selector, expected] of [
     ["stale", ".match-row", null],

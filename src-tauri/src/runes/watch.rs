@@ -153,6 +153,9 @@ pub fn spawn_watch(app: tauri::AppHandle) {
         match event {
             events::Event::Connected | events::Event::Disconnected => {
                 let connected = matches!(event, events::Event::Connected);
+                if connected {
+                    crate::client_health::note_api(true);
+                }
                 if state.connected == connected {
                     return;
                 }
@@ -191,6 +194,8 @@ pub fn spawn_watch(app: tauri::AppHandle) {
                 if state.revision != revision {
                     continue;
                 }
+                // A live push connection means the API answers even if this read failed.
+                crate::client_health::note_api(result.is_ok() || state.connected);
                 match result {
                     Ok(super::RuneContext {
                         phase,

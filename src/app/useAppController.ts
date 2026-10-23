@@ -616,6 +616,12 @@ export function useAppController(fullApp?: FullAppBridge) {
       return;
     }
     if (isSwitching) return;
+    // The flyout's signed-in row restarts the client; the full app asks via its own shared check.
+    if (!fullApp && id === data.activeId) {
+      const plan = await invoke<string>("restart_plan").catch(() => "ask");
+      if (plan === "defer") { setError("Can't restart during a game."); return; }
+      if (plan === "ask") { setError("Restarting now dodges champion select and can cost LP. Restart after it ends."); return; }
+    }
     setError(null);
     setAccountMenu(null);
     detectionEpoch.current += 1;

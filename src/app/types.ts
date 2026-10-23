@@ -98,6 +98,8 @@ export type FullAppBridge = {
   /** Riot ID League Client is signed in with (null when unknown), so the status
    *  bar agrees with the Dashboard even when the login did not go through Swapper. */
   signedIn?: string | null;
+  /** Restart the client behind the shared safety check; Accounts falls back to a plain switch without it. */
+  onRestart?: () => void;
   onViewChange: (view: View) => void;
   onChampSelectChange: (active: boolean) => void;
 };

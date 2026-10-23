@@ -27,9 +27,10 @@ type Props = {
   onPickPage: (page: string) => void;
   onPickPlayer: (riotId: string) => void;
   snapshot?: Snapshot | null;
+  onRestart: () => void;
 };
 
-type Result = ({ kind: "champion"; champion: ChampionOption } | { kind: "page"; page: string } | { kind: 'player'; player: PlayerHit }) & { group: string };
+type Result = ({ kind: "champion"; champion: ChampionOption } | { kind: "page"; page: string } | { kind: 'action' } | { kind: 'player'; player: PlayerHit }) & { group: string };
 const pageIcons: Record<string, typeof DashboardIcon> = { Dashboard: DashboardIcon, 'Live Game': LiveGameIcon, 'Tier list & Builds': TierlistIcon, Matchups: MatchupsIcon, 'Champion select': DraftIcon, Accounts: AccountsIcon, Settings: SettingsIcon };
 
 /** Frameless window chrome: drag region, history, Ctrl+K search and window buttons. */
@@ -75,7 +76,9 @@ export function TitleBar(props: Props) {
   </header>;
 }
 
-function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPickPlayer, onClose }: Props & { onClose: () => void }) {
+const RESTART_ACTION = "Restart client";
+
+function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPickPlayer, onRestart, onClose }: Props & { onClose: () => void }) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const input = useRef<HTMLInputElement>(null);
@@ -108,6 +111,7 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
   const results = useMemo<Result[]>(() => {
     const q = query.trim().toLowerCase();
     const pageHits = pages.filter(page => !q || pageLabel(page).toLowerCase().includes(q) || page.toLowerCase().includes(q)).map(page => ({ kind: "page", page, group: 'Pages' }) as Result);
+    const actionHits = !q || RESTART_ACTION.toLowerCase().includes(q) || 'restart riot client'.includes(q) ? [{ kind: 'action', group: 'Actions' } as Result] : [];
     const championHits = q ? champions
       .filter(c => c.name.toLowerCase().includes(q))
       .sort((a, b) => Number(!a.name.toLowerCase().startsWith(q)) - Number(!b.name.toLowerCase().startsWith(q)))
@@ -116,7 +120,7 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
     const recentHits: Result[] = q ? [] : recents.map(r => r.kind === 'champion' ? { ...r, group: 'Recent' }
       : { kind: 'player', player: lookup?.query === '' ? lookup.players.find(p => p.riotId.toLowerCase() === r.riotId.toLowerCase()) ?? { riotId: r.riotId, icon: null, level: null, ally: null, lastPlayed: null }
         : { riotId: r.riotId, icon: null, level: null, ally: null, lastPlayed: null }, group: 'Recent' });
-    return [...recentHits, ...pageHits, ...championHits, ...playerHits.map(player => ({ kind: 'player', player, group: 'Players' } as Result))];
+    return [...recentHits, ...pageHits, ...actionHits, ...championHits, ...playerHits.map(player => ({ kind: 'player', player, group: 'Players' } as Result))];
   }, [query, champions, pages, playerHits, recents, lookup]);
   useEffect(() => setActive(0), [query, results.length]);
   useEffect(() => { document.getElementById(`palette-${active}`)?.scrollIntoView({ block: 'nearest' }); }, [active]);
@@ -125,6 +129,7 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
     if (!result) return;
     if (result.kind === "champion") { save(remember(recents, { kind: 'champion', champion: result.champion })); onPickChampion(result.champion); }
     else if (result.kind === 'player') { save(remember(recents, { kind: 'player', riotId: result.player.riotId })); onPickPlayer(result.player.riotId); }
+    else if (result.kind === 'action') onRestart();
     else onPickPage(result.page);
     onClose();
   };
@@ -152,14 +157,15 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
       <div className="palette-hint"><span>{q ? pending ? 'Searching players…' : 'Search champions, pages and saved players' : 'Jump to a page, or type to search'}</span>
         {recents.length > 0 && <button onClick={() => { save([]); input.current?.focus(); }}>Clear recent</button>}</div>
       <div id="palette-results" role="listbox" aria-label="Search results">
-        {['Recent', 'Pages', 'Champions', 'Players'].map(group => {
+        {['Recent', 'Pages', 'Actions', 'Champions', 'Players'].map(group => {
           const hits = results.map((result, index) => ({ result, index })).filter(({ result }) => result.group === group);
           return hits.length > 0 && <div role="group" aria-label={group} key={group}><h3 aria-hidden="true">{group}</h3>
             {hits.map(({ result, index: i }) => {
-              const Icon = result.kind === 'page' ? pageIcons[result.page] ?? DashboardIcon : AccountsIcon;
-              return <div className="palette-option" key={result.kind === 'page' ? result.page : result.kind === 'champion' ? result.champion.id : result.player.riotId} id={`palette-${i}`} role="option" aria-selected={i === active}
+              const Icon = result.kind === 'page' ? pageIcons[result.page] ?? DashboardIcon : result.kind === 'action' ? RefreshIcon : AccountsIcon;
+              return <div className="palette-option" key={result.kind === 'page' ? result.page : result.kind === 'action' ? RESTART_ACTION : result.kind === 'champion' ? result.champion.id : result.player.riotId} id={`palette-${i}`} role="option" aria-selected={i === active}
                 onPointerEnter={() => setActive(i)} onClick={() => pick(result)}>
                 {result.kind === 'champion' ? <><ChampionIcon id={result.champion.id} name={result.champion.name} mode="desktop" /><span>{result.champion.name}</span><small>Build and counters</small></>
+                  : result.kind === 'action' ? <><span className="palette-nav-icon"><Icon size={19} aria-hidden /></span><span>{RESTART_ACTION}</span><small>Restarts Riot Client signed in as you</small></>
                   : result.kind === 'page' ? <><span className="palette-nav-icon"><Icon size={19} aria-hidden /></span><span>{pageLabel(result.page)}</span><small>Page</small></>
                   : <><ProfileIcon player={result.player} /><span className="palette-player-copy">{result.player.riotId}<small>{result.player.lastPlayed && result.player.ally != null ? `${result.player.ally ? 'Played with you' : 'Played against you'} · ${fmtAgo(result.player.lastPlayed)}` : group === 'Recent' ? 'Recent search' : result.player.live ? 'League Client' : 'Saved profile'}</small></span>{result.player.level != null && <small>Level {result.player.level}</small>}</>}
               </div>;
