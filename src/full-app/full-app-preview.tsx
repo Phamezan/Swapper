@@ -142,7 +142,7 @@ mockIPC(async (cmd, args) => {
   // ---- end glass draft fixture ----
   switch (cmd) {
     // ---- locbar: keep the existing version label visible in browser evidence ----
-    case 'plugin:app|version': return '1.0.2';
+    case 'plugin:app|version': return '1.0.3';
     // ---- end locbar version fixture ----
     // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
     case 'full_app_search_players': {
