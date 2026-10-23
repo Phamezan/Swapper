@@ -60,6 +60,7 @@
 .player-rank-progress meter::-moz-meter-bar { background: var(--ui-brand-gradient); border-radius: 8px; }
 .player-rank-record { margin-bottom: 8px; font-size: 14px; }
 .player-rank-record > b { color: var(--ui-text-1); }
+.player-record-source { display: block; margin-bottom: 8px; font-size: 12px; color: var(--ui-text-3); cursor: help; }
 .player-record-unavailable { margin: 8px 0 0; font-size: 14px; color: var(--ui-text-2); }
 .player-record-bar { height: 4px; overflow: hidden; border-radius: 8px; background: color-mix(in srgb, var(--ui-loss) 55%, transparent); }
 .player-record-bar i { display: block; height: 100%; background: var(--ui-win); border-radius: inherit; }

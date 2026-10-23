@@ -161,6 +161,10 @@ pub fn rank(value: &Value) -> Option<Rank> {
 /// Wins at which an all-win season stops being believable.
 const ZERO_LOSS_WIN_LIMIT: u64 = 10;
 
+pub fn record_plausible(wins: u64, losses: u64) -> bool {
+    losses > 0 || wins < ZERO_LOSS_WIN_LIMIT
+}
+
 pub fn rank_with_record(value: &Value) -> Option<(Rank, bool)> {
     let queue = value["queueMap"]["RANKED_SOLO_5x5"]
         .as_object()
@@ -178,7 +182,7 @@ pub fn rank_with_record(value: &Value) -> Option<(Rank, bool)> {
     // The client sometimes reports 0 losses for other players; a season of many wins and no loss
     // is that gap, not a real record, so it is treated as unavailable rather than shown as 100%.
     let record_available = match (queue["wins"].as_u64(), queue["losses"].as_u64()) {
-        (Some(wins), Some(losses)) => losses > 0 || wins < ZERO_LOSS_WIN_LIMIT,
+        (Some(wins), Some(losses)) => record_plausible(wins, losses),
         _ => false,
     };
     Some((

@@ -571,6 +571,18 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelector('.role-strip [title=\"Top: 7W 3L\"] b').textContent"), '70%');
   });
   // ---- end profile2 missing data checks ----
+  // ---- record: u.gg season-record fallback (mock resolves it) ----
+  await check('Player record from the u.gg fallback shows a source label', async () => {
+    await navigate(fullApp + '?profile-ugg-record', '.match-row');
+    await page.click('.title-search');
+    await page.type(searchInput, 'Player 1#DEMO');
+    await key('Enter');
+    await page.visible('.player-games .match-row');
+    await page.text('.player-ranks', 'win rate');
+    await page.text('.player-record-source', 'via u.gg');
+    assert.equal(await page.evaluate("document.querySelector('.player-record-source').title"), "Your League Client didn't return this player's season record.");
+  });
+  // ---- end record checks ----
 
   await check('Player partial data keeps games and offers retry', async () => {
     await navigate(`${fullApp}?search-partial`, '.match-row');

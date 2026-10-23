@@ -150,7 +150,7 @@ mockIPC(async (cmd, args) => {
       const riotId = String(a.riotId);
       return { region: live ? 'EUW' : null, player: { riotId, icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: live ? 184 : null, ally: true, lastPlayed: games[0]?.createdAt ?? null },
         // ---- profile2: honest rank records and cached participant portraits ----
-        solo: live ? { ...rank('EMERALD', 'II'), recordAvailable: !params.has('profile-no-record') } : null, flex: null,
+        solo: live ? { ...rank('EMERALD', 'II'), recordAvailable: !params.has('profile-no-record'), ...(params.has('profile-ugg-record') && { recordSource: 'ugg' }) } : null, flex: null,
         profileIcons: Object.fromEntries(games.flatMap(g => g.players.map(p => [p.riotId.toLowerCase(), `${DD}/${VERSION}/img/profileicon/${p.profileIcon}.png`]))),
         // ---- end profile2 rank and portraits ----
         games: (riotId === 'Demo Player#TEST' ? games : games.map(g => profileGame(g, riotId)).filter((g): g is NonNullable<typeof g> => g !== null))

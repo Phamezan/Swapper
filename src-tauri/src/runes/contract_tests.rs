@@ -378,3 +378,20 @@ async fn canary_opgg() {
         .expect("op.gg champion data");
     assert!(!data.rune_pages.is_empty() && !data.summoner_spells.is_empty());
 }
+
+#[tokio::test]
+#[ignore = "network: live u.gg fetchProfileRanks (unknown player, no real Riot ID sent)"]
+async fn canary_ugg_profile_ranks() {
+    // An unknown player is a valid empty answer; that proves the query name,
+    // variables and field set are still accepted by the live schema.
+    let text = reqwest::Client::new()
+        .post(probuilds::ENDPOINT)
+        .json(&ugg_record::body("zzqx", "0000", "euw1"))
+        .send()
+        .await
+        .expect("u.gg reachable")
+        .text()
+        .await
+        .unwrap();
+    assert_eq!(ugg_record::parse(&text).expect("profile ranks shape"), vec![]);
+}
