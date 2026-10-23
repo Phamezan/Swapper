@@ -9,6 +9,7 @@ import type { ChampionOption } from "../runes/types";
 import type { DashboardView, Game } from "./types";
 import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
+import { locationTrail } from './locationTrail';
 import { useInGame } from "./LiveGameData";
 import { LIVE_PAGE, enterLive, leaveLive, showInNav } from "./LiveGameModel";
 import FlyoutApp from "../App";
@@ -63,7 +64,8 @@ function App() {
   const [appView, setAppView] = useState<View>("accounts");
   const [request, setRequest] = useState<FullAppBridge["request"]>(null);
   const [inChampSelect, setInChampSelect] = useState(false);
-  const [focus, setFocus] = useState<{ champion: ChampionOption } | null>(null);
+  const [focus, setFocus] = useState<{ champion: ChampionOption | null } | null>(null);
+  const [locationChampion, setLocationChampion] = useState<ChampionOption | null>(null);
   const current: Location = page === "app" ? appPageOf(appView) : page;
   const currentRef = useRef(current);
   currentRef.current = current;
@@ -225,6 +227,9 @@ function App() {
   restartFn.current = () => void restartClient();
   return <LookContext.Provider value={lookControl}><AmbientArtContext.Provider value={publishAmbient}><div className="fa-frame" data-look={look} style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
+      trail={locationTrail(current, { champion: locationChampion?.name, matchPlayer, match: selectedMatch ? {
+        champion: snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? 'Match', win: selectedMatch.win,
+      } : null })} onPickLocation={target => { setFocus({ champion: null }); go(target as Location); }}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} snapshot={snapshot}
       onPickPlayer={riotId => go(`Player:${riotId}`)} onRestart={() => void restartClient()} />
@@ -253,7 +258,7 @@ function App() {
       <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       {page !== "app" && <main className="dashboard-main dash-scope">
-        {selectedMatch ? <PageHeader crumbs={[{ label: matchPlayer ? 'Player profile' : "Dashboard", onClick: () => matchPlayer ? travel(-1) : go("Dashboard") }]}
+        {selectedMatch ? <PageHeader
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
           : <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
@@ -270,7 +275,7 @@ function App() {
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
-              <Champions key={page} matchups={page === "Matchups"} focus={page === "Matchups" ? null : focus} />
+              <Champions key={page} matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion ? null : focus} onSelectionChange={setLocationChampion} />
             </Suspense>}
       </main>}
     </div>

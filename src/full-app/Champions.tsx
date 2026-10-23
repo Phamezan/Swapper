@@ -31,7 +31,7 @@ const ROW_STEP = 40;
 type SortKey = "rank" | "winPct" | "pickPct" | "banPct" | "games";
 const columns: [SortKey | null, string][] = [["rank", "Rank"], [null, "Champion"], [null, "Role"], [null, "Tier"], ["winPct", "Win rate"], ["pickPct", "Pick rate"], ["banPct", "Ban rate"], ["games", "Games"]];
 
-export default function Champions({ matchups, focus }: { matchups: boolean; focus?: { champion: ChampionOption } | null }) {
+export default function Champions({ matchups, focus, onSelectionChange }: { matchups: boolean; focus?: { champion: ChampionOption | null } | null; onSelectionChange: (champion: ChampionOption | null) => void }) {
   // The list's role filter; "auto" lists every champion at its main role.
   const [lane, setLane] = useState("auto");
   // The opened champion's role: the filter's, or its main role under Auto.
@@ -43,6 +43,8 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
   const [list, setList] = useState<TierListView | null>(null);
   const [champions, setChampions] = useState<ChampionOption[]>([]);
   const [selected, setSelected] = useState<ChampionOption | null>(null);
+  useEffect(() => { onSelectionChange(selected); }, [selected, onSelectionChange]);
+  useEffect(() => () => onSelectionChange(null), [onSelectionChange]);
   useAmbientChampion('champion', selected?.id);
   const [enemy, setEnemy] = useState(0);
   const [detail, setDetail] = useState<MatchupView | null>(null);

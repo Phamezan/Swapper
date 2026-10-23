@@ -57,6 +57,11 @@ function game(i: number) {
 const params = new URLSearchParams(location.search);
 // --- uidash states: ?empty (no games at all), ?no-solo (only Normal games), ?stale (saved snapshot), ?slow (snapshot takes 6 s) ---
 const games = params.has("empty") ? [] : Array.from({ length: 12 }, (_, i) => game(i)).map(g => params.has("no-solo") ? { ...g, queue: "normal", lpChange: null } : g);
+// ---- locbar: deliberately oversized invented ID to exercise middle-segment truncation ----
+if (params.has('locbar-long')) for (const game of games) for (const player of game.players) {
+  if (player.riotId === 'Player 1#DEMO') player.riotId = 'A very long invented player name for checking the location bar#DEMO';
+}
+// ---- end locbar long trail fixture ----
 const lpHistory = [[1, 2, 40, 70, 60], [1, 2, 62, 71, 60], [1, 2, 44, 71, 61], [1, 2, 71, 72, 61], [1, 1, 20, 73, 61], [1, 1, 41, 74, 61], [1, 1, 23, 74, 62], [1, 2, 64, 75, 62]]
   .map(([, , lp, wins, losses], i) => ({ at: now - (8 - i) * 36e5, tier: "EMERALD", division: "II", lp, wins, losses }));
 const summary = { metrics: [], roles: ROLES.map((role, i) => ({ role, wins: i === 0 ? 7 : i === 2 ? 1 : 0, games: i === 0 ? 10 : i === 2 ? 2 : 0 })),
@@ -131,6 +136,9 @@ mockIPC(async (cmd, args) => {
   }
   // ---- end glass draft fixture ----
   switch (cmd) {
+    // ---- locbar: keep the existing version label visible in browser evidence ----
+    case 'plugin:app|version': return '1.0.0';
+    // ---- end locbar version fixture ----
     // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
     case 'full_app_search_players': {
       const connected = !params.has('stale') && !params.has('disconnected');

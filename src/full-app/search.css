@@ -1,8 +1,18 @@
-.fa-frame .palette { max-height: min(640px, calc(100vh - 110px)); }
+.fa-frame .title-bar { z-index: 55; }
+/* A backdrop root on the header would prevent the dropdown from frosting the page. */
+.fa-frame .title-bar:has(.is-searching) { -webkit-backdrop-filter: none; backdrop-filter: none; }
+.location-search { height: 100%; }
+.location-search .palette-input { display: flex; align-items: center; gap: 9px; height: 100%; padding: 0 12px; color: var(--ui-text-3); }
+.fa-frame .location-search .palette-input input, .fa-frame .location-search .palette-input input:focus { flex: 1; min-width: 0; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 0; outline: none; box-shadow: none; background: transparent; color: var(--ui-text-1); font: inherit; font-size: var(--ui-label); }
+.fa-frame .location-search .palette { position: absolute; top: calc(100% + 8px); left: -1px; width: calc(100% + 2px); max-height: min(640px, calc(100vh - 62px)); display: flex; flex-direction: column; overflow: hidden; padding-top: 10px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-popover); backdrop-filter: var(--ui-blur); box-shadow: var(--ui-elev-3); color: var(--ui-text-1); }
+.location-search, .location-trail { animation: location-appear var(--ui-fast) var(--ui-ease); }
+@keyframes location-appear { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .title-location { transition: none; }
+  .location-search, .location-trail { animation: none; }
+  .location-refresh .spin { animation: none; }
+}
 .search-profile-icon { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; object-fit: cover; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-well); color: var(--ui-text-3); }
-.palette .palette-input { flex-shrink: 0; margin: 10px; padding: 0 12px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); }
-.palette .palette-input:focus-within { border-color: var(--ui-brand); box-shadow: 0 0 0 2px var(--ui-brand-tint); }
-.fa-frame .palette .palette-input input, .fa-frame .palette .palette-input input:focus { min-width: 0; height: 42px; padding: 0; border: 0; border-radius: 0; outline: none; box-shadow: none; background: transparent; font-size: 14px; }
 .palette-hint { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0 16px 8px; font-size: 12px; color: var(--ui-text-3); }
 .palette-hint button { border: 0; background: transparent; color: var(--ui-text-2); font: inherit; cursor: pointer; padding: 4px; }
 #palette-results { overflow-y: auto; padding: 0 7px 7px; }
