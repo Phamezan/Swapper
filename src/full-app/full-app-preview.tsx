@@ -253,7 +253,8 @@ mockIPC(async (cmd, args) => {
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     // --- clientctl preview block: restart client / Deceive restart (?restart=ask|defer|save|restart) ---
     case "save_settings": return state;
-    case "client_health": return new URLSearchParams(location.search).get("client") ?? "ok"; // ?client=hung|dead
+    case "client_health": return new URLSearchParams(location.search).get("client") ?? "ok"; // ?client=hung|dead|closed
+    case "riot_client_icon": return null; // PLAY falls back to its own icon; Swapper ships no Riot artwork.
     case "restart_plan": return new URLSearchParams(location.search).get("restart") ?? "restart";
     case "switch_account": {
       const account = state.accounts.find(x => x.id === a.id);

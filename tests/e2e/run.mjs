@@ -770,6 +770,9 @@ async function main() {
       await page.text('.restart-dialog h2', 'Restart during champion select?');
       await page.click('.restart-dialog button', 'Cancel');
     }
+    await navigate(`${fullApp}?client=closed`, ".sidebar-play");
+    await page.text('.sidebar-play', 'Play');
+    assert.equal(await page.evaluate("document.querySelector('.podium-status') === null"), true);
     // Hidden while Swapper is switching.
     await navigate(`${fullApp}?client=hung&switching`, ".switch-overlay");
     assert.equal(await page.evaluate("document.querySelector('.podium-status') === null"), true);

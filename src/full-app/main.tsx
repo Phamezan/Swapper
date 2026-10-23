@@ -3,8 +3,9 @@ import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Popover } from "radix-ui";
 import { listen } from "@tauri-apps/api/event";
-import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
+import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
+import { useRiotClientIcon } from "../riotIcon";
 import type { ChampionOption } from "../runes/types";
 import type { DashboardView, Game } from "./types";
 import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
@@ -136,8 +137,11 @@ function App() {
   // The switch flow reports no stages, only started / done / failed.
   const [switching, setSwitching] = useState<{ id: string; name: string; restart: boolean } | null>(null);
   const activeIdRef = useRef<string | null>(null);
-  // Backend watch: League Client runs but its API or window stopped answering.
-  const [clientStuck, setClientStuck] = useState(false);
+  // Backend watch: League Client is closed, or runs but its API or window stopped answering.
+  const [clientHealth, setClientHealth] = useState("ok");
+  const riotIcon = useRiotClientIcon();
+  const clientClosed = useRef(false);
+  clientClosed.current = clientHealth === "closed";
   const fetching = useRef(false);
   const mounted = useRef(false);
   const queued = useRef(false);
@@ -167,12 +171,12 @@ function App() {
     const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => setPage(payload === "live" ? LIVE_PAGE : "app")) : Promise.resolve(() => {});
     const switches = isTauri() ? Promise.all([
       // Switching onto the signed-in account is a client restart.
-      listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching({ ...payload, restart: payload.id === activeIdRef.current }); }),
+      listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching({ ...payload, restart: payload.id === activeIdRef.current && !clientClosed.current }); }),
       listen("switch_done", () => { setSwitching(null); void refresh(); }),
       listen("switch_failed", () => setSwitching(null)),
     ]) : Promise.resolve([]);
-    const health = isTauri() ? listen<string>("client_health", ({ payload }) => setClientStuck(payload !== "ok")) : Promise.resolve(() => {});
-    if (isTauri()) void invoke<string>("client_health").then(state => { if (mounted.current) setClientStuck(state !== "ok"); }).catch(() => {});
+    const health = isTauri() ? listen<string>("client_health", ({ payload }) => setClientHealth(payload)) : Promise.resolve(() => {});
+    if (isTauri()) void invoke<string>("client_health").then(state => { if (mounted.current) setClientHealth(state); }).catch(() => {});
     if (isTauri()) void invoke<ChampionOption[]>("get_champion_list").then(list => { if (mounted.current) setChampions(list); }).catch(() => {});
     if (isTauri()) void invoke<string | null>("get_current_patch").then(p => { if (mounted.current) setPatch(p); }).catch(() => {});
     void refresh();
@@ -231,8 +235,8 @@ function App() {
       <aside className="sidebar dash-scope">
         <Popover.Root open={pickerOpen} onOpenChange={setPickerOpen}>
           <div className="podium-wrap"><Podium who={who} connected={connected} open={pickerOpen} crest={rank ? crestSlug(rank.tier) : null} disabled={Boolean(switching)}
-            trouble={clientStuck && !switching && !inGame} onRestart={() => void restartClient()} onOpenProfile={who.tag ? () => go(`Player:${who.name}#${who.tag}`) : undefined} />
-            {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
+            trouble={(clientHealth === "dead" || clientHealth === "hung") && !switching && !inGame} onRestart={() => void restartClient()} onOpenProfile={who.tag ? () => go(`Player:${who.name}#${who.tag}`) : undefined} />
+            {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)} closed={clientHealth === "closed"}
               onSwitch={switchTo} onRestart={() => { setPickerOpen(false); void restartClient(); }} onManage={() => { setPickerOpen(false); go("Accounts"); }} />}
           </div>
         </Popover.Root>
@@ -245,6 +249,10 @@ function App() {
             </button>)}
           </div>)}
         </nav>
+        {/* The restart flow opens the client when none runs. */}
+        {clientHealth === "closed" && !switching && !inGame && <button type="button" className="sidebar-play" onClick={() => void restartClient()}>
+          {riotIcon ? <img src={riotIcon} alt="" /> : <PlayIcon size={22} aria-hidden />}<span>Play</span>
+        </button>}
       </aside>
       {restartDialog}
       {switching && <SwitchOverlay account={switchingAccount} name={switching.name} restart={switching.restart} />}

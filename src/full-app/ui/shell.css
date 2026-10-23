@@ -137,3 +137,11 @@ button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a
 .switch-bar > i { display: block; width: 38%; height: 100%; border-radius: inherit; background: var(--ui-brand); animation: switch-slide 1.3s var(--ui-ease) infinite; }
 @keyframes switch-slide { from { transform: translateX(-100%); } to { transform: translateX(270%); } }
 @media (prefers-reduced-motion: reduce) { .switch-bar > i { width: 100%; animation: none; opacity: .55; } }
+
+/* ---------- PLAY: League is closed, the sidebar foot opens it (quiet, like the tray's "Add account") ---------- */
+.sidebar-play { flex: none; display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 60px; padding: 0 16px; border: 1px solid var(--ui-line-2); border-radius: 14px; background: transparent; color: var(--ui-text-1); font: inherit; font-size: 22px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+.sidebar-play > img { flex: none; width: 24px; height: 24px; border-radius: 5px; }
+.sidebar-play > svg { flex: none; color: var(--ui-brand); }
+.sidebar-play > svg .ic-duo { fill: currentColor; }
+.sidebar-play:hover { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
+.sidebar-play:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }

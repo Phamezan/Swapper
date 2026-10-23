@@ -60,8 +60,8 @@ export function Podium({ who, connected, open, crest, disabled, trouble, onResta
 }
 
 /** Account rows keep identity and rank together; Popover owns placement and dismissal. */
-export function AccountPicker({ accounts, activeId, activeRank, cards, disabled, onSwitch, onRestart, onManage }: {
-  accounts: Account[]; activeId: string | null; cards: Record<string, AccountCard>; disabled: boolean;
+export function AccountPicker({ accounts, activeId, activeRank, cards, disabled, closed, onSwitch, onRestart, onManage }: {
+  accounts: Account[]; activeId: string | null; cards: Record<string, AccountCard>; disabled: boolean; closed?: boolean;
   activeRank: Snapshot["rank"]; onSwitch: (id: string) => void; onRestart: () => void; onManage: () => void;
 }) {
   const [query, setQuery] = useState("");
@@ -90,7 +90,7 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
             {isCurrent && <span className="picker-check" aria-label="Current account"><CheckIcon size={16} /></span>}
           </button>
           {isCurrent && <button type="button" className="picker-restart" disabled={disabled} onClick={onRestart}><RefreshIcon size={18} aria-hidden />
-            <span><b>Restart client</b></span></button>}</Fragment>;
+            <span><b>{closed ? "Open League" : "Restart client"}</b></span></button>}</Fragment>;
       })}
       {!shown.length && <p className="picker-empty">{accounts.length ? "No matches." : "No saved accounts yet."}</p>}
     </div>

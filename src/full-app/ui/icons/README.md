@@ -30,6 +30,7 @@ Contact sheet (dev only): `/src/full-app/ui/icons/icons-preview.html`.
 | `SearchIcon` | Lens | Title bar search and palette, champion/opponent/picker searches |
 | `BackIcon` / `ForwardIcon` | Chevrons | Title bar history, matchup strip scroll, tray back button |
 | `RefreshIcon` | Arc with half barb | Title bar refresh stats, tray update/try again |
+| `PlayIcon` | Rounded triangle | Sidebar PLAY button (opens League when it is closed) |
 | `CheckIcon` | Apply / saved | Build "Apply all" and applied chips, tray save and active marker |
 | `InfoIcon` | Information | `Notice tone="info"`, tray browser-preview banner |
 | `WarningIcon` | Warning | `Notice tone="warn"`, tray reconnect banner |

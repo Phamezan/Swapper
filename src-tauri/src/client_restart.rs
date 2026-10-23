@@ -57,11 +57,11 @@ fn tray_action(plan: RestartPlan, has_active_account: bool) -> TrayRestart {
         RestartPlan::Ask => {
             TrayRestart::Skip("You're in champion select. Restart from Swapper to confirm.")
         }
-        RestartPlan::Save => TrayRestart::Skip("No Riot client is running."),
-        RestartPlan::Restart if !has_active_account => {
+        RestartPlan::Save | RestartPlan::Restart if !has_active_account => {
             TrayRestart::Skip("Save the signed-in account in Swapper first.")
         }
-        RestartPlan::Restart => TrayRestart::Restart,
+        // Nothing running: the same switch opens the client.
+        RestartPlan::Save | RestartPlan::Restart => TrayRestart::Restart,
     }
 }
 
@@ -117,9 +117,11 @@ mod tests {
     #[test]
     fn tray_restarts_only_when_plainly_safe() {
         assert_eq!(tray_action(RestartPlan::Restart, true), TrayRestart::Restart);
-        for unsafe_plan in [RestartPlan::Defer, RestartPlan::Ask, RestartPlan::Save] {
+        assert_eq!(tray_action(RestartPlan::Save, true), TrayRestart::Restart);
+        for unsafe_plan in [RestartPlan::Defer, RestartPlan::Ask] {
             assert!(matches!(tray_action(unsafe_plan, true), TrayRestart::Skip(_)));
         }
         assert!(matches!(tray_action(RestartPlan::Restart, false), TrayRestart::Skip(_)));
+        assert!(matches!(tray_action(RestartPlan::Save, false), TrayRestart::Skip(_)));
     }
 }

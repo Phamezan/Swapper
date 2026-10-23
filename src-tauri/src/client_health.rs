@@ -1,5 +1,6 @@
 //! Notices a League Client that is running but not answering, so the sidebar can
-//! offer a restart. Never restarts anything itself.
+//! offer a restart, or one that is not running at all, so it can offer to open it.
+//! Never starts or restarts anything itself.
 //!
 //! Two signals only: the LCU API refusing the watcher's polls for a while, and
 //! Windows reporting the client's window as hung. Both are plain reads (a
@@ -27,6 +28,8 @@ pub enum Health {
     Dead,
     /// Windows reports the client window as not responding.
     Hung,
+    /// No League Client is running (and no game).
+    Closed,
 }
 
 impl Health {
@@ -37,6 +40,7 @@ impl Health {
         match code {
             1 => Self::Dead,
             2 => Self::Hung,
+            3 => Self::Closed,
             _ => Self::Ok,
         }
     }
@@ -49,6 +53,8 @@ pub struct Input {
     pub client_age: Option<Duration>,
     pub api_ok: bool,
     pub window_hung: bool,
+    /// No LeagueClientUx process at all.
+    pub closed: bool,
     /// A game is running or Swapper itself is switching: never offer then.
     pub suppressed: bool,
 }
@@ -63,7 +69,7 @@ impl Tracker {
     pub fn step(&mut self, now: Instant, input: Input) -> Health {
         let Some(age) = input.client_age.filter(|_| !input.suppressed) else {
             *self = Self::default();
-            return Health::Ok;
+            return if input.closed && !input.suppressed { Health::Closed } else { Health::Ok };
         };
         // Failures inside the startup grace do not count towards the dead window.
         self.api_failing_since = if input.api_ok || age < STARTUP_GRACE {
@@ -102,11 +108,15 @@ pub(crate) fn client_health() -> Health {
 
 fn sample(app: &tauri::AppHandle) -> Input {
     use tauri::Manager;
+    let switching = app
+        .try_state::<crate::AppState>()
+        .is_some_and(|state| state.switch_guard.is_switching());
     let none = Input {
         client_age: None,
         api_ok: true,
         window_hung: false,
-        suppressed: false,
+        closed: false,
+        suppressed: switching,
     };
     let Ok(clients) =
         crate::windows::process::matching(&["LeagueClientUx.exe", "LeagueClientUxRender.exe"])
@@ -117,19 +127,22 @@ fn sample(app: &tauri::AppHandle) -> Input {
         .iter()
         .find(|p| p.image.eq_ignore_ascii_case("LeagueClientUx.exe"))
     else {
-        return none;
+        return Input {
+            closed: true,
+            suppressed: switching || crate::riot::ensure_no_game().is_err(),
+            ..none
+        };
     };
+    // Starting up: the process is there but the API is not yet.
     if !crate::lcu::lockfile_present() {
         return none;
     }
     let pids: Vec<u32> = clients.iter().map(|p| p.pid).collect();
-    let switching = app
-        .try_state::<crate::AppState>()
-        .is_some_and(|state| state.switch_guard.is_switching());
     Input {
         client_age: crate::windows::process::process_age(ux.pid),
         api_ok: API_OK.load(Ordering::Relaxed),
         window_hung: crate::windows::process::has_hung_window(&pids),
+        closed: false,
         suppressed: switching || crate::riot::ensure_no_game().is_err(),
     }
 }
@@ -172,6 +185,7 @@ mod tests {
             client_age: Some(S * age as u32),
             api_ok,
             window_hung,
+            closed: false,
             suppressed: false,
         }
     }
@@ -254,5 +268,19 @@ mod tests {
             ..up(0, false, true)
         };
         assert_eq!(run(&[(0, gone), (100, gone)]), [Health::Ok, Health::Ok]);
+    }
+
+    #[test]
+    fn closed_client_is_offered_unless_in_a_game_or_switching() {
+        let closed = Input {
+            client_age: None,
+            closed: true,
+            ..up(0, true, false)
+        };
+        let busy = Input {
+            suppressed: true,
+            ..closed
+        };
+        assert_eq!(run(&[(0, closed), (5, busy)]), [Health::Closed, Health::Ok]);
     }
 }

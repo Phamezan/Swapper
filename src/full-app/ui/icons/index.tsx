@@ -77,6 +77,11 @@ export const RefreshIcon = (p: IconProps) => <Icon {...p}>
   <path d="M19.5 12A7.5 7.5 0 1 1 17 6.4L19.5 9M19.5 4.5V9H15" />
 </Icon>;
 
+/** Rounded play triangle. */
+export const PlayIcon = (p: IconProps) => <Icon {...p}>
+  <path className="ic-duo" d="M8 5.6v12.8a1.5 1.5 0 0 0 2.3 1.27l10-6.4a1.5 1.5 0 0 0 0-2.54l-10-6.4A1.5 1.5 0 0 0 8 5.6Z" />
+</Icon>;
+
 export const CheckIcon = (p: IconProps) => <Icon {...p}><path d="M5 12.5 9.5 17 19 7.5" /></Icon>;
 
 /* Status (banners and notices) */
