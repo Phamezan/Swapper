@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { crestSlug, enterLive, kda, leaveLive, pct, showInNav, roleOf, splitRiotId } from "./LiveGameModel.ts";
+import { crestSlug, enterLive, hasRecord, kda, leaveLive, pct, showInNav, roleOf, splitRiotId } from "./LiveGameModel.ts";
 
 test("a game start switches to Live Game and remembers the page", () => {
   assert.deepEqual(enterLive("Matchups", null, null), { page: "Live Game", returnTo: "Matchups" });
@@ -36,4 +36,11 @@ test("helpers", () => {
   assert.deepEqual(splitRiotId("A#B#EUW"), ["A#B", "#EUW"]);
   assert.equal(roleOf("UTILITY"), "support");
   assert.equal(roleOf(""), "");
+});
+
+test("a season with many wins and no recorded loss is the client's missing-losses gap", () => {
+  const rank = (wins, losses) => ({ tier: "EMERALD", division: "II", lp: 48, wins, losses });
+  assert.equal(hasRecord(rank(265, 0)), false);
+  assert.equal(hasRecord(rank(103, 83)), true);
+  assert.equal(hasRecord(rank(6, 0)), true);
 });

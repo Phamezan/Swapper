@@ -14,6 +14,7 @@ import { RoleIcon } from "../runes/RoleIcon";
 import { TIER_OPTIONS, fmtPct, tierClass } from "../runes/types";
 import type { ChampionOption, ChampionOverviewView, ChampionCountersView, TierListView, TierRow, MatchupView } from "../runes/types";
 import { useChampionArt } from "./art";
+import { useAmbientChampion } from './AmbientArt';
 import { autoRows, championPool, mainRoles, mostPlayed, ROLES, type AutoRow } from "./championsModel";
 import type { DashboardView } from "./types";
 import { Notice, Skeleton } from "./ui/States";
@@ -42,6 +43,7 @@ export default function Champions({ matchups, focus }: { matchups: boolean; focu
   const [list, setList] = useState<TierListView | null>(null);
   const [champions, setChampions] = useState<ChampionOption[]>([]);
   const [selected, setSelected] = useState<ChampionOption | null>(null);
+  useAmbientChampion('champion', selected?.id);
   const [enemy, setEnemy] = useState(0);
   const [detail, setDetail] = useState<MatchupView | null>(null);
   const [overview, setOverview] = useState<ChampionOverviewView | null>(null);

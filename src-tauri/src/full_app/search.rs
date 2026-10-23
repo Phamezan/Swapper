@@ -730,9 +730,14 @@ mod tests {
             assert_eq!(rank.rank.lp, 41);
             assert!(!rank.record_available);
         }
-        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"GOLD","wins":12,"losses":0}]})).unwrap();
+        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"GOLD","wins":6,"losses":0}]})).unwrap();
         assert!(rank.record_available);
         assert_eq!(rank.rank.losses, 0);
+        // A long season with no recorded loss is the client's missing-losses gap (seen as 265W 0L).
+        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"EMERALD","wins":265,"losses":0}]})).unwrap();
+        assert!(!rank.record_available);
+        let rank = profile_rank(&json!({"queues":[{"queueType":"RANKED_SOLO_5x5","tier":"MASTER","wins":103,"losses":83}]})).unwrap();
+        assert!(rank.record_available);
     }
 
     #[test]

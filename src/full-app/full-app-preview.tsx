@@ -124,6 +124,12 @@ const runePage = (primaryPageId: number, keystone: number, primaryRunes: number[
 mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
+  // ---- glass: exercise contextual draft art inside the real shell (?glass-draft) ----
+  if (shellState.has('glass-draft') && (cmd === 'get_runes' || cmd === 'full_app_draft')) {
+    const { fixtureView, fixtureDraft } = await import('./champ-select-fixtures');
+    return cmd === 'get_runes' ? fixtureView('locked') : fixtureDraft('locked');
+  }
+  // ---- end glass draft fixture ----
   switch (cmd) {
     // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
     case 'full_app_search_players': {
@@ -191,13 +197,21 @@ mockIPC(async (cmd, args) => {
       ? "https://raw.communitydragon.org/latest/game/assets/ux/minimap/icons/grub.png"
       : `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-match-history/global/default/${a.name}.png`;
     // ---- end matchdetail cases ----
-    case "rank_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/${a.tier}.svg`;
+    // ---- glass: normalize the preview bracket just like the backend (no *_plus asset exists) ----
+    case "rank_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/${String(a.tier).replace(/_plus$/, '').replace(/^all$/, 'unranked')}.svg`;
+    // ---- end glass rank fixture ----
     case "rune_icon": await runeReady; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("Preview rune icon unavailable");
     case "dashboard_benchmarks": return Object.fromEntries((a.picks as [number, string][]).map(([id, role]) => [`${id}|${role}`, { kills: 5, deaths: 5, assists: 6, damage: 21000, gold: 11000, cs: 185, games: 9000 }]));
     case "get_current_patch": return "16.21";
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
     case "champion_icon": return `${DD}/${VERSION}/img/champion/${key(a.id)}.png`;
     // The app's tiles are the client's 380 px splash tiles; Data Dragon's are the same crops.
+    // ---- glass: neutral client artwork (preview only; same allow-list as Rust) ----
+    case 'ambient_background':
+      if (a.name !== 'client') throw new Error('Unknown ambient background.');
+      if (shellState.has('art-offline')) throw new Error('Preview artwork offline.');
+      return 'https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/day1-background.jpg';
+    // ---- end glass ----
     case "champion_art": return `${DD}/img/champion/${a.kind === "splash" ? "splash" : a.kind === "loading" ? "loading" : "tiles"}/${key(a.id)}_0.jpg`;
     case "item_icon": return `${DD}/${VERSION}/img/item/${a.id}.png`;
     case "spell_icon": return `${DD}/${VERSION}/img/spell/${({ 4: "SummonerFlash", 12: "SummonerTeleport", 11: "SummonerSmite", 14: "SummonerDot" } as Record<number, string>)[a.id] ?? "SummonerFlash"}.png`;

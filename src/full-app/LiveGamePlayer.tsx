@@ -6,7 +6,7 @@ import { RoleIcon } from "../runes/RoleIcon";
 import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
 import { CooldownSheet } from "./CooldownSheet";
-import { clock, crestSlug, kda, pct, rankLabel, splitRiotId, type Player, type Rank } from "./LiveGameModel";
+import { clock, crestSlug, hasRecord, kda, pct, rankLabel, splitRiotId, type Player, type Rank } from "./LiveGameModel";
 
 const queueNames: Record<string, string> = { solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
 
@@ -63,14 +63,14 @@ export function LiveGamePlayer({ player: p, championNames, enemy, onClose }: {
 }
 
 function RankCard({ label, rank }: { label: string; rank: Rank | null }) {
-  const games = rank ? rank.wins + rank.losses : 0;
+  const games = rank && hasRecord(rank) ? rank.wins + rank.losses : 0;
   return <section className={`lg-rank-card${rank ? "" : " is-unranked"}`}>
     <RankCrest tier={crestSlug(rank?.tier)} size={44} mode="desktop" />
     <div>
       <small>{label}</small>
       <strong>{rankLabel(rank)}</strong>
-      {rank && <p><b>{rank.lp} LP</b> {rank.wins}W {rank.losses}L · {pct(rank.wins, games)}%</p>}
+      {rank && <p><b>{rank.lp} LP</b>{games > 0 && <> {rank.wins}W {rank.losses}L · {pct(rank.wins, games)}%</>}</p>}
     </div>
-    {rank && <i style={{ "--rate": `${pct(rank.wins, games)}%` } as CSSProperties} aria-hidden />}
+    {rank && games > 0 && <i style={{ "--rate": `${pct(rank.wins, games)}%` } as CSSProperties} aria-hidden />}
   </section>;
 }

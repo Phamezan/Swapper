@@ -150,18 +150,6 @@ body { margin: 0; background: var(--ui-surface-0); }
 .wl-strip > span.is-loss img { filter: grayscale(.6) brightness(.8); }
 :where(.dash-scope) .wl-strip .champion-icon, :where(.dash-scope) .wl-strip .champion-icon-fallback { width: 24px; height: 24px; border-radius: 7px; }
 .wl-strip small { margin-left: 8px; font-size: 12px; color: var(--text-secondary); }
-/* Insights: a topic and its two sides, each side's win rate large. */
-:where(.dash-scope) .insights { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
-.insight { display: grid; gap: 12px; padding: 14px 16px 15px; border: 1px solid var(--fa-line-2); border-radius: 11px; background: linear-gradient(180deg, var(--fa-raised, #28282e), var(--fa-panel-2) 70%); }
-:where(.dash-scope) .insight-topic { display: flex; align-items: baseline; justify-content: space-between; color: var(--text-primary); font-size: 13px; font-weight: 650; }
-:where(.dash-scope) .insight-topic small { color: var(--text-muted); font-size: 11px; font-weight: 500; }
-.insight-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.insight-side { min-width: 0; display: grid; gap: 4px; }
-.insight-side > span { color: var(--text-secondary); font-size: 12px; font-weight: 600; overflow-wrap: anywhere; }
-.insight-side b { font-size: 34px; font-weight: 750; letter-spacing: -.035em; line-height: 1; }
-.insight-side b i { font-style: normal; font-size: 18px; margin-left: 1px; }
-:where(.dash-scope) .insight-side small { color: var(--text-muted); font-size: 11.5px; }
-.insight-meter { width: 100%; height: 4px; margin-top: 4px; border-radius: 99px; background: linear-gradient(90deg, currentColor var(--rate), rgb(255 255 255 / .08) var(--rate)); }
 
 .dash-columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; align-items: start; }
 @media (min-width: 1760px) { .dash-columns { grid-template-columns: minmax(0, 1fr) 330px; } }
@@ -347,12 +335,6 @@ body { margin: 0; background: var(--ui-surface-0); }
   .fa-frame .dash-v2 .match-row { gap: 8px; padding-right: 10px; }
   .fa-frame .dash-v2 .match-items .ui-slot { --slot: 22px; }
 }
-
-/* Insights sit under the matches, flat like the stat row. */
-.fa-frame .dash-v2 .insights { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--ui-line-1); }
-.fa-frame .dash-v2 .insight { gap: 10px; padding: 16px 24px 4px; border: 0; border-left: 1px solid var(--ui-line-1); border-radius: 0; background: none; box-shadow: none; }
-.fa-frame .dash-v2 .insight:first-child { padding-left: 0; border-left: 0; }
-@media (max-width: 1240px) { .fa-frame .dash-v2 .insights { grid-template-columns: minmax(0, 1fr); } .fa-frame .dash-v2 .insight { padding-left: 0; border-left: 0; } }
 
 /* Champions: stacked under the matches below 1760px, so the list spreads into columns. */
 .fa-frame .dash-v2 .champ-perf { grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 2px 16px; }

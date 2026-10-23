@@ -1,13 +1,10 @@
-// Pure Dashboard logic: queue default, the five comparison tiles and the
-// insight lines. Kept free of React so node:test can cover it.
+// Pure Dashboard logic: queue default and the five comparison tiles.
+// Kept free of React so node:test can cover it.
 import { fmtCompact } from "./ui/format.ts";
 import type { Bench, Game, LpPoint, Player, Snapshot } from "./types";
 
 /** Fewer comparable games than this and a tile shows only the user's value. */
 export const MIN_COMPARED = 4;
-const MIN_GROUP = 4;
-const MIN_GAP = 20;
-const MIN_KP_GAP = 15;
 
 export const benchKey = (game: Game) => `${game.championId}|${game.role}`;
 
@@ -96,48 +93,6 @@ export function tiles(games: Game[], benches: Record<string, Bench>, tierLabel: 
 
 export function formatStat(value: number, digits: number, unit = "") {
   return `${value.toLocaleString("en-US", { minimumFractionDigits: digits, maximumFractionDigits: digits })}${unit}`;
-}
-
-type Split = { yes: Game[]; no: Game[] };
-/** Wins, games and rounded win rate of one side of a pattern. */
-export type WinRecord = { wins: number; games: number; rate: number };
-/** A win-rate pattern: how often you win when `condition` holds, and when `other` does. */
-export type Insight = { topic: string; condition: string; other: string; yes: WinRecord; no: WinRecord; gap: number };
-const record = (games: Game[]): WinRecord => {
-  const wins = games.filter(g => g.win).length;
-  return { wins, games: games.length, rate: Math.round(100 * wins / games.length) };
-};
-
-/** Up to three factual win-rate patterns, strongest first. A pattern needs
- *  four games on each side and a 20-point gap (15 for kill participation). */
-export function insights(games: Game[], championName: (id: number) => string): Insight[] {
-  const found: Insight[] = [];
-  const consider = (split: Split, minGap: number, topic: string, condition: string, other: string) => {
-    if (split.yes.length < MIN_GROUP || split.no.length < MIN_GROUP) return;
-    const [yes, no] = [record(split.yes), record(split.no)];
-    const gap = Math.abs(yes.rate - no.rate);
-    if (gap >= minGap) found.push({ topic, condition, other, yes, no, gap });
-  };
-  const split = (test: (g: Game) => boolean | null): Split => {
-    const known = games.filter(g => test(g) !== null);
-    return { yes: known.filter(g => test(g)), no: known.filter(g => !test(g)) };
-  };
-  consider(split(g => g.deaths <= 5), MIN_GAP, "Deaths", "5 or fewer", "6 or more");
-  consider(split(g => {
-    const p = me(g), o = opponent(g);
-    return p && o ? p.cs > o.cs : null;
-  }), MIN_GAP, "CS vs lane opponent", "Ahead", "Behind");
-  consider(split(g => {
-    const p = me(g), kp = p ? teamShare(g, p, "kp") : null;
-    return kp == null ? null : kp >= 50;
-  }), MIN_KP_GAP, "Kill participation", "50% or more", "Under 50%");
-  const byChampion = new Map<number, Game[]>();
-  for (const g of games) byChampion.set(g.championId, [...(byChampion.get(g.championId) ?? []), g]);
-  for (const [id, played] of byChampion) {
-    if (played.length < MIN_GROUP) continue;
-    consider({ yes: played, no: games.filter(g => g.championId !== id) }, MIN_GAP, "Champion", championName(id), "Other champions");
-  }
-  return found.sort((a, b) => b.gap - a.gap).slice(0, 3);
 }
 
 /** How a value compares with its reference: within 5% reads as even. */

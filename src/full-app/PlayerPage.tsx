@@ -9,6 +9,7 @@ import { RankCrest } from '../runes/RankCrest';
 import { ChampionIcon } from '../runes/ChampionIcon';
 import { crestForTier } from './buildLogic';
 import { useChampionArt } from './art';
+import { useAmbientChampion } from './AmbientArt';
 import { fmtAgo } from '../runes/types';
 import type { Game, Snapshot } from './types';
 import { profileGame, profileStats, type PlayerProfile } from './playerModel';
@@ -79,6 +80,7 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
   const games = useMemo(() => [...new Map((profile?.games ?? saved).map(g => [g.id, g])).values()].sort((a, b) => b.createdAt - a.createdAt), [profile, saved]);
   const stats = useMemo(() => profileStats(games, profile?.profileIcons), [games, profile?.profileIcons]);
   const splash = useChampionArt(stats.champions[0]?.id, 'splash');
+  useAmbientChampion('player', stats.champions[0]?.id);
   const secondSplash = useChampionArt(stats.champions[1]?.id, 'splash');
   const thirdSplash = useChampionArt(stats.champions[2]?.id, 'splash');
   const championArt = [splash, secondSplash, thirdSplash];

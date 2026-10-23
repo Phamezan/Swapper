@@ -23,6 +23,9 @@ import { PageHeader } from "./ui/PageHeader";
 import { pageLabel } from "./ui/pageNames";
 import { AccountPicker, Podium, SwitchOverlay, type PodiumIdentity } from "./ui/Podium";
 import { useChampionArt } from "./art";
+import { AmbientArt, AmbientArtContext, useAmbientArt } from './AmbientArt';
+import { contextualChampion, persistLook, readLook, sidebarChampion, type AmbientChampions, type Look } from './lookModel';
+import { LookContext } from './LookPreview';
 import { EmptyState, Notice, Skeleton } from "./ui/States";
 
 const Champions = lazy(() => import("./Champions"));
@@ -44,6 +47,16 @@ const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 
 function App() {
+  const [look, setLook] = useState(() => readLook(location.search, () => localStorage.getItem('swapper.look')));
+  const changeLook = useCallback((next: Look) => {
+    setLook(next);
+    persistLook(next, value => localStorage.setItem('swapper.look', value));
+  }, []);
+  const lookControl = useMemo(() => ({ look, changeLook }), [look, changeLook]);
+  const [ambientIds, setAmbientIds] = useState<AmbientChampions>({ champion: null, player: null, draft: null });
+  const publishAmbient = useCallback((kind: keyof AmbientChampions, id: number | null) => {
+    setAmbientIds(ids => ids[kind] === id ? ids : { ...ids, [kind]: id });
+  }, []);
   const visitedMatches = useRef(new Map<string, Game>());
   const [page, setPage] = useState<Page | "app">("Dashboard");
   const [appView, setAppView] = useState<View>("accounts");
@@ -187,20 +200,25 @@ function App() {
   };
   // Connected = the client reported who is signed in (not saved stats, not an error).
   const connected = Boolean(signedIn) && !error;
-  // The most played champion's splash is the sidebar profile's backdrop only; the canvas has its own neutral ambient.
-  const ambient = useChampionArt(snapshot?.summaries.all?.champions[0]?.id, "splash");
+  // Keep the sidebar's profile art distinct from the contextual canvas when another champion is available.
+  const mainChampion = contextualChampion(look, current, ambientIds, selectedMatch?.championId ?? null);
+  const pageArt = useAmbientArt(look, mainChampion);
+  const profileChampions = snapshot?.summaries.all?.champions;
+  const ambient = useChampionArt(sidebarChampion(profileChampions?.[0]?.id, profileChampions?.[1]?.id, mainChampion), "splash");
   activeIdRef.current = accounts?.activeId ?? null;
   const switchingAccount = switching ? accounts?.accounts.find(account => account.id === switching.id) : undefined;
   const switchTo = (id: string) => { setPickerOpen(false); setPage("app"); setRequest({ view: "accounts", switchId: id }); };
-  return <div className="fa-frame" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
+  return <LookContext.Provider value={lookControl}><AmbientArtContext.Provider value={publishAmbient}><div className="fa-frame" data-look={look} style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} snapshot={snapshot}
       onPickPlayer={riotId => go(`Player:${riotId}`)} />
     <div className="dashboard-shell">
+      <AmbientArt src={pageArt} />
       <aside className="sidebar dash-scope">
         <Popover.Root open={pickerOpen} onOpenChange={setPickerOpen}>
-          <div className="podium-wrap"><Podium who={who} connected={connected} open={pickerOpen} crest={rank ? crestSlug(rank.tier) : null} disabled={Boolean(switching)} />
+          <div className="podium-wrap"><Podium who={who} connected={connected} open={pickerOpen} crest={rank ? crestSlug(rank.tier) : null} disabled={Boolean(switching)}
+            onOpenProfile={who.tag ? () => go(`Player:${who.name}#${who.tag}`) : undefined} />
             {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)}
               onSwitch={switchTo} onManage={() => { setPickerOpen(false); go("Accounts"); }} />}
           </div>
@@ -240,7 +258,7 @@ function App() {
             </Suspense>}
       </main>}
     </div>
-  </div>;
+  </div></AmbientArtContext.Provider></LookContext.Provider>;
 }
 
 function fmtAgoShort(at: number) {

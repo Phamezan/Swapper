@@ -7,7 +7,10 @@
 .fa-frame .profile-podium { position: relative; display: block; width: 100%; padding: 24px 14px 0; color: var(--ui-text-1); text-align: left; }
 .podium-hero { position: absolute; inset: -14px -12px 0; pointer-events: none; background-image: var(--ambient-art); background-size: cover; background-position: center 18%; opacity: .32; mask-image: linear-gradient(180deg, #000, transparent 88%); }
 .podium-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ui-surface-0), transparent 70%); }
-.podium-band { position: relative; display: grid; justify-items: center; gap: 12px; }
+.podium-band { position: relative; display: grid; justify-items: center; gap: 12px; width: 100%; padding: 4px 0; border: 0; border-radius: var(--ui-radius-md); background: none; color: inherit; font: inherit; cursor: pointer; }
+.podium-band:disabled { cursor: default; }
+.podium-band:not(:disabled):hover .podium-copy strong { color: var(--ui-brand); }
+.podium-band:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 .podium-portrait { position: relative; width: 80px; height: 80px; display: grid; place-items: center; border: 2px solid var(--ui-brand); border-radius: var(--ui-radius-lg); background: var(--ui-surface-3); box-shadow: 0 8px 20px rgb(0 0 0 / .25); }
 .podium-portrait > img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
 .podium-level { position: absolute; left: 50%; bottom: -9px; padding: 1px 8px; border: 2px solid var(--ui-surface-2); border-radius: 99px; background: var(--ui-brand); color: var(--ui-brand-ink); font-size: var(--ui-caption); font-weight: 750; line-height: 18px; transform: translateX(-50%); white-space: nowrap; }

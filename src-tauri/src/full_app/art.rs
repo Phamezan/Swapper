@@ -66,6 +66,71 @@ fn read_cached(path: &std::path::Path) -> Option<Vec<u8>> {
     std::fs::read(path).ok().filter(|bytes| is_jpeg(bytes))
 }
 
+const BACKGROUND_URL: &str = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/day1-background.jpg";
+
+fn background_url(name: &str) -> Option<&'static str> {
+    (name == "client").then_some(BACKGROUND_URL)
+}
+
+/// A single allow-listed client background, cached like champion art. No caller
+/// supplied URL or path reaches the network or filesystem.
+#[tauri::command]
+pub async fn ambient_background(name: String) -> Result<String, String> {
+    let url = background_url(&name).ok_or("Unknown ambient background.")?;
+    let path = crate::vault::data_root()?
+        .join("art")
+        .join("background-client-v1.jpg");
+    let cached = {
+        let path = path.clone();
+        tokio::task::spawn_blocking(move || read_cached(&path))
+            .await
+            .unwrap_or(None)
+    };
+    let bytes = match cached {
+        Some(bytes) => bytes,
+        None => {
+            let client = reqwest::Client::builder()
+                .timeout(std::time::Duration::from_secs(4))
+                .redirect(reqwest::redirect::Policy::none())
+                .build()
+                .map_err(|e| e.to_string())?;
+            let mut response = client
+                .get(url)
+                .send()
+                .await
+                .map_err(|e| e.to_string())?
+                .error_for_status()
+                .map_err(|e| e.to_string())?;
+            if response.content_length().is_some_and(|len| len > MAX_BYTES) {
+                return Err("Ambient background is too large.".into());
+            }
+            let mut bytes = Vec::new();
+            while let Some(chunk) = response.chunk().await.map_err(|e| e.to_string())? {
+                if bytes.len() + chunk.len() > MAX_BYTES as usize {
+                    return Err("Ambient background is too large.".into());
+                }
+                bytes.extend_from_slice(&chunk);
+            }
+            if !is_jpeg(&bytes) {
+                return Err("Ambient background is not a JPEG.".into());
+            }
+            let copy = bytes.clone();
+            let _ = tokio::task::spawn_blocking(move || {
+                std::fs::create_dir_all(path.parent()?).ok()?;
+                let pending = path.with_extension("tmp");
+                std::fs::write(&pending, copy).ok()?;
+                std::fs::rename(pending, path).ok()
+            })
+            .await;
+            bytes
+        }
+    };
+    Ok(format!(
+        "data:image/jpeg;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
 /// Art loads come in bursts (a grid of portraits); a few at a time keeps the
 /// League Client's connection limit free for picks and the draft.
 static ART_FETCHES: tokio::sync::Semaphore = tokio::sync::Semaphore::const_new(4);
@@ -125,12 +190,34 @@ mod tests {
     use serde_json::json;
 
     #[test]
+    fn ambient_background_has_a_fixed_allow_list() {
+        assert_eq!(background_url("client"), Some(BACKGROUND_URL));
+        for name in ["", "../client", "https://example.com/a.jpg", "Client"] {
+            assert_eq!(background_url(name), None);
+        }
+    }
+
+    #[tokio::test]
+    async fn unknown_backgrounds_never_touch_disk_or_network() {
+        assert_eq!(
+            ambient_background("../client".into()).await.unwrap_err(),
+            "Unknown ambient background."
+        );
+    }
+
+    #[test]
     fn only_numeric_ids_and_known_kinds_name_files() {
-        assert_eq!(file_name(266, Kind::Splash).as_deref(), Some("splash-266.jpg"));
+        assert_eq!(
+            file_name(266, Kind::Splash).as_deref(),
+            Some("splash-266.jpg")
+        );
         assert_eq!(file_name(0, Kind::Tile), None);
         assert_eq!(file_name(-3, Kind::Tile), None);
         assert_eq!(Kind::parse("tile"), Some(Kind::Tile));
-        assert_eq!(file_name(103, Kind::Loading).as_deref(), Some("loading-103.jpg"));
+        assert_eq!(
+            file_name(103, Kind::Loading).as_deref(),
+            Some("loading-103.jpg")
+        );
         assert_eq!(Kind::parse("../splash"), None);
     }
 
@@ -138,9 +225,21 @@ mod tests {
     fn art_paths_must_stay_inside_game_data_assets() {
         let champion = |path: &str| json!({"skins": [{"splashPath": path, "tilePath": path}]});
         let ok = "/lol-game-data/assets/ASSETS/Characters/Aatrox/Skins/Base/Images/aatrox_splash_centered_0.jpg";
-        assert_eq!(base_skin_path(&champion(ok), Kind::Splash).as_deref(), Some(ok));
-        assert_eq!(base_skin_path(&champion("/lol-summoner/v1/current-summoner"), Kind::Tile), None);
-        assert_eq!(base_skin_path(&champion("/lol-game-data/assets/../../riotclient"), Kind::Tile), None);
+        assert_eq!(
+            base_skin_path(&champion(ok), Kind::Splash).as_deref(),
+            Some(ok)
+        );
+        assert_eq!(
+            base_skin_path(&champion("/lol-summoner/v1/current-summoner"), Kind::Tile),
+            None
+        );
+        assert_eq!(
+            base_skin_path(
+                &champion("/lol-game-data/assets/../../riotclient"),
+                Kind::Tile
+            ),
+            None
+        );
         assert_eq!(base_skin_path(&json!({"skins": []}), Kind::Tile), None);
     }
 

@@ -6,7 +6,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { BrandIcon } from "../components/BrandIcon";
 import { useLiveGame } from "./LiveGameData";
-import { clock, crestSlug, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary } from "./LiveGameModel";
+import { clock, crestSlug, hasRecord, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary } from "./LiveGameModel";
 import { LiveGamePlayer } from "./LiveGamePlayer";
 import { Slot } from "./ui/Slot";
 import "./live-game.css";
@@ -101,7 +101,7 @@ function Row({ player: p, onOpen }: { player: Player; onOpen: () => void }) {
         {loading ? <i className="lg-skel-bar" /> : <>
           <RankCrest tier={crestSlug(p.solo?.tier)} size={26} mode="desktop" />
           <span><strong>{rankLabel(p.solo)}</strong>
-            <small>{p.solo ? `${p.solo.lp} LP · ${p.solo.wins}W ${p.solo.losses}L · ${pct(p.solo.wins, p.solo.wins + p.solo.losses)}%` : p.status === "skipped" ? "–" : "No Solo/Duo rank"}</small></span>
+            <small>{p.solo ? (hasRecord(p.solo) ? `${p.solo.lp} LP · ${p.solo.wins}W ${p.solo.losses}L · ${pct(p.solo.wins, p.solo.wins + p.solo.losses)}%` : `${p.solo.lp} LP`) : p.status === "skipped" ? "–" : "No Solo/Duo rank"}</small></span>
         </>}
       </span>
       <span className="lg-flex">{loading ? <i className="lg-skel-bar" /> : <><strong>{p.flex ? rankLabel(p.flex) : "–"}</strong>{p.flex && <small>{p.flex.lp} LP</small>}</>}</span>

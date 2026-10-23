@@ -18,15 +18,15 @@ export type PodiumIdentity = {
 };
 
 /** Sidebar identity, with a separate account selector anchored at its foot. */
-export function Podium({ who, connected, open, crest, disabled }: {
-  who: PodiumIdentity; connected: boolean; open: boolean; crest: string | null; disabled: boolean;
+export function Podium({ who, connected, open, crest, disabled, onOpenProfile }: {
+  who: PodiumIdentity; connected: boolean; open: boolean; crest: string | null; disabled: boolean; onOpenProfile?: () => void;
 }) {
   const { rank } = who;
   const lp = rank && !apexTiers.has(rank.tier) ? Math.max(0, Math.min(100, rank.lp)) : null;
   const label = `${who.name}${who.tag ? `#${who.tag}` : ""}${rank ? `, ${rankLabel(rank)}, ${rank.lp} LP` : ""}. ${connected ? "League Client connected." : "League Client not connected."}`;
   return <section className="profile-podium" aria-label={label}>
     <span className="podium-hero" aria-hidden />
-    <span className="podium-band">
+    <button type="button" className="podium-band" onClick={onOpenProfile} disabled={!onOpenProfile} title="Open your profile">
       <span className="podium-portrait">
         {who.icon ? <img src={who.icon} alt="" /> : <BrandIcon size={40} />}
         {who.level != null && <span className="podium-level">Lv {who.level}</span>}
@@ -35,7 +35,7 @@ export function Podium({ who, connected, open, crest, disabled }: {
       <span className="podium-copy">
         <strong>{who.name}{who.tag && <span className="podium-tagpart">#{who.tag}</span>}</strong>
       </span>
-    </span>
+    </button>
     <span className="podium-standing">
       <span className="podium-rank">
         {rank && crest && <RankCrest tier={crest} size={40} mode="desktop" />}

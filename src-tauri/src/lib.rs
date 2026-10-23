@@ -295,6 +295,7 @@ pub fn run() {
                 full_app::search::full_app_player_profile,
                 full_app::bench::dashboard_benchmarks,
                 full_app::art::champion_art,
+                full_app::art::ambient_background,
                 full_app::ui_data::full_app_rune_catalog,
                 full_app::ui_data::full_app_draft,
                 full_app::champ_select::full_app_hover_champion,
