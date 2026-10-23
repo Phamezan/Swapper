@@ -18,14 +18,15 @@ A 26-second tour of v0.4 (also as an [MP4 file](docs/media/swapper-v0.4.mp4)). T
 
 **Fullsized App**
 
-- **Dashboard**: your rank and LP progress, today's games, wins and LP, your form over the last games, KDA, CS, damage and kill participation compared with players at your rank, and your recent games. Saved stats stay readable when League Client is closed.
+- **Dashboard**: your rank and LP progress, today's games, wins and LP, your form over the last games, KDA, CS, damage and kill participation compared with players at your rank, your champions and roles, and your recent games, newest first, each with its lane opponent. Saved stats stay readable when League Client is closed.
 - **Match details**: an overview with the facts that decided the game and a team comparison, a scoreboard with each player's rank, every loadout, a full stats table for all ten players, and graphs: the gold difference over time, both teams' objectives and kills on one time axis, and a kill map you can filter by player.
 - **Tier list & Builds**: the strongest champions per role and rank, and for each champion its runes, spells, skill order, item build, pro builds and matchups. Apply runes, spells and the item set to the client in one click. Hover an ability to see its cooldowns, costs and range.
 - **Matchups**: pick your champion and the enemy to see the win rate and the matchup build; your champion pool comes from your mastery.
 - **Champion select (Draft)**: a live view of both teams and bans with pick suggestions, your matchup and the recommended build. The window comes to the front when champion select starts.
-- **Search** (`Ctrl+K`): champions, pages and players. A player's page shows their rank and recent games, read from your League Client.
+- **Search** (`Ctrl+K`): champions, pages, players and actions. A player's profile shows their Solo/Duo rank, their averages with trends, top champions, the players they queue with, their role split and recent games, read from your League Client. Click your own portrait in the sidebar to open your profile. When the client doesn't return a player's season record, Swapper fills it in from u.gg and labels it; if neither has it, the record is shown as unavailable rather than guessed.
 - **Live game**: both teams with ranks while you are in a game.
-- Restart Riot Client on the current account from the account menu, for example when the client misbehaves. Turning **Launch through Deceive** on or off restarts the client so the change applies, and asks first in champion select.
+- **Restart client** on the current account from the account menu, `Ctrl+K` or the tray icon's menu, for example when the client misbehaves. When League Client stops responding, the sidebar offers the restart. Swapper never restarts during a game and asks first in champion select, where a restart means a dodge. Turning **Launch through Deceive** on or off restarts the client the same way so the change applies.
+- Pages show the champion, game or player you're looking at as a soft backdrop behind glass panels; numbers and tables sit on solid panels so they stay easy to read. Scrolling stays smooth on high-refresh screens.
 
 **In-game overlay**
 
@@ -91,7 +92,7 @@ Anyone permitted by your tailnet's access rules to reach this Serve route can us
 
 Swapper stores account names, Riot account identifiers, settings, and references to encrypted session snapshots in `%LOCALAPPDATA%\Swapper`. Session snapshots are encrypted with Windows DPAPI for the current Windows user and are not sent to the phone or a Swapper server. Riot's own live client files remain under `%LOCALAPPDATA%\Riot Games`. Copying a vault to a different Windows account generally will not make it usable there.
 
-Swapper reads the local Riot and League clients to identify a signed-in account and provide remote controls. It does not request passwords or use a Riot developer API key. Riot may change its clients independently, so a future client update can require a Swapper update.
+Swapper reads the local Riot and League clients to identify a signed-in account and provide remote controls. It does not request passwords or use a Riot developer API key. For public statistics, game data and updates it contacts op.gg, lolalytics, u.gg, Riot's Data Dragon, CommunityDragon and GitHub; the only player identifier it sends to any of them is the Riot ID and region of a profile you open, to u.gg, and only when your League Client didn't return that player's season record. Riot may change its clients independently, so a future client update can require a Swapper update.
 
 ## Open-source credits and licenses
 
