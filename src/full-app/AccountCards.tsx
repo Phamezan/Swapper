@@ -2,7 +2,7 @@ import { DropdownMenu } from "radix-ui";
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Check, MoreHorizontal, ShieldCheck, Wrench } from "lucide-react";
-import { AddAccountIcon, SwitchIcon } from "./ui/icons";
+import { AddAccountIcon, RefreshIcon, SwitchIcon } from "./ui/icons";
 import type { Account } from "../App";
 import { Notice } from "./ui/States";
 
@@ -38,9 +38,11 @@ export function AccountCards(props: AccountCardsProps) {
         </div>
         <div className="fa-account-identity">{account.iconDataUrl ? <img src={account.iconDataUrl} alt="" loading="lazy" /> : <span className="fa-account-initial">{account.name[0]?.toUpperCase()}</span>}<span><h2>{account.name}</h2><p>{account.riotId ?? "Riot ID unavailable"}</p></span></div>
         <div className="fa-account-meta"><span>Region<strong>{account.region ?? account.platform ?? "Unknown"}</strong></span><span>Session<strong>{switching ? "Switching…" : active ? "In use" : "Saved securely"}</strong></span></div>
-        <button className="fa-secondary fa-switch" disabled={props.busy || active} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : active ? "Currently signed in" : "Switch account"}{!active && <SwitchIcon size={16} />}</button>
-        {/* Switching to the signed-in account restarts the client with it (same as the tray flyout). */}
-        {active && <button className="fa-secondary fa-restart" disabled={props.busy} onClick={() => (props.onRestart ?? (() => props.onSwitch(account.id)))()}>Restart client</button>}
+        {/* The "Active session" badge already names the signed-in account, so its one action is the restart:
+            switching to the signed-in account restarts the client with it (same as the tray flyout). */}
+        {active
+          ? <button className="fa-secondary fa-switch fa-restart" disabled={props.busy} onClick={() => (props.onRestart ?? (() => props.onSwitch(account.id)))()}>Restart client<RefreshIcon size={16} /></button>
+          : <button className="fa-secondary fa-switch" disabled={props.busy} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : "Switch account"}<SwitchIcon size={16} /></button>}
       </article>;
     })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><AddAccountIcon size={22} /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.</span></span></button></div>
   </div>;

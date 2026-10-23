@@ -227,6 +227,57 @@ async function main() {
     await screenshot("dashboard-evidence", 1440, 900);
     await cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
   }
+  await check("LP graph shows gains, tier crests and a hover tooltip", async () => {
+    await navigate(`${fullApp}?lp=month`, ".lp-graph svg");
+    // Resize before hovering: a resize clears the hover the screenshot should show.
+    if (capture) await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+    await page.text(".lp-graph-gains", "Last 30d");
+    assert.ok(await page.evaluate("document.querySelectorAll('.lp-graph-guide .rank-crest, .lp-graph-guide .rank-crest-fallback').length >= 2"));
+    const stops = await page.evaluate("Array.from(document.querySelector('.lp-graph linearGradient').children).map(s => ({ offset: s.offset.baseVal, color: s.style.stopColor }))");
+    assert.equal(new Set(stops.map(s => s.color)).size, 3, "Platinum, Emerald and Diamond have their own line colors");
+    assert.ok(stops.every((s, i) => !i || s.offset >= stops[i - 1].offset), "SVG gradient stops are ordered");
+    const box = await page.evaluate("(() => { const r = document.querySelector('.lp-graph svg').getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; })()");
+    await page.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: box.x, y: box.y });
+    await page.text(".lp-graph-tip", "LP");
+    if (capture) await screenshot("lp-graph-hover", 1440, 900);
+    await page.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 5, y: 5 });
+    await page.wait("document.querySelector('.lp-graph-tip').hidden");
+    await page.evaluate("document.querySelector('.lp-graph-plot').focus()");
+    await page.text(".lp-graph-tip", "DIAMOND");
+    const key = async (name, code) => {
+      await page.cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: name, code: name, windowsVirtualKeyCode: code });
+      await page.cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: name, code: name, windowsVirtualKeyCode: code });
+      await page.settle();
+    };
+    await key("Home", 36);
+    await page.text(".lp-graph-tip", "PLATINUM");
+    await page.text(".lp-graph-tip", "Recorded rank");
+    await key("ArrowRight", 39);
+    await page.text(".lp-graph-tip", "1 game");
+    await key("ArrowLeft", 37);
+    await page.text(".lp-graph-tip", "Recorded rank");
+    await key("End", 35);
+    await page.text(".lp-graph-tip", "DIAMOND");
+    for (const [width, height] of [[1900, 620], [1280, 820]]) {
+      await page.cdp.send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: false });
+      await page.settle();
+      assert.ok(await page.evaluate(`(() => {
+        const graph = document.querySelector('.lp-graph').getBoundingClientRect();
+        const plot = document.querySelector('.lp-graph-plot').getBoundingClientRect();
+        const tip = document.querySelector('.lp-graph-tip').getBoundingClientRect();
+        return plot.height >= 180 && tip.left >= graph.left && tip.right <= graph.right && tip.top >= graph.top && tip.bottom <= graph.bottom;
+      })()`), `the plot has breathing room and its tooltip stays inside at ${width}px`);
+      if (width === 1900) assert.ok(await page.evaluate(`(() => {
+        const graph = document.querySelector('.lp-graph').getBoundingClientRect();
+        const record = document.querySelector('.rank-record').getBoundingClientRect();
+        return graph.left >= record.right;
+      })()`), "the wide card places the graph in the third column");
+      if (capture) await screenshot("lp-graph-keyboard", width, height);
+    }
+    await key("Escape", 27);
+    await page.wait("document.querySelector('.lp-graph-tip').hidden");
+    await page.evaluate("document.querySelector('.lp-graph-plot').blur()");
+  });
   await check("Dashboard match opens and returns", async () => {
     await page.click(".match-champ");
     // ---- matchdetail: Overview is the default; context stays above every tab ----
@@ -645,6 +696,8 @@ async function main() {
     await page.visible('.player-games .match-row');
     await page.text('.player-ranks', 'Emerald II');
     await page.text('.player-ranks', '40');
+    // The MMR estimate follows the profile and lands on its rank card.
+    await page.text('.player-ranks .mmr-line', 'Emerald I');
     await page.text('.player-ranks', 'Season record unavailable');
     assert.equal(await page.evaluate("document.querySelectorAll('.player-rank-record').length"), 0);
     assert.equal(await page.evaluate("document.querySelector('.player-ranks').textContent.includes('win rate')"), false);

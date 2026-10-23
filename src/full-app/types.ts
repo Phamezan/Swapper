@@ -31,8 +31,14 @@ export type Snapshot = {
   fetchedAt: number; games: Game[]; summaries: Record<string, Summary>;
   /** Solo/Duo rank points Swapper recorded, oldest first; absent in older caches. */
   lpHistory?: LpPoint[];
+  /** Average current rank of recent Solo/Duo lobbies: Swapper's own MMR estimate. */
+  mmr?: Mmr | null;
 };
-export type LpPoint = { at: number; tier: string; division: string; lp: number; wins: number; losses: number };
+/** `trend`: ladder LP the newer half of the lobbies sits above (negative: below) the older half. */
+export type Mmr = { tier: string; division: string; lp: number; games: number; trend: number | null };
+export type LpPoint = { at: number; tier: string; division: string; lp: number; wins: number; losses: number;
+  /** Set ("opgg") on points seeded from another tracker; those carry no win/loss counts. */
+  source?: string };
 /** Last saved rank and recent record of a saved account (key: account id). */
 export type AccountCard = { rank: Snapshot["rank"]; wins: number; losses: number; lastPlayed: number; updatedAt: number };
 export type DashboardView = { snapshot: Snapshot | null; cards: Record<string, AccountCard>; stale: boolean; message: string | null };

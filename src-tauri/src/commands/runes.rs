@@ -208,6 +208,18 @@ pub(crate) async fn rank_icon(tier: String) -> Result<String, String> {
     ))
 }
 
+/// The full ranked emblem behind the dashboard's rank card, as a data URL.
+#[tauri::command]
+pub(crate) async fn rank_emblem(tier: String) -> Result<String, String> {
+    let bytes = runes::ranks::emblem(&tier)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
 #[tauri::command]
 pub(crate) async fn get_pro_builds(
     champion_id: i64,

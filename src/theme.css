@@ -159,12 +159,16 @@
   --ui-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='white' opacity='.025' filter='url(%23n)' d='M0 0h96v96H0z'/%3E%3C/svg%3E");
   --ui-card-fill: var(--ui-grain), linear-gradient(180deg, var(--ui-card-top), var(--ui-card) 180px);
 }
-.fa-frame[data-look] .rank-card[data-tier="iron"] { --ui-rank-tone: #aaa29b; }
-.fa-frame[data-look] .rank-card[data-tier="bronze"] { --ui-rank-tone: #c39171; }
-.fa-frame[data-look] .rank-card[data-tier="silver"] { --ui-rank-tone: #b8c5d0; }
-.fa-frame[data-look] .rank-card:is([data-tier="gold"], [data-tier="challenger"]) { --ui-rank-tone: var(--ui-gold); }
-.fa-frame[data-look] .rank-card[data-tier="platinum"] { --ui-rank-tone: #8ad4cf; }
-.fa-frame[data-look] .rank-card[data-tier="emerald"] { --ui-rank-tone: var(--ui-win); }
-.fa-frame[data-look] .rank-card[data-tier="diamond"] { --ui-rank-tone: var(--ui-champ); }
-.fa-frame[data-look] .rank-card[data-tier="master"] { --ui-rank-tone: #c6a1e9; }
-.fa-frame[data-look] .rank-card[data-tier="grandmaster"] { --ui-rank-tone: var(--ui-loss); }
+/* One tone per tier; the LP graph colors its line by these. */
+.fa-frame[data-look] .rank-card { --ui-tier-iron: #aaa29b; --ui-tier-bronze: #c39171; --ui-tier-silver: #b8c5d0; --ui-tier-gold: var(--ui-gold); --ui-tier-platinum: #8ad4cf;
+  --ui-tier-emerald: var(--ui-win); --ui-tier-diamond: var(--ui-champ); --ui-tier-master: #c6a1e9; --ui-tier-grandmaster: var(--ui-loss); --ui-tier-challenger: var(--ui-gold); }
+.fa-frame[data-look] .rank-card[data-tier="iron"] { --ui-rank-tone: var(--ui-tier-iron); }
+.fa-frame[data-look] .rank-card[data-tier="bronze"] { --ui-rank-tone: var(--ui-tier-bronze); }
+.fa-frame[data-look] .rank-card[data-tier="silver"] { --ui-rank-tone: var(--ui-tier-silver); }
+.fa-frame[data-look] .rank-card[data-tier="gold"] { --ui-rank-tone: var(--ui-tier-gold); }
+.fa-frame[data-look] .rank-card[data-tier="platinum"] { --ui-rank-tone: var(--ui-tier-platinum); }
+.fa-frame[data-look] .rank-card[data-tier="emerald"] { --ui-rank-tone: var(--ui-tier-emerald); }
+.fa-frame[data-look] .rank-card[data-tier="diamond"] { --ui-rank-tone: var(--ui-tier-diamond); }
+.fa-frame[data-look] .rank-card[data-tier="master"] { --ui-rank-tone: var(--ui-tier-master); }
+.fa-frame[data-look] .rank-card[data-tier="grandmaster"] { --ui-rank-tone: var(--ui-tier-grandmaster); }
+.fa-frame[data-look] .rank-card[data-tier="challenger"] { --ui-rank-tone: var(--ui-tier-challenger); }

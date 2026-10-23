@@ -8,10 +8,11 @@ import { EmptyState, Notice, Skeleton } from './ui/States';
 import { RankCrest } from '../runes/RankCrest';
 import { ChampionIcon } from '../runes/ChampionIcon';
 import { crestForTier } from './buildLogic';
+import { MmrLine } from './MmrLine';
 import { useChampionArt } from './art';
 import { useAmbientChampion } from './AmbientArt';
 import { fmtAgo } from '../runes/types';
-import type { Game, Snapshot } from './types';
+import type { Game, Mmr, Snapshot } from './types';
 import { profileGame, profileStats, type PlayerProfile } from './playerModel';
 import './PlayerPage.css';
 
@@ -39,7 +40,7 @@ function RecordBar({ wins, games }: { wins: number; games: number }) {
   return <div className="player-record-bar" aria-hidden="true"><i style={{ width: `${games ? 100 * wins / games : 0}%` }} /></div>;
 }
 
-function Ranks({ profile, loading }: { profile: PlayerProfile | null; loading: boolean }) {
+function Ranks({ profile, loading, mmr }: { profile: PlayerProfile | null; loading: boolean; mmr: Mmr | null }) {
   const rank = profile?.solo;
   const record = rank?.recordAvailable === true;
   return <section className="player-ranks panel" aria-labelledby="player-ranks-title">
@@ -56,6 +57,7 @@ function Ranks({ profile, loading }: { profile: PlayerProfile | null; loading: b
       {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div>{rank.recordSource === 'ugg' && <small className="player-record-source" title="Your League Client didn't return this player's season record.">via u.gg</small>}<RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
         : <p className="player-record-unavailable">Season record unavailable</p>}
     </div>}
+    {mmr && <div className="player-rank-mmr"><MmrLine mmr={mmr} explain={`Swapper's estimate, not Riot's: the average current Solo/Duo rank of the other players in this player's last ${mmr.games} ranked ${mmr.games === 1 ? "game" : "games"}.`} /></div>}
   </section>;
 }
 
@@ -68,10 +70,16 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
   const [error, setError] = useState('');
   const [attempt, setAttempt] = useState(0);
   const [visible, setVisible] = useState(10);
+  const [mmr, setMmr] = useState<Mmr | null>(null);
   useEffect(() => {
     let active = true;
-    setLoading(true); setError('');
-    invoke<PlayerProfile>('full_app_player_profile', { riotId }).then(next => { if (active) setProfile(next); })
+    setLoading(true); setError(''); setMmr(null);
+    invoke<PlayerProfile>('full_app_player_profile', { riotId }).then(next => {
+      if (!active) return;
+      setProfile(next);
+      // Its rank lookups take a few seconds, so it follows the profile instead of delaying it.
+      if (next.live) invoke<Mmr | null>('full_app_player_mmr', { riotId }).then(found => { if (active) setMmr(found); }).catch(() => {});
+    })
       .catch(() => { if (active) setError('This profile is unavailable. Open League Client and try again.'); })
       .finally(() => { if (active) setLoading(false); });
     return () => { active = false; };
@@ -129,7 +137,7 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
         })}</div>
       </section>
       <aside className="player-side">
-        <Ranks profile={profile} loading={loading} />
+        <Ranks profile={profile} loading={loading} mmr={mmr} />
         <section className="player-champions panel" aria-labelledby="player-champions-title">
           <div className="panel-head"><h2 id="player-champions-title">Top champions</h2><small>{stats.games} loaded games</small></div>
           {stats.champions.length ? <ol>{stats.champions.map((c, i) => <li key={c.id}>

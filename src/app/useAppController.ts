@@ -30,6 +30,8 @@ const empty: AppState = {
   notificationsEnabled: true, readyCheckNotifications: true, koreanFont: false, ltkInstalled: false, remote: emptyRemote,
 };
 
+/** Polls (2 s apart) of "unavailable" in a row before the add flow gives up: about 30 s. */
+const DETECT_UNAVAILABLE_LIMIT = 15;
 const wait = (ms: number) =>
   new Promise<void>((resolve) => {
     window.setTimeout(resolve, ms);
@@ -146,6 +148,10 @@ export function useAppController(fullApp?: FullAppBridge) {
       listen("lan_reconnect_changed", () => {
         invoke<AppState>("get_state").then(sync).catch(() => {});
       }),
+      // Saved account details changed in the background (e.g. a profile icon).
+      listen("accounts_changed", () => {
+        invoke<AppState>("get_state").then(sync).catch(() => {});
+      }),
     ]);
     // Listeners exist now; a newly created window is shown (and sent its
     // destination) only after this.
@@ -205,6 +211,8 @@ export function useAppController(fullApp?: FullAppBridge) {
     }
     setDetect({ phase: "waiting", reason: "signingIn" });
     let cancelled = false;
+    // Riot Client answers "unavailable" while it starts up, so only a run of them is a failure.
+    let unavailable = 0;
     (async () => {
       while (!cancelled) {
         let outcome: DetectOutcome;
@@ -223,7 +231,8 @@ export function useAppController(fullApp?: FullAppBridge) {
           invoke<AppState>("get_state").then((next) => { if (!cancelled) sync(next); }).catch(() => {});
           return;
         }
-        if (outcome.state === "unavailable") {
+        unavailable = outcome.state === "unavailable" ? unavailable + 1 : 0;
+        if (unavailable >= DETECT_UNAVAILABLE_LIMIT) {
           setDetect({ phase: "failed" });
           return;
         }

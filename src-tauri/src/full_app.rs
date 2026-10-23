@@ -8,6 +8,8 @@ pub mod champ_select;
 pub(crate) mod bench;
 pub(crate) mod cards;
 pub(crate) mod lp;
+pub(crate) mod lp_seed;
+pub(crate) mod mmr;
 pub mod ui_data;
 pub(crate) mod model;
 pub mod routing;
@@ -327,7 +329,7 @@ fn cache_path() -> Option<std::path::PathBuf> {
     )
 }
 
-fn read_cache() -> Option<Snapshot> {
+pub(crate) fn read_cache() -> Option<Snapshot> {
     let path = cache_path()?;
     read_cache_at(&path)
 }
@@ -338,6 +340,24 @@ fn read_cache_at(path: &std::path::Path) -> Option<Snapshot> {
     }
     let snapshot: Snapshot = serde_json::from_slice(&std::fs::read(path).ok()?).ok()?;
     (snapshot.games.len() <= 20 && !snapshot.summoner.puuid.is_empty()).then_some(snapshot)
+}
+
+/// Keeps a saved account's avatar in step with its League profile icon. Icons
+/// were otherwise only saved when an account was identified with League open,
+/// so accounts added or switched to without it showed a letter instead.
+fn save_account_icon(app: &tauri::AppHandle, puuid: &str, icon: &str) {
+    use tauri::Manager;
+    let Some(state) = app.try_state::<crate::AppState>() else { return };
+    let Some(id) = state.config.lock().ok().and_then(|config| {
+        config.accounts.iter().find(|a| a.puuid.as_deref() == Some(puuid)).map(|a| a.id)
+    }) else {
+        return;
+    };
+    // Presentation only: a failed write keeps the letter avatar.
+    if crate::vault::profile_icon_data_url(id).as_deref() != Some(icon) && crate::vault::save_profile_icon(id, icon).is_ok() {
+        use tauri::Emitter;
+        let _ = app.emit("accounts_changed", ());
+    }
 }
 
 async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Snapshot, String> {
@@ -378,6 +398,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
                         && g.metrics[4].is_some()
                         && !g.items.is_empty()
                         && !g.players.is_empty()
+                        && g.players.iter().any(|p| !p.puuid.is_empty())
                 })
             {
                 return Some(game.clone());
@@ -410,6 +431,9 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
             ));
         }
     }
+    if let Some(icon) = summoner.icon.as_deref() {
+        save_account_icon(app, &summoner.puuid, icon);
+    }
     let champion_names = crate::runes::champion_list()
         .await
         .into_iter()
@@ -418,8 +442,11 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     // Verify both identity and switch generation before LP can be persisted.
     let points = lp::record_current(&client, account, summoner.puuid.clone(), rank.clone()).await?;
     lp::annotate(&mut games, &points);
+    lp_seed::spawn(summoner.puuid.clone(), summoner.riot_id.clone(), &points);
+    let mmr = mmr::current(&client, &games).await;
     Ok(Snapshot {
         lp_history: points,
+        mmr,
         champion_names,
         summoner,
         rank,
@@ -487,6 +514,7 @@ mod tests {
             summaries: model::summaries(&[]),
             champion_names: Default::default(),
             lp_history: vec![],
+            mmr: None,
         };
         std::fs::write(&path, serde_json::to_vec(&snapshot).unwrap()).unwrap();
         let cached = read_cache_at(&path).unwrap();

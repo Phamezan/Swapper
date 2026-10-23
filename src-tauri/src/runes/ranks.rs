@@ -13,6 +13,8 @@ use super::RuneError;
 
 const CDRAGON_BASE: &str =
     "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests";
+const CDRAGON_EMBLEMS: &str =
+    "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem";
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(4);
 
 /// One gate per crest name so concurrent requests for a bracket share a fetch.
@@ -54,6 +56,47 @@ fn lcu_paths(name: &str) -> [String; 3] {
 
 fn looks_like_svg(bytes: &[u8]) -> bool {
     bytes.windows(4).any(|window| window == b"<svg")
+}
+
+fn looks_like_png(bytes: &[u8]) -> bool {
+    bytes.starts_with(b"\x89PNG\r\n\x1a\n")
+}
+
+/// The full ranked emblem PNG for a tier (the art League shows on profiles),
+/// from the running client or CommunityDragon, cached on disk. Unranked has none.
+pub async fn emblem(tier: &str) -> Result<Vec<u8>, RuneError> {
+    let name = asset_name(tier)
+        .filter(|name| *name != "unranked")
+        .ok_or_else(|| RuneError::not_found("Unknown rank tier."))?;
+    if let Some(bytes) = asset_cache::read(asset_cache::Kind::Emblem, name) {
+        return Ok(bytes);
+    }
+    let gate = rank_gate(&format!("emblem-{name}"));
+    let _guard = gate.lock().await;
+    if let Some(bytes) = asset_cache::read(asset_cache::Kind::Emblem, name) {
+        return Ok(bytes);
+    }
+    let mut found = None;
+    if let Ok(lcu) = super::lcu().await {
+        for path in [
+            format!("/fe/lol-static-assets/global/default/images/ranked-emblem/emblem-{name}.png"),
+            format!("/lol-static-assets/global/default/images/ranked-emblem/emblem-{name}.png"),
+            format!("/lol-static-assets/images/ranked-emblem/emblem-{name}.png"),
+        ] {
+            if let Ok(bytes) = super::lcu_get_bytes(&lcu, &path).await {
+                if looks_like_png(&bytes) {
+                    found = Some(bytes);
+                    break;
+                }
+            }
+        }
+    }
+    let bytes = match found {
+        Some(bytes) => bytes,
+        None => fetch(&format!("{CDRAGON_EMBLEMS}/emblem-{name}.png"), looks_like_png).await?,
+    };
+    asset_cache::write(asset_cache::Kind::Emblem, name, &bytes);
+    Ok(bytes)
 }
 
 /// Returns the SVG bytes for a rank crest, cached in memory. `tier` must be one
@@ -99,14 +142,18 @@ pub async fn icon(tier: &str) -> Result<Vec<u8>, RuneError> {
 }
 
 async fn from_cdragon(name: &str) -> Result<Vec<u8>, RuneError> {
+    fetch(&format!("{CDRAGON_BASE}/{name}.svg"), looks_like_svg).await
+}
+
+/// One CommunityDragon download, kept only when `valid` recognises the body.
+async fn fetch(url: &str, valid: fn(&[u8]) -> bool) -> Result<Vec<u8>, RuneError> {
     let client = reqwest::Client::builder()
         .connect_timeout(REQUEST_TIMEOUT)
         .timeout(REQUEST_TIMEOUT)
         .build()
         .map_err(|_| RuneError::unavailable("Could not create the rank crest client."))?;
-    let url = format!("{CDRAGON_BASE}/{name}.svg");
     let response = client
-        .get(&url)
+        .get(url)
         .send()
         .await
         .map_err(|_| RuneError::unavailable("Could not load the rank crest."))?;
@@ -117,7 +164,7 @@ async fn from_cdragon(name: &str) -> Result<Vec<u8>, RuneError> {
         .bytes()
         .await
         .map_err(|_| RuneError::unavailable("Could not load the rank crest."))?;
-    if !looks_like_svg(&bytes) {
+    if !valid(&bytes) {
         return Err(RuneError::not_found("That rank crest is unavailable."));
     }
     Ok(bytes.to_vec())
@@ -152,5 +199,7 @@ mod tests {
         assert!(looks_like_svg(b"<?xml?>\n<svg>"));
         assert!(!looks_like_svg(b"<html></html>"));
         assert!(!looks_like_svg(b""));
+        assert!(looks_like_png(b"\x89PNG\r\n\x1a\n...."));
+        assert!(!looks_like_png(b"<html></html>"));
     }
 }

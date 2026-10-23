@@ -1,0 +1,63 @@
+/* The plot shares the card's surface; only the tooltip needs its own panel. */
+.fa-frame[data-look] .dashboard-shell .lp-graph {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(206px, 1fr) auto auto;
+  min-width: 0;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.fa-frame[data-look] .dashboard-shell .lp-graph-gains {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 16px;
+  padding: 0;
+}
+.fa-frame[data-look] .dashboard-shell .lp-graph-gains > span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 2px 0;
+  font-size: 12px;
+  color: var(--ui-text-2);
+  white-space: nowrap;
+}
+.fa-frame[data-look] .dashboard-shell .lp-graph-gains b { display: inline-flex; align-items: baseline; gap: 4px; font-size: 13px; font-weight: 650; color: var(--ui-text-1); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-gains b small { font-size: 12px; font-weight: 500; color: var(--ui-text-2); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-gains i { font-size: 9px; font-style: normal; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-gains .up { color: var(--ui-win); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-gains .down { color: var(--ui-loss); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-plot { position: relative; min-height: 180px; margin: 18px 5px 8px 42px; cursor: crosshair; outline: none; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-plot:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 7px; border-radius: 2px; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-guide { position: absolute; left: -38px; right: 0; display: flex; align-items: center; gap: 12px; height: 0; pointer-events: none; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-guide > :first-child { flex: none; width: 26px; text-align: center; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-guide i { font-size: 12px; font-style: normal; font-weight: 450; color: var(--ui-text-3); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-guide::after { content: ""; flex: 1; border-top: 1px dashed var(--ui-line-1); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-guide.is-tier::after { border-top-color: var(--ui-line-3); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-line { fill: none; stroke-width: 2.25; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-cross { stroke: var(--ui-line-3); stroke-width: 1; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-dot { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border: 2px solid var(--ui-surface-1); border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 25%, transparent); pointer-events: none; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-tip {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  gap: 5px;
+  box-sizing: border-box;
+  width: 140px;
+  padding: 10px 12px;
+  border: 1px solid var(--ui-line-3);
+  border-radius: var(--ui-radius-xs);
+  background: var(--ui-surface-1);
+  box-shadow: var(--ui-elev-3);
+  pointer-events: none;
+}
+.fa-frame[data-look] .dashboard-shell .lp-graph-tip[hidden] { display: none; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-tip small { font-size: 12px; color: var(--ui-text-3); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-rank { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 650; white-space: nowrap; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-dates { display: flex; justify-content: space-between; gap: 12px; margin: 0 5px 8px 42px; font-size: 12px; color: var(--ui-text-3); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-peak { display: flex; align-items: center; gap: 9px; margin: 0; padding: 8px 0 0; border-top: 1px solid var(--ui-line-1); font-size: 12px; font-weight: 550; letter-spacing: .06em; text-transform: uppercase; color: var(--ui-text-3); }
+.fa-frame[data-look] .dashboard-shell .lp-graph-peak .lp-graph-rank { font-size: 13px; letter-spacing: 0; text-transform: none; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-peak > small { margin-left: auto; font-size: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.fa-frame[data-look] .dashboard-shell .lp-graph-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

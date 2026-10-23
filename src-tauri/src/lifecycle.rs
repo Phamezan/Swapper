@@ -151,6 +151,10 @@ fn game_ended(previous: Option<&str>, current: &str) -> bool {
 /// for. A failed read leaves the previous phase in place (the caller keeps its
 /// state), so a reconnecting League client cannot re-fire an old transition.
 pub fn observe(app: &AppHandle, previous: Option<&str>, current: &str) {
+    if current == "InProgress" && !previous.is_some_and(in_game) {
+        // Lobby ranks as they are now feed the MMR estimate later.
+        tauri::async_runtime::spawn(crate::full_app::mmr::record_lobby());
+    }
     if game_ended(previous, current) {
         // Imported item sets are only useful for the game they were made for;
         // clearing them keeps the shop from filling up with old builds.

@@ -167,22 +167,99 @@ export function rankProgress(rank: NonNullable<Snapshot["rank"]>): Progress {
   return { lp: rank.lp, next, toNext: Math.max(0, 100 - rank.lp) };
 }
 
-export type LpTrend = { scores: number[]; games: number };
-const TREND_POINTS = 20;
-/** The recent LP line; null below two points, where there is nothing to draw. */
-export function lpTrend(points: LpPoint[] | undefined): LpTrend | null {
-  const recent = (points ?? []).slice(-TREND_POINTS);
-  if (recent.length < 2) return null;
-  const [first, last] = [recent[0], recent[recent.length - 1]];
-  return { scores: recent.map(ladderScore), games: last.wins + last.losses - first.wins - first.losses };
+const DAY = 864e5;
+const GRAPH_DAYS = 30;
+const APEX_SCORE = LADDER.length * 400;
+
+/** Tier name for a ladder score; every apex score is Master and up. */
+const tierAt = (score: number) => score >= APEX_SCORE ? "MASTER" : LADDER[Math.floor(score / 400)];
+
+export type GraphPoint = { x: number; y: number; point: LpPoint; /** Games since the previous point. */ games: number };
+export type LpGraph = {
+  points: GraphPoint[];
+  /** Smooth SVG path through the points; monotone, so it never bulges past a recorded LP. */
+  path: string;
+  /** The tier each height range belongs to, as fractions from the top, for the line's color stops. */
+  tiers: { from: number; to: number; tier: string }[];
+  /** LP gained (negative when lost) over the last 30 and 7 days; null without a point to compare with. */
+  month: number | null;
+  week: number | null;
+  peak: LpPoint;
+  /** Division lines; `tier` is set where a tier starts, which shows its crest. */
+  guides: { y: number; label: string; tier: string | null }[];
+};
+
+/** Monotone cubic (Fritsch-Carlson) through points sorted by x, as an SVG path. */
+export function smoothPath(points: { x: number; y: number }[]) {
+  const n = points.length;
+  if (!n) return "";
+  const slope = (i: number) => {
+    const dx = points[i + 1].x - points[i].x;
+    return dx ? (points[i + 1].y - points[i].y) / dx : 0;
+  };
+  const m = points.slice(0, -1).map((_, i) => slope(i));
+  const t = points.map((_, i) => i === 0 ? m[0] : i === n - 1 ? m[n - 2] : m[i - 1] * m[i] <= 0 ? 0 : (m[i - 1] + m[i]) / 2);
+  for (let i = 0; i < n - 1; i++) {
+    if (m[i] === 0) { t[i] = 0; t[i + 1] = 0; continue; }
+    const [a, b] = [t[i] / m[i], t[i + 1] / m[i]];
+    const s = a * a + b * b;
+    if (s > 9) { const k = 3 / Math.sqrt(s); t[i] = k * a * m[i]; t[i + 1] = k * b * m[i]; }
+  }
+  const f = (v: number) => v.toFixed(1);
+  let d = `M${f(points[0].x)},${f(points[0].y)}`;
+  for (let i = 0; i < n - 1; i++) {
+    const [p, q] = [points[i], points[i + 1]];
+    const h = (q.x - p.x) / 3;
+    d += ` C${f(p.x + h)},${f(p.y + h * t[i])} ${f(q.x - h)},${f(q.y - h * t[i + 1])} ${f(q.x)},${f(q.y)}`;
+  }
+  return d;
 }
 
-/** SVG polyline points for `scores` in a width x height box, with `pad` px inside. */
-export function sparkline(scores: number[], width: number, height: number, pad = 3) {
-  const [low, high] = [Math.min(...scores), Math.max(...scores)];
-  const span = high - low || 1;
-  return scores.map((value, i) =>
-    `${(pad + i * (width - 2 * pad) / (scores.length - 1)).toFixed(1)},${(height - pad - (value - low) / span * (height - 2 * pad)).toFixed(1)}`).join(" ");
+/** The Solo/Duo LP line over the last 30 days; null below two points, where there is nothing to draw. */
+export function lpGraph(history: LpPoint[] | undefined, now: number, width: number, height: number): LpGraph | null {
+  const sorted = (history ?? []).filter(p => onLadder(p.tier) && Number.isFinite(p.at) && Number.isFinite(p.lp) && p.lp >= 0 && p.at <= now)
+    .sort((a, b) => a.at - b.at);
+  const all = sorted.filter((p, i) => p.at !== sorted[i + 1]?.at);
+  const recent = all.filter(p => p.at >= now - GRAPH_DAYS * DAY);
+  if (recent.length < 2) return null;
+  const scores = recent.map(ladderScore);
+  // Frame the recorded range with division lines and room around promotions.
+  const padding = Math.max(24, (Math.max(...scores) - Math.min(...scores)) * .1);
+  const low = Math.max(0, Math.floor((Math.min(...scores) - padding) / 100) * 100);
+  const high = Math.ceil((Math.max(...scores) + padding) / 100) * 100;
+  const [start, end] = [recent[0].at, recent[recent.length - 1].at];
+  const y = (score: number) => height - (score - low) / (high - low) * height;
+  const points = recent.map((p, i) => ({
+    x: (p.at - start) / (end - start || 1) * width, y: y(scores[i]), point: p,
+    // Seeded points have no game counts, so no count spans them.
+    games: i && !p.source && !recent[i - 1].source ? Math.max(0, p.wins + p.losses - recent[i - 1].wins - recent[i - 1].losses) : 0,
+  }));
+  const latest = scores[scores.length - 1];
+  // The last point before the window is the fairest baseline; else the window's first point.
+  const gain = (days: number) => {
+    const cutoff = now - days * DAY;
+    const base = [...all].reverse().find(p => p.at <= cutoff) ?? recent.find(p => p.at > cutoff);
+    return base && base !== recent[recent.length - 1] ? latest - ladderScore(base) : null;
+  };
+  const tiers = [];
+  // Apex tiers have no 400 LP floors, so Master and up is one band.
+  for (let floor = low < APEX_SCORE ? low - low % 400 : low; floor < high;) {
+    const top = floor >= APEX_SCORE ? high : Math.min(high, floor + 400);
+    tiers.push({ from: y(top) / height, to: y(Math.max(low, floor)) / height, tier: tierAt(floor) });
+    floor = top;
+  }
+  const step = high - low > 600 ? 400 : 100;
+  const guides = [];
+  for (let score = Math.ceil(low / step) * step; score <= high; score += step) {
+    const apex = score >= APEX_SCORE;
+    guides.push({
+      y: y(score),
+      label: apex ? `${score - APEX_SCORE} LP` : DIVISIONS[Math.floor(score % 400 / 100)],
+      tier: score === APEX_SCORE || (!apex && score % 400 === 0) ? tierAt(score) : null,
+    });
+  }
+  const peak = recent.reduce((best, p) => ladderScore(p) > ladderScore(best) ? p : best);
+  return { points, path: smoothPath(points), tiers: tiers.reverse(), month: gain(GRAPH_DAYS), week: gain(7), peak, guides };
 }
 
 /** How a tile compares with its reference: points for percentages, percent otherwise. */

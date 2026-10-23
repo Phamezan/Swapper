@@ -292,6 +292,7 @@ fn line(ally: bool, role: &str, me: bool) -> Player {
     Player {
         champion_id: 1,
         riot_id: String::new(),
+        puuid: String::new(),
         me,
         ally,
         role: role.into(),

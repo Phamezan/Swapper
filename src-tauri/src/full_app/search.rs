@@ -499,6 +499,26 @@ fn perspective(game: &model::Game, id: &str) -> Option<model::Game> {
     Some(game)
 }
 
+/// The MMR estimate for a player whose profile was just loaded, from the games
+/// saved with it. Separate from the profile so its rank lookups never delay it.
+#[tauri::command]
+pub async fn full_app_player_mmr(
+    app: tauri::AppHandle,
+    window: tauri::WebviewWindow,
+    riot_id: String,
+) -> Result<Option<super::mmr::Mmr>, String> {
+    check(&app, &window)?;
+    if riot_id.trim().is_empty() || riot_id.len() > 128 || riot_id.chars().any(char::is_control) {
+        return Err("Invalid player name.".into());
+    }
+    let profiles = tokio::task::spawn_blocking(read).await.map_err(|_| "Saved profile is unavailable.".to_string())?;
+    let Some(profile) = profiles.into_iter().find(|p| p.player.riot_id.eq_ignore_ascii_case(riot_id.trim())) else {
+        return Ok(None);
+    };
+    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
+    Ok(super::mmr::for_player(&client, &profile.games).await)
+}
+
 #[tauri::command]
 pub async fn full_app_player_profile(
     app: tauri::AppHandle,
@@ -822,6 +842,7 @@ mod tests {
             summaries: Default::default(),
             champion_names: Default::default(),
             lp_history: vec![],
+            mmr: None,
         };
         let hits = saved_players(Some(&snapshot), &[], "rival");
         assert_eq!(hits.len(), 1);

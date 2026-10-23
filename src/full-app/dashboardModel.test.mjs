@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { defaultQueue, deltaText, ladderScore, lpTrend, newestFirst, playTime, rankProgress, sparkline, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
+import { defaultQueue, deltaText, ladderScore, lpGraph, newestFirst, smoothPath, playTime, rankProgress, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
 
 const line = (over = {}) => ({ championId: 1, riotId: "", me: false, ally: true, role: "mid", kills: 2, deaths: 2, assists: 2, cs: 150, damage: 10000, gold: 0, vision: 10, items: [], ...over });
 function game({ win = true, deaths = 3, cs = 200, oppCs = 150, champion = 103, queue = "solo", opponent = 7, kills = 5, assists = 5 } = {}) {
@@ -95,13 +95,58 @@ test("rank progress counts LP to the next division and skips apex tiers", () => 
   assert.equal(ladderScore({ tier: "GOLD", division: "I", lp: 90 }), 3 * 400 + 300 + 90);
 });
 
-test("the LP trend needs two recorded points", () => {
-  const point = (tier, division, lp, wins, losses) => ({ at: 1, tier, division, lp, wins, losses });
-  assert.equal(lpTrend(undefined), null);
-  assert.equal(lpTrend([point("GOLD", "II", 10, 1, 1)]), null);
-  const trend = lpTrend([point("GOLD", "II", 90, 10, 10), point("GOLD", "I", 12, 11, 10), point("GOLD", "I", 0, 11, 11)]);
-  assert.deepEqual(trend, { scores: [1490, 1512, 1500], games: 2 });
-  assert.equal(sparkline([1, 3], 100, 20, 0), "0.0,20.0 100.0,0.0");
+test("the LP graph covers 30 days, frames the line with division guides and sums gains", () => {
+  const DAY = 864e5, now = 100 * DAY;
+  const point = (daysAgo, tier, division, lp, games = 0) => ({ at: now - daysAgo * DAY, tier, division, lp, wins: games, losses: 0 });
+  assert.equal(lpGraph(undefined, now, 100, 50), null);
+  assert.equal(lpGraph([point(1, "GOLD", "II", 10)], now, 100, 50), null);
+  const history = [point(40, "GOLD", "IV", 0), point(20, "GOLD", "II", 90, 10), point(5, "GOLD", "I", 12, 13), point(0, "PLATINUM", "IV", 40, 16)];
+  const graph = lpGraph(history, now, 100, 50);
+  // Gold II 90 to Platinum IV 40, framed by the Gold II line and the Platinum III line above it.
+  assert.deepEqual(graph.points.map(p => [p.x, +p.y.toFixed(2), p.games]), [[0, 35, 0], [75, 31.33, 3], [100, 10, 3]]);
+  assert.ok(graph.path.startsWith("M0.0,35.0 C") && graph.path.endsWith(" 100.0,10.0"));
+  assert.deepEqual(graph.guides.map(g => [g.label, g.tier]), [["II", null], ["I", null], ["IV", "PLATINUM"], ["III", null]]);
+  assert.deepEqual(graph.tiers.map(t => [+t.from.toFixed(2), +t.to.toFixed(2), t.tier]), [[0, 0.33, "PLATINUM"], [0.33, 1, "GOLD"]]);
+  assert.equal(graph.month, ladderScore(history[3]) - ladderScore(history[0]), "the 30-day gain starts from the point before the window");
+  assert.equal(graph.week, 1640 - 1490);
+  assert.equal(graph.peak, history[3]);
+  // Only points from the last week: nothing earlier to compare the week with.
+  assert.equal(lpGraph(history.slice(2), now, 100, 50).week, 128);
+  const apex = lpGraph([point(2, "MASTER", "", 50), point(1, "MASTER", "", 250)], now, 100, 50);
+  assert.deepEqual(apex.guides[0], { y: 50, label: "0 LP", tier: "MASTER" });
+  assert.deepEqual(apex.tiers, [{ from: 0, to: 1, tier: "MASTER" }]);
+  const boundary = lpGraph([point(3, "EMERALD", "IV", 0), point(1, "DIAMOND", "IV", 0)], now, 400, 200);
+  assert.ok(boundary.points.every(p => p.y > 0 && p.y < 200), "tier boundaries leave breathing room above and below the series");
+  assert.deepEqual(boundary.guides.filter(g => g.tier).map(g => g.tier), ["EMERALD", "DIAMOND"]);
+  assert.ok(boundary.tiers.every((t, i, tiers) => t.from < t.to && (!i || t.from === tiers[i - 1].to)), "SVG color stops run from top to bottom without gaps");
+  const unordered = [history[3], history[0], history[2], history[1], { ...history[2], lp: 20 }, point(-1, "PLATINUM", "I", 99), point(2, "NONE", "", 0)];
+  const original = structuredClone(unordered);
+  const sorted = lpGraph(unordered, now, 100, 50);
+  assert.deepEqual(sorted.points.map(p => p.point.lp), [90, 20, 40], "sort records, keep the last duplicate, exclude future and unranked points");
+  assert.equal(sorted.month, graph.month);
+  assert.equal(sorted.week, graph.week);
+  assert.deepEqual(unordered, original, "the account history is not mutated");
+  assert.equal(lpGraph([history[3], { ...history[3], lp: 30 }], now, 100, 50), null);
+  const flat = lpGraph([point(2, "IRON", "IV", 0), point(1, "IRON", "IV", 0)], now, 100, 50);
+  assert.ok(flat.points.every(p => Number.isFinite(p.y)));
+  assert.equal(flat.month, 0);
+});
+
+test("the smooth LP path never overshoots a flat stretch", () => {
+  assert.equal(smoothPath([]), "");
+  assert.equal(smoothPath([{ x: 0, y: 10 }]), "M0.0,10.0");
+  const path = smoothPath([{ x: 0, y: 10 }, { x: 10, y: 10 }, { x: 20, y: 0 }]);
+  // The flat first segment keeps both control points on y = 10.
+  assert.equal(path.split(" C")[1].split(" ").slice(0, 2).join(" "), "3.3,10.0 6.7,10.0");
+  const points = [{ x: 0, y: 80 }, { x: 3, y: 20 }, { x: 90, y: 40 }, { x: 100, y: 0 }];
+  smoothPath(points).split(" C").slice(1).forEach((segment, i) => {
+    const [a, b, end] = segment.split(" ").map(p => p.split(",").map(Number));
+    for (let step = 0; step <= 20; step++) {
+      const t = step / 20, s = 1 - t;
+      const y = s ** 3 * points[i].y + 3 * s ** 2 * t * a[1] + 3 * s * t ** 2 * b[1] + t ** 3 * end[1];
+      assert.ok(y >= Math.min(points[i].y, end[1]) - .1 && y <= Math.max(points[i].y, end[1]) + .1, "irregularly spaced climbs and dips stay inside recorded LP");
+    }
+  });
 });
 
 test("tile deltas read in points for percentages and in percent otherwise", () => {
@@ -116,4 +161,14 @@ test("game lists are newest first whatever order they arrive in", () => {
   const games = [{ id: 1, createdAt: 10 }, { id: 3, createdAt: 30 }, { id: 2, createdAt: 20 }];
   assert.deepEqual(newestFirst(games).map(g => g.id), [3, 2, 1]);
   assert.deepEqual(games.map(g => g.id), [1, 3, 2]);
+});
+
+test("the LP graph counts no games across a seeded point", () => {
+  const DAY = 864e5, now = 100 * DAY;
+  const graph = lpGraph([
+    { at: now - 3 * DAY, tier: "DIAMOND", division: "IV", lp: 35, wins: 0, losses: 0, source: "opgg" },
+    { at: now - DAY, tier: "DIAMOND", division: "III", lp: 10, wins: 40, losses: 30 },
+    { at: now, tier: "DIAMOND", division: "III", lp: 38, wins: 41, losses: 30 },
+  ], now, 100, 50);
+  assert.deepEqual(graph.points.map(p => p.games), [0, 0, 1]);
 });

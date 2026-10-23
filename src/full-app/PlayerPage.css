@@ -127,3 +127,4 @@
   .player-match-open { grid-template-columns: 36px minmax(100px, 1fr) 100px; gap: 10px; }
   .player-match-cs, .player-match-opponent { display: none; }
 }
+.player-rank-mmr { padding: 0 20px 18px; }

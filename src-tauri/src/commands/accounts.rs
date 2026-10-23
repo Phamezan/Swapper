@@ -74,10 +74,11 @@ pub(crate) async fn begin_add(state: State<'_, AppState>) -> Result<AppView, Str
 
 #[tauri::command]
 pub(crate) async fn complete_add(
+    app: tauri::AppHandle,
     state: State<'_, AppState>,
     puuid: String,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
+    let lease = state.switch_guard.acquire()?;
     // Re-read the live identity at save time: if the Riot login changed
     // between detection and this click, refuse instead of saving the wrong
     // session under the account the user saw.
@@ -88,15 +89,27 @@ pub(crate) async fn complete_add(
     if live.puuid != puuid.trim() {
         return Err(mismatch_error());
     }
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
-    riot::complete_add(&mut config, &live)?;
-    Ok(view(
-        &config,
-        &state.bundled_deceive,
-        &state.remote.status(),
-        false,
-        state.hotkey_active.load(Ordering::SeqCst),
-    ))
+    let (saved_view, saved_id) = {
+        let mut config = state.config.lock().map_err(|e| e.to_string())?;
+        riot::complete_add(&mut config, &live)?;
+        let saved_view = view(
+            &config,
+            &state.bundled_deceive,
+            &state.remote.status(),
+            false,
+            state.hotkey_active.load(Ordering::SeqCst),
+        );
+        (saved_view, config.active_id)
+    };
+    drop(lease);
+    // Saving closes the clients so the session file is captured whole; open
+    // them again on the account just saved instead of leaving the user logged out.
+    if let Some(id) = saved_id {
+        if let Err(reason) = start_switch(&app, &state, id) {
+            notify::restart_skipped(&app, &reason);
+        }
+    }
+    Ok(saved_view)
 }
 
 fn detection_error(detection: &identity::Detection) -> String {

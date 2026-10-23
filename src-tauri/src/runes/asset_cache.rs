@@ -29,6 +29,8 @@ const MAX_TEAM_STEM: usize = 64;
 pub(crate) enum Kind {
     Role,
     Rank,
+    /// The full ranked emblem art behind the dashboard's rank card.
+    Emblem,
     Team,
     Objective,
 }
@@ -38,6 +40,7 @@ impl Kind {
         match self {
             Kind::Role => "role",
             Kind::Rank => "rank",
+            Kind::Emblem => "emblem",
             Kind::Team => "team",
             Kind::Objective => "objective",
         }
@@ -45,7 +48,7 @@ impl Kind {
 
     fn extension(self) -> &'static str {
         match self {
-            Kind::Team | Kind::Objective => "png",
+            Kind::Team | Kind::Objective | Kind::Emblem => "png",
             _ => "svg",
         }
     }
@@ -57,7 +60,7 @@ impl Kind {
         match self {
             Kind::Role => matches!(name, "top" | "jungle" | "middle" | "bottom" | "utility")
                 .then(|| name.to_string()),
-            Kind::Rank => matches!(
+            Kind::Rank | Kind::Emblem => matches!(
                 name,
                 "unranked" | "iron" | "bronze" | "silver" | "gold" | "platinum" | "emerald" | "diamond"
                     | "master" | "grandmaster" | "challenger"

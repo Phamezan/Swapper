@@ -176,6 +176,8 @@ function App() {
       listen("switch_failed", () => setSwitching(null)),
     ]) : Promise.resolve([]);
     const health = isTauri() ? listen<string>("client_health", ({ payload }) => setClientHealth(payload)) : Promise.resolve(() => {});
+    // A saved account's icon was refreshed: the picker shows it.
+    const accountsChanged = isTauri() ? listen("accounts_changed", () => { void invoke<AppState>("get_state").then(state => { if (mounted.current) setAccounts(state); }).catch(() => {}); }) : Promise.resolve(() => {});
     if (isTauri()) void invoke<string>("client_health").then(state => { if (mounted.current) setClientHealth(state); }).catch(() => {});
     if (isTauri()) void invoke<ChampionOption[]>("get_champion_list").then(list => { if (mounted.current) setChampions(list); }).catch(() => {});
     if (isTauri()) void invoke<string | null>("get_current_patch").then(p => { if (mounted.current) setPatch(p); }).catch(() => {});
@@ -186,6 +188,7 @@ function App() {
       void navigate.then(unlisten => unlisten());
       void switches.then(stops => stops.forEach(unlisten => unlisten()));
       void health.then(unlisten => unlisten());
+      void accountsChanged.then(unlisten => unlisten());
       void stop.then(unlisten => unlisten());
     };
   }, []);

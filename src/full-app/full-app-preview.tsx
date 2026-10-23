@@ -64,11 +64,16 @@ if (params.has('locbar-long')) for (const game of games) for (const player of ga
 // ---- end locbar long trail fixture ----
 const lpHistory = [[1, 2, 40, 70, 60], [1, 2, 62, 71, 60], [1, 2, 44, 71, 61], [1, 2, 71, 72, 61], [1, 1, 20, 73, 61], [1, 1, 41, 74, 61], [1, 1, 23, 74, 62], [1, 2, 64, 75, 62]]
   .map(([, , lp, wins, losses], i) => ({ at: now - (8 - i) * 36e5, tier: "EMERALD", division: "II", lp, wins, losses }));
+// ?lp=month: recorded climbs and dips through Platinum, Emerald and Diamond.
+if (params.get("lp") === "month") lpHistory.splice(0, lpHistory.length, ...Array.from({ length: 60 }, (_, i) => {
+  const score = Math.round(1870 + i * 10 + 38 * Math.sin(i / 2.2)), tier = score >= 2400 ? "DIAMOND" : score >= 2000 ? "EMERALD" : "PLATINUM";
+  return { at: now - (59 - i) * 12 * 36e5, tier, division: ["IV", "III", "II", "I"][Math.floor(score % 400 / 100)], lp: score % 100, wins: 40 + Math.floor(i * .7), losses: 30 + i - Math.floor(i * .7) };
+}));
 const summary = { metrics: [], roles: ROLES.map((role, i) => ({ role, wins: i === 0 ? 7 : i === 2 ? 1 : 0, games: i === 0 ? 10 : i === 2 ? 2 : 0 })),
   champions: [{ id: 266, wins: 5, losses: 1, kda: 4.12 }, { id: 122, wins: 1, losses: 2, kda: 2.05 }, { id: 875, wins: 0, losses: 2, kda: 1.4 }, { id: 24, wins: 1, losses: 0, kda: 5.5 }] };
 const snapshot = {
   championNames: names, summoner: { riotId: "Swapper Demo#EUW", level: 287, icon: `${DD}/${VERSION}/img/profileicon/5367.png` },
-  rank: { tier: "EMERALD", division: "II", lp: 64, wins: 88, losses: 71 }, fetchedAt: now - (params.has("stale") ? 72e5 : 120000), games, lpHistory: params.has("empty") || params.has("no-baseline") ? [] : lpHistory, // --- todaylp: ?no-baseline shows "–" for today's LP ---
+  rank: { tier: "EMERALD", division: "II", lp: 64, wins: 88, losses: 71 }, fetchedAt: now - (params.has("stale") ? 72e5 : 120000), mmr: params.has("empty") ? null : { tier: "DIAMOND", division: "IV", lp: 42, games: 10, trend: 31 }, games, lpHistory: params.has("empty") || params.has("no-baseline") ? [] : lpHistory, // --- todaylp: ?no-baseline shows "–" for today's LP ---
   summaries: { all: summary, solo: summary, flex: summary, normal: { ...summary, champions: [] } },
 };
 const account = (id: string, name: string, icon: number) => ({ id, name, riotId: `${name}#DEMO`, nickname: null, platform: "EUW1", region: "EUW", profileIconId: icon, iconDataUrl: `${DD}/${VERSION}/img/profileicon/${icon}.png` });
@@ -254,6 +259,9 @@ mockIPC(async (cmd, args) => {
     // --- clientctl preview block: restart client / Deceive restart (?restart=ask|defer|save|restart) ---
     case "save_settings": return state;
     case "client_health": return new URLSearchParams(location.search).get("client") ?? "ok"; // ?client=hung|dead|closed
+    // ?emblem loads the real art from CommunityDragon; e2e runs offline, so it stays off by default.
+    case "full_app_player_mmr": return { tier: "EMERALD", division: "I", lp: 18, games: 10, trend: -12 };
+    case "rank_emblem": return params.has("emblem") ? `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-${a.tier}.png` : null;
     case "riot_client_icon": return null; // PLAY falls back to its own icon; Swapper ships no Riot artwork.
     case "restart_plan": return new URLSearchParams(location.search).get("restart") ?? "restart";
     case "switch_account": {

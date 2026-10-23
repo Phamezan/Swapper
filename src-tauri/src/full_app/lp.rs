@@ -49,6 +49,10 @@ pub struct Point {
     pub at: u64,
     #[serde(flatten)]
     pub rank: Rank,
+    /// Where a point came from when Swapper did not record it itself ("opgg").
+    /// Such points carry no win/loss counts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub source: Option<String>,
 }
 
 type History = BTreeMap<String, Vec<Point>>;
@@ -75,25 +79,60 @@ fn record_at(path: &Path, puuid: &str, rank: Rank, at: u64) -> Vec<Point> {
     record_unlocked(path, puuid, rank, at)
 }
 
+fn save(path: &Path, history: &History) {
+    if let Ok(bytes) = serde_json::to_vec(history) {
+        let pending = path.with_extension(format!("{}.tmp", uuid::Uuid::new_v4()));
+        if let Some(parent) = path.parent() {
+            let _ = std::fs::create_dir_all(parent);
+        }
+        if std::fs::write(&pending, bytes).is_ok() {
+            let _ = std::fs::rename(&pending, path);
+        }
+        let _ = std::fs::remove_file(&pending);
+    }
+}
+
 fn record_unlocked(path: &Path, puuid: &str, rank: Rank, at: u64) -> Vec<Point> {
     let mut history = load(path);
     let points = history.entry(puuid.to_string()).or_default();
     if points.last().map(|p| &p.rank) != Some(&rank) {
-        points.push(Point { at, rank });
+        points.push(Point { at, rank, source: None });
         let excess = points.len().saturating_sub(MAX_POINTS);
         points.drain(..excess);
-        if let Ok(bytes) = serde_json::to_vec(&history) {
-            let pending = path.with_extension(format!("{}.tmp", uuid::Uuid::new_v4()));
-            if let Some(parent) = path.parent() {
-                let _ = std::fs::create_dir_all(parent);
-            }
-            if std::fs::write(&pending, bytes).is_ok() {
-                let _ = std::fs::rename(&pending, path);
-            }
-            let _ = std::fs::remove_file(&pending);
-        }
+        save(path, &history);
     }
     history.remove(puuid).unwrap_or_default()
+}
+
+/// Adds points from other trackers before the first point Swapper recorded
+/// itself, so they never interleave with its own record. Earlier seeds stay; a
+/// seed at a time already held is skipped. Returns how many were added.
+pub fn seed_at(path: &Path, puuid: &str, seeds: Vec<Point>) -> usize {
+    let _guard = HISTORY.lock().unwrap_or_else(|e| e.into_inner());
+    let mut history = load(path);
+    let points = history.entry(puuid.to_string()).or_default();
+    let first = points.iter().find(|p| p.source.is_none()).map_or(u64::MAX, |p| p.at);
+    let before = points.len();
+    points.extend(seeds.into_iter().filter(|p| p.at < first));
+    points.sort_by_key(|p| p.at);
+    // Stable sort keeps a held point ahead of a new seed at the same time.
+    points.dedup_by_key(|p| p.at);
+    let excess = points.len().saturating_sub(MAX_POINTS);
+    points.drain(..excess);
+    let added = points.len() + excess - before;
+    if added > 0 {
+        save(path, &history);
+    }
+    added
+}
+
+pub fn seed(puuid: &str, seeds: Vec<Point>) -> usize {
+    path().map_or(0, |path| seed_at(&path, puuid, seeds))
+}
+
+/// True once an account's history holds points seeded from `source`.
+pub fn seeded(points: &[Point], source: &str) -> bool {
+    points.iter().any(|p| p.source.as_deref() == Some(source))
 }
 
 fn record_verified_at(path: &Path, account: &AccountRead, puuid: &str, verified: &Value, rank: Option<Rank>) -> Result<Vec<Point>, String> {
@@ -116,7 +155,7 @@ pub async fn record_current(client: &crate::runes::Lcu, account: AccountRead, pu
 }
 
 /// LP on one ladder: 100 per division, apex tiers share the top base.
-fn score(rank: &Rank) -> i64 {
+pub(crate) fn score(rank: &Rank) -> i64 {
     let tier = TIERS
         .iter()
         .position(|t| *t == rank.tier)
@@ -135,12 +174,30 @@ fn score(rank: &Rank) -> i64 {
     base + rank.lp as i64
 }
 
+const DIVISIONS: [&str; 4] = ["IV", "III", "II", "I"];
+const APEX: [&str; 3] = ["MASTER", "GRANDMASTER", "CHALLENGER"];
+
+/// The rank at a ladder score, inverse of `score`. Apex scores keep `apex_tier`
+/// (the score cannot tell Master from Grandmaster), defaulting to Master.
+pub(crate) fn rank_at(score: i64, apex_tier: &str) -> Rank {
+    let score = score.max(0);
+    let top = TIERS.len() as i64 * 400;
+    let (tier, division, lp) = if score >= top {
+        let tier = if APEX.contains(&apex_tier) { apex_tier } else { "MASTER" };
+        (tier.to_string(), String::new(), score - top)
+    } else {
+        (TIERS[(score / 400) as usize].to_string(), DIVISIONS[(score % 400 / 100) as usize].to_string(), score % 100)
+    };
+    Rank { tier, division, lp: lp as u64, wins: 0, losses: 0 }
+}
+
 /// Sets `lp_change` on Solo/Duo games that sit alone between two points one
 /// game apart. Everything else (unrecorded gaps, remakes) stays `None`.
 pub fn annotate(games: &mut [Game], points: &[Point]) {
     for pair in points.windows(2) {
         let (a, b) = (&pair[0], &pair[1]);
-        if b.rank.wins + b.rank.losses != a.rank.wins + a.rank.losses + 1 {
+        // A seeded point has no game counts, so it never pins a game's LP.
+        if a.source.is_some() || b.source.is_some() || b.rank.wins + b.rank.losses != a.rank.wins + a.rank.losses + 1 {
             continue;
         }
         let ended = |g: &Game| g.created_at + g.duration * 1000;
@@ -202,6 +259,32 @@ mod tests {
     }
 
     #[test]
+    fn seeds_only_go_before_the_first_recorded_point() {
+        let path = std::env::temp_dir().join(format!("lp-seed-{}.json", uuid::Uuid::new_v4()));
+        record_at(&path, "fixture-a", rank("DIAMOND", "III", 38, 40, 30), 1_000);
+        let seed = |at, lp| Point { at, rank: rank("DIAMOND", "IV", lp, 0, 0), source: Some("opgg".into()) };
+        assert_eq!(seed_at(&path, "fixture-a", vec![seed(900, 85), seed(500, 35), seed(1_200, 5), seed(500, 35)]), 2);
+        let points = load(&path).remove("fixture-a").unwrap();
+        assert_eq!(points.iter().map(|p| p.at).collect::<Vec<_>>(), [500, 900, 1_000]);
+        assert!(seeded(&points, "opgg") && !seeded(&points, "ugg"));
+        // A held time is not added twice; a later seed between seeds still fits in.
+        assert_eq!(seed_at(&path, "fixture-a", vec![seed(900, 85)]), 0);
+        let game = Point { at: 700, rank: rank("DIAMOND", "IV", 60, 0, 0), source: Some("ugg".into()) };
+        assert_eq!(seed_at(&path, "fixture-a", vec![game]), 1);
+        let points = load(&path).remove("fixture-a").unwrap();
+        assert_eq!(points.iter().map(|p| p.at).collect::<Vec<_>>(), [500, 700, 900, 1_000]);
+        std::fs::remove_file(path).unwrap();
+    }
+
+    #[test]
+    fn a_seeded_point_never_pins_a_games_lp() {
+        let mut games = vec![game(1, "solo", 1_500)];
+        let seed = Point { at: 1_000, rank: rank("GOLD", "II", 10, 0, 0), source: Some("opgg".into()) };
+        annotate(&mut games, &[seed, point(2_000, rank("GOLD", "II", 30, 0, 1))]);
+        assert_eq!(games[0].lp_change, None);
+    }
+
+    #[test]
     fn concurrent_lp_writers_preserve_every_account() {
         let path = std::env::temp_dir().join(format!("lp-concurrent-{}.json", uuid::Uuid::new_v4()));
         let barrier = std::sync::Arc::new(std::sync::Barrier::new(16));
@@ -232,7 +315,7 @@ mod tests {
     }
 
     fn point(at: u64, rank: Rank) -> Point {
-        Point { at, rank }
+        Point { at, rank, source: None }
     }
 
     fn game(id: u64, queue: &str, ended_at: u64) -> Game {

@@ -70,6 +70,9 @@ pub struct Game {
 pub struct Player {
     pub champion_id: i64,
     pub riot_id: String,
+    /// Empty for games cached before PUUIDs were kept.
+    #[serde(default)]
+    pub puuid: String,
     pub me: bool,
     pub ally: bool,
     pub role: String,
@@ -128,6 +131,9 @@ pub struct Snapshot {
     /// Recorded Solo/Duo rank points, oldest first; empty for older caches.
     #[serde(default)]
     pub lp_history: Vec<super::lp::Point>,
+    /// Average rank of recent Solo/Duo lobbies; Swapper's own MMR estimate.
+    #[serde(default)]
+    pub mmr: Option<super::mmr::Mmr>,
 }
 
 pub fn summoner(value: &Value) -> Option<Summoner> {
@@ -321,9 +327,9 @@ fn players(value: &Value, own: &Value) -> (Vec<Player>, Option<u8>) {
         return (Vec::new(), None);
     };
     let identities = value["participantIdentities"].as_array();
+    let identity = |id: &Value| identities.and_then(|all| all.iter().find(|i| i["participantId"] == *id));
     let riot_id = |id: &Value| -> String {
-        identities
-            .and_then(|all| all.iter().find(|i| i["participantId"] == *id))
+        identity(id)
             .map(|i| {
                 let p = &i["player"];
                 let name = p["gameName"].as_str().unwrap_or("");
@@ -345,6 +351,7 @@ fn players(value: &Value, own: &Value) -> (Vec<Player>, Option<u8>) {
             Player {
                 champion_id: p["championId"].as_i64().unwrap_or(0),
                 riot_id: riot_id(&p["participantId"]),
+                puuid: identity(&p["participantId"]).and_then(|i| i["player"]["puuid"].as_str()).unwrap_or_default().into(),
                 me: p["participantId"] == own["participantId"],
                 ally: p["teamId"] == own["teamId"],
                 role: roles[*index].into(),

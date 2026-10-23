@@ -9,8 +9,8 @@ import { RoleIcon } from "../runes/RoleIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
-import { benchKey, defaultQueue, deltaText, formatStat, lpTrend, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, sparkline, tierLabel, tiles, today, tone } from "./dashboardModel";
-import type { AccountCard, Bench, Game, LpPoint, RoleRecord, Snapshot } from "./types";
+import { benchKey, defaultQueue, deltaText, formatStat, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, tierLabel, tiles, today, tone } from "./dashboardModel";
+import type { AccountCard, Bench, Game, LpPoint, Mmr, RoleRecord, Snapshot } from "./types";
 import { Slot } from "./ui/Slot";
 import { EmptyState, Skeleton } from "./ui/States";
 import { fmtCompact } from "./ui/format";
@@ -19,6 +19,8 @@ const roleLabels: Record<string, string> = { top: "Top", jungle: "Jungle", mid: 
 
 export { crestForTier as crestSlug } from "./buildLogic";
 import { crestForTier as crestSlug } from "./buildLogic";
+import { LpGraph } from "./LpGraph";
+import { MmrLine } from "./MmrLine";
 
 export function titleCase(text: string) {
   return text.charAt(0) + text.slice(1).toLowerCase();
@@ -98,7 +100,7 @@ export function Dashboard(props: Props) {
   useEffect(() => { document.querySelector(".match-row.is-last")?.scrollIntoView({ block: "nearest" }); }, []);
   return <div className={`dash-v2${stale ? " is-stale" : ""}`}>
     <div className="dash-top">
-      <TodayCard games={snapshot.games} rank={snapshot.rank} history={snapshot.lpHistory} live={inGamePhases.has(props.phase)} onOpenLive={props.onOpenLive} />
+      <TodayCard games={snapshot.games} rank={snapshot.rank} history={snapshot.lpHistory} mmr={snapshot.mmr} live={inGamePhases.has(props.phase)} onOpenLive={props.onOpenLive} />
       <RankCard snapshot={snapshot} stale={stale} />
     </div>
     <Performance games={games} queue={queue} onQueue={setQueue} benches={benches} tier={tier} name={name} />
@@ -145,7 +147,7 @@ function NoMatches({ queue, hasOthers, onShowAll }: { queue: string; hasOthers: 
 
 const inGamePhases = new Set(["GameStart", "InProgress", "Reconnect"]);
 
-function TodayCard({ games, rank, history, live, onOpenLive }: { games: Game[]; rank: Snapshot["rank"]; history?: LpPoint[]; live: boolean; onOpenLive: () => void }) {
+function TodayCard({ games, rank, history, mmr, live, onOpenLive }: { games: Game[]; rank: Snapshot["rank"]; history?: LpPoint[]; mmr?: Mmr | null; live: boolean; onOpenLive: () => void }) {
   const day = today(games, Date.now(), rank, history);
   const since = day.since == null ? "no games yet" : `since ${new Date(day.since).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   const none = day.games === 0;
@@ -158,29 +160,51 @@ function TodayCard({ games, rank, history, live, onOpenLive }: { games: Game[]; 
         <dt>{day.lp != null && day.lp < 0 ? "LP lost" : "LP gained"}</dt><dd className={day.lp == null ? "" : day.lp >= 0 ? "up" : "down"}>{day.lp == null ? "–" : `${day.lp >= 0 ? "+" : "−"}${Math.abs(day.lp)}`}</dd></div>
       <div><dt>played</dt><dd>{none ? "–" : playTime(day.seconds)}</dd></div>
     </dl>
+    {mmr && <MmrLine mmr={mmr} explain={`Swapper's estimate, not Riot's: the average Solo/Duo rank of the other players in your last ${mmr.games} ranked ${mmr.games === 1 ? "game" : "games"}, as recorded when each game started (current ranks for games before Swapper recorded them).`} />}
   </section>;
+}
+
+/** The full ranked emblem art for a tier slug, or null until (or unless) it loads. */
+function useRankEmblem(tier: string) {
+  const [url, setUrl] = useState<string | null>(null);
+  useEffect(() => {
+    let live = true;
+    setUrl(null);
+    if (tier !== "all") void invoke<string | null>("rank_emblem", { tier }).then(found => { if (live) setUrl(found); }).catch(() => {});
+    return () => { live = false; };
+  }, [tier]);
+  return url;
 }
 
 function RankCard({ snapshot, stale }: { snapshot: Snapshot; stale: boolean }) {
   const rank = snapshot.rank;
-  const trend = lpTrend(snapshot.lpHistory);
+  const emblem = useRankEmblem(crestSlug(rank?.tier));
   const progress = rank && rankProgress(rank);
   const total = rank ? rank.wins + rank.losses : 0;
-  return <section className="panel rank-card" data-tier={crestSlug(rank?.tier)} aria-label="Ranked progress">
-    <div className="card-head">{rank ? <>
-      <RankCrest tier={crestSlug(rank.tier)} size={84} mode="desktop" />
-      <h2>{`${titleCase(rank.tier)} ${rank.division}`.trim()}</h2><b className="rank-lp">{rank.lp} LP</b></> : <h2>Unranked</h2>}
-      <small>Ranked Solo/Duo{stale && ` · saved ${fmtAgo(snapshot.fetchedAt)}`}</small></div>
-    {rank ? <div className="rank-body">
-      <div className="rank-progress">
-        {progress!.next && <div className="lp-bar" role="progressbar" aria-label={`${progress!.toNext} LP to ${progress!.next}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress!.lp}><i style={{ width: `${progress!.lp}%` }} /></div>}
-        <p><span>{progress!.next ? `${progress!.toNext} LP to ${progress!.next}` : "Apex tier"}</span><span>Season {rank.wins}W {rank.losses}L{total > 0 && `, ${pct(rank.wins, total)}%`}</span></p>
-      </div>
-      {trend && <figure className="lp-trend" title="Solo/Duo LP Swapper recorded">
-        <svg viewBox="0 0 150 40" aria-hidden><polyline points={sparkline(trend.scores, 150, 40)} /></svg>
-        <figcaption><span>{trend.games > 0 ? `${trend.games} ${trend.games === 1 ? "game" : "games"} ago` : "earlier"}</span><span>now</span></figcaption>
-      </figure>}
-    </div> : <p className="rank-empty">Finish placements to see progress.</p>}
+  const queue = <small>Ranked Solo/Duo{stale && ` · saved ${fmtAgo(snapshot.fetchedAt)}`}</small>;
+  if (!rank) return <section className="panel rank-card" aria-label="Ranked progress">
+    <div className="card-head"><h2>Unranked</h2>{queue}</div>
+    <p className="rank-empty">Finish placements to see progress.</p>
+  </section>;
+  return <section className="panel rank-card" data-tier={crestSlug(rank.tier)} aria-label="Ranked progress">
+    <div className="rank-layout">
+    <div className="rank-summary">
+    {emblem && <span className="rank-emblem" style={{ backgroundImage: `url("${emblem}")` }} aria-hidden />}
+    <div className="card-head">
+      {!emblem && <RankCrest tier={crestSlug(rank.tier)} size={56} mode="desktop" />}
+      {queue}<h2>{`${titleCase(rank.tier)} ${rank.division}`.trim()}</h2><b className="rank-lp">{rank.lp}<small>LP</small></b>
+    </div>
+    {total > 0 && <div className="rank-record" aria-label={`${pct(rank.wins, total)}% win rate, ${rank.wins} wins, ${rank.losses} losses`}>
+      <strong className={rank.wins * 2 >= total ? "up" : "down"}>{pct(rank.wins, total)}%<small>WR</small></strong>
+      <div className="rank-record-bar" aria-hidden><i style={{ width: `${100 * rank.wins / total}%` }} /></div>
+      <span aria-hidden><b className="up">{rank.wins}W</b><b className="down">{rank.losses}L</b></span>
+    </div>}
+    <div className="rank-progress">
+      {progress!.next && <div className="lp-bar" role="progressbar" aria-label={`${progress!.toNext} LP to ${progress!.next}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress!.lp}><i style={{ width: `${progress!.lp}%` }} /></div>}
+      <p><span>{progress!.next ? `${progress!.toNext} LP to ${progress!.next}` : "Apex tier"}</span></p>
+    </div>
+    </div>
+    <LpGraph history={snapshot.lpHistory} /></div>
   </section>;
 }
 

@@ -1,11 +1,11 @@
 use crate::full_app::{self, model};
 use futures_util::{stream, StreamExt};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::{collections::BTreeMap, sync::OnceLock, time::Duration};
 use tauri::Emitter;
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Player {
     participant_id: u64,
@@ -37,12 +37,12 @@ pub struct Player {
     stats: BTreeMap<String, Value>,
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 struct MatchRank {
     tier: String,
     division: String,
     lp: Option<u64>,
-    queue: &'static str,
+    queue: String,
 }
 
 fn rank_for_match(value: &Value, game_queue: &str) -> Option<MatchRank> {
@@ -91,18 +91,18 @@ fn rank_for_match(value: &Value, game_queue: &str) -> Option<MatchRank> {
             tier: tier.into(),
             division: division.into(),
             lp: ranked["leaguePoints"].as_u64(),
-            queue,
+            queue: queue.into(),
         })
     })
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct Objective {
     label: String,
     kills: u64,
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Team {
     team_id: u64,
@@ -110,7 +110,7 @@ pub struct Team {
     objectives: Vec<Objective>,
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct Detail {
     game: model::Game,
     players: Vec<Player>,
@@ -128,13 +128,13 @@ fn extract_stats(stats: &Value) -> BTreeMap<String, Value> {
         .collect()
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct Timeline {
     frames: Vec<TimelineFrame>,
     events: Vec<TimelineEvent>,
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TimelineFrame {
     timestamp: u64,
@@ -143,7 +143,7 @@ pub struct TimelineFrame {
     red_gold: i64,
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TimelineEvent {
     timestamp: u64,
@@ -157,7 +157,7 @@ pub struct TimelineEvent {
     position: Option<TimelinePosition>,
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 struct TimelinePosition {
     x: u64,
     y: u64,
@@ -466,6 +466,79 @@ pub(crate) fn cached_games() -> Vec<model::Game> {
         .unwrap_or_default()
 }
 
+/// Opened matches are also kept on disk, so they load after a restart and with
+/// League Client closed. Ranks and timeline stay as they were when first opened.
+const SAVED_LIMIT: usize = 50;
+const SAVED_MAX_BYTES: u64 = 8 * 1024 * 1024;
+static SAVED_GATE: OnceLock<std::sync::Mutex<()>> = OnceLock::new();
+
+#[derive(Serialize, Deserialize)]
+struct Saved {
+    game_id: u64,
+    /// Lowercased Riot ID whose view of the match this is.
+    perspective: String,
+    detail: Detail,
+}
+
+fn saved_path() -> Option<std::path::PathBuf> {
+    Some(crate::vault::data_root().ok()?.join("match-details.json"))
+}
+
+fn read_saved_at(path: &std::path::Path) -> Vec<Saved> {
+    if std::fs::metadata(path).map_or(true, |m| m.len() > SAVED_MAX_BYTES) {
+        return vec![];
+    }
+    let mut saved: Vec<Saved> =
+        serde_json::from_slice(&std::fs::read(path).unwrap_or_default()).unwrap_or_default();
+    saved.truncate(SAVED_LIMIT);
+    saved
+}
+
+fn saved_detail_at(path: &std::path::Path, key: &(u64, String)) -> Option<Detail> {
+    read_saved_at(path)
+        .into_iter()
+        .find(|s| s.game_id == key.0 && s.perspective == key.1)
+        .map(|s| s.detail)
+}
+
+/// Newest first; a failed write only costs the offline copy, never the shown match.
+fn save_detail_at(path: &std::path::Path, key: &(u64, String), detail: &Detail) {
+    let Ok(_guard) = SAVED_GATE.get_or_init(Default::default).lock() else {
+        return;
+    };
+    let mut saved = read_saved_at(path);
+    saved.retain(|s| !(s.game_id == key.0 && s.perspective == key.1));
+    saved.insert(
+        0,
+        Saved {
+            game_id: key.0,
+            perspective: key.1.clone(),
+            detail: detail.clone(),
+        },
+    );
+    saved.truncate(SAVED_LIMIT);
+    let Ok(bytes) = serde_json::to_vec(&saved) else {
+        return;
+    };
+    if bytes.len() as u64 > SAVED_MAX_BYTES {
+        return;
+    }
+    if let Some(parent) = path.parent() {
+        let _ = std::fs::create_dir_all(parent);
+    }
+    let pending = path.with_extension("tmp");
+    if std::fs::write(&pending, bytes).is_ok() {
+        let _ = std::fs::rename(pending, path);
+    }
+}
+
+fn valid_perspective(perspective: &str) -> Result<(), String> {
+    if perspective.len() > 128 || perspective.chars().any(char::is_control) {
+        return Err("Invalid player name.".into());
+    }
+    Ok(())
+}
+
 async fn get(client: &crate::runes::Lcu, path: &str) -> Result<Value, String> {
     tokio::time::timeout(Duration::from_secs(4), crate::runes::lcu_get(client, path))
         .await
@@ -483,6 +556,19 @@ pub async fn full_app_match_detail(
     if window.label() != full_app::LABEL || !full_app::enabled(&app) {
         return Err("Fullsized App is closed or disabled.".into());
     }
+    // A match opened before loads without League Client. No Riot ID means the
+    // dashboard owner, whose Riot ID the saved dashboard knows.
+    let known = riot_id
+        .clone()
+        .or_else(|| full_app::read_cache().map(|snapshot| snapshot.summoner.riot_id));
+    if let Some(perspective) = known {
+        valid_perspective(&perspective)?;
+        let key = (game_id, perspective.to_lowercase());
+        let remembered = CACHE.get_or_init(Default::default).lock().await.matches.get(&key).cloned();
+        if let Some(detail) = remembered.or_else(|| saved_detail_at(&saved_path()?, &key)) {
+            return Ok(detail);
+        }
+    }
     let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
     let current = get(&client, "/lol-summoner/v1/current-summoner").await?;
     let owner =
@@ -495,9 +581,7 @@ pub async fn full_app_match_detail(
         };
     }
     let perspective = riot_id.unwrap_or_else(|| owner.riot_id.clone());
-    if perspective.len() > 128 || perspective.chars().any(char::is_control) {
-        return Err("Invalid player name.".into());
-    }
+    valid_perspective(&perspective)?;
     let key = (game_id, perspective.to_lowercase());
     if let Some(detail) = cache.matches.get(&key) {
         return Ok(detail.clone());
@@ -604,6 +688,9 @@ pub async fn full_app_match_detail(
     }
     if cache.ranks.len() > 200 {
         cache.ranks.clear();
+    }
+    if let Some(path) = saved_path() {
+        save_detail_at(&path, &key, &detail);
     }
     cache.matches.insert(key, detail.clone());
     Ok(detail)
@@ -774,6 +861,42 @@ mod tests {
             .unwrap()
             .remove("visionScore");
         assert!(model::performance_scores(&players).is_none());
+    }
+
+    #[test]
+    fn opened_matches_load_again_from_disk_newest_first() {
+        let owner = model::Summoner {
+            puuid: "fixture-self".into(),
+            summoner_id: 1,
+            riot_id: "You#TEST".into(),
+            level: 1,
+            icon: None,
+        };
+        let participants: Vec<_> = (1..=10).map(|id| json!({
+            "participantId": id, "teamId": if id <= 5 { 100 } else { 200 }, "championId": 103,
+            "stats": { "win": id <= 5, "kills": 2, "deaths": 1, "assists": 3 }
+        })).collect();
+        let value = json!({ "gameId": 42, "mapId": 11, "queueId": 420, "gameDuration": 1200, "gameCreation": 1234,
+            "participants": participants, "participantIdentities": [{"participantId": 1, "player": {"puuid": "fixture-self", "gameName": "You", "tagLine": "TEST"}}],
+            "teams": [{"teamId": 100, "win": "Win", "dragonKills": 2}] });
+        let detail = parse(&value, &owner).unwrap();
+        let path = std::env::temp_dir().join(format!("match-details-test-{}.json", uuid::Uuid::new_v4()));
+        let key = (42, "you#test".to_string());
+
+        assert!(saved_detail_at(&path, &key).is_none());
+        save_detail_at(&path, &key, &detail);
+        for game_id in 100..100 + SAVED_LIMIT as u64 {
+            save_detail_at(&path, &(game_id, key.1.clone()), &detail);
+        }
+        assert!(saved_detail_at(&path, &key).is_none(), "the oldest match drops past the limit");
+        save_detail_at(&path, &key, &detail);
+
+        let loaded = saved_detail_at(&path, &key).expect("saved match loads again");
+        assert_eq!(loaded.players.len(), 10);
+        assert!(loaded.players[0].me);
+        assert!(saved_detail_at(&path, &(42, "someone#else".into())).is_none());
+        assert_eq!(read_saved_at(&path).len(), SAVED_LIMIT);
+        let _ = std::fs::remove_file(path);
     }
 
     #[test]
