@@ -1,16 +1,19 @@
 import { AbilityHover } from "./AbilityHover";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
+import { RefreshCw } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { BuildPanel } from "./BuildPanel";
+import { DuoTable } from "./DuoTable";
 import { MatchupStrip, ChampionArt } from "./MatchupStrip";
+import { ChampionSlot } from "./ChampionSlot";
 import { RankPicker, ChampionPicker } from "./Picker";
 import { NearEnd, NearViewport } from "./NearViewport";
 import { PresetBuild } from "../runes/PresetBuild";
 import { CachedBadge } from "../runes/CachedBadge";
 import { RoleIcon } from "../runes/RoleIcon";
-import { TIER_OPTIONS, fmtPct, tierClass } from "../runes/types";
+import { TIER_OPTIONS, fmtPct, isLowSample, tierClass } from "../runes/types";
 import type { ChampionOption, ChampionOverviewView, ChampionCountersView, TierListView, TierRow, MatchupView } from "../runes/types";
 import { useChampionArt } from "./art";
 import { useAmbientChampion } from './AmbientArt';
@@ -46,6 +49,12 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
   useEffect(() => () => onSelectionChange(null), [onSelectionChange]);
   useAmbientChampion('champion', selected?.id);
   const [enemy, setEnemy] = useState(0);
+  const hasEnemy = enemy > 0;
+  const search = useRef<HTMLInputElement>(null);
+  const backToOpponents = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (matchups) (hasEnemy ? backToOpponents.current : search.current)?.focus();
+  }, [matchups, selected, hasEnemy]);
   const [detail, setDetail] = useState<MatchupView | null>(null);
   const [overview, setOverview] = useState<ChampionOverviewView | null>(null);
   const [counters, setCounters] = useState<ChampionCountersView | null>(null);
@@ -53,6 +62,9 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
   const [error, setError] = useState("");
   const [limit, setLimit] = useState(ROW_STEP);
   const [recent, setRecent] = useState<{ championId: number; role: string }[]>([]);
+  const [matchupRoles, setMatchupRoles] = useState<Record<string, TierRow[]> | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  const selectionRequest = useRef(0);
   // The five role tier lists share one cached u.gg file per rank, so loading all of them is cheap.
   const loadRoleLists = (forTier: string) => {
     let lists = roleLists.current.get(forTier);
@@ -63,11 +75,15 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
     }
     return lists;
   };
-  const open = async (champion: ChampionOption | null, filter = lane) => {
-    if (!champion) { setSelected(null); return; }
-    const next = filter !== "auto" ? filter : mainRoles(await loadRoleLists(tier)).get(champion.id) ?? "mid";
+  const open = async (champion: ChampionOption | null, filter = lane, forTier = tier) => {
+    const request = ++selectionRequest.current;
+    if (!champion) { setSelected(null); setEnemy(0); setQuery(""); return; }
+    const next = filter !== "auto" && filter !== "duos" ? filter : mainRoles(await loadRoleLists(forTier)).get(champion.id) ?? "mid";
+    if (request !== selectionRequest.current) return;
     setRole(next); setSelected(champion);
+    if (matchups && !enemy) { setShowAll(false); setQuery(""); }
   };
+  useEffect(() => () => { ++selectionRequest.current; }, []);
   useEffect(() => { if (focus) void open(focus.champion); }, [focus]);
   // Hovering a row starts its downloads; the backend caches them, so the click finds them ready.
   const prefetched = useRef(new Set<string>());
@@ -96,13 +112,17 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
   }, [matchups]);
   useEffect(() => {
     let live = true; setList(null); setError("");
-    if (!matchups && lane === "auto") void loadRoleLists(tier).then(lists => { if (live) setList({ rows: autoRows(lists), unavailable: !Object.values(lists).some(rows => rows.length), stale: false, updatedAt: null }); });
-    else if (!matchups) void invoke<TierListView>("get_tier_list", { position: lane, tier }).then(value => { if (live) setList(value); }).catch(reason => { if (live) setError(String(reason)); });
+    if (matchups) {
+      setMatchupRoles(null);
+      void loadRoleLists(tier).then(lists => { if (live) setMatchupRoles(lists); });
+    }
+    else if (lane === "auto") void loadRoleLists(tier).then(lists => { if (live) setList({ rows: autoRows(lists), unavailable: !Object.values(lists).some(rows => rows.length), stale: false, updatedAt: null }); });
+    else if (lane !== "duos") void invoke<TierListView>("get_tier_list", { position: lane, tier }).then(value => { if (live) setList(value); }).catch(reason => { if (live) setError(String(reason)); });
     return () => { live = false; };
   }, [lane, tier, matchups]);
   useEffect(() => {
     let live = true; setOverview(null); setCounters(null); setError("");
-    if (selected) {
+    if (selected && (!matchups || hasEnemy)) {
       setLoading(true);
       // The build shows as soon as it arrives; the matchup strip fills in on its own.
       void invoke<ChampionOverviewView>("get_champion_overview", { championId: selected.id, position: role, tier })
@@ -111,7 +131,7 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
         .then(counters => { if (live) setCounters(counters); }).catch(reason => { if (live) setError(String(reason)); });
     }
     return () => { live = false; };
-  }, [selected, role, tier]);
+  }, [selected, role, tier, matchups, hasEnemy]);
   useEffect(() => {
     let live = true; setDetail(null);
     if (selected && enemy && selected.id !== enemy) void loadMatchup(selected.id, enemy, role, tier).then(value => { if (live) setDetail(value); }).catch(reason => { if (live) setError(String(reason)); });
@@ -140,37 +160,52 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
 
   // A champion page carries its own filters in its header, like a game client's champion screen.
   const inHeader = !!selected && !matchups;
-  const pickLane = (value: string) => { setLane(value); if (selected) void open(selected, value); };
+  const pickLane = (value: string) => { ++selectionRequest.current; setLane(value); if (selected) void open(selected, value); };
+  const pickTier = (value: string) => { ++selectionRequest.current; setTier(value); if (matchups && selected) void open(selected, lane, value); };
+  const picking = matchups && (!selected || !enemy);
+  const suggested = new Set((matchupRoles?.[role] ?? []).map(row => row.championId));
+  const cards = champions.filter(champion => champion.id !== selected?.id && champion.name.toLowerCase().includes(query.trim().toLowerCase())
+    && (!selected || showAll || !suggested.size || suggested.has(champion.id))).sort((a, b) => a.name.localeCompare(b.name));
+  const clearPick = () => { void open(null); search.current?.focus(); };
+  const pickOpponent = () => { setEnemy(0); setQuery(""); setShowAll(false); };
   const filters = <>
     <div className="fa-seg role-tabs" role="group" aria-label="Role">
       {!inHeader && <button aria-pressed={lane === "auto"} onClick={() => pickLane("auto")} title="Auto: each champion at its most played role"><RoleIcon role="auto" size={16} mode="desktop" />Auto</button>}
       {lanes.map(([value, label]) => <button key={value} aria-pressed={(inHeader ? role : lane) === value} onClick={() => inHeader ? setRole(value) : pickLane(value)}><RoleIcon role={value} size={16} mode="desktop" />{label}</button>)}
+      {!matchups && !inHeader && <button aria-pressed={lane === "duos"} onClick={() => pickLane("duos")}>Duos</button>}
     </div>
-    <RankPicker value={tier} onChange={setTier} />
+    <RankPicker value={tier} onChange={pickTier} />
   </>;
-  return <div className="champion-tools runes-panel">
+  return <div className="champion-tools runes-panel" onKeyDown={event => {
+    if (!matchups || event.key !== "Escape" || event.defaultPrevented || (event.target as HTMLElement).closest('[data-radix-popper-content-wrapper]')) return;
+    event.preventDefault(); event.stopPropagation();
+    if (enemy) pickOpponent();
+    else if (query) setQuery("");
+    else clearPick();
+  }}>
     <div className="tool-bar">
       {!inHeader && filters}
-      {matchups ? <>
+      {matchups && !picking ? <>
         <ChampionPicker label="Your champion" value={selected?.id ?? 0} champions={champions} onChange={id => { void open(champions.find(c => c.id === id) ?? null); if (enemy === id) setEnemy(0); }} />
         <span className="versus">vs</span>
         <ChampionPicker label="Opponent" value={enemy} champions={champions.filter(c => c.id !== selected?.id)} onChange={setEnemy} />
-      </> : !selected && <label className="search-pill"><SearchIcon size={14} aria-hidden /><input placeholder="Search champion" aria-label="Search champion" value={query} onChange={e => setQuery(e.target.value)} /></label>}
+      </> : (!selected || picking) && <label className="search-pill"><SearchIcon size={14} aria-hidden /><input ref={search} placeholder={!matchups && lane === "duos" ? "Search duo" : selected ? "Search opponent" : "Search champion"} aria-label={!matchups && lane === "duos" ? "Search duo" : "Search champion"} value={query} onChange={e => setQuery(e.target.value)} /></label>}
     </div>
     {error && <Notice tone="error">{error}</Notice>}
-    {selected && <section className="selected-champion">
+    {selected && !picking && <section className="selected-champion">
+      {matchups && <button ref={backToOpponents} className="back-to-list" onClick={pickOpponent}>← Back to opponents</button>}
       {/* On Matchups the versus banner is the hero once both champions are picked; the pickers above change or clear them. */}
       {!(matchups && enemy > 0 && enemy !== selected.id) && <ChampionHeader champion={selected} lane={role} tier={tier} onBack={() => setSelected(null)} backLabel={matchups ? "Clear champion" : "Back to tier list"} patch={overview?.stats?.patch}>{inHeader && filters}</ChampionHeader>}
       {matchups && enemy > 0 && enemy !== selected.id && (detail ? <section className="matchup-banner fa-versus" aria-label="Matchup">
+        <VersusFrame />
         <VersusSide id={selected.id} name={selected.name} label="Your champion" />
         <div className="fa-versus-stat">
           {detail.stats ? <><small>{selected.name} win rate</small><strong className={detail.stats.winPct >= 50 ? "up" : "down"}>{fmtPct(detail.stats.winPct)}</strong>
             <span className="fa-versus-bar" role="img" aria-label={`${selected.name} ${fmtPct(detail.stats.winPct)}, ${detail.enemyName} ${fmtPct(100 - detail.stats.winPct)}`}><i style={{ width: `${detail.stats.winPct}%` }} /></span>
-            <span>{fmtCount(detail.stats.games)} games · {laneLabel(role)} · <b className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} vs avg</b></span></>
+            <span>{fmtCount(detail.stats.games)} games{isLowSample(detail.stats.games) && <> · <em className="fa-low-sample" title="Under 100 games in this matchup: the win rate is a rough read, and the build below is the general one.">Low sample</em></>} · {laneLabel(role)} · <b className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} vs avg</b></span></>
             : <><small>{laneLabel(role)} · {tierLabel(tier)}</small><span>Too few games.</span></>}
         </div>
         <VersusSide id={enemy} name={detail.enemyName} label="Opponent" end />
-        {detail.fallback && <p className="runes-note">General build: too few matchup games.</p>}
       </section> : <Skeleton label="Loading matchup" rows={2} height={72} />)}
       {loading && !overview ? <TableSkeleton /> : overview?.stats ? <>
         <div className={`fa-stat-strip ${tierClass(overview.stats.tier ?? "")}`}>
@@ -180,7 +215,7 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
           <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
         </div>
       </> : <Notice>No stats for this role and rank.</Notice>}
-      <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} matchups={matchups && detail ? [detail] : []} preferMatchup={matchups} />
+      <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} matchups={matchups && detail ? [detail] : []} preferMatchup={matchups} preview />
       {counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
       <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={matchups ? setEnemy : id => {
         // On a champion page a matchup card opens that champion's page, in the same lane; on Matchups it picks the opponent.
@@ -192,14 +227,41 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
       }} />
       {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${fmtCount(detail.stats.games)} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
     </section>}
-    {!selected && (matchups ? <section className="fa-matchup-empty">
-      <h2>Pick a matchup</h2>
-      <p>Choose your champion and an opponent.</p>
-      {recent.length > 0 && <><h3>Your champions</h3><div className="fa-quick-picks">{recent.map(pick => {
+    {picking && <section className="fa-matchup-empty">
+      {selected ? <div className="fa-matchup-selection">
+        <div className="fa-matchup-picks" role="group" aria-label="Matchup picks">
+          <div className="fa-repick-slot">
+            <ChampionSlot championId={selected.id} name={selected.name} role={role} state="Your champion" className="is-you" />
+            <button type="button" className="fa-repick" aria-label="Change your champion" onClick={clearPick}><RefreshCw size={28} aria-hidden /><span>Change</span></button>
+          </div>
+          <span className="fa-matchup-vs" aria-hidden>VS</span>
+          <ChampionSlot championId={0} role={role} state="Pick your opponent" emptyLabel={laneLabel(role)} />
+        </div>
+        <p className="fa-matchup-context" aria-live="polite"><RoleIcon role={role} size={16} mode="desktop" /> {laneLabel(role)} · {tierLabel(tier)}</p>
+      </div> : <div className="fa-matchup-prompt" aria-live="polite">
+        <h2>Pick your champion</h2><p>Choose your champion, then who you’re playing against.</p>
+      </div>}
+      {!selected && recent.length > 0 && <><h3>Your recent champions</h3><div className="fa-quick-picks">{recent.map(pick => {
         const champion = champions.find(c => c.id === pick.championId);
-        return champion && <button key={pick.championId} className="fa-quick-pick" onClick={() => { setLane(pick.role); void open(champion, pick.role); }}><NearViewport className="fa-featured-art"><ChampionArt id={pick.championId} name={champion.name} /></NearViewport><span><strong>{champion.name}</strong><small>{pick.role === "auto" ? "Your pool" : `${laneLabel(pick.role)} lane`}</small></span></button>;
+        return champion && <button key={pick.championId} className="fa-quick-pick" onClick={() => void open(champion)}><NearViewport className="fa-featured-art"><ChampionArt id={pick.championId} name={champion.name} /></NearViewport><span><strong>{champion.name}</strong><small>Recently played</small></span></button>;
       })}</div></>}
-    </section> : <>
+      <div className="fa-opponent-options">
+        <h3>{selected ? showAll || !suggested.size ? "All opponents" : `${laneLabel(role)} opponents` : "All champions"}</h3>
+        {selected && <button className="fa-show-all" aria-pressed={showAll} onClick={() => setShowAll(value => !value)}>Show all champions</button>}
+      </div>
+      {selected && !matchupRoles && <p role="status">Loading role suggestions…</p>}
+      {selected && matchupRoles && !suggested.size && <p>Role suggestions unavailable. Showing all champions.</p>}
+      <div className="fa-champion-grid" role="group" aria-label={selected ? "Choose opponent" : "Choose your champion"}>
+        {cards.map(champion => <button key={champion.id} className="fa-champion-card" data-champion-id={champion.id}
+            aria-label={`${champion.name}, ${selected ? "choose as opponent" : "choose as your champion"}`}
+            onClick={() => selected ? setEnemy(champion.id) : void open(champion)}>
+            <NearViewport className="fa-champion-card-art"><ChampionArt id={champion.id} name={champion.name} /></NearViewport>
+            <span><strong>{champion.name}</strong></span>
+          </button>)}
+      </div>
+      {!cards.length && <p>No {selected ? "opponent" : "champion"} matches{query ? ` “${query}”` : " this role"}.{selected && !showAll && " Try Show all champions."}</p>}
+    </section>}
+    {!selected && !matchups && (lane === "duos" ? <DuoTable tier={tier} query={query} /> : <>
       {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map(row => <button className="fa-featured-pick" key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>Leading {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b></span></button>)}</div>}
       {list?.stale && <CachedBadge stale updatedAt={list.updatedAt} />}
       {list?.unavailable ? <Notice tone="warn">Tier list unavailable. Try another role or rank.</Notice> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
@@ -233,6 +295,28 @@ function TierLine({ row, rank, lane, average, peak, onOpen, onIntent }: { row: T
 
 function RateBar({ value, peak }: { value: number; peak: number }) {
   return <><span>{fmtPct(value)}</span><i className="fa-rate-bar" style={{ "--rate": `${Math.min(100, (value / peak) * 100)}%` } as CSSProperties} aria-hidden /></>;
+}
+
+const VERSUS_PANELS = [["2,2 522,2 472,98 2,98", "blue", "#51a2e6"], ["528,2 998,2 998,98 478,98", "red", "#e83d32"]] as const;
+
+/** The banner's two outlined panels, yours blue and theirs red, split by a slanted seam through the win rate:
+ *  the fills sit behind the splash art, the glowing outlines in front of it. */
+function VersusFrame() {
+  return <><svg className="fa-versus-frame is-fill" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden>
+    <defs>
+      <linearGradient id="fa-versus-blue" gradientUnits="userSpaceOnUse" x1="0" x2="520"><stop offset="0" stopColor="#51a2e6" stopOpacity=".32" /><stop offset="1" stopColor="#51a2e6" stopOpacity=".03" /></linearGradient>
+      <linearGradient id="fa-versus-red" gradientUnits="userSpaceOnUse" x1="480" x2="1000"><stop offset="0" stopColor="#e83d32" stopOpacity=".03" /><stop offset="1" stopColor="#e83d32" stopOpacity=".32" /></linearGradient>
+      {/* Blur in viewBox units, pre-stretched for the wide banner so the glow stays about 3px all round. */}
+      <filter id="fa-versus-glow" x="-5%" y="-30%" width="110%" height="160%"><feGaussianBlur stdDeviation="1.6 1.2" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+    </defs>
+    {VERSUS_PANELS.map(([points, side]) => <polygon key={side} points={points} fill={`url(#fa-versus-${side})`} />)}
+  </svg>
+  <svg className="fa-versus-frame is-outline" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden>
+    {VERSUS_PANELS.map(([points, side, color]) => <polygon key={side} points={points} fill="none" stroke={color} />)}
+  </svg>
+  {/* Each letter is clipped to its own panel, so it never crosses the seam or a border at any width. */}
+  <span className="fa-versus-letter is-v" aria-hidden><i>V</i></span>
+  <span className="fa-versus-letter is-s" aria-hidden><i>S</i></span></>;
 }
 
 function VersusSide({ id, name, label, end }: { id: number; name: string; label: string; end?: boolean }) {

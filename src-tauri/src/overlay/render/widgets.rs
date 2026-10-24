@@ -1,5 +1,6 @@
-use super::super::model::{DisplayData, Gold, Objective, ROLES};
+use super::super::model::{DisplayData, Gold, Objective};
 use super::{icons, Surface, PULSE_STEPS};
+use super::super::scoreboard::{FRAME_HEIGHT, HEADER, ROW};
 use windows_sys::Win32::Graphics::GdiPlus::*;
 
 // ARGB palette, matched to Swapper's dark theme and DPM's widget colours.
@@ -9,94 +10,78 @@ const TRACK: u32 = 0x40FFFFFF;
 const TEXT: u32 = 0xFFE9ECF4;
 const MUTED: u32 = 0xFF8B93A7;
 const BLUE: u32 = 0xFF6E9BFF;
+/// League's gold (the client's `#C8AA6E`).
+const COIN: u32 = 0xFFC8AA6E;
 const RED: u32 = 0xFFFF6B7A;
-const GOLD: u32 = 0xFFE3B45C;
 /// Swapper's signature green (`--brand-green`) on graphite, for the level-up hint.
 const BRAND_GREEN: u32 = 0xFFC5E39E;
 const HINT_FILL: u32 = 0xF2181A17;
 
-const GOLD_WIDTH: f32 = 280.0;
-const GOLD_HEAD: f32 = 30.0;
-const GOLD_ROW: f32 = 20.0;
-const GOLD_PAD: f32 = 8.0;
-/// A role gap this large fills its half of the row; bigger gaps cap there.
-const ROLE_GAP_FULL: f64 = 3000.0;
-const ROLE_LABELS: [&str; 5] = ["TOP", "JNG", "MID", "BOT", "SUP"];
-const ROW_HIGHLIGHT: u32 = 0x1FFFFFFF;
+/// Scoreboard text sizes at 1080p, scaled with the frame.
+const ROW_TEXT: f32 = 14.0;
+const TOTAL_TEXT: f32 = 19.0;
+/// The empty header corners, outside the first and last team stat icons.
+const CORNER: f32 = 120.0;
+/// Dark edge around scoreboard text and arrows.
+pub(super) const OUTLINE: u32 = 0xF0080B10;
 
-fn gold_height() -> f32 {
-    GOLD_PAD * 2.0 + GOLD_HEAD + ROLES.len() as f32 * GOLD_ROW
+struct GoldMarker {
+    number: RectF,
+    bar: Option<RectF>,
+    gap: i64,
 }
 
-/// The bar length (share of its half) for a role gap.
-fn role_share(gap: i64) -> f32 {
-    (gap.unsigned_abs() as f64 / ROLE_GAP_FULL).min(1.0) as f32
+fn gold_markers(frame: RectF, gold: Gold) -> Vec<GoldMarker> {
+    let s = frame.Height / FRAME_HEIGHT;
+    let centre = frame.X + frame.Width / 2.0;
+    gold.rows.into_iter().enumerate().filter_map(|(i, gap)| {
+        let gap = gap?;
+        let top = frame.Y + (HEADER + i as f32 * ROW) * s;
+        Some(GoldMarker {
+            // Centred on the row's stretch of the divider; the bar breaks around it.
+            number: RectF { X: centre - 40.0 * s, Y: top + (ROW / 2.0 - 9.0) * s, Width: 80.0 * s, Height: 18.0 * s },
+            bar: (gap != 0).then_some(RectF { X: centre - 1.5 * s, Y: top + 16.0 * s, Width: 3.0 * s, Height: (ROW - 20.0) * s }),
+            gap,
+        })
+    }).collect()
+}
+
+/// Each team's total gold in its own top corner of the frame, beside its stat icons.
+fn team_totals(frame: RectF, gold: Gold) -> [(RectF, i64, u32); 2] {
+    let s = frame.Height / FRAME_HEIGHT;
+    let corner = |x: f32| RectF { X: x, Y: frame.Y + 22.0 * s, Width: CORNER * s, Height: 28.0 * s };
+    [(corner(frame.X + 10.0 * s), gold.blue, BLUE), (corner(frame.X + frame.Width - (10.0 + CORNER) * s), gold.red, RED)]
 }
 
 impl Surface {
-    /// Team totals (`19.6K ● +2.1K 17.5K`) over one row per role: from a centre
-    /// line a bar grows left in blue when blue side's player leads that role, or
-    /// right in red when red's does, with the gap at its end. Your role is lit.
+    /// Only coloured divider segments and outlined numbers, on the detected Tab frame.
     pub(super) fn gold(&self, rect: RectF, gold: Gold) -> Result<(), String> {
-        let s = self.scale;
-        self.rounded(rect, 8.0 * s, PANEL, Some((GOLD & 0xCCFFFFFF, 1.5 * s)))?;
-        let inner = RectF {
-            X: rect.X + GOLD_PAD * s,
-            Y: rect.Y + GOLD_PAD * s,
-            Width: rect.Width - 2.0 * GOLD_PAD * s,
-            Height: rect.Height - 2.0 * GOLD_PAD * s,
-        };
-        let column = inner.Width / 3.0;
-        let head = |i: f32| RectF {
-            X: inner.X + column * i,
-            Y: inner.Y,
-            Width: column,
-            Height: GOLD_HEAD * s,
-        };
-        let diff = gold.blue - gold.red;
-        self.text(head(0.0), &short(gold.blue, false), self.large, BLUE)?;
-        self.text(head(2.0), &short(gold.red, false), self.large, RED)?;
-        let coin = 11.0 * s;
-        let middle = head(1.0);
-        self.circle(middle.X + 4.0 * s, middle.Y + (middle.Height - coin) / 2.0, coin, GOLD)?;
-        self.text(
-            RectF { X: middle.X + coin, Width: middle.Width - coin, ..middle },
-            &short(diff.abs(), false),
-            self.medium,
-            if diff == 0 { MUTED } else { sign_color(diff) },
-        )?;
-        let label_width = 34.0 * s;
-        let number = 42.0 * s;
-        let bars_x = inner.X + label_width;
-        let half = (inner.Width - label_width) / 2.0;
-        let centre = bars_x + half;
-        for (i, gap) in gold.roles.iter().enumerate() {
-            let row = RectF {
-                X: inner.X,
-                Y: inner.Y + GOLD_HEAD * s + i as f32 * GOLD_ROW * s,
-                Width: inner.Width,
-                Height: GOLD_ROW * s,
+        let s = rect.Height / FRAME_HEIGHT;
+        for (corner, total, color) in team_totals(rect, gold) {
+            let glyphs = self.outlined(corner, &short(total, false), TOTAL_TEXT * s, color)?;
+            // League's gold coins just before the number, sized to its cap height.
+            let size = glyphs.Height * 1.55;
+            let coin = RectF { X: glyphs.X - size - 5.0 * s, Y: glyphs.Y + (glyphs.Height - size) / 2.0, Width: size, Height: size };
+            self.icon(coin, &icons::GOLD, COIN)?;
+        }
+        for marker in gold_markers(rect, gold) {
+            let color = match marker.gap.cmp(&0) {
+                std::cmp::Ordering::Greater => BLUE,
+                std::cmp::Ordering::Less => RED,
+                std::cmp::Ordering::Equal => MUTED,
             };
-            let mine = gold.mine == Some(i);
-            if mine {
-                self.rounded(row, 4.0 * s, ROW_HIGHLIGHT, None)?;
+            if let Some(bar) = marker.bar {
+                let (gap_top, gap_bottom) = (marker.number.Y - 1.0 * s, marker.number.Y + marker.number.Height + 1.0 * s);
+                for (from, to) in [(bar.Y, gap_top), (gap_bottom, bar.Y + bar.Height)] {
+                    if to > from {
+                        self.with_brush(color, |brush| unsafe { GdipFillRectangle(self.graphics, brush, bar.X, from, bar.Width, to - from) })?;
+                    }
+                }
             }
-            self.text(RectF { Width: label_width, ..row }, ROLE_LABELS[i], self.small, if mine { TEXT } else { MUTED })?;
-            let mid_y = row.Y + row.Height / 2.0;
-            self.rounded(RectF { X: bars_x, Y: mid_y - 1.0 * s, Width: half * 2.0, Height: 2.0 * s }, 1.0 * s, TRACK & 0x30FFFFFF, None)?;
-            self.rounded(RectF { X: centre - 1.0 * s, Y: row.Y + 3.0 * s, Width: 2.0 * s, Height: row.Height - 6.0 * s }, 1.0 * s, TEXT & 0x99FFFFFF, None)?;
-            // An unknown role (missing or shared position) keeps only the centre tick.
-            let Some(gap) = *gap else { continue };
-            let length = role_share(gap) * (half - number);
-            let (color, bar, label) = if gap >= 0 {
-                (BLUE, RectF { X: centre - length, Y: mid_y - 3.0 * s, Width: length, Height: 6.0 * s }, centre - length - number)
-            } else {
-                (RED, RectF { X: centre, Y: mid_y - 3.0 * s, Width: length, Height: 6.0 * s }, centre + length)
-            };
-            if length > 0.5 {
-                self.rounded(bar, 3.0 * s, color, None)?;
+            let glyphs = self.outlined(marker.number, &short(marker.gap.saturating_abs(), false), ROW_TEXT * s, color)?;
+            if marker.gap != 0 {
+                self.lead_arrow(glyphs, marker.gap > 0, ROW_TEXT * s, color)?;
             }
-            self.text(RectF { X: label, Width: number, ..row }, &short(gap.abs(), false), self.small, if gap == 0 { MUTED } else { color })?;
         }
         std::result::Result::Ok(())
     }
@@ -211,14 +196,6 @@ pub(super) fn scale(height: i32) -> f32 {
     (height as f32 / 1080.0).clamp(0.65, 2.0)
 }
 
-fn sign_color(value: i64) -> u32 {
-    if value >= 0 {
-        BLUE
-    } else {
-        RED
-    }
-}
-
 fn elapsed(objective: Objective) -> f32 {
     if objective.period == 0 {
         return 1.0;
@@ -246,16 +223,9 @@ pub(super) fn widgets(width: i32, height: i32, data: &DisplayData) -> Vec<Widget
     let s = scale(height);
     let (w, h) = (width as f32, height as f32);
     let mut widgets = Vec::new();
-    if let Some(gold) = data.gold {
-        let gw = (GOLD_WIDTH * s).min(w);
+    if let (Some(gold), Some(frame)) = (data.gold, data.scoreboard) {
         widgets.push(Widget::Gold(
-            RectF {
-                X: (w - gw) / 2.0,
-                // High enough to clear the Tab scoreboard it is shown with.
-                Y: h * 0.07,
-                Width: gw,
-                Height: (gold_height() * s).min(h * 0.9),
-            },
+            RectF { X: frame.x as f32, Y: frame.y as f32, Width: frame.width as f32, Height: frame.height as f32 },
             gold,
         ));
     }
@@ -303,9 +273,9 @@ mod tests {
             gold: Some(Gold {
                 blue: 19_600,
                 red: 17_500,
-                roles: [Some(1_600), Some(-4_200), Some(2_400), None, Some(0)],
-                mine: Some(2),
+                rows: [Some(1_600), Some(-4_200), Some(2_400), None, Some(0)],
             }),
+            scoreboard: None,
             objectives: vec![
                 Objective {
                     label: "Dragon",
@@ -322,6 +292,11 @@ mod tests {
             arrow: Some([60, 120, 20, 8]),
             pulse: 0,
         }
+    }
+
+    #[test]
+    fn gold_is_absent_until_the_scoreboard_is_detected() {
+        assert!(widgets(1920, 1080, &sample()).iter().all(|w| !matches!(w, Widget::Gold(..))));
     }
 
     #[test]
@@ -342,7 +317,7 @@ mod tests {
             (3840, 2160),
         ] {
             let widgets = widgets(width, height, &sample());
-            assert_eq!(widgets.len(), 4);
+            assert_eq!(widgets.len(), 3);
             assert_eq!(
                 widgets
                     .iter()
@@ -363,11 +338,34 @@ mod tests {
     }
 
     #[test]
-    fn role_bars_scale_with_the_gap_and_cap_at_full() {
-        assert_eq!(role_share(0), 0.0);
-        assert_eq!(role_share(1_500), 0.5);
-        assert_eq!(role_share(-1_500), 0.5, "red leads draw just as long");
-        assert_eq!(role_share(9_000), 1.0);
+    fn markers_follow_the_divider_and_skip_unknown_rows() {
+        let gold = sample().gold.unwrap();
+        let frame = RectF { X: 380.0, Y: 235.0, Width: 1156.0, Height: 465.0 };
+        let totals = team_totals(frame, gold);
+        assert_eq!((totals[0].1, totals[1].1), (gold.blue, gold.red));
+        assert!(totals[0].0.X > frame.X && totals[1].0.X + totals[1].0.Width < frame.X + frame.Width, "totals stay inside the frame corners");
+        let mut markers = gold_markers(frame, gold);
+        assert_eq!(markers.len(), 4, "four known rows");
+        // Keep the old indexes below: slot 0 used to be the team gap.
+        markers.insert(0, GoldMarker { number: markers[0].number, bar: None, gap: 0 });
+        assert_eq!(markers[1].gap, 1600);
+        assert_eq!(markers[1].bar.as_ref().unwrap().Width, 3.0);
+        assert_eq!(markers[2].gap, -4200);
+        assert_eq!(markers[4].gap, 0);
+        assert!(markers[4].bar.is_none(), "even rows have only a muted zero");
+        for marker in &markers {
+            assert_eq!(marker.number.X + marker.number.Width / 2.0, 958.0);
+        }
+        assert_eq!(markers[1].number.Y, 337.0);
+        assert_eq!(markers[4].number.Y, 641.0, "unknown fourth row must not shift later rows");
+        let moved = gold_markers(RectF { X: 368.0, Y: 148.0, ..frame }, gold);
+        assert_eq!(moved[0].number.X, markers[1].number.X - 12.0);
+        assert_eq!(moved[0].number.Y, markers[1].number.Y - 87.0);
+        let scaled = gold_markers(RectF { X: 0.0, Y: 0.0, Width: 2312.0, Height: 930.0 }, gold);
+        assert_eq!(scaled[0].bar.as_ref().unwrap().Width, 6.0);
+        let mut data = sample();
+        data.scoreboard = Some(super::super::super::render::Bounds { x: 380, y: 235, width: 1156, height: 465 });
+        assert!(widgets(1920, 1080, &data).iter().any(|w| matches!(w, Widget::Gold(..))));
     }
 
     #[test]

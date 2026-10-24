@@ -78,9 +78,9 @@ for (const signal of ["SIGINT", "SIGTERM"]) process.once(signal, () => {
   void cleanup().finally(() => process.exit(signal === "SIGINT" ? 130 : 143));
 });
 const watchdog = setTimeout(() => {
-  console.error(`FAIL suite exceeded 55 seconds during ${current}`);
+  console.error(`FAIL suite exceeded 65 seconds during ${current}`);
   void cleanup().finally(() => process.exit(1));
-}, 55_000);
+}, 65_000);
 
 async function audit() {
   await page.settle();
@@ -140,6 +140,37 @@ async function nav(label, selector) {
   await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', label);
   await page.text(".ui-page-header h1", label);
   await page.visible(selector);
+}
+
+async function championGridLayout() {
+  const measure = "(() => { const el = document.querySelector('.fa-champion-grid'); return {columns: getComputedStyle(el).gridTemplateColumns.split(' ').length, width: el.clientWidth, available: el.parentElement.clientWidth}; })()";
+  for (const width of [1280, 1650, 1920]) {
+    await page.cdp.send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: false });
+    for (const centered of [false, true]) {
+      // Also exercise the centered parent that caused the real-app collapse.
+      if (centered) await page.evaluate("Object.assign(document.querySelector('.fa-matchup-empty').style, {display: 'grid', justifyItems: 'center'})");
+      try {
+        const grid = await page.evaluate(measure);
+        assert.ok(grid.columns > 1, `${width}px: expected multiple champion columns, got ${grid.columns}`);
+        assert.ok(grid.width >= grid.available - 1, `${width}px: champion grid must fill its container`);
+        if (!centered) {
+          const hero = await page.evaluate("(() => { const parent = document.querySelector('.fa-matchup-empty'); const box = parent.getBoundingClientRect(); const yours = parent.querySelector('.cs-slot.is-you'); const enemy = parent.querySelector('.cs-slot.is-empty'); const title = parent.querySelector('.fa-matchup-prompt h2'); const center = yours ? (yours.getBoundingClientRect().left + enemy.getBoundingClientRect().right) / 2 : title.getBoundingClientRect().left + title.getBoundingClientRect().width / 2; const context = parent.querySelector('.fa-matchup-context')?.getBoundingClientRect(); return {offset: Math.abs(center - box.left - box.width / 2), contextOffset: context ? Math.abs(context.left + context.width / 2 - box.left - box.width / 2) : 0, titleCentered: !title || getComputedStyle(title).textAlign === 'center', hasSteps: /Step [12] of 2/.test(parent.textContent)}; })()");
+          assert.ok(hero.offset <= 1 && hero.contextOffset <= 1 && hero.titleCentered, `${width}px: matchup hero and context must be centered`);
+          assert.equal(hero.hasSteps, false, "hero must not show step labels");
+        }
+      } finally { await page.evaluate("document.querySelector('.fa-matchup-empty').removeAttribute('style')"); }
+    }
+  }
+  await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
+}
+
+// Every search box: the rounded box shows focus, never a square on the bare input.
+async function searchPillFocus(box = '.search-pill') {
+  await page.evaluate(`document.querySelector('${box} input').focus()`);
+  const focus = await page.evaluate(`(() => { const input = document.querySelector('${box} input'); const pill = getComputedStyle(input.closest('label')); return {inputOutline: getComputedStyle(input).outlineStyle, pillOutline: pill.outlineStyle, pillOutlineWidth: parseFloat(pill.outlineWidth), radius: parseFloat(pill.borderRadius)}; })()`);
+  assert.equal(focus.inputOutline, "none", "search input must not draw a square focus outline");
+  assert.equal(focus.pillOutline, "solid", "search pill must show keyboard focus");
+  assert.ok(focus.pillOutlineWidth >= 2 && focus.radius > 0, "focus ring belongs to the rounded pill");
 }
 
 async function main() {
@@ -443,6 +474,20 @@ async function main() {
     await page.wait("document.querySelector('#md-event-tooltip') === null", 'event tooltip dismissed');
     await page.click('.md-map-filter-heading button');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-map-dot').length"), 72);
+    // Hovering the graph narrows the map to that minute; a click keeps it after the pointer leaves.
+    const chart = await page.evaluate("(() => { const el = document.querySelector('.md-chart'); el.scrollIntoView({ block: 'center', behavior: 'instant' }); const r = el.getBoundingClientRect(); return { x: r.x + r.width * .6, y: r.y + r.height / 2 }; })()");
+    await cdp.send('Input.dispatchMouseEvent', {type: 'mouseMoved', ...chart});
+    await page.visible('.md-map-minute');
+    const minute = await page.evaluate("document.querySelectorAll('.md-map-dot').length");
+    assert.ok(minute < 72);
+    await cdp.send('Input.dispatchMouseEvent', {type: 'mousePressed', ...chart, button: 'left', clickCount: 1});
+    await cdp.send('Input.dispatchMouseEvent', {type: 'mouseReleased', ...chart, button: 'left', clickCount: 1});
+    await page.visible('.md-frame-dot.is-pinned');
+    await cdp.send('Input.dispatchMouseEvent', {type: 'mouseMoved', x: 2, y: 2});
+    await page.wait("document.querySelector('#md-minute-tooltip') === null", 'minute tooltip closed');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-map-dot').length"), minute);
+    await page.click('.md-map-minute button', 'Show all');
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-map-dot').length"), 72);
     await page.click('.md-event-filters button', 'All');
     await page.click('.md-event-expand button');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-event-list button').length"), 90);
@@ -481,6 +526,7 @@ async function main() {
   });
   // ---- end matchdetail missing data ----
   await check("Sidebar Tierlist", () => nav("Tierlist", ".tier-table tbody tr"));
+  await check("Shared search pill focuses its rounded container", searchPillFocus);
   await check("Tierlist champion overview and build", async () => {
     await page.click(".tier-champ", "Aatrox");
     await page.text(".champion-hero h2", "Aatrox");
@@ -493,15 +539,219 @@ async function main() {
     await page.visible(".tier-table tbody tr");
     await page.text('.location-trail [aria-current="page"]', 'Tierlist');
   });
-  await check("Sidebar Matchups", () => nav("Matchups", ".fa-matchup-empty"));
-  await check("Matchups chooses both champions", async () => {
-    await page.click('button[aria-label^="Your champion:"]');
-    await page.click(".fa-picker-option", "Aatrox");
-    await page.text(".champion-hero h2", "Aatrox");
+  await check("Tierlist Duos groups paired portraits and filters by either champion", async () => {
+    await page.click('.role-tabs button', 'Duos');
+    await page.visible('.fa-duo-table tbody tr');
+    await page.wait("Array.from(document.querySelectorAll('.fa-duo-table tbody tr')).every(row => row.querySelectorAll('img.champion-icon').length === 2)", 'two champion portraits per duo');
+    await page.text('.fa-duo-table tbody tr:first-child', 'Jinx');
+    await page.text('.fa-duo-table tbody tr:first-child', 'Milio');
+    await page.text('.fa-duo-table tbody tr:first-child', '54.8%');
+    for (const width of [1280, 1650, 1920]) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: false });
+      await page.settle();
+      assert.deepEqual(await page.evaluate(`(${horizontalOverflow.toString()})()`), [], `${width}px duo layout`);
+      const pair = await page.evaluate("(() => { const row = document.querySelector('.fa-duo-table tbody tr'); const group = row.querySelector('.fa-duo-portraits'); return { portraits: [...row.querySelectorAll('img')].map(img => img.getBoundingClientRect().width), groupWidth: group?.getBoundingClientRect().width }; })()");
+      assert.ok(pair.portraits.every(width => width >= 32) && pair.groupWidth < 100, `${width}px: portraits must read as a compact pair`);
+      if (width !== 1650) await screenshot('tierlist-duos-second-pass', width, 900);
+    }
+    await cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
+    await page.click('.fa-duo-table tbody tr:first-child .col-wr');
+    assert.equal(await page.evaluate("document.querySelector('.champion-hero')"), null);
+    await page.text('.role-tabs button[aria-pressed="true"]', 'Duos');
+    await page.click('button[aria-label="Show duos with Ziggs"]');
+    await page.text('.fa-duo-filter', 'With Ziggs');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 2", 'Ziggs bot pairs');
+    await page.click('button[aria-label="Show duos with Ziggs"]');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 17", 'same image clears filter');
+    await page.click('button[aria-label="Show duos with Milio"]');
+    await page.text('.fa-duo-filter', 'With Milio');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 5", 'Milio support pairs');
+    await page.click('button[aria-label="Show duos with Ziggs"]');
+    await page.text('.fa-duo-filter', 'With Ziggs');
+    await page.type('[aria-label="Search duo"]', 'mIlIo');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 1", 'champion filter combines with search');
+    await page.click('.fa-duo-table th button', 'Games together');
+    await page.text('.fa-duo-table tbody tr', 'Ziggs');
+    await page.click('button[aria-label="Clear champion filter"]');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 5", 'chip clears only champion filter');
+    await page.evaluate("document.querySelector('[aria-label=\"Search duo\"]').select()");
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Backspace', windowsVirtualKeyCode: 8 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Backspace', windowsVirtualKeyCode: 8 });
+    await page.click('.role-tabs button', 'Auto');
+    await page.visible('.tier-table tbody tr');
+  });
+  await check("Tierlist Duos supports search, rank changes, sorting and keyboard selection", async () => {
+    await page.evaluate("[...document.querySelectorAll('.role-tabs button')].find(button => button.textContent === 'Duos').focus()");
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', text: '\r', windowsVirtualKeyCode: 13 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+    await page.visible('.fa-duo-table tbody tr');
+    for (const [query, count] of [['mIlIo', 5], ['Jinx', 2], ['no such duo', 0]]) {
+      await page.evaluate("document.querySelector('[aria-label=\"Search duo\"]').select()");
+      await cdp.send('Input.insertText', { text: query });
+      await page.wait(`document.querySelectorAll('.fa-duo-table tbody tr').length === ${count}`, `duo search ${query}`);
+    }
+    await page.text('.panel-empty', 'No duo matches');
+    await page.evaluate("document.querySelector('[aria-label=\"Search duo\"]').select()");
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Backspace', windowsVirtualKeyCode: 8 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Backspace', windowsVirtualKeyCode: 8 });
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 17", 'cleared duo search');
+    await page.click('.fa-duo-table th button', 'Games together');
+    await page.text('.fa-duo-table tbody tr:nth-child(2)', 'Jinx');
+    await page.click('.fa-duo-table th button', 'Rank');
+    await page.text('.fa-duo-table tbody tr:nth-child(2)', 'Vayne');
+    await page.click('button[aria-label^="Rank:"]');
+    await page.click('.fa-picker-option', 'Diamond+');
+    await page.text('.fa-duo-table tbody tr:first-child', '53.9%');
+    await page.text('.fa-duo-table tbody tr:first-child', '9,210');
+    await page.evaluate("document.querySelector('button[aria-label=\"Show duos with Jinx\"]').focus()");
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', text: '\r', windowsVirtualKeyCode: 13 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+    await page.text('.fa-duo-filter', 'With Jinx');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 2", 'keyboard champion filter');
+    assert.equal(await page.evaluate("document.querySelector('.champion-hero')"), null);
+    await page.evaluate("document.querySelector('button[aria-label=\"Clear champion filter\"]').focus()");
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', text: '\r', windowsVirtualKeyCode: 13 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+    await page.wait("!document.querySelector('.fa-duo-filter')", 'keyboard clears chip');
+  });
+  await check("Tierlist Duos searches every pair and pages beyond the first forty", async () => {
+    await navigate(`${fullApp}?duos=paged`, '.match-row');
+    await nav('Tierlist', '.tier-table tbody tr');
+    await page.click('.role-tabs button', 'Duos');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 40", 'first forty pairs');
+    await page.type('[aria-label="Search duo"]', 'Smolder');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 4", 'search includes pairs beyond first forty');
+    await page.evaluate("document.querySelector('[aria-label=\"Search duo\"]').select()");
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Backspace', windowsVirtualKeyCode: 8 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Backspace', windowsVirtualKeyCode: 8 });
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 40", 'search reset starts at forty');
+    await page.evaluate("document.querySelector('.fa-duo-table + [aria-hidden]').scrollIntoView({block: 'center'})");
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 48", 'remaining pairs load on scroll');
+  });
+  await check("Tierlist Duos handles loading, empty, unavailable, cached and failed data", async () => {
+    for (const state of ['loading', 'empty', 'unavailable', 'stale', 'error']) {
+      await navigate(`${fullApp}?duos=${state}`, '.match-row');
+      await nav('Tierlist', '.tier-table tbody tr');
+      await page.click('.role-tabs button', 'Duos');
+      if (state === 'loading') {
+        await page.visible('[role="status"][aria-label="Loading bot-lane duos"]');
+        await page.visible('.fa-duo-table tbody tr');
+      } else if (state === 'empty') await page.text('.panel-empty', 'No bot-lane duo data for this rank yet.');
+      else if (state === 'unavailable') await page.text('.ui-notice', 'Duos unavailable');
+      else if (state === 'error') await page.text('[role="alert"]', 'Could not load bot-lane duos');
+      else { await page.visible('.fa-duo-table tbody tr'); await page.text('.cached-badge', 'Cached'); }
+      await audit();
+    }
+    await navigate(fullApp, '.match-row');
+  });
+  await check("Sidebar Matchups", async () => {
+    await nav("Matchups", ".fa-matchup-empty");
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.role-tabs button')].some(button => button.textContent === 'Duos')"), false);
+  });
+  await check("Matchups champion grid fills the page at desktop widths", championGridLayout);
+  await check("Matchups Auto ignores a recent off-role pick", async () => {
+    await navigate(fullApp + "?matchup-roles", ".match-row");
+    await nav("Matchups", ".fa-matchup-empty");
+    await page.click(".fa-quick-pick");
+    await page.text('.role-tabs button[aria-pressed="true"]', "Auto");
+    await page.text(".fa-matchup-picks .cs-slot.is-you", "LeBlanc");
+    await page.text(".fa-matchup-context", "Mid");
+    assert.equal(await page.evaluate("document.querySelector('.selected-champion')"), null);
+    assert.equal(await page.evaluate("document.querySelector('.fa-champion-card[data-champion-id=\"222\"]')"), null);
+  });
+  await check("Matchups opponent selection shows your champion versus an empty role slot", async () => {
+    await page.visible(".fa-matchup-picks .cs-slot.is-you");
+    await page.text(".fa-matchup-picks .cs-slot.is-you", "LeBlanc");
+    await page.text(".fa-matchup-picks .cs-slot.is-empty", "Mid");
+    await page.visible(".fa-matchup-picks .cs-slot.is-empty .cs-slot-placeholder");
+    await page.text(".fa-matchup-vs", "VS");
+    assert.equal(await page.evaluate("document.querySelector('.fa-champion-grid [data-champion-id=\"7\"]')"), null);
+    await championGridLayout();
+  });
+  await check("Matchups hero omits step labels and offers a repick button", async () => {
+    assert.equal(await page.evaluate("document.querySelector('.fa-matchup-empty').textContent.includes('Step 2 of 2')"), false);
+    await page.visible('button[aria-label="Change your champion"]');
+    await searchPillFocus();
+    const button = 'button[aria-label="Change your champion"]';
+    await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 0, y: 0 });
+    await page.wait("getComputedStyle(document.querySelector('.fa-repick')).opacity === '0'", "repick overlay hidden at rest");
+    const position = await page.evaluate("(() => { const r = document.querySelector('.fa-repick').getBoundingClientRect(); return {x: r.left + r.width / 2, y: r.top + r.height / 2}; })()");
+    await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", ...position });
+    await page.wait("getComputedStyle(document.querySelector('.fa-repick')).opacity === '1'", "repick overlay on hover");
+    await page.click(button);
+    await page.text(".fa-matchup-prompt h2", "Pick your champion");
+    assert.equal(await page.evaluate("document.querySelector('.fa-matchup-empty').textContent.includes('Step 1 of 2')"), false);
+    await page.click(".fa-quick-pick");
+    await page.visible(button);
+    await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 0, y: 0 });
+    await page.evaluate("document.querySelector('.search-pill input').focus()");
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 });
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 });
+    await page.wait("document.activeElement.matches('.fa-repick:focus-visible') && getComputedStyle(document.activeElement).opacity === '1'", "repick overlay on keyboard focus");
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Enter", code: "Enter", text: "\r", windowsVirtualKeyCode: 13 });
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Enter", code: "Enter", windowsVirtualKeyCode: 13 });
+    await page.text(".fa-matchup-prompt h2", "Pick your champion");
+    await page.click(".fa-quick-pick");
+    await page.text(".fa-matchup-picks .cs-slot.is-you", "LeBlanc");
+  });
+  await check("Matchups grid suggests opponents, shows all and opens on the second pick", async () => {
+    await page.click(".fa-show-all");
+    await page.visible('.fa-champion-card[data-champion-id="222"]');
+    await page.visible('.fa-show-all[aria-pressed="true"]');
+    assert.equal(await page.evaluate("document.querySelector('.fa-champion-grid [data-champion-id=\"7\"]')"), null);
+    await screenshot("matchups-opponents-all");
+    await screenshot("matchups-opponents-all", 1920, 1080);
+    await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
+    await page.click(".fa-show-all");
+    assert.equal(await page.evaluate("document.querySelector('.fa-champion-card[data-champion-id=\"222\"]')"), null);
+    await page.click('.fa-champion-card[data-champion-id="103"]');
+    await page.text('[aria-label="Matchup"]', "LeBlanc");
+    await page.text('[aria-label="Matchup"]', "Ahri");
+    await page.text('[aria-label="Matchup"]', "Mid");
+    await page.text('[aria-label="Matchup"]', "47.6");
+    assert.equal(await page.evaluate("document.querySelector('.fa-champion-grid')"), null);
+    assert.equal(await page.evaluate("document.activeElement.textContent"), "← Back to opponents");
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Escape", code: "Escape", windowsVirtualKeyCode: 27 });
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Escape", code: "Escape", windowsVirtualKeyCode: 27 });
+    await page.text(".fa-matchup-picks .cs-slot.is-you", "LeBlanc");
+    assert.equal(await page.evaluate("document.activeElement.getAttribute('aria-label')"), "Search champion");
+    await page.click('.fa-champion-card[data-champion-id="103"]');
+    await page.text('[aria-label="Matchup"]', "Ahri");
+    // The existing detail pickers and matchup strip still change the opponent.
     await page.click('button[aria-label^="Opponent:"]');
     await page.click(".fa-picker-option", "Darius");
     await page.text('[aria-label="Matchup"]', "Darius");
-    await page.text('[aria-label="Matchup"]', "47.6");
+    await page.click('.fa-matchup-card[title^="Jax:"]');
+    await page.text('[aria-label="Matchup"]', "Jax");
+    await searchPillFocus('.fa-strip-search');
+    await page.evaluate("document.activeElement.blur()");
+  });
+  await check("Matchups can undo picks, search and choose with the keyboard", async () => {
+    await page.click(".back-to-list", "← Back to opponents");
+    await page.text(".fa-matchup-picks .cs-slot.is-you", "LeBlanc");
+    await page.type('input[aria-label="Search champion"]', "missing-opponent");
+    await page.text(".fa-matchup-empty", "No opponent matches");
+    const escape = async () => {
+      await cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Escape", code: "Escape", windowsVirtualKeyCode: 27 });
+      await cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Escape", code: "Escape", windowsVirtualKeyCode: 27 });
+    };
+    await escape();
+    await page.visible('.fa-champion-card[data-champion-id="103"]');
+    await escape();
+    await page.text(".fa-matchup-prompt h2", "Pick your champion");
+    await page.click('.role-tabs button', "Top");
+    await page.evaluate("document.querySelector('.fa-champion-card[data-champion-id=\"7\"]').focus()");
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Enter", code: "Enter", windowsVirtualKeyCode: 13, text: "\r" });
+    await cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Enter", code: "Enter", windowsVirtualKeyCode: 13 });
+    await page.text(".fa-matchup-picks .cs-slot.is-empty", "Top");
+    await page.click('button[aria-label="Change your champion"]');
+    await page.text(".fa-matchup-prompt h2", "Pick your champion");
+    await page.click('.role-tabs button', "Auto");
+    await page.click(".fa-quick-pick");
+    await page.text(".fa-matchup-picks .cs-slot.is-empty", "Mid");
+    await page.click('button[aria-label="Change your champion"]');
+    await page.text(".fa-matchup-prompt h2", "Pick your champion");
+    await navigate(fullApp, ".match-row");
   });
   await check("Sidebar Patch notes", async () => {
     await page.text('nav[aria-label="Swapper pages"] .nav-badge.new', "NEW!");

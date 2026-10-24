@@ -17,6 +17,12 @@ test("a champion's main role is the role with the most games", () => {
   assert.equal(roles.get(1), "top");
 });
 
+test("Auto uses LeBlanc's per-role games rather than list order or tier strength", () => {
+  const roles = { top: [row(7, "S+", 55, 775)], mid: [row(7, "B", 50.5, 25689)] };
+  assert.equal(mainRoles(roles).get(7), "mid");
+  assert.deepEqual(autoRows(roles).map(r => [r.championId, r.role]), [[7, "mid"]]);
+});
+
 test("auto rows list each champion once at its main role, strongest tier first", () => {
   const rows = autoRows(lists);
   assert.deepEqual(rows.map(r => [r.championId, r.role]), [[64, "jungle"], [266, "top"], [103, "mid"], [1, "top"]]);

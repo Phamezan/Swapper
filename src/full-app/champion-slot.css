@@ -1,0 +1,22 @@
+/* Shared draft and matchup champion/role slot. */
+.cs-slot { position: relative; min-width: 0; height: 196px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: linear-gradient(160deg, var(--fa-raised), var(--fa-side)); isolation: isolate; }
+.cs-slot-art { position: absolute; inset: 0; display: grid; place-items: center; color: var(--text-muted); z-index: -1; }
+.cs-slot-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(11 11 13 / .12), transparent 30%, rgb(11 11 13 / .45) 58%, #101013 100%); }
+.cs-slot-art .fa-card-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; border-radius: 0; }
+.cs-slot-art .champion-icon, .cs-slot-art .champion-icon-fallback { width: 48px; height: 48px; border-radius: 8px; }
+.cs-slot-placeholder { display: grid; place-items: center; width: 100%; height: 100%; padding-bottom: 20px; color: rgb(179 179 187 / .25); }
+.cs-slot-role { position: absolute; top: 9px; left: 9px; display: grid; place-items: center; width: 27px; height: 27px; border-radius: 5px; background: rgb(11 11 13 / .72); color: #d4d4da; }
+.cs-slot-locked { position: absolute; top: 15px; right: 10px; color: var(--text-secondary); filter: drop-shadow(0 1px 3px #000); }
+.cs-slot-copy { position: absolute; inset: auto 10px 12px; display: grid; gap: 3px; min-width: 0; }
+.cs-slot-copy strong { overflow: hidden; font-size: 15px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; white-space: nowrap; text-overflow: ellipsis; }
+.cs-slot-copy > small { color: var(--text-secondary); font-size: 11px; }
+.cs-slot-state { margin-bottom: 4px; font-size: 9px; font-weight: 650; letter-spacing: 0; text-transform: none; color: var(--text-secondary); }
+.cs-slot.is-empty .cs-slot-art::after { background: linear-gradient(180deg, transparent, rgb(11 11 13 / .4)); }
+.cs-slot.is-empty .cs-slot-copy strong { font-size: 12px; color: var(--text-muted); font-weight: 450; letter-spacing: 0; }
+.cs-slot.is-empty .cs-slot-copy > small { color: var(--text-muted); }
+.cs-slot.is-hover .cs-slot-art .fa-card-art { opacity: .8; }
+.cs-slot.is-you { border-color: rgb(197 227 158 / .8); }
+.cs-slot.is-you::after { content: ""; position: absolute; inset: auto 0 0; height: 2px; background: var(--fa-you); }
+.cs-slot.is-you .cs-slot-state, .cs-slot.is-you .cs-slot-role { color: var(--fa-you); }
+.cs-slot.is-laner { border-color: rgb(233 194 122 / .45); }
+.cs-slot.is-laner .cs-slot-state { color: var(--fa-gold); }

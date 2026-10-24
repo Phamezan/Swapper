@@ -85,6 +85,14 @@ test("the skill grid spans levels 1-18 and leaves unreported levels empty", () =
   assert.ok(skillGrid(null).every(row => row.cells.every(cell => cell === null)));
 });
 
+test("a 15-level order is completed to 18 by League's rules", () => {
+  // Q and E maxed, W at 3, R at 2 after 15 levels: R at 16, then W twice.
+  const grid = skillGrid("QEQWQRQEQEREEWW");
+  assert.deepEqual(grid.map(row => row.cells.slice(15)), [[null, null, null], [null, 17, 18], [null, null, null], [16, null, null]]);
+  // Unreadable orders are not guessed.
+  assert.ok(skillGrid("QEQWQRQEQ?REEWW").every(row => row.cells.slice(15).every(cell => cell === null)));
+});
+
 test("the max order uses the reported priority, else the order skills fill up in", () => {
   assert.deepEqual(maxOrder("QWEQQRQEQEREEWW", "qew"), ["Q", "E", "W"]);
   assert.deepEqual(maxOrder("QWEQQRQEQEREEWW"), ["Q", "E", "W"]);

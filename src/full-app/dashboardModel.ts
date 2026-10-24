@@ -249,8 +249,12 @@ export function lpGraph(history: LpPoint[] | undefined, now: number, width: numb
     floor = top;
   }
   const step = high - low > 600 ? 400 : 100;
+  // Lines (and crests) only inside divisions the player reached: the padding stays empty, so Emerald I
+  // never shows a Diamond crest or a "Diamond III starts here" line above it.
+  const reachedLow = Math.floor(Math.min(...scores) / 100) * 100;
+  const reachedHigh = Math.floor(Math.max(...scores) / 100) * 100;
   const guides = [];
-  for (let score = Math.ceil(low / step) * step; score <= high; score += step) {
+  for (let score = Math.ceil(Math.max(low, reachedLow) / step) * step; score <= Math.min(high, reachedHigh); score += step) {
     const apex = score >= APEX_SCORE;
     guides.push({
       y: y(score),

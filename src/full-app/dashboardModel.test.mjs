@@ -102,10 +102,13 @@ test("the LP graph covers 30 days, frames the line with division guides and sums
   assert.equal(lpGraph([point(1, "GOLD", "II", 10)], now, 100, 50), null);
   const history = [point(40, "GOLD", "IV", 0), point(20, "GOLD", "II", 90, 10), point(5, "GOLD", "I", 12, 13), point(0, "PLATINUM", "IV", 40, 16)];
   const graph = lpGraph(history, now, 100, 50);
-  // Gold II 90 to Platinum IV 40, framed by the Gold II line and the Platinum III line above it.
+  // Gold II 90 to Platinum IV 40: lines for the divisions it touched, none for Platinum III above it.
   assert.deepEqual(graph.points.map(p => [p.x, +p.y.toFixed(2), p.games]), [[0, 35, 0], [75, 31.33, 3], [100, 10, 3]]);
   assert.ok(graph.path.startsWith("M0.0,35.0 C") && graph.path.endsWith(" 100.0,10.0"));
-  assert.deepEqual(graph.guides.map(g => [g.label, g.tier]), [["II", null], ["I", null], ["IV", "PLATINUM"], ["III", null]]);
+  assert.deepEqual(graph.guides.map(g => [g.label, g.tier]), [["II", null], ["I", null], ["IV", "PLATINUM"]]);
+  // Emerald I that never reached Diamond: no Diamond crest and no line above Emerald I.
+  const below = lpGraph([point(2, "EMERALD", "II", 40), point(1, "EMERALD", "I", 88)], now, 100, 50);
+  assert.deepEqual(below.guides.map(g => [g.label, g.tier]), [["II", null], ["I", null]]);
   assert.deepEqual(graph.tiers.map(t => [+t.from.toFixed(2), +t.to.toFixed(2), t.tier]), [[0, 0.33, "PLATINUM"], [0.33, 1, "GOLD"]]);
   assert.equal(graph.month, ladderScore(history[3]) - ladderScore(history[0]), "the 30-day gain starts from the point before the window");
   assert.equal(graph.week, 1640 - 1490);

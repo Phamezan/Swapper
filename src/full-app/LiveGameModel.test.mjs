@@ -30,12 +30,16 @@ test("helpers", () => {
   assert.equal(pct(3, 4), 75);
   assert.equal(pct(0, 0), 0);
   assert.equal(kda({ kills: 4, deaths: 0, assists: 2 }), 6);
-  assert.equal(crestSlug("SILVER"), "none");
-  assert.equal(crestSlug("GRANDMASTER"), "master_plus");
-  assert.equal(crestSlug("EMERALD"), "emerald_plus");
   assert.deepEqual(splitRiotId("A#B#EUW"), ["A#B", "#EUW"]);
   assert.equal(roleOf("UTILITY"), "support");
   assert.equal(roleOf(""), "");
+});
+
+test("live ranks use the available tier-specific crests instead of neutral or shared fallbacks", () => {
+  for (const tier of ["IRON", "BRONZE", "SILVER", "GOLD", "PLATINUM", "EMERALD", "DIAMOND", "MASTER", "GRANDMASTER", "CHALLENGER"]) {
+    assert.equal(crestSlug(tier), tier.toLowerCase());
+  }
+  for (const tier of [null, undefined, "", "UNKNOWN"]) assert.equal(crestSlug(tier), "none");
 });
 
 test("a season with many wins and no recorded loss is the client's missing-losses gap", () => {

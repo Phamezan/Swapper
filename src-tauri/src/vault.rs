@@ -115,6 +115,10 @@ pub struct Config {
     /// League shop. `None` means the default (on) has never been changed.
     #[serde(default)]
     pub import_items_with_runes: Option<bool>,
+    /// Which key recommended spells put Flash on: "d", "f", or `None` to keep
+    /// whichever key Flash is already on.
+    #[serde(default)]
+    pub flash_key: Option<String>,
     /// Optional global shortcut that toggles the tray flyout, e.g.
     /// "ctrl+shift+s". `None` means the hotkey is disabled (the default).
     #[serde(default)]

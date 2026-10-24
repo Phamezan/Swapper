@@ -36,7 +36,7 @@
 .ob-row label { display: block; font-size: 14px; font-weight: 550; cursor: pointer; }
 .ob-row p { margin: 3px 0 0; color: var(--ui-text-2, #b9b9bf); font-size: 13px; line-height: 1.45; }
 .ob-preview { position: relative; height: 130px; margin-bottom: 6px; overflow: hidden; flex: none; border: 1px solid var(--ui-line-1, #232327); border-radius: var(--ui-radius-md, 12px); background: radial-gradient(circle at 50% 40%, #202025, #0b0b0d); }
-.ob-preview img { position: absolute; top: -72px; left: calc(50% - 640px); width: 1280px; height: 720px; max-width: none; }
+.ob-preview img { position: absolute; inset: 0; max-width: 100%; max-height: 100%; margin: auto; }
 .ob-preview small { position: absolute; right: 10px; bottom: 8px; padding: 2px 7px; border-radius: 5px; background: rgb(11 11 13 / .7); font-size: 12px; }
 .ob-error { margin-top: 8px; padding: 8px 12px; border-left: 3px solid var(--ui-error, #ff7d76); border-radius: var(--ui-radius-xs, 6px); background: var(--ui-card, rgb(27 27 31 / .78)); }
 .ob-error p { margin: 0; font-size: 13px; }

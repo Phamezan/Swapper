@@ -1,10 +1,12 @@
 mod arrows;
+mod capture;
 mod icons;
 pub(crate) mod live_client;
 mod model;
 #[cfg(test)]
 mod probe;
 mod render;
+mod scoreboard;
 
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -258,6 +260,7 @@ fn display(
     };
     model::DisplayData {
         gold: (settings.gold && held).then(|| model::gold(data)).flatten(),
+        scoreboard: None,
         objectives: if settings.objectives {
             model::objectives(data)
         } else {
@@ -303,6 +306,7 @@ async fn run(
     let mut arrow: Option<[i32; 4]> = None;
     let mut arrow_for = None;
     let mut next_scan = Instant::now();
+    let mut scoreboard = scoreboard::Tracker::default();
     let started = Instant::now();
     let mut prepared = model::DisplayData::default();
     let mut dirty = true;
@@ -466,15 +470,17 @@ async fn run(
         // 20 Hz state sampling while a game process exists. No global hook,
         // key capture or swallowing; no bitmap work unless visible data changes.
         let bounds = data.as_ref().and_then(|_| render::game_bounds(&pids));
+        let held = settings.gold && bounds.is_some()
+            && unsafe { GetAsyncKeyState(settings.gold_hotkey as i32) } < 0;
+        let frame = scoreboard.update(bounds, held, now);
         if let (Some(bounds), Some(data)) = (bounds, data.as_ref()) {
-            let held =
-                settings.gold && unsafe { GetAsyncKeyState(settings.gold_hotkey as i32) } < 0;
             if dirty {
                 prepared = display(data, settings, priority.as_deref(), true);
                 dirty = false;
             }
             let mut visible = prepared.clone();
-            if !held {
+            visible.scoreboard = frame;
+            if frame.is_none() {
                 visible.gold = None;
             }
             // Find the game's own level-up arrows while a skill point is waiting, and

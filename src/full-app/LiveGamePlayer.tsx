@@ -65,11 +65,11 @@ export function LiveGamePlayer({ player: p, championNames, enemy, onClose }: {
 function RankCard({ label, rank }: { label: string; rank: Rank | null }) {
   const games = rank && hasRecord(rank) ? rank.wins + rank.losses : 0;
   return <section className={`lg-rank-card${rank ? "" : " is-unranked"}`}>
-    <RankCrest tier={crestSlug(rank?.tier)} size={44} mode="desktop" />
+    {rank && <RankCrest tier={crestSlug(rank.tier)} size={44} mode="desktop" />}
     <div>
       <small>{label}</small>
       <strong>{rankLabel(rank)}</strong>
-      {rank && <p><b>{rank.lp} LP</b>{games > 0 && <> {rank.wins}W {rank.losses}L · {pct(rank.wins, games)}%</>}</p>}
+      {rank ? <p><b>{rank.lp} LP</b>{games > 0 && <><br />{rank.wins}W {rank.losses}L · {pct(rank.wins, games)}%</>}</p> : <p>No current rank</p>}
     </div>
     {rank && games > 0 && <i style={{ "--rate": `${pct(rank.wins, games)}%` } as CSSProperties} aria-hidden />}
   </section>;

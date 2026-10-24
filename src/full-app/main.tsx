@@ -83,6 +83,8 @@ function App() {
   // A running game switches to Live Game; its end restores the earlier page.
   const inGame = useInGame();
   const liveReturn = useRef<Location | null>(null);
+  // Where a finished game left the user; its match opens once League files it, unless they moved on.
+  const afterGame = useRef<{ from: Location; id: number | null } | null>(null);
   useEffect(() => {
     if (inGame) {
       const next = enterLive(currentRef.current, liveReturn.current, returnTo.current);
@@ -92,6 +94,7 @@ function App() {
     } else if (liveReturn.current) {
       const back = leaveLive(currentRef.current, liveReturn.current);
       liveReturn.current = null;
+      afterGame.current = back ? { from: back as Location, id: null } : null;
       if (back) go(back as Location);
     }
   }, [inGame, go]);
@@ -227,6 +230,20 @@ function App() {
   const matchId = matchParts ? Number(matchParts[1]) : null;
   const matchPlayer = matchParts?.[2] ? decodeURIComponent(matchParts[2]) : undefined;
   const playerId = page.startsWith('Player:') ? page.slice(7) : null;
+  useEffect(() => {
+    if (!isTauri()) return;
+    const stop = listen<number>("game_finished", ({ payload }) => {
+      if (afterGame.current) afterGame.current = { ...afterGame.current, id: payload };
+      void refresh();
+    });
+    return () => { void stop.then(unlisten => unlisten()); };
+  }, []);
+  useEffect(() => {
+    const pending = afterGame.current;
+    if (!pending?.id || !snapshot?.games.some(game => game.id === pending.id)) return;
+    afterGame.current = null;
+    if (currentRef.current === pending.from) go(`Match:${pending.id}`);
+  }, [snapshot, go]);
   const selectedMatch = matchId == null ? null : visitedMatches.current.get(page) ?? snapshot?.games.find(game => game.id === matchId);
   const activeAccount = accounts?.accounts.find(account => account.id === accounts.activeId);
   const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? activeAccount?.riotId ?? "");

@@ -90,8 +90,25 @@ export function applyStatus(client: RunesView | null | undefined, championId: nu
 
 /** Q/W/E/R rows over levels 1-18; a cell holds its level when that skill is taken then. */
 export function skillGrid(order: string | string[] | null | undefined, levels = 18): { skill: Skill; cells: (number | null)[] }[] {
-  const steps = [...(Array.isArray(order) ? order.join("") : order ?? "").toUpperCase()].slice(0, levels);
+  const steps = completeSkillOrder([...(Array.isArray(order) ? order.join("") : order ?? "").toUpperCase()], levels).slice(0, levels);
   return (["Q", "W", "E", "R"] as Skill[]).map(skill => ({ skill, cells: Array.from({ length: levels }, (_, i) => steps[i] === skill ? i + 1 : null) }));
+}
+
+/** Builds report 15 levels; the rest follows League's rules: the ultimate at 6, 11 and 16, each basic
+ *  skill caps at 5 points and fills in max order. Short or unclear orders are left as reported. */
+export function completeSkillOrder(steps: string[], levels = 18): string[] {
+  const priority = maxOrder(steps);
+  if (steps.length < 15 || priority.length !== 3 || steps.some(step => !"QWER".includes(step))) return steps;
+  const done = [...steps];
+  const count = (skill: string) => done.filter(step => step === skill).length;
+  while (done.length < levels) {
+    const level = done.length + 1;
+    const ultimates = level >= 16 ? 3 : level >= 11 ? 2 : level >= 6 ? 1 : 0;
+    const next = count("R") < ultimates ? "R" : priority.find(skill => count(skill) < 5);
+    if (!next) break;
+    done.push(next);
+  }
+  return done;
 }
 
 /** The max order, e.g. ["Q", "E", "W"]: the reported priority, else the order basic skills fill up in. */

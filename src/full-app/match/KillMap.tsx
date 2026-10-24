@@ -7,8 +7,8 @@ import { eventLabel, side, time } from "./GraphEvents";
 let minimap: Promise<string> | undefined;
 export type InspectEvent = (events: TimelineKill[], target: HTMLElement) => void;
 
-export function KillMap({ kills, total, players, selected, onSelect, inspect, close, name }: {
-  kills: TimelineKill[]; total: number; players: MatchPlayer[]; selected: number | null;
+export function KillMap({ kills, total, minute, pinned, onUnpin, players, selected, onSelect, inspect, close, name }: {
+  kills: TimelineKill[]; total: number; minute: string | null; pinned: boolean; onUnpin: () => void; players: MatchPlayer[]; selected: number | null;
   onSelect: (id: number | null) => void; inspect: InspectEvent; close: () => void; name: (id: number) => string;
 }) {
   const [src, setSrc] = useState<string | null>(null);
@@ -19,7 +19,9 @@ export function KillMap({ kills, total, players, selected, onSelect, inspect, cl
     return () => { live = false; };
   }, []);
   return <aside className="md-kill-map" aria-label="Champion kill map">
-    <header><h3>Kill map</h3><span>{kills.length} of {total} positioned kills</span></header>
+    <header><h3>Kill map</h3>{minute == null ? <span>{kills.length} of {total} positioned kills</span>
+      : <span className="md-map-minute">{kills.length ? `${kills.length} ${kills.length === 1 ? "kill" : "kills"}` : "No kills"} in minute {minute}
+        {pinned && <button type="button" onClick={onUnpin} aria-label="Show every kill">Show all</button>}</span>}</header>
     <div className="md-map-surface">
       {src ? <img className="md-minimap" src={src} alt="Summoner's Rift minimap" onError={() => setSrc(null)} /> : <p>Map image unavailable</p>}
       {src && kills.map((event, i) => {
@@ -39,6 +41,6 @@ export function KillMap({ kills, total, players, selected, onSelect, inspect, cl
         <ChampionIcon id={player.championId} name={name(player.championId)} mode="desktop" />
       </button>)}
     </div>)}
-    <p className="md-map-note">Dots show the killing team. Ringed dots involve you. Selection also filters the event lanes.</p>
+    <p className="md-map-note">Dots show the killing team. Ringed dots involve you. Hover the graph to see one minute; click it to keep that minute. Selection also filters the event lanes.</p>
   </aside>;
 }

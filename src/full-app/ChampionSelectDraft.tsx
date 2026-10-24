@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-import { Clock3, LockKeyhole } from "lucide-react";
-import { DraftIcon } from "./ui/icons";
+import { Clock3 } from "lucide-react";
 import { ChampionIcon } from "../runes/ChampionIcon";
-import { RoleIcon } from "../runes/RoleIcon";
-import { ChampionArt } from "./MatchupStrip";
-import { NearViewport } from "./NearViewport";
+import { ChampionSlot } from "./ChampionSlot";
 import { roleSlug, secondsLeft, type Draft, type DraftMember } from "./champ-select-model";
 
-const ROLE_LABELS: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 const PHASES: Record<string, string> = { PLANNING: "Declare intent", BAN_PICK: "Picks & bans", FINALIZATION: "Finalizing", GAME_STARTING: "Game starting" };
 
 /** Both teams' picks and hovers, your slot highlighted, bans and the phase timer. */
@@ -56,13 +52,7 @@ function Slot({ member, seat, name, laner }: { member: DraftMember; seat: string
   const hovering = member.championId > 0 && !member.locked;
   const known = roleSlug(member.position);
   const slug = known || seat;
-  const role = ROLE_LABELS[slug] ?? "";
   const state = member.local ? "Your pick" : laner || (hovering ? "Hovering" : "");
-  const classes = ["cs-slot", !known && "is-seat", member.local && "is-you", hovering && "is-hover", !!laner && "is-laner", !member.championId && "is-empty"].filter(Boolean).join(" ");
-  return <article className={classes} aria-label={[name || "Not picked", role, state, member.locked ? "locked in" : ""].filter(Boolean).join(" · ")}>
-    <NearViewport className="cs-slot-art">{member.championId ? <ChampionArt id={member.championId} name={name ?? `Champion ${member.championId}`} kind="loading" /> : <span className="cs-slot-placeholder">{slug ? <RoleIcon role={slug} size={32} mode="desktop" /> : <DraftIcon size={28} strokeWidth={1.2} aria-hidden />}</span>}</NearViewport>
-    <span className="cs-slot-role" title={role}>{slug ? <RoleIcon role={slug} size={16} mode="desktop" /> : <DraftIcon size={15} strokeWidth={1.5} aria-hidden />}</span>
-    {member.locked && <LockKeyhole className="cs-slot-locked" size={13} aria-label="Locked in" />}
-    <span className="cs-slot-copy">{state && <span className="cs-slot-state">{state}</span>}<strong>{member.championId ? name ?? "Champion" : "Not picked"}</strong><small>{role}</small></span>
-  </article>;
+  const classes = [!known && "is-seat", member.local && "is-you", hovering && "is-hover", !!laner && "is-laner"].filter(Boolean).join(" ");
+  return <ChampionSlot championId={member.championId} name={name} role={slug} state={state} locked={member.locked} className={classes} />;
 }

@@ -160,6 +160,24 @@ impl AppState {
 
     /// Whether applying a recommended preset also imports its item build.
     /// Defaults to on until the user changes it.
+    /// "d", "f", or "keep" (the default): where recommended spells put Flash.
+    pub(crate) fn flash_key(&self) -> String {
+        self.config.lock().ok().and_then(|config| config.flash_key.clone()).unwrap_or_else(|| "keep".into())
+    }
+
+    pub(crate) fn set_flash_key(&self, key: &str) -> Result<(), String> {
+        let value = match key {
+            "d" | "f" => Some(key.to_string()),
+            "keep" => None,
+            _ => return Err("Choose D, F or keep for Flash.".into()),
+        };
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        config.flash_key = value;
+        vault::save(&config)?;
+        crate::runes::spells::set_flash_key(key);
+        Ok(())
+    }
+
     pub(crate) fn import_items_with_runes(&self) -> bool {
         self.config
             .lock()

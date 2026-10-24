@@ -25,6 +25,10 @@ body { margin: 0; background: var(--ui-surface-0); }
 :where(.dash-scope) button { cursor: pointer; }
 :where(.dash-scope) button:disabled { opacity: .45; cursor: default; }
 :where(.fa-frame) :focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+/* Search boxes (a text input inside its rounded label): the box shows focus, never a square on the bare input.
+   One rule for every search field, so a new one cannot bring the square back. */
+:where(.fa-frame) label > input:is(:not([type]), [type="text"], [type="search"]):focus-visible { outline: none; }
+:where(.fa-frame) label:has(> input:is(:not([type]), [type="text"], [type="search"]):focus-visible) { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 :where(.dash-scope) small, :where(.dash-scope) p { color: var(--text-muted); }
 :where(.dash-scope) h1, :where(.dash-scope) h2, :where(.dash-scope) h3, :where(.dash-scope) p { margin: 0; }
 :where(.dash-scope) .up { color: var(--fa-win); }

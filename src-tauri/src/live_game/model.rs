@@ -336,6 +336,8 @@ pub fn live_players(data: &Value) -> Vec<LivePlayer> {
     };
     players
         .iter()
+        // Practice Tool lists its target dummies as nameless "Unknown" players with no champion.
+        .filter(|p| p["championName"].as_str().is_some_and(|name| !name.is_empty()))
         .map(|p| {
             let mut items = vec![0; 7];
             for item in p["items"].as_array().into_iter().flatten() {
@@ -673,8 +675,13 @@ pub fn merge_live(view: &mut View, data: &Value, champion_ids: &BTreeMap<String,
         let player = match index {
             Some(i) => &mut view.players[i],
             None => {
-                let mut player =
-                    Player::new(format!("live:{}", l.riot_id), l.side.unwrap_or(Side::Blue));
+                let key = format!("live:{}", l.riot_id);
+                // An unmatched entry already added by an earlier read (e.g. duplicate IDs) is not added again,
+                // otherwise every poll would grow the team.
+                if view.players.iter().any(|p| p.key == key) {
+                    continue;
+                }
+                let mut player = Player::new(key, l.side.unwrap_or(Side::Blue));
                 player.riot_id = l.riot_id.clone();
                 player.champion_name = l.champion_name.clone();
                 player.champion_id = champion_ids

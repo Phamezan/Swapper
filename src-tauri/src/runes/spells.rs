@@ -7,6 +7,7 @@
 //! `PATCH /lol-champ-select/v1/session/my-selection` call used by LeagueAkari
 //! (MIT, `src/shared/http-api-axios-helper/league-client/champ-select.ts`).
 
+use std::sync::atomic::{AtomicU8, Ordering};
 use std::sync::{Arc, OnceLock};
 use std::time::Instant;
 
@@ -270,10 +271,27 @@ pub async fn apply_pick(slot: usize, spell_id: i64) -> Result<(), RuneError> {
     apply_pair(pick_pair(current, slot, spell_id)).await
 }
 
-/// Applies a recommended pair, keeping Flash on the player's usual key.
+/// The Flash key setting: 0 keeps Flash where it is, 1 is D, 2 is F. Mirrored from the config
+/// (set at startup and on change) so applying spells needs no app state.
+static FLASH_KEY: AtomicU8 = AtomicU8::new(0);
+
+pub fn set_flash_key(key: &str) {
+    FLASH_KEY.store(match key { "d" => 1, "f" => 2, _ => 0 }, Ordering::Relaxed);
+}
+
+/// The pair to apply: Flash on the chosen key (`1` D, `2` F), else [`keep_flash_side`].
+pub fn place_flash(recommended: [i64; 2], current: [i64; 2], key: u8) -> [i64; 2] {
+    match (key, recommended.iter().position(|id| *id == SPELL_FLASH)) {
+        (1 | 2, Some(have)) if have != usize::from(key - 1) => [recommended[1], recommended[0]],
+        (1 | 2, Some(_)) => recommended,
+        _ => keep_flash_side(recommended, current),
+    }
+}
+
+/// Applies a recommended pair, with Flash on the key the user chose (or the key it is on).
 pub async fn apply_recommended(recommended: [i64; 2]) -> Result<(), RuneError> {
     let current = current_pair().await.unwrap_or([0, 0]);
-    apply_pair(keep_flash_side(recommended, current)).await
+    apply_pair(place_flash(recommended, current, FLASH_KEY.load(Ordering::Relaxed))).await
 }
 
 #[cfg(test)]
@@ -358,6 +376,17 @@ mod tests {
         assert_eq!(keep_flash_side([12, 14], [14, 12]), [14, 12]);
         // A fresh pair keeps the recommended order.
         assert_eq!(keep_flash_side([12, 14], [4, 11]), [12, 14]);
+    }
+
+    #[test]
+    fn a_chosen_flash_key_wins_over_the_current_layout() {
+        // Flash on F today, setting says D: D wins.
+        assert_eq!(place_flash([14, 4], [12, 4], 1), [4, 14]);
+        assert_eq!(place_flash([4, 14], [12, 4], 2), [14, 4]);
+        assert_eq!(place_flash([14, 4], [4, 12], 2), [14, 4]);
+        // No Flash in the pair, or "keep": the old behaviour.
+        assert_eq!(place_flash([12, 14], [14, 12], 1), [14, 12]);
+        assert_eq!(place_flash([4, 14], [12, 4], 0), [14, 4]);
     }
 
     #[test]

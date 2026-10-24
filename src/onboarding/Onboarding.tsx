@@ -172,9 +172,9 @@ export function Onboarding({ onClose }: { onClose: () => void }) {
           </div>
           <Row id="ob-startup" title="Start with Windows" checked={choices.startup} onChange={startup => set({ startup })}>Swapper starts in the tray when you sign in.</Row>
         </> : step === 1 ? <>
-          <div className="ob-preview"><img src="/overlay-fixture.png" alt="The overlay in a game: gold difference and objective timers" /><small>Preview</small></div>
+          <div className="ob-preview"><img src="/overlay-gold-preview.png" alt="Gold difference overlay: team gold totals and blue and red lane gap markers" /><small>Preview</small></div>
           <Row id="ob-overlay" title="In-game overlay" checked={choices.overlay} onChange={overlay => set({ overlay })}>Shows over League. Needs Borderless or Windowed mode.</Row>
-          <Row id="ob-gold" title="Gold difference" checked={choices.gold} disabled={!choices.overlay} onChange={gold => set({ gold })}>Compare the value of held items while you hold your overlay key.</Row>
+          <Row id="ob-gold" title="Gold difference" checked={choices.gold} disabled={!choices.overlay} onChange={gold => set({ gold })}>Each lane's gold gap on the Tab scoreboard while you hold your overlay key.</Row>
           <Row id="ob-objectives" title="Objective timers" checked={choices.objectives} disabled={!choices.overlay} onChange={objectives => set({ objectives })}>Keep track of upcoming neutral objectives.</Row>
           <Row id="ob-skills" title="Skill level-up hint" checked={choices.skills} disabled={!choices.overlay} onChange={skills => set({ skills })}>See the next ability to level from your cached build.</Row>
         </> : <>

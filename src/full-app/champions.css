@@ -42,6 +42,23 @@
 .fa-frame .champion-tools .ban .fa-rate-bar::after { background: var(--fa-loss); }
 .fa-frame .champion-tools .tier-table-wrap .skeleton-row { height: 52px; }
 
+/* One compact identity; each portrait filters every pair containing that champion. */
+.fa-duo-identity { display: flex; align-items: center; gap: 12px; }
+.fa-duo-portraits { display: flex; flex: none; gap: 4px; padding: 4px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-0); }
+.fa-frame .champion-tools .fa-duo-portrait { display: grid; place-items: center; width: 40px; height: 40px; padding: 1px; border: 1px solid transparent; border-radius: var(--ui-radius-sm); background: none; cursor: pointer; }
+.fa-frame .champion-tools .fa-duo-portrait :is(.champion-icon, .champion-icon-fallback) { display: block; width: 36px; height: 36px; border-radius: calc(var(--ui-radius-sm) - 2px); }
+.fa-frame .champion-tools .fa-duo-portrait:hover, .fa-frame .champion-tools .fa-duo-portrait[aria-pressed="true"] { border-color: var(--ui-brand); background: var(--ui-brand-tint); }
+.fa-frame .champion-tools :is(.fa-duo-portrait, .fa-duo-filter button):focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+.fa-duo-names { display: grid; gap: 4px; }
+.fa-duo-names > span { display: flex; align-items: baseline; gap: 8px; }
+.fa-duo-names strong { color: var(--ui-text-1); font-size: var(--ui-body); font-weight: 650; }
+.fa-duo-names small { color: var(--ui-text-3); font-size: var(--ui-caption); }
+.fa-duo-filter { margin-bottom: 12px; }
+.fa-frame .champion-tools .fa-duo-filter button { display: inline-flex; align-items: center; gap: 12px; padding: 6px 12px; border: 1px solid var(--ui-brand-line); border-radius: 99px; background: var(--ui-brand-tint); color: var(--ui-text-1); font: inherit; font-size: var(--ui-label); cursor: pointer; }
+.fa-duo-filter button > span { color: var(--ui-brand); font-size: 18px; line-height: 1; }
+.fa-frame .champion-tools .fa-duo-table tbody tr { cursor: default; }
+.fa-frame .champion-tools .fa-duo-table tbody tr:focus-within { background: var(--ui-brand-tint); }
+
 /* ---------- Champion page: slimmer hero, quiet stat strip ---------- */
 .fa-frame .champion-tools .champion-hero { min-height: 176px; padding: 16px 24px 18px; }
 .fa-frame .champion-tools .champion-hero-title { margin-top: 12px; gap: 18px; }
@@ -55,11 +72,13 @@
 .fa-frame .champion-tools .fa-stat-strip strong { font-size: 30px; font-weight: 700; }
 
 /* ---------- Matchups: empty state and the selected matchup ---------- */
-.fa-matchup-empty { display: grid; justify-items: center; gap: 10px; padding: 56px 24px 24px; text-align: center; }
+.fa-matchup-empty { display: block; min-width: 0; padding: 20px 0; text-align: left; }
 .fa-frame .fa-matchup-empty h2 { font-size: 30px; font-weight: 750; letter-spacing: -.03em; }
 .fa-frame .fa-matchup-empty p { max-width: 460px; font-size: 14.5px; }
 .fa-frame .fa-matchup-empty h3 { margin-top: 18px; color: var(--text-primary); font-size: 14px; font-weight: 650; }
-.fa-quick-picks { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+/* Fixed-width cards, centred: a one-trick's single card sits as naturally as a full pool of ten. */
+.fa-quick-picks { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 24px; width: 100%; }
+.fa-quick-picks > * { flex: none; }
 .fa-frame .fa-quick-pick { position: relative; isolation: isolate; display: flex; align-items: flex-end; width: 190px; height: 144px; padding: 14px 16px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius); background: var(--fa-panel-2); color: var(--text-primary); text-align: left; cursor: pointer; box-shadow: var(--fa-shadow); }
 .fa-frame .fa-quick-pick:hover { border-color: var(--fa-line-3); transform: translateY(-2px); }
 .fa-frame .fa-quick-pick .fa-featured-art { inset: 0; -webkit-mask-image: none; mask-image: none; }
@@ -67,6 +86,42 @@
 .fa-quick-pick > span:last-child { display: grid; gap: 2px; }
 .fa-frame .fa-quick-pick strong { font-size: 22px; font-weight: 750; letter-spacing: -.02em; }
 .fa-frame .fa-quick-pick small { font-size: 13px; color: var(--text-secondary); }
+/* The pick area and its grids fill the canvas, including inside a centered grid parent. */
+.fa-frame .champion-tools .fa-quick-pick { width: auto; height: 112px; padding: 12px; }
+.fa-frame .champion-tools .fa-quick-pick strong { font-size: 18px; }
+.fa-matchup-prompt { width: 100%; padding: 28px 20px 40px; margin-bottom: 20px; text-align: center; }
+.fa-frame .fa-matchup-prompt h2 { margin: 0 0 12px; font-size: clamp(32px, 3.2vw, 46px); }
+.fa-frame .fa-matchup-prompt p { margin-inline: auto; }
+.fa-frame .champion-tools .fa-matchup-empty h3 { margin: 0 0 12px; }
+.fa-matchup-selection { width: 100%; padding: 24px 0 36px; margin-bottom: 12px; }
+.fa-frame .fa-matchup-context { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 16px auto 0; font-size: var(--ui-label); }
+.fa-matchup-picks { display: grid; grid-template-columns: minmax(0, 216px) 64px minmax(0, 216px); gap: 20px; align-items: center; justify-content: center; }
+.fa-repick-slot { position: relative; border-radius: var(--ui-radius-sm); }
+.fa-frame .fa-repick { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; width: 100%; border: 0; border-radius: inherit; background: var(--ui-scrim); color: var(--ui-text-1); font-size: var(--ui-body); font-weight: 650; opacity: 0; cursor: pointer; transition: opacity var(--ui-fast) var(--ui-ease); }
+.fa-repick-slot:hover .fa-repick, .fa-frame .fa-repick:focus-visible { opacity: 1; }
+/* The card's own name and caption step aside so "Change" reads alone. */
+.fa-repick-slot .cs-slot-copy { transition: opacity var(--ui-fast) var(--ui-ease); }
+.fa-repick-slot:is(:hover, :focus-within) .cs-slot-copy { opacity: 0; }
+.fa-matchup-picks .cs-slot { height: 220px; }
+.fa-matchup-picks .cs-slot-copy strong, .fa-matchup-picks .cs-slot.is-empty .cs-slot-copy strong { font-size: var(--ui-title); color: var(--ui-text-1); font-weight: 650; }
+.fa-matchup-picks .cs-slot-state, .fa-matchup-picks .cs-slot-copy > small { font-size: var(--ui-label); }
+.fa-matchup-picks .cs-slot.is-empty .cs-slot-copy > small { display: none; }
+.fa-matchup-picks .cs-slot-placeholder { color: var(--ui-text-2); }
+.fa-matchup-vs { color: var(--ui-text-3); font-size: 36px; font-weight: 750; text-align: center; }
+.fa-opponent-options { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+.fa-frame .champion-tools .fa-opponent-options h3 { margin: 0; }
+.fa-frame .fa-show-all { padding: 8px 12px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-well); color: var(--ui-text-2); font-size: var(--ui-label); cursor: pointer; }
+.fa-frame .fa-show-all[aria-pressed="true"] { border-color: var(--ui-brand-line); background: var(--ui-brand-tint); color: var(--ui-brand); }
+.fa-champion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 12px; width: 100%; min-width: 0; justify-self: stretch; }
+.fa-frame .fa-champion-card { position: relative; isolation: isolate; display: flex; align-items: flex-end; min-height: 164px; padding: 12px; overflow: hidden; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-card); color: var(--ui-text-1); text-align: left; cursor: pointer; transition: border-color var(--ui-fast) var(--ui-ease); }
+.fa-frame .fa-champion-card:hover { border-color: var(--ui-brand-line); }
+.fa-champion-card-art { position: absolute; inset: 0; z-index: -2; }
+.fa-champion-card-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.fa-champion-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, var(--ui-surface-0), transparent 85%); }
+.fa-champion-card > span:last-child { display: grid; gap: 6px; }
+.fa-champion-card strong { font-size: var(--ui-body); }
+.fa-champion-grid + p { margin-top: 14px; }
+.fa-frame .selected-champion > .back-to-list { margin-bottom: 14px; }
 /* Selected matchup: your champion, the lane result, the opponent. */
 .fa-frame .champion-tools .fa-versus { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(190px, auto) minmax(0, 1fr); align-items: stretch; gap: 0; padding: 0; overflow: hidden; border-color: transparent; background: none; box-shadow: none; }
 .fa-versus-side { position: relative; isolation: isolate; display: flex; align-items: flex-end; min-height: 150px; padding: 18px 22px; overflow: hidden; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius); background: var(--fa-panel); }
@@ -128,6 +183,23 @@
 .fa-frame .champion-tools .fa-versus .fa-versus-stat b.down { color: var(--fa-loss); }
 .fa-versus-bar { display: block; width: 200px; height: 6px; margin: 2px 0 4px; overflow: hidden; border-radius: 3px; background: rgb(239 143 137 / .55); }
 .fa-versus-bar i { display: block; height: 100%; border-radius: 3px 0 0 3px; background: var(--ui-win); box-shadow: 1px 0 0 var(--ui-surface-1); }
+/* Two outlined panels (blue yours, red theirs) on a slanted seam; the win rate sits on the seam with V above-left
+   and S below-right, following the slant. Kept to a faint glow so the artwork still leads. */
+/* Fills behind the splash art; outlines in front of it, below the win rate. */
+.fa-versus-frame { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+.fa-versus-frame.is-outline { z-index: 2; }
+.fa-versus-frame.is-outline polygon { stroke-width: 1.5; vector-effect: non-scaling-stroke; filter: url(#fa-versus-glow); }
+.fa-frame .champion-tools .fa-versus { background: var(--ui-surface-0); border-color: transparent; }
+.fa-frame .champion-tools .fa-versus > :not(.fa-versus-frame, .fa-versus-letter) { position: relative; z-index: 1; }
+.fa-frame .champion-tools .fa-versus > .fa-versus-stat { z-index: 3; }
+.fa-frame .champion-tools .fa-versus .fa-versus-stat strong { text-shadow: 0 0 10px var(--ui-surface-0), 0 0 4px var(--ui-surface-0); }
+/* A big slanted VS on the seam, behind the win rate. Each letter fills a banner-sized layer clipped to its panel
+   (the same shapes as the SVG frame, in %, inset inside the outline), meeting at the seam from either side. */
+.fa-versus-letter { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; pointer-events: none; }
+.fa-versus-letter.is-v { justify-content: flex-end; padding-right: 50%; color: rgb(81 162 230 / .3); clip-path: polygon(0.5% 4%, 51.7% 4%, 46.9% 96%, 0.5% 96%); }
+.fa-versus-letter.is-s { justify-content: flex-start; padding-left: 50%; color: rgb(232 61 50 / .3); clip-path: polygon(53.1% 4%, 99.5% 4%, 99.5% 96%, 48.3% 96%); }
+.fa-versus-letter i { font-size: 200px; font-style: normal; font-weight: 900; line-height: 1; transform: skewX(-21deg); }
+.fa-frame .champion-tools .fa-versus .fa-low-sample { padding: 1px 7px; border-radius: 99px; background: rgb(233 194 122 / .16); color: var(--fa-gold); font-style: normal; font-weight: 700; }
 /* The tile art is a face-centred square: show it square (never stretched across the wide side), anchored to the
    outer edge with the face in the card's band, fading toward the centre. */
 .fa-frame .champion-tools .fa-versus .fa-versus-art { inset: auto; top: 50%; left: 0; width: min(360px, 100%); aspect-ratio: 1; height: auto; transform: translateY(-42%); }

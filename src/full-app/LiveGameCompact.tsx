@@ -17,16 +17,19 @@ function Card() {
   return <section className="lgc" aria-label="Live game">
     <h2><i className="lgc-dot" />Live game<small>{view.queue}</small></h2>
     <div className="lgc-teams">
-      {(["blue", "red"] as const).map(side => <ol key={side} className={`is-${side}`}>
-        {view.players.filter(p => p.side === side).map(p => {
-          const [name] = splitRiotId(p.riotId || p.championName);
-          return <li key={p.key} className={p.isSelf ? "is-self" : undefined} title={`${p.riotId} · ${rankLabel(p.solo)}`}>
-            <ChampionIcon id={p.championId} name={p.championName} mode="desktop" />
-            <span className="lgc-name">{name}</span>
-            {p.status === "pending" ? <small>…</small> : <span className="lgc-rank"><RankCrest tier={crestSlug(p.solo?.tier)} size={14} mode="desktop" /><small>{shortRank(p.solo)}</small></span>}
-          </li>;
-        })}
-      </ol>)}
+      {(["blue", "red"] as const).map(side => <section key={side} className={`lgc-team is-${side}`} aria-label={`${side === "blue" ? "Blue" : "Red"} team`}>
+        <h3>{side === "blue" ? "Blue team" : "Red team"}</h3>
+        <ol>
+          {view.players.filter(p => p.side === side).map(p => {
+            const [name] = splitRiotId(p.riotId || p.championName);
+            return <li key={p.key} className={p.isSelf ? "is-self" : undefined} title={`${p.riotId} · ${rankLabel(p.solo)}`}>
+              <ChampionIcon id={p.championId} name={p.championName} mode="desktop" />
+              <span className="lgc-name">{name}{p.isSelf && <em>You</em>}</span>
+              {p.status === "pending" ? <small aria-label="Loading rank">…</small> : <span className={`lgc-rank${p.solo ? "" : " is-unranked"}`} aria-label={rankLabel(p.solo)}>{p.solo && <RankCrest tier={crestSlug(p.solo.tier)} size={20} mode="desktop" />}<small>{shortRank(p.solo)}</small></span>}
+            </li>;
+          })}
+        </ol>
+      </section>)}
     </div>
   </section>;
 }

@@ -13,7 +13,7 @@ use windows_sys::Win32::UI::WindowsAndMessaging::*;
 
 use super::icons;
 use super::model::DisplayData;
-use widgets::{scale, widgets, Widget};
+use widgets::{scale, widgets, Widget, OUTLINE};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Bounds {
@@ -128,7 +128,7 @@ impl Renderer {
             if renderer.hwnd.is_null() {
                 return Err("Could not create overlay window".into());
             }
-            // Keep the overlay out of screen captures, so the arrow finder never sees its own drawing.
+            // Keep the overlay out of captures used by both HUD finders.
             SetWindowDisplayAffinity(renderer.hwnd, WDA_EXCLUDEFROMCAPTURE);
         }
         std::result::Result::Ok(renderer)
@@ -254,9 +254,10 @@ struct Surface {
     image: *mut GpBitmap,
     graphics: *mut GpGraphics,
     family: *mut GpFontFamily,
-    large: *mut GpFont,
+    /// The scoreboard numbers' face and style; null falls back to `family` in bold.
+    gold_family: *mut GpFontFamily,
+    gold_style: i32,
     medium: *mut GpFont,
-    small: *mut GpFont,
     format: *mut GpStringFormat,
     scale: f32,
     width: i32,
@@ -275,9 +276,9 @@ impl Surface {
             image: null_mut(),
             graphics: null_mut(),
             family: null_mut(),
-            large: null_mut(),
+            gold_family: null_mut(),
+            gold_style: FontStyleBold,
             medium: null_mut(),
-            small: null_mut(),
             format: null_mut(),
             scale: scale(height),
             width,
@@ -330,20 +331,21 @@ impl Surface {
                 null_mut(),
                 &mut surface.family,
             ))?;
-            let s = surface.scale;
-            for (font, size) in [
-                (&mut surface.large, 21.0),
-                (&mut surface.medium, 16.0),
-                (&mut surface.small, 12.0),
-            ] {
-                status(GdipCreateFont(
-                    surface.family,
-                    size * s,
-                    FontStyleBold,
-                    UnitPixel,
-                    font,
-                ))?;
+            // A condensed, heavy face reads best as small numbers over the game; both ship with Windows 10+.
+            for name in ["Bahnschrift SemiBold", "Segoe UI Black"] {
+                if GdipCreateFontFamilyFromName(wide(name).as_ptr(), null_mut(), &mut surface.gold_family) == Ok {
+                    surface.gold_style = FontStyleRegular;
+                    break;
+                }
+                surface.gold_family = null_mut();
             }
+            status(GdipCreateFont(
+                surface.family,
+                16.0 * surface.scale,
+                FontStyleBold,
+                UnitPixel,
+                &mut surface.medium,
+            ))?;
             status(GdipCreateStringFormat(0, 0, &mut surface.format))?;
             status(GdipSetStringFormatAlign(
                 surface.format,
@@ -397,6 +399,46 @@ impl Surface {
                 brush,
             )
         })
+    }
+
+    /// Text as a path: a dark outline under a solid fill, crisp at small sizes on any background.
+    /// Returns the glyphs' bounds, for placing things beside them.
+    fn outlined(&self, rect: RectF, text: &str, size: f32, color: u32) -> Result<RectF, String> {
+        let text = wide(text);
+        let (family, style) = if self.gold_family.is_null() { (self.family, FontStyleBold) } else { (self.gold_family, self.gold_style) };
+        let mut bounds = RectF { X: 0.0, Y: 0.0, Width: 0.0, Height: 0.0 };
+        unsafe {
+            let mut path = null_mut();
+            status(GdipCreatePath(FillModeAlternate, &mut path))?;
+            let mut result = status(GdipAddPathString(path, text.as_ptr(), (text.len() - 1) as i32, family, style, size, &rect, self.format));
+            if result.is_ok() {
+                result = status(GdipGetPathWorldBounds(path, &mut bounds, null_mut(), null_mut()));
+            }
+            if result.is_ok() {
+                result = self.with_pen(OUTLINE, size * 0.24, |pen| {
+                    GdipSetPenLineJoin(pen, LineJoinRound);
+                    GdipDrawPath(self.graphics, pen, path)
+                });
+            }
+            if result.is_ok() {
+                result = self.with_brush(color, |brush| GdipFillPath(self.graphics, brush, path));
+            }
+            GdipDeletePath(path);
+            result.map(|()| bounds)
+        }
+    }
+
+    /// A small outlined triangle beside `glyphs`, pointing left (blue leads) or right (red leads).
+    fn lead_arrow(&self, glyphs: RectF, left: bool, size: f32, color: u32) -> Result<(), String> {
+        let (length, half, gap) = (size * 0.42, size * 0.3, size * 0.22);
+        let middle = glyphs.Y + glyphs.Height / 2.0;
+        let (tip, base) = if left { (glyphs.X - gap - length, glyphs.X - gap) } else { (glyphs.X + glyphs.Width + gap + length, glyphs.X + glyphs.Width + gap) };
+        let points = [PointF { X: tip, Y: middle }, PointF { X: base, Y: middle - half }, PointF { X: base, Y: middle + half }];
+        self.with_pen(OUTLINE, size * 0.2, |pen| unsafe {
+            GdipSetPenLineJoin(pen, LineJoinRound);
+            GdipDrawPolygon(self.graphics, pen, points.as_ptr(), 3)
+        })?;
+        self.with_brush(color, |brush| unsafe { GdipFillPolygon(self.graphics, brush, points.as_ptr(), 3, FillModeAlternate) })
     }
 
     fn rounded(
@@ -482,12 +524,6 @@ impl Surface {
         }
     }
 
-    fn circle(&self, x: f32, y: f32, size: f32, color: u32) -> Result<(), String> {
-        self.with_brush(color, |brush| unsafe {
-            GdipFillEllipse(self.graphics, brush, x, y, size, size)
-        })
-    }
-
     fn with_brush(
         &self,
         color: u32,
@@ -524,13 +560,13 @@ impl Drop for Surface {
             if !self.format.is_null() {
                 GdipDeleteStringFormat(self.format);
             }
-            for font in [self.large, self.medium, self.small] {
-                if !font.is_null() {
-                    GdipDeleteFont(font);
-                }
+            if !self.medium.is_null() {
+                GdipDeleteFont(self.medium);
             }
-            if !self.family.is_null() {
-                GdipDeleteFontFamily(self.family);
+            for family in [self.family, self.gold_family] {
+                if !family.is_null() {
+                    GdipDeleteFontFamily(family);
+                }
             }
             if !self.graphics.is_null() {
                 GdipDeleteGraphics(self.graphics);
@@ -562,6 +598,7 @@ mod tests {
         let data = serde_json::from_str(include_str!("fixtures/allgamedata.json")).unwrap();
         let display = DisplayData {
             gold: super::super::model::gold(&data),
+            scoreboard: Some(Bounds { x: 100, y: 100, width: 771, height: 310 }),
             objectives: super::super::model::objectives(&data),
             skill: Some('R'),
             arrow: Some([600, 600, 20, 8]),
@@ -617,44 +654,81 @@ mod tests {
     }
 
     #[test]
-    #[ignore = "exports a fixture PNG and shows a click-through preview for ten seconds"]
-    fn preview_fixture() {
-        let mut renderer = Renderer::new().unwrap();
-        let fixture = serde_json::from_str(include_str!("fixtures/allgamedata.json")).unwrap();
-        let data = DisplayData {
-            // Every role filled, so each bar state shows (blue lead, red lead, even, unknown).
-            gold: super::super::model::gold(&fixture).map(|gold| super::super::model::Gold {
-                roles: [Some(1_600), Some(-4_200), gold.roles[2], None, Some(0)],
-                ..gold
+    fn native_gold_draws_only_numbers_and_the_leading_row_segments() {
+        let _renderer = Renderer::new().unwrap();
+        let mut surface = Surface::new(1920, 1080).unwrap();
+        let mut data = DisplayData {
+            gold: Some(super::super::model::Gold {
+                blue: 1900, red: 1400,
+                rows: [Some(1600), Some(-700), Some(0), None, Some(2400)],
             }),
-            objectives: super::super::model::objectives(&fixture),
-            skill: Some('R'),
-            arrow: Some([600, 600, 20, 8]),
-            pulse: 0,
+            scoreboard: Some(Bounds { x: 380, y: 235, width: 1156, height: 465 }),
+            ..DisplayData::default()
         };
-        let bounds = Bounds {
-            x: 0,
-            y: 0,
-            width: 1280,
-            height: 720,
+        surface.draw(&data).unwrap();
+        let image = surface.image;
+        let pixel = |x, y| unsafe {
+            let mut color = 0;
+            status(GdipBitmapGetPixel(image, x, y, &mut color)).unwrap();
+            color
         };
-        renderer.show(bounds, &data).unwrap();
-        let path = std::env::temp_dir().join("swapper-overlay-fixture.png");
-        let encoder = windows_sys::core::GUID::from_u128(0x557cf406_1a04_11d3_9a73_0000f81ef32e);
-        unsafe {
-            status(GdipSaveImageToFile(
-                renderer.surface.as_ref().unwrap().image.cast(),
-                wide(&path.to_string_lossy()).as_ptr(),
-                &encoder,
-                null(),
-            ))
-            .unwrap();
-        }
-        println!("Fixture PNG: {}", path.display());
-        let until = std::time::Instant::now() + std::time::Duration::from_secs(10);
-        while std::time::Instant::now() < until {
-            renderer.pump();
-            std::thread::sleep(std::time::Duration::from_millis(50));
+        // Bar probes sit above each row's centred number.
+        assert_eq!(pixel(958, 328), 0xFF6E9BFF);
+        assert_eq!(pixel(958, 404), 0xFFFF6B7A);
+        assert_eq!(pixel(958, 480), 0, "even rows have no bar");
+        assert_eq!(pixel(958, 556), 0, "unknown rows stay transparent");
+        assert_eq!(pixel(958, 632), 0xFF6E9BFF);
+        assert_eq!(pixel(940, 328), 0, "no panels, boxes or side bars");
+        assert_eq!(pixel(958, 100), 0, "the old floating panel is gone");
+        data.scoreboard = None;
+        surface.draw(&data).unwrap();
+        assert_eq!(pixel(958, 328), 0, "losing detection removes the marker");
+    }
+
+    #[test]
+    #[ignore = "exports native composites; SWAPPER_SCOREBOARD_PREVIEW selects the screenshot/scratch folder"]
+    fn preview_fixture() {
+        let _renderer = Renderer::new().unwrap();
+        let source = std::env::var_os("SWAPPER_SCOREBOARD_PREVIEW").map(std::path::PathBuf::from);
+        let output = source.clone().unwrap_or_else(std::env::temp_dir);
+        for name in ["full", "practice"] {
+            let path = match &source {
+                Some(dir) => dir.join(format!("scoreboard-{name}-1080p.png")),
+                None => std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+                    .join(format!("src/overlay/fixtures/scoreboard-{name}-frame.png")),
+            };
+            let (pixels, width, height) = super::super::capture::load_png(&path);
+            let started = std::time::Instant::now();
+            let frame = super::super::scoreboard::find_in(&pixels, width, height).unwrap();
+            println!("{name}: {frame:?}, search {:?}", started.elapsed());
+            let data = DisplayData {
+                gold: Some(super::super::model::Gold {
+                    blue: if name == "full" { 19_600 } else { 500 },
+                    red: if name == "full" { 17_500 } else { 0 },
+                    rows: if name == "full" { [Some(1_600), Some(-700), Some(0), None, Some(2_400)] } else { [None; 5] },
+                }),
+                scoreboard: Some(frame),
+                ..DisplayData::default()
+            };
+            let mut surface = Surface::new(width as i32, height as i32).unwrap();
+            surface.draw(&data).unwrap();
+            let result = output.join(format!("overlay-scoreboard-{name}-preview.png"));
+            let encoder = windows_sys::core::GUID::from_u128(0x557cf406_1a04_11d3_9a73_0000f81ef32e);
+            // The overlay layer alone, transparent, for the settings preview.
+            let layer = output.join(format!("overlay-scoreboard-{name}-layer.png"));
+            unsafe { status(GdipSaveImageToFile(surface.image.cast(), wide(&layer.to_string_lossy()).as_ptr(), &encoder, null())).unwrap() };
+            unsafe {
+                let mut screenshot = null_mut();
+                status(GdipCreateBitmapFromFile(wide(&path.to_string_lossy()).as_ptr(), &mut screenshot)).unwrap();
+                let mut graphics = null_mut();
+                status(GdipGetImageGraphicsContext(screenshot.cast(), &mut graphics)).unwrap();
+                status(GdipDrawImageRectI(graphics, surface.image.cast(), 0, 0, width as i32, height as i32)).unwrap();
+                status(GdipFlush(graphics, FlushIntentionSync)).unwrap();
+                GdipDeleteGraphics(graphics);
+                status(GdipSaveImageToFile(screenshot.cast(), wide(&result.to_string_lossy()).as_ptr(), &encoder, null())).unwrap();
+                GdipDisposeImage(screenshot.cast());
+            }
+            println!("Native composite: {}", result.display());
         }
     }
 }

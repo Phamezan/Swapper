@@ -86,11 +86,12 @@ body { background: var(--ui-surface-0); }
 .fa-frame[data-look] .dashboard-shell :is(.panel-head, .card-head, .performance-head) > h2 { display: flex; align-items: center; gap: var(--ui-heading-gap); }
 .fa-frame[data-look] .dashboard-shell :is(.panel-head, .performance-head) > h2::before,
 .fa-frame[data-look] .dashboard-shell .md-comparison > header > h2::before,
-.fa-frame[data-look] .dashboard-shell .fa-build-grid h4::before,
 .fa-frame[data-look] .dashboard-shell .today-card .card-head > h2::before,
 .fa-frame[data-look] .dashboard-shell .rank-card .card-head > h2:only-child::before { content: ''; flex: none; width: 18px; height: 18px; background: var(--ui-card-accent); mask: var(--ui-section-icon) center / contain no-repeat; }
 .fa-frame[data-look] .dashboard-shell :is(.panel-head, .card-head, .performance-head) > h2 { color: var(--ui-text-1); }
-.fa-frame[data-look] .dashboard-shell :is(.md-comparison > header > h2, .fa-build-grid h4) { display: flex; align-items: center; gap: var(--ui-heading-gap); }
+/* Build card sections read as plain titles, no icon. */
+.fa-frame[data-look] .dashboard-shell .fa-build-grid h4 { color: var(--ui-text-1); font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+.fa-frame[data-look] .dashboard-shell :is(.md-comparison > header > h2) { display: flex; align-items: center; gap: var(--ui-heading-gap); }
 .fa-frame[data-look] .dashboard-shell :is(.rank-card, .player-ranks, .md-header, .cs-build-grid) { --ui-hero-glow: 0 10px 34px -23px color-mix(in srgb, var(--ui-card-accent) 50%, transparent); border-top-color: color-mix(in srgb, var(--ui-card-accent) 55%, var(--ui-line-2)); box-shadow: var(--ui-elev-2), var(--ui-hero-glow); }
 .fa-frame[data-look] .md-header.is-win { --ui-card-accent: var(--ui-win); }
 .fa-frame[data-look] .md-header.is-loss { --ui-card-accent: var(--ui-loss); }
@@ -105,7 +106,6 @@ body { background: var(--ui-surface-0); }
 
 /* Pass 2: leave the artwork exposed; protect the text at its own position. */
 .fa-frame[data-look^="glass-"] .dashboard-shell :is(.ui-page-header, .md-context, .cs-build-selected, .fa-settings-heading) { background: var(--ui-region-fill); border-radius: var(--ui-radius-md); padding: 12px var(--ui-card-pad); }
-.fa-frame[data-look^="glass-"] .dashboard-shell .fa-versus-stat { background: var(--ui-region-fill); }
 .fa-frame[data-look^="glass-"] .dashboard-shell :is(.tool-bar .fa-picker, .fa-hero-filters .fa-picker, .cs-apply-chip, .md-tabs) { background: var(--ui-control-on-art); }
 .fa-frame[data-look^="glass-"] .dashboard-shell .champion-hero .hero-art { width: 100%; opacity: 1; mask-image: var(--ui-hero-fade); -webkit-mask-image: var(--ui-hero-fade); }
 .fa-frame[data-look^="glass-"] .dashboard-shell .champion-hero::after { background: linear-gradient(90deg, rgb(9 9 13 / .92) 0 22%, rgb(9 9 13 / .42) 40%, transparent 65%), linear-gradient(0deg, var(--ui-card), transparent 60%); }
@@ -266,7 +266,6 @@ body { background: var(--ui-surface-0); }
 .fa-picker-search:focus-within { border-color: var(--fa-you); }
 .fa-picker-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font: inherit; }
 /* The field itself shows focus (border above); the input inside must not draw a second ring. */
-.fa-picker-popover .fa-picker-search input:focus-visible { outline: 0; }
 
 /* ---------- Cards ---------- */
 /* Elevation 1 for every card; the hairline is brighter on top, like the light. */
@@ -522,7 +521,8 @@ body { background: var(--ui-surface-0); }
 .fa-overlay-card { overflow: hidden; border: 1px solid var(--fa-line); border-radius: var(--fa-radius); background: var(--fa-card-bg); box-shadow: var(--fa-shadow); }
 .fa-overlay-preview { position: relative; height: 170px; overflow: hidden; border-bottom: 1px solid var(--fa-line); background: radial-gradient(circle at 1px 1px, rgb(255 255 255 / .12) 1px, transparent 0) 0 0 / 14px 14px, radial-gradient(circle at 50% 40%, #202025, #0b0b0d); }
 .fa-overlay-preview img { position: absolute; left: calc(50% - 640px); width: 1280px; height: 720px; max-width: none; }
-.fa-overlay-preview.is-gold img { top: -72px; } .fa-overlay-preview.is-objectives img { top: 60px; } 
+/* The gold preview is the real renderer's team totals and row markers on a transparent layer, centred. */
+.fa-overlay-preview.is-gold img { inset: 0; width: auto; height: auto; max-width: 100%; max-height: 100%; margin: auto; } .fa-overlay-preview.is-objectives img { top: 60px; } 
 .fa-overlay-preview small { position: absolute; right: 12px; bottom: 10px; padding: 2px 7px; border-radius: 5px; background: rgb(11 11 13 / .7); font-size: var(--ui-caption); }
 .fa-overlay-copy { padding: 18px 20px 20px; }
 .fa-overlay-copy > div { display: flex; align-items: center; justify-content: space-between; gap: 10px; }

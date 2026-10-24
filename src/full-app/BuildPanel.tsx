@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { CheckIcon } from "./ui/icons";
+import { ChampionIcon } from "../runes/ChampionIcon";
 import { ItemIcon } from "../runes/ItemIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { TeamLogo } from "../runes/TeamLogo";
@@ -11,7 +12,7 @@ import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
 import { fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen } from "../runes/types";
 import type { ChampionBuild, ItemsImported, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
-import { overviewSelection, spellLayout } from "./buildLogic";
+import { overviewSelection, spellLayout, type FlashKey } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
 import { NearViewport } from "./NearViewport";
 import { AbilityHover } from "./AbilityHover";
@@ -30,10 +31,12 @@ const PRO_STEP = 8;
 /** The auto-apply setting, shown inline on the champion select page. */
 export type AutoApply = { checked: boolean; disabled: boolean; onChange: (enabled: boolean) => void };
 
-export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply }: {
+export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply, preview }: {
   championId: number; name: string; lane: string; tier: string; build: ChampionBuild | null; liveView?: RunesView | null;
   /** The lane matchup, or each possible one; adds a "vs <enemy>" tab for each with its own build. */
   matchups?: MatchupView[]; autoApply?: AutoApply;
+  /** Browsing only (champion pages, Matchups): no apply controls and no rune editing; champion select applies. */
+  preview?: boolean;
   /** Open on the matchup build instead of the most played one, when there is one. */
   preferMatchup?: boolean;
 }) {
@@ -56,6 +59,14 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   // Pages hold many matches; show a few at a time so the build column stays aligned.
   const [proLimit, setProLimit] = useState(PRO_STEP);
   const [proError, setProError] = useState("");
+  const [flashKey, setFlashKey] = useState<FlashKey>("keep");
+  useEffect(() => {
+    let live = true;
+    const load = () => void invoke<FlashKey>("get_flash_key").then(key => { if (live) setFlashKey(key); }).catch(() => {});
+    load();
+    const stop = listen("runes_changed", load);
+    return () => { live = false; void stop.then(unlisten => unlisten()); };
+  }, []);
   const [custom, setCustom] = useState<Selection | null>(null);
   useEffect(() => {
     let live = true;
@@ -102,10 +113,10 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const variants: Variant[] = [{ label: "Most played", selection, items: details ?? build.items, spells: build.spells, order: build.skillOrder, winPct: (details ?? build.items).coreWinPct, games: (details ?? build.items).coreGames }];
   if (details?.highestWin && !details.highestWinMatchesPick) {
     const high = details.highestWin;
-    variants.push({ label: "Highest win rate", selection: selectionFromPreset(high.preset), items: high.build, spells: high.preset.spells, order: high.build.skillOrder ?? null, winPct: high.build.coreWinPct, games: high.build.coreGames });
+    variants.push({ label: "Highest WR", selection: selectionFromPreset(high.preset), items: high.build, spells: high.preset.spells, order: high.build.skillOrder ?? null, winPct: high.build.coreWinPct, games: high.build.coreGames });
   }
   for (const matchup of matchups) {
-    if (matchup.preset && matchup.build && !matchup.fallback) variants.push({ label: `vs ${matchup.enemyName}`, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
+    if (matchup.preset && matchup.build && !matchup.fallback) variants.push({ label: `vs ${matchup.enemyName}`, enemyId: matchup.enemyChampionId, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
   }
   const matchupIndex = variants.findIndex(variant => variant.label.startsWith("vs "));
   const variantIndex = chosenIndex ?? (preferMatchup && matchupIndex > 0 ? matchupIndex : 0);
@@ -115,7 +126,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const inSelect = client?.phase === "ChampSelect" && client.championId === championId;
   const itemIds = chosen.items.items.map(item => item.id);
   const itemsKey = itemSetKey(championId, itemIds);
-  const chosenSpells = spellLayout(chosen.spells, [client?.spells.spell1Id ?? 0, client?.spells.spell2Id ?? 0]);
+  const chosenSpells = spellLayout(chosen.spells, [client?.spells.spell1Id ?? 0, client?.spells.spell2Id ?? 0], flashKey);
   const status = applyStatus(client, championId, complete ? chosenSelection : null, chosenSpells, itemsKey, imported);
   const ready: ApplyStatus = { runes: inSelect && complete, spells: inSelect && chosen.spells.length === 2, items: itemIds.length > 0 };
   const boots = chosen.items.items.filter(item => /boots|greaves|treads|shoes|steelcaps|soulmarch/i.test(item.name));
@@ -145,7 +156,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
 
   return <div className="fa-build-section cs-build-browser">
     <aside className="cs-build-list" aria-label="Browse builds">
-      <h3>Builds</h3><div className="cs-build-entries">{variants.map((variant, index) => <button className="cs-build-row" disabled={!!busy} key={variant.label} aria-pressed={!pro && index === variantIndex} onClick={() => showTab(index)}>
+      <h3>Builds</h3><div className="cs-build-entries">{variants.map((variant, index) => <button className={`cs-build-row${variant.enemyId ? " is-matchup" : ""}`} disabled={!!busy} key={variant.label} aria-pressed={!pro && index === variantIndex} onClick={() => showTab(index)}>
+        {variant.enemyId ? <span className="cs-row-logo"><ChampionIcon id={variant.enemyId} name={variant.label.slice(3)} mode="desktop" /></span> : null}
         <span className="cs-row-text"><strong>{variant.label}</strong><small>{fmtCount(variant.games)} games</small></span>
         <BuildIcons keystone={variant.selection?.keystone} secondary={variant.selection?.secondaryPageId} items={variant.items.items} />
         <b className="cs-row-chip">{fmtPct(variant.winPct)}</b>
@@ -165,7 +177,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     </aside>
     <div className="cs-build-content">
     <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s build` : chosen.label}</strong><small>{pro ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `${name} · ${lane}`}</small></div>
-    <div className="cs-apply-bar" aria-label="Apply to League Client">
+    {!preview && <><div className="cs-apply-bar" aria-label="Apply to League Client">
       {sections.map(([key, label]) => {
         const didFail = failed?.section === key;
         return <span key={key} className={`cs-apply-chip${status[key] ? " is-done" : ""}${didFail ? " is-failed" : ""}`}>
@@ -177,10 +189,10 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       <button className="fa-primary" disabled={!!busy || allDone || !(ready.runes || ready.spells || ready.items)} onClick={() => void apply("all")}><CheckIcon size={16} />{busy === "all" ? "Applying…" : allDone ? "All applied" : "Apply all"}</button>
     </div>
     {failed && <Notice tone="error" action={<button className="fa-secondary" disabled={!!busy} onClick={() => void apply(failed.section)}>Try again</button>}><b>{failed.section === "all" ? "Couldn’t apply the build." : `Couldn’t apply ${sections.find(([key]) => key === failed.section)?.[1].toLowerCase()}.`}</b> {failed.message}</Notice>}
-    {notice && <Notice>{notice}</Notice>}
+    {notice && <Notice>{notice}</Notice>}</>}
     <section className="fa-card fa-build-grid cs-build-grid">
-      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom rune page" : "Rune page"}</h4>{custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{chosenSelection && [chosenSelection.keystone, ...chosenSelection.primaryRunes, ...chosenSelection.secondaryRunes, ...chosenSelection.shards].map((id, index) => <RuneIcon key={index} id={id} mode="desktop" />)}</div>}</div>
-      <div className="fa-spell-area cs-skill-area"><div><h4>Summoner spells</h4><div className="fa-spells">{chosenSpells.map((id, index) => <span key={index}><SpellIcon id={id} mode="desktop" /><kbd>{index ? "F" : "D"}</kbd></span>)}</div></div>
+      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom runes" : "Runes"}</h4>{preview ? null : custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy || preview ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{chosenSelection && [chosenSelection.keystone, ...chosenSelection.primaryRunes, ...chosenSelection.secondaryRunes, ...chosenSelection.shards].map((id, index) => <RuneIcon key={index} id={id} mode="desktop" />)}</div>}</div>
+      <div className="fa-spell-area cs-skill-area"><div><h4>Summoners</h4><div className="fa-spells">{chosenSpells.map((id, index) => <span key={index}><SpellIcon id={id} mode="desktop" /><kbd>{index ? "F" : "D"}</kbd></span>)}</div></div>
         <div><h4>Skill order</h4>
         {order.length ? <div className="fa-skill-priority" aria-label={`Max order ${order.join(", ")}`}>{order.map((key, index) => <span key={key}>{index > 0 && <ChevronRight size={14} />}<AbilityBadge championId={championId} ability={abilities.find(ability => ability.key === key)} skill={key} /></span>)}</div> : <p>Max order unavailable</p>}
         {chosen.order ? <SkillOrderGrid order={chosen.order} abilities={abilities} /> : <p>Level order unavailable</p>}</div>
@@ -189,7 +201,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       <div className="fa-item-area cs-items-row"><h4>Item build</h4><div className="cs-items">
         <section><h5>Starting</h5><div className="fa-item-line">{chosen.items.starters.map(item => <span className="fa-item-stack" key={item.id}><Slot kind="item" id={item.id} label={item.name} size={40} />{item.count > 1 && <b>×{item.count}</b>}</span>)}{!chosen.items.starters.length && <small>Not reported</small>}</div></section>
         {boots.length > 0 && <section><h5>Boots</h5><div className="fa-item-line">{boots.map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={40} />)}</div></section>}
-        <section><h5>Core path <small>{pro ? "Played in this match" : `${fmtPct(chosen.items.coreWinPct)} · ${fmtCount(chosen.items.coreGames)} games`}</small></h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<Slot kind="item" id={item.id} label={item.name} size={48} /></span>)}</div></section>
+        <section><h5>Core path {pro ? <small>Played in this match</small> : chosen.items.coreGames > 0 && <small>{fmtPct(chosen.items.coreWinPct)} · {fmtCount(chosen.items.coreGames)} games</small>}</h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).filter(item => !boots.includes(item)).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<Slot kind="item" id={item.id} label={item.name} size={40} /></span>)}</div></section>
         {chosen.items.items.length > (chosen.items.coreLen || 3) && <section><h5>Later <small>{pro ? "Completed in this match" : "Popular for each slot"}</small></h5><div className="fa-item-line">{chosen.items.items.slice(chosen.items.coreLen || 3).map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={40} />)}</div></section>}
         {chosen.items.options.length > 0 && <section><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <span key={`${item.id}-${item.slot}`} title={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${fmtCount(item.games)} games`}><Slot kind="item" id={item.id} size={40} /></span>)}</div></section>}
       </div>{chosen.items.stale && <CachedBadge stale updatedAt={chosen.items.updatedAt} />}</div>
@@ -206,7 +218,7 @@ function SkillOrderGrid({ order, abilities }: { order: string; abilities: Abilit
   return <div className="cs-skill-grid" role="table" aria-label={`Skill order by level: ${order.split("").join(" ")}`}>
     {skillGrid(order).map(row => <div className="cs-skill-row" role="row" key={row.skill}>
       <span role="rowheader" className={row.skill === "R" ? "is-ultimate" : ""} title={abilities.find(ability => ability.key === row.skill)?.name}>{row.skill}</span>
-      {row.cells.map((level, index) => <b role="cell" key={index} className={level ? row.skill === "R" ? "is-filled is-ultimate" : "is-filled" : ""}>{level ?? ""}</b>)}
+      {row.cells.map((level, index) => <b role="cell" key={index} className={level ? `is-filled${row.skill === "R" ? " is-ultimate" : ""}` : ""}>{level ?? ""}</b>)}
     </div>)}
   </div>;
 }

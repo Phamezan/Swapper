@@ -36,13 +36,10 @@ export function rankLabel(rank: Rank | null): string {
   return rank ? `${titleCase(rank.tier)} ${rank.division}`.trim() : "Unranked";
 }
 
-/** Tier -> the crest slug `RankCrest` knows. Iron to Silver have no crest asset
- *  yet (same rule as the Dashboard's `crestSlug`). */
+/** Tier -> the individual crest supported by `RankCrest` and the icon backend. */
 export function crestSlug(tier: string | null | undefined): string {
   const t = (tier ?? "").toLowerCase();
-  if (t === "challenger") return "challenger";
-  if (t === "master" || t === "grandmaster") return "master_plus";
-  return ["gold", "platinum", "emerald", "diamond"].includes(t) ? `${t}_plus` : "none";
+  return ["iron", "bronze", "silver", "gold", "platinum", "emerald", "diamond", "master", "grandmaster", "challenger"].includes(t) ? t : "none";
 }
 
 export function splitRiotId(riotId: string): [string, string] {

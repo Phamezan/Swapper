@@ -22,11 +22,12 @@ const CHAMPIONS: Record<number, [string, string]> = {
   266: ["Aatrox", "Aatrox"], 122: ["Darius", "Darius"], 103: ["Ahri", "Ahri"], 64: ["Lee Sin", "LeeSin"], 222: ["Jinx", "Jinx"],
   157: ["Yasuo", "Yasuo"], 777: ["Yone", "Yone"], 875: ["Sett", "Sett"], 902: ["Milio", "Milio"], 67: ["Vayne", "Vayne"],
   17: ["Teemo", "Teemo"], 126: ["Jayce", "Jayce"], 54: ["Malphite", "Malphite"], 86: ["Garen", "Garen"], 24: ["Jax", "Jax"],
-  268: ["Azir", "Azir"], 51: ["Caitlyn", "Caitlyn"],
+  268: ["Azir", "Azir"], 51: ["Caitlyn", "Caitlyn"], 7: ["LeBlanc", "Leblanc"],
   58: ["Renekton", "Renekton"], 164: ["Camille", "Camille"], 82: ["Mordekaiser", "Mordekaiser"], 516: ["Ornn", "Ornn"], 98: ["Shen", "Shen"],
   412: ["Thresh", "Thresh"], 81: ["Ezreal", "Ezreal"], 238: ["Zed", "Zed"], 11: ["Master Yi", "MasterYi"], 89: ["Leona", "Leona"],
 };
-const key = (id: number) => CHAMPIONS[id]?.[1] ?? "Aatrox";
+const DUO_CHAMPIONS: Record<number, string> = { 115: "Ziggs", 30: "Karthus", 50: "Swain", 45: "Veigar", 910: "Hwei", 147: "Seraphine", 63: "Brand", 901: "Smolder", 117: "Lulu" };
+const key = (id: number) => CHAMPIONS[id]?.[1] ?? DUO_CHAMPIONS[id] ?? "Aatrox";
 const names = Object.fromEntries(Object.entries(CHAMPIONS).map(([id, [name]]) => [id, name]));
 const now = Date.now();
 const live = new URLSearchParams(location.search).has("live");
@@ -190,6 +191,7 @@ mockIPC(async (cmd, args) => {
       if (params.has("slow")) await new Promise(resolve => setTimeout(resolve, 6000));
       if (shellState.has("loading")) await new Promise(resolve => setTimeout(resolve, 600000));
       if (shellState.has("disconnected")) return { snapshot: null, cards, stale: false, message: null };
+      if (params.has("matchup-roles")) return { snapshot: { ...snapshot, games: [{ ...games[0], championId: 7, role: "top" }] }, cards, stale: false, message: null };
       return { snapshot, cards, stale: (shellState.has("stale") || params.has("stale")), message: (shellState.has("stale") || params.has("stale")) ? "League Client is not running." : null };
     // ---- matchdetail: stats and timeline states ----
     case "full_app_match_detail": {
@@ -291,7 +293,40 @@ mockIPC(async (cmd, args) => {
     case "champion_art": return `${DD}/img/champion/${a.kind === "splash" ? "splash" : a.kind === "loading" ? "loading" : "tiles"}/${key(a.id)}_0.jpg`;
     case "item_icon": return `${DD}/${VERSION}/img/item/${a.id}.png`;
     case "spell_icon": return `${DD}/${VERSION}/img/spell/${({ 4: "SummonerFlash", 12: "SummonerTeleport", 11: "SummonerSmite", 14: "SummonerDot" } as Record<number, string>)[a.id] ?? "SummonerFlash"}.png`;
-    case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct], i) => ({ championId: id, name: CHAMPIONS[id][0], tier, winPct, pickPct: 9 - i * .5, banPct: 4 + i % 3, games: 24000 - i * 1200 })) };
+    case "get_duo_list": {
+      const duoState = params.get("duos");
+      if (duoState === "loading") await new Promise(resolve => setTimeout(resolve, 1200));
+      if (duoState === "error") throw new Error("Preview duo data unavailable.");
+      const pairs: [number, number, string, number, number][] = [
+        [222, 902, "S+", 54.8, 18420], [67, 412, "S", 53.9, 12680], [51, 89, "A", 53.2, 11450],
+        [115, 902, "A", 54.1, 1420], [30, 412, "A", 55.0, 780], [81, 902, "A", 52.6, 9680],
+        [115, 89, "B", 53.7, 1230], [50, 89, "B", 53.4, 940], [45, 412, "B", 53.1, 650], [910, 89, "B", 53.0, 750],
+        [222, 412, "B", 51.9, 15230], [67, 89, "B", 51.4, 7840], [147, 902, "C", 52.4, 580],
+        [63, 412, "C", 52.3, 560], [901, 902, "C", 51.8, 1310], [51, 412, "C", 50.7, 6420], [81, 89, "D", 49.8, 3910],
+      ];
+      if (duoState === "paged") {
+        pairs.length = 0;
+        for (const bot of [222, 67, 51, 81, 115, 30, 50, 45, 910, 147, 63, 901]) {
+          for (const support of [902, 412, 89, 117]) pairs.push([bot, support, "B", 51.7, 2400]);
+        }
+      }
+      return {
+        rows: ["empty", "unavailable"].includes(duoState ?? "") ? [] : pairs.map(([adcId, supportId, tier, winPct, games]) => ({
+          adcId, adcName: CHAMPIONS[adcId]?.[0] ?? DUO_CHAMPIONS[adcId], supportId, supportName: CHAMPIONS[supportId]?.[0] ?? DUO_CHAMPIONS[supportId], tier,
+          winPct: a.tier === "diamond_plus" ? winPct - 0.9 : winPct, games: a.tier === "diamond_plus" ? Math.round(games / 2) : games,
+        })),
+        unavailable: duoState === "unavailable", stale: duoState === "stale", updatedAt: now - 3600000,
+      };
+    }
+    case "get_tier_list": {
+      const pool: Record<string, number[]> = { top: tiers.map(([id]) => id), jungle: [64, 11], mid: [103, 7, 157, 777, 268, 238], adc: [222, 67, 51, 81], support: [902, 412, 89] };
+      const rows = (pool[a.position] ?? []).map((id, i) => {
+        const ranked = tiers.find(([championId]) => championId === id);
+        return { championId: id, name: CHAMPIONS[id][0], tier: ranked?.[1] ?? "B", winPct: ranked?.[2] ?? 50.5, pickPct: 9 - i * .5, banPct: 4 + i % 3, games: 24000 - i * 1200 };
+      });
+      if (a.position === "top") rows.push({ championId: 7, name: "LeBlanc", tier: "D", winPct: 49, pickPct: .2, banPct: 4, games: 775 });
+      return { unavailable: false, stale: false, updatedAt: null, rows };
+    }
     case "full_app_matchups": return { championId: a.championId, championName: CHAMPIONS[a.championId]?.[0] ?? "Aatrox", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null,
       beats: tiers.filter(([id]) => id !== a.championId).map(([id], i) => ({ championId: id, name: CHAMPIONS[id][0], winPct: 54 - i * .8, delta: 3.6 - i * .8, games: 3000 - i * 150, lowSample: i > 11 })) };
     // --- uishell preview block: Settings pages ---

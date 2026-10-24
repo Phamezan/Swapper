@@ -67,6 +67,19 @@ pub(crate) fn set_apply_spells_with_runes(
     Ok(view)
 }
 
+/// Where recommended spells put Flash: "d", "f" or "keep".
+#[tauri::command]
+pub(crate) fn get_flash_key(state: State<'_, AppState>) -> String {
+    state.flash_key()
+}
+
+#[tauri::command]
+pub(crate) fn set_flash_key(app: tauri::AppHandle, state: State<'_, AppState>, key: String) -> Result<String, String> {
+    state.set_flash_key(&key)?;
+    notify_runes_changed(&app, &state);
+    Ok(state.flash_key())
+}
+
 #[tauri::command]
 pub(crate) fn set_import_items_with_runes(
     app: tauri::AppHandle,

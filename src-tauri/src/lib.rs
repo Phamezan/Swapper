@@ -102,6 +102,7 @@ pub fn run() {
         });
     }
     let config = vault::load().expect("Swapper settings could not be loaded");
+    runes::spells::set_flash_key(config.flash_key.as_deref().unwrap_or("keep"));
     tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, args, _cwd| {
             // With the deep-link feature the second instance's arguments were
@@ -341,6 +342,8 @@ pub fn run() {
                 commands::runes::set_auto_apply_top_preset,
                 commands::runes::set_rune_tier,
                 commands::runes::set_apply_spells_with_runes,
+                commands::runes::get_flash_key,
+                commands::runes::set_flash_key,
                 commands::runes::set_import_items_with_runes,
                 commands::settings::set_notifications_enabled,
                 commands::remote::allow_lan_firewall,

@@ -1,6 +1,6 @@
 import type { KeystoneBuildView, ProBuild, ProBuildsView, Selection } from "../runes/types";
 
-export type BuildVariant = { label: string; selection: Selection | null; items: KeystoneBuildView; spells: number[]; order: string | null; winPct: number | null; games: number };
+export type BuildVariant = { label: string; enemyId?: number; selection: Selection | null; items: KeystoneBuildView; spells: number[]; order: string | null; winPct: number | null; games: number };
 
 export function proVariant(pro: ProBuild): BuildVariant {
   const items = (pro.completedItems.length ? pro.completedItems : pro.finalItems).filter(item => ![3340, 3363, 3364, 3330].includes(item.id));

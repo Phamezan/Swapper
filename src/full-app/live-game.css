@@ -1,101 +1,166 @@
-/* Live Game page. Uses the full app's tokens (--fa-*) and card patterns on
-   neutral surfaces: green marks you, colour stays on data (ranks, win/loss,
-   damage mix) and art. Team sides are a thin muted line, never a wash. */
-.lg { display: grid; gap: 16px; }
-.lg-bar .lg-queue { height: 26px; display: inline-flex; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid rgb(197 227 158 / .4); border-radius: 8px; background: var(--ui-brand-tint); color: var(--ui-brand-strong); font-size: var(--ui-label); font-weight: 600; }
-.lg-bar .lg-queue::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ui-brand); box-shadow: 0 0 8px var(--ui-brand); }
+/* Four aligned groups keep identity, rank, form and live state readable together. */
+.lg { display: grid; gap: 12px; min-width: 0; font-variant-numeric: tabular-nums; }
 .lg-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.lg-bar small { color: var(--text-muted); font-size: var(--ui-label); }
-.lg-clock { font-size: 15px; font-weight: 650; color: var(--text-primary); }
+.lg-bar .lg-queue { min-height: 28px; display: inline-flex; align-items: center; gap: 8px; padding: 3px 10px; border: 1px solid var(--ui-brand-line); border-radius: var(--ui-radius-xs); background: var(--ui-brand-tint); color: var(--ui-brand-strong); font-size: var(--ui-label); font-weight: 600; }
+.lg-bar .lg-queue::before { content: ""; width: 6px; height: 6px; flex: none; border-radius: 50%; background: var(--ui-brand); }
+.lg-bar small { color: var(--ui-text-2); font-size: var(--ui-caption); }
+.lg-clock { font-size: 18px; font-weight: 650; letter-spacing: -.03em; color: var(--ui-text-1); }
 
-.lg-team { --side: #7d8fa8; overflow: hidden; container-type: inline-size; border-radius: 12px; }
-.lg-team.is-red { --side: #b07a78; }
-.lg-team-head { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-bottom: 1px solid var(--fa-line); background: linear-gradient(180deg, rgb(255 255 255 / .03), transparent); box-shadow: inset 3px 0 0 var(--side); }
-.lg-team-head h2 { margin: 0; font-size: 14px; font-weight: 650; }
-.lg-team-kills { font-size: 15px; color: var(--side); }
-.lg-avg { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary); }
-.lg-avg small { font-weight: 450; }
-.lg-dmg { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
-.lg-dmg i { width: 120px; height: 6px; border-radius: 99px; background: linear-gradient(90deg, #f0a35e 0 var(--ad), #8fa7ff var(--ad) 100%); }
-.lg-dmg small, .lg-avg small { font-size: 12px; }
-.lg-kda i, .lg-row strong i { font-size: 12px; }
-.lg-dmg small:first-child { color: #f0a35e; }
-.lg-dmg small:last-child { color: #8fa7ff; }
+.lg-team { --side: var(--ui-tier-b); --lg-columns: minmax(232px, 1.35fr) minmax(206px, 1.1fr) minmax(236px, 1.2fr) minmax(176px, 1fr); overflow: hidden; container-type: inline-size; border-radius: var(--ui-radius-md); }
+.lg-team.is-red { --side: var(--ui-loss); }
+.lg-team.is-pregame { --lg-columns: minmax(232px, 1.35fr) minmax(206px, 1.1fr) minmax(236px, 1.2fr); }
+.lg-team-head { display: flex; align-items: center; gap: 20px; min-height: 60px; padding: 10px 16px; border-bottom: 1px solid var(--ui-line-2); background: linear-gradient(90deg, color-mix(in srgb, var(--side) 9%, transparent), transparent 65%); box-shadow: inset 3px 0 0 var(--side); }
+.lg-team-identity { min-width: 100px; }
+.lg-team-head h2 { margin: 0 0 2px; color: var(--side); font-size: 16px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
+.lg-team-identity > small { display: block; }
+.lg-team-head small { color: var(--ui-text-3); font-size: var(--ui-caption); line-height: 1.3; }
+.lg-team-score { display: flex; align-items: baseline; gap: 6px; }
+.lg-team-kills { color: var(--ui-text-1); font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: -.04em; }
+.lg-avg { display: flex; align-items: center; gap: 8px; padding-left: 20px; border-left: 1px solid var(--ui-line-2); }
+.lg-avg small, .lg-avg strong { display: block; }
+.lg-avg strong { margin-top: 1px; color: var(--ui-text-1); font-size: var(--ui-label); font-weight: 600; }
+.lg-dmg { display: grid; gap: 6px; width: 170px; margin-left: auto; flex: none; }
+.lg-dmg-labels { display: flex; justify-content: space-between; }
+.lg-dmg i { height: 5px; border-radius: var(--ui-radius-xs); background: linear-gradient(90deg, var(--ui-gold) 0 var(--ad), var(--ui-info) var(--ad) 100%); }
+.lg-dmg-labels small:first-child { color: var(--ui-gold); }
+.lg-dmg-labels small:last-child { color: var(--ui-info); }
+.lg-dmg-labels b { font-weight: 600; }
+.lg-dmg.is-empty { gap: 2px; color: var(--ui-text-2); font-size: var(--ui-caption); }
 
-.lg-team ol { margin: 0; padding: 4px 0; list-style: none; }
-.lg-cols, .lg-row { display: grid; grid-template-columns: 112px minmax(140px, 1.4fr) 168px 92px 120px 104px 60px minmax(190px, 1.2fr); align-items: center; gap: 10px; padding: 0 16px; }
-.lg-cols > span:first-child { grid-column: span 2; }
-.lg-cols > span:last-child { text-align: right; }
-.lg-cols { height: 30px; color: var(--text-muted); font-size: 12px; font-weight: 600;  }
-:where(.dash-scope) .lg-row { width: 100%; min-height: 58px; border: 0; border-radius: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .12s; }
-:where(.dash-scope) .lg-row:hover { background: var(--fa-panel-2); }
-.lg-row.is-self { background: linear-gradient(90deg, color-mix(in srgb, var(--fa-you) 11%, transparent), color-mix(in srgb, var(--fa-you) 3%, transparent) 60%); box-shadow: inset 3px 0 0 var(--fa-you); }
+.lg-team ol { margin: 0; padding: 0; list-style: none; }
+.lg-team li + li { border-top: 1px solid var(--ui-line-1); }
+.lg-cols, .lg-row { display: grid; grid-template-columns: var(--lg-columns); align-items: center; gap: 12px; padding: 0 16px; }
+.lg-cols { min-height: 26px; border-bottom: 1px solid var(--ui-line-1); color: var(--ui-text-2); font-size: var(--ui-caption); font-weight: 500; }
+.lg-cols small { color: var(--ui-text-3); font-size: inherit; font-weight: 400; }
+.lg-cols > span:last-child:not(:nth-child(3)) { text-align: right; }
+:where(.dash-scope) .lg-row { width: 100%; min-height: 66px; padding-top: 5px; padding-bottom: 5px; border: 0; border-radius: 0; background: transparent; color: var(--ui-text-1); font: inherit; text-align: left; cursor: pointer; transition: background-color var(--ui-fast) var(--ui-ease); }
+:where(.dash-scope) .lg-row:hover { background-color: var(--ui-hover); }
+:where(.dash-scope) .lg-row:active { background-color: var(--ui-press); }
+:where(.dash-scope) .lg-row:focus-visible { position: relative; outline: 2px solid var(--ui-brand); outline-offset: -3px; }
+.lg-row.is-self { background: linear-gradient(90deg, var(--ui-brand-tint), color-mix(in srgb, var(--ui-brand) 3%, transparent) 75%); box-shadow: inset 3px 0 0 var(--ui-brand); }
+.lg-row.is-self .lg-portrait { box-shadow: 0 0 0 1px var(--ui-brand); }
 .lg-row.is-dead .lg-portrait img { filter: grayscale(1) brightness(.6); }
-.lg-row > span { min-width: 0; }
-.lg-row small { display: block; font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lg-row strong { font-size: 13px; font-weight: 620; white-space: nowrap; }
+.lg-row > span, .lg-name, .lg-rank > span, .lg-performance > span { min-width: 0; }
+.lg-row small { display: block; color: var(--ui-text-3); font-size: var(--ui-caption); line-height: 1.3; white-space: nowrap; }
+.lg-row strong { font-weight: 650; white-space: nowrap; }
 
-.lg-champ { display: flex; align-items: center; gap: 4px; }
-.lg-portrait { position: relative; flex: none; }
-.lg-portrait b { position: absolute; right: -4px; bottom: -4px; min-width: 18px; padding: 0 4px; border: 2px solid var(--fa-panel); border-radius: 99px; background: var(--fa-panel-2); font-size: 12px; line-height: 14px; text-align: center; }
+.lg-identity { display: flex; align-items: center; gap: 12px; }
+.lg-champ { display: flex; align-items: center; gap: 3px; flex: none; }
+.lg-portrait { position: relative; flex: none; border-radius: var(--ui-radius-sm); }
+.lg-portrait .champion-icon, .lg-portrait .champion-icon-fallback { display: block; width: 48px; height: 48px; border-radius: var(--ui-radius-sm); }
+.lg-portrait b { position: absolute; right: -3px; bottom: -3px; min-width: 18px; padding: 0 3px; border: 2px solid var(--ui-surface-2); border-radius: var(--ui-radius-xs); background: var(--ui-surface-0); color: var(--ui-text-1); font-size: var(--ui-caption); line-height: 14px; text-align: center; }
 .lg-stack { display: grid; gap: 3px; }
-.lg-stack img, .lg-stack > span { width: 18px; height: 18px; border-radius: 4px; display: block; background: var(--fa-panel-2); }
-.lg-runes img, .lg-runes > span { border-radius: 50%; background: rgb(0 0 0 / .35); }
+.lg-stack img, .lg-stack > span { display: block; width: 18px; height: 18px; border-radius: 4px; background: var(--ui-surface-3); }
+.lg-runes img, .lg-runes > span { border-radius: 50%; background: var(--ui-well); }
 .lg-runes .lg-tree { padding: 2px; }
-
-.lg-name strong { display: flex; align-items: baseline; overflow: hidden; }
-.lg-name .riot-name { overflow: hidden; text-overflow: ellipsis; }
-.lg-you { margin-left: 7px; padding: 0 6px; border-radius: 5px; background: color-mix(in srgb, var(--fa-you) 18%, transparent); color: var(--fa-you); font-size: 12px; font-style: normal; font-weight: 650; }
-.lg-badges { display: flex; gap: 4px; margin-top: 3px; overflow: hidden; }
-.lg-badge { flex: none; padding: 1px 6px; border-radius: 5px; background: var(--fa-panel-2); color: var(--text-secondary); font-size: 12px; font-weight: 600; white-space: nowrap; }
-.lg-badge.is-streak-win { background: color-mix(in srgb, var(--fa-win) 16%, transparent); color: var(--fa-win); }
-.lg-badge.is-streak-loss { background: color-mix(in srgb, var(--fa-loss) 16%, transparent); color: var(--fa-loss); }
-.lg-badge.is-new-champ, .lg-badge.is-off-role { background: color-mix(in srgb, #f0c060 16%, transparent); color: #f0c060; }
-.lg-badge.is-one-trick { background: var(--fa-panel-2); color: var(--text-primary); box-shadow: inset 0 0 0 1px var(--fa-line-2); }
+.lg-name > strong { display: flex; align-items: baseline; font-size: var(--ui-body); letter-spacing: -.015em; line-height: 18px; }
+.lg-name .riot-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.lg-name .riot-tag { max-width: 40%; overflow: hidden; text-overflow: ellipsis; font-size: var(--ui-caption); letter-spacing: 0; }
+.lg-you { flex: none; margin-left: 6px; padding: 1px 5px; border-radius: 4px; background: var(--ui-brand); color: var(--ui-brand-ink); font-size: var(--ui-caption); font-style: normal; font-weight: 700; line-height: 1.2; }
+.lg-player-meta { display: flex; align-items: center; gap: 7px; margin-top: 2px; }
+.lg-player-meta > small { overflow: hidden; text-overflow: ellipsis; }
+.lg-role { display: inline-flex; align-items: center; gap: 3px; flex: none; }
+.lg-role:empty { display: none; }
+.lg-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 3px; }
+.lg-badge { display: inline-flex; align-items: center; width: fit-content; padding: 1px 5px; border: 1px solid var(--ui-line-2); border-radius: 4px; background: var(--ui-surface-3); color: var(--ui-text-2); font-size: var(--ui-caption); font-weight: 550; line-height: 1; white-space: nowrap; }
+.lg-badge.is-streak-win { color: var(--ui-win); border-color: color-mix(in srgb, var(--ui-win) 35%, transparent); }
+.lg-badge.is-streak-loss { color: var(--ui-loss); border-color: color-mix(in srgb, var(--ui-loss) 35%, transparent); }
+.lg-badge.is-new-champ, .lg-badge.is-off-role { color: var(--ui-warn); border-color: color-mix(in srgb, var(--ui-warn) 35%, transparent); }
+.lg-badge.is-one-trick { color: var(--ui-text-1); }
 
 .lg-rank { display: flex; align-items: center; gap: 8px; }
-.lg-rank > span { min-width: 0; }
-.lg-role { display: flex; align-items: center; gap: 4px; }
-.lg-live { display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
-.lg-kda { display: grid; text-align: right; }
-.lg-kda i { font-style: normal; color: var(--text-muted); font-weight: 400; }
-.lg-kda em { font-style: normal; color: var(--fa-loss); }
-/* Items: one row, six slots and the trinket, always seven frames so rows line up (shared Slot). */
-.lg-items { --slot: 26px; display: flex; gap: 3px; }
+.lg-rank > .rank-crest, .lg-rank > .rank-crest-fallback { flex: none; object-fit: contain; }
+.lg-rank > .rank-crest-fallback { border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); }
+.lg-rank strong { display: block; font-size: 17px; letter-spacing: -.02em; line-height: 1.15; }
+.lg-row .lg-rank-record { margin-top: 2px; color: var(--ui-text-2); }
+.lg-rank-record b { color: var(--ui-text-1); font-weight: 550; }
+.lg-row .lg-flex { margin-top: 2px; }
+.lg-flex span { color: var(--ui-text-2); }
+.lg-rank.is-unranked { padding-left: 8px; border-left: 2px solid var(--ui-line-2); }
+.lg-rank.is-unranked strong { color: var(--ui-text-2); font-size: var(--ui-body); font-weight: 550; }
+.lg-performance { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.lg-performance strong { display: block; margin: 1px 0; font-size: 19px; line-height: 1.05; letter-spacing: -.03em; }
+.lg-performance strong > span { margin-left: 1px; font-size: var(--ui-caption); font-weight: 500; }
+.lg-row .up { color: var(--ui-win); }
+.lg-row .down { color: var(--ui-loss); }
+.lg-row .lg-stat-label { color: var(--ui-text-2); }
+.lg-row .lg-no-data { margin-top: 4px; white-space: normal; }
+.lg-live { display: grid; justify-self: end; gap: 5px; }
+.lg-kda { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.lg-kda strong { font-size: 15px; line-height: 1.2; }
+.lg-kda i, .lg-recent i { color: var(--ui-text-3); font-size: var(--ui-caption); font-style: normal; font-weight: 400; }
+.lg-kda em, .lg-recent em { color: var(--ui-loss); font-style: normal; }
+.lg-items { --inventory-slot: 22px; display: flex; gap: 3px; }
+.lg-items .ui-slot { --slot: var(--inventory-slot); }
 .lg-items .is-trinket { margin-left: 4px; }
-
-.lg-skel, .lg-skel-bar { color: var(--text-muted); }
-.lg-skel-bar { display: block; width: 110px; height: 10px; border-radius: 99px; background: var(--fa-panel-2); }
+/* Preserve the seven inventory positions without making empty frames the focus. */
+.lg-items .ui-slot.is-empty { border-color: transparent; background: transparent; box-shadow: none; }
+.lg-items .ui-slot.is-empty::after { content: ""; width: 5px; height: 2px; border-radius: 1px; background: var(--ui-line-3); }
+.lg-row .lg-no-items { text-align: right; }
+.lg-skel-bar { display: block; width: 80%; height: 12px; border-radius: var(--ui-radius-xs); background: var(--ui-surface-3); }
 .lg-empty p { max-width: 420px; }
 
-/* Narrower windows drop what the profile repeats: Flex, then the role, then
-   the live items (K/D/A and CS stay). */
-@container (max-width: 1120px) {
-  .lg-cols, .lg-row { grid-template-columns: 112px minmax(120px, 1.2fr) 170px 116px 96px 58px minmax(184px, 1fr); }
-  .lg-flex { display: none !important; }
-  .lg-items { --slot: 22px; }
+@container (max-width: 940px) {
+  .lg-cols, .lg-row { grid-template-columns: minmax(210px, 1.3fr) minmax(190px, 1.1fr) minmax(172px, 1fr) minmax(148px, .9fr); gap: 10px; padding-left: 12px; padding-right: 12px; }
+  .lg-performance { grid-template-columns: 1fr; gap: 4px; }
+  .lg-performance > span { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 0 5px; }
+  .lg-performance strong { font-size: 15px; }
+  .lg-performance > span > small:last-child:not(:first-child) { grid-column: 1 / -1; }
+  .lg-row .lg-no-data { margin-top: 0; }
+  .lg-items { --inventory-slot: 18px; }
+  .lg-team-head { gap: 14px; }
+  .lg-avg { padding-left: 14px; }
+  .lg-team.is-pregame .lg-row, .lg-team.is-pregame .lg-cols { grid-template-columns: minmax(210px, 1.3fr) minmax(190px, 1.1fr) minmax(172px, 1fr); }
 }
-@container (max-width: 900px) {
-  .lg-cols, .lg-row { grid-template-columns: 112px minmax(120px, 1.4fr) 150px 116px 96px minmax(64px, auto); }
-  .lg-role, .lg-items { display: none !important; }
+@container (max-width: 780px) {
+  .lg-cols { display: none; }
+  .lg-row, .lg-team.is-pregame .lg-row { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px 20px; padding: 12px 16px; }
+  .lg-performance { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .lg-performance > span { display: block; }
+  .lg-performance strong { font-size: 18px; }
+  .lg-live { justify-self: stretch; justify-content: end; }
+  .lg-items { --inventory-slot: 22px; }
+  .lg-rank { justify-self: end; }
+  .lg-team-head { flex-wrap: wrap; }
+  .lg-team-identity { min-width: 90px; }
+  .lg-dmg { width: 136px; }
+  .lg-team.is-pregame .lg-performance { grid-column: 1 / -1; }
+}
+@container (max-width: 580px) {
+  .lg-team-head { gap: 10px 16px; }
+  .lg-avg { order: 3; flex-basis: 100%; border-left: 0; padding-left: 0; }
+  .lg-avg > span { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+  .lg-row { column-gap: 12px; }
+  .lg-identity { gap: 8px; }
+  .lg-champ { flex-wrap: wrap; width: 48px; justify-content: center; }
+  .lg-stack { display: flex; }
+  .lg-rank strong { font-size: 15px; }
+  .lg-rank > .rank-crest, .lg-rank > .rank-crest-fallback { width: 32px; height: 32px; }
+  .lg-rank-record { white-space: normal !important; }
+  .lg-player-meta { flex-wrap: wrap; gap: 3px; }
+  .lg-performance { gap: 8px; }
+  .lg-performance small:last-child { white-space: normal; }
 }
 
 /* Player profile drawer. */
 .lg-scrim { position: fixed; inset: 40px 0 0; z-index: 20; display: flex; justify-content: flex-end; background: rgb(0 0 0 / .45); }
-.lg-profile { width: min(440px, 92vw); height: 100%; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding: 0 0 24px; border-left: 1px solid var(--fa-line-2); background: var(--fa-panel); outline: 0; scrollbar-width: thin; }
+.lg-profile { width: min(460px, 92vw); height: 100%; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding: 0 0 24px; border-left: 1px solid var(--fa-line-2); background: var(--fa-panel); outline: 0; scrollbar-width: thin; }
 .lg-profile > :not(header) { margin-left: 18px; margin-right: 18px; }
 .lg-profile-head { position: relative; isolation: isolate; display: flex; align-items: center; gap: 14px; min-height: 120px; padding: 34px 18px 16px; overflow: hidden; }
-.lg-profile-head > img { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; opacity: .28; mask-image: linear-gradient(transparent, #000 10%, #000 40%, transparent); }
+.lg-profile-head > img:not(.champion-icon) { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; opacity: .28; mask-image: linear-gradient(transparent, #000 10%, #000 40%, transparent); }
 .lg-profile-head .champion-icon, .lg-profile-head .champion-icon-fallback { width: 56px; height: 56px; border-radius: 12px; }
 .lg-profile-head h2 { margin: 0; font-size: 19px; }
 .lg-profile-head p { margin: 3px 0 0; font-size: 12.5px; }
 :where(.dash-scope) .lg-close { position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 7px; background: rgb(0 0 0 / .35); color: var(--text-secondary); }
+:where(.dash-scope) .lg-close:hover { background: var(--ui-surface-hover); color: var(--ui-text-1); }
+:where(.dash-scope) .lg-close:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 .lg-rank-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .lg-rank-card { position: relative; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--fa-line); border-radius: 12px; background: var(--fa-panel-2); overflow: hidden; }
-.lg-rank-card strong { display: block; font-size: 14px; }
+.lg-rank-card > .rank-crest { flex: none; }
+.lg-rank-card strong { display: block; font-size: 16px; }
 .lg-rank-card p { margin: 2px 0 0; font-size: 12px; }
 .lg-rank-card > i { position: absolute; left: 0; bottom: 0; height: 3px; width: var(--rate); background: var(--fa-win); }
-.lg-rank-card.is-unranked { opacity: .7; }
+.lg-rank-card.is-unranked strong { color: var(--ui-text-2); }
 .lg-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 0; margin-bottom: 0; }
 .lg-facts div { padding: 9px 10px; border-radius: 10px; background: var(--fa-panel-2); }
 .lg-facts dt { color: var(--text-muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

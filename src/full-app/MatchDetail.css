@@ -220,7 +220,7 @@
 .md-chart-legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 0 22px 18px 76px; font-size: 14px; color: var(--ui-text-3); }
 .md-chart-wrap { display: flex; height: 230px; padding: 0 22px; gap: 14px; }
 .md-chart-axis { display: flex; flex-direction: column; justify-content: space-between; flex: 0 0 40px; text-align: right; color: var(--ui-text-3); font-size: 14px; }
-.md-chart { flex: 1; min-width: 0; position: relative; border: 1px solid var(--ui-line-1); border-radius: var(--ui-radius-xs); }
+.md-chart { flex: 1; min-width: 0; position: relative; cursor: pointer; border: 1px solid var(--ui-line-1); border-radius: var(--ui-radius-xs); }
 .md-chart > svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .md-chart line { stroke: var(--ui-line-1); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .md-chart .md-zero-line { stroke: var(--ui-line-3); stroke-dasharray: 4 4; }
@@ -232,6 +232,7 @@
 .md-chart-cursor { position: absolute; left: var(--cursor); inset-block: 0; border-left: 1px dashed var(--ui-text-2); pointer-events: none; }
 .md-frame-dot { position: absolute; transform: translate(-50%, -50%); width: 5px; height: 5px; border-radius: 50%; background: currentColor; pointer-events: none; }
 .md-frame-dot.is-active { width: 9px; height: 9px; box-shadow: 0 0 0 3px var(--ui-line-3); }
+.md-frame-dot.is-pinned { width: 11px; height: 11px; box-shadow: 0 0 0 2px var(--ui-surface-0), 0 0 0 4px var(--ui-brand); }
 .md-chart-anchor { position: absolute; pointer-events: none; width: 1px; height: 1px; }
 .md-event-anchor { position: fixed; pointer-events: none; width: 1px; height: 1px; }
 .md-event-lanes { padding: 14px 22px 0; display: grid; gap: 5px; }
@@ -271,6 +272,8 @@
 .md-kill-map > header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 14px; }
 .md-kill-map h3 { font-size: 14px; font-weight: 600; }
 .md-kill-map > header > span { color: var(--ui-text-3); font-size: 13px; }
+.md-kill-map > header > .md-map-minute { display: flex; align-items: center; gap: 10px; color: var(--ui-text-1); font-weight: 600; }
+.fa-frame .md-map-minute button { padding: 3px 9px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-xs); background: transparent; color: var(--ui-text-2); font-size: 13px; }
 .md-map-surface { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; margin: 0 auto 16px; background: var(--ui-well); border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); }
 .md-minimap { display: block; width: 100%; height: 100%; border-radius: inherit; }
 .md-map-surface > p { position: absolute; inset: 0; display: grid; place-content: center; color: var(--ui-text-3); font-size: 14px; }

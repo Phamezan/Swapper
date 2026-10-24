@@ -1,9 +1,14 @@
 import type { ChampionBuild, ChampionCountersView, CounterRow, RuneTree, Selection } from "../runes/types";
 
 /** Match the client's recommended-spell layout: keep Flash on its current key. */
-export function spellLayout(recommended: number[], current: number[]): number[] {
+export type FlashKey = "keep" | "d" | "f";
+
+/** Mirrors `place_flash` in spells.rs: Flash on the chosen key, else on the key it is on now. */
+export function spellLayout(recommended: number[], current: number[], flash: FlashKey = "keep"): number[] {
   if (recommended.length !== 2) return recommended;
-  const target = current.indexOf(4), have = recommended.indexOf(4);
+  const have = recommended.indexOf(4);
+  if (flash !== "keep" && have >= 0) return have === (flash === "d" ? 0 : 1) ? recommended : [recommended[1], recommended[0]];
+  const target = current.indexOf(4);
   const flip = target >= 0 && have >= 0 ? target !== have : recommended[0] === current[1] || recommended[1] === current[0];
   return flip ? [recommended[1], recommended[0]] : recommended;
 }

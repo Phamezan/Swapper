@@ -222,6 +222,24 @@ fn live_merge_corrects_sides_and_adds_players_the_session_missed() {
     assert_eq!(view, before);
 }
 
+#[test]
+fn practice_dummies_and_duplicate_ids_never_grow_the_teams() {
+    let mut view = from_session(
+        &json!({ "gameData": { "gameId": 7, "teamOne": [], "teamTwo": [] } }),
+        "", &BTreeMap::new(),
+    ).unwrap();
+    let dummy = json!({ "riotId": "", "summonerName": "Unknown", "championName": "", "team": "CHAOS", "isBot": true });
+    let twin = json!({ "riotId": "Twin#1", "championName": "Zed", "team": "CHAOS" });
+    let data = json!({ "gameData": { "gameTime": 30.0 }, "allPlayers": [
+        { "riotId": "Bot#1", "championName": "Zed", "team": "ORDER", "isBot": true },
+        dummy.clone(), dummy.clone(), dummy, twin.clone(), twin,
+    ] });
+    for _ in 0..3 {
+        merge_live(&mut view, &data, &ids());
+    }
+    assert_eq!(view.players.iter().map(|p| p.key.as_str()).collect::<Vec<_>>(), ["live:Bot#1", "live:Twin#1"]);
+}
+
 fn row(
     id: u64,
     champion: i64,

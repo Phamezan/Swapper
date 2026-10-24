@@ -360,6 +360,44 @@ fn save_account_icon(app: &tauri::AppHandle, puuid: &str, icon: &str) {
     }
 }
 
+/// How long, and how often, to wait for League to file a finished game in match history.
+const FILED_CHECKS: u32 = 36;
+const FILED_INTERVAL: std::time::Duration = std::time::Duration::from_secs(5);
+
+/// Waits until the game that just ended shows up in match history (League takes
+/// up to a few minutes), then emits `game_finished` with its id so the app can
+/// refresh the dashboard and open the match.
+pub async fn announce_finished_game(app: tauri::AppHandle) {
+    let Some(id) = finished_game_id().await else { return };
+    for _ in 0..FILED_CHECKS {
+        tokio::time::sleep(FILED_INTERVAL).await;
+        let Ok(client) = crate::runes::lcu().await else { continue };
+        let Ok(history) = crate::runes::lcu_get::<Value>(&client, "/lol-match-history/v1/products/lol/current-summoner/matches?begIndex=0&endIndex=4").await else {
+            continue;
+        };
+        if history_has_game(&history, id) {
+            let _ = app.emit("game_finished", id);
+            return;
+        }
+    }
+}
+
+/// The id of the game that just ended: the gameflow session still holds it at
+/// end of game; the end-of-game stats are the fallback.
+async fn finished_game_id() -> Option<u64> {
+    let client = crate::runes::lcu().await.ok()?;
+    let id = |value: &Value, pointer: &str| value.pointer(pointer).and_then(Value::as_u64).filter(|id| *id > 0);
+    if let Some(found) = crate::runes::lcu_get::<Value>(&client, "/lol-gameflow/v1/session").await.ok().and_then(|s| id(&s, "/gameData/gameId")) {
+        return Some(found);
+    }
+    let stats = crate::runes::lcu_get::<Value>(&client, "/lol-end-of-game/v1/eog-stats-block").await.ok()?;
+    id(&stats, "/gameId")
+}
+
+fn history_has_game(history: &Value, id: u64) -> bool {
+    history["games"]["games"].as_array().is_some_and(|games| games.iter().any(|g| g["gameId"].as_u64() == Some(id)))
+}
+
 async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Snapshot, String> {
     let account = lp::AccountRead::begin(app)?;
     let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
@@ -498,6 +536,16 @@ pub async fn dashboard_snapshot(
 
 #[cfg(test)]
 mod tests {
+    use super::history_has_game;
+
+    #[test]
+    fn finished_game_is_found_in_the_history_list() {
+        let history = serde_json::json!({ "games": { "games": [{ "gameId": 7 }, { "gameId": 9 }] } });
+        assert!(history_has_game(&history, 9));
+        assert!(!history_has_game(&history, 8));
+        assert!(!history_has_game(&serde_json::json!({}), 9));
+    }
+
     #[test]
     fn cached_snapshot_survives_restart_and_rejects_corrupt_or_oversized_files() {
         use super::*;

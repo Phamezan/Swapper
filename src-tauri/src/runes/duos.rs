@@ -1,4 +1,6 @@
-//! Bot lane duos (ADC + Support) from u.gg's duo tier list.
+//! Bot laner + Support duos from lolalytics' bottom-lane synergy tables.
+//! u.gg's curated duo list is the fallback: its `adc_supp` table can omit
+//! mage bot laners even when their bottom-lane synergy samples are available.
 //!
 //! `stats2.u.gg/lol/1.5/duos/world/{16_20}/ranked_solo_5x5/{rank}/1.5.0.json`
 //! is `[{"adc_supp": [row, ...], ...}, updated_at, ...]`, each row
@@ -6,8 +8,9 @@
 //! support_games, duo_wins, duo_games, ...]`. u.gg already drops small pairs
 //! (a few thousand games at Emerald+). Pairs are blended with the previous
 //! patch and scored like the lane tier list (shrunk win rate + popularity).
-//! If u.gg is unavailable, lolalytics' support synergy tables supply the pairs.
+//! Both sources use the same previous-patch blending and scoring.
 
+use std::future::Future;
 use std::sync::OnceLock;
 use std::time::Duration;
 
@@ -24,7 +27,7 @@ const TTL: Duration = Duration::from_secs(60 * 60);
 const LAST_GOOD_MAX_ENTRIES: usize = 16;
 const LAST_GOOD_MAX_BYTES: usize = 512 * 1024;
 /// Pick-rate weight in a duo's score. Lower than the lane tier list's: a duo
-/// list is read for the pairs that win, and u.gg already drops rare ones.
+/// list is read for the pairs that win; the scoring prior shrinks rare pairs.
 const POP_WEIGHT: f64 = 0.25;
 
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
@@ -155,11 +158,18 @@ fn last_good() -> &'static LastGoodCache<DuoList> {
 
 /// The bot lane duo list for a rank bracket. A fresh cached copy is served as
 /// is; a failed fetch falls back to the last good copy, marked stale. On the
-/// first day of a patch u.gg may not have the new file yet, so the previous
+/// first day of a patch a provider may not have new data yet, so the previous
 /// patch alone is shown.
 pub async fn load(tier: &str) -> Option<Sourced<DuoList>> {
-    let mut found = super::ugg::prefer(super::ugg::duos(tier).await, async {
-        Ok(load_lolalytics(tier).await)
+    load_sources(load_lolalytics(tier), super::ugg::duos(tier)).await
+}
+
+async fn load_sources(
+    lolalytics: impl Future<Output = Option<Sourced<DuoList>>>,
+    ugg: impl Future<Output = Option<Sourced<DuoList>>>,
+) -> Option<Sourced<DuoList>> {
+    let mut found = super::ugg::prefer(lolalytics.await, async {
+        Ok(ugg.await)
     })
     .await
     .ok()
@@ -295,6 +305,50 @@ mod tests {
             win_pct,
             games,
             ..Duo::default()
+        }
+    }
+
+    #[tokio::test]
+    async fn lane_wide_duos_keep_mage_bots_even_when_the_curated_ugg_list_is_fresh() {
+        let full = Sourced::fresh(DuoList { duos: vec![duo(115, 412, 54.0, 540)] }, Provider::Lolalytics);
+        let curated = Sourced::fresh(DuoList { duos: vec![duo(222, 412, 53.0, 8340)] }, Provider::Ugg);
+        let found = load_sources(async { Some(full) }, async { Some(curated) }).await.unwrap();
+        assert_eq!(found.provider, Provider::Lolalytics);
+        assert!(found.value.duos.iter().any(|row| row.adc_id == 115));
+    }
+
+    #[tokio::test]
+    async fn fresh_lane_wide_duos_do_not_fetch_the_curated_fallback() {
+        let full = Sourced::fresh(DuoList { duos: vec![duo(115, 412, 54.0, 540)] }, Provider::Lolalytics);
+        let found = load_sources(async { Some(full) }, async { panic!("fresh duos need no fallback") }).await.unwrap();
+        assert_eq!(found.provider, Provider::Lolalytics);
+        assert!(!found.stale);
+    }
+
+    #[tokio::test]
+    async fn duo_sources_keep_the_existing_live_and_stale_fallbacks() {
+        let curated = Sourced::fresh(DuoList { duos: vec![duo(222, 412, 53.0, 8340)] }, Provider::Ugg);
+        let found = load_sources(async { None }, async { Some(curated.clone()) }).await.unwrap();
+        assert_eq!(found.provider, Provider::Ugg);
+        let mut cached = Sourced::fresh(DuoList { duos: vec![duo(115, 412, 54.0, 540)] }, Provider::Lolalytics);
+        cached.stale = true;
+        let found = load_sources(async { Some(cached.clone()) }, async { Some(curated) }).await.unwrap();
+        assert_eq!(found.provider, Provider::Ugg);
+        let found = load_sources(async { Some(cached) }, async { None }).await.unwrap();
+        assert_eq!(found.provider, Provider::Lolalytics);
+        assert!(found.stale);
+    }
+
+    #[tokio::test]
+    #[ignore = "network: verifies the shared duo loader includes mage bot laners"]
+    async fn prints_live_complete_bot_duos() {
+        let started = std::time::Instant::now();
+        let found = load("emerald_plus").await.expect("a bot-lane duo list");
+        assert_eq!(found.provider, Provider::Lolalytics);
+        println!("{} pairs, {:?}, stale={}, elapsed={:?}", found.value.duos.len(), found.provider, found.stale, started.elapsed());
+        for id in [30, 45, 50, 63, 115, 147, 901, 910] {
+            let (index, row) = found.value.duos.iter().enumerate().find(|(_, row)| row.adc_id == id).expect("mage bot pairs retained");
+            println!("bot={id}, pairs={}, best_rank={}, support={}, wr={:.4}, games={}, score={:.4}", found.value.duos.iter().filter(|row| row.adc_id == id).count(), index + 1, row.support_id, row.win_pct, row.games, row.score);
         }
     }
 

@@ -95,11 +95,11 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
 
   return <section className="fa-card fa-matchups">
     <div className="fa-section-heading">
-      <div><h3>Matchups as {name}</h3><p>{counters ? `${reliable.length} ${laneName(lane).toLowerCase()} opponents, ${MIN_STRIP_GAMES}+ games · ` : ""}{toughest ? "toughest" : "best"} first · win rate vs {name}’s average</p></div>
+      <div><h3>Matchups as {name}</h3><p title={`${laneName(lane)} opponents with ${MIN_STRIP_GAMES}+ games, by win rate compared with ${name}’s average`}>{counters ? `${reliable.length} opponents · ` : ""}{toughest ? "Toughest" : "Best"} first</p></div>
       <div className="fa-actions">
         {tab === "matchups" && <div className="fa-seg" role="group" aria-label="Order"><button aria-pressed={!toughest} onClick={() => setToughest(false)}>Best</button><button aria-pressed={toughest} onClick={() => setToughest(true)}>Toughest</button></div>}
         {tab === "matchups" && <label className="fa-strip-search"><SearchIcon size={14} aria-hidden /><input aria-label="Find opponent" placeholder="Find opponent" value={query} onChange={event => setQuery(event.target.value)} /></label>}
-        {["adc", "support"].includes(lane) && <div className="fa-seg"><button aria-pressed={tab === "matchups"} onClick={() => setTab("matchups")}>Matchups</button><button aria-pressed={tab === "synergies"} onClick={() => setTab("synergies")}>Synergies</button></div>}
+        {["adc", "support"].includes(lane) && <div className="fa-seg"><button aria-pressed={tab === "matchups"} onClick={() => setTab("matchups")}>Matchups</button><button aria-pressed={tab === "synergies"} onClick={() => setTab("synergies")}>Duos</button></div>}
       </div>
     </div>
     {tab === "matchups" ? <>

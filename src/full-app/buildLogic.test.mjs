@@ -1,6 +1,13 @@
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
-import { matchupRows, stripRows, MIN_STRIP_GAMES, artWindow, stripOrder, skillLevels, crestForTier, overviewSelection } from './buildLogic.ts';
+import { matchupRows, stripRows, MIN_STRIP_GAMES, artWindow, stripOrder, skillLevels, crestForTier, overviewSelection, spellLayout } from './buildLogic.ts';
+
+test('a chosen Flash key wins; keep follows the current layout', () => {
+  assert.deepEqual(spellLayout([14, 4], [12, 4], 'd'), [4, 14]);
+  assert.deepEqual(spellLayout([4, 14], [4, 12], 'f'), [14, 4]);
+  assert.deepEqual(spellLayout([4, 14], [12, 4], 'keep'), [14, 4]);
+  assert.deepEqual(spellLayout([12, 14], [14, 12], 'd'), [14, 12], 'no Flash: the current order still wins');
+});
 
 test('matchups retain the player perspective, deduplicate by sample, and sort best to worst', () => {
   const row = (championId, delta, games) => ({ championId, delta, games, name: String(championId) });

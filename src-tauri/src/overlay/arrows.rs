@@ -2,8 +2,7 @@
 //! can highlight the right one at any resolution and HUD scale. It reads a
 //! strip of the screen (like any capture tool); the game process is never
 //! touched, and the overlay window is excluded from capture.
-use std::ptr::null_mut;
-use windows_sys::Win32::Graphics::Gdi::*;
+use super::capture::capture;
 
 use super::render::Bounds;
 
@@ -115,49 +114,6 @@ pub fn find(bounds: Bounds, expected: usize) -> Vec<Arrow> {
             ..a
         })
         .collect()
-}
-
-fn capture(x: i32, y: i32, width: i32, height: i32) -> Option<Vec<u32>> {
-    unsafe {
-        let screen = GetDC(null_mut());
-        if screen.is_null() {
-            return None;
-        }
-        let dc = CreateCompatibleDC(screen);
-        let info = BITMAPINFO {
-            bmiHeader: BITMAPINFOHEADER {
-                biSize: size_of::<BITMAPINFOHEADER>() as u32,
-                biWidth: width,
-                biHeight: -height,
-                biPlanes: 1,
-                biBitCount: 32,
-                biCompression: BI_RGB,
-                ..Default::default()
-            },
-            ..Default::default()
-        };
-        let mut bits = null_mut();
-        let bitmap = CreateDIBSection(dc, &info, DIB_RGB_COLORS, &mut bits, null_mut(), 0);
-        let mut result = None;
-        if !dc.is_null() && !bitmap.is_null() && !bits.is_null() {
-            let previous = SelectObject(dc, bitmap);
-            if BitBlt(dc, 0, 0, width, height, screen, x, y, SRCCOPY) != 0 {
-                result = Some(
-                    std::slice::from_raw_parts(bits.cast::<u32>(), (width * height) as usize)
-                        .to_vec(),
-                );
-            }
-            SelectObject(dc, previous);
-        }
-        if !bitmap.is_null() {
-            DeleteObject(bitmap);
-        }
-        if !dc.is_null() {
-            DeleteDC(dc);
-        }
-        ReleaseDC(null_mut(), screen);
-        result
-    }
 }
 
 #[cfg(test)]

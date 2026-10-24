@@ -7,7 +7,7 @@ import { Skeleton } from "./ui/States";
 
 type Settings = { enabled: boolean; gold: boolean; objectives: boolean; skills: boolean; goldHotkey: number };
 const widgets = [
-  { key: "gold", title: "Gold difference", description: "Held-item value while you hold the key." },
+  { key: "gold", title: "Gold difference", description: "Each lane's gold gap on the Tab scoreboard, plus team totals, while you hold the key." },
   { key: "objectives", title: "Objective timers", description: "Upcoming neutral objectives." },
   { key: "skills", title: "Skill level-up", description: "Next ability to level." },
 ] as const;
@@ -44,7 +44,9 @@ export function OverlayCards() {
     {!settings ? <Skeleton label="Loading overlay settings" rows={3} height={64} /> : <>
       <div className="setting-row"><div className="setting-copy"><strong>In-game overlay</strong><p>Needs Borderless or Windowed mode.</p></div><Switch aria-label="In-game overlay" checked={settings.enabled} disabled={busy} onCheckedChange={enabled => void update({ enabled })} /></div>
       <div className="fa-overlay-grid">{widgets.map(widget => <article className="fa-overlay-card" key={widget.key}>
-        <div className={`fa-overlay-preview is-${widget.key}`}>{widget.key === "skills" ? <SkillHint /> : <img src="/overlay-fixture.png" alt={`${widget.title} preview from Swapper's native overlay fixture`} loading="lazy" />}<small>Preview</small></div>
+        <div className={`fa-overlay-preview is-${widget.key}`}>{widget.key === "skills" ? <SkillHint />
+          : widget.key === "gold" ? <img src="/overlay-gold-preview.png" alt="Gold difference preview: team gold totals with coin icons, and a blue and a red lane gap marker" loading="lazy" />
+          : <img src="/overlay-fixture.png" alt={`${widget.title} preview from Swapper's native overlay fixture`} loading="lazy" />}<small>Preview</small></div>
         <div className="fa-overlay-copy"><div><h3>{widget.title}</h3><Switch aria-label={widget.title} checked={settings[widget.key]} disabled={busy || !settings.enabled} onCheckedChange={value => void update({ [widget.key]: value })} /></div><p>{widget.description}</p></div>
       </article>)}</div>
       <div className="setting-row"><div className="setting-copy"><strong>Hold to show gold</strong><p>Excludes unspent gold and consumed or sold items.</p></div><Picker label="Overlay hotkey" value={String(settings.goldHotkey)} disabled={busy || !settings.enabled || !settings.gold} onChange={value => void update({ goldHotkey: Number(value) })} options={[[9, "Tab"], [16, "Shift"], [17, "Ctrl"], [18, "Alt"], ...Array.from({ length: 12 }, (_, i) => [112 + i, `F${i + 1}`])].map(([value, label]) => ({ value: String(value), label: String(label) }))} /></div>
