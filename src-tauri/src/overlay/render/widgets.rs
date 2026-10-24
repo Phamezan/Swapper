@@ -1,4 +1,4 @@
-use super::super::model::{DisplayData, Gold, Objective};
+use super::super::model::{DisplayData, Gold, Objective, ROLES};
 use super::{icons, Surface, PULSE_STEPS};
 use windows_sys::Win32::Graphics::GdiPlus::*;
 
@@ -15,71 +15,90 @@ const GOLD: u32 = 0xFFE3B45C;
 const BRAND_GREEN: u32 = 0xFFC5E39E;
 const HINT_FILL: u32 = 0xF2181A17;
 
-const GOLD_BOX: f32 = 44.0;
-const LANE_BADGE: f32 = 26.0;
+const GOLD_WIDTH: f32 = 280.0;
+const GOLD_HEAD: f32 = 30.0;
+const GOLD_ROW: f32 = 20.0;
+const GOLD_PAD: f32 = 8.0;
+/// A role gap this large fills its half of the row; bigger gaps cap there.
+const ROLE_GAP_FULL: f64 = 3000.0;
+const ROLE_LABELS: [&str; 5] = ["TOP", "JNG", "MID", "BOT", "SUP"];
+const ROW_HIGHLIGHT: u32 = 0x1FFFFFFF;
+
+fn gold_height() -> f32 {
+    GOLD_PAD * 2.0 + GOLD_HEAD + ROLES.len() as f32 * GOLD_ROW
+}
+
+/// The bar length (share of its half) for a role gap.
+fn role_share(gap: i64) -> f32 {
+    (gap.unsigned_abs() as f64 / ROLE_GAP_FULL).min(1.0) as f32
+}
 
 impl Surface {
-    /// `19.6K  ● +2.1K  17.5K` in a gold frame, lane difference badge below.
+    /// Team totals (`19.6K ● +2.1K 17.5K`) over one row per role: from a centre
+    /// line a bar grows left in blue when blue side's player leads that role, or
+    /// right in red when red's does, with the gap at its end. Your role is lit.
     pub(super) fn gold(&self, rect: RectF, gold: Gold) -> Result<(), String> {
         let s = self.scale;
-        let main = RectF {
-            Height: GOLD_BOX * s,
-            ..rect
+        self.rounded(rect, 8.0 * s, PANEL, Some((GOLD & 0xCCFFFFFF, 1.5 * s)))?;
+        let inner = RectF {
+            X: rect.X + GOLD_PAD * s,
+            Y: rect.Y + GOLD_PAD * s,
+            Width: rect.Width - 2.0 * GOLD_PAD * s,
+            Height: rect.Height - 2.0 * GOLD_PAD * s,
         };
-        self.rounded(main, 8.0 * s, PANEL, Some((GOLD & 0xCCFFFFFF, 1.5 * s)))?;
-        let column = main.Width / 3.0;
-        let at = |i: f32| RectF {
-            X: main.X + column * i,
+        let column = inner.Width / 3.0;
+        let head = |i: f32| RectF {
+            X: inner.X + column * i,
+            Y: inner.Y,
             Width: column,
-            ..main
+            Height: GOLD_HEAD * s,
         };
-        let diff = gold.ours - gold.theirs;
-        self.text(at(0.0), &short(gold.ours, false), self.large, BLUE)?;
-        self.text(at(2.0), &short(gold.theirs, false), self.large, RED)?;
-        let coin = 12.0 * s;
-        let middle = at(1.0);
-        self.circle(
-            middle.X + 4.0 * s,
-            middle.Y + (middle.Height - coin) / 2.0,
-            coin,
-            GOLD,
-        )?;
+        let diff = gold.blue - gold.red;
+        self.text(head(0.0), &short(gold.blue, false), self.large, BLUE)?;
+        self.text(head(2.0), &short(gold.red, false), self.large, RED)?;
+        let coin = 11.0 * s;
+        let middle = head(1.0);
+        self.circle(middle.X + 4.0 * s, middle.Y + (middle.Height - coin) / 2.0, coin, GOLD)?;
         self.text(
-            RectF {
-                X: middle.X + coin,
-                Width: middle.Width - coin,
-                ..middle
-            },
-            &short(diff, true),
-            self.large,
-            sign_color(diff),
-        )?;
-        let Some(lane) = gold.lane else {
-            return std::result::Result::Ok(());
-        };
-        let badge = RectF {
-            X: rect.X + (rect.Width - 132.0 * s) / 2.0,
-            Y: main.Y + main.Height + 6.0 * s,
-            Width: 132.0 * s,
-            Height: LANE_BADGE * s,
-        };
-        self.rounded(badge, badge.Height / 2.0, PANEL, Some((EDGE, 1.0 * s)))?;
-        let label = RectF {
-            X: badge.X + 8.0 * s,
-            Width: 52.0 * s,
-            ..badge
-        };
-        self.text(label, "LANE", self.small, MUTED)?;
-        self.text(
-            RectF {
-                X: label.X + label.Width,
-                Width: badge.Width - label.Width - 16.0 * s,
-                ..badge
-            },
-            &short(lane, true),
+            RectF { X: middle.X + coin, Width: middle.Width - coin, ..middle },
+            &short(diff.abs(), false),
             self.medium,
-            sign_color(lane),
-        )
+            if diff == 0 { MUTED } else { sign_color(diff) },
+        )?;
+        let label_width = 34.0 * s;
+        let number = 42.0 * s;
+        let bars_x = inner.X + label_width;
+        let half = (inner.Width - label_width) / 2.0;
+        let centre = bars_x + half;
+        for (i, gap) in gold.roles.iter().enumerate() {
+            let row = RectF {
+                X: inner.X,
+                Y: inner.Y + GOLD_HEAD * s + i as f32 * GOLD_ROW * s,
+                Width: inner.Width,
+                Height: GOLD_ROW * s,
+            };
+            let mine = gold.mine == Some(i);
+            if mine {
+                self.rounded(row, 4.0 * s, ROW_HIGHLIGHT, None)?;
+            }
+            self.text(RectF { Width: label_width, ..row }, ROLE_LABELS[i], self.small, if mine { TEXT } else { MUTED })?;
+            let mid_y = row.Y + row.Height / 2.0;
+            self.rounded(RectF { X: bars_x, Y: mid_y - 1.0 * s, Width: half * 2.0, Height: 2.0 * s }, 1.0 * s, TRACK & 0x30FFFFFF, None)?;
+            self.rounded(RectF { X: centre - 1.0 * s, Y: row.Y + 3.0 * s, Width: 2.0 * s, Height: row.Height - 6.0 * s }, 1.0 * s, TEXT & 0x99FFFFFF, None)?;
+            // An unknown role (missing or shared position) keeps only the centre tick.
+            let Some(gap) = *gap else { continue };
+            let length = role_share(gap) * (half - number);
+            let (color, bar, label) = if gap >= 0 {
+                (BLUE, RectF { X: centre - length, Y: mid_y - 3.0 * s, Width: length, Height: 6.0 * s }, centre - length - number)
+            } else {
+                (RED, RectF { X: centre, Y: mid_y - 3.0 * s, Width: length, Height: 6.0 * s }, centre + length)
+            };
+            if length > 0.5 {
+                self.rounded(bar, 3.0 * s, color, None)?;
+            }
+            self.text(RectF { X: label, Width: number, ..row }, &short(gap.abs(), false), self.small, if gap == 0 { MUTED } else { color })?;
+        }
+        std::result::Result::Ok(())
     }
 
     /// Pill with a countdown ring that fills as the objective approaches spawn.
@@ -228,13 +247,14 @@ pub(super) fn widgets(width: i32, height: i32, data: &DisplayData) -> Vec<Widget
     let (w, h) = (width as f32, height as f32);
     let mut widgets = Vec::new();
     if let Some(gold) = data.gold {
-        let gw = (360.0 * s).min(w);
+        let gw = (GOLD_WIDTH * s).min(w);
         widgets.push(Widget::Gold(
             RectF {
                 X: (w - gw) / 2.0,
-                Y: h * 0.155,
+                // High enough to clear the Tab scoreboard it is shown with.
+                Y: h * 0.07,
                 Width: gw,
-                Height: (GOLD_BOX + 6.0 + LANE_BADGE) * s,
+                Height: (gold_height() * s).min(h * 0.9),
             },
             gold,
         ));
@@ -281,9 +301,10 @@ mod tests {
     fn sample() -> DisplayData {
         DisplayData {
             gold: Some(Gold {
-                ours: 19_600,
-                theirs: 17_500,
-                lane: Some(-700),
+                blue: 19_600,
+                red: 17_500,
+                roles: [Some(1_600), Some(-4_200), Some(2_400), None, Some(0)],
+                mine: Some(2),
             }),
             objectives: vec![
                 Objective {
@@ -339,6 +360,14 @@ mod tests {
             }
         }
         assert!(widgets(1920, 1080, &DisplayData::default()).is_empty());
+    }
+
+    #[test]
+    fn role_bars_scale_with_the_gap_and_cap_at_full() {
+        assert_eq!(role_share(0), 0.0);
+        assert_eq!(role_share(1_500), 0.5);
+        assert_eq!(role_share(-1_500), 0.5, "red leads draw just as long");
+        assert_eq!(role_share(9_000), 1.0);
     }
 
     #[test]

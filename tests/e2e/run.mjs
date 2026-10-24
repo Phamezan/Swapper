@@ -227,6 +227,12 @@ async function main() {
     await screenshot("dashboard-evidence", 1440, 900);
     await cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
   }
+  await check("Title bar offers a waiting update on every page", async () => {
+    // The page from the previous checks has no update waiting; one navigation avoids a harness interception race.
+    assert.equal(await page.evaluate("document.querySelector('.title-bar') !== null && document.querySelector('.update-pill') === null"), true);
+    await navigate(`${fullApp}?update`, ".update-pill");
+    await page.text(".update-pill", "Update to v1.0.4");
+  });
   await check("LP graph shows gains, tier crests and a hover tooltip", async () => {
     await navigate(`${fullApp}?lp=month`, ".lp-graph svg");
     // Resize before hovering: a resize clears the hover the screenshot should show.
@@ -294,8 +300,15 @@ async function main() {
     await audit();
     await screenshot("match-detail");
     // ---- matchdetail: comparison, loadout, searchable stats and timeline graph ----
-    assert.equal(await page.evaluate("document.querySelectorAll('.md-compare-row').length"), 4);
-    assert.equal(await page.evaluate("document.querySelectorAll('.md-objective-count').length"), 6);
+    // The recap: stat ladder, ten damage dealers and the gold swing with objective markers.
+    assert.ok(await page.evaluate("document.querySelectorAll('.md-recap-row').length >= 6"));
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-recap-dealer').length"), 10);
+    assert.equal(await page.evaluate("document.querySelectorAll('.md-recap-bans img, .md-recap-bans .champion-icon-fallback').length"), 10);
+    await page.visible('.md-recap-gold svg');
+    if (capture) {
+      await page.evaluate("document.querySelector('.md-recap').scrollIntoView()");
+      await screenshot("match-recap", 1440, 900);
+    }
     assert.equal(await page.evaluate("document.querySelectorAll('.md-fact').length"), 3);
     assert.equal(await page.evaluate("document.querySelector('.md-tower-reading span.is-blue').textContent"), 'Your team');
     assert.ok(await page.evaluate("document.querySelector('.md-share-ring').getAttribute('aria-label').includes('damage to champions')"));
@@ -305,12 +318,11 @@ async function main() {
     await page.text('.md-rank', 'Diamond II 45 LP');
     assert.ok(await page.evaluate("document.querySelector('.md-rank').getAttribute('aria-label').startsWith('Current Solo/Duo rank:')"));
     assert.equal(await page.evaluate("document.querySelector('.md-header, .md-comparison')"), null);
-    // Switching visible tabs preserves position; offscreen tabs return to the scroller's top.
+    // A tab switch scrolls to the page bottom, but never past the tabs reaching the top.
     await page.evaluate("document.querySelector('.dashboard-main').scrollTop = 0");
-    const visibleScroll = await page.evaluate("document.querySelector('.dashboard-main').scrollTop");
     await page.evaluate("document.querySelector('#md-tab-Loadout').click()");
     await page.visible('.md-runes');
-    assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollTop"), visibleScroll);
+    await page.wait("(() => { const s = document.querySelector('.dashboard-main'), tabs = document.querySelector('.md-tabs').getBoundingClientRect().top - s.getBoundingClientRect().top; return s.scrollTop > 0 && (Math.abs(s.scrollTop + s.clientHeight - s.scrollHeight) < 2 || Math.abs(tabs) < 2); })()", 'tab switch scrolls the new panel into view');
     assert.equal(await page.evaluate("document.querySelectorAll('.md-player .md-items .ui-slot').length"), 70);
     await page.click('#md-tab-Stats');
     await page.visible('.md-stats-table');

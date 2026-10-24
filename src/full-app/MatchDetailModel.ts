@@ -1,4 +1,5 @@
 import type { MatchDetailPlayer, MatchDetailTeam, MatchDetailView } from "./types";
+import { fmtCompact } from "./ui/format.ts";
 
 export type StatValue = number | boolean | null;
 export type MatchRank = { tier: string; division: string; lp: number | null; queue?: "Solo/Duo" | "Flex" };
@@ -89,6 +90,36 @@ export function comparisonRows(players: Pick<MatchPlayer, "teamId" | "kills" | "
   return rows;
 }
 
+/** One line of the broadcast-style recap: both teams' values and who leads. */
+export type RecapRow = { label: string; values: [string | null, string | null]; lead: 100 | 200 | null; objective?: string };
+
+/** The recap's stat ladder: K/D/A, gold, then objectives. Elders come from the
+ *  timeline (League counts them as dragons), so without one drakes include them. */
+export function recapRows(players: Pick<MatchPlayer, "teamId" | "kills" | "deaths" | "assists" | "gold">[], teams: MatchDetailTeam[], events?: TimelineEvent[]): RecapRow[] {
+  const team = (id: number) => players.filter(p => p.teamId === id);
+  const total = (id: number, key: "kills" | "deaths" | "assists" | "gold") => { const all = team(id); return all.length && all.every(p => p[key] != null) ? all.reduce((sum, p) => sum + p[key]!, 0) : null; };
+  const lead = (blue: number | null, red: number | null): RecapRow["lead"] => blue == null || red == null || blue === red ? null : blue > red ? 100 : 200;
+  const kda = (id: number) => [total(id, "kills"), total(id, "deaths"), total(id, "assists")];
+  const [blueKda, redKda] = [kda(100), kda(200)];
+  const rows: RecapRow[] = [
+    { label: "K/D/A", values: [blueKda, redKda].map(k => k.some(v => v == null) ? null : k.join("/")) as RecapRow["values"], lead: lead(blueKda[0], redKda[0]) },
+    { label: "Gold", values: [total(100, "gold"), total(200, "gold")].map(g => g == null ? null : fmtCompact(g)) as RecapRow["values"], lead: lead(total(100, "gold"), total(200, "gold")) },
+  ];
+  const count = (id: number, label: string) => teams.find(t => t.teamId === id)?.objectives.find(o => o.label === label)?.kills ?? null;
+  const elders = (id: number) => events ? events.filter(e => e.label === "Elder" && e.teamId === id).length : null;
+  const objective = (label: string, objective: string, blue: number | null, red: number | null) => {
+    if (blue != null || red != null) rows.push({ label, values: [blue, red].map(v => v == null ? null : String(v)) as RecapRow["values"], lead: lead(blue, red), objective });
+  };
+  objective("Towers", "Towers", count(100, "Towers"), count(200, "Towers"));
+  objective("Grubs", "Grubs", count(100, "Grubs"), count(200, "Grubs"));
+  objective("Heralds", "Heralds", count(100, "Heralds"), count(200, "Heralds"));
+  const drakes = (id: number) => { const all = count(id, "Dragons"); return all == null ? null : Math.max(0, all - (elders(id) ?? 0)); };
+  objective("Drakes", "Dragons", drakes(100), drakes(200));
+  if (events) objective("Elders", "Elders", elders(100), elders(200));
+  objective("Barons", "Barons", count(100, "Barons"), count(200, "Barons"));
+  return rows;
+}
+
 export type MatchFact = { value: string; label: string; detail: string; teamId: number } & (
   { kind: "gold" | "towers"; values: [number, number] } |
   { kind: "damage"; share: number; damage: number; teamDamage: number } |
@@ -134,7 +165,7 @@ export function timelineChart(timeline: Timeline) {
 type TimelineParticipant = Pick<MatchPlayer, "participantId" | "teamId" | "championId" | "me">;
 export type TimelineKill = TimelineEvent & { kind: "kill"; killer: TimelineParticipant; victim: TimelineParticipant };
 export type ResolvedTimelineEvent = TimelineKill | (TimelineEvent & { kind: "objective"; objective: string });
-const objectiveLabels: Record<string, string> = { Dragon: "Dragons", Baron: "Barons", Herald: "Heralds", Grub: "Grubs", Tower: "Towers", Inhibitor: "Inhibitors" };
+const objectiveLabels: Record<string, string> = { Dragon: "Dragons", Elder: "Elders", Baron: "Barons", Herald: "Heralds", Grub: "Grubs", Tower: "Towers", Inhibitor: "Inhibitors" };
 
 export function resolveTimelineEvents<T extends TimelineEvent>(events: T[], players: TimelineParticipant[]): (T & ResolvedTimelineEvent)[] {
   const participants = new Map(players.filter(p => p.championId > 0).map(p => [p.participantId, p]));

@@ -1,7 +1,6 @@
 import { AbilityHover } from "./AbilityHover";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Star } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { BuildPanel } from "./BuildPanel";
@@ -144,7 +143,7 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
   const pickLane = (value: string) => { setLane(value); if (selected) void open(selected, value); };
   const filters = <>
     <div className="fa-seg role-tabs" role="group" aria-label="Role">
-      {!inHeader && <button aria-pressed={lane === "auto"} onClick={() => pickLane("auto")} title="Auto: each champion at its most played role"><Star size={15} aria-hidden />Auto</button>}
+      {!inHeader && <button aria-pressed={lane === "auto"} onClick={() => pickLane("auto")} title="Auto: each champion at its most played role"><RoleIcon role="auto" size={16} mode="desktop" />Auto</button>}
       {lanes.map(([value, label]) => <button key={value} aria-pressed={(inHeader ? role : lane) === value} onClick={() => inHeader ? setRole(value) : pickLane(value)}><RoleIcon role={value} size={16} mode="desktop" />{label}</button>)}
     </div>
     <RankPicker value={tier} onChange={setTier} />

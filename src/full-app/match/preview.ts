@@ -80,7 +80,8 @@ export function matchDetailFixture(game: Game, ranks: Snapshot["rank"][], params
   // ---- end matchdetail graphs fixture ----
   return { game, players: params.has("detail-partial-own") ? players.filter((_, i) => i !== 4) : params.has("detail-partial") ? players.slice(0, 8) : players,
     teams: [100, 200].map((teamId, i) => ({teamId: side(teamId), win: i === 0 ? game.win : !game.win,
-      objectives: partial ? [] : [{label: "Dragons", kills: i ? 1 : 3}, {label: "Heralds", kills: i ? 0 : 1}, {label: "Grubs", kills: i ? 2 : 4}, {label: "Barons", kills: i ? 0 : 1}, {label: "Towers", kills: (i === 0) === game.win ? 9 : 3}, {label: "Inhibitors", kills: i ? 0 : 1}] })),
+      objectives: partial ? [] : [{label: "Dragons", kills: i ? 1 : 3}, {label: "Heralds", kills: i ? 0 : 1}, {label: "Grubs", kills: i ? 2 : 4}, {label: "Barons", kills: i ? 0 : 1}, {label: "Towers", kills: (i === 0) === game.win ? 9 : 3}, {label: "Inhibitors", kills: i ? 0 : 1}],
+      bans: partial ? [] : (i ? [64, 157, 238, 555, 777] : [11, 121, 84, 104, 266]) })),
     timeline: params.has("no-timeline") || partial ? null : {frames, events: params.has("timeline-long") ? longEvents.sort((a, b) => a.timestamp - b.timestamp) : [
       {timestamp: Math.round(game.duration * 1000 * .28), teamId: 200, label: "Dragon"},
       {timestamp: Math.round(game.duration * 1000 * .4), teamId: 100, label: "Tower"},

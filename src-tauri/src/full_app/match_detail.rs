@@ -108,6 +108,9 @@ pub struct Team {
     team_id: u64,
     win: Option<bool>,
     objectives: Vec<Objective>,
+    /// Banned champion ids in pick order; empty for blind modes and older saves.
+    #[serde(default)]
+    bans: Vec<i64>,
 }
 
 #[derive(Clone, Serialize, Deserialize)]
@@ -258,6 +261,7 @@ fn timeline_from_participants(
                 }
                 "ELITE_MONSTER_KILL" => {
                     let label = match event["monsterType"].as_str()? {
+                        "DRAGON" if event["monsterSubType"] == "ELDER_DRAGON" => "Elder",
                         "DRAGON" => "Dragon",
                         "BARON_NASHOR" => "Baron",
                         "RIFTHERALD" => "Herald",
@@ -310,6 +314,18 @@ fn objectives(team: &Value) -> Vec<Objective> {
             })
     })
     .collect()
+}
+
+/// A team's bans in pick order; a skipped ban (-1) is left out.
+fn bans(team: &Value) -> Vec<i64> {
+    let mut bans: Vec<(i64, i64)> = team["bans"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .filter_map(|ban| Some((ban["pickTurn"].as_i64().unwrap_or(0), ban["championId"].as_i64().filter(|id| *id > 0)?)))
+        .collect();
+    bans.sort_by_key(|(turn, _)| *turn);
+    bans.into_iter().map(|(_, id)| id).collect()
 }
 
 fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
@@ -431,6 +447,7 @@ fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
                 } else {
                     Vec::new()
                 },
+                bans: team.map(bans).unwrap_or_default(),
             }
         })
         .collect();
@@ -755,6 +772,13 @@ mod tests {
     }
 
     #[test]
+    fn bans_follow_pick_order_and_skip_empty_ones() {
+        let team = json!({"bans": [{"championId": 64, "pickTurn": 3}, {"championId": -1, "pickTurn": 2}, {"championId": 157, "pickTurn": 1}]});
+        assert_eq!(bans(&team), vec![157, 64]);
+        assert!(bans(&json!({})).is_empty());
+    }
+
+    #[test]
     fn timeline_uses_explicit_team_membership_and_damaged_building_side() {
         let participants: Vec<_> = (1..=10)
             .map(|id| {
@@ -770,7 +794,7 @@ mod tests {
         let mut value = json!({"frames": [frame(0, 500, 500), frame(60000, 1500, 1000)]});
         value["frames"][1]["events"] = json!([
             {"type": "BUILDING_KILL", "timestamp": 30000, "teamId": 100, "killerId": 0, "buildingType": "TOWER_BUILDING"},
-            {"type": "ELITE_MONSTER_KILL", "timestamp": 40000, "killerId": 2, "teamId": 0, "monsterType": "DRAGON"},
+            {"type": "ELITE_MONSTER_KILL", "timestamp": 40000, "killerId": 2, "teamId": 0, "monsterType": "DRAGON", "monsterSubType": "ELDER_DRAGON"},
             {"type": "ELITE_MONSTER_KILL", "timestamp": 45000, "killerId": 0, "teamId": 0, "monsterType": "DRAGON"},
             {"type": "CHAMPION_KILL", "timestamp": 50000, "killerId": 2, "victimId": 1, "position": {"x": 2443, "y": 12747}},
             {"type": "CHAMPION_KILL", "timestamp": 51000, "killerId": 0, "victimId": 1},
@@ -783,6 +807,7 @@ mod tests {
         assert_eq!(timeline.events.len(), 3);
         assert_eq!(timeline.events[0].team_id, 200);
         assert_eq!(timeline.events[1].team_id, 100);
+        assert_eq!(timeline.events[1].label, "Elder");
         let serialized = serde_json::to_value(&timeline).unwrap();
         assert_eq!(serialized["frames"][1]["blueGold"], 7500);
         assert_eq!(serialized["frames"][1]["redGold"], 5000);

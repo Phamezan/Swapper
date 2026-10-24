@@ -261,6 +261,8 @@ mockIPC(async (cmd, args) => {
     case "client_health": return new URLSearchParams(location.search).get("client") ?? "ok"; // ?client=hung|dead|closed
     // ?emblem loads the real art from CommunityDragon; e2e runs offline, so it stays off by default.
     case "full_app_player_mmr": return { tier: "EMERALD", division: "I", lp: 18, games: 10, trend: -12 };
+    // ?update: an update is waiting, so the title bar shows its pill.
+    case "update_status": return { state: params.has("update") ? "available" : "upToDate", currentVersion: "1.0.3", availableVersion: params.has("update") ? "1.0.4" : null, notes: null, message: null, lastCheck: null };
     case "rank_emblem": return params.has("emblem") ? `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-${a.tier}.png` : null;
     case "riot_client_icon": return null; // PLAY falls back to its own icon; Swapper ships no Riot artwork.
     case "restart_plan": return new URLSearchParams(location.search).get("restart") ?? "restart";

@@ -1,4 +1,15 @@
-/* Updates: the Settings section and the slim accounts-view banner. */
+/* Updates: the Settings section, the slim accounts-view banner and the title bar pill. */
+
+.update-pill {
+  display: inline-flex; align-items: center; gap: 7px; align-self: center; flex: none;
+  height: 30px; margin-right: 10px; padding: 0 13px;
+  border: 1px solid var(--ui-brand-line, var(--line-strong)); border-radius: 99px;
+  background: var(--ui-brand-tint, var(--surface-panel)); color: var(--ui-brand, var(--positive));
+  font: inherit; font-size: 12.5px; font-weight: 700; white-space: nowrap; cursor: pointer;
+}
+.update-pill:hover:not(:disabled) { background: color-mix(in srgb, var(--ui-brand, var(--positive)) 20%, transparent); }
+.update-pill:focus-visible { outline: 2px solid var(--ui-brand, var(--positive)); outline-offset: 2px; }
+.update-pill:disabled { cursor: default; opacity: .8; }
 
 .update-section { margin-top: 20px; padding-top: 17px; border-top: 1px solid var(--line-strong); }
 /* Same stacked header as the Doctor: full-width title, actions row below. */

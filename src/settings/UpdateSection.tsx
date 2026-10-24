@@ -147,6 +147,35 @@ export function UpdateSection() {
   );
 }
 
+/** The title bar's update button, on every page while an update waits.
+ *  One click installs it and restarts Swapper. */
+export function UpdatePill() {
+  const snapshot = useUpdateSnapshot();
+  const [busy, setBusy] = useState(false);
+  const installing = busy || snapshot?.state === "installing";
+  if (!snapshot || !snapshot.availableVersion || (snapshot.state !== "available" && !installing)) return null;
+
+  async function install() {
+    if (installing) return;
+    setBusy(true);
+    try {
+      await installUpdate();
+    } catch {
+      // Settings → About shows what went wrong; the pill stays to retry.
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <button className="update-pill" disabled={installing} onClick={() => void install()}
+      title={snapshot.notes ? `${snapshot.notes}\nUpdating restarts Swapper.` : "Updating restarts Swapper."}>
+      {installing ? <LoaderCircle className="spin" size={14} /> : <Download size={14} />}
+      <span>{installing ? "Updating…" : `Update to v${snapshot.availableVersion}`}</span>
+    </button>
+  );
+}
+
 /** The slim banner on the accounts view, shown only while an update is
  *  waiting. The text opens Settings for the details; the button installs. */
 export function UpdateBanner({ onOpenSettings }: { onOpenSettings: () => void }) {

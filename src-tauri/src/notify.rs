@@ -37,6 +37,15 @@ pub fn switch_failed(app: &AppHandle, account: &str, use_deceive: bool, failure:
         .show();
 }
 
+pub fn update_available(app: &AppHandle, version: &str) {
+    let _ = app
+        .notification()
+        .builder()
+        .title("Swapper update available")
+        .body(format!("Version {version} is ready. Click Update in Swapper's title bar to install it."))
+        .show();
+}
+
 pub fn restart_skipped(app: &AppHandle, reason: &str) {
     let _ = app
         .notification()

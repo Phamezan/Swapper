@@ -5,6 +5,8 @@ import { invoke } from "@tauri-apps/api/core";
 const FILES: Record<string, [string, string]> = {
   Dragons: ["dragon-100", "dragon-200"], Barons: ["baron-100", "baron-200"], Heralds: ["herald-100", "herald-200"],
   Towers: ["tower-100", "tower-200"], Inhibitors: ["inhibitor-100", "inhibitor-200"], Grubs: ["grub", "grub"],
+  // The client has no elder icon of its own in match history; the dragon stands in.
+  Elders: ["dragon-100", "dragon-200"],
 };
 const loaded = new Map<string, Promise<string | null>>();
 const load = (name: string) => {

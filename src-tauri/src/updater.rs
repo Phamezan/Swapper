@@ -65,6 +65,8 @@ pub struct UpdateState {
     app: AppHandle,
     snapshot: Mutex<UpdateSnapshot>,
     last_scheduled_check: Mutex<Option<Instant>>,
+    /// The version the user was last notified about.
+    notified: Mutex<Option<String>>,
 }
 
 impl UpdateState {
@@ -86,6 +88,7 @@ impl UpdateState {
                 last_check: None,
             }),
             last_scheduled_check: Mutex::new(None),
+            notified: Mutex::new(None),
         }
     }
 
@@ -126,6 +129,14 @@ impl UpdateState {
     }
 
     fn set_available(&self, version: String, notes: Option<String>) {
+        // Notify once per version per run; hourly checks find the same one again.
+        let first = {
+            let mut notified = self.notified.lock().unwrap_or_else(|error| error.into_inner());
+            notified.replace(version.clone()).as_deref() != Some(version.as_str())
+        };
+        if first {
+            crate::notify::update_available(&self.app, &version);
+        }
         self.publish(UpdateStateKind::Available, Some(version), notes, None, true);
     }
 

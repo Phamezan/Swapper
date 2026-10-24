@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { cachedIcon, loadIcon } from "./iconLoader";
 
 /** League positions, as the slugs used across the rune and pro-build data. */
-export type RoleKey = "all" | "top" | "jungle" | "mid" | "adc" | "support" | "none";
+export type RoleKey = "all" | "fill" | "top" | "jungle" | "mid" | "adc" | "support" | "none";
 
 /** Maps an LCU `assignedPosition`, an op.gg position or a display label to a
  *  role key. Unknown values fall back to `none`. */
@@ -26,6 +26,9 @@ export function roleKey(role: string): RoleKey {
       return "support";
     case "all":
       return "all";
+    case "fill":
+    case "auto":
+      return "fill";
     default:
       return "none";
   }
@@ -48,7 +51,7 @@ const ICON_LOAD_TRIES = 3;
 /** Wait between retries. */
 const ICON_RETRY_MS = 3_000;
 
-/** The two roles that have no client asset keep a small inline glyph. */
+/** The roles that have no client SVG keep a small inline glyph. */
 const PATHS: Partial<Record<RoleKey, ReactNode>> = {
   // All: a grid of every role.
   all: (
@@ -58,6 +61,12 @@ const PATHS: Partial<Record<RoleKey, ReactNode>> = {
       <rect x="4" y="13" width="7" height="7" rx="1.5" />
       <rect x="13" y="13" width="7" height="7" rx="1.5" />
     </>
+  ),
+  // Fill / Auto: League's six-armed fill mark (the client only ships it as a PNG).
+  fill: (
+    <g fill="currentColor" stroke="none">
+      {[0, 60, 120].map(angle => <rect key={angle} x="10.4" y="3" width="3.2" height="18" rx=".6" transform={`rotate(${angle} 12 12)`} />)}
+    </g>
   ),
   none: <circle cx="12" cy="12" r="3" />,
 };

@@ -1,7 +1,8 @@
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
 import { barWidth, placementLabel, rankLabel, scoreTone, teamAverageDamage, teamTotals, percent } from './MatchDetailModel.ts';
-import { bestValues, buildStatGroups, comparisonRows, filterStatGroups, matchFacts, timelineChart, resolveTimelineEvents, groupKillEvents, timelineLanes, mapPosition, filterTimelineEvents } from './MatchDetailModel.ts';
+import { fmtCompact } from './ui/format.ts';
+import { bestValues, buildStatGroups, comparisonRows, recapRows, filterStatGroups, matchFacts, timelineChart, resolveTimelineEvents, groupKillEvents, timelineLanes, mapPosition, filterTimelineEvents } from './MatchDetailModel.ts';
 
 test('current rank labels include observed LP and hide apex divisions', () => {
   assert.equal(rankLabel({tier: 'MASTER', division: 'I', lp: 200}, true), 'Master 200 LP');
@@ -169,4 +170,22 @@ test('score tone, team damage average and bar width never invent values', () => 
   assert.equal(teamAverageDamage([10, 20, 30, 40].map(damage => ({ damage }))), null);
   assert.equal(teamAverageDamage([10, 20, 30, 40, null].map(damage => ({ damage }))), null);
   assert.deepEqual([barWidth(50, 200), barWidth(null, 200), barWidth(5, 0), barWidth(300, 200)], [25, 0, 0, 100]);
+});
+
+test("the recap ladder splits elders out of drakes and marks the leading side", () => {
+  const player = (teamId, kills, gold) => ({ teamId, kills, deaths: 2, assists: 3, gold });
+  const players = [...Array(5)].flatMap((_, i) => [player(100, i, 10000), player(200, 1, 9000)]);
+  const teams = [{ teamId: 100, win: true, objectives: [{ label: "Dragons", kills: 3 }, { label: "Towers", kills: 9 }] },
+    { teamId: 200, win: false, objectives: [{ label: "Dragons", kills: 1 }, { label: "Towers", kills: 2 }] }];
+  const events = [{ timestamp: 1, teamId: 100, label: "Elder" }, { timestamp: 2, teamId: 100, label: "Dragon" }];
+  const rows = recapRows(players, teams, events);
+  assert.deepEqual(rows.map(r => r.label), ["K/D/A", "Gold", "Towers", "Drakes", "Elders"]);
+  assert.deepEqual(rows[0].values, ["10/10/15", "5/10/15"]);
+  assert.deepEqual(rows[1].values, [fmtCompact(50000), fmtCompact(45000)]);
+  assert.deepEqual(rows.find(r => r.label === "Drakes").values, ["2", "1"]);
+  assert.deepEqual(rows.find(r => r.label === "Elders").values, ["1", "0"]);
+  assert.ok(rows.every(r => r.lead === 100));
+  // Without a timeline League's dragon count stands, elders included, and there is no elder row.
+  assert.deepEqual(recapRows(players, teams).find(r => r.label === "Drakes").values, ["3", "1"]);
+  assert.equal(recapRows(players, teams).some(r => r.label === "Elders"), false);
 });

@@ -53,5 +53,7 @@ export type MatchDetailPlayer = {
   wardsPlaced: number | null; wardsKilled: number | null; items: number[];
   placement: number | null; score: number | null; rank: Snapshot["rank"]; rankLoaded: boolean;
 };
-export type MatchDetailTeam = { teamId: number; win: boolean | null; objectives: { label: string; kills: number }[] };
+export type MatchDetailTeam = { teamId: number; win: boolean | null; objectives: { label: string; kills: number }[];
+  /** Banned champion ids in pick order; missing on matches saved before bans were kept. */
+  bans?: number[] };
 export type MatchDetailView = { game: Game; players: MatchDetailPlayer[]; teams: MatchDetailTeam[] };

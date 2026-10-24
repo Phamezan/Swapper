@@ -11,12 +11,19 @@ pub struct DisplayData {
     pub pulse: u8,
 }
 
-/// Held-item value per team, rounded to whole gold so redraws only happen on change.
+/// The five roles in scoreboard order, as `lolalytics::lane` names them.
+pub const ROLES: [&str; 5] = ["top", "jungle", "middle", "bottom", "support"];
+
+/// Held-item value by side (blue = ORDER, red = CHAOS), rounded to whole gold
+/// so redraws only happen on change.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Gold {
-    pub ours: i64,
-    pub theirs: i64,
-    pub lane: Option<i64>,
+    pub blue: i64,
+    pub red: i64,
+    /// Blue minus red per role in `ROLES` order; `None` unless each side has exactly one player there.
+    pub roles: [Option<i64>; 5],
+    /// The active player's role in `ROLES`, when known.
+    pub mine: Option<usize>,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -47,42 +54,26 @@ pub fn active_player(data: &Value) -> Option<&Value> {
 pub fn gold(data: &Value) -> Option<Gold> {
     let players = data["allPlayers"].as_array()?;
     let active = active_player(data)?;
-    let team = active["team"].as_str()?;
-    let enemy_team = match team {
-        "ORDER" => "CHAOS",
-        "CHAOS" => "ORDER",
-        _ => return None,
-    };
-    let total = |team: &str| {
-        players
-            .iter()
-            .filter(|p| p["team"] == team)
-            .map(inventory)
-            .sum::<f64>()
-    };
-    let ours = total(team);
-    let theirs = total(enemy_team);
-    let mut gold = Gold {
-        ours: ours.round() as i64,
-        theirs: theirs.round() as i64,
-        lane: None,
-    };
-    if let Some(lane) = active["position"]
-        .as_str()
-        .and_then(crate::runes::lolalytics::lane)
-    {
-        let mut opponents = players.iter().filter(|p| {
-            p["team"] == enemy_team
-                && p["position"]
-                    .as_str()
-                    .and_then(crate::runes::lolalytics::lane)
-                    == Some(lane)
-        });
-        if let Some(opponent) = opponents.next().filter(|_| opponents.next().is_none()) {
-            gold.lane = Some((inventory(active) - inventory(opponent)).round() as i64);
-        }
+    if !matches!(active["team"].as_str()?, "ORDER" | "CHAOS") {
+        return None;
     }
-    Some(gold)
+    let role = |player: &Value| player["position"].as_str().and_then(crate::runes::lolalytics::lane);
+    let total = |team: &str| players.iter().filter(|p| p["team"] == team).map(inventory).sum::<f64>().round() as i64;
+    // The one player of `team` in `lane`; none when the position is missing or shared.
+    let at = |team: &str, lane: &str| {
+        let mut found = players.iter().filter(|p| p["team"] == team && role(p) == Some(lane));
+        found.next().filter(|_| found.next().is_none())
+    };
+    let roles = ROLES.map(|lane| {
+        let (blue, red) = (at("ORDER", lane)?, at("CHAOS", lane)?);
+        Some((inventory(blue) - inventory(red)).round() as i64)
+    });
+    Some(Gold {
+        blue: total("ORDER"),
+        red: total("CHAOS"),
+        roles,
+        mine: role(active).and_then(|lane| ROLES.iter().position(|r| *r == lane)),
+    })
 }
 
 // Current held-item purchase value, not earned gold: cash, sold/consumed items,
@@ -345,14 +336,23 @@ mod tests {
         assert_eq!(
             gold(&fixture()),
             Some(Gold {
-                ours: 1100,
-                theirs: 700,
-                lane: Some(400)
+                blue: 1100,
+                red: 700,
+                roles: [None, None, Some(400), None, None],
+                mine: Some(2),
             })
         );
         let mut data = fixture();
         data["allPlayers"][0]["position"] = json!("");
-        assert_eq!(gold(&data).unwrap().lane, None);
+        let unplaced = gold(&data).unwrap();
+        assert_eq!((unplaced.roles[2], unplaced.mine), (None, None));
+        // Sides stay blue and red whichever team the player is on.
+        let mut data = fixture();
+        data["activePlayer"]["riotId"] = json!("Enemy#TEST");
+        data["activePlayer"]["summonerName"] = json!("Enemy");
+        let enemy = gold(&data).unwrap();
+        assert_eq!((enemy.blue, enemy.red, enemy.roles[2]), (1100, 700, Some(400)));
+        let mut data = fixture();
         data["activePlayer"]["summonerName"] = json!("missing");
         data["activePlayer"]["riotId"] = json!("missing#TEST");
         assert_eq!(gold(&data), None);

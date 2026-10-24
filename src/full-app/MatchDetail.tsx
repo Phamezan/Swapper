@@ -10,7 +10,7 @@ import { crestSlug, queueLabels, splitRiotId, titleCase } from "./Dashboard";
 import { useChampionArt } from "./art";
 import { barWidth, matchFacts, percent, placementLabel, rankLabel, scoreTone, teamAverageDamage, teamTotals, type MatchPlayer as Player, type MatchView } from "./MatchDetailModel";
 import type { Game, Snapshot } from "./types";
-import { Comparison } from "./match/Comparison";
+import { Recap } from "./match/Recap";
 import { Stats } from "./match/Stats";
 import { Timeline } from "./match/Timeline";
 import { Facts } from "./match/Facts";
@@ -32,27 +32,27 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
   const [rankPending, setRankPending] = useState(true);
   const [tab, setTab] = useState("Overview");
   const tabBar = useRef<HTMLDivElement>(null);
-  const scrollRequest = useRef<{ scroller: HTMLElement; top: number } | null>(null);
+  const scrollRequest = useRef(false);
   const selectTab = (label: string) => {
     if (label === tab) return;
-    const scroller = tabBar.current?.closest<HTMLElement>(".dashboard-main");
-    if (scroller && tabBar.current) {
-      const bounds = tabBar.current.getBoundingClientRect(), viewport = scroller.getBoundingClientRect();
-      if (bounds.top < viewport.top || bounds.bottom > viewport.bottom) {
-        scrollRequest.current = { scroller, top: scroller.scrollTop + bounds.top - viewport.top };
-      }
-    }
+    scrollRequest.current = true;
     setTab(label);
   };
+  // After a tab switch, show the new panel: scroll to the page bottom, but never
+  // past the tab bar reaching the top, so a long panel still starts in view.
   useLayoutEffect(() => {
-    const request = scrollRequest.current;
-    scrollRequest.current = null;
-    if (request) request.scroller.scrollTo({ top: request.top, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+    if (!scrollRequest.current) return;
+    scrollRequest.current = false;
+    const scroller = tabBar.current?.closest<HTMLElement>(".dashboard-main");
+    if (!scroller || !tabBar.current) return;
+    const tabsTop = scroller.scrollTop + tabBar.current.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+    const top = Math.min(scroller.scrollHeight - scroller.clientHeight, tabsTop);
+    scroller.scrollTo({ top, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }, [tab]);
   const splash = useChampionArt(game.championId, "splash");
   useEffect(() => {
     let live = true; setDetail(null); setError(""); setRankPending(true); setTab("Overview");
-    scrollRequest.current = null;
+    scrollRequest.current = false;
     const expected = riotId ?? game.players.find(p => p.me)?.riotId;
     const stop = listen<MatchView>("match_detail", ({ payload }) => {
       if (live && payload.game.id === game.id && (!expected || payload.players.some(p => p.me && p.riotId.toLowerCase() === expected.toLowerCase()))) setDetail(payload);
@@ -105,7 +105,7 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
         {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading ranks…" : "Some player ranks are unavailable."}</Notice>}
         {detail.players.length !== 10 && <Notice tone="warn">League Client returned {detail.players.length} of 10 players for this match. Some team statistics and performance scores are unavailable.</Notice>}
         <div id="md-panel" role="tabpanel" aria-labelledby={`md-tab-${tab}`}>
-        {tab === "Overview" ? <div className="md-overview">{hero}<Comparison players={detail.players} teams={detail.teams} /></div>
+        {tab === "Overview" ? <div className="md-overview">{hero}<Recap players={detail.players} teams={detail.teams} timeline={detail.timeline} duration={detail.game.duration} name={name} /></div>
         : tab === "Stats" ? <Stats players={detail.players} name={name} /> : tab === "Graphs" && detail.timeline ? <Timeline data={detail.timeline} players={detail.players} name={name} /> : <>
         {teamRows.map(({ team, players, total, best, average }) => {
           return <section className={`md-team ${team.teamId === 100 ? "is-blue" : "is-red"} ${team.win === true ? "is-win" : team.win === false ? "is-loss" : ""}`} key={team.teamId} aria-label={`${team.teamId === 100 ? "Blue" : "Red"} team`}>
@@ -136,7 +136,6 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
           </section>;
         })}</>}
         </div>
-        {(tab === "Scoreboard" || tab === "Loadout") && <p className="md-rank-note">Score: KDA 35%, damage 35%, CS 15%, vision 15%, vs this game’s best.</p>}
       </>}
   </div>;
 }

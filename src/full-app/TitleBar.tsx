@@ -14,6 +14,7 @@ import type { Snapshot } from './types';
 import { fmtAgo } from '../runes/types';
 import type { LocationSegment } from './locationTrail';
 import './search.css';
+import { UpdatePill } from '../settings/UpdateSection';
 
 type Props = {
   trail: LocationSegment[];
@@ -85,6 +86,7 @@ export function TitleBar(props: Props) {
       </div>}
     </nav>
     <div className="title-spacer" data-tauri-drag-region />
+    <UpdatePill />
     {win && <div className="window-buttons">
       <button aria-label="Minimize" onClick={() => void win.minimize()}><Minus size={15} /></button>
       <button aria-label={maximized ? "Restore" : "Maximize"} onClick={() => void win.toggleMaximize()}>{maximized ? <Copy size={12} /> : <Square size={12} />}</button>

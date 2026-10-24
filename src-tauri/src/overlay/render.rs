@@ -622,7 +622,11 @@ mod tests {
         let mut renderer = Renderer::new().unwrap();
         let fixture = serde_json::from_str(include_str!("fixtures/allgamedata.json")).unwrap();
         let data = DisplayData {
-            gold: super::super::model::gold(&fixture),
+            // Every role filled, so each bar state shows (blue lead, red lead, even, unknown).
+            gold: super::super::model::gold(&fixture).map(|gold| super::super::model::Gold {
+                roles: [Some(1_600), Some(-4_200), gold.roles[2], None, Some(0)],
+                ..gold
+            }),
             objectives: super::super::model::objectives(&fixture),
             skill: Some('R'),
             arrow: Some([600, 600, 20, 8]),

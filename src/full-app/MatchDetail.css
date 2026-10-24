@@ -138,7 +138,6 @@
 .md-rune-group .is-tree { opacity: .85; }
 .md-runes-missing { font-size: 13px; }
 
-.md-rank-note { font-size: 14px; color: var(--ui-text-3); line-height: 1.5; }
 @media (max-width: 1350px) {
   .md-scoreboard { min-width: 920px; grid-template-columns: 32px 36px 16px 18px minmax(174px, 1fr) 161px 126px 50px 82px 38px; gap: 6px; padding-inline: 10px; }
   .md-items .ui-slot { --slot: 20px; }
@@ -321,4 +320,58 @@
   .md-hero-champion { flex-wrap: wrap; }
   .md-objective-comparison { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .md-view-heading { flex-wrap: wrap; }
+}
+
+/* ---------- Recap (Overview): broadcast-style result, stat ladder, damage dealt and gold swing ---------- */
+.md-recap { padding: 0; overflow: hidden; }
+.md-recap-head { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; padding: 18px 26px; border-bottom: 1px solid var(--ui-line-1);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--md-blue) 16%, transparent), transparent 38%, transparent 62%, color-mix(in srgb, var(--md-red) 16%, transparent)); }
+.md-recap-result { display: grid; font-size: 34px; font-weight: 900; letter-spacing: -.02em; line-height: 1; text-transform: uppercase; }
+.md-recap-result.is-blue { color: var(--md-blue); }
+.md-recap-result.is-red { justify-items: end; color: var(--md-red); }
+.md-recap-result small { margin-top: 6px; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--ui-text-3); }
+.md-recap-time { display: grid; justify-items: center; gap: 2px; }
+.md-recap-time small { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ui-text-3); }
+.md-recap-time b { font-size: 26px; font-weight: 800; }
+.md-recap-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+.md-recap-stats { padding: 8px 24px 14px; border-right: 1px solid var(--ui-line-1); }
+.md-recap-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; min-height: 52px; border-bottom: 1px solid var(--ui-line-1); }
+.md-recap-row:last-child { border-bottom: 0; }
+.md-recap-row > b { font-size: 22px; font-weight: 800; color: var(--ui-text-2); opacity: .7; white-space: nowrap; }
+.md-recap-row > b.is-red { text-align: right; }
+.md-recap-row > b.is-leading { opacity: 1; }
+.md-recap-row > b.is-blue.is-leading { color: var(--md-blue); }
+.md-recap-row > b.is-red.is-leading { color: var(--md-red); }
+.md-recap-row > [role="rowheader"] { display: inline-flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ui-text-3); }
+.md-recap-icons { display: inline-flex; gap: 6px; }
+.md-recap-icons .md-objective-icon { width: 16px; height: 16px; }
+.md-recap-bans { display: flex; gap: 4px; }
+.md-recap-bans.is-red { justify-content: flex-end; }
+.md-recap-bans :is(.champion-icon, .champion-icon-fallback) { width: 26px; height: 26px; border-radius: 6px; filter: grayscale(.6); }
+.md-recap-side { display: grid; align-content: start; gap: 18px; padding: 16px 24px 20px; }
+.md-recap-side h3 { margin-bottom: 10px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-align: center; text-transform: uppercase; color: var(--ui-text-2); }
+.md-recap-duel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+.md-recap-duel + .md-recap-duel { margin-top: 8px; }
+.md-recap-dealer { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.md-recap-dealer.is-red { flex-direction: row-reverse; text-align: right; }
+.md-recap-dealer :is(.champion-icon, .champion-icon-fallback) { flex: none; width: 36px; height: 36px; border-radius: 8px; }
+.md-recap-dealer > span { display: grid; flex: 1; min-width: 0; gap: 2px; }
+.md-recap-dealer small { overflow: hidden; font-size: 11px; color: var(--ui-text-3); text-overflow: ellipsis; white-space: nowrap; }
+.md-recap-dealer b { font-size: 15px; font-weight: 800; }
+.md-recap-dealer i { display: block; width: var(--share); height: 8px; border-radius: 3px; background: var(--md-blue); }
+.md-recap-dealer.is-red i { justify-self: end; background: var(--md-red); }
+.md-recap-dealer.is-me small { color: var(--ui-text-1); font-weight: 700; }
+.md-recap-chart { position: relative; height: 130px; margin: 0 4px 30px 40px; }
+.md-recap-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.md-recap-area.is-blue { fill: color-mix(in srgb, var(--md-blue) 55%, transparent); }
+.md-recap-area.is-red { fill: color-mix(in srgb, var(--md-red) 55%, transparent); }
+.md-recap-axis { position: absolute; left: -40px; font-size: 10px; color: var(--ui-text-3); }
+.md-recap-axis.is-top { top: 0; }
+.md-recap-axis.is-bottom { bottom: 0; }
+.md-recap-markers { position: absolute; left: 0; right: 0; bottom: -26px; height: 18px; }
+.md-recap-markers > span { position: absolute; transform: translateX(-50%); }
+.md-recap-markers .md-objective-icon { width: 18px; height: 18px; }
+@media (max-width: 1180px) {
+  .md-recap-body { grid-template-columns: minmax(0, 1fr); }
+  .md-recap-stats { border-right: 0; border-bottom: 1px solid var(--ui-line-1); }
 }
