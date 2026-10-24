@@ -22,6 +22,7 @@ const CHAMPIONS: Record<number, [string, string]> = {
   266: ["Aatrox", "Aatrox"], 122: ["Darius", "Darius"], 103: ["Ahri", "Ahri"], 64: ["Lee Sin", "LeeSin"], 222: ["Jinx", "Jinx"],
   157: ["Yasuo", "Yasuo"], 777: ["Yone", "Yone"], 875: ["Sett", "Sett"], 902: ["Milio", "Milio"], 67: ["Vayne", "Vayne"],
   17: ["Teemo", "Teemo"], 126: ["Jayce", "Jayce"], 54: ["Malphite", "Malphite"], 86: ["Garen", "Garen"], 24: ["Jax", "Jax"],
+  268: ["Azir", "Azir"], 51: ["Caitlyn", "Caitlyn"],
   58: ["Renekton", "Renekton"], 164: ["Camille", "Camille"], 82: ["Mordekaiser", "Mordekaiser"], 516: ["Ornn", "Ornn"], 98: ["Shen", "Shen"],
   412: ["Thresh", "Thresh"], 81: ["Ezreal", "Ezreal"], 238: ["Zed", "Zed"], 11: ["Master Yi", "MasterYi"], 89: ["Leona", "Leona"],
 };
@@ -216,6 +217,68 @@ mockIPC(async (cmd, args) => {
     case "rune_icon": await runeReady; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("Preview rune icon unavailable");
     case "dashboard_benchmarks": return Object.fromEntries((a.picks as [number, string][]).map(([id, role]) => [`${id}|${role}`, { kills: 5, deaths: 5, assists: 6, damage: 21000, gold: 11000, cs: 185, games: 9000 }]));
     case "get_current_patch": return "16.21";
+    // Patch key art: the browser preview shows champion splashes in its place.
+    case "newest_patch_notes": return "26.21";
+    case "patch_banner": return `${DD}/img/champion/splash/${a.version === "26.20" ? "Sett" : "Ekko"}_0.jpg`;
+    case "get_latest_patch_notes": {
+      if (a.version != null && a.version !== "26.21" && a.version !== "26.20") throw new Error("Only current and previous patches are available");
+      const notes = {
+      patch: "26.21", title: "League of Legends Patch 26.21 Notes",
+      availablePatches: [{ version: "26.21", bannerUrl: null }, { version: "26.20", bannerUrl: null }],
+      description: "True Damage has arrived with style! Plus tons to look forward to across SR, Mayhem, Classic, and Arena.",
+      date: "2026-10-20T18:00:00.000Z", bannerUrl: `${DD}/img/champion/splash/Aatrox_0.jpg`,
+      articleUrl: "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-21-notes/",
+      intro: ["Worlds has begun, but time still passes for the rest of us non-professional mortals, so here we've got 26.21. This is a pretty chunky patch, with changes to some chunks like Rammus, Sion, Nunu & Willump, as well as to a bunch of other champions across roles who've been on top of the game."],
+      stale: false, fetchedAt: now,
+      sections: [
+        { title: "Champions", paragraphs: [], entries: [
+          { name: "Azir", context: "We've kept the Emperor of the Sands' mana pool pretty dry, but this is overly restrictive now. We're buffing his Mana Growth so he can more freely use his abilities to contest lane.", notes: [], groups: [{ title: "Base Stats", lines: [{ label: "Mana Growth", before: "40/Level", after: "50/Level", text: null }] }] },
+          { name: "Caitlyn", context: "Caitlyn's been at a very high pick and ban rate for months, so it's time to nerf her. We're moving some power from her late-game headshots into her early game Q damage.", notes: [], groups: [
+            { title: "Passive", lines: [{ label: "Damage", before: "60 - 100% AD", after: "60 - 80% AD", text: null }] },
+            { title: "Q", lines: [{ label: "Base Damage", before: "50 / 90 / 130 / 170 / 210", after: "50 / 95 / 140 / 185 / 230", text: null }] }] },
+          { name: "Jinx", context: "Jinx is a touch weak after the item changes, so we're buffing her base attack speed to help her early trades.", notes: [], groups: [{ title: "Base Stats", lines: [{ label: "Attack Speed", before: "0.625", after: "0.645", text: null }] }] },
+          { name: "Lee Sin", context: "Dragon’s Rage deals less damage at every rank.", notes: [], groups: [
+            { title: "R", lines: [{ label: "Kick Damage", before: "175 / 400 / 625 (+200% bonus AD)", after: "150 / 350 / 550 (+200% bonus AD)", text: null }] },
+            { title: "E - Tempest", lines: [{ label: "Cooldown", before: "12s", after: "15s", text: null }] },
+          ] },
+        ] },
+        { title: "Items", paragraphs: [], entries: [
+          { name: "Dawncore", itemId: 6621, context: "Dawncore is the enchanter capstone that isn't. We're buffing its AP value to make it less purely bound to Healing and Shielding.", notes: [], groups: [{ title: null, lines: [{ label: "Ability Power per 100% Base Mana Regeneration", before: "10", after: "15", text: null }] }] },
+          { name: "Hubris", itemId: 6697, context: "Hubris has been overperforming for ranged users, so we're hitting it with a nerf for ranged while helping melee.", notes: [], groups: [{ title: null, lines: [{ label: "Base Bonus Attack Damage", before: "12", after: "15 Melee / 10 Ranged", text: null }] }] },
+          { name: "New Preview Relic", itemId: null, context: null, notes: [], groups: [{ title: null, lines: [{ label: "Health", before: "100", after: "120", text: null }] }] },
+        ] },
+        { title: "Runes", paragraphs: [], entries: [
+          { name: "Lethal Tempo", context: "Adjusting the early attack speed and late-game scaling.", notes: [], groups: [{ title: null, lines: [{ label: "Attack speed per stack", before: "5–9%", after: "6–8%", text: null }] }] },
+        ] },
+        { title: "Summoner’s Rift Changes", paragraphs: [], entries: [
+          { name: "Jungle", context: "A small adjustment to jungle monster respawns.", notes: [], groups: [{ title: "Monster camps", lines: [{ label: "Respawn timer", before: "2:15", after: "2:10", text: null }, { label: "New", before: null, after: "The minimap timer appears 15 seconds before a camp respawns.", text: null }] }] },
+        ] },
+        // Deliberately mixed source data: the reader must filter these out.
+        { title: "ARAM Mayhem", paragraphs: ["Mayhem-exclusive balance."], entries: [{ name: "Azir", context: "An ARAM buff.", notes: [], groups: [{ title: null, lines: [{ label: "Damage", before: "100%", after: "110%", text: null }] }] }] },
+        { title: "Arena", paragraphs: ["Arena-exclusive changes."], entries: [] },
+        { title: "Upcoming Skins", paragraphs: ["New cosmetic releases."], entries: [] },
+        { title: "Bugfixes & QoL Changes", paragraphs: [], entries: [
+          { name: "", context: null, notes: [], groups: [{ title: null, lines: [
+            { label: null, before: null, after: null, text: "Fixed a bug where a tooltip displayed the wrong cooldown." },
+            { label: null, before: null, after: null, text: "Fixed a bug where Lee Sin’s ability could be cast twice in one frame." }] }] },
+        ] },
+      ],
+      };
+      if (a.version === "26.20") return {
+        ...notes, patch: "26.20", title: "League of Legends Patch 26.20 Notes", date: "2026-10-06T18:00:00.000Z",
+        articleUrl: "https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-20-notes/",
+        sections: [
+          { title: "Champions", paragraphs: [], entries: [
+            { name: "Caitlyn", context: "Piltover Peacemaker gains damage at every rank.", notes: [], groups: [{ title: "Q", lines: [{ label: "Base Damage", before: "45 / 85 / 125 / 165 / 205", after: "50 / 90 / 130 / 170 / 210", text: null }] }] },
+            { name: "Lee Sin", context: "Tempest is available more often.", notes: [], groups: [{ title: "E - Tempest", lines: [{ label: "Cooldown", before: "12s", after: "10s", text: null }] }] },
+          ] },
+          { title: "Items", paragraphs: [], entries: [{ name: "Dawncore", itemId: 6621, context: null, notes: [], groups: [{ title: null, lines: [{ label: "Ability Power", before: "50", after: "60", text: null }] }] }] },
+          { title: "Runes", paragraphs: [], entries: [{ name: "Lethal Tempo", context: null, notes: [], groups: [{ title: null, lines: [{ label: "Attack Speed", before: "4%", after: "5%", text: null }] }] }] },
+          notes.sections[notes.sections.length - 1],
+        ],
+      };
+      return notes;
+    }
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
     case "champion_icon": return `${DD}/${VERSION}/img/champion/${key(a.id)}.png`;
     // The app's tiles are the client's 380 px splash tiles; Data Dragon's are the same crops.
@@ -248,11 +311,21 @@ mockIPC(async (cmd, args) => {
     case "get_keystone_build": return { ...buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), highestWin: { preset: { index: 1, title: "Grasp", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: buildOf([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
     case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: buildOf([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
     case "full_app_rune_catalog": await catalogReady; if (runeCatalog) return runeCatalog; throw new Error("Rune catalog unavailable");
-    case "champion_abilities": return { championId: a.championId, summoners: [], passive: { name: "Deathbringer Stance", iconPath: null, description: "Periodically, Aatrox's next basic attack deals bonus physical damage and heals him." },
+    case "champion_abilities":
+      if (params.has("patch-abilities-offline")) throw new Error("Preview abilities unavailable");
+      return { championId: a.championId, summoners: [], passive: a.championId === 51
+        ? { name: "Headshot", iconPath: "/lol-game-data/assets/caitlyn-passive.png", description: "Caitlyn periodically fires an empowered attack." }
+        : { name: "Deathbringer Stance", iconPath: null, description: "Periodically, Aatrox's next basic attack deals bonus physical damage and heals him." },
       spells: ["Q", "W", "E", "R"].map((key, i) => ({ key, name: ["The Darkin Blade", "Infernal Chains", "Umbral Dash", "World Ender"][i], iconPath: null,
         description: ["Aatrox slams his greatsword down three times; each strike is stronger at the edge.", "Aatrox smashes the ground, damaging and slowing the first enemy hit, then pulls them back.", "Passive: Aatrox heals from champion damage. Active: Aatrox dashes, empowering his next attacks.", "Aatrox unleashes his demonic form, fearing nearby minions and gaining Attack Damage and healing."][i],
         cooldowns: key === "R" ? [120, 100, 80] : [14, 12, 10, 8, 6], costs: [], ranges: key === "R" ? [] : [625, 625, 625, 625, 625], charges: key === "E" ? 2 : 0, recharge: key === "E" ? [9, 8, 7, 6, 5] : [] })) };
-    case "full_app_abilities": return ["Q", "W", "E", "R"].map(k => ({ key: k, name: `Ability ${k}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${k}.png` }));
+    case "ability_icon": return `${DD}/${VERSION}/img/passive/Caitlyn_Headshot.png`;
+    case "full_app_abilities":
+      if (params.has("patch-abilities-offline")) throw new Error("Preview abilities unavailable");
+      if (a.championId === 51) return [{ key: "Q", name: "Piltover Peacemaker", icon: `${DD}/${VERSION}/img/spell/CaitlynQ.png` }];
+      // Empty E metadata exercises the fallback to Riot's name in the patch text.
+      if (a.championId === 64) return [{ key: "R", name: "Dragon's Rage", icon: `${DD}/${VERSION}/img/spell/LeeSinR.png` }, { key: "E", name: "", icon: null }];
+      return ["Q", "W", "E", "R"].map(k => ({ key: k, name: `Ability ${k}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${k}.png` }));
     case "get_runes": return { phase: "None", championId: 0, championName: "", position: "top", presets: [], trees: [], shards: [], applied: null, autoApply: false, importItems: true, canApply: false, locked: false, spells: { spell1Id: 4, spell2Id: 12, available: [], applyWithRunes: true }, enemies: [], enemySlots: 5 };
     case "get_pro_builds": return { championId: 266, position: "top", role: "top", page: 1, hasMore: false, unavailable: false, message: null, stale: false, updatedAt: null, matches: [1, 2, 3].map(i => ({ matchId: i, proName: `Pro player ${String.fromCharCode(64 + i)}`, team: `Team ${i}`, league: "LCK", region: "KR", role: "top", roleLabel: "Top", win: i % 2 === 1, playedAgo: `${i * 3}h ago`, patch: "16.21", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), kills: 4 + i, deaths: 2, assists: 6, spells: [4, 12], finalItems: [6610, 3053, 3071, 3047, 6333, 3026].map(named), completedItems: [6610, 3053, 3071, 6333].map(named), skillOrder: SKILLS.split(""), itemPath: [], otp: false })) };
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;

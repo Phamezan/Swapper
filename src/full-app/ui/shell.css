@@ -47,6 +47,7 @@
 .nav-badge { flex: none; margin-left: auto; display: inline-flex; align-items: center; gap: 5px; padding: 3px 6px; border: 1px solid var(--ui-line-2); border-radius: 999px; font-size: var(--ui-caption); font-weight: 650; line-height: 16px; white-space: nowrap; }
 .nav-badge.patch { background: #ece9e2; border-color: #ece9e2; color: #141a1b; }
 .nav-badge.patch::after { content: attr(data-label); }
+.nav-badge.new { background: rgb(197 227 158 / .14); border-color: var(--ui-brand-line); color: var(--ui-brand); letter-spacing: .04em; }
 .nav-badge.live { background: rgb(229 72 77 / .13); border-color: #e5484d; color: #fff; }
 .nav-badge.live i { width: 6px; height: 6px; border-radius: 50%; background: #ff5a5f; }
 button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a1b; }

@@ -39,6 +39,12 @@ export const LiveGameIcon = (p: IconProps) => <Icon {...p}>
   <path d="M8.75 8.75a4.6 4.6 0 0 0 0 6.5M15.25 8.75a4.6 4.6 0 0 1 0 6.5" />
 </Icon>;
 
+/** Patch notes: a sheet with an up/down change pair. */
+export const PatchNotesIcon = (p: IconProps) => <Icon {...p}>
+  <path className="ic-duo" d="M6 3.5h9L19 7.5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V5A1.5 1.5 0 0 1 6 3.5Z" />
+  <path d="M14.5 3.5v4.5H19M8.5 12.5 10 11l1.5 1.5M8.5 17.5 10 19l1.5-1.5M14 11v8" />
+</Icon>;
+
 export const AccountsIcon = (p: IconProps) => <Icon {...p}>
   <circle className="ic-duo" cx="9.5" cy="8.5" r="3.5" />
   <path d="M3.5 20a6 6 0 0 1 12 0M15.5 5.25a3.5 3.5 0 0 1 0 6.5M17.75 14.5a6 6 0 0 1 2.75 5.5" />
@@ -83,6 +89,12 @@ export const PlayIcon = (p: IconProps) => <Icon {...p}>
 </Icon>;
 
 export const CheckIcon = (p: IconProps) => <Icon {...p}><path d="M5 12.5 9.5 17 19 7.5" /></Icon>;
+
+/** Open wrench head and a rounded handle, on the shared 24px grid. */
+export const WrenchIcon = (p: IconProps) => <Icon {...p}>
+  <path d="m14.5 4.2-2.8 2.8 1.3 4 4 1.3 2.8-2.8a5.5 5.5 0 0 1-7.2 7.2l-6 4a2.1 2.1 0 0 1-3-3l4-6a5.5 5.5 0 0 1 6.9-7.5Z" />
+  <path d="m5.5 18.5.01-.01" />
+</Icon>;
 
 /* Status (banners and notices) */
 

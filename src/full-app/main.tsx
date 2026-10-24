@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Popover } from "radix-ui";
 import { listen } from "@tauri-apps/api/event";
-import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
+import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
 import { useRiotClientIcon } from "../riotIcon";
 import type { ChampionOption } from "../runes/types";
@@ -31,11 +31,12 @@ import { EmptyState, Notice, Skeleton } from "./ui/States";
 import { useRestartClient } from "./restartClient";
 
 const Champions = lazy(() => import("./Champions"));
+const PatchNotes = lazy(() => import("./PatchNotes"));
 const LiveGame = lazy(() => import("./LiveGame"));
 const MatchDetail = lazy(() => import("./MatchDetail"));
 const PlayerPage = lazy(() => import('./PlayerPage'));
 type MatchLocation = `Match:${number}` | `Match:${number}:${string}`;
-type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | MatchLocation | `Player:${string}`;
+type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | "Patch notes" | MatchLocation | `Player:${string}`;
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
@@ -43,9 +44,12 @@ const appViews: Record<AppPage, View> = { Accounts: "accounts", "Champion select
 const appPageOf = (view: View): AppPage => view === "runes" ? "Champion select" : view === "settings" ? "Settings" : "Accounts";
 const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
   { label: "Overview", items: [["Dashboard", DashboardIcon], ["Live Game", LiveGameIcon]] },
-  { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["Champion select", DraftIcon]] },
+  { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["Patch notes", PatchNotesIcon], ["Champion select", DraftIcon]] },
   { label: "Swapper", items: [["Accounts", AccountsIcon], ["Settings", SettingsIcon]] },
 ];
+const SEEN_PATCH_KEY = "pn-seen-patch";
+// The listing itself is cached for six hours by the backend; an hourly check is mostly a cache hit.
+const NOTES_CHECK_MS = 60 * 60 * 1000;
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 
 function App() {
@@ -69,6 +73,12 @@ function App() {
     if (target in appViews) { setPage("app"); setRequest({ view: appViews[target as AppPage] }); }
     else setPage(target as Page);
   }, []);
+  const sidebarGo = (target: Location) => {
+    if (target !== currentRef.current) { go(target); return; }
+    const scroller = document.querySelector<HTMLElement>(".dashboard-main")
+      ?? document.querySelector<HTMLElement>(".full-app-embed .main-panel");
+    scroller?.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  };
 
   // A running game switches to Live Game; its end restores the earlier page.
   const inGame = useInGame();
@@ -134,6 +144,23 @@ function App() {
   const [error, setError] = useState("");
   const [pickerOpen, setPickerOpen] = useState(false);
   const [patch, setPatch] = useState<string | null>(null);
+  // Newest patch in Riot's notes listing (not the game patch: notes can land before or after it).
+  // A version newer than the last one opened earns the sidebar's NEW badge.
+  const [notesPatch, setNotesPatch] = useState<string | null>(null);
+  const [seenPatch, setSeenPatch] = useState(() => { try { return localStorage.getItem(SEEN_PATCH_KEY); } catch { return null; } });
+  useEffect(() => {
+    if (!isTauri()) return;
+    let live = true;
+    const check = () => void invoke<string>("newest_patch_notes").then(p => { if (live) setNotesPatch(p); }).catch(() => {});
+    check();
+    const timer = window.setInterval(check, NOTES_CHECK_MS);
+    return () => { live = false; window.clearInterval(timer); };
+  }, []);
+  useEffect(() => {
+    if (current !== "Patch notes" || !notesPatch || seenPatch === notesPatch) return;
+    setSeenPatch(notesPatch);
+    try { localStorage.setItem(SEEN_PATCH_KEY, notesPatch); } catch { /* badge only */ }
+  }, [current, notesPatch, seenPatch]);
   // The switch flow reports no stages, only started / done / failed.
   const [switching, setSwitching] = useState<{ id: string; name: string; restart: boolean } | null>(null);
   const activeIdRef = useRef<string | null>(null);
@@ -245,9 +272,10 @@ function App() {
         </Popover.Root>
         <nav aria-label="Swapper pages">
           {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
-            {group.items.filter(([label]) => showInNav(label, inGame)).map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => go(label)}>
+            {group.items.filter(([label]) => showInNav(label, inGame)).map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => sidebarGo(label)}>
               <Icon size={19} aria-hidden />{pageLabel(label)}
               {label === "Tier list & Builds" && patch && <span className="nav-badge patch" data-label={`PATCH ${patch}`} title={`Patch ${patch}`} />}
+              {label === "Patch notes" && notesPatch && seenPatch !== notesPatch && current !== label && <span className="nav-badge new" title={`Patch ${notesPatch} notes are out`}>NEW!</span>}
               {label === "Champion select" && inChampSelect && <span className="nav-badge live"><i aria-hidden />LIVE</span>}
             </button>)}
           </div>)}
@@ -278,6 +306,7 @@ function App() {
               onOpenMatch={game => { const target = `Match:${game.id}:${encodeURIComponent(playerId)}` as const; visitedMatches.current.set(target, game); go(target); }} /></Suspense>
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
+          : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page} matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion ? null : focus} onSelectionChange={setLocationChampion} />
             </Suspense>}

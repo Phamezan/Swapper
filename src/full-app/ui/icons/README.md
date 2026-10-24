@@ -32,6 +32,7 @@ Contact sheet (dev only): `/src/full-app/ui/icons/icons-preview.html`.
 | `RefreshIcon` | Arc with half barb | Title bar refresh stats, tray update/try again |
 | `PlayIcon` | Rounded triangle | Sidebar PLAY button (opens League when it is closed) |
 | `CheckIcon` | Apply / saved | Build "Apply all" and applied chips, tray save and active marker |
+| `WrenchIcon` | Repair / bugfix | Patch notes bugfix lines without a champion name |
 | `InfoIcon` | Information | `Notice tone="info"`, tray browser-preview banner |
 | `WarningIcon` | Warning | `Notice tone="warn"`, tray reconnect banner |
 | `ErrorIcon` | Error (hexagon) | `Notice tone="error"`, tray error banner |

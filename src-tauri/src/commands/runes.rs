@@ -300,6 +300,27 @@ pub(crate) async fn get_champion_overview(
     runes::champion_overview_view(champion_id, position.as_deref(), &tier).await
 }
 
+/// The latest League patch notes from Riot's site, parsed and cached on disk.
+#[tauri::command]
+pub(crate) async fn get_latest_patch_notes(
+    force: Option<bool>,
+    version: Option<String>,
+) -> Result<runes::patch_notes::PatchNotes, String> {
+    runes::patch_notes::latest_patch_notes(force.unwrap_or(false), version).await
+}
+
+/// The newest patch with published notes, e.g. "26.21".
+#[tauri::command]
+pub(crate) async fn newest_patch_notes() -> Result<String, String> {
+    runes::patch_notes::newest_patch().await
+}
+
+/// Key art for one of the two selectable patches, as a data URL.
+#[tauri::command]
+pub(crate) async fn patch_banner(version: String) -> Result<String, String> {
+    runes::patch_notes::banner(&version).await
+}
+
 /// The current game patch, for the sidebar badge.
 #[tauri::command]
 pub(crate) async fn get_current_patch() -> Option<String> {

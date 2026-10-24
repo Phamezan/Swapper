@@ -33,6 +33,7 @@ pub mod overview;
 pub mod opgg;
 pub mod patch;
 pub mod page;
+pub mod patch_notes;
 pub mod perks;
 pub mod prefetch;
 pub mod probuilds;

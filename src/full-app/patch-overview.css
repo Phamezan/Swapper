@@ -1,0 +1,34 @@
+/* Patch overview: the patch at a glance under the header, champions grouped by verdict. */
+.pov { margin: 24px 0 8px; padding: 20px 22px 22px; border: 1px solid var(--ui-line-2); border-top-color: var(--ui-line-3); border-radius: var(--ui-radius-lg); background: var(--ui-card-fill); box-shadow: var(--ui-elev-1); }
+.pov-title { margin: 0 0 16px; color: var(--ui-text-2); font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.pov-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 280px); gap: 18px 32px; }
+.pov-champions { display: grid; gap: 18px; }
+.pov-group { --pov-tone: var(--ui-text-2); }
+.pov-group.is-nerf { --pov-tone: var(--ui-loss); }
+.pov-group.is-buff { --pov-tone: var(--ui-win); }
+.pov-group h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--ui-line-1); color: var(--ui-text-1); font-size: 17px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+.pov-group h3 > span { color: var(--pov-tone); font-size: 14px; }
+.pov-group h3 small { margin-left: auto; color: var(--ui-text-3); font-size: 12px; font-weight: 600; letter-spacing: 0; }
+.pov-group ul, .pov-links ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.pov-champion { display: grid; justify-items: center; gap: 6px; width: 84px; padding: 6px 2px; border: 0; border-radius: var(--ui-radius-sm); background: none; color: var(--ui-text-2); font: inherit; cursor: pointer; }
+.pov-champion:hover { background: var(--ui-surface-hover); color: var(--ui-text-1); }
+.pov-champion:focus-visible, .pov-links button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+.pov-portrait { display: grid; place-items: center; width: 54px; height: 54px; overflow: hidden; border-radius: 50%; box-shadow: 0 0 0 2px color-mix(in srgb, var(--pov-tone) 70%, transparent), 0 4px 14px -6px color-mix(in srgb, var(--pov-tone) 60%, transparent); background: var(--ui-surface-2); }
+.pov-portrait :is(.champion-icon, .champion-icon-fallback) { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); }
+.pov-initial { color: var(--ui-text-2); font-size: 20px; font-weight: 700; }
+.pov-name { max-width: 100%; overflow: hidden; font-size: 12px; font-weight: 600; letter-spacing: .02em; text-align: center; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.pov-side { display: grid; align-content: start; gap: 18px; padding-left: 24px; border-left: 1px solid var(--ui-line-1); }
+.pov-links h3 { margin: 0 0 10px; color: var(--ui-text-1); font-size: 15px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+.pov-links button:not(.pov-item) { min-height: 30px; padding: 5px 11px; border: 1px solid var(--ui-line-2); border-radius: 99px; background: rgb(255 255 255 / .03); color: var(--ui-text-2); font: inherit; font-size: 13px; cursor: pointer; }
+.pov-links button:not(.pov-item):hover { border-color: var(--ui-line-3); color: var(--ui-text-1); }
+.pov-items { gap: 4px; }
+.pov-item { display: grid; justify-items: center; gap: 6px; width: 84px; padding: 6px 2px; border: 0; border-radius: var(--ui-radius-sm); background: none; color: var(--ui-text-2); font: inherit; cursor: pointer; }
+.pov-item:hover { background: var(--ui-surface-hover); color: var(--ui-text-1); }
+.pov-item:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+.pov-item-icon { display: grid; place-items: center; width: 50px; height: 50px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--ui-gold, #e9c27a) 55%, transparent); border-radius: 8px; background: var(--ui-surface-2); }
+.pov-item-icon :is(img, .item-icon) { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 1100px) {
+  .pov-body { grid-template-columns: minmax(0, 1fr); }
+  .pov-side { padding: 18px 0 0; border-top: 1px solid var(--ui-line-1); border-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .pov-champion { transition: none; } }

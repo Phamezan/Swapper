@@ -503,6 +503,194 @@ async function main() {
     await page.text('[aria-label="Matchup"]', "Darius");
     await page.text('[aria-label="Matchup"]', "47.6");
   });
+  await check("Sidebar Patch notes", async () => {
+    await page.text('nav[aria-label="Swapper pages"] .nav-badge.new', "NEW!");
+    await page.click('nav[aria-label="Swapper pages"] button', "Patch notesNEW!");
+    await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Patch notes");
+    await page.visible(".pn-entry");
+    assert.equal(await page.evaluate("document.querySelector('.sidebar .nav-badge.new')"), null);
+    await page.text(".pn-entry", "Azir");
+    await page.text(".pn-entry", "50/Level");
+    await page.text(".pn-patch-line h2", "Patch 26.21");
+    await page.text(".pn-summary", "2 buffs");
+    await page.text(".pn-summary", "2 nerfs");
+    // The overview groups champions by verdict and jumps to a card.
+    await page.text(".pov-group.is-buff", "Azir");
+    await page.click(".pov-group.is-buff .pov-champion");
+    await page.wait("document.activeElement?.classList.contains('pn-entry') && document.querySelector('.dashboard-main').scrollTop > 0", "overview jump focuses and scrolls to the card");
+    await page.wait("(() => { const m = document.querySelector('.dashboard-main'); const t = m.scrollTop; return new Promise(r => setTimeout(() => r(m.scrollTop === t), 300)); })()", "overview scroll settles");
+    await page.evaluate("document.activeElement.blur(); document.querySelector('.dashboard-main').scrollTop = 0");
+    assert.equal(await page.evaluate("/ARAM|Mayhem|Arena|cosmetic/.test(document.querySelector('.pn-page').textContent)"), false);
+    assert.equal(await page.evaluate("document.querySelector('.pn-bugfixes').open"), false);
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-checkpoint').length"), 8);
+    await page.text('.pn-entry[aria-label="Caitlyn"] h4', "Q - Piltover Peacemaker");
+    await page.text('.pn-entry[aria-label="Caitlyn"] h4', "Passive - Headshot");
+    await page.text('.pn-entry[aria-label="Lee Sin"] h4', "R - Dragon's Rage");
+    await page.text('.pn-entry[aria-label="Lee Sin"] h4', "E - Tempest");
+    await page.wait("Array.from(document.querySelectorAll('.pn-ability-icon')).length === 3 && Array.from(document.querySelectorAll('.pn-ability-icon')).every(img => img.complete && img.naturalWidth > 0)");
+    assert.equal(await page.evaluate("Array.from(document.querySelectorAll('.pn-ability-icon')).every(img => img.getBoundingClientRect().left < img.nextElementSibling.getBoundingClientRect().left)"), true, "ability icons appear to the left of the key and name");
+    const kick = '.pn-entry[aria-label="Lee Sin"] .pn-group:first-child .pn-after';
+    assert.deepEqual(await page.evaluate(`Array.from(document.querySelectorAll('${kick} .is-nerf')).map(el => el.textContent)`), ["150", "350", "550"]);
+    assert.equal(await page.evaluate(`document.querySelector('${kick}').querySelector('.is-neutral').textContent`), " / ");
+    assert.equal(await page.evaluate(`Array.from(document.querySelectorAll('${kick} .is-neutral')).some(el => el.textContent === '+200')`), true);
+    await page.text('.pn-entry[aria-label="Lee Sin"] .pn-tag', "Nerf");
+    assert.equal(await page.evaluate("document.querySelector('.pn-entry[aria-label=\"Lee Sin\"] .pn-group:last-child .pn-after .is-nerf').textContent"), "15");
+    assert.deepEqual(await page.evaluate("Array.from(document.querySelectorAll('.pn-entry[aria-label=\"Lethal Tempo\"] .pn-after :is(.is-buff, .is-nerf)')).map(el => [el.textContent, el.classList.contains('is-buff') ? 'buff' : 'nerf'])"), [["6", "buff"], ["8", "nerf"]]);
+    await page.text('.pn-entry[aria-label="Lethal Tempo"] .pn-tag', "Nerf");
+    assert.equal(await page.evaluate("document.querySelector('.pn-entry[aria-label=\"Hubris\"] .pn-after :is(.is-buff, .is-nerf)') === null"), true, "mismatched value shapes stay neutral");
+    assert.equal(await page.evaluate("document.querySelector('.pn-entry[aria-label=\"New Preview Relic\"] .pn-entry-letter').textContent"), "N", "unmatched item keeps its letter tile");
+    await page.evaluate("document.querySelector('.pn-entry[aria-label=\"Dawncore\"] .item-icon')?.scrollIntoView({ block: 'center', behavior: 'instant' })");
+    await page.wait("(() => { const icon = document.querySelector('.pn-entry[aria-label=\"Dawncore\"] .item-icon'); return icon?.complete && icon.naturalWidth > 0; })()", "resolved item uses the existing ItemIcon");
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTop = 0");
+    assert.equal(await page.evaluate("document.querySelector('.pn-bugfixes').open"), false, "bugfixes are initially collapsed");
+    assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('${kick} .is-nerf')).color === getComputedStyle(document.querySelector('.pn-summary .is-nerf')).color`), true, "numeric nerfs use the loss token");
+    assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.pn-entry[aria-label=\"Azir\"] .pn-after .is-buff')).color === getComputedStyle(document.querySelector('.pn-summary .is-buff')).color"), true, "numeric buffs use the win token");
+    await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
+    await page.settle();
+    assert.equal(await page.evaluate("(() => { const main = document.querySelector('.dashboard-main'); const card = document.querySelector('.pn-entry'); return Math.abs(card.getBoundingClientRect().left - main.getBoundingClientRect().left - main.clientLeft - parseFloat(getComputedStyle(main).paddingLeft)) < 1; })()"), true, "wide cards start at the canvas content edge");
+    assert.equal(await page.evaluate("parseFloat(getComputedStyle(document.querySelector('.pn-line')).fontSize) >= 16"), true);
+    const checkComparisonLayout = async () => {
+      const spacing = await page.evaluate(`(() => {
+        const row = document.querySelector('.pn-entry[aria-label="Azir"] .pn-line');
+        const label = row.querySelector('.pn-line-label');
+        const labelRect = label.getBoundingClientRect();
+        const before = row.querySelector('.pn-before').getBoundingClientRect();
+        const after = row.querySelector('.pn-after').getBoundingClientRect();
+        const arrow = row.querySelector('.pn-arrow');
+        const range = document.createRange();
+        range.setStart(arrow.firstChild, 0); range.setEnd(arrow.firstChild, 1);
+        const glyph = range.getBoundingClientRect();
+        const blocks = document.querySelectorAll('.pn-entry[aria-label="Jungle"] .pn-line');
+        return { labelAbove: before.top >= labelRect.bottom, labelLeft: Math.abs(before.left - labelRect.left),
+          smallerLabel: parseFloat(getComputedStyle(label).fontSize) < parseFloat(getComputedStyle(row).fontSize),
+          brighterAfter: getComputedStyle(row.querySelector('.pn-after')).color !== getComputedStyle(row.querySelector('.pn-before')).color,
+          blockGap: blocks[1].getBoundingClientRect().top - blocks[0].getBoundingClientRect().bottom,
+          beforeGap: glyph.left - before.right, afterGap: after.left - glyph.right,
+          arrow: arrow.textContent, sameLine: Math.abs(before.top - after.top) < 2 };
+      })()`);
+      assert.equal(spacing.arrow, "→");
+      assert.equal(spacing.sameLine, true);
+      assert.equal(spacing.labelAbove, true, "the stat label sits above its values");
+      assert.ok(spacing.labelLeft < 1, "label and values begin at the same left edge");
+      assert.equal(spacing.smallerLabel, true);
+      assert.equal(spacing.brighterAfter, true);
+      assert.ok(spacing.blockGap >= 18, "each change has space before the next block");
+      for (const gap of [spacing.beforeGap, spacing.afterGap]) {
+        assert.ok(gap >= 10 && gap <= 12, `comparison arrow has a comfortable local gap: ${JSON.stringify(spacing)}`);
+      }
+    };
+    await checkComparisonLayout();
+    await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 760, height: 820, deviceScaleFactor: 1, mobile: false });
+    await page.settle();
+    await checkComparisonLayout();
+    assert.equal(await page.evaluate("document.querySelector('.pn-entry[aria-label=\"Lee Sin\"] .pn-change').getClientRects().length > 1"), true, "long comparisons wrap naturally");
+    assert.equal(await page.evaluate("Array.from(document.querySelectorAll('.pn-line')).every(line => line.scrollWidth <= line.clientWidth + 1)"), true, "wrapped comparisons stay inside their cards");
+    await screenshot("patch-notes-comparison-small", 760, 820);
+    await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
+    await page.settle();
+    await screenshot("patch-notes-top");
+    const marker = await page.evaluate("document.querySelector('.pn-rail-marker').style.transform");
+    await page.click('.pn-checkpoint[aria-label="Read Caitlyn changes"]');
+    await page.wait("document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-champions-1'");
+    await page.wait("(() => { const main = document.querySelector('.dashboard-main'); const ratio = (document.getElementById('pn-champions-1').getBoundingClientRect().top - main.getBoundingClientRect().top - main.clientTop) / main.clientHeight; return ratio >= .25 && ratio <= .3; })()");
+    assert.notEqual(await page.evaluate("document.querySelector('.pn-rail-marker').style.transform"), marker);
+    assert.equal(await page.evaluate("window.scrollY"), 0, "the app container owns scrolling");
+    const atCaitlyn = await page.evaluate("document.querySelector('.pn-rail-marker').style.transform");
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTop += 75");
+    await page.wait(`document.querySelector('.pn-rail-marker').style.transform !== ${JSON.stringify(atCaitlyn)}`);
+    await page.evaluate("(() => { const main = document.querySelector('.dashboard-main'); const card = document.getElementById('pn-champions-2'); main.scrollTo({ top: main.scrollTop + card.getBoundingClientRect().top - main.getBoundingClientRect().top - main.clientTop - main.clientHeight * .42, behavior: 'instant' }); })()");
+    await page.wait("document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-champions-1'");
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTop += document.querySelector('.dashboard-main').clientHeight * .04");
+    await page.wait("document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-champions-2'", "the next card becomes active as it crosses 40% of the viewport");
+    await page.cdp.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
+    await page.evaluate("document.querySelector('.pn-checkpoint[aria-label=\"Read Jinx changes\"]').focus()");
+    await page.cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Enter", code: "Enter", text: "\r", unmodifiedText: "\r", windowsVirtualKeyCode: 13 });
+    await page.cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Enter", code: "Enter", windowsVirtualKeyCode: 13 });
+    await page.wait("document.activeElement.id === 'pn-champions-2' && document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-champions-2'");
+    await page.wait("(() => { const main = document.querySelector('.dashboard-main'); const ratio = (document.activeElement.getBoundingClientRect().top - main.getBoundingClientRect().top - main.clientTop) / main.clientHeight; return ratio >= .25 && ratio <= .3; })()", "keyboard jumps place the focused card below the top quarter");
+    await page.click('.pn-checkpoint[aria-label="Read Bugfixes changes"]');
+    await page.wait("document.querySelector('.pn-bugfixes').open");
+    await page.text(".pn-bugfixes", "Fixed a bug");
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-bugfix-list').length"), 1);
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-bugfix-list > li').length"), 2);
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-bugfixes .pn-entry').length"), 0, "bugfixes are compact rows, not cards");
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-bugfix-wrench').length"), 1);
+    await page.wait("(() => { const icon = document.querySelector('.pn-bugfix-list .champion-icon'); return icon?.complete && icon.naturalWidth > 0; })()", "named bugfix uses a champion icon");
+    await page.wait("document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-bugfixes'");
+    await page.wait("(() => { const main = document.querySelector('.dashboard-main'); return Math.abs(main.scrollTop + main.clientHeight - main.scrollHeight) < 2; })()", "the final checkpoint jump clamps to the bottom");
+    await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 2000, deviceScaleFactor: 1, mobile: false });
+    await page.settle();
+    await page.click('.pn-checkpoint[aria-label="Read Azir changes"]');
+    // The overview sits above the cards, so the first card's jump may stop short of zero; the rail still points at it.
+    await page.wait("document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-champions-0'");
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTo({ top: 0, behavior: 'instant' })");
+    await page.wait("document.querySelector('.dashboard-main').scrollTop === 0 && document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-champions-0'");
+    await page.wait("(() => { const marker = document.querySelector('.pn-rail-marker').getBoundingClientRect(); const first = document.querySelector('.pn-checkpoint').getBoundingClientRect(); return Math.abs(marker.top + marker.height / 2 - first.top - first.height / 2) < 1; })()", "the marker is pinned to the first checkpoint at scroll zero");
+    await page.evaluate("document.querySelector('.dashboard-main').scrollTop = document.querySelector('.dashboard-main').scrollHeight");
+    await page.wait("document.querySelector('.pn-checkpoint[aria-current=location]').getAttribute('aria-controls') === 'pn-bugfixes'", "the bottom selects the final checkpoint even in a tall viewport");
+    await page.cdp.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
+    await page.settle();
+    await page.evaluate("document.querySelector('.pn-bugfixes').open = false; document.querySelector('.dashboard-main').scrollTop = 0");
+    await page.cdp.send("Emulation.setEmulatedMedia", { features: [] });
+  });
+  await check("Patch notes current and previous", async () => {
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-patch-switch button').length"), 2);
+    await page.text('.pn-patch-switch [aria-pressed="true"]', "26.21");
+    await page.click('.pn-patch-switch [aria-label="Patch 26.20, Previous"]');
+    await page.text(".pn-patch-line h2", "Patch 26.20");
+    await page.text('.pn-patch-switch [aria-pressed="true"]', "26.20");
+    await page.text(".pn-patch-line time", "6 October 2026");
+    await page.text('.pn-entry[aria-label="Caitlyn"] .pn-tag', "Buff");
+    await page.text('.pn-entry[aria-label="Caitlyn"] h4', "Q - Piltover Peacemaker");
+    assert.equal(await page.evaluate("document.querySelector('.pn-entry[aria-label=\"Lee Sin\"] .pn-after .is-buff').textContent"), "10");
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-checkpoint').length"), 5);
+    assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollTop"), 0, "switching starts at the new patch header");
+    await screenshot("patch-notes-previous");
+    await page.click('.pn-checkpoint[aria-label="Read Caitlyn changes"]');
+    await page.wait("document.querySelector('.dashboard-main').scrollTop > 0");
+    await page.click('.pn-refresh');
+    await page.settle();
+    await page.text(".pn-patch-line h2", "Patch 26.20");
+    await page.click('.pn-patch-switch [aria-label="Patch 26.21, Current"]');
+    await page.text(".pn-patch-line h2", "Patch 26.21");
+    assert.equal(await page.evaluate("document.querySelectorAll('.pn-checkpoint').length"), 8);
+    await page.click('.pn-patch-switch [aria-label="Patch 26.20, Previous"]');
+    await page.text(".pn-patch-line h2", "Patch 26.20");
+    await nav("Dashboard", ".match-row");
+    await nav("Patch notes", ".pn-entry");
+    await page.text(".pn-patch-line h2", "Patch 26.21");
+    await page.text('.pn-patch-switch [aria-pressed="true"]', "26.21");
+  });
+  await check("Active sidebar entries scroll every page back to the top", async () => {
+    for (const [label, selector] of [["Patch notes", ".pn-entry"], ["Dashboard", ".match-row"], ["Tierlist", ".tier-table"], ["Matchups", ".fa-matchup-empty"], ["Draft", ".fa-draft-empty"], ["Accounts", ".fa-account-card"], ["Settings", ".fa-settings-content"]]) {
+      await nav(label, selector);
+      const reduce = label !== "Patch notes";
+      await page.cdp.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: reduce ? "reduce" : "no-preference" }] });
+      // Ensure even short empty pages have a real scroll range for this shared behavior.
+      await page.evaluate(`(() => {
+        const main = document.querySelector('.dashboard-main') ?? document.querySelector('.full-app-embed .main-panel');
+        const spacer = document.createElement('div'); spacer.id = 'sidebar-scroll-probe'; spacer.style.minHeight = '1000px'; spacer.style.flexShrink = '0'; main.append(spacer);
+        const scroll = main.scrollTo; main.scrollTo = function(options) { window.__sidebarScroll = options; scroll.call(this, options); };
+        main.scrollTop = 200; window.__sidebarScroll = null;
+      })()`);
+      assert.equal(await page.evaluate("(document.querySelector('.dashboard-main') ?? document.querySelector('.full-app-embed .main-panel')).scrollTop > 0"), true);
+      await page.click('nav[aria-label="Swapper pages"] button', label);
+      await page.wait("(document.querySelector('.dashboard-main') ?? document.querySelector('.full-app-embed .main-panel')).scrollTop === 0");
+      assert.deepEqual(await page.evaluate("window.__sidebarScroll"), { top: 0, behavior: reduce ? "instant" : "smooth" });
+      assert.equal(await page.evaluate("Boolean(document.getElementById('sidebar-scroll-probe'))"), true, "same-page clicks preserve page content");
+      await page.evaluate("document.getElementById('sidebar-scroll-probe').remove(); delete (document.querySelector('.dashboard-main') ?? document.querySelector('.full-app-embed .main-panel')).scrollTo");
+    }
+    await page.cdp.send("Emulation.setEmulatedMedia", { features: [] });
+    await navigate(fullApp, ".nav-group");
+  });
+  await check("Patch notes ability fallbacks", async () => {
+    await navigate(`${fullApp}?patch-abilities-offline`, ".nav-group");
+    await nav("Patch notes", ".pn-entry");
+    await page.text('.pn-entry[aria-label="Lee Sin"] h4', "E - Tempest");
+    assert.deepEqual(await page.evaluate("Array.from(document.querySelectorAll('.pn-entry[aria-label=\"Caitlyn\"] h4')).map(h => h.textContent)"), ["Passive", "Q"]);
+    assert.equal(await page.evaluate("document.querySelector('.pn-ability-icon') === null"), true, "unavailable metadata leaves readable source names or bare keys");
+    await navigate(fullApp, ".nav-group");
+  });
   await check("Sidebar Draft", () => nav("Draft", ".fa-draft-empty"));
   await check("Sidebar Accounts", async () => {
     await nav("Accounts", ".fa-account-card");
