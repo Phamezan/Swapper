@@ -87,24 +87,30 @@ pub struct DraftTimer {
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Draft {
     allies: Vec<DraftMember>,
     enemies: Vec<DraftMember>,
     bans: Vec<i64>,
+    ally_bans: Vec<i64>,
+    enemy_bans: Vec<i64>,
+    can_lock: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pickable: Option<Vec<i64>>,
     timer: Option<DraftTimer>,
 }
 
 pub(crate) fn draft_from(value: &Value) -> Draft {
     let local = value["localPlayerCellId"].as_i64();
-    let picks = || {
+    let actions = || {
         value["actions"]
             .as_array()
             .into_iter()
             .flatten()
             .filter_map(Value::as_array)
             .flatten()
-            .filter(|action| action["type"] == "pick")
     };
+    let picks = || actions().filter(|action| action["type"] == "pick");
     let members = |field: &str| {
         value[field]
             .as_array()
@@ -129,16 +135,26 @@ pub(crate) fn draft_from(value: &Value) -> Draft {
             })
             .collect()
     };
-    let bans = value["actions"]
-        .as_array()
-        .into_iter()
-        .flatten()
-        .filter_map(Value::as_array)
-        .flatten()
+    let bans = actions()
         .filter(|action| action["type"] == "ban" && action["completed"] == true)
         .filter_map(|action| action["championId"].as_i64())
         .filter(|id| *id > 0)
         .collect();
+    let team_bans = |field: &str| {
+        actions()
+            .filter(|action| action["type"] == "ban" && action["completed"] == true)
+            .filter(|action| {
+                let actor = action["actorCellId"].as_i64();
+                actor.is_some() && value[field].as_array().into_iter().flatten()
+                    .any(|member| member["cellId"].as_i64() == actor)
+            })
+            .filter_map(|action| action["championId"].as_i64())
+            .filter(|id| *id > 0)
+            .collect()
+    };
+    let can_lock = local.is_some() && value["timer"]["phase"] == "BAN_PICK"
+        && picks().any(|action| action["actorCellId"].as_i64() == local
+            && action["completed"] != true && action["isInProgress"] == true);
     let timer = value["timer"]["phase"].as_str().map(|phase| DraftTimer {
         phase: phase.to_string(),
         remaining_ms: value["timer"]["adjustedTimeLeftInPhase"]
@@ -150,6 +166,10 @@ pub(crate) fn draft_from(value: &Value) -> Draft {
         allies: members("myTeam"),
         enemies: members("theirTeam"),
         bans,
+        ally_bans: team_bans("myTeam"),
+        enemy_bans: team_bans("theirTeam"),
+        can_lock,
+        pickable: None,
         timer,
     }
 }
@@ -160,7 +180,10 @@ pub async fn full_app_draft() -> Result<Draft, String> {
     let session: Value = crate::runes::lcu_get(&client, "/lol-champ-select/v1/session")
         .await
         .map_err(|e| e.to_string())?;
-    Ok(draft_from(&session))
+    let mut draft = draft_from(&session);
+    draft.pickable = crate::runes::lcu_get(&client, "/lol-champ-select/v1/pickable-champion-ids")
+        .await.ok();
+    Ok(draft)
 }
 
 #[derive(Serialize, Deserialize)]
@@ -248,6 +271,33 @@ pub async fn full_app_abilities(champion_id: i64) -> Result<Vec<Ability>, String
 mod tests {
     use super::*;
     use serde_json::json;
+    #[test]
+    fn draft_exposes_team_bans_and_only_the_local_pick_turn() {
+        let mut session = json!({"localPlayerCellId": 2,
+            "timer": {"phase": "BAN_PICK"},
+            "myTeam": [{"cellId": 2}], "theirTeam": [{"cellId": 7}],
+            "actions": [[
+                {"actorCellId": 7, "type": "ban", "completed": true, "championId": 157},
+                {"actorCellId": 2, "type": "ban", "completed": true, "championId": 777},
+                {"actorCellId": 2, "type": "ban", "completed": false, "championId": 103},
+                {"actorCellId": 2, "type": "pick", "completed": false, "isInProgress": true}
+            ]]});
+        let draft = draft_from(&session);
+        assert_eq!(draft.ally_bans, vec![777]);
+        assert_eq!(draft.enemy_bans, vec![157]);
+        assert!(draft.can_lock);
+        for (field, value) in [("isInProgress", json!(false)), ("completed", json!(true)),
+            ("type", json!("ban")), ("actorCellId", json!(7))] {
+            let mut other = session.clone();
+            other["actions"][0][3][field] = value;
+            assert!(!draft_from(&other).can_lock, "{field}");
+        }
+        session["timer"]["phase"] = json!("PLANNING");
+        assert!(!draft_from(&session).can_lock);
+        session["timer"]["phase"] = json!("BAN_PICK");
+        session["localPlayerCellId"] = Value::Null;
+        assert!(!draft_from(&session).can_lock);
+    }
     #[test]
     fn draft_preserves_hidden_slots_and_only_completed_bans() {
         let draft = draft_from(

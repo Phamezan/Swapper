@@ -1,8 +1,10 @@
 import type { ChampionOption } from '../runes/types';
 import type { Game, Snapshot } from './types';
+import type { LiveGameView } from './LiveGameModel';
 
 export type PlayerHit = { riotId: string; icon: string | null; level: number | null; ally: boolean | null; lastPlayed: number | null; live?: boolean };
 export type PlayerSearch = { connected: boolean; players: PlayerHit[]; message: string | null };
+export type PlayerLive = { live: boolean; view: LiveGameView | null; message: string | null };
 export type ProfileRank = NonNullable<Snapshot['rank']> & { recordAvailable?: boolean; recordSource?: 'ugg' };
 export type PlayerProfile = { player: PlayerHit; region?: string | null; solo: ProfileRank | null; flex: Snapshot['rank']; profileIcons?: Record<string, string>; games: Game[]; live: boolean; fetchedAt: number; message: string | null };
 export type Recent = { kind: 'champion'; champion: ChampionOption } | { kind: 'player'; riotId: string };
@@ -21,6 +23,21 @@ export function readRecents(value: string | null): Recent[] {
   } catch { return []; }
 }
 export function matchesPrefix(name: string, query: string) { const q = query.trim().toLowerCase(); return Boolean(q) && name.toLowerCase().startsWith(q); }
+
+export function rankPlayers(players: PlayerHit[], query: string): PlayerHit[] {
+  const q = query.trim().toLowerCase();
+  const hits = new Map<string, PlayerHit>();
+  for (const player of players) {
+    if (!matchesPrefix(player.riotId, q)) continue;
+    const key = player.riotId.toLowerCase(), previous = hits.get(key);
+    hits.set(key, previous ? { ...previous, icon: previous.icon ?? player.icon, level: previous.level ?? player.level,
+      ally: (player.lastPlayed ?? 0) > (previous.lastPlayed ?? 0) ? player.ally : previous.ally ?? player.ally,
+      lastPlayed: Math.max(previous.lastPlayed ?? 0, player.lastPlayed ?? 0) || null, live: previous.live || player.live } : player);
+  }
+  const exact = (id: string) => id.toLowerCase() === q || id.split('#')[0].toLowerCase() === q;
+  return [...hits.values()].sort((a, b) => Number(exact(b.riotId)) - Number(exact(a.riotId))
+    || (b.lastPlayed ?? 0) - (a.lastPlayed ?? 0) || a.riotId.toLowerCase().localeCompare(b.riotId.toLowerCase())).slice(0, 8);
+}
 
 /** Saved rows only know a participant's observed stats; leave unobserved fields empty. */
 export function profileGame(game: Game, riotId: string): Game | null {
@@ -82,5 +99,5 @@ export function savedPlayers(snapshot: Snapshot | null | undefined, query: strin
     for (const p of game.players) if (!p.me && matchesPrefix(p.riotId, query) && !hits.has(p.riotId.toLowerCase()))
       hits.set(p.riotId.toLowerCase(), { riotId: p.riotId, icon: null, level: null, ally: p.ally, lastPlayed: game.createdAt });
   }
-  return [...hits.values()].slice(0, 8);
+  return rankPlayers([...hits.values()], query);
 }

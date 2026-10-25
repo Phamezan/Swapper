@@ -1,16 +1,21 @@
-//! Player search only reads the local client and Swapper's bounded saved data.
+//! Player search merges saved data with optional, bounded online suggestions.
 use super::{model, LABEL};
 use base64::Engine;
 use futures_util::{stream, StreamExt};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use tauri::Manager;
 use std::{collections::BTreeMap, path::PathBuf, sync::OnceLock, time::Duration};
+
+mod online;
+pub mod live;
 
 const LIMIT: usize = 8;
 const CLOSED: &str = "Open League Client to load a profile. Showing saved players only.";
 static GATE: OnceLock<tokio::sync::Semaphore> = OnceLock::new();
 static CACHE_GATE: OnceLock<std::sync::Mutex<()>> = OnceLock::new();
 static ICON_CACHE: OnceLock<std::sync::Mutex<BTreeMap<u64, String>>> = OnceLock::new();
+static SEARCH_QUERY: OnceLock<tokio::sync::watch::Sender<String>> = OnceLock::new();
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -21,6 +26,7 @@ pub struct Player {
     ally: Option<bool>,
     last_played: Option<u64>,
     #[serde(default)]
+    // Fresh game presence only; resolving an identity is not evidence of a running game.
     live: bool,
 }
 
@@ -43,6 +49,7 @@ pub struct Profile {
     #[serde(default)]
     profile_icons: BTreeMap<String, String>,
     games: Vec<model::Game>,
+    // Existing profile contract: true when this profile was fetched from League Client.
     live: bool,
     fetched_at: i64,
     message: Option<String>,
@@ -121,6 +128,25 @@ fn valid_puuid(value: &str) -> bool {
 fn prefix(name: &str, query: &str) -> bool {
     let query = query.trim().to_lowercase();
     !query.is_empty() && name.to_lowercase().starts_with(&query)
+}
+
+fn rank_players(players: &mut Vec<Player>, query: &str) {
+    let query = query.trim().to_lowercase();
+    players.sort_by_key(|p| {
+        let id = p.riot_id.to_lowercase();
+        let exact = id == query || id.split('#').next() == Some(query.as_str());
+        (!exact, std::cmp::Reverse(p.last_played), id)
+    });
+    players.truncate(LIMIT);
+}
+
+fn account_players(accounts: &[crate::vault::Account], query: &str) -> Vec<Player> {
+    accounts.iter().filter_map(|account| {
+        let id = account.riot_id().or_else(|| riot_id(&account.name).ok().map(|_| account.name.clone()))?;
+        (riot_id(&id).is_ok() && prefix(&id, query)).then_some(Player {
+            riot_id: id, icon: None, level: None, ally: None, last_played: None, live: false,
+        })
+    }).collect()
 }
 
 fn path() -> Option<PathBuf> {
@@ -257,8 +283,7 @@ fn saved_players(
         }
     }
     let mut players: Vec<_> = players.into_values().collect();
-    players.sort_by_key(|p| std::cmp::Reverse(p.last_played));
-    players.truncate(LIMIT);
+    rank_players(&mut players, query);
     players
 }
 
@@ -332,7 +357,7 @@ fn player(summoner: &model::Summoner, icon: Option<String>) -> Player {
         level: Some(summoner.level),
         ally: None,
         last_played: None,
-        live: true,
+        live: live::known(&summoner.riot_id),
     }
 }
 
@@ -348,45 +373,70 @@ pub async fn full_app_search_players(
     app: tauri::AppHandle,
     window: tauri::WebviewWindow,
     query: String,
+    online: Option<bool>,
 ) -> Result<Search, String> {
     check(&app, &window)?;
     if query.len() > 128 || query.chars().any(char::is_control) {
         return Err("Search is too long or contains invalid characters.".into());
     }
+    let query = query.trim().to_string();
+    let channel = SEARCH_QUERY.get_or_init(|| tokio::sync::watch::channel(String::new()).0);
+    if !online.unwrap_or(false) { channel.send_replace(query.clone()); }
     let saved_query = query.clone();
     let mut players = tokio::task::spawn_blocking(move || {
         saved_players(saved_snapshot().as_ref(), &read(), &saved_query)
     })
     .await
     .unwrap_or_default();
-    if query.trim().is_empty() {
+    if !query.is_empty() {
+        if let Ok(config) = app.state::<crate::AppState>().config.lock() {
+            for account in account_players(&config.accounts, &query) {
+                if !players.iter().any(|p| p.riot_id.to_lowercase() == account.riot_id.to_lowercase()) {
+                    players.push(account);
+                }
+            }
+        }
+    }
+    for friend in live::cached_friends().into_iter().filter(|p| prefix(&p.riot_id, &query)) {
+        if !players.iter().any(|p| p.riot_id.to_lowercase() == friend.riot_id.to_lowercase()) { players.push(friend); }
+    }
+    for player in &mut players { player.live = live::known(&player.riot_id); }
+    rank_players(&mut players, &query);
+    if query.is_empty() || !online.unwrap_or(false) {
         return Ok(Search {
             connected: false,
             players,
             message: None,
         });
     }
-    let Ok(client) = crate::runes::lcu().await else {
-        return Ok(Search {
-            connected: false,
-            players,
-            message: Some(CLOSED.into()),
-        });
-    };
-    if !query.contains('#') {
-        return Ok(Search {
-            connected: true,
-            players,
-            message: Some(
-                "Type a full Riot ID: Name#TAG. Saved players match by name prefix.".into(),
-            ),
-        });
+    let mut current = channel.subscribe();
+    if *current.borrow_and_update() != query { return Ok(Search { connected: false, players, message: None }); }
+    tokio::select! {
+        _ = current.changed() => Ok(Search { connected: false, players, message: None }),
+        result = search_online(&query, players.clone()) => Ok(result),
     }
-    let _permit = GATE
-        .get_or_init(|| tokio::sync::Semaphore::new(2))
-        .try_acquire()
-        .map_err(|_| "Player search is busy. Try again.".to_string())?;
-    match lookup(&client, &query).await {
+}
+
+async fn search_online(query: &str, mut players: Vec<Player>) -> Search {
+    let Ok(client) = crate::runes::lcu().await else {
+        return Search { connected: false, players, message: Some(CLOSED.into()) };
+    };
+    let (region, friends) = tokio::join!(get(&client, "/riotclient/region-locale"), live::friends(&client));
+    for friend in friends.into_iter().filter(|p| prefix(&p.riot_id, query)) {
+        if let Some(hit) = players.iter_mut().find(|p| p.riot_id.to_lowercase() == friend.riot_id.to_lowercase()) { hit.live |= friend.live; }
+        else { players.push(friend); }
+    }
+    if let Some(region) = region.ok().and_then(|v| v["region"].as_str().map(str::to_string)) {
+        for hit in online::autocomplete(&region, query).await {
+            if !players.iter().any(|p| p.riot_id.to_lowercase() == hit.riot_id.to_lowercase()) { players.push(hit); }
+        }
+    }
+    rank_players(&mut players, query);
+    if riot_id(query).is_err() { return Search { connected: true, players, message: None }; }
+    let Ok(_permit) = GATE.get_or_init(|| tokio::sync::Semaphore::new(2)).try_acquire() else {
+        return Search { connected: true, players, message: None };
+    };
+    match lookup(&client, query).await {
         Ok((summoner, value)) => {
             let mut hit = player(&summoner, icon(&client, &value).await);
             if let Some(saved) = players
@@ -399,17 +449,17 @@ pub async fn full_app_search_players(
             players.retain(|p| !p.riot_id.eq_ignore_ascii_case(&hit.riot_id));
             players.insert(0, hit);
             players.truncate(LIMIT);
-            Ok(Search {
+            Search {
                 connected: true,
                 players,
                 message: None,
-            })
+            }
         }
-        Err(message) => Ok(Search {
+        Err(message) => Search {
             connected: true,
             players,
             message: Some(message),
-        }),
+        },
     }
 }
 
@@ -456,6 +506,19 @@ fn saved_profile(snapshot: Option<&model::Snapshot>, profiles: Vec<Profile>, id:
         fetched_at: snapshot.map_or(0, |s| s.fetched_at),
         message: None,
     }
+}
+
+#[tauri::command]
+pub async fn full_app_player_live(
+    app: tauri::AppHandle,
+    window: tauri::WebviewWindow,
+    riot_id: String,
+    details: Option<bool>,
+) -> Result<live::LiveStatus, String> {
+    check(&app, &window)?;
+    self::riot_id(&riot_id)?;
+    let client = crate::runes::lcu().await.map_err(|_| "Open League Client to check live games.")?;
+    Ok(live::status(&client, riot_id.trim(), details.unwrap_or(false)).await)
 }
 
 fn perspective(game: &model::Game, id: &str) -> Option<model::Game> {
@@ -653,6 +716,31 @@ pub async fn full_app_player_profile(
 mod tests {
     use super::*;
     use serde_json::json;
+    #[test]
+    fn exact_names_rank_before_more_recent_prefixes() {
+        let mut players = vec![
+            saved_profile(None, vec![], "Example Longer#TAG").player,
+            saved_profile(None, vec![], "Example#TAG").player,
+        ];
+        players[0].last_played = Some(300);
+        players[1].last_played = Some(100);
+        rank_players(&mut players, " example ");
+        assert_eq!(players[0].riot_id, "Example#TAG");
+    }
+    #[test]
+    fn saved_account_names_are_searchable_without_matching_private_nicknames() {
+        let accounts: Vec<crate::vault::Account> = serde_json::from_value(json!([
+            {"id":"00000000-0000-0000-0000-000000000001","vault_id":"00000000-0000-0000-0000-000000000002",
+                "name":"Legacy","game_name":"Example","tag_line":"TAG","nickname":"Private label"},
+            {"id":"00000000-0000-0000-0000-000000000003","vault_id":"00000000-0000-0000-0000-000000000004",
+                "name":"Example Older#TAG"}
+        ])).unwrap();
+        assert_eq!(account_players(&accounts, "EXAMPLE").len(), 2);
+        assert!(account_players(&accounts, "Private").is_empty());
+        assert_eq!(account_players(&accounts, "Example#ta")[0].riot_id, "Example#TAG");
+        let summoner = model::summoner(&json!({"puuid":"fixture-player","gameName":"Example","tagLine":"TAG"})).unwrap();
+        assert!(!player(&summoner, None).live);
+    }
     #[tokio::test]
     #[ignore = "Requires League Client; read-only GETs, sanitised aggregate counts only."]
     async fn live_lcu_opponent_coverage() {

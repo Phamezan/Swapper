@@ -99,6 +99,52 @@ pub async fn emblem(tier: &str) -> Result<Vec<u8>, RuneError> {
     Ok(bytes)
 }
 
+const CDRAGON_BORDERS: &str =
+    "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/uikit/themed-borders";
+
+/// League's level frame for a summoner level: one frame below 30, new ones at 30 and 50, then every 25 levels up
+/// to the 21st at 500.
+pub fn level_theme(level: u64) -> u8 {
+    match level {
+        0..=29 => 1,
+        30..=49 => 2,
+        _ => (3 + (level.min(500) - 50) / 25) as u8,
+    }
+}
+
+/// The level frame PNG for a summoner level, from the running client or CommunityDragon, cached on disk.
+pub async fn level_border(level: u64) -> Result<Vec<u8>, RuneError> {
+    let name = format!("theme-{}", level_theme(level));
+    if let Some(bytes) = asset_cache::read(asset_cache::Kind::LevelBorder, &name) {
+        return Ok(bytes);
+    }
+    let gate = rank_gate(&format!("border-{name}"));
+    let _guard = gate.lock().await;
+    if let Some(bytes) = asset_cache::read(asset_cache::Kind::LevelBorder, &name) {
+        return Ok(bytes);
+    }
+    let mut found = None;
+    if let Ok(lcu) = super::lcu().await {
+        for path in [
+            format!("/fe/lol-static-assets/global/default/images/uikit/themed-borders/{name}-border.png"),
+            format!("/lol-static-assets/global/default/images/uikit/themed-borders/{name}-border.png"),
+        ] {
+            if let Ok(bytes) = super::lcu_get_bytes(&lcu, &path).await {
+                if looks_like_png(&bytes) {
+                    found = Some(bytes);
+                    break;
+                }
+            }
+        }
+    }
+    let bytes = match found {
+        Some(bytes) => bytes,
+        None => fetch(&format!("{CDRAGON_BORDERS}/{name}-border.png"), looks_like_png).await?,
+    };
+    asset_cache::write(asset_cache::Kind::LevelBorder, &name, &bytes);
+    Ok(bytes)
+}
+
 /// Returns the SVG bytes for a rank crest, cached in memory. `tier` must be one
 /// of the op.gg bracket slugs; anything else is `NotFound`.
 pub async fn icon(tier: &str) -> Result<Vec<u8>, RuneError> {
@@ -172,6 +218,14 @@ async fn fetch(url: &str, valid: fn(&[u8]) -> bool) -> Result<Vec<u8>, RuneError
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn level_frames_change_at_30_50_and_every_25_levels_to_500() {
+        let cases = [(1, 1), (29, 1), (30, 2), (49, 2), (50, 3), (74, 3), (75, 4), (100, 5), (475, 20), (499, 20), (500, 21), (1398, 21)];
+        for (level, theme) in cases {
+            assert_eq!(super::level_theme(level), theme, "level {level}");
+        }
+    }
+
     use super::*;
 
     #[test]

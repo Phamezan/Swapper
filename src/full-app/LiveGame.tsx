@@ -6,7 +6,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { BrandIcon } from "../components/BrandIcon";
 import { useLiveGame } from "./LiveGameData";
-import { clock, crestSlug, hasRecord, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary } from "./LiveGameModel";
+import { clock, crestSlug, hasRecord, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary, type LiveGameView } from "./LiveGameModel";
 import { LiveGamePlayer } from "./LiveGamePlayer";
 import { Slot } from "./ui/Slot";
 import "./live-game.css";
@@ -17,6 +17,12 @@ const roleNames: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "
  *  while this page is visible, live K/D/A, CS and items. */
 export default function LiveGame({ championNames }: { championNames: Map<number, string> }) {
   const { view, error, loaded } = useLiveGame(true);
+  return <LiveGameContent view={view} error={error} loaded={loaded} championNames={championNames} />;
+}
+
+export function LiveGameContent({ view, error, loaded, championNames, readOnly = false }: {
+  view: LiveGameView | null; error: string; loaded: boolean; championNames: Map<number, string>; readOnly?: boolean;
+}) {
   const [selected, setSelected] = useState<string | null>(null);
   const player = view?.players.find(p => p.key === selected) ?? null;
   const selfSide = view?.players.find(p => p.isSelf)?.side;
@@ -32,11 +38,11 @@ export default function LiveGame({ championNames }: { championNames: Map<number,
     <div className="lg-bar">
       <span className="lg-queue">{view.queue || "Custom game"}</span>
       {view.gameTime !== null && <span className="lg-clock" title="Game time">{clock(view.gameTime)}</span>}
-      <small>{fetched < view.players.length ? `Loading players ${fetched}/${view.players.length}…` : "Rank and form: latest 20 Rift games"}</small>
+      <small>{readOnly ? 'Live roster via u.gg · Rank and form from League Client' : fetched < view.players.length ? `Loading players ${fetched}/${view.players.length}…` : "Rank and form: latest 20 Rift games"}</small>
     </div>
     {(["blue", "red"] as const).map(side => <Team key={side} side={side} summary={view[side]}
       players={view.players.filter(p => p.side === side)} live={view.gameTime !== null || view.players.some(p => p.live !== null)} onOpen={setSelected} />)}
-    {player && <LiveGamePlayer player={player} championNames={championNames} enemy={player.side !== selfSide} onClose={() => setSelected(null)} />}
+    {player && <LiveGamePlayer player={player} championNames={championNames} enemy={!readOnly && player.side !== selfSide} onClose={() => setSelected(null)} />}
   </div>;
 }
 

@@ -1,7 +1,7 @@
 //! Ability cooldown cheat sheet: a champion's passive and Q/W/E/R with base
 //! cooldowns, costs and ranges per rank, plus summoner spell base cooldowns.
 //!
-//! Everything comes from the client's local game data:
+//! Base fields come from the client's local game data:
 //! `/lol-game-data/assets/v1/champions/{id}.json` carries per-rank arrays
 //! (`cooldownCoefficients`, `costCoefficients`, `range`, `ammo`) six entries
 //! long whatever the real rank count, and `maxLevel` is always 0, so the rank
@@ -15,6 +15,9 @@ use std::sync::{Mutex, OnceLock};
 use base64::Engine;
 use serde::Serialize;
 use serde_json::Value;
+
+#[path = "ability_tooltips.rs"]
+mod tooltips;
 
 /// A range at or above this is the client's "global or self-cast" marker.
 const GLOBAL_RANGE: f64 = 25_000.0;
@@ -48,6 +51,7 @@ pub struct Passive {
     pub name: String,
     pub icon_path: Option<String>,
     pub description: String,
+    pub tooltip: Option<String>,
 }
 
 /// One of Q/W/E/R. Every list holds one value per rank; `costs` and `ranges`
@@ -60,6 +64,8 @@ pub struct Ability {
     pub icon_path: Option<String>,
     /// The game data's short plain description (markup stripped).
     pub description: String,
+    /// Numeric CommunityDragon text, absent when enrichment is unavailable.
+    pub tooltip: Option<String>,
     pub cooldowns: Vec<f64>,
     pub costs: Vec<f64>,
     pub ranges: Vec<f64>,
@@ -165,6 +171,7 @@ fn ability(champion_id: i64, key: &str, spell: &Value) -> Ability {
         name: spell["name"].as_str().unwrap_or("").to_string(),
         icon_path: icon_path(spell),
         description: plain(&spell["description"]),
+        tooltip: None,
         cooldowns: numbers(&spell["cooldownCoefficients"], count),
         costs,
         ranges,
@@ -196,6 +203,7 @@ pub fn parse(champion_id: i64, champion: &Value) -> Abilities {
                 .to_string(),
             icon_path: icon_path(&champion["passive"]),
             description: plain(&champion["passive"]["description"]),
+            tooltip: None,
         },
         spells,
         summoners: Vec::new(),
@@ -223,7 +231,8 @@ async fn load(champion_id: i64) -> Result<Abilities, String> {
     ))
     .await
     .map_err(|e| e.to_string())?;
-    let parsed = parse(champion_id, &champion);
+    let mut parsed = parse(champion_id, &champion);
+    tooltips::enrich(&mut parsed, &champion).await;
     if parsed.spells.len() == 4 {
         cache().insert(champion_id, parsed.clone());
     }

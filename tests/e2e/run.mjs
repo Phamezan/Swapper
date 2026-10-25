@@ -78,9 +78,9 @@ for (const signal of ["SIGINT", "SIGTERM"]) process.once(signal, () => {
   void cleanup().finally(() => process.exit(signal === "SIGINT" ? 130 : 143));
 });
 const watchdog = setTimeout(() => {
-  console.error(`FAIL suite exceeded 65 seconds during ${current}`);
+  console.error(`FAIL suite exceeded 80 seconds during ${current}`);
   void cleanup().finally(() => process.exit(1));
-}, 65_000);
+}, 80_000);
 
 async function audit() {
   await page.settle();
@@ -138,7 +138,7 @@ async function shell() {
 async function nav(label, selector) {
   await page.click('nav[aria-label="Swapper pages"] button', label);
   await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', label);
-  await page.text(".ui-page-header h1", label);
+  if (label !== "Draft") await page.text(".ui-page-header h1", label);
   await page.visible(selector);
 }
 
@@ -1022,6 +1022,70 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelector('[role=group][aria-label=Recent]')"), null);
     await key('Escape');
   });
+  await check('Partial names appear while typing without Enter', async () => {
+    await navigate(fullApp + '?search-slow', '.match-row');
+    await page.click('.location-search-button');
+    await page.type(searchInput, 'pLaYeR 1');
+    await page.text('.palette-player-copy', 'Player 1#DEMO');
+    assert.equal(await page.evaluate("document.querySelector('.player-page')"), null);
+    await page.text('.palette-hint', 'Searching players');
+    assert.equal(await page.evaluate('window.liveChecks.length'), 0);
+    await screenshot('search-typing-results');
+    await key('Escape');
+  });
+  await check('Online tagless suggestions and stale responses', async () => {
+    await navigate(fullApp + '?search-reorder', '.match-row');
+    await page.click('.location-search-button');
+    await page.type(searchInput, 'exam');
+    await page.wait("window.searchCalls.some(c => c.online && c.query === 'exam')", 'online debounce');
+    await page.evaluate("document.querySelector('.title-location input').select()");
+    await page.cdp.send('Input.insertText', { text: 'Player 2' });
+    await page.text('.palette-player-copy', 'Player 2#DEMO');
+    await page.wait("window.searchCalls.some(c => c.online && c.query === 'Player 2')", 'new query requested');
+    await page.wait("!document.querySelector('.palette-hint').textContent.includes('Searching')", 'new query settled');
+    await page.wait("window.searchCalls.some(c => c.query === 'exam' && c.online && c.done)", 'stale response finished');
+    assert.equal(await page.evaluate("document.querySelector('.palette-player-copy').textContent.includes('Example')"), false);
+    await page.evaluate("document.querySelector('.title-location input').select()");
+    await page.cdp.send('Input.insertText', { text: 'Example' });
+    await page.text('.palette-player-copy', 'Example#TAG');
+    assert.equal(await page.evaluate('window.liveChecks.length'), 0);
+    await key('Enter');
+    await page.text('.player-identity h2', 'Example#TAG');
+  });
+  await check('Profile LIVE badge opens a read-only ten-player view', async () => {
+    await navigate(fullApp + '?profile-live', '.match-row');
+    await page.click('.location-search-button');
+    await page.type(searchInput, 'Player 1');
+    await page.text('.palette-player-copy', 'Player 1#DEMO');
+    await page.visible('.palette-option .nav-badge.live');
+    await key('Enter');
+    await page.visible('.player-live-badge');
+    await screenshot('profile-live-badge');
+    await page.click('.player-live-badge');
+    await page.visible('.player-live-game .lg-row');
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-live-game .lg-row').length"), 10);
+    assert.equal(await page.evaluate("document.querySelectorAll('.player-live-game .lg-live').length"), 0);
+    await page.click('.player-live-game .lg-row');
+    await page.visible('.lg-profile');
+    assert.equal(await page.evaluate("document.querySelector('.lg-profile .cd-sheet')"), null);
+    await page.click('.lg-close');
+    await screenshot('profile-live-players', 1440, 1400);
+    await page.click('.player-live-game .player-back');
+    await page.visible('.player-identity');
+    await navigate(fullApp, '.match-row');
+  });
+  await check('Live roster failures keep the profile usable', async () => {
+    await navigate(fullApp + '?profile-live&profile-live-fail', '.match-row');
+    await page.click('.location-search-button');
+    await page.type(searchInput, 'Player 1');
+    await page.text('.palette-player-copy', 'Player 1#DEMO');
+    await key('Enter');
+    await page.click('.player-live-badge');
+    await page.text('.player-live-game', 'Live players unavailable');
+    await page.click('.player-live-game .player-back');
+    await page.visible('.player-identity');
+    await navigate(fullApp, '.match-row');
+  });
   await check('Palette player profile, match details and back', async () => {
     await nav('Dashboard', '.match-row');
     await page.click('.location-search-button');
@@ -1304,37 +1368,116 @@ async function main() {
     });
   }
 
-  await check("Draft planning fixture", async () => {
+  const draftGeometry = () => page.evaluate(`(() => {
+    const selectors = ['.cs-band', '.cs-band-head', '.cs-band-phase', '.cs-band-side', '.cs-bans', '.cs-bans > span', '.cs-teams', '.cs-team', '.cs-slot', '.cs-slot-role', '.cs-draft-clock', '.cs-draft-clock > *', '.cs-workspace'];
+    // Page coordinates, so a sub-pixel scroll from focusing a button is not mistaken for a layout change.
+    const scroll = document.querySelector('.dashboard-main')?.scrollTop ?? 0;
+    return Object.fromEntries(selectors.map(selector => [selector, Array.from(document.querySelectorAll(selector), el => {
+      const r = el.getBoundingClientRect();
+      return [r.x, r.y + scroll, r.width, r.height].map(value => Math.round(value));
+    })]));
+  })()`);
+  let draftLayout;
+  await check("Draft planning fits the viewport", async () => {
     await navigate(`${draft}?fixture=planning`, ".cs-pick");
-    await page.text(".ui-page-header h1", "Draft");
-    await page.visible('.cs-lock button:disabled');
-    await page.text(".cs-preview h3", "Choose a champion");
+    assert.equal(await page.evaluate("!!document.querySelector('.fa-draft-page :is(.ui-page-header, .cs-preview, .cs-band-foot)')"), false);
+    await page.visible('.cs-picks .cs-role-buttons');
+    await page.visible('.cs-picks [aria-label^="Rank:"]');
+    assert.equal(await page.evaluate("['html', 'body', '.dashboard-main', '.fa-draft-page'].every(selector => { const el = document.querySelector(selector); return el.scrollHeight <= el.clientHeight + 1; })"), true, "only the champion grid may scroll");
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-workspace > .cs-planning')"), true, "picks occupy the shared workspace below the draft band");
+    await page.evaluate("Promise.all(document.querySelector('.fa-draft-page').getAnimations().map(animation => animation.finished)).then(() => true)");
+    draftLayout = await draftGeometry();
+    assert.equal(await page.evaluate("document.querySelector('.cs-bans').firstElementChild.getAttribute('aria-label')"), 'Banned: Yasuo');
+    await page.click('.cs-picks .fa-seg button', 'All');
+    await page.wait("document.querySelectorAll('.cs-pick').length > 8", "all champions to load");
+    const card = await page.evaluate("(() => { const r = document.querySelector('.cs-pick').getBoundingClientRect(); return { width: r.width, height: r.height }; })()");
+    assert.ok(card.width >= 170 && card.height >= card.width * 1.3, `the overflowing All grid keeps full-size cards (${card.width}x${card.height})`);
+    assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollHeight <= document.querySelector('.dashboard-main').clientHeight + 1"), true);
   });
-  await check("Draft planning to hover", async () => {
+  await check("Draft shows Lock in only after clicking a champion", async () => {
     await page.type('input[aria-label="Search champion"]', "Aatrox");
     await page.text(".cs-pick strong", "Aatrox");
-    await page.click(".cs-pick");
-    await page.text(".cs-preview h3", "Aatrox");
-    await page.visible(".cs-preview-row");
+    assert.equal(await page.evaluate("document.querySelector('.cs-pick-select').getAttribute('aria-pressed')"), "false", "locking must also work before declaring intent");
+    const position = await page.evaluate("(() => { const r = document.querySelector('.cs-pick').getBoundingClientRect(); return {x: r.x + r.width / 2, y: r.y + r.height / 3}; })()");
+    await page.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", ...position });
+    assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').disabled"), true, "Lock in stays inactive until a champion is selected");
+    await page.click(".cs-pick-select");
+    await page.visible(".cs-lock-in:not(:disabled)");
+    assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').title"), "Lock in Aatrox", "the button locks the selected champion");
   });
-  await check("Draft confirms lock and shows build", async () => {
-    await page.click(".cs-lock button", "Lock in");
-    await page.text(".cs-lock", "This can’t be undone.");
-    await page.click(".cs-lock button", "Confirm");
-    await page.text(".fa-status-pill", "Locked in");
+  await check("Draft one click locks and preserves the complete top layout", async () => {
+    await page.click(".cs-lock-in");
     await page.visible(".fa-build-section");
     await page.wait("!document.querySelector('.cs-planning')", "planning panel to close");
+    assert.deepEqual(await draftGeometry(), draftLayout, "team cards, bans, timer and the replacement workspace keep their complete bounds");
+    await page.visible('.cs-workspace > .fa-build-section');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-lock, .cs-preview')"), false);
+    assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollHeight <= document.querySelector('.dashboard-main').clientHeight + 1"), true);
   });
   for (const fixture of ["hover", "locked", "locked-blind"]) {
     await check(`Draft ${fixture} fixture`, async () => {
-      await navigate(`${draft}?fixture=${fixture}`, fixture === "hover" ? ".cs-preview-row" : ".fa-build-section");
-      await page.text(".ui-page-header h1", "Draft");
-      await page.text(".cs-toolbar h2", "Aatrox");
+      await navigate(`${draft}?fixture=${fixture}`, fixture === "hover" ? ".cs-pick" : ".fa-build-section");
+      if (fixture !== "hover") await page.text(".cs-toolbar h2", "Aatrox");
       await page.visible('[aria-label="Your team\'s picks"]');
       await page.visible('[aria-label="Enemy team\'s picks"]');
+      if (fixture === "locked") {
+        await page.visible('.cs-pro-pages');
+        await page.click('.cs-pro-pages button', 'Next');
+        await page.text('.cs-build-row.is-pro', 'Pro player D');
+        await page.text('.cs-build-row.is-pro', 'Pro player F');
+        await page.click('.cs-pro-pages button', 'Previous');
+        await page.text('.cs-build-row.is-pro', 'Pro player A');
+      }
       if (fixture === "locked-blind") await page.wait("!document.querySelector('.cs-toolbar h2 small')", "blind draft has no revealed opponent");
     });
   }
+  await check("Draft lock busy state and errors", async () => {
+    await navigate(`${draft}?fixture=planning&lock-delay&lock-fail`, '.cs-pick');
+    await page.type('input[aria-label="Search champion"]', 'Aatrox');
+    await page.visible('.cs-pick-select');
+    await page.click('.cs-pick-select');
+    await page.visible('.cs-lock-in:not(:disabled)');
+    await page.evaluate("document.querySelector('.cs-lock-in').focus()");
+    await page.wait("document.activeElement.matches('.cs-lock-in')", 'Lock in is keyboard focusable');
+    await page.evaluate("Promise.all(document.querySelector('.fa-draft-page').getAnimations({ subtree: true }).filter(animation => animation.effect.getTiming().iterations !== Infinity).map(animation => animation.finished)).then(() => true)");
+    const beforeFailure = await draftGeometry();
+    await page.click('.cs-lock-in');
+    await page.visible('.cs-lock-in:disabled[aria-busy="true"]');
+    await page.text('.cs-picks .ui-notice', 'Lock in failed. Try again.');
+    assert.deepEqual(await draftGeometry(), beforeFailure, "an error stays in the workspace without moving the top section");
+    assert.equal(await page.evaluate("document.body.dataset.lockCalls"), '1');
+    await page.visible('.cs-lock-in:not(:disabled)');
+    await page.evaluate("history.replaceState(null, '', location.href.replace('&lock-fail', ''))");
+    await page.click('.cs-lock-in');
+    await page.visible('.fa-build-section');
+  });
+  await check("Draft hides lock outside your pick turn or availability", async () => {
+    for (const query of ['turn=waiting', 'turn=ban', 'turn=intent', 'unavailable']) {
+      await navigate(`${draft}?fixture=planning&${query}`, '.cs-pick');
+      await page.type('input[aria-label="Search champion"]', 'Aatrox');
+      await page.visible('.cs-pick-select');
+      if (query !== 'unavailable') { await page.click('.cs-pick-select'); await page.visible('.cs-pick.is-hovered'); }
+      assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').disabled"), true, query);
+    }
+    await page.click('.cs-pick-select');
+    await page.text('.cs-picks .ui-notice', 'not currently pickable');
+  });
+  await check("Draft role buttons override the assigned role, also on All", async () => {
+    await navigate(`${draft}?fixture=planning`, '.cs-pick');
+    assert.equal(await page.evaluate("document.querySelectorAll('.cs-role-buttons button').length"), 5);
+    const assigned = await page.evaluate("document.querySelector('.cs-role-buttons [aria-pressed=\"true\"]').getAttribute('aria-label')");
+    const target = assigned === 'Jungle' ? 'Support' : 'Jungle';
+    await page.click('.cs-picks .fa-seg button', 'All');
+    await page.click(`.cs-role-buttons button[aria-label="${target}"]`);
+    await page.wait(`document.querySelector('.cs-role-buttons [aria-pressed="true"]')?.getAttribute('aria-label') === '${target}'`, 'the picked role to stick');
+  });
+  await check("A just-ended game shows on the dashboard before match history has it", async () => {
+    await navigate(fullApp + "?ended", ".match-row");
+    await page.visible(".match-row.is-pending");
+    await page.text(".match-row.is-pending", "Victory");
+    await page.text(".match-row.is-pending .match-kda", "7 / 2 / 9");
+    await page.text(".match-row.is-pending", "Full match details");
+  });
   await check("Tray flyout browser preview", async () => {
     await navigate("/index.html", ".shell .main-panel");
     await page.text("h1", "Accounts");

@@ -13,7 +13,7 @@ import { NearEnd, NearViewport } from "./NearViewport";
 import { PresetBuild } from "../runes/PresetBuild";
 import { CachedBadge } from "../runes/CachedBadge";
 import { RoleIcon } from "../runes/RoleIcon";
-import { TIER_OPTIONS, fmtPct, isLowSample, tierClass } from "../runes/types";
+import { TIER_OPTIONS, fmtPct, isLowSample, tierClass, wrTone } from "../runes/types";
 import type { ChampionOption, ChampionOverviewView, ChampionCountersView, TierListView, TierRow, MatchupView } from "../runes/types";
 import { useChampionArt } from "./art";
 import { useAmbientChampion } from './AmbientArt';
@@ -210,8 +210,9 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
       {loading && !overview ? <TableSkeleton /> : overview?.stats ? <>
         <div className={`fa-stat-strip ${tierClass(overview.stats.tier ?? "")}`}>
           <div><strong className="fa-tier-big">{overview.stats.tier ?? "–"}</strong><small>Tier</small></div>
-          <div><strong>{overview.stats.rank ?? "–"}{overview.stats.rank ? <i> / {overview.stats.rankTotal}</i> : null}</strong><small>Lane rank</small></div>
-          {([["Win rate", overview.stats.winPct], ["Pick rate", overview.stats.pickPct], ["Ban rate", overview.stats.banPct]] as const).map(([label, value]) => <div key={label}><strong><StatPct value={value} /></strong><small>{label}</small></div>)}
+          <div><strong className={`wr-${rankTone(overview.stats.rank, overview.stats.rankTotal)}`}>{overview.stats.rank ?? "–"}{overview.stats.rank ? <i> / {overview.stats.rankTotal}</i> : null}</strong><small>Rank</small></div>
+          <div><strong className={`wr-${stripWinTone(overview.stats.winPct)}`}><StatPct value={overview.stats.winPct} /></strong><small>Win rate</small></div>
+          {([["Pick rate", overview.stats.pickPct], ["Ban rate", overview.stats.banPct]] as const).map(([label, value]) => <div key={label}><strong><StatPct value={value} /></strong><small>{label}</small></div>)}
           <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
         </div>
       </> : <Notice>No stats for this role and rank.</Notice>}
@@ -328,6 +329,18 @@ function TableSkeleton() {
 }
 
 /** A percentage as a big number with a small, lighter percent sign. */
+/** The app's win-rate colours (54%+ teal, 52%+ green); 48–52% reads as plain average, red only below 48%. */
+function stripWinTone(winPct: number | null | undefined) {
+  if (winPct == null) return "mid";
+  return winPct >= 50 ? wrTone(winPct) : winPct < 48 ? "low" : "mid";
+}
+
+/** Rank in its lane: top 3 or top 10% teal, top quarter green, the rest plain. */
+function rankTone(rank: number | null | undefined, total: number | null | undefined) {
+  if (!rank || !total) return "mid";
+  return rank <= Math.max(3, total * .1) ? "high" : rank <= total * .25 ? "good" : "mid";
+}
+
 export function StatPct({ value }: { value: number | null | undefined }) {
   return value === null || value === undefined || Number.isNaN(value) ? <>–</> : <>{value.toFixed(1)}<i>%</i></>;
 }

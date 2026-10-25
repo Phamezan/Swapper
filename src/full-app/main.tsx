@@ -7,7 +7,7 @@ import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, Pat
 import { BrandIcon } from "../components/BrandIcon";
 import { useRiotClientIcon } from "../riotIcon";
 import type { ChampionOption } from "../runes/types";
-import type { DashboardView, Game } from "./types";
+import type { DashboardView, EndedGame, Game } from "./types";
 import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
 import { locationTrail } from './locationTrail';
@@ -85,6 +85,8 @@ function App() {
   const liveReturn = useRef<Location | null>(null);
   // Where a finished game left the user; its match opens once League files it, unless they moved on.
   const afterGame = useRef<{ from: Location; id: number | null } | null>(null);
+  // The end-of-game screen's stats, shown on the dashboard until match history files the game.
+  const [ended, setEnded] = useState<EndedGame | null>(null);
   useEffect(() => {
     if (inGame) {
       const next = enterLive(currentRef.current, liveReturn.current, returnTo.current);
@@ -232,12 +234,16 @@ function App() {
   const playerId = page.startsWith('Player:') ? page.slice(7) : null;
   useEffect(() => {
     if (!isTauri()) return;
+    const shown = listen<EndedGame>("game_ended", ({ payload }) => setEnded(payload));
     const stop = listen<number>("game_finished", ({ payload }) => {
       if (afterGame.current) afterGame.current = { ...afterGame.current, id: payload };
       void refresh();
     });
-    return () => { void stop.then(unlisten => unlisten()); };
+    return () => { void stop.then(unlisten => unlisten()); void shown.then(unlisten => unlisten()); };
   }, []);
+  useEffect(() => {
+    if (ended && snapshot?.games.some(game => game.id === ended.id)) setEnded(null);
+  }, [ended, snapshot]);
   useEffect(() => {
     const pending = afterGame.current;
     if (!pending?.id || !snapshot?.games.some(game => game.id === pending.id)) return;
@@ -313,7 +319,7 @@ function App() {
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "Dashboard"
-          ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} onOpenLive={() => go(LIVE_PAGE)}
+          ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} justEnded={ended} onOpenLive={() => go(LIVE_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { const target = `Match:${game.id}` as const; visitedMatches.current.set(target, game); go(target); }} />
             : loading ? <DashboardSkeleton />

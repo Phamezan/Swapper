@@ -221,6 +221,13 @@ pub(crate) async fn rank_icon(tier: String) -> Result<String, String> {
     ))
 }
 
+/// League's level frame for a summoner level, as a data URL.
+#[tauri::command]
+pub(crate) async fn level_border(level: u64) -> Result<String, String> {
+    let bytes = runes::ranks::level_border(level).await.map_err(|e| e.message().to_string())?;
+    Ok(format!("data:image/png;base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes)))
+}
+
 /// The full ranked emblem behind the dashboard's rank card, as a data URL.
 #[tauri::command]
 pub(crate) async fn rank_emblem(tier: String) -> Result<String, String> {

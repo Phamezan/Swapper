@@ -1,6 +1,15 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { abilityDetails, perRank } from "./cooldownModel.ts";
+import { abilityDetails, perRank, tooltipParts } from "./cooldownModel.ts";
+
+test("numeric tooltip formatting preserves text and distinguishes ranks and scaling", () => {
+  const text = "Deals 75/150/225 (+60% AP) damage; below 9/10/11% (+0.5% per stack).";
+  const parts = tooltipParts(text);
+  assert.equal(parts.map(part => part.text).join(""), text);
+  assert.deepEqual(parts.filter(part => part.kind).map(part => part.kind), ["ranks", "ap", "ranks", "stack"]);
+  assert.equal(tooltipParts("Deals 20 (+50% bonus AD) and heals (+10% max Health).").filter(part => part.kind).map(part => part.kind).join(","), "ad,health");
+  assert.deepEqual(tooltipParts("Short fallback description."), [{ text: "Short fallback description." }]);
+});
 
 test("cooldowns read one value per rank, collapsing flat ones", () => {
   assert.equal(perRank([12, 11, 10, 9, 8]), "12 / 11 / 10 / 9 / 8");

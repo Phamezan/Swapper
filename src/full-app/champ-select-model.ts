@@ -2,7 +2,7 @@ import type { Applied, CounterRow, RunesView, Selection, TierRow } from "../rune
 import type { RecommendedPick } from "./types";
 
 export type DraftMember = { championId: number; position: string; local: boolean; locked: boolean };
-export type Draft = { allies: DraftMember[]; enemies: DraftMember[]; bans: number[]; timer: { phase: string; remainingMs: number } | null };
+export type Draft = { allies: DraftMember[]; enemies: DraftMember[]; bans: number[]; allyBans?: number[]; enemyBans?: number[]; canLock?: boolean; pickable?: number[]; timer: { phase: string; remainingMs: number } | null };
 export type PageMode = "idle" | "planning" | "build";
 export type SuggestionTab = "all" | "recommended" | "counters";
 export type Suggestion = { championId: number; name: string; winPct: number; games: number; flex?: boolean };
@@ -54,9 +54,10 @@ export function counterPicks(rows: CounterRow[], taken: Set<number>, limit = 8):
 }
 
 /** Every champion A to Z, with the role's win rate where the tier list has one. */
+/** Every champion played in the role (its tier list), A to Z; every champion when the role list is unavailable. */
 export function allChampions(names: Map<number, string>, rows: TierRow[], taken: Set<number>): Suggestion[] {
   const stats = new Map(rows.map(row => [row.championId, row]));
-  return [...names].filter(([id]) => !taken.has(id)).sort(([, a], [, b]) => a.localeCompare(b))
+  return [...names].filter(([id]) => !taken.has(id) && (!stats.size || stats.has(id))).sort(([, a], [, b]) => a.localeCompare(b))
     .map(([championId, name]) => {
       const row = stats.get(championId);
       return { championId, name, winPct: row?.winPct ?? NaN, games: row?.games ?? 0 };

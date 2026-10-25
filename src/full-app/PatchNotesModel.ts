@@ -213,10 +213,14 @@ export function classifyChange(entry: PatchEntry): ChangeKind {
   const nerf = /\bnerf/.test(text);
   if (buff && !nerf) return "buff";
   if (nerf && !buff) return "nerf";
-  if (buff && nerf) return "adjust";
-  const tones = new Set(entry.groups.flatMap(group => group.lines.flatMap(lineSignals)));
-  if (tones.size === 1) return tones.has("buff") ? "buff" : "nerf";
-  return "adjust";
+  // Mixed or no wording (e.g. "with the Hubris nerf … a couple buffs"): count the lines. Each line is a buff
+  // or a nerf by its own numbers (a line pulling both ways counts as neither); the majority decides, a tie is an adjustment.
+  let score = 0;
+  for (const line of entry.groups.flatMap(group => group.lines)) {
+    const tones = new Set(lineSignals(line));
+    if (tones.size === 1) score += tones.has("buff") ? 1 : -1;
+  }
+  return score > 0 ? "buff" : score < 0 ? "nerf" : "adjust";
 }
 
 const normalize = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, "");

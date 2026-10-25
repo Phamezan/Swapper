@@ -4,6 +4,7 @@ import { mockIPC } from "@tauri-apps/api/mocks";
 import { emit } from "@tauri-apps/api/event";
 import type { RuneTree, RunesView } from "../runes/types";
 import { fixtureDraft, fixtureView, type FixtureName } from "./champ-select-fixtures";
+import { takenIds } from "./champ-select-model";
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
 const VERSION = "16.21.1";
@@ -29,13 +30,23 @@ const counters = [[67, 46.1, 2400], [133, 46.8, 1300], [17, 47.2, 3100], [85, 47
 const tiers = [[266, "S+", 51.6], [24, "S", 51.4], [875, "S+", 52.2], [86, "S", 51.1], [58, "A", 50.6], [164, "S", 50.9], [82, "A", 51.0], [516, "A", 50.4], [897, "B", 49.2], [54, "A", 51.3], [122, "S", 50.8]];
 
 let fixture: FixtureName = (new URLSearchParams(location.search).get("fixture") as FixtureName) || "planning";
+let selectedChampion = fixtureView(fixture).championId;
 let applied: RunesView["applied"] = new URLSearchParams(location.search).has("rune-fail") ? null : fixtureView(fixture).applied;
 let spells = fixtureView(fixture).spells;
 /** Commands a page adds to, or overrides in, the champion select ones (the flyout preview). */
 export const extra: Record<string, (args: Record<string, any>) => unknown> = {};
 export const listeners = new Set<() => void>();
-export const current = (): RunesView => ({ ...fixtureView(fixture), trees: catalog?.trees ?? [], shards: catalog?.shards ?? [], applied, spells });
-const change = (next: FixtureName) => { fixture = next; applied = fixtureView(next).applied; spells = fixtureView(next).spells; listeners.forEach(listener => listener()); void emit("draft_changed", fixtureDraft(next)); };
+export const current = (): RunesView => ({ ...fixtureView(fixture), championId: selectedChampion, championName: CHAMPIONS[selectedChampion]?.[0] ?? "", trees: catalog?.trees ?? [], shards: catalog?.shards ?? [], applied, spells });
+const currentDraft = () => {
+  const draft = fixtureDraft(fixture);
+  draft.allies = draft.allies.map(member => member.local ? { ...member, championId: selectedChampion } : member);
+  const params = new URLSearchParams(location.search);
+  if (params.has("turn")) draft.canLock = false;
+  if (params.get("turn") === "intent") draft.timer!.phase = "PLANNING";
+  draft.pickable = Object.keys(CHAMPIONS).map(Number).filter(id => !params.has("unavailable") || id !== 266);
+  return draft;
+};
+const change = (next: FixtureName, championId = selectedChampion) => { fixture = next; selectedChampion = championId; applied = fixtureView(next).applied; spells = fixtureView(next).spells; listeners.forEach(listener => listener()); void emit("draft_changed", currentDraft()); };
 let catalog: { trees: RuneTree[]; shards: { kind: string; label: string; runes: { id: number; name: string; winPct: null; pickPct: null; play: number }[] }[] } | null = null;
 const runeIcons = new Map<number, string>(Object.entries({ 5008: "AdaptiveForce", 5005: "AttackSpeed", 5007: "CDRScaling", 5010: "MovementSpeed", 5001: "HealthPlus", 5011: "HealthScaling", 5013: "Tenacity" }).map(([id, name]) => [Number(id), `${DD}/img/perk-images/StatMods/StatMods${name}Icon.png`]));
 const ready = fetch(`${DD}/${VERSION}/data/en_US/runesReforged.json`).then(r => r.json()).then((trees: { id: number; name: string; slots: { runes: { id: number; name: string; icon: string }[] }[] }[]) => {
@@ -52,7 +63,7 @@ mockIPC(async (cmd, args) => {
   if (extra[cmd]) return extra[cmd](a);
   switch (cmd) {
     case "get_runes": return current();
-    case "full_app_draft": return fixtureDraft(fixture);
+    case "full_app_draft": return currentDraft();
     case "get_champion_list": return Object.entries(CHAMPIONS).map(([id, [name]]) => ({ id: Number(id), name }));
     case "champion_icon": return `${DD}/${VERSION}/img/champion/${CHAMPIONS[a.id]?.[1] ?? "Aatrox"}.png`;
     // Same crops as the client's art: 380 px tiles and the centred splash.
@@ -63,6 +74,7 @@ mockIPC(async (cmd, args) => {
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     case "full_app_rune_catalog": await ready; if (catalog) return catalog; throw new Error("Rune catalog unavailable");
     case "full_app_abilities": return ["Q", "W", "E", "R"].map(key => ({ key, name: `Aatrox ${key}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${key === "R" ? "R" : key}.png` }));
+    case "champion_abilities": return { championId: a.championId, passive: { name: "Passive", iconPath: null, description: "This champion's innate effect.", tooltip: null }, spells: ["Q", "W", "E", "R"].map(key => ({ key, name: `Enemy ${key}`, iconPath: null, description: "Deals damage to enemies.", tooltip: key === "Q" ? "Deals 60/90/120/150/180 (+50% AP) magic damage." : null, cooldowns: key === "R" ? [120, 100, 80] : [12, 11, 10, 9, 8], costs: [], ranges: [], charges: 0, recharge: [] })), summoners: [] };
     case "get_champion_overview": return { championId: a.championId, position: "top", stats: null, damage: null, unavailable: false, build: { runes: page(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347], [5005, 5008, 5001]), spells: [4, 12], items: build([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), skillOrder: ORDER } };
     case "get_keystone_build": return { ...build([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), highestWin: { preset: { index: 1, title: "Grasp", ...page(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104], [5005, 5008, 5001]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: build([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
     case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...page(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: build([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
@@ -80,8 +92,16 @@ mockIPC(async (cmd, args) => {
           itemPath: [{ minute: 0, items: [{ ...item(1055), count: 1 }, { ...item(2003), count: 1 }] }], otp: false,
         }; }) };
     }
-    case "full_app_hover_champion": change(a.championId === 266 ? "hover" : fixture); return null;
-    case "full_app_lock_in": change("locked"); return null;
+    case "full_app_hover_champion":
+      if (!currentDraft().pickable?.includes(a.championId) || takenIds(currentDraft()).has(a.championId)) throw new Error("That champion is not currently pickable.");
+      change("hover", a.championId); return null;
+    case "full_app_lock_in": {
+      document.body.dataset.lockCalls = String(Number(document.body.dataset.lockCalls ?? 0) + 1);
+      if (new URLSearchParams(location.search).has("lock-delay")) await new Promise(resolve => setTimeout(resolve, 200));
+      if (new URLSearchParams(location.search).has("lock-fail")) throw new Error("Lock in failed. Try again.");
+      if (!currentDraft().canLock || selectedChampion !== a.championId) throw new Error("Wait for your pick turn to lock in.");
+      change("locked"); return null;
+    }
     case "apply_rune_page": if (new URLSearchParams(location.search).has("rune-fail")) throw new Error("Your rune pages are full (25 of 25). Delete a page in League Client, then try again."); applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;
     case "apply_spell": spells = a.slot === "d" ? { ...spells, spell1Id: a.spellId } : { ...spells, spell2Id: a.spellId }; return null;
     case "import_item_build": return null;

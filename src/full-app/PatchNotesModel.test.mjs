@@ -22,10 +22,11 @@ test("passive headers use Passive and fall back without inventing a name", () =>
   assert.equal(abilityHeading(null, []), null);
 });
 
-test("classifies from Riot's wording, mixed changes are adjusts", () => {
+test("classifies from one-sided wording; mixed wording falls back to the line count", () => {
   assert.equal(classifyChange(entry("Azir", "We are buffing his mana.")), "buff");
   assert.equal(classifyChange(entry("Caitlyn", "It's time to nerf her.")), "nerf");
-  assert.equal(classifyChange(entry("Caitlyn", "A buff to Q, a nerf to passive.")), "adjust");
+  // Mixed wording: the one changed line (Mana 1 → 2) is a buff.
+  assert.equal(classifyChange(entry("Caitlyn", "A buff to Q, a nerf to passive.")), "buff");
   assert.equal(classifyChange({ ...entry("X", null), groups: [] }), "adjust");
 });
 
@@ -304,7 +305,8 @@ test("range verdicts retain stat direction and independent line/ratio signals", 
   assert.equal(verdict(line("Cooldown", "12 - 20s", "10 - 22s")), "nerf");
   assert.equal(verdict(line("Damage", "20 - 35 (+10% AP)", "10 - 40 (+5% AP)")), "adjust");
   assert.equal(verdict(line("Refund", "20 - 35%", "10 - 40%"), line("Damage", "100", "90")), "adjust");
-  assert.equal(verdict(line("Damage", "80 / 150 / 200", "70 / 150 / 220"), line("Health", "100", "110")), "adjust", "mixed rank arrays still contribute both signals");
+  assert.equal(verdict(line("Damage", "80 / 150 / 200", "70 / 150 / 220"), line("Health", "100", "110")), "buff", "a line pulling both ways counts as neither; the clear buff decides");
+  assert.equal(verdict(line("Damage", "80 / 150 / 200", "70 / 150 / 220")), "adjust", "only a two-way line is an adjustment");
 });
 
 test("Locke grey health store compares through a removed level note and is a Nerf", () => {
@@ -504,8 +506,18 @@ test("unknown or ambiguous labels, unlabeled lines and unchanged values remain n
 test("Riot's explicit verdict overrides numeric aggregation; summary counts use the fallback", () => {
   const reduced = { name: "Lee Sin", context: null, notes: [], groups: [{ title: "R", lines: [line("Kick Damage", "175 / 400 / 625 (+200% bonus AD)", "150 / 350 / 550 (+200% bonus AD)")] }] };
   assert.equal(classifyChange({ ...reduced, context: "We are buffing his other tools." }), "buff");
-  assert.equal(classifyChange({ ...reduced, context: "A buff here and a nerf there." }), "adjust");
+  assert.equal(classifyChange({ ...reduced, context: "A buff here and a nerf there." }), "nerf", "mixed wording falls back to the numbers");
   assert.deepEqual(patchCounts({ sections: [{ title: "Champions", entries: [reduced] }] }), { buffs: 0, nerfs: 1, adjusts: 0, champions: 1, items: 0, lines: 1 });
+});
+
+test("Miss Fortune 26.21: mixed wording, two buffed lines, is a Buff; one buff and one nerf is an Adjustment", () => {
+  const context = "Miss Fortune has been in a relatively decent place throughout the year, but with the Hubris nerf this patch, we're looking to compensate with a couple buffs to her damage output.";
+  const e = line("Damage", "70 / 100 / 130 / 160 / 190 (+120% AP)", "90 / 120 / 150 / 180 / 210 (+120% AP)");
+  const r = line("Critical Strike Damage", "130% (+0.3% per 1% Bonus Crit Damage)", "145% (+0.45% per 1% Bonus Crit Damage)");
+  const mf = lines => ({ name: "Miss Fortune", context, notes: [], groups: [{ title: "E", lines }] });
+  assert.equal(classifyChange(mf([e, r])), "buff");
+  assert.equal(classifyChange(mf([e, line("Cooldown", "10s", "12s")])), "adjust");
+  assert.equal(classifyChange(mf([e, r, line("Cooldown", "10s", "12s")])), "buff", "two buffs outweigh one nerf");
 });
 
 test("matches champion names across punctuation and aliases", () => {

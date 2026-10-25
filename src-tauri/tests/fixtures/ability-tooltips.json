@@ -1,0 +1,583 @@
+{
+  "patch": "16.21",
+  "champions": [
+    {
+      "alias": "locke",
+      "championId": 805,
+      "key": "R",
+      "bin": {
+        "Characters/Locke/CharacterRecords/Root": {
+          "spells": [
+            "Characters/Locke/Spells/LockeQAbility/LockeQ",
+            "Characters/Locke/Spells/LockeWAbility/LockeW",
+            "Characters/Locke/Spells/LockeEAbility/LockeE",
+            "Characters/Locke/Spells/LockeRAbility/LockeR"
+          ],
+          "mCharacterPassiveSpell": "Characters/Locke/Spells/LockePassiveAbility/LockePassive"
+        },
+        "Characters/Locke/Spells/LockeRAbility/LockeR": {
+          "mScriptName": "LockeR",
+          "mSpell": {
+            "DataValues": [
+              {
+                "name": "BaseDamage",
+                "values": [
+                  75.0,
+                  150.0,
+                  225.0,
+                  300.0,
+                  375.0,
+                  450.0,
+                  525.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "SlowDuration",
+                "values": [
+                  2.0,
+                  2.0,
+                  2.0,
+                  2.0,
+                  2.0,
+                  2.0,
+                  2.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "Radius",
+                "values": [
+                  400.0,
+                  400.0,
+                  400.0,
+                  400.0,
+                  400.0,
+                  400.0,
+                  400.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "SlowAmount",
+                "values": [
+                  0.9900000095367432,
+                  0.9900000095367432,
+                  0.9900000095367432,
+                  0.9900000095367432,
+                  0.9900000095367432,
+                  0.9900000095367432,
+                  0.9900000095367432
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "ExecutionThreshold",
+                "values": [
+                  0.09000000357627869,
+                  0.10000000149011612,
+                  0.10999999940395355,
+                  0.11999999731779099,
+                  0.12999999523162842,
+                  0.14000000059604645,
+                  0.15000000596046448
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "Duration",
+                "values": [
+                  5.0,
+                  5.0,
+                  5.0,
+                  5.0,
+                  5.0,
+                  5.0,
+                  5.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "CooldownReduction",
+                "values": [
+                  20.0,
+                  20.0,
+                  20.0,
+                  20.0,
+                  20.0,
+                  20.0,
+                  20.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "AbilityHastePerStack",
+                "values": [
+                  6.0,
+                  6.0,
+                  6.0,
+                  6.0,
+                  6.0,
+                  6.0,
+                  6.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "Anim_BiteTime",
+                "values": [
+                  0.38999998569488525,
+                  0.38999998569488525,
+                  0.38999998569488525,
+                  0.38999998569488525,
+                  0.38999998569488525,
+                  0.38999998569488525,
+                  0.38999998569488525
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "ExecuteThresholdPerStack",
+                "values": [
+                  0.004999999888241291,
+                  0.004999999888241291,
+                  0.004999999888241291,
+                  0.004999999888241291,
+                  0.004999999888241291,
+                  0.004999999888241291,
+                  0.004999999888241291
+                ],
+                "__type": "SpellDataValue"
+              }
+            ],
+            "mSpellCalculations": {
+              "Damage": {
+                "mFormulaParts": [
+                  {
+                    "mDataValue": "BaseDamage",
+                    "__type": "NamedDataValueCalculationPart"
+                  },
+                  {
+                    "mCoefficient": 0.6000000238418579,
+                    "__type": "StatByCoefficientCalculationPart"
+                  }
+                ],
+                "__type": "GameCalculation"
+              },
+              "ExecuteBonusCalc": {
+                "mFormulaParts": [
+                  {
+                    "mBuffName": "{b5c3348f}",
+                    "mIconKey": "%i:LockeStackIcon%",
+                    "mScalingTagKey": "font color='#0bf7de'",
+                    "mDataValue": "ExecuteThresholdPerStack",
+                    "__type": "BuffCounterByNamedDataValueCalculationPart"
+                  }
+                ],
+                "mDisplayAsPercent": true,
+                "mPrecision": 1,
+                "__type": "GameCalculation"
+              },
+              "{6c540a3a}": {
+                "mFormulaParts": [
+                  {
+                    "mDataValue": "ExecutionThreshold",
+                    "__type": "NamedDataValueCalculationPart"
+                  },
+                  {
+                    "mBuffName": "{b5c3348f}",
+                    "mIconKey": "%i:LockeStackIcon%",
+                    "mScalingTagKey": "font color='#0bf7de'",
+                    "mDataValue": "ExecuteThresholdPerStack",
+                    "__type": "BuffCounterByNamedDataValueCalculationPart"
+                  }
+                ],
+                "mDisplayAsPercent": true,
+                "mPrecision": 1,
+                "__type": "GameCalculation"
+              }
+            },
+            "mClientData": {
+              "mTooltipData": {
+                "mLocKeys": {
+                  "keyTooltip": "Spell_LockeR_Tooltip"
+                }
+              }
+            }
+          }
+        }
+      },
+      "strings": {
+        "spell_locker_tooltip": "Locke throws a binding artifact to a location, dealing <magicDamage>@Damage@ magic damage</magicDamage> and <status>Slowing</status> enemies in the area by @SlowAmount*100@%, decaying over @SlowDuration@ seconds. The artifact marks enemies hit for @Duration@ seconds, sealing away marked enemy champions brought below <spellName>@ExecuteTooltipCalc@</spellName>, and resetting the duration of the mark on other affected champions.<br><br>After the duration ends, if at least one champion was sealed, the artifact lands on the ground. Locke can pick up the artifact to permanently increase its execution threshold by @ExecuteThresholdPerStack*100@%, and refund @CooldownReduction@% of his total Cooldown, for each champion sealed.<br>"
+      }
+    },
+    {
+      "alias": "ahri",
+      "championId": 103,
+      "key": "Q",
+      "bin": {
+        "Characters/Ahri/CharacterRecords/Root": {
+          "spells": [
+            "Characters/Ahri/Spells/AhriQAbility/AhriQ",
+            "Characters/Ahri/Spells/AhriWAbility/AhriW",
+            "Characters/Ahri/Spells/AhriEAbility/AhriE",
+            "Characters/Ahri/Spells/AhriRAbility/AhriR"
+          ],
+          "mCharacterPassiveSpell": "Characters/Ahri/Spells/AhriPassiveAbility/AhriPassive"
+        },
+        "Characters/Ahri/Spells/AhriQAbility/AhriQ": {
+          "mScriptName": "AhriQ",
+          "mSpell": {
+            "DataValues": [
+              {
+                "name": "BaseDamage",
+                "values": [
+                  10.0,
+                  35.0,
+                  60.0,
+                  85.0,
+                  110.0,
+                  135.0,
+                  160.0
+                ],
+                "__type": "SpellDataValue"
+              }
+            ],
+            "mSpellCalculations": {
+              "TotalDamage": {
+                "mSimpleTooltipCalculationDisplay": 6,
+                "mFormulaParts": [
+                  {
+                    "mDataValue": "BaseDamage",
+                    "__type": "NamedDataValueCalculationPart"
+                  },
+                  {
+                    "mCoefficient": 0.5,
+                    "__type": "StatByCoefficientCalculationPart"
+                  }
+                ],
+                "__type": "GameCalculation"
+              }
+            },
+            "mClientData": {
+              "mTooltipData": {
+                "mLocKeys": {
+                  "keyTooltip": "Spell_AhriOrbofDeception_Tooltip"
+                }
+              }
+            }
+          }
+        }
+      },
+      "strings": {
+        "spell_ahriorbofdeception_tooltip": "Ahri throws then pulls back her orb, dealing <magicDamage>@TotalDamage@ magic damage</magicDamage> on the way out and <trueDamage>@TotalDamage@ true damage</trueDamage> on the way back."
+      }
+    },
+    {
+      "alias": "darius",
+      "championId": 122,
+      "key": "Q",
+      "bin": {
+        "Characters/Darius/CharacterRecords/Root": {
+          "spells": [
+            "Characters/Darius/Spells/DariusCleaveAbility/DariusCleave",
+            "Characters/Darius/Spells/DariusNoxianTacticsONHAbility/DariusNoxianTacticsONH",
+            "Characters/Darius/Spells/DariusAxeGrabConeAbility/DariusAxeGrabCone",
+            "Characters/Darius/Spells/DariusExecuteAbility/DariusExecute"
+          ],
+          "mCharacterPassiveSpell": "Characters/Darius/Spells/DariusHemoMarkerAbility/DariusHemoMarker"
+        },
+        "Characters/Darius/Spells/DariusCleaveAbility/DariusCleave": {
+          "mScriptName": "DariusCleave",
+          "mSpell": {
+            "DataValues": [
+              {
+                "name": "MissingHealthHeal",
+                "values": [
+                  17.0,
+                  17.0,
+                  17.0,
+                  17.0,
+                  17.0,
+                  17.0,
+                  17.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "TotalADRatio",
+                "values": [
+                  90.0,
+                  100.0,
+                  110.0,
+                  120.0,
+                  130.0,
+                  140.0,
+                  150.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "BaseDamage",
+                "values": [
+                  10.0,
+                  50.0,
+                  80.0,
+                  110.0,
+                  140.0,
+                  170.0,
+                  200.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "InnerCircleDamagePercent",
+                "values": [
+                  35.0,
+                  35.0,
+                  35.0,
+                  35.0,
+                  35.0,
+                  35.0,
+                  35.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "MissingHealPercent",
+                "values": [
+                  51.0,
+                  51.0,
+                  51.0,
+                  51.0,
+                  51.0,
+                  51.0,
+                  51.0
+                ],
+                "__type": "SpellDataValue"
+              }
+            ],
+            "mSpellCalculations": {
+              "BladeDamage": {
+                "tooltipOnly": true,
+                "mFormulaParts": [
+                  {
+                    "mDataValue": "BaseDamage",
+                    "__type": "NamedDataValueCalculationPart"
+                  },
+                  {
+                    "mStat": 2,
+                    "mSubpart": {
+                      "mPart1": {
+                        "mDataValue": "TotalADRatio",
+                        "__type": "NamedDataValueCalculationPart"
+                      },
+                      "mPart2": {
+                        "mNumber": 0.009999999776482582,
+                        "__type": "NumberCalculationPart"
+                      },
+                      "__type": "ProductOfSubPartsCalculationPart"
+                    },
+                    "__type": "StatBySubPartCalculationPart"
+                  }
+                ],
+                "__type": "GameCalculation"
+              },
+              "HandleDamage": {
+                "mMultiplier": {
+                  "mNumber": 0.3499999940395355,
+                  "__type": "NumberCalculationPart"
+                },
+                "tooltipOnly": true,
+                "mModifiedGameCalculation": "BladeDamage",
+                "__type": "GameCalculationModified"
+              }
+            },
+            "mClientData": {
+              "mTooltipData": {
+                "mLocKeys": {
+                  "keyTooltip": "Spell_DariusQ_Tooltip"
+                }
+              }
+            }
+          }
+        }
+      },
+      "strings": {
+        "spell_dariusq_tooltip": "Darius hefts his axe then swings it around, dealing <physicalDamage>@BladeDamage@ physical damage</physicalDamage> with the edge and <physicalDamage>@HandleDamage@ damage</physicalDamage> with the handle. Enemies hit with the handle do not take a <keywordMajor>Hemorrhage</keywordMajor> stack.<br><br>Darius restores <healing>@MissingHealthHeal@% missing Health</healing> per enemy champion and large jungle monster hit with the edge, up to a max of <healing>@MissingHealPercent@%</healing>."
+      }
+    },
+    {
+      "alias": "garen",
+      "championId": 86,
+      "key": "P",
+      "bin": {
+        "Characters/Garen/CharacterRecords/Root": {
+          "spells": [
+            "Characters/Garen/Spells/GarenQAbility/GarenQ",
+            "Characters/Garen/Spells/GarenWAbility/GarenW",
+            "Characters/Garen/Spells/GarenEAbility/GarenE",
+            "Characters/Garen/Spells/GarenRAbility/GarenR"
+          ],
+          "mCharacterPassiveSpell": "Characters/Garen/Spells/GarenPassiveAbility/GarenPassive"
+        },
+        "Characters/Garen/Spells/GarenPassiveAbility/GarenPassive": {
+          "mScriptName": "GarenPassive",
+          "mSpell": {
+            "DataValues": [
+              {
+                "name": "DamageTimer",
+                "values": [
+                  8.0,
+                  8.0,
+                  8.0,
+                  8.0,
+                  8.0,
+                  8.0,
+                  8.0
+                ],
+                "__type": "SpellDataValue"
+              }
+            ],
+            "mSpellCalculations": {
+              "RegenCalc": {
+                "mMultiplier": {
+                  "mNumber": 0.009999999776482582,
+                  "__type": "NumberCalculationPart"
+                },
+                "mFormulaParts": [
+                  {
+                    "mLevel1Value": 1.5,
+                    "mInitialBonusPerLevel": 0.20000000298023224,
+                    "mBreakpoints": [
+                      {
+                        "mLevel": 7,
+                        "mBonusPerLevelAtAndAfter": 0.800000011920929,
+                        "__type": "Breakpoint"
+                      },
+                      {
+                        "mLevel": 14,
+                        "mBonusPerLevelAtAndAfter": 0.4000000059604645,
+                        "__type": "Breakpoint"
+                      }
+                    ],
+                    "__type": "ByCharLevelBreakpointsCalculationPart"
+                  }
+                ],
+                "mDisplayAsPercent": true,
+                "mPrecision": 1,
+                "__type": "GameCalculation"
+              }
+            },
+            "mClientData": {
+              "mTooltipData": {
+                "mLocKeys": {
+                  "keyTooltip": "Spell_GarenPassive_Tooltip"
+                }
+              }
+            }
+          }
+        }
+      },
+      "strings": {
+        "spell_garenpassive_tooltip": "Garen regenerates <healing>@RegenCalc@ max Health</healing> every 5 seconds if he has not been damaged or hit with enemy Abilities in the last @DamageTimer@ seconds."
+      }
+    },
+    {
+      "alias": "annie",
+      "championId": 1,
+      "key": "P",
+      "bin": {
+        "Characters/Annie/CharacterRecords/Root": {
+          "spells": [
+            "Characters/Annie/Spells/AnnieQAbility/AnnieQ",
+            "Characters/Annie/Spells/AnnieWAbility/AnnieW",
+            "Characters/Annie/Spells/AnnieEAbility/AnnieE",
+            "Characters/Annie/Spells/AnnieRAbility/AnnieR"
+          ],
+          "mCharacterPassiveSpell": "Characters/Annie/Spells/AnniePassiveAbility/AnniePassive"
+        },
+        "Characters/Annie/Spells/AnniePassiveAbility/AnniePassive": {
+          "mScriptName": "AnniePassive",
+          "mSpell": {
+            "DataValues": [
+              {
+                "name": "MaxStacks",
+                "values": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "StunBaseDuration",
+                "values": [
+                  1.25,
+                  1.25,
+                  1.25,
+                  1.25,
+                  1.25,
+                  1.25,
+                  1.25
+                ],
+                "__type": "SpellDataValue"
+              },
+              {
+                "name": "StunDurationPerTier",
+                "values": [
+                  0.25,
+                  0.25,
+                  0.25,
+                  0.25,
+                  0.25,
+                  0.25,
+                  0.25
+                ],
+                "__type": "SpellDataValue"
+              }
+            ],
+            "mSpellCalculations": {
+              "StunDuration": {
+                "mFormulaParts": [
+                  {
+                    "mLevel1Value": 1.25,
+                    "mBreakpoints": [
+                      {
+                        "mLevel": 6,
+                        "mAdditionalBonusAtThisLevel": 0.25,
+                        "__type": "Breakpoint"
+                      },
+                      {
+                        "mLevel": 11,
+                        "mAdditionalBonusAtThisLevel": 0.25,
+                        "__type": "Breakpoint"
+                      }
+                    ],
+                    "__type": "ByCharLevelBreakpointsCalculationPart"
+                  }
+                ],
+                "mPrecision": 2,
+                "__type": "GameCalculation"
+              }
+            },
+            "mClientData": {
+              "mTooltipData": {
+                "mLocKeys": {
+                  "keyTooltip": "Spell_AnniePassive_Tooltip"
+                }
+              }
+            }
+          }
+        }
+      },
+      "strings": {
+        "spell_anniepassive_tooltip": "After using 4 Abilities, Annie's next damaging Ability <status>Stuns</status> for @StunDuration@ seconds.<br><br>Annie begins the game and respawns with <spellName>Pyromania</spellName> available."
+      }
+    }
+  ]
+}

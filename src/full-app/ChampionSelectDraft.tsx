@@ -7,7 +7,7 @@ import { roleSlug, secondsLeft, type Draft, type DraftMember } from "./champ-sel
 const PHASES: Record<string, string> = { PLANNING: "Declare intent", BAN_PICK: "Picks & bans", FINALIZATION: "Finalizing", GAME_STARTING: "Game starting" };
 
 /** Both teams' picks and hovers, your slot highlighted, bans and the phase timer. */
-export function DraftBand({ draft, readAt, names, enemyIds, mainRoles, small }: { draft: Draft | null; readAt: number; names: Map<number, string>; enemyIds: number[]; mainRoles?: Map<number, string>; small: boolean }) {
+export function DraftBand({ draft, readAt, names, enemyIds, mainRoles }: { draft: Draft | null; readAt: number; names: Map<number, string>; enemyIds: number[]; mainRoles?: Map<number, string> }) {
   const [now, setNow] = useState(() => Date.now());
   const running = !!draft?.timer && draft.timer.remainingMs > 0;
   // One tick a second, only while a draft timer is counting down.
@@ -19,11 +19,11 @@ export function DraftBand({ draft, readAt, names, enemyIds, mainRoles, small }: 
   }, [running, readAt]);
   const seconds = secondsLeft(draft?.timer ?? null, readAt, now);
   const empty: DraftMember = { championId: 0, position: "", local: false, locked: false };
-  return <section className={`fa-card cs-band${small ? " is-small" : ""}`} aria-label="Draft">
+  return <section className="fa-card cs-band" aria-label="Draft">
     <div className="cs-band-head">
-      <span className="cs-band-label is-ally">Your team</span>
+      <div className="cs-band-side"><span className="cs-band-label is-ally">Your team</span><Bans ids={draft?.allyBans ?? []} names={names} label="Your team's bans" /></div>
       <span className="cs-band-phase"><span className="cs-live-dot" />{PHASES[draft?.timer?.phase ?? ""] ?? "Draft"}</span>
-      <span className="cs-band-label is-enemy">Enemy team</span>
+      <div className="cs-band-side is-enemy"><span className="cs-band-label is-enemy">Enemy team</span><Bans ids={draft?.enemyBans ?? []} names={names} label="Enemy team's bans" /></div>
     </div>
     <div className="cs-teams">
       {(["allies", "enemies"] as const).map(side => {
@@ -41,8 +41,14 @@ export function DraftBand({ draft, readAt, names, enemyIds, mainRoles, small }: 
         <span>{seconds !== null ? "seconds" : "Waiting"}</span>
       </div>
     </div>
-    <div className="cs-band-foot"><span>Bans</span><div className="cs-bans" aria-label="Bans">{draft?.bans.length ? draft.bans.map((id, index) => <span key={`${id}-${index}`} title={`Banned: ${names.get(id) ?? "Champion"}`}><ChampionIcon id={id} name={names.get(id)} mode="desktop" /></span>) : <small>No bans yet</small>}</div><span className="cs-draft-hint">{small ? "Your pick is locked in" : "The draft updates live"}</span></div>
   </section>;
+}
+
+function Bans({ ids, names, label }: { ids: number[]; names: Map<number, string>; label: string }) {
+  return <div className="cs-bans" role="list" aria-label={label}>{Array.from({ length: 5 }, (_, index) => {
+    const id = ids[index];
+    return <span key={index} role="listitem" className={id ? "" : "is-empty"} aria-label={id ? `Banned: ${names.get(id) ?? "Champion"}` : "Empty ban slot"} title={id ? `Banned: ${names.get(id) ?? "Champion"}` : undefined}>{id > 0 && <ChampionIcon id={id} name={names.get(id)} mode="desktop" />}</span>;
+  })}</div>;
 }
 
 // Practice tool, blind pick and ranked enemies give no positions: show the champion's usual role (enemies) or the seat's, dimmed.

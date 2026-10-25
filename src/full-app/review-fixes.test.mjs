@@ -7,6 +7,7 @@ import * as model from "./champ-select-model.ts";
 import * as buildLogic from "./buildLogic.ts";
 import * as championsModel from "./championsModel.ts";
 import * as format from "./ui/format.ts";
+import * as cooldownModel from "./cooldownModel.ts";
 import { fixtureView, fixtureDraft } from "./champ-select-fixtures.ts";
 
 // Execute the actual components with deterministic hooks and command/event boundaries.
@@ -52,6 +53,9 @@ function harness(file, exportName, commands = {}, visibility = "visible") {
     react: hooks, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke, isTauri: () => true },
     "./AmbientArt": { useAmbientChampion: () => {} },
+    "./Picker": { ROLES: [["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] },
+    "./cooldownModel": cooldownModel,
+    "radix-ui": { HoverCard: { Root: "hover-root", Trigger: "hover-trigger", Portal: "hover-portal", Content: "hover-content" } },
     "@tauri-apps/api/event": { listen: async (name, fn) => { handlers.set(name, fn); return () => handlers.delete(name); } },
     "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./championsModel": championsModel, "./ui/format": format,
   };
@@ -120,8 +124,8 @@ test("equivalent parent build objects preserve rune edits; a changed source rese
   h.render({ ...props, build: { ...props.build, spells: [4, 14] } }); await h.flush();
   assert.equal(button(h, "Reset"), undefined);
 });
-test("draft events update taken picks and enemy build context without a local view change", async () => {
-  const view = fixtureView("hover"), draft = fixtureDraft("hover");
+test("draft events update taken picks during planning without a local view change", async () => {
+  const view = fixtureView("planning"), draft = fixtureDraft("planning");
   let buildReads = 0;
   const h = harness("./ChampionSelect.tsx", "ChampionSelect", { full_app_draft: draft });
   h.render({ view, championApi: { list: async () => [], overview: async () => null, tierList: async () => ({ rows: [] }) }, onLoadBuild: async () => { buildReads++; return null; }, onLoadMatchup: async () => null }); await h.flush();
@@ -132,6 +136,28 @@ test("draft events update taken picks and enemy build context without a local vi
   assert.equal(suggestions.props.enemyId, 238);
   assert.ok(suggestions.props.taken.has(11));
   assert.equal(buildReads, before, "enemy reveals must not reload and reset the source build");
+});
+test("draft events update enemy build context without reloading the source build", async () => {
+  const view = fixtureView("locked"), draft = fixtureDraft("locked");
+  let buildReads = 0;
+  const h = harness("./ChampionSelect.tsx", "ChampionSelect", { full_app_draft: draft });
+  h.render({ view, championApi: { list: async () => [], overview: async () => null, tierList: async () => ({ rows: [] }) }, onPositionChange() {}, onLoadBuild: async () => { buildReads++; return null; }, onLoadMatchup: async () => null }); await h.flush();
+  const before = buildReads;
+  await h.emit("draft_changed", { ...draft, enemies: [{ championId: 238, position: "top", locked: true }] });
+  assert.equal(nodes(h.tree()).find(n => n.props?.compact)?.props.championId, 238);
+  assert.equal(buildReads, before);
+});
+
+test("ability hover prefers resolved text and falls back for both spells and passives", async () => {
+  for (const key of ["Q", "P"]) for (const tooltip of ["Deals 75/150/225 (+60% AP) damage.", null]) {
+    const sheet = { championId: 103, passive: { name: "Passive", description: "Short fallback.", tooltip }, spells: [{ key: "Q", name: "Spell", description: "Short fallback.", tooltip, cooldowns: [7], costs: [], ranges: [], charges: 0, recharge: [] }] };
+    const h = harness("./AbilityHover.tsx", "AbilityHover", { champion_abilities: sheet });
+    h.render({ championId: 103, abilityKey: key, children: "Q" });
+    h.tree().props.onOpenChange(true); await h.flush();
+    const text = nodes(h.tree()).find(n => n.props?.className === "fa-ability-text");
+    assert.equal(textOf(text), tooltip ?? "Short fallback.");
+    if (tooltip) assert.ok(nodes(text).some(n => n.props?.className === "fa-ability-ap"));
+  }
 });
 test("game-state pushes update navigation immediately and beat a stale startup read", async () => {
   let finish;

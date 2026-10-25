@@ -70,6 +70,9 @@
 .fa-frame .champion-tools .fa-stat-strip { background: none; border-color: transparent; box-shadow: none; }
 .fa-frame .champion-tools .fa-stat-strip > div { padding: 14px 10px 16px; }
 .fa-frame .champion-tools .fa-stat-strip strong { font-size: 30px; font-weight: 700; }
+.fa-frame .champion-tools .fa-stat-strip strong.wr-high { color: var(--wr-high); }
+.fa-frame .champion-tools .fa-stat-strip strong.wr-good { color: var(--wr-good); }
+.fa-frame .champion-tools .fa-stat-strip strong.wr-low { color: var(--wr-low); }
 
 /* ---------- Matchups: empty state and the selected matchup ---------- */
 .fa-matchup-empty { display: block; min-width: 0; padding: 20px 0; text-align: left; }

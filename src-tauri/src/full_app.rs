@@ -369,6 +369,19 @@ const FILED_INTERVAL: std::time::Duration = std::time::Duration::from_secs(5);
 /// refresh the dashboard and open the match.
 pub async fn announce_finished_game(app: tauri::AppHandle) {
     let Some(id) = finished_game_id().await else { return };
+    // The end-of-game screen's stats exist right away, minutes before match history files the game:
+    // the dashboard shows them as a "just ended" row meanwhile. They can take a few seconds to appear.
+    for _ in 0..ENDED_CHECKS {
+        let summary = match crate::runes::lcu().await {
+            Ok(client) => crate::runes::lcu_get::<Value>(&client, "/lol-end-of-game/v1/eog-stats-block").await.ok().and_then(|eog| ended_game(&eog)),
+            Err(_) => None,
+        };
+        if let Some(summary) = summary.filter(|game| game.id == id) {
+            let _ = app.emit("game_ended", summary);
+            break;
+        }
+        tokio::time::sleep(ENDED_INTERVAL).await;
+    }
     for _ in 0..FILED_CHECKS {
         tokio::time::sleep(FILED_INTERVAL).await;
         let Ok(client) = crate::runes::lcu().await else { continue };
@@ -380,6 +393,45 @@ pub async fn announce_finished_game(app: tauri::AppHandle) {
             return;
         }
     }
+}
+
+const ENDED_CHECKS: u32 = 6;
+const ENDED_INTERVAL: std::time::Duration = std::time::Duration::from_secs(2);
+
+/// A just-ended game from the end-of-game stats, for the dashboard until match history has it.
+#[derive(Clone, Debug, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct EndedGame {
+    id: u64,
+    win: bool,
+    champion_id: i64,
+    kills: u64,
+    deaths: u64,
+    assists: u64,
+    cs: u64,
+    /// Seconds.
+    duration: u64,
+}
+
+fn ended_game(eog: &Value) -> Option<EndedGame> {
+    let local = &eog["localPlayer"];
+    let stats = &local["stats"];
+    let stat = |key: &str| stats[key].as_u64().unwrap_or(0);
+    let team = local["teamId"].as_i64();
+    let win = eog["teams"].as_array()
+        .and_then(|teams| teams.iter().find(|t| t["teamId"].as_i64() == team))
+        .and_then(|t| t["isWinningTeam"].as_bool())
+        .or_else(|| stats["WIN"].as_u64().map(|win| win == 1))?;
+    Some(EndedGame {
+        id: eog["gameId"].as_u64().filter(|id| *id > 0)?,
+        win,
+        champion_id: local["championId"].as_i64().filter(|id| *id > 0)?,
+        kills: stat("CHAMPIONS_KILLED"),
+        deaths: stat("NUM_DEATHS"),
+        assists: stat("ASSISTS"),
+        cs: stat("MINIONS_KILLED") + stat("NEUTRAL_MINIONS_KILLED"),
+        duration: eog["gameLength"].as_u64().unwrap_or(0),
+    })
 }
 
 /// The id of the game that just ended: the gameflow session still holds it at
@@ -536,7 +588,24 @@ pub async fn dashboard_snapshot(
 
 #[cfg(test)]
 mod tests {
-    use super::history_has_game;
+    use super::{ended_game, history_has_game};
+
+    #[test]
+    fn end_of_game_stats_become_a_just_ended_row() {
+        let eog = serde_json::json!({
+            "gameId": 42, "gameLength": 1830,
+            "localPlayer": { "championId": 103, "teamId": 200, "stats": {
+                "CHAMPIONS_KILLED": 7, "NUM_DEATHS": 2, "ASSISTS": 9, "MINIONS_KILLED": 180, "NEUTRAL_MINIONS_KILLED": 12 } },
+            "teams": [{ "teamId": 100, "isWinningTeam": false }, { "teamId": 200, "isWinningTeam": true }]
+        });
+        let game = ended_game(&eog).unwrap();
+        assert_eq!((game.id, game.win, game.champion_id, game.kills, game.deaths, game.assists, game.cs, game.duration), (42, true, 103, 7, 2, 9, 192, 1830));
+        // Without team results the player's own WIN stat decides; without a game or champion there is no row.
+        let solo = serde_json::json!({ "gameId": 7, "localPlayer": { "championId": 1, "stats": { "WIN": 0 } } });
+        assert!(!ended_game(&solo).unwrap().win);
+        assert!(ended_game(&serde_json::json!({ "localPlayer": { "championId": 1, "stats": { "WIN": 1 } } })).is_none());
+        assert!(ended_game(&serde_json::json!({ "gameId": 7, "localPlayer": { "championId": 1, "stats": {} } })).is_none());
+    }
 
     #[test]
     fn finished_game_is_found_in_the_history_list() {

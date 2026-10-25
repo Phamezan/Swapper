@@ -7,6 +7,7 @@ import { mockIPC, mockWindows } from "@tauri-apps/api/mocks";
 import { emit } from "@tauri-apps/api/event";
 // ---- matchdetail: rich match fixture (preview only) ----
 import { matchDetailFixture } from "./match/preview";
+import type { PlayerHit } from './playerModel';
 // ---- end matchdetail import ----
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
@@ -133,6 +134,9 @@ const buildOf = (ids: number[], winPct: number, games: number, order: string) =>
 });
 const runePage = (primaryPageId: number, keystone: number, primaryRunes: number[], secondaryPageId: number, secondaryRunes: number[]) => ({ primaryPageId, keystone, primaryRunes, secondaryPageId, secondaryRunes, shards: [5005, 5008, 5001] });
 // ---- end uibuilds mocks ----
+const searchCalls: { query: string; online: boolean; done: boolean }[] = [];
+const liveChecks: boolean[] = [];
+Object.assign(window, { searchCalls, liveChecks });
 mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
@@ -149,13 +153,26 @@ mockIPC(async (cmd, args) => {
     // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
     case 'full_app_search_players': {
       const connected = !params.has('stale') && !params.has('disconnected');
-      if (params.has('search-slow')) await new Promise(resolve => setTimeout(resolve, 1000));
+      const call = { query: String(a.query), online: Boolean(a.online), done: false };
+      searchCalls.push(call);
+      if (a.online && params.has('search-slow')) await new Promise(resolve => setTimeout(resolve, 1000));
       const q = String(a.query).trim().toLowerCase();
+      if (a.online && params.has('search-reorder') && q === 'exam') await new Promise(resolve => setTimeout(resolve, 800));
       const saved = snapshot.games.flatMap(g => g.players.filter(p => !p.me && p.riotId.toLowerCase().startsWith(q)).map(p => ({ riotId: p.riotId,
         icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: null, ally: p.ally, lastPlayed: g.createdAt })));
-      const players = [...new Map(saved.reverse().map(p => [p.riotId, p])).values()].slice(0, 8).map(p => ({ ...p, live: false }));
-      if (connected && q === 'demo player#test') players.unshift({ riotId: 'Demo Player#TEST', icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: null, ally: false, lastPlayed: 0, live: true });
+      const players: (PlayerHit & { live: boolean })[] = [...new Map(saved.reverse().map(p => [p.riotId, p])).values()].slice(0, 8).map(p => ({ ...p, live: false }));
+      if (connected && a.online && q === 'demo player#test') players.unshift({ riotId: 'Demo Player#TEST', icon: `${DD}/${VERSION}/img/profileicon/29.png`, level: null, ally: false, lastPlayed: 0, live: false });
+      if (connected && a.online && !params.has('search-online-fail') && 'example'.startsWith(q) && q.length >= 2) players.unshift({ riotId: 'Example#TAG', icon: null, level: null, ally: null, lastPlayed: null, live: false });
+      if (params.has('profile-live')) for (const player of players) player.live = player.riotId === 'Player 1#DEMO';
+      call.done = true;
       return { connected, players, message: connected ? q.includes('#') && !players.length ? 'No player found for that Riot ID.' : null : 'Open League Client to load a profile. Showing saved players only.' };
+    }
+    case 'full_app_player_live': {
+      liveChecks.push(Boolean(a.details));
+      const active = params.has('profile-live') && !params.has('stale') && !params.has('disconnected');
+      const view = active && a.details && !params.has('profile-live-fail') ? { ...liveView, gameTime: null,
+        players: liveView.players.map(p => ({ ...p, isSelf: false, live: null })) } : null;
+      return { live: active, view, message: a.details && !view ? 'Live players are unavailable. Try again shortly.' : null };
     }
     case 'full_app_player_profile': {
       const { profileGame } = await import('./playerModel');
@@ -349,10 +366,11 @@ mockIPC(async (cmd, args) => {
     case "champion_abilities":
       if (params.has("patch-abilities-offline")) throw new Error("Preview abilities unavailable");
       return { championId: a.championId, summoners: [], passive: a.championId === 51
-        ? { name: "Headshot", iconPath: "/lol-game-data/assets/caitlyn-passive.png", description: "Caitlyn periodically fires an empowered attack." }
-        : { name: "Deathbringer Stance", iconPath: null, description: "Periodically, Aatrox's next basic attack deals bonus physical damage and heals him." },
+        ? { name: "Headshot", iconPath: "/lol-game-data/assets/caitlyn-passive.png", description: "Caitlyn periodically fires an empowered attack.", tooltip: null }
+        : { name: "Deathbringer Stance", iconPath: null, description: "Periodically, Aatrox's next basic attack deals bonus physical damage and heals him.", tooltip: "Periodically, Aatrox's next attack deals (+4–8% target max Health) physical damage and heals him for the damage dealt (based on level)." },
       spells: ["Q", "W", "E", "R"].map((key, i) => ({ key, name: ["The Darkin Blade", "Infernal Chains", "Umbral Dash", "World Ender"][i], iconPath: null,
         description: ["Aatrox slams his greatsword down three times; each strike is stronger at the edge.", "Aatrox smashes the ground, damaging and slowing the first enemy hit, then pulls them back.", "Passive: Aatrox heals from champion damage. Active: Aatrox dashes, empowering his next attacks.", "Aatrox unleashes his demonic form, fearing nearby minions and gaining Attack Damage and healing."][i],
+        tooltip: i === 0 ? "Aatrox slams his greatsword down, dealing 10/25/40/55/70 (+60/70/80/90/100% AD) physical damage.\n\nEnemies hit at the edge take increased damage and are knocked up." : null,
         cooldowns: key === "R" ? [120, 100, 80] : [14, 12, 10, 8, 6], costs: [], ranges: key === "R" ? [] : [625, 625, 625, 625, 625], charges: key === "E" ? 2 : 0, recharge: key === "E" ? [9, 8, 7, 6, 5] : [] })) };
     case "ability_icon": return `${DD}/${VERSION}/img/passive/Caitlyn_Headshot.png`;
     case "full_app_abilities":
@@ -371,6 +389,7 @@ mockIPC(async (cmd, args) => {
     case "full_app_player_mmr": return { tier: "EMERALD", division: "I", lp: 18, games: 10, trend: -12 };
     // ?update: an update is waiting, so the title bar shows its pill.
     case "update_status": return { state: params.has("update") ? "available" : "upToDate", currentVersion: "1.0.3", availableVersion: params.has("update") ? "1.0.4" : null, notes: null, message: null, lastCheck: null };
+    case "level_border": { const level = Number(a.level); const theme = level < 30 ? 1 : level < 50 ? 2 : 3 + Math.floor((Math.min(level, 500) - 50) / 25); return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/uikit/themed-borders/theme-${theme}-border.png`; }
     case "rank_emblem": return params.has("emblem") ? `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-${a.tier}.png` : null;
     case "riot_client_icon": return null; // PLAY falls back to its own icon; Swapper ships no Riot artwork.
     case "restart_plan": return new URLSearchParams(location.search).get("restart") ?? "restart";
@@ -393,4 +412,6 @@ mockWindows("full-app");
 void import("./main").then(() => {
   // ?switching: the switch flow only reports started/done/failed, so that is all the preview fakes.
   if (shellState.has("switching")) setTimeout(() => void emit("switch_started", { id: "b", name: "Alt Account" }), 1200);
+  // ?ended: a game just ended and is not in match history yet.
+  if (params.has("ended")) setTimeout(() => void emit("game_ended", { id: 999, win: true, championId: 103, kills: 7, deaths: 2, assists: 9, cs: 192, duration: 1830 }), 800);
 });

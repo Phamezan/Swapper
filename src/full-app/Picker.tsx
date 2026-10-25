@@ -4,7 +4,6 @@ import { Check, ChevronDown } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { RankCrest } from "../runes/RankCrest";
-import { RoleIcon } from "../runes/RoleIcon";
 import { TIER_OPTIONS, type ChampionOption } from "../runes/types";
 import { NearViewport } from "./NearViewport";
 
@@ -43,9 +42,6 @@ export function Picker({ label, value, options, onChange, grid = false, searchab
 export const ROLES = [["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const;
 export function RankPicker({ value, onChange, disabled }: { value: string; onChange: (value: string) => void; disabled?: boolean }) {
   return <Picker label="Rank" value={value} onChange={onChange} disabled={disabled} grid options={TIER_OPTIONS.map(option => ({ ...option, icon: <RankCrest tier={option.value} size={28} mode="desktop" /> }))} />;
-}
-export function RolePicker({ value, onChange }: { value: string; onChange: (value: string) => void }) {
-  return <Picker label="Role" value={value} onChange={onChange} options={ROLES.map(([value, label]) => ({ value, label, icon: <RoleIcon role={value} size={20} mode="desktop" /> }))} />;
 }
 export function ChampionPicker({ label, value, champions, onChange }: { label: string; value: number; champions: ChampionOption[]; onChange: (value: number) => void }) {
   return <Picker label={label} value={String(value)} onChange={value => onChange(Number(value))} searchable options={[{ value: "0", label }, ...champions.map(champion => ({ value: String(champion.id), label: champion.name, icon: <ChampionIcon id={champion.id} name={champion.name} mode="desktop" /> }))]} />;

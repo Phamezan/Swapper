@@ -16,6 +16,7 @@ export function fixtureDraft(name: FixtureName): Draft {
     enemies: [member(122, "top", true), member(0, "jungle", false), member(enemyMid, "middle", enemyMid > 0), member(0, "bottom", false), member(0, "utility", false)]
       .map(enemy => name === "locked-blind" && enemy.position === "top" ? { ...enemy, championId: 0, locked: false } : enemy),
     bans: [157, 777, 893, 875, 233, 902],
+    allyBans: [157, 893, 233], enemyBans: [777, 875, 902], canLock: !name.startsWith("locked"),
     timer: { phase: name.startsWith("locked") ? "FINALIZATION" : "BAN_PICK", remainingMs: name.startsWith("locked") ? 41_000 : 24_000 },
   };
 }

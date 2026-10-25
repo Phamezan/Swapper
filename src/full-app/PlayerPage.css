@@ -8,6 +8,14 @@
 .player-hero-content { padding: 28px; }
 .player-hero-identity { display: flex; align-items: center; gap: 18px; }
 .player-hero-identity > .search-profile-icon { flex-shrink: 0; border-radius: var(--ui-radius-md); box-shadow: 0 0 0 1px var(--ui-line-3), var(--ui-elev-2); }
+/* League's level frame: the 512px art's ring is ~38% of its width and centred at 46% height, so the 82px icon sits in
+   it at 216px. The level sits on the frame's bottom plate, the spotlight of the header. */
+.player-level-frame { position: relative; flex-shrink: 0; display: grid; place-items: center; width: 82px; height: 82px; }
+.player-level-frame.has-border { margin: 30px 46px 22px; }
+.player-level-frame > .search-profile-icon { border-radius: var(--ui-radius-md); box-shadow: 0 0 0 1px var(--ui-line-3), var(--ui-elev-2); }
+.player-level-frame.has-border > .search-profile-icon { border-radius: 50%; border: 0; box-shadow: none; }
+.player-level-border { position: absolute; left: 50%; top: 50%; z-index: 1; width: 216px; height: 216px; max-width: none; transform: translate(-50%, -46%); pointer-events: none; }
+.player-level-plate { position: absolute; left: 50%; bottom: -15px; z-index: 2; transform: translateX(-50%); padding: 2px 10px; border: 1px solid rgb(200 170 110 / .75); border-radius: 99px; background: rgb(10 12 16 / .94); color: #f0e6d2; font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: .02em; line-height: 1.3; box-shadow: 0 4px 14px -6px rgb(0 0 0 / .9); }
 .player-identity { min-width: 0; }
 .player-identity h2 { margin: 0 0 8px; font-size: clamp(28px, 2.7vw, 38px); line-height: 1.15; letter-spacing: -.035em; font-weight: 750; overflow-wrap: anywhere; }
 .player-identity h2 span { color: var(--ui-text-2); font-size: .65em; letter-spacing: -.02em; margin-left: 8px; }
@@ -128,3 +136,6 @@
   .player-match-cs, .player-match-opponent { display: none; }
 }
 .player-rank-mmr { padding: 0 20px 18px; }
+.player-live-badge { margin-left: 12px; cursor: pointer; vertical-align: middle; }
+.player-live-game { display: grid; gap: 16px; min-width: 0; }
+.player-live-game > h2 { margin: 0; font-size: 20px; }

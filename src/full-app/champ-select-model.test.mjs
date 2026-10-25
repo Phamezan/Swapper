@@ -117,11 +117,12 @@ test("champion search ignores case and punctuation, prefers prefix matches and s
   assert.deepEqual(searchChampions(names, "  ", new Set()), []);
 });
 
-test("all champions are listed A to Z with role win rates where known", () => {
-  const names = new Map([[3, "Zed"], [1, "Ahri"], [2, "Lux"]]);
-  const rows = [{ championId: 3, name: "Zed", tier: "S", winPct: 52, games: 900, pickPct: 1, banPct: 1 }];
-  const all = allChampions(names, rows, new Set([2]));
-  assert.deepEqual(all.map(c => c.name), ["Ahri", "Zed"]);
-  assert.ok(Number.isNaN(all[0].winPct));
-  assert.equal(all[1].winPct, 52);
+test("All lists the role's champions A to Z, or every champion without role data", () => {
+  const names = new Map([[3, "Zed"], [1, "Ahri"], [2, "Lux"], [4, "Garen"]]);
+  const row = (championId, name, winPct) => ({ championId, name, tier: "S", winPct, games: 900, pickPct: 1, banPct: 1 });
+  const all = allChampions(names, [row(3, "Zed", 52), row(1, "Ahri", 51), row(2, "Lux", 50)], new Set([2]));
+  assert.deepEqual(all.map(c => [c.name, c.winPct]), [["Ahri", 51], ["Zed", 52]], "only the role's champions, minus taken ones");
+  const fallback = allChampions(names, [], new Set());
+  assert.deepEqual(fallback.map(c => c.name), ["Ahri", "Garen", "Lux", "Zed"]);
+  assert.ok(Number.isNaN(fallback[0].winPct));
 });

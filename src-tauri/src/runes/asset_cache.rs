@@ -33,6 +33,8 @@ pub(crate) enum Kind {
     Emblem,
     Team,
     Objective,
+    /// The summoner-level frame around a profile icon (`theme-1` … `theme-21`).
+    LevelBorder,
 }
 
 impl Kind {
@@ -43,12 +45,13 @@ impl Kind {
             Kind::Emblem => "emblem",
             Kind::Team => "team",
             Kind::Objective => "objective",
+            Kind::LevelBorder => "level-border",
         }
     }
 
     fn extension(self) -> &'static str {
         match self {
-            Kind::Team | Kind::Objective | Kind::Emblem => "png",
+            Kind::Team | Kind::Objective | Kind::Emblem | Kind::LevelBorder => "png",
             _ => "svg",
         }
     }
@@ -68,6 +71,8 @@ impl Kind {
             .then(|| name.to_string()),
             Kind::Team => team_stem(name),
             Kind::Objective => super::objectives::FILES.contains(&name).then(|| name.to_string()),
+            Kind::LevelBorder => name.strip_prefix("theme-").and_then(|n| n.parse::<u8>().ok()).filter(|n| (1..=21).contains(n))
+                .map(|n| format!("theme-{n}")),
         }
     }
 }

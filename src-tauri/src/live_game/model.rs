@@ -442,7 +442,7 @@ pub struct Player {
 }
 
 impl Player {
-    fn new(key: String, side: Side) -> Self {
+    pub(crate) fn new(key: String, side: Side) -> Self {
         Self {
             key,
             puuid: String::new(),

@@ -13,7 +13,8 @@ import { useChampionArt } from './art';
 import { useAmbientChampion } from './AmbientArt';
 import { fmtAgo } from '../runes/types';
 import type { Game, Mmr, Snapshot } from './types';
-import { profileGame, profileStats, type PlayerProfile } from './playerModel';
+import { profileGame, profileStats, type PlayerProfile, type PlayerLive } from './playerModel';
+import { LiveGameContent } from './LiveGame';
 import './PlayerPage.css';
 
 const roleNames: Record<string, string> = { top: 'Top', jungle: 'Jungle', mid: 'Mid', adc: 'Bot', support: 'Support' };
@@ -71,9 +72,33 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
   const [attempt, setAttempt] = useState(0);
   const [visible, setVisible] = useState(10);
   const [mmr, setMmr] = useState<Mmr | null>(null);
+  const [live, setLive] = useState<PlayerLive | null>(null);
+  const [showLive, setShowLive] = useState(false);
+  const [liveLoading, setLiveLoading] = useState(false);
   useEffect(() => {
     let active = true;
-    setLoading(true); setError(''); setMmr(null);
+    setLive(null); setShowLive(false); setLiveLoading(false);
+    const check = () => {
+      if (document.hidden) return;
+      void invoke<PlayerLive>('full_app_player_live', { riotId, details: false })
+        .then(next => { if (active) setLive(previous => ({ ...next, view: next.live ? previous?.view ?? null : null })); }).catch(() => {});
+    };
+    check();
+    const timer = setInterval(check, 30_000);
+    return () => { active = false; clearInterval(timer); };
+  }, [riotId, attempt]);
+  useEffect(() => {
+    if (!showLive) return;
+    let active = true;
+    setLiveLoading(true);
+    invoke<PlayerLive>('full_app_player_live', { riotId, details: true }).then(next => { if (active) setLive(next); })
+      .catch(() => { if (active) setLive(previous => ({ live: previous?.live ?? false, view: null, message: 'Live players are unavailable. Try again shortly.' })); })
+      .finally(() => { if (active) setLiveLoading(false); });
+    return () => { active = false; };
+  }, [showLive, riotId]);
+  useEffect(() => {
+    let active = true;
+    setLoading(true); setProfile(null); setError(''); setMmr(null);
     invoke<PlayerProfile>('full_app_player_profile', { riotId }).then(next => {
       if (!active) return;
       setProfile(next);
@@ -96,15 +121,22 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
   const [name, tag] = splitRiotId(player.riotId);
   const championName = (id: number) => names[id] ?? `Champion ${id}`;
   const knownRoles = stats.roles.reduce((total, role) => total + role.games, 0);
+  if (showLive) return <div className="player-live-game">
+    <button className="player-back" onClick={() => setShowLive(false)}><BackIcon size={16} />Back to {name}</button>
+    <h2>{name}{tag} · Live game</h2>
+    {liveLoading ? <Skeleton label="Loading live players" rows={10} height={54} />
+      : live?.view ? <LiveGameContent view={live.view} error="" loaded championNames={new Map(Object.entries(names).map(([id, name]) => [Number(id), name]))} readOnly />
+        : <EmptyState title={live?.message?.includes("aren't supported") ? 'Game mode not supported' : 'Live players unavailable'}>{live?.message ?? 'The game may have ended. Try again shortly.'}</EmptyState>}
+  </div>;
   return <div className="player-page dash-v2">
     <button className="player-back" onClick={onBack}><BackIcon size={16} />Back</button>
     <div className="player-layout">
       <section className="player-hero ui-card is-raised" aria-label="Player profile">
         {splash && <img className="player-hero-art" src={splash} alt="" draggable={false} />}
         <div className="player-hero-content">
-          <div className="player-hero-identity"><ProfileIcon player={player} size={82} />
-            <div className="player-identity"><h2>{name}{tag && <span>{tag}</span>}</h2>
-              <p>{player.level ? `Level ${player.level}` : 'Level unavailable'}{profile?.region && <span> · {profile.region}</span>}</p>
+          <div className="player-hero-identity"><LevelFrame player={player} />
+            <div className="player-identity"><h2>{name}{tag && <span>{tag}</span>}{live?.live && <button className="nav-badge live player-live-badge" aria-label="Open live game" onClick={() => setShowLive(true)}><i aria-hidden />LIVE</button>}</h2>
+              {(!player.level || profile?.region) && <p>{player.level ? profile?.region : <>Level unavailable{profile?.region && <span> · {profile.region}</span>}</>}</p>}
               <small>{loading ? 'Loading profile…' : profile?.live ? 'From League Client · just now' : `Saved data${profile?.fetchedAt ? ` · ${fmtAgo(profile.fetchedAt)}` : ''}`}</small>
             </div>
           </div>
@@ -178,4 +210,20 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
       </section>}
     </div>
   </div>;
+}
+
+/** The profile icon inside League's level frame (it changes every 25 levels), with the level on the frame's plate. */
+function LevelFrame({ player }: { player: { riotId: string; icon: string | null; level: number | null } }) {
+  const [border, setBorder] = useState<string | null>(null);
+  useEffect(() => {
+    let live = true;
+    setBorder(null);
+    if (player.level) void invoke<string>('level_border', { level: player.level }).then(url => { if (live) setBorder(url); }).catch(() => {});
+    return () => { live = false; };
+  }, [player.level]);
+  return <span className={`player-level-frame${border ? ' has-border' : ''}`}>
+    {border && <img className="player-level-border" src={border} alt="" draggable={false} />}
+    <ProfileIcon player={player} size={82} />
+    {player.level ? <b className="player-level-plate" title={`Level ${player.level}`}>{player.level}</b> : null}
+  </span>;
 }

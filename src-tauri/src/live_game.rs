@@ -20,7 +20,8 @@ use tauri::{Emitter, Manager};
 /// Each LCU request gets this long; the shared client also caps a response at 4 s.
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(6);
 /// Per-player fetches in flight at once (one request each).
-const CONCURRENCY: usize = 3;
+/// All ten players at once: each one mostly waits on the client's remote history fetch.
+const CONCURRENCY: usize = 10;
 /// Live Client reads closer together than this return the cached view.
 const LIVE_MIN_INTERVAL: Duration = Duration::from_millis(2500);
 
@@ -31,6 +32,8 @@ pub struct Runtime {
     /// The current game's view; `None` outside a game. Cleared at game end.
     view: Mutex<Option<View>>,
     live: Mutex<LiveState>,
+    /// A background load of the current game is running (see `observe`).
+    prefetching: AtomicBool,
 }
 
 #[derive(Default)]
@@ -82,7 +85,18 @@ pub fn observe(app: &tauri::AppHandle, phase: &str) {
     if fixture::bundle().is_some() {
         return;
     }
-    set_active(app, model::in_game(phase));
+    let active = model::in_game(phase);
+    set_active(app, active);
+    // Load the players from the loading screen on, with or without the window open, so the page is
+    // ready when opened. Retried on each poll until the session lists the game's players.
+    let Some(rt) = app.try_state::<Runtime>() else { return };
+    if active && lock(&rt.view).is_none() && !rt.prefetching.swap(true, Ordering::SeqCst) {
+        let app = app.clone();
+        tauri::async_runtime::spawn(async move {
+            let _ = live_game_view(app.clone()).await;
+            app.state::<Runtime>().prefetching.store(false, Ordering::SeqCst);
+        });
+    }
 }
 
 fn set_active(app: &tauri::AppHandle, active: bool) {
@@ -173,7 +187,7 @@ pub async fn live_game_view(app: tauri::AppHandle) -> Result<Option<View>, Strin
     Ok(Some(view))
 }
 
-/// Fetches every player once (≤ 3 in flight) and publishes each as it lands.
+/// Fetches every player once (all in flight) and publishes each as it lands.
 async fn fetch_players(app: tauri::AppHandle, game_id: u64) {
     let targets: Vec<(String, String, i64)> = {
         let rt = app.state::<Runtime>();
@@ -190,12 +204,8 @@ async fn fetch_players(app: tauri::AppHandle, game_id: u64) {
         targets
             .into_iter()
             .map(|(key, puuid, champion)| async move {
-                let damage = source::damage(champion).await;
-                let parts = if puuid.is_empty() {
-                    None
-                } else {
-                    Some(source::player(&puuid).await)
-                };
+                let player = async { if puuid.is_empty() { None } else { Some(source::player(&puuid).await) } };
+                let (damage, parts) = tokio::join!(source::damage(champion), player);
                 (key, damage, parts)
             }),
     )
@@ -283,6 +293,12 @@ mod tests {
     }
 }
 
+/// Summoner, ranked stats and recent games for any player, read in parallel with a history retry
+/// (shared with the player-search live rosters).
+pub(crate) async fn player_parts(puuid: &str) -> (Option<Value>, Option<Value>, Option<Vec<Value>>) {
+    source::player(puuid).await
+}
+
 mod source {
     use super::*;
 
@@ -331,20 +347,22 @@ mod source {
                 rows,
             );
         }
-        let summoner = get(&format!("/lol-summoner/v2/summoners/puuid/{puuid}"))
-            .await
-            .ok();
-        let ranked = get(&format!("/lol-ranked/v1/ranked-stats/{puuid}"))
-            .await
-            .ok();
         let path =
             format!("/lol-match-history/v1/products/lol/{puuid}/matches?begIndex=0&endIndex=19");
-        // The client fetches another player's history remotely the first time
-        // (measured ~2.6 s); a retry is served from its cache.
-        let history = match get(&path).await {
-            Ok(value) => Some(value),
-            Err(_) => get(&path).await.ok(),
+        let history = async {
+            // The client fetches another player's history remotely the first time
+            // (measured ~2.6 s); a retry is served from its cache.
+            match get(&path).await {
+                Ok(value) => Some(value),
+                Err(_) => get(&path).await.ok(),
+            }
         };
+        // The three reads are independent, so the slow history no longer waits behind the others.
+        let (summoner, ranked, history) = tokio::join!(
+            async { get(&format!("/lol-summoner/v2/summoners/puuid/{puuid}")).await.ok() },
+            async { get(&format!("/lol-ranked/v1/ranked-stats/{puuid}")).await.ok() },
+            history,
+        );
         let rows = history.and_then(|h| h["games"]["games"].as_array().cloned());
         (summoner, ranked, rows)
     }

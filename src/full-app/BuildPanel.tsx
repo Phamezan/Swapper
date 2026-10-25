@@ -31,12 +31,14 @@ const PRO_STEP = 8;
 /** The auto-apply setting, shown inline on the champion select page. */
 export type AutoApply = { checked: boolean; disabled: boolean; onChange: (enabled: boolean) => void };
 
-export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply, preview }: {
+export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply, preview, proPageSize }: {
   championId: number; name: string; lane: string; tier: string; build: ChampionBuild | null; liveView?: RunesView | null;
   /** The lane matchup, or each possible one; adds a "vs <enemy>" tab for each with its own build. */
   matchups?: MatchupView[]; autoApply?: AutoApply;
   /** Browsing only (champion pages, Matchups): no apply controls and no rune editing; champion select applies. */
   preview?: boolean;
+  /** Draft pages through pro builds to fit the window without a scrolling list. */
+  proPageSize?: number;
   /** Open on the matchup build instead of the most played one, when there is one. */
   preferMatchup?: boolean;
 }) {
@@ -58,6 +60,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const [pro, setPro] = useState<ProBuild | null>(null);
   // Pages hold many matches; show a few at a time so the build column stays aligned.
   const [proLimit, setProLimit] = useState(PRO_STEP);
+  const [proOffset, setProOffset] = useState(0);
   const [proError, setProError] = useState("");
   const [flashKey, setFlashKey] = useState<FlashKey>("keep");
   useEffect(() => {
@@ -76,14 +79,14 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     const update = () => invoke<RunesView>("get_runes").then(value => { if (live) setClient(value); }).catch(() => {});
     if (!liveView) void update();
     const events = listen("champ_select", () => { void update(); });
-    const items = listen<ItemsImported>("items_imported", ({ payload }) => { if (live) setNotice(shopNoticeFrom(payload).message); });
+    const items = listen<ItemsImported>("items_imported", ({ payload }) => { if (live && !payload.ok) setNotice(shopNoticeFrom(payload).message); });
     return () => { live = false; void events.then(stop => stop()); void items.then(stop => stop()); };
   }, [championId]);
   useEffect(() => { if (liveView) setClient(liveView); }, [liveView]);
   const selection = overviewSelection(build, catalog?.trees ?? []);
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
-    setDetails(null); setChosenIndex(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setNotice(""); setFailed(null); setCustom(null);
+    setDetails(null); setChosenIndex(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setProOffset(0); setNotice(""); setFailed(null); setCustom(null);
     proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
     setImported(null);
   }, [championId, lane, tier, sourceKey]);
@@ -96,16 +99,17 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   useEffect(() => { void loadPros(1); }, [championId, lane, tier, sourceKey]);
   useEffect(() => () => { proRequest.current++; }, []);
   const loadPros = async (page: number) => {
-    if (proBusy.current) return;
+    if (proBusy.current) return false;
     const request = ++proRequest.current;
     proBusy.current = true; setProLoading(true);
     setProError("");
     try {
       const value = await invoke<ProBuildsView>("get_pro_builds", { championId, position: lane, page, isOtp: false });
-      if (request !== proRequest.current) return;
+      if (request !== proRequest.current) return false;
       if (value.unavailable) throw new Error(value.message || "Pro builds unavailable. Try again.");
       setPros(previous => mergeProPage(page === 1 ? null : previous, value));
-    } catch (error) { if (request === proRequest.current) setProError(String(error)); }
+      return true;
+    } catch (error) { if (request === proRequest.current) setProError(String(error)); return false; }
     finally { if (request === proRequest.current) { proBusy.current = false; setProLoading(false); } }
   };
 
@@ -163,7 +167,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         <b className="cs-row-chip">{fmtPct(variant.winPct)}</b>
       </button>)}</div>
       <h3>Pro builds <small>Recent matches</small></h3>
-      <div className="cs-build-entries">{pros?.matches.slice(0, proLimit).map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); setNotice(""); setFailed(null); }}
+      <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); setNotice(""); setFailed(null); }}
         title={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}>
         <TeamLogo team={match.team} size={30} mode="desktop" className="cs-row-logo" />
         <span className="cs-row-text"><strong>{match.proName}</strong><small>{match.playedAgo}</small></span>
@@ -172,8 +176,16 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       </button>)}</div>
       {pros?.stale && <CachedBadge stale updatedAt={pros.updatedAt} />}
       {proError && <p role="alert">{proError}</p>}
-      {proLoading ? <Skeleton label="Loading pro builds" rows={4} height={46} /> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
-        : pros && !pros.matches.length ? <p>No recent pro builds for this role.</p> : pros && (pros.matches.length > proLimit || pros.hasMore) ? <button className="fa-text-button cs-load-pros" onClick={() => { setProLimit(limit => limit + PRO_STEP); if (pros.matches.length <= proLimit + PRO_STEP && pros.hasMore) void loadPros(pros.page + 1); }}>Load more</button> : null}
+      {proLoading && (!pros || !proPageSize) ? <Skeleton label="Loading pro builds" rows={proPageSize ?? 4} height={46} /> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
+        : pros && !pros.matches.length ? <p>No recent pro builds for this role.</p> : proPageSize && pros ? <nav className="cs-pro-pages" aria-label="Pro build pages">
+          <button className="fa-text-button" disabled={proOffset === 0 || proLoading} onClick={() => setProOffset(offset => Math.max(0, offset - proPageSize))}>Previous</button>
+          <span>{Math.floor(proOffset / proPageSize) + 1}</span>
+          <button className="fa-text-button" disabled={proLoading || (proOffset + proPageSize >= pros.matches.length && !pros.hasMore)} onClick={async () => {
+            const next = proOffset + proPageSize;
+            if (next + proPageSize > pros.matches.length && pros.hasMore && !await loadPros(pros.page + 1)) return;
+            setProOffset(next);
+          }}>{proLoading ? "Loading…" : "Next"}</button>
+        </nav> : pros && (pros.matches.length > proLimit || pros.hasMore) ? <button className="fa-text-button cs-load-pros" onClick={() => { setProLimit(limit => limit + PRO_STEP); if (pros.matches.length <= proLimit + PRO_STEP && pros.hasMore) void loadPros(pros.page + 1); }}>Load more</button> : null}
     </aside>
     <div className="cs-build-content">
     <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s build` : chosen.label}</strong><small>{pro ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `${name} · ${lane}`}</small></div>

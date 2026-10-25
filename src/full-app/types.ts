@@ -5,6 +5,9 @@ export type Summary = {
   champions: { id: number; wins: number; losses: number; kda: number }[];
   roles: RoleRecord[];
 };
+/** A just-ended game from the end-of-game screen (`game_ended`), before match history has it. */
+export type EndedGame = { id: number; win: boolean; championId: number; kills: number; deaths: number; assists: number; cs: number; duration: number };
+
 export type Game = {
   id: number; queue: string; championId: number; createdAt: number; duration: number;
   win: boolean; kills: number; deaths: number; assists: number; metrics: (number | null)[];

@@ -1,6 +1,20 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readRecents, remember, matchesPrefix, profileGame, profileStats } from './playerModel.ts';
+import { readRecents, remember, matchesPrefix, profileGame, profileStats, rankPlayers } from './playerModel.ts';
+
+test('player search ranks exact names before prefixes, merges metadata and caps results', () => {
+  const hit = (riotId, lastPlayed = null) => ({ riotId, lastPlayed, icon: null, level: null, ally: null });
+  const local = [hit('Example Longer#TAG', 300), { ...hit('Example#TAG', 100), ally: true }];
+  const online = [{ ...hit('example#tag'), level: 50, live: true }, hit('Unrelated#TAG')];
+  const hits = rankPlayers([...online, ...local], ' EXAMPLE ');
+  assert.deepEqual(hits.map(p => p.riotId.toLowerCase()), ['example#tag', 'example longer#tag']);
+  assert.equal(hits[0].lastPlayed, 100);
+  assert.equal(hits[0].ally, true);
+  assert.equal(hits[0].level, 50);
+  assert.equal(hits[0].live, true);
+  assert.equal(rankPlayers(local, 'example#ta').length, 1);
+  assert.equal(rankPlayers(Array.from({ length: 20 }, (_, i) => hit(`Example ${i}#TAG`)), 'example').length, 8);
+});
 
 test('recent searches are validated, deduplicated, bounded and reorder on selection', () => {
   let recent = [];
