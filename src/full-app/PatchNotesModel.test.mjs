@@ -520,6 +520,19 @@ test("Miss Fortune 26.21: mixed wording, two buffed lines, is a Buff; one buff a
   assert.equal(classifyChange(mf([e, r, line("Cooldown", "10s", "12s")])), "buff", "two buffs outweigh one nerf");
 });
 
+test("Qiyana 26.21: partially reverting an earlier buff is a Nerf, reverting a nerf is a Buff", () => {
+  const q = line("Damage", "80 / 110 / 140 / 170 / 200 (+90% bonus AD)", "70 / 100 / 130 / 160 / 190 (+90% bonus AD)");
+  const qiyana = context => ({ name: "Qiyana", context, notes: [], groups: [{ title: "Q", lines: [q] }] });
+  assert.equal(classifyChange(qiyana("Damage on Qiyana’s Q turned out to be a lot more impactful than we anticipated, so we’re partially reverting the buff we gave her back in 26.17.")), "nerf");
+  assert.equal(classifyChange(entry("Azir", "We are reverting last patch’s nerf.")), "buff");
+});
+
+test("reverting a change does not flip buffs in a separate clause", () => {
+  for (const separator of [" and ", ", ", "; ", ". "]) {
+    assert.equal(classifyChange(entry("Azir", `We're reverting the Q change${separator}buffing W.`)), "buff", separator);
+  }
+});
+
 test("matches champion names across punctuation and aliases", () => {
   const champions = [{ id: 62, name: "Wukong" }, { id: 20, name: "Nunu & Willump" }, { id: 145, name: "Kai'Sa" }];
   assert.equal(championIdFor("Nunu & Willump", champions), 20);

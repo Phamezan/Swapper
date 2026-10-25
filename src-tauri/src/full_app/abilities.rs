@@ -39,6 +39,7 @@ fn cache() -> std::sync::MutexGuard<'static, HashMap<i64, Abilities>> {
 #[serde(rename_all = "camelCase")]
 pub struct Abilities {
     pub champion_id: i64,
+    pub tooltips_ready: bool,
     pub passive: Passive,
     pub spells: Vec<Ability>,
     /// Filled per request from the summoner-spell catalog, never cached here.
@@ -196,6 +197,7 @@ pub fn parse(champion_id: i64, champion: &Value) -> Abilities {
         .collect();
     Abilities {
         champion_id,
+        tooltips_ready: false,
         passive: Passive {
             name: champion["passive"]["name"]
                 .as_str()
@@ -231,12 +233,32 @@ async fn load(champion_id: i64) -> Result<Abilities, String> {
     ))
     .await
     .map_err(|e| e.to_string())?;
-    let mut parsed = parse(champion_id, &champion);
-    tooltips::enrich(&mut parsed, &champion).await;
-    if parsed.spells.len() == 4 {
-        cache().insert(champion_id, parsed.clone());
+    let parsed = parse(champion_id, &champion);
+    let mut enriched = parsed.clone();
+    Ok(cache_tooltips(parsed, async move {
+        enriched.tooltips_ready = tooltips::enrich(&mut enriched, &champion).await;
+        enriched
+    }))
+}
+
+fn cache_tooltips(
+    base: Abilities,
+    work: impl std::future::Future<Output = Abilities> + Send + 'static,
+) -> Abilities {
+    let id = base.champion_id;
+    {
+        let mut sheets = cache();
+        if let Some(found) = sheets.get(&id) { return found.clone(); }
+        if base.spells.len() != 4 { return base; }
+        // Keep the base sheet only while its single background lookup is running.
+        sheets.insert(id, base.clone());
     }
-    Ok(parsed)
+    tokio::spawn(async move {
+        let sheet = work.await;
+        if sheet.tooltips_ready { cache().insert(id, sheet); }
+        else { cache().remove(&id); }
+    });
+    base
 }
 
 /// The cheat sheet for one champion, with `spell_ids`' base cooldowns when given.
@@ -279,6 +301,65 @@ pub async fn ability_icon(path: String) -> Result<String, String> {
 
 #[cfg(test)]
 mod tests {
+    #[tokio::test]
+    async fn pending_tooltips_return_base_data_and_share_one_enrichment() {
+        let mut base = champion(103);
+        base.champion_id = -1001;
+        let (send, receive) = tokio::sync::oneshot::channel();
+        let mut enriched = base.clone();
+        enriched.tooltips_ready = true;
+        let pending = async { super::cache_tooltips(base.clone(), async move {
+            receive.await.unwrap();
+            enriched
+        }) };
+        let found = tokio::time::timeout(std::time::Duration::from_millis(50), pending)
+            .await.expect("base data must not wait for tooltip downloads");
+        assert_eq!(found, base);
+        let again = super::cache_tooltips(base.clone(), async { panic!("duplicate enrichment") });
+        assert_eq!(again, base);
+        send.send(()).unwrap();
+        tokio::task::yield_now().await;
+        assert!(cache().remove(&base.champion_id).unwrap().tooltips_ready);
+    }
+
+    #[tokio::test]
+    async fn failed_and_timed_out_tooltips_are_evicted_and_the_next_call_retries() {
+        for (id, timed_out) in [(-1002, false), (-1003, true)] {
+            let mut base = champion(103);
+            base.champion_id = id;
+            let failed = base.clone();
+            let (done, finished) = tokio::sync::oneshot::channel();
+            super::cache_tooltips(base.clone(), async move {
+                if timed_out {
+                    assert!(tokio::time::timeout(std::time::Duration::ZERO, std::future::pending::<()>()).await.is_err());
+                }
+                done.send(()).unwrap();
+                failed
+            });
+            finished.await.unwrap();
+            assert!(!cache().contains_key(&id), "failed tooltips must not be cached");
+            let mut ready = base.clone();
+            ready.tooltips_ready = true;
+            ready.spells[0].tooltip = Some("Deals 10/20/30 damage.".into());
+            super::cache_tooltips(base, async move { ready });
+            tokio::task::yield_now().await;
+            assert_eq!(cache().remove(&id).unwrap().spells[0].tooltip.as_deref(), Some("Deals 10/20/30 damage."));
+        }
+    }
+
+    #[tokio::test]
+    async fn successful_lookup_without_tooltip_text_is_cached() {
+        let mut base = champion(103);
+        base.champion_id = -1004;
+        let mut ready = base.clone();
+        ready.tooltips_ready = true;
+        super::cache_tooltips(base, async move { ready });
+        tokio::task::yield_now().await;
+        let cached = cache().remove(&-1004).unwrap();
+        assert!(cached.tooltips_ready);
+        assert!(cached.spells.iter().all(|spell| spell.tooltip.is_none()));
+    }
+
     #[test]
     fn descriptions_are_plain_capped_text() {
         let raw = serde_json::json!("After killing 9 minions, Ahri heals.<br>After a <b>takedown</b>   she heals more.");

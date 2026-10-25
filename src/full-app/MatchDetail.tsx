@@ -60,7 +60,11 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
     void stop.then(() => live ? invoke<MatchView>("full_app_match_detail", { gameId: game.id, riotId }) : undefined)
       .then(value => { if (live && value) setDetail(value); }).catch(reason => { if (live) setError(String(reason)); })
       .finally(() => { if (live) setRankPending(false); });
-    return () => { live = false; void stop.then(unlisten => unlisten()); };
+    // A just-ended game opens from the end-of-game stats; swap in the full details once League files it (a failure keeps what is shown).
+    const filed = listen<number>("game_finished", ({ payload }) => {
+      if (live && payload === game.id) void invoke<MatchView>("full_app_match_detail", { gameId: game.id, riotId }).then(value => { if (live) setDetail(value); }).catch(() => undefined);
+    });
+    return () => { live = false; void stop.then(unlisten => unlisten()); void filed.then(unlisten => unlisten()); };
   }, [game.id, riotId, attempt]);
   const match = detail?.game ?? game;
   const own = detail?.players.find(p => p.me);

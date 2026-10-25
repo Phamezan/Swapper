@@ -1,6 +1,6 @@
 use super::super::{control, RemoteCore};
 use super::actions::action_allowed;
-use axum::extract::{Path, Query, State};
+use axum::extract::{Path, Query, Request, State};
 use axum::http::{header, HeaderMap, StatusCode};
 use axum::response::{IntoResponse, Response};
 use axum::Json;
@@ -170,12 +170,14 @@ pub(super) async fn champion_list() -> Response {
 pub(super) struct ImportItemBuildRequest {
     champion_id: i64,
     champion_name: String,
-    items: Vec<i64>,
+    build: crate::runes::KeystoneBuildView,
 }
+
+const MAX_ITEM_IMPORT_BYTES: usize = 64 * 1024;
 
 pub(super) async fn import_item_build(
     headers: HeaderMap,
-    Json(body): Json<ImportItemBuildRequest>,
+    request: Request,
 ) -> Response {
     if !action_allowed(&headers) {
         return (
@@ -184,7 +186,15 @@ pub(super) async fn import_item_build(
         )
             .into_response();
     }
-    match crate::runes::item_sets::import_build(body.champion_id, &body.champion_name, &body.items)
+    let bytes = match axum::body::to_bytes(request.into_body(), MAX_ITEM_IMPORT_BYTES).await {
+        Ok(bytes) => bytes,
+        Err(_) => return StatusCode::PAYLOAD_TOO_LARGE.into_response(),
+    };
+    let body: ImportItemBuildRequest = match serde_json::from_slice(&bytes) {
+        Ok(body) => body,
+        Err(_) => return StatusCode::BAD_REQUEST.into_response(),
+    };
+    match crate::runes::item_sets::import_keystone_build(body.champion_id, &body.champion_name, &body.build)
         .await
     {
         Ok(_) => (StatusCode::OK, Json(control::ActionResult::success())).into_response(),
@@ -595,5 +605,97 @@ pub(super) async fn set_import_items_with_runes(
             Json(control::ActionResult::error(&message)),
         )
             .into_response(),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use axum::body::Body;
+    use axum::extract::Request;
+    use axum::handler::Handler;
+    use serde_json::{json, Value};
+
+    fn item_import() -> Value {
+        json!({
+            "championId": 266, "championName": "Aatrox",
+            "build": {
+                "starters": [{ "id": 1054, "name": "Shield", "count": 1 }, { "id": 2003, "name": "Potion", "count": 2 }],
+                "items": [{ "id": 6692, "name": "Eclipse" }],
+                "options": [{ "id": 3053, "name": "Sterak", "slot": 4, "games": 80, "winPct": 52.0 }],
+                "games": 100, "coreGames": 100, "coreLen": 1, "coreWinPct": 51.0,
+                "skillPriority": "QWE"
+            }
+        })
+    }
+
+    async fn import_request(body: String, allowed: bool) -> Response {
+        let mut request = Request::builder()
+            .method("POST")
+            .uri("/api/items/import")
+            .header(header::CONTENT_TYPE, "application/json");
+        if allowed {
+            request = request.header("x-swapper-action", "1");
+        }
+        import_item_build.call(request.body(Body::from(body)).unwrap(), ()).await
+    }
+
+    #[test]
+    fn item_import_deserializes_a_full_build() {
+        let body: ImportItemBuildRequest = serde_json::from_value(item_import()).unwrap();
+        assert_eq!(body.build.starters[1].count, 2);
+        assert_eq!(body.build.items[0].id, 6692);
+        assert_eq!(body.build.options[0].id, 3053);
+        assert_eq!(body.build.skill_priority.as_deref(), Some("QWE"));
+    }
+
+    #[tokio::test]
+    async fn item_import_requires_the_action_header() {
+        let response = import_request(item_import().to_string(), false).await;
+        assert_eq!(response.status(), StatusCode::FORBIDDEN);
+    }
+
+    #[tokio::test]
+    async fn item_import_rejects_an_oversized_body() {
+        let mut body = item_import();
+        body["championName"] = json!("a".repeat(64 * 1024));
+        assert_eq!(import_request(body.to_string(), true).await.status(), StatusCode::PAYLOAD_TOO_LARGE);
+    }
+
+    #[tokio::test]
+    async fn item_import_rejects_invalid_builds_before_contacting_league() {
+        let valid = item_import();
+        let mut invalid = Vec::new();
+        for field in ["items", "starters"] {
+            for id in [0, -1] {
+                let mut body = valid.clone();
+                body["build"][field][0]["id"] = json!(id);
+                invalid.push(body);
+            }
+        }
+        for count in [0, 21] {
+            let mut body = valid.clone();
+            body["build"]["starters"][0]["count"] = json!(count);
+            invalid.push(body);
+        }
+        for (field, count) in [("items", 0), ("items", 8), ("starters", 8), ("options", 257)] {
+            let mut body = valid.clone();
+            body["build"][field] = json!(vec![valid["build"][field][0].clone(); count]);
+            invalid.push(body);
+        }
+        let mut body = valid.clone();
+        body["championId"] = json!(0);
+        invalid.push(body);
+        for body in invalid {
+            assert_eq!(import_request(body.to_string(), true).await.status(), StatusCode::CONFLICT, "{body}");
+        }
+    }
+
+    #[tokio::test]
+    async fn item_import_rejects_malformed_and_legacy_payloads() {
+        // An invalid champion also prevents writes when this test runs against the legacy handler.
+        for body in ["{".to_string(), json!({ "championId": 0, "championName": "Invalid", "items": [6692] }).to_string()] {
+            assert_eq!(import_request(body, true).await.status(), StatusCode::BAD_REQUEST);
+        }
     }
 }

@@ -365,7 +365,7 @@ mockIPC(async (cmd, args) => {
     case "full_app_rune_catalog": await catalogReady; if (runeCatalog) return runeCatalog; throw new Error("Rune catalog unavailable");
     case "champion_abilities":
       if (params.has("patch-abilities-offline")) throw new Error("Preview abilities unavailable");
-      return { championId: a.championId, summoners: [], passive: a.championId === 51
+      return { championId: a.championId, tooltipsReady: true, summoners: [], passive: a.championId === 51
         ? { name: "Headshot", iconPath: "/lol-game-data/assets/caitlyn-passive.png", description: "Caitlyn periodically fires an empowered attack.", tooltip: null }
         : { name: "Deathbringer Stance", iconPath: null, description: "Periodically, Aatrox's next basic attack deals bonus physical damage and heals him.", tooltip: "Periodically, Aatrox's next attack deals (+4–8% target max Health) physical damage and heals him for the damage dealt (based on level)." },
       spells: ["Q", "W", "E", "R"].map((key, i) => ({ key, name: ["The Darkin Blade", "Infernal Chains", "Umbral Dash", "World Ender"][i], iconPath: null,
@@ -413,5 +413,5 @@ void import("./main").then(() => {
   // ?switching: the switch flow only reports started/done/failed, so that is all the preview fakes.
   if (shellState.has("switching")) setTimeout(() => void emit("switch_started", { id: "b", name: "Alt Account" }), 1200);
   // ?ended: a game just ended and is not in match history yet.
-  if (params.has("ended")) setTimeout(() => void emit("game_ended", { id: 999, win: true, championId: 103, kills: 7, deaths: 2, assists: 9, cs: 192, duration: 1830 }), 800);
+  if (params.has("ended")) setTimeout(() => void emit("game_ended", { ...games[0], id: 999, win: true, kills: 7, deaths: 2, assists: 9, createdAt: Date.now() - 1830e3, lpChange: null }), 800);
 });

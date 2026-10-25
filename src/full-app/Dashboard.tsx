@@ -10,7 +10,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { benchKey, defaultQueue, deltaText, formatStat, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, tierLabel, tiles, today, tone } from "./dashboardModel";
-import type { AccountCard, Bench, EndedGame, Game, LpPoint, Mmr, RoleRecord, Snapshot } from "./types";
+import type { AccountCard, Bench, Game, LpPoint, Mmr, RoleRecord, Snapshot } from "./types";
 import { Slot } from "./ui/Slot";
 import { EmptyState, Skeleton } from "./ui/States";
 import { fmtCompact } from "./ui/format";
@@ -71,7 +71,7 @@ type Props = {
   snapshot: Snapshot; phase: string; onOpenLive: () => void; onOpenChampion: (id: number, name: string) => void;
   onOpenMatch: (game: Game) => void;
   /** A game that just ended but is not in match history yet. */
-  justEnded?: EndedGame | null;
+  justEnded?: Game | null;
   /** True while only the saved snapshot is available (League Client closed). */
   stale?: boolean;
   /** The sidebar podium owns accounts now; main.tsx may still pass these. */
@@ -110,7 +110,7 @@ export function Dashboard(props: Props) {
       <section className="panel matches-panel" aria-labelledby="matches-title">
         <div className="panel-head"><h2 id="matches-title">Recent games</h2><small>{games.length} {games.length === 1 ? "game" : "games"} · {queue === "all" ? "all queues" : queueLabels[queue]}</small></div>
         {!games.length ? <NoMatches queue={queue} hasOthers={snapshot.games.length > 0} onShowAll={() => setQueue("all")} />
-          : <ol className="match-list">{props.justEnded && !snapshot.games.some(game => game.id === props.justEnded!.id) && <EndedRow game={props.justEnded} name={name} />}{games.map(game => <MatchRow key={game.id} game={game} name={name} isLast={game.id === lastOpenedMatch} onOpen={() => openMatch(game)} />)}</ol>}
+          : <ol className="match-list">{(props.justEnded && !snapshot.games.some(game => game.id === props.justEnded!.id) ? [props.justEnded, ...games] : games).map(game => <MatchRow key={game.id} game={game} name={name} isLast={game.id === lastOpenedMatch} onOpen={() => openMatch(game)} />)}</ol>}
       </section>
       <section className="panel" aria-labelledby="champions-title">
         <div className="panel-head"><h2 id="champions-title">Champions &amp; roles</h2><small>{queueLabels[queue]}</small></div>
@@ -241,19 +241,6 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
 }
 
 const ITEM_SLOTS = 7;
-
-/** The just-ended game from the end-of-game screen, until Riot files it in match history. */
-function EndedRow({ game, name }: { game: EndedGame; name: (id: number) => string }) {
-  const ratio = (game.kills + game.assists) / Math.max(1, game.deaths);
-  return <li className={`match-row is-pending ${game.win ? "is-win" : "is-loss"}`}>
-    <span className="match-champ"><ChampionIcon id={game.championId} name={name(game.championId)} mode="desktop" /></span>
-    <div className="match-result"><p><strong>{game.win ? "Victory" : "Defeat"}</strong></p><small>Just now · {clock(game.duration)}</small></div>
-    <div className="match-kda"><strong>{game.kills} <i>/</i> <em>{game.deaths}</em> <i>/</i> {game.assists}</strong><small>{ratio.toFixed(2)} KDA</small></div>
-    <span aria-hidden />
-    <div className="match-cs"><strong>{game.cs} CS</strong><small>this game</small></div>
-    <p className="match-pending-note">Full match details in a minute or two, once Riot has processed the game.</p>
-  </li>;
-}
 
 export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id: number) => string; isLast: boolean; onOpen: () => void }) {
   const ratio = (game.kills + game.assists) / Math.max(1, game.deaths);

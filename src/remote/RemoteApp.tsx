@@ -3,7 +3,7 @@ import { Network, Search, Swords } from "lucide-react";
 import { BrandIcon } from "@/components/BrandIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { RunesPanel } from "../runes/RunesPanel";
-import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "../runes/types";
+import type { RunesView, ProBuildsView, PresetBuildView, KeystoneBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "../runes/types";
 import { isGamePhase, shopNoticeFrom } from "../runes/types";
 import "./remote.css";
 
@@ -370,7 +370,7 @@ export default function RemoteApp() {
   async function importItemBuild(
     championId: number,
     championName: string,
-    items: number[],
+    build: KeystoneBuildView,
   ) {
     setRunesBusy(true);
     setRunesError(null);
@@ -379,7 +379,7 @@ export default function RemoteApp() {
       const response = await fetch("/api/items/import", {
         method: "POST",
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
-        body: JSON.stringify({ championId, championName, items }),
+        body: JSON.stringify({ championId, championName, build }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
       if (!response.ok || !result.ok) throw new Error(result.message ?? "Could not add the item set.");

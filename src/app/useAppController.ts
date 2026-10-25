@@ -5,7 +5,7 @@ import { open as browseForFile } from "@tauri-apps/plugin-dialog";
 import {
   disable as disableAutostart, enable as enableAutostart, isEnabled as isAutostartEnabled,
 } from "@tauri-apps/plugin-autostart";
-import type { RunesView, ProBuildsView, PresetBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "../runes/types";
+import type { RunesView, ProBuildsView, PresetBuildView, KeystoneBuildView, MatchupView, ChampionApi, Selection, ItemsImported, ShopNotice } from "../runes/types";
 import { isGamePhase, shopNoticeFrom } from "../runes/types";
 import type { SettingsTab } from "../settings/SettingsView";
 import { useSettingsVersion } from "../settingsEvents";
@@ -39,6 +39,7 @@ const wait = (ms: number) =>
 
 export function useAppController(fullApp?: FullAppBridge) {
   const [data, setData] = useState<AppState>(empty);
+  const [clientHealth, setClientHealth] = useState("ok");
   const [view, setView] = useState<View>("accounts");
   const [inChampSelect, setInChampSelect] = useState(false);
   const [modeSpin, setModeSpin] = useState(0);
@@ -97,6 +98,7 @@ export function useAppController(fullApp?: FullAppBridge) {
     if (!native) return;
     invoke<AppState>("get_state").then(sync).catch(showError);
     const unlisteners = Promise.all([
+      listen<string>("client_health", ({ payload }) => setClientHealth(payload)),
       listen<string>("navigate", ({ payload }) => {
         if (["accounts", "add", "edit", "remove", "settings"].includes(payload)) {
           // Opening Swapper during champion select lands on the champ select page.
@@ -153,10 +155,15 @@ export function useAppController(fullApp?: FullAppBridge) {
         invoke<AppState>("get_state").then(sync).catch(() => {});
       }),
     ]);
+    let live = true;
+    void unlisteners.then(() => invoke<string>("client_health")).then(health => {
+      if (live) setClientHealth(health);
+    }).catch(() => {});
     // Listeners exist now; a newly created window is shown (and sent its
     // destination) only after this.
     void unlisteners.then(() => invoke("window_ready")).catch(() => {});
     return () => {
+      live = false;
       unlisteners.then((fns) => fns.forEach((unlisten) => unlisten()));
     };
   }, [native]);
@@ -310,13 +317,13 @@ export function useAppController(fullApp?: FullAppBridge) {
   async function importItemBuild(
     championId: number,
     championName: string,
-    items: number[],
+    build: KeystoneBuildView,
   ) {
     setRunesBusy(true);
     setRunesError(null);
     setShopNotice(null);
     try {
-      await invoke("import_item_build", { championId, championName, items });
+      await invoke("import_full_item_build", { championId, championName, build });
     } catch (reason) {
       setRunesError(String(reason));
       throw reason;
@@ -777,7 +784,7 @@ export function useAppController(fullApp?: FullAppBridge) {
   const modeName = (mode: string) => fullApp ? mode.toUpperCase() : mode[0].toUpperCase() + mode.slice(1);
 
   return {
-    data, view, inChampSelect, modeSpin, setModeSpin, busy, switchingAccountId, error, setError, name,
+    data, clientHealth, view, inChampSelect, modeSpin, setModeSpin, busy, switchingAccountId, error, setError, name,
     setName, editing, setEditing, pendingRemove, setPendingRemove, repairableId, setRepairableId,
     repairingId, setRepairingId, accountMenu, setAccountMenu, useDeceive, koreanFont, ltkInstalling,
     ltkInstallError, riotExe, setRiotExe, addStage, setAddStage, detect, setDetectRound, setDetectedPrompt,

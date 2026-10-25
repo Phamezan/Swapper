@@ -28,23 +28,26 @@ fn safe_patch(patch: &str) -> bool {
 }
 
 /// Enrichment is optional: an unavailable CDN leaves every LCU field intact.
-pub(super) async fn enrich(sheet: &mut super::Abilities, champion: &Value) {
-    let Some(alias) = champion["alias"].as_str().and_then(safe_alias) else { return };
-    let Some(patches) = crate::runes::patch::patches().await else { return };
-    if !safe_patch(&patches.current) { return; }
+pub(super) async fn enrich(sheet: &mut super::Abilities, champion: &Value) -> bool {
+    let Some(alias) = champion["alias"].as_str().and_then(safe_alias) else { return false };
+    let Some(patches) = crate::runes::patch::patches().await else { return false };
+    if !safe_patch(&patches.current) { return false; }
     let dir = crate::vault::data_root().ok().map(|root| root.join("ability-tooltips"));
-    let work = async {
-        let (bin, strings) = tokio::join!(
-            champion_bin(&patches.current, &alias, dir.as_deref()),
-            strings(&patches.current, dir.as_deref()),
-        );
-        let (Some(bin), Some(strings)) = (bin, strings) else { return };
-        sheet.passive.tooltip = resolve(&bin, &strings, &alias, "P", 1);
-        for spell in &mut sheet.spells {
-            spell.tooltip = resolve(&bin, &strings, &alias, &spell.key, super::ranks(sheet.champion_id, &spell.key));
-        }
-    };
-    let _ = tokio::time::timeout(Duration::from_secs(12), work).await;
+    let (bin, strings) = tokio::join!(
+        champion_bin(&patches.current, &alias, dir.as_deref()),
+        strings(&patches.current, dir.as_deref()),
+    );
+    let (Some(bin), Some(strings)) = (bin, strings) else { return false };
+    sheet.passive.tooltip = resolve(&bin, &strings, &alias, "P", 1);
+    for spell in &mut sheet.spells {
+        spell.tooltip = resolve(&bin, &strings, &alias, &spell.key, super::ranks(sheet.champion_id, &spell.key));
+    }
+    true
+}
+
+fn download_timeout(cap: usize) -> Duration {
+    // The ~32 MB string table needs a larger transfer budget than champion bins.
+    if cap == MAX_STRINGS { Duration::from_secs(60) } else { TIMEOUT }
 }
 
 async fn fetch(path: &str, cap: usize) -> Option<Vec<u8>> {
@@ -59,7 +62,7 @@ async fn fetch(path: &str, cap: usize) -> Option<Vec<u8>> {
         let _ = CLIENT.set(client);
     }
     let client = CLIENT.get()?;
-    let mut response = client.get(format!("{BASE}/{path}")).send().await.ok()?;
+    let mut response = client.get(format!("{BASE}/{path}")).timeout(download_timeout(cap)).send().await.ok()?;
     if !response.status().is_success() || response.content_length().is_some_and(|n| n > cap as u64) { return None; }
     let mut bytes = Vec::new();
     while let Some(chunk) = response.chunk().await.ok()? {
@@ -438,6 +441,12 @@ fn resolve(bin: &Value, strings: &Strings, alias: &str, key: &str, ranks: usize)
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn string_table_has_a_longer_download_budget_than_champion_bins() {
+        assert_eq!(download_timeout(MAX_STRINGS), Duration::from_secs(60));
+        assert_eq!(download_timeout(MAX_BIN), Duration::from_secs(8));
+    }
 
     fn tooltip(alias: &str) -> String {
         let fixtures: Value = serde_json::from_str(include_str!("../../tests/fixtures/ability-tooltips.json")).unwrap();

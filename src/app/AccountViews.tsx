@@ -15,7 +15,7 @@ import type { AppController } from "./useAppController";
 
 export function AccountsView({ controller, fullApp }: { controller: AppController; fullApp?: FullAppBridge }) {
   const {
-    data, busy, switchingAccountId, setName, setEditing, setPendingRemove, repairableId,
+    data, clientHealth, busy, switchingAccountId, setName, setEditing, setPendingRemove, repairableId,
     setDetectedPrompt, showError, showRemoteQr, dismissReconnect, navigate, isBusy, openAccountMenu,
     switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId, saveDetected,
   } = controller;
@@ -45,7 +45,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
                 </Button>
               </section>
             )}
-            {AccountsSurface ? <AccountsSurface accounts={data.accounts} activeId={displayedActiveId} switchingId={switchingAccountId} repairableId={repairableId} busy={isBusy}
+            {AccountsSurface ? <AccountsSurface accounts={data.accounts} activeId={displayedActiveId} switchingId={switchingAccountId} repairableId={repairableId} busy={isBusy} closed={clientHealth === "closed"}
               onSwitch={id => void switchToAccount(id)} onRestart={fullApp?.onRestart} onAdd={() => navigate("add")} onRepair={startRepair} onError={showError}
               onRename={account => { navigate("edit"); setEditing(account.id); setName(account.nickname ?? ""); }}
               onRemove={id => { navigate("remove"); setPendingRemove(id); }} /> : <div className="account-list">
@@ -83,7 +83,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
                         {isThisSwitching
                           ? "Switching…"
                           : isActive
-                            ? "Active"
+                            ? clientHealth === "closed" ? "Open League" : "Restart client"
                             : repairableId === account.id
                               ? "Session needs repair"
                               : "Click to switch"}

@@ -309,9 +309,6 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .match-row::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 0 3px 3px 0; background: var(--tone); }
 .fa-frame .dash-v2 .match-row:hover { border-color: var(--ui-line-2); background-color: var(--ui-surface-hover); }
 .fa-frame .dash-v2 .match-row.is-last { border-color: var(--ui-brand-line); }
-.fa-frame .dash-v2 .match-row.is-pending { cursor: default; }
-.fa-frame .dash-v2 .match-row.is-pending:hover { background-color: transparent; }
-.match-pending-note { grid-column: 6 / -1; margin: 0; color: var(--ui-text-3); font-size: 13px; }
 .match-chevron { color: var(--ui-text-3); transition: transform var(--ui-fast), color var(--ui-fast); }
 .match-row:hover .match-chevron { color: var(--ui-text-1); transform: translateX(2px); }
 :where(.dash-scope) .match-champ { position: relative; padding: 0; border: 0; background: none; }

@@ -8,10 +8,12 @@ import * as buildLogic from "./buildLogic.ts";
 import * as championsModel from "./championsModel.ts";
 import * as format from "./ui/format.ts";
 import * as cooldownModel from "./cooldownModel.ts";
+import * as proBuilds from "./champ-select-pro.ts";
+import * as runesPanelModel from "../runes/runesPanelModel.ts";
 import { fixtureView, fixtureDraft } from "./champ-select-fixtures.ts";
 
 // Execute the actual components with deterministic hooks and command/event boundaries.
-function harness(file, exportName, commands = {}, visibility = "visible") {
+function harness(file, exportName, commands = {}, visibility = "visible", environment = {}) {
   const states = [], effects = [], memos = [], handlers = new Map(), timers = new Map();
   const calls = [];
   let cursor = 0, pending = [], result, props, nextTimer = 0;
@@ -25,6 +27,7 @@ function harness(file, exportName, commands = {}, visibility = "visible") {
     useRef(initial) { return hooks.useState({ current: initial })[0]; },
     useEffect(fn, deps) {
       const i = cursor++;
+      if (environment.effects === false) return;
       if (changed(effects[i]?.deps, deps)) pending.push(() => {
         effects[i]?.cleanup?.(); effects[i] = { deps, cleanup: fn() };
       });
@@ -43,6 +46,7 @@ function harness(file, exportName, commands = {}, visibility = "visible") {
   const window = {
     setInterval(fn) { const id = ++nextTimer; timers.set(id, fn); return id; },
     clearInterval(id) { timers.delete(id); },
+    ...environment.window,
   };
   const invoke = async (name, args) => {
     calls.push({ name, args });
@@ -58,12 +62,16 @@ function harness(file, exportName, commands = {}, visibility = "visible") {
     "radix-ui": { HoverCard: { Root: "hover-root", Trigger: "hover-trigger", Portal: "hover-portal", Content: "hover-content" } },
     "@tauri-apps/api/event": { listen: async (name, fn) => { handlers.set(name, fn); return () => handlers.delete(name); } },
     "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./championsModel": championsModel, "./ui/format": format,
+    "./types": runeTypes, "../full-app/champ-select-pro": proBuilds,
+    "./runesPanelModel": runesPanelModel,
+    "../settingsEvents": { useSettingsVersion: () => 0 },
+    ...environment.modules,
   };
   const code = ts.transpileModule(readFileSync(new URL(file, import.meta.url), "utf8"), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 },
   }).outputText;
   const exports = {};
-  new Function("require", "exports", "document", "window", code)(name => modules[name] ?? {}, exports, document, window);
+  new Function("require", "exports", "document", "window", ...Object.keys(environment.globals ?? {}), code)(name => modules[name] ?? {}, exports, document, window, ...Object.values(environment.globals ?? {}));
   const render = value => { props = value ?? props; cursor = 0; result = exports[exportName](props); pending.splice(0).forEach(fn => fn()); return result; };
   return {
     render, calls, timers, document,
@@ -92,10 +100,79 @@ const catalog = { trees: [
 function panel(overrides = {}, commands = {}) {
   const view = { ...fixtureView("locked"), applied: null, spells: { ...fixtureView("locked").spells, spell1Id: 14, spell2Id: 4, applyWithRunes: false } };
   const props = { championId: 266, name: "Aatrox", lane: "top", tier: "diamond_plus", build: build(), liveView: view, ...overrides };
-  const h = harness("./BuildPanel.tsx", "BuildPanel", { full_app_rune_catalog: catalog, get_runes: view, ...commands });
+  const h = harness("./BuildPanel.tsx", "BuildPanel", { full_app_rune_catalog: catalog, full_app_abilities: [], get_runes: view, ...commands });
   h.render(props);
   return { h, props };
 }
+
+const itemBuild = () => ({
+  starters: [{ id: 1054, name: "Doran's Shield", count: 1 }, { id: 2003, name: "Health Potion", count: 2 }],
+  items: [{ id: 6692, name: "Eclipse" }, { id: 3047, name: "Plated Steelcaps" }],
+  options: [{ id: 3053, name: "Sterak's Gage", slot: 4, games: 80, winPct: 52 }],
+  games: 100, coreGames: 100, coreLen: 2, coreWinPct: 51, stale: false, updatedAt: null, skillPriority: "QWE",
+});
+const proBuild = () => ({
+  ...fixtureView("locked").presets[0], matchId: "fixture-pro", proName: "Demo Pro", spells: [4, 12],
+  finalItems: [...itemBuild().items, { id: 3340, name: "Trinket" }], completedItems: itemBuild().items,
+  itemPath: [{ minute: 0, items: itemBuild().starters }], skillOrder: ["Q", "W", "E"],
+});
+
+test("draft Item set apply sends the chosen full build including starters", async () => {
+  const chosen = itemBuild();
+  const { h } = panel({ matchups: [{ enemyChampionId: 122, enemyName: "Darius", preset: build().runes, build: chosen, fallback: false }] });
+  await h.flush();
+  nodes(h.tree()).find(n => n.type === "button" && textOf(n).startsWith("vs Darius")).props.onClick(); h.render();
+  const chip = nodes(h.tree()).find(n => n.props?.className?.includes("cs-apply-chip") && textOf(n).startsWith("Item set"));
+  nodes(chip).find(n => n.type === "button").props.onClick(); await h.flush();
+  assert.deepEqual(h.calls.filter(c => c.name.startsWith("import_")), [{ name: "import_full_item_build", args: { championId: 266, championName: "Aatrox", build: chosen } }]);
+});
+
+test("tray controller imports the full item build", async () => {
+  const h = harness("../app/useAppController.ts", "useAppController", {}, "visible", { effects: false });
+  h.render();
+  const chosen = itemBuild();
+  await h.tree().importItemBuild(266, "Aatrox", chosen);
+  assert.deepEqual(h.calls, [{ name: "import_full_item_build", args: { championId: 266, championName: "Aatrox", build: chosen } }]);
+});
+
+for (const mode of ["desktop", "remote"]) test(`${mode} pro import preserves starter stacks and completed items`, async () => {
+  const calls = [], chosen = proBuild();
+  const h = harness("../runes/RunesPanel.tsx", "RunesPanel");
+  h.render({ mode, view: fixtureView("locked"), sessionKey: "fixture", onLoadBuild: async () => null,
+    onLoadProBuilds: async () => ({ matches: [chosen] }), onLoadMatchup: async () => null,
+    onApply: async () => {}, onImportItems: async (...args) => calls.push(args), championApi: {} });
+  await h.flush();
+  button(h, "Pro builds").props.onClick(); await h.flush();
+  const list = nodes(h.tree()).find(n => n.props?.onImport);
+  list.props.onImport(chosen); await h.flush();
+  assert.deepEqual(calls, [[266, "Aatrox", proBuilds.proVariant(chosen).items]]);
+  assert.deepEqual(calls[0][2].starters, itemBuild().starters);
+  assert.deepEqual(calls[0][2].items, chosen.completedItems);
+});
+
+test("phone item import posts the full build with its action header", async () => {
+  const requests = [], view = fixtureView("locked");
+  const h = harness("../remote/RemoteApp.tsx", "default", {}, "visible", {
+    window: { location: { protocol: "https:", host: "fixture.invalid" } },
+    globals: {
+      WebSocket: class { close() {} },
+      fetch: async (url, init) => {
+        requests.push({ url, init });
+        const body = url === "/api/status" ? { lcuConnected: true } : url === "/api/game" ? { phase: "ChampSelect", championSelect: { availableChampionIds: [] } }
+          : url.startsWith("/api/runes") ? view : url === "/api/champions" ? [] : { ok: true };
+        return { ok: true, json: async () => body };
+      },
+    },
+  });
+  h.render(); await h.flush();
+  button(h, "Runes").props.onClick(); await h.flush();
+  const runes = nodes(h.tree()).find(n => n.props?.onImportItems), chosen = itemBuild();
+  await runes.props.onImportItems(266, "Aatrox", chosen);
+  const request = requests.find(r => r.url === "/api/items/import");
+  assert.equal(request.init.method, "POST");
+  assert.equal(request.init.headers["X-Swapper-Action"], "1");
+  assert.deepEqual(JSON.parse(request.init.body), { championId: 266, championName: "Aatrox", build: chosen });
+});
 
 test("Apply all explicitly writes the displayed spell pair with automatic spells off", async () => {
   const { h } = panel(); await h.flush();
@@ -144,7 +221,7 @@ test("draft events update enemy build context without reloading the source build
   h.render({ view, championApi: { list: async () => [], overview: async () => null, tierList: async () => ({ rows: [] }) }, onPositionChange() {}, onLoadBuild: async () => { buildReads++; return null; }, onLoadMatchup: async () => null }); await h.flush();
   const before = buildReads;
   await h.emit("draft_changed", { ...draft, enemies: [{ championId: 238, position: "top", locked: true }] });
-  assert.equal(nodes(h.tree()).find(n => n.props?.compact)?.props.championId, 238);
+  assert.ok(nodes(h.tree()).find(n => n.props?.enemyIds)?.props.enemyIds.includes(238));
   assert.equal(buildReads, before);
 });
 
@@ -154,7 +231,8 @@ test("ability hover prefers resolved text and falls back for both spells and pas
     const h = harness("./AbilityHover.tsx", "AbilityHover", { champion_abilities: sheet });
     h.render({ championId: 103, abilityKey: key, children: "Q" });
     h.tree().props.onOpenChange(true); await h.flush();
-    const text = nodes(h.tree()).find(n => n.props?.className === "fa-ability-text");
+    const details = nodes(h.tree()).find(n => n.type?.name === "AbilityDetails");
+    const text = nodes(details.type(details.props)).find(n => n.props?.className === "fa-ability-text");
     assert.equal(textOf(text), tooltip ?? "Short fallback.");
     if (tooltip) assert.ok(nodes(text).some(n => n.props?.className === "fa-ability-ap"));
   }

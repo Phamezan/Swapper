@@ -368,16 +368,22 @@ const FILED_INTERVAL: std::time::Duration = std::time::Duration::from_secs(5);
 /// up to a few minutes), then emits `game_finished` with its id so the app can
 /// refresh the dashboard and open the match.
 pub async fn announce_finished_game(app: tauri::AppHandle) {
-    let Some(id) = finished_game_id().await else { return };
+    let Some((id, queue)) = finished_game().await else { return };
     // The end-of-game screen's stats exist right away, minutes before match history files the game:
-    // the dashboard shows them as a "just ended" row meanwhile. They can take a few seconds to appear.
+    // the dashboard shows them as a normal row with match details meanwhile. They can take a few seconds to appear.
     for _ in 0..ENDED_CHECKS {
-        let summary = match crate::runes::lcu().await {
-            Ok(client) => crate::runes::lcu_get::<Value>(&client, "/lol-end-of-game/v1/eog-stats-block").await.ok().and_then(|eog| ended_game(&eog)),
+        let eog = match crate::runes::lcu().await {
+            Ok(client) => crate::runes::lcu_get::<Value>(&client, "/lol-end-of-game/v1/eog-stats-block").await.ok(),
             Err(_) => None,
         };
-        if let Some(summary) = summary.filter(|game| game.id == id) {
-            let _ = app.emit("game_ended", summary);
+        if let Some(eog) = eog.filter(|eog| eog["gameId"].as_u64() == Some(id)) {
+            let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_millis() as u64);
+            if let Some((history, owner)) = eog_as_history(&eog, queue, now) {
+                if let Some(game) = model::game(&history, &owner) {
+                    crate::match_detail::remember_ended(&history, &owner);
+                    let _ = app.emit("game_ended", game);
+                }
+            }
             break;
         }
         tokio::time::sleep(ENDED_INTERVAL).await;
@@ -398,52 +404,116 @@ pub async fn announce_finished_game(app: tauri::AppHandle) {
 const ENDED_CHECKS: u32 = 6;
 const ENDED_INTERVAL: std::time::Duration = std::time::Duration::from_secs(2);
 
-/// A just-ended game from the end-of-game stats, for the dashboard until match history has it.
-#[derive(Clone, Debug, PartialEq, Serialize)]
-#[serde(rename_all = "camelCase")]
-pub struct EndedGame {
-    id: u64,
-    win: bool,
-    champion_id: i64,
-    kills: u64,
-    deaths: u64,
-    assists: u64,
-    cs: u64,
-    /// Seconds.
-    duration: u64,
+/// End-of-game stat names whose match-history name is not just their camelCase form.
+const EOG_STATS: [(&str, &str); 6] = [
+    ("kills", "CHAMPIONS_KILLED"),
+    ("deaths", "NUM_DEATHS"),
+    ("totalMinionsKilled", "MINIONS_KILLED"),
+    ("champLevel", "LEVEL"),
+    ("wardsPlaced", "WARD_PLACED"),
+    ("wardsKilled", "WARD_KILLED"),
+];
+
+/// `TOTAL_DAMAGE_TAKEN` to `totalDamageTaken`.
+fn camel(key: &str) -> String {
+    let mut out = String::new();
+    for (i, word) in key.split('_').filter(|w| !w.is_empty()).enumerate() {
+        let lower = word.to_ascii_lowercase();
+        if i == 0 {
+            out.push_str(&lower);
+        } else {
+            out.push_str(&lower[..1].to_ascii_uppercase());
+            out.push_str(&lower[1..]);
+        }
+    }
+    out
 }
 
-fn ended_game(eog: &Value) -> Option<EndedGame> {
+/// The end-of-game stats in the match-history game shape, plus the local player,
+/// so the just-ended game gets the same row and match details as filed games.
+fn eog_as_history(eog: &Value, queue: Option<u64>, now_ms: u64) -> Option<(Value, model::Summoner)> {
     let local = &eog["localPlayer"];
-    let stats = &local["stats"];
-    let stat = |key: &str| stats[key].as_u64().unwrap_or(0);
-    let team = local["teamId"].as_i64();
-    let win = eog["teams"].as_array()
-        .and_then(|teams| teams.iter().find(|t| t["teamId"].as_i64() == team))
-        .and_then(|t| t["isWinningTeam"].as_bool())
-        .or_else(|| stats["WIN"].as_u64().map(|win| win == 1))?;
-    Some(EndedGame {
-        id: eog["gameId"].as_u64().filter(|id| *id > 0)?,
-        win,
-        champion_id: local["championId"].as_i64().filter(|id| *id > 0)?,
-        kills: stat("CHAMPIONS_KILLED"),
-        deaths: stat("NUM_DEATHS"),
-        assists: stat("ASSISTS"),
-        cs: stat("MINIONS_KILLED") + stat("NEUTRAL_MINIONS_KILLED"),
-        duration: eog["gameLength"].as_u64().unwrap_or(0),
-    })
+    let duration = eog["gameLength"].as_u64()?;
+    let queue = queue.or_else(|| eog["queueId"].as_u64()).or_else(|| match eog["queueType"].as_str()? {
+        "RANKED_SOLO_5x5" => Some(420),
+        "RANKED_FLEX_SR" => Some(440),
+        _ => None,
+    })?;
+    let teams = eog["teams"].as_array()?;
+    let mut players: Vec<(&Value, &Value)> = teams.iter()
+        .flat_map(|team| team["players"].as_array().into_iter().flatten().map(move |p| (team, p)))
+        .collect();
+    if !players.iter().any(|(_, p)| p["puuid"] == local["puuid"]) {
+        let team = teams.iter().find(|t| t["teamId"] == local["teamId"])?;
+        players.push((team, local));
+    }
+    let (mut participants, mut identities) = (Vec::new(), Vec::new());
+    for (index, (team, p)) in players.into_iter().enumerate() {
+        let raw = &p["stats"];
+        let mut stats: serde_json::Map<String, Value> = raw.as_object().into_iter().flatten()
+            .map(|(key, value)| (camel(key), value.clone())).collect();
+        for (history, eog_key) in EOG_STATS {
+            if let Some(value) = raw.get(eog_key) {
+                stats.insert(history.into(), value.clone());
+            }
+        }
+        for (i, item) in p["items"].as_array().into_iter().flatten().take(7).enumerate() {
+            stats.insert(format!("item{i}"), item.clone());
+        }
+        let win = team["isWinningTeam"].as_bool().or_else(|| raw["WIN"].as_u64().map(|win| win == 1))?;
+        stats.insert("win".into(), win.into());
+        stats.insert("gameEndedInEarlySurrender".into(), eog["gameEndedInEarlySurrender"].as_bool().unwrap_or(false).into());
+        let position = p["detectedTeamPosition"].as_str().filter(|s| !s.is_empty()).or_else(|| p["selectedPosition"].as_str());
+        let (lane, role) = match position {
+            Some("TOP") => ("TOP", "SOLO"),
+            Some("JUNGLE") => ("JUNGLE", "NONE"),
+            Some("MIDDLE") => ("MIDDLE", "SOLO"),
+            Some("BOTTOM") => ("BOTTOM", "DUO_CARRY"),
+            Some("UTILITY") => ("BOTTOM", "DUO_SUPPORT"),
+            _ => ("NONE", "NONE"),
+        };
+        participants.push(serde_json::json!({
+            "participantId": index + 1, "teamId": p["teamId"].as_u64().or_else(|| team["teamId"].as_u64()),
+            "championId": p["championId"], "spell1Id": p["spell1Id"], "spell2Id": p["spell2Id"],
+            "stats": stats, "timeline": { "lane": lane, "role": role },
+        }));
+        identities.push(serde_json::json!({ "participantId": index + 1, "player": {
+            "puuid": p["puuid"], "summonerId": p["summonerId"], "gameName": p["riotIdGameName"],
+            "tagLine": p["riotIdTagLine"], "summonerName": p["summonerName"],
+        } }));
+    }
+    let history = serde_json::json!({
+        "gameId": eog["gameId"].as_u64().filter(|id| *id > 0)?, "gameDuration": duration,
+        "gameCreation": now_ms.saturating_sub(duration * 1000), "mapId": 11, "queueId": queue,
+        "participants": participants, "participantIdentities": identities,
+        "teams": teams.iter().map(|t| serde_json::json!({ "teamId": t["teamId"], "win": t["isWinningTeam"] })).collect::<Vec<_>>(),
+    });
+    let name = local["riotIdGameName"].as_str().unwrap_or_default();
+    let owner = model::Summoner {
+        puuid: local["puuid"].as_str().filter(|id| !id.is_empty())?.into(),
+        summoner_id: local["summonerId"].as_u64().unwrap_or(0),
+        riot_id: match local["riotIdTagLine"].as_str().filter(|tag| !tag.is_empty()) {
+            Some(tag) => format!("{name}#{tag}"),
+            None => name.into(),
+        },
+        level: 0,
+        icon: None,
+    };
+    Some((history, owner))
 }
 
-/// The id of the game that just ended: the gameflow session still holds it at
-/// end of game; the end-of-game stats are the fallback.
-async fn finished_game_id() -> Option<u64> {
+/// The id and queue of the game that just ended: the gameflow session still
+/// holds them at end of game; the end-of-game stats are the fallback for the id.
+async fn finished_game() -> Option<(u64, Option<u64>)> {
     let client = crate::runes::lcu().await.ok()?;
     let id = |value: &Value, pointer: &str| value.pointer(pointer).and_then(Value::as_u64).filter(|id| *id > 0);
-    if let Some(found) = crate::runes::lcu_get::<Value>(&client, "/lol-gameflow/v1/session").await.ok().and_then(|s| id(&s, "/gameData/gameId")) {
-        return Some(found);
+    if let Ok(session) = crate::runes::lcu_get::<Value>(&client, "/lol-gameflow/v1/session").await {
+        if let Some(found) = id(&session, "/gameData/gameId") {
+            return Some((found, id(&session, "/gameData/queue/id")));
+        }
     }
     let stats = crate::runes::lcu_get::<Value>(&client, "/lol-end-of-game/v1/eog-stats-block").await.ok()?;
-    id(&stats, "/gameId")
+    id(&stats, "/gameId").map(|found| (found, None))
 }
 
 fn history_has_game(history: &Value, id: u64) -> bool {
@@ -588,23 +658,40 @@ pub async fn dashboard_snapshot(
 
 #[cfg(test)]
 mod tests {
-    use super::{ended_game, history_has_game};
+    use super::{eog_as_history, history_has_game, model};
 
     #[test]
-    fn end_of_game_stats_become_a_just_ended_row() {
-        let eog = serde_json::json!({
-            "gameId": 42, "gameLength": 1830,
-            "localPlayer": { "championId": 103, "teamId": 200, "stats": {
-                "CHAMPIONS_KILLED": 7, "NUM_DEATHS": 2, "ASSISTS": 9, "MINIONS_KILLED": 180, "NEUTRAL_MINIONS_KILLED": 12 } },
-            "teams": [{ "teamId": 100, "isWinningTeam": false }, { "teamId": 200, "isWinningTeam": true }]
+    fn end_of_game_stats_become_a_full_match() {
+        let player = |n: u64, team: u64, position: &str, kills: u64| serde_json::json!({
+            "puuid": format!("p{n}"), "summonerId": n, "riotIdGameName": format!("Player{n}"), "riotIdTagLine": "EUW",
+            "championId": 100 + n, "teamId": team, "detectedTeamPosition": position,
+            "spell1Id": 4, "spell2Id": if position == "JUNGLE" { 11 } else { 14 },
+            "items": [3089, 0, 3020, 0, 0, 0, 3364],
+            "stats": { "CHAMPIONS_KILLED": kills, "NUM_DEATHS": 2, "ASSISTS": 9, "MINIONS_KILLED": 180, "NEUTRAL_MINIONS_KILLED": 12,
+                "LEVEL": 16, "PERK0": 8112, "TOTAL_DAMAGE_DEALT_TO_CHAMPIONS": 20000 + kills, "GOLD_EARNED": 12000,
+                "VISION_SCORE": 30, "TOTAL_DAMAGE_TAKEN": 15000, "WARD_PLACED": 10, "WARD_KILLED": 3 }
         });
-        let game = ended_game(&eog).unwrap();
-        assert_eq!((game.id, game.win, game.champion_id, game.kills, game.deaths, game.assists, game.cs, game.duration), (42, true, 103, 7, 2, 9, 192, 1830));
-        // Without team results the player's own WIN stat decides; without a game or champion there is no row.
-        let solo = serde_json::json!({ "gameId": 7, "localPlayer": { "championId": 1, "stats": { "WIN": 0 } } });
-        assert!(!ended_game(&solo).unwrap().win);
-        assert!(ended_game(&serde_json::json!({ "localPlayer": { "championId": 1, "stats": { "WIN": 1 } } })).is_none());
-        assert!(ended_game(&serde_json::json!({ "gameId": 7, "localPlayer": { "championId": 1, "stats": {} } })).is_none());
+        let positions = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"];
+        let team = |id: u64, win: bool| serde_json::json!({ "teamId": id, "isWinningTeam": win, "players":
+            positions.iter().enumerate().map(|(i, pos)| player(id / 100 * 10 + i as u64, id, pos, i as u64)).collect::<Vec<_>>() });
+        let eog = serde_json::json!({
+            "gameId": 42, "gameLength": 1830, "localPlayer": player(12, 100, "MIDDLE", 2),
+            "teams": [team(100, false), team(200, true)]
+        });
+        let (history, owner) = eog_as_history(&eog, Some(420), 2_000_000).unwrap();
+        assert_eq!(owner.riot_id, "Player12#EUW");
+        let game = model::game(&history, &owner).unwrap();
+        assert_eq!((game.id, game.queue.as_str(), game.win, game.champion_id, game.kills, game.deaths, game.assists, game.cs, game.duration),
+            (42, "solo", false, 112, 2, 2, 9, 192, 1830));
+        assert_eq!((game.items.clone(), game.spells.clone(), game.keystone, game.level, game.role.as_str()), (vec![3089, 0, 3020, 0, 0, 0, 3364], vec![4, 14], 8112, 16, "mid"));
+        assert_eq!(game.created_at, 2_000_000 - 1_830_000);
+        assert!(game.placement > 0 && game.opponent.is_some(), "placement and lane opponent come from all ten players");
+        assert!(crate::match_detail::remember_ended(&history, &owner));
+        // Without a queue the game is not a dashboard row; without a game id there is nothing.
+        assert!(eog_as_history(&eog, None, 0).is_none());
+        let mut nameless = eog.clone();
+        nameless["gameId"] = 0.into();
+        assert!(eog_as_history(&nameless, Some(420), 0).is_none());
     }
 
     #[test]

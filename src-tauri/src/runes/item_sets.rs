@@ -20,8 +20,6 @@ const MAX_CHAMPION_CHARS: usize = 28;
 /// common pick per later slot.
 const BUILD_BLOCK: &str = "Core + Popular Picks";
 const BUILD_BLOCK_UNCORED: &str = "Popular Picks";
-/// A pro game's completed items, as listed; the data has no purchase order here.
-const FINAL_ITEMS_BLOCK: &str = "Final Items";
 const ALTERNATIVES_BLOCK: &str = "Alternatives";
 /// Every item set Swapper creates starts with this, which is how it finds its
 /// own sets to replace or clean up without touching the player's.
@@ -44,18 +42,6 @@ fn clean(value: &str, max_chars: usize) -> String {
         .chars()
         .take(max_chars)
         .collect()
-}
-
-fn item_values(item_ids: &[i64]) -> Result<Vec<Value>, RuneError> {
-    if item_ids.is_empty() || item_ids.len() > MAX_ITEMS || item_ids.iter().any(|id| *id <= 0) {
-        return Err(RuneError::conflict(
-            "This build does not contain a valid item list.",
-        ));
-    }
-    Ok(item_ids
-        .iter()
-        .map(|id| json!({ "id": id.to_string(), "count": 1 }))
-        .collect())
 }
 
 fn block(label: &str, items: Vec<Value>) -> Value {
@@ -109,15 +95,6 @@ fn item_set_body(
         "uid": Uuid::new_v4().to_string()
     });
     Ok((title, body))
-}
-
-fn generic_item_set_body(
-    champion_id: i64,
-    champion_name: &str,
-    item_ids: &[i64],
-) -> Result<(String, Value), RuneError> {
-    let items = item_values(item_ids)?;
-    item_set_body(champion_id, champion_name, vec![block(FINAL_ITEMS_BLOCK, items)])
 }
 
 fn preset_item_set_body(
@@ -321,16 +298,6 @@ async fn post_item_set(title: String, body: Value) -> Result<String, RuneError> 
     let existing: Value = super::lcu_get(&lcu, &path).await?;
     put_item_sets(&lcu, &path, &with_item_set_appended(existing, body, now_ms())).await?;
     Ok(title)
-}
-
-/// Adds one item set, replacing Swapper's previous one but never the player's.
-pub async fn import_build(
-    champion_id: i64,
-    champion_name: &str,
-    item_ids: &[i64],
-) -> Result<String, RuneError> {
-    let (title, body) = generic_item_set_body(champion_id, champion_name, item_ids)?;
-    post_item_set(title, body).await
 }
 
 /// Imports a preset build as starter, final-inventory and alternatives blocks.
@@ -578,21 +545,14 @@ mod tests {
     }
 
     #[test]
-    fn generic_pro_build_keeps_its_single_build_block() {
-        let (_, body) = generic_item_set_body(799, "Ambessa", &[6692, 3047]).unwrap();
-        let blocks = body["blocks"].as_array().unwrap();
-        assert_eq!(blocks.len(), 1);
-        assert_eq!(blocks[0]["type"], "Final Items");
-    }
-
-    #[test]
     fn malformed_preset_build_is_rejected_before_import() {
         let mut build = sample_build();
         build.items.clear();
         assert!(
             preset_item_set_body(799, "Ambessa", &build).is_err()
         );
-        assert!(generic_item_set_body(799, "Ambessa", &[0]).is_err());
+        build.items = vec![ItemView { id: 0, name: "Invalid".to_string() }];
+        assert!(preset_item_set_body(799, "Ambessa", &build).is_err());
     }
 
     #[test]

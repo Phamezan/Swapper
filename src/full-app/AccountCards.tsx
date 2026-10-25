@@ -8,6 +8,7 @@ import { Notice } from "./ui/States";
 
 export type AccountCardsProps = {
   accounts: Account[]; activeId: string | null; switchingId: string | null; repairableId: string | null; busy: boolean;
+  closed?: boolean;
   onSwitch: (id: string) => void; onRestart?: () => void; onAdd: () => void; onRename: (account: Account) => void;
   onRemove: (id: string) => void; onRepair: (id: string) => void; onError: (reason: unknown) => void;
 };
@@ -41,7 +42,7 @@ export function AccountCards(props: AccountCardsProps) {
         {/* The "Active session" badge already names the signed-in account, so its one action is the restart:
             switching to the signed-in account restarts the client with it (same as the tray flyout). */}
         {active
-          ? <button className="fa-secondary fa-switch fa-restart" disabled={props.busy} onClick={() => (props.onRestart ?? (() => props.onSwitch(account.id)))()}>Restart client<RefreshIcon size={16} /></button>
+          ? <button className="fa-secondary fa-switch fa-restart" disabled={props.busy} onClick={() => (props.onRestart ?? (() => props.onSwitch(account.id)))()}>{props.closed ? "Open League" : "Restart client"}<RefreshIcon size={16} /></button>
           : <button className="fa-secondary fa-switch" disabled={props.busy} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : "Switch account"}<SwitchIcon size={16} /></button>}
       </article>;
     })}<button className="fa-add-account" disabled={props.busy} onClick={props.onAdd}><AddAccountIcon size={22} /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.</span></span></button></div>

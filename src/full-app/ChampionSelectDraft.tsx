@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Clock3 } from "lucide-react";
 import { ChampionIcon } from "../runes/ChampionIcon";
+import { ChampionAbilitiesHover } from "./AbilityHover";
 import { ChampionSlot } from "./ChampionSlot";
 import { roleSlug, secondsLeft, type Draft, type DraftMember } from "./champ-select-model";
 
@@ -60,5 +61,7 @@ function Slot({ member, seat, name, laner }: { member: DraftMember; seat: string
   const slug = known || seat;
   const state = member.local ? "Your pick" : laner || (hovering ? "Hovering" : "");
   const classes = [!known && "is-seat", member.local && "is-you", hovering && "is-hover", !!laner && "is-laner"].filter(Boolean).join(" ");
-  return <ChampionSlot championId={member.championId} name={name} role={slug} state={state} locked={member.locked} className={classes} />;
+  return <ChampionAbilitiesHover championId={member.championId} name={name}>
+    <ChampionSlot championId={member.championId} name={name} role={slug} state={state} locked={member.locked} className={classes} />
+  </ChampionAbilitiesHover>;
 }

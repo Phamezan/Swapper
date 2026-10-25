@@ -215,15 +215,50 @@ pub fn remove_profile_icon(account_id: Uuid) -> Result<(), String> {
 
 pub fn load() -> Result<Config, String> {
     let path = data_root()?.join("state.json");
-    if !path.exists() {
-        return Ok(Config { onboarded: Some(false), ..Config::default() });
-    }
-    let bytes = fs::read(path).map_err(|e| e.to_string())?;
-    let mut config: Config =
-        serde_json::from_slice(&bytes).map_err(|e| format!("Cannot read Swapper settings: {e}"))?;
+    let bytes = match fs::read(&path) {
+        Ok(bytes) => bytes,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+            return Ok(Config { onboarded: Some(false), ..Config::default() });
+        }
+        Err(error) => return recover_settings(&path, &error.to_string()),
+    };
+    let mut config: Config = match serde_json::from_slice(&bytes) {
+        Ok(config) => config,
+        Err(error) => return recover_settings(&path, &error.to_string()),
+    };
     // Settings saved before the setup existed belong to an existing user.
     config.onboarded.get_or_insert(true);
     Ok(config)
+}
+
+fn recover_settings(path: &Path, reason: &str) -> Result<Config, String> {
+    use std::os::windows::ffi::OsStrExt;
+    use std::time::{SystemTime, UNIX_EPOCH};
+    let error = format!("Cannot read Swapper settings: {reason}");
+    // A directory or symlink at this path must not be moved out of the way.
+    if !fs::symlink_metadata(path).map_err(|_| error.clone())?.is_file() {
+        return Err(error);
+    }
+    let millis = SystemTime::now().duration_since(UNIX_EPOCH).map_err(|e| e.to_string())?.as_millis();
+    let backup = path.with_file_name(format!("state.json.broken-{millis}"));
+    let source: Vec<u16> = path.as_os_str().encode_wide().chain([0]).collect();
+    let target: Vec<u16> = backup.as_os_str().encode_wide().chain([0]).collect();
+    // MoveFileW refuses to replace an existing backup, including a timestamp collision.
+    if unsafe { windows_sys::Win32::Storage::FileSystem::MoveFileW(source.as_ptr(), target.as_ptr()) } == 0 {
+        return Err(format!("{error}. Cannot preserve the original settings: {}", std::io::Error::last_os_error()));
+    }
+    #[cfg(not(test))]
+    {
+        use windows_sys::Win32::UI::WindowsAndMessaging::{MessageBoxW, MB_ICONWARNING, MB_OK};
+        // Loading precedes Tauri's notification plugin and every app window.
+        let message: Vec<u16> = format!(
+            "Swapper could not read its settings and will start with defaults.\n\nYour account list and preferences have been reset. Saved session files are untouched.\n\nYour original settings were preserved at:\n{}",
+            backup.display()
+        ).encode_utf16().chain([0]).collect();
+        let title: Vec<u16> = "Swapper settings recovered".encode_utf16().chain([0]).collect();
+        unsafe { MessageBoxW(std::ptr::null_mut(), message.as_ptr(), title.as_ptr(), MB_OK | MB_ICONWARNING); }
+    }
+    Ok(Config::default())
 }
 
 pub fn save(config: &Config) -> Result<(), String> {
@@ -768,6 +803,95 @@ mod tests {
         assert!(account.riot_id().is_none());
         assert!(account.nickname.is_none());
         assert!(account.region.is_none());
+    }
+
+    #[test]
+    fn broken_settings_are_preserved_and_recover_with_defaults() {
+        for bytes in [b"{broken settings".as_slice(), b"{}", b"\xff\xfe"] {
+            with_test_data(|root| {
+                let data = root.join("Swapper");
+                fs::create_dir_all(data.join("vault")).unwrap();
+                let blob = data.join("vault").join("saved-session.bin");
+                fs::write(&blob, b"encrypted session bytes").unwrap();
+                let path = data.join("state.json");
+                fs::write(&path, bytes).unwrap();
+
+                let config = load().expect("broken settings should not prevent startup");
+                assert!(config.accounts.is_empty());
+                assert!(config.active_id.is_none());
+                assert!(!config.onboarding_pending());
+                assert!(!path.exists());
+                let backups: Vec<_> = fs::read_dir(&data).unwrap().flatten()
+                    .filter(|file| file.file_name().to_string_lossy().starts_with("state.json.broken-"))
+                    .collect();
+                assert_eq!(backups.len(), 1);
+                let name = backups[0].file_name().to_string_lossy().into_owned();
+                assert!(name.trim_start_matches("state.json.broken-").parse::<u128>().is_ok());
+                assert_eq!(fs::read(backups[0].path()).unwrap(), bytes);
+                assert_eq!(fs::read(&blob).unwrap(), b"encrypted session bytes");
+                save(&config).unwrap();
+                assert!(load().unwrap().accounts.is_empty());
+                assert_eq!(fs::read(backups[0].path()).unwrap(), bytes);
+                assert_eq!(fs::read(&blob).unwrap(), b"encrypted session bytes");
+            });
+        }
+    }
+
+    #[test]
+    fn unreadable_settings_recover_only_after_the_file_can_be_preserved() {
+        use std::os::windows::fs::OpenOptionsExt;
+        use windows_sys::Win32::Storage::FileSystem::FILE_SHARE_DELETE;
+        with_test_data(|root| {
+            let data = root.join("Swapper");
+            fs::create_dir_all(&data).unwrap();
+            let path = data.join("state.json");
+            fs::write(&path, b"unreadable settings").unwrap();
+            let lock = fs::OpenOptions::new().read(true).share_mode(FILE_SHARE_DELETE).open(&path).unwrap();
+            assert!(fs::read(&path).is_err());
+            let config = load().expect("a read error can recover when the file can be moved safely");
+            assert!(config.accounts.is_empty());
+            assert!(!path.exists());
+            drop(lock);
+            let backup = fs::read_dir(&data).unwrap().next().unwrap().unwrap();
+            assert!(backup.file_name().to_string_lossy().starts_with("state.json.broken-"));
+            assert_eq!(fs::read(backup.path()).unwrap(), b"unreadable settings");
+        });
+    }
+
+    #[test]
+    fn settings_read_error_does_not_move_a_directory_or_overwrite_a_locked_file() {
+        use std::os::windows::fs::OpenOptionsExt;
+        with_test_data(|root| {
+            let path = root.join("Swapper").join("state.json");
+            fs::create_dir_all(&path).unwrap();
+            fs::write(path.join("keep"), b"untouched").unwrap();
+            assert!(load().is_err());
+            assert_eq!(fs::read(path.join("keep")).unwrap(), b"untouched");
+        });
+        with_test_data(|root| {
+            let data = root.join("Swapper");
+            fs::create_dir_all(&data).unwrap();
+            let path = data.join("state.json");
+            fs::write(&path, b"locked settings").unwrap();
+            let lock = fs::OpenOptions::new().read(true).share_mode(0).open(&path).unwrap();
+            assert!(load().is_err());
+            drop(lock);
+            assert_eq!(fs::read(&path).unwrap(), b"locked settings");
+            assert_eq!(fs::read_dir(&data).unwrap().count(), 1);
+        });
+    }
+
+    #[test]
+    fn missing_settings_are_fresh_and_valid_settings_keep_their_values() {
+        with_test_data(|_| {
+            assert!(load().unwrap().onboarding_pending());
+            let config = Config { full_app: true, riot_exe: Some("example.exe".into()), ..Config::default() };
+            save(&config).unwrap();
+            let loaded = load().unwrap();
+            assert!(loaded.full_app);
+            assert_eq!(loaded.riot_exe.as_deref(), Some("example.exe"));
+            assert_eq!(loaded.onboarded, Some(true));
+        });
     }
 
     #[test]

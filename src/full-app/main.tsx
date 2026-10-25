@@ -7,7 +7,7 @@ import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, Pat
 import { BrandIcon } from "../components/BrandIcon";
 import { useRiotClientIcon } from "../riotIcon";
 import type { ChampionOption } from "../runes/types";
-import type { DashboardView, EndedGame, Game } from "./types";
+import type { DashboardView, Game } from "./types";
 import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
 import { TitleBar } from "./TitleBar";
 import { locationTrail } from './locationTrail';
@@ -86,7 +86,7 @@ function App() {
   // Where a finished game left the user; its match opens once League files it, unless they moved on.
   const afterGame = useRef<{ from: Location; id: number | null } | null>(null);
   // The end-of-game screen's stats, shown on the dashboard until match history files the game.
-  const [ended, setEnded] = useState<EndedGame | null>(null);
+  const [ended, setEnded] = useState<Game | null>(null);
   useEffect(() => {
     if (inGame) {
       const next = enterLive(currentRef.current, liveReturn.current, returnTo.current);
@@ -234,7 +234,11 @@ function App() {
   const playerId = page.startsWith('Player:') ? page.slice(7) : null;
   useEffect(() => {
     if (!isTauri()) return;
-    const shown = listen<EndedGame>("game_ended", ({ payload }) => setEnded(payload));
+    // game_ended: the just-ended game from the end-of-game screen, before match history has it.
+    const shown = listen<Game>("game_ended", ({ payload }) => {
+      if (afterGame.current) afterGame.current = { ...afterGame.current, id: payload.id };
+      setEnded(payload);
+    });
     const stop = listen<number>("game_finished", ({ payload }) => {
       if (afterGame.current) afterGame.current = { ...afterGame.current, id: payload };
       void refresh();
@@ -246,11 +250,11 @@ function App() {
   }, [ended, snapshot]);
   useEffect(() => {
     const pending = afterGame.current;
-    if (!pending?.id || !snapshot?.games.some(game => game.id === pending.id)) return;
+    if (!pending?.id || (ended?.id !== pending.id && !snapshot?.games.some(game => game.id === pending.id))) return;
     afterGame.current = null;
     if (currentRef.current === pending.from) go(`Match:${pending.id}`);
-  }, [snapshot, go]);
-  const selectedMatch = matchId == null ? null : visitedMatches.current.get(page) ?? snapshot?.games.find(game => game.id === matchId);
+  }, [snapshot, ended, go]);
+  const selectedMatch = matchId == null ? null : visitedMatches.current.get(page) ?? snapshot?.games.find(game => game.id === matchId) ?? (ended?.id === matchId ? ended : undefined);
   const activeAccount = accounts?.accounts.find(account => account.id === accounts.activeId);
   const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? activeAccount?.riotId ?? "");
   const who: PodiumIdentity = {
@@ -282,7 +286,7 @@ function App() {
       } : null })} onPickLocation={target => { setFocus({ champion: null }); go(target as Location); }}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} snapshot={snapshot}
-      onPickPlayer={riotId => go(`Player:${riotId}`)} onRestart={() => void restartClient()} />
+      onPickPlayer={riotId => go(`Player:${riotId}`)} onRestart={() => void restartClient()} closed={clientHealth === "closed"} />
     <div className="dashboard-shell">
       <AmbientArt src={pageArt} />
       <aside className="sidebar dash-scope">

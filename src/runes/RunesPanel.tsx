@@ -9,9 +9,11 @@ import { ProBuilds } from "./ProBuilds";
 import { CachedBadge } from "./CachedBadge";
 import { RuneEditor } from "./RuneEditor";
 import { RankPicker } from "./RankPicker";
+import { proVariant } from "../full-app/champ-select-pro";
 import {
   ProBuild,
   ProBuildsView,
+  KeystoneBuildView,
   PresetBuildView,
   MatchupView,
   Selection,
@@ -339,10 +341,10 @@ export function RunesPanel({
     proRequested.current = false;
   }
 
-  async function importItemSet(items: number[]) {
+  async function importItemSet(build: KeystoneBuildView) {
     setImportNotice(null);
     try {
-      await onImportItems(championId, view?.championName ?? "Champion", items);
+      await onImportItems(championId, view?.championName ?? "Champion", build);
       setImportNotice("Item set added to the League shop.");
     } catch {
       // The parent displays the request error beside the rune controls.
@@ -358,8 +360,9 @@ export function RunesPanel({
     editorFromPreset.current = false;
     setScreen("editor");
     await onApply(next, null, build.spells);
-    if (build.finalItems.length > 0) {
-      await importItemSet(build.finalItems.map((item) => item.id));
+    const items = proVariant(build).items;
+    if (items.items.length > 0) {
+      await importItemSet(items);
     }
   }
 

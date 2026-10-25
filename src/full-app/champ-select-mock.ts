@@ -74,7 +74,7 @@ mockIPC(async (cmd, args) => {
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     case "full_app_rune_catalog": await ready; if (catalog) return catalog; throw new Error("Rune catalog unavailable");
     case "full_app_abilities": return ["Q", "W", "E", "R"].map(key => ({ key, name: `Aatrox ${key}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${key === "R" ? "R" : key}.png` }));
-    case "champion_abilities": return { championId: a.championId, passive: { name: "Passive", iconPath: null, description: "This champion's innate effect.", tooltip: null }, spells: ["Q", "W", "E", "R"].map(key => ({ key, name: `Enemy ${key}`, iconPath: null, description: "Deals damage to enemies.", tooltip: key === "Q" ? "Deals 60/90/120/150/180 (+50% AP) magic damage." : null, cooldowns: key === "R" ? [120, 100, 80] : [12, 11, 10, 9, 8], costs: [], ranges: [], charges: 0, recharge: [] })), summoners: [] };
+    case "champion_abilities": return { championId: a.championId, tooltipsReady: true, passive: { name: "Passive", iconPath: null, description: "This champion's innate effect.", tooltip: null }, spells: ["Q", "W", "E", "R"].map(key => ({ key, name: `Enemy ${key}`, iconPath: null, description: "Deals damage to enemies.", tooltip: key === "Q" ? "Deals 60/90/120/150/180 (+50% AP) magic damage." : null, cooldowns: key === "R" ? [120, 100, 80] : [12, 11, 10, 9, 8], costs: [], ranges: [], charges: 0, recharge: [] })), summoners: [] };
     case "get_champion_overview": return { championId: a.championId, position: "top", stats: null, damage: null, unavailable: false, build: { runes: page(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347], [5005, 5008, 5001]), spells: [4, 12], items: build([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), skillOrder: ORDER } };
     case "get_keystone_build": return { ...build([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), highestWin: { preset: { index: 1, title: "Grasp", ...page(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104], [5005, 5008, 5001]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: build([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
     case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...page(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: build([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
@@ -104,7 +104,7 @@ mockIPC(async (cmd, args) => {
     }
     case "apply_rune_page": if (new URLSearchParams(location.search).has("rune-fail")) throw new Error("Your rune pages are full (25 of 25). Delete a page in League Client, then try again."); applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;
     case "apply_spell": spells = a.slot === "d" ? { ...spells, spell1Id: a.spellId } : { ...spells, spell2Id: a.spellId }; return null;
-    case "import_item_build": return null;
+    case "import_full_item_build": return null;
     default: throw new Error(`Not mocked: ${cmd}`);
   }
 }, { shouldMockEvents: true });

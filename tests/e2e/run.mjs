@@ -1326,6 +1326,35 @@ async function main() {
     await page.text('.switch-overlay h2', 'Restarting client');
     await page.wait("!document.querySelector('.switch-overlay')");
   });
+  await check("Closed client offers Open League across account actions", async () => {
+    await navigate(`${fullApp}?client=closed`, ".sidebar-play");
+    await nav("Accounts", ".fa-account-card");
+    await page.text('.fa-account-card.is-active .fa-restart', 'Open League');
+    await page.click('.podium-switch');
+    await page.text('.picker-restart', 'Open League');
+    await key('Escape');
+    await page.wait("!document.querySelector('.account-picker')");
+    await page.evaluate("document.querySelector('.location-search-button').focus()");
+    await key('k', 2);
+    await page.visible('.palette');
+    await page.type(searchInput, 'open league');
+    await page.text('.palette-option', 'Open League');
+    for (const query of ['restart', 'restart client', 'restart riot client']) {
+      await page.evaluate("document.querySelector('.title-location input').select()");
+      await page.cdp.send('Input.insertText', { text: query });
+      await page.text('.palette-option', 'Open League');
+    }
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', { event: 'client_health', payload: 'ok' })");
+    await page.text('.palette-option', 'Restart client');
+    await page.text('.fa-account-card.is-active .fa-restart', 'Restart client');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', { event: 'client_health', payload: 'closed' })");
+    await page.text('.palette-option', 'Open League');
+    await page.text('.fa-account-card.is-active .fa-restart', 'Open League');
+    await key('Enter');
+    await page.text('.switch-overlay p', 'Signing in through Riot Client.');
+    await page.wait("!document.querySelector('.switch-overlay')");
+    await navigate(fullApp, ".nav-group");
+  });
   await check("Not-responding status offers a guarded restart", async () => {
     await navigate(fullApp, ".nav-group");
     assert.equal(await page.evaluate("document.querySelector('.podium-status') === null"), true);
@@ -1471,18 +1500,36 @@ async function main() {
     await page.click(`.cs-role-buttons button[aria-label="${target}"]`);
     await page.wait(`document.querySelector('.cs-role-buttons [aria-pressed="true"]')?.getAttribute('aria-label') === '${target}'`, 'the picked role to stick');
   });
+  await check("Hovering a draft card shows that champion's abilities", async () => {
+    await navigate(`${draft}?fixture=locked`, '.cs-band .cs-slot:not(.is-empty)');
+    assert.equal(await page.evaluate("document.querySelector('.cd-sheet')"), null, "the cooldown strip below the build is gone");
+    const box = await page.evaluate("(() => { const r = document.querySelector('.cs-band .cs-slot:not(.is-empty)').getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; })()");
+    await page.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: box.x, y: box.y });
+    await page.wait("document.querySelectorAll('.fa-ability-card.is-champion section').length === 5", 'five ability sections');
+    await page.text(".fa-ability-card.is-champion", "Passive");
+    await page.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 2, y: 2 });
+    await page.wait("!document.querySelector('.fa-ability-card.is-champion')", 'the card to close');
+  });
   await check("A just-ended game shows on the dashboard before match history has it", async () => {
     await navigate(fullApp + "?ended", ".match-row");
-    await page.visible(".match-row.is-pending");
-    await page.text(".match-row.is-pending", "Victory");
-    await page.text(".match-row.is-pending .match-kda", "7 / 2 / 9");
-    await page.text(".match-row.is-pending", "Full match details");
+    await page.wait("document.querySelector('.match-row .match-kda')?.textContent.includes('7 / 2 / 9')", 'the just-ended game on top');
+    await page.text(".match-row", "Victory");
+    await page.click(".match-row .match-champ");
+    await page.visible('#md-tab-Overview');
   });
   await check("Tray flyout browser preview", async () => {
     await navigate("/index.html", ".shell .main-panel");
     await page.text("h1", "Accounts");
     await page.visible(".empty-state");
     await page.visible('button[aria-label="Settings"]');
+  });
+  await check("Closed client offers Open League in the tray", async () => {
+    await navigate('/src/flyout-preview.html?client=closed', '.account-row.is-active');
+    await page.text('.account-row.is-active small', 'Open League');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', { event: 'client_health', payload: 'ok' })");
+    await page.text('.account-row.is-active small', 'Restart client');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', { event: 'client_health', payload: 'closed' })");
+    await page.text('.account-row.is-active small', 'Open League');
   });
   if (existsSync(path.join(root, setup))) {
     await check("Setup next back and finish", async () => {

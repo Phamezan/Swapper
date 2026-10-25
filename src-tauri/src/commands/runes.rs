@@ -376,13 +376,14 @@ pub(crate) async fn champion_icon(id: i64) -> Result<String, String> {
     ))
 }
 
+/// Imports a whole build as starter, build and alternatives blocks, like auto-apply does.
 #[tauri::command]
-pub(crate) async fn import_item_build(
+pub(crate) async fn import_full_item_build(
     champion_id: i64,
     champion_name: String,
-    items: Vec<i64>,
+    build: runes::view::KeystoneBuildView,
 ) -> Result<String, String> {
-    runes::item_sets::import_build(champion_id, &champion_name, &items)
+    runes::item_sets::import_keystone_build(champion_id, &champion_name, &build)
         .await
         .map_err(|error| error.message().to_string())
 }

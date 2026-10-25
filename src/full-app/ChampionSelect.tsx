@@ -9,7 +9,6 @@ import { fmtPct, selectionFromPreset } from "../runes/types";
 import { SpellIcon } from "../runes/SpellIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { BuildPanel } from "./BuildPanel";
-import { CooldownSheet } from "./CooldownSheet";
 import { DraftBand } from "./ChampionSelectDraft";
 import { PickSuggestions } from "./ChampionSelectPicks";
 import { enemyLaners, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
@@ -133,9 +132,8 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
         </div>
         <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} liveView={view} matchups={matchups} proPageSize={3}
           autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
-        {enemyId > 0 && <CooldownSheet championId={enemyId} compact />}
       </>}
-      {props.shopNotice && <Notice>{props.shopNotice.message}</Notice>}
+      {props.shopNotice && !props.shopNotice.ok && <Notice>{props.shopNotice.message}</Notice>}
       </div>
     </>}
   </div>;

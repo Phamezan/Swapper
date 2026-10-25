@@ -14,6 +14,7 @@ export type Ability = {
 export type Summoner = { id: number; name: string; cooldown: number };
 export type Abilities = {
   championId: number;
+  tooltipsReady: boolean;
   passive: { name: string; iconPath: string | null; description?: string; tooltip?: string | null };
   spells: Ability[];
   summoners: Summoner[];

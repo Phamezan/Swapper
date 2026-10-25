@@ -55,7 +55,7 @@ export function CooldownSheet({ championId, spells, compact }: { championId: num
   </section>;
 }
 
-function AbilityIcon({ path, letter }: { path: string | null; letter: string }) {
+export function AbilityIcon({ path, letter }: { path: string | null; letter: string }) {
   const key = `ability:${path}`;
   const [src, setSrc] = useState<string | null>(() => (path ? cachedIcon(key) ?? null : null));
   useEffect(() => {

@@ -24,6 +24,7 @@ const champSelect = { phase: params.get("fixture") ? "ChampSelect" : "None", cha
 const handlers: typeof extra = {
   get_state: () => state, window_ready: none, onboarding_pending: () => false, set_onboarded: none, window_settings: () => ({}),
   champ_select_status: () => champSelect,
+  client_health: () => params.get("client") ?? "ok",
   detect_account_identity: () => ({ state: "notRunning" }), "plugin:autostart|is_enabled": () => false,
   live_game_active: () => false, live_game_auto_open: () => false, live_game_live: () => null, live_game_view: () => null,
   get_overlay_settings: () => ({ enabled: true, opacity: 80, scale: 100, objectives: true, gold: true, skills: true, levelUp: true, cooldowns: true }),

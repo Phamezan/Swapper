@@ -563,6 +563,18 @@ async fn get(client: &crate::runes::Lcu, path: &str) -> Result<Value, String> {
         .map_err(|e| e.to_string())
 }
 
+/// The just-ended game's details, built from the end-of-game stats until match history files it.
+static ENDED: std::sync::Mutex<Option<Detail>> = std::sync::Mutex::new(None);
+
+/// Keeps `value` (a match-history-shaped game) as the just-ended game's details; false when it does not parse.
+pub fn remember_ended(value: &Value, owner: &model::Summoner) -> bool {
+    let Ok(detail) = parse(value, owner) else { return false };
+    if let Ok(mut ended) = ENDED.lock() {
+        *ended = Some(detail);
+    }
+    true
+}
+
 #[tauri::command]
 pub async fn full_app_match_detail(
     app: tauri::AppHandle,
@@ -603,7 +615,14 @@ pub async fn full_app_match_detail(
     if let Some(detail) = cache.matches.get(&key) {
         return Ok(detail.clone());
     }
-    let value = get(&client, &format!("/lol-match-history/v1/games/{game_id}")).await?;
+    let value = match get(&client, &format!("/lol-match-history/v1/games/{game_id}")).await {
+        Ok(value) => value,
+        // Not filed yet: the end-of-game copy stands in, uncached so the full one replaces it.
+        Err(error) => {
+            let ended = ENDED.lock().ok().and_then(|ended| ended.clone()).filter(|detail| detail.game.id == game_id);
+            return ended.filter(|_| perspective.eq_ignore_ascii_case(&owner.riot_id)).ok_or(error);
+        }
+    };
     if value["gameId"].as_u64() != Some(game_id) {
         return Err("League Client returned another match.".into());
     }

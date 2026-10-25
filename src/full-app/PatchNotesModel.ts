@@ -208,7 +208,8 @@ export function riftSections(sections: PatchSection[]): PatchSection[] {
 /** Riot's explicit wording takes priority; otherwise aggregate line signals,
  * including range endpoints and scaling notes. Mixed or unknown means Adjustment. */
 export function classifyChange(entry: PatchEntry): ChangeKind {
-  const text = (entry.context ?? "").toLowerCase();
+  // "Reverting the buff" is a nerf and "reverting the nerf" a buff: flip those before reading the wording.
+  const text = (entry.context ?? "").toLowerCase().replace(/\brevert\w*\b(?:(?!\band\b)[^.,;]){0,30}?\b(buff|nerf)/g, (_, word) => word === "buff" ? "nerf" : "buff");
   const buff = /\bbuff/.test(text);
   const nerf = /\bnerf/.test(text);
   if (buff && !nerf) return "buff";

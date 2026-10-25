@@ -150,7 +150,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       }
       if (runes) await invoke("apply_rune_page", { selection: chosenSelection, presetIndex: null, spells: null, position: lane, enemyChampionId: null, highestWin: false });
       if (spells) for (const [index, slot] of (["d", "f"] as const).entries()) await invoke("apply_spell", { slot, spellId: chosenSpells[index] });
-      if (items) { await invoke("import_item_build", { championId, championName: name, items: itemIds }); setImported(itemsKey); }
+      if (items) { await invoke("import_full_item_build", { championId, championName: name, build: chosen.items }); setImported(itemsKey); }
       if (runes || spells) setClient(await invoke<RunesView>("get_runes"));
     } catch (error) { setFailed({ section, message: String(error).replace(/^Error: /, "") }); }
     finally { setBusy(null); }

@@ -382,7 +382,7 @@ pub fn run() {
                 runes::blind::recommended_picks,
                 commands::runes::get_champion_list,
                 commands::runes::champion_icon,
-                commands::runes::import_item_build,
+                commands::runes::import_full_item_build,
                 commands::runes::apply_rune_page,
                 updater::update_status,
                 updater::update_check_now,

@@ -1,4 +1,4 @@
-import type { RunesView, Selection, ShopNotice, ProBuildsView, PresetBuildView, MatchupView, ChampionApi } from "./types";
+import type { RunesView, Selection, ShopNotice, ProBuildsView, PresetBuildView, KeystoneBuildView, MatchupView, ChampionApi } from "./types";
 
 export type RunesPanelProps = {
   mode: "desktop" | "remote";
@@ -24,7 +24,7 @@ export type RunesPanelProps = {
   onImportItems: (
     championId: number,
     championName: string,
-    items: number[],
+    build: KeystoneBuildView,
   ) => Promise<void>;
   /** Loads one page of pros' solo-queue games for the champion and role. */
   onLoadProBuilds: (
