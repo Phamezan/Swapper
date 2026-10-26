@@ -10,7 +10,7 @@ import { TeamLogo } from "../runes/TeamLogo";
 import { SpellIcon } from "../runes/SpellIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
-import { fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen } from "../runes/types";
+import { TIER_OPTIONS, fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen } from "../runes/types";
 import type { ChampionBuild, ItemsImported, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
 import { overviewSelection, spellLayout, type FlashKey } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
@@ -232,7 +232,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       </>}
     </aside>
     <div className="cs-build-content">
-    <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s ${proPart === "runes" ? "runes" : proPart === "build" ? "items" : "build"}` : chosen.label}</strong><small>{pro ? proPart === "all" ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `with ${base.label} ${proPart === "runes" ? "items" : "runes"}` : `${name} · ${lane}`}</small>
+    <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s ${proPart === "runes" ? "runes" : proPart === "build" ? "items" : "build"}` : chosen.label}</strong><small>{pro ? proPart === "all" ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `with ${base.label} ${proPart === "runes" ? "items" : "runes"}` : `${name} · ${lane}${build.fromTier ? ` · from ${TIER_OPTIONS.find(option => option.value === build.fromTier)?.label ?? build.fromTier} games` : ""}`}</small>
       {pro && <div className="fa-seg cs-pro-part" role="group" aria-label="Use from this pro build"><small>Use</small>{([["all", "Everything"], ["runes", "Runes only"], ["build", "Items only"]] as const).map(([value, label]) => <button key={value} aria-pressed={proPart === value} disabled={!!busy} onClick={() => { setProPart(value); setCustom(null); }}>{label}</button>)}</div>}</div>
     {!preview && <><div className="cs-apply-bar" aria-label="Apply to League Client">
       {autoApply && <label className="cs-auto-apply">Auto-apply<Switch aria-label="Auto-apply runes" checked={autoApply.checked} disabled={autoApply.disabled} onCheckedChange={autoApply.onChange} /></label>}

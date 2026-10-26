@@ -468,11 +468,11 @@ pub fn switch_account(
     detection: &Detection,
 ) -> Result<(), SwitchFailure> {
     let t_pre = Instant::now();
-    ensure_no_game().map_err(switch_failure)?;
     // Restoring would overwrite a sign-in that was never saved (same rule as begin_add).
     if config.active_id.is_none() && vault::live_session_exists()? {
         return Err(SwitchFailure::new(SwitchFailureKind::Other, "Save the current Riot sign-in first, then switch accounts."));
     }
+    ensure_no_game().map_err(switch_failure)?;
     let target = config
         .accounts
         .iter()

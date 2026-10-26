@@ -216,6 +216,8 @@ export type ChampionBuild = {
   } | null;
   spells: number[];
   items: KeystoneBuildView;
+  /** The wider rank this build came from when the chosen one had none, e.g. "emerald_plus". */
+  fromTier?: string | null;
   /** Ability order for levels 1-15. */
   skillOrder: string | null;
 };

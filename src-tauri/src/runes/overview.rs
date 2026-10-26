@@ -54,6 +54,9 @@ pub struct Overview {
     /// The page's "Highest Win Build", with its own runes and spells.
     #[serde(default)]
     pub win: Option<lolalytics::WinBuild>,
+    /// The wider bracket the build came from when the chosen one had too few games.
+    #[serde(default)]
+    pub build_tier: Option<String>,
     pub runes: Option<MatchupRunes>,
     pub spells: Option<[i64; 2]>,
     pub skill_order: Option<String>,
@@ -142,6 +145,7 @@ pub fn parse_overview(html: &str, champion_id: i64) -> Option<Overview> {
         damage: page.get("damage").and_then(damage),
         build: builds.as_ref().map(|builds| builds.pick.clone()),
         win: builds.and_then(|builds| builds.win),
+        build_tier: None,
         runes: details.runes,
         spells: details.spells,
         skill_order: details.skill_order,
@@ -217,7 +221,51 @@ pub async fn load(
             (stats, details)
         }
     };
-    merge_sources(stats, details)
+    let merged = merge_sources(stats, details)?;
+    if merged.as_ref().is_some_and(|found| found.value.build.is_some()) {
+        return Ok(merged);
+    }
+    // An off-meta pick can have no build in a high bracket (Ezreal jungle in
+    // Diamond+); borrow one from a wider bracket, keeping this bracket's stats.
+    let lane = merged.as_ref().map(|found| found.value.lane.clone())
+        .or_else(|| lane.map(|lane| lolalytics::lane(lane).unwrap_or(lane).to_string()));
+    for wider in wider_tiers(tier) {
+        let Ok(Some(found)) = load_lolalytics(champion_slug, champion_id, lane.as_deref(), wider).await else {
+            continue;
+        };
+        if found.value.build.is_none() {
+            continue;
+        }
+        return Ok(Some(with_wider_build(merged, found, wider)));
+    }
+    Ok(merged)
+}
+
+/// The brackets tried, in order, when `tier` has no build: the next wider one, then all ranks.
+fn wider_tiers(tier: &str) -> Vec<&'static str> {
+    const ORDER: [&str; 7] = ["challenger", "master_plus", "diamond_plus", "emerald_plus", "platinum_plus", "gold_plus", "all"];
+    let at = ORDER.iter().position(|slug| *slug == lolalytics::tier_slug(tier)).unwrap_or(ORDER.len() - 1);
+    let mut tiers: Vec<&'static str> = ORDER.get(at + 1).into_iter().copied().collect();
+    if !tiers.contains(&"all") && at + 1 < ORDER.len() {
+        tiers.push("all");
+    }
+    tiers
+}
+
+/// `merged`'s stats with the build, runes, spells and skill order of a wider bracket.
+fn with_wider_build(merged: Option<Sourced<Overview>>, wider: Sourced<Overview>, tier: &str) -> Sourced<Overview> {
+    let Some(mut merged) = merged else {
+        let mut wider = wider;
+        wider.value.build_tier = Some(tier.to_string());
+        return wider;
+    };
+    merged.value.build = wider.value.build;
+    merged.value.win = wider.value.win;
+    merged.value.runes = wider.value.runes;
+    merged.value.spells = wider.value.spells;
+    merged.value.skill_order = wider.value.skill_order;
+    merged.value.build_tier = Some(tier.to_string());
+    merged
 }
 
 fn merge_sources(
@@ -371,6 +419,19 @@ mod tests {
         0,0,0,
         103,"middle","52.94",1737.36,18222.55,5362.05
     ]}</script>"#;
+
+    #[test]
+    fn a_missing_build_borrows_the_next_wider_bracket_then_all_ranks() {
+        assert_eq!(wider_tiers("diamond_plus"), vec!["emerald_plus", "all"]);
+        assert_eq!(wider_tiers("gold_plus"), vec!["all"]);
+        assert!(wider_tiers("all").is_empty());
+        let stats = Overview { lane: "jungle".into(), stats: OverviewStats { games: 73, ..Default::default() }, ..Default::default() };
+        let wider = Overview { build: Some(KeystoneBuild { items: vec![3078, 3158, 3042], ..Default::default() }), skill_order: Some("QEW".into()), ..Default::default() };
+        let merged = with_wider_build(Some(Sourced::fresh(stats, Provider::Ugg)), Sourced::fresh(wider, Provider::Lolalytics), "emerald_plus");
+        assert_eq!(merged.value.stats.games, 73, "the chosen bracket's stats stay");
+        assert_eq!(merged.value.build.map(|build| build.items), Some(vec![3078, 3158, 3042]));
+        assert_eq!(merged.value.build_tier.as_deref(), Some("emerald_plus"));
+    }
 
     #[test]
     fn the_highest_win_build_survives_the_ugg_stats_merge() {

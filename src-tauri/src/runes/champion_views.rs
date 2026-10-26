@@ -185,6 +185,8 @@ pub struct ChampionBuildView {
     pub items: KeystoneBuildView,
     /// Ability order for levels 1-15.
     pub skill_order: Option<String>,
+    /// The wider bracket this build came from when the chosen one had none.
+    pub from_tier: Option<String>,
 }
 
 #[derive(Debug, Clone, serde::Serialize)]
@@ -295,6 +297,7 @@ fn build_overview(
         spells: overview.spells.map(|pair| pair.to_vec()).unwrap_or_default(),
         items: view::keystone_build_view(build, stale, fetched_at, item_names),
         skill_order: overview.skill_order,
+        from_tier: overview.build_tier,
     });
     ChampionOverviewView {
         champion_id,
@@ -422,6 +425,7 @@ mod tests {
                 ..KeystoneBuild::default()
             }),
             win: None,
+            build_tier: None,
             runes: Some(MatchupRunes {
                 keystone: 8112,
                 ..MatchupRunes::default()
