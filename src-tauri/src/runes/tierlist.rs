@@ -331,6 +331,10 @@ pub(super) async fn load_lolalytics(lane: &str, tier: &str) -> Result<Option<Sou
     if let Some(cached) = cached(&key) {
         return Ok(cached);
     }
+    if let Some(found) = last_good().fresh(&key) {
+        super::shared().tierlists.store(key.clone(), found.value);
+        return Ok(stale(&key));
+    }
     let _permit = keystone_fetches()
         .acquire()
         .await

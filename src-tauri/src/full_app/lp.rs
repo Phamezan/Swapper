@@ -71,6 +71,23 @@ fn load(path: &Path) -> History {
         .unwrap_or_default()
 }
 
+/// The history to modify and save back. `None` means the file exists but cannot
+/// be read right now, so saving would destroy other accounts' points. A corrupt
+/// or oversized file is moved to `.bad` first and history starts fresh.
+fn load_for_write(path: &Path) -> Option<History> {
+    let bytes = match std::fs::metadata(path) {
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Some(History::new()),
+        Err(_) => return None,
+        Ok(m) if m.len() > MAX_FILE_BYTES => None,
+        Ok(_) => Some(std::fs::read(path).ok()?),
+    };
+    if let Some(history) = bytes.and_then(|b| serde_json::from_slice(&b).ok()) {
+        return Some(history);
+    }
+    std::fs::rename(path, path.with_extension("bad")).ok()?;
+    Some(History::new())
+}
+
 /// Appends `rank` for `puuid` unless it equals the last point. Returns the
 /// account's points, oldest first.
 #[cfg(test)]
@@ -93,7 +110,7 @@ fn save(path: &Path, history: &History) {
 }
 
 fn record_unlocked(path: &Path, puuid: &str, rank: Rank, at: u64) -> Vec<Point> {
-    let mut history = load(path);
+    let Some(mut history) = load_for_write(path) else { return Vec::new() };
     let points = history.entry(puuid.to_string()).or_default();
     if points.last().map(|p| &p.rank) != Some(&rank) {
         points.push(Point { at, rank, source: None });
@@ -109,7 +126,7 @@ fn record_unlocked(path: &Path, puuid: &str, rank: Rank, at: u64) -> Vec<Point> 
 /// seed at a time already held is skipped. Returns how many were added.
 pub fn seed_at(path: &Path, puuid: &str, seeds: Vec<Point>) -> usize {
     let _guard = HISTORY.lock().unwrap_or_else(|e| e.into_inner());
-    let mut history = load(path);
+    let Some(mut history) = load_for_write(path) else { return 0 };
     let points = history.entry(puuid.to_string()).or_default();
     let first = points.iter().find(|p| p.source.is_none()).map_or(u64::MAX, |p| p.at);
     let before = points.len();
@@ -342,6 +359,22 @@ mod tests {
         std::fs::write(&path, b"not json").unwrap();
         assert!(load(&path).is_empty());
         let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn corrupt_history_is_set_aside_and_unreadable_history_is_not_overwritten() {
+        let path = std::env::temp_dir().join(format!("lp-test-{}.json", uuid::Uuid::new_v4()));
+        std::fs::write(&path, b"not json").unwrap();
+        assert_eq!(record_at(&path, "a", rank("GOLD", "II", 10, 1, 1), 1).len(), 1);
+        assert_eq!(std::fs::read(path.with_extension("bad")).unwrap(), b"not json");
+        // A directory cannot be read as a file: nothing may be saved over it.
+        let blocked = std::env::temp_dir().join(format!("lp-test-{}.json", uuid::Uuid::new_v4()));
+        std::fs::create_dir(&blocked).unwrap();
+        assert!(record_at(&blocked, "a", rank("GOLD", "II", 10, 1, 1), 1).is_empty());
+        assert!(blocked.is_dir());
+        let _ = std::fs::remove_file(path.with_extension("bad"));
+        let _ = std::fs::remove_file(path);
+        let _ = std::fs::remove_dir(blocked);
     }
 
     #[test]

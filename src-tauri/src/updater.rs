@@ -385,12 +385,11 @@ pub async fn update_install(app: AppHandle) -> Result<(), String> {
         UpdateStateKind::Available => {}
         _ => return Err("No update is ready to install. Check for updates first.".into()),
     }
-    let switching = app
-        .try_state::<crate::AppState>()
-        .is_some_and(|state| state.is_switching());
-    if switching {
-        return Err("Wait for the account switch to finish, then update.".into());
-    }
+    // Held for the whole install so an account switch cannot start mid-update.
+    let _lease = match app.try_state::<crate::AppState>() {
+        Some(app_state) => Some(app_state.switch_guard.acquire()?),
+        None => None,
+    };
     state.set_installing();
     let update = match app.updater() {
         Ok(updater) => match updater.check().await {

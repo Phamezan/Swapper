@@ -30,12 +30,20 @@ pub(super) fn now_ms() -> i64 {
     super::super::provider::now_ms()
 }
 
+/// Fewer finished items than this, boots aside, is a remake or early surrender, not a build to copy.
+const MIN_CORE_ITEMS: usize = 2;
+
 pub(super) fn pro_build_view(
     matched: &probuilds::ProMatch,
     now: i64,
-    names: &HashMap<i64, String>,
+    catalog: &items::Catalog,
 ) -> Option<ProBuildView> {
     let selection = matched.selection()?;
+    let built = matched.built_items(catalog);
+    if built.iter().filter(|id| !catalog.is_boots(**id)).count() < MIN_CORE_ITEMS {
+        return None;
+    }
+    let names = &*catalog.names();
     let team = if matched.pro_info.current_team.trim().is_empty() {
         matched.current_team.trim()
     } else {
@@ -69,15 +77,7 @@ pub(super) fn pro_build_view(
             .take(2)
             .collect(),
         final_items: item_views(&matched.final_items(), names),
-        completed_items: item_views(
-            &matched
-                .completed_items
-                .iter()
-                .copied()
-                .filter(|id| *id > 0)
-                .collect::<Vec<_>>(),
-            names,
-        ),
+        completed_items: item_views(&built, names),
         item_path: matched
             .item_path_groups()
             .into_iter()
@@ -142,14 +142,11 @@ pub async fn pro_builds_view(champion_id: i64, position: &str, page: u32, is_otp
             let now = now_ms();
             // Names come from the client's item catalog; empty when unavailable,
             // in which case each icon falls back to "Item <id>".
-            let names: std::sync::Arc<HashMap<i64, String>> = if matches.is_empty() {
-                std::sync::Arc::new(HashMap::new())
-            } else {
-                items::names().await
-            };
+            let catalog = if matches.is_empty() { None } else { items::catalog().await.ok() };
+            let catalog = catalog.unwrap_or_default();
             let views: Vec<ProBuildView> = matches
                 .iter()
-                .filter_map(|entry| pro_build_view(entry, now, &names))
+                .filter_map(|entry| pro_build_view(entry, now, &catalog))
                 .collect();
             ProBuildsView {
                 champion_id,

@@ -51,6 +51,9 @@ pub struct Overview {
     pub stats: OverviewStats,
     pub damage: Option<Damage>,
     pub build: Option<KeystoneBuild>,
+    /// The page's "Highest Win Build", with its own runes and spells.
+    #[serde(default)]
+    pub win: Option<lolalytics::WinBuild>,
     pub runes: Option<MatchupRunes>,
     pub spells: Option<[i64; 2]>,
     pub skill_order: Option<String>,
@@ -126,16 +129,19 @@ pub fn parse_overview(html: &str, champion_id: i64) -> Option<Overview> {
         pick_pct: page.get("pr").and_then(number)?,
         ban_pct: page.get("br").and_then(number)?,
         games: page.get("n").and_then(as_u64).unwrap_or(0),
-        rank: page.get("rank").and_then(as_u64)? as u32,
-        rank_total: page.get("rankTotal").and_then(as_u64)? as u32,
+        // Off-meta lanes are unranked: lolalytics shows "?" for rank and tier.
+        rank: page.get("rank").and_then(as_u64).unwrap_or(0) as u32,
+        rank_total: page.get("rankTotal").and_then(as_u64).unwrap_or(0) as u32,
         patch: page.get("patch")?.as_str()?.to_string(),
     };
     let details = pick_details(objs);
+    let builds = lolalytics::parse_builds(html);
     Some(Overview {
         lane: page.get("lane")?.as_str()?.to_string(),
         stats,
         damage: page.get("damage").and_then(damage),
-        build: lolalytics::parse_build(html),
+        build: builds.as_ref().map(|builds| builds.pick.clone()),
+        win: builds.and_then(|builds| builds.win),
         runes: details.runes,
         spells: details.spells,
         skill_order: details.skill_order,
@@ -192,11 +198,25 @@ pub async fn load(
     lane: Option<&str>,
     tier: &str,
 ) -> Result<Option<Sourced<Overview>>, RuneError> {
-    let stats = super::ugg::overview(champion_id, lane, tier).await;
     // The build, runes, damage and skill order still come from the same
     // lolalytics page/cache. A build outage must not hide available stats.
-    let details_lane = stats.as_ref().map(|s| s.value.lane.as_str()).or(lane);
-    let details = load_lolalytics(champion_slug, champion_id, details_lane, tier).await;
+    let (stats, details) = match lane {
+        // An explicit lane needs no u.gg answer to start lolalytics, so overlap them.
+        Some(lane) => {
+            let lane = lolalytics::lane(lane).unwrap_or(lane);
+            tokio::join!(
+                super::ugg::overview(champion_id, Some(lane), tier),
+                load_lolalytics(champion_slug, champion_id, Some(lane), tier)
+            )
+        }
+        // Without one, lolalytics needs the lane u.gg resolves.
+        None => {
+            let stats = super::ugg::overview(champion_id, None, tier).await;
+            let lane = stats.as_ref().map(|s| s.value.lane.as_str());
+            let details = load_lolalytics(champion_slug, champion_id, lane, tier).await;
+            (stats, details)
+        }
+    };
     merge_sources(stats, details)
 }
 
@@ -211,6 +231,7 @@ fn merge_sources(
             }
             stats.value.damage = details.value.damage.clone();
             stats.value.build = details.value.build.clone();
+            stats.value.win = details.value.win.clone();
             stats.value.runes = details.value.runes.clone();
             stats.value.spells = details.value.spells;
             stats.value.skill_order = details.value.skill_order.clone();
@@ -237,6 +258,10 @@ async fn load_lolalytics(
     let _guard = gate.lock().await;
     if let Some(cached) = cached(&key) {
         return Ok(cached);
+    }
+    if let Some(found) = last_good().fresh(&key) {
+        super::shared().overviews.store(key.clone(), found.value);
+        return Ok(stale(&key));
     }
     let _permit = keystone_fetches()
         .acquire()
@@ -346,6 +371,29 @@ mod tests {
         0,0,0,
         103,"middle","52.94",1737.36,18222.55,5362.05
     ]}</script>"#;
+
+    #[test]
+    fn the_highest_win_build_survives_the_ugg_stats_merge() {
+        let win = lolalytics::parse_builds(include_str!("../../tests/fixtures/lolalytics-ahri-mid-8112.html"))
+            .and_then(|builds| builds.win)
+            .expect("the fixture has a highest win build");
+        let details = Overview { lane: "middle".into(), win: Some(win.clone()), ..Default::default() };
+        let stats = Overview { lane: "middle".into(), stats: OverviewStats { games: 1000, ..Default::default() }, ..Default::default() };
+        let merged = merge_sources(Some(Sourced::fresh(stats, Provider::Ugg)), Ok(Some(Sourced::fresh(details, Provider::Lolalytics))))
+            .unwrap()
+            .unwrap();
+        assert_eq!((merged.value.stats.games, merged.value.win), (1000, Some(win)));
+    }
+
+    #[test]
+    fn an_unranked_off_meta_lane_still_parses() {
+        // Ezreal jungle: lolalytics has games and a build but no tier-list rank.
+        let page = AHRI.replace(r#""rank":10,"rankTotal":98,"tier":"S-""#, r#""rank":"?","rankTotal":"?","tier":"?""#);
+        assert_ne!(page, AHRI, "the fixture still carries a rank to replace");
+        let overview = parse_overview(&page, 103).expect("an unranked lane is still a page");
+        assert_eq!((overview.stats.rank, overview.stats.rank_total, overview.stats.tier.as_str()), (0, 0, "?"));
+        assert!(overview.build.is_some());
+    }
 
     #[test]
     fn parses_stats_and_the_damage_split() {

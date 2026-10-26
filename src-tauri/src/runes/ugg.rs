@@ -478,7 +478,7 @@ pub async fn tier_list(lane: &str, tier: &str) -> Option<Sourced<TierList>> {
     })
 }
 
-async fn default_lane(champion: i64, tier: &str) -> Option<&'static str> {
+pub(super) async fn default_lane(champion: i64, tier: &str) -> Option<&'static str> {
     let versions = versions().await?;
     let patches = patch_names(&versions.value)?;
     let found = match dataset(

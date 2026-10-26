@@ -71,7 +71,7 @@ async fn run(context: ChampSelectContext, tier: String, generation: u64) {
     let _ = super::spells::catalog().await;
     let current = super::lcu().await.ok();
     let position = match current.as_ref() {
-        Some(lcu) => super::position_for(lcu, &context).await.to_string(),
+        Some(lcu) => super::position_for(lcu, &context, &tier).await.to_string(),
         None => context.position().unwrap_or("jungle").to_string(),
     };
     let mut runes: Vec<i64> = Vec::new();

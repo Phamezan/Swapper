@@ -46,11 +46,13 @@ function harness(file, exportName, commands = {}, visibility = "visible", enviro
   const window = {
     setInterval(fn) { const id = ++nextTimer; timers.set(id, fn); return id; },
     clearInterval(id) { timers.delete(id); },
+    setTimeout(fn) { const id = ++nextTimer; timers.set(id, fn); return id; },
+    clearTimeout(id) { timers.delete(id); },
     ...environment.window,
   };
   const invoke = async (name, args) => {
     calls.push({ name, args });
-    return typeof commands[name] === "function" ? commands[name](args) : commands[name] ?? null;
+    return typeof commands[name] === "function" ? commands[name](args) : commands[name] ?? (name === "get_rune_presets" ? [] : null);
   };
   const jsx = (type, props) => ({ type, props });
   const modules = {
@@ -62,7 +64,7 @@ function harness(file, exportName, commands = {}, visibility = "visible", enviro
     "radix-ui": { HoverCard: { Root: "hover-root", Trigger: "hover-trigger", Portal: "hover-portal", Content: "hover-content" } },
     "@tauri-apps/api/event": { listen: async (name, fn) => { handlers.set(name, fn); return () => handlers.delete(name); } },
     "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./championsModel": championsModel, "./ui/format": format,
-    "./types": runeTypes, "../full-app/champ-select-pro": proBuilds,
+    "./types": runeTypes, "../full-app/champ-select-pro": proBuilds, "./champ-select-pro": proBuilds,
     "./runesPanelModel": runesPanelModel,
     "../settingsEvents": { useSettingsVersion: () => 0 },
     ...environment.modules,
@@ -117,13 +119,12 @@ const proBuild = () => ({
   itemPath: [{ minute: 0, items: itemBuild().starters }], skillOrder: ["Q", "W", "E"],
 });
 
-test("draft Item set apply sends the chosen full build including starters", async () => {
+test("draft Apply all sends the chosen full build including starters", async () => {
   const chosen = itemBuild();
   const { h } = panel({ matchups: [{ enemyChampionId: 122, enemyName: "Darius", preset: build().runes, build: chosen, fallback: false }] });
   await h.flush();
   nodes(h.tree()).find(n => n.type === "button" && textOf(n).startsWith("vs Darius")).props.onClick(); h.render();
-  const chip = nodes(h.tree()).find(n => n.props?.className?.includes("cs-apply-chip") && textOf(n).startsWith("Item set"));
-  nodes(chip).find(n => n.type === "button").props.onClick(); await h.flush();
+  nodes(h.tree()).find(n => n.type === "button" && textOf(n).includes("Apply all")).props.onClick(); await h.flush();
   assert.deepEqual(h.calls.filter(c => c.name.startsWith("import_")), [{ name: "import_full_item_build", args: { championId: 266, championName: "Aatrox", build: chosen } }]);
 });
 
@@ -210,7 +211,7 @@ test("draft events update taken picks during planning without a local view chang
   const next = { ...draft, bans: [...draft.bans, 11], enemies: [{ championId: 238, position: "top", locked: true }] };
   await h.emit("draft_changed", next);
   const suggestions = nodes(h.tree()).find(n => n.props?.taken);
-  assert.equal(suggestions.props.enemyId, 238);
+  assert.deepEqual(suggestions.props.enemyIds, [238]);
   assert.ok(suggestions.props.taken.has(11));
   assert.equal(buildReads, before, "enemy reveals must not reload and reset the source build");
 });
@@ -284,4 +285,21 @@ test("a shard that appears in two rows is chosen only in its own row", async () 
   assert.equal(shardChosen(hecarim, 1, 5008), false);
   assert.equal(shardChosen(hecarim, 1, 5001), true);
   assert.equal(shardChosen(hecarim, 2, 5001), false);
+});
+
+test("chosen build tab follows its label when the tab list changes", async () => {
+  const mk = (id, enemyName) => ({ enemyChampionId: id, enemyName, preset: build().runes, build: itemBuild(), fallback: false });
+  const { h, props } = panel({ matchups: [mk(122, "Darius")] });
+  await h.flush();
+  nodes(h.tree()).find(n => n.type === "button" && textOf(n).startsWith("vs Darius")).props.onClick(); h.render();
+  h.render({ ...props, matchups: [mk(238, "Zed"), mk(122, "Darius")] });
+  const pressed = nodes(h.tree()).filter(n => n.type === "button" && n.props["aria-pressed"] && /^(Most played|vs )/.test(textOf(n)));
+  assert.deepEqual(pressed.map(n => textOf(n).slice(0, 9)), ["vs Darius"]);
+});
+
+test("BuildPanel shows a skeleton, not 'unavailable', while the build loads", async () => {
+  const { h, props } = panel({ build: null, loading: true });
+  assert.ok(!textOf(h.tree()).includes("Build unavailable"));
+  h.render({ ...props, loading: false });
+  assert.ok(textOf(h.tree()).includes("Build unavailable"));
 });

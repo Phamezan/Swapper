@@ -481,14 +481,29 @@ async fn region_for(lcu: &Lcu) -> String {
     opgg::DEFAULT_REGION.to_string()
 }
 
-async fn position_for(_lcu: &Lcu, context: &session::ChampSelectContext) -> &'static str {
+async fn position_for(
+    _lcu: &Lcu,
+    context: &session::ChampSelectContext,
+    tier: &str,
+) -> &'static str {
     if let Some(position) = context.position() {
         return position;
     }
-    // A roleless ranked context is commonly Practice Tool. Keep the current
-    // default Swapper has always inferred there, while allowing the user to
-    // choose a different lane from the rune screen.
-    "jungle"
+    // A roleless context (Practice Tool): use the champion's main lane, and let
+    // the user choose another from the rune screen.
+    let lane = if context.champion_id > 0 {
+        ugg::default_lane(context.champion_id, tier).await
+    } else {
+        None
+    };
+    roleless_position(lane)
+}
+
+/// The op.gg position for a champion's main lane, or jungle when it is unknown.
+fn roleless_position(main_lane: Option<&str>) -> &'static str {
+    main_lane
+        .and_then(session::position_from_request)
+        .unwrap_or("jungle")
 }
 
 // ---------------------------------------------------------------------------
@@ -608,6 +623,15 @@ mod tests {
         assert_eq!(region_slug("NA1"), Some("na"));
         assert_eq!(region_slug("KR"), Some("kr"));
         assert_eq!(region_slug("unknown-region"), None);
+    }
+
+    #[test]
+    fn a_roleless_context_uses_the_main_lane_and_falls_back_to_jungle() {
+        assert_eq!(roleless_position(Some("middle")), "mid");
+        assert_eq!(roleless_position(Some("bottom")), "adc");
+        assert_eq!(roleless_position(Some("support")), "support");
+        assert_eq!(roleless_position(None), "jungle");
+        assert_eq!(roleless_position(Some("nonsense")), "jungle");
     }
 
     #[test]

@@ -30,7 +30,7 @@
 .fa-ability-card dt { color: var(--ui-text-3); font-size: 12.5px; }
 .fa-ability-card dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
 /* Whole-champion card (draft): one section per ability, scrolls when long. */
-.fa-ability-card.is-champion { width: min(420px, calc(100vw - 24px)); max-height: min(560px, calc(100vh - 24px)); display: grid; gap: 12px; }
+.fa-ability-card.is-champion { width: min(420px, calc(100vw - 24px)); max-height: min(560px, calc(100vh - 24px)); display: grid; gap: 12px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--ui-line-3) transparent; }
 .fa-ability-card.is-champion h4 { margin: 0; font-size: 16px; font-weight: 700; }
 .fa-ability-card.is-champion section { display: grid; gap: 6px; padding-top: 12px; border-top: 1px solid var(--ui-line-1); }
 .fa-ability-card.is-champion h4 + section { padding-top: 0; border-top: 0; }

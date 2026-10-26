@@ -53,13 +53,14 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
     else setDraft(null);
     return () => { live = false; void stop.then(unlisten => unlisten()); };
   }, [view?.phase]);
+  // Owned and free champions don't depend on whose turn it is; the list also hides the rest
+  // from suggestions, so it is kept for the whole draft and refetched until the client fills it.
   useEffect(() => {
-    if (!draft?.value.canLock) { setPickable(new Set()); return; }
-    if (pickable.size) return;
+    if (!draft || pickable.size) return;
     let live = true;
     void invoke<Draft>("full_app_draft").then(value => { if (live) setPickable(new Set(value.pickable ?? [])); }).catch(() => {});
     return () => { live = false; };
-  }, [draft?.value.canLock]);
+  }, [draft?.value.canLock, !draft]);
   const [lastRole, setLastRole] = useState(() => { try { return localStorage.getItem("cs-role") || "mid"; } catch { return "mid"; } });
   const assigned = roleSlug(draft?.value.allies.find(member => member.local)?.position ?? "");
   // The role picked in this draft wins; otherwise League's assigned role (a role swap clears the pick so the list
@@ -107,7 +108,6 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const taken = useMemo(() => takenIds(draft?.value ?? null), [draft]);
   const build = useMemo<ChampionBuild | null>(() => preset && items ? { runes: preset, spells: preset.spells, items, skillOrder: items.skillOrder ?? overview?.build?.skillOrder ?? null } : overview?.build ?? null, [preset, items, overview?.build]);
   const enemyNameOf = (id: number) => names.get(id) || (id === view?.enemyChampionId ? view.enemyChampionName : "") || "";
-  const enemyName = enemyId ? enemyNameOf(enemyId) : "";
   const enemyNames = enemyIds.map(enemyNameOf).filter(Boolean).join(" or ");
   const championName = view?.championName || names.get(view?.championId ?? 0) || "";
 
@@ -122,7 +122,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
       <div className="cs-workspace">
       {notices}
       {mode === "planning" ? <div className="cs-planning">
-        <PickSuggestions role={role} tier={view.tier} enemyId={enemyId} enemyName={enemyName} enemyCount={draft?.value.enemies.filter(member => member.championId > 0).length ?? 0} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} controls={pickers} canLock={!!draft?.value.canLock} pickable={pickable} />
+        <PickSuggestions role={role} tier={view.tier} enemyIds={enemyIds} taken={taken} names={names} hovered={view.championId} tierList={props.championApi.tierList} controls={pickers} canLock={!!draft?.value.canLock} banTurn={draft?.value.banTurn} pickable={pickable} />
       </div> : <>
         <div className="fa-draft-controls cs-toolbar">
           <h2>{championName}{enemyNames && <small> vs {enemyNames}</small>}</h2>
@@ -130,7 +130,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
           {pickers}
           {(["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
         </div>
-        <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} liveView={view} matchups={matchups} proPageSize={3}
+        <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} loading={!overview && !error} liveView={view} matchups={matchups} proPageSize={3}
           autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
       </>}
       {props.shopNotice && !props.shopNotice.ok && <Notice>{props.shopNotice.message}</Notice>}

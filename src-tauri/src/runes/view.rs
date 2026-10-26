@@ -462,13 +462,17 @@ pub(crate) fn build_shards(catalog: &perks::PerkCatalog, stats: &stats::Aggregat
     catalog
         .shard_rows()
         .into_iter()
-        .map(|(label, row)| RuneRowView {
-            kind: "statmod".into(),
-            label,
-            runes: row
-                .iter()
-                .map(|id| rune_view(*id, catalog.name(*id).unwrap_or("Unknown"), stats, &row))
-                .collect(),
+        .enumerate()
+        .map(|(index, (label, row))| {
+            let row_stats = stats.shard_row(index);
+            RuneRowView {
+                kind: "statmod".into(),
+                label,
+                runes: row
+                    .iter()
+                    .map(|id| rune_view(*id, catalog.name(*id).unwrap_or("Unknown"), &row_stats, &row))
+                    .collect(),
+            }
         })
         .collect()
 }
@@ -573,7 +577,7 @@ pub async fn view(
             );
         }
     };
-    let detected_position = super::position_for(&current, &context).await;
+    let detected_position = super::position_for(&current, &context, tier).await;
     let position = requested_position
         .and_then(session::position_from_request)
         .filter(|position| *position != super::opgg::POSITION_NONE)

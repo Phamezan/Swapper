@@ -19,6 +19,8 @@ const GAMES: usize = 10;
 /// A lobby counts once this many of its other players have a known rank.
 const MIN_RANKED: usize = 4;
 const LOOKUP_TIMEOUT: Duration = Duration::from_secs(4);
+/// How long a caller waits for rank lookups; they keep filling the cache after that.
+const ESTIMATE_DEADLINE: Duration = Duration::from_secs(3);
 /// Recorded lobbies kept, newest game ids first.
 const RECORDED_GAMES: usize = 50;
 const SOLO_QUEUE_ID: i64 = 420;
@@ -144,18 +146,18 @@ pub async fn record_lobby() {
 
 /// The signed-in account's estimate for its `games` (newest first): recorded
 /// lobbies where Swapper saw the game start, current ranks otherwise.
-pub async fn current(client: &crate::runes::Lcu, games: &[Game]) -> Option<Mmr> {
+pub async fn current(games: &[Game]) -> Option<Mmr> {
     let recorded = lobby_path().map(|path| load_lobbies(&path)).unwrap_or_default();
-    estimate_from(client, games, &recorded).await
+    estimate_from(games, &recorded).await
 }
 
 /// Another player's estimate from their `games` (seen from their side, `me` is
 /// them), always from current ranks: recorded lobbies belong to the signed-in account.
-pub async fn for_player(client: &crate::runes::Lcu, games: &[Game]) -> Option<Mmr> {
-    estimate_from(client, games, &Lobbies::new()).await
+pub async fn for_player(games: &[Game]) -> Option<Mmr> {
+    estimate_from(games, &Lobbies::new()).await
 }
 
-async fn estimate_from(client: &crate::runes::Lcu, games: &[Game], recorded: &Lobbies) -> Option<Mmr> {
+async fn estimate_from(games: &[Game], recorded: &Lobbies) -> Option<Mmr> {
     let recent: Vec<&Game> = games.iter().filter(|g| g.queue == "solo").take(GAMES).collect();
     let others = |game: &&Game| -> Vec<String> {
         game.players.iter().filter(|p| !p.me && valid_puuid(&p.puuid)).map(|p| p.puuid.clone()).collect()
@@ -172,7 +174,15 @@ async fn estimate_from(client: &crate::runes::Lcu, games: &[Game], recorded: &Lo
         missing.dedup();
         missing
     };
-    look_up(client, missing).await;
+    if !missing.is_empty() {
+        // Detached so a timeout leaves the lookups running; the cache is keyed by PUUID, so a late result is harmless.
+        let lookups = tokio::spawn(async move {
+            if let Ok(client) = crate::runes::lcu().await {
+                look_up(&client, missing).await;
+            }
+        });
+        let _ = tokio::time::timeout(ESTIMATE_DEADLINE, lookups).await;
+    }
     let cache = RANKS.lock().unwrap_or_else(|e| e.into_inner());
     let known = |puuid: &String| cache.as_ref().and_then(|c| c.get(puuid).copied().flatten());
     let lobbies: Vec<Vec<i64>> = recent

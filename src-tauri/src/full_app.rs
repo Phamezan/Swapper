@@ -603,7 +603,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     let points = lp::record_current(&client, account, summoner.puuid.clone(), rank.clone()).await?;
     lp::annotate(&mut games, &points);
     lp_seed::spawn(summoner.puuid.clone(), summoner.riot_id.clone(), &points);
-    let mmr = mmr::current(&client, &games).await;
+    let mmr = mmr::current(&games).await;
     Ok(Snapshot {
         lp_history: points,
         mmr,

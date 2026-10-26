@@ -58,12 +58,11 @@ pub async fn matchup_view(
     let slug = lolalytics::champion_slug(names.get(&champion_id)?)?;
     let enemy_name = names.get(&enemy_id)?.clone();
     let enemy_slug = lolalytics::champion_slug(&enemy_name)?;
-    let found = data::matchup(&slug, &enemy_slug, champion_id, enemy_id, lane, tier)
-        .await
-        .ok()
-        .flatten();
+    let (found, stats) =
+        data::matchup_and_stats(&slug, &enemy_slug, champion_id, enemy_id, lane, tier).await;
+    let found = data::with_stats(found.ok().flatten(), stats.as_ref());
     if found.is_none() {
-        if let Some(stats) = super::ugg::matchup_stats(champion_id, enemy_id, lane, tier).await {
+        if let Some(stats) = stats {
             let mut view = fallback_view(enemy_id, enemy_name, Some(MatchupStatsView {
                 win_pct: stats.value.win_pct, avg_win_pct: stats.value.avg_win_pct,
                 delta: stats.value.delta(), games: stats.value.games, patch: stats.value.patch,

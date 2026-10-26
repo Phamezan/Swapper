@@ -134,7 +134,7 @@ fn sample(app: &tauri::AppHandle) -> Input {
         };
     };
     // Starting up: the process is there but the API is not yet.
-    if !crate::lcu::lockfile_present() {
+    if !crate::lcu::lockfile_present() && crate::lcu::discover().is_none() {
         return none;
     }
     let pids: Vec<u32> = clients.iter().map(|p| p.pid).collect();

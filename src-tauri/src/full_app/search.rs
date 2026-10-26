@@ -100,6 +100,18 @@ fn participant_icons(detail: &Value) -> BTreeMap<String, u64> {
         .collect()
 }
 
+/// A saved game with its full match detail, so a revisit needn't download it again.
+fn reusable(saved: &[model::Game], id: u64) -> Option<&model::Game> {
+    saved.iter().find(|g| {
+        g.id == id
+            && g.metrics[1].is_some()
+            && g.metrics[4].is_some()
+            && !g.items.is_empty()
+            && !g.players.is_empty()
+            && g.players.iter().any(|p| !p.puuid.is_empty())
+    })
+}
+
 fn riot_id(value: &str) -> Result<(&str, &str), String> {
     let (name, tag) = value
         .trim()
@@ -578,8 +590,7 @@ pub async fn full_app_player_mmr(
     let Some(profile) = profiles.into_iter().find(|p| p.player.riot_id.eq_ignore_ascii_case(riot_id.trim())) else {
         return Ok(None);
     };
-    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
-    Ok(super::mmr::for_player(&client, &profile.games).await)
+    Ok(super::mmr::for_player(&profile.games).await)
 }
 
 #[tauri::command]
@@ -640,8 +651,12 @@ pub async fn full_app_player_profile(
             .map(|row| {
                 let client = &client;
                 let summoner = &summoner;
+                let saved = &saved.games;
                 async move {
                     let id = row["gameId"].as_u64()?;
+                    if let Some(game) = reusable(saved, id) {
+                        return Some((game.clone(), BTreeMap::new()));
+                    }
                     let detail = get(client, &format!("/lol-match-history/v1/games/{id}"))
                         .await
                         .ok()
@@ -868,6 +883,18 @@ mod tests {
         assert!(rank.record_available);
     }
 
+    #[test]
+    fn saved_games_are_reused_only_when_complete() {
+        let game = |id: u64, complete: bool| -> model::Game {
+            let player = json!({"championId":1,"riotId":"A#B","puuid":"p","me":true,"ally":true,"role":"","kills":0,"deaths":0,"assists":0,"cs":0,"damage":0,"gold":0,"vision":0,"items":[]});
+            serde_json::from_value(json!({"id":id,"queue":"solo","championId":1,"createdAt":1,"duration":1,"win":true,"kills":0,"deaths":0,"assists":0,
+                "metrics":[null,1.0,null,null,1.0,null],"items":[1],"players":if complete {vec![player]} else {vec![]}})).unwrap()
+        };
+        let saved = [game(1, true), game(2, false)];
+        assert_eq!(reusable(&saved, 1).map(|g| g.id), Some(1));
+        assert!(reusable(&saved, 2).is_none(), "a game without players is fetched again");
+        assert!(reusable(&saved, 3).is_none());
+    }
     #[test]
     fn participant_icons_only_keep_observed_ids() {
         let detail = json!({"participantIdentities":[{"player":{"gameName":"Friend","tagLine":"TEST","profileIcon":29}},{"player":{"gameName":"Missing","tagLine":"TEST"}}]});

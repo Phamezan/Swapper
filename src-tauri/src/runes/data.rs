@@ -206,6 +206,10 @@ pub async fn champion_data(
     if let Some(result) = cached_group(&key) {
         return result;
     }
+    if let Some(found) = rune_last_good().fresh(&key) {
+        super::shared().groups.insert(key.clone(), (Instant::now(), found.value));
+        return group_stale_or_error(&key, ProviderError::Unavailable);
+    }
     let client = match opgg::OpggClient::new() {
         Ok(client) => client,
         Err(error) => {
@@ -342,6 +346,10 @@ pub async fn pro_builds(
     if let Some(cached) = cached_pro_builds(&key) {
         return cached;
     }
+    if let Some(found) = pro_last_good().fresh(&key) {
+        super::shared().pro_builds.store(key.clone(), found.value);
+        return pro_stale_or_error(&key, ProviderError::Unavailable);
+    }
     let client = match probuilds::ProBuildsClient::new() {
         Ok(client) => client,
         Err(error) => {
@@ -423,13 +431,18 @@ pub async fn keystone_build(
     if let Some(cached) = cached_keystone_build(&key) {
         return cached;
     }
+    // After a restart the session cache is empty but the persisted entry may be fresh.
+    if let Some(found) = build_last_good().fresh(&key) {
+        super::shared().lolalytics.store(key.clone(), found.value);
+        return Ok(keystone_stale(&key));
+    }
     let _permit = keystone_fetches()
         .acquire()
         .await
         .expect("the keystone fetch semaphore is never closed");
     let client = match lolalytics::LolalyticsClient::new() {
         Ok(client) => client,
-        Err(_) => return Ok(keystone_stale(&key)),
+        Err(_) => return Ok(keystone_unavailable(&key)),
     };
     match client.build(champion_slug, lane, tier, keystone, None).await {
         Ok(Some(build)) => {
@@ -456,8 +469,15 @@ pub async fn keystone_build(
             super::shared().lolalytics.fail(key);
             Ok(None)
         }
-        Err(_) => Ok(keystone_stale(&key)),
+        Err(_) => Ok(keystone_unavailable(&key)),
     }
+}
+
+/// Negative-caches a failed keystone fetch so the next waiter does not fetch
+/// again, then serves the persisted last-good build if there is one.
+fn keystone_unavailable(key: &str) -> Option<Sourced<lolalytics::KeystoneBuilds>> {
+    super::shared().lolalytics.fail(key.to_string());
+    keystone_stale(key)
 }
 
 /// A cached keystone build for a filter key, if one is still fresh. A
@@ -499,24 +519,39 @@ fn keystone_stale(key: &str) -> Option<Sourced<lolalytics::KeystoneBuilds>> {
 /// that matchup, failures are negative-cached, concurrent misses share one
 /// request, and a failed fetch serves the persisted last-good matchup. The
 /// caller decides whether the sample is large enough to use.
-pub async fn matchup(
+///
+/// The u.gg stats are fetched concurrently and returned separately, so a caller
+/// can merge them with [`with_stats`] and reuse them as the fallback.
+pub async fn matchup_and_stats(
     champion_slug: &str,
     enemy_slug: &str,
     champion_id: i64,
     enemy_id: i64,
     lane: &str,
     tier: &str,
-) -> Result<Option<Sourced<Matchup>>, RuneError> {
-    let mut found = matchup_lolalytics(champion_slug, enemy_slug, champion_id, enemy_id, lane, tier).await?;
-    if let Some(found) = found.as_mut() {
-        if let Some(stats) = super::ugg::matchup_stats(champion_id, enemy_id, lane, tier).await {
-            if !stats.stale || found.stale {
-                found.value.stats = stats.value;
-                found.stale |= stats.stale;
-            }
+) -> (
+    Result<Option<Sourced<Matchup>>, RuneError>,
+    Option<Sourced<matchup::MatchupStats>>,
+) {
+    tokio::join!(
+        matchup_lolalytics(champion_slug, enemy_slug, champion_id, enemy_id, lane, tier),
+        super::ugg::matchup_stats(champion_id, enemy_id, lane, tier)
+    )
+}
+
+/// Replaces a matchup's stats with the u.gg ones unless they are stale and the
+/// matchup is not.
+pub fn with_stats(
+    mut found: Option<Sourced<Matchup>>,
+    stats: Option<&Sourced<matchup::MatchupStats>>,
+) -> Option<Sourced<Matchup>> {
+    if let (Some(found), Some(stats)) = (found.as_mut(), stats) {
+        if !stats.stale || found.stale {
+            found.value.stats = stats.value.clone();
+            found.stale |= stats.stale;
         }
     }
-    Ok(found)
+    found
 }
 
 async fn matchup_lolalytics(
@@ -536,13 +571,20 @@ async fn matchup_lolalytics(
     if let Some(cached) = cached_matchup(&key) {
         return cached;
     }
+    if let Some(found) = matchup_last_good().fresh(&key) {
+        super::shared().matchups.store(key.clone(), found.value);
+        return Ok(matchup_stale(&key));
+    }
     let _permit = keystone_fetches()
         .acquire()
         .await
         .expect("the keystone fetch semaphore is never closed");
     let client = match lolalytics::LolalyticsClient::new() {
         Ok(client) => client,
-        Err(_) => return Ok(matchup_stale(&key)),
+        Err(_) => {
+            super::shared().matchups.fail(key.clone());
+            return Ok(matchup_stale(&key));
+        }
     };
     match client
         .matchup(champion_slug, enemy_slug, champion_id, enemy_id, lane, tier, None)
@@ -810,6 +852,17 @@ pub async fn icon(id: i64) -> Result<Vec<u8>, RuneError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_keystone_fetch_error_is_negative_cached() {
+        let key = "test-keystone-error-key";
+        assert!(matches!(super::super::shared().lolalytics.lookup(key), lolalytics::Cached::Miss));
+        assert!(keystone_unavailable(key).is_none());
+        assert!(matches!(
+            super::super::shared().lolalytics.lookup(key),
+            lolalytics::Cached::Unavailable
+        ));
+    }
 
     #[test]
     fn the_cache_key_carries_the_rank_bracket() {

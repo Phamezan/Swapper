@@ -216,17 +216,28 @@ export default function RemoteApp() {
 
   useEffect(() => {
     let cancelled = false;
+    let timer = 0;
+    const controller = new AbortController();
+    // One request in flight: the next poll is scheduled only after this one settles.
+    let inFlight = false;
     async function poll() {
+      window.clearTimeout(timer);
+      if (inFlight || document.visibilityState === "hidden") return;
+      inFlight = true;
       try {
-        const response = await fetch("/api/game", { cache: "no-store" });
+        const response = await fetch("/api/game", { cache: "no-store", signal: controller.signal });
         if (response.ok && !cancelled) setGame(await response.json() as GameSnapshot);
       } catch {
-        if (!cancelled) setGame(null);
+        if (!cancelled && !controller.signal.aborted) setGame(null);
       }
+      inFlight = false;
+      if (!cancelled) timer = window.setTimeout(() => void poll(), 1500);
     }
+    // A hidden page stops the chain; becoming visible polls right away.
+    const onVisible = () => { if (document.visibilityState === "visible") void poll(); };
+    document.addEventListener("visibilitychange", onVisible);
     void poll();
-    const timer = window.setInterval(() => void poll(), 1500);
-    return () => { cancelled = true; window.clearInterval(timer); };
+    return () => { cancelled = true; controller.abort(); window.clearTimeout(timer); document.removeEventListener("visibilitychange", onVisible); };
   }, []);
 
   // Leaving a live game bumps the rune session, so the Champion tab's search is
@@ -252,19 +263,25 @@ export default function RemoteApp() {
   useEffect(() => {
     if (!status?.lcuConnected || game?.phase !== "ChampSelect" || champions.length > 0) return;
     let cancelled = false;
+    let pending = false;
+    const controller = new AbortController();
     async function loadCatalog() {
+      if (pending) return;
+      pending = true;
       try {
-        const response = await fetch("/api/champions");
+        const response = await fetch("/api/champions", { signal: controller.signal });
         if (!response.ok) throw new Error("Catalog unavailable");
         const entries = await response.json() as Champion[];
         if (!cancelled) { setChampions(entries); setCatalogError(false); }
       } catch {
         if (!cancelled) setCatalogError(true);
+      } finally {
+        pending = false;
       }
     }
     void loadCatalog();
     const retry = window.setInterval(() => void loadCatalog(), 8000);
-    return () => { cancelled = true; window.clearInterval(retry); };
+    return () => { cancelled = true; controller.abort(); window.clearInterval(retry); };
   }, [status?.lcuConnected, game?.phase, champions.length]);
 
   useEffect(() => {
@@ -304,7 +321,7 @@ export default function RemoteApp() {
   }, [game?.phase]);
 
   useEffect(() => {
-    if (game?.phase !== "ChampSelect") setTab("pick");
+    if (game?.phase !== "ChampSelect") { setTab("pick"); setRunes(null); runeChampion.current = 0; runeRequest.current++; }
   }, [game?.phase]);
 
   useEffect(() => {
@@ -354,13 +371,13 @@ export default function RemoteApp() {
     try {
       const query = selectedPosition ? `?position=${encodeURIComponent(selectedPosition)}` : "";
       const response = await fetch(`/api/runes${query}`, { cache: "no-store" });
-      if (response.ok) {
-        const next = await response.json() as RunesView;
-        if (request === runeRequest.current) {
-          if (next.championId !== runeChampion.current) setShopNotice(null);
-          setRunes(next);
-          runeChampion.current = next.championId;
-        }
+      if (!response.ok) throw new Error("Runes unavailable");
+      const next = await response.json() as RunesView;
+      if (request === runeRequest.current) {
+        if (next.championId !== runeChampion.current) setShopNotice(null);
+        setRunes(next);
+        setRunesError(null);
+        runeChampion.current = next.championId;
       }
     } catch {
       if (request === runeRequest.current) setRunesError("Could not load runes.");
@@ -546,12 +563,13 @@ export default function RemoteApp() {
     setRunesBusy(true);
     setRunesError(null);
     try {
-      await fetch("/api/runes/auto-apply", {
+      const response = await fetch("/api/runes/auto-apply", {
         method: "POST",
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
         body: JSON.stringify({ enabled }),
       });
-      await loadRunes();
+      if (!response.ok) setRunesError("Could not update the setting.");
+      else await loadRunes();
     } catch {
       setRunesError("Could not update the setting.");
     } finally {

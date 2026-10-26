@@ -74,7 +74,7 @@ function App() {
     else setPage(target as Page);
   }, []);
   const sidebarGo = (target: Location) => {
-    if (target !== currentRef.current) { go(target); return; }
+    if (target !== currentRef.current) { setFocus(null); go(target); return; }
     const scroller = document.querySelector<HTMLElement>(".dashboard-main")
       ?? document.querySelector<HTMLElement>(".full-app-embed .main-panel");
     scroller?.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });

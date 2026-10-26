@@ -199,6 +199,36 @@ impl ProMatch {
         items
     }
 
+    /// The completed items in build order, with the finished items the API
+    /// leaves out of `completedItems` taken from the final build: an upgrade
+    /// (Seraph's, Diadem) takes the slot of the completed item that builds into
+    /// it, anything else (support quest items) goes last. Completed items that
+    /// are not in the final build were sold and are dropped; at most six remain.
+    pub fn built_items(&self, catalog: &super::items::Catalog) -> Vec<i64> {
+        let source = if self.completed_items.is_empty() { &self.final_build } else { &self.completed_items };
+        let mut items: Vec<i64> = source.iter().copied().filter(|id| *id > 0 && !is_trinket(*id)).collect();
+        if self.completed_items.is_empty() {
+            return items;
+        }
+        let finished = catalog.finished();
+        for id in self.final_build.iter().copied() {
+            if finished.contains(&id) && !is_trinket(id) && !items.contains(&id) {
+                let old = items
+                    .iter()
+                    .position(|old| !self.final_build.contains(old) && catalog.builds_into(*old, id));
+                match old {
+                    Some(slot) => items[slot] = id,
+                    None => items.push(id),
+                }
+            }
+        }
+        if !self.final_build.is_empty() {
+            items.retain(|id| self.final_build.contains(id));
+        }
+        items.truncate(6);
+        items
+    }
+
     /// The recorded purchases as whole minutes: `(minute, [(item id, count)])`.
     ///
     /// Only purchase events (`type: 1`) are kept; sells and undos are dropped.

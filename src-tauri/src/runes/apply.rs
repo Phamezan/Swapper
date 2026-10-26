@@ -183,7 +183,7 @@ pub async fn apply_top(
         }
     }
     let lcu = super::lcu().await?;
-    let position = super::position_for(&lcu, &context).await;
+    let position = super::position_for(&lcu, &context, tier).await;
     if let Some(applied) =
         apply_top_matchup(&context, position, owned_page_id, tier, apply_spells, import_items)
             .await?
@@ -338,7 +338,7 @@ pub async fn import_preset_items(
     }
     let position = match position.and_then(session::position_from_request) {
         Some(position) => position,
-        None => super::position_for(&super::lcu().await?, &context).await,
+        None => super::position_for(&super::lcu().await?, &context, tier).await,
     };
     let matchup = match validated_enemy(&context, enemy_champion_id) {
         Some(enemy_id) => matchup_view(context.champion_id, enemy_id, position, tier).await,

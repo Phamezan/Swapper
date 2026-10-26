@@ -51,7 +51,7 @@
 .cs-picks .fa-section-heading { flex: none; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 14px; }
 .cs-picks .fa-section-heading h3 { font-size: 19px; letter-spacing: -.025em; }
 .cs-picks .fa-section-heading p { font-size: 12px; }
-.cs-pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); grid-auto-rows: max-content; align-content: start; gap: 10px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 2px; }
+.cs-pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 12vw, 180px), 1fr)); grid-auto-rows: max-content; align-content: start; gap: 10px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 2px; }
 .fa-frame .cs-pick { position: relative; aspect-ratio: 3 / 4; min-width: 0; width: 100%; max-width: 264px; overflow: hidden; border: 1px solid var(--fa-line); border-radius: var(--fa-radius-sm); background: var(--fa-panel-2); color: var(--text-primary); transition: border-color var(--ui-fast), box-shadow var(--ui-fast); }
 .fa-frame .cs-pick:is(:hover, :focus-within) { border-color: var(--fa-you); box-shadow: var(--ui-elev-1); }
 .fa-frame .cs-pick-select { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; border-radius: inherit; background: none; color: inherit; text-align: left; }
@@ -111,10 +111,6 @@
 
 /* ---------- Build mode: apply status ---------- */
 .cs-apply-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 14px; }
-.cs-apply-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 4px 6px 4px 12px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: var(--fa-panel); font-size: var(--fa-small); }
-.cs-apply-chip small { padding-right: 6px; font-size: 12px; }
-.cs-apply-chip.is-done { border-color: rgb(95 207 180 / .35); background: rgb(95 207 180 / .08); color: var(--fa-win); }
-.cs-apply-chip.is-done small { color: var(--fa-win); }
 .cs-auto-apply { display: inline-flex; align-items: center; gap: 9px; margin-left: auto; color: var(--text-secondary); font-size: var(--fa-small); }
 .cs-apply-bar .fa-primary { display: inline-flex; align-items: center; gap: 7px; }
 
@@ -161,7 +157,6 @@
 .cs-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font: inherit; font-size: 13px; }
 .fa-frame .cs-search button { display: grid; place-items: center; padding: 2px; border: 0; background: none; color: var(--text-muted); cursor: pointer; }
 
-.cs-tab-badge { display: inline-grid; place-items: center; min-width: 18px; height: 18px; margin-left: 6px; padding: 0 5px; border-radius: 99px; background: var(--fa-loss); color: #fff; font-size: 10.5px; font-weight: 750; line-height: 1; }
 .cs-slot.is-seat .cs-slot-placeholder, .cs-slot.is-seat .cs-slot-role { opacity: .55; }
 
 /* Shared build browser: list remains alongside the selected build. */
@@ -224,7 +219,7 @@
 .fa-frame .fa-draft-page .cs-toolbar .fa-picker { height: 38px; min-height: 38px; padding: 4px 10px; }
 
 /* Draft keeps the complete build workspace within the remaining window height. */
-.fa-frame .fa-draft-page .fa-build-section.cs-build-browser { grid-template-columns: 252px minmax(0, 1fr); gap: 14px; }
+.fa-frame .fa-draft-page .fa-build-section.cs-build-browser { grid-template-columns: 300px minmax(0, 1fr); gap: 14px; }
 .fa-frame .fa-draft-page .fa-build-section.cs-build-browser .cs-build-list { position: static; max-height: none; padding: 10px 6px; }
 .fa-frame .fa-draft-page .fa-build-section .cs-build-entries > .cs-build-row { padding: 5px 6px; gap: 6px; }
 .fa-frame .fa-draft-page .fa-build-section .cs-build-row .cs-row-text small { white-space: nowrap; font-size: 12px; }
@@ -238,9 +233,9 @@
 .fa-frame .fa-draft-page .fa-build-section .cs-row-chip { padding: 2px 5px; font-size: 12px; }
 .cs-pro-pages { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin: 8px 6px 0; color: var(--text-muted); font-size: 12px; }
 .fa-frame .cs-pro-pages button { min-height: 30px; font-size: 12px; }
-.fa-frame .fa-draft-page .fa-build-section .cs-build-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: "runes skill" "items items"; }
+.fa-frame .fa-draft-page .fa-build-section .cs-build-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
 .fa-frame .fa-draft-page .fa-build-section .cs-build-grid > div { padding: 10px; }
-.fa-frame .fa-draft-page .fa-build-section .cs-skill-area { border-top: 0; border-left: 1px solid var(--fa-line); gap: 12px; }
+.fa-frame .fa-draft-page .fa-build-section .cs-skill-area { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; border-top: 0; border-left: 1px solid var(--fa-line); gap: 16px; }
 .fa-frame .fa-draft-page .fa-build-section .fa-spells img, .fa-frame .fa-draft-page .fa-build-section .fa-spells .spell-icon-fallback, .fa-frame .fa-draft-page .fa-build-section .fa-ability { width: 32px; height: 32px; }
 .fa-frame .fa-draft-page .fa-build-section .fa-skill-priority { margin-bottom: 10px; }
 .fa-frame .fa-draft-page .fa-build-section .cs-build-content .cs-build-selected { padding: 2px 10px; }
@@ -251,13 +246,11 @@
 .fa-frame .fa-draft-page .fa-build-section .fa-section-heading h4 { margin-bottom: 0; }
 .fa-frame .fa-draft-page .fa-rune-page { gap: 12px; }
 .fa-frame .fa-draft-page .fa-rune-tree > .fa-picker { margin-bottom: 8px; }
-.fa-frame .fa-draft-page .fa-rune-page .fa-rune-row { --rune: clamp(26px, 3.2vh, 34px); gap: 6px; margin-bottom: 4px; }
-.fa-frame .fa-draft-page .fa-rune-page .fa-rune-row:first-of-type { --rune: clamp(32px, 4vh, 44px); }
+/* Runes grow with their tree's width, capped by window height so the draft still fits. */
+.fa-frame .fa-draft-page .fa-build-section .fa-rune-page :not(.fa-shards) > .fa-rune-row { --rune: clamp(28px, min(17cqi, 5.4vh), 58px); gap: clamp(6px, 5cqi, 22px); margin-bottom: clamp(4px, 1.1vh, 14px); }
+.fa-frame .fa-draft-page .fa-build-section .fa-rune-page :not(.fa-shards) > .fa-rune-row:first-of-type { --rune: clamp(34px, min(19cqi, 6.4vh), 68px); }
 .fa-frame .fa-draft-page .fa-rune-page .fa-shards { padding-top: 6px; }
-.fa-frame .fa-draft-page .fa-rune-page .fa-shards .fa-rune-row { --rune: 24px; margin-bottom: 4px; }
-.fa-frame .fa-draft-page .fa-rune-page { position: relative; padding-bottom: 38px; }
-.fa-frame .fa-draft-page .fa-rune-tree { container-type: normal; }
-.fa-frame .fa-draft-page .fa-rune-page .fa-shards { position: absolute; inset: auto 0 0; display: flex; justify-content: space-around; gap: 8px; }
+.fa-frame .fa-draft-page .fa-build-section .fa-rune-page .fa-shards .fa-rune-row { --rune: clamp(24px, min(12cqi, 3.6vh), 38px); gap: clamp(8px, 7cqi, 26px); margin-bottom: 4px; }
 .fa-frame .fa-draft-page .cs-items { gap: 12px 0; }
 .fa-frame .fa-draft-page .cs-items > section { padding: 0 10px; }
 .fa-frame .fa-draft-page .cs-items > section:first-child { padding-left: 0; }
@@ -271,8 +264,13 @@
 .cs-workspace > .cd-sheet .cd-time { grid-column: 2; font-size: 11px; white-space: normal; }
 @container draft (max-width: 1050px) {
   .fa-frame .fa-draft-page .fa-build-section .fa-rune-area .fa-section-heading { flex-wrap: wrap; }
-  .fa-frame .fa-draft-page .fa-rune-page .fa-rune-row:first-of-type { --rune: 32px; gap: 4px; }
+  .fa-frame .fa-draft-page .fa-build-section .fa-rune-page :not(.fa-shards) > .fa-rune-row:first-of-type { --rune: 32px; gap: 4px; }
 }
 @container draft (max-width: 850px) {
   .fa-frame .fa-draft-page .fa-build-section.cs-build-browser { grid-template-columns: 214px minmax(0, 1fr); }
 }
+.cs-laner-pick { flex: none; align-self: flex-start; align-items: center; margin-bottom: 10px; }
+.cs-laner-pick small { padding: 0 8px; color: var(--ui-text-3); }
+/* On your ban turn the same button bans, in the loss colour. */
+.fa-frame .cs-lock-in.is-ban { --accent: var(--fa-loss); }
+.fa-frame .cs-lock-in.is-ban:hover:not(:disabled) { border-color: var(--fa-loss); background-color: var(--fa-loss); box-shadow: inset 0 1px 0 rgb(255 255 255 / .3), 0 10px 28px -10px rgb(239 143 137 / .9); }

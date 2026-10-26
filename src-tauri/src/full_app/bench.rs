@@ -137,7 +137,7 @@ pub async fn dashboard_benchmarks(
             Some(entry) => {
                 found.insert(key, entry.bench.clone());
             }
-            None => missing.push((id, lane, key)),
+            None => missing.push((id, lane.to_string(), key)),
         }
     }
     if missing.is_empty() {
@@ -147,23 +147,21 @@ pub async fn dashboard_benchmarks(
         .await
         .map_err(|e| e.to_string())?;
     let client = crate::runes::lolalytics::LolalyticsClient::new().map_err(|e| format!("{e:?}"))?;
-    // ponytail: one request at a time; at most 20 champions, then cached for a day.
-    let mut fetched: Vec<(String, Bench)> = Vec::new();
-    for (id, lane, key) in missing {
-        let Some(slug) = names
-            .get(&id)
-            .and_then(|n| crate::runes::lolalytics::champion_slug(n))
-        else {
-            continue;
-        };
+    // At most 20 champions, 3 requests at a time, then cached for a day.
+    use futures_util::{stream, StreamExt};
+    let client = &client;
+    let names = &names;
+    let fetched: Vec<(String, Bench)> = stream::iter(missing.into_iter().map(|(id, lane, key)| async move {
+        let slug = names.get(&id).and_then(|n| crate::runes::lolalytics::champion_slug(n))?;
         let url = format!("https://a1.lolalytics.com/mega/?ep=build-full&v=1&c={slug}&lane={lane}&tier={bracket}&queue=ranked&region=all");
-        let Ok(body) = client.page(url).await else {
-            continue;
-        };
-        if let Some(bench) = serde_json::from_str(&body).ok().as_ref().and_then(parse) {
-            fetched.push((key, bench));
-        }
-    }
+        let body = client.page(url).await.ok()?;
+        let bench = serde_json::from_str(&body).ok().as_ref().and_then(parse)?;
+        Some((key, bench))
+    }))
+    .buffer_unordered(3)
+    .filter_map(|found| async move { found })
+    .collect()
+    .await;
     if let (Some(file), false) = (file, fetched.is_empty()) {
         let mut entries = cached;
         for (key, bench) in &fetched {

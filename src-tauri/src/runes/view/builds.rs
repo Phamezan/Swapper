@@ -19,9 +19,28 @@ pub async fn preset_build_view(
     let lane = lolalytics::lane(position)?;
     let names = data::champion_names().await.ok()?;
     let slug = lolalytics::champion_slug(names.get(&champion_id)?)?;
-    let sourced = data::keystone_build(&slug, lane, tier, keystone)
-        .await
-        .ok()??;
+    let keystone_page = data::keystone_build(&slug, lane, tier, keystone).await.ok().flatten();
+    // A keystone page with few games has no build summaries, or no "Highest Win
+    // Build"; the champion's own page (already loaded for its overview) usually has both.
+    let overview = match &keystone_page {
+        Some(page) if page.value.win.is_some() => None,
+        _ => super::super::overview::load(&slug, champion_id, Some(lane), tier).await.ok().flatten(),
+    };
+    let sourced = match (keystone_page, overview) {
+        (Some(mut page), overview) => {
+            if let Some(overview) = overview {
+                page.value.win = page.value.win.or(overview.value.win);
+            }
+            page
+        }
+        (None, Some(overview)) => super::super::provider::Sourced {
+            value: lolalytics::KeystoneBuilds { pick: overview.value.build?, win: overview.value.win },
+            provider: overview.provider,
+            stale: overview.stale,
+            fetched_at: overview.fetched_at,
+        },
+        (None, None) => return None,
+    };
     let item_names = items::names().await;
     let catalog = data::catalog().await.ok();
     let highest_win = catalog
@@ -30,7 +49,6 @@ pub async fn preset_build_view(
         .and_then(|catalog| {
             highest_win_view(
                 &sourced.value,
-                keystone,
                 most_played,
                 catalog,
                 sourced.stale,
@@ -58,7 +76,6 @@ pub(super) enum HighestWinOmission {
 
 pub(super) fn highest_win_view(
     builds: &lolalytics::KeystoneBuilds,
-    keystone: i64,
     most_played: Option<&super::super::RuneSelection>,
     catalog: &perks::PerkCatalog,
     stale: bool,
@@ -66,9 +83,6 @@ pub(super) fn highest_win_view(
     item_names: &HashMap<i64, String>,
 ) -> Result<HighestWinView, HighestWinOmission> {
     let win = builds.win.as_ref().ok_or(HighestWinOmission::Unavailable)?;
-    if win.runes.keystone != keystone {
-        return Err(HighestWinOmission::Unavailable);
-    }
     let selection = win
         .runes
         .selection(catalog)
@@ -82,7 +96,7 @@ pub(super) fn highest_win_view(
         preset: PresetView {
             index: 0,
             title: catalog
-                .name(keystone)
+                .name(selection.keystone)
                 .unwrap_or("Highest win rate")
                 .to_string(),
             primary_page_id: selection.primary_page_id,

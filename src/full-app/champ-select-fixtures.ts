@@ -3,7 +3,8 @@
 import type { RunesView } from "../runes/types";
 import type { Draft } from "./champ-select-model";
 
-export type FixtureName = "planning" | "hover" | "locked" | "locked-blind";
+/** hidden-roles: ranked hides enemy positions, so two revealed enemies could be your laner. */
+export type FixtureName = "planning" | "hover" | "locked" | "locked-blind" | "hidden-roles";
 
 const member = (championId: number, position: string, locked: boolean, local = false) => ({ championId, position, local, locked });
 const selection = { primaryPageId: 8000, secondaryPageId: 8300, keystone: 8010, primaryRunes: [9111, 9104, 8299], secondaryRunes: [8304, 8347], shards: [5005, 5008, 5001] };
@@ -14,7 +15,8 @@ export function fixtureDraft(name: FixtureName): Draft {
   return {
     allies: [member(64, "jungle", true), member(own, "top", name.startsWith("locked"), true), member(0, "middle", false), member(222, "bottom", true), member(0, "utility", false)],
     enemies: [member(122, "top", true), member(0, "jungle", false), member(enemyMid, "middle", enemyMid > 0), member(0, "bottom", false), member(0, "utility", false)]
-      .map(enemy => name === "locked-blind" && enemy.position === "top" ? { ...enemy, championId: 0, locked: false } : enemy),
+      .map(enemy => name === "locked-blind" && enemy.position === "top" ? { ...enemy, championId: 0, locked: false } : enemy)
+      .map((enemy, i) => name === "hidden-roles" ? { ...enemy, position: "", championId: [122, 0, 24, 0, 0][i], locked: false } : enemy),
     bans: [157, 777, 893, 875, 233, 902],
     allyBans: [157, 893, 233], enemyBans: [777, 875, 902], canLock: !name.startsWith("locked"),
     timer: { phase: name.startsWith("locked") ? "FINALIZATION" : "BAN_PICK", remainingMs: name.startsWith("locked") ? 41_000 : 24_000 },

@@ -128,6 +128,8 @@ pub(crate) struct PickConfirmation {
     pub cell_id: i64,
     pub action_id: i64,
     pub champion_id: i64,
+    /// "pick" or "ban": the action must still be that kind when it is confirmed.
+    pub kind: &'static str,
 }
 
 impl ChampionSession {
@@ -539,10 +541,10 @@ fn lock_patch(session: &ChampionSession, expected: Option<PickConfirmation>) -> 
             || session.local_player_cell_id != expected.cell_id
             || action.id != expected.action_id
             || action.champion_id != expected.champion_id
-            || action.kind != "pick"
+            || action.kind != expected.kind
             || !action.is_in_progress
         {
-            return Err(ActionError::conflict("Your pick changed. Check it and try again."));
+            return Err(ActionError::conflict(if expected.kind == "ban" { "Your ban changed. Check it and try again." } else { "Your pick changed. Check it and try again." }));
         }
     }
     Ok((format!("{SESSION_PATH}/actions/{}", action.id), serde_json::json!({
@@ -572,7 +574,7 @@ mod tests {
         let original = serde_json::json!({"gameId": 42, "localPlayerCellId": 3,
             "timer": {"phase": "BAN_PICK"}, "actions": [[{"id": 7, "actorCellId": 3,
                 "championId": 103, "type": "pick", "completed": false, "isInProgress": true}]]});
-        let expected = PickConfirmation { game_id: 42, cell_id: 3, action_id: 7, champion_id: 103 };
+        let expected = PickConfirmation { game_id: 42, cell_id: 3, action_id: 7, champion_id: 103, kind: "pick" };
         let session = serde_json::from_value(original.clone()).unwrap();
         let (path, body) = lock_patch(&session, Some(expected)).ok().unwrap();
         assert!(path.ends_with("/7"));

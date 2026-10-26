@@ -33,31 +33,34 @@
 .fa-frame .fa-build-section .cs-build-selected strong { font-size: 20px; }
 .fa-frame .fa-build-section .cs-build-selected small { font-size: 13px; }
 .fa-frame .fa-build-section .cs-apply-bar { gap: 8px; margin: 10px 0 14px; }
-.fa-frame .fa-build-section .cs-apply-chip { min-height: 36px; padding: 3px 4px 3px 12px; border-color: var(--ui-line-2); background: rgb(255 255 255 / .03); font-size: 13px; }
-.fa-frame .fa-build-section .cs-apply-chip > strong { font-weight: 600; }
-.fa-frame .fa-build-section .cs-apply-chip small { padding-right: 6px; font-size: 13px; }
-.fa-frame .fa-build-section .cs-apply-chip.is-done { border-color: rgb(197 227 158 / .35); background: rgb(197 227 158 / .07); color: var(--fa-you); }
-.fa-frame .fa-build-section .cs-apply-chip.is-done small { color: var(--fa-you); }
-.fa-frame .fa-build-section .cs-apply-chip.is-failed { border-color: rgb(239 143 137 / .45); }
-.fa-frame .fa-build-section .cs-apply-chip.is-failed small { color: var(--fa-loss); }
-.fa-frame .fa-build-section .cs-apply-chip .fa-text-button { font-size: 13px; }
 /* Apply all is the one real action: bold uppercase, pushed to the right of the bar. */
 .fa-frame .fa-build-section .cs-apply-bar .fa-primary { margin-left: auto; min-height: 38px; padding: 8px 18px; font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
 .fa-frame .fa-build-section .cs-auto-apply { margin-left: 8px; font-size: 13px; }
 .fa-frame .fa-build-section .cs-build-content > .ui-notice b { font-weight: 650; }
 .fa-frame .fa-build-section .cs-build-content > .ui-notice .fa-secondary { min-height: 34px; padding: 5px 14px; font-size: 13px; }
 
-/* ---------- Workspace: runes | spells + skill order, then the item row ---------- */
-.fa-frame .fa-build-section .cs-build-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "runes skill" "items items"; grid-template-rows: auto; border-radius: var(--fa-radius); }
+/* ---------- Workspace: runes | spells + skill order over the item build ---------- */
+.fa-frame .fa-build-section .cs-build-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "runes skill" "runes items"; grid-template-rows: auto 1fr; border-radius: var(--fa-radius); }
 .fa-frame .fa-build-section .cs-build-grid > div { padding: var(--build-pad); }
-.fa-frame .fa-build-section .cs-build-grid > .fa-item-area { grid-area: items; border-top: 1px solid var(--ui-line-1); border-left: 0; }
-.fa-frame .fa-build-section .cs-build-grid > .cs-skill-area { grid-area: skill; flex-direction: column; flex-wrap: nowrap; gap: 20px; }
+.fa-frame .fa-build-section .cs-build-grid > .fa-item-area { grid-area: items; border-top: 1px solid var(--ui-line-1); border-left: 1px solid var(--ui-line-1); }
+/* Summoners sit beside the max order; the level grid runs full width under both. */
+.fa-frame .fa-build-section .cs-build-grid > .cs-skill-area { grid-area: skill; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "spells head" "spells order" "levels levels"; align-items: start; gap: 0 20px; }
+.fa-frame .fa-build-section .cs-skill-area > div:first-child { grid-area: spells; }
+.fa-frame .fa-build-section .cs-skill-area > div:last-child { display: contents; }
+.fa-frame .fa-build-section .cs-skill-area > div:last-child > :nth-child(1) { grid-area: head; justify-self: end; }
+.fa-frame .fa-build-section .cs-skill-area > div:last-child > :nth-child(2) { grid-area: order; justify-self: end; }
+.fa-frame .fa-build-section .cs-skill-area > div:last-child > :nth-child(3) { grid-area: levels; margin-top: 4px; }
+.fa-frame .fa-build-section .cs-skill-grid { gap: 5px; }
 .fa-frame .fa-build-section .fa-spells { gap: 12px; margin-bottom: 0; }
-.fa-frame .fa-build-section .cs-skill-row { grid-template-columns: 20px repeat(18, minmax(12px, 1fr)); gap: 3px; }
+.fa-frame .fa-build-section .cs-skill-row { grid-template-columns: 18px repeat(18, minmax(12px, 1fr)); gap: 5px; }
 .fa-frame .fa-build-section .cs-skill-row > span { font-size: 12px; }
 .fa-frame .fa-build-section .cs-skill-row > b { height: auto; aspect-ratio: 1; font-size: 12px; }
 .fa-frame .fa-build-section .cs-skill-row > b.is-filled { background: rgb(197 227 158 / .16); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .5); }
 .fa-frame .fa-build-section .fa-rune-page { gap: 20px; }
+/* Runes fill their tree's width: four keystones or three runes per row. */
+.fa-frame .fa-build-section .fa-rune-page :not(.fa-shards) > .fa-rune-row { --rune: clamp(30px, 20cqi, 62px); margin-bottom: clamp(8px, 6cqi, 22px); }
+.fa-frame .fa-build-section .fa-rune-page :not(.fa-shards) > .fa-rune-row:first-of-type { --rune: clamp(38px, 21cqi, 74px); }
+.fa-frame .fa-build-section .fa-rune-page .fa-shards .fa-rune-row { --rune: clamp(28px, 18cqi, 44px); gap: clamp(10px, 10cqi, 28px); }
 .fa-frame .fa-build-section .fa-rune-tree > strong { color: var(--text-primary); font-size: 13.5px; letter-spacing: 0; }
 
 /* Items: Starting, Boots, Core, Later, Situational, one row in buy order. */
@@ -71,14 +74,14 @@
 @media (max-width: 1250px) {
   .fa-frame .fa-build-section.cs-build-browser { grid-template-columns: 214px minmax(0, 1fr); gap: 14px; }
   .fa-frame .fa-build-section .cs-build-grid { grid-template-columns: 1fr; grid-template-areas: "runes" "skill" "items"; }
-  .fa-frame .fa-build-section .cs-build-grid > div + div { border-left: 0; border-top: 1px solid var(--ui-line-1); }
+  .fa-frame .fa-build-section .cs-build-grid > div + div, .fa-frame .fa-build-section .cs-build-grid > .fa-item-area { border-left: 0; border-top: 1px solid var(--ui-line-1); }
   .cs-items > section { padding: 0 16px; }
 }
 .cs-items > section { padding: 0 18px; }
 .cs-items h5 small { display: block; margin: 2px 0 0; }
 
 /* ---------- Compact build rows (DPM-style): name over games/time, keystone + secondary tree, two core items, chip ---------- */
-.fa-frame .fa-build-section.cs-build-browser { grid-template-columns: 300px minmax(0, 1fr); }
+.fa-frame .fa-build-section.cs-build-browser { grid-template-columns: 330px minmax(0, 1fr); }
 .fa-frame .fa-build-section .cs-build-entries { display: grid; gap: 2px; }
 .fa-frame .fa-build-section .cs-build-entries > .cs-build-row { display: grid; grid-template-columns: minmax(0, 1fr) auto 50px; align-items: center; gap: 10px; padding: 9px 10px; text-align: left; }
 .fa-frame .fa-build-section .cs-build-entries > .cs-build-row.is-pro { grid-template-columns: 30px minmax(0, 1fr) auto 30px; }
@@ -99,4 +102,37 @@
 .fa-frame .fa-build-section .cs-build-entries > .cs-build-row { grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; }
 .fa-frame .fa-build-section .cs-build-entries > .cs-build-row:is(.is-pro, .is-matchup) { grid-template-columns: 30px minmax(0, 1fr) auto auto; }
 .fa-frame .fa-build-section .cs-build-row .cs-build-icons img { width: 24px; height: 24px; }
-.fa-frame .fa-build-section .cs-build-list h3 + .cs-build-entries + h3 { margin-top: 16px; }
+.fa-frame .fa-build-section .cs-build-list :is(h3, .cs-list-tabs) + .cs-build-entries + h3 { margin-top: 16px; }
+.cs-rune-actions { display: inline-flex; gap: 12px; }
+.cs-preset-save { display: flex; gap: 8px; align-items: center; margin: 0 0 12px; }
+.cs-preset-save input { flex: 1; min-width: 0; height: 32px; padding: 0 10px; border: 1px solid var(--ui-line-2); border-radius: 8px; background: var(--ui-surface-2, transparent); color: inherit; font: inherit; }
+/* Underlined text tabs that read as the list's own heading, not a separate control. */
+.cs-list-tabs { display: flex; gap: 18px; margin: -4px 8px 14px; border-bottom: 1px solid var(--ui-line-1); }
+.fa-frame .cs-list-tabs button { margin-bottom: -1px; padding: 6px 0 9px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none; color: var(--text-muted); font-size: 13.5px; font-weight: 600; }
+.fa-frame .cs-list-tabs button:hover { color: var(--text-primary); }
+.fa-frame .cs-list-tabs button[aria-pressed="true"] { border-bottom-color: var(--ui-brand); color: var(--text-primary); }
+.cs-list-tabs small { margin-left: 6px; color: var(--text-muted); font-weight: 500; }
+/* Auto-apply and Apply all share the build title's row. */
+.fa-frame .fa-build-section .cs-build-content { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.fa-frame .fa-build-section .cs-build-content > * { grid-column: 1 / -1; }
+.fa-frame .fa-build-section .cs-build-content > .cs-build-selected { grid-column: 1; }
+.fa-frame .fa-build-section .cs-build-content > .cs-apply-bar { grid-column: 2; margin: 0 0 0 16px; gap: 16px; }
+.fa-frame .fa-build-section .cs-build-content > .cs-build-grid { margin-top: 12px; }
+/* Which parts of a pro build to use: a segmented control beside the title. */
+.cs-pro-part { align-self: center; align-items: center; margin-left: 6px; }
+.cs-pro-part > small { padding: 0 8px 0 10px; color: var(--text-muted); font-size: 12px; }
+/* Rune tree menus: each tree's icon and colour, like the League client. */
+.fa-frame .fa-picker.fa-tree-picker.is-accented { border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 18%, transparent), color-mix(in srgb, var(--accent) 4%, transparent)); color: var(--text-primary); }
+.fa-frame .fa-picker.fa-tree-picker.is-accented:hover:not(:disabled) { border-color: var(--accent); }
+.fa-frame .fa-picker.fa-tree-picker img { width: 22px; height: 22px; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 55%, transparent)); }
+.fa-picker-popover.fa-tree-picker { padding: 6px; }
+.fa-picker-popover.fa-tree-picker .fa-picker-option { gap: 12px; min-height: 46px; }
+.fa-picker-popover.fa-tree-picker .fa-picker-option img { width: 28px; height: 28px; }
+.fa-picker-popover.fa-tree-picker .fa-picker-option.is-accented:hover:not(:disabled), .fa-picker-popover.fa-tree-picker .fa-picker-option.is-accented:focus-visible { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text-primary); }
+.fa-picker-popover.fa-tree-picker .fa-picker-option.is-accented:hover img { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 70%, transparent)); }
+.fa-picker-popover.fa-tree-picker .fa-picker-option.is-accented[aria-pressed="true"] { border-color: color-mix(in srgb, var(--accent) 60%, transparent); background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 22%, transparent), transparent); color: var(--text-primary); }
+.fa-picker-popover.fa-tree-picker .fa-picker-option.is-accented[aria-pressed="true"] .fa-picker-check { color: var(--accent); }
+/* Presets list: each row with its delete button on the right of the row. */
+.fa-frame .fa-build-section .cs-build-entries.is-presets { grid-template-columns: minmax(0, 1fr) 30px; align-items: center; column-gap: 2px; }
+.fa-frame .fa-build-section .cs-build-entries > button.cs-preset-delete { display: grid; place-items: center; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--text-muted); box-shadow: none; }
+.fa-frame .fa-build-section .cs-build-entries > button.cs-preset-delete:hover:not(:disabled), .fa-frame .fa-build-section .cs-build-entries > button.cs-preset-delete:focus-visible { background: rgb(239 143 137 / .12); color: var(--fa-loss); }

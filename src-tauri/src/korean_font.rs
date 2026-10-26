@@ -406,9 +406,23 @@ pub async fn install_ltk_manager() -> Result<(), String> {
         .map_err(|error| format!("Could not download LTK Manager: {error}"))?;
     verify_minisign(LTK_PUBKEY, &signature, &installer)?;
 
-    let path = std::env::temp_dir().join("Swapper-LTK-Manager-setup.exe");
-    fs::write(&path, &installer)
+    // A fresh unpredictable directory, so nothing can pre-plant or swap the file path.
+    let dir = std::env::temp_dir().join(format!("Swapper-LTK-{}", uuid::Uuid::new_v4()));
+    fs::create_dir(&dir)
         .map_err(|error| format!("Could not save the LTK Manager installer: {error}"))?;
+    let path = dir.join("setup.exe");
+    let saved = fs::write(&path, &installer)
+        .map_err(|error| format!("Could not save the LTK Manager installer: {error}"))
+        // Re-verify what is on disk, so the bytes that run are the bytes that were signed.
+        .and_then(|()| {
+            let on_disk = fs::read(&path)
+                .map_err(|error| format!("Could not save the LTK Manager installer: {error}"))?;
+            verify_minisign(LTK_PUBKEY, &signature, &on_disk)
+        });
+    if let Err(error) = saved {
+        let _ = fs::remove_dir_all(&dir);
+        return Err(error);
+    }
     let run = {
         let installer_path = path.to_string_lossy().into_owned();
         // Per-machine: it needs admin, so a plain CreateProcess fails with error
@@ -418,7 +432,7 @@ pub async fn install_ltk_manager() -> Result<(), String> {
         })
         .await
     };
-    let _ = fs::remove_file(&path);
+    let _ = fs::remove_dir_all(&dir);
     match run {
         Ok(Ok(0)) => {}
         Ok(Ok(code)) => {

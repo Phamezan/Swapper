@@ -139,9 +139,58 @@ pub struct Config {
     /// (see `load`); `None` or `Some(true)` never shows it.
     #[serde(default)]
     pub onboarded: Option<bool>,
+    /// Rune pages the user saved, by champion id, in the order they were saved.
+    #[serde(default)]
+    pub rune_presets: std::collections::BTreeMap<i64, Vec<SavedRunes>>,
 }
 
+/// A rune page the user saved for one champion.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct SavedRunes {
+    pub name: String,
+    pub selection: crate::runes::RuneSelection,
+}
+
+const MAX_RUNE_PRESETS: usize = 20;
+const MAX_PRESET_NAME: usize = 40;
+
 impl Config {
+    /// Saves `selection` as `name` for a champion; a preset with the same name is replaced.
+    pub fn save_rune_preset(&mut self, champion_id: i64, name: &str, selection: crate::runes::RuneSelection) -> Result<(), String> {
+        let name = name.trim();
+        if champion_id <= 0 {
+            return Err("Pick a champion first.".into());
+        }
+        if name.is_empty() || name.chars().count() > MAX_PRESET_NAME || name.chars().any(char::is_control) {
+            return Err(format!("Give the preset a name of up to {MAX_PRESET_NAME} characters."));
+        }
+        let ids = selection.perk_ids();
+        if selection.primary_runes.len() != 3 || selection.secondary_runes.len() != 2 || selection.shards.len() != 3
+            || selection.primary_page_id <= 0 || selection.secondary_page_id <= 0 || ids.iter().any(|id| *id <= 0) {
+            return Err("Finish the rune page before saving it.".into());
+        }
+        let presets = self.rune_presets.entry(champion_id).or_default();
+        let saved = SavedRunes { name: name.to_string(), selection };
+        if let Some(existing) = presets.iter_mut().find(|preset| preset.name.eq_ignore_ascii_case(name)) {
+            *existing = saved;
+        } else if presets.len() >= MAX_RUNE_PRESETS {
+            return Err(format!("This champion already has {MAX_RUNE_PRESETS} presets. Delete one first."));
+        } else {
+            presets.push(saved);
+        }
+        Ok(())
+    }
+
+    /// Deletes a champion's preset by name; deleting a missing one does nothing.
+    pub fn delete_rune_preset(&mut self, champion_id: i64, name: &str) {
+        if let Some(presets) = self.rune_presets.get_mut(&champion_id) {
+            presets.retain(|preset| !preset.name.eq_ignore_ascii_case(name.trim()));
+            if presets.is_empty() {
+                self.rune_presets.remove(&champion_id);
+            }
+        }
+    }
+
     /// Whether the first-run setup should open by itself. A saved account always
     /// means an existing user, whatever the flag says.
     pub fn onboarding_pending(&self) -> bool {
@@ -215,12 +264,13 @@ pub fn remove_profile_icon(account_id: Uuid) -> Result<(), String> {
 
 pub fn load() -> Result<Config, String> {
     let path = data_root()?.join("state.json");
-    let bytes = match fs::read(&path) {
+    let bytes = match read_with_retry(&path) {
         Ok(bytes) => bytes,
         Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
             return Ok(Config { onboarded: Some(false), ..Config::default() });
         }
-        Err(error) => return recover_settings(&path, &error.to_string()),
+        // A lock (antivirus, backup) is transient; the file itself is fine.
+        Err(error) => return Err(format!("Cannot read Swapper settings: {error}")),
     };
     let mut config: Config = match serde_json::from_slice(&bytes) {
         Ok(config) => config,
@@ -229,6 +279,19 @@ pub fn load() -> Result<Config, String> {
     // Settings saved before the setup existed belong to an existing user.
     config.onboarded.get_or_insert(true);
     Ok(config)
+}
+
+fn read_with_retry(path: &Path) -> std::io::Result<Vec<u8>> {
+    let mut attempt = 0;
+    loop {
+        match fs::read(path) {
+            Err(error) if error.kind() != std::io::ErrorKind::NotFound && attempt < 4 => {
+                attempt += 1;
+                std::thread::sleep(std::time::Duration::from_millis(100));
+            }
+            result => return result,
+        }
+    }
 }
 
 fn recover_settings(path: &Path, reason: &str) -> Result<Config, String> {
@@ -703,6 +766,42 @@ mod tests {
     use super::*;
 
     #[test]
+    fn saves_replaces_and_deletes_rune_presets_per_champion() {
+        let page = || crate::runes::RuneSelection { primary_page_id: 8000, secondary_page_id: 8300, keystone: 8010,
+            primary_runes: vec![9111, 9104, 8299], secondary_runes: vec![8304, 8347], shards: vec![5005, 5008, 5001] };
+        let mut config = Config::default();
+        config.save_rune_preset(266, " Lane bully ", page()).unwrap();
+        config.save_rune_preset(266, "Safe", page()).unwrap();
+        let mut changed = page();
+        changed.keystone = 8005;
+        config.save_rune_preset(266, "lane BULLY", changed).unwrap();
+        let names: Vec<_> = config.rune_presets[&266].iter().map(|p| (p.name.as_str(), p.selection.keystone)).collect();
+        assert_eq!(names, [("lane BULLY", 8005), ("Safe", 8010)], "same name replaces in place");
+        assert!(!config.rune_presets.contains_key(&103), "presets are per champion");
+
+        let mut unfinished = page();
+        unfinished.shards.pop();
+        assert!(config.save_rune_preset(266, "Half", unfinished).is_err());
+        assert!(config.save_rune_preset(266, "  ", page()).is_err());
+        assert!(config.save_rune_preset(266, &"x".repeat(41), page()).is_err());
+        assert!(config.save_rune_preset(0, "No champion", page()).is_err());
+        for i in 2..MAX_RUNE_PRESETS {
+            config.save_rune_preset(266, &format!("P{i}"), page()).unwrap();
+        }
+        assert!(config.save_rune_preset(266, "One too many", page()).is_err());
+
+        config.delete_rune_preset(266, "safe");
+        assert!(config.rune_presets[&266].iter().all(|p| p.name != "Safe"));
+        let mut one = Config::default();
+        one.save_rune_preset(1, "Only", page()).unwrap();
+        one.delete_rune_preset(1, "Only");
+        assert!(one.rune_presets.is_empty(), "the last delete drops the champion");
+        // Older settings files have no presets.
+        let old: Config = serde_json::from_str(r#"{"accounts":[],"active_id":null,"use_deceive":false,"riot_exe":null,"deceive_exe":null}"#).unwrap();
+        assert!(old.rune_presets.is_empty());
+    }
+
+    #[test]
     fn reads_the_observed_riot_client_id_token_subject() {
         use base64::Engine;
         let puuid = "00000000-0000-0000-0000-000000000001";
@@ -838,23 +937,20 @@ mod tests {
     }
 
     #[test]
-    fn unreadable_settings_recover_only_after_the_file_can_be_preserved() {
+    fn unreadable_settings_are_not_renamed_or_reset() {
         use std::os::windows::fs::OpenOptionsExt;
         use windows_sys::Win32::Storage::FileSystem::FILE_SHARE_DELETE;
         with_test_data(|root| {
             let data = root.join("Swapper");
             fs::create_dir_all(&data).unwrap();
             let path = data.join("state.json");
-            fs::write(&path, b"unreadable settings").unwrap();
+            fs::write(&path, b"{}").unwrap();
             let lock = fs::OpenOptions::new().read(true).share_mode(FILE_SHARE_DELETE).open(&path).unwrap();
             assert!(fs::read(&path).is_err());
-            let config = load().expect("a read error can recover when the file can be moved safely");
-            assert!(config.accounts.is_empty());
-            assert!(!path.exists());
+            assert!(load().is_err());
             drop(lock);
-            let backup = fs::read_dir(&data).unwrap().next().unwrap().unwrap();
-            assert!(backup.file_name().to_string_lossy().starts_with("state.json.broken-"));
-            assert_eq!(fs::read(backup.path()).unwrap(), b"unreadable settings");
+            assert_eq!(fs::read(&path).unwrap(), b"{}");
+            assert_eq!(fs::read_dir(&data).unwrap().count(), 1);
         });
     }
 

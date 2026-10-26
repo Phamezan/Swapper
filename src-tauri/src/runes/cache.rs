@@ -120,6 +120,12 @@ impl<T: Clone + Serialize + DeserializeOwned> LastGoodCache<T> {
         })
     }
 
+    /// The cached result for `key` only while it is within the TTL, so a loader
+    /// can reuse a persisted entry after a restart without fetching.
+    pub fn fresh(&self, key: &str) -> Option<Cached<T>> {
+        self.lookup(key).filter(|cached| cached.fresh)
+    }
+
     /// Records a successful result and schedules a background write, so async
     /// callers never block on the disk.
     pub fn store(&self, key: String, value: T) {

@@ -175,7 +175,7 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .select-pill:hover, .search-pill:focus-within { border-color: var(--fa-line-2); }
 .select-pill select { appearance: none; border: 0; outline: 0; padding: 0 18px 0 0; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2393939c' fill='none' stroke-width='1.5'/%3E%3C/svg%3E") right center no-repeat; color: var(--text-primary); font-weight: 600; cursor: pointer; }
 .select-pill select option { background: var(--fa-panel); }
-.search-pill { margin-left: auto; width: min(260px, 100%); }
+.search-pill { margin-left: auto; flex: 1 1 160px; max-width: 260px; }
 .search-pill input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); }
 .versus { color: var(--text-muted); font-size: 12px; font-weight: 650; }
 .tier-table-wrap { border: 1px solid var(--fa-line); border-radius: var(--fa-radius); background: var(--fa-panel); }

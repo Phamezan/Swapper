@@ -33,6 +33,13 @@ pub(crate) async fn prepick_champion(champion_id: i64) -> Result<(), String> {
         .map_err(|e| e.message)
 }
 
+/// Hovers the champion on your current pick or ban action.
+pub(crate) async fn select_champion(champion_id: i64) -> Result<(), String> {
+    control::select_champion(champion_id)
+        .await
+        .map_err(|e| e.message)
+}
+
 pub(crate) use control::PickConfirmation;
 
 pub(crate) async fn lock_confirmed_pick(expected: PickConfirmation) -> Result<(), String> {

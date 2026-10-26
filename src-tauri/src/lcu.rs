@@ -14,6 +14,7 @@ use tokio_tungstenite::{
 
 static LOCKFILE_PATH: Mutex<Option<PathBuf>> = Mutex::new(None);
 static LAST_PROCESS_SCAN: Mutex<Option<Instant>> = Mutex::new(None);
+static SCANNED_ENDPOINT: Mutex<Option<(u32, LcuEndpoint)>> = Mutex::new(None);
 
 const PROCESS_SCAN_INTERVAL: Duration = Duration::from_secs(10);
 
@@ -185,12 +186,25 @@ fn process_endpoint() -> Option<LcuEndpoint> {
         let mut last = lock(&LAST_PROCESS_SCAN);
         if let Some(at) = *last {
             if at.elapsed() < PROCESS_SCAN_INTERVAL {
-                return None;
+                return cached_endpoint(&mut lock(&SCANNED_ENDPOINT), league_pid_alive);
             }
         }
         *last = Some(Instant::now());
     }
-    scan_system()
+    let found = scan_system();
+    *lock(&SCANNED_ENDPOINT) = found.clone();
+    found.map(|(_, endpoint)| endpoint)
+}
+
+/// The last scan's endpoint while its process is still alive; drops it otherwise.
+fn cached_endpoint(
+    cache: &mut Option<(u32, LcuEndpoint)>,
+    alive: impl Fn(u32) -> bool,
+) -> Option<LcuEndpoint> {
+    if !cache.as_ref().is_some_and(|(pid, _)| alive(*pid)) {
+        *cache = None;
+    }
+    cache.as_ref().map(|(_, endpoint)| endpoint.clone())
 }
 
 /// Plain `refresh_processes` leaves `cmd` at `UpdateKind::Never`, so every
@@ -206,11 +220,11 @@ fn cmd_scan_system() -> sysinfo::System {
     system
 }
 
-fn scan_system() -> Option<LcuEndpoint> {
+fn scan_system() -> Option<(u32, LcuEndpoint)> {
     let system = cmd_scan_system();
-    for process in system.processes().values() {
+    first_endpoint(system.processes().iter().filter_map(|(pid, process)| {
         if !process.name().to_string_lossy().eq_ignore_ascii_case("LeagueClientUx.exe") {
-            continue;
+            return None;
         }
         let command = process
             .cmd()
@@ -218,16 +232,31 @@ fn scan_system() -> Option<LcuEndpoint> {
             .map(|part| part.to_string_lossy())
             .collect::<Vec<_>>()
             .join(" ");
-        let port: u16 = arg_value(&command, "--app-port=")?.parse().ok()?;
-        let password = arg_value(&command, "--remoting-auth-token=")?;
+        Some((pid.as_u32(), command))
+    }))
+}
+
+/// The first usable endpoint; a client with a malformed command line is skipped.
+fn first_endpoint(clients: impl Iterator<Item = (u32, String)>) -> Option<(u32, LcuEndpoint)> {
+    for (pid, command) in clients {
+        let Some(port) = arg_value(&command, "--app-port=").and_then(|p| p.parse::<u16>().ok())
+        else {
+            continue;
+        };
+        let Some(password) = arg_value(&command, "--remoting-auth-token=") else {
+            continue;
+        };
         if port == 0 || password.is_empty() {
             continue;
         }
-        return Some(LcuEndpoint {
-            port,
-            password,
-            protocol: "https".to_string(),
-        });
+        return Some((
+            pid,
+            LcuEndpoint {
+                port,
+                password,
+                protocol: "https".to_string(),
+            },
+        ));
     }
     None
 }
@@ -269,6 +298,32 @@ mod tests {
         assert!(parse_lockfile("LeagueClient:123:0:tok:https\n").is_none());
         assert!(parse_lockfile("LeagueClient:0:51234:tok:https\n").is_none());
         assert!(parse_lockfile("OtherProcess:123:51234:tok:https\n").is_none());
+    }
+
+    fn endpoint(port: u16) -> LcuEndpoint {
+        LcuEndpoint { port, password: "p".into(), protocol: "https".into() }
+    }
+
+    #[test]
+    fn throttled_scan_reuses_endpoint_while_process_lives() {
+        let mut cache = Some((7, endpoint(5000)));
+        assert_eq!(cached_endpoint(&mut cache, |pid| pid == 7), Some(endpoint(5000)));
+        assert_eq!(cached_endpoint(&mut cache, |pid| pid == 7), Some(endpoint(5000)));
+        assert_eq!(cached_endpoint(&mut cache, |_| false), None);
+        assert!(cache.is_none());
+        assert_eq!(cached_endpoint(&mut None, |_| true), None);
+    }
+
+    #[test]
+    fn scan_skips_malformed_clients_instead_of_giving_up() {
+        let clients = vec![
+            (1, "LeagueClientUx.exe --app-port=abc --remoting-auth-token=x".to_string()),
+            (2, "LeagueClientUx.exe --remoting-auth-token=x".to_string()),
+            (3, "LeagueClientUx.exe --app-port=0 --remoting-auth-token=x".to_string()),
+            (4, "LeagueClientUx.exe --app-port=6000 --remoting-auth-token=tok".to_string()),
+        ];
+        let (pid, found) = first_endpoint(clients.into_iter()).unwrap();
+        assert_eq!((pid, found.port, found.password.as_str()), (4, 6000, "tok"));
     }
 
     #[test]

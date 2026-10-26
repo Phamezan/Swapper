@@ -10,7 +10,6 @@ pub(crate) fn set_auto_apply_top_preset(
     state: State<'_, AppState>,
     enabled: bool,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     state.set_auto_apply_top_preset(enabled)?;
     // Turning the setting on with the champion already locked applies now,
     // instead of waiting for the watcher's next poll.
@@ -51,7 +50,6 @@ pub(crate) fn set_apply_spells_with_runes(
     state: State<'_, AppState>,
     enabled: bool,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     state.set_apply_spells_with_runes(enabled)?;
     let view = {
         let config = state.config.lock().map_err(|e| e.to_string())?;
@@ -68,6 +66,25 @@ pub(crate) fn set_apply_spells_with_runes(
 }
 
 /// Where recommended spells put Flash: "d", "f" or "keep".
+/// The rune pages the user saved for a champion.
+#[tauri::command]
+pub(crate) fn get_rune_presets(state: State<'_, AppState>, champion_id: i64) -> Vec<crate::vault::SavedRunes> {
+    state.rune_presets(champion_id)
+}
+
+#[tauri::command]
+pub(crate) fn save_rune_preset(state: State<'_, AppState>, champion_id: i64, name: String, selection: runes::RuneSelection) -> Result<Vec<crate::vault::SavedRunes>, String> {
+    state.change_rune_presets(champion_id, |config| config.save_rune_preset(champion_id, &name, selection))
+}
+
+#[tauri::command]
+pub(crate) fn delete_rune_preset(state: State<'_, AppState>, champion_id: i64, name: String) -> Result<Vec<crate::vault::SavedRunes>, String> {
+    state.change_rune_presets(champion_id, |config| {
+        config.delete_rune_preset(champion_id, &name);
+        Ok(())
+    })
+}
+
 #[tauri::command]
 pub(crate) fn get_flash_key(state: State<'_, AppState>) -> String {
     state.flash_key()
@@ -86,7 +103,6 @@ pub(crate) fn set_import_items_with_runes(
     state: State<'_, AppState>,
     enabled: bool,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     state.set_import_items_with_runes(enabled)?;
     let view = {
         let config = state.config.lock().map_err(|e| e.to_string())?;
@@ -129,7 +145,6 @@ pub(crate) fn set_rune_tier(
     state: State<'_, AppState>,
     tier: String,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     state.set_rune_tier(&tier)?;
     let view = {
         let config = state.config.lock().map_err(|e| e.to_string())?;

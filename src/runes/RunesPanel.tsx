@@ -204,7 +204,7 @@ export function RunesPanel({
     void loadPro(1);
     // Load once when the tab is opened; "load more" is the only other fetch.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [screen, championId, proView, proOtp]);
+  }, [screen, championId, proView, proOtp, position]);
 
   const appliedKey = view?.applied ? JSON.stringify(view.applied) : "";
   useEffect(() => {

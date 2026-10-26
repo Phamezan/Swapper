@@ -32,7 +32,6 @@ fn win_preset_maps_tree_ids_and_carries_its_own_apply_payload() {
     let catalog = win_catalog();
     let win = highest_win_view(
         &builds,
-        8112,
         None,
         &catalog,
         true,
@@ -86,7 +85,6 @@ fn win_view_dedupes_against_the_displayed_preset_and_omits_invalid_runes() {
                    selection: &super::super::RuneSelection| {
         highest_win_view(
             builds,
-            8112,
             Some(selection),
             &catalog,
             false,
@@ -128,3 +126,90 @@ fn formats_how_long_ago_a_match_was_played() {
     // A clock skew in the future must not produce a negative duration.
     assert_eq!(played_ago(now, now + 5_000), "just now");
 }
+
+/// A catalog of named items; `finished` and `boots` mark their kind.
+fn item_catalog(finished: &[i64], boots: &[i64]) -> items::Catalog {
+    let item = |id: i64, finished: bool, boots: bool| items::Item {
+        id,
+        name: format!("Item {id}"),
+        icon_path: "/lol-game-data/assets/x.png".into(),
+        from: if finished { vec![1] } else { vec![] },
+        categories: if boots { vec!["Boots".into()] } else { vec![] },
+        ..Default::default()
+    };
+    items::Catalog::build(finished.iter().map(|id| item(*id, true, boots.contains(id))).chain(boots.iter().filter(|id| !finished.contains(id)).map(|id| item(*id, false, true))).collect())
+}
+
+#[test]
+fn pro_games_ended_before_two_finished_items_besides_boots_are_left_out() {
+    let mut matched = probuilds::parse(include_str!("../../../tests/fixtures/probuilds-ahri-mid.json")).unwrap().remove(0);
+    let catalog = item_catalog(&[2503, 4629], &[3158, 3020]);
+    matched.completed_items = vec![3158, 2503, 4629, 3340]; matched.final_build = vec![3158, 2503, 4629, 3340];
+    assert!(pro_build_view(&matched, 0, &catalog).is_some(), "two finished items at 20 minutes is a build");
+    matched.completed_items = vec![3158, 2503, 3340];
+    matched.final_build = vec![3158, 2503, 3020, 3340];
+    assert!(pro_build_view(&matched, 0, &catalog).is_none(), "boots, one item and a trinket is a remake, not a build");
+}
+
+#[test]
+fn pro_builds_add_upgraded_and_quest_items_the_api_leaves_out() {
+    // Live Seraphine games: Archangel's became Seraph's, Circlet became Diadem,
+    // and the support quest item never appears in `completedItems`.
+    let mut matched = probuilds::parse(include_str!("../../../tests/fixtures/probuilds-ahri-mid.json")).unwrap().remove(0);
+    matched.completed_items = vec![3158, 3003, 2526, 4005];
+    matched.final_build = vec![3158, 3040, 2530, 4005, 3870, 1082, 3364];
+    let catalog = recipe_catalog(&[
+        (3003, &[], &[3040], false), (3040, &[], &[], false),
+        (2526, &[], &[2530], false), (2530, &[], &[], false),
+        (3158, &[], &[], true), (4005, &[], &[], false), (3870, &[], &[], false),
+    ]);
+    assert_eq!(matched.built_items(&catalog), vec![3158, 3040, 2530, 4005, 3870]);
+    matched.completed_items = vec![6620, 3158];
+    matched.final_build = vec![6620, 3158, 3870, 3070, 2031, 3114, 3364];
+    let view = pro_build_view(&matched, 0, &item_catalog(&[6620, 3870], &[3158])).expect("two finished items is a build");
+    assert_eq!(view.completed_items.iter().map(|item| item.id).collect::<Vec<_>>(), vec![6620, 3158, 3870]);
+}
+
+/// A catalog of `(id, from, to, is_boots)` items, all priced as full items.
+fn recipe_catalog(items: &[(i64, &[i64], &[i64], bool)]) -> items::Catalog {
+    items::Catalog::build(
+        items
+            .iter()
+            .map(|(id, from, to, boots)| items::Item {
+                id: *id,
+                name: format!("Item {id}"),
+                icon_path: "/lol-game-data/assets/x.png".into(),
+                from: from.to_vec(),
+                to: to.to_vec(),
+                price_total: 3000,
+                categories: if *boots { vec!["Boots".into()] } else { vec![] },
+            })
+            .collect(),
+    )
+}
+
+#[test]
+fn a_sold_item_is_dropped_and_an_upgrade_does_not_take_an_unrelated_slot() {
+    // Tristana: Guardian Angel is new, Mercurial was sold; the boots stay.
+    let mut matched = probuilds::parse(include_str!("../../../tests/fixtures/probuilds-ahri-mid.json")).unwrap().remove(0);
+    let catalog = recipe_catalog(&[
+        (3006, &[], &[], true), (3139, &[], &[], false), (3031, &[], &[], false),
+        (3094, &[], &[], false), (3026, &[], &[], false),
+    ]);
+    matched.completed_items = vec![3006, 3139, 3031, 3094];
+    matched.final_build = vec![3006, 3031, 3094, 3026, 3364];
+    assert_eq!(matched.built_items(&catalog), vec![3006, 3031, 3094, 3026]);
+    // Ahri: Sorcerer's Shoes became Spellslinger's; sold Mercury's must not show as second boots.
+    let catalog = recipe_catalog(&[
+        (3111, &[], &[], true), (3020, &[], &[3175], true), (3175, &[], &[], true), (6655, &[], &[], false),
+    ]);
+    matched.completed_items = vec![3111, 3020, 6655];
+    matched.final_build = vec![3175, 6655, 3364];
+    assert_eq!(matched.built_items(&catalog), vec![3175, 6655]);
+    // Never more than six items.
+    let catalog = recipe_catalog(&(1..=8).map(|id| (id, &[][..], &[][..], false)).collect::<Vec<_>>());
+    matched.completed_items = vec![1, 2, 3, 4, 5];
+    matched.final_build = (1..=8).collect();
+    assert_eq!(matched.built_items(&catalog).len(), 6);
+}
+

@@ -33,11 +33,23 @@ impl RuneStat {
 #[derive(Debug, Default)]
 pub struct Aggregate {
     pub per_rune: HashMap<i64, RuneStat>,
+    /// Stat shards per row (by position in the build's shard array), because
+    /// the same shard id sits in two rows and would be counted twice by id.
+    pub per_shard_row: Vec<HashMap<i64, RuneStat>>,
 }
 
 impl Aggregate {
     pub fn get(&self, id: i64) -> Option<RuneStat> {
         self.per_rune.get(&id).copied()
+    }
+
+    /// The stats of one shard row (0 Offense, 1 Flex, 2 Defense), usable with
+    /// [`Aggregate::get`] and [`Aggregate::pick_pct`].
+    pub fn shard_row(&self, row: usize) -> Aggregate {
+        Aggregate {
+            per_rune: self.per_shard_row.get(row).cloned().unwrap_or_default(),
+            per_shard_row: Vec::new(),
+        }
     }
 
     /// Pick% of a rune within the row that contains it. Runes that never
@@ -62,16 +74,20 @@ pub fn aggregate(groups: &[RunePageGroup]) -> Aggregate {
     let mut result = Aggregate::default();
     for group in groups {
         for build in &group.builds {
-            let mut ids: Vec<i64> = Vec::new();
-            ids.extend(build.primary_rune_ids.iter().copied());
-            ids.extend(build.secondary_rune_ids.iter().copied());
-            ids.extend(build.stat_mod_ids.iter().copied());
-            for id in ids {
-                let entry = result.per_rune.entry(id).or_default();
+            let add = |entry: &mut RuneStat| {
                 entry.play += build.play;
                 entry.win += build.win;
                 entry.weight += build.weight();
                 entry.weighted_win += build.weight() * build.win_pct().unwrap_or(0.0) / 100.0;
+            };
+            for id in build.primary_rune_ids.iter().chain(&build.secondary_rune_ids) {
+                add(result.per_rune.entry(*id).or_default());
+            }
+            if result.per_shard_row.len() < build.stat_mod_ids.len() {
+                result.per_shard_row.resize_with(build.stat_mod_ids.len(), HashMap::new);
+            }
+            for (row, id) in build.stat_mod_ids.iter().enumerate() {
+                add(result.per_shard_row[row].entry(*id).or_default());
             }
         }
     }
@@ -97,7 +113,25 @@ mod tests {
         let manaflow = stats.get(8210).unwrap();
         assert_eq!(manaflow.play, 8058 + 985 + 640);
         // A stat shard is aggregated too (present in the first, fourth and fifth builds).
-        assert_eq!(stats.get(5001).unwrap().play, 8058 + 985 + 640);
+        assert_eq!(stats.shard_row(2).get(5001).unwrap().play, 8058 + 985 + 640);
+    }
+
+    #[test]
+    fn a_shard_id_repeated_across_rows_is_counted_once_per_row() {
+        let group: RunePageGroup = serde_json::from_str(
+            r#"{"primary_page_id":8100,"secondary_page_id":8200,"builds":[
+                {"primary_page_id":8100,"primary_rune_ids":[],"secondary_page_id":8200,
+                 "secondary_rune_ids":[],"stat_mod_ids":[5008,5008,5001],"play":217,"win":110}]}"#,
+        )
+        .unwrap();
+        let stats = aggregate(&[group]);
+        // Adaptive Force is in Offense and Flex: 217 plays in each row, not 434.
+        assert_eq!(stats.shard_row(0).get(5008).unwrap().play, 217);
+        assert_eq!(stats.shard_row(1).get(5008).unwrap().play, 217);
+        assert_eq!(stats.shard_row(2).get(5001).unwrap().play, 217);
+        assert!(stats.shard_row(0).get(5001).is_none());
+        let flex = stats.shard_row(1);
+        assert_eq!(flex.pick_pct(5008, &[5008, 5010, 5001]), Some(100.0));
     }
 
     #[test]

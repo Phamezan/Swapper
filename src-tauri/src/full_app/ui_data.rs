@@ -95,6 +95,9 @@ pub struct Draft {
     ally_bans: Vec<i64>,
     enemy_bans: Vec<i64>,
     can_lock: bool,
+    /// On your ban turn: the champion you are hovering to ban (0 for none yet).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    ban_turn: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pickable: Option<Vec<i64>>,
     timer: Option<DraftTimer>,
@@ -155,6 +158,11 @@ pub(crate) fn draft_from(value: &Value) -> Draft {
     let can_lock = local.is_some() && value["timer"]["phase"] == "BAN_PICK"
         && picks().any(|action| action["actorCellId"].as_i64() == local
             && action["completed"] != true && action["isInProgress"] == true);
+    let ban_turn = (local.is_some() && value["timer"]["phase"] == "BAN_PICK")
+        .then(|| actions().find(|action| action["type"] == "ban" && action["actorCellId"].as_i64() == local
+            && action["completed"] != true && action["isInProgress"] == true))
+        .flatten()
+        .map(|action| action["championId"].as_i64().unwrap_or(0).max(0));
     let timer = value["timer"]["phase"].as_str().map(|phase| DraftTimer {
         phase: phase.to_string(),
         remaining_ms: value["timer"]["adjustedTimeLeftInPhase"]
@@ -169,6 +177,7 @@ pub(crate) fn draft_from(value: &Value) -> Draft {
         ally_bans: team_bans("myTeam"),
         enemy_bans: team_bans("theirTeam"),
         can_lock,
+        ban_turn,
         pickable: None,
         timer,
     }
@@ -224,35 +233,22 @@ pub async fn full_app_abilities(champion_id: i64) -> Result<Vec<Ability>, String
     ))
     .await
     .map_err(|e| e.to_string())?;
-    let mut abilities = Vec::new();
-    for (index, spell) in champion["spells"]
-        .as_array()
-        .into_iter()
-        .flatten()
-        .take(4)
-        .enumerate()
-    {
-        let icon = match ability_path(spell) {
-            Some(asset) => crate::runes::game_data::fetch_bytes(asset)
-                .await
-                .ok()
-                .filter(|bytes| {
-                    bytes.len() <= 256 * 1024 && bytes.starts_with(b"\x89PNG\r\n\x1a\n")
-                })
-                .map(|bytes| {
-                    format!(
-                        "data:image/png;base64,{}",
-                        base64::engine::general_purpose::STANDARD.encode(bytes)
-                    )
-                }),
-            None => None,
-        };
-        abilities.push(Ability {
-            key: ["Q", "W", "E", "R"][index].into(),
-            name: spell["name"].as_str().unwrap_or("").into(),
-            icon,
-        });
-    }
+    // Concurrent; game_data::fetch_bytes already bounds CDN requests. join_all keeps Q/W/E/R order.
+    let abilities: Vec<Ability> =
+        futures_util::future::join_all(champion["spells"].as_array().into_iter().flatten().take(4).enumerate().map(
+            |(index, spell)| async move {
+                let icon = match ability_path(spell) {
+                    Some(asset) => crate::runes::game_data::fetch_bytes(asset)
+                        .await
+                        .ok()
+                        .filter(|bytes| bytes.len() <= 256 * 1024 && bytes.starts_with(b"\x89PNG\r\n\x1a\n"))
+                        .map(|bytes| format!("data:image/png;base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes))),
+                    None => None,
+                };
+                Ability { key: ["Q", "W", "E", "R"][index].into(), name: spell["name"].as_str().unwrap_or("").into(), icon }
+            },
+        ))
+        .await;
     if abilities.len() == 4 && abilities.iter().all(|ability| ability.icon.is_some()) {
         if let Ok(bytes) = serde_json::to_vec(&abilities) {
             let _ = tokio::task::spawn_blocking(move || {
@@ -286,6 +282,14 @@ mod tests {
         assert_eq!(draft.ally_bans, vec![777]);
         assert_eq!(draft.enemy_bans, vec![157]);
         assert!(draft.can_lock);
+        assert_eq!(draft.ban_turn, None, "a pending ban that isn't in progress is not your ban turn");
+        let mut banning = session.clone();
+        banning["actions"][0][2]["isInProgress"] = json!(true);
+        banning["actions"][0][3]["isInProgress"] = json!(false);
+        assert_eq!(draft_from(&banning).ban_turn, Some(103));
+        assert!(!draft_from(&banning).can_lock, "a ban turn is not a pick turn");
+        banning["actions"][0][2]["championId"] = json!(0);
+        assert_eq!(draft_from(&banning).ban_turn, Some(0), "your ban turn before hovering anyone");
         for (field, value) in [("isInProgress", json!(false)), ("completed", json!(true)),
             ("type", json!("ban")), ("actorCellId", json!(7))] {
             let mut other = session.clone();

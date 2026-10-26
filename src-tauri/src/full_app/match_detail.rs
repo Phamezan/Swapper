@@ -469,10 +469,18 @@ struct Cache {
 
 static CACHE: OnceLock<tokio::sync::Mutex<Cache>> = OnceLock::new();
 
+/// Starts an empty cache when a different account is signed in.
+fn reset_for(cache: &mut Cache, owner: &str) {
+    if cache.owner != owner {
+        *cache = Cache { owner: owner.to_string(), ..Default::default() };
+    }
+}
+
+/// Waits for the cache lock, so call it from `spawn_blocking`, never from async code.
 pub(crate) fn cached_games() -> Vec<model::Game> {
     CACHE
         .get()
-        .and_then(|cache| cache.try_lock().ok())
+        .map(|cache| cache.blocking_lock())
         .map(|cache| {
             cache
                 .matches
@@ -602,19 +610,18 @@ pub async fn full_app_match_detail(
     let current = get(&client, "/lol-summoner/v1/current-summoner").await?;
     let owner =
         model::summoner(&current).ok_or("Sign in to League Client to load match details.")?;
-    let mut cache = CACHE.get_or_init(Default::default).lock().await;
-    if cache.owner != owner.puuid {
-        *cache = Cache {
-            owner: owner.puuid.clone(),
-            ..Default::default()
-        };
-    }
     let perspective = riot_id.unwrap_or_else(|| owner.riot_id.clone());
     valid_perspective(&perspective)?;
     let key = (game_id, perspective.to_lowercase());
-    if let Some(detail) = cache.matches.get(&key) {
-        return Ok(detail.clone());
-    }
+    // The lock is held only to read and write the cache, never across League Client calls.
+    let known_ranks = {
+        let mut cache = CACHE.get_or_init(Default::default).lock().await;
+        reset_for(&mut cache, &owner.puuid);
+        if let Some(detail) = cache.matches.get(&key) {
+            return Ok(detail.clone());
+        }
+        cache.ranks.clone()
+    };
     let value = match get(&client, &format!("/lol-match-history/v1/games/{game_id}")).await {
         Ok(value) => value,
         // Not filed yet: the end-of-game copy stands in, uncached so the full one replaces it.
@@ -675,7 +682,7 @@ pub async fn full_app_match_detail(
                     .bytes()
                     .all(|b| b.is_ascii_alphanumeric() || b == b'-' || b == b'_')
         })
-        .filter(|id| !cache.ranks.contains_key(*id))
+        .filter(|id| !known_ranks.contains_key(*id))
         .map(str::to_string)
         .collect();
     let rank_requests = stream::iter(pending.into_iter().map(|puuid| {
@@ -698,6 +705,8 @@ pub async fn full_app_match_detail(
             )
         })
     });
+    let mut cache = CACHE.get_or_init(Default::default).lock().await;
+    reset_for(&mut cache, &owner.puuid);
     for (puuid, result) in ranks {
         if let Ok(value) = result {
             cache.ranks.insert(

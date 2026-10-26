@@ -332,7 +332,6 @@ pub(crate) fn set_nickname(
     id: Uuid,
     name: String,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     let mut config = state.config.lock().map_err(|e| e.to_string())?;
     riot::set_nickname(&mut config, id, name)?;
     Ok(view(

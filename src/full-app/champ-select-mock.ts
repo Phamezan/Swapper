@@ -33,6 +33,8 @@ let fixture: FixtureName = (new URLSearchParams(location.search).get("fixture") 
 let selectedChampion = fixtureView(fixture).championId;
 let applied: RunesView["applied"] = new URLSearchParams(location.search).has("rune-fail") ? null : fixtureView(fixture).applied;
 let spells = fixtureView(fixture).spells;
+let runePresets: { name: string; selection: unknown }[] = [];
+let banHover = 0;
 /** Commands a page adds to, or overrides in, the champion select ones (the flyout preview). */
 export const extra: Record<string, (args: Record<string, any>) => unknown> = {};
 export const listeners = new Set<() => void>();
@@ -42,6 +44,7 @@ const currentDraft = () => {
   draft.allies = draft.allies.map(member => member.local ? { ...member, championId: selectedChampion } : member);
   const params = new URLSearchParams(location.search);
   if (params.has("turn")) draft.canLock = false;
+  if (params.get("turn") === "ban") draft.banTurn = banHover;
   if (params.get("turn") === "intent") draft.timer!.phase = "PLANNING";
   draft.pickable = Object.keys(CHAMPIONS).map(Number).filter(id => !params.has("unavailable") || id !== 266);
   return draft;
@@ -95,6 +98,12 @@ mockIPC(async (cmd, args) => {
     case "full_app_hover_champion":
       if (!currentDraft().pickable?.includes(a.championId) || takenIds(currentDraft()).has(a.championId)) throw new Error("That champion is not currently pickable.");
       change("hover", a.championId); return null;
+    case "full_app_hover_ban":
+      if (currentDraft().banTurn === undefined) throw new Error("It is not your ban turn.");
+      banHover = a.championId; listeners.forEach(listener => listener()); void emit("draft_changed", currentDraft()); return null;
+    case "full_app_ban":
+      if (currentDraft().banTurn !== a.championId) throw new Error("Your ban changed. Check it and try again.");
+      document.body.dataset.banned = String(a.championId); return null;
     case "full_app_lock_in": {
       document.body.dataset.lockCalls = String(Number(document.body.dataset.lockCalls ?? 0) + 1);
       if (new URLSearchParams(location.search).has("lock-delay")) await new Promise(resolve => setTimeout(resolve, 200));
@@ -105,6 +114,9 @@ mockIPC(async (cmd, args) => {
     case "apply_rune_page": if (new URLSearchParams(location.search).has("rune-fail")) throw new Error("Your rune pages are full (25 of 25). Delete a page in League Client, then try again."); applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;
     case "apply_spell": spells = a.slot === "d" ? { ...spells, spell1Id: a.spellId } : { ...spells, spell2Id: a.spellId }; return null;
     case "import_full_item_build": return null;
+    case "get_rune_presets": return runePresets;
+    case "save_rune_preset": runePresets = [...runePresets.filter(p => p.name.toLowerCase() !== a.name.trim().toLowerCase()), { name: a.name.trim(), selection: a.selection }]; return runePresets;
+    case "delete_rune_preset": runePresets = runePresets.filter(p => p.name !== a.name); return runePresets;
     default: throw new Error(`Not mocked: ${cmd}`);
   }
 }, { shouldMockEvents: true });

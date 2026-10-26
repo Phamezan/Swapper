@@ -2,16 +2,30 @@ import type { KeystoneBuildView, ProBuild, ProBuildsView, Selection } from "../r
 
 export type BuildVariant = { label: string; enemyId?: number; selection: Selection | null; items: KeystoneBuildView; spells: number[]; order: string | null; winPct: number | null; games: number };
 
+export const isBoots = (item: { name: string }) => /boots|greaves|treads|shoes|steelcaps|soulmarch|tabi|armored advance|chainlaced crushers|crimson lucidity|ghostcrawlers|immortal path|swiftmarch/i.test(item.name);
+
 export function proVariant(pro: ProBuild): BuildVariant {
-  const items = (pro.completedItems.length ? pro.completedItems : pro.finalItems).filter(item => ![3340, 3363, 3364, 3330].includes(item.id));
+  const bought = (pro.completedItems.length ? pro.completedItems : pro.finalItems).filter(item => ![3340, 3363, 3364, 3330].includes(item.id));
+  // Boots get their own column, so they must not take one of the three core slots.
+  const items = [...bought.filter(item => !isBoots(item)), ...bought.filter(isBoots)];
+  const coreLen = Math.min(3, items.filter(item => !isBoots(item)).length);
   return {
     label: pro.proName,
     selection: { primaryPageId: pro.primaryPageId, secondaryPageId: pro.secondaryPageId, keystone: pro.keystone,
       primaryRunes: pro.primaryRunes, secondaryRunes: pro.secondaryRunes, shards: pro.shards },
     spells: pro.spells, order: pro.skillOrder.length ? pro.skillOrder.join("") : null, winPct: null, games: 1,
     items: { items, starters: pro.itemPath.find(group => group.minute === 0)?.items ?? [], options: [],
-      games: 1, coreGames: 1, coreLen: Math.min(3, items.length), coreWinPct: null, stale: false, updatedAt: null, skillPriority: null },
+      games: 1, coreGames: 1, coreLen, coreWinPct: null, stale: false, updatedAt: null, skillPriority: null },
   };
+}
+
+/** What to take from a selected pro build; the rest comes from the stats build shown before it. */
+export type ProPart = "all" | "runes" | "build";
+
+export function mixPro(base: BuildVariant, pro: BuildVariant, part: ProPart): BuildVariant {
+  if (part === "runes") return { ...base, label: pro.label, selection: pro.selection };
+  if (part === "build") return { ...pro, selection: base.selection };
+  return pro;
 }
 
 export function mergeProPage(previous: ProBuildsView | null, next: ProBuildsView): ProBuildsView {

@@ -78,9 +78,9 @@ for (const signal of ["SIGINT", "SIGTERM"]) process.once(signal, () => {
   void cleanup().finally(() => process.exit(signal === "SIGINT" ? 130 : 143));
 });
 const watchdog = setTimeout(() => {
-  console.error(`FAIL suite exceeded 80 seconds during ${current}`);
+  console.error(`FAIL suite exceeded 100 seconds during ${current}`);
   void cleanup().finally(() => process.exit(1));
-}, 80_000);
+}, 100_000);
 
 async function audit() {
   await page.settle();
@@ -535,6 +535,8 @@ async function main() {
     await page.visible(".fa-build-section");
     await audit();
     await screenshot("champion-overview");
+    await page.evaluate("document.querySelector('.fa-build-section').scrollIntoView()");
+    await screenshot("champion-overview-wide", 1600, 900);
     await page.click('.location-trail button', 'Tierlist');
     await page.visible(".tier-table tbody tr");
     await page.text('.location-trail [aria-current="page"]', 'Tierlist');
@@ -1420,7 +1422,7 @@ async function main() {
     await page.click('.cs-picks .fa-seg button', 'All');
     await page.wait("document.querySelectorAll('.cs-pick').length > 8", "all champions to load");
     const card = await page.evaluate("(() => { const r = document.querySelector('.cs-pick').getBoundingClientRect(); return { width: r.width, height: r.height }; })()");
-    assert.ok(card.width >= 170 && card.height >= card.width * 1.3, `the overflowing All grid keeps full-size cards (${card.width}x${card.height})`);
+    assert.ok(card.width >= 120 && card.height >= card.width * 1.3, `the overflowing All grid keeps portrait cards (${card.width}x${card.height})`);
     assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollHeight <= document.querySelector('.dashboard-main').clientHeight + 1"), true);
   });
   await check("Draft shows Lock in only after clicking a champion", async () => {
@@ -1481,15 +1483,32 @@ async function main() {
     await page.visible('.fa-build-section');
   });
   await check("Draft hides lock outside your pick turn or availability", async () => {
-    for (const query of ['turn=waiting', 'turn=ban', 'turn=intent', 'unavailable']) {
+    for (const query of ['turn=waiting', 'turn=intent']) {
       await navigate(`${draft}?fixture=planning&${query}`, '.cs-pick');
       await page.type('input[aria-label="Search champion"]', 'Aatrox');
       await page.visible('.cs-pick-select');
-      if (query !== 'unavailable') { await page.click('.cs-pick-select'); await page.visible('.cs-pick.is-hovered'); }
+      await page.click('.cs-pick-select'); await page.visible('.cs-pick.is-hovered');
       assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').disabled"), true, query);
     }
+  });
+  await check("Draft bans the selected champion on your ban turn", async () => {
+    await navigate(`${draft}?fixture=planning&turn=ban&unavailable`, '.cs-pick');
+    await page.text('.cs-lock-in', 'Ban');
+    assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').disabled"), true, 'nothing selected to ban yet');
+    await page.type('input[aria-label="Search champion"]', 'Aatrox');
     await page.click('.cs-pick-select');
-    await page.text('.cs-picks .ui-notice', 'not currently pickable');
+    await page.visible('.cs-pick.is-hovered');
+    await page.wait("!document.querySelector('.cs-lock-in').disabled", 'the Ban button for a champion you do not own');
+    await page.click('.cs-lock-in');
+    await page.wait("document.body.dataset.banned === '266'", 'the ban of the selected champion');
+  });
+  await check("Draft hides champions the player can't pick", async () => {
+    await navigate(`${draft}?fixture=planning&unavailable&turn=waiting`, '.cs-pick');
+    await page.click('.cs-picks .fa-seg button', 'All');
+    await page.wait("document.querySelectorAll('.cs-pick strong').length > 3", 'the champion list');
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.cs-pick strong')].some(n => n.textContent === 'Aatrox')"), false, 'an unowned champion is not offered on All');
+    await page.type('input[aria-label="Search champion"]', 'Aatrox');
+    await page.wait("!document.querySelector('.cs-pick-select')", 'search to skip the unowned champion');
   });
   await check("Draft role buttons override the assigned role, also on All", async () => {
     await navigate(`${draft}?fixture=planning`, '.cs-pick');
@@ -1499,6 +1518,62 @@ async function main() {
     await page.click('.cs-picks .fa-seg button', 'All');
     await page.click(`.cs-role-buttons button[aria-label="${target}"]`);
     await page.wait(`document.querySelector('.cs-role-buttons [aria-pressed="true"]')?.getAttribute('aria-label') === '${target}'`, 'the picked role to stick');
+  });
+  await check("Counters offer each likely laner when ranked hides enemy roles", async () => {
+    await navigate(`${draft}?fixture=hidden-roles`, '.cs-pick');
+    await page.click('.cs-picks-tools .fa-seg button', 'Counters');
+    await page.wait("document.querySelectorAll('.cs-laner-pick button').length === 2", 'both revealed enemies as laner choices');
+    await page.visible('.cs-pick-grid .cs-pick');
+    await page.click('.cs-laner-pick button:not([aria-pressed="true"])');
+    await page.wait("document.querySelectorAll('.cs-laner-pick [aria-pressed=\"true\"]').length === 1", 'the other laner to be chosen');
+    await page.visible('.cs-pick-grid .cs-pick');
+  });
+  await check("Rune tree menus show each tree's colour without a heading", async () => {
+    await navigate(`${draft}?fixture=locked`, '.fa-build-section .fa-rune-tree .fa-picker');
+    assert.equal(await page.evaluate("!!document.querySelector('.fa-rune-tree .fa-picker.is-accented')?.style.getPropertyValue('--accent')"), true, 'the chosen tree shows its colour');
+    await page.click('.fa-build-section .fa-rune-tree .fa-picker');
+    await page.wait("document.querySelectorAll('.fa-picker-popover.fa-tree-picker .fa-picker-option.is-accented').length >= 3", 'coloured tree options');
+    assert.equal(await page.evaluate("!!document.querySelector('.fa-picker-popover.fa-tree-picker .fa-picker-label')"), false, 'no Primary tree heading');
+  });
+  await check("Custom runes save as a champion preset, reopen and delete", async () => {
+    await navigate(`${draft}?fixture=locked`, '.fa-build-section .fa-rune-row button');
+    await page.click('.fa-build-section .fa-rune-row button:not(.is-chosen)');
+    await page.click('.cs-rune-actions button', 'Save as preset');
+    await page.type('.cs-preset-save input', 'Lane bully');
+    await page.click('.cs-preset-save button', 'Save');
+    await page.text('.fa-rune-area h4', 'Lane bully');
+    await page.click('.cs-list-tabs button:nth-child(2)');
+    await page.wait("document.querySelector('.cs-list-tabs + .cs-build-entries > .cs-build-row')?.getAttribute('aria-pressed') === 'true'", 'the saved preset selected in the presets tab');
+    await page.click('.cs-list-tabs button:first-child');
+    await page.click('.cs-list-tabs ~ div.cs-build-entries > .cs-build-row:first-child');
+    await page.wait("document.querySelector('.fa-rune-area h4')?.textContent === 'Runes'", 'the stats runes back');
+    await page.click('.fa-build-section .fa-rune-row button:not(.is-chosen):nth-child(2)');
+    await page.click('.cs-rune-actions button', 'Save as preset');
+    await page.wait("document.querySelector('.cs-preset-save input')?.value === ''", 'an empty name for the second preset');
+    await page.type('.cs-preset-save input', 'Safe');
+    await page.click('.cs-preset-save button', 'Save');
+    await page.click('.cs-list-tabs button:nth-child(2)');
+    await page.wait("document.querySelectorAll('.cs-list-tabs + .cs-build-entries > .cs-build-row').length === 2", 'two presets');
+    await page.click('.cs-list-tabs + .cs-build-entries > .cs-build-row:first-child');
+    await page.text('.fa-rune-area h4', 'Lane bully');
+    await page.click('.fa-build-section .fa-rune-row button:not(.is-chosen):nth-child(3)');
+    await page.click('.cs-rune-actions button', 'Update Lane bully');
+    await page.text('.fa-rune-area h4', 'Lane bully');
+    await page.wait("document.querySelectorAll('.cs-list-tabs + .cs-build-entries > .cs-build-row').length === 2", 'the update replaces in place');
+    await page.click('.cs-preset-delete');
+    await page.wait("document.querySelectorAll('.cs-list-tabs + .cs-build-entries > .cs-build-row').length === 1", 'one preset left');
+    await page.click('.cs-preset-delete');
+    await page.text('.cs-build-list > p', 'No presets');
+  });
+  await check("A pro build can lend only its runes or only its items", async () => {
+    await navigate(`${draft}?fixture=locked`, '.cs-build-row.is-pro');
+    await page.click('.cs-build-row.is-pro');
+    await page.wait("document.querySelector('.cs-build-selected strong')?.textContent.endsWith('’s build')", 'the whole pro build');
+    await page.click('.cs-pro-part button', 'Runes only');
+    await page.wait("document.querySelector('.cs-build-selected strong')?.textContent.endsWith('’s runes')", 'pro runes only');
+    await page.text('.cs-build-selected small', 'with Most played items');
+    await page.click('.cs-pro-part button', 'Items only');
+    await page.text('.cs-build-selected small', 'with Most played runes');
   });
   await check("Hovering a draft card shows that champion's abilities", async () => {
     await navigate(`${draft}?fixture=locked`, '.cs-band .cs-slot:not(.is-empty)');

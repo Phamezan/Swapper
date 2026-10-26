@@ -88,11 +88,22 @@ fn update_at(
     cards
 }
 
+/// Lets `update` read the live accounts instead of re-reading state.json.
+static APP: std::sync::OnceLock<tauri::AppHandle> = std::sync::OnceLock::new();
+
+pub fn init(app: &tauri::AppHandle) {
+    let _ = APP.set(app.clone());
+}
+
 pub fn update(snapshot: Option<&Snapshot>) -> Cards {
-    let (Some(path), Ok(config)) = (path(), crate::vault::load()) else {
+    use tauri::Manager;
+    let accounts = APP
+        .get()
+        .and_then(|app| Some(app.try_state::<crate::AppState>()?.config.lock().ok()?.accounts.clone()));
+    let (Some(path), Some(accounts)) = (path(), accounts) else {
         return Cards::new();
     };
-    update_at(&path, &config.accounts, snapshot)
+    update_at(&path, &accounts, snapshot)
 }
 
 #[cfg(test)]

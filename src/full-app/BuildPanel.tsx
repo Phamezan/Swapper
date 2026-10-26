@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Trash2 } from "lucide-react";
 import { CheckIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { ItemIcon } from "../runes/ItemIcon";
@@ -17,7 +17,7 @@ import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "
 import { NearViewport } from "./NearViewport";
 import { AbilityHover } from "./AbilityHover";
 import { Picker } from "./Picker";
-import { mergeProPage, proVariant, type BuildVariant as Variant } from "./champ-select-pro";
+import { isBoots, mergeProPage, mixPro, proVariant, type ProPart, type BuildVariant as Variant } from "./champ-select-pro";
 import { Slot } from "./ui/Slot";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
@@ -27,11 +27,15 @@ import "./build-panel.css";
 export type RuneCatalog = { trees: RuneTree[]; shards: RuneRow[] };
 type Ability = { key: string; name: string; icon: string | null };
 type Section = keyof ApplyStatus;
-const PRO_STEP = 8;
+/** A rune page the user saved for this champion. */
+type SavedRunes = { name: string; selection: Selection };
+const sameRunes = (a: Selection, b: Selection) => a.primaryPageId === b.primaryPageId && a.secondaryPageId === b.secondaryPageId && a.keystone === b.keystone
+  && [a.primaryRunes, a.secondaryRunes, a.shards].every((ids, i) => ids.join() === [b.primaryRunes, b.secondaryRunes, b.shards][i].join());
+const PRO_STEP = 6;
 /** The auto-apply setting, shown inline on the champion select page. */
 export type AutoApply = { checked: boolean; disabled: boolean; onChange: (enabled: boolean) => void };
 
-export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply, preview, proPageSize }: {
+export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply, preview, proPageSize, loading }: {
   championId: number; name: string; lane: string; tier: string; build: ChampionBuild | null; liveView?: RunesView | null;
   /** The lane matchup, or each possible one; adds a "vs <enemy>" tab for each with its own build. */
   matchups?: MatchupView[]; autoApply?: AutoApply;
@@ -41,12 +45,14 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   proPageSize?: number;
   /** Open on the matchup build instead of the most played one, when there is one. */
   preferMatchup?: boolean;
+  /** The build is still being fetched: show a skeleton instead of "unavailable". */
+  loading?: boolean;
 }) {
   const [catalog, setCatalog] = useState<RuneCatalog | null>(null);
   const [details, setDetails] = useState<PresetBuildView | null>(null);
   const [abilities, setAbilities] = useState<Ability[]>([]);
-  // null until a tab is clicked: the default tab then follows what loaded (see `variantIndex` below).
-  const [chosenIndex, setChosenIndex] = useState<number | null>(null);
+  // Label of the clicked tab; null until then, so the default follows what loaded. Labels are unique, indexes shift as tabs load.
+  const [chosenLabel, setChosenLabel] = useState<string | null>(null);
   const [client, setClient] = useState<RunesView | null>(liveView ?? null);
   const [busy, setBusy] = useState<Section | "all" | null>(null);
   const [notice, setNotice] = useState("");
@@ -58,6 +64,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const proBusy = useRef(false);
   const [pros, setPros] = useState<ProBuildsView | null>(null);
   const [pro, setPro] = useState<ProBuild | null>(null);
+  const [proPart, setProPart] = useState<ProPart>("all");
   // Pages hold many matches; show a few at a time so the build column stays aligned.
   const [proLimit, setProLimit] = useState(PRO_STEP);
   const [proOffset, setProOffset] = useState(0);
@@ -71,6 +78,17 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     return () => { live = false; void stop.then(unlisten => unlisten()); };
   }, []);
   const [custom, setCustom] = useState<Selection | null>(null);
+  const [presets, setPresets] = useState<SavedRunes[]>([]);
+  const [presetName, setPresetName] = useState<string | null>(null);
+  // The name being typed into the save box; null while it is closed.
+  const [naming, setNaming] = useState<string | null>(null);
+  const [listTab, setListTab] = useState<"builds" | "presets">("builds");
+  useEffect(() => {
+    let live = true;
+    setPresets([]); setPresetName(null); setNaming(null);
+    if (!preview) void invoke<SavedRunes[]>("get_rune_presets", { championId }).then(value => { if (live) setPresets(value); }).catch(() => {});
+    return () => { live = false; };
+  }, [championId, preview]);
   useEffect(() => {
     let live = true;
     setImported(null);
@@ -86,7 +104,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const selection = overviewSelection(build, catalog?.trees ?? []);
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
-    setDetails(null); setChosenIndex(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setProOffset(0); setNotice(""); setFailed(null); setCustom(null);
+    setDetails(null); setChosenLabel(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setProOffset(0); setNotice(""); setFailed(null); setCustom(null);
     proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
     setImported(null);
   }, [championId, lane, tier, sourceKey]);
@@ -113,6 +131,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     finally { if (request === proRequest.current) { proBusy.current = false; setProLoading(false); } }
   };
 
+  if (!build && loading) return <Skeleton label="Loading build" rows={4} height={64} />;
   if (!build) return <section className="fa-card fa-build-empty"><h3>Build unavailable</h3><p>Try another role or rank.</p></section>;
   const variants: Variant[] = [{ label: "Most played", selection, items: details ?? build.items, spells: build.spells, order: build.skillOrder, winPct: (details ?? build.items).coreWinPct, games: (details ?? build.items).coreGames }];
   if (details?.highestWin && !details.highestWinMatchesPick) {
@@ -123,9 +142,13 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     if (matchup.preset && matchup.build && !matchup.fallback) variants.push({ label: `vs ${matchup.enemyName}`, enemyId: matchup.enemyChampionId, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
   }
   const matchupIndex = variants.findIndex(variant => variant.label.startsWith("vs "));
-  const variantIndex = chosenIndex ?? (preferMatchup && matchupIndex > 0 ? matchupIndex : 0);
-  const chosen: Variant = pro ? proVariant(pro) : variants[variantIndex] ?? variants[0];
+  const labelIndex = chosenLabel === null ? -1 : variants.findIndex(variant => variant.label === chosenLabel);
+  const variantIndex = labelIndex >= 0 ? labelIndex : preferMatchup && matchupIndex > 0 ? matchupIndex : 0;
+  const base = variants[variantIndex] ?? variants[0];
+  const chosen: Variant = pro ? mixPro(base, proVariant(pro), proPart) : base;
   const chosenSelection = custom ?? chosen.selection;
+  // The saved preset being shown, while its runes are unchanged.
+  const shownPreset = custom && presets.find(preset => preset.name === presetName && sameRunes(preset.selection, custom));
   const complete = !!chosenSelection && chosenSelection.primaryRunes.length === 3 && chosenSelection.secondaryRunes.length === 2 && chosenSelection.shards.length === 3;
   const inSelect = client?.phase === "ChampSelect" && client.championId === championId;
   const itemIds = chosen.items.items.map(item => item.id);
@@ -133,9 +156,19 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const chosenSpells = spellLayout(chosen.spells, [client?.spells.spell1Id ?? 0, client?.spells.spell2Id ?? 0], flashKey);
   const status = applyStatus(client, championId, complete ? chosenSelection : null, chosenSpells, itemsKey, imported);
   const ready: ApplyStatus = { runes: inSelect && complete, spells: inSelect && chosen.spells.length === 2, items: itemIds.length > 0 };
-  const boots = chosen.items.items.filter(item => /boots|greaves|treads|shoes|steelcaps|soulmarch/i.test(item.name));
+  const boots = chosen.items.items.filter(isBoots);
+  const later = chosen.items.items.slice(chosen.items.coreLen || 3).filter(item => !isBoots(item));
   const order = maxOrder(chosen.order, chosen.items.skillPriority);
-  const showTab = (index: number) => { setPro(null); setChosenIndex(index); setCustom(null); setNotice(""); setFailed(null); };
+  const showTab = (label: string) => { setPro(null); setChosenLabel(label); setCustom(null); setNotice(""); setFailed(null); };
+  const savePreset = async (name: string) => {
+    if (!custom) return;
+    try { setPresets(await invoke<SavedRunes[]>("save_rune_preset", { championId, name, selection: custom })); setPresetName(name.trim()); setNaming(null); setNotice(""); }
+    catch (error) { setNotice(String(error).replace(/^Error: /, "")); }
+  };
+  const deletePreset = async (name: string) => {
+    try { setPresets(await invoke<SavedRunes[]>("delete_rune_preset", { championId, name })); }
+    catch (error) { setNotice(String(error).replace(/^Error: /, "")); }
+  };
 
   const apply = async (section: Section | "all") => {
     setBusy(section); setNotice(""); setFailed(null);
@@ -160,14 +193,24 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
 
   return <div className="fa-build-section cs-build-browser">
     <aside className="cs-build-list" aria-label="Browse builds">
-      <h3>Builds</h3><div className="cs-build-entries">{variants.map((variant, index) => <button className={`cs-build-row${variant.enemyId ? " is-matchup" : ""}`} disabled={!!busy} key={variant.label} aria-pressed={!pro && index === variantIndex} onClick={() => showTab(index)}>
+      {!preview && <div className="cs-list-tabs" role="group" aria-label="Build list">
+        <button aria-pressed={listTab === "builds"} onClick={() => setListTab("builds")}>Builds</button>
+        <button aria-pressed={listTab === "presets"} onClick={() => setListTab("presets")}>My presets{presets.length > 0 && <small>{presets.length}</small>}</button>
+      </div>}
+      {/* Each row is followed by its delete button: the list's grid puts them side by side. */}
+      {listTab === "presets" && !preview ? presets.length ? <div className="cs-build-entries is-presets">{presets.map(preset => <Fragment key={preset.name}><button className="cs-build-row" disabled={!!busy} aria-pressed={shownPreset?.name === preset.name} onClick={() => { setPro(null); setCustom(preset.selection); setPresetName(preset.name); setNotice(""); setFailed(null); }}>
+        <span className="cs-row-text"><strong>{preset.name}</strong><small>Rune page</small></span>
+        <BuildIcons keystone={preset.selection.keystone} secondary={preset.selection.secondaryPageId} items={[]} />
+      </button>
+      <button className="cs-preset-delete" disabled={!!busy} aria-label={`Delete preset ${preset.name}`} title="Delete preset" onClick={() => { if (shownPreset?.name === preset.name) setCustom(null); void deletePreset(preset.name); }}><Trash2 size={15} aria-hidden /></button></Fragment>)}</div> :<p>No presets for {name} yet. Change a rune, then choose Save as preset.</p> : <>
+      {preview && <h3>Builds</h3>}<div className="cs-build-entries">{variants.map((variant, index) => <button className={`cs-build-row${variant.enemyId ? " is-matchup" : ""}`} disabled={!!busy} key={variant.label} aria-pressed={!pro && !shownPreset && index === variantIndex} onClick={() => showTab(variant.label)}>
         {variant.enemyId ? <span className="cs-row-logo"><ChampionIcon id={variant.enemyId} name={variant.label.slice(3)} mode="desktop" /></span> : null}
         <span className="cs-row-text"><strong>{variant.label}</strong><small>{fmtCount(variant.games)} games</small></span>
         <BuildIcons keystone={variant.selection?.keystone} secondary={variant.selection?.secondaryPageId} items={variant.items.items} />
         <b className="cs-row-chip">{fmtPct(variant.winPct)}</b>
       </button>)}</div>
       <h3>Pro builds <small>Recent matches</small></h3>
-      <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setCustom(null); setNotice(""); setFailed(null); }}
+      <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setProPart("all"); setCustom(null); setNotice(""); setFailed(null); }}
         title={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}>
         <TeamLogo team={match.team} size={30} mode="desktop" className="cs-row-logo" />
         <span className="cs-row-text"><strong>{match.proName}</strong><small>{match.playedAgo}</small></span>
@@ -186,24 +229,27 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
             setProOffset(next);
           }}>{proLoading ? "Loading…" : "Next"}</button>
         </nav> : pros && (pros.matches.length > proLimit || pros.hasMore) ? <button className="fa-text-button cs-load-pros" onClick={() => { setProLimit(limit => limit + PRO_STEP); if (pros.matches.length <= proLimit + PRO_STEP && pros.hasMore) void loadPros(pros.page + 1); }}>Load more</button> : null}
+      </>}
     </aside>
     <div className="cs-build-content">
-    <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s build` : chosen.label}</strong><small>{pro ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `${name} · ${lane}`}</small></div>
+    <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s ${proPart === "runes" ? "runes" : proPart === "build" ? "items" : "build"}` : chosen.label}</strong><small>{pro ? proPart === "all" ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `with ${base.label} ${proPart === "runes" ? "items" : "runes"}` : `${name} · ${lane}`}</small>
+      {pro && <div className="fa-seg cs-pro-part" role="group" aria-label="Use from this pro build"><small>Use</small>{([["all", "Everything"], ["runes", "Runes only"], ["build", "Items only"]] as const).map(([value, label]) => <button key={value} aria-pressed={proPart === value} disabled={!!busy} onClick={() => { setProPart(value); setCustom(null); }}>{label}</button>)}</div>}</div>
     {!preview && <><div className="cs-apply-bar" aria-label="Apply to League Client">
-      {sections.map(([key, label]) => {
-        const didFail = failed?.section === key;
-        return <span key={key} className={`cs-apply-chip${status[key] ? " is-done" : ""}${didFail ? " is-failed" : ""}`}>
-          {status[key] ? <><CheckIcon size={14} aria-hidden /><strong>{label}</strong><small>{key === "runes" ? "Applied" : key === "items" ? "Added" : "Set"}</small></>
-            : <><strong>{label}</strong>{didFail && <small>Failed</small>}<button className="fa-text-button" disabled={!ready[key] || !!busy} title={ready[key] ? `Apply ${label.toLowerCase()} to League Client` : `Select ${name} in champion select to apply`} onClick={() => void apply(key)}>{busy === key ? "Applying…" : didFail ? "Retry" : "Apply"}</button></>}
-        </span>;
-      })}
       {autoApply && <label className="cs-auto-apply">Auto-apply<Switch aria-label="Auto-apply runes" checked={autoApply.checked} disabled={autoApply.disabled} onCheckedChange={autoApply.onChange} /></label>}
       <button className="fa-primary" disabled={!!busy || allDone || !(ready.runes || ready.spells || ready.items)} onClick={() => void apply("all")}><CheckIcon size={16} />{busy === "all" ? "Applying…" : allDone ? "All applied" : "Apply all"}</button>
     </div>
     {failed && <Notice tone="error" action={<button className="fa-secondary" disabled={!!busy} onClick={() => void apply(failed.section)}>Try again</button>}><b>{failed.section === "all" ? "Couldn’t apply the build." : `Couldn’t apply ${sections.find(([key]) => key === failed.section)?.[1].toLowerCase()}.`}</b> {failed.message}</Notice>}
     {notice && <Notice>{notice}</Notice>}</>}
     <section className="fa-card fa-build-grid cs-build-grid">
-      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{custom ? "Custom runes" : "Runes"}</h4>{preview ? null : custom ? <button className="fa-text-button" disabled={!!busy} onClick={() => setCustom(null)}>Reset</button> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy || preview ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{chosenSelection && [chosenSelection.keystone, ...chosenSelection.primaryRunes, ...chosenSelection.secondaryRunes, ...chosenSelection.shards].map((id, index) => <RuneIcon key={index} id={id} mode="desktop" />)}</div>}</div>
+      <div className="fa-rune-area"><div className="fa-section-heading"><h4>{shownPreset ? shownPreset.name : custom ? "Custom runes" : "Runes"}</h4>{preview ? null : custom ? <span className="cs-rune-actions">
+        {!shownPreset && naming === null && presets.some(preset => preset.name === presetName) && <button className="fa-text-button" disabled={!!busy} onClick={() => void savePreset(presetName!)}>Update {presetName}</button>}
+        {!shownPreset && naming === null && <button className="fa-text-button" disabled={!!busy} onClick={() => setNaming("")}>Save as preset</button>}
+        <button className="fa-text-button" disabled={!!busy} onClick={() => { setCustom(null); setNaming(null); }}>Reset</button></span> : <small className="fa-rune-hint">Click a rune to change it</small>}</div>
+        {naming !== null && custom && <form className="cs-preset-save" onSubmit={event => { event.preventDefault(); void savePreset(naming); }}>
+          <input autoFocus value={naming} maxLength={40} onChange={event => setNaming(event.target.value)} placeholder={`Name this ${name} rune page`} aria-label="Preset name" />
+          <button className="fa-secondary" type="submit" disabled={!naming.trim()}>Save</button>
+          <button className="fa-text-button" type="button" onClick={() => setNaming(null)}>Cancel</button>
+        </form>}{catalog && chosenSelection ? <RunePage catalog={catalog} selection={chosenSelection} onChange={busy || preview ? undefined : setCustom} /> : <div className="fa-rune-fallback"><p>Rune catalog unavailable</p>{chosenSelection && [chosenSelection.keystone, ...chosenSelection.primaryRunes, ...chosenSelection.secondaryRunes, ...chosenSelection.shards].map((id, index) => <RuneIcon key={index} id={id} mode="desktop" />)}</div>}</div>
       <div className="fa-spell-area cs-skill-area"><div><h4>Summoners</h4><div className="fa-spells">{chosenSpells.map((id, index) => <span key={index}><SpellIcon id={id} mode="desktop" /><kbd>{index ? "F" : "D"}</kbd></span>)}</div></div>
         <div><h4>Skill order</h4>
         {order.length ? <div className="fa-skill-priority" aria-label={`Max order ${order.join(", ")}`}>{order.map((key, index) => <span key={key}>{index > 0 && <ChevronRight size={14} />}<AbilityBadge championId={championId} ability={abilities.find(ability => ability.key === key)} skill={key} /></span>)}</div> : <p>Max order unavailable</p>}
@@ -214,7 +260,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         <section><h5>Starting</h5><div className="fa-item-line">{chosen.items.starters.map(item => <span className="fa-item-stack" key={item.id}><Slot kind="item" id={item.id} label={item.name} size={40} />{item.count > 1 && <b>×{item.count}</b>}</span>)}{!chosen.items.starters.length && <small>Not reported</small>}</div></section>
         {boots.length > 0 && <section><h5>Boots</h5><div className="fa-item-line">{boots.map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={40} />)}</div></section>}
         <section><h5>Core path {pro ? <small>Played in this match</small> : chosen.items.coreGames > 0 && <small>{fmtPct(chosen.items.coreWinPct)} · {fmtCount(chosen.items.coreGames)} games</small>}</h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).filter(item => !boots.includes(item)).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<Slot kind="item" id={item.id} label={item.name} size={40} /></span>)}</div></section>
-        {chosen.items.items.length > (chosen.items.coreLen || 3) && <section><h5>Later <small>{pro ? "Completed in this match" : "Popular for each slot"}</small></h5><div className="fa-item-line">{chosen.items.items.slice(chosen.items.coreLen || 3).map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={40} />)}</div></section>}
+        {later.length > 0 && <section><h5>Later <small>{pro ? "Completed in this match" : "Popular for each slot"}</small></h5><div className="fa-item-line">{later.map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={40} />)}</div></section>}
         {chosen.items.options.length > 0 && <section><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <span key={`${item.id}-${item.slot}`} title={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${fmtCount(item.games)} games`}><Slot kind="item" id={item.id} size={40} /></span>)}</div></section>}
       </div>{chosen.items.stale && <CachedBadge stale updatedAt={chosen.items.updatedAt} />}</div>
     </section>
@@ -235,12 +281,15 @@ function SkillOrderGrid({ order, abilities }: { order: string; abilities: Abilit
   </div>;
 }
 
+/** Each rune tree's colour in the League client. */
+const TREE_COLORS: Record<number, string> = { 8000: "#c8aa6e", 8100: "#d44242", 8200: "#9faafc", 8300: "#49aab9", 8400: "#a1d586" };
+
 export function RunePage({ catalog, selection, onChange }: { catalog: RuneCatalog; selection: Selection; onChange?: (selection: Selection) => void }) {
   return <div className="fa-rune-page">{[selection.primaryPageId, selection.secondaryPageId].map((id, index) => {
     const tree = catalog.trees.find(tree => tree.id === id);
     if (!tree) return null;
     const selected = index === 0 ? [selection.keystone, ...selection.primaryRunes] : selection.secondaryRunes;
-    return <div className="fa-rune-tree" key={id}>{onChange ? <Picker label={index ? "Secondary tree" : "Primary tree"} value={String(id)} options={catalog.trees.filter(tree => tree.id !== (index ? selection.primaryPageId : selection.secondaryPageId)).map(tree => ({ value: String(tree.id), label: tree.name }))} onChange={value => {
+    return <div className="fa-rune-tree" key={id}>{onChange ? <Picker label={index ? "Secondary tree" : "Primary tree"} hideLabel className="fa-tree-picker" value={String(id)} options={catalog.trees.filter(tree => tree.id !== (index ? selection.primaryPageId : selection.secondaryPageId)).map(tree => ({ value: String(tree.id), label: tree.name, icon: <RuneIcon id={tree.id} mode="desktop" />, accent: TREE_COLORS[tree.id] }))} onChange={value => {
       const next = catalog.trees.find(tree => tree.id === Number(value))!;
       onChange(index ? { ...selection, secondaryPageId: next.id, secondaryRunes: next.rows.slice(0, 2).map(row => row.runes[0].id) } : { ...selection, primaryPageId: next.id, keystone: next.keystones[0].id, primaryRunes: next.rows.map(row => row.runes[0].id) });
     }} /> : <strong>{tree.name}</strong>}{index === 0 && <RuneRowDisplay row={tree.keystones} selected={selected} onPick={onChange ? id => onChange({ ...selection, keystone: id }) : undefined} />}{tree.rows.map((row, rowIndex) => <RuneRowDisplay key={rowIndex} row={row.runes} selected={selected} onPick={onChange ? id => onChange(index ? toggleSecondary(selection, tree, id) : togglePrimary(selection, tree, id)) : undefined} />)}{index === 1 && <div className="fa-shards">{catalog.shards.map((row, index) => <RuneRowDisplay key={index} row={row.runes} selected={row.runes.filter(rune => shardChosen(selection, index, rune.id)).map(rune => rune.id)} onPick={onChange ? id => onChange(selectShard(selection, index, id)) : undefined} />)}</div>}</div>;

@@ -21,7 +21,6 @@ pub(crate) fn save_settings(
     use_deceive: bool,
     riot_exe: Option<String>,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     let mut config = state.config.lock().map_err(|e| e.to_string())?;
     riot::save_settings(&mut config, use_deceive, riot_exe, &state.bundled_deceive)?;
     Ok(view(
@@ -120,7 +119,6 @@ pub(crate) fn set_notifications_enabled(
     state: State<'_, AppState>,
     enabled: bool,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     state.set_notifications_enabled(enabled)?;
     let config = state.config.lock().map_err(|e| e.to_string())?;
     Ok(view(
@@ -137,7 +135,6 @@ pub(crate) fn set_ready_check_notifications(
     state: State<'_, AppState>,
     enabled: bool,
 ) -> Result<AppView, String> {
-    let _lease = state.switch_guard.acquire()?;
     state.set_ready_check_notifications(enabled)?;
     let config = state.config.lock().map_err(|e| e.to_string())?;
     Ok(view(

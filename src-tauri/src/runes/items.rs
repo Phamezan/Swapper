@@ -9,7 +9,7 @@
 //! `i64`, and every path built here starts from the client's own `iconPath`
 //! (`/lol-game-data/assets/...`).
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::sync::{Arc, OnceLock};
 use std::time::{Duration, Instant};
 
@@ -46,6 +46,14 @@ pub struct Item {
     pub name: String,
     #[serde(default)]
     pub icon_path: String,
+    #[serde(default)]
+    pub from: Vec<i64>,
+    #[serde(default)]
+    pub to: Vec<i64>,
+    #[serde(default)]
+    pub price_total: i64,
+    #[serde(default)]
+    pub categories: Vec<String>,
 }
 
 impl Item {
@@ -53,6 +61,15 @@ impl Item {
     /// unnamed placeholders and a few desktop-only entries.
     pub fn is_playable(&self) -> bool {
         self.id > 0 && !self.name.trim().is_empty() && !self.icon_path.trim().is_empty()
+    }
+
+    /// A last-tier item: nothing builds from it, and it has a recipe or a full
+    /// item's price (Seraph's and Diadem have no recipe; Doran's items are cheap).
+    pub fn is_finished(&self) -> bool {
+        const FULL_ITEM_PRICE: i64 = 2000;
+        self.to.is_empty()
+            && (!self.from.is_empty() || self.price_total >= FULL_ITEM_PRICE)
+            && !self.categories.iter().any(|c| c == "Consumable" || c == "Trinket")
     }
 }
 
@@ -78,12 +95,19 @@ fn lcu_asset_path(icon_path: &str) -> Option<String> {
     Some(path.to_string())
 }
 
+/// An item's `(from, to)` recipe links.
+type Links = (Vec<i64>, Vec<i64>);
+
 /// The item catalog, indexed for O(1) icon-path and name lookups so an icon
 /// request never clones the whole list to find one entry.
 #[derive(Default)]
 pub struct Catalog {
     icons: HashMap<i64, String>,
     names: Arc<HashMap<i64, String>>,
+    finished: Arc<HashSet<i64>>,
+    boots: HashSet<i64>,
+    /// Each item's `(from, to)` recipe links.
+    links: HashMap<i64, Links>,
 }
 
 impl Catalog {
@@ -92,8 +116,18 @@ impl Catalog {
     pub fn build(items: Vec<Item>) -> Self {
         let mut icons = HashMap::new();
         let mut names = HashMap::new();
+        let mut finished = HashSet::new();
+        let mut boots = HashSet::new();
+        let mut links = HashMap::new();
         for item in items.iter().filter(|item| item.is_playable()) {
             names.insert(item.id, item.name.clone());
+            links.insert(item.id, (item.from.clone(), item.to.clone()));
+            if item.is_finished() {
+                finished.insert(item.id);
+            }
+            if item.categories.iter().any(|c| c == "Boots") {
+                boots.insert(item.id);
+            }
             if let Some(path) = lcu_asset_path(&item.icon_path) {
                 icons.insert(item.id, path);
             }
@@ -101,6 +135,9 @@ impl Catalog {
         Self {
             icons,
             names: Arc::new(names),
+            finished: Arc::new(finished),
+            boots,
+            links,
         }
     }
 
@@ -112,6 +149,37 @@ impl Catalog {
     /// The id-to-name map, shared with the view layer without cloning it.
     pub fn names(&self) -> Arc<HashMap<i64, String>> {
         Arc::clone(&self.names)
+    }
+
+    /// The ids of last-tier items; see [`Item::is_finished`].
+    pub fn finished(&self) -> Arc<HashSet<i64>> {
+        Arc::clone(&self.finished)
+    }
+
+    pub fn is_boots(&self, id: i64) -> bool {
+        self.boots.contains(&id)
+    }
+
+    /// Whether `part` is a (possibly indirect) component of `whole`. Some
+    /// upgrades (Seraph's, Diadem) list no recipe, so both directions are read.
+    pub fn builds_into(&self, part: i64, whole: i64) -> bool {
+        let reaches = |start: i64, target: i64, next: fn(&Links) -> &Vec<i64>| {
+            let mut seen = HashSet::new();
+            let mut stack = vec![start];
+            while let Some(id) = stack.pop() {
+                if !seen.insert(id) {
+                    continue;
+                }
+                for link in self.links.get(&id).map(next).into_iter().flatten() {
+                    if *link == target {
+                        return true;
+                    }
+                    stack.push(*link);
+                }
+            }
+            false
+        };
+        reaches(part, whole, |(_, to)| to) || reaches(whole, part, |(from, _)| from)
     }
 }
 
@@ -225,6 +293,22 @@ async fn from_ddragon(id: i64) -> Result<Vec<u8>, RuneError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn finished_items_are_last_tier_full_items_not_components_starters_or_consumables() {
+        let items = parse(r#"[
+            {"id":3870,"name":"Dream Maker","iconPath":"/lol-game-data/assets/a.png","from":[3867],"to":[],"priceTotal":400,"categories":["Lane"]},
+            {"id":3040,"name":"Seraph's Embrace","iconPath":"/lol-game-data/assets/b.png","from":[],"to":[],"priceTotal":2900},
+            {"id":3070,"name":"Tear of the Goddess","iconPath":"/lol-game-data/assets/c.png","from":[],"to":[3003],"priceTotal":400},
+            {"id":1056,"name":"Doran's Ring","iconPath":"/lol-game-data/assets/d.png","from":[],"to":[],"priceTotal":400},
+            {"id":2033,"name":"Corrupting Potion","iconPath":"/lol-game-data/assets/e.png","from":[2031],"to":[],"priceTotal":500,"categories":["Consumable"]},
+            {"id":3364,"name":"Oracle Lens","iconPath":"/lol-game-data/assets/f.png","from":[3340],"to":[],"priceTotal":0,"categories":["Trinket"]}
+        ]"#).unwrap();
+        let finished = Catalog::build(items).finished();
+        let mut ids: Vec<_> = finished.iter().copied().collect();
+        ids.sort();
+        assert_eq!(ids, vec![3040, 3870]);
+    }
 
     const FIXTURE: &str = r#"[
         {"id":1001,"name":"Boots","iconPath":"/lol-game-data/assets/ASSETS/Items/Icons2D/1001_Class_T1_BootsofSpeed.png"},

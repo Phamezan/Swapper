@@ -421,6 +421,7 @@ mod tests {
                 items: vec![1, 2, 3],
                 ..KeystoneBuild::default()
             }),
+            win: None,
             runes: Some(MatchupRunes {
                 keystone: 8112,
                 ..MatchupRunes::default()

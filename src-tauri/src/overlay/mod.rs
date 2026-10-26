@@ -137,7 +137,11 @@ impl Controller {
     }
 }
 
+/// Lets the worker thread read the live config instead of re-reading state.json.
+static APP: std::sync::OnceLock<tauri::AppHandle> = std::sync::OnceLock::new();
+
 pub fn init(app: &tauri::AppHandle) -> Result<(), String> {
+    let _ = APP.set(app.clone());
     let state = app.state::<crate::AppState>();
     let config = state.config.lock().map_err(|e| e.to_string())?;
     let mut worker = None;
@@ -449,9 +453,9 @@ async fn run(
             }
             if !read_cache {
                 if let Some(current) = data.as_ref() {
-                    let current_tier = crate::vault::load()
-                        .ok()
-                        .and_then(|config| config.rune_tier)
+                    let current_tier = APP
+                        .get()
+                        .and_then(|app| app.try_state::<crate::AppState>()?.config.lock().ok()?.rune_tier.clone())
                         .unwrap_or_else(|| tier.clone());
                     priority = read_priority(current, &current_tier);
                     read_cache = true;

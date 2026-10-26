@@ -469,6 +469,10 @@ pub fn switch_account(
 ) -> Result<(), SwitchFailure> {
     let t_pre = Instant::now();
     ensure_no_game().map_err(switch_failure)?;
+    // Restoring would overwrite a sign-in that was never saved (same rule as begin_add).
+    if config.active_id.is_none() && vault::live_session_exists()? {
+        return Err(SwitchFailure::new(SwitchFailureKind::Other, "Save the current Riot sign-in first, then switch accounts."));
+    }
     let target = config
         .accounts
         .iter()
@@ -661,6 +665,20 @@ pub(crate) mod tests {
             }],
         };
         (config, snapshot)
+    }
+
+    #[test]
+    fn switch_refuses_to_overwrite_an_unsaved_sign_in() {
+        vault::with_test_data(|root| {
+            let (mut config, _) = session_fixture(root);
+            config.active_id = None;
+            let target = config.accounts[0].id;
+            let live = root.join("Riot Games/Riot Client/Data/RiotGamesPrivateSettings.yaml");
+            let before = std::fs::read(&live).unwrap();
+            let error = switch_account(&mut config, target, Path::new("Deceive.exe"), &Detection::NotRunning).unwrap_err();
+            assert!(format!("{error:?}").contains("Save the current Riot sign-in first"));
+            assert_eq!(std::fs::read(&live).unwrap(), before);
+        });
     }
 
     #[test]

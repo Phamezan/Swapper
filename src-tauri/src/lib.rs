@@ -101,7 +101,21 @@ pub fn run() {
             Err(_) => 1,
         });
     }
-    let config = vault::load().expect("Swapper settings could not be loaded");
+    let config = match vault::load() {
+        Ok(config) => config,
+        Err(error) => {
+            use windows_sys::Win32::UI::WindowsAndMessaging::{MessageBoxW, MB_ICONERROR, MB_OK};
+            let message: Vec<u16> = format!("Swapper could not load its settings.
+
+{error}
+
+Your settings file was not changed. Close programs that may be using it and start Swapper again.")
+                .encode_utf16().chain([0]).collect();
+            let title: Vec<u16> = "Swapper".encode_utf16().chain([0]).collect();
+            unsafe { MessageBoxW(std::ptr::null_mut(), message.as_ptr(), title.as_ptr(), MB_OK | MB_ICONERROR); }
+            std::process::exit(1);
+        }
+    };
     runes::spells::set_flash_key(config.flash_key.as_deref().unwrap_or("keep"));
     tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, args, _cwd| {
@@ -148,6 +162,7 @@ pub fn run() {
                 hotkey_active: AtomicBool::new(false),
             });
             overlay::init(app.handle())?;
+            full_app::cards::init(app.handle());
             let auto_enable = remote.clone();
             std::thread::spawn(move || {
                 if auto_enable.status().enabled {
@@ -308,6 +323,8 @@ pub fn run() {
                 full_app::ui_data::full_app_draft,
                 full_app::champ_select::full_app_hover_champion,
                 full_app::champ_select::full_app_lock_in,
+                full_app::champ_select::full_app_hover_ban,
+                full_app::champ_select::full_app_ban,
                 full_app::ui_data::full_app_abilities,
                 full_app::abilities::champion_abilities,
                 full_app::abilities::ability_icon,
@@ -343,6 +360,9 @@ pub fn run() {
                 commands::runes::set_auto_apply_top_preset,
                 commands::runes::set_rune_tier,
                 commands::runes::set_apply_spells_with_runes,
+                commands::runes::get_rune_presets,
+                commands::runes::save_rune_preset,
+                commands::runes::delete_rune_preset,
                 commands::runes::get_flash_key,
                 commands::runes::set_flash_key,
                 commands::runes::set_import_items_with_runes,

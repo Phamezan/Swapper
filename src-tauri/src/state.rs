@@ -161,6 +161,20 @@ impl AppState {
     /// Whether applying a recommended preset also imports its item build.
     /// Defaults to on until the user changes it.
     /// "d", "f", or "keep" (the default): where recommended spells put Flash.
+    pub(crate) fn rune_presets(&self, champion_id: i64) -> Vec<vault::SavedRunes> {
+        self.config.lock().ok().and_then(|config| config.rune_presets.get(&champion_id).cloned()).unwrap_or_default()
+    }
+
+    /// Applies `change` to the config and saves it, keeping the old config if saving fails.
+    pub(crate) fn change_rune_presets(&self, champion_id: i64, change: impl FnOnce(&mut vault::Config) -> Result<(), String>) -> Result<Vec<vault::SavedRunes>, String> {
+        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut next = config.clone();
+        change(&mut next)?;
+        vault::save(&next)?;
+        *config = next;
+        Ok(config.rune_presets.get(&champion_id).cloned().unwrap_or_default())
+    }
+
     pub(crate) fn flash_key(&self) -> String {
         self.config.lock().ok().and_then(|config| config.flash_key.clone()).unwrap_or_else(|| "keep".into())
     }
