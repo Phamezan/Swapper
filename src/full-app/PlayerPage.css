@@ -113,13 +113,14 @@
 .player-more span { margin-left: 10px; color: var(--ui-text-3); font-size: 12px; }
 .player-page button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 @media (min-width: 1440px) {
-  .player-layout { grid-template-columns: minmax(0, 1fr) 340px; grid-template-areas: 'hero side' 'notices side' 'performance side' 'games side'; row-gap: 18px; }
+  .player-layout { grid-template-columns: minmax(0, 1fr) 340px; grid-template-areas: 'hero side' 'notices side' 'performance side' 'games side'; grid-template-rows: auto auto auto 1fr; row-gap: 18px; }
   .player-hero { grid-area: hero; }
   .player-side { grid-area: side; grid-template-columns: minmax(0, 1fr); }
   .player-performance { grid-area: performance; }
   .player-games { grid-area: games; }
   .player-notices { grid-area: notices; }
-  .player-layout:has(.player-notices:empty) { grid-template-areas: 'hero side' 'performance side' 'games side'; }
+  /* A taller side column stretches only the last row, never opening gaps between the hero, performance and games. */
+  .player-layout:has(.player-notices:empty) { grid-template-areas: 'hero side' 'performance side' 'games side'; grid-template-rows: auto auto 1fr; }
   .player-metrics { gap: 8px; }
   .player-match-open { gap: 10px; grid-template-columns: 36px minmax(120px, 1.4fr) minmax(90px, 1fr) 66px minmax(92px, 1fr); }
 }

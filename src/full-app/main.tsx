@@ -331,7 +331,7 @@ function App() {
           : playerId != null ? <Suspense fallback={<Skeleton label="Loading player profile" rows={4} height={64} />}><PlayerPage key={playerId} riotId={playerId} snapshot={snapshot}
               names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => travel(-1)} onOpenPlayer={riotId => go(`Player:${riotId}`)}
               onOpenMatch={game => { const target = `Match:${game.id}:${encodeURIComponent(playerId)}` as const; visitedMatches.current.set(target, game); go(target); }} /></Suspense>
-          : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} /></Suspense>
+          : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} onOpenPlayer={riotId => go(`Player:${riotId}`)} /></Suspense>
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>

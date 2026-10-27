@@ -97,6 +97,8 @@
 .md-identity > strong { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 15px; font-weight: 600; }
 .md-identity > small { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 14px; color: var(--ui-text-3); }
 .md-identity .riot-tag { font-weight: 400; font-size: 13px; }
+.md-name { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.md-name:hover { text-decoration: underline; }
 .md-you { margin-left: 8px; padding: 1px 6px; border-radius: 4px; background: var(--ui-brand-tint); color: var(--ui-brand); font-size: 13px; font-weight: 600; }
 .md-rank { display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px 1px 3px; border-radius: 99px; background: rgb(255 255 255 / .05); color: var(--ui-text-2); font-size: 14px; white-space: nowrap; }
 .md-placement { text-align: center; font-size: 14px; color: var(--ui-text-3); }

@@ -9,6 +9,7 @@ use std::{collections::BTreeMap, path::PathBuf, sync::OnceLock, time::Duration};
 
 mod online;
 pub mod live;
+mod season;
 
 const LIMIT: usize = 8;
 const CLOSED: &str = "Open League Client to load a profile. Showing saved players only.";
@@ -51,6 +52,9 @@ pub struct Profile {
     games: Vec<model::Game>,
     // Existing profile contract: true when this profile was fetched from League Client.
     live: bool,
+    /// "ugg" when League Client was closed and u.gg answered instead.
+    #[serde(default)]
+    source: Option<String>,
     fetched_at: i64,
     message: Option<String>,
 }
@@ -362,6 +366,42 @@ async fn icon(client: &crate::runes::Lcu, value: &Value) -> Option<String> {
     Some(data)
 }
 
+/// A profile icon from Community Dragon, for players found without League Client.
+async fn remote_icon(id: Option<u64>) -> Option<String> {
+    let id = id?;
+    let cache = ICON_CACHE.get_or_init(Default::default);
+    if let Some(data) = cache.lock().ok()?.get(&id) {
+        return Some(data.clone());
+    }
+    let url = format!("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/{id}.jpg");
+    let client = reqwest::Client::builder().timeout(Duration::from_secs(4)).build().ok()?;
+    let response = client.get(url).send().await.ok()?.error_for_status().ok()?;
+    let bytes = response.bytes().await.ok().filter(|b| b.len() <= 128 * 1024)?;
+    let data = format!("data:image/jpeg;base64,{}", base64::engine::general_purpose::STANDARD.encode(bytes));
+    if let Ok(mut cache) = cache.lock() {
+        if cache.len() >= 64 {
+            cache.clear();
+        }
+        cache.insert(id, data.clone());
+    }
+    Some(data)
+}
+
+/// Puts `hit` first, keeping what the saved entry knew about playing together.
+fn put_first(players: &mut Vec<Player>, mut hit: Player) {
+    if let Some(saved) = players.iter().find(|p| p.riot_id.eq_ignore_ascii_case(&hit.riot_id)) {
+        hit.ally = saved.ally;
+        hit.last_played = saved.last_played;
+    }
+    players.retain(|p| !p.riot_id.eq_ignore_ascii_case(&hit.riot_id));
+    players.insert(0, hit);
+    players.truncate(LIMIT);
+}
+
+fn ugg_player(found: &season::Identity, icon: Option<String>) -> Player {
+    Player { riot_id: found.riot_id.clone(), icon, level: found.level, ally: None, last_played: None, live: live::known(&found.riot_id) }
+}
+
 fn player(summoner: &model::Summoner, icon: Option<String>) -> Player {
     Player {
         riot_id: summoner.riot_id.clone(),
@@ -421,17 +461,41 @@ pub async fn full_app_search_players(
             message: None,
         });
     }
+    let known_region = app.state::<crate::AppState>().config.lock().ok()
+        .and_then(|config| config.accounts.iter().find_map(|a| a.region.clone()));
     let mut current = channel.subscribe();
     if *current.borrow_and_update() != query { return Ok(Search { connected: false, players, message: None }); }
     tokio::select! {
         _ = current.changed() => Ok(Search { connected: false, players, message: None }),
-        result = search_online(&query, players.clone()) => Ok(result),
+        result = search_online(&query, players.clone(), known_region) => Ok(result),
     }
 }
 
-async fn search_online(query: &str, mut players: Vec<Player>) -> Search {
+/// Without League Client: op.gg suggestions in a saved account's region, and an
+/// exact Riot ID found through u.gg in whichever region it plays.
+async fn search_offline(query: &str, mut players: Vec<Player>, region: Option<String>) -> Search {
+    if let Some(region) = &region {
+        for hit in online::autocomplete(region, query).await {
+            if !players.iter().any(|p| p.riot_id.to_lowercase() == hit.riot_id.to_lowercase()) { players.push(hit); }
+        }
+    }
+    rank_players(&mut players, query);
+    let Ok((name, tag)) = riot_id(query) else {
+        return Search { connected: false, players, message: region.is_none().then(|| CLOSED.into()) };
+    };
+    match season::identity(name, tag, None).await {
+        Some(found) => {
+            let icon = remote_icon(found.icon_id).await;
+            put_first(&mut players, ugg_player(&found, icon));
+            Search { connected: false, players, message: None }
+        }
+        None => Search { connected: false, players, message: Some("No player found for that Riot ID on u.gg. Open League Client to search it there.".into()) },
+    }
+}
+
+async fn search_online(query: &str, mut players: Vec<Player>, known_region: Option<String>) -> Search {
     let Ok(client) = crate::runes::lcu().await else {
-        return Search { connected: false, players, message: Some(CLOSED.into()) };
+        return search_offline(query, players, known_region).await;
     };
     let (region, friends) = tokio::join!(get(&client, "/riotclient/region-locale"), live::friends(&client));
     for friend in friends.into_iter().filter(|p| prefix(&p.riot_id, query)) {
@@ -450,17 +514,7 @@ async fn search_online(query: &str, mut players: Vec<Player>) -> Search {
     };
     match lookup(&client, query).await {
         Ok((summoner, value)) => {
-            let mut hit = player(&summoner, icon(&client, &value).await);
-            if let Some(saved) = players
-                .iter()
-                .find(|p| p.riot_id.eq_ignore_ascii_case(&hit.riot_id))
-            {
-                hit.ally = saved.ally;
-                hit.last_played = saved.last_played;
-            }
-            players.retain(|p| !p.riot_id.eq_ignore_ascii_case(&hit.riot_id));
-            players.insert(0, hit);
-            players.truncate(LIMIT);
+            put_first(&mut players, player(&summoner, icon(&client, &value).await));
             Search {
                 connected: true,
                 players,
@@ -482,6 +536,7 @@ fn saved_profile(snapshot: Option<&model::Snapshot>, profiles: Vec<Profile>, id:
         .cloned()
     {
         profile.live = false;
+        profile.source = None;
         profile.player.live = false;
         profile.message = None;
         profile.flex = None;
@@ -515,9 +570,58 @@ fn saved_profile(snapshot: Option<&model::Snapshot>, profiles: Vec<Profile>, id:
         region: None,
         games,
         live: false,
+        source: None,
         fetched_at: snapshot.map_or(0, |s| s.fetched_at),
         message: None,
     }
+}
+
+const APEX: [&str; 3] = ["MASTER", "GRANDMASTER", "CHALLENGER"];
+
+/// Without League Client: who the player is and their Solo/Duo rank from u.gg.
+/// Games follow through `full_app_player_season`.
+async fn ugg_profile(saved: Profile, id: &str) -> Profile {
+    let Ok((name, tag)) = riot_id(id) else { return saved };
+    let Some(found) = season::identity(name, tag, saved.region.as_deref()).await else {
+        return Profile { message: Some("u.gg couldn't find this player. Open League Client to load the profile.".into()), ..saved };
+    };
+    let (icon, ranks) = tokio::join!(remote_icon(found.icon_id), crate::runes::ugg_record::lookup(name, tag, found.region));
+    let solo = ranks.unwrap_or_default().into_iter().find(|r| r.queue == "ranked_solo_5x5").map(|r| {
+        let tier = r.tier.to_ascii_uppercase();
+        ProfileRank {
+            record_available: model::record_plausible(r.wins, r.losses),
+            record_source: Some("ugg".into()),
+            rank: model::Rank { division: if APEX.contains(&tier.as_str()) { String::new() } else { r.division }, tier, lp: r.lp, wins: r.wins, losses: r.losses },
+        }
+    });
+    let profile = Profile {
+        player: ugg_player(&found, icon.or(saved.player.icon)),
+        region: Some(found.region.into()),
+        solo,
+        source: Some("ugg".into()),
+        fetched_at: crate::runes::provider::now_ms(),
+        ..saved
+    };
+    let cached = Profile { source: None, ..profile.clone() };
+    let _ = tokio::task::spawn_blocking(move || save(cached)).await;
+    profile
+}
+
+/// One page (from 1) of the player's ranked season from u.gg; see `season::page`.
+#[tauri::command]
+pub async fn full_app_player_season(
+    app: tauri::AppHandle,
+    window: tauri::WebviewWindow,
+    riot_id: String,
+    region: String,
+    page: u32,
+) -> Result<season::SeasonPage, String> {
+    check(&app, &window)?;
+    let (name, tag) = self::riot_id(&riot_id)?;
+    if page == 0 || page > season::MAX_PAGES {
+        return Err("Invalid page.".into());
+    }
+    season::page(name, tag, &region, page).await
 }
 
 #[tauri::command]
@@ -609,7 +713,7 @@ pub async fn full_app_player_profile(
             .await
             .map_err(|_| "Saved profile is unavailable.".to_string())?;
     let Ok(client) = crate::runes::lcu().await else {
-        return Ok(saved);
+        return Ok(ugg_profile(saved, &riot_id).await);
     };
     let _permit = GATE
         .get_or_init(|| tokio::sync::Semaphore::new(2))
@@ -721,7 +825,7 @@ pub async fn full_app_player_profile(
         fill_record(rank, &summoner.riot_id, region.as_deref()).await;
     }
     let profile = Profile { player: player(&summoner, profile_icon), region, solo, flex: None, profile_icons,
-        games, live: true, fetched_at: crate::runes::provider::now_ms(), message: incomplete.then(|| "Some profile data could not be loaded. Saved games may be shown; try again shortly.".into()) };
+        games, live: true, source: None, fetched_at: crate::runes::provider::now_ms(), message: incomplete.then(|| "Some profile data could not be loaded. Saved games may be shown; try again shortly.".into()) };
     let cached = profile.clone();
     let _ = tokio::task::spawn_blocking(move || save(cached)).await;
     Ok(profile)

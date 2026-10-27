@@ -316,6 +316,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 full_app::search::full_app_player_profile,
                 full_app::search::full_app_player_live,
                 full_app::search::full_app_player_mmr,
+                full_app::search::full_app_player_season,
                 full_app::bench::dashboard_benchmarks,
                 full_app::art::champion_art,
                 full_app::art::ambient_background,

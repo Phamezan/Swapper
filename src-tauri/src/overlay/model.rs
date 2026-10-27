@@ -195,15 +195,17 @@ pub fn levelable(level: u64, ranks: [u64; 4]) -> [bool; 4] {
     [0, 1, 2, 3].map(|i| if i == 3 { ranks[3] < ultimate } else { ranks[i] < 5 && ranks[i] < level.div_ceil(2) })
 }
 
-pub fn next_skill(level: u64, ranks: [u64; 4], priority: &str) -> Option<char> {
-    let priority: Vec<_> = priority.to_ascii_uppercase().chars().collect();
+/// `plan` is a level-by-level skill order ("EQWQQRQ...") or a max priority ("QWE").
+pub fn next_skill(level: u64, ranks: [u64; 4], plan: &str) -> Option<char> {
+    let priority: Vec<_> = plan.to_ascii_uppercase().chars().collect();
     if !(1..=18).contains(&level)
-        || priority.len() != 3
-        || !['Q', 'W', 'E'].iter().all(|key| priority.contains(key))
         || ranks[..3].iter().any(|rank| *rank > 5)
         || ranks[3] > 3
         || ranks.iter().sum::<u64>() >= level
     {
+        return None;
+    }
+    if priority.len() != 3 && priority.len() != 15 {
         return None;
     }
     let ultimate = [6, 11, 16]
@@ -212,6 +214,12 @@ pub fn next_skill(level: u64, ranks: [u64; 4], priority: &str) -> Option<char> {
         .count() as u64;
     if ranks[3] < ultimate {
         return Some('R');
+    }
+    if priority.len() == 15 {
+        return next_in_order(level, ranks, &priority);
+    }
+    if !['Q', 'W', 'E'].iter().all(|key| priority.contains(key)) {
+        return None;
     }
     let index = |key| match key {
         'Q' => 0,
@@ -224,6 +232,26 @@ pub fn next_skill(level: u64, ranks: [u64; 4], priority: &str) -> Option<char> {
     }
     let cap = level.div_ceil(2).min(5);
     priority.into_iter().find(|key| ranks[index(*key)] < cap)
+}
+
+/// The earliest step of the order not yet taken that the game allows now; past
+/// the order (levels 16-18), any ability that can still be levelled.
+fn next_in_order(level: u64, ranks: [u64; 4], order: &[char]) -> Option<char> {
+    const KEYS: [char; 4] = ['Q', 'W', 'E', 'R'];
+    if !order.iter().all(|key| KEYS.contains(key)) {
+        return None;
+    }
+    let open = levelable(level, ranks);
+    let mut taken = [0u64; 4];
+    order
+        .iter()
+        .find(|key| {
+            let i = KEYS.iter().position(|k| k == *key).unwrap();
+            taken[i] += 1;
+            taken[i] > ranks[i] && open[i]
+        })
+        .copied()
+        .or_else(|| (0..3).rev().find(|i| open[*i]).map(|i| KEYS[i]))
 }
 
 pub fn supported(data: &Value) -> bool {
@@ -255,13 +283,19 @@ pub fn cached_priority(cache: &Value, champion: &str, lane: &str, tier: &str) ->
                 .as_str()
                 .is_some_and(|key| key.starts_with(&prefix))
         })
-        .max_by_key(|e| e["fetched_at"].as_i64().unwrap_or(0))?["value"]["pick"]["skill_priority"]
-        .as_str()
+        .max_by_key(|e| e["fetched_at"].as_i64().unwrap_or(0))
+        .and_then(|e| {
+            let pick = &e["value"]["pick"];
+            pick["skill_order"].as_str().or(pick["skill_priority"].as_str())
+        })
         .map(str::to_owned)
 }
 
-/// lolalytics `build-full`'s most picked skill priority ("QWE").
+/// lolalytics `build-full`'s most picked skill order, else its priority ("QWE").
 pub fn fetched_priority(root: &Value) -> Option<String> {
+    if let Some(order) = crate::runes::matchup::parse_skill_order(&root["summary"]["pick"]) {
+        return Some(order);
+    }
     let id = root["summary"]["pick"]["skillpriority"]["id"].as_str()?.to_ascii_uppercase();
     let mut keys: Vec<char> = id.chars().collect();
     keys.sort_unstable();
@@ -424,6 +458,24 @@ mod tests {
     }
 
     #[test]
+    fn recommendation_follows_the_level_by_level_order() {
+        // Jarvan IV jungle: E first though Q is maxed first.
+        let order = "EQWQQRQEQEREEWW";
+        assert_eq!(next_skill(1, [0; 4], order), Some('E'));
+        assert_eq!(next_skill(2, [0, 0, 1, 0], order), Some('Q'));
+        assert_eq!(next_skill(6, [3, 1, 1, 0], order), Some('R'));
+        // Took Q at 1 instead: catch up on the skipped E.
+        assert_eq!(next_skill(2, [1, 0, 0, 0], order), Some('E'));
+        // Order step not allowed yet (Q capped at half the level): next allowed step.
+        assert_eq!(next_skill(3, [2, 0, 0, 0], order), Some('E'));
+        // Past the order: R at 16, then whatever is left.
+        assert_eq!(next_skill(16, [5, 5, 3, 2], order), Some('R'));
+        assert_eq!(next_skill(17, [5, 5, 5, 3], order), None);
+        assert_eq!(next_skill(17, [5, 5, 3, 3], order), Some('E'));
+        assert_eq!(next_skill(1, [0; 4], "EQWQQRQEQERWWEX"), None);
+    }
+
+    #[test]
     fn only_normal_ranked_sr_with_an_active_player_is_supported() {
         let mut data = fixture();
         assert!(supported(&data));
@@ -473,6 +525,8 @@ mod tests {
         assert_eq!(fetched_priority(&root("ewq")).as_deref(), Some("EWQ"));
         assert_eq!(fetched_priority(&root("QQE")), None);
         assert_eq!(fetched_priority(&json!({})), None);
+        let both = json!({"summary":{"pick":{"skillpriority":{"id":"QEW"},"skillorder":{"id":312114131343322u64}}}});
+        assert_eq!(fetched_priority(&both).as_deref(), Some("EQWQQRQEQEREEWW"));
     }
 
     #[test]
@@ -480,8 +534,13 @@ mod tests {
         let cache = json!({"entries":[
             {"key":"ahri|middle|emerald_plus|8112","fetched_at":1,"value":{"pick":{"skill_priority":"QWE"}}},
             {"key":"ahri|middle|emerald_plus|8229","fetched_at":2,"value":{"pick":{"skill_priority":"QEW"}}},
-            {"key":"ahri|top|emerald_plus|8112","fetched_at":3,"value":{"pick":{"skill_priority":"WQE"}}}
+            {"key":"ahri|top|emerald_plus|8112","fetched_at":3,"value":{"pick":{"skill_priority":"WQE"}}},
+            {"key":"jarvaniv|jungle|emerald_plus|8010","fetched_at":4,"value":{"pick":{"skill_priority":"QEW","skill_order":"EQWQQRQEQEREEWW"}}}
         ]});
+        assert_eq!(
+            cached_priority(&cache, "JarvanIV", "JUNGLE", "emerald_plus").as_deref(),
+            Some("EQWQQRQEQEREEWW")
+        );
         assert_eq!(
             cached_priority(&cache, "Ahri", "MIDDLE", "emerald_plus").as_deref(),
             Some("QEW")

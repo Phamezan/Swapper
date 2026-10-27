@@ -13,7 +13,7 @@ import { useChampionArt } from './art';
 import { useAmbientChampion } from './AmbientArt';
 import { fmtAgo } from '../runes/types';
 import type { Game, Mmr, Snapshot } from './types';
-import { profileGame, profileStats, type PlayerProfile, type PlayerLive } from './playerModel';
+import { profileGame, profileStats, SEASON_PAGES, type PlayerProfile, type PlayerLive, type SeasonPage } from './playerModel';
 import { LiveGameContent } from './LiveGame';
 import './PlayerPage.css';
 
@@ -21,9 +21,12 @@ const roleNames: Record<string, string> = { top: 'Top', jungle: 'Jungle', mid: '
 const metrics = [['KDA', 2, '', Swords, '--ui-champ'], ['Kill participation', 0, '%', Crosshair, '--ui-win'], ['CS / min', 1, '', Wheat, '--ui-gold'], ['Damage / min', 0, '', Flame, '--ui-loss'], ['Vision / min', 2, '', Eye, '--ui-tier-s']] as const;
 const metricIndexes = [0, 1, 2, 3, 5];
 const rate = (wins: number, games: number) => games ? `${Math.round(100 * wins / games)}%` : '–';
+/** Sparklines show the latest games only; a season of points is unreadable. */
+const TREND_POINTS = 20;
 
 function Trend({ points, average }: { points: number[]; average: number | null }) {
   const fill = useId();
+  points = points.slice(-TREND_POINTS);
   if (average == null || points.length < 2) return <span className="player-trend-empty">{points.length ? 'One observed game' : 'No observed data'}</span>;
   const min = Math.min(...points), max = Math.max(...points);
   const y = (v: number) => 30 - (max === min ? 12 : (v - min) / (max - min) * 24);
@@ -55,7 +58,7 @@ function Ranks({ profile, loading, mmr }: { profile: PlayerProfile | null; loadi
     </div>
     {rank && <div className="player-rank-progress">
       {rank.division && <><div className="player-lp-caption"><span>Division progress</span><span>{rank.lp} / 100 LP</span></div><meter min={0} max={100} value={Math.min(100, rank.lp)} aria-label="LP toward next division" /></>}
-      {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div>{rank.recordSource === 'ugg' && <small className="player-record-source" title="Your League Client didn't return this player's season record.">via u.gg</small>}<RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
+      {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div>{rank.recordSource === 'ugg' && <small className="player-record-source" title={profile?.source === 'ugg' ? 'League Client is closed, so this rank comes from u.gg.' : "Your League Client didn't return this player's season record."}>via u.gg</small>}<RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
         : <p className="player-record-unavailable">Season record unavailable</p>}
     </div>}
     {mmr && <div className="player-rank-mmr"><MmrLine mmr={mmr} explain={`Swapper's estimate, not Riot's: the average current Solo/Duo rank of the other players in this player's last ${mmr.games} ranked ${mmr.games === 1 ? "game" : "games"}.`} /></div>}
@@ -75,6 +78,8 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
   const [live, setLive] = useState<PlayerLive | null>(null);
   const [showLive, setShowLive] = useState(false);
   const [liveLoading, setLiveLoading] = useState(false);
+  const [season, setSeason] = useState<Game[]>([]);
+  const [seasonStatus, setSeasonStatus] = useState<'loading' | 'done' | 'error' | null>(null);
   useEffect(() => {
     let active = true;
     setLive(null); setShowLive(false); setLiveLoading(false);
@@ -109,8 +114,28 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
       .finally(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, [riotId, attempt]);
+  // The whole ranked season from u.gg, a page at a time; League Client games
+  // (listed after) win on overlap because they carry every player's stats.
+  const region = profile?.region;
+  useEffect(() => {
+    setSeason([]); setSeasonStatus(null);
+    if (!region) return;
+    let active = true;
+    setSeasonStatus('loading');
+    void (async () => {
+      for (let page = 1; page <= SEASON_PAGES; page++) {
+        const next = await invoke<SeasonPage>('full_app_player_season', { riotId, region, page }).catch(() => null);
+        if (!active) return;
+        if (!next) { setSeasonStatus('error'); return; }
+        setSeason(previous => next.done ? next.games : [...previous, ...next.games]);
+        if (next.done) { setSeasonStatus('done'); return; }
+      }
+      setSeasonStatus('done');
+    })();
+    return () => { active = false; };
+  }, [riotId, region]);
   const saved = useMemo(() => (snapshot?.games ?? []).map(game => profileGame(game, riotId)).filter((g): g is Game => g !== null), [snapshot, riotId]);
-  const games = useMemo(() => [...new Map((profile?.games ?? saved).map(g => [g.id, g])).values()].sort((a, b) => b.createdAt - a.createdAt), [profile, saved]);
+  const games = useMemo(() => [...new Map([...season, ...(profile?.games ?? saved)].map(g => [g.id, g])).values()].sort((a, b) => b.createdAt - a.createdAt), [profile, saved, season]);
   const stats = useMemo(() => profileStats(games, profile?.profileIcons), [games, profile?.profileIcons]);
   const splash = useChampionArt(stats.champions[0]?.id, 'splash');
   useAmbientChampion('player', stats.champions[0]?.id);
@@ -137,17 +162,17 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
           <div className="player-hero-identity"><LevelFrame player={player} />
             <div className="player-identity"><h2>{name}{tag && <span>{tag}</span>}{live?.live && <button className="nav-badge live player-live-badge" aria-label="Open live game" onClick={() => setShowLive(true)}><i aria-hidden />LIVE</button>}</h2>
               {(!player.level || profile?.region) && <p>{player.level ? profile?.region : <>Level unavailable{profile?.region && <span> · {profile.region}</span>}</>}</p>}
-              <small>{loading ? 'Loading profile…' : profile?.live ? 'From League Client · just now' : `Saved data${profile?.fetchedAt ? ` · ${fmtAgo(profile.fetchedAt)}` : ''}`}</small>
+              <small>{loading ? 'Loading profile…' : profile?.live ? 'From League Client · just now' : profile?.source === 'ugg' ? 'From u.gg · just now' : `Saved data${profile?.fetchedAt ? ` · ${fmtAgo(profile.fetchedAt)}` : ''}`}</small>
             </div>
           </div>
-          <div className="player-hero-record"><div><strong>{rate(stats.wins, stats.games)}</strong><span>Recent win rate</span></div>
+          <div className="player-hero-record"><div><strong>{rate(stats.wins, stats.games)}</strong><span>Win rate</span></div>
             <div><b className="up">{stats.wins}W</b><span> / </span><b className="down">{stats.games - stats.wins}L</b><small>Across {stats.games} loaded games</small></div>
             {stats.champions[0] && <p>Most played <strong>{championName(stats.champions[0].id)}</strong></p>}
           </div>
         </div>
       </section>
       <div className="player-notices">
-        {!loading && !profile?.live && <Notice>Open League Client to load this profile. Saved games show what Swapper recorded.</Notice>}
+        {!loading && !profile?.live && profile?.source !== 'ugg' && <Notice>Open League Client to load this profile. Saved games show what Swapper recorded.</Notice>}
         {profile?.message && <Notice action={<button disabled={loading} onClick={() => setAttempt(n => n + 1)}>Try again</button>}>{profile.message}</Notice>}
         {error && <Notice action={<button disabled={loading} onClick={() => setAttempt(n => n + 1)}>Try again</button>}>{error}</Notice>}
       </div>
@@ -193,7 +218,7 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
         </section>
       </aside>
       {loading && !games.length ? <div className="player-games"><Skeleton label="Loading player games" rows={5} height={54} /></div> : <section className="panel player-games" aria-labelledby="player-games-title">
-        <div className="panel-head"><h2 id="player-games-title">Recent games</h2><small>{Math.min(visible, games.length)} of {games.length}{profile?.live ? '' : ' · saved'}</small></div>
+        <div className="panel-head"><h2 id="player-games-title">Recent games</h2><small>{Math.min(visible, games.length)} of {games.length}{profile?.live || profile?.source === 'ugg' ? '' : ' · saved'}{seasonStatus === 'loading' ? ' · loading season…' : seasonStatus === 'error' ? ' · season unavailable' : ''}</small></div>
         {games.length ? <ol className="player-match-list">{games.slice(0, visible).map(game => {
           const opponent = game.opponent == null ? null : game.players[game.opponent];
           return <li className={`player-match match-row ${game.win ? 'is-win' : 'is-loss'}`} key={game.id}>
