@@ -6,15 +6,15 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { BrandIcon } from "../components/BrandIcon";
 import { useLiveGame } from "./LiveGameData";
-import { clock, crestSlug, hasRecord, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary, type LiveGameView } from "./LiveGameModel";
+import { EyeOff } from "lucide-react";
+import { clock, crestSlug, hasRecord, isHidden, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary, type LiveGameView } from "./LiveGameModel";
 import { LiveGamePlayer } from "./LiveGamePlayer";
-import { Slot } from "./ui/Slot";
 import "./live-game.css";
 
 const roleNames: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 
 /** Every player in the running game: rank, recent form, champion stats and,
- *  while this page is visible, live K/D/A, CS and items. */
+ *  while this page is visible, live K/D/A and CS. */
 export default function LiveGame({ championNames }: { championNames: Map<number, string> }) {
   const { view, error, loaded } = useLiveGame(true);
   return <LiveGameContent view={view} error={error} loaded={loaded} championNames={championNames} />;
@@ -65,7 +65,7 @@ function Team({ side, summary, players, live, onOpen }: {
       <DamageBar physical={summary.physical} />
     </header>
     <div className="lg-cols" aria-hidden>
-      <span>Player &amp; loadout</span><span>Ranked Solo/Duo <small>+ Flex</small></span><span>Recent form</span>{live && <span>Live stats &amp; items</span>}
+      <span>Player &amp; loadout</span><span>Ranked Solo/Duo <small>+ Flex</small></span><span>Recent form</span>{live && <span>Live stats</span>}
     </div>
     <ol>{players.map(p => <Row key={p.key} player={p} live={live} onOpen={() => onOpen(p.key)} />)}</ol>
   </section>;
@@ -84,8 +84,9 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
   const h = p.history;
   const loading = p.status === "pending";
   const assigned = roleOf(p.position);
+  const hidden = isHidden(p);
   return <li>
-    <button className={`lg-row${p.isSelf ? " is-self" : ""}${p.live?.dead ? " is-dead" : ""}`} onClick={onOpen} title={`Open ${name}'s profile`} aria-haspopup="dialog">
+    <button className={`lg-row${p.isSelf ? " is-self" : ""}${hidden ? " is-hidden" : ""}${p.live?.dead ? " is-dead" : ""}`} onClick={onOpen} title={hidden ? "Streamer mode hides this player" : `Open ${name}'s profile`} aria-haspopup="dialog">
       <span className="lg-identity">
         <span className="lg-champ">
           <span className="lg-portrait">
@@ -99,7 +100,8 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
           </span>
         </span>
         <span className="lg-name">
-          <strong><span className="riot-name">{name}</span><span className="riot-tag">{tag}</span>{p.isSelf && <em className="lg-you">You</em>}</strong>
+          {hidden ? <strong className="lg-hidden-name"><EyeOff size={14} aria-hidden />Hidden player</strong>
+            : <strong><span className="riot-name">{name}</span><span className="riot-tag">{tag}</span>{p.isSelf && <em className="lg-you">You</em>}</strong>}
           <span className="lg-player-meta"><small>{p.championName}{p.summonerLevel ? ` · Lv ${p.summonerLevel}` : ""}</small>
             <span className="lg-role" title={h?.mainRole ? `Usually ${roleNames[h.mainRole[0]]} (${h.mainRole[1]} of ${h.form.games}, estimated)${assigned ? `; playing ${roleNames[assigned]}` : ""}` : assigned ? `Playing ${roleNames[assigned]}` : undefined}>
               {h?.mainRole ? <><RoleIcon role={h.mainRole[0]} size={14} mode="desktop" /><small>{h.mainRole[1]}/{h.form.games}</small></> : assigned ? <RoleIcon role={assigned} size={14} mode="desktop" /> : null}
@@ -111,6 +113,7 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
           </span>}
         </span>
       </span>
+      {hidden ? <span className="lg-streamer"><EyeOff size={18} aria-hidden /><span><strong>Streamer mode</strong><small>Rank and match history are hidden for this player</small></span></span> : <>
       <span className={`lg-rank${!p.solo && !loading ? " is-unranked" : ""}`}>
         {loading ? <i className="lg-skel-bar" /> : <>
           {p.solo && <RankCrest tier={crestSlug(p.solo.tier)} size={44} mode="desktop" />}
@@ -124,16 +127,15 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
         <span className="lg-form"><small className="lg-stat-label">Latest 20</small>{h && h.form.games ? <>
           <strong className={pct(h.form.wins, h.form.games) >= 50 ? "up" : "down"}>{pct(h.form.wins, h.form.games)}<span>%</span></strong>
           <small>{h.form.games} games · {kda(h.form).toFixed(1)} KDA</small>
-        </> : <small className="lg-no-data">{loading ? "Loading…" : "No Rift games"}</small>}</span>
+        </> : <small className="lg-no-data">{loading ? "Loading…" : h ? "No Rift games" : "Unavailable"}</small>}</span>
         <span className="lg-oncha"><small className="lg-stat-label">On champion</small>{h && h.onChampion.games ? <>
           <strong className={pct(h.onChampion.wins, h.onChampion.games) >= 50 ? "up" : "down"}>{pct(h.onChampion.wins, h.onChampion.games)}<span>%</span></strong>
           <small>{h.onChampion.games} {h.onChampion.games === 1 ? "game" : "games"} · {kda(h.onChampion).toFixed(1)} KDA</small>
         </> : <small className="lg-no-data">{h ? "No recent games" : loading ? "Loading…" : "Unavailable"}</small>}</span>
-      </span>
+      </span></>}
       {live && <span className="lg-live">{p.live ? <>
         <span className="lg-kda"><strong aria-label={`${p.live.kills} kills, ${p.live.deaths} deaths, ${p.live.assists} assists`}>{p.live.kills} <i>/</i> <em>{p.live.deaths}</em> <i>/</i> {p.live.assists}</strong><small>{p.live.cs} CS{p.live.dead && <em className="lg-dead"> · Dead</em>}</small></span>
-        {p.live.items.some(id => id > 0) ? <span className="lg-items">{Array.from({ length: 7 }, (_, i) => <Slot key={i} kind="item" id={p.live!.items[i]} className={i === 6 ? "is-trinket" : undefined} />)}</span> : <small className="lg-no-items">No items yet</small>}
-      </> : <small className="lg-no-data">Waiting for live stats</small>}</span>}
+      </> :<small className="lg-no-data">Waiting for live stats</small>}</span>}
     </button>
   </li>;
 }

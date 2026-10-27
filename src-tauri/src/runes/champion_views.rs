@@ -426,6 +426,7 @@ mod tests {
             }),
             win: None,
             build_tier: None,
+            keystones: Vec::new(),
             runes: Some(MatchupRunes {
                 keystone: 8112,
                 ..MatchupRunes::default()

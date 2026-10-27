@@ -250,6 +250,10 @@
 .fa-frame .fa-draft-page .fa-build-section .fa-rune-page :not(.fa-shards) > .fa-rune-row { --rune: clamp(28px, min(17cqi, 5.4vh), 58px); gap: clamp(6px, 5cqi, 22px); margin-bottom: clamp(4px, 1.1vh, 14px); }
 .fa-frame .fa-draft-page .fa-build-section .fa-rune-page :not(.fa-shards) > .fa-rune-row:first-of-type { --rune: clamp(34px, min(19cqi, 6.4vh), 68px); }
 .fa-frame .fa-draft-page .fa-rune-page .fa-shards { padding-top: 6px; }
+/* The rune column spans the card's height; spread the rows over it instead of leaving a gap below. */
+.fa-frame .fa-draft-page .cs-build-grid > .fa-rune-area { display: flex; flex-direction: column; }
+.fa-frame .fa-draft-page .cs-build-grid .fa-rune-page { flex: 1; }
+.fa-frame .fa-draft-page .cs-build-grid .fa-rune-tree { display: flex; flex-direction: column; justify-content: space-between; }
 .fa-frame .fa-draft-page .fa-build-section .fa-rune-page .fa-shards .fa-rune-row { --rune: clamp(24px, min(12cqi, 3.6vh), 38px); gap: clamp(8px, 7cqi, 26px); margin-bottom: 4px; }
 .fa-frame .fa-draft-page .cs-items { gap: 12px 0; }
 .fa-frame .fa-draft-page .cs-items > section { padding: 0 10px; }

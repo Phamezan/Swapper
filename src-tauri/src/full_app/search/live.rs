@@ -141,12 +141,16 @@ async fn enrich(client: &crate::runes::Lcu, view: &mut View) {
         if p.riot_id.is_empty() { return p; }
         if let Ok((summoner, value)) = super::lookup(client, &p.riot_id).await {
             p.puuid = summoner.puuid;
-            // Same reads as your own Live game: parallel per player, with the slow remote history retried once.
-            let (_, rank, rows) = crate::live_game::player_parts(&p.puuid).await;
-            p.apply(Some(&value), rank.as_ref(), rows.as_deref());
+            // u.gg answers for all ten at once; the client's history, served one player at a time, only fills gaps.
+            let ((_, rank), quick) = tokio::join!(crate::live_game::profile(&p.puuid), crate::live_game::quick_history(&p.riot_id));
+            p.apply(Some(&value), rank.as_ref(), None);
+            match quick.filter(|rows| !rows.is_empty()) {
+                Some(rows) => p.apply_quick(&rows),
+                None => if let Some(rows) = crate::live_game::history(&p.puuid).await { p.apply(None, None, Some(&rows)) },
+            }
         }
         p
-    // All ten at once: each mostly waits on the client's remote history fetch. Players unfinished after the budget
+    // All ten at once. Players unfinished after the budget
     // keep their slot without rank/form rather than holding the page.
     })).buffer_unordered(ENRICH_CONCURRENCY).take_until(tokio::time::sleep(ENRICH_BUDGET)).collect::<Vec<_>>().await;
     for update in updates {

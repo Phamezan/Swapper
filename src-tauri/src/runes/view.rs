@@ -16,7 +16,7 @@ mod builds;
 mod pro;
 
 pub(super) use builds::keystone_build_view;
-pub use builds::preset_build_view;
+pub use builds::{other_build_view, preset_build_view};
 pub use pro::pro_builds_view;
 
 #[derive(Debug, Clone, serde::Serialize)]

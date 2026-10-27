@@ -107,6 +107,19 @@ pub struct KeystoneBuilds {
     pub pick: KeystoneBuild,
     #[serde(default)]
     pub win: Option<WinBuild>,
+    /// The "Most Common Build" runes and spells; missing from builds cached before they were parsed.
+    #[serde(default)]
+    pub pick_runes: Option<super::matchup::MatchupRunes>,
+    #[serde(default)]
+    pub pick_spells: Option<[i64; 2]>,
+}
+
+/// How often one keystone is played on a champion page (lane and bracket).
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct KeystoneShare {
+    pub id: i64,
+    pub pick_pct: f64,
+    pub games: u64,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -156,6 +169,8 @@ pub fn blend_builds(
             ),
             ..win
         }),
+        pick_runes: now.pick_runes,
+        pick_spells: now.pick_spells,
     }
 }
 
@@ -266,7 +281,7 @@ pub fn parse_build(html: &str) -> Option<KeystoneBuild> {
 }
 
 pub fn parse_builds(html: &str) -> Option<KeystoneBuilds> {
-    parse_qwik(html).or_else(|| parse_anchors(html).map(|pick| KeystoneBuilds { pick, win: None }))
+    parse_qwik(html).or_else(|| parse_anchors(html).map(|pick| KeystoneBuilds { pick, win: None, pick_runes: None, pick_spells: None }))
 }
 
 /// The compacted state inside `<script type="qwik/json">`.
@@ -307,10 +322,42 @@ fn parse_qwik(html: &str) -> Option<KeystoneBuilds> {
                     spells: super::matchup::parse_spells(&summary),
                 })
             });
-            return Some(KeystoneBuilds { pick: build, win });
+            return Some(KeystoneBuilds {
+                pick: build,
+                win,
+                pick_runes: super::matchup::parse_runes(&pick),
+                pick_spells: super::matchup::parse_spells(&pick),
+            });
         }
     }
     None
+}
+
+/// Every rune's share on an unfiltered champion page, from the runes table
+/// (`runes.stats`: id -> [[pick %, win %, games]]). Keystones have one row;
+/// callers keep the ids that are keystones. Empty when the table is missing.
+pub(super) fn keystone_shares(objs: &[Value]) -> Vec<KeystoneShare> {
+    let Some(holder) = objs.iter().find(|entry| {
+        entry.as_object().is_some_and(|map| ["runes", "summary", "header"].iter().all(|key| map.contains_key(*key)))
+    }) else {
+        return Vec::new();
+    };
+    // Only the runes table: the holder also references the whole page, past the resolve budget.
+    let runes = resolve(&holder["runes"], objs, 0);
+    let Some(stats) = runes["stats"].as_object() else {
+        return Vec::new();
+    };
+    stats
+        .iter()
+        .filter_map(|(id, rows)| {
+            let row = rows.as_array()?.first()?.as_array()?;
+            Some(KeystoneShare {
+                id: id.parse().ok()?,
+                pick_pct: number(row.first()?)?,
+                games: as_u64(row.get(2)?)?,
+            })
+        })
+        .collect()
 }
 
 /// The JSON string inside the page's Qwik state script.

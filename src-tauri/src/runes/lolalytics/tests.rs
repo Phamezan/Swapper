@@ -513,3 +513,22 @@ fn the_build_url_pins_the_previous_patch() {
     assert!(url("ahri", "middle", "emerald_plus", 8112, Some("16.19")).ends_with("&keystone=8112&patch=16.19"));
     assert!(!url("ahri", "middle", "emerald_plus", 8112, None).contains("patch"));
 }
+
+#[test]
+fn keystone_shares_read_the_runes_table() {
+    // Shaped like lolalytics' Qwik state: base-36 references into `objs`; invented values.
+    let objs: Vec<Value> = serde_json::from_str(r#"[
+        {"header": "5", "summary": "5", "runes": "1"},
+        {"stats": "2"},
+        {"8369": "3", "8230": "6", "8105": "9"},
+        ["4"], ["a", "b", "c"], "skip",
+        ["7"], ["d", "e", "f"], 0,
+        ["g", "h"], 48.7, 52.7, 18341, 29.6, 52.3, 11148, ["d", "e", "f"], ["a", "b", "c"]
+    ]"#).unwrap();
+    let mut shares = keystone_shares(&objs);
+    shares.sort_by_key(|s| s.id);
+    let read: Vec<_> = shares.iter().map(|s| (s.id, s.pick_pct, s.games)).collect();
+    assert_eq!(read, [(8105, 29.6, 11148), (8230, 29.6, 11148), (8369, 48.7, 18341)]);
+    assert!(keystone_shares(&[]).is_empty());
+}
+

@@ -79,6 +79,12 @@
 .lg-rank.is-unranked { padding-left: 8px; border-left: 2px solid var(--ui-line-2); }
 .lg-rank.is-unranked strong { color: var(--ui-text-2); font-size: var(--ui-body); font-weight: 550; }
 .lg-performance { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Streamer mode: one hatched band across rank and form instead of a row of "Unavailable". */
+.lg-hidden-name { display: inline-flex; align-items: center; gap: 6px; color: var(--ui-text-2); font-style: italic; }
+.lg-streamer { grid-column: span 2; display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px dashed var(--ui-line-3); border-radius: var(--ui-radius-sm); color: var(--ui-text-2);
+  background: repeating-linear-gradient(135deg, transparent 0 8px, color-mix(in srgb, var(--ui-text-3) 10%, transparent) 8px 9px); }
+.lg-streamer strong { display: block; color: var(--ui-text-1); font-size: var(--ui-body); }
+.lg-streamer small { color: var(--ui-text-2); }
 .lg-performance strong { display: block; margin: 1px 0; font-size: 19px; line-height: 1.05; letter-spacing: -.03em; }
 .lg-performance strong > span { margin-left: 1px; font-size: var(--ui-caption); font-weight: 500; }
 .lg-row .up { color: var(--ui-win); }
@@ -90,13 +96,6 @@
 .lg-kda strong { font-size: 15px; line-height: 1.2; }
 .lg-kda i, .lg-recent i { color: var(--ui-text-3); font-size: var(--ui-caption); font-style: normal; font-weight: 400; }
 .lg-kda em, .lg-recent em { color: var(--ui-loss); font-style: normal; }
-.lg-items { --inventory-slot: 22px; display: flex; gap: 3px; }
-.lg-items .ui-slot { --slot: var(--inventory-slot); }
-.lg-items .is-trinket { margin-left: 4px; }
-/* Preserve the seven inventory positions without making empty frames the focus. */
-.lg-items .ui-slot.is-empty { border-color: transparent; background: transparent; box-shadow: none; }
-.lg-items .ui-slot.is-empty::after { content: ""; width: 5px; height: 2px; border-radius: 1px; background: var(--ui-line-3); }
-.lg-row .lg-no-items { text-align: right; }
 .lg-skel-bar { display: block; width: 80%; height: 12px; border-radius: var(--ui-radius-xs); background: var(--ui-surface-3); }
 .lg-empty p { max-width: 420px; }
 
@@ -107,7 +106,6 @@
   .lg-performance strong { font-size: 15px; }
   .lg-performance > span > small:last-child:not(:first-child) { grid-column: 1 / -1; }
   .lg-row .lg-no-data { margin-top: 0; }
-  .lg-items { --inventory-slot: 18px; }
   .lg-team-head { gap: 14px; }
   .lg-avg { padding-left: 14px; }
   .lg-team.is-pregame .lg-row, .lg-team.is-pregame .lg-cols { grid-template-columns: minmax(210px, 1.3fr) minmax(190px, 1.1fr) minmax(172px, 1fr); }
@@ -119,7 +117,6 @@
   .lg-performance > span { display: block; }
   .lg-performance strong { font-size: 18px; }
   .lg-live { justify-self: stretch; justify-content: end; }
-  .lg-items { --inventory-slot: 22px; }
   .lg-rank { justify-self: end; }
   .lg-team-head { flex-wrap: wrap; }
   .lg-team-identity { min-width: 90px; }

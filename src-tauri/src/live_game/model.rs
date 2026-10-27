@@ -91,10 +91,58 @@ pub fn summarize(rows: &[Value], puuid: &str, champion_id: i64) -> History {
         level: 0,
         icon: None,
     };
-    let mut games: Vec<Game> = rows
-        .iter()
-        .filter_map(|row| history::game(row, &player))
-        .collect();
+    from_games(rows.iter().filter_map(|row| history::game(row, &player)).collect(), champion_id)
+}
+
+/// The same summary from u.gg's match summaries, with the same rules: Rift
+/// queues only, remakes dropped.
+pub fn summarize_ugg(rows: &[Value], champion_id: i64) -> History {
+    from_games(rows.iter().filter_map(ugg_game).collect(), champion_id)
+}
+
+fn ugg_game(row: &Value) -> Option<Game> {
+    let queue = match row["queueType"].as_str()? {
+        "ranked_solo_5x5" => "solo",
+        "ranked_flex_sr" => "flex",
+        q if q.starts_with("normal_") && !q.contains("aram") => "normal",
+        _ => return None,
+    };
+    let duration = row["matchDuration"].as_u64().filter(|d| *d >= 300)?;
+    let (kills, deaths, assists) = (row["kills"].as_u64()?, row["deaths"].as_u64()?, row["assists"].as_u64()?);
+    Some(Game {
+        id: row["matchId"].as_u64().or_else(|| row["matchId"].as_str()?.parse().ok())?,
+        queue: queue.into(),
+        champion_id: row["championId"].as_i64()?,
+        created_at: row["matchCreationTime"].as_u64()?,
+        duration,
+        win: row["win"].as_bool()?,
+        kills,
+        deaths,
+        assists,
+        metrics: [Some((kills + assists) as f64 / deaths.max(1) as f64), None, None, None, None, None],
+        items: Vec::new(),
+        spells: Vec::new(),
+        keystone: 0,
+        cs: row["cs"].as_u64().unwrap_or(0) + row["jungleCs"].as_u64().unwrap_or(0),
+        level: 0,
+        // u.gg's role codes, checked against the client's history.
+        role: match row["role"].as_i64() {
+            Some(1) => "jungle",
+            Some(2) => "support",
+            Some(3) => "adc",
+            Some(4) => "top",
+            Some(5) => "mid",
+            _ => "",
+        }
+        .into(),
+        placement: 0,
+        lp_change: None,
+        players: Vec::new(),
+        opponent: None,
+    })
+}
+
+fn from_games(mut games: Vec<Game>, champion_id: i64) -> History {
     games.sort_by_key(|g| std::cmp::Reverse(g.created_at));
     games.truncate(20);
     let mut roles: BTreeMap<&str, usize> = BTreeMap::new();
@@ -494,6 +542,14 @@ impl Player {
         } else {
             Status::Partial
         };
+    }
+
+    /// u.gg's recent games, shown until the client's own history arrives;
+    /// never replaces it.
+    pub fn apply_quick(&mut self, rows: &[Value]) {
+        if self.history.is_none() && !rows.is_empty() {
+            self.history = Some(summarize_ugg(rows, self.champion_id));
+        }
     }
 }
 

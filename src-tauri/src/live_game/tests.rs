@@ -421,3 +421,28 @@ fn only_loading_and_running_phases_count_as_in_game() {
         assert!(!in_game(phase));
     }
 }
+
+#[test]
+fn ugg_summaries_count_rift_games_only_and_never_replace_client_history() {
+    // Shaped like u.gg's fetchPlayerMatchSummaries rows; invented values.
+    let rows = vec![
+        json!({"matchId": 3, "matchCreationTime": 3000, "matchDuration": 1800, "queueType": "ranked_solo_5x5", "role": 1, "championId": 254, "win": true, "kills": 6, "deaths": 2, "assists": 8, "cs": 20, "jungleCs": 150}),
+        json!({"matchId": "2", "matchCreationTime": 2000, "matchDuration": 1500, "queueType": "normal_draft_5x5", "role": 1, "championId": 64, "win": true, "kills": 3, "deaths": 3, "assists": 3, "cs": 10, "jungleCs": 120}),
+        json!({"matchId": 1, "matchCreationTime": 1000, "matchDuration": 1200, "queueType": "normal_aram", "role": 6, "championId": 254, "win": false, "kills": 9, "deaths": 9, "assists": 9}),
+        json!({"matchId": 0, "matchCreationTime": 500, "matchDuration": 200, "queueType": "ranked_solo_5x5", "role": 4, "championId": 254, "win": false, "kills": 0, "deaths": 1, "assists": 0}),
+    ];
+    let h = summarize_ugg(&rows, 254);
+    assert_eq!((h.form.games, h.form.wins, h.form.kills), (2, 2, 9), "ARAM and the remake are dropped");
+    assert_eq!((h.on_champion.games, h.streak), (1, 2));
+    assert_eq!(h.main_role, Some(("jungle".into(), 2)));
+    assert_eq!((h.recent[0].cs, h.recent[0].queue.as_str()), (170, "solo"));
+
+    let mut quick = Player::new("k".into(), Side::Blue);
+    quick.apply_quick(&[]);
+    assert!(quick.history.is_none(), "an empty u.gg answer shows nothing");
+    quick.apply_quick(&rows);
+    let from_client = History { streak: -1, ..History::default() };
+    quick.history = Some(from_client.clone());
+    quick.apply_quick(&rows);
+    assert_eq!(quick.history, Some(from_client));
+}

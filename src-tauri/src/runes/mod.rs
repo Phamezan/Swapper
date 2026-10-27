@@ -79,7 +79,7 @@ pub use champion_views::{
 pub use counters_view::{champion_counters_view, champion_list, ChampionCountersView, ChampionOption};
 pub use matchup_view::{matchup_view, MatchupView};
 pub use view::{
-    preset_build_view, pro_builds_view, view, KeystoneBuildView, PresetBuildView, ProBuildsView,
+    other_build_view, preset_build_view, pro_builds_view, view, KeystoneBuildView, PresetBuildView, ProBuildsView,
     RunesView,
 };
 pub use watch::{

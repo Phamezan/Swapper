@@ -390,6 +390,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 commands::runes::apply_spell,
                 commands::runes::get_pro_builds,
                 commands::runes::get_keystone_build,
+                commands::runes::get_other_build,
                 commands::runes::get_matchup,
                 commands::runes::get_champion_counters,
                 commands::runes::get_champion_overview,

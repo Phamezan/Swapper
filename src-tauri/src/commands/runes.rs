@@ -303,6 +303,18 @@ pub(crate) async fn get_keystone_build(
     .await
 }
 
+/// A common build on another keystone than the ones already shown (`exclude`),
+/// from lolalytics. `None` when no other keystone is played often enough.
+#[tauri::command]
+pub(crate) async fn get_other_build(
+    champion_id: i64,
+    position: String,
+    tier: String,
+    exclude: Vec<i64>,
+) -> Option<runes::view::HighestWinView> {
+    runes::other_build_view(champion_id, &position, &tier, &exclude).await
+}
+
 /// The lane matchup build against the enemy laner, from lolalytics. `None`
 /// means there is nothing to show; a low sample comes back flagged `fallback`.
 #[tauri::command]

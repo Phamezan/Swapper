@@ -148,7 +148,7 @@ mockIPC(async (cmd, args) => {
   // ---- end glass draft fixture ----
   switch (cmd) {
     // ---- locbar: keep the existing version label visible in browser evidence ----
-    case 'plugin:app|version': return '1.0.9';
+    case 'plugin:app|version': return '1.0.10';
     // ---- end locbar version fixture ----
     // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
     case 'full_app_search_players': {
@@ -360,6 +360,7 @@ mockIPC(async (cmd, args) => {
     case "get_champion_overview": return { championId: a.championId, position: a.position, unavailable: false, damage: null,
       stats: { tier: "S+", rank: 1, rankTotal: 58, winPct: 52.6, pickPct: 9, banPct: 4, games: 24000, patch: "16.21" },
       build: { runes: runePage(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347]), spells: [4, 12], items: buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), skillOrder: SKILLS } };
+    case "get_other_build": return { preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9104, 8299], 8400, [8446, 8451]), winPct: 51.2, play: 4300, spells: [4, 12] }, build: buildOf([6692, 3053, 3071, 3065, 3026, 6333], 51.2, 4300, SKILLS) };
     case "get_keystone_build": return { ...buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), highestWin: { preset: { index: 1, title: "Grasp", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: buildOf([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
     case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: buildOf([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
     case "full_app_rune_catalog": await catalogReady; if (runeCatalog) return runeCatalog; throw new Error("Rune catalog unavailable");

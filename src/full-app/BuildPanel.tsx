@@ -11,7 +11,7 @@ import { SpellIcon } from "../runes/SpellIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
 import { TIER_OPTIONS, fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen } from "../runes/types";
-import type { ChampionBuild, ItemsImported, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
+import type { ChampionBuild, HighestWinView, ItemsImported, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
 import { overviewSelection, spellLayout, type FlashKey } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
 import { NearViewport } from "./NearViewport";
@@ -50,6 +50,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
 }) {
   const [catalog, setCatalog] = useState<RuneCatalog | null>(null);
   const [details, setDetails] = useState<PresetBuildView | null>(null);
+  // A common build on another keystone than Most played and Highest WR.
+  const [other, setOther] = useState<HighestWinView | null>(null);
   const [abilities, setAbilities] = useState<Ability[]>([]);
   // Label of the clicked tab; null until then, so the default follows what loaded. Labels are unique, indexes shift as tabs load.
   const [chosenLabel, setChosenLabel] = useState<string | null>(null);
@@ -104,7 +106,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const selection = overviewSelection(build, catalog?.trees ?? []);
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
-    setDetails(null); setChosenLabel(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setProOffset(0); setNotice(""); setFailed(null); setCustom(null);
+    setDetails(null); setOther(null); setChosenLabel(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setProOffset(0); setNotice(""); setFailed(null); setCustom(null);
     proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
     setImported(null);
   }, [championId, lane, tier, sourceKey]);
@@ -114,8 +116,27 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       .then(value => { if (live) setDetails(value); }).catch(() => {});
     return () => { live = false; };
   }, [championId, lane, tier, sourceKey, catalog]);
+  useEffect(() => {
+    let live = true;
+    const keystone = build?.runes?.keystone;
+    if (!keystone || !details) return;
+    const exclude = details.highestWin && !details.highestWinMatchesPick ? [keystone, details.highestWin.preset.keystone] : [keystone];
+    void invoke<HighestWinView | null>("get_other_build", { championId, position: lane, tier, exclude })
+      .then(value => { if (live) setOther(value); }).catch(() => {});
+    return () => { live = false; };
+  }, [championId, lane, tier, sourceKey, details]);
   useEffect(() => { void loadPros(1); }, [championId, lane, tier, sourceKey]);
   useEffect(() => () => { proRequest.current++; }, []);
+  // With auto-apply on, switching to another build (or editing its runes) applies it; set each render below.
+  const autoRun = useRef<() => void>(() => {});
+  const pickKey = JSON.stringify([chosenLabel, pro?.matchId ?? null, proPart, custom]);
+  const lastPick = useRef(pickKey);
+  useEffect(() => {
+    if (lastPick.current === pickKey) return;
+    lastPick.current = pickKey;
+    const timer = setTimeout(() => autoRun.current(), custom ? 500 : 0);
+    return () => clearTimeout(timer);
+  }, [pickKey]);
   const loadPros = async (page: number) => {
     if (proBusy.current) return false;
     const request = ++proRequest.current;
@@ -138,6 +159,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     const high = details.highestWin;
     variants.push({ label: "Highest WR", selection: selectionFromPreset(high.preset), items: high.build, spells: high.preset.spells, order: high.build.skillOrder ?? null, winPct: high.build.coreWinPct, games: high.build.coreGames });
   }
+  if (other) variants.push({ label: "Other", selection: selectionFromPreset(other.preset), items: other.build, spells: other.preset.spells, order: other.build.skillOrder ?? null, winPct: other.build.coreWinPct, games: other.build.coreGames });
   for (const matchup of matchups) {
     if (matchup.preset && matchup.build && !matchup.fallback) variants.push({ label: `vs ${matchup.enemyName}`, enemyId: matchup.enemyChampionId, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
   }
@@ -189,6 +211,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     finally { setBusy(null); }
   };
   const allDone = (!ready.runes || status.runes) && (!ready.spells || status.spells) && (!ready.items || status.items);
+  autoRun.current = () => { if (autoApply?.checked && !preview && inSelect && !busy && !allDone) void apply("all"); };
   const sections: [Section, string][] = [["runes", "Runes"], ["spells", "Spells"], ["items", "Item set"]];
 
   return <div className="fa-build-section cs-build-browser">

@@ -8,7 +8,6 @@
 //! visible Live Game page asks ([`live_game_live`]), at most every 2.5 s.
 pub mod model;
 
-use futures_util::{stream, StreamExt};
 use model::View;
 use serde_json::Value;
 use std::collections::{BTreeMap, HashMap};
@@ -19,9 +18,8 @@ use tauri::{Emitter, Manager};
 
 /// Each LCU request gets this long; the shared client also caps a response at 4 s.
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(6);
-/// Per-player fetches in flight at once (one request each).
-/// All ten players at once: each one mostly waits on the client's remote history fetch.
-const CONCURRENCY: usize = 10;
+/// Match history reads in flight at once; the client serves them one by one.
+static HISTORY_FETCHES: tokio::sync::Semaphore = tokio::sync::Semaphore::const_new(1);
 /// Live Client reads closer together than this return the cached view.
 const LIVE_MIN_INTERVAL: Duration = Duration::from_millis(2500);
 
@@ -187,9 +185,19 @@ pub async fn live_game_view(app: tauri::AppHandle) -> Result<Option<View>, Strin
     Ok(Some(view))
 }
 
-/// Fetches every player once (all in flight) and publishes each as it lands.
+/// One piece of a player, published as soon as it lands.
+enum Part {
+    Damage(Option<String>),
+    Profile(Option<Value>, Option<Value>),
+    /// u.gg's recent games: here in about a second, but may miss the latest game.
+    Quick(Vec<Value>),
+    /// The client's own history: exact, but served one player at a time.
+    Rows(Vec<Value>),
+}
+
+/// Fetches every player once (all in flight) and publishes each part as it lands.
 async fn fetch_players(app: tauri::AppHandle, game_id: u64) {
-    let targets: Vec<(String, String, i64)> = {
+    let targets: Vec<(String, String, i64, String)> = {
         let rt = app.state::<Runtime>();
         let view = lock(&rt.view);
         let Some(view) = view.as_ref().filter(|v| v.game_id == game_id) else {
@@ -197,20 +205,30 @@ async fn fetch_players(app: tauri::AppHandle, game_id: u64) {
         };
         view.players
             .iter()
-            .map(|p| (p.key.clone(), p.puuid.clone(), p.champion_id))
+            .map(|p| (p.key.clone(), p.puuid.clone(), p.champion_id, p.riot_id.clone()))
             .collect()
     };
-    let mut updates = stream::iter(
-        targets
-            .into_iter()
-            .map(|(key, puuid, champion)| async move {
-                let player = async { if puuid.is_empty() { None } else { Some(source::player(&puuid).await) } };
-                let (damage, parts) = tokio::join!(source::damage(champion), player);
-                (key, damage, parts)
-            }),
-    )
-    .buffer_unordered(CONCURRENCY);
-    while let Some((key, damage, parts)) = updates.next().await {
+    let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel::<(String, Part)>();
+    for (key, puuid, champion, riot_id) in targets {
+        let tx = tx.clone();
+        tauri::async_runtime::spawn(async move {
+            let send = |part| { let _ = tx.send((key.clone(), part)); };
+            if puuid.is_empty() {
+                send(Part::Damage(source::damage(champion).await));
+                return;
+            }
+            let (damage, (summoner, ranked)) = tokio::join!(source::damage(champion), source::profile(&puuid));
+            let riot_id = summoner.as_ref().and_then(riot_id_of).unwrap_or(riot_id);
+            send(Part::Damage(damage));
+            send(Part::Profile(summoner, ranked));
+            tokio::join!(
+                async { if let Some(rows) = source::quick_history(&riot_id).await { send(Part::Quick(rows)) } },
+                async { if let Some(rows) = source::history(&puuid).await { send(Part::Rows(rows)) } },
+            );
+        });
+    }
+    drop(tx);
+    while let Some((key, part)) = rx.recv().await {
         let rt = app.state::<Runtime>();
         let snapshot = {
             let mut view = lock(&rt.view);
@@ -218,9 +236,11 @@ async fn fetch_players(app: tauri::AppHandle, game_id: u64) {
                 return; // The game ended or changed; drop the rest.
             };
             if let Some(player) = view.players.iter_mut().find(|p| p.key == key) {
-                player.damage = damage.unwrap_or_default();
-                if let Some((summoner, ranked, rows)) = parts.as_ref() {
-                    player.apply(summoner.as_ref(), ranked.as_ref(), rows.as_deref());
+                match part {
+                    Part::Damage(damage) => player.damage = damage.unwrap_or_default(),
+                    Part::Profile(summoner, ranked) => player.apply(summoner.as_ref(), ranked.as_ref(), None),
+                    Part::Quick(rows) => player.apply_quick(&rows),
+                    Part::Rows(rows) => player.apply(None, None, Some(&rows)),
                 }
             }
             view.summarize_teams();
@@ -228,6 +248,11 @@ async fn fetch_players(app: tauri::AppHandle, game_id: u64) {
         };
         let _ = app.emit("live_game", snapshot);
     }
+}
+
+fn riot_id_of(summoner: &Value) -> Option<String> {
+    let name = summoner["gameName"].as_str().filter(|s| !s.is_empty())?;
+    Some(format!("{name}#{}", summoner["tagLine"].as_str().unwrap_or("")))
 }
 
 /// Merges a fresh Live Client read into the current view. Called by the Live
@@ -293,11 +318,8 @@ mod tests {
     }
 }
 
-/// Summoner, ranked stats and recent games for any player, read in parallel with a history retry
-/// (shared with the player-search live rosters).
-pub(crate) async fn player_parts(puuid: &str) -> (Option<Value>, Option<Value>, Option<Vec<Value>>) {
-    source::player(puuid).await
-}
+// Shared with the player-search live rosters.
+pub(crate) use source::{history, profile, quick_history};
 
 mod source {
     use super::*;
@@ -333,39 +355,71 @@ mod source {
             .unwrap_or_default()
     }
 
-    /// Summoner (Riot ID, level, icon), ranked stats and the latest 20 games.
-    /// Each part fails independently.
-    pub async fn player(puuid: &str) -> (Option<Value>, Option<Value>, Option<Vec<Value>>) {
+    /// Summoner (Riot ID, level, icon) and ranked stats; each fails independently.
+    pub async fn profile(puuid: &str) -> (Option<Value>, Option<Value>) {
         #[cfg(any(debug_assertions, feature = "live-fixture"))]
         if let Some(bundle) = fixture::bundle() {
             tokio::time::sleep(Duration::from_millis(350)).await;
             let p = &bundle["players"][puuid];
-            let rows = p["history"]["games"]["games"].as_array().cloned();
             return (
                 Some(p["summoner"].clone()).filter(|v| !v.is_null()),
                 Some(p["ranked"].clone()).filter(|v| !v.is_null()),
-                rows,
             );
+        }
+        tokio::join!(
+            async { get(&format!("/lol-summoner/v2/summoners/puuid/{puuid}")).await.ok() },
+            async { get(&format!("/lol-ranked/v1/ranked-stats/{puuid}")).await.ok() },
+        )
+    }
+
+    /// The latest 20 games from the client's own match history.
+    pub async fn history(puuid: &str) -> Option<Vec<Value>> {
+        #[cfg(any(debug_assertions, feature = "live-fixture"))]
+        if let Some(bundle) = fixture::bundle() {
+            return bundle["players"][puuid]["history"]["games"]["games"].as_array().cloned();
         }
         let path =
             format!("/lol-match-history/v1/products/lol/{puuid}/matches?begIndex=0&endIndex=19");
-        let history = async {
-            // The client fetches another player's history remotely the first time
-            // (measured ~2.6 s); a retry is served from its cache.
-            match get(&path).await {
-                Ok(value) => Some(value),
-                Err(_) => get(&path).await.ok(),
-            }
+        // The client fetches other players' histories remotely one at a time
+        // (measured ~1.6 s each), so ten at once queue past the 4 s cap.
+        // Asking one at a time keeps each inside it; a retry is served from its cache.
+        let _turn = HISTORY_FETCHES.acquire().await.ok()?;
+        let history = match get(&path).await {
+            Ok(value) => value,
+            Err(_) => get(&path).await.ok()?,
         };
-        // The three reads are independent, so the slow history no longer waits behind the others.
-        let (summoner, ranked, history) = tokio::join!(
-            async { get(&format!("/lol-summoner/v2/summoners/puuid/{puuid}")).await.ok() },
-            async { get(&format!("/lol-ranked/v1/ranked-stats/{puuid}")).await.ok() },
-            history,
-        );
-        let rows = history.and_then(|h| h["games"]["games"].as_array().cloned());
-        (summoner, ranked, rows)
+        history["games"]["games"].as_array().cloned()
     }
+
+    /// The latest 20 games from u.gg's match summaries: all ten players in
+    /// about a second, though u.gg may not have seen the newest game yet.
+    /// `None` when u.gg does not know the player or cannot be reached.
+    pub async fn quick_history(riot_id: &str) -> Option<Vec<Value>> {
+        #[cfg(any(debug_assertions, feature = "live-fixture"))]
+        if fixture::bundle().is_some() {
+            return None;
+        }
+        let (name, tag) = riot_id.split_once('#').filter(|(n, t)| !n.is_empty() && !t.is_empty())?;
+        let locale = get("/riotclient/region-locale").await.ok()?;
+        let region_id = crate::runes::ugg_record::region_id(locale["region"].as_str()?)?;
+        let body = serde_json::json!({ "query": UGG_HISTORY, "variables": {
+            "page": 1, "queueType": [], "regionId": region_id, "riotUserName": name, "riotTagLine": tag,
+            "seasonIds": [crate::runes::ugg_record::SEASON_ID] } });
+        let client = UGG_CLIENT.get_or_init(|| {
+            reqwest::Client::builder().connect_timeout(REQUEST_TIMEOUT).timeout(REQUEST_TIMEOUT).build().ok()
+        }).as_ref()?;
+        let response = client.post(crate::runes::probuilds::ENDPOINT).json(&body).send().await.ok()?;
+        let value: Value = response.error_for_status().ok()?.json().await.ok()?;
+        value.pointer("/data/fetchPlayerMatchSummaries/matchSummaries")?.as_array().cloned()
+    }
+
+    static UGG_CLIENT: std::sync::OnceLock<Option<reqwest::Client>> = std::sync::OnceLock::new();
+    const UGG_HISTORY: &str = "\
+query FetchMatchSummaries($page: Int, $queueType: [Int], $regionId: String!, $riotUserName: String!, $riotTagLine: String!, $seasonIds: [Int]!) {
+  fetchPlayerMatchSummaries(page: $page, queueType: $queueType, regionId: $regionId, riotUserName: $riotUserName, riotTagLine: $riotTagLine, seasonIds: $seasonIds) {
+    matchSummaries { matchId matchCreationTime matchDuration queueType role championId win kills deaths assists cs jungleCs }
+  }
+}";
 
     pub async fn damage(champion: i64) -> Option<String> {
         if champion <= 0 {

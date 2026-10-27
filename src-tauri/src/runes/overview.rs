@@ -57,6 +57,9 @@ pub struct Overview {
     /// The wider bracket the build came from when the chosen one had too few games.
     #[serde(default)]
     pub build_tier: Option<String>,
+    /// How often each rune is played here; see [`lolalytics::keystone_shares`].
+    #[serde(default)]
+    pub keystones: Vec<lolalytics::KeystoneShare>,
     pub runes: Option<MatchupRunes>,
     pub spells: Option<[i64; 2]>,
     pub skill_order: Option<String>,
@@ -146,6 +149,7 @@ pub fn parse_overview(html: &str, champion_id: i64) -> Option<Overview> {
         build: builds.as_ref().map(|builds| builds.pick.clone()),
         win: builds.and_then(|builds| builds.win),
         build_tier: None,
+        keystones: lolalytics::keystone_shares(objs),
         runes: details.runes,
         spells: details.spells,
         skill_order: details.skill_order,
@@ -264,6 +268,7 @@ fn with_wider_build(merged: Option<Sourced<Overview>>, wider: Sourced<Overview>,
     merged.value.runes = wider.value.runes;
     merged.value.spells = wider.value.spells;
     merged.value.skill_order = wider.value.skill_order;
+    merged.value.keystones = wider.value.keystones;
     merged.value.build_tier = Some(tier.to_string());
     merged
 }
@@ -283,6 +288,7 @@ fn merge_sources(
             stats.value.runes = details.value.runes.clone();
             stats.value.spells = details.value.spells;
             stats.value.skill_order = details.value.skill_order.clone();
+            stats.value.keystones = details.value.keystones.clone();
             // Build consumers use this metadata to decide whether to trust it.
             stats.stale |= details.stale;
             stats.fetched_at = details.fetched_at;

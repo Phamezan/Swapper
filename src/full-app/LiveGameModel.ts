@@ -42,6 +42,11 @@ export function crestSlug(tier: string | null | undefined): string {
   return ["iron", "bronze", "silver", "gold", "platinum", "emerald", "diamond", "master", "grandmaster", "challenger"].includes(t) ? t : "none";
 }
 
+/** Streamer mode hides a player's Riot ID, so nothing about them can be looked up. */
+export function isHidden(p: Player): boolean {
+  return !p.isBot && (p.status === "skipped" || !p.riotId.replace("#", "").trim());
+}
+
 export function splitRiotId(riotId: string): [string, string] {
   const at = riotId.lastIndexOf("#");
   return at > 0 ? [riotId.slice(0, at), riotId.slice(at)] : [riotId, ""];
