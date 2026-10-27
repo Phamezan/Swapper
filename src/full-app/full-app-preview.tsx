@@ -8,6 +8,8 @@ import { emit } from "@tauri-apps/api/event";
 // ---- matchdetail: rich match fixture (preview only) ----
 import { matchDetailFixture } from "./match/preview";
 import type { PlayerHit } from './playerModel';
+import { ahriVsZed } from "./fixtures/ahriVsZed";
+import { guideAbilities } from "./fixtures/guideAbilities";
 // ---- end matchdetail import ----
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
@@ -125,6 +127,7 @@ const catalogReady = fetch(`${DD}/${VERSION}/data/en_US/runesReforged.json`).the
   };
 }).catch(() => {});
 const ITEM_NAMES: Record<number, string> = { 1055: "Doran's Blade", 2003: "Health Potion", 3047: "Plated Steelcaps", 3111: "Mercury's Treads", 6692: "Eclipse", 3053: "Sterak's Gage", 3071: "Black Cleaver", 6333: "Death's Dance", 3156: "Maw of Malmortius", 3065: "Spirit Visage", 3026: "Guardian Angel", 6610: "Sundered Sky" };
+Object.assign(ITEM_NAMES, { 1056: "Doran’s Ring", 3118: "Malignance", 4628: "Horizon Focus", 3157: "Zhonya’s Hourglass", 3089: "Rabadon’s Deathcap", 3135: "Void Staff", 3020: "Sorcerer’s Shoes", 3802: "Lost Chapter", 2420: "Seeker’s Armguard" });
 const named = (id: number) => ({ id, name: ITEM_NAMES[id] ?? "Item" });
 const SKILLS = "QEWQQRQEQERWEEWRWW";
 const buildOf = (ids: number[], winPct: number, games: number, order: string) => ({
@@ -133,6 +136,12 @@ const buildOf = (ids: number[], winPct: number, games: number, order: string) =>
   games, coreGames: Math.round(games / 3), coreLen: 3, coreWinPct: winPct, stale: false, updatedAt: null, skillPriority: null, skillOrder: order,
 });
 const runePage = (primaryPageId: number, keystone: number, primaryRunes: number[], secondaryPageId: number, secondaryRunes: number[]) => ({ primaryPageId, keystone, primaryRunes, secondaryPageId, secondaryRunes, shards: [5005, 5008, 5001] });
+const ahriRunes = () => runePage(8100, 8112, [8126, 8138, 8106], 8200, [8226, 8210]);
+const ahriBuild = (matchup = false) => ({
+  ...buildOf(matchup ? [3118, 3157, 3020, 3089, 3135, 4628] : [3118, 4628, 3020, 3089, 3135, 3157], matchup ? 48.9 : 52.8, matchup ? 3150 : 18200, "QWEQQRQWQWRWWEEREE"),
+  starters: [{ ...named(1056), count: 1 }, { ...named(2003), count: 2 }],
+  options: [3157, 4628, 3135].map((id, i) => ({ ...named(id), slot: i + 2, winPct: 51.8, games: 1200 })),
+});
 // ---- end uibuilds mocks ----
 const searchCalls: { query: string; online: boolean; done: boolean }[] = [];
 const liveChecks: boolean[] = [];
@@ -309,7 +318,7 @@ mockIPC(async (cmd, args) => {
     // ---- end glass ----
     case "champion_art": return `${DD}/img/champion/${a.kind === "splash" ? "splash" : a.kind === "loading" ? "loading" : "tiles"}/${key(a.id)}_0.jpg`;
     case "item_icon": return `${DD}/${VERSION}/img/item/${a.id}.png`;
-    case "spell_icon": return `${DD}/${VERSION}/img/spell/${({ 4: "SummonerFlash", 12: "SummonerTeleport", 11: "SummonerSmite", 14: "SummonerDot" } as Record<number, string>)[a.id] ?? "SummonerFlash"}.png`;
+    case "spell_icon": return `${DD}/${VERSION}/img/spell/${({ 4: "SummonerFlash", 12: "SummonerTeleport", 3: "SummonerExhaust", 11: "SummonerSmite", 14: "SummonerDot" } as Record<number, string>)[a.id] ?? "SummonerFlash"}.png`;
     case "get_duo_list": {
       const duoState = params.get("duos");
       if (duoState === "loading") await new Promise(resolve => setTimeout(resolve, 1200));
@@ -357,14 +366,29 @@ mockIPC(async (cmd, args) => {
     case "begin_repair": return null;
     case "doctor_report": return null;
     // ---- uibuilds cases ----
-    case "get_champion_overview": return { championId: a.championId, position: a.position, unavailable: false, damage: null,
+    case "open_guide_source": return null;
+    case "get_matchup_guide":
+      if (params.has("guide-missing-command")) throw new Error("Unknown command get_matchup_guide");
+      if (params.has("guide-null")) return null;
+      return { guide: a.championId === 103 && a.enemyChampionId === 238 && a.position === "mid" ? { ...ahriVsZed, reviewed: !params.has("guide-unreviewed") } : null,
+        record: { wins: a.championId === 103 && a.enemyChampionId === 238 ? 5 : 0, losses: a.championId === 103 && a.enemyChampionId === 238 ? 20 : 0 } };
+    case "get_champion_overview":
+      if (a.championId === 103) return { championId: 103, position: a.position, unavailable: false, damage: null,
+        stats: { tier: "A", rank: 12, rankTotal: 58, winPct: 51.4, pickPct: 7.2, banPct: 3.1, games: 24000, patch: "16.21" },
+        build: { runes: ahriRunes(), spells: [4, 12], items: ahriBuild(), skillOrder: "QWEQQRQWQWRWWEEREE" } };
+      return { championId: a.championId, position: a.position, unavailable: false, damage: null,
       stats: { tier: "S+", rank: 1, rankTotal: 58, winPct: 52.6, pickPct: 9, banPct: 4, games: 24000, patch: "16.21" },
       build: { runes: runePage(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347]), spells: [4, 12], items: buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), skillOrder: SKILLS } };
-    case "get_other_build": return { preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9104, 8299], 8400, [8446, 8451]), winPct: 51.2, play: 4300, spells: [4, 12] }, build: buildOf([6692, 3053, 3071, 3065, 3026, 6333], 51.2, 4300, SKILLS) };
-    case "get_keystone_build": return { ...buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), highestWin: { preset: { index: 1, title: "Grasp", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: buildOf([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
-    case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: buildOf([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
+    case "get_other_build": if (a.championId === 103) return null; return { preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9104, 8299], 8400, [8446, 8451]), winPct: 51.2, play: 4300, spells: [4, 12] }, build: buildOf([6692, 3053, 3071, 3065, 3026, 6333], 51.2, 4300, SKILLS) };
+    case "get_keystone_build": if (a.championId === 103) return { ...ahriBuild(), highestWin: null, highestWinMatchesPick: false }; return { ...buildOf([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, SKILLS), highestWin: { preset: { index: 1, title: "Grasp", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: buildOf([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
+    case "get_matchup":
+      if (a.championId === 103) return { enemyChampionId: a.enemyChampionId, enemyName: names[a.enemyChampionId], fallback: false,
+        stats: { winPct: 48.2, avgWinPct: 51.4, delta: -3.2, games: 3150, patch: "16.21" },
+        preset: { index: 0, title: "Electrocute", ...ahriRunes(), winPct: 48.2, play: 3150, spells: [4, 3] }, build: ahriBuild(true) };
+      return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: buildOf([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
     case "full_app_rune_catalog": await catalogReady; if (runeCatalog) return runeCatalog; throw new Error("Rune catalog unavailable");
     case "champion_abilities":
+      if (!params.has("patch-abilities-offline") && guideAbilities(a.championId, `${DD}/${VERSION}`)) return guideAbilities(a.championId, `${DD}/${VERSION}`);
       if (params.has("patch-abilities-offline")) throw new Error("Preview abilities unavailable");
       return { championId: a.championId, tooltipsReady: true, summoners: [], passive: a.championId === 51
         ? { name: "Headshot", iconPath: "/lol-game-data/assets/caitlyn-passive.png", description: "Caitlyn periodically fires an empowered attack.", tooltip: null }
@@ -373,8 +397,9 @@ mockIPC(async (cmd, args) => {
         description: ["Aatrox slams his greatsword down three times; each strike is stronger at the edge.", "Aatrox smashes the ground, damaging and slowing the first enemy hit, then pulls them back.", "Passive: Aatrox heals from champion damage. Active: Aatrox dashes, empowering his next attacks.", "Aatrox unleashes his demonic form, fearing nearby minions and gaining Attack Damage and healing."][i],
         tooltip: i === 0 ? "Aatrox slams his greatsword down, dealing 10/25/40/55/70 (+60/70/80/90/100% AD) physical damage.\n\nEnemies hit at the edge take increased damage and are knocked up." : null,
         cooldowns: key === "R" ? [120, 100, 80] : [14, 12, 10, 8, 6], costs: [], ranges: key === "R" ? [] : [625, 625, 625, 625, 625], charges: key === "E" ? 2 : 0, recharge: key === "E" ? [9, 8, 7, 6, 5] : [] })) };
-    case "ability_icon": return `${DD}/${VERSION}/img/passive/Caitlyn_Headshot.png`;
+    case "ability_icon": return typeof a.path === "string" && a.path.startsWith(`${DD}/`) ? a.path : `${DD}/${VERSION}/img/passive/Caitlyn_Headshot.png`;
     case "full_app_abilities":
+      if (!params.has("patch-abilities-offline") && guideAbilities(a.championId, `${DD}/${VERSION}`)) return guideAbilities(a.championId, `${DD}/${VERSION}`)!.spells.map(spell => ({ key: spell.key, name: spell.name, icon: spell.iconPath }));
       if (params.has("patch-abilities-offline")) throw new Error("Preview abilities unavailable");
       if (a.championId === 51) return [{ key: "Q", name: "Piltover Peacemaker", icon: `${DD}/${VERSION}/img/spell/CaitlynQ.png` }];
       // Empty E metadata exercises the fallback to Riot's name in the patch text.

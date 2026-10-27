@@ -376,6 +376,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 commands::settings::set_onboarded,
                 korean_font::install_ltk_manager,
                 korean_font::open_ltk_website,
+                commands::guide::open_guide_source,
                 commands::runes::get_runes,
                 commands::runes::champ_select_status,
                 commands::runes::rune_icon,

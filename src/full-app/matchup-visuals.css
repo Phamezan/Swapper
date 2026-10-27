@@ -1,0 +1,70 @@
+.mg-data-visual { --mg-you: #51a2e6; --mg-enemy: #e83d32; flex-shrink: 0; min-width: 0; margin: 0; padding: 10px 12px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-surface-1); }
+.mg-visual-header { display: flex; align-items: center; gap: 14px; min-height: 28px; margin-bottom: 6px; }
+.mg-data-visual.is-collapsed { padding-block: 4px; }
+.mg-data-visual.is-collapsed .mg-visual-header { margin-bottom: 0; }
+.mg-visual-toggle { display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; margin-left: auto; padding: 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-xs); background: var(--ui-surface-2); color: var(--ui-text-2); cursor: pointer; }
+.mg-visual-toggle:hover { color: var(--ui-text-1); border-color: var(--ui-line-3); }
+.mg-visual-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.mg-visual-header > small + .mg-visual-toggle { margin-left: 0; }
+.fa-frame .champion-tools .mg-deck .mg-data-visual h3 { font-size: 18px; line-height: 1.25; }
+.mg-visual-header > small { margin-left: auto; color: var(--ui-text-3); font-size: 13px; }
+.mg-visual-legend { display: flex; gap: 12px; font-size: 13px; }
+.mg-visual-legend > span { display: inline-flex; align-items: center; gap: 5px; }
+.mg-visual-legend > span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--mg-you); }
+.mg-visual-legend > .is-enemy::before { background: var(--mg-enemy); }
+.mg-trade-axis { display: flex; justify-content: space-between; margin: 0 136px 2px 50px; color: var(--ui-text-3); font-size: 13px; line-height: 18px; }
+.mg-trade-row { display: grid; grid-template-columns: 50px minmax(0, 1fr); align-items: center; height: 22px; padding-right: 136px; color: var(--mg-you); }
+.mg-trade-row.is-enemy { color: var(--mg-enemy); }
+.mg-trade-row.is-window { border-radius: 3px; background: var(--ui-surface-3); box-shadow: inset 2px 0 0 var(--mg-enemy); }
+.mg-trade-ability { display: flex; align-items: center; padding-left: 4px; line-height: 1; }
+.mg-trade-ability .cd-icon { display: flex; align-items: center; gap: 5px; width: auto; height: 20px; }
+.mg-trade-ability .cd-icon :is(img, i) { width: 20px; height: 20px; border-radius: 3px; }
+.mg-trade-ability .cd-icon kbd { position: static; min-width: 14px; padding: 0; border: 0; border-radius: 0; background: none; font-size: 12px; line-height: 16px; }
+.mg-trade-track { position: relative; height: 8px; border-radius: 2px; background: var(--ui-surface-3); }
+.mg-trade-fill { display: block; width: var(--bar); height: 100%; border-radius: 2px; background: currentColor; }
+.mg-trade-tick { position: absolute; top: 50%; z-index: 1; width: 8px; height: 20px; transform: translate(-50%, -50%); cursor: help; }
+.mg-trade-tick::before { content: ""; position: absolute; top: 4px; bottom: 4px; left: 3px; width: 2px; border-radius: 1px; background: var(--ui-text-1); box-shadow: 0 0 0 1px var(--ui-surface-1); }
+.mg-trade-tick-tooltip { position: absolute; bottom: calc(100% + 3px); left: 0; display: none; width: max-content; padding: 5px 8px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); background: var(--ui-surface-2); color: var(--ui-text-1); font-size: 12px; line-height: 18px; white-space: nowrap; pointer-events: none; }
+.mg-trade-tick-tooltip > span { display: block; }
+.mg-trade-tick:is(:hover, :focus) { z-index: 3; outline: 2px solid var(--ui-brand); outline-offset: 1px; }
+.mg-trade-tick:is(:hover, :focus) .mg-trade-tick-tooltip { display: block; }
+.mg-trade-value { position: absolute; left: var(--bar); top: 50%; transform: translate(6px, -50%); color: var(--ui-text-1); font-size: 13px; line-height: 18px; white-space: nowrap; }
+.mg-trade-value small { color: var(--ui-text-2); font-size: 13px; }
+.mg-visual-caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; color: var(--ui-text-3); font-size: 13px; line-height: 18px; }
+.mg-trade-ultimates { margin-top: 5px; padding-top: 4px; border-top: 1px solid var(--ui-line-2); }
+.mg-trade-ultimates > p { margin-bottom: 3px; color: var(--ui-text-3); font-size: 12px; line-height: 16px; }
+.mg-ultimate-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.mg-window-label { color: var(--ui-text-2); }
+.mg-spike-axis, .mg-spike-side { display: grid; grid-template-columns: 86px repeat(6, minmax(0, 1fr)); align-items: center; column-gap: 8px; }
+.mg-spike-groups { display: grid; grid-template-columns: 86px repeat(2, minmax(0, 1fr)); gap: 8px; margin: 4px 0; color: var(--ui-text-2); text-align: center; font-size: 13px; }
+.mg-spike-axis { color: var(--ui-text-3); font-size: 13px; text-align: center; }
+.mg-spike-side { color: var(--mg-you); }
+.mg-spike-side.is-enemy { color: var(--mg-enemy); padding-top: 12px; border-top: 1px solid var(--ui-line-3); }
+.mg-spike-side.is-you { padding-bottom: 12px; border-bottom: 1px solid var(--ui-line-3); }
+.mg-spike-side.is-you + .mg-spike-side.is-enemy { border-top: 0; }
+.mg-spike-identity { min-width: 0; }
+.mg-spike-identity strong { display: block; overflow: hidden; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
+.mg-spike-identity small { display: block; color: var(--ui-text-3); font-size: 12px; }
+.mg-spike-marker { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 0; min-height: 54px; padding-top: 4px; }
+.mg-spike-marker::after { content: ""; position: absolute; left: calc(50% - 3px); width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.mg-spike-side.is-you .mg-spike-marker::after { bottom: -16px; }
+.mg-spike-side.is-enemy .mg-spike-marker::after { top: -16px; }
+.mg-spike-marker b { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid currentColor; border-radius: 50%; font-size: 13px; }
+.mg-spike-marker small { max-width: 100%; overflow: hidden; color: var(--ui-text-2); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.mg-spike-marker.is-first-item, .mg-spike-axis > span:nth-child(5) { border-left: 1px dashed var(--ui-line-3); }
+.mg-visual-text { position: absolute; width: 1px; height: 1px; overflow: hidden; margin: -1px; padding: 0; clip-path: inset(50%); white-space: nowrap; }
+.mg-slide.is-visual-slide { display: flex; flex-direction: column; overflow: hidden; padding: 18px 22px; }
+.mg-slide.is-visual-slide[hidden] { display: none; }
+.mg-slide.is-visual-slide > .mg-slide-heading { position: absolute; width: 1px; height: 1px; overflow: hidden; margin: -1px; clip-path: inset(50%); white-space: nowrap; }
+.mg-slide.is-visual-slide > .mg-slide-reading { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; margin-top: 12px; padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--ui-line-3) transparent; }
+.mg-no-written-guide { color: var(--ui-text-2); font-size: 14px; line-height: 1.55; }
+@media (max-width: 1200px) {
+  .mg-slide.is-visual-slide { padding: 16px; }
+  .mg-visual-header { gap: 10px; }
+  .mg-spike-axis, .mg-spike-side { grid-template-columns: 76px repeat(6, minmax(0, 1fr)); column-gap: 5px; }
+  .mg-spike-groups { grid-template-columns: 76px repeat(2, minmax(0, 1fr)); gap: 5px; }
+}
+@media (max-height: 760px) {
+  .mg-data-visual { padding-block: 8px; }
+  .mg-visual-caption { margin-top: 4px; }
+}

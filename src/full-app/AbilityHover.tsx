@@ -21,7 +21,7 @@ function loadSheet(championId: number): Promise<Abilities | null> {
   return sheets.get(championId)!;
 }
 
-function useAbilitySheet(championId: number, open: boolean) {
+export function useAbilitySheet(championId: number, open: boolean) {
   const [result, setResult] = useState<{ championId: number; sheet: Abilities | null } | null>(null);
   useEffect(() => {
     if (!open || championId <= 0) return;

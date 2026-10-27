@@ -1,9 +1,16 @@
 import { AbilityHover } from "./AbilityHover";
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type KeyboardEvent } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { RefreshCw } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
+import { MatchupGuideCarousel } from "./MatchupGuideCarousel";
+import { MatchupVods } from "./MatchupVods";
+import type { GuideSectionId } from "./matchupGuide";
+import { GuideSourcesPopover } from "./GuideSourcesPopover";
+import { useMatchupGuide } from "./useMatchupGuide";
+import { MatchupTabs, type MatchupTab } from "./MatchupTabs";
+import { MatchupItemization } from "./MatchupItemization";
 import { BuildPanel } from "./BuildPanel";
 import { DuoTable } from "./DuoTable";
 import { MatchupStrip, ChampionArt } from "./MatchupStrip";
@@ -50,6 +57,10 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
   useAmbientChampion('champion', selected?.id);
   const [enemy, setEnemy] = useState(0);
   const hasEnemy = enemy > 0;
+  const [matchupTab, setMatchupTab] = useState<MatchupTab>("build");
+  const [guideSection, setGuideSection] = useState<GuideSectionId>();
+  const guideState = useMatchupGuide(matchups ? selected?.id ?? 0 : 0, matchups ? enemy : 0, role);
+  useEffect(() => { setMatchupTab("build"); setGuideSection(undefined); }, [selected?.id, enemy, role]);
   const search = useRef<HTMLInputElement>(null);
   const backToOpponents = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -176,23 +187,56 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
     </div>
     <RankPicker value={tier} onChange={pickTier} />
   </>;
-  return <div className="champion-tools runes-panel" onKeyDown={event => {
+  const statContent = <>{loading && !overview ? <TableSkeleton /> : overview?.stats ? <>
+        <div className={`fa-stat-strip ${tierClass(overview.stats.tier ?? "")}`}>
+          <div><strong className="fa-tier-big">{overview.stats.tier ?? "–"}</strong><small>Tier</small></div>
+          <div><strong className={`wr-${rankTone(overview.stats.rank, overview.stats.rankTotal)}`}>{overview.stats.rank ?? "–"}{overview.stats.rank ? <i> / {overview.stats.rankTotal}</i> : null}</strong><small>Rank</small></div>
+          <div><strong className={`wr-${stripWinTone(overview.stats.winPct)}`}><StatPct value={overview.stats.winPct} /></strong><small>Win rate</small></div>
+          {([["Pick rate", overview.stats.pickPct], ["Ban rate", overview.stats.banPct]] as const).map(([label, value]) => <div key={label}><strong><StatPct value={value} /></strong><small>{label}</small></div>)}
+          <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
+        </div>
+      </> : <Notice>No stats for this role and rank.</Notice>}</>;
+  const buildContent = selected && <>
+    {matchups && <MatchupItemization detail={detail} usual={overview?.build ?? null} guide={guideState.guide} abilities={guideState.abilities} />}
+    <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} loading={loading && !overview} matchups={matchups && detail ? [detail] : []} preferMatchup={matchups} preview />
+  </>;
+  const counterContent = selected && <>{counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
+      <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={matchups ? setEnemy : id => {
+        // On a champion page a matchup card opens that champion's page, in the same lane; on Matchups it picks the opponent.
+        const champion = champions.find(c => c.id === id);
+        if (!champion) return;
+        setEnemy(0);
+        void open(champion, role);
+        document.querySelector(".dashboard-main")?.scrollTo({ top: 0, behavior: "smooth" });
+      }} /></>;
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (!matchups || event.key !== "Escape" || event.defaultPrevented || (event.target as HTMLElement).closest('[data-radix-popper-content-wrapper]')) return;
     event.preventDefault(); event.stopPropagation();
     if (enemy) pickOpponent();
     else if (query) setQuery("");
     else clearPick();
-  }}>
+  };
+  const viewTabs = matchups && !picking && <MatchupTabs value={matchupTab} onChange={tab => { setGuideSection(undefined); setMatchupTab(tab); }} />;
+  if (matchups && selected && !picking && matchupTab !== "build") return <div className={`champion-tools runes-panel is-matchup-workspace is-matchup-${matchupTab}`} onKeyDown={onKeyDown}>
+    {viewTabs}
+      <header className="mg-context"><strong>{selected.name} vs {champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent"}</strong><span>{laneLabel(role)}</span>
+        {guideState.guide && <><span>{guideState.guide.difficulty}</span><span className={`mg-badge${guideState.guide.reviewed ? " is-reviewed" : ""}`}>{guideState.guide.reviewed ? "Reviewed" : "Not reviewed"}</span><span>Patch {guideState.guide.patch}</span>{guideState.guide.fixture && <span className="mg-fixture">Fixture content</span>}<GuideSourcesPopover sources={guideState.guide.sources} /></>}
+      </header>
+    {matchupTab === "guide" ? <div id="matchup-view" role="tabpanel" aria-label="Guide" className="mg-guide-view"><MatchupGuideCarousel key={`${selected.id}-${enemy}-${role}`} {...guideState} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} tier={tier} matchup={detail} initialSection={guideSection} /></div>
+      : <div id="matchup-view" role="tabpanel" aria-label="VODs" className="mv-view"><MatchupVods key={`${selected.id}-${enemy}-${role}`} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} onGuideSection={section => { setGuideSection(section); setMatchupTab("guide"); }} /></div>}
+  </div>;
+  return <div className="champion-tools runes-panel" onKeyDown={onKeyDown}>
+    {viewTabs}
     <div className="tool-bar">
       {!inHeader && filters}
-      {matchups && !picking ? <>
+      {matchups && !picking ? <div className="mg-pickers">
         <ChampionPicker label="Your champion" value={selected?.id ?? 0} champions={champions} onChange={id => { void open(champions.find(c => c.id === id) ?? null); if (enemy === id) setEnemy(0); }} />
         <span className="versus">vs</span>
         <ChampionPicker label="Opponent" value={enemy} champions={champions.filter(c => c.id !== selected?.id)} onChange={setEnemy} />
-      </> : (!selected || picking) && <label className="search-pill"><SearchIcon size={14} aria-hidden /><input ref={search} placeholder={!matchups && lane === "duos" ? "Search duo" : selected ? "Search opponent" : "Search champion"} aria-label={!matchups && lane === "duos" ? "Search duo" : "Search champion"} value={query} onChange={e => setQuery(e.target.value)} /></label>}
+      </div> : (!selected || picking) && <label className="search-pill"><SearchIcon size={14} aria-hidden /><input ref={search} placeholder={!matchups && lane === "duos" ? "Search duo" : selected ? "Search opponent" : "Search champion"} aria-label={!matchups && lane === "duos" ? "Search duo" : "Search champion"} value={query} onChange={e => setQuery(e.target.value)} /></label>}
     </div>
     {error && <Notice tone="error">{error}</Notice>}
-    {selected && !picking && <section className="selected-champion">
+    {selected && !picking && <section className="selected-champion" id={matchups ? "matchup-view" : undefined} role={matchups ? "tabpanel" : undefined} aria-label={matchups ? "Build" : undefined}>
       {matchups && <button ref={backToOpponents} className="back-to-list" onClick={pickOpponent}>← Back to opponents</button>}
       {/* On Matchups the versus banner is the hero once both champions are picked; the pickers above change or clear them. */}
       {!(matchups && enemy > 0 && enemy !== selected.id) && <ChampionHeader champion={selected} lane={role} tier={tier} onBack={() => setSelected(null)} backLabel={matchups ? "Clear champion" : "Back to tier list"} patch={overview?.stats?.patch}>{inHeader && filters}</ChampionHeader>}
@@ -207,25 +251,8 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
         </div>
         <VersusSide id={enemy} name={detail.enemyName} label="Opponent" end />
       </section> : <Skeleton label="Loading matchup" rows={2} height={72} />)}
-      {loading && !overview ? <TableSkeleton /> : overview?.stats ? <>
-        <div className={`fa-stat-strip ${tierClass(overview.stats.tier ?? "")}`}>
-          <div><strong className="fa-tier-big">{overview.stats.tier ?? "–"}</strong><small>Tier</small></div>
-          <div><strong className={`wr-${rankTone(overview.stats.rank, overview.stats.rankTotal)}`}>{overview.stats.rank ?? "–"}{overview.stats.rank ? <i> / {overview.stats.rankTotal}</i> : null}</strong><small>Rank</small></div>
-          <div><strong className={`wr-${stripWinTone(overview.stats.winPct)}`}><StatPct value={overview.stats.winPct} /></strong><small>Win rate</small></div>
-          {([["Pick rate", overview.stats.pickPct], ["Ban rate", overview.stats.banPct]] as const).map(([label, value]) => <div key={label}><strong><StatPct value={value} /></strong><small>{label}</small></div>)}
-          <div><strong>{fmtCount(overview.stats.games)}</strong><small>Games</small></div>
-        </div>
-      </> : <Notice>No stats for this role and rank.</Notice>}
-      <BuildPanel key={`build-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} build={overview?.build ?? null} loading={loading && !overview} matchups={matchups && detail ? [detail] : []} preferMatchup={matchups} preview />
-      {counters?.stale && <CachedBadge stale updatedAt={counters.updatedAt} />}
-      <MatchupStrip key={`matchups-${selected.id}-${role}-${tier}`} championId={selected.id} name={selected.name} lane={role} tier={tier} counters={counters} onPick={matchups ? setEnemy : id => {
-        // On a champion page a matchup card opens that champion's page, in the same lane; on Matchups it picks the opponent.
-        const champion = champions.find(c => c.id === id);
-        if (!champion) return;
-        setEnemy(0);
-        void open(champion, role);
-        document.querySelector(".dashboard-main")?.scrollTo({ top: 0, behavior: "smooth" });
-      }} />
+      {matchups && guideState.record && guideState.record.wins + guideState.record.losses > 0 && <div className="mg-record" aria-label="Your matchup record"><small>Your record</small><strong><span>{guideState.record.wins}W</span> – <span>{guideState.record.losses}L</span></strong>{guideState.guide?.fixture && <small>Fixture</small>}</div>}
+      {statContent}{buildContent}{counterContent}
       {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${fmtCount(detail.stats.games)} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
     </section>}
     {picking && <section className="fa-matchup-empty">
