@@ -9,6 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test:e2e": "node tests/e2e/run.mjs",
+    "guides:sync": "node scripts/sync-guides.mjs",
     "tauri": "node scripts/tauri.mjs"
   },
   "dependencies": {

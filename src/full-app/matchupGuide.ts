@@ -12,7 +12,7 @@ export type GuideTip = {
   patch?: string;
   abilityKeys?: { champion: number; key: "P" | "Q" | "W" | "E" | "R" }[];
   itemIds?: number[];
-  outdated?: string;
+  outdated?: string | true;
 };
 export type GuideSection = {
   tips: GuideTip[];

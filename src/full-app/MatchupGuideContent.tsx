@@ -32,7 +32,7 @@ export function GuideTips({ tips, sources, abilities = {} }: { tips: GuideTip[];
         })}
         {tip.itemIds?.map(id => <GuideItem key={id} id={id} />)}
       </div> : null}
-      {tip.outdated && <Notice tone="warn">May be outdated: {tip.outdated}</Notice>}
+      {tip.outdated && <Notice tone="warn">May be outdated: {tip.outdated === true ? "a champion changed after this tip's patch." : tip.outdated}</Notice>}
     </div>
   </li>)}</ol>;
 }

@@ -226,6 +226,25 @@ test("draft events update enemy build context without reloading the source build
   assert.equal(buildReads, before);
 });
 
+test("the draft guide follows one resolved laner and disappears for ambiguous or unknown opponents", async () => {
+  const view = fixtureView("locked-guide"), draft = fixtureDraft("locked-guide");
+  const h = harness("./ChampionSelect.tsx", "ChampionSelect", { full_app_draft: draft }, "visible", {
+    modules: { "./ChampionSelectMatchup": { ChampionSelectMatchup: "matchup-card" } },
+  });
+  h.render({ view, championApi: { list: async () => [], overview: async () => null,
+    tierList: async () => ({ rows: [238, 7].map(championId => ({ championId, pickPct: 5 })) }) },
+    onPositionChange() {}, onLoadBuild: async () => null, onLoadMatchup: async () => null });
+  await h.flush();
+  let card = nodes(h.tree()).find(n => n.type === "matchup-card");
+  assert.equal(card.props.champion.id, 103);
+  assert.equal(card.props.enemyId, 238);
+  assert.equal(card.props.lane, "mid");
+  await h.emit("draft_changed", { ...draft, enemies: [238, 7].map(championId => ({ championId, position: "", locked: true })) });
+  assert.equal(nodes(h.tree()).some(n => n.type === "matchup-card"), false);
+  await h.emit("draft_changed", { ...draft, enemies: [] });
+  assert.equal(nodes(h.tree()).some(n => n.type === "matchup-card"), false);
+});
+
 test("ability hover prefers resolved text and falls back for both spells and passives", async () => {
   for (const key of ["Q", "P"]) for (const tooltip of ["Deals 75/150/225 (+60% AP) damage.", null]) {
     const sheet = { championId: 103, passive: { name: "Passive", description: "Short fallback.", tooltip }, spells: [{ key: "Q", name: "Spell", description: "Short fallback.", tooltip, cooldowns: [7], costs: [], ranges: [], charges: 0, recharge: [] }] };

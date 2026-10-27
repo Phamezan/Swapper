@@ -379,6 +379,7 @@ pub async fn announce_finished_game(app: tauri::AppHandle) {
         if let Some(eog) = eog.filter(|eog| eog["gameId"].as_u64() == Some(id)) {
             let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_millis() as u64);
             if let Some((history, owner)) = eog_as_history(&eog, queue, now) {
+                crate::matchup_records::remember(&app, &history, &owner.puuid);
                 if let Some(game) = model::game(&history, &owner) {
                     crate::match_detail::remember_ended(&history, &owner);
                     let _ = app.emit("game_ended", game);

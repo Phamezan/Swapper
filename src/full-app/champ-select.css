@@ -45,6 +45,34 @@
 .cs-toolbar h2 small { color: var(--text-secondary); font-size: 17px; font-weight: 450; letter-spacing: -.01em; }
 .cs-matchup-chip { padding: 6px 11px; border: 1px solid rgb(233 194 122 / .35); border-radius: var(--fa-radius-xs); background: rgb(233 194 122 / .08); color: var(--fa-gold); font-size: var(--fa-small); font-weight: 650; font-variant-numeric: tabular-nums; }
 
+/* Collapsed by default; expanded tips scroll within their own bounded reading area. */
+.cs-matchup-guide { flex: none; min-width: 0; border: 1px solid var(--fa-line); border-radius: var(--fa-radius-sm); background: var(--fa-panel); }
+.cs-matchup-guide > summary { padding: 10px 14px; cursor: pointer; list-style-position: inside; }
+.cs-guide-heading { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; width: calc(100% - 22px); font-size: 13px; font-weight: 600; }
+.cs-guide-difficulty { color: var(--fa-gold); font-size: 12px; font-weight: 450; }
+.cs-guide-outlook { display: block; margin-top: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-secondary); font-size: 12px; line-height: 1.5; }
+.cs-guide-record { display: inline-flex; align-items: baseline; gap: 8px; margin-left: auto; font-variant-numeric: tabular-nums; }
+.cs-guide-record small { color: var(--text-muted); font-size: 11px; font-weight: 400; }
+.cs-guide-record strong { color: var(--text-primary); font-size: 13px; font-weight: 600; }
+.cs-guide-record-only { flex: none; display: flex; padding: 0 2px; }
+.cs-guide-record-only .cs-guide-record { margin-left: 0; }
+.cs-guide-reading { max-height: min(180px, 22vh); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 14px; border-top: 1px solid var(--fa-line); }
+.cs-matchup-guide .mg-summary { grid-template-columns: minmax(180px, .7fr) minmax(0, 1.5fr); gap: 18px; font-size: 13px; }
+.cs-matchup-guide .mg-summary h3 { margin: 0 0 8px; font-size: 13px; }
+.cs-matchup-guide .mg-summary-outlook { padding-right: 18px; }
+.cs-matchup-guide .mg-summary-outlook p, .cs-matchup-guide .mg-tips p { font-size: 13px; line-height: 1.5; }
+.cs-matchup-guide .mg-summary-outlook small { margin-top: 12px; font-size: 11px; }
+.cs-matchup-guide .mg-difficulty { margin-bottom: 10px; padding: 3px 7px; font-size: 12px; }
+.cs-matchup-guide .mg-tips > li { padding: 8px 0; }
+.cs-matchup-guide .mg-tip-meta, .cs-matchup-guide .mg-references { margin-top: 6px; }
+.cs-guide-footer { display: flex; justify-content: flex-end; padding: 8px 14px; border-top: 1px solid var(--fa-line); }
+.fa-frame .cs-guide-footer > button { padding: 6px 10px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); background: var(--fa-panel-2); color: var(--fa-you); font: inherit; font-size: 12px; cursor: pointer; }
+.cs-matchup-guide :is(summary, button):focus-visible { outline: 2px solid var(--fa-you); outline-offset: 2px; }
+@container draft (max-width: 700px) {
+  .cs-matchup-guide .mg-summary { grid-template-columns: 1fr; }
+  .cs-matchup-guide .mg-summary-outlook { padding: 0 0 12px; border-right: 0; border-bottom: 1px solid var(--fa-line); }
+}
+
 /* ---------- Planning mode ---------- */
 .cs-planning { display: grid; flex: 1; min-height: 0; min-width: 0; }
 .fa-frame .cs-picks { display: flex; flex-direction: column; min-height: 0; padding: 16px; }

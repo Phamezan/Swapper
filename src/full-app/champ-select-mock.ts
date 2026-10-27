@@ -5,10 +5,12 @@ import { emit } from "@tauri-apps/api/event";
 import type { RuneTree, RunesView } from "../runes/types";
 import { fixtureDraft, fixtureView, type FixtureName } from "./champ-select-fixtures";
 import { takenIds } from "./champ-select-model";
+import { guideAbilities } from "./fixtures/guideAbilities";
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
 const VERSION = "16.21.1";
 const CHAMPIONS: Record<number, [string, string]> = {
+  238: ["Zed", "Zed"],
   266: ["Aatrox", "Aatrox"], 122: ["Darius", "Darius"], 103: ["Ahri", "Ahri"], 64: ["Lee Sin", "LeeSin"], 222: ["Jinx", "Jinx"],
   157: ["Yasuo", "Yasuo"], 777: ["Yone", "Yone"], 893: ["Aurora", "Aurora"], 875: ["Sett", "Sett"], 233: ["Briar", "Briar"], 902: ["Milio", "Milio"],
   67: ["Vayne", "Vayne"], 133: ["Quinn", "Quinn"], 17: ["Teemo", "Teemo"], 85: ["Kennen", "Kennen"], 150: ["Gnar", "Gnar"], 126: ["Jayce", "Jayce"],
@@ -16,6 +18,7 @@ const CHAMPIONS: Record<number, [string, string]> = {
   164: ["Camille", "Camille"], 82: ["Mordekaiser", "Mordekaiser"], 516: ["Ornn", "Ornn"], 897: ["K'Sante", "KSante"], 98: ["Shen", "Shen"],
 };
 const ITEMS: Record<number, string> = { 1055: "Doran's Blade", 2003: "Health Potion", 3047: "Plated Steelcaps", 3111: "Mercury's Treads", 6692: "Eclipse", 3053: "Sterak's Gage", 3071: "Black Cleaver", 6333: "Death's Dance", 3156: "Maw of Malmortius", 3065: "Spirit Visage", 3026: "Guardian Angel", 6610: "Sundered Sky", 3074: "Ravenous Hydra" };
+Object.assign(ITEMS, { 3118: "Malignance", 4628: "Horizon Focus", 3020: "Sorcerer's Shoes", 3089: "Rabadon's Deathcap", 3135: "Void Staff", 3157: "Zhonya's Hourglass", 2420: "Seeker's Armguard" });
 const SPELLS: Record<number, string> = { 4: "SummonerFlash", 12: "SummonerTeleport", 14: "SummonerDot", 6: "SummonerHaste" };
 const item = (id: number) => ({ id, name: ITEMS[id] ?? "Item" });
 const option = (id: number, slot: number, winPct: number, games: number) => ({ ...item(id), slot, winPct, games });
@@ -76,11 +79,14 @@ mockIPC(async (cmd, args) => {
     case "rune_icon": await ready; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("no icon");
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     case "full_app_rune_catalog": await ready; if (catalog) return catalog; throw new Error("Rune catalog unavailable");
-    case "full_app_abilities": return ["Q", "W", "E", "R"].map(key => ({ key, name: `Aatrox ${key}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${key === "R" ? "R" : key}.png` }));
-    case "champion_abilities": return { championId: a.championId, tooltipsReady: true, passive: { name: "Passive", iconPath: null, description: "This champion's innate effect.", tooltip: null }, spells: ["Q", "W", "E", "R"].map(key => ({ key, name: `Enemy ${key}`, iconPath: null, description: "Deals damage to enemies.", tooltip: key === "Q" ? "Deals 60/90/120/150/180 (+50% AP) magic damage." : null, cooldowns: key === "R" ? [120, 100, 80] : [12, 11, 10, 9, 8], costs: [], ranges: [], charges: 0, recharge: [] })), summoners: [] };
-    case "get_champion_overview": return { championId: a.championId, position: "top", stats: null, damage: null, unavailable: false, build: { runes: page(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347], [5005, 5008, 5001]), spells: [4, 12], items: build([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), skillOrder: ORDER } };
-    case "get_keystone_build": return { ...build([6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), highestWin: { preset: { index: 1, title: "Grasp", ...page(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104], [5005, 5008, 5001]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: build([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
-    case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...page(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: build([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
+    case "get_matchup_guide": return { guide: null, record: new URLSearchParams(location.search).has("no-record") ? { wins: 0, losses: 0 }
+      : fixture === "locked-guide" || new URLSearchParams(location.search).has("record") ? { wins: 5, losses: 20 } : null };
+    case "full_app_abilities": return guideAbilities(a.championId, `${DD}/${VERSION}`)?.spells.map(spell => ({ key: spell.key, name: spell.name, icon: spell.iconPath }))
+      ?? ["Q", "W", "E", "R"].map(key => ({ key, name: `Aatrox ${key}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${key}.png` }));
+    case "champion_abilities": return guideAbilities(a.championId, `${DD}/${VERSION}`) ?? { championId: a.championId, tooltipsReady: true, passive: { name: "Passive", iconPath: null, description: "This champion's innate effect.", tooltip: null }, spells: ["Q", "W", "E", "R"].map(key => ({ key, name: `Enemy ${key}`, iconPath: null, description: "Deals damage to enemies.", tooltip: key === "Q" ? "Deals 60/90/120/150/180 (+50% AP) magic damage." : null, cooldowns: key === "R" ? [120, 100, 80] : [12, 11, 10, 9, 8], costs: [], ranges: [], charges: 0, recharge: [] })), summoners: [] };
+    case "get_champion_overview": return { championId: a.championId, position: a.position ?? "top", stats: null, damage: null, unavailable: false, build: { runes: fixture === "locked-guide" ? current().presets[0] : page(8000, 8010, [9111, 9104, 8299], 8300, [8304, 8347], [5005, 5008, 5001]), spells: [4, 12], items: build(fixture === "locked-guide" ? [3118, 4628, 3020, 3089, 3135, 3157] : [6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), skillOrder: ORDER } };
+    case "get_keystone_build": return { ...build(fixture === "locked-guide" ? [3118, 4628, 3020, 3089, 3135, 3157] : [6692, 3053, 3071, 6333, 3065, 3026], 52.8, 18200, ORDER), highestWin: { preset: { index: 1, title: "Grasp", ...page(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104], [5005, 5008, 5001]), winPct: 54.1, play: 6100, spells: [4, 14] }, build: build([6610, 3053, 3071, 3065, 3026, 6333], 54.3, 6100, "QWEQQRQEQERWEEWRWW") }, highestWinMatchesPick: false };
+    case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Opponent", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...page(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: build([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
     case "full_app_matchups": return { championId: a.championId, championName: "Darius", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null, beats: counters.map(([id, winPct, games]) => ({ championId: id, name: CHAMPIONS[id][0], winPct, delta: winPct - 50.4, games, lowSample: false })) };
     case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct]) => ({ championId: id, name: CHAMPIONS[id as number][0], tier, winPct, pickPct: 6, banPct: 3, games: 20000 })) };
     case "recommended_picks": return tiers.slice(0, 8).map(([championId, , winRate]) => ({ championId, winRate, games: 20000, flex: championId === 875 }));

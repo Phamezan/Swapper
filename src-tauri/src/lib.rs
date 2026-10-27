@@ -4,12 +4,14 @@ mod commands;
 mod doctor;
 mod flyout;
 mod full_app;
+mod guides;
 mod hotkey;
 mod identity;
 mod korean_font;
 mod lcu;
 mod lifecycle;
 mod live_game;
+mod matchup_records;
 #[path = "full_app/match_detail.rs"]
 mod match_detail;
 mod notify;
@@ -163,6 +165,7 @@ Your settings file was not changed. Close programs that may be using it and star
             });
             overlay::init(app.handle())?;
             full_app::cards::init(app.handle());
+            matchup_records::spawn_watch(app.handle().clone());
             let auto_enable = remote.clone();
             std::thread::spawn(move || {
                 if auto_enable.status().enabled {
@@ -377,6 +380,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 korean_font::install_ltk_manager,
                 korean_font::open_ltk_website,
                 commands::guide::open_guide_source,
+                guides::get_matchup_guide,
                 commands::runes::get_runes,
                 commands::runes::champ_select_status,
                 commands::runes::rune_icon,

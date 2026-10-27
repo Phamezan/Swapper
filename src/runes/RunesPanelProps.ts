@@ -1,4 +1,4 @@
-import type { RunesView, Selection, ShopNotice, ProBuildsView, PresetBuildView, KeystoneBuildView, MatchupView, ChampionApi } from "./types";
+import type { RunesView, Selection, ShopNotice, ProBuildsView, PresetBuildView, KeystoneBuildView, MatchupView, ChampionApi, ChampionOption } from "./types";
 
 export type RunesPanelProps = {
   mode: "desktop" | "remote";
@@ -50,6 +50,8 @@ export type RunesPanelProps = {
   ) => Promise<MatchupView | null>;
   /** Loaders for the Champion tab. */
   championApi: ChampionApi;
+  /** Opens this pair's Guide tab in the Fullsized App. */
+  onOpenMatchupGuide?: (champion: ChampionOption, enemyId: number, lane: string) => void;
   onTierChange: (tier: string) => void;
   /** Changes when a game ends, so the Champion tab drops its search. */
   sessionKey: string;

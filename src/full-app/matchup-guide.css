@@ -14,8 +14,6 @@
 .mg-sources-popover { display: grid; gap: 8px; width: min(360px, calc(100vw - 24px)); max-height: var(--radix-popover-content-available-height); overflow-y: auto; background: var(--ui-surface-2); }
 .mg-sources-popover .mg-source { width: 100%; }
 
-.mg-badge { display: inline-flex; align-items: center; padding: 2px 7px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-xs); }
-.mg-badge.is-reviewed { color: var(--ui-brand); border-color: var(--ui-brand-line); background: var(--ui-surface-3); }
 .mg-fixture { color: var(--ui-text-3); font-size: 13px; }
 .mg-record { display: flex; justify-self: end; align-items: center; width: max-content; gap: 12px; margin-top: -8px; padding: 8px 14px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-surface-2); color: var(--ui-text-2); }
 .mg-record small { font-size: 13px; }

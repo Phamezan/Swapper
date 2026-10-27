@@ -1,7 +1,7 @@
 use std::process::Command;
 use url::Url;
 
-fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
+pub(crate) fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
     let url = Url::parse(raw).map_err(|_| "Invalid guide source URL.".to_string())?;
     if url.scheme() != "https"
         || !url.username().is_empty()

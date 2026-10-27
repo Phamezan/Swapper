@@ -150,9 +150,10 @@ mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
   // ---- glass: exercise contextual draft art inside the real shell (?glass-draft) ----
-  if (shellState.has('glass-draft') && (cmd === 'get_runes' || cmd === 'full_app_draft')) {
+  if ((shellState.has('glass-draft') || shellState.has('draft-guide')) && (cmd === 'get_runes' || cmd === 'full_app_draft')) {
     const { fixtureView, fixtureDraft } = await import('./champ-select-fixtures');
-    return cmd === 'get_runes' ? fixtureView('locked') : fixtureDraft('locked');
+    const fixture = shellState.has('draft-guide') ? 'locked-guide' : 'locked';
+    return cmd === 'get_runes' ? fixtureView(fixture) : fixtureDraft(fixture);
   }
   // ---- end glass draft fixture ----
   switch (cmd) {
@@ -370,7 +371,7 @@ mockIPC(async (cmd, args) => {
     case "get_matchup_guide":
       if (params.has("guide-missing-command")) throw new Error("Unknown command get_matchup_guide");
       if (params.has("guide-null")) return null;
-      return { guide: a.championId === 103 && a.enemyChampionId === 238 && a.position === "mid" ? { ...ahriVsZed, reviewed: !params.has("guide-unreviewed") } : null,
+      return { guide: a.championId === 103 && a.enemyChampionId === 238 && a.position === "mid" ? ahriVsZed : null,
         record: { wins: a.championId === 103 && a.enemyChampionId === 238 ? 5 : 0, losses: a.championId === 103 && a.enemyChampionId === 238 ? 20 : 0 } };
     case "get_champion_overview":
       if (a.championId === 103) return { championId: 103, position: a.position, unavailable: false, damage: null,

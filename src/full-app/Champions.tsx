@@ -40,27 +40,36 @@ const ROW_STEP = 40;
 type SortKey = "rank" | "winPct" | "pickPct" | "banPct" | "games";
 const columns: [SortKey | null, string][] = [["rank", "Rank"], [null, "Champion"], [null, "Role"], [null, "Tier"], ["winPct", "Win rate"], ["pickPct", "Pick rate"], ["banPct", "Ban rate"], ["games", "Games"]];
 
-export default function Champions({ matchups, focus, onSelectionChange }: { matchups: boolean; focus?: { champion: ChampionOption | null } | null; onSelectionChange: (champion: ChampionOption | null) => void }) {
+export type ChampionFocus = { champion: ChampionOption | null; matchup?: { enemy: number; lane: string } };
+
+export default function Champions({ matchups, focus, onSelectionChange }: { matchups: boolean; focus?: ChampionFocus | null; onSelectionChange: (champion: ChampionOption | null) => void }) {
+  const initialMatchup = matchups ? focus?.matchup : undefined;
   // The list's role filter; "auto" lists every champion at its main role.
   const [lane, setLane] = useState("auto");
   // The opened champion's role: the filter's, or its main role under Auto.
-  const [role, setRole] = useState("mid");
+  const [role, setRole] = useState(initialMatchup?.lane ?? "mid");
   const roleLists = useRef(new Map<string, Promise<Record<string, TierRow[]>>>());
   const [tier, setTier] = useState("emerald_plus");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortKey>("rank");
   const [list, setList] = useState<TierListView | null>(null);
   const [champions, setChampions] = useState<ChampionOption[]>([]);
-  const [selected, setSelected] = useState<ChampionOption | null>(null);
+  const [selected, setSelected] = useState<ChampionOption | null>(initialMatchup ? focus?.champion ?? null : null);
   useEffect(() => { onSelectionChange(selected); }, [selected, onSelectionChange]);
   useEffect(() => () => onSelectionChange(null), [onSelectionChange]);
   useAmbientChampion('champion', selected?.id);
-  const [enemy, setEnemy] = useState(0);
+  const [enemy, setEnemy] = useState(initialMatchup?.enemy ?? 0);
   const hasEnemy = enemy > 0;
-  const [matchupTab, setMatchupTab] = useState<MatchupTab>("build");
+  const [matchupTab, setMatchupTab] = useState<MatchupTab>(initialMatchup ? "guide" : "build");
   const [guideSection, setGuideSection] = useState<GuideSectionId>();
   const guideState = useMatchupGuide(matchups ? selected?.id ?? 0 : 0, matchups ? enemy : 0, role);
-  useEffect(() => { setMatchupTab("build"); setGuideSection(undefined); }, [selected?.id, enemy, role]);
+  const pairKey = `${selected?.id}-${enemy}-${role}`;
+  const previousPair = useRef(pairKey);
+  useEffect(() => {
+    if (previousPair.current === pairKey) return;
+    previousPair.current = pairKey;
+    setMatchupTab("build"); setGuideSection(undefined);
+  }, [pairKey]);
   const search = useRef<HTMLInputElement>(null);
   const backToOpponents = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -95,7 +104,7 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
     if (matchups && !enemy) { setShowAll(false); setQuery(""); }
   };
   useEffect(() => () => { ++selectionRequest.current; }, []);
-  useEffect(() => { if (focus) void open(focus.champion); }, [focus]);
+  useEffect(() => { if (focus && !initialMatchup) void open(focus.champion); }, [focus]);
   // Hovering a row starts its downloads; the backend caches them, so the click finds them ready.
   const prefetched = useRef(new Set<string>());
   const prefetch = (championId: number, role: string) => {
@@ -220,7 +229,7 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
   if (matchups && selected && !picking && matchupTab !== "build") return <div className={`champion-tools runes-panel is-matchup-workspace is-matchup-${matchupTab}`} onKeyDown={onKeyDown}>
     {viewTabs}
       <header className="mg-context"><strong>{selected.name} vs {champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent"}</strong><span>{laneLabel(role)}</span>
-        {guideState.guide && <><span>{guideState.guide.difficulty}</span><span className={`mg-badge${guideState.guide.reviewed ? " is-reviewed" : ""}`}>{guideState.guide.reviewed ? "Reviewed" : "Not reviewed"}</span><span>Patch {guideState.guide.patch}</span>{guideState.guide.fixture && <span className="mg-fixture">Fixture content</span>}<GuideSourcesPopover sources={guideState.guide.sources} /></>}
+        {guideState.guide && <><span>{guideState.guide.difficulty}</span><span>Patch {guideState.guide.patch}</span>{guideState.guide.fixture && <span className="mg-fixture">Fixture content</span>}<GuideSourcesPopover sources={guideState.guide.sources} /></>}
       </header>
     {matchupTab === "guide" ? <div id="matchup-view" role="tabpanel" aria-label="Guide" className="mg-guide-view"><MatchupGuideCarousel key={`${selected.id}-${enemy}-${role}`} {...guideState} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} tier={tier} matchup={detail} initialSection={guideSection} /></div>
       : <div id="matchup-view" role="tabpanel" aria-label="VODs" className="mv-view"><MatchupVods key={`${selected.id}-${enemy}-${role}`} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} onGuideSection={section => { setGuideSection(section); setMatchupTab("guide"); }} /></div>}

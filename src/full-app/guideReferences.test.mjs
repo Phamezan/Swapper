@@ -147,3 +147,9 @@ test("header sources popover counts and lists credited authors with the existing
   assert.deepEqual(nodes(tree).filter(node => node.type === "source-chip").map(node => node.props.source), sources);
   assert.equal(h.render({ sources: [] }), null);
 });
+
+test("a backend outdated flag renders a readable warning", () => {
+  const h = harness("./MatchupGuideContent.tsx", "GuideTips", () => null);
+  const tree = h.render({ tips: [{ text: "Hold Charm.", scope: "pair", outdated: true }], sources: [] });
+  assert.match(text(tree), /May be outdated: a champion changed after this tip's patch\./);
+});

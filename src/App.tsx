@@ -78,6 +78,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
           </div>
         ) : view === "runes" ? (
           <RunesSurface
+            onOpenMatchupGuide={fullApp?.onOpenMatchupGuide}
             mode="desktop"
             view={runes}
             loading={runesLoading}

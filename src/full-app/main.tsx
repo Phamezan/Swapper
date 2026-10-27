@@ -21,6 +21,7 @@ import "./full-app.css";
 import { AccountCards } from "./AccountCards";
 import { SettingsPage } from "./SettingsPage";
 import { ChampionSelect } from "./ChampionSelect";
+import type { ChampionFocus } from "./Champions";
 import { PageHeader } from "./ui/PageHeader";
 import { pageLabel } from "./ui/pageNames";
 import { AccountPicker, Podium, SwitchOverlay, type PodiumIdentity } from "./ui/Podium";
@@ -62,7 +63,7 @@ function App() {
   const [appView, setAppView] = useState<View>("accounts");
   const [request, setRequest] = useState<FullAppBridge["request"]>(null);
   const [inChampSelect, setInChampSelect] = useState(false);
-  const [focus, setFocus] = useState<{ champion: ChampionOption | null } | null>(null);
+  const [focus, setFocus] = useState<ChampionFocus | null>(null);
   const [locationChampion, setLocationChampion] = useState<ChampionOption | null>(null);
   const current: Location = page === "app" ? appPageOf(appView) : page;
   const currentRef = useRef(current);
@@ -126,6 +127,7 @@ function App() {
     Accounts: AccountCards,
     Settings: SettingsPage,
     Runes: ChampionSelect,
+    onOpenMatchupGuide: (champion, enemy, lane) => { setFocus({ champion, matchup: { enemy, lane } }); go("Matchups"); },
     onViewChange: setAppView,
     onChampSelectChange: active => {
       setInChampSelect(active);
@@ -335,7 +337,8 @@ function App() {
           : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
-              <Champions key={page} matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion ? null : focus} onSelectionChange={setLocationChampion} />
+              <Champions key={page === "Matchups" && focus?.matchup ? `${page}-${focus.champion?.id}-${focus.matchup.enemy}-${focus.matchup.lane}` : page}
+                matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion && !focus.matchup ? null : focus} onSelectionChange={setLocationChampion} />
             </Suspense>}
       </main>}
     </div>

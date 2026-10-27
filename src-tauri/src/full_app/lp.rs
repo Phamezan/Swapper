@@ -28,7 +28,7 @@ impl AccountRead {
         Ok(Self { epoch, guard })
     }
 
-    fn verify(&self, puuid: &str, verified: &Value) -> Result<(), String> {
+    pub(crate) fn verify(&self, puuid: &str, verified: &Value) -> Result<(), String> {
         if puuid.is_empty() || verified["puuid"].as_str() != Some(puuid)
             || self.guard.is_switching() || self.guard.epoch() != self.epoch {
             return Err("League account changed; refresh the dashboard.".into());

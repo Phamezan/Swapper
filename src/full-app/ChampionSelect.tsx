@@ -9,6 +9,7 @@ import { fmtPct, selectionFromPreset } from "../runes/types";
 import { SpellIcon } from "../runes/SpellIcon";
 import { RoleIcon } from "../runes/RoleIcon";
 import { BuildPanel } from "./BuildPanel";
+import { ChampionSelectMatchup } from "./ChampionSelectMatchup";
 import { DraftBand } from "./ChampionSelectDraft";
 import { PickSuggestions } from "./ChampionSelectPicks";
 import { enemyLaners, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
@@ -130,6 +131,8 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
           {pickers}
           {(["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
         </div>
+        {enemyId > 0 && view.championId > 0 && <ChampionSelectMatchup key={`${view.championId}-${enemyId}-${role}`}
+          champion={{ id: view.championId, name: championName }} enemyId={enemyId} lane={role} onOpenMatchupGuide={props.onOpenMatchupGuide} />}
         <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} loading={!overview && !error} liveView={view} matchups={matchups} proPageSize={3}
           autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
       </>}

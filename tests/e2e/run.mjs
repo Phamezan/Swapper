@@ -13,7 +13,9 @@ import { placeholder, runes } from "./assets.mjs";
 const root = fileURLToPath(new URL("../../", import.meta.url));
 const started = performance.now();
 const capture = process.argv.includes("--screenshots");
-const unknown = process.argv.slice(2).filter(arg => arg !== "--screenshots");
+const matchArg = process.argv.slice(2).find(arg => arg.startsWith("--match="));
+const match = matchArg ? new RegExp(matchArg.slice("--match=".length)) : null;
+const unknown = process.argv.slice(2).filter(arg => arg !== "--screenshots" && arg !== matchArg);
 assert.equal(unknown.length, 0, `Unknown arguments: ${unknown.join(" ")}`);
 assert.ok(Number(process.versions.node.split(".")[0]) >= 22 && typeof WebSocket === "function", "Use Node 22+ with built-in WebSocket");
 const processes = [];
@@ -105,6 +107,7 @@ async function screenshot(name, width = 1280, height = 820) {
 }
 
 async function check(name, work) {
+  if (match && !match.test(name)) return;
   current = name;
   const start = performance.now();
   let failure;
@@ -1462,6 +1465,53 @@ async function main() {
       if (fixture === "locked-blind") await page.wait("!document.querySelector('.cs-toolbar h2 small')", "blind draft has no revealed opponent");
     });
   }
+  await check("Draft matchup summary keeps builds visible and reuses live guide tips", async () => {
+    await navigate(`${draft}?fixture=locked-guide`, '.cs-matchup-guide');
+    await page.text('.cs-toolbar h2', 'Ahri');
+    await page.text('.cs-toolbar h2', 'Zed');
+    await page.text('.cs-matchup-guide > summary', 'Skill matchup');
+    await page.text('.cs-matchup-guide > summary', '5W – 20L');
+    const layout = await page.evaluate(`(() => {
+      const guide = document.querySelector('.cs-matchup-guide');
+      const rune = document.querySelector('.fa-build-section .fa-rune-row');
+      return { open: guide.open, height: guide.getBoundingClientRect().height, runeTop: rune?.getBoundingClientRect().top, viewport: innerHeight };
+    })()`);
+    assert.equal(layout.open, false);
+    assert.ok(layout.height < 90 && layout.runeTop < layout.viewport - 24, JSON.stringify(layout));
+    await screenshot('draft-matchup-guide-collapsed');
+    await page.click('.cs-matchup-guide > summary');
+    await page.visible('.cs-matchup-guide .mg-summary');
+    assert.equal(await page.evaluate("document.querySelectorAll('.cs-matchup-guide .mg-tips > li').length"), 3);
+    await page.text('.cs-matchup-guide .mg-tip-author-name', 'Peng04');
+    await page.text('.cs-matchup-guide .mg-live-cooldown', '20/18.5/17/15.5/14s');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-matchup-guide .mg-deck, .cs-matchup-guide .mg-sources-trigger, .cs-matchup-guide .mg-visual')"), false);
+    await screenshot('draft-matchup-guide-expanded');
+    await page.click('.cs-guide-footer button', 'Open full guide');
+    await page.text('.mg-workspace-tabs [aria-selected="true"]', 'Guide');
+    await page.text('.mg-context strong', 'Ahri vs Zed');
+    await page.text('.mg-context', 'Mid');
+  });
+  await check("Draft without a guide shows only an available record", async () => {
+    await navigate(`${draft}?fixture=locked&record`, '.cs-guide-record-only');
+    await page.text('.cs-guide-record-only', '5W – 20L');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-matchup-guide, .cs-guide-footer')"), false);
+    await navigate(`${draft}?fixture=locked-blind`, '.fa-build-section');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-matchup-guide, .cs-guide-record-only')"), false);
+  });
+  await check("Open full guide navigates the real app to this pair and Guide tab", async () => {
+    await navigate(`${fullApp}?draft-guide`, 'nav[aria-label="Swapper pages"]');
+    await nav('Draft', '.cs-matchup-guide');
+    const runeTop = await page.evaluate("document.querySelector('.fa-build-section .fa-rune-row').getBoundingClientRect().top");
+    assert.ok(runeTop < 820 - 24, `full-app runes must stay in view: ${runeTop}`);
+    await screenshot('draft-matchup-guide-shell');
+    await page.click('.cs-matchup-guide > summary');
+    await page.click('.cs-guide-footer button', 'Open full guide');
+    await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', 'Matchups');
+    await page.text('.mg-workspace-tabs [aria-selected="true"]', 'Guide');
+    await page.text('.mg-context strong', 'Ahri vs Zed');
+    await page.text('.mg-context', 'Mid');
+    await screenshot('draft-open-full-guide');
+  });
   await check("Draft lock busy state and errors", async () => {
     await navigate(`${draft}?fixture=planning&lock-delay&lock-fail`, '.cs-pick');
     await page.type('input[aria-label="Search champion"]', 'Aatrox');
@@ -1637,7 +1687,7 @@ async function main() {
   await check("No late page or console errors", () => page.settle());
 }
 
-try { await main(); }
+try { await main(); assert.ok(results.length > 0, "No browser scenarios matched the requested filter."); }
 catch (error) {
   results.push({ name: current, passed: false, failure: error.stack });
   console.error(`FAIL ${current}: ${error.stack}`);

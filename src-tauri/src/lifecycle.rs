@@ -163,6 +163,7 @@ pub fn observe(app: &AppHandle, previous: Option<&str>, current: &str) {
         });
         tauri::async_runtime::spawn(crate::full_app::lp::record_after_game(app.clone()));
         tauri::async_runtime::spawn(crate::full_app::announce_finished_game(app.clone()));
+        tauri::async_runtime::spawn(crate::matchup_records::after_game(app.clone()));
     }
     let Some(event) = transition(previous, current) else {
         return;

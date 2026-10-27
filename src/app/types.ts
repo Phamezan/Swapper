@@ -92,6 +92,7 @@ export type View = "accounts" | "add" | "edit" | "remove" | "repair" | "settings
 export type FullAppBridge = {
   Accounts?: ComponentType<AccountCardsProps>;
   Runes?: ComponentType<ComponentProps<typeof RunesPanel>>;
+  onOpenMatchupGuide?: ComponentProps<typeof RunesPanel>["onOpenMatchupGuide"];
   Settings?: ComponentType<ComponentProps<typeof SettingsView>>;
   /** A new object navigates once, e.g. from the sidebar. */
   request: { view: View; switchId?: string } | null;
