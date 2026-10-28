@@ -77,6 +77,7 @@ pub(super) struct Section {
 pub(super) enum SourceKind {
     #[serde(rename = "mobafire")] Mobafire,
     #[serde(rename = "sheet")] Sheet,
+    #[serde(rename = "youtube")] Youtube,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
