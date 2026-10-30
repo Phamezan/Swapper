@@ -19,6 +19,41 @@ pub struct Arrow {
 /// above the gold counter, across the HUD's middle.
 const STRIP: (f32, f32, f32, f32) = (0.25, 0.74, 0.75, 0.96);
 
+/// The game's level-up box side and the ability slot pitch, measured at 1080p
+/// (32px boxes, 44px apart). The box is what the hint covers; the pitch is the
+/// fallback before two arrows have shown at once to measure it.
+pub const BOX: f32 = 32.0 / 44.0;
+pub const PITCH_1080: f32 = 44.0;
+
+/// Centre-to-centre distance between ability slots, from arrows `found` over
+/// `slots` (0 = Q, left to right); none with fewer than two arrows.
+pub fn pitch(found: &[Arrow], slots: &[usize]) -> Option<f32> {
+    let centre = |a: &Arrow| a.x as f32 + a.width as f32 / 2.0;
+    let span = slots.last()?.checked_sub(*slots.first()?)?;
+    (found.len() == slots.len() && span > 0).then(|| (centre(&found[found.len() - 1]) - centre(&found[0])) / span as f32)
+}
+
+/// The game's level-up box around `arrow`, as client x, y, width, height. Sized
+/// from the slot pitch: the arrow's lit pixels grow and shrink with its pulse.
+/// The pulse lights the chevron from the bottom up, so its bottom edge and
+/// horizontal centre stay put; the box centre sits 0.11 pitch above that edge.
+pub fn level_box(arrow: Arrow, pitch: f32) -> [i32; 4] {
+    let side = pitch * BOX;
+    let (cx, cy) = (arrow.x as f32 + arrow.width as f32 / 2.0, (arrow.y + arrow.height) as f32 - 0.11 * pitch);
+    [(cx - side / 2.0).round() as i32, (cy - side / 2.0).round() as i32, side.round() as i32, side.round() as i32]
+}
+
+/// `seen` widened to also cover `next` when both are the same arrow. The pulse
+/// lights an uneven part of the chevron on each scan; together they span it all,
+/// so the centre lands on the arrow instead of drifting with the lit side.
+pub fn merge(seen: Arrow, next: Arrow, pitch: f32) -> Arrow {
+    let centre = |a: Arrow| a.x as f32 + a.width as f32 / 2.0;
+    let (x0, y0) = (seen.x.min(next.x), seen.y.min(next.y));
+    let (x1, y1) = ((seen.x + seen.width).max(next.x + next.width), (seen.y + seen.height).max(next.y + next.height));
+    let same = (centre(seen) - centre(next)).abs() < pitch / 2.0 && (x1 - x0) as f32 <= pitch * BOX;
+    if same { Arrow { x: x0, y: y0, width: x1 - x0, height: y1 - y0 } } else { seen }
+}
+
 /// The level-up arrows' gold: bright red and green, little blue.
 fn is_arrow_gold(pixel: u32) -> bool {
     let (r, g, b) = ((pixel >> 16) & 0xFF, (pixel >> 8) & 0xFF, pixel & 0xFF);
@@ -28,7 +63,9 @@ fn is_arrow_gold(pixel: u32) -> bool {
 /// The topmost band of `expected` similar gold blobs in a BGRA strip. Rows with
 /// gold are first split into bands at any vertical gap over 2px, so the arrows' band stays
 /// apart from the ability icons under them; blobs are then split at column gaps.
-pub fn find_in(pixels: &[u32], width: usize, height: usize, expected: usize) -> Vec<Arrow> {
+/// A blob wider than `widest` (the game's box) is never an arrow, such as the buff
+/// icons above them.
+pub fn find_in(pixels: &[u32], width: usize, height: usize, expected: usize, widest: i32) -> Vec<Arrow> {
     if expected == 0 || pixels.len() < width * height {
         return Vec::new();
     }
@@ -69,6 +106,7 @@ pub fn find_in(pixels: &[u32], width: usize, height: usize, expected: usize) -> 
         // text in it is some other part of the HUD.
         let arrow = |b: &Arrow| {
             b.width >= 6
+                && b.width <= widest
                 && b.height >= 3
                 && b.height * 2 <= height as i32
                 && b.width * 2 >= b.height * 3
@@ -94,7 +132,7 @@ fn spans(on: &[bool], join: usize) -> Vec<(usize, usize)> {
 
 /// Captures the strip of the game client and returns `expected` arrows in
 /// client coordinates, left to right, or nothing when they are not all found.
-pub fn find(bounds: Bounds, expected: usize) -> Vec<Arrow> {
+pub fn find(bounds: Bounds, expected: usize, widest: i32) -> Vec<Arrow> {
     let (fx0, fy0, fx1, fy1) = STRIP;
     let x0 = (bounds.width as f32 * fx0) as i32;
     let y0 = (bounds.height as f32 * fy0) as i32;
@@ -106,7 +144,7 @@ pub fn find(bounds: Bounds, expected: usize) -> Vec<Arrow> {
     let Some(pixels) = capture(bounds.x + x0, bounds.y + y0, width, height) else {
         return Vec::new();
     };
-    find_in(&pixels, width as usize, height as usize, expected)
+    find_in(&pixels, width as usize, height as usize, expected, widest)
         .into_iter()
         .map(|a| Arrow {
             x: a.x + x0,
@@ -145,7 +183,7 @@ mod tests {
         // A mixed-size row (a spell icon and an item) never passes as arrows.
         paint(&mut pixels, width, 20, 40, 30, 10);
         paint(&mut pixels, width, 60, 40, 10, 10);
-        let found = find_in(&pixels, width, height, 3);
+        let found = find_in(&pixels, width, height, 3, 32);
         assert_eq!(
             found.iter().map(|a| a.x).collect::<Vec<_>>(),
             vec![20, 60, 100]
@@ -153,11 +191,63 @@ mod tests {
         assert_eq!((found[0].width, found[0].height), (16, 8));
         // A square icon (an item) above the arrows is never taken for a lone arrow.
         paint(&mut pixels, width, 120, 0, 6, 6);
-        assert_eq!(find_in(&pixels, width, height, 3).len(), 3);
-        assert!(find_in(&pixels, width, height, 1).is_empty());
+        assert_eq!(find_in(&pixels, width, height, 3, 32).len(), 3);
+        assert!(find_in(&pixels, width, height, 1, 32).is_empty());
         // A count that does not match any row finds nothing rather than guessing.
-        assert!(find_in(&pixels, width, height, 2).is_empty());
-        assert!(find_in(&vec![DARK; width * height], width, height, 1).is_empty());
+        assert!(find_in(&pixels, width, height, 2, 32).is_empty());
+        assert!(find_in(&vec![DARK; width * height], width, height, 1, 32).is_empty());
+    }
+
+    #[test]
+    fn box_follows_slot_pitch_not_lit_pixels() {
+        let at = |x, width| Arrow { x, y: 100, width, height: 8 };
+        // Q, W, R showing: R is two slots after W, so the pitch is 44 throughout.
+        assert_eq!(pitch(&[at(10, 20), at(54, 20), at(142, 20)], &[0, 1, 3]), Some(44.0));
+        assert_eq!(pitch(&[at(10, 20)], &[1]), None);
+        assert_eq!(pitch(&[], &[0, 1]), None);
+        // A dim pulse lights only part of the chevron; the box stays the same size.
+        assert_eq!(level_box(at(374, 20), 44.0), [368, 87, 32, 32]);
+        assert_eq!(level_box(Arrow { x: 380, y: 104, width: 8, height: 4 }, 44.0), [368, 87, 32, 32]);
+    }
+
+    /// Captured strips with W and E waiting, mid-pulse (1440p and 2160p are the
+    /// 1080p capture upscaled), and the game's W and E box centres measured in each.
+    #[test]
+    fn real_frames_land_on_the_game_boxes_at_every_resolution() {
+        let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("src/overlay/fixtures");
+        for (name, height, centres, middle) in [
+            ("720p", 720.0, [260.0, 289.3], 116.0),
+            ("1080p", 1080.0, [390.5, 434.5], 175.0),
+            ("1440p", 1440.0, [520.7, 579.3], 233.3),
+            ("2160p", 2160.0, [781.0, 869.0], 350.0),
+        ] {
+            let (pixels, width, strip) = super::super::capture::load_png(&dir.join(format!("arrows-{name}.png")));
+            let fallback = PITCH_1080 * height / 1080.0;
+            let widest = (fallback * BOX).ceil() as i32;
+            let found = find_in(&pixels, width, strip, 2, widest);
+            let pitch = pitch(&found, &[1, 2]).unwrap_or_else(|| panic!("{name}: {found:?}"));
+            assert!((pitch - fallback).abs() < fallback * 0.05, "{name}: pitch {pitch}");
+            for (arrow, centre) in found.iter().zip(centres) {
+                let [x, y, side, _] = level_box(*arrow, pitch);
+                let half = side as f32 / 2.0;
+                assert!((x as f32 + half - centre).abs() <= 1.5, "{name}: {arrow:?}");
+                assert!((y as f32 + half - middle).abs() <= 1.5, "{name}: {arrow:?}");
+            }
+            // With one arrow expected, the buff icons above are not taken for it.
+            assert!(find_in(&pixels, width, strip, 1, widest).is_empty(), "{name}");
+        }
+    }
+
+    #[test]
+    fn scans_of_a_pulsing_arrow_merge_to_its_centre() {
+        let at = |x, width| Arrow { x, y: 100, width, height: 8 };
+        // One scan lit only the right of the chevron, the next only the left.
+        let both = merge(at(384, 10), at(374, 12), 44.0);
+        assert_eq!(both, at(374, 20));
+        assert_eq!(level_box(both, 44.0)[0], 368);
+        // Another slot's arrow, or a blob wider than the box, is not merged.
+        assert_eq!(merge(at(374, 20), at(418, 20), 44.0), at(374, 20));
+        assert_eq!(merge(at(374, 20), at(360, 30), 44.0), at(374, 20));
     }
 
     #[test]

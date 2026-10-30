@@ -309,6 +309,9 @@ async fn run(
     let mut lookup: Option<tokio::task::JoinHandle<Option<String>>> = None;
     let mut arrow: Option<[i32; 4]> = None;
     let mut arrow_for = None;
+    let mut seen: Option<arrows::Arrow> = None;
+    // Ability slot pitch last measured from two or more arrows, per client size.
+    let mut slot_pitch: Option<((i32, i32), f32)> = None;
     let mut next_scan = Instant::now();
     let mut scoreboard = scoreboard::Tracker::default();
     let started = Instant::now();
@@ -487,22 +490,36 @@ async fn run(
             if frame.is_none() {
                 visible.gold = None;
             }
-            // Find the game's own level-up arrows while a skill point is waiting, and
-            // keep the first match until the point is spent or the window changes:
-            // the game's arrow pulses, so rescanning would make the hint jump or blink.
+            // Find the game's own level-up arrows while a skill point is waiting. A failed
+            // rescan keeps the last match so the hint never blinks; matches merge, as the
+            // pulse lights a different part of the arrow each time.
             let pending = visible.skill.and_then(|skill| Some((skill, skill_ranks(data)?, bounds.width, bounds.height)));
             if pending != arrow_for {
                 arrow_for = pending;
+                seen = None;
                 arrow = None;
             }
-            if let (Some((skill, (level, ranks), _, _)), None) = (pending, arrow) {
+            if let Some((skill, (level, ranks), _, _)) = pending {
                 if now >= next_scan {
                     next_scan = now + Duration::from_millis(400);
                     let shown = model::levelable(level, ranks);
-                    let keys: Vec<char> = ['Q', 'W', 'E', 'R'].into_iter().zip(shown).filter(|(_, on)| *on).map(|(key, _)| key).collect();
-                    let found = arrows::find(bounds, keys.len());
-                    arrow = keys.iter().position(|key| *key == skill).and_then(|i| found.get(i)).map(|a| [a.x, a.y, a.width, a.height]);
+                    let slots: Vec<usize> = (0..4).filter(|&i| shown[i]).collect();
+                    let size = (bounds.width, bounds.height);
+                    let known = slot_pitch
+                        .filter(|(at, _)| *at == size)
+                        .map_or(arrows::PITCH_1080 * bounds.height as f32 / 1080.0, |(_, p)| p);
+                    let found = arrows::find(bounds, slots.len(), (known * arrows::BOX).ceil() as i32);
+                    let pitch = arrows::pitch(&found, &slots).unwrap_or(known);
+                    slot_pitch = Some((size, pitch));
+                    let slot = ['Q', 'W', 'E', 'R'].iter().position(|key| *key == skill);
+                    let next = slots.iter().position(|s| Some(*s) == slot).and_then(|i| found.get(i));
+                    if let Some(next) = next {
+                        seen = Some(seen.map_or(*next, |old| arrows::merge(old, *next, pitch)));
+                    }
+                    arrow = seen.map(|a| arrows::level_box(a, pitch));
                 }
+            } else {
+                arrow = None;
             }
             visible.arrow = arrow;
             // Redraws at the 20 Hz tick only while the hint shows, to animate its diamonds.
