@@ -12,7 +12,7 @@ import { BuildPanel } from "./BuildPanel";
 import { DraftBand } from "./ChampionSelectDraft";
 import { PickSuggestions } from "./ChampionSelectPicks";
 import { enemyLaners, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
-import { mainRoles, ROLES } from "./championsModel";
+import { ROLES } from "./championsModel";
 import { Picker, RankPicker, ROLES as ROLE_OPTIONS } from "./Picker";
 import { Notice } from "./ui/States";
 import { fmtCount } from "./ui/format";
@@ -86,8 +86,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
       .then(entries => { if (live) setRoleLists(Object.fromEntries(entries)); });
     return () => { live = false; };
   }, [tier]);
-  const mains = useMemo(() => mainRoles(roleLists), [roleLists]);
-  const enemyIds = draft ? enemyLaners(draft.value, role, roleLists[role]) : view?.enemyChampionId ? [view.enemyChampionId] : [];
+  const enemyIds = draft ? enemyLaners(draft.value, role, roleLists) : view?.enemyChampionId ? [view.enemyChampionId] : [];
   // One known laner drives counters and cooldowns; several candidates each get a build tab to choose from.
   const enemyId = enemyIds.length === 1 ? enemyIds[0] : 0;
   const enemyKey = enemyIds.join(",");
@@ -118,7 +117,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const notices = <>{props.error && <Notice tone="error">{props.error}</Notice>}{error && <Notice tone="error">{error}</Notice>}</>;
   return <div className={`fa-draft-page dash-scope is-${mode}`}>
     {!view || mode === "idle" ? <>{notices}<section className="fa-card fa-draft-empty"><div className="fa-draft-emblem"><DraftIcon size={52} strokeWidth={1.25} /></div><h2>{props.loading ? "Connecting…" : "Waiting for draft"}</h2><div className="fa-draft-placeholder-team">{([["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] as const).map(([role, label]) => <span key={role}><RoleIcon role={role} size={26} mode="desktop" /><small>{label}</small></span>)}</div></section></> : <>
-      <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyIds={enemyIds} mainRoles={mains} />
+      <DraftBand draft={draft?.value ?? null} readAt={draft?.at ?? 0} names={names} enemyIds={enemyIds} roleLists={roleLists} />
       <div className="cs-workspace">
       {notices}
       {mode === "planning" ? <div className="cs-planning">

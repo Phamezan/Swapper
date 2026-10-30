@@ -29,10 +29,15 @@ test("the enemy laner is the revealed enemy in your role, or the only one in bli
   const blind = { allies: [], bans: [], timer: null, enemies: [{ championId: 7, position: "", local: false, locked: true }] };
   assert.deepEqual(enemyLaners(blind, ""), [7]);
   assert.deepEqual(enemyLaners({ ...blind, enemies: [...blind.enemies, { championId: 8, position: "", local: false, locked: true }] }, ""), []);
-  // Ranked: no enemy positions, so every enemy who plays your role (1%+ of its games) is a candidate, likeliest first.
-  const ranked = { ...blind, enemies: [18, 203, 201, 84].map(championId => ({ championId, position: "", local: false, locked: true })) };
-  const row = (championId, pickPct) => ({ championId, name: "", tier: "A", winPct: 50, pickPct, banPct: 0, games: 1000 });
-  assert.deepEqual(enemyLaners(ranked, "jungle", [row(18, 1.2), row(203, 6), row(84, 0.4), row(99, 9)]), [203, 18]);
+  // Ranked: no enemy positions, so every enemy who plays your role in 5%+ of its own games is a candidate,
+  // the one the team's role assignment puts there first. Karthus (30) beside Shyvana (102) is bot, not jungle.
+  const ranked = { ...blind, enemies: [30, 102, 16, 84].map(championId => ({ championId, position: "", local: false, locked: true })) };
+  const row = (championId, games) => ({ championId, name: "", tier: "A", winPct: 50, pickPct: 1, banPct: 0, games });
+  const lists = { top: [row(102, 5000), row(84, 2000)], jungle: [row(30, 30000), row(102, 60000)], mid: [row(84, 50000)], adc: [row(30, 8000)], support: [row(16, 90000)] };
+  assert.deepEqual(enemyLaners(ranked, "adc", lists), [30]);
+  assert.deepEqual(enemyLaners(ranked, "jungle", lists), [102, 30]);
+  // Soraka (16) never counts as a top laner; Akali (84, 4% top) is below the cut.
+  assert.deepEqual(enemyLaners(ranked, "top", lists), [102]);
   assert.deepEqual(enemyLaners(ranked, "jungle"), []);
 });
 

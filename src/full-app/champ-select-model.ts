@@ -1,5 +1,6 @@
 import type { Applied, CounterRow, RunesView, Selection, TierRow } from "../runes/types";
 import type { RecommendedPick } from "./types";
+import { assignRoles, ROLES, roleShares } from "./championsModel.ts";
 
 export type DraftMember = { championId: number; position: string; local: boolean; locked: boolean };
 export type Draft = { allies: DraftMember[]; enemies: DraftMember[]; bans: number[]; allyBans?: number[]; enemyBans?: number[]; canLock?: boolean; /** On your ban turn: the champion hovered to ban, 0 for none yet. */ banTurn?: number; pickable?: number[]; timer: { phase: string; remainingMs: number } | null };
@@ -23,20 +24,25 @@ const LCU_ROLES: Record<string, string> = { top: "top", jungle: "jungle", middle
 /** LCU `assignedPosition` ("middle", "utility") to Swapper's role slug ("mid", "support"). */
 export const roleSlug = (position: string) => LCU_ROLES[position.trim().toLowerCase()] ?? "";
 
-/** Below this share of a role's games a champion does not play it (as `FLEX_MIN_PICK_PCT` in blind.rs). */
-const MIN_ROLE_PICK_PCT = 1;
+/** Below this share of its own games in a role, a champion is not a lane opponent there
+ *  (Karthus bot counts, a support in top does not). */
+const MIN_ROLE_SHARE = 0.05;
 
 /** The revealed enemies who may be in your lane: the one in your role, or the only revealed enemy in blind pick.
- *  Ranked hides enemy positions, so then it is every enemy who plays your role in `roleRows` (your role's tier list),
- *  likeliest first, for you to choose between. Empty when unknown. */
-export function enemyLaners(draft: Draft | null, role: string, roleRows: TierRow[] = []): number[] {
+ *  Ranked hides enemy positions, so then it is every unplaced enemy who plays your role in enough of its games
+ *  (from the per-role tier lists), the one the team's role assignment puts there first, for you to choose between.
+ *  Empty when unknown. */
+export function enemyLaners(draft: Draft | null, role: string, lists: Record<string, TierRow[]> = {}): number[] {
   const revealed = (draft?.enemies ?? []).filter(member => member.championId > 0);
   if (!role || role === "none") return revealed.length === 1 && !revealed[0].position ? [revealed[0].championId] : [];
   const assigned = revealed.find(member => roleSlug(member.position) === role)?.championId;
   if (assigned) return [assigned];
-  const unplaced = new Set(revealed.filter(member => !member.position).map(member => member.championId));
-  return roleRows.filter(row => unplaced.has(row.championId) && row.pickPct >= MIN_ROLE_PICK_PCT)
-    .sort((a, b) => b.pickPct - a.pickPct).map(row => row.championId);
+  const slot = ROLES.indexOf(role as typeof ROLES[number]);
+  const roles = assignRoles(revealed.map(member => ({ championId: member.championId, role: roleSlug(member.position) })), lists);
+  return revealed.filter(member => !member.position)
+    .map(member => ({ id: member.championId, share: roleShares(member.championId, lists)[slot] ?? 0, first: roles[revealed.indexOf(member)] === role }))
+    .filter(laner => laner.share >= MIN_ROLE_SHARE)
+    .sort((a, b) => Number(b.first) - Number(a.first) || b.share - a.share).map(laner => laner.id);
 }
 
 /** Banned and locked champions, which can no longer be hovered. */
