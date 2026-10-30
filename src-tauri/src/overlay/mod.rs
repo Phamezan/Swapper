@@ -309,8 +309,9 @@ async fn run(
     let mut lookup: Option<tokio::task::JoinHandle<Option<String>>> = None;
     let mut arrow: Option<[i32; 4]> = None;
     let mut arrow_for = None;
-    let mut seen: Option<arrows::Arrow> = None;
-    // Ability slot pitch last measured from two or more arrows, per client size.
+    let mut seen: Option<(arrows::Arrow, f32)> = None;
+    // Slot pitch measured from the spacing of two or more arrows, per client size: a lone
+    // arrow must match it, so gold elsewhere cannot pass for one.
     let mut slot_pitch: Option<((i32, i32), f32)> = None;
     let mut next_scan = Instant::now();
     let mut scoreboard = scoreboard::Tracker::default();
@@ -504,19 +505,20 @@ async fn run(
                     next_scan = now + Duration::from_millis(400);
                     let shown = model::levelable(level, ranks);
                     let slots: Vec<usize> = (0..4).filter(|&i| shown[i]).collect();
-                    let size = (bounds.width, bounds.height);
-                    let known = slot_pitch
-                        .filter(|(at, _)| *at == size)
-                        .map_or(arrows::PITCH_1080 * bounds.height as f32 / 1080.0, |(_, p)| p);
-                    let found = arrows::find(bounds, slots.len(), (known * arrows::BOX).ceil() as i32);
-                    let pitch = arrows::pitch(&found, &slots).unwrap_or(known);
-                    slot_pitch = Some((size, pitch));
                     let slot = ['Q', 'W', 'E', 'R'].iter().position(|key| *key == skill);
-                    let next = slots.iter().position(|s| Some(*s) == slot).and_then(|i| found.get(i));
-                    if let Some(next) = next {
-                        seen = Some(seen.map_or(*next, |old| arrows::merge(old, *next, pitch)));
+                    let size = (bounds.width, bounds.height);
+                    let known = slot_pitch.filter(|(at, _)| *at == size).map(|(_, pitch)| pitch);
+                    let found = arrows::find(bounds, &slots, known);
+                    if let Some((_, pitch)) = found.as_ref().filter(|(row, _)| row.len() > 1) {
+                        slot_pitch = Some((size, *pitch));
                     }
-                    arrow = seen.map(|a| arrows::level_box(a, pitch));
+                    let next = found.and_then(|(found, pitch)| {
+                        Some((*slots.iter().position(|s| Some(*s) == slot).and_then(|i| found.get(i))?, pitch))
+                    });
+                    if let Some((next, pitch)) = next {
+                        seen = Some((seen.map_or(next, |(old, _)| arrows::merge(old, next, pitch)), pitch));
+                    }
+                    arrow = seen.map(|(a, pitch)| arrows::level_box(a, pitch));
                 }
             } else {
                 arrow = None;
