@@ -78,6 +78,7 @@ pub(super) enum SourceKind {
     #[serde(rename = "mobafire")] Mobafire,
     #[serde(rename = "sheet")] Sheet,
     #[serde(rename = "youtube")] Youtube,
+    #[serde(rename = "web")] Web,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]

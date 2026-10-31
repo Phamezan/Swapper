@@ -24,7 +24,7 @@ export type GuideSource = {
   author: string;
   rankClaim: string;
   url: string;
-  kind: "mobafire" | "sheet" | "youtube";
+  kind: "mobafire" | "sheet" | "youtube" | "web";
 };
 // The Markdown compiler emits one flat JSON object per champion/enemy/lane.
 export type MatchupGuide = {
