@@ -23,6 +23,14 @@ test("offline sync preserves exact compiled bytes and rejects mismatches before 
     await writeFile(indexPath, JSON.stringify(index));
     await assert.rejects(syncGuides(source, destination), /SHA-256/);
     assert.deepEqual(await readFile(join(destination, "index.json")), originalIndex);
+    const generalOnly = Buffer.from('{"schema":1,"champion":103,"generatedAt":"2026-10-27","guides":[],"general":[{"champion":103}]}');
+    await writeFile(join(source, "champions", "103.json"), generalOnly);
+    index.champions["103"] = { sha256: createHash("sha256").update(generalOnly).digest("hex"), guides: 0, general: 1 };
+    await writeFile(indexPath, JSON.stringify(index));
+    assert.equal(await syncGuides(source, destination), 1);
+    index.champions["103"].general = 0;
+    await writeFile(indexPath, JSON.stringify(index));
+    await assert.rejects(syncGuides(source, destination), /Invalid champion entry/);
     index.champions = { "../private": { sha256: "0".repeat(64), guides: 1 } };
     await writeFile(indexPath, JSON.stringify(index));
     await assert.rejects(syncGuides(source, destination), /Invalid champion/);
