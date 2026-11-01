@@ -37,6 +37,7 @@ export function MatchupGuideCarousel({ guide, loading, abilities, champion, enem
   useEffect(() => { tabs.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: "nearest", inline: "nearest" }); }, [index]);
   const count = GUIDE_SECTIONS.length;
   return <section className="mg-deck" aria-label="Matchup guide">
+    {guide && guide.enemy === undefined && <p className="mg-no-written-guide">General {champion.name} guide · no {enemy.name} matchup guide yet</p>}
     <div ref={tabs} className="mg-tabs" role="tablist" aria-label="Guide sections">{GUIDE_SECTIONS.map(([key, label], i) =>
       <button key={key} id={`${id}-tab-${key}`} role="tab" aria-selected={i === index} aria-controls={`${id}-panel-${key}`} tabIndex={i === index ? 0 : -1} onClick={() => setIndex(i)}>{label}</button>)}
     </div>

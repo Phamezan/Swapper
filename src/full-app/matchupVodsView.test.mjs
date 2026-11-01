@@ -127,3 +127,12 @@ test("opening a guide from a VOD starts on the requested slide", () => {
   assert.equal(text(nodes(tree).find(node => node.props.role === "tab" && node.props["aria-selected"])), "Mid lane");
   assert.equal(nodes(tree).filter(node => node.props.role === "tabpanel" && !node.props.hidden).length, 1);
 });
+
+test("general fallback is labelled above the existing carousel sections", () => {
+  const guide = { champion: 103, lane: "mid", keyTips: [] };
+  const h = harness("./MatchupGuideCarousel.tsx", "MatchupGuideCarousel");
+  const tree = h.render({ ...props, guide, loading: false, abilities: {}, tier: "emerald_plus", matchup: null });
+  assert.match(text(tree), /General Ahri guide \u00b7 no Zed matchup guide yet/);
+  assert.equal(nodes(tree).find(n => n.type === "summary").props.guide, guide);
+  assert.equal(nodes(tree).filter(n => n.type === "guide-content").length, 3);
+});

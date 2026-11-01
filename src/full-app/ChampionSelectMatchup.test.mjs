@@ -18,7 +18,7 @@ function render(state) {
   const exports = {};
   new Function("require", "exports", code)(key => modules[key] ?? {}, exports);
   const opened = [];
-  const tree = exports.ChampionSelectMatchup({ champion: { id: 103, name: "Ahri" }, enemyId: 238, lane: "mid", onOpenMatchupGuide: (...args) => opened.push(args) });
+  const tree = exports.ChampionSelectMatchup({ champion: { id: 103, name: "Ahri" }, enemyId: 238, enemyName: "Zed", lane: "mid", onOpenMatchupGuide: (...args) => opened.push(args) });
   return { tree, calls, opened };
 }
 function nodes(tree) {
@@ -52,4 +52,12 @@ test("the compact guide reuses the shared summary and opens the exact pair and l
   nodes(h.tree).find(n => n.type === "button").props.onClick();
   assert.deepEqual(h.opened, [[{ id: 103, name: "Ahri" }, 238, "mid"]]);
   assert.doesNotMatch(text(render({ guide: ahriVsZed, record: { wins: 0, losses: 0 } }).tree), /Your record|0W|0L/);
+});
+
+test("general guides are labelled and omit the matchup outlook", () => {
+  const { enemy, difficulty, favoredWhen, enemyTips, ...general } = ahriVsZed;
+  const h = render({ guide: general, record: null, abilities: {} });
+  assert.match(text(h.tree), /General Ahri guide \u00b7 no Zed matchup guide yet/);
+  assert.equal(nodes(h.tree).some(n => n.props.className === "cs-guide-difficulty" || n.props.className === "cs-guide-outlook"), false);
+  assert.equal(nodes(h.tree).find(n => n.type === "shared-summary").props.guide, general);
 });

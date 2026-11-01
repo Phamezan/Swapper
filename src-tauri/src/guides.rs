@@ -141,14 +141,18 @@ async fn guide(champion: i64, enemy: i64, position: Lane) -> Option<Guide> {
     let client = reqwest::Client::builder().connect_timeout(Duration::from_secs(3)).timeout(Duration::from_secs(8))
         .redirect(reqwest::redirect::Policy::none()).user_agent("Swapper/1.0 (matchup guides)").build().ok()?;
     let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
-    let mut guide = cache.lock().await.champion(&client, champion, now).await.into_iter()
-        .find(|g| g.enemy == enemy && g.lane == position)?;
+    let mut guide = select_guide(cache.lock().await.champion(&client, champion, now).await, enemy, position)?;
     mark_outdated(&mut guide).await;
     Some(guide)
 }
 
+fn select_guide(guides: Vec<Guide>, enemy: i64, position: Lane) -> Option<Guide> {
+    guides.iter().find(|g| g.enemy == Some(enemy) && g.lane == position)
+        .or_else(|| guides.iter().find(|g| g.enemy.is_none() && g.lane == position)).cloned()
+}
+
 fn flag_tips(guide: &mut Guide, changes: &[(String, Vec<i64>)]) {
-    let (champion, enemy, patch) = (guide.champion, guide.enemy, guide.patch.clone());
+    let (champion, enemy, patch) = (guide.champion, guide.enemy.unwrap_or(guide.champion), guide.patch.clone());
     for tip in guide.tips_mut() {
         // Cooldowns resolve from live game data; never attach a stale-data warning to them.
         if tip.text.contains("{cd:") { continue; }

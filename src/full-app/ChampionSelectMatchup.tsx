@@ -3,8 +3,8 @@ import type { RunesPanelProps } from "../runes/RunesPanelProps";
 import { MatchupGuideSummary } from "./MatchupGuideSummary";
 import { useMatchupGuide } from "./useMatchupGuide";
 
-export function ChampionSelectMatchup({ champion, enemyId, lane, onOpenMatchupGuide }: {
-  champion: ChampionOption; enemyId: number; lane: string;
+export function ChampionSelectMatchup({ champion, enemyId, enemyName, lane, onOpenMatchupGuide }: {
+  champion: ChampionOption; enemyId: number; enemyName: string; lane: string;
   onOpenMatchupGuide?: RunesPanelProps["onOpenMatchupGuide"];
 }) {
   const { guide, record, abilities } = useMatchupGuide(champion.id, enemyId, lane);
@@ -15,8 +15,8 @@ export function ChampionSelectMatchup({ champion, enemyId, lane, onOpenMatchupGu
   </span>;
   if (!guide) return <div className="cs-guide-record-only">{recordLine}</div>;
   return <details className="cs-matchup-guide">
-    <summary><span className="cs-guide-heading">Matchup guide <span className="cs-guide-difficulty">{guide.difficulty}</span>{recordLine}</span>
-      <span className="cs-guide-outlook">{guide.favoredWhen}</span></summary>
+    <summary><span className="cs-guide-heading">{guide.enemy === undefined ? `General ${champion.name} guide · no ${enemyName} matchup guide yet` : <>Matchup guide <span className="cs-guide-difficulty">{guide.difficulty}</span></>}{recordLine}</span>
+      {guide.enemy !== undefined && <span className="cs-guide-outlook">{guide.favoredWhen}</span>}</summary>
     <div className="cs-guide-reading"><MatchupGuideSummary guide={guide} abilities={abilities} /></div>
     <div className="cs-guide-footer"><button type="button" disabled={!onOpenMatchupGuide}
       onClick={() => onOpenMatchupGuide?.(champion, enemyId, lane)}>Open full guide</button></div>

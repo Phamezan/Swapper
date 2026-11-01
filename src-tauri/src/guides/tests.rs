@@ -178,3 +178,83 @@ async fn missing_repository_uses_a_verified_bundled_snapshot_or_no_guide() {
     server.publish(vec![b'x';MAX_CHAMPION_BYTES+1]);
     assert_eq!(cache.champion(&client,103,100_000+REFRESH_SECONDS).await.len(),1,"oversized network data falls back to the bundle");
 }
+
+fn general() -> Value {
+    let mut value = guide();
+    for field in ["enemy", "difficulty", "favoredWhen", "enemyTips"] { value.as_object_mut().unwrap().remove(field); }
+    for tip in value["keyTips"].as_array_mut().unwrap() {
+        tip["scope"] = json!("champion");
+        tip["text"] = json!("Hold {cd:103:E}.");
+    }
+    value
+}
+
+fn with_general(guides: Vec<Value>, general: Vec<Value>) -> Vec<u8> {
+    let mut file: Value = serde_json::from_slice(&champion_bytes(guides)).unwrap();
+    file["general"] = json!(general);
+    serde_json::to_vec(&file).unwrap()
+}
+
+#[test]
+fn general_guides_parse_without_breaking_old_files_or_the_index() {
+    assert_eq!(parse_champion(&champion_bytes(vec![guide()]), 103).unwrap().len(), 1);
+    let parsed = parse_champion(&with_general(vec![guide()], vec![general()]), 103).unwrap();
+    assert_eq!(parsed.len(), 2);
+    let rendered = serde_json::to_value(&parsed[1]).unwrap();
+    assert_eq!(rendered, general());
+    let index = json!({"schema":1,"generatedAt":"x","champions":{"103":{"sha256":"a".repeat(64),"guides":0,"general":1}}});
+    assert!(parse_index(&serde_json::to_vec(&index).unwrap()).is_some());
+    let mut empty = index;
+    empty["champions"]["103"]["general"] = json!(0);
+    assert!(parse_index(&serde_json::to_vec(&empty).unwrap()).is_none());
+}
+
+#[test]
+fn general_guides_validate_participants_scope_and_duplicate_lanes() {
+    for (field, value) in [("abilityKeys", json!([{"champion":238,"key":"W"}])),
+        ("text", json!("Wait for {cd:238:W}.")), ("scope", json!("pair")),
+        ("sourceIds", json!(["missing"]))] {
+        let mut bad = general();
+        bad["keyTips"][0][field] = value;
+        let parsed = parse_champion(&with_general(vec![guide()], vec![bad]), 103).unwrap();
+        assert_eq!(parsed.len(), 1, "{field}");
+    }
+    assert!(parse_champion(&with_general(vec![], vec![general(), general()]), 103).unwrap().is_empty());
+}
+
+#[test]
+fn selection_prefers_pair_then_general_for_the_lane_then_none() {
+    let mut top_pair = guide(); top_pair["lane"] = json!("top");
+    let mut top_general = general(); top_general["lane"] = json!("top");
+    let bytes = with_general(vec![guide(), top_pair], vec![general(), top_general]);
+    let guides = parse_champion(&bytes, 103).unwrap();
+    let pair = select_guide(guides.clone(), 238, Lane::Mid).unwrap();
+    assert_eq!(pair.enemy, Some(238));
+    assert_eq!(pair.lane, Lane::Mid);
+    let fallback = select_guide(guides.clone(), 7, Lane::Mid).unwrap();
+    assert_eq!(fallback.enemy, None);
+    assert_eq!(fallback.lane, Lane::Mid);
+    assert!(select_guide(guides.clone(), 238, Lane::Support).is_none());
+    assert!(select_guide(guides, 7, Lane::Jungle).is_none());
+    let only_general = parse_champion(&with_general(vec![], vec![general()]), 103).unwrap();
+    assert!(select_guide(only_general, 238, Lane::Mid).unwrap().enemy.is_none());
+    let only_pair = parse_champion(&champion_bytes(vec![guide()]), 103).unwrap();
+    assert!(select_guide(only_pair, 7, Lane::Mid).is_none());
+}
+
+#[test]
+fn general_outdated_flags_only_follow_the_champion_and_respect_live_cooldowns() {
+    let mut value = general();
+    value["keyTips"][0]["text"] = json!("Hold Charm.");
+    value["keyTips"][0]["outdated"] = json!(true);
+    value["keyTips"][1]["text"] = json!("Keep your escape.");
+    value["keyTips"][1]["patch"] = json!("26.22");
+    let mut guide = parse_champion(&with_general(vec![], vec![value]), 103).unwrap().remove(0);
+    flag_tips(&mut guide, &[("26.21".into(), vec![238])]);
+    assert!(serde_json::to_value(&guide).unwrap()["keyTips"][0].get("outdated").is_none());
+    flag_tips(&mut guide, &[("26.21".into(), vec![103])]);
+    let rendered = serde_json::to_value(&guide).unwrap();
+    assert_eq!(rendered["keyTips"][0]["outdated"], true);
+    assert!(rendered["keyTips"][1].get("outdated").is_none());
+    assert!(rendered["keyTips"][2].get("outdated").is_none());
+}

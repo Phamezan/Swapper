@@ -1,10 +1,10 @@
 import type { ChampionBuild, MatchupView } from "../runes/types";
 import { GuideTips, type GuideAbilities } from "./MatchupGuideContent";
-import { itemChanges, type MatchupGuide } from "./matchupGuide";
+import { itemChanges, type AuthoredGuide } from "./matchupGuide";
 import { fmtCount } from "./ui/format";
 
 export function MatchupItemization({ detail, usual, guide, abilities }: {
-  detail: MatchupView | null; usual: ChampionBuild | null; guide: MatchupGuide | null; abilities: GuideAbilities;
+  detail: MatchupView | null; usual: ChampionBuild | null; guide: AuthoredGuide | null; abilities: GuideAbilities;
 }) {
   const changes = usual && detail?.build && !detail.fallback ? itemChanges(usual.items.items, detail.build.items) : [];
   return <section className="ui-card mg-itemization" aria-label="Itemization">

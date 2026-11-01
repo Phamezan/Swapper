@@ -7,7 +7,7 @@ export type GuideTip = {
   heading?: string;
   /** Live base cooldown per rank: {cd:championId:Q|W|E|R}. */
   text: string;
-  scope: "enemy" | "pair";
+  scope: "enemy" | "pair" | "champion";
   sourceIds?: string[];
   patch?: string;
   abilityKeys?: { champion: number; key: "P" | "Q" | "W" | "E" | "R" }[];
@@ -42,8 +42,13 @@ export type MatchupGuide = {
   itemization: GuideTip[];
   sources: GuideSource[];
 };
+// An absent enemy distinguishes a general guide from a pair guide.
+export type GeneralGuide = Omit<MatchupGuide, "enemy" | "difficulty" | "favoredWhen" | "enemyTips"> & {
+  enemy?: never; difficulty?: never; favoredWhen?: never; enemyTips?: never;
+};
+export type AuthoredGuide = MatchupGuide | GeneralGuide;
 // Player history belongs to the response, never the authored guide.
-export type MatchupGuideResult = { guide: MatchupGuide | null; record: { wins: number; losses: number } | null };
+export type MatchupGuideResult = { guide: AuthoredGuide | null; record: { wins: number; losses: number } | null };
 
 export type MatchupVod = {
   videoId: string;

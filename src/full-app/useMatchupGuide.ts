@@ -28,6 +28,6 @@ export function useMatchupGuide(champion: number, enemy: number, lane: string) {
     return () => { live = false; void stop.then(unlisten => unlisten()); };
   }, [champion, enemy, lane, key, active]);
   const result = active && response?.key === key ? response.value : null;
-  const guide = result?.guide?.champion === champion && result.guide.enemy === enemy && result.guide.lane === lane ? result.guide : null;
+  const guide = result?.guide?.champion === champion && (result.guide.enemy === undefined || result.guide.enemy === enemy) && result.guide.lane === lane ? result.guide : null;
   return { guide, record: result?.record, abilities, loading: active && done !== key };
 }

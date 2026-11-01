@@ -52,3 +52,11 @@ test("record pushes refresh an open guide and older reads cannot replace the new
   await h.flush();
   assert.equal(h.listeners.size, 0);
 });
+
+test("general guides are accepted only for the requested champion and lane", async () => {
+  for (const guide of [{ champion: 103, lane: "mid" }, { champion: 238, lane: "mid" }, { champion: 103, lane: "top" }]) {
+    const h = harness(); h.render();
+    h.requests[0].resolve({ guide, record: null });
+    assert.equal((await h.flush()).guide, guide.champion === 103 && guide.lane === "mid" ? guide : null);
+  }
+});

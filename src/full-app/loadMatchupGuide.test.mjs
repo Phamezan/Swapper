@@ -60,3 +60,10 @@ test("production never imports the fixture on missing, failed or fixture-tagged 
     assert.equal(h.fixtureLoads(), 0);
   }
 });
+
+test("a general guide takes precedence over the development fixture", async () => {
+  const response = { guide: { champion: 103, lane: "mid", reviewed: true }, record: null };
+  const h = harness(true, response);
+  assert.equal(await h.load(103, 238, "mid"), response);
+  assert.equal(h.fixtureLoads(), 0);
+});

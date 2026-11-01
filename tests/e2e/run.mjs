@@ -1512,6 +1512,30 @@ async function main() {
     await page.text('.mg-context', 'Mid');
     await screenshot('draft-open-full-guide');
   });
+  await check("General guide fallback renders in Draft and the Matchups carousel", async () => {
+    await navigate(`${fullApp}?draft-guide`, 'nav[aria-label="Swapper pages"]');
+    await page.evaluate(`(() => {
+      const invoke = window.__TAURI_INTERNALS__.invoke;
+      const tip = { scope: "champion", text: "General Ahri advice." };
+      const guide = { champion: 103, lane: "mid", patch: "26.20", reviewed: true,
+        keyTips: [tip, tip, tip], itemization: [], sources: [],
+        sections: Object.fromEntries(["overview", "early-lane", "mid-lane", "win-condition"].map(id => [id, { tips: [tip] }])) };
+      window.__TAURI_INTERNALS__.invoke = (cmd, args, options) => cmd === "get_matchup_guide"
+        ? Promise.resolve({ guide, record: null }) : invoke(cmd, args, options);
+    })()`);
+    await nav('Draft', '.cs-matchup-guide');
+    await page.text('.cs-matchup-guide > summary', 'General Ahri guide · no Zed matchup guide yet');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-guide-difficulty, .cs-guide-outlook')"), false);
+    await page.click('.cs-matchup-guide > summary');
+    await page.text('.cs-guide-reading', 'General Ahri advice.');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-guide-reading .mg-summary-outlook')"), false);
+    await page.click('.cs-guide-footer button', 'Open full guide');
+    await page.text('.mg-deck', 'General Ahri guide · no Zed matchup guide yet');
+    await page.text('.mg-slide:not([hidden])', 'General Ahri advice.');
+    assert.equal(await page.evaluate("!!document.querySelector('.mg-summary-outlook, .mg-context .mg-difficulty')"), false);
+    await page.click('.mg-tabs [role="tab"]', 'Win condition');
+    await page.text('.mg-slide:not([hidden])', 'General Ahri advice.');
+  });
   await check("Draft lock busy state and errors", async () => {
     await navigate(`${draft}?fixture=planning&lock-delay&lock-fail`, '.cs-pick');
     await page.type('input[aria-label="Search champion"]', 'Aatrox');

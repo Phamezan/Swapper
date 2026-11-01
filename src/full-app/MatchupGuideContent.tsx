@@ -3,7 +3,7 @@ import { GuideItem } from "./GuideItem";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { Notice } from "./ui/States";
 import { GuideTipText } from "./GuideTipText";
-import type { GuideSource, GuideTip, GuideSectionId, MatchupGuide } from "./matchupGuide";
+import type { GuideSource, GuideTip, GuideSectionId, AuthoredGuide } from "./matchupGuide";
 
 export type GuideAbilities = Record<number, { key: string; name: string; icon: string | null }[]>;
 
@@ -37,10 +37,10 @@ export function GuideTips({ tips, sources, abilities = {} }: { tips: GuideTip[];
   </li>)}</ol>;
 }
 
-export function GuideSectionContent({ guide, section, abilities }: { guide: MatchupGuide; section: GuideSectionId; abilities: GuideAbilities }) {
+export function GuideSectionContent({ guide, section, abilities }: { guide: AuthoredGuide; section: GuideSectionId; abilities: GuideAbilities }) {
   const content = guide.sections[section];
   return <div className="mg-section-content">
-    <GuideTips tips={[...content.tips, ...(guide.enemyTips[section] ?? [])]} sources={guide.sources} abilities={abilities} />
+    <GuideTips tips={[...content.tips, ...(guide.enemyTips?.[section] ?? [])]} sources={guide.sources} abilities={abilities} />
     {content.alternatives && <div className="mg-alternatives">{content.alternatives.map(style => {
       const source = guide.sources.find(source => source.id === style.sourceId);
       return <section className="ui-well" key={style.title}>
