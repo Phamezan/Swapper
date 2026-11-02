@@ -141,8 +141,10 @@ async fn fetch(client: &reqwest::Client, url: &str, limit: usize) -> Option<Vec<
 async fn champion_content(champion: i64) -> Option<Vec<u8>> {
     // ponytail: one fetch lock coalesces IPC bursts; per-champion locks if parallel guide loads matter.
     static CACHE: OnceLock<tokio::sync::Mutex<GuideCache>> = OnceLock::new();
-    let cache = CACHE.get_or_init(|| tokio::sync::Mutex::new(GuideCache::open(
-        crate::vault::data_root().ok().map(|p| p.join("guides-cache")), BASE_URL.into(), BUNDLED_GUIDES)));
+    // Dev builds only: SWAPPER_GUIDES_LOCAL=1 skips the published index and the cache to test unpublished bundled content.
+    let local = cfg!(debug_assertions) && std::env::var_os("SWAPPER_GUIDES_LOCAL").is_some();
+    let cache = CACHE.get_or_init(|| tokio::sync::Mutex::new(if local { GuideCache::open(None, String::new(), BUNDLED_GUIDES) } else { GuideCache::open(
+        crate::vault::data_root().ok().map(|p| p.join("guides-cache")), BASE_URL.into(), BUNDLED_GUIDES) }));
     let client = reqwest::Client::builder().connect_timeout(Duration::from_secs(3)).timeout(Duration::from_secs(8))
         .redirect(reqwest::redirect::Policy::none()).user_agent("Swapper/1.0 (matchup guides)").build().ok()?;
     let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
