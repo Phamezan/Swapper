@@ -18,7 +18,7 @@ function VodArt({ id }: { id: number }) {
 }
 
 function VodFacts({ vod }: { vod: MatchupVod }) {
-  return <span className="mv-facts"><span className={`mv-result is-${vod.result === "W" ? "win" : "loss"}`} aria-label={vod.result === "W" ? "Win" : "Loss"}>{vod.result}</span>
+  return <span className="mv-facts">{vod.result && <span className={`mv-result is-${vod.result === "W" ? "win" : "loss"}`} aria-label={vod.result === "W" ? "Win" : "Loss"}>{vod.result}</span>}
     <span>Patch {vod.patch}</span><span>{formatVodTime(vod.durationSec)}</span><span>{vod.moments.length} key moments</span>
   </span>;
 }
@@ -68,7 +68,7 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
   if (!selected) return <div className="mv-library">
     <header className="mv-list-toolbar"><h2>{vods.length} games as {champion.name}</h2>{vods.some(vod => vod.fixture) && <span className="mv-preview">Preview data</span>}</header>
     <ul className="mv-vod-list" aria-label={`${champion.name} matchup VODs`}>{vods.map(vod => <li key={vod.videoId}>
-      <button type="button" className="mv-vod-row" data-vod-id={vod.videoId} ref={vod.videoId === lastOpened.current ? sourceRow : undefined} aria-label={`Watch ${vod.player}: ${vod.title}`} onClick={() => { lastOpened.current = vod.videoId; setSelectedId(vod.videoId); }}>
+      <button type="button" className="mv-vod-row" data-vod-id={vod.videoId} ref={vod.videoId === lastOpened.current ? sourceRow : undefined} aria-label={`Watch ${vod.player ?? vod.rankClaim}: ${vod.title}`} onClick={() => { lastOpened.current = vod.videoId; setSelectedId(vod.videoId); }}>
         <VodPlayer vod={vod} />
         <span className="mv-row-description"><span className="mv-row-title">{vod.title}</span><VodFacts vod={vod} /></span>
         <span className="mv-thumbnail"><VodArt id={champion.id} /></span>

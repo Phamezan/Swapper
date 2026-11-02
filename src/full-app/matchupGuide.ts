@@ -56,12 +56,12 @@ export type MomentKind = "kill" | "death" | "teamfight" | "dragon" | "baron" | "
 export type MatchupVod = {
   videoId: string;
   title: string;
-  player: string;
+  player?: string;
   playerImage?: string;
   team?: string;
   rankClaim: string;
   patch: string;
-  result: "W" | "L";
+  result?: "W" | "L";
   durationSec: number;
   moments: { atSec: number; label: string; section?: GuideSectionId; kind?: MomentKind }[];
   fixture?: boolean;

@@ -228,9 +228,13 @@ impl ChampionFile {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub(crate) struct MatchupVod {
-    video_id: String, title: String, player: String,
+    video_id: String, title: String,
+    // Replay channels often name neither the player nor the result; both are optional.
+    #[serde(default, skip_serializing_if = "Option::is_none")] player: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")] team: Option<String>,
-    rank_claim: String, patch: String, result: String, duration_sec: u32,
+    rank_claim: String, patch: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")] result: Option<String>,
+    duration_sec: u32,
     #[serde(default)] moments: Vec<VodMoment>,
 }
 
@@ -265,10 +269,11 @@ fn vod_text(text: &str) -> bool {
 impl MatchupVod {
     fn valid(&self) -> bool {
         self.video_id.len() == 11 && self.video_id.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_' || b == b'-')
-            && [&self.title, &self.player, &self.rank_claim].iter().all(|s| vod_text(s)) && self.team.as_deref().is_none_or(vod_text)
+            && [&self.title, &self.rank_claim].iter().all(|s| vod_text(s)) && self.team.as_deref().is_none_or(vod_text)
+            && self.player.as_deref().is_none_or(vod_text)
             && self.patch.len() <= 32 && (2..=3).contains(&self.patch.split('.').count())
             && self.patch.split('.').all(|part| !part.is_empty() && part.bytes().all(|b| b.is_ascii_digit()))
-            && matches!(self.result.as_str(), "W" | "L") && self.duration_sec > 0
+            && self.result.as_deref().is_none_or(|r| matches!(r, "W" | "L")) && self.duration_sec > 0
             && self.moments.iter().all(|m| m.at_sec < self.duration_sec && vod_text(&m.label))
     }
 }

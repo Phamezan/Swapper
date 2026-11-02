@@ -34,6 +34,8 @@ fn vods_are_optional_and_invalid_videos_do_not_discard_valid_siblings_or_guides(
         assert_eq!(parse_champion(&bytes, 103).unwrap().len(), 1);
     }
     assert!(parse_vods(&with_vods(vec![vod(), vod()]), 103, 238, Lane::Mid).is_empty());
+    let mut anonymous = vod(); anonymous.as_object_mut().unwrap().remove("player"); anonymous.as_object_mut().unwrap().remove("result");
+    assert_eq!(parse_vods(&with_vods(vec![anonymous]), 103, 238, Lane::Mid).len(), 1);
     let mut only: Value = serde_json::from_slice(&bytes).unwrap(); only["guides"] = json!([]);
     assert_eq!(parse_vods(&serde_json::to_vec(&only).unwrap(), 103, 238, Lane::Mid).len(), 1);
     let mut duplicate: Value = serde_json::from_slice(&bytes).unwrap();
