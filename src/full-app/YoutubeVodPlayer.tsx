@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type KeyboardEvent, type PointerEvent } from 'react';
-import { Maximize, Minimize, Pause, Play, RotateCcw, RotateCw, SkipBack, SkipForward, Volume1, Volume2, VolumeX } from 'lucide-react';
+import { Maximize, Minimize, Pause, Settings2, Play, RotateCcw, RotateCw, SkipBack, SkipForward, Volume1, Volume2, VolumeX } from 'lucide-react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { isTauri } from '@tauri-apps/api/core';
 import type { MatchupVod } from './matchupGuide';
@@ -9,7 +9,7 @@ import { VodMomentArt } from './VodMomentArt';
 import { VodPlayer } from './VodPlayer';
 import { GuideSourceButton } from './GuideSourceButton';
 import type { ChampionOption } from '../runes/types';
-import { playerMessage, YOUTUBE_ORIGIN, type PlayerInfo } from './youtubePlayer';
+import { embedUrl, playerMessage, switchEmbed, YOUTUBE_ORIGIN, type EmbedMode, type PlayerInfo } from './youtubePlayer';
 
 type Moment = MatchupVod['moments'][number];
 export type VodSeek = { moment: Moment; serial: number };
@@ -24,6 +24,8 @@ const ESC_GRACE_MS = 500;
 const HUD_IDLE_MS = 3000;
 // Mouse moves over the cross-origin YouTube picture never reach this document; the rest of the screen and keys do.
 const ACTIVITY_EVENTS = ['pointermove', 'pointerdown', 'pointerover', 'keydown', 'wheel'] as const;
+// Whoever picked YouTube's own controls (for its quality menu) keeps them for the next VOD this session.
+let preferYoutubeControls = false;
 
 function IconButton({ label, shortcut, children, ...props }: { label: string; shortcut?: string } & ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" className="mv-icon-button" aria-label={label} aria-keyshortcuts={shortcut} title={shortcut ? `${label} (${shortcut})` : label} {...props}>{children}</button>;
@@ -101,6 +103,13 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const [fullscreenError, setFullscreenError] = useState('');
   const [speedOpen, setSpeedOpen] = useState(false);
   const [idle, setIdle] = useState(false);
+  const [embed, setEmbed] = useState<EmbedMode>(() => ({ youtubeControls: preferYoutubeControls, startSec: 0, autoplay: true }));
+  // What the reloaded embed must restore once it reports in; the URL already carries time and play state.
+  const carried = useRef<PlayerInfo | null>(null);
+  const handledSeek = useRef<VodSeek | null>(null);
+  // The old embed keeps reporting until the reloaded one loads; its messages must not mark the new one ready.
+  const reloading = useRef(false);
+  const src = embedUrl(vod.videoId, embed, location.origin);
   fullscreenNow.current = fullscreen;
   const playing = info.playerState === PLAYING;
   const duration = info.duration || vod.durationSec;
@@ -117,6 +126,13 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const jump = (sec: number) => { seekTo(sec); command('playVideo'); };
   const togglePlay = () => command(playing ? 'pauseVideo' : 'playVideo');
   const toggleMute = () => { command(info.muted ? 'unMute' : 'mute'); setInfo(previous => ({ ...previous, muted: !previous.muted })); };
+  const switchControls = (youtubeControls: boolean) => {
+    preferYoutubeControls = youtubeControls;
+    carried.current = info;
+    reloading.current = true;
+    setEmbed(switchEmbed(youtubeControls, info));
+    setReady(false); setSpeedOpen(false);
+  };
   // Resize the native window before WebView2 captures the element-fullscreen viewport.
   // Browsers still enter synchronously; desktop has the popover fallback if activation expires.
   // tao clamps a maximized borderless window to the monitor work area, which left a taskbar-high band under fullscreen.
@@ -156,6 +172,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     if (!vodUrl(vod)) return;
     let connected = false;
     const receive = (event: MessageEvent) => {
+      if (reloading.current) return;
       const next = playerMessage(event, frame.current?.contentWindow ?? null);
       if (next) { connected = true; setReady(true); setFailed(false); setInfo(previous => ({ ...previous, ...next })); }
       if (event.source === frame.current?.contentWindow && [YOUTUBE_ORIGIN, 'https://www.youtube.com'].includes(event.origin)) {
@@ -169,11 +186,20 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     const timer = window.setInterval(() => { if (!connected) send({ event: 'listening', id: 1 }); }, 500);
     const timeout = window.setTimeout(() => { if (!connected) setFailed(true); }, 20000);
     return () => { window.removeEventListener('message', receive); window.clearInterval(timer); window.clearTimeout(timeout); };
-  }, [vod.videoId, vod.fixture]);
+  }, [vod.videoId, vod.fixture, src]);
   useEffect(() => {
-    if (!ready || !seek) return;
+    // A controls switch toggles `ready`; that must not replay the last moment click.
+    if (!ready || !seek || handledSeek.current === seek) return;
+    handledSeek.current = seek;
     jump(seek.moment.atSec);
   }, [ready, seek]);
+  useEffect(() => {
+    const was = carried.current;
+    if (!ready || !was) return;
+    carried.current = null;
+    if (was.playbackRate && was.playbackRate !== 1) command('setPlaybackRate', [was.playbackRate]);
+    if (was.muted) command('mute');
+  }, [ready]);
   useEffect(() => { onMomentChange?.(momentIndex); }, [momentIndex, onMomentChange]);
   useEffect(() => {
     const list = cinemaList.current, row = list?.children[momentIndex] as HTMLElement | undefined;
@@ -227,9 +253,9 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const rate = info.playbackRate ?? 1;
   return <div ref={root} popover="manual" tabIndex={-1} className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}${fullscreen && idle ? ' is-idle' : ''}`} onKeyDown={onKeyDown}>
     <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title}
-      src={`${YOUTUBE_ORIGIN}/embed/${vod.videoId}?enablejsapi=1&controls=0&fs=0&rel=0&playsinline=1&autoplay=1&origin=${encodeURIComponent(location.origin)}`}
+      src={src}
       allow="autoplay; encrypted-media; picture-in-picture"
-      onLoad={() => { setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
+      onLoad={() => { reloading.current = false; setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
     <div className="mv-controls" aria-label="Video controls">
       <Timeline vod={vod} champions={champions} current={current} duration={duration} buffered={info.videoLoadedFraction ?? 0} disabled={!ready} onSeek={seekTo} onJump={jump} />
       <div className="mv-control-row">
@@ -249,13 +275,18 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
             }} />
         </span>
         <span className="mv-time">{formatVodTime(current)} / {formatVodTime(duration)}</span>
-        <span className="mv-now" title={moment?.label}>{moment && <><MomentIcon kind={moment.kind} /><span>{moment.label}</span></>}</span>
+        <span className="mv-now" title={embed.youtubeControls ? undefined : moment?.label}>{embed.youtubeControls
+          ? <span className="mv-mode-note">YouTube controls: quality and captions are in the gear on the video</span>
+          : moment && <><MomentIcon kind={moment.kind} /><span>{moment.label}</span></>}</span>
         <span className="mv-speed mv-hide-mini" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setSpeedOpen(false); }}>
           <button type="button" className="mv-speed-button" aria-label={`Playback speed ${rate}×`} title="Playback speed" aria-haspopup="menu" aria-expanded={speedOpen}
             disabled={!ready} onClick={() => setSpeedOpen(open => !open)}>{rate}×</button>
           {speedOpen && <span className="mv-speed-menu" role="menu" aria-label="Playback speed">{RATES.map(option => <button key={option} type="button" role="menuitemradio"
             aria-checked={option === rate} autoFocus={option === rate} onClick={() => { command('setPlaybackRate', [option]); setSpeedOpen(false); }}>{option}×</button>)}</span>}
         </span>
+        <button type="button" className={`mv-quality-button mv-hide-mini${embed.youtubeControls ? ' is-on' : ''}`}
+          aria-label={embed.youtubeControls ? 'Done, back to Swapper controls' : 'Quality: show YouTube controls'} title={embed.youtubeControls ? 'Back to Swapper controls' : "Use YouTube's own controls to pick quality or captions"}
+          onClick={() => switchControls(!embed.youtubeControls)}>{embed.youtubeControls ? 'Done' : <><Settings2 size={15} aria-hidden />Quality</>}</button>
         <IconButton label={fullscreen ? 'Exit full screen' : 'Full screen'} shortcut="f" className="mv-icon-button mv-hide-mini" disabled={!ready} onClick={() => void changeFullscreen(!fullscreen)}>
           {fullscreen ? <Minimize size={17} /> : <Maximize size={17} />}</IconButton>
       </div>

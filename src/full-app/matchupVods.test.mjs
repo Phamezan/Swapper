@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
-import { ANY_VOD, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, vodMatches, vodUrl } from "./matchupVodModel.ts";
+import { ANY_VOD, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
 
 test("VOD timestamps use minutes, pad seconds, and support hour-long games", () => {
   assert.deepEqual([0, 9, 61.9, 184, 3605, -1, NaN].map(formatVodTime), ["0:00", "0:09", "1:01", "3:04", "1:00:05", "0:00", "0:00"]);
@@ -184,4 +184,28 @@ test("the HUD idle timer hides after the delay, wakes on activity and restarts i
   assert.equal(timers.size, 1);
   idle.stop();
   assert.equal(timers.size, 0);
+});
+
+test("the server region is read next to the rank, from the claim first and then the title", () => {
+  const region = (title, rankClaim = "Challenger") => vodRegion({ title, rankClaim });
+  assert.equal(region("(Peng) Ahri Mid vs Akali - EUW Challenger Patch 26.19"), "EUW");
+  assert.equal(region("Kayle vs Sylas Mid - EUNE Challenger - Patch 16.10 Season 16"), "EUNE");
+  assert.equal(region("Ahri Top vs Jayce - KR CHallenger Patch 26.16"), "KR");
+  assert.equal(region("Ahri vs Zed - kr1 grandmaster"), "KR");
+  assert.equal(region("Ahri vs Zed", "NA Master"), "NA", "the rank claim names the region");
+  assert.equal(region("Ahri vs Zed - EUW Master", "KR Master"), "KR", "the claim wins over the title");
+  for (const title of ["Ahri Mid vs Master Yi - Challenger", "(KR) Ahri vs Zed", "(EUW Peng) Ahri vs Zed - Patch 26.1", "NAME Master guide", "Ahri vs Zed"])
+    assert.equal(region(title), null, title);
+});
+
+test("list rows lead with the player, or rank and region, and leave out an unknown result and zero moments", () => {
+  const base = { videoId: "A_b-cD12345", title: "(Peng) Ahri Mid vs Akali - EUW Challenger Patch 26.19", rankClaim: "Challenger", patch: "26.19", durationSec: 1700 };
+  assert.deepEqual(vodRow({ ...base, player: "Peng", team: "MKOI", result: "W", moments: [{ atSec: 1, label: "a" }, { atSec: 2, label: "b" }] }),
+    { primary: "Peng", named: true, details: ["EUW Challenger", "Patch 26.19"], result: "win", moments: 2 });
+  assert.deepEqual(vodRow({ ...base, title: "Ahri Mid vs Akali - KR Master Patch 26.19", rankClaim: "MASTER", player: "?", moments: [] }),
+    { primary: "KR Master", named: false, details: ["Patch 26.19"], result: null, moments: null });
+  assert.equal(vodRow({ ...base, result: "L", moments: [] }).result, "loss");
+  assert.deepEqual(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: "KR Diamond 1", moments: [] }).primary, "KR Diamond 1", "an unknown tier keeps its own words without repeating the region");
+  assert.deepEqual(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: " ", player: "Faker", moments: [] }).details, ["Patch 26.19"]);
+  assert.equal(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: "", moments: [] }).primary, "Ranked game");
 });

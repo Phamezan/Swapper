@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight, ChevronRight, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, X } from "lucide-react";
 import { invoke } from "@tauri-apps/api/core";
 import { VodMomentArt } from "./VodMomentArt";
 import type { ChampionOption } from "../runes/types";
@@ -8,7 +8,7 @@ import { RankCrest } from "../runes/RankCrest";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { loadChampionVods, loadMatchupVods } from "./loadMatchupVods";
 import { GUIDE_SECTIONS, type GuideSectionId, type MatchupVod } from "./matchupGuide";
-import { ANY_VOD, comparePatch, filterVods, formatVodTime, RANK_TIERS, rankTier, vodMatches, vodPlayerName, vodUrl, type RankTier, type VodFilters, type VodSort } from "./matchupVodModel";
+import { ANY_VOD, comparePatch, filterVods, formatVodTime, RANK_TIERS, rankTier, vodMatches, vodPlayerName, vodRow, vodUrl, type RankTier, type VodFilters, type VodSort } from "./matchupVodModel";
 import { NearEnd } from "./NearViewport";
 import { Picker, ROLES } from "./Picker";
 import { VodPlayer } from "./VodPlayer";
@@ -125,15 +125,20 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
           </div>
           {!shown.length ? <div className="mv-empty"><p>No VODs match these filters</p><button type="button" className="mv-text-button" onClick={() => filter({ ...ANY_VOD, sort: filters.sort })}>Clear filters</button></div>
             : <div className={`mv-table${wide ? " is-wide" : ""}`}>
-              <div className="mv-table-head" aria-hidden><span>Result</span><span>Player</span><span>Rank</span>{wide && <span>Opponent</span>}<span>Patch</span><span>Length</span><span>Moments</span><span>Title</span></div>
-              <ul className="mv-vod-list" aria-label={wide ? `Every ${champion.name} VOD` : `${champion.name} matchup VODs`}>{shown.slice(0, limit).map(vod => { const name = vodPlayerName(vod.player); return <li key={vod.videoId}>
-                <button type="button" className="mv-vod-row" data-vod-id={vod.videoId} ref={vod.videoId === lastOpened.current ? sourceRow : undefined} aria-label={`Watch ${name ?? vod.rankClaim}${wide ? ` vs ${enemyName(vod.enemy)}` : ""}: ${vod.title}`} onClick={() => { lastOpened.current = vod.videoId; setSelectedId(vod.videoId); }}>
-                  <span className={`mv-cell-result${vod.result ? ` is-${vod.result === "W" ? "win" : "loss"}` : ""}`} title={vod.result === "W" ? "Win" : vod.result === "L" ? "Loss" : "Result unknown"}>{vod.result ?? "–"}</span>
-                  <span className="mv-cell-player">{name ? <strong>{name}</strong> : <em>Unlisted</em>}{vod.team && <span className="mv-team-tag">{vod.team}</span>}</span>
-                  <span className="mv-cell-rank"><RankCrest tier={rankTier(vod.rankClaim)} size={18} mode="desktop" /><span>{vod.rankClaim}</span></span>
-                  {wide && <span className="mv-cell-enemy"><ChampionIcon id={vod.enemy ?? 0} name={enemyName(vod.enemy)} mode="desktop" /><span>{enemyName(vod.enemy)}</span><small>{LANES[vod.lane ?? ""]}</small></span>}
-                  <span className="mv-cell-num">{vod.patch}</span><span className="mv-cell-num">{formatVodTime(vod.durationSec)}</span><span className="mv-cell-num">{vod.moments.length}</span>
-                  <span className="mv-cell-title">{vod.title}</span>
+              <ul className="mv-vod-list" aria-label={wide ? `Every ${champion.name} VOD` : `${champion.name} matchup VODs`}>{shown.slice(0, limit).map(vod => { const row = vodRow(vod); return <li key={vod.videoId}>
+                <button type="button" className="mv-vod-row" data-vod-id={vod.videoId} data-result={row.result ?? undefined} data-recent={vod.videoId === lastOpened.current || undefined}
+                  ref={vod.videoId === lastOpened.current ? sourceRow : undefined} title={vod.title}
+                  aria-label={`Watch ${row.primary}${wide ? ` vs ${enemyName(vod.enemy)}` : ""}${row.result ? `, ${row.result === "win" ? "win" : "loss"}` : ""}: ${vod.title}`}
+                  onClick={() => { lastOpened.current = vod.videoId; setSelectedId(vod.videoId); }}>
+                  <RankCrest tier={rankTier(vod.rankClaim)} size={26} mode="desktop" />
+                  <span className="mv-cell-who">
+                    <span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.primary}</strong>{vod.team && <span className="mv-team-tag">{vod.team}</span>}</span>
+                    <small>{row.details.join(" · ")}</small>
+                  </span>
+                  {wide && <span className="mv-cell-enemy"><ChampionIcon id={vod.enemy ?? 0} name={enemyName(vod.enemy)} mode="desktop" /><span><span>vs {enemyName(vod.enemy)}</span><small>{LANES[vod.lane ?? ""]}</small></span></span>}
+                  <span className="mv-cell-moments">{row.moments && <><Flag size={12} aria-hidden />{row.moments}<span className="mv-hide-tight">{row.moments === 1 ? " moment" : " moments"}</span></>}</span>
+                  <span className="mv-cell-result">{row.result && <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span>}</span>
+                  <span className="mv-cell-length">{formatVodTime(vod.durationSec)}</span>
                 </button>
               </li>; })}</ul>
               {limit < shown.length && <NearEnd onNear={() => setLimit(current => current + ROW_STEP)} />}

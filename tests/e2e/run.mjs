@@ -204,6 +204,8 @@ async function main() {
   const endpoint = `http://127.0.0.1:${debugPort}`;
   const edge = launch(executable, ["--headless=new", `--user-data-dir=${profile}`, "--no-first-run", "--no-default-browser-check",
     "--disable-extensions", "--disable-background-networking", "--disable-component-update", "--disable-sync", "--disable-gpu",
+    // In-process iframes: an out-of-process iframe's own navigations (the VOD controls switch) would bypass the page's Fetch interception and reach YouTube.
+    "--disable-site-isolation-trials", "--disable-features=IsolateOrigins,site-per-process",
     "--remote-debugging-address=127.0.0.1", `--remote-debugging-port=${debugPort}`, "about:blank"]);
   const version = await poll("headless browser startup", async () => {
     if (edge.launchError || edge.exitCode !== null) throw new Error(edge.launchError?.message ?? edge.output);
@@ -235,7 +237,8 @@ async function main() {
       if (current === 'VOD player controls and persistent mini player' && url.origin === 'https://www.youtube-nocookie.com') {
         // An offline protocol peer tests our controls without depending on a live video.
         const html = `<html><body style="margin:0;background:#151515;color:white">Offline video test peer<script>
-          let info = {currentTime:0,duration:1746,playerState:1,playbackRate:1,muted:false};
+          const query = new URLSearchParams(location.search);
+          let info = {currentTime:Number(query.get('start')) || 0,duration:1746,playerState:query.get('autoplay') === '0' ? 5 : 1,playbackRate:1,muted:false};
           const deliver = () => parent.postMessage(JSON.stringify({event:'infoDelivery',info}), ${JSON.stringify(origin)});
           const viewport = () => parent.postMessage(JSON.stringify({event:'testViewport',width:innerWidth,height:innerHeight,dpr:devicePixelRatio}), ${JSON.stringify(origin)});
           addEventListener('resize', viewport); viewport();
@@ -704,7 +707,7 @@ async function main() {
     await screenshot('vod-library-filtered');
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1000, height: 700, deviceScaleFactor: 1, mobile: false });
     await page.settle();
-    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.querySelector('.mv-cell-title').checkVisibility() && row.getBoundingClientRect().height <= 64)"), 'small windows keep the title on a second line');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.querySelector('.mv-who-line strong').checkVisibility() && row.querySelector('.mv-cell-length').checkVisibility() && row.scrollWidth <= row.clientWidth && row.getBoundingClientRect().height <= 48)"), 'small windows keep player, length and one dense row without overflow');
     await audit();
     await screenshot('vod-library-filtered-small', 1000, 700);
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
@@ -753,6 +756,16 @@ async function main() {
     const controlsBelowVideo = await page.evaluate("document.querySelector('.mv-controls').getBoundingClientRect().top >= document.querySelector('.mv-embed').getBoundingClientRect().bottom");
     assert.ok(controlsBelowVideo, 'controls must remain below the YouTube video');
     await page.text('.mv-marker-count', '2');
+    // Quality: YouTube's own controls (gear menu) at the same time, play state, speed and mute, in the same iframe.
+    await page.click('.mv-quality-button');
+    await page.wait("(() => { const q = new URL(document.querySelector('.mv-embed iframe').src).searchParams; return q.get('controls') === '1' && q.get('start') === '412' && q.get('autoplay') === '1' && q.get('vq') === 'hd1080'; })()", 'YouTube controls resume at the same time');
+    await page.wait("document.querySelector('.mv-control-row button[aria-label=Pause]') && document.querySelector('.mv-control-row button[aria-label=Unmute]') && document.querySelector('.mv-speed-button').textContent === '1.5×'", 'play state, mute and speed carry over');
+    await page.text('.mv-time', '6:52 / 29:06');
+    assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame"), 'the switch reloads the same iframe');
+    await screenshot('vod-youtube-controls');
+    await page.click('.mv-quality-button', 'Done');
+    await page.wait("new URL(document.querySelector('.mv-embed iframe').src).searchParams.get('controls') === '0' && !!document.querySelector('.mv-control-row button[aria-label=Pause]') && document.querySelector('.mv-track').getAttribute('aria-disabled') === 'false'", 'Done returns to our controls, still playing');
+    await page.text('.mv-time', '6:52 / 29:06');
     await page.click('button[aria-label="Full screen"]');
     await page.visible('.mv-video-player.is-fullscreen');
     assert.ok(await page.evaluate("document.querySelector('.mv-controls').getBoundingClientRect().top >= document.querySelector('.mv-embed').getBoundingClientRect().bottom"), 'fullscreen controls stay below the picture');

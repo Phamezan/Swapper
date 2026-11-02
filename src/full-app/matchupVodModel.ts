@@ -107,6 +107,30 @@ export function rankTier(rankClaim: string): RankTier {
   return claim.includes("master") ? "master" : "other";
 }
 
+// Riot server regions; only a token right before the rank counts, so "vs Master Yi" or a team tag never reads as one.
+const REGION_BEFORE_RANK = /\b(EUW|EUNE|KR|NA|BR|LAN|LAS|OCE|TR|RU|JP|VN|TW|SG|PH|TH)\d?\s+(?=(?:challenger|grand\s*master|master|diamond|emerald)\b)/i;
+
+/** Server region as in "KR Grandmaster" or "EUW Challenger Patch 26.19"; the rank claim wins over the title. */
+export function vodRegion(vod: Pick<MatchupVod, "title" | "rankClaim">): string | null {
+  const match = REGION_BEFORE_RANK.exec(vod.rankClaim) ?? REGION_BEFORE_RANK.exec(vod.title);
+  return match ? match[1].toUpperCase() : null;
+}
+
+export type VodRow = { primary: string; named: boolean; details: string[]; result: "win" | "loss" | null; moments: number | null };
+
+/** List row text: the player leads, or rank and region when nobody is named; empty result and moments are left out. */
+export function vodRow(vod: MatchupVod): VodRow {
+  const name = vodPlayerName(vod.player), region = vodRegion(vod), tier = rankTier(vod.rankClaim);
+  const rank = tier === "other" ? vod.rankClaim.replace(REGION_BEFORE_RANK, "").trim() : RANK_TIERS.find(([id]) => id === tier)![1];
+  const standing = [region, rank].filter(Boolean).join(" ");
+  return {
+    primary: name ?? (standing || "Ranked game"), named: !!name,
+    details: [...(name && standing ? [standing] : []), `Patch ${vod.patch}`],
+    result: vod.result === "W" ? "win" : vod.result === "L" ? "loss" : null,
+    moments: vod.moments.length || null,
+  };
+}
+
 /** Numeric patch order, so 26.10 is newer than 26.9 and 26.21.1 newer than 26.21. */
 export function comparePatch(a: string, b: string): number {
   const x = a.split(".").map(Number), y = b.split(".").map(Number);

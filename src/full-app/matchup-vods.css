@@ -14,29 +14,32 @@
 .mv-empty { display: flex; flex-direction: column; align-items: start; gap: 10px; padding: 24px 0; color: var(--ui-text-2); font-size: 13px; }
 .mv-empty > p { margin: 0; }
 .mv-text-button { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--ui-brand); font: inherit; font-size: 13px; cursor: pointer; }
-/* One dense row per VOD: columns line up so a long library scans like a table. */
-.mv-table { --mv-cols: 28px minmax(140px, 1.3fr) minmax(104px, .9fr) 52px 52px 60px minmax(0, 2fr); display: flex; flex-direction: column; flex: 1; min-height: 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); overflow: hidden; }
-.mv-table.is-wide { --mv-cols: 28px minmax(140px, 1.3fr) minmax(104px, .9fr) minmax(112px, .8fr) 52px 52px 60px minmax(0, 1.7fr); }
-.mv-table-head, .mv-vod-row { display: grid; grid-template-columns: var(--mv-cols); align-items: center; gap: 12px; padding: 0 14px; }
-.mv-table-head { height: 32px; flex-shrink: 0; overflow: hidden; scrollbar-gutter: stable; border-bottom: 1px solid var(--ui-line-2); color: var(--ui-text-3); font-size: 12px; }
+/* One two-line row per VOD built around the player; the result is an edge plus a badge, so colour is never the only cue. */
+.mv-table { --mv-cols: 26px minmax(0, 1fr) 92px 44px 52px; display: flex; flex-direction: column; flex: 1; min-height: 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); overflow: hidden; }
+.mv-table.is-wide { --mv-cols: 26px minmax(0, 1.4fr) minmax(0, 1fr) 92px 44px 52px; }
 .mv-vod-list { flex: 1; min-height: 0; margin: 0; padding: 0; list-style: none; overflow-y: auto; scrollbar-width: thin; scrollbar-gutter: stable; overscroll-behavior: contain; }
-.mv-vod-list > li + li { border-top: 1px solid var(--ui-line-1, var(--ui-line-2)); }
-.mv-vod-row { width: 100%; min-height: 42px; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 13px; text-align: left; cursor: pointer; }
+.mv-vod-list > li + li { border-top: 1px solid var(--ui-line-1); }
+.mv-vod-row { display: grid; grid-template-columns: var(--mv-cols); align-items: center; gap: 12px; width: 100%; min-height: 44px; padding: 5px 14px; line-height: 18px; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 13px; text-align: left; cursor: pointer; box-shadow: inset 3px 0 transparent; transition: background var(--ui-fast, .12s); }
+.mv-vod-row[data-result="win"] { box-shadow: inset 3px 0 var(--ui-win); }
+.mv-vod-row[data-result="loss"] { box-shadow: inset 3px 0 var(--ui-loss); }
 .mv-vod-row:hover { background: var(--ui-surface-hover); color: var(--ui-text-1); }
-.mv-vod-row > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mv-cell-result { color: var(--ui-text-3); font-weight: 700; text-align: center; }
-.mv-cell-result.is-win { color: var(--ui-win); }
-.mv-cell-result.is-loss { color: var(--ui-loss); }
-.mv-vod-row > :is(.mv-cell-player, .mv-cell-rank, .mv-cell-enemy) { display: flex; align-items: center; gap: 7px; }
-.mv-cell-player strong { overflow: hidden; color: var(--ui-text-1); font-weight: 600; text-overflow: ellipsis; }
-.mv-cell-player em { color: var(--ui-text-3); font-style: normal; }
-.mv-team-tag { flex-shrink: 0; padding: 0 5px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); color: var(--ui-text-2); font-size: 12px; line-height: 18px; }
-.mv-cell-rank > span, .mv-cell-enemy > span { overflow: hidden; text-overflow: ellipsis; }
-.mv-cell-rank > :first-child, .mv-cell-enemy > :first-child { flex-shrink: 0; }
-.mv-cell-enemy :is(.champion-icon, .champion-icon-fallback) { display: block; width: 22px; height: 22px; border-radius: 4px; object-fit: cover; }
-.mv-cell-enemy small { color: var(--ui-text-3); font-size: 12px; }
-.mv-cell-num { color: var(--ui-text-3); font-variant-numeric: tabular-nums; }
-.mv-cell-title { color: var(--ui-text-2); }
+.mv-vod-row[data-recent] { background: var(--ui-brand-tint); }
+.mv-view .mv-vod-row:focus-visible { outline-offset: -2px; }
+.mv-vod-row > span { min-width: 0; }
+.mv-cell-who, .mv-cell-enemy > span { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.mv-who-line { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.mv-who-line strong { overflow: hidden; color: var(--ui-text-1); font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.mv-who-line strong.is-unnamed { color: var(--ui-text-2); font-weight: 500; }
+.mv-vod-row small { overflow: hidden; color: var(--ui-text-3); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.mv-team-tag { flex-shrink: 0; padding: 0 5px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); color: var(--ui-text-2); font-size: 11px; font-weight: 600; line-height: 16px; }
+.mv-cell-enemy { display: flex; align-items: center; gap: 8px; }
+.mv-cell-enemy > span > span { overflow: hidden; color: var(--ui-text-2); text-overflow: ellipsis; white-space: nowrap; }
+.mv-cell-enemy :is(.champion-icon, .champion-icon-fallback) { display: block; flex-shrink: 0; width: 26px; height: 26px; border-radius: 6px; object-fit: cover; }
+.mv-cell-moments { display: flex; align-items: center; gap: 5px; color: var(--ui-text-3); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mv-result-badge { display: inline-block; padding: 0 6px; border-radius: var(--ui-radius-xs); font-size: 11px; font-weight: 600; line-height: 18px; }
+.mv-result-badge.is-win { background: color-mix(in srgb, var(--ui-win) 14%, transparent); color: var(--ui-win); }
+.mv-result-badge.is-loss { background: color-mix(in srgb, var(--ui-loss) 14%, transparent); color: var(--ui-loss); }
+.mv-cell-length { color: var(--ui-text-2); font-variant-numeric: tabular-nums; text-align: right; }
 .mv-watch-header { flex-shrink: 0; }
 .mv-watch-toolbar { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
 .mv-back { display: inline-flex; align-items: center; gap: 7px; padding: 0; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; cursor: pointer; }
@@ -129,8 +132,8 @@
 .mv-tip > span { display: grid; grid-template-columns: 20px auto minmax(0, 1fr); align-items: center; gap: 6px; }
 .mv-tip b { color: var(--ui-text-1); font-weight: 600; font-variant-numeric: tabular-nums; }
 .mv-control-row { display: flex; border-top: 1px solid var(--ui-line-2); padding-top: 8px; align-items: center; gap: 2px; min-width: 0; margin-top: 2px; }
-.mv-icon-button, .mv-speed-button { display: inline-grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; padding: 0; border: 0; border-radius: var(--ui-radius-xs); background: none; color: var(--ui-text-2); cursor: pointer; transition: background .12s, color .12s; }
-:is(.mv-icon-button, .mv-speed-button):hover:not(:disabled) { background: var(--ui-surface-hover); color: var(--ui-text-1); }
+.mv-icon-button, .mv-speed-button, .mv-quality-button { display: inline-grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; padding: 0; border: 0; border-radius: var(--ui-radius-xs); background: none; color: var(--ui-text-2); cursor: pointer; transition: background .12s, color .12s; }
+:is(.mv-icon-button, .mv-speed-button, .mv-quality-button):hover:not(:disabled) { background: var(--ui-surface-hover); color: var(--ui-text-1); }
 .mv-icon-button.mv-play { width: 34px; height: 34px; margin: 0 2px; border-radius: 50%; background: var(--ui-brand); color: var(--ui-brand-ink); }
 .mv-icon-button.mv-play:hover:not(:disabled) { background: var(--ui-brand-strong); color: var(--ui-brand-ink); }
 .mv-volume { display: inline-flex; align-items: center; margin-left: 4px; }
@@ -140,6 +143,9 @@
 .mv-now { display: flex; align-items: center; flex: 1; gap: 6px; min-width: 0; margin: 0 8px; color: var(--ui-text-3); }
 .mv-now > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mv-speed { position: relative; flex-shrink: 0; }
+.mv-quality-button { display: inline-flex; gap: 6px; width: auto; padding: 0 10px; font: inherit; font-size: 12px; font-weight: 600; }
+.mv-quality-button.is-on, .mv-quality-button.is-on:hover:not(:disabled) { background: var(--ui-brand); color: var(--ui-brand-ink); }
+.mv-now > .mv-mode-note { color: var(--ui-text-2); }
 .mv-speed-button { width: auto; min-width: 40px; padding: 0 8px; font: inherit; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .mv-speed-menu { position: absolute; right: 0; bottom: 100%; z-index: 6; display: flex; gap: 2px; padding: 3px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); box-shadow: 0 8px 24px rgb(0 0 0 / .35); }
 .mv-speed-menu > button { padding: 4px 8px; border: 0; border-radius: var(--ui-radius-xs); background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; font-variant-numeric: tabular-nums; cursor: pointer; }
@@ -205,14 +211,17 @@
 }
 @media (prefers-reduced-motion: reduce) { .mv-player-view *, .mv-library * { transition: none !important; scroll-behavior: auto !important; } }
 
-/* Smaller windows: the title moves to a second line under the facts instead of shrinking to nothing. */
+/* Smaller windows: the moment count drops its word, then the opponent keeps only its portrait. */
 @container matchup-vods (max-width: 860px) {
-  .mv-table { --mv-cols: 28px minmax(0, 1.2fr) minmax(0, 1fr) 46px 46px; }
-  .mv-table.is-wide { --mv-cols: 28px minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) 46px 46px; }
-  .mv-table-head > :nth-last-child(-n+2), .mv-vod-row > .mv-cell-num:nth-last-child(2) { display: none; }
-  .mv-vod-row { row-gap: 2px; padding-block: 6px; }
-  .mv-vod-row > .mv-cell-title { grid-column: 2 / -1; color: var(--ui-text-3); font-size: 12px; }
+  .mv-table { --mv-cols: 26px minmax(0, 1fr) 44px 44px 46px; }
+  .mv-table.is-wide { --mv-cols: 26px minmax(0, 1.3fr) minmax(0, 1fr) 44px 44px 46px; }
+  .mv-hide-tight { display: none; }
   .mv-match-count { margin-left: 0; }
+}
+@container matchup-vods (max-width: 560px) {
+  .mv-table.is-wide { --mv-cols: 26px minmax(0, 1fr) 26px 44px 44px 46px; }
+  .mv-cell-enemy > span { display: none; }
+  .mv-vod-row { gap: 10px; padding-inline: 12px; }
 }
 @container matchup-vods (max-width: 500px) { .mv-description { align-items: start; flex-direction: column; gap: 12px; } .mv-watch-toolbar > .mv-eyebrow { display: none; } }
 
