@@ -3,11 +3,12 @@ import { TeamLogo } from "../runes/TeamLogo";
 import { RankCrest } from "../runes/RankCrest";
 import type { MatchupVod } from "./matchupGuide";
 import { vodPlayerName } from "./matchupVodModel";
+import { usePlayerPhoto } from "./PlayerPhoto";
 
 export function VodPlayer({ vod }: { vod: MatchupVod }) {
   const [failedImage, setFailedImage] = useState<string | null>(null);
   const name = vodPlayerName(vod.player);
-  const image = name ? vod.playerImage?.trim() : undefined;
+  const image = usePlayerPhoto(name);
   const player = name ?? `${vod.rankClaim} replay`;
   const initials = player.trim().split(/\s+/).slice(0, 2).map(word => Array.from(word)[0] ?? "").join("").toUpperCase() || "?";
   return <span className="mv-player">

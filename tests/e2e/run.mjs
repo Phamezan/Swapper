@@ -681,7 +681,9 @@ async function main() {
     await navigate(fullApp, '.match-row');
     await page.evaluate(`(() => {
       const invoke = window.__TAURI_INTERNALS__.invoke;
-      window.__TAURI_INTERNALS__.invoke = (cmd, args) => cmd === 'get_matchup_vods' ? Promise.resolve([{
+      // A bright headshot for one pro and a dark CDN-style silhouette for another; everyone else has none.
+      const photos = { 'Fixture Pro 1': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVR4nGO8c+nEfwY8gAmf5PBRAACRSQOFCSL1+gAAAABJRU5ErkJggg==', 'Fixture Pro 2': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFUlEQVR4nGPk4eH7z4AHMOGTHD4KADM1ATVHev50AAAAAElFTkSuQmCC' };
+      window.__TAURI_INTERNALS__.invoke = (cmd, args) => cmd === 'player_photo' ? (photos[args.player] ? Promise.resolve(photos[args.player]) : Promise.reject('That player photo is unavailable.')) : cmd === 'get_matchup_vods' ? Promise.resolve([{
         videoId:'A_b-cD12345',title:'Ahri vs Zed · Challenger mid lane',player:'?',rankClaim:'Challenger',patch:'26.21',durationSec:1746,
         moments:[{atSec:184,label:'Ahri takes down Zed',kind:'kill',section:'early-lane'},{atSec:412,label:'Second fight',kind:'teamfight'}, {atSec:416,label:'Dragon secured',kind:'dragon'}, {atSec:710,label:'Ahri catches Zed at river',kind:'kill'}, {atSec:903,label:'Zed takes down Ahri',kind:'death'}, {atSec:1200,label:'Ahri wins the final fight',kind:'kill'}]
       }]) : invoke(cmd, args);
@@ -695,11 +697,19 @@ async function main() {
     await page.click('.mv-segment[aria-label="VOD scope"] button:last-child');
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 60", 'a 1,205-VOD library renders its first step');
     await page.text('.mv-match-count', '1205 VODs');
+    const row = name => `[...document.querySelectorAll('.mv-vod-row')].find(row => row.querySelector('strong').textContent === ${JSON.stringify(name)})`;
+    await page.wait(`!!${row('Fixture Pro 1')}?.querySelector('img.mv-row-photo')`, 'a pro with a real headshot shows it');
+    assert.ok(await page.evaluate(`!${row('Fixture Pro 2')}.querySelector('img.mv-row-photo') && !!${row('Fixture Pro 2')}.querySelector('.rank-crest, [class*="crest"]')`), 'a silhouette placeholder falls back to the rank crest');
+    await screenshot('vod-library-photos');
+    assert.ok(await page.evaluate("![...document.querySelectorAll('.mv-filters .fa-picker')].some(b => /Sort|patch first|Shortest|Longest/.test(b.getAttribute('aria-label')))"), 'no sort picker');
     assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.getBoundingClientRect().height <= 48)"), 'one dense row per VOD');
     await page.evaluate("document.querySelector('.mv-vod-list').scrollTop = 1e6");
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 120", 'scrolling renders the next step');
     await page.click('button[aria-label^="Opponent:"]');
     await page.visible('.fa-picker-option .champion-icon, .fa-picker-option .champion-icon-fallback');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.fa-picker-option')].every(b => !b.querySelector('span').textContent.includes('·') && /^\\d+$/.test(b.querySelector('.fa-picker-count').textContent))"), 'opponent counts sit apart from names');
+    await page.evaluate("document.querySelector('.fa-picker-search input').focus()");
+    await screenshot('vod-opponent-picker');
     await page.click('.fa-picker-option', await page.evaluate("[...document.querySelectorAll('.fa-picker-option')].map(b => b.textContent.trim()).find(t => t.startsWith('Yasuo'))"));
     await page.wait("/ of 1205/.test(document.querySelector('.mv-match-count').textContent) && [...document.querySelectorAll('.mv-vod-row')].every(row => row.getAttribute('aria-label').includes('vs Yasuo'))", 'opponent filter');
     await page.click('.mv-segment[aria-label="Players"] button:last-child');

@@ -32,6 +32,8 @@ pub(crate) enum Kind {
     /// The full ranked emblem art behind the dashboard's rank card.
     Emblem,
     Team,
+    /// A pro player's headshot from the same CDN as the team logos.
+    Player,
     Objective,
     /// The summoner-level frame around a profile icon (`theme-1` … `theme-21`).
     LevelBorder,
@@ -44,6 +46,7 @@ impl Kind {
             Kind::Rank => "rank",
             Kind::Emblem => "emblem",
             Kind::Team => "team",
+            Kind::Player => "player",
             Kind::Objective => "objective",
             Kind::LevelBorder => "level-border",
         }
@@ -51,7 +54,7 @@ impl Kind {
 
     fn extension(self) -> &'static str {
         match self {
-            Kind::Team | Kind::Objective | Kind::Emblem | Kind::LevelBorder => "png",
+            Kind::Team | Kind::Player | Kind::Objective | Kind::Emblem | Kind::LevelBorder => "png",
             _ => "svg",
         }
     }
@@ -69,7 +72,7 @@ impl Kind {
                     | "master" | "grandmaster" | "challenger"
             )
             .then(|| name.to_string()),
-            Kind::Team => team_stem(name),
+            Kind::Team | Kind::Player => team_stem(name),
             Kind::Objective => super::objectives::FILES.contains(&name).then(|| name.to_string()),
             Kind::LevelBorder => name.strip_prefix("theme-").and_then(|n| n.parse::<u8>().ok()).filter(|n| (1..=21).contains(n))
                 .map(|n| format!("theme-{n}")),

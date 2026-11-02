@@ -1,4 +1,4 @@
-//! Pro team logos from the probuildstats CDN.
+//! Pro team logos and pro player headshots from the probuildstats CDN.
 //!
 //! Unlike the role and rank assets, team names are not a fixed set, so the only
 //! variable part of the request is a slug derived from the name. The slug is
@@ -13,8 +13,47 @@ use std::time::Duration;
 use super::asset_cache;
 use super::RuneError;
 
-/// The one host logos are fetched from. Only the slug varies.
-const BASE: &str = "https://static.bigbrain.gg/assets/probuildstats/team_icons";
+/// The one host logos and headshots are fetched from. Only the slug varies.
+const BASE: &str = "https://static.bigbrain.gg/assets/probuildstats";
+
+/// Which picture a slug names: the folder on the CDN and the disk cache it lands in.
+#[derive(Clone, Copy)]
+enum Art {
+    TeamLogo,
+    /// Path found in probuildstats' own site code: `{normalized_name}.png`, the same slug rule as teams.
+    PlayerPhoto,
+}
+
+impl Art {
+    fn folder(self) -> &'static str {
+        match self {
+            Art::TeamLogo => "team_icons",
+            Art::PlayerPhoto => "player_images/small_2x",
+        }
+    }
+
+    fn cache(self) -> asset_cache::Kind {
+        match self {
+            Art::TeamLogo => asset_cache::Kind::Team,
+            Art::PlayerPhoto => asset_cache::Kind::Player,
+        }
+    }
+
+    /// The in-memory key; teams keep their bare slug, players are prefixed so the two never collide.
+    fn key(self, slug: &str) -> String {
+        match self {
+            Art::TeamLogo => slug.to_string(),
+            Art::PlayerPhoto => format!("player:{slug}"),
+        }
+    }
+
+    fn missing(self) -> RuneError {
+        RuneError::not_found(match self {
+            Art::TeamLogo => "That team logo is unavailable.",
+            Art::PlayerPhoto => "That player photo is unavailable.",
+        })
+    }
+}
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(4);
 
 /// One gate per slug so concurrent requests for the same team share a fetch.
@@ -64,75 +103,80 @@ fn looks_like_png(bytes: &[u8]) -> bool {
 /// one that sanitizes to nothing) is `NotFound`. A 404 is remembered for the
 /// session so a team without a logo is not refetched on every render.
 pub async fn icon(team: &str) -> Result<Vec<u8>, RuneError> {
-    let slug = slug(team);
+    cdn_png(Art::TeamLogo, team).await
+}
+
+/// A pro player's headshot PNG, looked up like a team logo. Some players get a
+/// dark placeholder silhouette instead of a 404; the frontend hides those.
+pub async fn player_photo(player: &str) -> Result<Vec<u8>, RuneError> {
+    cdn_png(Art::PlayerPhoto, player).await
+}
+
+async fn cdn_png(art: Art, name: &str) -> Result<Vec<u8>, RuneError> {
+    let slug = slug(name);
     if !valid_slug(&slug) {
-        return Err(RuneError::not_found("Unknown team."));
+        return Err(RuneError::not_found("Unknown name."));
     }
-    if let Some(bytes) = super::shared().team_icons.get(&slug) {
+    let key = art.key(&slug);
+    if let Some(bytes) = super::shared().team_icons.get(&key) {
         return Ok(bytes.clone());
     }
-    if super::shared().team_icon_misses.contains(&slug) {
-        return Err(RuneError::not_found("That team logo is unavailable."));
+    if super::shared().team_icon_misses.contains(&key) {
+        return Err(art.missing());
     }
-    let gate = team_gate(&slug);
+    let gate = team_gate(&key);
     let _guard = gate.lock().await;
-    if let Some(bytes) = super::shared().team_icons.get(&slug) {
+    if let Some(bytes) = super::shared().team_icons.get(&key) {
         return Ok(bytes.clone());
     }
-    if super::shared().team_icon_misses.contains(&slug) {
-        return Err(RuneError::not_found("That team logo is unavailable."));
+    if super::shared().team_icon_misses.contains(&key) {
+        return Err(art.missing());
     }
     // A previous run's copy outlives the RAM cache, so a restart and a down CDN
-    // no longer mean a blank logo.
-    if let Some(bytes) = asset_cache::read(asset_cache::Kind::Team, &slug) {
-        super::shared().team_icons.insert(slug, bytes.clone());
+    // no longer mean a blank picture.
+    if let Some(bytes) = asset_cache::read(art.cache(), &slug) {
+        super::shared().team_icons.insert(key, bytes.clone());
         return Ok(bytes);
     }
-    match fetch(&slug).await {
+    match fetch(art, &slug).await {
         Ok(Some(bytes)) => {
-            asset_cache::write(asset_cache::Kind::Team, &slug, &bytes);
-            super::shared().team_icons.insert(slug, bytes.clone());
+            asset_cache::write(art.cache(), &slug, &bytes);
+            super::shared().team_icons.insert(key, bytes.clone());
             Ok(bytes)
         }
         // A 404 is permanent for the session; an outage is not.
         Ok(None) => {
             let mut state = super::shared();
             // ponytail: wholesale reset bounds the set against junk names from a
-            // remote client; real teams without logos are only a few dozen.
+            // remote client; real names without pictures are only a few dozen.
             if state.team_icon_misses.len() >= MAX_REMEMBERED_MISSES {
                 state.team_icon_misses.clear();
             }
-            state.team_icon_misses.insert(slug);
-            Err(RuneError::not_found("That team logo is unavailable."))
+            state.team_icon_misses.insert(key);
+            Err(art.missing())
         }
         Err(error) => Err(error),
     }
 }
 
-/// Fetches one logo. `Ok(None)` means the CDN answered 404 (no logo for this
-/// team); `Err` is a transient failure worth retrying later.
-async fn fetch(slug: &str) -> Result<Option<Vec<u8>>, RuneError> {
+/// Fetches one picture. `Ok(None)` means the CDN answered 404 (nothing for this
+/// name); `Err` is a transient failure worth retrying later.
+async fn fetch(art: Art, slug: &str) -> Result<Option<Vec<u8>>, RuneError> {
+    let unavailable = || RuneError::unavailable("Could not load the picture.");
     let client = reqwest::Client::builder()
         .connect_timeout(REQUEST_TIMEOUT)
         .timeout(REQUEST_TIMEOUT)
         .build()
-        .map_err(|_| RuneError::unavailable("Could not create the team logo client."))?;
-    let url = format!("{BASE}/{slug}.png");
-    let response = client
-        .get(&url)
-        .send()
-        .await
-        .map_err(|_| RuneError::unavailable("Could not load the team logo."))?;
+        .map_err(|_| unavailable())?;
+    let url = format!("{BASE}/{}/{slug}.png", art.folder());
+    let response = client.get(&url).send().await.map_err(|_| unavailable())?;
     if response.status() == reqwest::StatusCode::NOT_FOUND {
         return Ok(None);
     }
     if !response.status().is_success() {
-        return Err(RuneError::unavailable("Could not load the team logo."));
+        return Err(unavailable());
     }
-    let bytes = response
-        .bytes()
-        .await
-        .map_err(|_| RuneError::unavailable("Could not load the team logo."))?;
+    let bytes = response.bytes().await.map_err(|_| unavailable())?;
     if !looks_like_png(&bytes) {
         return Ok(None);
     }
@@ -167,6 +211,14 @@ mod tests {
         assert_eq!(slug("One Trick Pony"), "onetrickpony");
         assert_eq!(slug(""), "");
         assert_eq!(slug("   "), "");
+    }
+
+    #[test]
+    fn players_and_teams_have_separate_folders_and_keys() {
+        assert_eq!(Art::TeamLogo.folder(), "team_icons");
+        assert_eq!(Art::PlayerPhoto.folder(), "player_images/small_2x");
+        assert_eq!(slug("ShowMaker"), "showmaker");
+        assert_ne!(Art::TeamLogo.key("faker"), Art::PlayerPhoto.key("faker"));
     }
 
     #[test]

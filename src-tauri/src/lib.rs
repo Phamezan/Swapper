@@ -394,6 +394,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 commands::runes::level_border,
                 commands::runes::objective_icon,
                 commands::runes::team_icon,
+                commands::runes::player_photo,
                 commands::runes::apply_spell,
                 commands::runes::get_pro_builds,
                 commands::runes::get_keystone_build,

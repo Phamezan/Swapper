@@ -138,23 +138,33 @@ export function comparePatch(a: string, b: string): number {
   return 0;
 }
 
-export type VodSort = "patch" | "shortest" | "longest";
 /** `null` means any; `enemy` only matches champion-wide VODs, which carry their matchup. */
-export type VodFilters = { pros: boolean; tier: RankTier | null; result: "W" | "L" | null; patch: string | null; enemy: number | null; sort: VodSort };
-export const ANY_VOD: VodFilters = { pros: false, tier: null, result: null, patch: null, enemy: null, sort: "patch" };
+export type VodFilters = { pros: boolean; tier: RankTier | null; result: "W" | "L" | null; patch: string | null; enemy: number | null };
+export const ANY_VOD: VodFilters = { pros: false, tier: null, result: null, patch: null, enemy: null };
 
 export function vodMatches(vod: MatchupVod, f: VodFilters): boolean {
   return (!f.pros || !!vod.team) && (!f.tier || rankTier(vod.rankClaim) === f.tier) && (!f.result || vod.result === f.result)
     && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy);
 }
 
-const ORDER: Record<VodSort, (a: MatchupVod, b: MatchupVod) => number> = {
-  patch: (a, b) => comparePatch(b.patch, a.patch), shortest: (a, b) => a.durationSec - b.durationSec, longest: (a, b) => b.durationSec - a.durationSec,
-};
-
-/** Matching VODs in the chosen order; ties keep the content order (the sort is stable). */
+/** Matching VODs, newest patch first; ties keep the content order (the sort is stable). */
 export function filterVods(vods: readonly MatchupVod[], filters: VodFilters): MatchupVod[] {
-  return vods.filter(vod => vodMatches(vod, filters)).sort(ORDER[filters.sort]);
+  return vods.filter(vod => vodMatches(vod, filters)).sort((a, b) => comparePatch(b.patch, a.patch));
+}
+
+// Some players get a dark silhouette instead of a 404. Measured on 82 real CDN images:
+// headshots have 26% or more bright pixels, silhouettes 8% or fewer.
+const PHOTO_MIN_BRIGHT = 0.15;
+
+/** Whether RGBA pixels are a placeholder silhouette (or empty) rather than a real headshot. */
+export function isPlaceholderPhoto(rgba: ArrayLike<number>): boolean {
+  let opaque = 0, bright = 0;
+  for (let i = 0; i + 3 < rgba.length; i += 4) {
+    if (rgba[i + 3] <= 128) continue;
+    opaque++;
+    if ((rgba[i] + rgba[i + 1] + rgba[i + 2]) / 3 > 90) bright++;
+  }
+  return !opaque || bright / opaque < PHOTO_MIN_BRIGHT;
 }
 
 type Clock = { setTimeout: (fn: () => void, ms: number) => unknown; clearTimeout: (id: never) => void };

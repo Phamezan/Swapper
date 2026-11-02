@@ -7,6 +7,7 @@ import * as guide from "./matchupGuide.ts";
 import * as youtube from './youtubePlayer.ts';
 import { ahriVsZedVods } from "./fixtures/ahriVsZedVods.ts";
 
+const photos = {};
 function harness(file, component, vods = ahriVsZedVods, championVods = []) {
   const states = [], effects = [], focus = [], domRefs = new Set(), messages = [], listeners = new Map(), timers = new Map(), fullscreen = [], scrolls = [];
   const contentWindow = { postMessage: (data, origin) => messages.push({ data: JSON.parse(data), origin }) };
@@ -30,7 +31,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = []) {
     "./Picker": { Picker: "picker", ROLES: [["mid", "Mid"], ["top", "Top"]] }, "./NearViewport": { NearEnd: "near-end" },
     './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
     "./art": { useChampionArt: () => null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
-    "./VodPlayer": { VodPlayer: "player-identity" }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
+    "./VodPlayer": { VodPlayer: "player-identity" }, "./PlayerPhoto": { usePlayerPhoto: name => photos[name] ?? null }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
     "./ui/States": { Skeleton: "skeleton" }, "./MomentIcon": { MomentIcon: "moment-icon" }, "@tauri-apps/api/window": { getCurrentWindow: () => tauriWindow }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
     "./MatchupGuideSummary": { MatchupGuideSummary: "summary" }, "./TradeWindows": { TradeWindows: "trades" }, "./PowerSpikeTimeline": { PowerSpikeTimeline: "spikes" },
   };
@@ -314,8 +315,10 @@ test("missing and failed player photos show initials rather than a broken image"
   const vod = { ...ahriVsZedVods[0], player: "Fixture Pro 1" };
   const avatar = tree => nodes(tree).find(node => node.props.className === "mv-avatar");
   assert.equal(text(avatar(h.render({ vod }))), "FP");
-  const withPhoto = { ...vod, playerImage: "https://example.invalid/player.png" };
-  const image = nodes(h.render({ vod: withPhoto })).find(node => node.type === "img");
+  photos["Fixture Pro 1"] = "data:image/png;base64,AAAA";
+  const image = nodes(h.render({ vod })).find(node => node.type === "img");
+  delete photos["Fixture Pro 1"];
+  assert.equal(image.props.src, "data:image/png;base64,AAAA", "the CDN headshot fills the avatar");
   image.props.onError();
   const failed = h.render();
   assert.equal(nodes(failed).some(node => node.type === "img"), false);
@@ -358,16 +361,15 @@ test("the library pages a large matchup list and filters every Ahri VOD across o
   assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${every.length} VODs`);
   assert.equal(rows(tree).length, 60, "switching scope starts from the first step again");
   const opponents = labelled(tree, "Opponent").props.options;
-  assert.equal(opponents[1].label, `Zed · ${zed.length + every.filter(vod => vod.enemy === 238 && vod.lane !== "mid").length}`, "opponents are ordered by games, with portraits");
+  assert.deepEqual([opponents[1].label, opponents[1].count], ["Zed", zed.length + every.filter(vod => vod.enemy === 238 && vod.lane !== "mid").length], "opponents are ordered by games, with portraits and a separate count");
   assert.equal(opponents[1].icon.props.id, 238);
 
   labelled(tree, "Opponent").props.onChange("157");
   labelled(tree, "Players").props.onChange(true);
   labelled(tree, "Result").props.onChange("W");
   labelled(tree, "Rank").props.onChange("grandmaster");
-  labelled(tree, "Sort").props.onChange("longest");
   tree = h.render();
-  const filters = { ...logic.ANY_VOD, enemy: 157, pros: true, result: "W", tier: "grandmaster", sort: "longest" };
+  const filters = { ...logic.ANY_VOD, enemy: 157, pros: true, result: "W", tier: "grandmaster" };
   const expected = logic.filterVods(every, filters);
   assert.ok(expected.length > 1);
   assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]), expected.slice(0, 60).map(vod => vod.videoId));
@@ -382,7 +384,7 @@ test("the library pages a large matchup list and filters every Ahri VOD across o
   nodes(tree).find(node => node.props.className === "mv-text-button").props.onClick();
   tree = h.render();
   assert.equal(rows(tree).length, 60);
-  assert.equal(labelled(tree, "Sort").props.value, "longest", "clearing filters keeps the chosen order");
+  assert.equal(labelled(tree, "Sort"), undefined, "VODs are always newest patch first");
   assert.equal(labelled(tree, "Opponent").props.value, "0");
 });
 

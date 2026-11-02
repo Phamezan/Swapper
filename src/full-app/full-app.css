@@ -253,6 +253,9 @@ body { background: var(--ui-surface-0); }
 .fa-picker-option .champion-icon, .fa-picker-option .champion-icon-fallback { width: 30px; height: 30px; border-radius: 7px; }
 .fa-picker-option > span:not(.champion-icon-fallback) { flex: 1; }
 .fa-picker-check { margin-left: auto; color: var(--fa-you); }
+.fa-picker-option > span.fa-picker-count { flex: none; margin-left: auto; color: var(--text-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.fa-picker-count + .fa-picker-check { margin-left: 0; }
+.fa-picker-option:disabled .fa-picker-count { opacity: .6; }
 .fa-option-icon { width: 30px; height: 30px; flex: none; display: grid; place-items: center; }
 .fa-picker-popover.is-grid { width: 336px; }
 .fa-picker-popover.is-grid .fa-picker-options { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; max-height: none; }
@@ -264,6 +267,8 @@ body { background: var(--ui-surface-0); }
 .fa-picker-popover.is-grid .fa-picker-option:first-child { grid-column: 1 / -1; order: 99; flex-direction: row; min-height: 50px; }
 .fa-picker-search { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 9px 10px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-sm); background: rgb(11 11 13 / .4); color: var(--text-muted); }
 .fa-picker-search:focus-within { border-color: var(--fa-you); }
+/* The search box border already shows focus; a second ring on the input drew a double outline. */
+.fa-picker-popover .fa-picker-search input:focus-visible { outline: none; }
 .fa-picker-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font: inherit; }
 /* The field itself shows focus (border above); the input inside must not draw a second ring. */
 

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
-import { ANY_VOD, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
+import { ANY_VOD, isPlaceholderPhoto, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
 
 test("VOD timestamps use minutes, pad seconds, and support hour-long games", () => {
   assert.deepEqual([0, 9, 61.9, 184, 3605, -1, NaN].map(formatVodTime), ["0:00", "0:09", "1:01", "3:04", "1:00:05", "0:00", "0:00"]);
@@ -148,10 +148,9 @@ const library = [
 ];
 const ids = (filters) => filterVods(library, { ...ANY_VOD, ...filters }).map(vod => vod.videoId);
 
-test("VODs sort by newest patch by default, keeping content order for ties, or by length", () => {
+test("VODs always list the newest patch first, keeping content order for ties", () => {
   assert.deepEqual(ids({}), ["d", "e", "b", "c", "a"]);
-  assert.deepEqual(ids({ sort: "shortest" }), ["e", "b", "d", "a", "c"]);
-  assert.deepEqual(ids({ sort: "longest" }), ["c", "a", "d", "b", "e"]);
+  assert.deepEqual(ids({ result: "W" }), ["d", "e", "a"]);
   assert.deepEqual(library.map(vod => vod.videoId), ["a", "b", "c", "d", "e"], "sorting never reorders the source list");
 });
 
@@ -208,4 +207,13 @@ test("list rows lead with the player, or rank and region, and leave out an unkno
   assert.deepEqual(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: "KR Diamond 1", moments: [] }).primary, "KR Diamond 1", "an unknown tier keeps its own words without repeating the region");
   assert.deepEqual(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: " ", player: "Faker", moments: [] }).details, ["Patch 26.19"]);
   assert.equal(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: "", moments: [] }).primary, "Ranked game");
+});
+
+test("a dark placeholder silhouette is not shown as a player photo", () => {
+  const pixels = (count, rgba) => Array.from({ length: count }, () => rgba).flat();
+  // Measured: real headshots are 26%+ bright pixels, CDN silhouettes 8% or fewer.
+  assert.equal(isPlaceholderPhoto([...pixels(70, [20, 20, 24, 255]), ...pixels(30, [230, 220, 210, 255])]), false, "a real headshot");
+  assert.equal(isPlaceholderPhoto([...pixels(92, [10, 10, 12, 255]), ...pixels(8, [200, 200, 210, 255])]), true, "a rim-lit silhouette");
+  assert.equal(isPlaceholderPhoto([...pixels(50, [255, 255, 255, 0]), ...pixels(50, [8, 8, 8, 255])]), true, "transparent pixels are ignored");
+  assert.equal(isPlaceholderPhoto(pixels(10, [255, 255, 255, 0])), true, "an empty image");
 });

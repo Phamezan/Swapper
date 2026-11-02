@@ -283,6 +283,18 @@ pub(crate) async fn team_icon(team: String) -> Result<String, String> {
     ))
 }
 
+/// The PNG headshot of a pro player, addressed by the name a VOD gives.
+#[tauri::command]
+pub(crate) async fn player_photo(player: String) -> Result<String, String> {
+    let bytes = runes::teams::player_photo(&player)
+        .await
+        .map_err(|e| e.message().to_string())?;
+    Ok(format!(
+        "data:image/png;base64,{}",
+        base64::engine::general_purpose::STANDARD.encode(bytes)
+    ))
+}
+
 /// The 6-item build people build with one preset's keystone, from lolalytics.
 /// `None` means there is no build to show for that card.
 #[tauri::command]

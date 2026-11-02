@@ -7,8 +7,8 @@ import { RankCrest } from "../runes/RankCrest";
 import { TIER_OPTIONS, type ChampionOption } from "../runes/types";
 import { NearViewport } from "./NearViewport";
 
-/** `accent` tints the option (and the trigger while it is chosen), e.g. a rune tree's colour. */
-export type PickOption = { value: string; label: string; icon?: ReactNode; disabled?: boolean; accent?: string };
+/** `accent` tints the option (and the trigger while it is chosen), e.g. a rune tree's colour. `count` shows right-aligned in the menu only. */
+export type PickOption = { value: string; label: string; icon?: ReactNode; disabled?: boolean; accent?: string; count?: number };
 const accented = (accent?: string) => accent ? { "--accent": accent } as CSSProperties : undefined;
 export function Picker({ label, value, options, onChange, grid = false, searchable = false, disabled = false, hideLabel = false, className = "" }: {
   label: string; value: string; options: PickOption[]; onChange: (value: string) => void;
@@ -36,7 +36,7 @@ export function Picker({ label, value, options, onChange, grid = false, searchab
       {!hideLabel && <p className="fa-picker-label">{label}</p>}
       {searchable && <label className="fa-picker-search"><SearchIcon size={15} /><input aria-label={`Search ${label.toLowerCase()}`} placeholder="Search champions…" value={query} onChange={e => setQuery(e.target.value)} /></label>}
       <div className="fa-picker-options" role="group" aria-label={label}>{visible.map(option => <button type="button" className={`fa-picker-option${option.accent ? " is-accented" : ""}`} style={accented(option.accent)} key={option.value} disabled={option.disabled} aria-pressed={value === option.value} onClick={() => { onChange(option.value); setOpen(false); }}>
-        {option.icon && <NearViewport className="fa-option-icon">{option.icon}</NearViewport>}<span>{option.label}</span>{value === option.value && <Check size={13} className="fa-picker-check" />}
+        {option.icon && <NearViewport className="fa-option-icon">{option.icon}</NearViewport>}<span>{option.label}</span>{option.count !== undefined && <span className="fa-picker-count">{option.count}</span>}{value === option.value && <Check size={13} className="fa-picker-check" />}
       </button>)}</div>
       {!visible.length && <p className="fa-picker-label">No champions found.</p>}
     </Popover.Content></Popover.Portal>
