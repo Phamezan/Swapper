@@ -24,3 +24,11 @@ test('player messages accept only the iframe window and exact YouTube origins', 
   for (const value of ['broken', 'null', '{}', '{"event":"infoDelivery","info":null}']) assert.equal(playerMessage({ ...message, data: value }, frame), null);
   assert.deepEqual(playerMessage({ ...message, data: { event: 'infoDelivery', info: { currentTime: -1, duration: Infinity, playerState: '1', playbackRate: 0, muted: 'yes' } } }, frame), {});
 });
+
+test('buffered fraction and volume are kept only inside their ranges', () => {
+  const frame = {};
+  const info = value => playerMessage({ source: frame, origin: 'https://www.youtube-nocookie.com', data: { event: 'infoDelivery', info: value } }, frame);
+  assert.deepEqual(info({ volume: 40, videoLoadedFraction: 0.25 }), { volume: 40, videoLoadedFraction: 0.25 });
+  assert.deepEqual(info({ volume: 101, videoLoadedFraction: 1.5 }), {});
+  assert.deepEqual(info({ volume: -1, videoLoadedFraction: NaN }), {});
+});

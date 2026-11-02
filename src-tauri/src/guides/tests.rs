@@ -43,6 +43,17 @@ fn vods_are_optional_and_invalid_videos_do_not_discard_valid_siblings_or_guides(
 }
 
 #[test]
+fn moment_kinds_pass_through_and_unknown_kinds_drop_only_the_kind() {
+    let mut video = vod();
+    video["moments"] = json!([{"atSec":184,"label":"Dragon","kind":"dragon"}, {"atSec":200,"label":"Ward","kind":"ward"},
+        {"atSec":220,"label":"Odd","kind":7}, {"atSec":240,"label":"Plain"}]);
+    let vods = parse_vods(&with_vods(vec![video]), 103, 238, Lane::Mid);
+    assert_eq!(vods.len(), 1);
+    assert_eq!(serde_json::to_value(&vods[0]).unwrap()["moments"], json!([{"atSec":184,"label":"Dragon","kind":"dragon"},
+        {"atSec":200,"label":"Ward"}, {"atSec":220,"label":"Odd"}, {"atSec":240,"label":"Plain"}]));
+}
+
+#[test]
 fn vod_only_index_entries_are_validated() {
     let good = json!({"schema":1,"generatedAt":"2026-11-01T00:00:00Z","champions":{"103":{"sha256":"a".repeat(64),"guides":0,"vods":1}}});
     assert!(parse_index(&serde_json::to_vec(&good).unwrap()).is_some());

@@ -50,6 +50,9 @@ export type AuthoredGuide = MatchupGuide | GeneralGuide;
 // Player history belongs to the response, never the authored guide.
 export type MatchupGuideResult = { guide: AuthoredGuide | null; record: { wins: number; losses: number } | null };
 
+// Mirrors MOMENT_KINDS in the guides repo; the app drops kinds it does not know.
+export type MomentKind = "kill" | "death" | "teamfight" | "dragon" | "baron" | "herald" | "grubs" | "tower" | "trade" | "roam" | "other";
+
 export type MatchupVod = {
   videoId: string;
   title: string;
@@ -60,7 +63,7 @@ export type MatchupVod = {
   patch: string;
   result: "W" | "L";
   durationSec: number;
-  moments: { atSec: number; label: string; section?: GuideSectionId }[];
+  moments: { atSec: number; label: string; section?: GuideSectionId; kind?: MomentKind }[];
   fixture?: boolean;
 };
 

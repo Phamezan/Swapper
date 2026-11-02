@@ -236,7 +236,21 @@ pub(crate) struct MatchupVod {
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
-struct VodMoment { at_sec: u32, label: String, #[serde(skip_serializing_if = "Option::is_none")] section: Option<SectionId> }
+struct VodMoment {
+    at_sec: u32, label: String,
+    #[serde(skip_serializing_if = "Option::is_none")] section: Option<SectionId>,
+    #[serde(default, skip_serializing_if = "Option::is_none", deserialize_with = "known_kind")] kind: Option<MomentKind>,
+}
+
+// Mirrors MOMENT_KINDS in the guides repo's scripts/vods.mjs.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "lowercase")]
+enum MomentKind { Kill, Death, Teamfight, Dragon, Baron, Herald, Grubs, Tower, Trade, Roam, Other }
+
+// A kind added by newer content drops only the icon, never the moment or its video.
+fn known_kind<'de, D: serde::Deserializer<'de>>(deserializer: D) -> Result<Option<MomentKind>, D::Error> {
+    Ok(serde_json::from_value(serde_json::Value::deserialize(deserializer)?).ok())
+}
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]

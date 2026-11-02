@@ -6,6 +6,7 @@ import { useChampionArt } from "./art";
 import { loadMatchupVods } from "./loadMatchupVods";
 import { GUIDE_SECTIONS, type GuideSectionId, type MatchupVod } from "./matchupGuide";
 import { formatVodTime, vodUrl } from "./matchupVodModel";
+import { MomentIcon } from "./MomentIcon";
 import { VodPlayer } from "./VodPlayer";
 import { YoutubeVodPlayer, type VodSeek } from "./YoutubeVodPlayer";
 import { Skeleton } from "./ui/States";
@@ -30,6 +31,8 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
   const [response, setResponse] = useState<{ key: string; vods: MatchupVod[] } | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [seek, setSeek] = useState<VodSeek | null>(null);
+  const [activeMoment, setActiveMoment] = useState(-1);
+  const momentList = useRef<HTMLOListElement>(null);
   const lastOpened = useRef("");
   const sourceRow = useRef<HTMLButtonElement>(null);
   const backButton = useRef<HTMLButtonElement>(null);
@@ -48,6 +51,13 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
   const vods = response?.key === key ? response.vods : null;
   const selected = vods?.find(vod => vod.videoId === selectedId);
   const playable = !!selected && !!vodUrl(selected);
+  // Keep the playing moment in view by scrolling the feed only, never the page around the video.
+  useEffect(() => {
+    const list = momentList.current, row = list?.children[activeMoment] as HTMLElement | undefined;
+    if (!list || !row || list.scrollHeight <= list.clientHeight) return;
+    if (row.offsetTop < list.scrollTop || row.offsetTop + row.offsetHeight > list.scrollTop + list.clientHeight)
+      list.scrollTo({ top: row.offsetTop - (list.clientHeight - row.offsetHeight) / 2, behavior: "smooth" });
+  }, [activeMoment]);
   useEffect(() => {
     onPlaybackChange?.(playable);
     return () => onPlaybackChange?.(false);
@@ -73,18 +83,19 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
     <div className="mv-mini-actions"><button type="button" onClick={onReopen}>Reopen VOD</button><button type="button" aria-label="Close mini player" onClick={() => { setSelectedId(null); setSeek(null); }}>Close</button></div>
     <div className="mv-player-layout">
       <article className="mv-watch" aria-label="Selected VOD">
-        <YoutubeVodPlayer key={selected.videoId} vod={selected} seek={seek} />
+        <YoutubeVodPlayer key={selected.videoId} vod={selected} seek={seek} mini={!active} onMomentChange={setActiveMoment} />
         {vodUrl(selected) && <GuideSourceButton url={vodUrl(selected)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube</GuideSourceButton>}
         <div className="mv-description"><VodPlayer key={selected.videoId} vod={selected} /><h2 className="mv-title">{selected.title}</h2>
           <VodFacts vod={selected} />
         </div>
       </article>
       <section className="mv-chapters" aria-label="Key moments"><header><h3>Key moments</h3><small>{selected.moments.length} moments</small></header>
-          <ol className="mv-moments">{selected.moments.map((moment, i) => {
+          <ol className="mv-moments" ref={momentList}>{selected.moments.map((moment, i) => {
             const section = GUIDE_SECTIONS.find(([id]) => id === moment.section);
-            return <li key={`${selected.videoId}-${i}`}>
-            <button type="button" disabled={!vodUrl(selected)} className="mv-timestamp" aria-label={`Watch ${moment.label} at ${formatVodTime(moment.atSec)}`} onClick={() => setSeek({ moment, serial: (seek?.serial ?? 0) + 1 })}>{formatVodTime(moment.atSec)}</button>
-            <button type="button" disabled={!vodUrl(selected)} className="mv-moment-label" onClick={() => setSeek({ moment, serial: (seek?.serial ?? 0) + 1 })}>{moment.label}</button>
+            return <li key={`${selected.videoId}-${i}`} className={i === activeMoment ? "is-active" : undefined}>
+            <button type="button" disabled={!playable} className="mv-moment" aria-current={i === activeMoment || undefined} aria-label={`Watch ${moment.label} at ${formatVodTime(moment.atSec)}`} onClick={() => setSeek({ moment, serial: (seek?.serial ?? 0) + 1 })}>
+              <MomentIcon kind={moment.kind} /><span className="mv-moment-time">{formatVodTime(moment.atSec)}</span><span className="mv-moment-label">{moment.label}</span>
+            </button>
             {section && <button type="button" className="mv-section-link" onClick={() => onGuideSection(section[0])} aria-label={`Open ${section[1]} guide section`}>{section[1]}<ChevronRight size={12} aria-hidden /></button>}
           </li>; })}</ol>
       </section>
