@@ -226,8 +226,10 @@ impl ChampionFile {
     }
 }
 
+// VOD types ignore unknown fields: content published later must not make installed apps drop the video.
+// Ignored fields are also never forwarded, so content cannot set app-only fields like `fixture`.
 #[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[serde(rename_all = "camelCase")]
 pub(crate) struct MatchupVod {
     video_id: String, title: String,
     // Replay channels often name neither the player nor the result; both are optional.
@@ -236,11 +238,13 @@ pub(crate) struct MatchupVod {
     rank_claim: String, patch: String,
     #[serde(default, skip_serializing_if = "Option::is_none")] result: Option<String>,
     duration_sec: u32,
+    /// Upload day as YYYY-MM-DD, when the harvester knows it.
+    #[serde(default, skip_serializing_if = "Option::is_none")] uploaded: Option<String>,
     #[serde(default)] moments: Vec<VodMoment>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[serde(rename_all = "camelCase")]
 struct VodMoment {
     at_sec: u32, label: String,
     #[serde(skip_serializing_if = "Option::is_none")] section: Option<SectionId>,
@@ -258,13 +262,20 @@ fn known_kind<'de, D: serde::Deserializer<'de>>(deserializer: D) -> Result<Optio
 }
 
 #[derive(Deserialize)]
-#[serde(deny_unknown_fields)]
 struct VodMatchup { enemy: i64, lane: Lane, videos: Vec<serde_json::Value> }
 
 fn vod_text(text: &str) -> bool {
     static MARKUP: OnceLock<regex::Regex> = OnceLock::new();
     !text.trim().is_empty() && valid_text(text, 0, 0) && !text.contains(['{', '}'])
         && !MARKUP.get_or_init(|| regex::Regex::new(r"<|>|\*\*|__|~~|`|\[[^\]]*\]\([^)]*\)|(?:^|\W)[*_][^*_\n]+[*_](?:\W|$)").unwrap()).is_match(text)
+}
+
+/// A YYYY-MM-DD day; only used for display and ordering, so month lengths are not checked.
+fn upload_day(day: &str) -> bool {
+    let parts: Vec<_> = day.split('-').collect();
+    let number = |i: usize, len: usize, range: std::ops::RangeInclusive<u32>| parts.get(i)
+        .is_some_and(|p| p.len() == len && p.bytes().all(|b| b.is_ascii_digit()) && p.parse().is_ok_and(|n| range.contains(&n)));
+    parts.len() == 3 && number(0, 4, 2000..=2999) && number(1, 2, 1..=12) && number(2, 2, 1..=31)
 }
 
 impl MatchupVod {
@@ -275,6 +286,7 @@ impl MatchupVod {
             && self.patch.len() <= 32 && (2..=3).contains(&self.patch.split('.').count())
             && self.patch.split('.').all(|part| !part.is_empty() && part.bytes().all(|b| b.is_ascii_digit()))
             && self.result.as_deref().is_none_or(|r| matches!(r, "W" | "L")) && self.duration_sec > 0
+            && self.uploaded.as_deref().is_none_or(upload_day)
             && self.moments.iter().all(|m| m.at_sec < self.duration_sec && vod_text(&m.label))
     }
 }

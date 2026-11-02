@@ -8,8 +8,11 @@ pub(crate) fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
         || url.password().is_some()
         || !matches!(
             url.host_str(),
+            // Same hosts as HOSTS in the guides repo's scripts/validate.mjs; a guide citing any other host is dropped.
             Some("mobafire.com" | "www.mobafire.com" | "docs.google.com"
-                | "youtube.com" | "www.youtube.com" | "youtu.be")
+                | "youtube.com" | "www.youtube.com" | "youtu.be"
+                | "reddit.com" | "www.reddit.com" | "old.reddit.com" | "lolmatchups.gg"
+                | "www.inven.co.kr" | "talk.op.gg" | "mobalytics.gg")
         )
     {
         return Err("Guide sources must use HTTPS on an allowed host without credentials.".to_string());
@@ -41,6 +44,12 @@ mod tests {
             "https://youtube.com/watch?v=example",
             "https://www.youtube.com/watch?v=example&t=20",
             "https://youtu.be/example",
+            "https://www.reddit.com/r/summonerschool/comments/example",
+            "https://old.reddit.com/r/example",
+            "https://lolmatchups.gg/ahri/zed",
+            "https://mobalytics.gg/lol/champions/ahri/counters",
+            "https://www.inven.co.kr/board/lol/2778",
+            "https://talk.op.gg/s/lol/free/1",
         ] {
             assert!(validate_guide_source_url(raw).is_ok(), "{raw}");
         }
@@ -51,6 +60,8 @@ mod tests {
             "https://evil-mobafire.com/guide",
             "https://evil.io/mobafire.com",
             "https://docs.google.com.evil.io/guide",
+            "https://mobalytics.gg.evil.io/guide",
+            "https://evil.reddit.com/r/example",
             "file:///C:/Windows/System32/calc.exe",
             "javascript:alert(1)",
             "https://user:password@mobafire.com/guide",

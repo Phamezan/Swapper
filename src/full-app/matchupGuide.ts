@@ -63,6 +63,8 @@ export type MatchupVod = {
   patch: string;
   result?: "W" | "L";
   durationSec: number;
+  /** Upload day, YYYY-MM-DD. */
+  uploaded?: string;
   moments: { atSec: number; label: string; section?: GuideSectionId; kind?: MomentKind }[];
   fixture?: boolean;
   /** Set only on champion-wide lists (`get_champion_vods`), which span matchups. */

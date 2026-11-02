@@ -24,7 +24,7 @@ fn vods_are_optional_and_invalid_videos_do_not_discard_valid_siblings_or_guides(
     for (field, value) in [("videoId", json!("bad")), ("title", json!("<b>Bad</b>")),
         ("player", json!("")), ("rankClaim", json!("**Rank**")), ("team", json!("")),
         ("patch", json!("current")), ("result", json!("win")), ("durationSec", json!(0)),
-        ("durationSec", json!(1.5)), ("fixture", json!(true)), ("playerImage", json!("https://evil.io/photo")),
+        ("durationSec", json!(1.5)), ("uploaded", json!("2026-13-01")), ("uploaded", json!("yesterday")),
         ("moments", json!([{"atSec":1746,"label":"End"}])),
         ("moments", json!([{"atSec":-1,"label":"Bad"}])),
         ("moments", json!([{"atSec":1,"label":"Bad","section":"build"}]))] {
@@ -107,6 +107,24 @@ async fn champion_files_up_to_eight_megabytes_download_cache_and_parse() {
     let bytes = reopened.content(&client, 103, 100_000 + REFRESH_SECONDS).await;
     assert_eq!(parse_champion_vods(&bytes, 103).len(), 1, "the disk cache holds a 6 MB file");
     std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn unknown_vod_fields_are_ignored_and_never_forwarded() {
+    let mut video = vod();
+    video["fixture"] = json!(true);
+    video["playerImage"] = json!("https://evil.io/photo");
+    video["futureField"] = json!({"any": "shape"});
+    video["uploaded"] = json!("2026-08-25");
+    video["moments"][0]["futureField"] = json!(1);
+    let mut file: Value = serde_json::from_slice(&with_vods(vec![video])).unwrap();
+    file["vods"][0]["futureField"] = json!(true);
+    let vods = parse_vods(&serde_json::to_vec(&file).unwrap(), 103, 238, Lane::Mid);
+    assert_eq!(vods.len(), 1, "newer content keeps working in this app version");
+    let wire = serde_json::to_value(&vods[0]).unwrap();
+    for field in ["fixture", "playerImage", "futureField"] { assert!(wire.get(field).is_none(), "{field}"); }
+    assert!(wire["moments"][0].get("futureField").is_none());
+    assert_eq!(wire["uploaded"], json!("2026-08-25"));
 }
 
 #[test]
