@@ -40,54 +40,82 @@
 .mv-result-badge.is-win { background: color-mix(in srgb, var(--ui-win) 14%, transparent); color: var(--ui-win); }
 .mv-result-badge.is-loss { background: color-mix(in srgb, var(--ui-loss) 14%, transparent); color: var(--ui-loss); }
 .mv-cell-length { color: var(--ui-text-2); font-variant-numeric: tabular-nums; text-align: right; }
-.mv-watch-header { flex-shrink: 0; }
-.mv-watch-toolbar { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
-.mv-back { display: inline-flex; align-items: center; gap: 7px; padding: 0; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; cursor: pointer; }
+/* Player: one header line, then the picture at exactly 16:9 and as large as the space allows, with the moment rail under it. */
+/* The popover is a fallback top layer for Tauri; closed playback remains in normal flow. */
+.mv-video-player { display: grid; grid-template: auto minmax(0, 1fr) / minmax(0, 1fr) auto; flex: 1; min-height: 0; position: relative; inset: auto; width: auto; height: auto; margin: 0; padding: 0; border: 0; overflow: visible; color: var(--ui-text-2); background: transparent; outline: none; }
+.mv-watch-header { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; min-width: 0; padding-bottom: 12px; }
+.mv-back { display: inline-flex; flex-shrink: 0; align-items: center; gap: 7px; padding: 0; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; cursor: pointer; }
 .mv-back:hover, .mv-youtube-link:hover { color: var(--ui-brand); }
-.mv-watch-toolbar > .mv-eyebrow { padding-left: 16px; border-left: 1px solid var(--ui-line-3); }
-.mv-youtube-link { display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; padding: 4px 0; color: var(--ui-text-3); font: inherit; font-size: 11px; cursor: pointer; }
-.mv-watch-toolbar > .mv-youtube-link { margin-left: auto; }
-.mv-description { display: flex; align-items: center; gap: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--ui-line-2); }
-.mv-game-info { min-width: 0; flex: 1; }
-.fa-frame .champion-tools .mv-title { margin: 0 0 7px; color: var(--ui-text-1); font-size: 16px; font-weight: 500; line-height: 1.35; text-wrap: pretty; }
-.mv-player { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.mv-avatar { display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; overflow: hidden; border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); color: var(--ui-brand); font-size: 14px; font-weight: 600; }
+.mv-youtube-link { display: inline-flex; flex-shrink: 0; align-items: center; gap: 6px; border: 0; background: none; padding: 4px 0; color: var(--ui-text-3); font: inherit; font-size: 11px; cursor: pointer; }
+.mv-watch-header > .mv-youtube-link { margin-left: auto; }
+.mv-game-info { display: flex; align-items: center; gap: 14px; min-width: 0; overflow: hidden; padding-left: 16px; border-left: 1px solid var(--ui-line-3); }
+.mv-player { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mv-avatar { display: grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; overflow: hidden; border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); color: var(--ui-brand); font-size: 11px; font-weight: 600; }
 .mv-avatar > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 /* Headshots are head and shoulders; the top of the frame keeps the face in a small circle. */
 .mv-row-photo { display: block; width: 26px; height: 26px; border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; object-position: center 12%; }
-.mv-player-info { display: flex; flex-direction: column; min-width: 0; gap: 3px; }
-.mv-player-name { overflow: hidden; color: var(--ui-text-1); font-size: 18px; font-weight: 600; line-height: 1.2; letter-spacing: -.02em; text-overflow: ellipsis; white-space: nowrap; }
-.mv-affiliation { display: inline-flex; align-items: center; gap: 5px; color: var(--ui-text-3); font-size: 11px; line-height: 18px; }
-.mv-facts { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; color: var(--ui-text-3); font-size: 11px; line-height: 18px; }
+.mv-player-name { overflow: hidden; color: var(--ui-text-1); font-size: 14px; font-weight: 600; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
+.mv-affiliation { display: inline-flex; flex-shrink: 0; align-items: center; gap: 5px; color: var(--ui-text-3); font-size: 11px; }
+.mv-facts { display: flex; align-items: center; gap: 12px; min-width: 0; color: var(--ui-text-3); font-size: 11px; line-height: 18px; white-space: nowrap; }
 .mv-result { font-weight: 600; }
 .mv-result.is-win { color: var(--ui-win); }
 .mv-result.is-loss { color: var(--ui-loss); }
-.mv-player-layout { display: grid; grid-template-columns: minmax(0, 1fr) 256px; flex: 1; min-height: 0; gap: 24px; }
-.mv-watch { min-width: 0; min-height: 0; overflow: hidden; }
-/* Reserve the dock first; video width must never push playback controls offscreen. */
-.mv-watch > .mv-video-player { display: grid; grid-template-rows: minmax(0, 1fr) auto; height: 100%; min-height: 0; }
-.mv-watch > .mv-video-player > .mv-embed { height: 100%; min-height: 0; aspect-ratio: auto; }
+.mv-stage { grid-row: 2; grid-column: 1; display: grid; place-items: start center; min-width: 0; min-height: 0; container-type: size; }
+/* Fit by width and height; each rail or notice row below the picture is 32px (--mv-bars counts them). */
+.mv-screen { width: min(100cqw, (100cqh - var(--mv-bars, 0) * 32px) * 16 / 9); }
 .mv-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #08090b; overflow: hidden; }
 .mv-embed > iframe { display: block; width: 100%; height: 100%; border: 0; }
 .mv-preview-frame { display: grid; align-content: center; justify-items: center; color: var(--ui-text-3); }
 .mv-preview { padding: 5px 8px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); color: var(--ui-text-3); font-size: 11px; }
-.mv-chapters { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
-.mv-chapters > header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 0 16px; border-bottom: 1px solid var(--ui-line-2); }
-.fa-frame .champion-tools .mv-chapters h3 { margin: 5px 0 0; font-size: 18px; font-weight: 500; letter-spacing: -.02em; }
-.mv-chapters > header small { color: var(--ui-text-3); font-size: 26px; font-variant-numeric: tabular-nums; font-weight: 400; }
-.mv-moments { position: relative; flex: 1; min-height: 0; margin: 0; padding: 0 3px; list-style: none; overflow-y: auto; scrollbar-width: thin; overscroll-behavior: contain; }
-.mv-moments > li { position: relative; border-bottom: 1px solid var(--ui-line-2); padding-bottom: 10px; }
+.mv-notice { display: flex; align-items: center; gap: 12px; height: 32px; margin: 0; padding: 0 8px; color: var(--ui-warn); font-size: 12px; }
+.mv-notice > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mv-notice > .mv-youtube-link { color: var(--ui-text-1); font-size: 12px; }
+.mv-icon-button { display: inline-grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; padding: 0; border: 0; border-radius: var(--ui-radius-xs); background: none; color: var(--ui-text-2); cursor: pointer; transition: background .12s, color .12s; }
+.mv-icon-button:hover:not(:disabled) { background: var(--ui-surface-hover); color: var(--ui-text-1); }
+.mv-icon-button:disabled { opacity: .4; cursor: default; }
+/* Moment rail: jump ticks under the picture, not a scrubber (YouTube's own bar scrubs). */
+.mv-rail-row { display: flex; align-items: center; gap: 2px; height: 32px; }
+.mv-rail-row > .mv-icon-button { width: 28px; height: 28px; }
+.mv-rail-spacer { flex: 1; }
+/* Bottom right of the picture, where media players keep fullscreen; full-contrast so it never reads as disabled. */
+.mv-bar-end { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.mv-icon-button.mv-strong { color: var(--ui-text-1); }
+.mv-show-moments { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; cursor: pointer; }
+.mv-show-moments:hover { background: var(--ui-surface-hover); color: var(--ui-text-1); }
+.mv-rail { position: relative; flex: 1; align-self: stretch; min-width: 0; margin: 0 10px; }
+.mv-rail-line { position: absolute; top: 50%; left: 0; right: 0; height: 3px; margin-top: -1.5px; overflow: hidden; border-radius: 999px; background: var(--ui-line-2); }
+.mv-rail-played { position: absolute; inset: 0 auto 0 0; background: color-mix(in srgb, var(--ui-brand) 55%, transparent); }
+.mv-tick { position: absolute; top: 0; bottom: 0; width: 14px; padding: 0; transform: translateX(-50%); border: 0; border-radius: var(--ui-radius-xs); background: none; cursor: pointer; }
+.mv-tick::before { content: ""; position: absolute; top: 50%; left: 50%; width: 3px; height: 12px; transform: translate(-50%, -50%); border-radius: 2px; background: var(--ui-text-2); transition: height .12s, background .12s; }
+.mv-tick.is-past::before { background: var(--ui-text-3); }
+.mv-tick:is(:hover, :focus-visible)::before { height: 18px; background: var(--ui-text-1); }
+.mv-tick.is-current::before { width: 4px; height: 18px; background: var(--ui-brand); }
+.mv-tick:disabled { cursor: default; opacity: .5; }
+.mv-tick-count { position: absolute; top: 0; left: calc(50% + 3px); min-width: 11px; height: 11px; padding: 0 2px; border-radius: 999px; background: var(--ui-text-1); color: var(--ui-surface-0); font-size: 8px; font-weight: 700; line-height: 11px; }
+.mv-tip { position: absolute; bottom: calc(100% + 2px); left: 50%; z-index: 6; display: none; flex-direction: column; gap: 4px; width: max-content; max-width: min(280px, 60cqw); padding: 7px 9px; transform: translateX(-50%); border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); box-shadow: 0 8px 24px rgb(0 0 0 / .35); color: var(--ui-text-2); font-size: 12px; line-height: 16px; text-align: left; overflow-wrap: anywhere; pointer-events: none; }
+.mv-tick.is-start .mv-tip { left: -4px; transform: none; }
+.mv-tick.is-end .mv-tip { left: auto; right: -4px; transform: none; }
+.mv-tick:is(:hover, :focus-visible) .mv-tip { display: flex; }
+.mv-tip > span { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 8px; }
+.mv-tip b { color: var(--ui-text-1); font-weight: 600; font-variant-numeric: tabular-nums; }
+.mv-tip .mv-portraits :is(.champion-icon, .champion-icon-fallback) { width: 20px; height: 20px; }
+/* Key moments: only when the VOD has some; otherwise the picture takes the full width. */
+.mv-side { position: relative; grid-row: 2; grid-column: 2; display: flex; flex-direction: column; width: 272px; min-height: 0; margin-left: 20px; }
+.mv-side-close { position: absolute; top: -8px; right: -6px; z-index: 1; }
+.mv-side-close > .mv-icon-button { width: 28px; height: 28px; }
+.mv-chapters { display: flex; flex-direction: column; flex: 1; min-width: 0; min-height: 0; }
+.mv-chapters > header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 30px 10px 0; border-bottom: 1px solid var(--ui-line-2); }
+.fa-frame .champion-tools .mv-chapters h3 { margin: 0; color: var(--ui-text-1); font-size: 13px; font-weight: 600; }
+.mv-chapters > header small { color: var(--ui-text-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+.mv-moments { position: relative; flex: 1; min-height: 0; margin: 0; padding: 0; list-style: none; overflow-y: auto; scrollbar-width: thin; overscroll-behavior: contain; }
+.mv-moments > li { border-bottom: 1px solid var(--ui-line-2); }
 .mv-moments > li.is-active { background: var(--ui-brand-tint); box-shadow: inset 2px 0 var(--ui-brand); }
-.mv-moment { display: grid; grid-template-columns: 38px minmax(0, 1fr); align-items: start; gap: 10px; width: 100%; padding: 14px 10px 8px; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; line-height: 1.5; text-align: left; cursor: pointer; }
+.mv-moment { display: grid; grid-template-columns: 36px auto minmax(0, 1fr); align-items: center; gap: 8px; width: 100%; padding: 9px 8px; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; line-height: 1.45; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
 .mv-moment:hover:not(:disabled) { color: var(--ui-text-1); background: var(--ui-surface-hover); }
 .mv-moment:disabled { cursor: default; }
-.mv-moment-time { padding-top: 4px; color: var(--ui-text-3); font-size: 11px; font-variant-numeric: tabular-nums; }
+.mv-moment-time { color: var(--ui-text-3); font-size: 11px; font-variant-numeric: tabular-nums; }
 .mv-moments > li.is-active .mv-moment-time { color: var(--ui-brand); }
-.mv-moment-body { display: flex; flex-direction: column; gap: 8px; min-width: 0; overflow-wrap: anywhere; }
-.mv-moment-topline { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-.mv-moment-kind { color: var(--ui-text-3); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; }
-.mv-moments > li.is-active .mv-moment-kind { color: var(--ui-brand); }
-.mv-section-link { display: inline-flex; align-items: center; gap: 3px; margin-left: 58px; padding: 2px 0; border: 0; background: none; color: var(--ui-brand); font: inherit; font-size: 10px; cursor: pointer; }
+.mv-section-link { display: inline-flex; align-items: center; gap: 3px; margin: -4px 0 8px 52px; padding: 2px 0; border: 0; background: none; color: var(--ui-brand); font: inherit; font-size: 10px; cursor: pointer; }
 .mv-event-art { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
 .mv-event-art > .mv-kind-icon { opacity: .85; }
 .mv-portraits { display: inline-flex; gap: 2px; }
@@ -97,120 +125,45 @@
 .mv-event-number { display: grid; place-items: center; width: 24px; height: 24px; background: var(--ui-surface-3); color: var(--ui-text-2); font-size: 11px; font-variant-numeric: tabular-nums; border-radius: 3px; }
 .mv-kind-icon { display: inline-grid; place-items: center; flex-shrink: 0; color: var(--ui-text-3); }
 .mv-kind-icon > img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.mv-marker .mv-portraits :is(.champion-icon, .champion-icon-fallback) { width: 20px; height: 20px; }
-.mv-marker .mv-event-art { gap: 2px; }
-.mv-marker .mv-event-art > .mv-kind-icon { width: 12px !important; height: 12px !important; }
-/* The popover is a fallback top layer for Tauri; closed playback remains in normal flow. */
-.mv-video-player { display: block; position: relative; inset: auto; width: auto; height: auto; margin: 0; padding: 0; border: 0; overflow: visible; color: var(--ui-text-2); background: var(--ui-surface-1); container: vod-player / inline-size; outline: none; }
-.mv-controls { container: vod-controls / inline-size; padding: 12px 12px 8px; color: var(--ui-text-2); font-size: 12px; background: var(--ui-surface-1); }
-.mv-controls > p { margin: 8px 0; color: var(--ui-warn); }
-.mv-controls :disabled, .mv-track[aria-disabled="true"] { opacity: .45; cursor: default; }
-.mv-timeline { position: relative; padding: 0 28px; }
-.mv-timeline-heading { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 3px; color: var(--ui-text-3); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
-.mv-timeline-heading > span:first-child { color: var(--ui-brand); }
-.mv-track { position: relative; display: flex; align-items: center; height: 18px; cursor: pointer; touch-action: none; }
-.mv-rail { position: relative; flex: 1; height: 4px; overflow: hidden; border-radius: 999px; background: var(--ui-line-2); transition: height .12s; }
-.mv-rail > span { position: absolute; inset: 0 auto 0 0; }
-.mv-rail-buffered { background: var(--ui-line-3); }
-.mv-rail-hover { background: rgb(255 255 255 / .2); }
-.mv-rail-played { background: var(--ui-brand); }
-.mv-thumb { position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%; background: var(--ui-brand-strong); box-shadow: 0 0 0 3px var(--ui-brand-tint); transform: translate(-50%, -50%) scale(0); transition: transform .12s; pointer-events: none; }
-.mv-track:is(:hover, :focus-visible, .is-dragging) .mv-rail { height: 6px; }
-.mv-track:is(:hover, :focus-visible, .is-dragging) .mv-thumb { transform: translate(-50%, -50%) scale(1); }
-.mv-hover-time { position: absolute; top: calc(100% + 1px); z-index: 6; padding: 1px 6px; transform: translateX(-50%); border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); background: var(--ui-surface-3); color: var(--ui-text-1); font-size: 11px; line-height: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; pointer-events: none; }
-.mv-marker-lane { position: relative; height: 55px; margin-top: 5px; }
-.mv-marker { position: absolute; top: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; width: 58px; height: 51px; padding: 3px; transform: translateX(-50%); border: 0; border-radius: var(--ui-radius-xs); background: transparent; color: var(--ui-text-3); cursor: pointer; }
-.mv-marker::before { content: ''; position: absolute; top: -10px; height: 8px; width: 1px; background: var(--ui-line-3); }
-.mv-marker.is-past { opacity: .65; }
-.mv-marker.is-current { opacity: 1; color: var(--ui-brand); background: var(--ui-brand-tint); }
-.mv-marker:is(:hover, :focus-visible) { z-index: 5; opacity: 1; background: var(--ui-surface-hover); }
-.mv-marker-time { font-size: 10px; font-variant-numeric: tabular-nums; }
-.mv-marker:disabled { cursor: default; }
-.mv-marker-count { position: absolute; top: -3px; right: -3px; min-width: 13px; height: 13px; padding: 0 3px; border-radius: 999px; background: var(--ui-text-1); color: var(--ui-surface-0); font-size: 9px; font-weight: 700; line-height: 13px; }
-.mv-tip { position: absolute; top: calc(100% - 5px); left: 50%; display: none; max-height: 60px; box-sizing: border-box; overflow-y: auto; flex-direction: column; gap: 4px; width: max-content; max-width: min(260px, 65cqw); overflow-wrap: anywhere; padding: 7px 9px; transform: translateX(-50%); border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); box-shadow: 0 8px 24px rgb(0 0 0 / .35); color: var(--ui-text-2); font-size: 12px; line-height: 16px; text-align: left; pointer-events: auto; }
-.mv-marker.is-start .mv-tip { left: -4px; transform: none; }
-.mv-marker.is-end .mv-tip { left: auto; right: -4px; transform: none; }
-.mv-marker:is(:hover, :focus-visible) .mv-tip { display: flex; }
-.mv-tip > span { display: grid; grid-template-columns: 20px auto minmax(0, 1fr); align-items: center; gap: 6px; }
-.mv-tip b { color: var(--ui-text-1); font-weight: 600; font-variant-numeric: tabular-nums; }
-.mv-control-row { display: flex; border-top: 1px solid var(--ui-line-2); padding-top: 8px; align-items: center; gap: 2px; min-width: 0; margin-top: 2px; }
-.mv-icon-button, .mv-speed-button, .mv-quality-button { display: inline-grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; padding: 0; border: 0; border-radius: var(--ui-radius-xs); background: none; color: var(--ui-text-2); cursor: pointer; transition: background .12s, color .12s; }
-:is(.mv-icon-button, .mv-speed-button, .mv-quality-button):hover:not(:disabled) { background: var(--ui-surface-hover); color: var(--ui-text-1); }
-.mv-icon-button.mv-play { width: 34px; height: 34px; margin: 0 2px; border-radius: 50%; background: var(--ui-brand); color: var(--ui-brand-ink); }
-.mv-icon-button.mv-play:hover:not(:disabled) { background: var(--ui-brand-strong); color: var(--ui-brand-ink); }
-.mv-volume { display: inline-flex; align-items: center; margin-left: 4px; }
-.mv-volume > input { width: 72px; height: 4px; margin: 0 6px 0 2px; appearance: none; border-radius: 999px; background: linear-gradient(to right, var(--ui-text-2) var(--mv-fill), var(--ui-line-2) var(--mv-fill)); cursor: pointer; }
-.mv-volume > input::-webkit-slider-thumb { width: 12px; height: 12px; appearance: none; border-radius: 50%; background: var(--ui-text-1); }
-.mv-time { flex-shrink: 0; margin-left: 6px; color: var(--ui-text-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.mv-now { display: flex; align-items: center; flex: 1; gap: 6px; min-width: 0; margin: 0 8px; color: var(--ui-text-3); }
-.mv-now > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mv-speed { position: relative; flex-shrink: 0; }
-.mv-quality-button { display: inline-flex; gap: 6px; width: auto; padding: 0 10px; font: inherit; font-size: 12px; font-weight: 600; }
-.mv-quality-button.is-on, .mv-quality-button.is-on:hover:not(:disabled) { background: var(--ui-brand); color: var(--ui-brand-ink); }
-.mv-now > .mv-mode-note { color: var(--ui-text-2); }
-.mv-speed-button { width: auto; min-width: 40px; padding: 0 8px; font: inherit; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.mv-speed-menu { position: absolute; right: 0; bottom: 100%; z-index: 6; display: flex; gap: 2px; padding: 3px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); box-shadow: 0 8px 24px rgb(0 0 0 / .35); }
-.mv-speed-menu > button { padding: 4px 8px; border: 0; border-radius: var(--ui-radius-xs); background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; font-variant-numeric: tabular-nums; cursor: pointer; }
-.mv-speed-menu > button:hover { background: var(--ui-surface-hover); color: var(--ui-text-1); }
-.mv-speed-menu > [aria-checked="true"] { background: var(--ui-brand-tint); color: var(--ui-brand); }
 /* WebView fullscreen can keep the shell painted even when fullscreenElement is set. */
 .fa-frame:has(.mv-video-player.is-fullscreen) { grid-template-rows: minmax(0, 1fr); }
 .fa-frame:has(.mv-video-player.is-fullscreen) > .title-bar { display: none; }
 .mv-view:has(.mv-video-player.is-fullscreen) { container-type: normal; }
-/* Cinema mode: picture and controls form one column; match story owns the spare width. */
-.mv-video-player:is(:fullscreen, .is-fullscreen, :popover-open) { position: fixed; inset: 0; z-index: 1000; display: grid; grid-template-columns: minmax(0, 1fr) 264px; grid-template-rows: minmax(0, 1fr) auto; width: auto; height: auto; max-width: none; max-height: none; margin: 0; padding: 0; box-sizing: border-box; overflow: hidden; background: var(--ui-surface-0, #111215); }
+/* Fullscreen: the picture centred in the free space, rail under it, key moments (collapsible) on the right. */
+.mv-video-player:is(:fullscreen, .is-fullscreen, :popover-open) { position: fixed; inset: 0; z-index: 1000; grid-template: minmax(0, 1fr) / minmax(0, 1fr) auto; width: auto; height: auto; max-width: none; max-height: none; margin: 0; padding: 0; box-sizing: border-box; overflow: hidden; background: var(--ui-surface-0, #111215); }
 .mv-video-player::backdrop { background: var(--ui-surface-0, #111215); }
-.mv-video-player:is(:fullscreen, .is-fullscreen) > .mv-embed { grid-column: 1; grid-row: 1; height: 100%; min-height: 0; aspect-ratio: auto; align-self: center; background: #08090b; }
-.mv-video-player:is(:fullscreen, .is-fullscreen) > .mv-controls { grid-column: 1; grid-row: 2; padding: 14px 24px 16px; border-top: 1px solid var(--ui-line-2); }
-.mv-cinema-story { grid-column: 2; grid-row: 1 / 3; display: flex; flex-direction: column; min-height: 0; border-left: 1px solid var(--ui-line-2); padding: 24px 16px 16px; background: var(--ui-surface-1); }
-.mv-cinema-story header { padding-bottom: 20px; border-bottom: 1px solid var(--ui-line-2); }
-.mv-cinema-story .mv-player { margin-top: 24px; }
-.mv-cinema-story .mv-player-name { font-size: 16px; }
-.mv-cinema-story h2 { margin: 20px 0 10px; font-size: 14px; font-weight: 500; line-height: 1.5; color: var(--ui-text-1); }
-.mv-cinema-facts { font-size: 10px; color: var(--ui-text-3); }
-.mv-cinema-story ol { position: relative; flex: 1; min-height: 0; overflow-y: auto; list-style: none; margin: 12px 0; padding: 0; scrollbar-width: thin; }
-.mv-cinema-story li > button { display: grid; grid-template-columns: 38px 1fr; gap: 8px; width: 100%; padding: 12px 8px; border: 0; border-bottom: 1px solid var(--ui-line-2); background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; text-align: left; cursor: pointer; }
-.mv-cinema-story li > button > span:last-child { grid-column: 2; line-height: 1.5; }
-.mv-cinema-story li > button[aria-current] { background: var(--ui-brand-tint); box-shadow: inset 2px 0 var(--ui-brand); }
-.mv-cinema-story li > button:hover { background: var(--ui-surface-hover); }
-.mv-cinema-story footer { display: flex; flex-direction: column; align-items: start; gap: 8px; color: var(--ui-text-3); font-size: 10px; }
+.mv-video-player.is-fullscreen > .mv-stage { grid-row: 1; place-items: center; }
+.mv-video-player.is-fullscreen > .mv-side { grid-row: 1; width: 300px; margin: 0; padding: 16px; box-sizing: border-box; border-left: 1px solid var(--ui-line-2); background: var(--ui-surface-1); }
+.is-fullscreen > .mv-side > .mv-side-close { top: 8px; right: 8px; }
+.mv-side-top { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-bottom: 14px; padding-right: 28px; color: var(--ui-text-3); font-size: 11px; }
+.mv-side-top > .mv-player { flex-basis: 100%; }
+/* Idle fullscreen: our chrome and cursor go; the rail stays below the picture because mouse moves over the video never reach us. */
+.mv-video-player.is-idle, .mv-video-player.is-idle * { cursor: none; }
+.mv-video-player.is-idle > .mv-side { display: none; }
+.mv-video-player.is-idle :is(.mv-rail-row > .mv-icon-button, .mv-bar-end) { visibility: hidden; }
 .mv-mini-actions { display: none; }
 .mv-mini-host { position: fixed; right: 24px; bottom: 24px; z-index: 50; width: min(360px, calc(100vw - 48px)); }
 .mv-mini-host:empty { display: none; }
 .mv-player-view.is-mini { gap: 0; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); box-shadow: 0 16px 48px rgb(0 0 0 / .4); overflow: hidden; }
-.is-mini .mv-watch-header, .is-mini .mv-chapters { display: none; }
-.is-mini .mv-player-layout { display: block; }
-.is-mini .mv-watch { overflow: visible; }
-.is-mini .mv-watch > .mv-video-player { display: block; height: auto; }
-.is-mini .mv-watch > .mv-video-player > .mv-embed { height: auto; aspect-ratio: 16 / 9; }
+.is-mini .mv-video-player, .is-mini .mv-stage { display: block; container-type: normal; }
+.is-mini .mv-screen { width: 100%; }
 .is-mini .mv-mini-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; }
 .mv-mini-actions button { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 10px; border: 0; padding: 0; background: none; color: var(--ui-text-2); font: inherit; text-align: left; cursor: pointer; }
 .mv-mini-actions button:first-child { flex: 1; }
 .mv-mini-actions strong { grid-column: 1; font-size: 13px; font-weight: 500; }
 .mv-mini-actions button:first-child > svg { grid-column: 2; grid-row: 1 / 3; }
-.is-mini .mv-controls { container: vod-controls / inline-size; padding: 4px 10px 8px; }
-.is-mini .mv-youtube-link { font-size: 10px; margin-top: 4px; }
-.is-mini :is(.mv-hide-mini, .mv-marker-lane, .mv-timeline-heading) { display: none; }
-:is(.mv-view, .mv-mini-host, .mv-video-player) :is(button, .mv-track, input):focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
-@container vod-controls (max-width: 650px) {
-  .mv-now, .mv-volume > input { display: none; }
-  .mv-time { margin-right: auto; }
-}
-@container vod-controls (max-width: 420px) { .mv-hide-narrow { display: none; } }
+:is(.mv-view, .mv-mini-host, .mv-video-player) :is(button, input):focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+/* Narrow windows: picture at full width, key moments below it. */
 @container matchup-vods (max-width: 780px) {
   .mv-player-view:not(.is-mini) { overflow-y: auto; scrollbar-width: thin; }
-  .mv-player-layout { display: flex; flex-direction: column; flex: none; }
-  .mv-watch { overflow: visible; }
-  .mv-chapters { min-height: 240px; }
+  .mv-video-player { display: flex; flex-direction: column; flex: none; }
+  .mv-stage { display: block; container-type: normal; }
+  .mv-screen { width: 100%; }
+  .mv-side { width: auto; min-height: 240px; margin: 16px 0 0; }
   .mv-moments { overflow: visible; }
-  .mv-description { gap: 16px; }
-  .mv-description .mv-player { flex-shrink: 0; }
-  .mv-player-view:not(.is-mini) .mv-video-player:not(:fullscreen, .is-fullscreen) { height: max(350px, calc(100dvh - 310px)); }
+  .mv-facts { display: none; }
 }
-@media (max-width: 800px) {
-  .mv-video-player:is(:fullscreen, .is-fullscreen, :popover-open) { grid-template-columns: minmax(0, 1fr); }
-  .mv-cinema-story { display: none; }
-}
+@media (max-width: 800px) { .mv-video-player.is-fullscreen > .mv-side { display: none; } }
 @media (prefers-reduced-motion: reduce) { .mv-player-view *, .mv-library * { transition: none !important; scroll-behavior: auto !important; } }
 
 /* Smaller windows: the moment count drops its word, then the opponent keeps only its portrait. */
@@ -225,13 +178,6 @@
   .mv-cell-enemy > span { display: none; }
   .mv-vod-row { gap: 10px; padding-inline: 12px; }
 }
-@container matchup-vods (max-width: 500px) { .mv-description { align-items: start; flex-direction: column; gap: 12px; } .mv-watch-toolbar > .mv-eyebrow { display: none; } }
 
 /* Paint the document canvas too during native-window resize/fullscreen transitions. */
 html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscreen) { margin: 0; overflow: hidden; background: #111215; }
-
-/* Idle cinema: only the match timeline stays, below the picture (nothing may cover the video), and the picture takes the freed space. */
-.mv-video-player.is-fullscreen.is-idle { grid-template-columns: minmax(0, 1fr); cursor: none; }
-.mv-video-player.is-idle :is(.mv-cinema-story, .mv-control-row, .mv-timeline-heading, .mv-controls > p) { display: none; }
-.mv-video-player.is-idle > .mv-controls { padding-block: 6px 4px; }
-.mv-video-player.is-idle * { cursor: none; }

@@ -1,44 +1,42 @@
-import { useEffect, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type KeyboardEvent, type PointerEvent } from 'react';
-import { Maximize, Minimize, Pause, Settings2, Play, RotateCcw, RotateCw, SkipBack, SkipForward, Volume1, Volume2, VolumeX } from 'lucide-react';
+import { useEffect, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react';
+import { Maximize, Minimize, PanelRightOpen, SkipBack, SkipForward, X } from 'lucide-react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { isTauri } from '@tauri-apps/api/core';
 import type { MatchupVod } from './matchupGuide';
 import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, idleTimer, playerKeyAction, vodUrl } from './matchupVodModel';
-import { MomentIcon } from './MomentIcon';
 import { VodMomentArt } from './VodMomentArt';
 import { VodPlayer } from './VodPlayer';
 import { GuideSourceButton } from './GuideSourceButton';
 import type { ChampionOption } from '../runes/types';
-import { embedUrl, playerMessage, switchEmbed, YOUTUBE_ORIGIN, type EmbedMode, type PlayerInfo } from './youtubePlayer';
+import { embedUrl, playerMessage, YOUTUBE_ORIGIN, type PlayerInfo } from './youtubePlayer';
 
 type Moment = MatchupVod['moments'][number];
 export type VodSeek = { moment: Moment; serial: number };
 
-const RATES = [0.5, 0.75, 1, 1.25, 1.5, 2];
 const PLAYING = 1;
-// Markers closer than this many pixels merge into one group so their icons never overlap.
-const MARKER_SPACING_PX = 70;
+// Ticks closer than this many pixels merge into one group so their hit areas never overlap.
+const TICK_SPACING_PX = 16;
 // After the browser leaves element fullscreen on Esc, the same key must not also close the VOD.
 const ESC_GRACE_MS = 500;
-// Fullscreen playback hides everything but the timeline after this long without mouse or keyboard input.
+// Fullscreen playback hides our chrome after this long without mouse or keyboard input.
 const HUD_IDLE_MS = 3000;
 // Mouse moves over the cross-origin YouTube picture never reach this document; the rest of the screen and keys do.
 const ACTIVITY_EVENTS = ['pointermove', 'pointerdown', 'pointerover', 'keydown', 'wheel'] as const;
-// Whoever picked YouTube's own controls (for its quality menu) keeps them for the next VOD this session.
-let preferYoutubeControls = false;
+// Closing the key-moment sidebar is a preference: it stays closed for every VOD, also after a restart.
+const SIDEBAR_HIDDEN_KEY = 'swapper.vodMomentsHidden';
+const sidebarHidden = () => { try { return localStorage.getItem(SIDEBAR_HIDDEN_KEY) === '1'; } catch { return false; } };
 
 function IconButton({ label, shortcut, children, ...props }: { label: string; shortcut?: string } & ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" className="mv-icon-button" aria-label={label} aria-keyshortcuts={shortcut} title={shortcut ? `${label} (${shortcut})` : label} {...props}>{children}</button>;
 }
 
-function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump, champions }: {
-  champions: readonly ChampionOption[]; vod: MatchupVod; current: number; duration: number; buffered: number; disabled: boolean;
-  onSeek: (sec: number, final: boolean) => void; onJump: (sec: number) => void;
+/** Key moments along the video's length: ticks to jump to, not a scrubber (YouTube's own bar scrubs). */
+function MomentRail({ moments, current, duration, disabled, onJump, champions }: {
+  moments: readonly Moment[]; current: number; duration: number; disabled: boolean; onJump: (sec: number) => void;
+  champions: readonly ChampionOption[];
 }) {
   const lane = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(480);
-  const [hover, setHover] = useState<number | null>(null);
-  const [dragging, setDragging] = useState(false);
   useEffect(() => {
     const element = lane.current;
     if (!element || typeof ResizeObserver === 'undefined') return;
@@ -46,54 +44,40 @@ function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump, 
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
-  const at = (event: PointerEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    return Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)) * duration;
-  };
   const percent = (sec: number) => `${Math.max(0, Math.min(100, sec / duration * 100))}%`;
-  return <div className="mv-timeline">
-    <div className="mv-timeline-heading"><span>Match timeline</span><span>{vod.moments.length} key moments</span></div>
-    <div className={`mv-track${dragging ? ' is-dragging' : ''}`} role="slider" tabIndex={disabled ? -1 : 0} aria-disabled={disabled}
-      aria-label="Video position" aria-valuemin={0} aria-valuemax={Math.round(duration)} aria-valuenow={Math.round(current)}
-      aria-valuetext={`${formatVodTime(current)} of ${formatVodTime(duration)}`}
-      onPointerDown={event => {
-        if (disabled || event.button !== 0) return;
-        event.currentTarget.setPointerCapture(event.pointerId); setDragging(true); onSeek(at(event), false);
-      }}
-      onPointerMove={event => { const sec = at(event); setHover(sec); if (dragging) onSeek(sec, false); }}
-      onPointerUp={event => { if (dragging) { setDragging(false); onSeek(at(event), true); } }}
-      onPointerCancel={() => setDragging(false)} onPointerLeave={() => setHover(null)}>
-      <span className="mv-rail">
-        <span className="mv-rail-buffered" style={{ width: `${buffered * 100}%` }} />
-        {hover !== null && <span className="mv-rail-hover" style={{ width: percent(hover) }} />}
-        <span className="mv-rail-played" style={{ width: percent(current) }} />
-      </span>
-      <span className="mv-thumb" style={{ left: percent(current) }} />
-      {hover !== null && <span className="mv-hover-time" style={{ left: `clamp(18px, ${percent(hover)}, calc(100% - 18px))` }}>{formatVodTime(hover)}</span>}
+  const currentIndex = currentMomentIndex(moments, current);
+  const previous = adjacentMoment(moments, current, -1), next = adjacentMoment(moments, current, 1);
+  return <>
+    <IconButton label="Previous key moment" shortcut="[" disabled={disabled || !previous} onClick={() => previous && onJump(previous.atSec)}><SkipBack size={15} /></IconButton>
+    <div className="mv-rail" ref={lane}>
+      <span className="mv-rail-line"><span className="mv-rail-played" style={{ width: percent(current) }} /></span>
+      {groupMarkers(moments, duration * TICK_SPACING_PX / width).map(group => {
+        const members = group.indices.map(i => moments[i]);
+        const edge = group.atSec / duration < .2 ? ' is-start' : group.atSec / duration > .8 ? ' is-end' : '';
+        return <button key={group.indices[0]} type="button" disabled={disabled} data-kind={members[0].kind ?? 'none'}
+          className={`mv-tick${group.atSec <= current ? ' is-past' : ''}${group.indices.includes(currentIndex) ? ' is-current' : ''}${edge}`} style={{ left: percent(group.atSec) }}
+          aria-label={`Jump to ${members.map(moment => `${moment.label} at ${formatVodTime(moment.atSec)}`).join('; ')}`} onClick={() => onJump(group.atSec)}>
+          {members.length > 1 && <span className="mv-tick-count">{members.length}</span>}
+          <span className="mv-tip" aria-hidden>{members.map((moment, i) => <span key={i}>
+            <VodMomentArt moment={moment} champions={champions} index={group.indices[i]} /><b>{formatVodTime(moment.atSec)}</b><span>{moment.label}</span>
+          </span>)}</span>
+        </button>;
+      })}
     </div>
-    <div className="mv-marker-lane" ref={lane}>{groupMarkers(vod.moments, duration * MARKER_SPACING_PX / width).map(group => {
-      const members = group.indices.map(i => vod.moments[i]);
-      const edge = group.atSec / duration < .25 ? ' is-start' : group.atSec / duration > .75 ? ' is-end' : '';
-      return <button key={group.indices[0]} type="button" disabled={disabled} data-kind={members[0].kind ?? 'none'}
-        className={`mv-marker${group.atSec <= current ? ' is-past' : ''}${group.indices.includes(currentMomentIndex(vod.moments, current)) ? ' is-current' : ''}${edge}`} style={{ left: percent(group.atSec) }}
-        aria-label={`Jump to ${members.map(moment => `${moment.label} at ${formatVodTime(moment.atSec)}`).join('; ')}`} onClick={() => onJump(group.atSec)}>
-        <VodMomentArt moment={members[0]} champions={champions} index={group.indices[0]} /><span className="mv-marker-time">{formatVodTime(group.atSec)}</span>
-        {members.length > 1 && <span className="mv-marker-count">{members.length}</span>}
-        <span className="mv-tip" aria-hidden>{members.map((moment, i) => <span key={i}>
-          <MomentIcon kind={moment.kind} size={20} /><b>{formatVodTime(moment.atSec)}</b><span>{moment.label}</span>
-        </span>)}</span>
-      </button>;
-    })}</div>
-  </div>;
+    <IconButton label="Next key moment" shortcut="]" disabled={disabled || !next} onClick={() => next && onJump(next.atSec)}><SkipForward size={15} /></IconButton>
+  </>;
 }
 
-export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMomentChange }: {
+/** YouTube's embed with its own controls, sized 16:9 to the space, plus the League-specific parts: header, moment rail and key-moment sidebar (`children`). */
+export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMomentChange, header, children }: {
   champions?: readonly ChampionOption[]; vod: MatchupVod; seek: VodSeek | null; mini?: boolean; onMomentChange?: (index: number) => void;
+  header?: ReactNode; children?: ReactNode;
 }) {
   const frame = useRef<HTMLIFrameElement>(null);
   const root = useRef<HTMLDivElement>(null);
-  const cinemaList = useRef<HTMLOListElement>(null);
   const fullscreenNow = useRef(false);
+  // Fullscreen changes of ours still in flight; their late fullscreenchange events are not user exits.
+  const transitions = useRef(0);
   const fullscreenExitedAt = useRef(-Infinity);
   const restoreMaximized = useRef(false);
   const [info, setInfo] = useState<PlayerInfo>({});
@@ -101,15 +85,9 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const [failed, setFailed] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [fullscreenError, setFullscreenError] = useState('');
-  const [speedOpen, setSpeedOpen] = useState(false);
   const [idle, setIdle] = useState(false);
-  const [embed, setEmbed] = useState<EmbedMode>(() => ({ youtubeControls: preferYoutubeControls, startSec: 0, autoplay: true }));
-  // What the reloaded embed must restore once it reports in; the URL already carries time and play state.
-  const carried = useRef<PlayerInfo | null>(null);
-  const handledSeek = useRef<VodSeek | null>(null);
-  // The old embed keeps reporting until the reloaded one loads; its messages must not mark the new one ready.
-  const reloading = useRef(false);
-  const src = embedUrl(vod.videoId, embed, location.origin);
+  const [collapsed, setCollapsed] = useState(sidebarHidden);
+  const src = embedUrl(vod.videoId, location.origin);
   fullscreenNow.current = fullscreen;
   const playing = info.playerState === PLAYING;
   const duration = info.duration || vod.durationSec;
@@ -117,22 +95,13 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const momentIndex = currentMomentIndex(vod.moments, current);
   const send = (message: object) => frame.current?.contentWindow?.postMessage(JSON.stringify(message), YOUTUBE_ORIGIN);
   const command = (func: string, args: unknown[] = []) => send({ event: 'command', func, args });
-  // Seek optimistically: YouTube reports progress a few times a second, so the UI would lag behind the click.
-  const seekTo = (sec: number, final = true) => {
+  // Seek optimistically: YouTube reports progress a few times a second, so the rail would lag behind the click.
+  const seekTo = (sec: number) => {
     const to = Math.max(0, Math.min(sec, duration));
-    command('seekTo', [to, final]);
+    command('seekTo', [to, true]);
     setInfo(previous => ({ ...previous, currentTime: to }));
   };
   const jump = (sec: number) => { seekTo(sec); command('playVideo'); };
-  const togglePlay = () => command(playing ? 'pauseVideo' : 'playVideo');
-  const toggleMute = () => { command(info.muted ? 'unMute' : 'mute'); setInfo(previous => ({ ...previous, muted: !previous.muted })); };
-  const switchControls = (youtubeControls: boolean) => {
-    preferYoutubeControls = youtubeControls;
-    carried.current = info;
-    reloading.current = true;
-    setEmbed(switchEmbed(youtubeControls, info));
-    setReady(false); setSpeedOpen(false);
-  };
   // Resize the native window before WebView2 captures the element-fullscreen viewport.
   // Browsers still enter synchronously; desktop has the popover fallback if activation expires.
   // tao clamps a maximized borderless window to the monitor work area, which left a taskbar-high band under fullscreen.
@@ -146,6 +115,10 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     if (!on && restoreMaximized.current) { restoreMaximized.current = false; await native.toggleMaximize(); }
   };
   const changeFullscreen = async (on: boolean) => {
+    transitions.current++;
+    try { await applyFullscreen(on); } finally { transitions.current--; }
+  };
+  const applyFullscreen = async (on: boolean) => {
     fullscreenNow.current = on;
     setFullscreen(on);
     setFullscreenError('');
@@ -172,7 +145,6 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     if (!vodUrl(vod)) return;
     let connected = false;
     const receive = (event: MessageEvent) => {
-      if (reloading.current) return;
       const next = playerMessage(event, frame.current?.contentWindow ?? null);
       if (next) { connected = true; setReady(true); setFailed(false); setInfo(previous => ({ ...previous, ...next })); }
       if (event.source === frame.current?.contentWindow && [YOUTUBE_ORIGIN, 'https://www.youtube.com'].includes(event.origin)) {
@@ -186,31 +158,14 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     const timer = window.setInterval(() => { if (!connected) send({ event: 'listening', id: 1 }); }, 500);
     const timeout = window.setTimeout(() => { if (!connected) setFailed(true); }, 20000);
     return () => { window.removeEventListener('message', receive); window.clearInterval(timer); window.clearTimeout(timeout); };
-  }, [vod.videoId, vod.fixture, src]);
-  useEffect(() => {
-    // A controls switch toggles `ready`; that must not replay the last moment click.
-    if (!ready || !seek || handledSeek.current === seek) return;
-    handledSeek.current = seek;
-    jump(seek.moment.atSec);
-  }, [ready, seek]);
-  useEffect(() => {
-    const was = carried.current;
-    if (!ready || !was) return;
-    carried.current = null;
-    if (was.playbackRate && was.playbackRate !== 1) command('setPlaybackRate', [was.playbackRate]);
-    if (was.muted) command('mute');
-  }, [ready]);
+  }, [vod.videoId, vod.fixture]);
+  useEffect(() => { if (ready && seek) jump(seek.moment.atSec); }, [ready, seek]);
   useEffect(() => { onMomentChange?.(momentIndex); }, [momentIndex, onMomentChange]);
-  useEffect(() => {
-    const list = cinemaList.current, row = list?.children[momentIndex] as HTMLElement | undefined;
-    if (!list || !row) return;
-    if (row.offsetTop < list.scrollTop || row.offsetTop + row.offsetHeight > list.scrollTop + list.clientHeight)
-      list.scrollTo({ top: row.offsetTop - (list.clientHeight - row.offsetHeight) / 2, behavior: 'smooth' });
-  }, [momentIndex, fullscreen]);
   useEffect(() => {
     if (!fullscreen) return;
     const sync = () => {
-      if (document.fullscreenElement) return;
+      // Our own exit's event can land after a quick re-entry; only an exit we did not start (Esc, F11) counts.
+      if (document.fullscreenElement || transitions.current) return;
       fullscreenExitedAt.current = performance.now();
       void changeFullscreen(false);
     };
@@ -225,81 +180,65 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     const timer = idleTimer(HUD_IDLE_MS, next => {
       // Hidden controls cannot hold focus; the player root keeps the shortcuts working.
       if (next && root.current?.contains(document.activeElement)) root.current.focus({ preventScroll: true });
-      if (next) setSpeedOpen(false);
       setIdle(next);
     }, window);
     ACTIVITY_EVENTS.forEach(name => document.addEventListener(name, timer.activity, { capture: true, passive: true }));
     return () => { timer.stop(); ACTIVITY_EVENTS.forEach(name => document.removeEventListener(name, timer.activity, { capture: true })); };
   }, [fullscreen, playing]);
-  if (!vodUrl(vod)) return <div className="mv-frame mv-preview-frame"><span className="mv-preview">Preview, no video</span><p>Preview only · no video linked</p></div>;
+  const previous = adjacentMoment(vod.moments, current, -1), next = adjacentMoment(vod.moments, current, 1);
+  // Keys reach us only while focus is on our UI; when the video has focus, YouTube handles its own.
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Escape' && (speedOpen || fullscreen || performance.now() - fullscreenExitedAt.current < ESC_GRACE_MS)) {
+    if (event.key === 'Escape' && (fullscreen || performance.now() - fullscreenExitedAt.current < ESC_GRACE_MS)) {
       event.preventDefault(); event.stopPropagation();
-      if (speedOpen) setSpeedOpen(false); else if (fullscreen) void changeFullscreen(false);
+      if (fullscreen) void changeFullscreen(false);
       return;
     }
     const action = ready && playerKeyAction({ key: event.key, ctrlKey: event.ctrlKey, metaKey: event.metaKey, altKey: event.altKey, target: event.target as HTMLElement });
     if (!action || (action === 'fullscreen' && mini)) return;
     event.preventDefault();
-    if (action === 'toggle') togglePlay();
-    else if (action === 'mute') toggleMute();
+    if (action === 'toggle') command(playing ? 'pauseVideo' : 'playVideo');
+    else if (action === 'mute') { command(info.muted ? 'unMute' : 'mute'); setInfo(previous => ({ ...previous, muted: !previous.muted })); }
     else if (action === 'fullscreen') void changeFullscreen(!fullscreen);
-    else seekTo(current + action.seekBy);
+    else if ('seekBy' in action) seekTo(current + action.seekBy);
+    else { const target = action.moment > 0 ? next : previous; if (target) jump(target.atSec); }
   };
-  const volume = info.muted ? 0 : info.volume ?? 100;
-  const VolumeIcon = volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
-  const previous = adjacentMoment(vod.moments, current, -1), next = adjacentMoment(vod.moments, current, 1);
-  const moment = vod.moments[momentIndex];
-  const rate = info.playbackRate ?? 1;
-  return <div ref={root} popover="manual" tabIndex={-1} className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}${fullscreen && idle ? ' is-idle' : ''}`} onKeyDown={onKeyDown}>
-    <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title}
-      src={src}
-      allow="autoplay; encrypted-media; picture-in-picture"
-      onLoad={() => { reloading.current = false; setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
-    <div className="mv-controls" aria-label="Video controls">
-      <Timeline vod={vod} champions={champions} current={current} duration={duration} buffered={info.videoLoadedFraction ?? 0} disabled={!ready} onSeek={seekTo} onJump={jump} />
-      <div className="mv-control-row">
-        <IconButton label="Previous key moment" className="mv-icon-button mv-hide-narrow" disabled={!ready || !previous} onClick={() => previous && jump(previous.atSec)}><SkipBack size={17} /></IconButton>
-        <IconButton label="Back 10 seconds" shortcut="j" className="mv-icon-button mv-hide-mini" disabled={!ready} onClick={() => seekTo(current - 10)}><RotateCcw size={17} /></IconButton>
-        <IconButton label={playing ? 'Pause' : 'Play'} shortcut="k" className="mv-icon-button mv-play" disabled={!ready} onClick={togglePlay}>{playing ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}</IconButton>
-        <IconButton label="Forward 10 seconds" shortcut="l" className="mv-icon-button mv-hide-mini" disabled={!ready} onClick={() => seekTo(current + 10)}><RotateCw size={17} /></IconButton>
-        <IconButton label="Next key moment" className="mv-icon-button mv-hide-narrow" disabled={!ready || !next} onClick={() => next && jump(next.atSec)}><SkipForward size={17} /></IconButton>
-        <span className="mv-volume">
-          <IconButton label={info.muted ? 'Unmute' : 'Mute'} shortcut="m" disabled={!ready} onClick={toggleMute}><VolumeIcon size={17} /></IconButton>
-          <input type="range" min="0" max="100" step="1" value={volume} disabled={!ready} aria-label="Volume" style={{ '--mv-fill': `${volume}%` } as CSSProperties}
-            onChange={event => {
-              const value = Number(event.target.value);
-              command('setVolume', [value]);
-              if (info.muted && value > 0) command('unMute');
-              setInfo(previous => ({ ...previous, volume: value, muted: value === 0 ? previous.muted : false }));
-            }} />
+  const url = vodUrl(vod);
+  const notice = failed ? 'Video unavailable or slow to load.' : fullscreenError;
+  // The rail needs the API connection; a failed embed gets the notice instead.
+  const hasMoments = !mini && vod.moments.length > 0, hasRail = hasMoments && !failed;
+  const showSidebar = hasMoments && !!children && !collapsed;
+  const toggleSidebar = () => {
+    try { localStorage.setItem(SIDEBAR_HIDDEN_KEY, collapsed ? '0' : '1'); } catch { /* Private storage only loses the preference. */ }
+    setCollapsed(!collapsed);
+  };
+  // One bar under the picture, like a media player's control strip: key moments on the left, fullscreen bottom right.
+  const showBar = !mini && !!url;
+  const fullscreenButton = <IconButton label={fullscreen ? 'Exit full screen' : 'Full screen'} shortcut="f" className="mv-icon-button mv-strong" onClick={() => void changeFullscreen(!fullscreen)}>
+    {fullscreen ? <Minimize size={16} /> : <Maximize size={16} />}</IconButton>;
+  return <div ref={root} popover="manual" tabIndex={-1} onKeyDown={onKeyDown}
+    className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}${fullscreen && idle ? ' is-idle' : ''}`}
+    style={{ '--mv-bars': Number(showBar) + Number(!!notice) } as CSSProperties}>
+    {!mini && !fullscreen && <header className="mv-watch-header">{header}</header>}
+    <div className="mv-stage"><div className="mv-screen">
+      {url ? <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title} src={src}
+        allow="autoplay; encrypted-media; picture-in-picture"
+        onLoad={() => { setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
+        : <div className="mv-frame mv-preview-frame"><span className="mv-preview">Preview, no video</span><p>Preview only · no video linked</p></div>}
+      {notice && <div className="mv-notice" role="status"><span>{notice}</span>
+        {failed && url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}</div>}
+      {showBar && <div className="mv-rail-row" role="group" aria-label="Video tools">
+        {hasRail ? <MomentRail moments={vod.moments} current={current} duration={duration} disabled={!ready} onJump={jump} champions={champions} /> : <span className="mv-rail-spacer" />}
+        <span className="mv-bar-end">
+          {hasMoments && collapsed && <IconButton label="Show key moments" className="mv-show-moments" onClick={toggleSidebar}><PanelRightOpen size={15} aria-hidden />Key moments</IconButton>}
+          {fullscreenButton}
         </span>
-        <span className="mv-time">{formatVodTime(current)} / {formatVodTime(duration)}</span>
-        <span className="mv-now" title={embed.youtubeControls ? undefined : moment?.label}>{embed.youtubeControls
-          ? <span className="mv-mode-note">YouTube controls: quality and captions are in the gear on the video</span>
-          : moment && <><MomentIcon kind={moment.kind} /><span>{moment.label}</span></>}</span>
-        <span className="mv-speed mv-hide-mini" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setSpeedOpen(false); }}>
-          <button type="button" className="mv-speed-button" aria-label={`Playback speed ${rate}×`} title="Playback speed" aria-haspopup="menu" aria-expanded={speedOpen}
-            disabled={!ready} onClick={() => setSpeedOpen(open => !open)}>{rate}×</button>
-          {speedOpen && <span className="mv-speed-menu" role="menu" aria-label="Playback speed">{RATES.map(option => <button key={option} type="button" role="menuitemradio"
-            aria-checked={option === rate} autoFocus={option === rate} onClick={() => { command('setPlaybackRate', [option]); setSpeedOpen(false); }}>{option}×</button>)}</span>}
-        </span>
-        <button type="button" className={`mv-quality-button mv-hide-mini${embed.youtubeControls ? ' is-on' : ''}`}
-          aria-label={embed.youtubeControls ? 'Done, back to Swapper controls' : 'Quality: show YouTube controls'} title={embed.youtubeControls ? 'Back to Swapper controls' : "Use YouTube's own controls to pick quality or captions"}
-          onClick={() => switchControls(!embed.youtubeControls)}>{embed.youtubeControls ? 'Done' : <><Settings2 size={15} aria-hidden />Quality</>}</button>
-        <IconButton label={fullscreen ? 'Exit full screen' : 'Full screen'} shortcut="f" className="mv-icon-button mv-hide-mini" disabled={!ready} onClick={() => void changeFullscreen(!fullscreen)}>
-          {fullscreen ? <Minimize size={17} /> : <Maximize size={17} />}</IconButton>
-      </div>
-      {failed && <p role="status">Video unavailable or slow to load. Try opening it on YouTube.</p>}
-      {fullscreenError && <p role="status">{fullscreenError}</p>}
-      {mini && <GuideSourceButton url={vodUrl(vod)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}
-    </div>
-    {fullscreen && <aside className="mv-cinema-story" aria-label="Fullscreen match story">
-      <header><span className="mv-eyebrow">Match room / {vod.patch}</span><VodPlayer vod={vod} /><h2>{vod.title}</h2><span className="mv-cinema-facts">{vod.result === 'W' ? 'Victory · ' : vod.result === 'L' ? 'Defeat · ' : ''}{formatVodTime(duration)} · {vod.moments.length} key moments</span></header>
-      <ol ref={cinemaList}>{vod.moments.map((event, index) => <li key={index}><button type="button" disabled={!ready} aria-current={index === momentIndex || undefined} onClick={() => jump(event.atSec)}>
-        <span className="mv-moment-time">{formatVodTime(event.atSec)}</span><VodMomentArt moment={event} champions={champions} index={index} /><span>{event.label}</span>
-      </button></li>)}</ol>
-      <footer><GuideSourceButton url={vodUrl(vod)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton><span>Esc to return</span></footer>
-    </aside>}
+      </div>}
+    </div></div>
+    {showSidebar && <div className="mv-side">
+      <span className="mv-side-close"><IconButton label="Hide key moments" onClick={toggleSidebar}><X size={15} /></IconButton></span>
+      {fullscreen && <div className="mv-side-top"><VodPlayer vod={vod} />
+        {url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}<span>Esc to return</span></div>}
+      {children}
+    </div>}
   </div>;
 }

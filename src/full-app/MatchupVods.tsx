@@ -8,7 +8,7 @@ import { RankCrest } from "../runes/RankCrest";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { loadChampionVods, loadMatchupVods } from "./loadMatchupVods";
 import { GUIDE_SECTIONS, type GuideSectionId, type MatchupVod } from "./matchupGuide";
-import { ANY_VOD, comparePatch, filterVods, formatVodTime, RANK_TIERS, rankTier, vodMatches, vodPlayerName, vodRow, vodUrl, type RankTier, type VodFilters } from "./matchupVodModel";
+import { ANY_VOD, comparePatch, filterVods, formatVodTime, RANK_TIERS, rankTier, uploadAge, vodMatches, vodPlayerName, vodRow, vodUrl, type RankTier, type VodFilters } from "./matchupVodModel";
 import { NearEnd } from "./NearViewport";
 import { Picker, ROLES } from "./Picker";
 import { VodPlayer } from "./VodPlayer";
@@ -33,9 +33,12 @@ function RowAvatar({ vod }: { vod: MatchupVod }) {
   return photo ? <img className="mv-row-photo" src={photo} alt="" draggable={false} /> : <RankCrest tier={rankTier(vod.rankClaim)} size={26} mode="desktop" />;
 }
 
+/** Region and rank, patch, result and upload age; length and moment count live in YouTube's bar and the sidebar. */
 function VodFacts({ vod }: { vod: MatchupVod }) {
-  return <span className="mv-facts">{vod.result && <span className={`mv-result is-${vod.result === "W" ? "win" : "loss"}`} aria-label={vod.result === "W" ? "Win" : "Loss"}>{vod.result === "W" ? "Victory" : "Defeat"}</span>}
-    <span>Patch {vod.patch}</span><span>{formatVodTime(vod.durationSec)}</span><span>{vod.moments.length} key moments</span>
+  const age = uploadAge(vod.uploaded, new Date());
+  return <span className="mv-facts">{vodRow(vod).details.map(detail => <span key={detail}>{detail}</span>)}
+    {vod.result && <span className={`mv-result is-${vod.result === "W" ? "win" : "loss"}`}>{vod.result === "W" ? "Victory" : "Defeat"}</span>}
+    {age && <span title={vod.uploaded}>{age}</span>}
   </span>;
 }
 
@@ -153,33 +156,28 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
   }
   // Guide sections belong to the open matchup; a VOD from another one cannot link to them.
   const sameMatchup = !selected.enemy || (selected.enemy === enemy.id && selected.lane === lane);
+  const close = () => { setSelectedId(null); setSeek(null); };
   return <div className={`mv-player-view${active ? "" : " is-mini"}`} aria-label={active ? "VOD player" : "Mini player"} onKeyDown={event => {
     if (event.key !== "Escape" || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-    event.preventDefault(); event.stopPropagation(); setSelectedId(null); setSeek(null);
+    event.preventDefault(); event.stopPropagation(); close();
   }}>
-    <header className="mv-watch-header">
-      <div className="mv-watch-toolbar"><button type="button" className="mv-back" ref={backButton} onClick={() => { setSelectedId(null); setSeek(null); }}><ArrowLeft size={15} aria-hidden />All VODs</button><span className="mv-eyebrow">Match room</span>
+    <div className="mv-mini-actions"><button type="button" onClick={onReopen} aria-label="Reopen VOD"><span className="mv-eyebrow">Now watching</span><strong>{vodPlayerName(selected.player) ?? `${selected.rankClaim} replay`}</strong><ArrowUpRight size={16} /></button><button type="button" aria-label="Close mini player" onClick={close}><X size={16} /></button></div>
+    <YoutubeVodPlayer key={selected.videoId} vod={selected} seek={seek} mini={!active} champions={champions} onMomentChange={setActiveMoment}
+      header={<>
+        <button type="button" className="mv-back" ref={backButton} onClick={close}><ArrowLeft size={15} aria-hidden />All VODs</button>
+        <span className="mv-game-info" title={selected.title}><VodPlayer key={selected.videoId} vod={selected} /><VodFacts vod={selected} /></span>
         {vodUrl(selected) && <GuideSourceButton url={vodUrl(selected)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube<ArrowUpRight size={14} /></GuideSourceButton>}
-      </div>
-      <div className="mv-description"><VodPlayer key={selected.videoId} vod={selected} /><div className="mv-game-info"><h2 className="mv-title">{selected.title}</h2><VodFacts vod={selected} /></div></div>
-    </header>
-    <div className="mv-mini-actions"><button type="button" onClick={onReopen} aria-label="Reopen VOD"><span className="mv-eyebrow">Now watching</span><strong>{vodPlayerName(selected.player) ?? `${selected.rankClaim} replay`}</strong><ArrowUpRight size={16} /></button><button type="button" aria-label="Close mini player" onClick={() => { setSelectedId(null); setSeek(null); }}><X size={16} /></button></div>
-    <div className="mv-player-layout">
-      <article className="mv-watch" aria-label="Selected VOD">
-        <YoutubeVodPlayer key={selected.videoId} vod={selected} seek={seek} mini={!active} champions={champions} onMomentChange={setActiveMoment} />
-      </article>
-      <section className="mv-chapters" aria-label="Key moments"><header><div><span className="mv-eyebrow">Match story</span><h3>Key moments</h3></div><small>{String(selected.moments.length).padStart(2, "0")}</small></header>
-          <ol className="mv-moments" ref={momentList}>{selected.moments.map((moment, i) => {
-            const section = GUIDE_SECTIONS.find(([id]) => id === moment.section);
-            return <li key={`${selected.videoId}-${i}`} data-kind={moment.kind} className={i === activeMoment ? "is-active" : undefined}>
+      </>}>
+      {selected.moments.length > 0 && <section className="mv-chapters" aria-label="Key moments"><header><h3>Key moments</h3><small>{selected.moments.length}</small></header>
+        <ol className="mv-moments" ref={momentList}>{selected.moments.map((moment, i) => {
+          const section = GUIDE_SECTIONS.find(([id]) => id === moment.section);
+          return <li key={`${selected.videoId}-${i}`} data-kind={moment.kind} className={i === activeMoment ? "is-active" : undefined}>
             <button type="button" disabled={!playable} className="mv-moment" aria-current={i === activeMoment || undefined} aria-label={`Watch ${moment.label} at ${formatVodTime(moment.atSec)}`} onClick={() => setSeek({ moment, serial: (seek?.serial ?? 0) + 1 })}>
-              <span className="mv-moment-time">{formatVodTime(moment.atSec)}</span>
-              <span className="mv-moment-body"><span className="mv-moment-topline"><VodMomentArt moment={moment} champions={champions} index={i} /><span className="mv-moment-kind">{i === activeMoment ? 'Now playing' : moment.kind && moment.kind !== "other" ? moment.kind : "Key moment"}</span></span><span className="mv-moment-label">{moment.label}</span></span>
-
+              <span className="mv-moment-time">{formatVodTime(moment.atSec)}</span><VodMomentArt moment={moment} champions={champions} index={i} /><span className="mv-moment-label">{moment.label}</span>
             </button>
             {section && sameMatchup && <button type="button" className="mv-section-link" onClick={() => onGuideSection(section[0])} aria-label={`Open ${section[1]} guide section`}>{section[1]}<ChevronRight size={12} aria-hidden /></button>}
           </li>; })}</ol>
-      </section>
-    </div>
+      </section>}
+    </YoutubeVodPlayer>
   </div>;
 }

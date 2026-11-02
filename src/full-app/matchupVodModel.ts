@@ -79,11 +79,11 @@ export function groupMarkers(moments: readonly Moment[], minGapSec: number): Mar
   return groups;
 }
 
-export type PlayerKeyAction = "toggle" | "mute" | "fullscreen" | { seekBy: number };
+export type PlayerKeyAction = "toggle" | "mute" | "fullscreen" | { seekBy: number } | { moment: 1 | -1 };
 type KeyTarget = { tagName?: string; isContentEditable?: boolean } | null;
 const SEEK_KEYS = new Map([["j", -10], ["l", 10], ["ArrowLeft", -5], ["ArrowRight", 5]]);
 
-/** YouTube-style shortcuts. Inputs (including the volume slider) keep their own keys, and Space still presses a focused button. */
+/** YouTube-style shortcuts plus [ and ] for the previous and next key moment. Fields keep their own keys, and Space still presses a focused button. */
 export function playerKeyAction(event: { key: string; ctrlKey?: boolean; metaKey?: boolean; altKey?: boolean; target: KeyTarget }): PlayerKeyAction | null {
   const tag = event.target?.tagName?.toUpperCase();
   if (event.ctrlKey || event.metaKey || event.altKey || event.target?.isContentEditable || ["INPUT", "SELECT", "TEXTAREA"].includes(tag ?? "")) return null;
@@ -92,6 +92,7 @@ export function playerKeyAction(event: { key: string; ctrlKey?: boolean; metaKey
   if (key === " " || key === "k") return "toggle";
   if (key === "m") return "mute";
   if (key === "f") return "fullscreen";
+  if (key === "[" || key === "]") return { moment: key === "]" ? 1 : -1 };
   const seekBy = SEEK_KEYS.get(key);
   return seekBy === undefined ? null : { seekBy };
 }
@@ -129,6 +130,19 @@ export function vodRow(vod: MatchupVod): VodRow {
     result: vod.result === "W" ? "win" : vod.result === "L" ? "loss" : null,
     moments: vod.moments.length || null,
   };
+}
+
+const DAY_MS = 86_400_000;
+
+/** "today", "3 days ago" or "2 weeks ago" for recent uploads, otherwise a short date; null when `uploaded` is not YYYY-MM-DD. */
+export function uploadAge(uploaded: string | undefined, now: Date): string | null {
+  const at = /^\d{4}-\d{2}-\d{2}$/.test(uploaded ?? "") ? Date.parse(`${uploaded}T00:00:00Z`) : NaN;
+  if (!Number.isFinite(at)) return null;
+  const days = Math.round((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - at) / DAY_MS);
+  const relative = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+  if (days >= 0 && days < 7) return relative.format(-days, "day");
+  if (days >= 7 && days < 30) return relative.format(-Math.floor(days / 7), "week");
+  return new Date(at).toLocaleDateString("en", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 }
 
 /** Numeric patch order, so 26.10 is newer than 26.9 and 26.21.1 newer than 26.21. */

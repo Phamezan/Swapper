@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
-import { ANY_VOD, isPlaceholderPhoto, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
+import { ANY_VOD, isPlaceholderPhoto, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, uploadAge, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
 
 test("VOD timestamps use minutes, pad seconds, and support hour-long games", () => {
   assert.deepEqual([0, 9, 61.9, 184, 3605, -1, NaN].map(formatVodTime), ["0:00", "0:09", "1:01", "3:04", "1:00:05", "0:00", "0:00"]);
@@ -116,6 +116,14 @@ test("player shortcuts follow YouTube and never take keys from fields or modifie
   for (const modifier of ["ctrlKey", "metaKey", "altKey"]) assert.equal(key("f", undefined, { [modifier]: true }), null);
   for (const other of ["a", "Escape", "Enter", "toString", "constructor"]) assert.equal(key(other), null);
   assert.equal(key("k", null), "toggle");
+  assert.deepEqual(["[", "]"].map(k => key(k)), [{ moment: -1 }, { moment: 1 }], "[ and ] step through key moments");
+});
+
+test("upload age reads as days or weeks ago when recent and as a short date after a month", () => {
+  const now = new Date(2026, 10, 2, 23, 30);
+  assert.deepEqual(["2026-11-02", "2026-11-01", "2026-10-30", "2026-10-19", "2026-08-01", "2026-12-25"].map(day => uploadAge(day, now)),
+    ["today", "yesterday", "3 days ago", "2 weeks ago", "Aug 1, 2026", "Dec 25, 2026"]);
+  for (const bad of [undefined, "", "2026-8-1", "yesterday", "2026-13-45"]) assert.equal(uploadAge(bad, now), null);
 });
 
 test("the champion preview library is large, varied, unplayable and never reuses an ID", async () => {

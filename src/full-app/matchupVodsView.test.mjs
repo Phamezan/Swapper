@@ -50,7 +50,8 @@ function harness(file, component, vods = ahriVsZedVods, championVods = []) {
   };
   return { render, tauriWindow, focus, messages, contentWindow, timers, fullscreen, fakeDocument, documentListeners, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
 }
-function nodes(tree) { return !tree || typeof tree !== "object" ? [] : Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.children)]; }
+// The player's header is a prop like its children; walk both.
+function nodes(tree) { return !tree || typeof tree !== "object" ? [] : Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.header), ...nodes(tree.props?.children)]; }
 function text(tree) { return typeof tree === "string" || typeof tree === "number" ? String(tree) : !tree || typeof tree !== "object" ? "" : Array.isArray(tree) ? tree.map(text).join("") : text(tree.props?.children); }
 const props = { champion: { id: 103, name: "Ahri" }, enemy: { id: 238, name: "Zed" }, lane: "mid", onGuideSection() {} };
 
@@ -65,14 +66,14 @@ test('moment cards render roster portraits and unnamed replays show a rank crest
   assert.deepEqual(nodes(portraits).filter(node => node.type === 'champion-icon').map(node => node.props.id), [103, 238]);
   const identity = harness('./VodPlayer.tsx', 'VodPlayer').render({ vod });
   const avatar = nodes(identity).find(node => node.props.className === 'mv-avatar');
-  assert.equal(nodes(avatar).find(node => node.type === 'rank-crest').props.size, 40);
+  assert.equal(nodes(avatar).find(node => node.type === 'rank-crest').props.size, 26);
   assert.match(text(identity), /replay/);
 });
 
-test('question-mark players use the unlisted identity and no player photo', () => {
+test('question-mark players read as a rank replay with no player photo', () => {
   const tree = harness('./VodPlayer.tsx', 'VodPlayer').render({ vod: { ...ahriVsZedVods[0], player: ' ? ', team: undefined, playerImage: '/unknown.png' } });
   assert.doesNotMatch(text(tree), /\?/);
-  assert.match(text(tree), /player unlisted/);
+  assert.equal(text(tree), 'Challenger replay');
   assert.equal(nodes(tree).some(node => node.type === 'img'), false);
 });
 
@@ -93,7 +94,7 @@ test("VODs start as a five-game list and Back restores focus to the opened row",
   assert.doesNotMatch(text(tree), /Played as/);
   nodes(tree).filter(node => node.props.className === "mv-vod-row")[2].props.onClick();
   tree = h.render();
-  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-title")), ahriVsZedVods[2].title);
+  assert.equal(nodes(tree).find(node => node.props.className === "mv-game-info").props.title, ahriVsZedVods[2].title, "the YouTube title is a tooltip, not a second heading");
   assert.equal(h.focus[h.focus.length - 1], "mv-back");
   nodes(tree).find(node => node.props.className === "mv-back").props.onClick();
   tree = h.render();
@@ -194,6 +195,9 @@ test('keyboard shortcuts drive the player and fullscreen covers the window until
   assert.deepEqual(h.messages.pop().data.args, [590, true]);
   press('ArrowRight');
   assert.deepEqual(h.messages.pop().data.args, [595, true]);
+  press(']');
+  assert.equal(h.messages.pop().data.func, 'playVideo');
+  assert.deepEqual(h.messages.pop().data.args, [logic.adjacentMoment(realVod.moments, 595, 1).atSec, true], '] jumps to the next key moment');
   const sent = h.messages.length;
   assert.equal(press('k', { tagName: 'INPUT' }).prevented, false);
   assert.equal(h.messages.length, sent, 'keys typed into a field are left alone');
@@ -252,52 +256,90 @@ test('element fullscreen waits for the native resize and native errors stay visi
   assert.match(text(tree), /Window fullscreen unavailable: Error: permission denied/);
 });
 
-test('player receives trusted progress, sends controls and cleans up its listeners', () => {
+test('player receives trusted progress, jumps to moments and shows a failed embed with a way out', () => {
   const vod = { ...ahriVsZedVods[0], fixture: undefined, videoId: 'A_b-cD12345' };
   const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
   let tree = h.render({ vod, seek: null });
   const iframe = nodes(tree).find(node => node.type === 'iframe');
-  assert.match(iframe.props.src, /controls=0.*origin=http%3A%2F%2Ftauri.localhost/);
+  assert.match(iframe.props.src, /controls=1&fs=0.*origin=http%3A%2F%2Ftauri.localhost/);
   iframe.props.onLoad();
   assert.deepEqual(h.messages.pop(), { data: { event: 'listening', id: 1 }, origin: youtube.YOUTUBE_ORIGIN });
   h.receive({ source: h.contentWindow, origin: 'https://evil.io', data: JSON.stringify({ event: 'infoDelivery', info: { currentTime: 99 } }) });
   assert.ok(timeline(h.render()).props.disabled);
   h.timers.get('timeout')();
-  assert.match(text(h.render()), /Video unavailable or slow to load/);
-  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: 'infoDelivery', info: { currentTime: 184, duration: 1746, playerState: 1, playbackRate: 1.5, muted: true } }) });
+  tree = h.render();
+  assert.match(text(tree), /Video unavailable or slow to load/);
+  assert.equal(nodes(tree).find(node => node.type === 'source-button').props.url, 'https://www.youtube.com/watch?v=A_b-cD12345&t=0', 'the notice offers YouTube itself');
+  assert.equal(timeline(tree), undefined, 'no rail without the player connection');
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: 'infoDelivery', info: { currentTime: 184, duration: 1746, playerState: 1 } }) });
   tree = h.render();
   assert.doesNotMatch(text(tree), /Video unavailable/);
-  assert.match(text(tree), /3:04 \/ 29:06/);
-  assert.equal(timeline(tree).props.disabled, false);
-  control(tree, 'Pause').props.onClick();
-  assert.equal(h.messages.pop().data.func, 'pauseVideo');
-  control(tree, 'Unmute').props.onClick();
-  assert.equal(h.messages.pop().data.func, 'unMute');
-  tree = h.render();
-  assert.ok(control(tree, 'Mute'), 'mute state updates without waiting for YouTube');
-  nodes(tree).find(node => node.props['aria-label'] === 'Volume').props.onChange({ target: { value: '30' } });
-  assert.deepEqual(h.messages.pop().data, { event: 'command', func: 'setVolume', args: [30] });
-  nodes(tree).find(node => node.props.className === 'mv-speed-button').props.onClick();
-  tree = h.render();
-  const rates = nodes(tree).filter(node => node.props.role === 'menuitemradio');
-  assert.deepEqual(rates.filter(node => node.props['aria-checked']).map(text), ['1.5×']);
-  rates.find(node => text(node) === '2×').props.onClick();
-  assert.deepEqual(h.messages.pop().data, { event: 'command', func: 'setPlaybackRate', args: [2] });
-  assert.equal(nodes(h.render()).some(node => node.props.role === 'menu'), false);
-  timeline(tree).props.onSeek(300, true);
-  assert.deepEqual(h.messages.pop().data.args, [300, true]);
-  assert.match(text(h.render()), /5:00 \/ 29:06/, 'seeks show immediately');
-  timeline(tree).props.onJump(184);
+  assert.deepEqual([timeline(tree).props.disabled, timeline(tree).props.current, timeline(tree).props.duration], [false, 184, 1746]);
+  timeline(tree).props.onJump(412);
   assert.equal(h.messages.pop().data.func, 'playVideo');
-  assert.deepEqual(h.messages.pop().data.args, [184, true]);
+  assert.deepEqual(h.messages.pop().data.args, [412, true]);
+  assert.equal(timeline(h.render()).props.current, 412, 'jumps show on the rail immediately');
   h.render({ vod, seek: { moment: vod.moments[1], serial: 1 } });
   assert.equal(h.messages.pop().data.func, 'playVideo');
   assert.deepEqual(h.messages.pop().data.args, [vod.moments[1].atSec, true]);
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: 'onError', info: 150 }) });
+  assert.match(text(h.render()), /Video unavailable or slow to load/, 'an embed error shows the notice too');
   h.unmount();
   assert.equal(h.timers.size, 0);
 });
 
-test("player identity uses desktop team logos for pros and a rank crest for solo players", () => {
+test('a VOD without moments gets no rail and no sidebar; one with moments gets both, and fullscreen can hide the sidebar', async () => {
+  const sidebar = 'key-moments';
+  const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
+  let tree = h.render({ vod: { ...realVod, moments: [] }, seek: null, header: 'header', children: sidebar });
+  assert.equal(timeline(tree), undefined);
+  assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false, 'the picture takes the full width');
+  assert.equal(tree.props.style['--mv-bars'], 1, 'a slim bar under the picture keeps fullscreen bottom right');
+  assert.ok(control(tree, 'Full screen'));
+  assert.equal(control(tree, 'Show key moments'), undefined, 'no moments, nothing to reopen');
+  tree = h.render({ vod: realVod, seek: null, header: 'header', children: sidebar });
+  assert.ok(timeline(tree));
+  assert.equal(tree.props.style['--mv-bars'], 1);
+  assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-side')), sidebar);
+  control(tree, 'Full screen').props.onClick();
+  tree = await h.flush();
+  assert.equal(nodes(tree).some(node => node.type === 'header'), false, 'fullscreen drops the page header');
+  assert.match(text(nodes(tree).find(node => node.props.className === 'mv-side-top')), /Esc to return/);
+  control(tree, 'Hide key moments').props.onClick();
+  tree = h.render();
+  assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false);
+  control(tree, 'Exit full screen').props.onClick();
+  tree = await h.flush();
+  assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false, 'a closed sidebar stays closed outside fullscreen too');
+  assert.ok(control(tree, 'Show key moments'), 'the bar under the picture reopens it');
+  control(tree, 'Full screen').props.onClick();
+  tree = await h.flush();
+  assert.ok(control(tree, 'Show key moments'), 'the collapsed sidebar is remembered');
+  assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false);
+  h.render({ vod: realVod, seek: null, mini: true, header: 'header', children: sidebar });
+  tree = await h.flush();
+  assert.deepEqual([timeline(tree), nodes(tree).some(node => node.type === 'header' || node.props.className === 'mv-side')], [undefined, false], 'the mini player is just the video');
+});
+
+test('the player header shows the facts once and the sidebar only exists with moments', async () => {
+  const vod = { ...ahriVsZedVods[0], player: 'Peng', team: 'MKOI', rankClaim: 'EUW Challenger', result: 'W', uploaded: '2020-03-04' };
+  const h = harness('./MatchupVods.tsx', 'MatchupVods', [vod, { ...ahriVsZedVods[1], moments: [] }]);
+  h.render(props);
+  let tree = await h.flush();
+  rows(tree)[0].props.onClick();
+  tree = h.render();
+  const facts = nodes(tree).find(node => node.type?.name === 'VodFacts');
+  assert.equal(text(facts.type(facts.props)), `EUW ChallengerPatch ${vod.patch}VictoryMar 4, 2020`);
+  assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-chapters').props.children[0]), `Key moments${vod.moments.length}`, 'the count appears once, in the sidebar header');
+  assert.doesNotMatch(text(tree), /Match room|Match story|Match timeline/);
+  nodes(tree).find(node => node.props.className === 'mv-back').props.onClick();
+  tree = h.render();
+  rows(tree)[1].props.onClick();
+  tree = h.render();
+  assert.equal(nodes(tree).some(node => node.props.className === 'mv-chapters'), false);
+});
+
+test("player identity shows a pro's desktop team logo and an unnamed player's rank crest; a named solo player's rank sits in the facts", () => {
   const h = harness("./VodPlayer.tsx", "VodPlayer");
   let tree = h.render({ vod: { ...ahriVsZedVods[0], team: "T1" } });
   const team = nodes(tree).find(node => node.type === "team-logo");
@@ -305,6 +347,8 @@ test("player identity uses desktop team logos for pros and a rank crest for solo
   assert.equal(team.props.mode, "desktop");
   assert.equal(nodes(tree).some(node => node.type === "rank-crest"), false);
   tree = h.render({ vod: { ...ahriVsZedVods[0], team: undefined, rankClaim: "Grandmaster" } });
+  assert.equal(nodes(tree).some(node => node.type === "team-logo" || node.type === "rank-crest"), false);
+  tree = h.render({ vod: { ...ahriVsZedVods[0], player: undefined, team: undefined, rankClaim: "Grandmaster" } });
   const crest = nodes(tree).find(node => node.type === "rank-crest");
   assert.equal(crest.props.tier, "grandmaster");
   assert.equal(crest.props.mode, "desktop");
@@ -406,7 +450,7 @@ test("a VOD from another matchup keeps its moments but cannot open this matchup'
   assert.ok(nodes(player).some(node => node.props.className === "mv-section-link"));
 });
 
-test("fullscreen playback hides everything but the timeline when idle and wakes on activity", async () => {
+test("fullscreen playback hides everything but the moment rail when idle and wakes on activity", async () => {
   const h = harness("./YoutubeVodPlayer.tsx", "YoutubeVodPlayer");
   const progress = playerState => h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 100, duration: 1746, playerState } }) });
   let tree = h.render({ vod: realVod, seek: null });
@@ -418,7 +462,7 @@ test("fullscreen playback hides everything but the timeline when idle and wakes 
   h.timers.get("timeout")();
   tree = h.render();
   assert.match(tree.props.className, /is-idle/);
-  assert.ok(timeline(tree), "the timeline stays");
+  assert.ok(timeline(tree), "the rail stays, so a mouse move outside the video can wake the HUD");
   h.documentListeners.get("pointermove")();
   assert.doesNotMatch(h.render().props.className, /is-idle/, "moving the mouse brings the HUD back");
   h.timers.get("timeout")();
@@ -473,54 +517,6 @@ test("general fallback is labelled above the existing carousel sections", () => 
   assert.match(text(tree), /General Ahri guide \u00b7 no Zed matchup guide yet/);
   assert.equal(nodes(tree).find(n => n.type === "summary").props.guide, guide);
   assert.equal(nodes(tree).filter(n => n.type === "guide-content").length, 3);
-});
-
-test("Quality switches to YouTube's own controls and back, keeping time, play state, speed and mute", () => {
-  const vod = { ...ahriVsZedVods[0], fixture: undefined, videoId: 'A_b-cD12345' };
-  const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
-  const frame = tree => nodes(tree).find(node => node.type === 'iframe');
-  const params = tree => new URL(frame(tree).props.src).searchParams;
-  const quality = tree => nodes(tree).find(node => String(node.props.className).startsWith('mv-quality-button'));
-  const deliver = info => h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: 'infoDelivery', info }) });
-  let tree = h.render({ vod, seek: null });
-  assert.deepEqual([params(tree).get('controls'), params(tree).get('vq'), params(tree).get('start')], ['0', 'hd1080', null]);
-  deliver({ currentTime: 0, duration: 1746, playerState: 1 });
-  h.render({ vod, seek: { moment: vod.moments[1], serial: 1 } });
-  assert.equal(h.messages.at(-1).data.func, 'playVideo', 'a moment click seeks once the player is ready');
-  deliver({ currentTime: 184, duration: 1746, playerState: 1, playbackRate: 1.5, muted: true });
-  h.render();
-  h.messages.length = 0;
-  quality(h.render()).props.onClick();
-  tree = h.render();
-  assert.deepEqual([params(tree).get('controls'), params(tree).get('start'), params(tree).get('autoplay')], ['1', '184', '1']);
-  assert.equal(text(quality(tree)), 'Done');
-  assert.match(text(tree), /quality and captions are in the gear/);
-  assert.ok(timeline(tree).props.disabled, 'our controls wait for the reloaded embed');
-  assert.match(text(tree), /3:04 \/ 29:06/, 'the timeline keeps its place while the embed reloads');
-  deliver({ currentTime: 190, duration: 1746, playerState: 1, playbackRate: 1.5, muted: true });
-  tree = h.render();
-  assert.ok(timeline(tree).props.disabled, 'the old embed reporting before the reload loads is ignored');
-  assert.match(text(tree), /3:04 \/ 29:06/);
-  frame(tree).props.onLoad();
-  h.messages.length = 0;
-  deliver({ currentTime: 184, duration: 1746, playerState: 1, playbackRate: 1, muted: false });
-  tree = h.render();
-  assert.equal(timeline(tree).props.disabled, false);
-  assert.deepEqual(h.messages.map(message => message.data.func).filter(Boolean), ['setPlaybackRate', 'mute'], 'speed and mute carry over, the last moment click is not replayed');
-  assert.deepEqual(h.messages[0].data.args, [1.5]);
-  timeline(tree).props.onJump(412);
-  deliver({ currentTime: 412, duration: 1746, playerState: 2 });
-  h.messages.length = 0;
-  quality(h.render()).props.onClick();
-  tree = h.render();
-  assert.deepEqual([params(tree).get('controls'), params(tree).get('start'), params(tree).get('autoplay')], ['0', '412', '0'], 'Done resumes paused at the same time');
-  assert.equal(text(quality(tree)), 'Quality');
-  frame(tree).props.onLoad();
-  h.messages.length = 0;
-  deliver({ currentTime: 412, duration: 1746, playerState: 5 });
-  h.render();
-  assert.deepEqual(h.messages.map(message => message.data.func).filter(Boolean), [], 'nothing to restore at normal speed and volume');
-  h.unmount();
 });
 
 test("library rows show the player or rank and region, a result badge and moments only when known", async () => {
