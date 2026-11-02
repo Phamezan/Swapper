@@ -4,6 +4,10 @@ import { getCurrentWindow } from '@tauri-apps/api/window';
 import type { MatchupVod } from './matchupGuide';
 import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, playerKeyAction, vodUrl } from './matchupVodModel';
 import { MomentIcon } from './MomentIcon';
+import { VodMomentArt } from './VodMomentArt';
+import { VodPlayer } from './VodPlayer';
+import { GuideSourceButton } from './GuideSourceButton';
+import type { ChampionOption } from '../runes/types';
 import { playerMessage, YOUTUBE_ORIGIN, type PlayerInfo } from './youtubePlayer';
 
 type Moment = MatchupVod['moments'][number];
@@ -12,7 +16,7 @@ export type VodSeek = { moment: Moment; serial: number };
 const RATES = [0.5, 0.75, 1, 1.25, 1.5, 2];
 const PLAYING = 1;
 // Markers closer than this many pixels merge into one group so their icons never overlap.
-const MARKER_SPACING_PX = 40;
+const MARKER_SPACING_PX = 70;
 // After the browser leaves element fullscreen on Esc, the same key must not also close the VOD.
 const ESC_GRACE_MS = 500;
 
@@ -20,8 +24,8 @@ function IconButton({ label, shortcut, children, ...props }: { label: string; sh
   return <button type="button" className="mv-icon-button" aria-label={label} aria-keyshortcuts={shortcut} title={shortcut ? `${label} (${shortcut})` : label} {...props}>{children}</button>;
 }
 
-function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump }: {
-  vod: MatchupVod; current: number; duration: number; buffered: number; disabled: boolean;
+function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump, champions }: {
+  champions: readonly ChampionOption[]; vod: MatchupVod; current: number; duration: number; buffered: number; disabled: boolean;
   onSeek: (sec: number, final: boolean) => void; onJump: (sec: number) => void;
 }) {
   const lane = useRef<HTMLDivElement>(null);
@@ -64,9 +68,9 @@ function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump }
       const members = group.indices.map(i => vod.moments[i]);
       const edge = group.atSec / duration < .25 ? ' is-start' : group.atSec / duration > .75 ? ' is-end' : '';
       return <button key={group.indices[0]} type="button" disabled={disabled} data-kind={members[0].kind ?? 'none'}
-        className={`mv-marker${group.atSec <= current ? ' is-past' : ''}${edge}`} style={{ left: percent(group.atSec) }}
+        className={`mv-marker${group.atSec <= current ? ' is-past' : ''}${group.indices.includes(currentMomentIndex(vod.moments, current)) ? ' is-current' : ''}${edge}`} style={{ left: percent(group.atSec) }}
         aria-label={`Jump to ${members.map(moment => `${moment.label} at ${formatVodTime(moment.atSec)}`).join('; ')}`} onClick={() => onJump(group.atSec)}>
-        <MomentIcon kind={members[0].kind} size={22} />
+        <VodMomentArt moment={members[0]} champions={champions} index={group.indices[0]} /><span className="mv-marker-time">{formatVodTime(group.atSec)}</span>
         {members.length > 1 && <span className="mv-marker-count">{members.length}</span>}
         <span className="mv-tip" aria-hidden>{members.map((moment, i) => <span key={i}>
           <MomentIcon kind={moment.kind} size={20} /><b>{formatVodTime(moment.atSec)}</b><span>{moment.label}</span>
@@ -76,11 +80,12 @@ function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump }
   </div>;
 }
 
-export function YoutubeVodPlayer({ vod, seek, mini = false, onMomentChange }: {
-  vod: MatchupVod; seek: VodSeek | null; mini?: boolean; onMomentChange?: (index: number) => void;
+export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMomentChange }: {
+  champions?: readonly ChampionOption[]; vod: MatchupVod; seek: VodSeek | null; mini?: boolean; onMomentChange?: (index: number) => void;
 }) {
   const frame = useRef<HTMLIFrameElement>(null);
   const root = useRef<HTMLDivElement>(null);
+  const cinemaList = useRef<HTMLOListElement>(null);
   const fullscreenNow = useRef(false);
   const fullscreenExitedAt = useRef(-Infinity);
   const [info, setInfo] = useState<PlayerInfo>({});
@@ -110,7 +115,12 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, onMomentChange }: {
     try {
       if (on && !document.fullscreenElement) await root.current?.requestFullscreen();
       if (!on && document.fullscreenElement) await document.exitFullscreen();
-    } catch { /* Refused element fullscreen: the .is-fullscreen fixed layout still covers the window. */ }
+    } catch { /* The Tauri window can still enter fullscreen when the element API is refused. */ }
+    // A manual popover supplies the top layer without moving/remounting the iframe.
+    try {
+      if (on && !document.fullscreenElement) root.current?.showPopover?.();
+      if (!on) root.current?.hidePopover?.();
+    } catch { /* A detached view must not prevent the window from leaving fullscreen. */ }
     try { await getCurrentWindow().setFullscreen(on); } catch { /* Outside Tauri the element fullscreen alone fills the page. */ }
   };
   useEffect(() => {
@@ -136,6 +146,12 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, onMomentChange }: {
     jump(seek.moment.atSec);
   }, [ready, seek]);
   useEffect(() => { onMomentChange?.(momentIndex); }, [momentIndex, onMomentChange]);
+  useEffect(() => {
+    const list = cinemaList.current, row = list?.children[momentIndex] as HTMLElement | undefined;
+    if (!list || !row) return;
+    if (row.offsetTop < list.scrollTop || row.offsetTop + row.offsetHeight > list.scrollTop + list.clientHeight)
+      list.scrollTo({ top: row.offsetTop - (list.clientHeight - row.offsetHeight) / 2, behavior: 'smooth' });
+  }, [momentIndex, fullscreen]);
   useEffect(() => {
     if (!fullscreen) return;
     const sync = () => {
@@ -169,13 +185,13 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, onMomentChange }: {
   const previous = adjacentMoment(vod.moments, current, -1), next = adjacentMoment(vod.moments, current, 1);
   const moment = vod.moments[momentIndex];
   const rate = info.playbackRate ?? 1;
-  return <div ref={root} tabIndex={-1} className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}`} onKeyDown={onKeyDown}>
+  return <div ref={root} popover="manual" tabIndex={-1} className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}`} onKeyDown={onKeyDown}>
     <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title}
       src={`${YOUTUBE_ORIGIN}/embed/${vod.videoId}?enablejsapi=1&controls=0&fs=0&rel=0&playsinline=1&autoplay=1&origin=${encodeURIComponent(location.origin)}`}
       allow="autoplay; encrypted-media; picture-in-picture"
       onLoad={() => { setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
     <div className="mv-controls" aria-label="Video controls">
-      <Timeline vod={vod} current={current} duration={duration} buffered={info.videoLoadedFraction ?? 0} disabled={!ready} onSeek={seekTo} onJump={jump} />
+      <Timeline vod={vod} champions={champions} current={current} duration={duration} buffered={info.videoLoadedFraction ?? 0} disabled={!ready} onSeek={seekTo} onJump={jump} />
       <div className="mv-control-row">
         <IconButton label="Previous key moment" className="mv-icon-button mv-hide-narrow" disabled={!ready || !previous} onClick={() => previous && jump(previous.atSec)}><SkipBack size={17} /></IconButton>
         <IconButton label="Back 10 seconds" shortcut="j" className="mv-icon-button mv-hide-mini" disabled={!ready} onClick={() => seekTo(current - 10)}><RotateCcw size={17} /></IconButton>
@@ -204,6 +220,14 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, onMomentChange }: {
           {fullscreen ? <Minimize size={17} /> : <Maximize size={17} />}</IconButton>
       </div>
       {failed && <p role="status">Video unavailable or slow to load. Try opening it on YouTube.</p>}
+      {mini && <GuideSourceButton url={vodUrl(vod)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}
     </div>
+    {fullscreen && <aside className="mv-cinema-story" aria-label="Fullscreen match story">
+      <header><span className="mv-eyebrow">Match room / {vod.patch}</span><VodPlayer vod={vod} /><h2>{vod.title}</h2><span className="mv-cinema-facts">{vod.result === 'W' ? 'Victory · ' : vod.result === 'L' ? 'Defeat · ' : ''}{formatVodTime(duration)} · {vod.moments.length} key moments</span></header>
+      <ol ref={cinemaList}>{vod.moments.map((event, index) => <li key={index}><button type="button" disabled={!ready} aria-current={index === momentIndex || undefined} onClick={() => jump(event.atSec)}>
+        <span className="mv-moment-time">{formatVodTime(event.atSec)}</span><VodMomentArt moment={event} champions={champions} index={index} /><span>{event.label}</span>
+      </button></li>)}</ol>
+      <footer><GuideSourceButton url={vodUrl(vod)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton><span>Esc to return</span></footer>
+    </aside>}
   </div>;
 }

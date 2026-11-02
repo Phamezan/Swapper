@@ -1,6 +1,11 @@
 import type { MatchupVod, MomentKind } from "./matchupGuide";
 import type { ChampionOption } from "../runes/types";
 
+export function vodPlayerName(player?: string): string | null {
+  const name = player?.trim();
+  return name && !/^\?+$/.test(name) ? name : null;
+}
+
 const MOMENT_ART: Record<MomentKind, string | null> = {
   kill: "kills", death: "/vod-icons/dead_red.png", teamfight: "/vod-icons/teamfight.png", trade: "kills",
   dragon: "dragon-100", baron: "baron-100", herald: "herald-100", grubs: "grub",

@@ -1,7 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { championsInMoment, momentArt } from './matchupVodModel.ts';
+import { championsInMoment, momentArt, vodPlayerName } from './matchupVodModel.ts';
+
+test('missing, blank and question-mark player names are unlisted, real names are trimmed', () => {
+  for (const player of [undefined, '', '   ', '?', ' ? ', '???']) assert.equal(vodPlayerName(player), null);
+  assert.equal(vodPlayerName(' Faker '), 'Faker');
+  assert.equal(vodPlayerName('Who?'), 'Who?');
+});
 
 const roster = ['Ahri', 'Zed', "Kai\'Sa", 'Thresh', 'Miss Fortune', 'Nunu & Willump', "Cho'Gath", 'Vi', 'Lee Sin'].map((name, id) => ({ id, name }));
 const names = label => championsInMoment(label, roster).map(champion => champion.name);

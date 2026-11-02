@@ -677,16 +677,19 @@ async function main() {
     await page.evaluate(`(() => {
       const invoke = window.__TAURI_INTERNALS__.invoke;
       window.__TAURI_INTERNALS__.invoke = (cmd, args) => cmd === 'get_matchup_vods' ? Promise.resolve([{
-        videoId:'A_b-cD12345',title:'Offline player test',rankClaim:'Challenger',patch:'26.21',durationSec:1746,
-        moments:[{atSec:184,label:'Ahri takes down Zed',kind:'kill',section:'early-lane'},{atSec:412,label:'Second fight',kind:'teamfight'}, {atSec:416,label:'Dragon secured',kind:'dragon'}]
+        videoId:'A_b-cD12345',title:'Ahri vs Zed · Challenger mid lane',player:'?',rankClaim:'Challenger',patch:'26.21',durationSec:1746,
+        moments:[{atSec:184,label:'Ahri takes down Zed',kind:'kill',section:'early-lane'},{atSec:412,label:'Second fight',kind:'teamfight'}, {atSec:416,label:'Dragon secured',kind:'dragon'}, {atSec:710,label:'Ahri catches Zed at river',kind:'kill'}, {atSec:903,label:'Zed takes down Ahri',kind:'death'}, {atSec:1200,label:'Ahri wins the final fight',kind:'kill'}]
       }]) : invoke(cmd, args);
     })()`);
     await nav('Matchups', '.fa-matchup-empty');
     await page.click('.fa-champion-card[data-champion-id="103"]');
     await page.click('.fa-champion-card[data-champion-id="238"]');
     await page.click('.mg-workspace-tabs button', 'VODs');
+    await screenshot('vod-library-redesign');
     await page.click('.mv-vod-row');
     await page.visible('.mv-embed iframe');
+    assert.ok(await page.evaluate("document.querySelector('.mv-description').getBoundingClientRect().bottom <= document.querySelector('.mv-embed').getBoundingClientRect().top"), 'game information heads the player');
+    assert.ok(await page.evaluate("!document.querySelector('.mv-watch-header').textContent.includes('?')"), 'unknown pilot player is never displayed as a question mark');
     await page.visible('.mv-control-row button[aria-label="Pause"]');
     await page.evaluate("window.__vodFrame = document.querySelector('.mv-embed iframe'); window.__vodWindow = window.__vodFrame.contentWindow");
     await page.click('.mv-moment');
@@ -717,11 +720,30 @@ async function main() {
     await page.click('button[aria-label="Full screen"]');
     await page.visible('.mv-video-player.is-fullscreen');
     assert.ok(await page.evaluate("document.querySelector('.mv-controls').getBoundingClientRect().top >= document.querySelector('.mv-embed').getBoundingClientRect().bottom"), 'fullscreen controls stay below the picture');
+    await screenshot('vod-fullscreen-redesign');
+    await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
+    await page.settle();
+    assert.ok(await page.evaluate("(() => { const r = document.querySelector('.mv-video-player').getBoundingClientRect(), v = document.querySelector('.mv-embed').getBoundingClientRect(), story = document.querySelector('.mv-cinema-story').getBoundingClientRect(); return r.top === 0 && r.left === 0 && r.bottom === innerHeight && r.right === innerWidth && story.left >= v.right; })()"), 'fullscreen fills every viewport edge and story does not cover video');
+    await screenshot('vod-fullscreen-wide', 1920, 1080);
     await page.click('button[aria-label="Exit full screen"]');
+    await page.wait("!document.fullscreenElement && !document.querySelector('.mv-video-player.is-fullscreen')", 'native fullscreen has exited');
+    await page.settle();
+    await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
+    await page.evaluate("window.__nativeFullscreen = window.__vodFrame.parentElement.parentElement.requestFullscreen; window.__vodFrame.parentElement.parentElement.requestFullscreen = () => Promise.reject(new Error('test refused fullscreen'))");
+    await page.click('button[aria-label="Full screen"]');
+    await page.wait("document.querySelector('.mv-video-player').matches(':popover-open')", 'Tauri fallback uses top layer');
+    assert.ok(await page.evaluate("(() => { const r = document.querySelector('.mv-video-player').getBoundingClientRect(); return r.top === 0 && r.left === 0 && r.bottom === innerHeight && r.right === innerWidth && document.querySelector('.mv-embed iframe') === window.__vodFrame; })()"), 'fallback fills viewport without remounting the video');
+    await screenshot('vod-fullscreen-fallback');
+    await page.evaluate("document.querySelector('.mv-video-player').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}))");
+    await page.wait("!document.querySelector('.mv-video-player').matches(':popover-open') && !document.querySelector('.mv-video-player.is-fullscreen')", 'Escape exits fallback fullscreen');
+    await page.evaluate("window.__vodFrame.parentElement.parentElement.requestFullscreen = window.__nativeFullscreen");
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1000, height: 700, deviceScaleFactor: 1, mobile: false });
     await page.settle();
     await audit();
     await screenshot('vod-player-small', 1000, 700);
+    assert.ok(await page.evaluate("document.querySelector('.mv-control-row').getBoundingClientRect().bottom <= innerHeight"), 'small-window playback controls remain visible');
+    await page.click('.mv-moment[aria-label*="final fight"]');
+    await screenshot('vod-story-small', 1000, 700);
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
     await page.click('.mv-section-link');
     await page.visible('.mg-guide-view');
@@ -737,7 +759,7 @@ async function main() {
     assert.ok(await page.evaluate("window.__vodFrame.isConnected"), 'starting a game must not stop the VOD');
     await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:false})");
     await screenshot('vod-mini-player');
-    await page.click('.mv-mini-actions button', 'Reopen VOD');
+    await page.click('.mv-mini-actions button[aria-label="Reopen VOD"]');
     await page.visible('.mv-player-view:not(.is-mini) iframe');
     assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame"));
     await page.click('.mg-workspace-tabs button', 'Guide');

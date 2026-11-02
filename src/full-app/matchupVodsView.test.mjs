@@ -23,7 +23,7 @@ function harness(file, component, vods = ahriVsZedVods) {
   const jsx = (type, props) => ({ type, props });
   const modules = {
     "@tauri-apps/api/core": { invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }] },
-    "../runes/ChampionIcon": { ChampionIcon: "champion-icon" },
+    "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", ChevronRight: "chevron", ArrowLeft: "back-icon" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods },
     './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
@@ -57,11 +57,28 @@ test('moment cards render roster portraits and unnamed replays show a rank crest
   h.render(props);
   nodes(await h.flush()).find(node => node.props.className === 'mv-vod-row').props.onClick();
   const tree = h.render();
-  assert.deepEqual(nodes(tree).filter(node => node.type === 'champion-icon').map(node => node.props.id), [103, 238]);
+  const art = nodes(tree).find(node => node.type === 'event-art');
+  const portraits = harness('./VodMomentArt.tsx', 'VodMomentArt').render(art.props);
+  assert.deepEqual(nodes(portraits).filter(node => node.type === 'champion-icon').map(node => node.props.id), [103, 238]);
   const identity = harness('./VodPlayer.tsx', 'VodPlayer').render({ vod });
   const avatar = nodes(identity).find(node => node.props.className === 'mv-avatar');
   assert.equal(nodes(avatar).find(node => node.type === 'rank-crest').props.size, 40);
   assert.match(text(identity), /replay/);
+});
+
+test('question-mark players use the unlisted identity and no player photo', () => {
+  const tree = harness('./VodPlayer.tsx', 'VodPlayer').render({ vod: { ...ahriVsZedVods[0], player: ' ? ', team: undefined, playerImage: '/unknown.png' } });
+  assert.doesNotMatch(text(tree), /\?/);
+  assert.match(text(tree), /player unlisted/);
+  assert.equal(nodes(tree).some(node => node.type === 'img'), false);
+});
+
+test('unnamed events get ordinal art and death events retain their explicit kind', () => {
+  const h = harness('./VodMomentArt.tsx', 'VodMomentArt');
+  const tree = h.render({ moment: { label: 'Caught at river', kind: 'death' }, champions: [], index: 7 });
+  assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-event-number')), '08');
+  assert.equal(tree.props['data-kind'], 'death');
+  assert.equal(nodes(tree).find(node => node.type === 'moment-icon').props.kind, 'death');
 });
 
 test("VODs start as a five-game list and Back restores focus to the opened row", async () => {
@@ -128,7 +145,7 @@ test('moment clicks seek repeatedly and the mini player can reopen or close', as
   player = nodes(tree).find(node => node.type === 'youtube-player');
   assert.equal(player.props.seek.serial, 2);
   assert.equal(player.props.mini, true, 'the mini player drops fullscreen and the bigger controls');
-  nodes(tree).find(node => text(node) === 'Reopen VOD' && node.type === 'button').props.onClick();
+  nodes(tree).find(node => node.props['aria-label'] === 'Reopen VOD').props.onClick();
   assert.equal(reopened, 1);
   nodes(tree).find(node => node.props['aria-label'] === 'Close mini player').props.onClick();
   assert.equal(h.render(), null);
@@ -152,7 +169,7 @@ test('the playing moment is highlighted in the feed with its kind icon', async (
   const row = nodes(active[0]).find(node => node.props.className === 'mv-moment');
   assert.equal(row.props['aria-current'], true);
   assert.match(text(row), new RegExp(vod.moments[1].label));
-  assert.equal(nodes(row).find(node => node.type === 'moment-icon').props.kind, 'dragon');
+  assert.equal(nodes(row).find(node => node.type === 'event-art').props.moment.kind, 'dragon');
 });
 
 test('keyboard shortcuts drive the player and fullscreen covers the window until Esc', async () => {
