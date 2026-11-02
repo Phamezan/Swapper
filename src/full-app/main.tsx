@@ -21,6 +21,8 @@ import "./full-app.css";
 import { AccountCards } from "./AccountCards";
 import { SettingsPage } from "./SettingsPage";
 import { ChampionSelect } from "./ChampionSelect";
+import { MatchupVods } from "./MatchupVods";
+import type { VodRequest } from "./MatchupVodEntry";
 import type { ChampionFocus } from "./Champions";
 import { PageHeader } from "./ui/PageHeader";
 import { pageLabel } from "./ui/pageNames";
@@ -37,7 +39,7 @@ const LiveGame = lazy(() => import("./LiveGame"));
 const MatchDetail = lazy(() => import("./MatchDetail"));
 const PlayerPage = lazy(() => import('./PlayerPage'));
 type MatchLocation = `Match:${number}` | `Match:${number}:${string}`;
-type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | "Patch notes" | MatchLocation | `Player:${string}`;
+type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | "VODs" | "Patch notes" | MatchLocation | `Player:${string}`;
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
@@ -45,7 +47,7 @@ const appViews: Record<AppPage, View> = { Accounts: "accounts", "Champion select
 const appPageOf = (view: View): AppPage => view === "runes" ? "Champion select" : view === "settings" ? "Settings" : "Accounts";
 const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
   { label: "Overview", items: [["Dashboard", DashboardIcon], ["Live Game", LiveGameIcon]] },
-  { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["Patch notes", PatchNotesIcon], ["Champion select", DraftIcon]] },
+  { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["VODs", PlayIcon], ["Patch notes", PatchNotesIcon], ["Champion select", DraftIcon]] },
   { label: "Swapper", items: [["Accounts", AccountsIcon], ["Settings", SettingsIcon]] },
 ];
 const SEEN_PATCH_KEY = "pn-seen-patch";
@@ -65,17 +67,23 @@ function App() {
   const [inChampSelect, setInChampSelect] = useState(false);
   const [focus, setFocus] = useState<ChampionFocus | null>(null);
   const [locationChampion, setLocationChampion] = useState<ChampionOption | null>(null);
+  const [vodRequest, setVodRequest] = useState<VodRequest>({ champion: null });
   const current: Location = page === "app" ? appPageOf(appView) : page;
   const currentRef = useRef(current);
   currentRef.current = current;
   const vodOpen = useRef(false);
+  const vodVisited = useRef(false);
+  if (page === "VODs") vodVisited.current = true;
   const trackVodPlayback = useCallback((open: boolean) => { vodOpen.current = open; }, []);
   // Where champion select interrupted the user; restored when it ends.
   const returnTo = useRef<Location | null>(null);
   const go = useCallback((target: Location) => {
+    if (target === "VODs")
+      setVodRequest({ champion: null });
     if (target in appViews) { setPage("app"); setRequest({ view: appViews[target as AppPage] }); }
     else setPage(target as Page);
   }, []);
+  const openVods = (request: VodRequest) => { setVodRequest(request); setPage("VODs"); };
   const sidebarGo = (target: Location) => {
     if (target !== currentRef.current) { setFocus(null); go(target); return; }
     const scroller = document.querySelector<HTMLElement>(".dashboard-main")
@@ -322,13 +330,14 @@ function App() {
       {switching && <SwitchOverlay account={switchingAccount} name={switching.name} restart={switching.restart} />}
       <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
-      {page !== "app" && <main className="dashboard-main dash-scope">
+      <main className={page === "app" ? "mv-background-host" : "dashboard-main dash-scope"}>
+        {page !== "app" && <>
         {selectedMatch ? <PageHeader
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
           : <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
         {error && <Notice tone="error">{error}</Notice>}
-        {page === "Dashboard"
+        {page === "VODs" ? null : page === "Dashboard"
           ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} justEnded={ended} onOpenLive={() => go(LIVE_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { const target = `Match:${game.id}` as const; visitedMatches.current.set(target, game); go(target); }} />
@@ -342,9 +351,17 @@ function App() {
           : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page === "Matchups" && focus?.matchup ? `${page}-${focus.champion?.id}-${focus.matchup.enemy}-${focus.matchup.lane}` : page}
-                matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion && !focus.matchup ? null : focus} onSelectionChange={setLocationChampion} onVodPlaybackChange={trackVodPlayback} />
+                matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion && !focus.matchup ? null : focus} onSelectionChange={setLocationChampion} onOpenVods={openVods} />
             </Suspense>}
-      </main>}
+        </>}
+        <div className={page === "VODs" ? "champion-tools runes-panel mv-view mv-section" : "mv-mini-host"}>
+          {vodVisited.current && <MatchupVods request={vodRequest} active={page === "VODs"} onReopen={() => go("VODs")} onPlaybackChange={trackVodPlayback}
+            onChampionChange={champion => openVods({ champion })} onGuideSection={(section, watch) => {
+              if (!watch.champion || !watch.enemy || !watch.lane) return;
+              setFocus({ champion: watch.champion, matchup: { enemy: watch.enemy.id, lane: watch.lane, section } }); go("Matchups");
+            }} />}
+        </div>
+      </main>
     </div>
   </div></AmbientArtContext.Provider>;
 }

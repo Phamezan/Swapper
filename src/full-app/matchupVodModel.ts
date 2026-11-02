@@ -111,8 +111,9 @@ export function rankTier(rankClaim: string): RankTier {
 // Riot server regions; only a token right before the rank counts, so "vs Master Yi" or a team tag never reads as one.
 const REGION_BEFORE_RANK = /\b(EUW|EUNE|KR|NA|BR|LAN|LAS|OCE|TR|RU|JP|VN|TW|SG|PH|TH)\d?\s+(?=(?:challenger|grand\s*master|master|diamond|emerald)\b)/i;
 
-/** Server region as in "KR Grandmaster" or "EUW Challenger Patch 26.19"; the rank claim wins over the title. */
-export function vodRegion(vod: Pick<MatchupVod, "title" | "rankClaim">): string | null {
+/** Server region as in "KR Grandmaster" or "EUW Challenger Patch 26.19"; explicit region wins, then the rank claim, then the title. */
+export function vodRegion(vod: Pick<MatchupVod, "title" | "rankClaim" | "region">): string | null {
+  if (vod.region) return vod.region;
   const match = REGION_BEFORE_RANK.exec(vod.rankClaim) ?? REGION_BEFORE_RANK.exec(vod.title);
   return match ? match[1].toUpperCase() : null;
 }
@@ -126,7 +127,7 @@ export function vodRow(vod: MatchupVod): VodRow {
   const standing = [region, rank].filter(Boolean).join(" ");
   return {
     primary: name ?? (standing || "Ranked game"), named: !!name,
-    details: [...(name && standing ? [standing] : []), `Patch ${vod.patch}`],
+    details: [...(name && standing ? [standing] : []), `Patch ${vod.patchEstimated ? "~" : ""}${vod.patch}`],
     result: vod.result === "W" ? "win" : vod.result === "L" ? "loss" : null,
     moments: vod.moments.length || null,
   };
@@ -152,18 +153,20 @@ export function comparePatch(a: string, b: string): number {
   return 0;
 }
 
-/** `null` means any; `enemy` only matches champion-wide VODs, which carry their matchup. */
-export type VodFilters = { pros: boolean; tier: RankTier | null; result: "W" | "L" | null; patch: string | null; enemy: number | null };
-export const ANY_VOD: VodFilters = { pros: false, tier: null, result: null, patch: null, enemy: null };
+/** Opponent and lane restrict the champion library; null means any. */
+export type VodFilters = { named: boolean; tier: RankTier | null; patch: string | null; enemy: number | null; lane: string | null };
+export const ANY_VOD: VodFilters = { named: false, tier: null, patch: null, enemy: null, lane: null };
 
 export function vodMatches(vod: MatchupVod, f: VodFilters): boolean {
-  return (!f.pros || !!vod.team) && (!f.tier || rankTier(vod.rankClaim) === f.tier) && (!f.result || vod.result === f.result)
-    && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy);
+  return (!f.named || !!vodPlayerName(vod.player)) && (!f.tier || rankTier(vod.rankClaim) === f.tier)
+    && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy) && (!f.lane || vod.lane === f.lane);
 }
 
-/** Matching VODs, newest patch first; ties keep the content order (the sort is stable). */
+/** Newest patch, then named players, then latest upload; remaining ties keep content order. */
 export function filterVods(vods: readonly MatchupVod[], filters: VodFilters): MatchupVod[] {
-  return vods.filter(vod => vodMatches(vod, filters)).sort((a, b) => comparePatch(b.patch, a.patch));
+  return vods.filter(vod => vodMatches(vod, filters)).sort((a, b) => comparePatch(b.patch, a.patch)
+    || Number(!!vodPlayerName(b.player)) - Number(!!vodPlayerName(a.player))
+    || (b.uploaded ?? "").localeCompare(a.uploaded ?? ""));
 }
 
 // Some players get a dark silhouette instead of a 404. Measured on 82 real CDN images:

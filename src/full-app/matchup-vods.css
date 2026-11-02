@@ -2,7 +2,7 @@
 .mv-library, .mv-player-view { display: flex; flex-direction: column; flex: 1; min-height: 0; min-width: 0; gap: 16px; }
 .mv-eyebrow { display: block; color: var(--ui-text-3); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
 .mv-list-toolbar { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 12px 16px; padding: 4px 0 0; }
-.fa-frame .champion-tools .mv-list-toolbar h2 { margin: 6px 0; font-size: 24px; font-weight: 600; letter-spacing: -.03em; color: var(--ui-text-1); }
+.mv-list-toolbar h2 { margin: 6px 0; font-size: 24px; font-weight: 600; letter-spacing: -.03em; color: var(--ui-text-1); }
 .mv-list-toolbar p { margin: 0; font-size: 13px; color: var(--ui-text-3); }
 .mv-scope { display: flex; align-items: center; gap: 10px; }
 .mv-segment button { display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; white-space: nowrap; }
@@ -105,7 +105,7 @@
 .mv-side-close > .mv-icon-button { width: 28px; height: 28px; }
 .mv-chapters { display: flex; flex-direction: column; flex: 1; min-width: 0; min-height: 0; }
 .mv-chapters > header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 30px 10px 0; border-bottom: 1px solid var(--ui-line-2); }
-.fa-frame .champion-tools .mv-chapters h3 { margin: 0; color: var(--ui-text-1); font-size: 13px; font-weight: 600; }
+.mv-chapters h3 { margin: 0; color: var(--ui-text-1); font-size: 13px; font-weight: 600; }
 .mv-chapters > header small { color: var(--ui-text-3); font-size: 12px; font-variant-numeric: tabular-nums; }
 .mv-moments { position: relative; flex: 1; min-height: 0; margin: 0; padding: 0; list-style: none; overflow-y: auto; scrollbar-width: thin; overscroll-behavior: contain; }
 .mv-moments > li { border-bottom: 1px solid var(--ui-line-2); }
@@ -166,7 +166,7 @@
 @media (max-width: 800px) { .mv-video-player.is-fullscreen > .mv-side { display: none; } }
 @media (prefers-reduced-motion: reduce) { .mv-player-view *, .mv-library * { transition: none !important; scroll-behavior: auto !important; } }
 
-/* Smaller windows: the moment count drops its word, then the opponent keeps only its portrait. */
+/* Smaller windows: the moment count drops its word, then the matchup keeps both portraits. */
 @container matchup-vods (max-width: 860px) {
   .mv-table { --mv-cols: 26px minmax(0, 1fr) 44px 44px 46px; }
   .mv-table.is-wide { --mv-cols: 26px minmax(0, 1.3fr) minmax(0, 1fr) 44px 44px 46px; }
@@ -174,10 +174,20 @@
   .mv-match-count { margin-left: 0; }
 }
 @container matchup-vods (max-width: 560px) {
-  .mv-table.is-wide { --mv-cols: 26px minmax(0, 1fr) 26px 44px 44px 46px; }
+  .mv-table.is-wide { --mv-cols: 26px minmax(0, 1fr) 60px 44px 44px 46px; }
   .mv-cell-enemy > span { display: none; }
   .mv-vod-row { gap: 10px; padding-inline: 12px; }
 }
 
 /* Paint the document canvas too during native-window resize/fullscreen transitions. */
 html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscreen) { margin: 0; overflow: hidden; background: #111215; }
+
+.mv-section { height: calc(100% - 70px); min-height: 320px; }
+.mv-background-host { position: absolute; width: 0; height: 0; }
+.mv-matchup-scope, .mv-entry { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--ui-text-2); font-size: 13px; }
+.mv-entry { padding: 12px 16px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); }
+.mv-segment button:disabled { opacity: .4; cursor: default; }
+
+.mv-perspective-label { color: var(--ui-text-3); font-size: 12px; }
+
+.mv-more > div { height: 1px; }

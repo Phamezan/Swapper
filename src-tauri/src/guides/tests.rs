@@ -260,6 +260,9 @@ fn outdated_flags_use_each_tips_patch_and_never_flag_live_cooldowns() {
 
 #[derive(Clone, Default)]
 struct ServerState {
+    active: std::sync::Arc<std::sync::atomic::AtomicUsize>,
+    peak: std::sync::Arc<std::sync::atomic::AtomicUsize>,
+    delay_ms: std::sync::Arc<std::sync::atomic::AtomicU64>,
     files: std::sync::Arc<std::sync::Mutex<BTreeMap<String, Vec<u8>>>>,
     requests: std::sync::Arc<std::sync::Mutex<Vec<String>>>,
 }
@@ -272,10 +275,16 @@ impl Server {
         async fn response(axum::extract::State(s): axum::extract::State<ServerState>, uri: axum::http::Uri) -> (axum::http::StatusCode,Vec<u8>) {
             let path = uri.path().to_string();
             s.requests.lock().unwrap().push(path.clone());
-            match s.files.lock().unwrap().get(&path) {
+            use std::sync::atomic::Ordering::SeqCst;
+            let active = s.active.fetch_add(1, SeqCst) + 1;
+            s.peak.fetch_max(active, SeqCst);
+            tokio::time::sleep(Duration::from_millis(s.delay_ms.load(SeqCst))).await;
+            let result = match s.files.lock().unwrap().get(&path) {
                 Some(bytes) => (axum::http::StatusCode::OK, bytes.clone()),
                 None => (axum::http::StatusCode::NOT_FOUND, vec![]),
-            }
+            };
+            s.active.fetch_sub(1, SeqCst);
+            result
         }
         let state = ServerState::default();
         let router = axum::Router::new().fallback(axum::routing::get(response)).with_state(state.clone());
@@ -423,4 +432,130 @@ fn general_outdated_flags_only_follow_the_champion_and_respect_live_cooldowns() 
     assert_eq!(rendered["keyTips"][0]["outdated"], true);
     assert!(rendered["keyTips"][1].get("outdated").is_none());
     assert!(rendered["keyTips"][2].get("outdated").is_none());
+}
+
+
+#[test]
+fn vod_region_and_estimated_patch_are_optional_validated_and_forwarded() {
+    for region in ["KR", "NA", "EUW", "EUNE"] {
+        for estimated in [true, false] {
+            let mut v = vod(); v["region"] = json!(region); v["patchEstimated"] = json!(estimated);
+            let bytes = with_vods(vec![v]);
+            let wire = serde_json::to_value(&parse_vods(&bytes, 103, 238, Lane::Mid)[0]).unwrap();
+            assert_eq!(wire["region"], region);
+            assert_eq!(wire["patchEstimated"], estimated);
+            let all = serde_json::to_value(&parse_champion_vods(&bytes, 103)[0]).unwrap();
+            assert_eq!(all["region"], region);
+            assert_eq!(all["patchEstimated"], estimated);
+        }
+    }
+    let wire = serde_json::to_value(&parse_vods(&with_vods(vec![vod()]), 103, 238, Lane::Mid)[0]).unwrap();
+    assert!(wire.get("region").is_none() && wire.get("patchEstimated").is_none());
+    for (field, value) in [("region", json!("BR")), ("region", json!("kr")), ("region", json!(1)),
+        ("patchEstimated", json!("true")), ("patchEstimated", json!(1))] {
+        let mut bad = vod(); bad[field] = value;
+        let bytes = with_vods(vec![bad, vod()]);
+        assert_eq!(parse_vods(&bytes, 103, 238, Lane::Mid).len(), 1, "{field}");
+        assert_eq!(parse_champion_vods(&bytes, 103).len(), 1, "{field}");
+    }
+}
+
+
+fn library_file(champion: i64, videos: Vec<Value>) -> Vec<u8> {
+    let mut file: Value = serde_json::from_slice(&with_vods(videos)).unwrap();
+    file["champion"] = json!(champion);
+    file["guides"] = json!([]);
+    serde_json::to_vec(&file).unwrap()
+}
+
+fn publish_library(server: &Server, entries: Vec<(i64, Vec<u8>)>) {
+    let mut index = json!({"schema":1,"generatedAt":"2026-11-02","champions":{}});
+    let mut files = server.state.files.lock().unwrap();
+    for (id, bytes) in entries {
+        index["champions"][id.to_string()] = json!({"sha256":digest(&bytes),"guides":0,"vods":1});
+        files.insert(format!("/champions/{id}.json"), bytes);
+    }
+    files.insert("/index.json".into(), serde_json::to_vec(&index).unwrap());
+}
+
+#[tokio::test]
+async fn all_vods_spans_champions_skips_failed_content_and_reuses_the_content_cache() {
+    let server = Server::start().await;
+    let mut invalid = video("invalid0001"); invalid["region"] = json!("invalid");
+    publish_library(&server, vec![(103, library_file(103, vec![video("ahriVod0001"), invalid])),
+        (238, library_file(238, vec![video("zedVod00001")])), (17, library_file(17, vec![vod()])),
+        (18, library_file(103, vec![vod()]))]);
+    {
+        let mut files = server.state.files.lock().unwrap();
+        files.remove("/champions/17.json");
+        let mut index: Value = serde_json::from_slice(files.get("/index.json").unwrap()).unwrap();
+        index["champions"]["222"] = json!({"sha256":"a".repeat(64),"guides":1,"vods":0});
+        files.insert("/index.json".into(), serde_json::to_vec(&index).unwrap());
+    }
+    let root = std::env::temp_dir().join(format!("swapper-all-vod-test-{}", uuid::Uuid::new_v4()));
+    let client = reqwest::Client::new();
+    let mut cache = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    let all = cache.all_vods(&client, 100_000).await;
+    let wire = serde_json::to_value(&all).unwrap();
+    assert_eq!(all.len(), 2, "a 404 and a wrong-champion file do not discard valid champions");
+    assert_eq!((wire[0]["champion"].clone(), wire[0]["enemy"].clone(), wire[0]["lane"].clone(), wire[0]["videoId"].clone()),
+        (json!(103), json!(238), json!("mid"), json!("ahriVod0001")));
+    assert_eq!(wire[1]["champion"], 238);
+    assert_eq!(server.count("/champions/222.json"), 0, "only positive VOD entries are loaded");
+    assert_eq!(server.count("/index.json"), 1);
+    assert_eq!(parse_champion_vods(&cache.content(&client, 103, 100_001).await, 103).len(), 1);
+    assert_eq!(server.count("/champions/103.json"), 1, "single-champion reads reuse the aggregate download");
+    assert_eq!(cache.all_vods(&client, 100_001).await.len(), 2);
+    assert_eq!(server.count("/champions/17.json"), 1, "failed attempts remain throttled");
+    server.state.files.lock().unwrap().clear();
+    let mut reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    assert_eq!(reopened.all_vods(&client, 100_002).await.len(), 2, "aggregate downloads persist across offline restart");
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[tokio::test]
+async fn all_vods_fetches_at_most_four_champions_concurrently_in_stable_order() {
+    use std::sync::atomic::Ordering::SeqCst;
+    let server = Server::start().await;
+    server.state.delay_ms.store(25, SeqCst);
+    publish_library(&server, (100..106).map(|id| (id, library_file(id, vec![vod()]))).collect());
+    let mut cache = GuideCache::open(None, server.base.clone(), &[]);
+    let all = cache.all_vods(&reqwest::Client::new(), 100_000).await;
+    assert_eq!(all.iter().map(|vod| vod.champion).collect::<Vec<_>>(), (100..106).collect::<Vec<_>>());
+    let peak = server.state.peak.load(SeqCst);
+    assert!((2..=4).contains(&peak), "expected parallel fetches bounded by four, saw {peak}");
+}
+
+#[tokio::test]
+async fn all_vods_in_local_mode_uses_only_the_verified_bundled_index_and_content() {
+    let bytes: &'static [u8] = Box::leak(library_file(103, vec![vod()]).into_boxed_slice());
+    let index: &'static [u8] = Box::leak(serde_json::to_vec(&json!({"schema":1,"generatedAt":"2026-11-02",
+        "champions":{"103":{"sha256":digest(bytes),"guides":0,"vods":1},"238":{"sha256":"a".repeat(64),"guides":0,"vods":1}}})).unwrap().into_boxed_slice());
+    let offline: &'static [(&'static str, &'static [u8])] = Box::leak(vec![("index.json", index), ("champions/103.json", bytes),
+        ("champions/238.json", bytes)].into_boxed_slice());
+    let mut cache = GuideCache::open(None, String::new(), offline);
+    let all = cache.all_vods(&reqwest::Client::new(), 100_000).await;
+    assert_eq!(all.len(), 1, "missing/invalid bundled files are skipped, without accepting an unchecked payload");
+    assert_eq!(all[0].champion, 103);
+    assert!(cache.index.is_none() && cache.champions.is_empty(), "local mode bypasses published cache state");
+}
+
+
+#[tokio::test]
+async fn all_vods_repairs_corrupt_cached_content_even_when_the_stored_hash_matches() {
+    let server = Server::start().await;
+    let bytes = library_file(103, vec![vod()]);
+    publish_library(&server, vec![(103, bytes.clone())]);
+    let root = std::env::temp_dir().join(format!("swapper-all-vod-repair-{}", uuid::Uuid::new_v4()));
+    let client = reqwest::Client::new();
+    let mut cache = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    cache.champions.insert(103, CachedChampion { sha256: digest(&bytes), content: "corrupt".into() });
+    assert_eq!(cache.all_vods(&client, 100_000).await.len(), 1);
+    assert!(cache.cached(103).is_some(), "a valid aggregate download must replace the damaged held body, even with the same hash field");
+    assert_eq!(cache.content(&client, 103, 100_001).await, bytes);
+    assert_eq!(server.count("/champions/103.json"), 1);
+    server.state.files.lock().unwrap().clear();
+    let mut reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    assert_eq!(reopened.content(&client, 103, 100_002).await, bytes, "the repaired body is persisted");
+    std::fs::remove_dir_all(root).unwrap();
 }

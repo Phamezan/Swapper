@@ -1,6 +1,7 @@
 mod model;
 use model::*;
 use serde::{Deserialize, Serialize};
+use futures_util::{stream, StreamExt};
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 use std::sync::OnceLock;
@@ -17,7 +18,7 @@ struct RefreshState {
     champions: BTreeMap<i64, u64>,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct CachedChampion { sha256: String, content: String }
 
@@ -80,7 +81,7 @@ impl GuideCache {
         verified_champion(cached.content.as_bytes(), &cached.sha256, champion).map(|_| (cached.sha256.clone(), cached.content.as_bytes().to_vec()))
     }
 
-    async fn content(&mut self, client: &reqwest::Client, champion: i64, now: u64) -> Vec<u8> {
+    async fn refresh_index(&mut self, client: &reqwest::Client, now: u64) {
         if due(self.refresh.index, now) {
             self.refresh.index = Some(now);
             // Persist failures as attempts too: a 404/offline install does not hammer the host.
@@ -91,6 +92,17 @@ impl GuideCache {
                 self.index = Some(index);
             }
         }
+    }
+
+    fn store_champion(&mut self, champion: i64, cached: CachedChampion) {
+        if let (Some(root), Ok(bytes)) = (&self.root, serde_json::to_vec(&cached)) {
+            write_atomic(&root.join(format!("champions/{champion}.json")), &bytes);
+        }
+        self.champions.insert(champion, cached);
+    }
+
+    async fn content(&mut self, client: &reqwest::Client, champion: i64, now: u64) -> Vec<u8> {
+        self.refresh_index(client, now).await;
         let cached = self.cached(champion);
         let offline_index = self.bundled("index.json").and_then(parse_index);
         let index = self.index.as_ref().or(offline_index.as_ref());
@@ -107,10 +119,7 @@ impl GuideCache {
                 if let Some(bytes) = fetch(client, &format!("{}/champions/{champion}.json", self.base), MAX_CHAMPION_BYTES).await
                     .filter(|b| verified_champion(b, &hash, champion).is_some()) {
                     let cached = CachedChampion { sha256: hash, content: String::from_utf8(bytes.clone()).expect("validated JSON is UTF-8") };
-                    if let (Some(root), Ok(bytes)) = (&self.root, serde_json::to_vec(&cached)) {
-                        write_atomic(&root.join(format!("champions/{champion}.json")), &bytes);
-                    }
-                    self.champions.insert(champion, cached);
+                    self.store_champion(champion, cached);
                     return bytes;
                 }
             }
@@ -119,6 +128,35 @@ impl GuideCache {
         offline_index.as_ref().and_then(|i| i.champions.get(&champion.to_string()))
             .and_then(|e| self.bundled(&format!("champions/{champion}.json")).and_then(|b| verified_champion(b, &e.sha256, champion).map(|_| b.to_vec())))
             .unwrap_or_default()
+    }
+
+    async fn all_vods(&mut self, client: &reqwest::Client, now: u64) -> Vec<LibraryVod> {
+        self.refresh_index(client, now).await;
+        let Some(index) = self.index.clone().or_else(|| self.bundled("index.json").and_then(parse_index)) else { return vec![] };
+        // Reuse content() concurrently without racing shared cache files; merge writes under the caller's lock.
+        let loads = index.champions.iter().filter(|(_, entry)| entry.vods.unwrap_or(0) > 0).map(|(id, _)| {
+            let champion = id.parse::<i64>().expect("validated index id");
+            self.cached(champion);
+            let mut cache = Self {
+                root: None, index: self.index.clone(), base: self.base.clone(), offline: self.offline,
+                refresh: RefreshState { index: Some(now), champions: self.refresh.champions.get(&champion).map(|at| (champion, *at)).into_iter().collect() },
+                champions: self.champions.get(&champion).cloned().map(|cached| (champion, cached)).into_iter().collect(),
+            };
+            async move { let bytes = cache.content(client, champion, now).await; (champion, cache, bytes) }
+        }).collect::<Vec<_>>();
+        let mut loads = stream::iter(loads).buffered(4);
+        let mut vods = vec![];
+        while let Some((champion, mut cache, bytes)) = loads.next().await {
+            if let Some(at) = cache.refresh.champions.get(&champion) { self.refresh.champions.insert(champion, *at); }
+            if let Some(cached) = cache.champions.remove(&champion) {
+                if self.champions.get(&champion).is_none_or(|held| held.sha256 != cached.sha256 || held.content != cached.content) {
+                    self.store_champion(champion, cached);
+                }
+            }
+            vods.extend(parse_champion_vods(&bytes, champion).into_iter().map(|vod| LibraryVod { champion, vod }));
+        }
+        self.persist_refresh();
+        vods
     }
 
     #[cfg(test)]
@@ -138,17 +176,23 @@ async fn fetch(client: &reqwest::Client, url: &str, limit: usize) -> Option<Vec<
     Some(bytes)
 }
 
-async fn champion_content(champion: i64) -> Option<Vec<u8>> {
-    // ponytail: one fetch lock coalesces IPC bursts; per-champion locks if parallel guide loads matter.
+fn guide_cache() -> &'static tokio::sync::Mutex<GuideCache> {
     static CACHE: OnceLock<tokio::sync::Mutex<GuideCache>> = OnceLock::new();
-    // Dev builds only: SWAPPER_GUIDES_LOCAL=1 skips the published index and the cache to test unpublished bundled content.
+    // Dev builds only: SWAPPER_GUIDES_LOCAL=1 skips the published index and cache.
     let local = cfg!(debug_assertions) && std::env::var_os("SWAPPER_GUIDES_LOCAL").is_some();
-    let cache = CACHE.get_or_init(|| tokio::sync::Mutex::new(if local { GuideCache::open(None, String::new(), BUNDLED_GUIDES) } else { GuideCache::open(
-        crate::vault::data_root().ok().map(|p| p.join("guides-cache")), BASE_URL.into(), BUNDLED_GUIDES) }));
-    let client = reqwest::Client::builder().connect_timeout(Duration::from_secs(3)).timeout(Duration::from_secs(8))
-        .redirect(reqwest::redirect::Policy::none()).user_agent("Swapper/1.0 (matchup guides)").build().ok()?;
+    CACHE.get_or_init(|| tokio::sync::Mutex::new(if local { GuideCache::open(None, String::new(), BUNDLED_GUIDES) } else { GuideCache::open(
+        crate::vault::data_root().ok().map(|p| p.join("guides-cache")), BASE_URL.into(), BUNDLED_GUIDES) }))
+}
+
+fn guide_client() -> Option<reqwest::Client> {
+    reqwest::Client::builder().connect_timeout(Duration::from_secs(3)).timeout(Duration::from_secs(8))
+        .redirect(reqwest::redirect::Policy::none()).user_agent("Swapper/1.0 (matchup guides)").build().ok()
+}
+
+async fn champion_content(champion: i64) -> Option<Vec<u8>> {
+    let client = guide_client()?;
     let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
-    Some(cache.lock().await.content(&client, champion, now).await)
+    Some(guide_cache().lock().await.content(&client, champion, now).await)
 }
 
 async fn guide(champion: i64, enemy: i64, position: Lane) -> Option<Guide> {
@@ -214,6 +258,16 @@ pub(crate) async fn get_matchup_vods(champion_id: i64, enemy_champion_id: i64, p
 pub(crate) async fn get_champion_vods(champion_id: i64) -> Result<Vec<ChampionVod>, String> {
     if champion_id <= 0 || champion_id > i32::MAX as i64 { return Err("Unknown champion.".into()); }
     Ok(parse_champion_vods(&champion_content(champion_id).await.unwrap_or_default(), champion_id))
+}
+
+#[derive(Serialize)]
+pub(crate) struct LibraryVod { champion: i64, #[serde(flatten)] vod: ChampionVod }
+
+#[tauri::command]
+pub(crate) async fn get_all_vods() -> Result<Vec<LibraryVod>, String> {
+    let client = guide_client().ok_or("VOD library unavailable.")?;
+    let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
+    Ok(guide_cache().lock().await.all_vods(&client, now).await)
 }
 
 #[cfg(test)]

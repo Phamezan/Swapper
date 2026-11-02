@@ -28,7 +28,7 @@ function loader(dev, response = [], fails = false) {
     if (name === '@tauri-apps/api/core') return { invoke: async (command, args) => { calls.push({ command, args }); if (fails) throw new Error('offline'); return response; } };
     assert.equal(name, "./fixtures/ahriChampionVods"); imports++; return { ahriChampionVods: fixture };
   }, exports);
-  return { load: exports.loadMatchupVods, loadChampion: exports.loadChampionVods, imports: () => imports, fixture, zed, calls };
+  return { load: exports.loadMatchupVods, loadChampion: exports.loadChampionVods, loadAll: exports.loadAllVods, imports: () => imports, fixture, zed, calls };
 }
 
 test("only the exact Ahri vs Zed mid pair loads VOD preview data in development", async () => {
@@ -158,21 +158,18 @@ const ids = (filters) => filterVods(library, { ...ANY_VOD, ...filters }).map(vod
 
 test("VODs always list the newest patch first, keeping content order for ties", () => {
   assert.deepEqual(ids({}), ["d", "e", "b", "c", "a"]);
-  assert.deepEqual(ids({ result: "W" }), ["d", "e", "a"]);
   assert.deepEqual(library.map(vod => vod.videoId), ["a", "b", "c", "d", "e"], "sorting never reorders the source list");
 });
 
-test("filters combine: pros, rank tier, result, patch and enemy", () => {
-  assert.deepEqual(ids({ pros: true }), ["d", "a"]);
-  assert.deepEqual(ids({ tier: "challenger" }), ["e", "a"]);
-  assert.deepEqual(ids({ tier: "other" }), ["d"]);
-  assert.deepEqual(ids({ result: "W" }), ["d", "e", "a"]);
-  assert.deepEqual(ids({ result: "L" }), ["b"], "VODs without a result match neither result filter");
-  assert.deepEqual(ids({ patch: "26.10" }), ["b", "c"]);
-  assert.deepEqual(ids({ enemy: 238 }), ["e", "c", "a"]);
-  assert.deepEqual(ids({ enemy: 238, result: "W", tier: "challenger", pros: true }), ["a"]);
-  assert.deepEqual(ids({ patch: "26.1" }), [], "patch matches exactly");
-  assert.equal(vodMatches({ videoId: "x", rankClaim: "Master", patch: "26.21", durationSec: 1 }, { ...ANY_VOD, enemy: 238 }), false, "matchup-only VODs never match an enemy filter");
+test("filters combine named players, rank, patch, opponent and lane", () => {
+  const list = library.map((vod, i) => ({ ...vod, player: i === 0 ? 'Faker' : i === 2 ? ' ? ' : undefined, lane: i === 0 ? 'mid' : 'top' }));
+  const matching = filters => filterVods(list, { ...ANY_VOD, ...filters }).map(v => v.videoId);
+  assert.deepEqual(matching({ named: true }), ['a']);
+  assert.deepEqual(matching({ enemy: 238, named: true, tier: 'challenger', lane: 'mid' }), ['a']);
+  assert.deepEqual(matching({ tier: 'other' }), ['d']);
+  assert.deepEqual(matching({ patch: '26.10' }), ['b', 'c']);
+  assert.deepEqual(matching({ enemy: 238 }), ['e', 'c', 'a']);
+  assert.deepEqual(matching({ patch: '26.1' }), []);
 });
 
 test("the HUD idle timer hides after the delay, wakes on activity and restarts its countdown", () => {
@@ -224,4 +221,37 @@ test("a dark placeholder silhouette is not shown as a player photo", () => {
   assert.equal(isPlaceholderPhoto([...pixels(92, [10, 10, 12, 255]), ...pixels(8, [200, 200, 210, 255])]), true, "a rim-lit silhouette");
   assert.equal(isPlaceholderPhoto([...pixels(50, [255, 255, 255, 0]), ...pixels(50, [8, 8, 8, 255])]), true, "transparent pixels are ignored");
   assert.equal(isPlaceholderPhoto(pixels(10, [255, 255, 255, 0])), true, "an empty image");
+});
+
+
+test("library sorts patch, named player, upload day and stable ties", () => {
+  const base = { rankClaim: "Master", moments: [], patch: "26.21" };
+  const list = [
+    { ...base, videoId: "anonymous-new", uploaded: "2026-11-02", player: "?", team: "T1" },
+    { ...base, videoId: "named-old", player: "Faker", uploaded: "2026-10-01" },
+    { ...base, videoId: "named-new", player: "Peyz", uploaded: "2026-11-01" },
+    { ...base, videoId: "tie", player: "Ruler", uploaded: "2026-11-01" },
+    { ...base, videoId: "new-patch", patch: "26.22" },
+  ];
+  assert.deepEqual(filterVods(list, ANY_VOD).map(v => v.videoId), ["new-patch", "named-new", "tie", "named-old", "anonymous-new"]);
+  assert.deepEqual(filterVods(list, { ...ANY_VOD, named: true }).map(v => v.videoId), ["named-new", "tie", "named-old"]);
+});
+
+test("explicit region wins and estimated patches carry a tilde", () => {
+  const vod = { videoId: "x", title: "EUW Challenger", rankClaim: "Grandmaster", region: "KR", patch: "26.21", patchEstimated: true, moments: [] };
+  assert.equal(vodRegion(vod), "KR");
+  assert.equal(vodRow(vod).primary, "KR Grandmaster");
+  assert.deepEqual(vodRow(vod).details, ["Patch ~26.21"]);
+});
+
+
+test("all-VOD loader invokes the aggregate endpoint and only development adds tagged preview rows", async () => {
+  const real = [{videoId:'A_b-cD12345',champion:238,enemy:103,lane:'mid',moments:[]}];
+  const cached = loader(false, real);
+  assert.equal(await cached.loadAll(), real);
+  assert.deepEqual(cached.calls, [{command:'get_all_vods',args:undefined}]);
+  assert.equal(cached.imports(), 0);
+  assert.deepEqual(await loader(false, [], true).loadAll(), []);
+  const preview = loader(true, [], true);
+  assert.deepEqual(await preview.loadAll(), preview.fixture.map(vod => ({...vod,champion:103})));
 });

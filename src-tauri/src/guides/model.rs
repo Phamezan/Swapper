@@ -236,6 +236,8 @@ pub(crate) struct MatchupVod {
     #[serde(default, skip_serializing_if = "Option::is_none")] player: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")] team: Option<String>,
     rank_claim: String, patch: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")] patch_estimated: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] region: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")] result: Option<String>,
     duration_sec: u32,
     /// Upload day as YYYY-MM-DD, when the harvester knows it.
@@ -283,6 +285,7 @@ impl MatchupVod {
         self.video_id.len() == 11 && self.video_id.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_' || b == b'-')
             && [&self.title, &self.rank_claim].iter().all(|s| vod_text(s)) && self.team.as_deref().is_none_or(vod_text)
             && self.player.as_deref().is_none_or(vod_text)
+            && self.region.as_deref().is_none_or(|r| matches!(r, "KR" | "NA" | "EUW" | "EUNE"))
             && self.patch.len() <= 32 && (2..=3).contains(&self.patch.split('.').count())
             && self.patch.split('.').all(|part| !part.is_empty() && part.bytes().all(|b| b.is_ascii_digit()))
             && self.result.as_deref().is_none_or(|r| matches!(r, "W" | "L")) && self.duration_sec > 0

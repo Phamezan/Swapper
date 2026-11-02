@@ -5,7 +5,7 @@ import { RefreshCw } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { MatchupGuideCarousel } from "./MatchupGuideCarousel";
-import { MatchupVods } from "./MatchupVods";
+import { MatchupVodEntry, type VodRequest } from "./MatchupVodEntry";
 import type { GuideSectionId } from "./matchupGuide";
 import { GuideSourcesPopover } from "./GuideSourcesPopover";
 import { useMatchupGuide } from "./useMatchupGuide";
@@ -40,9 +40,9 @@ const ROW_STEP = 40;
 type SortKey = "rank" | "winPct" | "pickPct" | "banPct" | "games";
 const columns: [SortKey | null, string][] = [["rank", "Rank"], [null, "Champion"], [null, "Role"], [null, "Tier"], ["winPct", "Win rate"], ["pickPct", "Pick rate"], ["banPct", "Ban rate"], ["games", "Games"]];
 
-export type ChampionFocus = { champion: ChampionOption | null; matchup?: { enemy: number; lane: string } };
+export type ChampionFocus = { champion: ChampionOption | null; matchup?: { enemy: number; lane: string; section?: GuideSectionId } };
 
-export default function Champions({ matchups, focus, onSelectionChange, onVodPlaybackChange }: { matchups: boolean; focus?: ChampionFocus | null; onSelectionChange: (champion: ChampionOption | null) => void; onVodPlaybackChange?: (open: boolean) => void }) {
+export default function Champions({ matchups, focus, onSelectionChange, onOpenVods }: { matchups: boolean; focus?: ChampionFocus | null; onSelectionChange: (champion: ChampionOption | null) => void; onOpenVods?: (request: VodRequest) => void }) {
   const initialMatchup = matchups ? focus?.matchup : undefined;
   // The list's role filter; "auto" lists every champion at its main role.
   const [lane, setLane] = useState("auto");
@@ -61,7 +61,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onVodPla
   const [enemy, setEnemy] = useState(initialMatchup?.enemy ?? 0);
   const hasEnemy = enemy > 0;
   const [matchupTab, setMatchupTab] = useState<MatchupTab>(initialMatchup ? "guide" : "build");
-  const [guideSection, setGuideSection] = useState<GuideSectionId>();
+  const [guideSection, setGuideSection] = useState<GuideSectionId | undefined>(initialMatchup?.section);
   const guideState = useMatchupGuide(matchups ? selected?.id ?? 0 : 0, matchups ? enemy : 0, role);
   const pairKey = `${selected?.id}-${enemy}-${role}`;
   const previousPair = useRef(pairKey);
@@ -225,6 +225,8 @@ export default function Champions({ matchups, focus, onSelectionChange, onVodPla
     else if (query) setQuery("");
     else clearPick();
   };
+  const vodEntry = matchups && selected && enemy > 0 && !picking && onOpenVods && <MatchupVodEntry champion={selected}
+    enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} onWatch={onOpenVods} />;
   const viewTabs = matchups && !picking && <MatchupTabs value={matchupTab} onChange={tab => { setGuideSection(undefined); setMatchupTab(tab); }} />;
   if (matchups && selected && !picking && matchupTab !== "build") return <div className={`champion-tools runes-panel is-matchup-workspace is-matchup-${matchupTab}`} onKeyDown={onKeyDown}>
     {viewTabs}
@@ -232,7 +234,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onVodPla
         {guideState.guide && <>{guideState.guide.enemy !== undefined && <span>{guideState.guide.difficulty}</span>}<span>Patch {guideState.guide.patch}</span>{guideState.guide.fixture && <span className="mg-fixture">Fixture content</span>}<GuideSourcesPopover sources={guideState.guide.sources} /></>}
       </header>
     {matchupTab === "guide" && <div id="matchup-view" role="tabpanel" aria-label="Guide" className="mg-guide-view"><MatchupGuideCarousel key={`${selected.id}-${enemy}-${role}`} {...guideState} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} tier={tier} matchup={detail} initialSection={guideSection} /></div>}
-    <div id={matchupTab === "vods" ? "matchup-view" : undefined} role={matchupTab === "vods" ? "tabpanel" : undefined} aria-label="VODs" className={matchupTab === "vods" ? "mv-view" : "mv-mini-host"}><MatchupVods key={`${selected.id}-${enemy}-${role}`} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} active={matchupTab === "vods"} onReopen={() => setMatchupTab("vods")} onPlaybackChange={onVodPlaybackChange} onGuideSection={section => { setGuideSection(section); setMatchupTab("guide"); }} /></div>
+    {vodEntry}
   </div>;
   return <div className="champion-tools runes-panel" onKeyDown={onKeyDown}>
     {viewTabs}
@@ -261,6 +263,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onVodPla
         <VersusSide id={enemy} name={detail.enemyName} label="Opponent" end />
       </section> : <Skeleton label="Loading matchup" rows={2} height={72} />)}
       {matchups && guideState.record && guideState.record.wins + guideState.record.losses > 0 && <div className="mg-record" aria-label="Your matchup record"><small>Your record</small><strong><span>{guideState.record.wins}W</span> – <span>{guideState.record.losses}L</span></strong>{guideState.guide?.fixture && <small>Fixture</small>}</div>}
+      {vodEntry}
       {statContent}{buildContent}{counterContent}
       {!matchups && enemy > 0 && detail && <section className="fa-card fa-inline-matchup"><h3>{selected.name} vs {detail.enemyName}</h3><p>{detail.stats ? `${fmtPct(detail.stats.winPct)} win rate · ${fmtCount(detail.stats.games)} games · ${detail.stats.delta >= 0 ? "+" : ""}${detail.stats.delta.toFixed(1)}% versus champion average` : "Not enough games for this matchup."}</p><PresetBuild mode="desktop" build={detail.build} loading={false} matchupOnly /></section>}
     </section>}

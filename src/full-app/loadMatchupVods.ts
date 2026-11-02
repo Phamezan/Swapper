@@ -18,3 +18,12 @@ export async function loadChampionVods(champion: number): Promise<MatchupVod[]> 
   if (import.meta.env.DEV && champion === 103) return (await import("./fixtures/ahriChampionVods")).ahriChampionVods;
   return [];
 }
+
+
+/** Every indexed VOD, with the played champion and matchup attached. */
+export async function loadAllVods(): Promise<MatchupVod[]> {
+  const vods = await invoke<MatchupVod[]>('get_all_vods').catch(() => []);
+  if (vods?.length) return vods;
+  if (import.meta.env.DEV) return (await import("./fixtures/ahriChampionVods")).ahriChampionVods.map(vod => ({ ...vod, champion: 103 }));
+  return [];
+}

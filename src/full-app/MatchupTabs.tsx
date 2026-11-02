@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-const tabs = [["build", "Build"], ["guide", "Guide"], ["vods", "VODs"]] as const;
+const tabs = [["build", "Build"], ["guide", "Guide"]] as const;
 export type MatchupTab = typeof tabs[number][0];
 
 export function MatchupTabs({ value, onChange }: { value: MatchupTab; onChange: (tab: MatchupTab) => void }) {

@@ -61,13 +61,16 @@ export type MatchupVod = {
   team?: string;
   rankClaim: string;
   patch: string;
+  patchEstimated?: boolean;
+  region?: "KR" | "NA" | "EUW" | "EUNE";
   result?: "W" | "L";
   durationSec: number;
   /** Upload day, YYYY-MM-DD. */
   uploaded?: string;
   moments: { atSec: number; label: string; section?: GuideSectionId; kind?: MomentKind }[];
   fixture?: boolean;
-  /** Set only on champion-wide lists (`get_champion_vods`), which span matchups. */
+  /** Library matchup metadata; get_all_vods also supplies the played champion. */
+  champion?: number;
   enemy?: number;
   lane?: MatchupGuide["lane"];
 };
