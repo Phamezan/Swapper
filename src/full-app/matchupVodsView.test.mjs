@@ -22,6 +22,8 @@ function harness(file, component, vods = ahriVsZedVods) {
   };
   const jsx = (type, props) => ({ type, props });
   const modules = {
+    "@tauri-apps/api/core": { invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }] },
+    "../runes/ChampionIcon": { ChampionIcon: "champion-icon" },
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", ChevronRight: "chevron", ArrowLeft: "back-icon" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods },
     './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
@@ -48,6 +50,19 @@ function harness(file, component, vods = ahriVsZedVods) {
 function nodes(tree) { return !tree || typeof tree !== "object" ? [] : Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.children)]; }
 function text(tree) { return typeof tree === "string" || typeof tree === "number" ? String(tree) : !tree || typeof tree !== "object" ? "" : Array.isArray(tree) ? tree.map(text).join("") : text(tree.props?.children); }
 const props = { champion: { id: 103, name: "Ahri" }, enemy: { id: 238, name: "Zed" }, lane: "mid", onGuideSection() {} };
+
+test('moment cards render roster portraits and unnamed replays show a rank crest', async () => {
+  const vod = { ...ahriVsZedVods[0], player: undefined, result: undefined, moments: [{ atSec: 30, label: 'Ahri takes down Zed', kind: 'kill' }] };
+  const h = harness('./MatchupVods.tsx', 'MatchupVods', [vod]);
+  h.render(props);
+  nodes(await h.flush()).find(node => node.props.className === 'mv-vod-row').props.onClick();
+  const tree = h.render();
+  assert.deepEqual(nodes(tree).filter(node => node.type === 'champion-icon').map(node => node.props.id), [103, 238]);
+  const identity = harness('./VodPlayer.tsx', 'VodPlayer').render({ vod });
+  const avatar = nodes(identity).find(node => node.props.className === 'mv-avatar');
+  assert.equal(nodes(avatar).find(node => node.type === 'rank-crest').props.size, 40);
+  assert.match(text(identity), /replay/);
+});
 
 test("VODs start as a five-game list and Back restores focus to the opened row", async () => {
   const h = harness("./MatchupVods.tsx", "MatchupVods");

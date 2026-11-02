@@ -1,13 +1,24 @@
-import { ArrowLeftRight, Bug, CircleDot, Crown, Eye, Flame, Footprints, Skull, Swords, TowerControl, Users, type LucideIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
+import { CircleDot } from "lucide-react";
+import { cachedIcon, loadIcon } from "../runes/iconLoader";
 import type { MomentKind } from "./matchupGuide";
+import { momentArt } from "./matchupVodModel";
 
-const ICONS: Record<MomentKind, LucideIcon> = {
-  kill: Swords, death: Skull, teamfight: Users, dragon: Flame, baron: Crown, herald: Eye,
-  grubs: Bug, tower: TowerControl, trade: ArrowLeftRight, roam: Footprints, other: CircleDot,
-};
-
-/** Key-moment icon; moments without a known kind get the neutral dot. CSS colours it by `data-kind`. */
-export function MomentIcon({ kind, size = 14 }: { kind?: MomentKind; size?: number }) {
-  const Icon = (kind && ICONS[kind]) || CircleDot;
-  return <Icon size={size} strokeWidth={2.2} aria-hidden className="mv-kind-icon" data-kind={kind ?? "none"} />;
+/** Reuse the recap's objective_icon service; images resolve locally or as data URLs. */
+export function MomentIcon({ kind, size = 20 }: { kind?: MomentKind; size?: number }) {
+  const art = momentArt(kind);
+  const [loaded, setLoaded] = useState<{ art: string; src: string } | null>(null);
+  const [failed, setFailed] = useState<string | null>(null);
+  const src = art?.startsWith("/") ? art : art ? cachedIcon(`objective:${art}`) ?? (loaded?.art === art ? loaded.src : null) : null;
+  useEffect(() => {
+    if (!art || art.startsWith("/")) return;
+    let live = true;
+    void loadIcon(`objective:${art}`, () => invoke<string>("objective_icon", { name: art }))
+      .then(src => { if (live) setLoaded({ art, src }); }).catch(() => {});
+    return () => { live = false; };
+  }, [art]);
+  return <span className="mv-kind-icon" data-kind={kind ?? "none"} aria-hidden style={{ width: size, height: size }}>
+    {src && failed !== src ? <img src={src} alt="" onError={() => setFailed(src)} /> : <CircleDot size={size} />}
+  </span>;
 }

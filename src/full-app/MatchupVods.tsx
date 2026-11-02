@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ChevronRight } from "lucide-react";
+import { invoke } from "@tauri-apps/api/core";
+import { ChampionIcon } from "../runes/ChampionIcon";
 import type { ChampionOption } from "../runes/types";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { useChampionArt } from "./art";
 import { loadMatchupVods } from "./loadMatchupVods";
 import { GUIDE_SECTIONS, type GuideSectionId, type MatchupVod } from "./matchupGuide";
-import { formatVodTime, vodUrl } from "./matchupVodModel";
+import { championsInMoment, formatVodTime, vodUrl } from "./matchupVodModel";
 import { MomentIcon } from "./MomentIcon";
 import { VodPlayer } from "./VodPlayer";
 import { YoutubeVodPlayer, type VodSeek } from "./YoutubeVodPlayer";
@@ -32,6 +34,12 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [seek, setSeek] = useState<VodSeek | null>(null);
   const [activeMoment, setActiveMoment] = useState(-1);
+  const [champions, setChampions] = useState<ChampionOption[]>([]);
+  useEffect(() => {
+    let live = true;
+    void invoke<ChampionOption[]>("get_champion_list").then(list => { if (live) setChampions(list); }).catch(() => {});
+    return () => { live = false; };
+  }, []);
   const momentList = useRef<HTMLOListElement>(null);
   const lastOpened = useRef("");
   const sourceRow = useRef<HTMLButtonElement>(null);
@@ -92,9 +100,12 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection, active = tr
       <section className="mv-chapters" aria-label="Key moments"><header><h3>Key moments</h3><small>{selected.moments.length} moments</small></header>
           <ol className="mv-moments" ref={momentList}>{selected.moments.map((moment, i) => {
             const section = GUIDE_SECTIONS.find(([id]) => id === moment.section);
+            const portraits = championsInMoment(moment.label, champions);
             return <li key={`${selected.videoId}-${i}`} className={i === activeMoment ? "is-active" : undefined}>
             <button type="button" disabled={!playable} className="mv-moment" aria-current={i === activeMoment || undefined} aria-label={`Watch ${moment.label} at ${formatVodTime(moment.atSec)}`} onClick={() => setSeek({ moment, serial: (seek?.serial ?? 0) + 1 })}>
-              <MomentIcon kind={moment.kind} /><span className="mv-moment-time">{formatVodTime(moment.atSec)}</span><span className="mv-moment-label">{moment.label}</span>
+              <MomentIcon kind={moment.kind} size={24} /><span className="mv-moment-time">{formatVodTime(moment.atSec)}</span>
+              <span className="mv-moment-kind">{moment.kind && moment.kind !== "other" ? moment.kind : "Key moment"}</span>
+              <span className="mv-moment-body">{portraits.length > 0 && <span className="mv-portraits" aria-hidden>{portraits.map(named => <ChampionIcon key={named.id} id={named.id} name={named.name} mode="desktop" />)}</span>}<span className="mv-moment-label">{moment.label}</span></span>
             </button>
             {section && <button type="button" className="mv-section-link" onClick={() => onGuideSection(section[0])} aria-label={`Open ${section[1]} guide section`}>{section[1]}<ChevronRight size={12} aria-hidden /></button>}
           </li>; })}</ol>

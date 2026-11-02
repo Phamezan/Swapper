@@ -12,7 +12,7 @@ export type VodSeek = { moment: Moment; serial: number };
 const RATES = [0.5, 0.75, 1, 1.25, 1.5, 2];
 const PLAYING = 1;
 // Markers closer than this many pixels merge into one group so their icons never overlap.
-const MARKER_SPACING_PX = 26;
+const MARKER_SPACING_PX = 40;
 // After the browser leaves element fullscreen on Esc, the same key must not also close the VOD.
 const ESC_GRACE_MS = 500;
 
@@ -41,6 +41,7 @@ function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump }
   };
   const percent = (sec: number) => `${Math.max(0, Math.min(100, sec / duration * 100))}%`;
   return <div className="mv-timeline">
+    <div className="mv-timeline-heading"><span>Match timeline</span><span>{vod.moments.length} key moments</span></div>
     <div className={`mv-track${dragging ? ' is-dragging' : ''}`} role="slider" tabIndex={disabled ? -1 : 0} aria-disabled={disabled}
       aria-label="Video position" aria-valuemin={0} aria-valuemax={Math.round(duration)} aria-valuenow={Math.round(current)}
       aria-valuetext={`${formatVodTime(current)} of ${formatVodTime(duration)}`}
@@ -65,10 +66,10 @@ function Timeline({ vod, current, duration, buffered, disabled, onSeek, onJump }
       return <button key={group.indices[0]} type="button" disabled={disabled} data-kind={members[0].kind ?? 'none'}
         className={`mv-marker${group.atSec <= current ? ' is-past' : ''}${edge}`} style={{ left: percent(group.atSec) }}
         aria-label={`Jump to ${members.map(moment => `${moment.label} at ${formatVodTime(moment.atSec)}`).join('; ')}`} onClick={() => onJump(group.atSec)}>
-        <MomentIcon kind={members[0].kind} size={12} />
+        <MomentIcon kind={members[0].kind} size={22} />
         {members.length > 1 && <span className="mv-marker-count">{members.length}</span>}
         <span className="mv-tip" aria-hidden>{members.map((moment, i) => <span key={i}>
-          <MomentIcon kind={moment.kind} size={12} /><b>{formatVodTime(moment.atSec)}</b><span>{moment.label}</span>
+          <MomentIcon kind={moment.kind} size={20} /><b>{formatVodTime(moment.atSec)}</b><span>{moment.label}</span>
         </span>)}</span>
       </button>;
     })}</div>

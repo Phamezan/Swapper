@@ -1,4 +1,32 @@
-import type { MatchupVod } from "./matchupGuide";
+import type { MatchupVod, MomentKind } from "./matchupGuide";
+import type { ChampionOption } from "../runes/types";
+
+const MOMENT_ART: Record<MomentKind, string | null> = {
+  kill: "kills", death: "/vod-icons/dead_red.png", teamfight: "/vod-icons/teamfight.png", trade: "kills",
+  dragon: "dragon-100", baron: "baron-100", herald: "herald-100", grubs: "grub",
+  tower: "tower-100", roam: "/vod-icons/roam.png", other: null,
+};
+
+export function momentArt(kind?: string): string | null {
+  return kind && Object.prototype.hasOwnProperty.call(MOMENT_ART, kind) ? MOMENT_ART[kind as MomentKind] : null;
+}
+
+/** Full roster names only; longest alternatives consume overlaps before shorter names. */
+export function championsInMoment(label: string, champions: readonly ChampionOption[]): ChampionOption[] {
+  const normalize = (value: string) => value.replace(/[’‘]/g, "'").toLowerCase();
+  const roster = [...champions].filter(champion => champion.name.trim()).sort((a, b) => b.name.length - a.name.length);
+  if (!roster.length) return [];
+  const escape = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const names = roster.map(champion => escape(normalize(champion.name))).join("|");
+  const matches = normalize(label).matchAll(new RegExp(`(?<![\\p{L}\\p{N}_])(?:${names})(?![\\p{L}\\p{N}_])`, "gu"));
+  const found = new Set<number>();
+  return [...matches].flatMap(match => {
+    const champion = roster.find(candidate => normalize(candidate.name) === match[0])!;
+    if (found.has(champion.id)) return [];
+    found.add(champion.id);
+    return [champion];
+  });
+}
 
 export function formatVodTime(seconds: number): string {
   const total = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;

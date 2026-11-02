@@ -677,8 +677,8 @@ async function main() {
     await page.evaluate(`(() => {
       const invoke = window.__TAURI_INTERNALS__.invoke;
       window.__TAURI_INTERNALS__.invoke = (cmd, args) => cmd === 'get_matchup_vods' ? Promise.resolve([{
-        videoId:'A_b-cD12345',title:'Offline player test',player:'Test player',rankClaim:'Test rank',patch:'26.21',result:'W',durationSec:1746,
-        moments:[{atSec:184,label:'Trading window',section:'early-lane'},{atSec:412,label:'Second fight'}]
+        videoId:'A_b-cD12345',title:'Offline player test',rankClaim:'Challenger',patch:'26.21',durationSec:1746,
+        moments:[{atSec:184,label:'Ahri takes down Zed',kind:'kill',section:'early-lane'},{atSec:412,label:'Second fight',kind:'teamfight'}, {atSec:416,label:'Dragon secured',kind:'dragon'}]
       }]) : invoke(cmd, args);
     })()`);
     await nav('Matchups', '.fa-matchup-empty');
@@ -687,29 +687,47 @@ async function main() {
     await page.click('.mg-workspace-tabs button', 'VODs');
     await page.click('.mv-vod-row');
     await page.visible('.mv-embed iframe');
-    await page.text('.mv-control-row button', 'Pause');
+    await page.visible('.mv-control-row button[aria-label="Pause"]');
     await page.evaluate("window.__vodFrame = document.querySelector('.mv-embed iframe'); window.__vodWindow = window.__vodFrame.contentWindow");
-    await page.click('.mv-timestamp');
+    await page.click('.mv-moment');
     await page.text('.mv-time', '3:04 / 29:06');
-    await page.click('.mv-control-row button', 'Pause');
-    await page.text('.mv-control-row button', 'Play');
-    await page.click('.mv-control-row button', 'Play');
-    await page.text('.mv-control-row button', 'Pause');
-    await page.click('.mv-control-row button', 'Mute');
-    await page.text('.mv-control-row button', 'Unmute');
-    await page.evaluate("const speed = document.querySelector('.mv-control-row select'); speed.value = '1.5'; speed.dispatchEvent(new Event('change', {bubbles:true}))");
-    await page.wait("document.querySelector('.mv-control-row select').value === '1.5'", 'playback speed');
-    await page.evaluate("const slider = document.querySelector('.mv-scrubber input'); Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(slider,'300'); slider.dispatchEvent(new Event('input',{bubbles:true})); slider.dispatchEvent(new Event('change',{bubbles:true}))");
-    await page.text('.mv-time', '5:00 / 29:06');
-    await page.click('.mv-markers button[aria-label*="Second fight"]');
+    await page.click('.mv-control-row button[aria-label="Pause"]');
+    await page.visible('.mv-control-row button[aria-label="Play"]');
+    await page.click('.mv-control-row button[aria-label="Play"]');
+    await page.visible('.mv-control-row button[aria-label="Pause"]');
+    await page.click('.mv-control-row button[aria-label="Mute"]');
+    await page.visible('.mv-control-row button[aria-label="Unmute"]');
+    await page.click('.mv-speed-button');
+    await page.click('.mv-speed-menu button', '1.5×');
+    await page.text('.mv-speed-button', '1.5×');
+    await page.evaluate("document.querySelector('.mv-video-player').dispatchEvent(new KeyboardEvent('keydown',{key:'l',bubbles:true}))");
+    await page.text('.mv-time', '3:14 / 29:06');
+    const scrub = await page.evaluate("(() => { const r = document.querySelector('.mv-track').getBoundingClientRect(); return {x:r.left + r.width * 300 / 1746,y:r.top + r.height / 2}; })()");
+    await page.cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', ...scrub, button: 'left', clickCount: 1 });
+    await page.cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...scrub, button: 'left', clickCount: 1 });
+    await page.wait("Math.abs(Number(document.querySelector('.mv-track').getAttribute('aria-valuenow')) - 300) <= 1", 'scrubbing to five minutes');
+    await page.click('.mv-marker[aria-label*="Second fight"]');
     await page.text('.mv-time', '6:52 / 29:06');
+    await page.visible('.mv-portraits .champion-icon');
+    await page.text('.mv-player-name', 'Challenger replay');
+    await screenshot('vod-player-polished');
     const controlsBelowVideo = await page.evaluate("document.querySelector('.mv-controls').getBoundingClientRect().top >= document.querySelector('.mv-embed').getBoundingClientRect().bottom");
     assert.ok(controlsBelowVideo, 'controls must remain below the YouTube video');
+    await page.text('.mv-marker-count', '2');
+    await page.click('button[aria-label="Full screen"]');
+    await page.visible('.mv-video-player.is-fullscreen');
+    assert.ok(await page.evaluate("document.querySelector('.mv-controls').getBoundingClientRect().top >= document.querySelector('.mv-embed').getBoundingClientRect().bottom"), 'fullscreen controls stay below the picture');
+    await page.click('button[aria-label="Exit full screen"]');
+    await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1000, height: 700, deviceScaleFactor: 1, mobile: false });
+    await page.settle();
+    await audit();
+    await screenshot('vod-player-small', 1000, 700);
+    await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
     await page.click('.mv-section-link');
     await page.visible('.mg-guide-view');
     await page.visible('.is-mini iframe');
     assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame && window.__vodFrame.contentWindow === window.__vodWindow"), 'guide navigation must retain the iframe and its browsing context');
-    await page.text('.is-mini .mv-control-row button', 'Pause');
+    await page.visible('.is-mini .mv-control-row button[aria-label="Pause"]');
     await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'champ_select',payload:{phase:'ChampSelect'}})");
     await page.settle();
     assert.ok(await page.evaluate("window.__vodFrame.isConnected"), 'entering draft must not stop the VOD');
