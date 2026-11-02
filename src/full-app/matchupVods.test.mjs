@@ -16,16 +16,18 @@ test("real video links use a YouTube watch URL with an integer timestamp", () =>
   assert.equal(vodUrl({ videoId: "A_b-cD12345", fixture: true }), null);
 });
 
-function loader(dev) {
+function loader(dev, response = [], fails = false) {
   let imports = 0;
+  const calls = [];
   const fixture = [{ videoId: "fixture-ahri-1", fixture: true }];
   const source = readFileSync(new URL("./loadMatchupVods.ts", import.meta.url), "utf8").replaceAll("import.meta.env.DEV", String(dev));
   const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
   const exports = {};
   new Function("require", "exports", code)(name => {
+    if (name === '@tauri-apps/api/core') return { invoke: async (command, args) => { calls.push({ command, args }); if (fails) throw new Error('offline'); return response; } };
     assert.equal(name, "./fixtures/ahriVsZedVods"); imports++; return { ahriVsZedVods: fixture };
   }, exports);
-  return { load: exports.loadMatchupVods, imports: () => imports, fixture };
+  return { load: exports.loadMatchupVods, imports: () => imports, fixture, calls };
 }
 
 test("only the exact Ahri vs Zed mid pair loads VOD preview data in development", async () => {
@@ -39,6 +41,17 @@ test("production never imports or returns preview VODs", async () => {
   const h = loader(false);
   assert.deepEqual(await h.load(103, 238, "mid"), []);
   assert.equal(h.imports(), 0);
+});
+
+test('cached VODs take precedence over development fixtures and invoke uses the matchup key', async () => {
+  const real = [{ videoId: 'A_b-cD12345', moments: [] }];
+  const h = loader(true, real);
+  assert.equal(await h.load(103, 238, 'mid'), real);
+  assert.deepEqual(h.calls, [{ command: 'get_matchup_vods', args: { championId: 103, enemyChampionId: 238, position: 'mid' } }]);
+  assert.equal(h.imports(), 0);
+  assert.deepEqual(await loader(false, [], true).load(103, 238, 'mid'), []);
+  const fallback = loader(true, [], true);
+  assert.equal(await fallback.load(103, 238, 'mid'), fallback.fixture);
 });
 
 test("every bundled VOD is visibly fictional, unplayable, and has valid guide chapters", async () => {

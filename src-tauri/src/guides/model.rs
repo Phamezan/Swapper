@@ -173,6 +173,7 @@ fn valid_text(text: &str, champion: i64, enemy: i64) -> bool {
 pub(super) struct IndexEntry {
     pub sha256: String, pub guides: usize,
     #[serde(skip_serializing_if = "Option::is_none")] pub general: Option<usize>,
+    #[serde(skip_serializing_if = "Option::is_none")] pub vods: Option<usize>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -185,7 +186,8 @@ pub(super) fn parse_index(bytes: &[u8]) -> Option<GuideIndex> {
     (index.schema == 1 && !index.generated_at.is_empty() && index.generated_at.len() <= 64
         && index.champions.len() <= 2048 && index.champions.iter().all(|(id, e)| {
             id.parse::<i32>().is_ok_and(|n| n > 0 && n.to_string() == *id)
-                && (e.guides > 0 || e.general.unwrap_or(0) > 0) && e.guides <= 2048 && e.general.unwrap_or(0) <= 5
+                && (e.guides > 0 || e.general.unwrap_or(0) > 0 || e.vods.unwrap_or(0) > 0)
+                && e.guides <= 2048 && e.general.unwrap_or(0) <= 5 && e.vods.unwrap_or(0) <= 2048
                 && e.sha256.len() == 64 && e.sha256.bytes().all(|b| b.is_ascii_hexdigit())
         })).then_some(index)
 }
@@ -195,12 +197,13 @@ pub(super) fn parse_index(bytes: &[u8]) -> Option<GuideIndex> {
 struct ChampionFile {
     schema: u32, champion: i64, generated_at: String, guides: Vec<serde_json::Value>,
     #[serde(default)] general: Vec<serde_json::Value>,
+    #[serde(default)] vods: Vec<serde_json::Value>,
 }
 
 pub(super) fn parse_champion(bytes: &[u8], champion: i64) -> Option<Vec<Guide>> {
     if bytes.len() > MAX_CHAMPION_BYTES { return None; }
     let file: ChampionFile = serde_json::from_slice(bytes).ok()?;
-    if file.schema != 1 || file.champion != champion || file.generated_at.is_empty() || file.generated_at.len() > 64 || file.guides.len() > 2048 || file.general.len() > 2048 { return None; }
+    if !file.valid(champion) { return None; }
     let mut guides: Vec<Guide> = file.guides.into_iter().filter_map(|v| serde_json::from_value::<Guide>(v).ok())
         .filter(|g| g.champion == champion && g.valid(false)).collect();
     guides.extend(file.general.into_iter()
@@ -213,6 +216,61 @@ pub(super) fn parse_champion(bytes: &[u8], champion: i64) -> Option<Vec<Guide>> 
     guides.retain(|_| { let key = &keys[i]; i += 1; keys.iter().filter(|k| *k == key).count() == 1 });
     for guide in &mut guides { for tip in guide.tips_mut() { tip.outdated = None; } }
     Some(guides)
+}
+
+impl ChampionFile {
+    fn valid(&self, champion: i64) -> bool {
+        self.schema == 1 && self.champion == champion && !self.generated_at.is_empty() && self.generated_at.len() <= 64
+            && self.guides.len() <= 2048 && self.general.len() <= 2048 && self.vods.len() <= 2048
+    }
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub(crate) struct MatchupVod {
+    video_id: String, title: String, player: String,
+    #[serde(skip_serializing_if = "Option::is_none")] team: Option<String>,
+    rank_claim: String, patch: String, result: String, duration_sec: u32,
+    #[serde(default)] moments: Vec<VodMoment>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+struct VodMoment { at_sec: u32, label: String, #[serde(skip_serializing_if = "Option::is_none")] section: Option<SectionId> }
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct VodMatchup { enemy: i64, lane: Lane, videos: Vec<serde_json::Value> }
+
+fn vod_text(text: &str) -> bool {
+    static MARKUP: OnceLock<regex::Regex> = OnceLock::new();
+    !text.trim().is_empty() && valid_text(text, 0, 0) && !text.contains(['{', '}'])
+        && !MARKUP.get_or_init(|| regex::Regex::new(r"<|>|\*\*|__|~~|`|\[[^\]]*\]\([^)]*\)|(?:^|\W)[*_][^*_\n]+[*_](?:\W|$)").unwrap()).is_match(text)
+}
+
+impl MatchupVod {
+    fn valid(&self) -> bool {
+        self.video_id.len() == 11 && self.video_id.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_' || b == b'-')
+            && [&self.title, &self.player, &self.rank_claim].iter().all(|s| vod_text(s)) && self.team.as_deref().is_none_or(vod_text)
+            && self.patch.len() <= 32 && (2..=3).contains(&self.patch.split('.').count())
+            && self.patch.split('.').all(|part| !part.is_empty() && part.bytes().all(|b| b.is_ascii_digit()))
+            && matches!(self.result.as_str(), "W" | "L") && self.duration_sec > 0
+            && self.moments.iter().all(|m| m.at_sec < self.duration_sec && vod_text(&m.label))
+    }
+}
+
+pub(super) fn parse_vods(bytes: &[u8], champion: i64, enemy: i64, position: Lane) -> Vec<MatchupVod> {
+    if bytes.len() > MAX_CHAMPION_BYTES { return vec![]; }
+    let Ok(file) = serde_json::from_slice::<ChampionFile>(bytes) else { return vec![] };
+    if !file.valid(champion) { return vec![]; }
+    let mut matches = file.vods.into_iter().filter_map(|v| serde_json::from_value::<VodMatchup>(v).ok())
+        .filter(|v| v.enemy > 0 && v.enemy <= i32::MAX as i64 && v.enemy == enemy && v.lane == position);
+    let Some(found) = matches.next() else { return vec![] };
+    if matches.next().is_some() { return vec![]; }
+    let mut videos: Vec<MatchupVod> = found.videos.into_iter().filter_map(|v| serde_json::from_value::<MatchupVod>(v).ok()).filter(MatchupVod::valid).collect();
+    let ids: Vec<_> = videos.iter().map(|v| v.video_id.clone()).collect();
+    videos.retain(|v| ids.iter().filter(|id| **id == v.video_id).count() == 1);
+    videos
 }
 
 pub(super) fn digest(bytes: &[u8]) -> String { format!("{:x}", Sha256::digest(bytes)) }

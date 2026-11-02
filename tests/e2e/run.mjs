@@ -232,6 +232,25 @@ async function main() {
     void (async () => {
       const url = new URL(request.url);
       if (url.origin === origin) return cdp.send("Fetch.continueRequest", { requestId });
+      if (current === 'VOD player controls and persistent mini player' && url.origin === 'https://www.youtube-nocookie.com') {
+        // An offline protocol peer tests our controls without depending on a live video.
+        const html = `<html><body style="margin:0;background:#151515;color:white">Offline video test peer<script>
+          let info = {currentTime:0,duration:1746,playerState:1,playbackRate:1,muted:false};
+          const deliver = () => parent.postMessage(JSON.stringify({event:'infoDelivery',info}), ${JSON.stringify(origin)});
+          addEventListener('message', e => {
+            if (e.origin !== ${JSON.stringify(origin)}) return;
+            const m = JSON.parse(e.data);
+            if (m.func === 'seekTo') info.currentTime = m.args[0];
+            if (m.func === 'playVideo') info.playerState = 1;
+            if (m.func === 'pauseVideo') info.playerState = 2;
+            if (m.func === 'setPlaybackRate') info.playbackRate = m.args[0];
+            if (m.func === 'mute') info.muted = true;
+            if (m.func === 'unMute') info.muted = false;
+            deliver();
+          });
+        </script></body></html>`;
+        return cdp.send('Fetch.fulfillRequest', { requestId, responseCode: 200, responseHeaders: [{ name: 'Content-Type', value: 'text/html' }], body: Buffer.from(html).toString('base64') });
+      }
       if (!["ddragon.leagueoflegends.com", "raw.communitydragon.org"].includes(url.hostname)) {
         record({ kind: "network", text: `Unexpected external request: ${url.href}` });
         return cdp.send("Fetch.failRequest", { requestId, errorReason: "BlockedByClient" });
@@ -652,6 +671,65 @@ async function main() {
   await check("Sidebar Matchups", async () => {
     await nav("Matchups", ".fa-matchup-empty");
     assert.equal(await page.evaluate("[...document.querySelectorAll('.role-tabs button')].some(button => button.textContent === 'Duos')"), false);
+  });
+  await check('VOD player controls and persistent mini player', async () => {
+    await navigate(fullApp, '.match-row');
+    await page.evaluate(`(() => {
+      const invoke = window.__TAURI_INTERNALS__.invoke;
+      window.__TAURI_INTERNALS__.invoke = (cmd, args) => cmd === 'get_matchup_vods' ? Promise.resolve([{
+        videoId:'A_b-cD12345',title:'Offline player test',player:'Test player',rankClaim:'Test rank',patch:'26.21',result:'W',durationSec:1746,
+        moments:[{atSec:184,label:'Trading window',section:'early-lane'},{atSec:412,label:'Second fight'}]
+      }]) : invoke(cmd, args);
+    })()`);
+    await nav('Matchups', '.fa-matchup-empty');
+    await page.click('.fa-champion-card[data-champion-id="103"]');
+    await page.click('.fa-champion-card[data-champion-id="238"]');
+    await page.click('.mg-workspace-tabs button', 'VODs');
+    await page.click('.mv-vod-row');
+    await page.visible('.mv-embed iframe');
+    await page.text('.mv-control-row button', 'Pause');
+    await page.evaluate("window.__vodFrame = document.querySelector('.mv-embed iframe'); window.__vodWindow = window.__vodFrame.contentWindow");
+    await page.click('.mv-timestamp');
+    await page.text('.mv-time', '3:04 / 29:06');
+    await page.click('.mv-control-row button', 'Pause');
+    await page.text('.mv-control-row button', 'Play');
+    await page.click('.mv-control-row button', 'Play');
+    await page.text('.mv-control-row button', 'Pause');
+    await page.click('.mv-control-row button', 'Mute');
+    await page.text('.mv-control-row button', 'Unmute');
+    await page.evaluate("const speed = document.querySelector('.mv-control-row select'); speed.value = '1.5'; speed.dispatchEvent(new Event('change', {bubbles:true}))");
+    await page.wait("document.querySelector('.mv-control-row select').value === '1.5'", 'playback speed');
+    await page.evaluate("const slider = document.querySelector('.mv-scrubber input'); Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(slider,'300'); slider.dispatchEvent(new Event('input',{bubbles:true})); slider.dispatchEvent(new Event('change',{bubbles:true}))");
+    await page.text('.mv-time', '5:00 / 29:06');
+    await page.click('.mv-markers button[aria-label*="Second fight"]');
+    await page.text('.mv-time', '6:52 / 29:06');
+    const controlsBelowVideo = await page.evaluate("document.querySelector('.mv-controls').getBoundingClientRect().top >= document.querySelector('.mv-embed').getBoundingClientRect().bottom");
+    assert.ok(controlsBelowVideo, 'controls must remain below the YouTube video');
+    await page.click('.mv-section-link');
+    await page.visible('.mg-guide-view');
+    await page.visible('.is-mini iframe');
+    assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame && window.__vodFrame.contentWindow === window.__vodWindow"), 'guide navigation must retain the iframe and its browsing context');
+    await page.text('.is-mini .mv-control-row button', 'Pause');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'champ_select',payload:{phase:'ChampSelect'}})");
+    await page.settle();
+    assert.ok(await page.evaluate("window.__vodFrame.isConnected"), 'entering draft must not stop the VOD');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'champ_select',payload:{phase:'None'}})");
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:true})");
+    await page.wait("Array.from(document.querySelectorAll('nav button')).some(button => button.textContent === 'Live game')", 'game start reached the shell');
+    assert.ok(await page.evaluate("window.__vodFrame.isConnected"), 'starting a game must not stop the VOD');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:false})");
+    await screenshot('vod-mini-player');
+    await page.click('.mv-mini-actions button', 'Reopen VOD');
+    await page.visible('.mv-player-view:not(.is-mini) iframe');
+    assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame"));
+    await page.click('.mg-workspace-tabs button', 'Guide');
+    await page.click('button[aria-label="Close mini player"]');
+    await page.wait("!document.querySelector('.mv-embed iframe')", 'mini player closed');
+    await page.click('.mg-workspace-tabs button', 'VODs');
+    await page.visible('.mv-vod-row');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:true})");
+    await page.text('nav button[aria-current="page"]', 'Live game');
+    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:false})");
   });
   await check("Matchups champion grid fills the page at desktop widths", championGridLayout);
   await check("Matchups Auto ignores a recent off-role pick", async () => {

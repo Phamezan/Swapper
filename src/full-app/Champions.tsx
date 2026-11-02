@@ -42,7 +42,7 @@ const columns: [SortKey | null, string][] = [["rank", "Rank"], [null, "Champion"
 
 export type ChampionFocus = { champion: ChampionOption | null; matchup?: { enemy: number; lane: string } };
 
-export default function Champions({ matchups, focus, onSelectionChange }: { matchups: boolean; focus?: ChampionFocus | null; onSelectionChange: (champion: ChampionOption | null) => void }) {
+export default function Champions({ matchups, focus, onSelectionChange, onVodPlaybackChange }: { matchups: boolean; focus?: ChampionFocus | null; onSelectionChange: (champion: ChampionOption | null) => void; onVodPlaybackChange?: (open: boolean) => void }) {
   const initialMatchup = matchups ? focus?.matchup : undefined;
   // The list's role filter; "auto" lists every champion at its main role.
   const [lane, setLane] = useState("auto");
@@ -231,8 +231,8 @@ export default function Champions({ matchups, focus, onSelectionChange }: { matc
       <header className="mg-context"><strong>{selected.name} vs {champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent"}</strong><span>{laneLabel(role)}</span>
         {guideState.guide && <>{guideState.guide.enemy !== undefined && <span>{guideState.guide.difficulty}</span>}<span>Patch {guideState.guide.patch}</span>{guideState.guide.fixture && <span className="mg-fixture">Fixture content</span>}<GuideSourcesPopover sources={guideState.guide.sources} /></>}
       </header>
-    {matchupTab === "guide" ? <div id="matchup-view" role="tabpanel" aria-label="Guide" className="mg-guide-view"><MatchupGuideCarousel key={`${selected.id}-${enemy}-${role}`} {...guideState} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} tier={tier} matchup={detail} initialSection={guideSection} /></div>
-      : <div id="matchup-view" role="tabpanel" aria-label="VODs" className="mv-view"><MatchupVods key={`${selected.id}-${enemy}-${role}`} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} onGuideSection={section => { setGuideSection(section); setMatchupTab("guide"); }} /></div>}
+    {matchupTab === "guide" && <div id="matchup-view" role="tabpanel" aria-label="Guide" className="mg-guide-view"><MatchupGuideCarousel key={`${selected.id}-${enemy}-${role}`} {...guideState} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} tier={tier} matchup={detail} initialSection={guideSection} /></div>}
+    <div id={matchupTab === "vods" ? "matchup-view" : undefined} role={matchupTab === "vods" ? "tabpanel" : undefined} aria-label="VODs" className={matchupTab === "vods" ? "mv-view" : "mv-mini-host"}><MatchupVods key={`${selected.id}-${enemy}-${role}`} champion={selected} enemy={{ id: enemy, name: champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent" }} lane={role} active={matchupTab === "vods"} onReopen={() => setMatchupTab("vods")} onPlaybackChange={onVodPlaybackChange} onGuideSection={section => { setGuideSection(section); setMatchupTab("guide"); }} /></div>
   </div>;
   return <div className="champion-tools runes-panel" onKeyDown={onKeyDown}>
     {viewTabs}

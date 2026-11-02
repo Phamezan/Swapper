@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowLeft, ChevronRight, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
 import type { ChampionOption } from "../runes/types";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { useChampionArt } from "./art";
@@ -7,6 +7,7 @@ import { loadMatchupVods } from "./loadMatchupVods";
 import { GUIDE_SECTIONS, type GuideSectionId, type MatchupVod } from "./matchupGuide";
 import { formatVodTime, vodUrl } from "./matchupVodModel";
 import { VodPlayer } from "./VodPlayer";
+import { YoutubeVodPlayer, type VodSeek } from "./YoutubeVodPlayer";
 import { Skeleton } from "./ui/States";
 import "./matchup-vods.css";
 
@@ -15,25 +16,20 @@ function VodArt({ id }: { id: number }) {
   return art ? <img src={art} alt="" /> : <span className="mv-art-fallback" aria-hidden />;
 }
 
-function VodOpen({ vod, atSec = 0, className, label, children }: {
-  vod: MatchupVod; atSec?: number; className: string; label: string; children: ReactNode;
-}) {
-  const url = vodUrl(vod, atSec);
-  return url ? <GuideSourceButton url={url} className={className} label={label}>{children}</GuideSourceButton>
-    : <button type="button" className={className} aria-disabled aria-label={`${label}. Preview only; no video linked.`} title="Preview only; no video linked">{children}</button>;
-}
-
 function VodFacts({ vod }: { vod: MatchupVod }) {
   return <span className="mv-facts"><span className={`mv-result is-${vod.result === "W" ? "win" : "loss"}`} aria-label={vod.result === "W" ? "Win" : "Loss"}>{vod.result}</span>
     <span>Patch {vod.patch}</span><span>{formatVodTime(vod.durationSec)}</span><span>{vod.moments.length} key moments</span>
   </span>;
 }
 
-export function MatchupVods({ champion, enemy, lane, onGuideSection }: {
+export function MatchupVods({ champion, enemy, lane, onGuideSection, active = true, onReopen, onPlaybackChange }: {
   champion: ChampionOption; enemy: ChampionOption; lane: string; onGuideSection: (section: GuideSectionId) => void;
+  active?: boolean; onReopen?: () => void;
+  onPlaybackChange?: (open: boolean) => void;
 }) {
   const [response, setResponse] = useState<{ key: string; vods: MatchupVod[] } | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [seek, setSeek] = useState<VodSeek | null>(null);
   const lastOpened = useRef("");
   const sourceRow = useRef<HTMLButtonElement>(null);
   const backButton = useRef<HTMLButtonElement>(null);
@@ -45,13 +41,20 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection }: {
     return () => { live = false; };
   }, [champion.id, enemy.id, lane, key]);
   useEffect(() => {
+    if (!active) return;
     if (selectedId) backButton.current?.focus({ preventScroll: true });
     else sourceRow.current?.focus();
-  }, [selectedId]);
+  }, [selectedId, active]);
   const vods = response?.key === key ? response.vods : null;
+  const selected = vods?.find(vod => vod.videoId === selectedId);
+  const playable = !!selected && !!vodUrl(selected);
+  useEffect(() => {
+    onPlaybackChange?.(playable);
+    return () => onPlaybackChange?.(false);
+  }, [playable, onPlaybackChange]);
+  if (!active && !selectedId) return null;
   if (!vods) return <Skeleton label="Loading matchup VODs" rows={2} height={70} />;
   if (!vods.length) return <p className="mg-no-written-guide">No VODs for this matchup yet</p>;
-  const selected = vods.find(vod => vod.videoId === selectedId);
   if (!selected) return <div className="mv-library">
     <header className="mv-list-toolbar"><h2>{vods.length} games as {champion.name}</h2>{vods.some(vod => vod.fixture) && <span className="mv-preview">Preview data</span>}</header>
     <ul className="mv-vod-list" aria-label={`${champion.name} matchup VODs`}>{vods.map(vod => <li key={vod.videoId}>
@@ -62,18 +65,16 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection }: {
       </button>
     </li>)}</ul>
   </div>;
-  return <div className="mv-player-view" onKeyDown={event => {
+  return <div className={`mv-player-view${active ? "" : " is-mini"}`} aria-label={active ? "VOD player" : "Mini player"} onKeyDown={event => {
     if (event.key !== "Escape" || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-    event.preventDefault(); event.stopPropagation(); setSelectedId(null);
+    event.preventDefault(); event.stopPropagation(); setSelectedId(null); setSeek(null);
   }}>
-    <button type="button" className="mv-back" ref={backButton} onClick={() => setSelectedId(null)}><ArrowLeft size={16} aria-hidden />All VODs</button>
+    <button type="button" className="mv-back" ref={backButton} onClick={() => { setSelectedId(null); setSeek(null); }}><ArrowLeft size={16} aria-hidden />All VODs</button>
+    <div className="mv-mini-actions"><button type="button" onClick={onReopen}>Reopen VOD</button><button type="button" aria-label="Close mini player" onClick={() => { setSelectedId(null); setSeek(null); }}>Close</button></div>
     <div className="mv-player-layout">
       <article className="mv-watch" aria-label="Selected VOD">
-        <div className="mv-frame"><VodArt key={champion.id} id={champion.id} />
-          {selected.fixture && <span className="mv-preview">Preview data</span>}
-          <VodOpen vod={selected} className="mv-play" label={`Play ${selected.title}`}><span className="mv-play-disc"><Play size={24} fill="currentColor" aria-hidden /></span><span className="mv-play-hint">{selected.fixture ? "Preview only · no video linked" : "Watch on YouTube"}</span></VodOpen>
-          <span className="mv-frame-length">{formatVodTime(selected.durationSec)}</span>
-        </div>
+        <YoutubeVodPlayer key={selected.videoId} vod={selected} seek={seek} />
+        {vodUrl(selected) && <GuideSourceButton url={vodUrl(selected)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube</GuideSourceButton>}
         <div className="mv-description"><VodPlayer key={selected.videoId} vod={selected} /><h2 className="mv-title">{selected.title}</h2>
           <VodFacts vod={selected} />
         </div>
@@ -82,8 +83,8 @@ export function MatchupVods({ champion, enemy, lane, onGuideSection }: {
           <ol className="mv-moments">{selected.moments.map((moment, i) => {
             const section = GUIDE_SECTIONS.find(([id]) => id === moment.section);
             return <li key={`${selected.videoId}-${i}`}>
-            <VodOpen vod={selected} atSec={moment.atSec} className="mv-timestamp" label={`Watch ${moment.label} at ${formatVodTime(moment.atSec)}`}>{formatVodTime(moment.atSec)}</VodOpen>
-            <span>{moment.label}</span>
+            <button type="button" disabled={!vodUrl(selected)} className="mv-timestamp" aria-label={`Watch ${moment.label} at ${formatVodTime(moment.atSec)}`} onClick={() => setSeek({ moment, serial: (seek?.serial ?? 0) + 1 })}>{formatVodTime(moment.atSec)}</button>
+            <button type="button" disabled={!vodUrl(selected)} className="mv-moment-label" onClick={() => setSeek({ moment, serial: (seek?.serial ?? 0) + 1 })}>{moment.label}</button>
             {section && <button type="button" className="mv-section-link" onClick={() => onGuideSection(section[0])} aria-label={`Open ${section[1]} guide section`}>{section[1]}<ChevronRight size={12} aria-hidden /></button>}
           </li>; })}</ol>
       </section>

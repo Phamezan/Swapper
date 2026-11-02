@@ -70,17 +70,17 @@ impl GuideCache {
         }
     }
 
-    fn cached(&mut self, champion: i64) -> Option<(String, Vec<Guide>)> {
+    fn cached(&mut self, champion: i64) -> Option<(String, Vec<u8>)> {
         if !self.champions.contains_key(&champion) {
             let bytes = read_limited(&self.root.as_ref()?.join(format!("champions/{champion}.json")), MAX_CHAMPION_BYTES * 6 + 1024)?;
             let cached: CachedChampion = serde_json::from_slice(&bytes).ok()?;
             self.champions.insert(champion, cached);
         }
         let cached = self.champions.get(&champion)?;
-        verified_champion(cached.content.as_bytes(), &cached.sha256, champion).map(|g| (cached.sha256.clone(), g))
+        verified_champion(cached.content.as_bytes(), &cached.sha256, champion).map(|_| (cached.sha256.clone(), cached.content.as_bytes().to_vec()))
     }
 
-    async fn champion(&mut self, client: &reqwest::Client, champion: i64, now: u64) -> Vec<Guide> {
+    async fn content(&mut self, client: &reqwest::Client, champion: i64, now: u64) -> Vec<u8> {
         if due(self.refresh.index, now) {
             self.refresh.index = Some(now);
             // Persist failures as attempts too: a 404/offline install does not hammer the host.
@@ -97,28 +97,33 @@ impl GuideCache {
         // A published index is authoritative when an author removes a champion.
         if index.is_some_and(|i| !i.champions.contains_key(&champion.to_string())) { return vec![]; }
         let expected = index.and_then(|i| i.champions.get(&champion.to_string())).map(|e| e.sha256.clone());
-        if let (Some(hash), Some((held, guides))) = (&expected, &cached) {
-            if held.eq_ignore_ascii_case(hash) { return guides.clone(); }
+        if let (Some(hash), Some((held, bytes))) = (&expected, &cached) {
+            if held.eq_ignore_ascii_case(hash) { return bytes.clone(); }
         }
         if self.index.is_some() && due(self.refresh.champions.get(&champion).copied(), now) {
             self.refresh.champions.insert(champion, now);
             self.persist_refresh();
             if let Some(hash) = expected {
-                if let Some((bytes, guides)) = fetch(client, &format!("{}/champions/{champion}.json", self.base), MAX_CHAMPION_BYTES).await
-                    .and_then(|b| verified_champion(&b, &hash, champion).map(|g| (b, g))) {
-                    let cached = CachedChampion { sha256: hash, content: String::from_utf8(bytes).expect("validated JSON is UTF-8") };
+                if let Some(bytes) = fetch(client, &format!("{}/champions/{champion}.json", self.base), MAX_CHAMPION_BYTES).await
+                    .filter(|b| verified_champion(b, &hash, champion).is_some()) {
+                    let cached = CachedChampion { sha256: hash, content: String::from_utf8(bytes.clone()).expect("validated JSON is UTF-8") };
                     if let (Some(root), Ok(bytes)) = (&self.root, serde_json::to_vec(&cached)) {
                         write_atomic(&root.join(format!("champions/{champion}.json")), &bytes);
                     }
                     self.champions.insert(champion, cached);
-                    return guides;
+                    return bytes;
                 }
             }
         }
-        if let Some((_, guides)) = cached { return guides; }
+        if let Some((_, bytes)) = cached { return bytes; }
         offline_index.as_ref().and_then(|i| i.champions.get(&champion.to_string()))
-            .and_then(|e| self.bundled(&format!("champions/{champion}.json")).and_then(|b| verified_champion(b, &e.sha256, champion)))
+            .and_then(|e| self.bundled(&format!("champions/{champion}.json")).and_then(|b| verified_champion(b, &e.sha256, champion).map(|_| b.to_vec())))
             .unwrap_or_default()
+    }
+
+    #[cfg(test)]
+    async fn champion(&mut self, client: &reqwest::Client, champion: i64, now: u64) -> Vec<Guide> {
+        parse_champion(&self.content(client, champion, now).await, champion).unwrap_or_default()
     }
 }
 
@@ -133,7 +138,7 @@ async fn fetch(client: &reqwest::Client, url: &str, limit: usize) -> Option<Vec<
     Some(bytes)
 }
 
-async fn guide(champion: i64, enemy: i64, position: Lane) -> Option<Guide> {
+async fn champion_content(champion: i64) -> Option<Vec<u8>> {
     // ponytail: one fetch lock coalesces IPC bursts; per-champion locks if parallel guide loads matter.
     static CACHE: OnceLock<tokio::sync::Mutex<GuideCache>> = OnceLock::new();
     let cache = CACHE.get_or_init(|| tokio::sync::Mutex::new(GuideCache::open(
@@ -141,7 +146,11 @@ async fn guide(champion: i64, enemy: i64, position: Lane) -> Option<Guide> {
     let client = reqwest::Client::builder().connect_timeout(Duration::from_secs(3)).timeout(Duration::from_secs(8))
         .redirect(reqwest::redirect::Policy::none()).user_agent("Swapper/1.0 (matchup guides)").build().ok()?;
     let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
-    let mut guide = select_guide(cache.lock().await.champion(&client, champion, now).await, enemy, position)?;
+    Some(cache.lock().await.content(&client, champion, now).await)
+}
+
+async fn guide(champion: i64, enemy: i64, position: Lane) -> Option<Guide> {
+    let mut guide = select_guide(parse_champion(&champion_content(champion).await?, champion)?, enemy, position)?;
     mark_outdated(&mut guide).await;
     Some(guide)
 }
@@ -190,6 +199,13 @@ pub(crate) async fn get_matchup_guide(app: tauri::AppHandle, champion_id: i64, e
     let (guide, record) = tokio::join!(guide(champion_id, enemy_champion_id, lane),
         tokio::task::spawn_blocking(move || crate::matchup_records::record(&app, champion_id, enemy_champion_id, &position)));
     Ok(MatchupGuideResult { guide, record: record.unwrap_or(None) })
+}
+
+#[tauri::command]
+pub(crate) async fn get_matchup_vods(champion_id: i64, enemy_champion_id: i64, position: String) -> Result<Vec<MatchupVod>, String> {
+    if champion_id <= 0 || enemy_champion_id <= 0 || champion_id > i32::MAX as i64 || enemy_champion_id > i32::MAX as i64 { return Err("Unknown champion.".into()); }
+    let lane = lane(&position).ok_or("Unknown position.")?;
+    Ok(parse_vods(&champion_content(champion_id).await.unwrap_or_default(), champion_id, enemy_champion_id, lane))
 }
 
 #[cfg(test)]

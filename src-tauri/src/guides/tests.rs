@@ -1,6 +1,76 @@
 use super::*;
 use serde_json::{json, Value};
 
+fn vod() -> Value {
+    json!({"videoId":"A_b-cD12345","title":"Hold Charm.","player":"Test player","team":"T1",
+        "rankClaim":"Challenger","patch":"26.21","result":"W","durationSec":1746,
+        "moments":[{"atSec":184,"label":"Trading window","section":"early-lane"}]})
+}
+
+fn with_vods(videos: Vec<Value>) -> Vec<u8> {
+    let mut file: Value = serde_json::from_slice(&champion_bytes(vec![guide()])).unwrap();
+    file["vods"] = json!([{"enemy":238,"lane":"mid","videos":videos}]);
+    serde_json::to_vec(&file).unwrap()
+}
+
+#[test]
+fn vods_are_optional_and_invalid_videos_do_not_discard_valid_siblings_or_guides() {
+    let bytes = with_vods(vec![vod()]);
+    assert_eq!(parse_champion(&bytes, 103).unwrap().len(), 1);
+    assert_eq!(parse_vods(&bytes, 103, 238, Lane::Mid).len(), 1);
+    assert!(parse_vods(&bytes, 103, 238, Lane::Top).is_empty());
+    assert!(parse_vods(&bytes, 238, 238, Lane::Mid).is_empty());
+    assert!(parse_vods(&champion_bytes(vec![guide()]), 103, 238, Lane::Mid).is_empty());
+    for (field, value) in [("videoId", json!("bad")), ("title", json!("<b>Bad</b>")),
+        ("player", json!("")), ("rankClaim", json!("**Rank**")), ("team", json!("")),
+        ("patch", json!("current")), ("result", json!("win")), ("durationSec", json!(0)),
+        ("durationSec", json!(1.5)), ("fixture", json!(true)), ("playerImage", json!("https://evil.io/photo")),
+        ("moments", json!([{"atSec":1746,"label":"End"}])),
+        ("moments", json!([{"atSec":-1,"label":"Bad"}])),
+        ("moments", json!([{"atSec":1,"label":"Bad","section":"build"}]))] {
+        let mut bad = vod(); bad[field] = value;
+        let bytes = with_vods(vec![bad, vod()]);
+        assert_eq!(parse_vods(&bytes, 103, 238, Lane::Mid).len(), 1, "{field}");
+        assert_eq!(parse_champion(&bytes, 103).unwrap().len(), 1);
+    }
+    assert!(parse_vods(&with_vods(vec![vod(), vod()]), 103, 238, Lane::Mid).is_empty());
+    let mut only: Value = serde_json::from_slice(&bytes).unwrap(); only["guides"] = json!([]);
+    assert_eq!(parse_vods(&serde_json::to_vec(&only).unwrap(), 103, 238, Lane::Mid).len(), 1);
+    let mut duplicate: Value = serde_json::from_slice(&bytes).unwrap();
+    let entry = duplicate["vods"][0].clone();
+    duplicate["vods"].as_array_mut().unwrap().push(entry);
+    assert!(parse_vods(&serde_json::to_vec(&duplicate).unwrap(), 103, 238, Lane::Mid).is_empty());
+}
+
+#[test]
+fn vod_only_index_entries_are_validated() {
+    let good = json!({"schema":1,"generatedAt":"2026-11-01T00:00:00Z","champions":{"103":{"sha256":"a".repeat(64),"guides":0,"vods":1}}});
+    assert!(parse_index(&serde_json::to_vec(&good).unwrap()).is_some());
+    for count in [json!(0), json!(-1), json!(2049), json!(1.5)] {
+        let mut bad = good.clone(); bad["champions"]["103"]["vods"] = count;
+        assert!(parse_index(&serde_json::to_vec(&bad).unwrap()).is_none());
+    }
+}
+
+#[tokio::test]
+async fn vods_share_the_guide_download_and_survive_an_offline_restart() {
+    let root = std::env::temp_dir().join(format!("swapper-vod-test-{}", uuid::Uuid::new_v4()));
+    let server = Server::start().await;
+    let client = reqwest::Client::new();
+    server.publish(with_vods(vec![vod()]));
+    let mut cache = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    assert_eq!(cache.champion(&client, 103, 100_000).await.len(), 1);
+    let bytes = cache.content(&client, 103, 100_001).await;
+    assert_eq!(parse_vods(&bytes, 103, 238, Lane::Mid).len(), 1);
+    assert_eq!(server.count("/champions/103.json"), 1, "VODs reuse the guide file");
+    server.state.files.lock().unwrap().clear();
+    let mut reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    let bytes = reopened.content(&client, 103, 100_000 + REFRESH_SECONDS).await;
+    assert_eq!(parse_vods(&bytes, 103, 238, Lane::Mid).len(), 1);
+    assert_eq!(parse_champion(&bytes, 103).unwrap().len(), 1);
+    std::fs::remove_dir_all(root).unwrap();
+}
+
 fn guide() -> Value {
     let tip = json!({"scope":"pair","text":"Trade after {cd:238:W}.","sourceIds":["s"]});
     json!({"champion":103,"enemy":238,"lane":"mid","patch":"26.20","reviewed":true,

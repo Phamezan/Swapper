@@ -4,20 +4,24 @@ import { readFileSync } from "node:fs";
 import ts from "typescript";
 import * as logic from "./matchupVodModel.ts";
 import * as guide from "./matchupGuide.ts";
+import * as youtube from './youtubePlayer.ts';
 import { ahriVsZedVods } from "./fixtures/ahriVsZedVods.ts";
 
 function harness(file, component, vods = ahriVsZedVods) {
-  const states = [], effects = [], focus = [], domRefs = new Set();
+  const states = [], effects = [], focus = [], domRefs = new Set(), messages = [], listeners = new Map(), timers = new Map();
+  const contentWindow = { postMessage: (data, origin) => messages.push({ data: JSON.parse(data), origin }) };
+  const browser = { addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name), setInterval: fn => { timers.set('interval', fn); return 'interval'; }, clearInterval: name => timers.delete(name), setTimeout: fn => { timers.set('timeout', fn); return 'timeout'; }, clearTimeout: name => timers.delete(name) };
   let cursor = 0, pending = [], props;
   const react = {
     useId: () => "test-id", useRef(initial) { const i = cursor++; return states[i] ??= { current: initial }; },
-    useState(initial) { const i = cursor++; if (!(i in states)) states[i] = typeof initial === "function" ? initial() : initial; return [states[i], value => { states[i] = value; }]; },
+    useState(initial) { const i = cursor++; if (!(i in states)) states[i] = typeof initial === "function" ? initial() : initial; return [states[i], value => { states[i] = typeof value === 'function' ? value(states[i]) : value; }]; },
     useEffect(fn, deps) { const i = cursor++; if (!effects[i] || deps.some((dep, j) => dep !== effects[i].deps[j])) pending.push(() => { effects[i]?.cleanup?.(); effects[i] = { deps, cleanup: fn() }; }); },
   };
   const jsx = (type, props) => ({ type, props });
   const modules = {
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", ChevronRight: "chevron", ArrowLeft: "back-icon" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods },
+    './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
     "./art": { useChampionArt: () => null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
     "./VodPlayer": { VodPlayer: "player-identity" }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
     "./ui/States": { Skeleton: "skeleton" }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
@@ -26,16 +30,16 @@ function harness(file, component, vods = ahriVsZedVods) {
   const source = readFileSync(new URL(file, import.meta.url), "utf8");
   const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 } }).outputText;
   const exports = {};
-  new Function("require", "exports", "window", code)(name => modules[name] ?? {}, exports, { addEventListener() {}, removeEventListener() {} });
+  new Function("require", "exports", "window", 'location', code)(name => modules[name] ?? {}, exports, browser, { origin: 'http://tauri.localhost' });
   const render = value => {
     props = value ?? props; cursor = 0; const tree = exports[component](props);
     for (const ref of domRefs) ref.current = null;
     for (const node of nodes(tree)) if (node.props.ref && typeof node.props.ref === "object") {
-      const ref = node.props.ref; domRefs.add(ref); ref.current = { querySelector: () => null, focus: () => focus.push(node.props["data-vod-id"] ?? node.props.className) };
+      const ref = node.props.ref; domRefs.add(ref); ref.current = { contentWindow, querySelector: () => null, focus: () => focus.push(node.props["data-vod-id"] ?? node.props.className) };
     }
     pending.splice(0).forEach(fn => fn()); return tree;
   };
-  return { render, focus, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
+  return { render, focus, messages, contentWindow, timers, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
 }
 function nodes(tree) { return !tree || typeof tree !== "object" ? [] : Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.children)]; }
 function text(tree) { return typeof tree === "string" || typeof tree === "number" ? String(tree) : !tree || typeof tree !== "object" ? "" : Array.isArray(tree) ? tree.map(text).join("") : text(tree.props?.children); }
@@ -78,15 +82,70 @@ test("fixture playback stays inert while moment tags navigate to their exact gui
   const list = await h.flush();
   nodes(list).find(node => node.props.className === "mv-vod-row").props.onClick();
   const tree = h.render();
-  for (const opener of nodes(tree).filter(node => typeof node.type === "function" && node.type.name === "VodOpen")) {
-    const button = opener.type(opener.props);
-    assert.equal(button.type, "button");
-    assert.equal(button.props["aria-disabled"], true);
-    assert.equal(button.props.onClick, undefined);
-  }
+  assert.ok(nodes(tree).filter(node => node.props.className === 'mv-timestamp').every(node => node.props.disabled));
+  const player = nodes(tree).find(node => node.type === 'youtube-player');
+  const preview = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer').render(player.props);
+  assert.match(text(preview), /Preview, no video/);
+  assert.equal(nodes(preview).some(node => node.type === 'iframe'), false);
   nodes(tree).find(node => node.props.className === "mv-section-link").props.onClick();
   assert.deepEqual(sections, ["early-lane"]);
-  assert.match(text(tree), /Preview data/);
+});
+
+test('moment clicks seek repeatedly and the mini player can reopen or close', async () => {
+  let reopened = 0;
+  const real = { ...ahriVsZedVods[0], fixture: undefined, videoId: 'A_b-cD12345' };
+  const h = harness('./MatchupVods.tsx', 'MatchupVods', [real]);
+  h.render({ ...props, onReopen: () => reopened++ });
+  nodes(await h.flush()).find(node => node.props.className === 'mv-vod-row').props.onClick();
+  let tree = h.render();
+  const moment = nodes(tree).find(node => node.props.className === 'mv-timestamp');
+  moment.props.onClick(); tree = h.render();
+  let player = nodes(tree).find(node => node.type === 'youtube-player');
+  assert.equal(player.props.seek.moment.atSec, 184);
+  assert.equal(player.props.seek.serial, 1);
+  nodes(tree).find(node => node.props.className === 'mv-moment-label').props.onClick();
+  tree = h.render({ ...props, active: false, onReopen: () => reopened++ });
+  assert.match(tree.props.className, /is-mini/);
+  player = nodes(tree).find(node => node.type === 'youtube-player');
+  assert.equal(player.props.seek.serial, 2);
+  nodes(tree).find(node => text(node) === 'Reopen VOD' && node.type === 'button').props.onClick();
+  assert.equal(reopened, 1);
+  nodes(tree).find(node => node.props['aria-label'] === 'Close mini player').props.onClick();
+  assert.equal(h.render(), null);
+});
+
+test('player receives trusted progress, sends controls and cleans up its listeners', () => {
+  const vod = { ...ahriVsZedVods[0], fixture: undefined, videoId: 'A_b-cD12345' };
+  const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
+  let tree = h.render({ vod, seek: null });
+  const iframe = nodes(tree).find(node => node.type === 'iframe');
+  assert.match(iframe.props.src, /controls=0.*origin=http%3A%2F%2Ftauri.localhost/);
+  iframe.props.onLoad();
+  assert.deepEqual(h.messages.pop(), { data: { event: 'listening', id: 1 }, origin: youtube.YOUTUBE_ORIGIN });
+  h.receive({ source: h.contentWindow, origin: 'https://evil.io', data: JSON.stringify({ event: 'infoDelivery', info: { currentTime: 99 } }) });
+  assert.ok(nodes(h.render()).find(node => node.type === 'input').props.disabled);
+  h.timers.get('timeout')();
+  assert.match(text(h.render()), /Video unavailable or slow to load/);
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: 'infoDelivery', info: { currentTime: 184, duration: 1746, playerState: 1, playbackRate: 1.5, muted: true } }) });
+  tree = h.render();
+  assert.doesNotMatch(text(tree), /Video unavailable/);
+  assert.match(text(tree), /3:04 \/ 29:06/);
+  nodes(tree).find(node => node.type === 'button' && text(node) === 'Pause').props.onClick();
+  assert.equal(h.messages.pop().data.func, 'pauseVideo');
+  nodes(tree).find(node => node.type === 'button' && text(node) === 'Unmute').props.onClick();
+  assert.equal(h.messages.pop().data.func, 'unMute');
+  nodes(tree).find(node => node.type === 'select').props.onChange({ target: { value: '2' } });
+  assert.deepEqual(h.messages.pop().data, { event: 'command', func: 'setPlaybackRate', args: [2] });
+  nodes(tree).find(node => node.type === 'input').props.onChange({ target: { value: '300' } });
+  assert.deepEqual(h.messages.pop().data.args, [300, true]);
+  nodes(tree).find(node => node.props['aria-label']?.startsWith('Jump to')).props.onClick();
+  assert.equal(h.messages.pop().data.func, 'playVideo');
+  assert.deepEqual(h.messages.pop().data.args, [184, true]);
+  h.render({ vod, seek: { moment: vod.moments[1], serial: 1 } });
+  assert.equal(h.messages.pop().data.func, 'playVideo');
+  assert.deepEqual(h.messages.pop().data.args, [vod.moments[1].atSec, true]);
+  h.unmount();
+  assert.equal(h.timers.size, 0);
 });
 
 test("player identity uses desktop team logos for pros and a rank crest for solo players", () => {

@@ -68,6 +68,8 @@ function App() {
   const current: Location = page === "app" ? appPageOf(appView) : page;
   const currentRef = useRef(current);
   currentRef.current = current;
+  const vodOpen = useRef(false);
+  const trackVodPlayback = useCallback((open: boolean) => { vodOpen.current = open; }, []);
   // Where champion select interrupted the user; restored when it ends.
   const returnTo = useRef<Location | null>(null);
   const go = useCallback((target: Location) => {
@@ -90,6 +92,7 @@ function App() {
   const [ended, setEnded] = useState<Game | null>(null);
   useEffect(() => {
     if (inGame) {
+      if (vodOpen.current) return;
       const next = enterLive(currentRef.current, liveReturn.current, returnTo.current);
       liveReturn.current = next.returnTo as Location;
       returnTo.current = null;
@@ -132,6 +135,7 @@ function App() {
     onChampSelectChange: active => {
       setInChampSelect(active);
       if (active) {
+        if (vodOpen.current) return;
         // App switches itself to its champion select view.
         returnTo.current = currentRef.current;
         setPage("app");
@@ -338,7 +342,7 @@ function App() {
           : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page === "Matchups" && focus?.matchup ? `${page}-${focus.champion?.id}-${focus.matchup.enemy}-${focus.matchup.lane}` : page}
-                matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion && !focus.matchup ? null : focus} onSelectionChange={setLocationChampion} />
+                matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion && !focus.matchup ? null : focus} onSelectionChange={setLocationChampion} onVodPlaybackChange={trackVodPlayback} />
             </Suspense>}
       </main>}
     </div>

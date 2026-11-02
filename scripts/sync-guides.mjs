@@ -17,13 +17,17 @@ export async function syncGuides(source, destination = bundled) {
     if (!/^[1-9]\d*$/.test(id) || Number(id) > 2147483647 || !/^[a-fA-F0-9]{64}$/.test(entry.sha256)
       || !Number.isInteger(entry.guides) || entry.guides < 0 || entry.guides > 2048
       || !Number.isInteger(entry.general ?? 0) || (entry.general ?? 0) < 0 || (entry.general ?? 0) > 5
-      || entry.guides + (entry.general ?? 0) < 1) throw new Error(`Invalid champion entry: ${id}`);
+      || !Number.isInteger(entry.vods ?? 0) || (entry.vods ?? 0) < 0 || (entry.vods ?? 0) > 2048
+      || entry.guides + (entry.general ?? 0) + (entry.vods ?? 0) < 1) throw new Error(`Invalid champion entry: ${id}`);
     const bytes = await readFile(resolve(source, "champions", `${id}.json`));
     if (bytes.length > MAX_FILE_BYTES) throw new Error(`Champion ${id} exceeds 2 MB.`);
     if (createHash("sha256").update(bytes).digest("hex") !== entry.sha256.toLowerCase()) throw new Error(`SHA-256 mismatch for ${id}.`);
     const champion = JSON.parse(bytes);
     if (champion.schema !== 1 || champion.champion !== Number(id) || !Array.isArray(champion.guides)
       || champion.guides.length !== entry.guides || (champion.general?.length ?? 0) !== (entry.general ?? 0)
+      || (champion.vods !== undefined && (!Array.isArray(champion.vods) || champion.vods.some(vod => !Array.isArray(vod.videos))))
+      || (champion.vods?.length ?? 0) !== (entry.vods ?? 0)
+      || (champion.vods ?? []).flatMap(vod => vod.videos).some(video => Object.hasOwn(video, 'fixture'))
       || [...champion.guides, ...(champion.general ?? [])].some(guide => Object.hasOwn(guide, "fixture"))) throw new Error(`Invalid champion file: ${id}`);
     files.push([id, bytes]);
   }

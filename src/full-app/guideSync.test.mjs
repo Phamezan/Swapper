@@ -31,6 +31,22 @@ test("offline sync preserves exact compiled bytes and rejects mismatches before 
     index.champions["103"].general = 0;
     await writeFile(indexPath, JSON.stringify(index));
     await assert.rejects(syncGuides(source, destination), /Invalid champion entry/);
+    const vodOnly = Buffer.from(JSON.stringify({ schema: 1, champion: 103, generatedAt: '2026-11-01', guides: [], vods: [{ enemy: 238, lane: 'mid', videos: [{ videoId: 'A_b-cD12345' }] }] }));
+    await writeFile(join(source, 'champions', '103.json'), vodOnly);
+    index.champions['103'] = { sha256: createHash('sha256').update(vodOnly).digest('hex'), guides: 0, vods: 1 };
+    await writeFile(indexPath, JSON.stringify(index));
+    assert.equal(await syncGuides(source, destination), 1);
+    assert.deepEqual(await readFile(join(destination, 'champions', '103.json')), vodOnly);
+    for (const count of [0, -1, 1.5, 2049, 2]) {
+      index.champions['103'].vods = count;
+      await writeFile(indexPath, JSON.stringify(index));
+      await assert.rejects(syncGuides(source, destination), /Invalid champion/);
+    }
+    const fixtureVod = Buffer.from(JSON.stringify({ schema: 1, champion: 103, generatedAt: '2026-11-01', guides: [], vods: [{ enemy: 238, lane: 'mid', videos: [{ fixture: true }] }] }));
+    await writeFile(join(source, 'champions', '103.json'), fixtureVod);
+    index.champions['103'] = { sha256: createHash('sha256').update(fixtureVod).digest('hex'), guides: 0, vods: 1 };
+    await writeFile(indexPath, JSON.stringify(index));
+    await assert.rejects(syncGuides(source, destination), /Invalid champion file/);
     index.champions = { "../private": { sha256: "0".repeat(64), guides: 1 } };
     await writeFile(indexPath, JSON.stringify(index));
     await assert.rejects(syncGuides(source, destination), /Invalid champion/);
