@@ -494,7 +494,7 @@ async fn all_vods_spans_champions_skips_failed_content_and_reuses_the_content_ca
     }
     let root = std::env::temp_dir().join(format!("swapper-all-vod-test-{}", uuid::Uuid::new_v4()));
     let client = reqwest::Client::new();
-    let mut cache = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    let cache = SharedGuideCache::new(GuideCache::open(Some(root.clone()), server.base.clone(), &[]));
     let all = cache.all_vods(&client, 100_000).await;
     let wire = serde_json::to_value(&all).unwrap();
     assert_eq!(all.len(), 2, "a 404 and a wrong-champion file do not discard valid champions");
@@ -508,7 +508,7 @@ async fn all_vods_spans_champions_skips_failed_content_and_reuses_the_content_ca
     assert_eq!(cache.all_vods(&client, 100_001).await.len(), 2);
     assert_eq!(server.count("/champions/17.json"), 1, "failed attempts remain throttled");
     server.state.files.lock().unwrap().clear();
-    let mut reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    let reopened = SharedGuideCache::new(GuideCache::open(Some(root.clone()), server.base.clone(), &[]));
     assert_eq!(reopened.all_vods(&client, 100_002).await.len(), 2, "aggregate downloads persist across offline restart");
     std::fs::remove_dir_all(root).unwrap();
 }
@@ -519,7 +519,7 @@ async fn all_vods_fetches_at_most_four_champions_concurrently_in_stable_order() 
     let server = Server::start().await;
     server.state.delay_ms.store(25, SeqCst);
     publish_library(&server, (100..106).map(|id| (id, library_file(id, vec![vod()]))).collect());
-    let mut cache = GuideCache::open(None, server.base.clone(), &[]);
+    let cache = SharedGuideCache::new(GuideCache::open(None, server.base.clone(), &[]));
     let all = cache.all_vods(&reqwest::Client::new(), 100_000).await;
     assert_eq!(all.iter().map(|vod| vod.champion).collect::<Vec<_>>(), (100..106).collect::<Vec<_>>());
     let peak = server.state.peak.load(SeqCst);
@@ -533,11 +533,12 @@ async fn all_vods_in_local_mode_uses_only_the_verified_bundled_index_and_content
         "champions":{"103":{"sha256":digest(bytes),"guides":0,"vods":1},"238":{"sha256":"a".repeat(64),"guides":0,"vods":1}}})).unwrap().into_boxed_slice());
     let offline: &'static [(&'static str, &'static [u8])] = Box::leak(vec![("index.json", index), ("champions/103.json", bytes),
         ("champions/238.json", bytes)].into_boxed_slice());
-    let mut cache = GuideCache::open(None, String::new(), offline);
+    let cache = SharedGuideCache::new(GuideCache::open(None, String::new(), offline));
     let all = cache.all_vods(&reqwest::Client::new(), 100_000).await;
     assert_eq!(all.len(), 1, "missing/invalid bundled files are skipped, without accepting an unchecked payload");
     assert_eq!(all[0].champion, 103);
-    assert!(cache.index.is_none() && cache.champions.is_empty(), "local mode bypasses published cache state");
+    let data = cache.data.lock().await;
+    assert!(data.index.is_none() && data.champions.is_empty(), "local mode bypasses published cache state");
 }
 
 
@@ -548,14 +549,55 @@ async fn all_vods_repairs_corrupt_cached_content_even_when_the_stored_hash_match
     publish_library(&server, vec![(103, bytes.clone())]);
     let root = std::env::temp_dir().join(format!("swapper-all-vod-repair-{}", uuid::Uuid::new_v4()));
     let client = reqwest::Client::new();
-    let mut cache = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
-    cache.champions.insert(103, CachedChampion { sha256: digest(&bytes), content: "corrupt".into() });
+    let cache = SharedGuideCache::new(GuideCache::open(Some(root.clone()), server.base.clone(), &[]));
+    cache.data.lock().await.champions.insert(103, CachedChampion { sha256: digest(&bytes), content: "corrupt".into() });
     assert_eq!(cache.all_vods(&client, 100_000).await.len(), 1);
-    assert!(cache.cached(103).is_some(), "a valid aggregate download must replace the damaged held body, even with the same hash field");
+    assert!(cache.data.lock().await.cached(103).is_some(), "a valid aggregate download must replace the damaged held body, even with the same hash field");
     assert_eq!(cache.content(&client, 103, 100_001).await, bytes);
     assert_eq!(server.count("/champions/103.json"), 1);
     server.state.files.lock().unwrap().clear();
-    let mut reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    let reopened = SharedGuideCache::new(GuideCache::open(Some(root.clone()), server.base.clone(), &[]));
     assert_eq!(reopened.content(&client, 103, 100_002).await, bytes, "the repaired body is persisted");
     std::fs::remove_dir_all(root).unwrap();
+}
+
+#[tokio::test]
+async fn slow_aggregate_does_not_block_another_cached_champion() {
+    use std::sync::atomic::Ordering::SeqCst;
+    let server = Server::start().await;
+    let bytes = library_file(238, vec![vod()]);
+    publish_library(&server, vec![(103, library_file(103, vec![vod()])), (238, bytes.clone())]);
+    let client = reqwest::Client::new();
+    let mut data = GuideCache::open(None, server.base.clone(), &[]);
+    data.refresh_index(&client, 100_000).await;
+    data.store_champion(238, CachedChampion { sha256: digest(&bytes), content: String::from_utf8(bytes).unwrap() });
+    let cache = SharedGuideCache::new(data);
+    server.state.delay_ms.store(2000, SeqCst);
+    let aggregate = cache.all_vods(&client, 100_001);
+    let request = async {
+        tokio::time::timeout(Duration::from_secs(2), async {
+            while server.count("/champions/103.json") == 0 { tokio::time::sleep(Duration::from_millis(5)).await; }
+        }).await.expect("aggregate started downloading");
+        let bytes = tokio::time::timeout(Duration::from_millis(250), cache.content(&client, 238, 100_001))
+            .await.expect("cached champion must not wait for aggregate downloads");
+        assert_eq!(parse_champion_vods(&bytes, 238).len(), 1);
+    };
+    tokio::join!(aggregate, request);
+}
+
+#[tokio::test]
+async fn aggregate_and_single_champion_share_one_download() {
+    use std::sync::atomic::Ordering::SeqCst;
+    let server = Server::start().await;
+    publish_library(&server, vec![(103, library_file(103, vec![vod()]))]);
+    server.state.delay_ms.store(100, SeqCst);
+    let cache = SharedGuideCache::new(GuideCache::open(None, server.base.clone(), &[]));
+    let client = reqwest::Client::new();
+    let (all, bytes) = tokio::time::timeout(Duration::from_secs(3), async {
+        tokio::join!(cache.all_vods(&client, 100_000), cache.content(&client, 103, 100_000))
+    }).await.expect("concurrent requests complete");
+    assert_eq!(all.len(), 1);
+    assert_eq!(parse_champion_vods(&bytes, 103).len(), 1);
+    assert_eq!(server.count("/index.json"), 1);
+    assert_eq!(server.count("/champions/103.json"), 1);
 }
