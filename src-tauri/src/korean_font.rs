@@ -376,11 +376,8 @@ fn installer_client() -> Result<reqwest::Client, String> {
 /// webview never chooses what Swapper opens.
 #[tauri::command]
 pub fn open_ltk_website() -> Result<(), String> {
-    Command::new("explorer")
-        .arg("https://wiki.leaguetoolkit.dev/")
-        .spawn()
-        .map(drop)
-        .map_err(|error| format!("Could not open the LTK Manager website: {error}"))
+    let url = url::Url::parse("https://wiki.leaguetoolkit.dev/").map_err(|error| error.to_string())?;
+    crate::commands::guide::open_in_browser(&url).map_err(|error| format!("Could not open the LTK Manager website: {error}"))
 }
 
 /// Downloads LTK Manager's official installer, minisign-verifies it against

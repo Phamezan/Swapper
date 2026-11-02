@@ -1,4 +1,3 @@
-use std::process::Command;
 use url::Url;
 
 pub(crate) fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
@@ -20,15 +19,22 @@ pub(crate) fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
     Ok(url)
 }
 
+/// Opens a URL in the default browser. `explorer <url>` is not used: on some Windows
+/// builds it shows an "open with" picker instead of handing the URL to the browser.
+pub(crate) fn open_in_browser(url: &Url) -> Result<(), String> {
+    use windows_sys::Win32::UI::Shell::ShellExecuteW;
+    use windows_sys::Win32::UI::WindowsAndMessaging::SW_SHOWNORMAL;
+    let wide = |text: &str| text.encode_utf16().chain(Some(0)).collect::<Vec<u16>>();
+    let (verb, file) = (wide("open"), wide(url.as_str()));
+    let result = unsafe { ShellExecuteW(std::ptr::null_mut(), verb.as_ptr(), file.as_ptr(), std::ptr::null(), std::ptr::null(), SW_SHOWNORMAL) };
+    // ShellExecuteW reports success as a value above 32.
+    if result as isize > 32 { Ok(()) } else { Err(format!("Windows could not open the link (code {}).", result as isize)) }
+}
+
 #[tauri::command]
 pub(crate) fn open_guide_source(url: String) -> Result<(), String> {
-    let url = validate_guide_source_url(&url)?;
     // Launch the parsed URL, never the webview's raw string.
-    Command::new("explorer")
-        .arg(url.as_str())
-        .spawn()
-        .map(drop)
-        .map_err(|error| format!("Could not open the guide source: {error}"))
+    open_in_browser(&validate_guide_source_url(&url)?).map_err(|error| format!("Could not open the guide source: {error}"))
 }
 
 #[cfg(test)]
