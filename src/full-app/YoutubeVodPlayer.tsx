@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type KeyboardEvent, type PointerEvent } from 'react';
 import { Maximize, Minimize, Pause, Play, RotateCcw, RotateCw, SkipBack, SkipForward, Volume1, Volume2, VolumeX } from 'lucide-react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
+import { isTauri } from '@tauri-apps/api/core';
 import type { MatchupVod } from './matchupGuide';
-import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, playerKeyAction, vodUrl } from './matchupVodModel';
+import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, idleTimer, playerKeyAction, vodUrl } from './matchupVodModel';
 import { MomentIcon } from './MomentIcon';
 import { VodMomentArt } from './VodMomentArt';
 import { VodPlayer } from './VodPlayer';
@@ -19,6 +20,10 @@ const PLAYING = 1;
 const MARKER_SPACING_PX = 70;
 // After the browser leaves element fullscreen on Esc, the same key must not also close the VOD.
 const ESC_GRACE_MS = 500;
+// Fullscreen playback hides everything but the timeline after this long without mouse or keyboard input.
+const HUD_IDLE_MS = 3000;
+// Mouse moves over the cross-origin YouTube picture never reach this document; the rest of the screen and keys do.
+const ACTIVITY_EVENTS = ['pointermove', 'pointerdown', 'pointerover', 'keydown', 'wheel'] as const;
 
 function IconButton({ label, shortcut, children, ...props }: { label: string; shortcut?: string } & ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" className="mv-icon-button" aria-label={label} aria-keyshortcuts={shortcut} title={shortcut ? `${label} (${shortcut})` : label} {...props}>{children}</button>;
@@ -88,12 +93,16 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const cinemaList = useRef<HTMLOListElement>(null);
   const fullscreenNow = useRef(false);
   const fullscreenExitedAt = useRef(-Infinity);
+  const restoreMaximized = useRef(false);
   const [info, setInfo] = useState<PlayerInfo>({});
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  const [fullscreenError, setFullscreenError] = useState('');
   const [speedOpen, setSpeedOpen] = useState(false);
+  const [idle, setIdle] = useState(false);
   fullscreenNow.current = fullscreen;
+  const playing = info.playerState === PLAYING;
   const duration = info.duration || vod.durationSec;
   const current = Math.min(info.currentTime ?? 0, duration);
   const momentIndex = currentMomentIndex(vod.moments, current);
@@ -106,12 +115,29 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     setInfo(previous => ({ ...previous, currentTime: to }));
   };
   const jump = (sec: number) => { seekTo(sec); command('playVideo'); };
-  const togglePlay = () => command(info.playerState === PLAYING ? 'pauseVideo' : 'playVideo');
+  const togglePlay = () => command(playing ? 'pauseVideo' : 'playVideo');
   const toggleMute = () => { command(info.muted ? 'unMute' : 'mute'); setInfo(previous => ({ ...previous, muted: !previous.muted })); };
-  // The element API puts the player in the top layer of the WebView; wry ignores it, so the Tauri window goes fullscreen too.
-  // Element first: it needs the click's user activation, which must not wait behind the window IPC.
+  // Resize the native window before WebView2 captures the element-fullscreen viewport.
+  // Browsers still enter synchronously; desktop has the popover fallback if activation expires.
+  // tao clamps a maximized borderless window to the monitor work area, which left a taskbar-high band under fullscreen.
+  const nativeFullscreen = async (on: boolean) => {
+    const native = getCurrentWindow();
+    if (on) {
+      restoreMaximized.current = await native.isMaximized();
+      if (restoreMaximized.current) await native.toggleMaximize();
+    }
+    await native.setFullscreen(on);
+    if (!on && restoreMaximized.current) { restoreMaximized.current = false; await native.toggleMaximize(); }
+  };
   const changeFullscreen = async (on: boolean) => {
+    fullscreenNow.current = on;
     setFullscreen(on);
+    setFullscreenError('');
+    if (on && isTauri()) {
+      try { await nativeFullscreen(true); }
+      catch (error) { setFullscreenError(`Window fullscreen unavailable: ${String(error)}`); }
+      if (!fullscreenNow.current) return;
+    }
     try {
       if (on && !document.fullscreenElement) await root.current?.requestFullscreen();
       if (!on && document.fullscreenElement) await document.exitFullscreen();
@@ -121,7 +147,10 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
       if (on && !document.fullscreenElement) root.current?.showPopover?.();
       if (!on) root.current?.hidePopover?.();
     } catch { /* A detached view must not prevent the window from leaving fullscreen. */ }
-    try { await getCurrentWindow().setFullscreen(on); } catch { /* Outside Tauri the element fullscreen alone fills the page. */ }
+    if (!on && isTauri()) {
+      try { await nativeFullscreen(false); }
+      catch (error) { setFullscreenError(`Could not leave window fullscreen: ${String(error)}`); }
+    }
   };
   useEffect(() => {
     if (!vodUrl(vod)) return;
@@ -163,7 +192,19 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     return () => document.removeEventListener('fullscreenchange', sync);
   }, [fullscreen]);
   useEffect(() => { if (mini && fullscreen) void changeFullscreen(false); }, [mini, fullscreen]);
-  useEffect(() => () => { if (fullscreenNow.current) void getCurrentWindow().setFullscreen(false).catch(() => {}); }, []);
+  useEffect(() => () => { if (fullscreenNow.current) void nativeFullscreen(false).catch(() => {}); }, []);
+  useEffect(() => {
+    setIdle(false);
+    if (!fullscreen || !playing) return;
+    const timer = idleTimer(HUD_IDLE_MS, next => {
+      // Hidden controls cannot hold focus; the player root keeps the shortcuts working.
+      if (next && root.current?.contains(document.activeElement)) root.current.focus({ preventScroll: true });
+      if (next) setSpeedOpen(false);
+      setIdle(next);
+    }, window);
+    ACTIVITY_EVENTS.forEach(name => document.addEventListener(name, timer.activity, { capture: true, passive: true }));
+    return () => { timer.stop(); ACTIVITY_EVENTS.forEach(name => document.removeEventListener(name, timer.activity, { capture: true })); };
+  }, [fullscreen, playing]);
   if (!vodUrl(vod)) return <div className="mv-frame mv-preview-frame"><span className="mv-preview">Preview, no video</span><p>Preview only · no video linked</p></div>;
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape' && (speedOpen || fullscreen || performance.now() - fullscreenExitedAt.current < ESC_GRACE_MS)) {
@@ -179,13 +220,12 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     else if (action === 'fullscreen') void changeFullscreen(!fullscreen);
     else seekTo(current + action.seekBy);
   };
-  const playing = info.playerState === PLAYING;
   const volume = info.muted ? 0 : info.volume ?? 100;
   const VolumeIcon = volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
   const previous = adjacentMoment(vod.moments, current, -1), next = adjacentMoment(vod.moments, current, 1);
   const moment = vod.moments[momentIndex];
   const rate = info.playbackRate ?? 1;
-  return <div ref={root} popover="manual" tabIndex={-1} className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}`} onKeyDown={onKeyDown}>
+  return <div ref={root} popover="manual" tabIndex={-1} className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}${fullscreen && idle ? ' is-idle' : ''}`} onKeyDown={onKeyDown}>
     <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title}
       src={`${YOUTUBE_ORIGIN}/embed/${vod.videoId}?enablejsapi=1&controls=0&fs=0&rel=0&playsinline=1&autoplay=1&origin=${encodeURIComponent(location.origin)}`}
       allow="autoplay; encrypted-media; picture-in-picture"
@@ -220,6 +260,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
           {fullscreen ? <Minimize size={17} /> : <Maximize size={17} />}</IconButton>
       </div>
       {failed && <p role="status">Video unavailable or slow to load. Try opening it on YouTube.</p>}
+      {fullscreenError && <p role="status">{fullscreenError}</p>}
       {mini && <GuideSourceButton url={vodUrl(vod)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}
     </div>
     {fullscreen && <aside className="mv-cinema-story" aria-label="Fullscreen match story">

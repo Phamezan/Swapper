@@ -95,3 +95,54 @@ export function playerKeyAction(event: { key: string; ctrlKey?: boolean; metaKey
   const seekBy = SEEK_KEYS.get(key);
   return seekBy === undefined ? null : { seekBy };
 }
+
+export const RANK_TIERS = [["challenger", "Challenger"], ["grandmaster", "Grandmaster"], ["master", "Master"], ["other", "Other"]] as const;
+export type RankTier = typeof RANK_TIERS[number][0];
+
+/** Free-text claims like "KR Grandmaster" or "MASTER"; grandmaster is matched before its substring master. */
+export function rankTier(rankClaim: string): RankTier {
+  const claim = rankClaim.toLowerCase();
+  if (claim.includes("challenger")) return "challenger";
+  if (/grand\s*master|\bgm\b/.test(claim)) return "grandmaster";
+  return claim.includes("master") ? "master" : "other";
+}
+
+/** Numeric patch order, so 26.10 is newer than 26.9 and 26.21.1 newer than 26.21. */
+export function comparePatch(a: string, b: string): number {
+  const x = a.split(".").map(Number), y = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(x.length, y.length); i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0);
+  return 0;
+}
+
+export type VodSort = "patch" | "shortest" | "longest";
+/** `null` means any; `enemy` only matches champion-wide VODs, which carry their matchup. */
+export type VodFilters = { pros: boolean; tier: RankTier | null; result: "W" | "L" | null; patch: string | null; enemy: number | null; sort: VodSort };
+export const ANY_VOD: VodFilters = { pros: false, tier: null, result: null, patch: null, enemy: null, sort: "patch" };
+
+export function vodMatches(vod: MatchupVod, f: VodFilters): boolean {
+  return (!f.pros || !!vod.team) && (!f.tier || rankTier(vod.rankClaim) === f.tier) && (!f.result || vod.result === f.result)
+    && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy);
+}
+
+const ORDER: Record<VodSort, (a: MatchupVod, b: MatchupVod) => number> = {
+  patch: (a, b) => comparePatch(b.patch, a.patch), shortest: (a, b) => a.durationSec - b.durationSec, longest: (a, b) => b.durationSec - a.durationSec,
+};
+
+/** Matching VODs in the chosen order; ties keep the content order (the sort is stable). */
+export function filterVods(vods: readonly MatchupVod[], filters: VodFilters): MatchupVod[] {
+  return vods.filter(vod => vodMatches(vod, filters)).sort(ORDER[filters.sort]);
+}
+
+type Clock = { setTimeout: (fn: () => void, ms: number) => unknown; clearTimeout: (id: never) => void };
+
+/** Reports idle after `delayMs` without `activity()`, and active again on the next one. */
+export function idleTimer(delayMs: number, onIdle: (idle: boolean) => void, clock: Clock) {
+  let timer: unknown, idle = false;
+  const activity = () => {
+    if (idle) { idle = false; onIdle(false); }
+    clock.clearTimeout(timer as never);
+    timer = clock.setTimeout(() => { idle = true; onIdle(true); }, delayMs);
+  };
+  activity();
+  return { activity, stop: () => clock.clearTimeout(timer as never) };
+}

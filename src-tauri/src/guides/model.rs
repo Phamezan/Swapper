@@ -3,7 +3,8 @@ use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, HashSet};
 use std::sync::OnceLock;
 
-pub(super) const MAX_CHAMPION_BYTES: usize = 2 * 1024 * 1024;
+// VODs grow champion files: popular champions carry 1,000+ videos.
+pub(super) const MAX_CHAMPION_BYTES: usize = 8 * 1024 * 1024;
 pub(super) const MAX_INDEX_BYTES: usize = 256 * 1024;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -278,18 +279,45 @@ impl MatchupVod {
     }
 }
 
-pub(super) fn parse_vods(bytes: &[u8], champion: i64, enemy: i64, position: Lane) -> Vec<MatchupVod> {
+/// Valid VOD matchups; duplicate enemy/lane keys are ambiguous, so every copy is dropped.
+fn vod_matchups(bytes: &[u8], champion: i64) -> Vec<VodMatchup> {
     if bytes.len() > MAX_CHAMPION_BYTES { return vec![]; }
     let Ok(file) = serde_json::from_slice::<ChampionFile>(bytes) else { return vec![] };
     if !file.valid(champion) { return vec![]; }
-    let mut matches = file.vods.into_iter().filter_map(|v| serde_json::from_value::<VodMatchup>(v).ok())
-        .filter(|v| v.enemy > 0 && v.enemy <= i32::MAX as i64 && v.enemy == enemy && v.lane == position);
-    let Some(found) = matches.next() else { return vec![] };
-    if matches.next().is_some() { return vec![]; }
-    let mut videos: Vec<MatchupVod> = found.videos.into_iter().filter_map(|v| serde_json::from_value::<MatchupVod>(v).ok()).filter(MatchupVod::valid).collect();
+    let mut matchups: Vec<VodMatchup> = file.vods.into_iter().filter_map(|v| serde_json::from_value::<VodMatchup>(v).ok())
+        .filter(|v| v.enemy > 0 && v.enemy <= i32::MAX as i64).collect();
+    let keys: Vec<_> = matchups.iter().map(|m| (m.enemy, m.lane.clone())).collect();
+    matchups.retain(|m| keys.iter().filter(|k| k.0 == m.enemy && k.1 == m.lane).count() == 1);
+    matchups
+}
+
+fn valid_videos(matchup: VodMatchup) -> Vec<MatchupVod> {
+    let mut videos: Vec<MatchupVod> = matchup.videos.into_iter().filter_map(|v| serde_json::from_value::<MatchupVod>(v).ok()).filter(MatchupVod::valid).collect();
     let ids: Vec<_> = videos.iter().map(|v| v.video_id.clone()).collect();
     videos.retain(|v| ids.iter().filter(|id| **id == v.video_id).count() == 1);
     videos
+}
+
+pub(super) fn parse_vods(bytes: &[u8], champion: i64, enemy: i64, position: Lane) -> Vec<MatchupVod> {
+    vod_matchups(bytes, champion).into_iter().find(|m| m.enemy == enemy && m.lane == position).map(valid_videos).unwrap_or_default()
+}
+
+#[derive(Clone, Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct ChampionVod { pub enemy: i64, pub lane: Lane, #[serde(flatten)] pub vod: MatchupVod }
+
+/// Every VOD of a champion across enemies and lanes, validated exactly like `parse_vods`.
+pub(super) fn parse_champion_vods(bytes: &[u8], champion: i64) -> Vec<ChampionVod> {
+    let mut videos: Vec<MatchupVod> = vec![];
+    let mut keys = vec![];
+    for matchup in vod_matchups(bytes, champion) {
+        let (enemy, lane) = (matchup.enemy, matchup.lane.clone());
+        for vod in valid_videos(matchup) { keys.push((enemy, lane.clone())); videos.push(vod); }
+    }
+    // One game has one opponent: a video filed under two matchups is ambiguous, like a duplicate within one.
+    let ids: Vec<_> = videos.iter().map(|v| v.video_id.clone()).collect();
+    videos.into_iter().zip(keys).filter(|(v, _)| ids.iter().filter(|id| **id == v.video_id).count() == 1)
+        .map(|(vod, (enemy, lane))| ChampionVod { enemy, lane, vod }).collect()
 }
 
 pub(super) fn digest(bytes: &[u8]) -> String { format!("{:x}", Sha256::digest(bytes)) }

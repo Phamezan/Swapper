@@ -210,5 +210,11 @@ pub(crate) async fn get_matchup_vods(champion_id: i64, enemy_champion_id: i64, p
     Ok(parse_vods(&champion_content(champion_id).await.unwrap_or_default(), champion_id, enemy_champion_id, lane))
 }
 
+#[tauri::command]
+pub(crate) async fn get_champion_vods(champion_id: i64) -> Result<Vec<ChampionVod>, String> {
+    if champion_id <= 0 || champion_id > i32::MAX as i64 { return Err("Unknown champion.".into()); }
+    Ok(parse_champion_vods(&champion_content(champion_id).await.unwrap_or_default(), champion_id))
+}
+
 #[cfg(test)]
 mod tests;

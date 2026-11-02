@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { syncGuides } from "../../scripts/sync-guides.mjs";
+import { MAX_FILE_BYTES, syncGuides } from "../../scripts/sync-guides.mjs";
 
 test("offline sync preserves exact compiled bytes and rejects mismatches before writing", async () => {
   const root = await mkdtemp(join(tmpdir(), "swapper-guide-sync-"));
@@ -53,6 +53,25 @@ test("offline sync preserves exact compiled bytes and rejects mismatches before 
     index.schema = 2;
     await writeFile(indexPath, JSON.stringify(index));
     await assert.rejects(syncGuides(source, destination), /Invalid guide index/);
+  } finally {
+    await rm(root, { recursive: true });
+  }
+});
+
+test("champion files up to 8 MB sync and larger ones are refused", async () => {
+  assert.equal(MAX_FILE_BYTES, 8 * 1024 * 1024);
+  const root = await mkdtemp(join(tmpdir(), "swapper-guide-size-"));
+  try {
+    const source = join(root, "dist"), destination = join(root, "bundled");
+    await mkdir(join(source, "champions"), { recursive: true });
+    const json = '{"schema":1,"champion":103,"generatedAt":"2026-11-02","guides":[{"champion":103}]}';
+    for (const [size, ok] of [[6 * 1024 * 1024, true], [MAX_FILE_BYTES, true], [MAX_FILE_BYTES + 1, false]]) {
+      const bytes = Buffer.from(json.padEnd(size, " "));
+      await writeFile(join(source, "champions", "103.json"), bytes);
+      await writeFile(join(source, "index.json"), JSON.stringify({ schema: 1, generatedAt: "2026-11-02", champions: { "103": { sha256: createHash("sha256").update(bytes).digest("hex"), guides: 1 } } }));
+      if (ok) assert.equal(await syncGuides(source, destination), 1, `${size} bytes`);
+      else await assert.rejects(syncGuides(source, destination), /exceeds 8 MB/);
+    }
   } finally {
     await rm(root, { recursive: true });
   }

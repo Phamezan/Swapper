@@ -368,7 +368,10 @@ mockIPC(async (cmd, args) => {
     case "doctor_report": return null;
     // ---- uibuilds cases ----
     case "open_guide_source": return null;
-    case "get_matchup_vods": return [];
+    case "get_matchup_vods": case "get_champion_vods": return [];
+    // The VOD player's native fullscreen; the browser page has no window to resize.
+    case "plugin:window|is_maximized": return false;
+    case "plugin:window|set_fullscreen": case "plugin:window|toggle_maximize": return null;
     case "get_matchup_guide":
       if (params.has("guide-missing-command")) throw new Error("Unknown command get_matchup_guide");
       if (params.has("guide-null")) return null;

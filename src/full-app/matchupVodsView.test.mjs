@@ -7,13 +7,14 @@ import * as guide from "./matchupGuide.ts";
 import * as youtube from './youtubePlayer.ts';
 import { ahriVsZedVods } from "./fixtures/ahriVsZedVods.ts";
 
-function harness(file, component, vods = ahriVsZedVods) {
+function harness(file, component, vods = ahriVsZedVods, championVods = []) {
   const states = [], effects = [], focus = [], domRefs = new Set(), messages = [], listeners = new Map(), timers = new Map(), fullscreen = [], scrolls = [];
   const contentWindow = { postMessage: (data, origin) => messages.push({ data: JSON.parse(data), origin }) };
   const browser = { addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name), setInterval: fn => { timers.set('interval', fn); return 'interval'; }, clearInterval: name => timers.delete(name), setTimeout: fn => { timers.set('timeout', fn); return 'timeout'; }, clearTimeout: name => timers.delete(name) };
   const documentListeners = new Map();
   const fakeDocument = { fullscreenElement: null, addEventListener: (name, fn) => documentListeners.set(name, fn), removeEventListener: name => documentListeners.delete(name), exitFullscreen: async () => { fullscreen.push('element off'); fakeDocument.fullscreenElement = null; } };
-  const tauriWindow = { setFullscreen: async on => { fullscreen.push(`window ${on ? 'on' : 'off'}`); } };
+  const tauriWindow = { maximized: false, isMaximized: async () => tauriWindow.maximized, toggleMaximize: async () => { tauriWindow.maximized = !tauriWindow.maximized; fullscreen.push(tauriWindow.maximized ? 'maximize' : 'unmaximize'); },
+    setFullscreen: async on => { fullscreen.push(`window ${on ? 'on' : 'off'}`); } };
   let cursor = 0, pending = [], props;
   const react = {
     useId: () => "test-id", useRef(initial) { const i = cursor++; return states[i] ??= { current: initial }; },
@@ -22,10 +23,11 @@ function harness(file, component, vods = ahriVsZedVods) {
   };
   const jsx = (type, props) => ({ type, props });
   const modules = {
-    "@tauri-apps/api/core": { invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }] },
+    "@tauri-apps/api/core": { isTauri: () => true, invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }] },
     "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", ChevronRight: "chevron", ArrowLeft: "back-icon" },
-    "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods },
+    "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods, loadChampionVods: async () => championVods },
+    "./Picker": { Picker: "picker", ROLES: [["mid", "Mid"], ["top", "Top"]] }, "./NearViewport": { NearEnd: "near-end" },
     './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
     "./art": { useChampionArt: () => null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
     "./VodPlayer": { VodPlayer: "player-identity" }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
@@ -40,12 +42,12 @@ function harness(file, component, vods = ahriVsZedVods) {
     props = value ?? props; cursor = 0; const tree = exports[component](props);
     for (const ref of domRefs) ref.current = null;
     for (const node of nodes(tree)) if (node.props.ref && typeof node.props.ref === "object") {
-      const ref = node.props.ref; domRefs.add(ref); ref.current = { contentWindow, querySelector: () => null, focus: () => focus.push(node.props["data-vod-id"] ?? node.props.className), children: [], scrollHeight: 0, clientHeight: 0,
+      const ref = node.props.ref; domRefs.add(ref); ref.current = { contentWindow, querySelector: () => null, contains: () => false, focus: () => focus.push(node.props["data-vod-id"] ?? node.props.className), children: [], scrollHeight: 0, clientHeight: 0,
         requestFullscreen: async () => { fullscreen.push('element on'); fakeDocument.fullscreenElement = ref.current; } };
     }
     pending.splice(0).forEach(fn => fn()); return tree;
   };
-  return { render, focus, messages, contentWindow, timers, fullscreen, fakeDocument, documentListeners, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
+  return { render, tauriWindow, focus, messages, contentWindow, timers, fullscreen, fakeDocument, documentListeners, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
 }
 function nodes(tree) { return !tree || typeof tree !== "object" ? [] : Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.children)]; }
 function text(tree) { return typeof tree === "string" || typeof tree === "number" ? String(tree) : !tree || typeof tree !== "object" ? "" : Array.isArray(tree) ? tree.map(text).join("") : text(tree.props?.children); }
@@ -197,7 +199,7 @@ test('keyboard shortcuts drive the player and fullscreen covers the window until
 
   press('f');
   await h.flush();
-  assert.deepEqual(h.fullscreen.splice(0), ['element on', 'window on']);
+  assert.deepEqual(h.fullscreen.splice(0), ['window on', 'element on']);
   assert.match(tree.props.className, /is-fullscreen/);
   assert.equal(control(tree, 'Exit full screen').props.shortcut, 'f');
   assert.deepEqual(press('Escape'), { prevented: true, stopped: true }, 'Esc leaves fullscreen, not the VOD');
@@ -226,6 +228,27 @@ test('keyboard shortcuts drive the player and fullscreen covers the window until
   press('f');
   await h.flush();
   assert.deepEqual(h.fullscreen, [], 'the mini player ignores the fullscreen key');
+});
+
+test('element fullscreen waits for the native resize and native errors stay visible', async () => {
+  const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
+  let finishResize;
+  h.tauriWindow.setFullscreen = () => new Promise(resolve => { finishResize = resolve; });
+  let tree = h.render({ vod: realVod, seek: null });
+  const entering = control(tree, 'Full screen').props.onClick();
+  await h.flush();
+  assert.deepEqual(h.fullscreen, [], 'the element must not capture the old window size');
+  finishResize();
+  await entering;
+  tree = await h.flush();
+  assert.deepEqual(h.fullscreen, ['element on']);
+  h.tauriWindow.setFullscreen = async () => { throw new Error('permission denied'); };
+  control(tree, 'Exit full screen').props.onClick();
+  tree = await h.flush();
+  assert.match(text(tree), /Could not leave window fullscreen: Error: permission denied/);
+  control(tree, 'Full screen').props.onClick();
+  tree = await h.flush();
+  assert.match(text(tree), /Window fullscreen unavailable: Error: permission denied/);
 });
 
 test('player receives trusted progress, sends controls and cleans up its listeners', () => {
@@ -299,10 +322,139 @@ test("missing and failed player photos show initials rather than a broken image"
   assert.equal(text(avatar(failed)), "FP");
 });
 
-test("an empty VOD response shows a compact empty message", async () => {
-  const h = harness("./MatchupVods.tsx", "MatchupVods", []);
+test("an empty matchup offers the champion's whole library, which can be empty too", async () => {
+  const h = harness("./MatchupVods.tsx", "MatchupVods", [], []);
   h.render(props);
-  assert.equal(text(await h.flush()), "No VODs for this matchup yet");
+  let tree = await h.flush();
+  assert.match(text(tree), /No VODs for this matchup yet/);
+  assert.equal(nodes(tree).some(node => node.props.className === "mv-filters"), false, "no filters over nothing");
+  nodes(tree).find(node => node.props.className === "mv-text-button").props.onClick();
+  h.render();
+  tree = await h.flush();
+  assert.match(text(tree), /No Ahri VODs yet/);
+});
+
+const rows = tree => nodes(tree).filter(node => node.props.className === "mv-vod-row");
+const labelled = (tree, label) => nodes(tree).find(node => node.props?.label === label && node.props.onChange);
+
+test("the library pages a large matchup list and filters every Ahri VOD across opponents", async () => {
+  const { ahriChampionVods: every } = await import("./fixtures/ahriChampionVods.ts");
+  const zed = every.filter(vod => vod.enemy === 238 && vod.lane === "mid");
+  const h = harness("./MatchupVods.tsx", "MatchupVods", zed, every);
+  h.render(props);
+  let tree = await h.flush();
+  assert.equal(rows(tree).length, 60, "a long list renders its first step only");
+  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${zed.length} VODs`);
+  assert.equal(labelled(tree, "Opponent"), undefined, "one matchup needs no opponent filter");
+  const patches = rows(tree).map(row => zed.find(vod => vod.videoId === row.props["data-vod-id"]).patch);
+  assert.ok(patches.every((patch, i) => !i || logic.comparePatch(patches[i - 1], patch) >= 0), "newest patch first by default");
+  nodes(tree).find(node => node.type === "near-end").props.onNear();
+  assert.equal(rows(h.render()).length, 120, "scrolling near the end renders the next step");
+
+  labelled(tree, "VOD scope").props.onChange("champion");
+  h.render();
+  tree = await h.flush();
+  assert.match(text(tree), /Every Ahri VOD/);
+  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${every.length} VODs`);
+  assert.equal(rows(tree).length, 60, "switching scope starts from the first step again");
+  const opponents = labelled(tree, "Opponent").props.options;
+  assert.equal(opponents[1].label, `Zed · ${zed.length + every.filter(vod => vod.enemy === 238 && vod.lane !== "mid").length}`, "opponents are ordered by games, with portraits");
+  assert.equal(opponents[1].icon.props.id, 238);
+
+  labelled(tree, "Opponent").props.onChange("157");
+  labelled(tree, "Players").props.onChange(true);
+  labelled(tree, "Result").props.onChange("W");
+  labelled(tree, "Rank").props.onChange("grandmaster");
+  labelled(tree, "Sort").props.onChange("longest");
+  tree = h.render();
+  const filters = { ...logic.ANY_VOD, enemy: 157, pros: true, result: "W", tier: "grandmaster", sort: "longest" };
+  const expected = logic.filterVods(every, filters);
+  assert.ok(expected.length > 1);
+  assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]), expected.slice(0, 60).map(vod => vod.videoId));
+  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${expected.length} of ${every.length}`);
+  assert.deepEqual(labelled(tree, "Players").props.options.map(option => option[2]),
+    [false, true].map(pros => every.filter(vod => logic.vodMatches(vod, { ...filters, pros })).length), "each option counts what choosing it would show");
+  assert.ok(rows(tree).every(row => /vs Yasuo/.test(row.props["aria-label"])));
+
+  labelled(tree, "Patch").props.onChange("1.1");
+  tree = h.render();
+  assert.match(text(tree), /No VODs match these filters/);
+  nodes(tree).find(node => node.props.className === "mv-text-button").props.onClick();
+  tree = h.render();
+  assert.equal(rows(tree).length, 60);
+  assert.equal(labelled(tree, "Sort").props.value, "longest", "clearing filters keeps the chosen order");
+  assert.equal(labelled(tree, "Opponent").props.value, "0");
+});
+
+test("a VOD from another matchup keeps its moments but cannot open this matchup's guide", async () => {
+  const other = { ...ahriVsZedVods[0], enemy: 157, lane: "mid" }, same = { ...ahriVsZedVods[1], enemy: 238, lane: "mid" };
+  const h = harness("./MatchupVods.tsx", "MatchupVods", [], [other, same]);
+  h.render(props);
+  let tree = await h.flush();
+  labelled(tree, "VOD scope").props.onChange("champion");
+  h.render();
+  tree = await h.flush();
+  const open = id => { rows(tree).find(row => row.props["data-vod-id"] === id).props.onClick(); return h.render(); };
+  let player = open(other.videoId);
+  assert.ok(nodes(player).some(node => node.props.className === "mv-moment"));
+  assert.equal(nodes(player).some(node => node.props.className === "mv-section-link"), false);
+  nodes(player).find(node => node.props.className === "mv-back").props.onClick();
+  tree = h.render();
+  player = open(same.videoId);
+  assert.ok(nodes(player).some(node => node.props.className === "mv-section-link"));
+});
+
+test("fullscreen playback hides everything but the timeline when idle and wakes on activity", async () => {
+  const h = harness("./YoutubeVodPlayer.tsx", "YoutubeVodPlayer");
+  const progress = playerState => h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 100, duration: 1746, playerState } }) });
+  let tree = h.render({ vod: realVod, seek: null });
+  progress(1);
+  control(h.render(), "Full screen").props.onClick();
+  tree = await h.flush();
+  assert.match(tree.props.className, /is-fullscreen/);
+  assert.doesNotMatch(tree.props.className, /is-idle/);
+  h.timers.get("timeout")();
+  tree = h.render();
+  assert.match(tree.props.className, /is-idle/);
+  assert.ok(timeline(tree), "the timeline stays");
+  h.documentListeners.get("pointermove")();
+  assert.doesNotMatch(h.render().props.className, /is-idle/, "moving the mouse brings the HUD back");
+  h.timers.get("timeout")();
+  assert.match(h.render().props.className, /is-idle/, "the countdown restarted after the activity");
+  h.documentListeners.get("keydown")();
+  assert.doesNotMatch(h.render().props.className, /is-idle/, "a key brings the HUD back");
+  progress(2);
+  tree = h.render();
+  await h.flush();
+  assert.equal(h.documentListeners.has("pointermove"), false, "paused playback keeps the HUD up");
+  assert.equal(h.timers.has("timeout"), false);
+  progress(1);
+  h.render();
+  control(h.render(), "Exit full screen").props.onClick();
+  tree = await h.flush();
+  assert.equal(h.documentListeners.has("pointermove"), false, "leaving fullscreen stops watching activity");
+  assert.doesNotMatch(tree.props.className, /is-idle/);
+});
+
+test("a maximized window is restored before fullscreen and maximized again after it", async () => {
+  const h = harness("./YoutubeVodPlayer.tsx", "YoutubeVodPlayer");
+  h.tauriWindow.maximized = true;
+  let tree = h.render({ vod: realVod, seek: null });
+  control(tree, "Full screen").props.onClick();
+  tree = await h.flush();
+  assert.deepEqual(h.fullscreen.splice(0), ["unmaximize", "window on", "element on"], "a maximized borderless window would keep its taskbar-high gap");
+  control(tree, "Exit full screen").props.onClick();
+  tree = await h.flush();
+  assert.deepEqual(h.fullscreen.splice(0), ["element off", "window off", "maximize"]);
+  control(tree, "Full screen").props.onClick();
+  tree = await h.flush();
+  control(tree, "Exit full screen").props.onClick();
+  await h.flush();
+  assert.deepEqual(h.fullscreen.splice(0), ["unmaximize", "window on", "element on", "element off", "window off", "maximize"]);
+  h.tauriWindow.maximized = false;
+  control(h.render(), "Full screen").props.onClick();
+  await h.flush();
+  assert.deepEqual(h.fullscreen.splice(0), ["window on", "element on"], "a normal window is left as it is");
 });
 
 test("opening a guide from a VOD starts on the requested slide", () => {

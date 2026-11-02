@@ -79,7 +79,7 @@ mockIPC(async (cmd, args) => {
     case "rune_icon": await ready; if (runeIcons.has(a.id)) return runeIcons.get(a.id); throw new Error("no icon");
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     case "full_app_rune_catalog": await ready; if (catalog) return catalog; throw new Error("Rune catalog unavailable");
-    case "get_matchup_vods": return [];
+    case "get_matchup_vods": case "get_champion_vods": return [];
     case "get_matchup_guide": return { guide: null, record: new URLSearchParams(location.search).has("no-record") ? { wins: 0, losses: 0 }
       : fixture === "locked-guide" || new URLSearchParams(location.search).has("record") ? { wins: 5, losses: 20 } : null };
     case "full_app_abilities": return guideAbilities(a.championId, `${DD}/${VERSION}`)?.spells.map(spell => ({ key: spell.key, name: spell.name, icon: spell.iconPath }))

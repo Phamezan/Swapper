@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
-import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, playerKeyAction, vodUrl } from "./matchupVodModel.ts";
+import { ANY_VOD, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, vodMatches, vodUrl } from "./matchupVodModel.ts";
 
 test("VOD timestamps use minutes, pad seconds, and support hour-long games", () => {
   assert.deepEqual([0, 9, 61.9, 184, 3605, -1, NaN].map(formatVodTime), ["0:00", "0:09", "1:01", "3:04", "1:00:05", "0:00", "0:00"]);
@@ -19,27 +19,32 @@ test("real video links use a YouTube watch URL with an integer timestamp", () =>
 function loader(dev, response = [], fails = false) {
   let imports = 0;
   const calls = [];
-  const fixture = [{ videoId: "fixture-ahri-1", fixture: true }];
+  const zed = { videoId: "fixture-ahri-1", fixture: true, enemy: 238, lane: "mid" };
+  const fixture = [zed, { videoId: "fixture-ahri-6", fixture: true, enemy: 157, lane: "mid" }, { videoId: "fixture-ahri-7", fixture: true, enemy: 238, lane: "top" }];
   const source = readFileSync(new URL("./loadMatchupVods.ts", import.meta.url), "utf8").replaceAll("import.meta.env.DEV", String(dev));
   const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
   const exports = {};
   new Function("require", "exports", code)(name => {
     if (name === '@tauri-apps/api/core') return { invoke: async (command, args) => { calls.push({ command, args }); if (fails) throw new Error('offline'); return response; } };
-    assert.equal(name, "./fixtures/ahriVsZedVods"); imports++; return { ahriVsZedVods: fixture };
+    assert.equal(name, "./fixtures/ahriChampionVods"); imports++; return { ahriChampionVods: fixture };
   }, exports);
-  return { load: exports.loadMatchupVods, imports: () => imports, fixture, calls };
+  return { load: exports.loadMatchupVods, loadChampion: exports.loadChampionVods, imports: () => imports, fixture, zed, calls };
 }
 
 test("only the exact Ahri vs Zed mid pair loads VOD preview data in development", async () => {
   const h = loader(true);
-  assert.equal(await h.load(103, 238, "mid"), h.fixture);
+  assert.deepEqual(await h.load(103, 238, "mid"), [h.zed], "only the fixture's Ahri vs Zed mid games");
   for (const args of [[103, 157, "mid"], [238, 103, "mid"], [103, 238, "top"], [0, 238, "mid"]]) assert.deepEqual(await h.load(...args), []);
   assert.equal(h.imports(), 1);
+  assert.equal(await h.loadChampion(103), h.fixture, "the champion-wide preview spans enemies and lanes");
+  assert.deepEqual(await h.loadChampion(238), []);
+  assert.deepEqual(h.calls.at(-1), { command: "get_champion_vods", args: { championId: 238 } });
 });
 
 test("production never imports or returns preview VODs", async () => {
   const h = loader(false);
   assert.deepEqual(await h.load(103, 238, "mid"), []);
+  assert.deepEqual(await h.loadChampion(103), []);
   assert.equal(h.imports(), 0);
 });
 
@@ -51,7 +56,8 @@ test('cached VODs take precedence over development fixtures and invoke uses the 
   assert.equal(h.imports(), 0);
   assert.deepEqual(await loader(false, [], true).load(103, 238, 'mid'), []);
   const fallback = loader(true, [], true);
-  assert.equal(await fallback.load(103, 238, 'mid'), fallback.fixture);
+  assert.deepEqual(await fallback.load(103, 238, 'mid'), [fallback.zed]);
+  assert.equal(await loader(true, real).loadChampion(103), real);
 });
 
 test("every bundled VOD is visibly fictional, unplayable, and has valid guide chapters", async () => {
@@ -110,4 +116,72 @@ test("player shortcuts follow YouTube and never take keys from fields or modifie
   for (const modifier of ["ctrlKey", "metaKey", "altKey"]) assert.equal(key("f", undefined, { [modifier]: true }), null);
   for (const other of ["a", "Escape", "Enter", "toString", "constructor"]) assert.equal(key(other), null);
   assert.equal(key("k", null), "toggle");
+});
+
+test("the champion preview library is large, varied, unplayable and never reuses an ID", async () => {
+  const { ahriChampionVods } = await import("./fixtures/ahriChampionVods.ts");
+  assert.ok(ahriChampionVods.length >= 1000);
+  assert.equal(new Set(ahriChampionVods.map(vod => vod.videoId)).size, ahriChampionVods.length);
+  assert.ok(ahriChampionVods.every(vod => vod.fixture && vodUrl(vod) === null && vod.enemy > 0 && vod.lane && vod.moments.every(m => m.atSec < vod.durationSec)));
+  for (const values of [vod => rankTier(vod.rankClaim), vod => vod.result, vod => vod.patch, vod => vod.enemy, vod => vod.lane, vod => !!vod.team, vod => !!vod.player])
+    assert.ok(new Set(ahriChampionVods.map(values)).size > 1);
+});
+
+test("rank tiers come from free-text claims, case-insensitively, and grandmaster is never read as master", () => {
+  assert.deepEqual(["Challenger", "KR Challenger", "challenger", "KR Grandmaster", "GRANDMASTER", "Grand Master", "EUW GM", "MASTER", "Master 400 LP", "Diamond 1", "", "Gamma"].map(rankTier),
+    ["challenger", "challenger", "challenger", "grandmaster", "grandmaster", "grandmaster", "grandmaster", "master", "master", "other", "other", "other"]);
+});
+
+test("patches compare numerically, not as text", () => {
+  assert.ok(comparePatch("26.10", "26.9") > 0);
+  assert.ok(comparePatch("26.21.1", "26.21") > 0);
+  assert.equal(comparePatch("26.21", "26.21.0"), 0);
+  assert.ok(comparePatch("25.24", "26.1") < 0);
+});
+
+const library = [
+  { videoId: "a", rankClaim: "KR Challenger", team: "T1", result: "W", patch: "26.9", durationSec: 1500, enemy: 238 },
+  { videoId: "b", rankClaim: "Grandmaster", result: "L", patch: "26.10", durationSec: 1200, enemy: 157 },
+  { videoId: "c", rankClaim: "MASTER", patch: "26.10", durationSec: 1800, enemy: 238 },
+  { videoId: "d", rankClaim: "Diamond", team: "G2", result: "W", patch: "26.21", durationSec: 1300, enemy: 7 },
+  { videoId: "e", rankClaim: "challenger", result: "W", patch: "26.21", durationSec: 1100, enemy: 238 },
+];
+const ids = (filters) => filterVods(library, { ...ANY_VOD, ...filters }).map(vod => vod.videoId);
+
+test("VODs sort by newest patch by default, keeping content order for ties, or by length", () => {
+  assert.deepEqual(ids({}), ["d", "e", "b", "c", "a"]);
+  assert.deepEqual(ids({ sort: "shortest" }), ["e", "b", "d", "a", "c"]);
+  assert.deepEqual(ids({ sort: "longest" }), ["c", "a", "d", "b", "e"]);
+  assert.deepEqual(library.map(vod => vod.videoId), ["a", "b", "c", "d", "e"], "sorting never reorders the source list");
+});
+
+test("filters combine: pros, rank tier, result, patch and enemy", () => {
+  assert.deepEqual(ids({ pros: true }), ["d", "a"]);
+  assert.deepEqual(ids({ tier: "challenger" }), ["e", "a"]);
+  assert.deepEqual(ids({ tier: "other" }), ["d"]);
+  assert.deepEqual(ids({ result: "W" }), ["d", "e", "a"]);
+  assert.deepEqual(ids({ result: "L" }), ["b"], "VODs without a result match neither result filter");
+  assert.deepEqual(ids({ patch: "26.10" }), ["b", "c"]);
+  assert.deepEqual(ids({ enemy: 238 }), ["e", "c", "a"]);
+  assert.deepEqual(ids({ enemy: 238, result: "W", tier: "challenger", pros: true }), ["a"]);
+  assert.deepEqual(ids({ patch: "26.1" }), [], "patch matches exactly");
+  assert.equal(vodMatches({ videoId: "x", rankClaim: "Master", patch: "26.21", durationSec: 1 }, { ...ANY_VOD, enemy: 238 }), false, "matchup-only VODs never match an enemy filter");
+});
+
+test("the HUD idle timer hides after the delay, wakes on activity and restarts its countdown", () => {
+  const timers = new Map(); let next = 0;
+  const clock = { setTimeout: (fn, ms) => { timers.set(++next, { fn, ms }); return next; }, clearTimeout: id => timers.delete(id) };
+  const changes = [];
+  const idle = idleTimer(3000, value => changes.push(value), clock);
+  assert.deepEqual([...timers.values()].map(t => t.ms), [3000], "counting starts immediately");
+  idle.activity(); idle.activity();
+  assert.equal(timers.size, 1, "activity replaces the countdown instead of stacking timers");
+  assert.deepEqual(changes, [], "activity while visible changes nothing");
+  [...timers.values()][0].fn();
+  assert.deepEqual(changes, [true]);
+  idle.activity();
+  assert.deepEqual(changes, [true, false], "the next activity shows the HUD again");
+  assert.equal(timers.size, 1);
+  idle.stop();
+  assert.equal(timers.size, 0);
 });

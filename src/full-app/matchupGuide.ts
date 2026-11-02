@@ -65,6 +65,9 @@ export type MatchupVod = {
   durationSec: number;
   moments: { atSec: number; label: string; section?: GuideSectionId; kind?: MomentKind }[];
   fixture?: boolean;
+  /** Set only on champion-wide lists (`get_champion_vods`), which span matchups. */
+  enemy?: number;
+  lane?: MatchupGuide["lane"];
 };
 
 export function guideStep(index: number, key: string): number | null {

@@ -382,6 +382,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 commands::guide::open_guide_source,
                 guides::get_matchup_guide,
                 guides::get_matchup_vods,
+                guides::get_champion_vods,
                 commands::runes::get_runes,
                 commands::runes::champ_select_status,
                 commands::runes::rune_icon,

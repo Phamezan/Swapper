@@ -44,6 +44,71 @@ fn vods_are_optional_and_invalid_videos_do_not_discard_valid_siblings_or_guides(
     assert!(parse_vods(&serde_json::to_vec(&duplicate).unwrap(), 103, 238, Lane::Mid).is_empty());
 }
 
+fn champion_vods(groups: Value) -> Vec<u8> {
+    let mut file: Value = serde_json::from_slice(&champion_bytes(vec![guide()])).unwrap();
+    file["vods"] = groups;
+    serde_json::to_vec(&file).unwrap()
+}
+
+fn video(id: &str) -> Value { let mut v = vod(); v["videoId"] = json!(id); v }
+
+#[test]
+fn champion_vods_span_every_matchup_with_the_same_validation() {
+    let mut bad = video("bad-title-1"); bad["title"] = json!("<b>Bad</b>");
+    let bytes = champion_vods(json!([
+        {"enemy":238,"lane":"mid","videos":[video("zedMid00001"), bad, video("zedMid00002")]},
+        {"enemy":157,"lane":"mid","videos":[video("yasuoMid001")]},
+        {"enemy":238,"lane":"top","videos":[video("zedTop00001")]},
+        {"enemy":0,"lane":"mid","videos":[video("noEnemy0001")]},
+        {"enemy":7,"lane":"bottom","videos":[video("badLane0001")]},
+    ]));
+    let all = parse_champion_vods(&bytes, 103);
+    let keys: Vec<_> = all.iter().map(|v| (v.enemy, v.lane.clone(), serde_json::to_value(v).unwrap()["videoId"].as_str().unwrap().to_string())).collect();
+    assert_eq!(keys, vec![(238, Lane::Mid, "zedMid00001".into()), (238, Lane::Mid, "zedMid00002".into()),
+        (157, Lane::Mid, "yasuoMid001".into()), (238, Lane::Top, "zedTop00001".into())]);
+    let wire = serde_json::to_value(&all[2]).unwrap();
+    assert_eq!((wire["enemy"].clone(), wire["lane"].clone(), wire["videoId"].clone(), wire["rankClaim"].clone()),
+        (json!(157), json!("mid"), json!("yasuoMid001"), json!("Challenger")), "the matchup key sits beside the flattened video");
+    assert_eq!(parse_vods(&bytes, 103, 238, Lane::Mid).len(), 2, "the matchup view still reads the same file");
+    assert!(parse_champion_vods(&bytes, 238).is_empty(), "another champion's file is rejected");
+    assert!(parse_champion_vods(&champion_bytes(vec![guide()]), 103).is_empty());
+    assert!(parse_champion_vods(b"not json", 103).is_empty());
+}
+
+#[test]
+fn champion_vods_drop_every_copy_of_an_ambiguous_matchup_or_video() {
+    let bytes = champion_vods(json!([
+        {"enemy":238,"lane":"mid","videos":[video("zedMid00001"), video("twiceInZed1"), video("twiceInZed1")]},
+        {"enemy":157,"lane":"mid","videos":[video("yasuoMid001")]},
+        {"enemy":157,"lane":"mid","videos":[video("yasuoMid002")]},
+        {"enemy":7,"lane":"mid","videos":[video("zedMid00001"), video("leblanc0001")]},
+    ]));
+    let ids: Vec<_> = parse_champion_vods(&bytes, 103).iter().map(|v| serde_json::to_value(v).unwrap()["videoId"].clone()).collect();
+    assert_eq!(ids, vec![json!("leblanc0001")], "duplicate ids, duplicate matchups and a video filed under two enemies are all dropped");
+    assert!(parse_vods(&bytes, 103, 157, Lane::Mid).is_empty());
+}
+
+#[tokio::test]
+async fn champion_files_up_to_eight_megabytes_download_cache_and_parse() {
+    assert_eq!(MAX_CHAMPION_BYTES, 8 * 1024 * 1024);
+    let mut big = with_vods(vec![vod()]);
+    big.resize(6 * 1024 * 1024, b' ');
+    assert_eq!(parse_vods(&big, 103, 238, Lane::Mid).len(), 1);
+    assert_eq!(parse_champion_vods(&big, 103).len(), 1);
+    let mut over = big.clone(); over.resize(MAX_CHAMPION_BYTES + 1, b' ');
+    assert!(parse_champion(&over, 103).is_none() && parse_vods(&over, 103, 238, Lane::Mid).is_empty() && parse_champion_vods(&over, 103).is_empty());
+    let root = std::env::temp_dir().join(format!("swapper-big-guide-test-{}", uuid::Uuid::new_v4()));
+    let server = Server::start().await;
+    let client = reqwest::Client::new();
+    server.publish(big);
+    assert_eq!(GuideCache::open(Some(root.clone()), server.base.clone(), &[]).champion(&client, 103, 100_000).await.len(), 1);
+    server.state.files.lock().unwrap().clear();
+    let mut reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    let bytes = reopened.content(&client, 103, 100_000 + REFRESH_SECONDS).await;
+    assert_eq!(parse_champion_vods(&bytes, 103).len(), 1, "the disk cache holds a 6 MB file");
+    std::fs::remove_dir_all(root).unwrap();
+}
+
 #[test]
 fn moment_kinds_pass_through_and_unknown_kinds_drop_only_the_kind() {
     let mut video = vod();

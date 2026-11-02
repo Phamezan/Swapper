@@ -3,7 +3,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-const MAX_FILE_BYTES = 2 * 1024 * 1024;
+// Mirrors MAX_CHAMPION_BYTES in src-tauri/src/guides/model.rs.
+export const MAX_FILE_BYTES = 8 * 1024 * 1024;
 const bundled = fileURLToPath(new URL("../src-tauri/resources/guides/", import.meta.url));
 
 export async function syncGuides(source, destination = bundled) {
@@ -20,7 +21,7 @@ export async function syncGuides(source, destination = bundled) {
       || !Number.isInteger(entry.vods ?? 0) || (entry.vods ?? 0) < 0 || (entry.vods ?? 0) > 2048
       || entry.guides + (entry.general ?? 0) + (entry.vods ?? 0) < 1) throw new Error(`Invalid champion entry: ${id}`);
     const bytes = await readFile(resolve(source, "champions", `${id}.json`));
-    if (bytes.length > MAX_FILE_BYTES) throw new Error(`Champion ${id} exceeds 2 MB.`);
+    if (bytes.length > MAX_FILE_BYTES) throw new Error(`Champion ${id} exceeds 8 MB.`);
     if (createHash("sha256").update(bytes).digest("hex") !== entry.sha256.toLowerCase()) throw new Error(`SHA-256 mismatch for ${id}.`);
     const champion = JSON.parse(bytes);
     if (champion.schema !== 1 || champion.champion !== Number(id) || !Array.isArray(champion.guides)
