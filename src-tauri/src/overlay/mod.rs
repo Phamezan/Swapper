@@ -283,9 +283,7 @@ fn skill_ranks(data: &Value) -> Option<(u64, [u64; 4])> {
 }
 
 fn session_scope(session: &Value) -> Option<bool> {
-    session["map"]["id"].as_u64().filter(|id| *id > 0)?;
-    // Custom games such as practice tool report queue id -1.
-    session["gameData"]["queue"]["id"].as_i64()?;
+    if session["map"].is_null() && session["gameData"]["queue"].is_null() { return None; }
     Some(model::supported_session(session))
 }
 
@@ -299,8 +297,9 @@ async fn run(
     let mut fast_until = Instant::now();
     let mut pids = Vec::new();
     let mut fetch: Option<tokio::task::JoinHandle<Result<Value, String>>> = None;
-    let mut scope: Option<tokio::task::JoinHandle<Option<bool>>> = None;
+    let mut scope: Option<tokio::task::JoinHandle<Option<(bool, bool)>>> = None;
     let mut allowed = false;
+    let mut players_supported = false;
     let mut checked_scope = false;
     let mut ended = false;
     let mut data = None;
@@ -397,14 +396,15 @@ async fn run(
                 crate::runes::overlay_game_session()
                     .await
                     .ok()
-                    .and_then(|session| session_scope(&session))
+                    .and_then(|session| session_scope(&session).map(|allowed| (allowed, crate::game_mode::supports_rift(&session))))
             }));
         }
         if scope.as_ref().is_some_and(|task| task.is_finished()) {
             let supported = scope.take().unwrap().await.ok().flatten();
-            allowed = supported == Some(true);
+            allowed = supported.is_some_and(|(allowed, _)| allowed);
+            players_supported = supported.is_some_and(|(_, players)| players);
             checked_scope = supported.is_some();
-            if supported == Some(false) {
+            if supported.is_some_and(|(allowed, _)| !allowed) {
                 fast_until = now;
             }
             // Fail closed, but retry a client that was still loading.
@@ -484,6 +484,7 @@ async fn run(
         if let (Some(bounds), Some(data)) = (bounds, data.as_ref()) {
             if dirty {
                 prepared = display(data, settings, priority.as_deref(), true);
+                if !players_supported || !crate::game_mode::supports_rift(data) { prepared.gold = None; }
                 dirty = false;
             }
             let mut visible = prepared.clone();
@@ -564,14 +565,14 @@ mod tests {
     fn loading_scope_retries_but_known_unsupported_games_do_not() {
         use serde_json::json;
         assert_eq!(session_scope(&json!({})), None);
-        assert_eq!(session_scope(&json!({"map":{"id":11}})), None);
+        assert_eq!(session_scope(&json!({"map":{"id":11}})), Some(true));
         assert_eq!(
             session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":420}}})),
             Some(true)
         );
         assert_eq!(
             session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":0}}})),
-            Some(false)
+            Some(true)
         );
         assert_eq!(
             session_scope(&json!({"map":{"id":12},"gameData":{"queue":{"id":450}}})),

@@ -108,7 +108,9 @@ fn parse_game(value: &Value, id: &str) -> Option<View> {
     }
     if !players.iter().any(|p| p.riot_id.to_lowercase() == id.to_lowercase()) { return None; }
     let queue = match queue_id { 420 => "Ranked Solo/Duo", 440 => "Ranked Flex", 450 => "ARAM", 400 | 430 | 490 => "Normal", _ => "Live game" };
-    Some(View { game_id: 0, queue_id, queue: queue.into(), map_id: 0, players,
+    let supported = crate::game_mode::supports_rift(&json!({"gameData":{"queue":{"id":queue_id}}}));
+    if !supported { players.clear(); }
+    Some(View { supported, game_id: 0, queue_id, queue: queue.into(), map_id: 0, players,
         blue: TeamSummary::default(), red: TeamSummary::default(), game_time: None })
 }
 

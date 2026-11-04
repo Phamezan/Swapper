@@ -403,7 +403,11 @@ async fn rune_context() -> Result<RuneContext, RuneError> {
         });
     }
     let text = lcu_get_text(&lcu, SESSION_PATH).await?;
-    let draft = serde_json::from_str(&text).ok().map(|value| crate::full_app::ui_data::draft_from(&value));
+    let mut draft = serde_json::from_str(&text).ok().map(|value| crate::full_app::ui_data::draft_from(&value));
+    let gameflow = lcu_get_text(&lcu, GAMEFLOW_PATH).await.ok();
+    if let (Some(draft), Some(gameflow)) = (draft.as_mut(), gameflow.as_deref().and_then(|text| serde_json::from_str::<Value>(text).ok())) {
+        draft.set_supported(Some(crate::game_mode::supports_rift(&gameflow)));
+    }
     let Some(mut context) = session::parse_champ_select(&text)? else {
         return Ok(RuneContext {
             phase,
@@ -411,7 +415,7 @@ async fn rune_context() -> Result<RuneContext, RuneError> {
             draft,
         });
     };
-    if let Ok(gameflow) = lcu_get_text(&lcu, GAMEFLOW_PATH).await {
+    if let Some(gameflow) = gameflow {
         if let Ok(info) = session::parse_gameflow(&gameflow) {
             context.map_id = info.map_id;
             context.queue_id = info.queue_id;

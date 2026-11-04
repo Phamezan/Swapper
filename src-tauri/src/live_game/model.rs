@@ -556,6 +556,7 @@ impl Player {
 #[derive(Clone, Debug, PartialEq, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct View {
+    pub supported: bool,
     pub game_id: u64,
     pub queue_id: i64,
     pub queue: String,
@@ -569,6 +570,14 @@ pub struct View {
 }
 
 impl View {
+    pub fn check_mode(&mut self, data: &Value) {
+        self.supported &= crate::game_mode::supports_rift(data);
+        if !self.supported {
+            self.players.clear();
+            self.summarize_teams();
+        }
+    }
+
     /// Recomputes what depends on several sources: badges (history and the
     /// assigned position, which the Live Client may fill in later) and the
     /// team summaries.
@@ -603,7 +612,10 @@ pub fn from_session(
     champion_names: &BTreeMap<i64, String>,
 ) -> Option<View> {
     let data = &session["gameData"];
-    let game_id = data["gameId"].as_u64().filter(|id| *id > 0)?;
+    let supported = crate::game_mode::supports_rift(session);
+    let game_id = data["gameId"].as_u64().filter(|id| *id > 0);
+    if supported && game_id.is_none() { return None; }
+    let game_id = game_id.unwrap_or(0);
     let selections = data["playerChampionSelections"].as_array();
     let mut players = Vec::new();
     for (team, side) in [("teamOne", Side::Blue), ("teamTwo", Side::Red)] {
@@ -660,6 +672,7 @@ pub fn from_session(
     }
     let queue = &data["queue"];
     let mut view = View {
+        supported,
         game_id,
         queue_id: queue["id"].as_i64().unwrap_or(0),
         queue: queue["description"]
@@ -677,6 +690,7 @@ pub fn from_session(
         red: TeamSummary::default(),
         game_time: None,
     };
+    if !view.supported { view.players.clear(); }
     view.summarize_teams();
     Some(view)
 }
@@ -721,6 +735,8 @@ pub fn match_live(players: &[Player], live: &[LivePlayer]) -> Vec<Option<usize>>
 /// Merges a Live Client read into the view: live numbers, runes, sides and
 /// any players the session did not list (custom games, bots).
 pub fn merge_live(view: &mut View, data: &Value, champion_ids: &BTreeMap<String, i64>) {
+    view.check_mode(data);
+    if !view.supported { return; }
     let live = live_players(data);
     if live.is_empty() {
         return;

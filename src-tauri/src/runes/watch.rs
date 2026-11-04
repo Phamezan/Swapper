@@ -63,8 +63,11 @@ pub struct ChampSelectEvent {
 
 fn replace_draft(
     last: &mut Option<crate::full_app::ui_data::Draft>,
-    next: Option<crate::full_app::ui_data::Draft>,
+    mut next: Option<crate::full_app::ui_data::Draft>,
 ) -> bool {
+    if let Some(draft) = next.as_mut() {
+        draft.set_supported(draft.supported.or_else(|| last.as_ref().and_then(|draft| draft.supported)));
+    }
     if *last == next {
         return false;
     }
@@ -456,6 +459,22 @@ mod tests {
         assert!(!replace_draft(&mut last, draft(&next)));
         assert!(replace_draft(&mut last, None));
         assert!(!replace_draft(&mut last, None));
+    }
+
+    #[test]
+    fn draft_pushes_preserve_mode_until_the_next_game() {
+        let raw = serde_json::json!({"myTeam":[{"championId":103}],"theirTeam":[{"championId":238}]});
+        let mut classified = crate::full_app::ui_data::draft_from(&raw);
+        classified.set_supported(Some(false));
+        let mut last = Some(classified);
+        replace_draft(&mut last, Some(crate::full_app::ui_data::draft_from(&raw)));
+        let value = serde_json::to_value(last.as_ref().unwrap()).unwrap();
+        assert_eq!(value["supported"], false);
+        assert_eq!(value["allies"], serde_json::json!([]));
+        assert_eq!(value["enemies"], serde_json::json!([]));
+        replace_draft(&mut last, None);
+        replace_draft(&mut last, Some(crate::full_app::ui_data::draft_from(&raw)));
+        assert_eq!(last.unwrap().supported, None);
     }
 
     #[test]

@@ -4,6 +4,7 @@ mod commands;
 mod doctor;
 mod flyout;
 mod full_app;
+mod game_mode;
 mod hotkey;
 mod identity;
 mod korean_font;

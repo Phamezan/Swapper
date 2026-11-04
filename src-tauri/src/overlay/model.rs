@@ -256,7 +256,7 @@ fn next_in_order(level: u64, ranks: [u64; 4], order: &[char]) -> Option<char> {
 
 pub fn supported(data: &Value) -> bool {
     data["gameData"]["mapNumber"] == 11
-        && matches!(data["gameData"]["gameMode"].as_str(), Some("CLASSIC" | "PRACTICETOOL"))
+        && (data["gameData"]["gameMode"] == "PRACTICETOOL" || crate::game_mode::supports_rift(data))
         && data["activePlayer"]["level"]
             .as_u64()
             .is_some_and(|level| level > 0)
@@ -302,17 +302,12 @@ pub fn fetched_priority(root: &Value) -> Option<String> {
     (keys == ['E', 'Q', 'W']).then_some(id)
 }
 
-/// Summoner's Rift normal, ranked and quickplay games, plus practice tool so the
+/// Summoner's Rift games, plus practice tool so the
 /// overlay can be tried without a real game.
 pub fn supported_session(session: &Value) -> bool {
     let practice = session["gameData"]["queue"]["gameMode"] == "PRACTICETOOL"
         || session["map"]["gameMode"] == "PRACTICETOOL";
-    session["map"]["id"] == 11
-        && (practice
-            || matches!(
-                session["gameData"]["queue"]["id"].as_i64(),
-                Some(400 | 420 | 430 | 440 | 490)
-            ))
+    ((practice && session["map"]["id"] == 11) || crate::game_mode::supports_rift(session))
         && session["gameClient"]["isSpectating"] != true
 }
 
@@ -485,12 +480,12 @@ mod tests {
         data["events"]["Events"] = json!([{"EventName":"GameEnd","EventTime":600}]);
         assert!(!supported(&data));
         assert!(!supported(&json!({})));
-        for queue in [400, 420, 430, 440, 490] {
+        for queue in [0, 400, 420, 430, 440, 480, 490, 700] {
             assert!(supported_session(
                 &json!({"map":{"id":11},"gameData":{"queue":{"id":queue}},"gameClient":{"isSpectating":false}})
             ));
         }
-        for queue in [0, 450, 480, 1700] {
+        for queue in [450, 900, 1700, 870, 2000] {
             assert!(!supported_session(
                 &json!({"map":{"id":11},"gameData":{"queue":{"id":queue}}})
             ));
