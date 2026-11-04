@@ -229,7 +229,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     {fullscreen ? <Minimize size={16} /> : <Maximize size={16} />}</IconButton>;
   return <div ref={root} popover="manual" tabIndex={-1} onKeyDown={onKeyDown}
     className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}${fullscreen && idle ? ' is-idle' : ''}`}
-    style={{ '--mv-bars': Number(showBar) + Number(!!notice) } as CSSProperties}>
+    style={{ '--mv-bars': fullscreen ? 0 : Number(showBar) + Number(!!notice) } as CSSProperties}>
     {!mini && !fullscreen && <header className="mv-watch-header">{header}</header>}
     <div className="mv-stage"><div className="mv-screen">
       {url ? <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title} src={src}
@@ -241,7 +241,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
         {failed && url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}</div>}
       {showBar && <div className="mv-rail-row" role="group" aria-label="Video tools">
         {hasRail ? <MomentRail moments={vod.moments} current={current} duration={segDuration || duration} start={segStart} disabled={!ready} onJump={jump} champions={champions} /> : <span className="mv-rail-spacer" />}
-        <span className="mv-bar-end">{fullscreen && collapsed && <small>Esc to return</small>}
+        <span className="mv-bar-end">{fullscreen && <small>Esc to return</small>}
           {hasMoments && collapsed && <IconButton label="Show key moments" className="mv-show-moments" onClick={toggleSidebar}><PanelRightOpen size={15} aria-hidden />Key moments</IconButton>}
           {fullscreenButton}
         </span>
@@ -250,7 +250,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     {showSidebar && <div className="mv-side">
       <span className="mv-side-close"><IconButton label="Hide key moments" onClick={toggleSidebar}><X size={15} /></IconButton></span>
       {fullscreen && <div className="mv-side-top"><VodPlayer vod={vod} />
-        {url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}<span>Esc to return</span></div>}
+        {url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}</div>}
       {children}
     </div>}
   </div>;

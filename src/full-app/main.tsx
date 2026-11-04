@@ -334,7 +334,7 @@ function App() {
         {page !== "app" && <>
         {selectedMatch ? <PageHeader
             title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
-          : <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
+          : page !== "VODs" && <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "VODs" ? null : page === "Dashboard"

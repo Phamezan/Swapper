@@ -24,7 +24,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
   };
   const jsx = (type, props) => ({ type, props });
   const modules = {
-    "@tauri-apps/api/core": { isTauri: () => true, invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }] },
+    "@tauri-apps/api/core": { isTauri: () => true, invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }, { id: 157, name: "Yasuo" }] },
     "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", ChevronRight: "chevron", ArrowLeft: "back-icon" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods, loadChampionVods: async () => championVods, loadAllVods: async () => championVods.map(vod => ({ ...vod, champion: vod.champion ?? (vod.enemy === 103 ? 238 : 103) })) },
@@ -36,7 +36,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     "./MatchupGuideSummary": { MatchupGuideSummary: "summary" }, "./TradeWindows": { TradeWindows: "trades" }, "./PowerSpikeTimeline": { PowerSpikeTimeline: "spikes" },
   };
   const source = readFileSync(new URL(file, import.meta.url), "utf8");
-  const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 } }).outputText;
+  const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 } }).outputText + (component === "RowThumb" ? "\nexports.RowThumb = RowThumb;" : "");
   const exports = {};
   new Function("require", "exports", "window", 'location', 'document', code)(name => modules[name] ?? {}, exports, browser, { origin: 'http://tauri.localhost' }, fakeDocument);
   const render = value => {
@@ -308,7 +308,8 @@ test('a VOD without moments gets no rail and no sidebar; one with moments gets b
   control(tree, 'Full screen').props.onClick();
   tree = await h.flush();
   assert.equal(nodes(tree).some(node => node.type === 'header'), false, 'fullscreen drops the page header');
-  assert.match(text(nodes(tree).find(node => node.props.className === 'mv-side-top')), /Esc to return/);
+  assert.match(text(nodes(tree).find(node => node.props.className === 'mv-bar-end')), /Esc to return/);
+  assert.equal(tree.props.style['--mv-bars'], 0);
   control(tree, 'Hide key moments').props.onClick();
   tree = h.render();
   assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false);
@@ -524,18 +525,18 @@ test("library rows show the player or rank and region, a result badge and moment
   const [first, second] = rows(await h.flush());
   assert.equal(first.props.title, named.title, "the full title stays available as a tooltip");
   assert.equal(first.props["data-result"], "win");
-  assert.match(first.props["aria-label"], /^Watch Peng, Ahri vs Zed: /);
+  assert.match(first.props["aria-label"], /^Watch Peng \(MKOI\), Ahri vs Zed, Mid\. EUW Challenger, patch /);
   assert.equal(text(nodes(first).find(node => node.type === "strong")), "Peng");
   assert.equal(text(nodes(first).find(node => node.props.className === "mv-team-tag")), "MKOI");
-  assert.equal(text(nodes(first).find(node => node.type === "small")), `EUW Challenger · Patch ${named.patch}`);
+  assert.equal(text(nodes(first).find(node => node.props.className === "mv-cell-rank")), "ChallengerEUW");
   assert.equal(text(nodes(first).find(node => node.props.className === "mv-result-badge is-win")), "Win");
-  assert.match(text(nodes(first).find(node => node.props.className === "mv-cell-moments")), new RegExp(`^${named.moments.length} moments$`));
-  assert.equal(text(nodes(second).find(node => node.type === "strong")), "KR Master", "an unknown player leads with rank and region");
+  assert.match(text(nodes(first).find(node => node.props.className === "mv-chip mv-moments")), new RegExp(`^${named.moments.length} moments$`));
+  assert.equal(text(nodes(second).find(node => node.type === "strong")), "Ranked replay", "an unknown player is labelled as a replay");
   assert.equal(nodes(second).find(node => node.type === "strong").props.className, "is-unnamed");
-  assert.equal(text(nodes(second).find(node => node.type === "small")), "Patch 26.18");
+  assert.equal(text(nodes(second).find(node => node.props.className === "mv-cell-rank")), "MasterKR");
   assert.equal(second.props["data-result"], undefined);
   assert.equal(nodes(second).some(node => String(node.props.className).startsWith("mv-result-badge")), false, "no result shows nothing, not a dash");
-  assert.equal(text(nodes(second).find(node => node.props.className === "mv-cell-moments")), "", "zero moments shows nothing");
+  assert.equal(text(nodes(second).find(node => node.props.className === "mv-chip mv-moments")), "", "zero moments shows nothing");
   assert.doesNotMatch(text(second), /Unlisted|–/);
 });
 
@@ -574,7 +575,7 @@ test("estimated patch tooltip and upload age are visible on the row", async () =
   const h = harness('./MatchupVods.tsx', 'MatchupVods', [vod]);
   h.render(props);
   const tree = await h.flush();
-  assert.match(text(rows(tree)[0]), /Patch ~26.21.*Mar 4, 2020/);
+  assert.match(text(rows(tree)[0]), /~26.21.*Mar 4, 2020/);
   assert.ok(nodes(tree).some(node => node.props.title === 'Patch estimated from the upload date'));
 });
 
@@ -681,7 +682,7 @@ test("two segments of one stream are two rows, streamer badge and filter work, a
   // The matchup-scoped request still sets an enemy filter via props? No: enemy undefined, so all three show.
   assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]).slice(0, 3), [logic.vodKey(segA), logic.vodKey(segB), logic.vodKey(anyVod)]);
   assert.match(text(tree), /Streamer/);
-  assert.match(text(tree), /opponent unknown/);
+  assert.match(text(tree), /vs any/);
   const streamer = labelled(tree, "Streamer");
   assert.ok(streamer, "streamer filter renders when the pool has a stream VOD");
   streamer.props.onChange(true);
@@ -750,4 +751,35 @@ test('segment overlay offers the supplied next game action', () => {
   h.render();
   nodes(h.render()).find(n=>n.type==='button' && text(n)==='Next game').props.onClick();
   assert.equal(next,1);
+});
+
+test("thumbnail URLs exclude fixtures and invalid IDs", () => {
+  for (const vod of [{videoId: "fixture-x"}, {videoId: "1234567890"}, {videoId: "A_b-cD12345", fixture: true}]) assert.equal(logic.vodThumbnail(vod), null);
+  assert.equal(logic.vodThumbnail({videoId: "A_b-cD12345"}), "https://i.ytimg.com/vi/A_b-cD12345/mqdefault.jpg");
+});
+test("spoken label includes segment, facecam, estimated patch and singular moment", () => {
+ const vod = {...ahriVsZedVods[0], player: "Peng", team: "MKOI", format: "stream", cam: true, patch: "26.21", patchEstimated: true, startSec: 100, endSec: 200, moments: [{atSec: 120, label: "Trade"}]};
+ const label = logic.vodLabel(vod, {champion: "Ahri", enemy: null, lane: "Mid"}, new Date());
+ for (const part of ["streamer with facecam", "vs any opponent", "patch ~26.21 (estimated)", "1 key moment.", "(game segment)"]) assert.ok(label.includes(part));
+});
+test("thumbnail falls back for fixtures and YouTube placeholder stills", () => {
+ const vod = {...ahriVsZedVods[0], videoId: "A_b-cD12345", fixture: false};
+ const h = harness('./MatchupVods.tsx', 'RowThumb');
+ let tree = h.render({vod, row: logic.vodRow(vod)});
+ nodes(tree).find(n => n.type === 'img').props.onLoad({currentTarget: {naturalWidth: 120}});
+ tree = h.render(); assert.equal(nodes(tree).some(n => n.type === 'img'), false);
+ const fixture = harness('./MatchupVods.tsx', 'RowThumb').render({vod: {...vod, fixture: true}, row: logic.vodRow(vod)});
+ assert.equal(nodes(fixture).some(n => n.type === 'img'), false);
+ assert.ok(nodes(fixture).some(n => n.type === 'champion-icon'));
+});
+
+test("wide rows lead with both matchup portraits, lane and the full spoken label", async () => {
+ const vod = {...ahriVsZedVods[0], champion: 103, enemy: 238, lane: "mid"};
+ const h = harness('./MatchupVods.tsx', 'MatchupVods', [vod], [vod]);
+ h.render({...props, enemy: undefined});
+ const tree = await h.flush(), row = rows(tree)[0];
+ const matchup = nodes(row).find(n => n.props.className === 'mv-cell-matchup');
+ assert.equal(nodes(matchup).filter(n => n.type === 'champion-icon').length, 2);
+ assert.match(text(matchup), /Ahri vs ZedMid/);
+ assert.match(row.props['aria-label'], /Ahri vs Zed, Mid\./);
 });

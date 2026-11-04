@@ -1,9 +1,6 @@
 .mv-view { display: flex; flex-direction: column; flex: 1; min-height: 0; min-width: 0; container: matchup-vods / inline-size; }
 .mv-library, .mv-player-view { display: flex; flex-direction: column; flex: 1; min-height: 0; min-width: 0; gap: 16px; }
 .mv-eyebrow { display: block; color: var(--ui-text-3); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-.mv-list-toolbar { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 12px 16px; padding: 4px 0 0; }
-.mv-list-toolbar h2 { margin: 6px 0; font-size: 24px; font-weight: 600; letter-spacing: -.03em; color: var(--ui-text-1); }
-.mv-list-toolbar p { margin: 0; font-size: 13px; color: var(--ui-text-3); }
 .mv-scope { display: flex; align-items: center; gap: 10px; }
 .mv-segment button { display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; white-space: nowrap; }
 .mv-segment small { color: var(--ui-text-3); font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
@@ -14,34 +11,103 @@
 .mv-empty { display: flex; flex-direction: column; align-items: start; gap: 10px; padding: 24px 0; color: var(--ui-text-2); font-size: 13px; }
 .mv-empty > p { margin: 0; }
 .mv-text-button { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--ui-brand); font: inherit; font-size: 13px; cursor: pointer; }
-/* One two-line row per VOD built around the player; the result is an edge plus a badge, so colour is never the only cue. */
-.mv-table { --mv-cols: 26px minmax(0, 1fr) 92px 44px 52px; display: flex; flex-direction: column; flex: 1; min-height: 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); overflow: hidden; }
-.mv-table.is-wide { --mv-cols: 26px minmax(0, 1.4fr) minmax(0, 1fr) 92px 44px 52px; }
-.mv-vod-list { flex: 1; min-height: 0; margin: 0; padding: 0; list-style: none; overflow-y: auto; scrollbar-width: thin; scrollbar-gutter: stable; overscroll-behavior: contain; }
+/* ---- VOD table: one dense row per VOD, thumbnail first, matchup leads ---- */
+.mv-table { --mv-thumb: 88px; --mv-cols: var(--mv-thumb) minmax(220px, 1.3fr) minmax(190px, 1.2fr) minmax(120px, .8fr) minmax(88px, .6fr) 150px; --mv-gap: 16px;
+  display: flex; flex-direction: column; flex: 1; min-height: 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); overflow: hidden; }
+.mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(220px, 1.4fr) minmax(120px, .8fr) minmax(88px, .6fr) 150px; }
+.mv-vod-head, .mv-vod-row { display: grid; grid-template-columns: var(--mv-cols); align-items: center; gap: var(--mv-gap); padding: 0 16px 0 10px; }
+.mv-vod-head { flex-shrink: 0; height: 30px; border-bottom: 1px solid var(--ui-line-2); color: var(--ui-text-3); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; scrollbar-gutter: stable; overflow: hidden; }
+.mv-vod-head > .is-end { text-align: right; }
+.mv-vod-list { flex: 1; min-height: 0; margin: 0; padding: 0; list-style: none; overflow-y: auto; scrollbar-width: thin; scrollbar-gutter: stable; }
 .mv-vod-list > li + li { border-top: 1px solid var(--ui-line-1); }
-.mv-vod-row { display: grid; grid-template-columns: var(--mv-cols); align-items: center; gap: 12px; width: 100%; min-height: 44px; padding: 5px 14px; line-height: 18px; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 13px; text-align: left; cursor: pointer; box-shadow: inset 3px 0 transparent; transition: background var(--ui-fast, .12s); }
+.mv-vod-row { width: 100%; min-height: 62px; padding-block: 6px; border: 0; background: none; color: var(--ui-text-2); font-size: 13px; line-height: 18px; text-align: left; cursor: pointer; box-shadow: inset 3px 0 transparent; transition: background var(--ui-fast); }
 .mv-vod-row[data-result="win"] { box-shadow: inset 3px 0 var(--ui-win); }
 .mv-vod-row[data-result="loss"] { box-shadow: inset 3px 0 var(--ui-loss); }
-.mv-vod-row:hover { background: var(--ui-surface-hover); color: var(--ui-text-1); }
-.mv-vod-row[data-recent] { background: var(--ui-brand-tint); }
-.mv-view .mv-vod-row:focus-visible { outline-offset: -2px; }
+.mv-vod-row:hover, .mv-vod-row.is-hover { background: var(--ui-surface-hover); }
+.mv-vod-row:active { background: var(--ui-press); }
+.mv-vod-row:focus-visible, .mv-vod-row.is-focus { outline: 2px solid var(--ui-brand); outline-offset: -2px; }
+.mv-vod-row[data-recent] { background: var(--ui-brand-tint); box-shadow: inset 3px 0 var(--ui-brand); }
 .mv-vod-row > span { min-width: 0; }
-.mv-cell-who, .mv-cell-enemy > span { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.mv-vod-row small { display: block; overflow: hidden; color: var(--ui-text-3); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Thumbnail: 16:9, length badge bottom right like every video site, play glyph on hover/focus. */
+.mv-thumb { position: relative; display: grid; place-items: center; width: var(--mv-thumb); aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--ui-radius-xs); background: linear-gradient(135deg, var(--ui-surface-3), var(--ui-surface-2)); box-shadow: inset 0 0 0 1px var(--ui-line-2); }
+.mv-thumb > img:not(.champion-icon) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mv-thumb > .champion-icon { width: 26px; height: 26px; border-radius: 6px; opacity: .7; }
+.mv-thumb-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(0 0 0 / .35); color: #fff; opacity: 0; transition: opacity var(--ui-fast); }
+.mv-thumb-play > svg { width: 26px; height: 26px; padding: 7px 6px 7px 8px; border-radius: 50%; background: rgb(0 0 0 / .6); }
+.mv-vod-row:is(:hover, :focus-visible, .is-hover, .is-focus) .mv-thumb-play { opacity: 1; }
+.mv-vod-row[data-recent] .mv-thumb { box-shadow: 0 0 0 2px var(--ui-brand); }
+.mv-cell-length { position: absolute; right: 3px; bottom: 3px; display: inline-flex; align-items: center; gap: 3px; padding: 0 4px; border-radius: 4px; background: rgb(0 0 0 / .78); color: #fff; font-size: 11px; font-weight: 600; line-height: 16px; font-variant-numeric: tabular-nums; }
+
+/* Matchup: own champion, "vs", opponent (or a dashed "any" slot), then names over lane. */
+.mv-cell-matchup { display: flex; align-items: center; gap: 10px; }
+.mv-pair { display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.mv-pair .champion-icon, .mv-any { display: block; width: 32px; height: 32px; border-radius: 7px; object-fit: cover; box-shadow: 0 0 0 1px var(--ui-line-3); }
+.mv-any { display: grid; place-items: center; box-shadow: none; border: 1px dashed var(--ui-line-3); color: var(--ui-text-3); font-size: 13px; font-weight: 600; }
+.mv-vs { color: var(--ui-text-3); font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.mv-lines { display: flex; flex-direction: column; min-width: 0; }
+.mv-lines > strong { overflow: hidden; color: var(--ui-text-1); font-size: 14px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.mv-lines > strong .mv-vs-word { color: var(--ui-text-3); font-weight: 500; }
+.mv-lines > strong .is-any { color: var(--ui-text-3); font-weight: 500; }
+
+/* Player: avatar (photo, initials or a muted glyph for anonymous replays), name, team, Streamer badge. */
+.mv-cell-who { display: flex; align-items: center; gap: 10px; }
+.mv-row-photo, .mv-row-initials { flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; object-position: center 12%; }
+.mv-row-initials { display: grid; place-items: center; color: var(--ui-brand); font-size: 11px; font-weight: 600; }
+.mv-row-initials.is-unnamed { color: var(--ui-text-3); }
 .mv-who-line { display: flex; align-items: center; gap: 7px; min-width: 0; }
 .mv-who-line strong { overflow: hidden; color: var(--ui-text-1); font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
-.mv-who-line strong.is-unnamed { color: var(--ui-text-2); font-weight: 500; }
-.mv-vod-row small { overflow: hidden; color: var(--ui-text-3); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.mv-who-line strong.is-unnamed { color: var(--ui-text-3); font-weight: 500; }
 .mv-team-tag { flex-shrink: 0; padding: 0 5px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); color: var(--ui-text-2); font-size: 11px; font-weight: 600; line-height: 16px; }
 .mv-stream-tag { flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px; padding: 0 5px; border: 1px solid color-mix(in srgb, var(--ui-brand) 55%, transparent); border-radius: var(--ui-radius-xs); background: var(--ui-brand-tint); color: var(--ui-brand); font-size: 11px; font-weight: 600; line-height: 16px; white-space: nowrap; }
-.mv-cam-dot { flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.mv-cell-enemy { display: flex; align-items: center; gap: 8px; }
-.mv-cell-enemy > span > span { overflow: hidden; color: var(--ui-text-2); text-overflow: ellipsis; white-space: nowrap; }
-.mv-cell-enemy :is(.champion-icon, .champion-icon-fallback) { display: block; flex-shrink: 0; width: 26px; height: 26px; border-radius: 6px; object-fit: cover; }
-.mv-cell-moments { display: flex; align-items: center; gap: 5px; color: var(--ui-text-3); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.mv-result-badge { display: inline-block; padding: 0 6px; border-radius: var(--ui-radius-xs); font-size: 11px; font-weight: 600; line-height: 18px; }
+.mv-cam-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* Rank: crest, tier over region. */
+.mv-cell-rank { display: flex; align-items: center; gap: 8px; }
+.mv-cell-rank > img, .mv-cell-rank > .rank-crest { flex: 0 0 22px; width: 22px; height: 22px; object-fit: contain; }
+.mv-cell-rank .mv-lines > span { overflow: hidden; color: var(--ui-text-2); text-overflow: ellipsis; white-space: nowrap; }
+
+/* Patch over upload age. */
+.mv-cell-patch > span { color: var(--ui-text-2); font-variant-numeric: tabular-nums; }
+.mv-cell-patch .is-estimated { color: var(--ui-text-3); text-decoration: underline dotted var(--ui-line-3); text-underline-offset: 3px; }
+
+/* Chips: moments and result, right-aligned so the row ends on a clean edge. */
+.mv-cell-chips { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+.mv-chip { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 8px; border: 1px solid var(--ui-line-2); border-radius: 999px; background: rgb(255 255 255 / .03); color: var(--ui-text-2); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mv-chip > svg { color: var(--ui-text-3); }
+.mv-result-badge { display: inline-grid; place-items: center; min-width: 40px; height: 22px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
 .mv-result-badge.is-win { background: color-mix(in srgb, var(--ui-win) 14%, transparent); color: var(--ui-win); }
 .mv-result-badge.is-loss { background: color-mix(in srgb, var(--ui-loss) 14%, transparent); color: var(--ui-loss); }
-.mv-cell-length { color: var(--ui-text-2); font-variant-numeric: tabular-nums; text-align: right; }
+
+/* ---- Breakpoints (container = .mv-view inline size) ---- */
+@container matchup-vods (max-width: 1100px) {
+  .mv-table { --mv-thumb: 80px; --mv-cols: var(--mv-thumb) minmax(190px, 1.3fr) minmax(160px, 1.2fr) 76px 76px 120px; }
+  .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(190px, 1.4fr) 76px 76px 120px; }
+  .mv-cell-rank .mv-rank-tier { display: none; }
+  .mv-hide-tight { display: none; }
+}
+@container matchup-vods (max-width: 760px) {
+  .mv-table { --mv-thumb: 72px; --mv-gap: 12px; --mv-cols: var(--mv-thumb) minmax(0, 1.25fr) minmax(0, 1fr) 40px 72px 86px; }
+  .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(0, 1fr) 40px 72px 86px; }
+  .mv-vod-head, .mv-vod-row { padding: 0 12px 0 8px; }
+  .mv-vod-row { min-height: 54px; padding-block: 6px; }
+  .mv-pair { gap: 0; }
+  .mv-pair .mv-vs { display: none; }
+  .mv-pair > :nth-child(3) { margin-left: -6px; box-shadow: 0 0 0 2px var(--ui-surface-1); }
+  .mv-pair .champion-icon, .mv-any { width: 26px; height: 26px; border-radius: 6px; }
+  .mv-cell-matchup { gap: 8px; }
+  .mv-lines > strong { font-size: 13px; }
+  .mv-cell-rank { flex-direction: column; gap: 1px; }
+  .mv-cell-rank > img, .mv-cell-rank > .rank-crest { flex-basis: 18px; width: 18px; height: 18px; }
+  .mv-cell-rank .mv-lines small { font-size: 12px; text-align: center; }
+  .mv-row-photo, .mv-row-initials { display: none; }
+}
+@container matchup-vods (max-width: 560px) {
+  .mv-table, .mv-table:not(.is-wide) { --mv-thumb: 64px; --mv-cols: var(--mv-thumb) minmax(0, 1fr) 64px 76px; }
+  .mv-table.is-wide .mv-cell-who, .mv-cell-rank, .mv-vod-head { display: none; }
+}
+
 /* Player: one header line, then the picture at exactly 16:9 and as large as the space allows, with the moment rail under it. */
 /* The popover is a fallback top layer for Tauri; closed playback remains in normal flow. */
 .mv-video-player { display: grid; grid-template: auto minmax(0, 1fr) / minmax(0, 1fr) auto; flex: 1; min-height: 0; position: relative; inset: auto; width: auto; height: auto; margin: 0; padding: 0; border: 0; overflow: visible; color: var(--ui-text-2); background: transparent; outline: none; }
@@ -55,7 +121,6 @@
 .mv-avatar { display: grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; overflow: hidden; border-radius: var(--ui-radius-sm); background: var(--ui-surface-3); color: var(--ui-brand); font-size: 11px; font-weight: 600; }
 .mv-avatar > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 /* Headshots are head and shoulders; the top of the frame keeps the face in a small circle. */
-.mv-row-photo { display: block; width: 26px; height: 26px; border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; object-position: center 12%; }
 .mv-player-name { overflow: hidden; color: var(--ui-text-1); font-size: 14px; font-weight: 600; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
 .mv-affiliation { display: inline-flex; flex-shrink: 0; align-items: center; gap: 5px; color: var(--ui-text-3); font-size: 11px; }
 .mv-facts { display: flex; align-items: center; gap: 12px; min-width: 0; color: var(--ui-text-3); font-size: 11px; line-height: 18px; white-space: nowrap; }
@@ -132,17 +197,29 @@
 .fa-frame:has(.mv-video-player.is-fullscreen) > .title-bar { display: none; }
 .mv-view:has(.mv-video-player.is-fullscreen) { container-type: normal; }
 /* Fullscreen: the picture centred in the free space, rail under it, key moments (collapsible) on the right. */
-.mv-video-player:is(:fullscreen, .is-fullscreen, :popover-open) { position: fixed; inset: 0; z-index: 1000; grid-template: minmax(0, 1fr) / minmax(0, 1fr) auto; width: auto; height: auto; max-width: none; max-height: none; margin: 0; padding: 0; box-sizing: border-box; overflow: hidden; background: var(--ui-surface-0, #111215); }
-.mv-video-player::backdrop { background: var(--ui-surface-0, #111215); }
-.mv-video-player.is-fullscreen > .mv-stage { grid-row: 1; place-items: center; }
-.mv-video-player.is-fullscreen > .mv-side { grid-row: 1; width: 300px; margin: 0; padding: 16px; box-sizing: border-box; border-left: 1px solid var(--ui-line-2); background: var(--ui-surface-1); }
+.mv-video-player:is(:fullscreen, .is-fullscreen, :popover-open) { position: fixed; inset: 0; z-index: 1000; display: block; width: auto; height: auto; max-width: none; max-height: none; margin: 0; padding: 0; overflow: hidden; background: #000; }
+.mv-video-player.is-fullscreen > .mv-stage { position: absolute; inset: 0; display: grid; place-items: center; container-type: normal; }
+/* Exactly 16:9 at the largest size the screen allows: 1920×1080 fills it, 16:10 letterboxes top and bottom. */
+.mv-video-player.is-fullscreen .mv-screen { width: min(100vw, 100vh * 16 / 9); }
+/* Our tools overlay the top edge, so YouTube's control bar at the bottom stays free. */
+.mv-video-player.is-fullscreen .mv-rail-row { position: absolute; inset: 0 0 auto 0; z-index: 3; height: 48px; padding: 0 12px; background: linear-gradient(180deg, rgb(0 0 0 / .72), rgb(0 0 0 / .38) 62%, transparent); transition: opacity var(--ui-base) var(--ui-ease); }
+.mv-video-player.is-fullscreen .mv-rail-line { background: rgb(255 255 255 / .22); }
+.mv-video-player.is-fullscreen .mv-tip { top: calc(100% + 2px); bottom: auto; }
+.mv-video-player.is-fullscreen .mv-show-moments { background: rgb(0 0 0 / .3); color: var(--ui-text-1); }
+.mv-video-player.is-fullscreen .mv-notice { position: absolute; top: 56px; left: 12px; right: 12px; z-index: 3; border-radius: var(--ui-radius-sm); background: var(--ui-popover); }
+.mv-video-player.is-fullscreen .mv-game-over { inset: 0 0 84px; }
+/* Key moments float over the right side and stop above YouTube's controls (≈62px at 1080p). */
+.mv-video-player.is-fullscreen > .mv-side { position: absolute; top: max(60px, calc((100vh - 100vw * 9 / 16) / 2 + 60px)); right: 12px; bottom: 84px; z-index: 4; width: 300px; margin: 0; padding: 16px; box-sizing: border-box; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-popover); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur); box-shadow: var(--ui-elev-3); }
 .is-fullscreen > .mv-side > .mv-side-close { top: 8px; right: 8px; }
+/* Idle: fade but keep the box, so the pointer at the top edge reaches our document and wakes the HUD; nothing inside is clickable while invisible. */
+.mv-video-player.is-idle .mv-rail-row { opacity: 0; }
+.mv-video-player.is-idle .mv-rail-row * { pointer-events: none; }
+.mv-video-player.is-idle > .mv-side { display: none; }
+@media (max-width: 800px) { .mv-video-player.is-fullscreen > .mv-side { width: auto; left: 12px; } }
 .mv-side-top { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-bottom: 14px; padding-right: 28px; color: var(--ui-text-3); font-size: 11px; }
 .mv-side-top > .mv-player { flex-basis: 100%; }
-/* Idle fullscreen: our chrome and cursor go; the rail stays below the picture because mouse moves over the video never reach us. */
+.mv-video-player::backdrop { background: #111215; }
 .mv-video-player.is-idle, .mv-video-player.is-idle * { cursor: none; }
-.mv-video-player.is-idle > .mv-side { display: none; }
-.mv-video-player.is-idle :is(.mv-rail-row > .mv-icon-button, .mv-bar-end) { visibility: hidden; }
 .mv-mini-actions { display: none; }
 .mv-mini-host { position: fixed; right: 24px; bottom: 24px; z-index: 50; width: min(360px, calc(100vw - 48px)); }
 .mv-mini-host:empty { display: none; }
@@ -165,26 +242,13 @@
   .mv-moments { overflow: visible; }
   .mv-facts { display: none; }
 }
-@media (max-width: 800px) { .mv-video-player.is-fullscreen > .mv-side { display: none; } }
-@media (prefers-reduced-motion: reduce) { .mv-player-view *, .mv-library * { transition: none !important; scroll-behavior: auto !important; } }
 
-/* Smaller windows: the moment count drops its word, then the matchup keeps both portraits. */
-@container matchup-vods (max-width: 860px) {
-  .mv-table { --mv-cols: 26px minmax(0, 1fr) 44px 44px 46px; }
-  .mv-table.is-wide { --mv-cols: 26px minmax(0, 1.3fr) minmax(0, 1fr) 44px 44px 46px; }
-  .mv-hide-tight { display: none; }
-  .mv-match-count { margin-left: 0; }
-}
-@container matchup-vods (max-width: 560px) {
-  .mv-table.is-wide { --mv-cols: 26px minmax(0, 1fr) 60px 44px 44px 46px; }
-  .mv-cell-enemy > span { display: none; }
-  .mv-vod-row { gap: 10px; padding-inline: 12px; }
-}
+@media (prefers-reduced-motion: reduce) { .mv-player-view *, .mv-library * { transition: none !important; scroll-behavior: auto !important; } }
 
 /* Paint the document canvas too during native-window resize/fullscreen transitions. */
 html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscreen) { margin: 0; overflow: hidden; background: #111215; }
 
-.mv-section { height: calc(100% - 70px); min-height: 320px; }
+.mv-section { height: 100%; min-height: 320px; }
 .mv-background-host { position: absolute; width: 0; height: 0; }
 .mv-matchup-scope, .mv-entry { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--ui-text-2); font-size: 13px; }
 .mv-entry { padding: 12px 16px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); }
@@ -194,8 +258,8 @@ html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscree
 
 .mv-more > div { height: 1px; }
 
-.mv-vod-list > li { content-visibility: auto; contain-intrinsic-size: auto 46px; }
-.mv-table.is-wide { --mv-cols: 26px minmax(0, 1fr) minmax(0, 220px) 92px 44px 52px; }
+.mv-vod-list > li { content-visibility: auto; contain-intrinsic-size: auto 63px; }
+
 .fa-frame .dashboard-main:has(> .mv-mini-host:not(:empty)) { padding-bottom: calc(min(360px, 100vw - 48px) * 9 / 16 + 76px); }
 .mv-screen { position: relative; }
 .mv-game-over { position: absolute; inset: 0 0 38px; display: flex; align-items: center; justify-content: center; gap: 16px; background: #111e; z-index: 2; }
@@ -210,3 +274,9 @@ html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscree
 .mv-header-matchup { display: flex; align-items: center; gap: 4px; white-space: nowrap; }
 .mv-header-matchup .champion-icon, .mv-header-matchup img { width: 20px; height: 20px; flex-shrink: 0; }
 .mv-filters { flex-wrap: wrap; }
+
+.mv-library > .ui-page-header { margin: 0; }
+.ui-page-title:has(.mv-head-count) { align-items: baseline; gap: 14px; }
+.mv-head-count { margin-left: 14px; font-size: 13px; font-weight: 400; letter-spacing: 0; color: var(--ui-text-3); }
+.mv-filter-sep { width: 1px; height: 24px; margin: 0 4px; background: var(--ui-line-3); }
+.mv-view .mv-vod-row:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: -2px; }

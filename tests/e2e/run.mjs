@@ -233,6 +233,7 @@ async function main() {
   cdp.on("Fetch.requestPaused", ({ requestId, request }) => {
     void (async () => {
       const url = new URL(request.url);
+      if (url.hostname === "i.ytimg.com") return cdp.send("Fetch.fulfillRequest", { requestId, responseCode: 200, responseHeaders: [{name: "Content-Type", value: "image/svg+xml"}], body: Buffer.from(placeholder).toString("base64") });
       if (url.origin === origin) return cdp.send("Fetch.continueRequest", { requestId });
       if (current === 'VOD player controls and persistent mini player' && url.origin === 'https://www.youtube-nocookie.com') {
         // An offline protocol peer tests our controls without depending on a live video.
@@ -700,9 +701,9 @@ async function main() {
     await page.text('.mv-match-count', '125 VODs');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===60", 'all-champion library starts with sixty rows');
     assert.equal(await page.evaluate("document.querySelector('.mv-vod-row').dataset.vodId"), 'all-vod-124@0', 'newest patch first across champions');
-    await page.text('.mv-vod-row:first-child .mv-cell-enemy', 'vs Yasuo');
-    await page.text('.mv-vod-row:first-child .mv-cell-enemy', 'Top');
-    assert.equal(await page.evaluate("document.querySelector('.mv-vod-row:first-child .mv-cell-enemy').querySelectorAll('.champion-icon, .champion-icon-fallback').length"), 2, 'both champions have portraits');
+    await page.text('.mv-vod-row:first-child .mv-cell-matchup', 'vs Yasuo');
+    await page.text('.mv-vod-row:first-child .mv-cell-matchup', 'Top');
+    assert.equal(await page.evaluate("document.querySelector('.mv-vod-row:first-child .mv-cell-matchup').querySelectorAll('.champion-icon, .champion-icon-fallback').length"), 2, 'both champions have portraits');
     assert.equal(await page.evaluate("!!document.querySelector('[aria-label=Perspective]')"), false);
     await page.evaluate("document.querySelector('.mv-vod-list').scrollTop=1e6");
     await page.wait("document.querySelectorAll('.mv-vod-row').length===120", 'second page across champions');
@@ -766,7 +767,7 @@ async function main() {
     await page.wait("document.querySelectorAll('.mv-vod-row').length===8", 'entry filters champion, opponent and lane');
     assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].map(r=>r.dataset.vodId)"), ['patch-new01@0','named-new01@0','named-tie01@0','named-old01@0','anonymous01@0','match-vod00@0','match-vod01@0','match-vod02@0']);
     await page.text('[title="Patch estimated from the upload date"]', '~26.21');
-    await page.text('.mv-vod-row[data-vod-id="anonymous01@0"] strong', 'KR Grandmaster');
+    await page.text('.mv-vod-row[data-vod-id="anonymous01@0"] strong', 'Ranked replay');
     await page.click('.mv-segment[aria-label="Players"] button:last-child');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===3", 'named players include people without teams');
     assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(r=>!r.querySelector('.mv-team-tag'))"));
@@ -824,17 +825,21 @@ async function main() {
     await page.text('.mv-entry', '2 VODs for Ahri vs Zed');
     await page.click('.mv-entry button', 'Watch');
     await page.text('nav button[aria-current="page"]', 'VODs');
-    await screenshot('vod-library-redesign');
+    await screenshot('vod-library-redesign', 1920, 1080);
     // Every Ahri VOD: the dev fixture holds 1,205 across 19 opponents and three lanes.
     await page.click('.mv-matchup-scope button');
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 60", 'a 1,205-VOD library renders its first step');
     await page.text('.mv-match-count', '1,207 VODs');
-    const row = name => `[...document.querySelectorAll('.mv-vod-row')].find(row => row.querySelector('strong').textContent === ${JSON.stringify(name)})`;
+    const row = name => `[...document.querySelectorAll('.mv-vod-row')].find(row => row.querySelector('.mv-who-line strong').textContent === ${JSON.stringify(name)})`;
     await page.wait(`!!${row('Fixture Pro 1')}?.querySelector('img.mv-row-photo')`, 'a pro with a real headshot shows it');
-    assert.ok(await page.evaluate(`!${row('Fixture Pro 2')}.querySelector('img.mv-row-photo') && !!${row('Fixture Pro 2')}.querySelector('.rank-crest, [class*="crest"]')`), 'a silhouette placeholder falls back to the rank crest');
-    await screenshot('vod-library-photos');
+    assert.ok(await page.evaluate(`!${row('Fixture Pro 2')}.querySelector('img.mv-row-photo') && !!${row('Fixture Pro 2')}.querySelector('.mv-row-initials')`), 'a silhouette placeholder falls back to the rank crest');
+    await screenshot('vod-library-photos', 1920, 1080);
+    assert.ok(await page.evaluate("(() => { const row = document.querySelector('.mv-vod-row'), cells = [...row.children].map(c => c.getBoundingClientRect()); return Math.max(...cells.slice(1).map((c,i) => c.left - cells[i].right)) < row.getBoundingClientRect().width * .4; })()"), 'no dead column gap');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-thumb')].every(t => Math.abs(t.getBoundingClientRect().width / t.getBoundingClientRect().height - 16/9) < .02)"), 'thumbnail tiles keep 16:9');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].filter(r => r.dataset.vodId.startsWith('fixture-')).every(r => !r.querySelector('.mv-thumb > img:not(.champion-icon)'))"), 'fixture thumbnails use portraits');
+
     assert.ok(await page.evaluate("![...document.querySelectorAll('.mv-filters .fa-picker')].some(b => /Sort|patch first|Shortest|Longest/.test(b.getAttribute('aria-label')))"), 'no sort picker');
-    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.getBoundingClientRect().height <= 48)"), 'one dense row per VOD');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.getBoundingClientRect().height <= 64)"), 'one dense row per VOD');
     await page.evaluate("document.querySelector('.mv-vod-list').scrollTop = 1e6");
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 120", 'scrolling renders the next step');
     await page.click('button[aria-label^="Opponent:"]');
@@ -849,7 +854,7 @@ async function main() {
     await screenshot('vod-library-filtered');
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1000, height: 700, deviceScaleFactor: 1, mobile: false });
     await page.settle();
-    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.querySelector('.mv-who-line strong').checkVisibility() && row.querySelector('.mv-cell-length').checkVisibility() && row.scrollWidth <= row.clientWidth && row.getBoundingClientRect().height <= 48)"), 'small windows keep player, length and one dense row without overflow');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.querySelector('.mv-who-line strong').checkVisibility() && row.querySelector('.mv-cell-length').checkVisibility() && row.scrollWidth <= row.clientWidth && row.getBoundingClientRect().height <= 64)"), 'small windows keep player, length and one dense row without overflow');
     await audit();
     await screenshot('vod-library-filtered-small', 1000, 700);
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
@@ -868,7 +873,7 @@ async function main() {
     // What YouTube sizes quality from: the iframe box and the viewport its document reports.
     const frameSize = "(() => { const f = document.querySelector('.mv-embed iframe'), r = f.getBoundingClientRect(); return { box: `${Math.round(r.width)}x${Math.round(r.height)}`, transform: getComputedStyle(f).transform, peer: window.__peer && `${window.__peer.width}x${window.__peer.height}@${window.__peer.dpr}x` }; })()";
     // Exactly 16:9, rail flush under the picture at its width, everything inside the window without nested scrolling.
-    const layout = "(() => { const f = document.querySelector('.mv-embed iframe').getBoundingClientRect(), view = document.querySelector('.mv-player-view').getBoundingClientRect(), rail = document.querySelector('.mv-rail-row')?.getBoundingClientRect(); return { ratio: f.width / f.height, chromeAbove: Math.round(f.top - view.top), chromeBelow: Math.round(view.bottom - f.bottom), railFlush: !rail || (Math.abs(rail.top - f.bottom) <= 1 && Math.abs(rail.left - f.left) <= 1 && Math.abs(rail.width - f.width) <= 1), inside: view.bottom <= innerHeight + 1 && document.querySelector('.mv-player-view').scrollHeight <= document.querySelector('.mv-player-view').clientHeight + 1 }; })()";
+    const layout = "(() => { const f = document.querySelector('.mv-embed iframe').getBoundingClientRect(), view = document.querySelector('.mv-player-view').getBoundingClientRect(), rail = document.querySelector('.mv-rail-row')?.getBoundingClientRect(); return { ratio: f.width / f.height, chromeAbove: Math.round(f.top - view.top), chromeBelow: Math.round(view.bottom - f.bottom), railFlush: !rail || (Math.abs(rail.top - (document.querySelector('.mv-video-player.is-fullscreen') ? f.top : f.bottom)) <= 1 && Math.abs(rail.left - f.left) <= 1 && Math.abs(rail.width - f.width) <= 1), inside: view.bottom <= innerHeight + 1 && document.querySelector('.mv-player-view').scrollHeight <= document.querySelector('.mv-player-view').clientHeight + 1 }; })()";
     const fitted = (state, label) => { assert.ok(Math.abs(state.ratio - 16 / 9) < 0.01, `${label}: picture is 16:9, got ${state.ratio}`); assert.ok(state.railFlush, `${label}: rail sits under the picture at its width`); };
     let windowedFrame, windowedLayout;
     for (const [width, height] of [[1920, 1080], [1655, 997], [1280, 820]]) {
@@ -905,7 +910,7 @@ async function main() {
     await page.visible('.mv-video-player.is-fullscreen');
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
     await page.settle();
-    assert.ok(await page.evaluate("(() => { const r = document.querySelector('.mv-video-player').getBoundingClientRect(), v = document.querySelector('.mv-embed').getBoundingClientRect(), side = document.querySelector('.mv-side').getBoundingClientRect(); return r.top === 0 && r.left === 0 && r.bottom === innerHeight && r.right === innerWidth && side.left >= v.right && !document.querySelector('.mv-watch-header') && document.querySelector('.mv-side-top').textContent.includes('Esc to return'); })()"), 'fullscreen fills every viewport edge, key moments beside the picture, no repeated header');
+    assert.ok(await page.evaluate("(() => { const r = document.querySelector('.mv-video-player').getBoundingClientRect(), v = document.querySelector('.mv-embed').getBoundingClientRect(), side = document.querySelector('.mv-side').getBoundingClientRect(); return r.top === 0 && r.left === 0 && r.bottom === innerHeight && r.right === innerWidth && Math.round(v.width) === innerWidth && Math.round(v.height) === innerHeight && side.bottom <= innerHeight - 84 && side.right <= innerWidth && !document.querySelector('.mv-watch-header') && document.querySelector('.mv-bar-end').textContent.includes('Esc to return'); })()"), 'fullscreen fills every viewport edge, key moments beside the picture, no repeated header');
     fitted(await page.evaluate(layout), 'fullscreen');
     await page.wait("(() => { const r = document.querySelector('.mv-embed iframe').getBoundingClientRect(); return window.__peer && window.__peer.width === Math.round(r.width) && window.__peer.height === Math.round(r.height); })()", 'the video document resizes with fullscreen');
     const fullscreenFrame = await page.evaluate(frameSize);
@@ -915,6 +920,8 @@ async function main() {
     await page.settle();
     fitted(await page.evaluate(layout), 'fullscreen without sidebar');
     const collapsedFrame = await page.evaluate(frameSize);
+    for (const frame of [fullscreenFrame, collapsedFrame]) { assert.equal(frame.box, "1920x1080"); }
+    await page.cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...await page.evaluate("(() => { const r = document.querySelector('.mv-rail-row').getBoundingClientRect(); return {x: r.left + 8, y: r.top + 8}; })()") });
     await page.click('button[aria-label="Exit full screen"]');
     await page.wait("!document.fullscreenElement && !document.querySelector('.mv-video-player.is-fullscreen')", 'fullscreen has exited');
     assert.ok(await page.evaluate("!document.querySelector('.mv-side') && !!document.querySelector('.mv-rail-row button[aria-label=\"Show key moments\"]') && localStorage.getItem('swapper.vodMomentsHidden') === '1'"), 'a closed sidebar stays closed in the window and is saved');
@@ -928,17 +935,18 @@ async function main() {
     const picture = await page.evaluate("(() => { const r = document.querySelector('.mv-embed iframe').getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; })()");
     await page.cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...picture });
     await poll('the idle HUD while playing', () => page.evaluate("!!document.querySelector('.mv-video-player.is-idle')"), 6000);
-    await page.settle();
+    await page.wait("getComputedStyle(document.querySelector('.mv-rail-row')).opacity === '0'", 'idle fade finishes');
     assert.ok(await page.evaluate(`(() => {
       const frame = document.querySelector('.mv-embed iframe').getBoundingClientRect(), rail = document.querySelector('.mv-rail').getBoundingClientRect();
-      return !document.querySelector('.mv-side')?.checkVisibility() && rail.top >= frame.bottom && rail.bottom <= innerHeight
-        && [...document.querySelectorAll('.mv-rail-row > button')].every(button => getComputedStyle(button).visibility === 'hidden')
+      return !document.querySelector('.mv-side')?.checkVisibility() && rail.top >= frame.top && rail.bottom <= frame.top + 48 && getComputedStyle(document.querySelector('.mv-rail-row')).opacity === '0'
+        && [...document.querySelectorAll('.mv-rail-row > button')].every(button => getComputedStyle(button).pointerEvents === 'none')
         && document.elementFromPoint(frame.left + frame.width / 2, frame.top + frame.height / 2) === document.querySelector('.mv-embed iframe')
         && getComputedStyle(document.querySelector('.mv-video-player')).cursor === 'none';
     })()`), 'idle fullscreen hides the sidebar, rail buttons and cursor; nothing covers the picture');
     fitted(await page.evaluate(layout), 'idle fullscreen');
     await page.wait("(() => { const r = document.querySelector('.mv-embed iframe').getBoundingClientRect(); return window.__peer && window.__peer.height === Math.round(r.height); })()", 'the video document grows into the freed space');
     const idleFrame = await page.evaluate(frameSize);
+    assert.equal(idleFrame.box, '1920x1080');
     assert.equal(idleFrame.transform, 'none', 'nothing scales the iframe');
     console.log(`  iframe at 1920x1080: windowed ${JSON.stringify(windowedFrame)} chrome above ${windowedLayout.chromeAbove}px below ${windowedLayout.chromeBelow}px | fullscreen ${JSON.stringify(fullscreenFrame)} | sidebar hidden ${JSON.stringify(collapsedFrame)} | idle ${JSON.stringify(idleFrame)}`);
     await screenshot('vod-fullscreen-idle', 1920, 1080);
@@ -946,6 +954,7 @@ async function main() {
     await page.cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...rail });
     await page.wait("!document.querySelector('.mv-video-player.is-idle') && document.querySelector('.mv-side').checkVisibility()", 'moving the mouse brings the HUD back');
     await screenshot('vod-fullscreen-wide', 1920, 1080);
+    await page.cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...await page.evaluate("(() => { const r = document.querySelector('.mv-rail-row').getBoundingClientRect(); return {x: r.left + 8, y: r.top + 8}; })()") });
     await page.click('button[aria-label="Exit full screen"]');
     await page.wait("!document.fullscreenElement && !document.querySelector('.mv-video-player.is-fullscreen')", 'native fullscreen has exited');
     await page.settle();
@@ -966,6 +975,7 @@ async function main() {
     await page.settle();
     assert.ok(await page.evaluate("(() => { const r = document.querySelector('.mv-video-player').getBoundingClientRect(); return r.top === 0 && r.left === 0 && r.bottom === innerHeight && r.right === innerWidth && !document.querySelector('.title-bar').checkVisibility() && document.querySelector('.mv-video-player').contains(document.elementFromPoint(10, 10)); })()"), 'CSS-only fullscreen covers the shell and every viewport edge');
     await screenshot('vod-fullscreen-css-fallback');
+    await page.cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...await page.evaluate("(() => { const r = document.querySelector('.mv-rail-row').getBoundingClientRect(); return {x: r.left + 8, y: r.top + 8}; })()") });
     await page.click('button[aria-label="Exit full screen"]');
     await page.visible('.title-bar');
     await page.evaluate("window.__vodRoot.requestFullscreen = window.__nativeFullscreen; window.__vodRoot.showPopover = window.__nativePopover");
@@ -1017,7 +1027,7 @@ async function main() {
     await page.click('button[aria-label="Full screen"]');
     await page.visible('.mv-video-player.is-fullscreen');
     await page.settle();
-    assert.ok(await page.evaluate("(() => { const f = document.querySelector('.mv-embed iframe').getBoundingClientRect(); const bar = document.querySelector('.mv-rail-row').getBoundingClientRect(); return f.top === 0 && Math.abs(f.height + 32 - innerHeight) <= 1 && Math.abs(f.width / f.height - 16 / 9) < 0.01 && bar.top >= f.bottom - 1 && !document.querySelector('.mv-side, .mv-rail') && !!document.querySelector('.mv-rail-row button[aria-label=\"Exit full screen\"]'); })()"), 'fullscreen without moments is the video plus a visible exit button under it');
+    assert.ok(await page.evaluate("(() => { const f = document.querySelector('.mv-embed iframe').getBoundingClientRect(); const bar = document.querySelector('.mv-rail-row').getBoundingClientRect(); return f.top === 0 && Math.abs(f.height - innerHeight) <= 1 && Math.abs(f.width / f.height - 16 / 9) < 0.01 && Math.abs(bar.top - f.top) <= 1 && !document.querySelector('.mv-side, .mv-rail') && !!document.querySelector('.mv-rail-row button[aria-label=\"Exit full screen\"]'); })()"), 'fullscreen without moments is the video plus a visible exit button under it');
     console.log(`  no-moment VOD at 1920x1080: windowed ${JSON.stringify(plainFrame)} | fullscreen ${JSON.stringify(await page.evaluate(frameSize))}`);
     await page.evaluate("document.querySelector('.mv-video-player').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}))");
     await page.wait("!document.fullscreenElement && !document.querySelector('.mv-video-player.is-fullscreen')", 'Escape leaves fullscreen');
