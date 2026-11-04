@@ -103,7 +103,7 @@ test("VODs start as a five-game list and Back restores focus to the opened row",
   nodes(tree).find(node => node.props.className === "mv-back").props.onClick();
   tree = h.render();
   assert.equal(nodes(tree).filter(node => node.props.className === "mv-vod-row").length, 5);
-  assert.equal(h.focus[h.focus.length - 1], ahriVsZedVods[2].videoId);
+  assert.equal(h.focus[h.focus.length - 1], logic.vodKey(ahriVsZedVods[2]));
 });
 
 test("Escape leaves the media view without triggering the parent matchup navigation", async () => {
@@ -116,7 +116,7 @@ test("Escape leaves the media view without triggering the parent matchup navigat
   player.props.onKeyDown({ key: "Escape", preventDefault() { prevented = true; }, stopPropagation() { stopped = true; } });
   assert.equal(prevented && stopped, true);
   assert.equal(nodes(h.render()).filter(node => node.props.className === "mv-vod-row").length, 5);
-  assert.equal(h.focus[h.focus.length - 1], ahriVsZedVods[0].videoId);
+  assert.equal(h.focus[h.focus.length - 1], logic.vodKey(ahriVsZedVods[0]));
 });
 
 test("fixture playback stays inert while moment tags navigate to their exact guide section", async () => {
@@ -393,7 +393,7 @@ test("the library pages a large matchup list and filters every Ahri VOD across o
   assert.equal(rows(tree).length, 60, "a long list renders its first step only");
   assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${every.length} VODs`);
   assert.ok(labelled(tree, "Opponent"));
-  const patches = rows(tree).map(row => every.find(vod => vod.videoId === row.props["data-vod-id"]).patch);
+  const patches = rows(tree).map(row => every.find(vod => logic.vodKey(vod) === row.props["data-vod-id"]).patch);
   assert.ok(patches.every((patch, i) => !i || logic.comparePatch(patches[i - 1], patch) >= 0), "newest patch first by default");
   nodes(tree).find(node => node.type === "near-end").props.onNear();
   tree = h.render();
@@ -413,7 +413,7 @@ test("the library pages a large matchup list and filters every Ahri VOD across o
   const filters = { ...logic.ANY_VOD, enemy: 157, named: true, tier: "grandmaster" };
   const expected = logic.filterVods(every, filters);
   assert.ok(expected.length > 1);
-  assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]), expected.slice(0, 60).map(vod => vod.videoId));
+  assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]), expected.slice(0, 60).map(vod => logic.vodKey(vod)));
   assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${expected.length} of ${every.length}`);
   assert.deepEqual(labelled(tree, "Players").props.options.map(option => option[2]),
     [false, true].map(named => every.filter(vod => logic.vodMatches(vod, { ...filters, named })).length), "each option counts what choosing it would show");
@@ -438,12 +438,12 @@ test("a VOD from another matchup keeps its moments but cannot open this matchup'
   nodes(tree).find(node => node.props.className === 'mv-matchup-scope').props.children[1].props.onClick();
   tree = h.render();
   const open = id => { rows(tree).find(row => row.props["data-vod-id"] === id).props.onClick(); return h.render(); };
-  let player = open(other.videoId);
+  let player = open(logic.vodKey(other));
   assert.ok(nodes(player).some(node => node.props.className === "mv-moment"));
   assert.equal(nodes(player).some(node => node.props.className === "mv-section-link"), false);
   nodes(player).find(node => node.props.className === "mv-back").props.onClick();
   tree = h.render();
-  player = open(same.videoId);
+  player = open(logic.vodKey(same));
   assert.ok(nodes(player).some(node => node.props.className === "mv-section-link"));
 });
 
@@ -563,7 +563,7 @@ test("opponent side is separate, labelled, restricted to the same lane and canno
   assert.equal(perspective.props.options[1][2], 1);
   perspective.props.onChange(true);
   tree = h.render();
-  assert.deepEqual(rows(tree).map(row => row.props['data-vod-id']), ['reverse-mid']);
+  assert.deepEqual(rows(tree).map(row => row.props['data-vod-id']), ['reverse-mid@0']);
   assert.equal(nodes(tree).find(node => node.props.className === 'mv-vod-list').props['aria-label'], 'From Zed’s side');
   rows(tree)[0].props.onClick(); tree = h.render();
   assert.equal(nodes(tree).some(node => node.props.className === 'mv-section-link'), false);
@@ -622,7 +622,7 @@ test("all champions is the neutral default with sorted paging and both champion 
   assert.equal(labelled(tree, 'Champion').props.value, '0');
   assert.equal(labelled(tree, 'Champion').props.options[0].label, 'All champions');
   assert.equal(rows(tree).length, 60);
-  assert.equal(rows(tree)[0].props['data-vod-id'], 'all-64');
+  assert.equal(rows(tree)[0].props['data-vod-id'], 'all-64@0');
   assert.match(text(rows(tree)[0]), /Ahri vs Zed.*Mid/);
   assert.deepEqual(nodes(rows(tree)[0]).filter(n => n.type === 'champion-icon').map(n => n.props.id), [103, 238]);
   assert.equal(labelled(tree, 'Perspective'), undefined);
@@ -667,4 +667,56 @@ test("returning to all champions preserves playback and the Watch guide context"
   nodes(tree).find(n => n.props.className === 'mv-back').props.onClick();
   tree = h.render();
   assert.equal(labelled(tree, 'Champion').props.value, '0');
+});
+
+test("two segments of one stream are two rows, streamer badge and filter work, and vs-any rows show vs any", async () => {
+  const segA = { ...realVod, format: "stream", cam: true, startSec: 100, endSec: 900, durationSec: 3600, moments: [{ atSec: 200, label: "Seg A moment" }] };
+  const segB = { ...realVod, format: "stream", startSec: 1000, endSec: 1700, durationSec: 3600, moments: [{ atSec: 1100, label: "Seg B moment" }] };
+  const anyVod = { ...realVod, videoId: "B_c-dE23456", enemy: undefined, format: "stream", moments: [] };
+  const fillers = Array.from({ length: 6 }, (_, i) => ({ ...realVod, videoId: `fillerSeg${i}1`, format: "stream", moments: [] }));
+  const pool = [segA, segB, anyVod, ...fillers];
+  const h = harness("./MatchupVods.tsx", "MatchupVods", pool, pool.map(v => ({ ...v, champion: 103 })));
+  h.render({ ...props, enemy: undefined, lane: undefined });
+  let tree = await h.flush();
+  // The matchup-scoped request still sets an enemy filter via props? No: enemy undefined, so all three show.
+  assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]).slice(0, 3), [logic.vodKey(segA), logic.vodKey(segB), logic.vodKey(anyVod)]);
+  assert.match(text(tree), /Streamer/);
+  assert.match(text(tree), /vs any/);
+  const streamer = labelled(tree, "Streamer");
+  assert.ok(streamer, "streamer filter renders when the pool has a stream VOD");
+  streamer.props.onChange(true);
+  tree = h.render();
+  assert.equal(rows(tree).length, 9, "every pooled VOD is a stream");
+  // Opening the second segment keys the player by its segment, not the bare video.
+  rows(tree).find(row => row.props["data-vod-id"] === logic.vodKey(segB)).props.onClick();
+  tree = h.render();
+  const player = nodes(tree).find(node => node.type === "youtube-player");
+  assert.equal(player.props.vod.startSec, 1000);
+  const identity = harness("./VodPlayer.tsx", "VodPlayer").render({ vod: segB });
+  assert.match(text(identity), /Streamer/);
+  assert.equal(nodes(identity).some(node => node.props.className === "mv-cam-dot"), false, "no cam indicator without cam");
+  const camIdentity = harness("./VodPlayer.tsx", "VodPlayer").render({ vod: segA });
+  assert.match(text(camIdentity), /Streamer/);
+  assert.ok(nodes(camIdentity).some(node => node.props.className === "mv-cam-dot"), "cam indicator shows in the player header");
+});
+
+test("segment playback clamps seeks, snaps back before the start and pauses at the end", () => {
+  const vod = { ...realVod, format: "stream", startSec: 100, endSec: 900, durationSec: 3600, moments: [{ atSec: 200, label: "In segment" }, { atSec: 800, label: "Late" }] };
+  const h = harness("./YoutubeVodPlayer.tsx", "YoutubeVodPlayer");
+  let tree = h.render({ vod, seek: null });
+  const iframe = nodes(tree).find(node => node.type === "iframe");
+  assert.match(iframe.props.src, /start=100/);
+  assert.match(iframe.props.src, /end=900/);
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 500, duration: 3600, playerState: 1 } }) });
+  tree = h.render();
+  assert.deepEqual([timeline(tree).props.duration, timeline(tree).props.start], [800, 100], "the rail windows to the segment");
+  timeline(tree).props.onJump(50);
+  assert.equal(h.messages.pop().data.func, "playVideo");
+  assert.deepEqual(h.messages.pop().data.args, [100, true], "a jump before the segment clamps to its start");
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 10, duration: 3600, playerState: 1 } }) });
+  h.render();
+  assert.deepEqual(h.messages.pop().data.args, [100, true], "scrubbing before the segment snaps back on the next tick");
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 950, duration: 3600, playerState: 1 } }) });
+  h.render();
+  assert.equal(h.messages.pop().data.func, "pauseVideo", "playing past the end pauses");
 });

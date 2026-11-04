@@ -25,3 +25,14 @@ test("embed URL always uses YouTube's own controls, keeps fullscreen ours and se
   assert.equal(url.origin + url.pathname, 'https://www.youtube-nocookie.com/embed/A_b-cD12345');
   assert.deepEqual(Object.fromEntries(url.searchParams), { enablejsapi: '1', controls: '1', fs: '0', rel: '0', playsinline: '1', autoplay: '1', origin: 'http://tauri.localhost' });
 });
+
+test('embed URL adds segment start and end only when a segment is set', () => {
+  const plain = new URL(embedUrl('A_b-cD12345', 'http://tauri.localhost'));
+  assert.equal(plain.searchParams.has('start'), false);
+  assert.equal(plain.searchParams.has('end'), false);
+  const segmented = new URL(embedUrl('A_b-cD12345', 'http://tauri.localhost', { start: 5025, end: 7510 }));
+  assert.equal(segmented.searchParams.get('start'), '5025');
+  assert.equal(segmented.searchParams.get('end'), '7510');
+  const fromVod = new URL(embedUrl('A_b-cD12345', 'http://tauri.localhost', { startSec: 100, endSec: 900 }));
+  assert.deepEqual([fromVod.searchParams.get('start'), fromVod.searchParams.get('end')], ['100', '900']);
+});

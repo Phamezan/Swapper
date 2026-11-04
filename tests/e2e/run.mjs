@@ -699,7 +699,7 @@ async function main() {
     await page.visible('button[aria-label="Opponent: Any opponent"]');
     await page.text('.mv-match-count', '125 VODs');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===60", 'all-champion library starts with sixty rows');
-    assert.equal(await page.evaluate("document.querySelector('.mv-vod-row').dataset.vodId"), 'all-vod-124', 'newest patch first across champions');
+    assert.equal(await page.evaluate("document.querySelector('.mv-vod-row').dataset.vodId"), 'all-vod-124@0', 'newest patch first across champions');
     await page.text('.mv-vod-row:first-child .mv-cell-enemy', 'Ahri vs Yasuo');
     await page.text('.mv-vod-row:first-child .mv-cell-enemy', 'Top');
     assert.equal(await page.evaluate("document.querySelector('.mv-vod-row:first-child .mv-cell-enemy').querySelectorAll('.champion-icon, .champion-icon-fallback').length"), 2, 'both champions have portraits');
@@ -760,9 +760,9 @@ async function main() {
     await page.text('nav button[aria-current="page"]', 'VODs');
     await page.text('.mv-matchup-scope', 'Ahri vs Zed · Mid');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===8", 'entry filters champion, opponent and lane');
-    assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].map(r=>r.dataset.vodId)"), ['patch-new01','named-new01','named-tie01','named-old01','anonymous01','match-vod00','match-vod01','match-vod02']);
+    assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].map(r=>r.dataset.vodId)"), ['patch-new01@0','named-new01@0','named-tie01@0','named-old01@0','anonymous01@0','match-vod00@0','match-vod01@0','match-vod02@0']);
     await page.text('[title="Patch estimated from the upload date"]', '~26.21');
-    await page.text('.mv-vod-row[data-vod-id="anonymous01"] strong', 'KR Grandmaster');
+    await page.text('.mv-vod-row[data-vod-id="anonymous01@0"] strong', 'KR Grandmaster');
     await page.click('.mv-segment[aria-label="Players"] button:last-child');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===3", 'named players include people without teams');
     assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(r=>!r.querySelector('.mv-team-tag'))"));
@@ -855,7 +855,7 @@ async function main() {
     await page.click('.fa-picker-option', await page.evaluate("[...document.querySelectorAll('.fa-picker-option')].map(b => b.textContent.trim()).find(t => t.startsWith('Patch 26.22'))"));
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 2", 'back to the matchup list');
     await page.evaluate("window.__peer = null; window.__commands = []; addEventListener('message', e => { try { const d = JSON.parse(e.data); if (d.event === 'testViewport') window.__peer = d; if (d.event === 'testCommand') window.__commands.push(`${d.func}:${(d.args ?? []).join(',')}`); } catch {} })");
-    await page.click('.mv-vod-row[data-vod-id="A_b-cD12345"]');
+    await page.click('.mv-vod-row[data-vod-id="A_b-cD12345@0"]');
     await page.visible('.mv-embed iframe');
     assert.ok(await page.evaluate("new URL(document.querySelector('.mv-embed iframe').src).searchParams.get('controls') === '1' && !document.querySelector('.mv-quality-button, .mv-track, .mv-speed-button, .mv-time, .mv-control-row')"), "YouTube's own controls, with no second transport of ours");
     assert.ok(await page.evaluate("(() => { const h = document.querySelector('.mv-watch-header').getBoundingClientRect(); return h.height <= 44 && h.bottom <= document.querySelector('.mv-embed').getBoundingClientRect().top; })()"), 'one header line above the picture');
@@ -998,7 +998,7 @@ async function main() {
     await page.visible('.mv-vod-row');
     // Most VODs have no key moments: then the picture takes the whole width, with only the fullscreen bar below it.
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
-    await page.click('.mv-vod-row[data-vod-id="B_b-cD12345"]');
+    await page.click('.mv-vod-row[data-vod-id="B_b-cD12345@0"]');
     await page.visible('.mv-embed iframe');
     await page.settle();
     const plain = await page.evaluate("(() => { const f = document.querySelector('.mv-embed iframe').getBoundingClientRect(), stage = document.querySelector('.mv-stage').getBoundingClientRect(); return { none: !document.querySelector('.mv-side, .mv-rail, .mv-chapters') && document.querySelectorAll('.mv-rail-row button').length === 1, filled: Math.abs(f.width - stage.width) <= 1 || Math.abs(f.height + 32 - stage.height) <= 1, facts: document.querySelector('.mv-facts').textContent }; })()");

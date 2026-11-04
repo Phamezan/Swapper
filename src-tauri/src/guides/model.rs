@@ -242,6 +242,10 @@ pub(crate) struct MatchupVod {
     duration_sec: u32,
     /// Upload day as YYYY-MM-DD, when the harvester knows it.
     #[serde(default, skip_serializing_if = "Option::is_none")] uploaded: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] format: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] cam: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] start_sec: Option<u32>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] end_sec: Option<u32>,
     #[serde(default)] moments: Vec<VodMoment>,
 }
 
@@ -264,7 +268,7 @@ fn known_kind<'de, D: serde::Deserializer<'de>>(deserializer: D) -> Result<Optio
 }
 
 #[derive(Deserialize)]
-struct VodMatchup { enemy: i64, lane: Lane, videos: Vec<serde_json::Value> }
+struct VodMatchup { #[serde(default)] enemy: Option<i64>, lane: Lane, videos: Vec<serde_json::Value> }
 
 fn vod_text(text: &str) -> bool {
     static MARKUP: OnceLock<regex::Regex> = OnceLock::new();
@@ -290,6 +294,9 @@ impl MatchupVod {
             && self.patch.split('.').all(|part| !part.is_empty() && part.bytes().all(|b| b.is_ascii_digit()))
             && self.result.as_deref().is_none_or(|r| matches!(r, "W" | "L")) && self.duration_sec > 0
             && self.uploaded.as_deref().is_none_or(upload_day)
+            && self.format.as_deref().is_none_or(|f| f == "stream")
+            && self.cam.is_none_or(|c| c)
+            && match (self.start_sec, self.end_sec) { (None, None) => true, (Some(start), Some(end)) => start < end && end <= self.duration_sec, _ => false }
             && self.moments.iter().all(|m| m.at_sec < self.duration_sec && vod_text(&m.label))
     }
 }
@@ -300,26 +307,28 @@ fn vod_matchups(bytes: &[u8], champion: i64) -> Vec<VodMatchup> {
     let Ok(file) = serde_json::from_slice::<ChampionFile>(bytes) else { return vec![] };
     if !file.valid(champion) { return vec![]; }
     let mut matchups: Vec<VodMatchup> = file.vods.into_iter().filter_map(|v| serde_json::from_value::<VodMatchup>(v).ok())
-        .filter(|v| v.enemy > 0 && v.enemy <= i32::MAX as i64).collect();
+        .filter(|v| v.enemy.is_none_or(|e| e > 0 && e <= i32::MAX as i64)).collect();
     let keys: Vec<_> = matchups.iter().map(|m| (m.enemy, m.lane.clone())).collect();
     matchups.retain(|m| keys.iter().filter(|k| k.0 == m.enemy && k.1 == m.lane).count() == 1);
     matchups
 }
 
+fn vod_key(vod: &MatchupVod) -> (String, u32) { (vod.video_id.clone(), vod.start_sec.unwrap_or(0)) }
+
 fn valid_videos(matchup: VodMatchup) -> Vec<MatchupVod> {
     let mut videos: Vec<MatchupVod> = matchup.videos.into_iter().filter_map(|v| serde_json::from_value::<MatchupVod>(v).ok()).filter(MatchupVod::valid).collect();
-    let ids: Vec<_> = videos.iter().map(|v| v.video_id.clone()).collect();
-    videos.retain(|v| ids.iter().filter(|id| **id == v.video_id).count() == 1);
+    let ids: Vec<_> = videos.iter().map(vod_key).collect();
+    videos.retain(|v| ids.iter().filter(|id| **id == vod_key(v)).count() == 1);
     videos
 }
 
 pub(super) fn parse_vods(bytes: &[u8], champion: i64, enemy: i64, position: Lane) -> Vec<MatchupVod> {
-    vod_matchups(bytes, champion).into_iter().find(|m| m.enemy == enemy && m.lane == position).map(valid_videos).unwrap_or_default()
+    vod_matchups(bytes, champion).into_iter().find(|m| m.enemy == Some(enemy) && m.lane == position).map(valid_videos).unwrap_or_default()
 }
 
 #[derive(Clone, Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
-pub(crate) struct ChampionVod { pub enemy: i64, pub lane: Lane, #[serde(flatten)] pub vod: MatchupVod }
+pub(crate) struct ChampionVod { #[serde(skip_serializing_if = "Option::is_none")] pub enemy: Option<i64>, pub lane: Lane, #[serde(flatten)] pub vod: MatchupVod }
 
 /// Every VOD of a champion across enemies and lanes, validated exactly like `parse_vods`.
 pub(super) fn parse_champion_vods(bytes: &[u8], champion: i64) -> Vec<ChampionVod> {
@@ -330,8 +339,8 @@ pub(super) fn parse_champion_vods(bytes: &[u8], champion: i64) -> Vec<ChampionVo
         for vod in valid_videos(matchup) { keys.push((enemy, lane.clone())); videos.push(vod); }
     }
     // One game has one opponent: a video filed under two matchups is ambiguous, like a duplicate within one.
-    let ids: Vec<_> = videos.iter().map(|v| v.video_id.clone()).collect();
-    videos.into_iter().zip(keys).filter(|(v, _)| ids.iter().filter(|id| **id == v.video_id).count() == 1)
+    let ids: Vec<_> = videos.iter().map(vod_key).collect();
+    videos.into_iter().zip(keys).filter(|(v, _)| ids.iter().filter(|id| **id == vod_key(v)).count() == 1)
         .map(|(vod, (enemy, lane))| ChampionVod { enemy, lane, vod }).collect()
 }
 

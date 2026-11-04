@@ -65,6 +65,10 @@ export type MatchupVod = {
   region?: "KR" | "NA" | "EUW" | "EUNE";
   result?: "W" | "L";
   durationSec: number;
+  format?: "stream";
+  cam?: true;
+  startSec?: number;
+  endSec?: number;
   /** Upload day, YYYY-MM-DD. */
   uploaded?: string;
   moments: { atSec: number; label: string; section?: GuideSectionId; kind?: MomentKind }[];

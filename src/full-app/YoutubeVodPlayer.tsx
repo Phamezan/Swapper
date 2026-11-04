@@ -3,7 +3,7 @@ import { Maximize, Minimize, PanelRightOpen, SkipBack, SkipForward, X } from 'lu
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { isTauri } from '@tauri-apps/api/core';
 import type { MatchupVod } from './matchupGuide';
-import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, idleTimer, playerKeyAction, vodUrl } from './matchupVodModel';
+import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, idleTimer, playerKeyAction, segmentOf, vodUrl } from './matchupVodModel';
 import { VodMomentArt } from './VodMomentArt';
 import { VodPlayer } from './VodPlayer';
 import { GuideSourceButton } from './GuideSourceButton';
@@ -31,8 +31,8 @@ function IconButton({ label, shortcut, children, ...props }: { label: string; sh
 }
 
 /** Key moments along the video's length: ticks to jump to, not a scrubber (YouTube's own bar scrubs). */
-function MomentRail({ moments, current, duration, disabled, onJump, champions }: {
-  moments: readonly Moment[]; current: number; duration: number; disabled: boolean; onJump: (sec: number) => void;
+function MomentRail({ moments, current, duration, start = 0, disabled, onJump, champions }: {
+  moments: readonly Moment[]; current: number; duration: number; start?: number; disabled: boolean; onJump: (sec: number) => void;
   champions: readonly ChampionOption[];
 }) {
   const lane = useRef<HTMLDivElement>(null);
@@ -44,7 +44,7 @@ function MomentRail({ moments, current, duration, disabled, onJump, champions }:
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
-  const percent = (sec: number) => `${Math.max(0, Math.min(100, sec / duration * 100))}%`;
+  const percent = (sec: number) => `${Math.max(0, Math.min(100, (sec - start) / duration * 100))}%`;
   const currentIndex = currentMomentIndex(moments, current);
   const previous = adjacentMoment(moments, current, -1), next = adjacentMoment(moments, current, 1);
   return <>
@@ -53,7 +53,7 @@ function MomentRail({ moments, current, duration, disabled, onJump, champions }:
       <span className="mv-rail-line"><span className="mv-rail-played" style={{ width: percent(current) }} /></span>
       {groupMarkers(moments, duration * TICK_SPACING_PX / width).map(group => {
         const members = group.indices.map(i => moments[i]);
-        const edge = group.atSec / duration < .2 ? ' is-start' : group.atSec / duration > .8 ? ' is-end' : '';
+        const edge = (group.atSec - start) / duration < .2 ? ' is-start' : (group.atSec - start) / duration > .8 ? ' is-end' : '';
         return <button key={group.indices[0]} type="button" disabled={disabled} data-kind={members[0].kind ?? 'none'}
           className={`mv-tick${group.atSec <= current ? ' is-past' : ''}${group.indices.includes(currentIndex) ? ' is-current' : ''}${edge}`} style={{ left: percent(group.atSec) }}
           aria-label={`Jump to ${members.map(moment => `${moment.label} at ${formatVodTime(moment.atSec)}`).join('; ')}`} onClick={() => onJump(group.atSec)}>
@@ -87,17 +87,20 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const [fullscreenError, setFullscreenError] = useState('');
   const [idle, setIdle] = useState(false);
   const [collapsed, setCollapsed] = useState(sidebarHidden);
-  const src = embedUrl(vod.videoId, location.origin);
+  const segment = segmentOf(vod);
+  const hasSegment = vod.startSec !== undefined || vod.endSec !== undefined;
+  const src = embedUrl(vod.videoId, location.origin, hasSegment ? segment : undefined);
   fullscreenNow.current = fullscreen;
   const playing = info.playerState === PLAYING;
   const duration = info.duration || vod.durationSec;
+  const segStart = segment.start, segEnd = vod.endSec ?? duration, segDuration = Math.max(segEnd - segStart, 0);
   const current = Math.min(info.currentTime ?? 0, duration);
   const momentIndex = currentMomentIndex(vod.moments, current);
   const send = (message: object) => frame.current?.contentWindow?.postMessage(JSON.stringify(message), YOUTUBE_ORIGIN);
   const command = (func: string, args: unknown[] = []) => send({ event: 'command', func, args });
   // Seek optimistically: YouTube reports progress a few times a second, so the rail would lag behind the click.
   const seekTo = (sec: number) => {
-    const to = Math.max(0, Math.min(sec, duration));
+    const to = Math.max(segStart, Math.min(sec, segEnd));
     command('seekTo', [to, true]);
     setInfo(previous => ({ ...previous, currentTime: to }));
   };
@@ -158,8 +161,15 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     const timer = window.setInterval(() => { if (!connected) send({ event: 'listening', id: 1 }); }, 500);
     const timeout = window.setTimeout(() => { if (!connected) setFailed(true); }, 20000);
     return () => { window.removeEventListener('message', receive); window.clearInterval(timer); window.clearTimeout(timeout); };
-  }, [vod.videoId, vod.fixture]);
+  }, [vod.videoId, vod.startSec, vod.endSec, vod.fixture]);
   useEffect(() => { if (ready && seek) jump(seek.moment.atSec); }, [ready, seek]);
+  useEffect(() => {
+    const time = info.currentTime;
+    if (time === undefined || !hasSegment) return;
+    if (vod.endSec !== undefined && time >= segEnd) command('pauseVideo');
+    else if (time < segStart - 1) seekTo(segStart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [info.currentTime, hasSegment, segStart, segEnd, vod.endSec]);
   useEffect(() => { onMomentChange?.(momentIndex); }, [momentIndex, onMomentChange]);
   useEffect(() => {
     if (!fullscreen) return;
@@ -227,7 +237,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
       {notice && <div className="mv-notice" role="status"><span>{notice}</span>
         {failed && url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}</div>}
       {showBar && <div className="mv-rail-row" role="group" aria-label="Video tools">
-        {hasRail ? <MomentRail moments={vod.moments} current={current} duration={duration} disabled={!ready} onJump={jump} champions={champions} /> : <span className="mv-rail-spacer" />}
+        {hasRail ? <MomentRail moments={vod.moments} current={current} duration={segDuration || duration} start={segStart} disabled={!ready} onJump={jump} champions={champions} /> : <span className="mv-rail-spacer" />}
         <span className="mv-bar-end">
           {hasMoments && collapsed && <IconButton label="Show key moments" className="mv-show-moments" onClick={toggleSidebar}><PanelRightOpen size={15} aria-hidden />Key moments</IconButton>}
           {fullscreenButton}

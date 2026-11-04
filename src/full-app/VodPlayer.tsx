@@ -17,5 +17,6 @@ export function VodPlayer({ vod }: { vod: MatchupVod }) {
       ? <img src={image} alt="" onError={() => setFailedImage(image)} /> : name ? initials : <RankCrest tier={vod.rankClaim.toLowerCase()} size={26} mode="desktop" />}</span>
     <strong className="mv-player-name" title={player}>{player}</strong>
     {vod.team && <span className="mv-affiliation"><TeamLogo key={vod.team} team={vod.team} size={16} mode="desktop" /><span>{vod.team}</span></span>}
+    {vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <span className="mv-cam-dot" role="img" aria-label="Facecam" title="Facecam" />}</span>}
   </span>;
 }

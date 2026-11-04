@@ -64,8 +64,8 @@ fn champion_vods_span_every_matchup_with_the_same_validation() {
     ]));
     let all = parse_champion_vods(&bytes, 103);
     let keys: Vec<_> = all.iter().map(|v| (v.enemy, v.lane.clone(), serde_json::to_value(v).unwrap()["videoId"].as_str().unwrap().to_string())).collect();
-    assert_eq!(keys, vec![(238, Lane::Mid, "zedMid00001".into()), (238, Lane::Mid, "zedMid00002".into()),
-        (157, Lane::Mid, "yasuoMid001".into()), (238, Lane::Top, "zedTop00001".into())]);
+    assert_eq!(keys, vec![(Some(238), Lane::Mid, "zedMid00001".into()), (Some(238), Lane::Mid, "zedMid00002".into()),
+        (Some(157), Lane::Mid, "yasuoMid001".into()), (Some(238), Lane::Top, "zedTop00001".into())]);
     let wire = serde_json::to_value(&all[2]).unwrap();
     assert_eq!((wire["enemy"].clone(), wire["lane"].clone(), wire["videoId"].clone(), wire["rankClaim"].clone()),
         (json!(157), json!("mid"), json!("yasuoMid001"), json!("Challenger")), "the matchup key sits beside the flattened video");
@@ -136,6 +136,41 @@ fn moment_kinds_pass_through_and_unknown_kinds_drop_only_the_kind() {
     assert_eq!(vods.len(), 1);
     assert_eq!(serde_json::to_value(&vods[0]).unwrap()["moments"], json!([{"atSec":184,"label":"Dragon","kind":"dragon"},
         {"atSec":200,"label":"Ward"}, {"atSec":220,"label":"Odd"}, {"atSec":240,"label":"Plain"}]));
+}
+
+#[test]
+fn streamer_segments_and_vs_any_vods_validate_and_dedupe_by_segment() {
+    let mut stream = vod();
+    stream["format"] = json!("stream"); stream["cam"] = json!(true);
+    stream["startSec"] = json!(100); stream["endSec"] = json!(900);
+    let bytes = with_vods(vec![stream.clone()]);
+    let vods = parse_vods(&bytes, 103, 238, Lane::Mid);
+    assert_eq!(vods.len(), 1);
+    let wire = serde_json::to_value(&vods[0]).unwrap();
+    assert_eq!((wire["format"].clone(), wire["cam"].clone(), wire["startSec"].clone(), wire["endSec"].clone()), (json!("stream"), json!(true), json!(100), json!(900)));
+    // Invalid format/cam/segment drops only that video.
+    for (field, value) in [("format", json!("replay")), ("format", json!("vod")), ("cam", json!(false)), ("startSec", json!(900)), ("endSec", json!(50)), ("endSec", json!(99999))] {
+        let mut bad = stream.clone(); bad[field] = value.clone();
+        assert_eq!(parse_vods(&with_vods(vec![bad, vod()]), 103, 238, Lane::Mid).len(), 1, "{field}={value}");
+    }
+    let mut only_start = stream.clone(); only_start.as_object_mut().unwrap().remove("endSec");
+    assert_eq!(parse_vods(&with_vods(vec![only_start, vod()]), 103, 238, Lane::Mid).len(), 1, "both-or-neither");
+    // Two segments of one stream both survive; the exact same segment drops both copies.
+    let mut second = stream.clone(); second["startSec"] = json!(1000); second["endSec"] = json!(1700);
+    assert_eq!(parse_vods(&with_vods(vec![stream.clone(), second.clone()]), 103, 238, Lane::Mid).len(), 2);
+    assert!(parse_vods(&with_vods(vec![stream.clone(), stream.clone()]), 103, 238, Lane::Mid).is_empty());
+    // Same segment under two matchups is still ambiguous across a champion.
+    let cross = champion_vods(json!([{"enemy":238,"lane":"mid","videos":[stream.clone()]},{"enemy":157,"lane":"mid","videos":[stream.clone()]}]));
+    assert!(parse_champion_vods(&cross, 103).is_empty());
+    let cross2 = champion_vods(json!([{"enemy":238,"lane":"mid","videos":[stream.clone()]},{"enemy":157,"lane":"mid","videos":[second]}]));
+    assert_eq!(parse_champion_vods(&cross2, 103).len(), 2, "different segments of one stream under different enemies both survive");
+    // Enemy-less group: champion/all views keep it (no enemy on the wire), matchup view excludes it.
+    let any_bytes = champion_vods(json!([{"lane":"mid","videos":[video("anyEnemy001")]}]));
+    let all = parse_champion_vods(&any_bytes, 103);
+    assert_eq!(all.len(), 1);
+    assert_eq!(all[0].enemy, None);
+    assert!(serde_json::to_value(&all[0]).unwrap().get("enemy").is_none());
+    assert!(parse_vods(&any_bytes, 103, 238, Lane::Mid).is_empty());
 }
 
 #[test]

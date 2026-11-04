@@ -17,7 +17,10 @@ export function playerMessage(event: Pick<MessageEvent, 'source' | 'origin' | 'd
 }
 
 /** YouTube's own controls (quality, captions, chapters); `fs=0` because fullscreen is ours, with the moment rail and sidebar. */
-export function embedUrl(videoId: string, origin: string): string {
+export function embedUrl(videoId: string, origin: string, segment?: { start?: number; end?: number; startSec?: number; endSec?: number }): string {
   const params = new URLSearchParams({ enablejsapi: '1', controls: '1', fs: '0', rel: '0', playsinline: '1', autoplay: '1', origin });
+  const start = segment?.start ?? segment?.startSec, end = segment?.end ?? segment?.endSec;
+  if (typeof start === 'number' && Number.isFinite(start) && start > 0) params.set('start', String(Math.floor(start)));
+  if (typeof end === 'number' && Number.isFinite(end) && end > 0) params.set('end', String(Math.floor(end)));
   return `${YOUTUBE_ORIGIN}/embed/${videoId}?${params}`;
 }

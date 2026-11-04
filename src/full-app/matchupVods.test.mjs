@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
-import { ANY_VOD, isPlaceholderPhoto, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, uploadAge, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
+import { ANY_VOD, isPlaceholderPhoto, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, segmentOf, uploadAge, vodKey, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
 
 test("VOD timestamps use minutes, pad seconds, and support hour-long games", () => {
   assert.deepEqual([0, 9, 61.9, 184, 3605, -1, NaN].map(formatVodTime), ["0:00", "0:09", "1:01", "3:04", "1:00:05", "0:00", "0:00"]);
@@ -254,4 +254,25 @@ test("all-VOD loader invokes the aggregate endpoint and only development adds ta
   assert.deepEqual(await loader(false, [], true).loadAll(), []);
   const preview = loader(true, [], true);
   assert.deepEqual(await preview.loadAll(), preview.fixture.map(vod => ({...vod,champion:103})));
+});
+
+test("vodKey and segmentOf default to the full video and vodUrl opens at the segment start", () => {
+  assert.equal(vodKey({ videoId: "A_b-cD12345" }), "A_b-cD12345@0");
+  assert.equal(vodKey({ videoId: "A_b-cD12345", startSec: 5025 }), "A_b-cD12345@5025");
+  assert.deepEqual(segmentOf({ durationSec: 1746 }), { start: 0, end: 1746 });
+  assert.deepEqual(segmentOf({ durationSec: 10800, startSec: 5025, endSec: 7510 }), { start: 5025, end: 7510 });
+  assert.equal(vodUrl({ videoId: "A_b-cD12345", startSec: 5025 }), "https://www.youtube.com/watch?v=A_b-cD12345&t=5025");
+  assert.equal(vodUrl({ videoId: "A_b-cD12345", startSec: 5025 }, 6000), "https://www.youtube.com/watch?v=A_b-cD12345&t=6000", "an explicit moment time wins");
+});
+
+test("the streamer filter keeps only stream VODs and an opponent filter excludes vs-any VODs", () => {
+  const list = [
+    { videoId: "s", rankClaim: "Master", patch: "26.21", durationSec: 3600, moments: [], format: "stream", cam: true, startSec: 100, endSec: 900 },
+    { videoId: "r", rankClaim: "Master", patch: "26.21", durationSec: 1500, moments: [], enemy: 238 },
+    { videoId: "a", rankClaim: "Master", patch: "26.21", durationSec: 1500, moments: [], format: "stream" },
+  ];
+  assert.deepEqual(filterVods(list, { ...ANY_VOD, streamer: true }).map(v => v.videoId), ["s", "a"]);
+  assert.deepEqual(filterVods(list, { ...ANY_VOD, enemy: 238 }).map(v => v.videoId), ["r"], "vs any has no enemy to match");
+  assert.equal(vodMatches(list[2], ANY_VOD), true);
+  assert.equal(segmentOf(list[0]).end - segmentOf(list[0]).start, 800);
 });

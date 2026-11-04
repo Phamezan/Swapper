@@ -39,7 +39,16 @@ export function formatVodTime(seconds: number): string {
   return minutes < 60 ? `${minutes}:${remainder}` : `${Math.floor(minutes / 60)}:${String(minutes % 60).padStart(2, "0")}:${remainder}`;
 }
 
-export function vodUrl(vod: Pick<MatchupVod, "videoId" | "fixture">, atSec = 0): string | null {
+export function vodKey(vod: Pick<MatchupVod, "videoId" | "startSec">): string {
+  return `${vod.videoId}@${vod.startSec ?? 0}`;
+}
+
+export function segmentOf(vod: Pick<MatchupVod, "startSec" | "endSec" | "durationSec">): { start: number; end: number } {
+  return { start: vod.startSec ?? 0, end: vod.endSec ?? vod.durationSec };
+}
+
+export function vodUrl(vod: Pick<MatchupVod, "videoId" | "fixture" | "startSec">, atSec?: number): string | null {
+  atSec ??= vod.startSec ?? 0;
   if (vod.fixture || vod.videoId.startsWith("fixture-") || !/^[\w-]{11}$/.test(vod.videoId) || !Number.isFinite(atSec) || atSec < 0) return null;
   return `https://www.youtube.com/watch?v=${vod.videoId}&t=${Math.floor(atSec)}`;
 }
@@ -154,11 +163,11 @@ export function comparePatch(a: string, b: string): number {
 }
 
 /** Opponent and lane restrict the champion library; null means any. */
-export type VodFilters = { named: boolean; tier: RankTier | null; patch: string | null; enemy: number | null; lane: string | null };
-export const ANY_VOD: VodFilters = { named: false, tier: null, patch: null, enemy: null, lane: null };
+export type VodFilters = { named: boolean; streamer: boolean; tier: RankTier | null; patch: string | null; enemy: number | null; lane: string | null };
+export const ANY_VOD: VodFilters = { named: false, streamer: false, tier: null, patch: null, enemy: null, lane: null };
 
 export function vodMatches(vod: MatchupVod, f: VodFilters): boolean {
-  return (!f.named || !!vodPlayerName(vod.player)) && (!f.tier || rankTier(vod.rankClaim) === f.tier)
+  return (!f.named || !!vodPlayerName(vod.player)) && (!f.streamer || vod.format === "stream") && (!f.tier || rankTier(vod.rankClaim) === f.tier)
     && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy) && (!f.lane || vod.lane === f.lane);
 }
 
