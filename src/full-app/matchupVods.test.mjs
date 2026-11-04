@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
-import { ANY_VOD, isPlaceholderPhoto, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, segmentOf, uploadAge, vodKey, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
+import { ANY_VOD, facetCounts, isPlaceholderPhoto, adjacentMoment, comparePatch, currentMomentIndex, filterVods, formatVodTime, groupMarkers, idleTimer, playerKeyAction, rankTier, segmentOf, uploadAge, vodKey, vodMatches, vodRegion, vodRow, vodUrl } from "./matchupVodModel.ts";
 
 test("VOD timestamps use minutes, pad seconds, and support hour-long games", () => {
   assert.deepEqual([0, 9, 61.9, 184, 3605, -1, NaN].map(formatVodTime), ["0:00", "0:09", "1:01", "3:04", "1:00:05", "0:00", "0:00"]);
@@ -54,8 +54,9 @@ test('cached VODs take precedence over development fixtures and invoke uses the 
   assert.equal(await h.load(103, 238, 'mid'), real);
   assert.deepEqual(h.calls, [{ command: 'get_matchup_vods', args: { championId: 103, enemyChampionId: 238, position: 'mid' } }]);
   assert.equal(h.imports(), 0);
-  assert.deepEqual(await loader(false, [], true).load(103, 238, 'mid'), []);
-  const fallback = loader(true, [], true);
+  assert.deepEqual(await loader(false, [], true).load(103, 238, 'mid'), null);
+  assert.equal(await loader(true, [], true).load(103, 238, "mid"), null);
+  const fallback = loader(true, []);
   assert.deepEqual(await fallback.load(103, 238, 'mid'), [fallback.zed]);
   assert.equal(await loader(true, real).loadChampion(103), real);
 });
@@ -251,8 +252,9 @@ test("all-VOD loader invokes the aggregate endpoint and only development adds ta
   assert.equal(await cached.loadAll(), real);
   assert.deepEqual(cached.calls, [{command:'get_all_vods',args:undefined}]);
   assert.equal(cached.imports(), 0);
-  assert.deepEqual(await loader(false, [], true).loadAll(), []);
-  const preview = loader(true, [], true);
+  assert.deepEqual(await loader(false, [], true).loadAll(), null);
+  assert.equal(await loader(true, [], true).loadAll(), null);
+  const preview = loader(true, []);
   assert.deepEqual(await preview.loadAll(), preview.fixture.map(vod => ({...vod,champion:103})));
 });
 
@@ -275,4 +277,17 @@ test("the streamer filter keeps only stream VODs and an opponent filter excludes
   assert.deepEqual(filterVods(list, { ...ANY_VOD, enemy: 238 }).map(v => v.videoId), ["r"], "vs any has no enemy to match");
   assert.equal(vodMatches(list[2], ANY_VOD), true);
   assert.equal(segmentOf(list[0]).end - segmentOf(list[0]).start, 800);
+});
+
+test('facet counts equal brute force for every selection including unknown regions', () => {
+  const pool = Array.from({length:40}, (_,i) => ({videoId:String(i),player:i%2?'Player':undefined,format:i%3?'replay':'stream',rankClaim:i%2?'Master':'Diamond',patch:i%3?'26.21':'26.22',enemy:i%2?238:157,lane:i%3?'mid':'top',region:i%4?'KR':undefined,title:'Game',moments:[]}));
+  for (const f of [ANY_VOD, {...ANY_VOD,named:true,tier:'master'}, {...ANY_VOD,region:'KR',enemy:238,streamer:true}]) {
+    const counts=facetCounts(pool,f);
+    assert.equal(counts.total,pool.filter(v=>vodMatches(v,f)).length);
+    for (const key of ['named','streamer','tier','patch','enemy','lane','region']) {
+      const values = key==='named'||key==='streamer' ? [false,true] : [null,...counts[key].keys()];
+      for(const value of values) assert.equal(counts[key].get(value===false?null:value)??0,pool.filter(v=>vodMatches(v,{...f,[key]:value})).length, key);
+    }
+  }
+  assert.equal(filterVods(pool,{...ANY_VOD,region:'NA'}).length,0);
 });

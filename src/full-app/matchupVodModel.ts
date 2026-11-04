@@ -106,7 +106,7 @@ export function playerKeyAction(event: { key: string; ctrlKey?: boolean; metaKey
   return seekBy === undefined ? null : { seekBy };
 }
 
-export const RANK_TIERS = [["challenger", "Challenger"], ["grandmaster", "Grandmaster"], ["master", "Master"], ["other", "Other"]] as const;
+export const RANK_TIERS = [["challenger", "Challenger"], ["grandmaster", "Grandmaster"], ["master", "Master"], ["other", "Diamond & below"]] as const;
 export type RankTier = typeof RANK_TIERS[number][0];
 
 /** Free-text claims like "KR Grandmaster" or "MASTER"; grandmaster is matched before its substring master. */
@@ -163,12 +163,12 @@ export function comparePatch(a: string, b: string): number {
 }
 
 /** Opponent and lane restrict the champion library; null means any. */
-export type VodFilters = { named: boolean; streamer: boolean; tier: RankTier | null; patch: string | null; enemy: number | null; lane: string | null };
-export const ANY_VOD: VodFilters = { named: false, streamer: false, tier: null, patch: null, enemy: null, lane: null };
+export type VodFilters = { named: boolean; streamer: boolean; tier: RankTier | null; patch: string | null; enemy: number | null; lane: string | null; region: string | null };
+export const ANY_VOD: VodFilters = { named: false, streamer: false, tier: null, patch: null, enemy: null, lane: null, region: null };
 
 export function vodMatches(vod: MatchupVod, f: VodFilters): boolean {
   return (!f.named || !!vodPlayerName(vod.player)) && (!f.streamer || vod.format === "stream") && (!f.tier || rankTier(vod.rankClaim) === f.tier)
-    && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy) && (!f.lane || vod.lane === f.lane);
+    && (!f.region || vodRegion(vod) === f.region) && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy) && (!f.lane || vod.lane === f.lane);
 }
 
 /** Newest patch, then named players, then latest upload; remaining ties keep content order. */
@@ -205,4 +205,28 @@ export function idleTimer(delayMs: number, onIdle: (idle: boolean) => void, cloc
   };
   activity();
   return { activity, stop: () => clock.clearTimeout(timer as never) };
+}
+
+export function crestTier(claim: string): string | null {
+  return /\b(challenger|grandmaster|master|diamond|emerald|platinum|gold|silver|bronze|iron)\b/i.exec(claim)?.[1].toLowerCase() ?? null;
+}
+
+/** Each facet ignores its own selection, preserving the pickers' existing counts. */
+export function facetCounts(pool: readonly MatchupVod[], filters: VodFilters) {
+  const keys = ['named', 'streamer', 'tier', 'patch', 'enemy', 'lane', 'region'] as const;
+  const counts = Object.fromEntries(keys.map(key => [key, new Map<unknown, number>()])) as Record<typeof keys[number], Map<unknown, number>>;
+  let total = 0;
+  for (const vod of pool) {
+    const values = { named: !!vodPlayerName(vod.player), streamer: vod.format === 'stream', tier: rankTier(vod.rankClaim), patch: vod.patch, enemy: vod.enemy, lane: vod.lane, region: vodRegion(vod) };
+    const passes = keys.map(key => !filters[key] || values[key] === filters[key]);
+    const failures = passes.filter(pass => !pass).length;
+    if (!failures) total++;
+    keys.forEach((key, i) => {
+      if (failures - Number(!passes[i])) return;
+      const map = counts[key], value = values[key];
+      map.set(value, (map.get(value) ?? 0) + 1);
+      if (value !== null) map.set(null, (map.get(null) ?? 0) + 1);
+    });
+  }
+  return { ...counts, total };
 }
