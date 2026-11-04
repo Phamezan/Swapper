@@ -20,6 +20,7 @@ export type Player = {
 };
 export type TeamSummary = { averageTier: string | null; averageDivision: string; ranked: number; physical: number | null };
 export type LiveGameView = {
+  supported?: boolean;
   gameId: number; queueId: number; queue: string; mapId: number; players: Player[];
   blue: TeamSummary; red: TeamSummary; gameTime: number | null;
 };
@@ -61,26 +62,27 @@ export function roleOf(position: string): string {
 // Shell routing. Pages are plain strings so this stays testable from Node.
 // ---------------------------------------------------------------------------
 
-export const LIVE_PAGE = "Live Game";
-const CHAMP_SELECT_PAGE = "Champion select";
+export const DRAFT_PAGE = "Champion select";
+export const UNSUPPORTED_GAME = "Swapper's draft and live game work for Summoner's Rift games.";
 const HOME = "Dashboard";
+
+export const draftRoute = (page: string): string => page === "Live Game" ? DRAFT_PAGE : page;
+
+export function draftStage(phase: string = "", inGame = false): "draft" | "live" | "idle" {
+  if (inGame || ["GameStart", "InProgress", "Reconnect"].includes(phase)) return "live";
+  return phase === "ChampSelect" ? "draft" : "idle";
+}
 
 /** Where the shell goes when a game starts, and what to restore afterwards.
  *  `champSelectReturn` is the page champion select interrupted (if any): a
  *  game straight after champion select returns there, never to champion select. */
 export function enterLive(current: string, liveReturn: string | null, champSelectReturn: string | null): { page: string; returnTo: string } {
-  if (current === LIVE_PAGE) return { page: LIVE_PAGE, returnTo: liveReturn ?? HOME };
-  const back = current === CHAMP_SELECT_PAGE ? champSelectReturn ?? HOME : current;
-  return { page: LIVE_PAGE, returnTo: back === LIVE_PAGE ? HOME : back };
+  const back = draftRoute(current) === DRAFT_PAGE ? champSelectReturn ?? liveReturn ?? HOME : current;
+  return { page: DRAFT_PAGE, returnTo: draftRoute(back) === DRAFT_PAGE ? HOME : back };
 }
 
 /** The page to show when the game ends: back to where the user was, but only
- *  if they are still on Live Game; otherwise they navigated on purpose. */
+ *  if they are still on Draft; otherwise they navigated on purpose. */
 export function leaveLive(current: string, returnTo: string | null): string | null {
-  return current === LIVE_PAGE ? returnTo ?? HOME : null;
-}
-
-/** The Live Game sidebar and search entry exists only while a game runs. */
-export function showInNav(page: string, inGame: boolean): boolean {
-  return inGame || page !== LIVE_PAGE;
+  return draftRoute(current) === DRAFT_PAGE ? returnTo ?? HOME : null;
 }

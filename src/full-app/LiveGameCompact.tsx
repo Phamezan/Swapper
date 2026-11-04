@@ -3,6 +3,7 @@ import { RankCrest } from "../runes/RankCrest";
 import { useInGame, useLiveGame } from "./LiveGameData";
 import { crestSlug, rankLabel, splitRiotId, type Rank } from "./LiveGameModel";
 import "./live-game-compact.css";
+import { UNSUPPORTED_GAME } from "./LiveGameModel";
 
 /** The flyout's Live Game card: both teams with champion and Solo/Duo rank.
  *  Renders nothing outside a game; no Live Client reads (the Fullsized App is
@@ -13,6 +14,7 @@ export function LiveGameCompact() {
 
 function Card() {
   const { view } = useLiveGame(false);
+  if (view?.supported === false) return <section className="lgc" aria-label="Live game"><p className="lgc-wait">{UNSUPPORTED_GAME}</p></section>;
   if (!view) return <section className="lgc" aria-label="Live game"><h2><i className="lgc-dot" />Live game</h2><p className="lgc-wait">Loading game…</p></section>;
   return <section className="lgc" aria-label="Live game">
     <h2><i className="lgc-dot" />Live game<small>{view.queue}</small></h2>

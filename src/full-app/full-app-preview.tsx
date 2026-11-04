@@ -31,7 +31,9 @@ const DUO_CHAMPIONS: Record<number, string> = { 115: "Ziggs", 30: "Karthus", 50:
 const key = (id: number) => CHAMPIONS[id]?.[1] ?? DUO_CHAMPIONS[id] ?? "Aatrox";
 const names = Object.fromEntries(Object.entries(CHAMPIONS).map(([id, [name]]) => [id, name]));
 const now = Date.now();
-const live = new URLSearchParams(location.search).has("live");
+let live = new URLSearchParams(location.search).has("live");
+let gamePhase = live ? "InProgress" : "None";
+let gameSupported = !new URLSearchParams(location.search).has("unsupported");
 // --- uishell preview block: shell states (?disconnected, ?stale, ?empty-accounts, ?switching) ---
 const shellState = new URLSearchParams(location.search);
 
@@ -136,14 +138,20 @@ const runePage = (primaryPageId: number, keystone: number, primaryRunes: number[
 // ---- end uibuilds mocks ----
 const searchCalls: { query: string; online: boolean; done: boolean }[] = [];
 const liveChecks: boolean[] = [];
-Object.assign(window, { searchCalls, liveChecks });
+Object.assign(window, { searchCalls, liveChecks, previewNavigate: (target: string) => emit("navigate", target), async previewGamePhase(phase: string, supported = true) {
+  gamePhase = phase;
+  gameSupported = supported;
+  live = ["GameStart", "InProgress", "Reconnect"].includes(phase);
+  await emit("live_game_state", live);
+  await emit("champ_select", { phase, championId: 0, championName: "", position: "", locked: false });
+} });
 mockIPC(async (cmd, args) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const a = (args ?? {}) as Record<string, any>;
   // ---- glass: exercise contextual draft art inside the real shell (?glass-draft) ----
-  if (shellState.has('glass-draft') && (cmd === 'get_runes' || cmd === 'full_app_draft')) {
+  if ((shellState.has('glass-draft') || gamePhase === 'ChampSelect') && (cmd === 'get_runes' || cmd === 'full_app_draft')) {
     const { fixtureView, fixtureDraft } = await import('./champ-select-fixtures');
-    return cmd === 'get_runes' ? fixtureView('locked') : fixtureDraft('locked');
+    return cmd === 'get_runes' ? fixtureView('locked') : { ...fixtureDraft('locked'), supported: gameSupported };
   }
   // ---- end glass draft fixture ----
   switch (cmd) {
@@ -380,7 +388,7 @@ mockIPC(async (cmd, args) => {
       // Empty E metadata exercises the fallback to Riot's name in the patch text.
       if (a.championId === 64) return [{ key: "R", name: "Dragon's Rage", icon: `${DD}/${VERSION}/img/spell/LeeSinR.png` }, { key: "E", name: "", icon: null }];
       return ["Q", "W", "E", "R"].map(k => ({ key: k, name: `Ability ${k}`, icon: `${DD}/${VERSION}/img/spell/Aatrox${k}.png` }));
-    case "get_runes": return { phase: "None", championId: 0, championName: "", position: "top", presets: [], trees: [], shards: [], applied: null, autoApply: false, importItems: true, canApply: false, locked: false, spells: { spell1Id: 4, spell2Id: 12, available: [], applyWithRunes: true }, enemies: [], enemySlots: 5 };
+    case "get_runes": return { phase: gamePhase, championId: 0, championName: "", position: "top", presets: [], trees: [], shards: [], applied: null, autoApply: false, importItems: true, canApply: false, locked: false, spells: { spell1Id: 4, spell2Id: 12, available: [], applyWithRunes: true }, enemies: [], enemySlots: 5 };
     case "get_pro_builds": return { championId: 266, position: "top", role: "top", page: 1, hasMore: false, unavailable: false, message: null, stale: false, updatedAt: null, matches: [1, 2, 3].map(i => ({ matchId: i, proName: `Pro player ${String.fromCharCode(64 + i)}`, team: `Team ${i}`, league: "LCK", region: "KR", role: "top", roleLabel: "Top", win: i % 2 === 1, playedAgo: `${i * 3}h ago`, patch: "16.21", ...runePage(8400, 8437, [8446, 8429, 8451], 8000, [9111, 9104]), kills: 4 + i, deaths: 2, assists: 6, spells: [4, 12], finalItems: [6610, 3053, 3071, 3047, 6333, 3026].map(named), completedItems: [6610, 3053, 3071, 6333].map(named), skillOrder: SKILLS.split(""), itemPath: [], otp: false })) };
     case "role_icon": return `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/svg/position-${a.role}.svg`;
     // --- clientctl preview block: restart client / Deceive restart (?restart=ask|defer|save|restart) ---
@@ -402,8 +410,9 @@ mockIPC(async (cmd, args) => {
     }
     // ---- end clientctl cases ----
     // ---- end uibuilds cases ----
+    case "champ_select_status": return { phase: gamePhase, championId: 0, championName: "", position: "", locked: false };
     case "live_game_active": return live;
-    case "live_game_view": case "live_game_live": return live ? liveView : null;
+    case "live_game_view": case "live_game_live": return live ? { ...liveView, supported: gameSupported } : null;
     default: throw new Error(`Not mocked: ${cmd}`);
   }
 }, { shouldMockEvents: true });

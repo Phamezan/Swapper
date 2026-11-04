@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Popover } from "radix-ui";
 import { listen } from "@tauri-apps/api/event";
-import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
+import { AccountsIcon, DashboardIcon, DraftIcon, MatchupsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
 import { useRiotClientIcon } from "../riotIcon";
 import type { ChampionOption } from "../runes/types";
@@ -12,7 +12,7 @@ import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboar
 import { TitleBar } from "./TitleBar";
 import { locationTrail } from './locationTrail';
 import { useInGame } from "./LiveGameData";
-import { LIVE_PAGE, enterLive, leaveLive, showInNav } from "./LiveGameModel";
+import { DRAFT_PAGE, draftRoute, draftStage, enterLive, leaveLive } from "./LiveGameModel";
 import FlyoutApp from "../App";
 import { OnboardingGate } from "../onboarding/Onboarding";
 import type { AppState, FullAppBridge, View } from "../App";
@@ -20,7 +20,7 @@ import "./dashboard.css";
 import "./full-app.css";
 import { AccountCards } from "./AccountCards";
 import { SettingsPage } from "./SettingsPage";
-import { ChampionSelect } from "./ChampionSelect";
+import { DraftPage } from "./DraftPage";
 import { PageHeader } from "./ui/PageHeader";
 import { pageLabel } from "./ui/pageNames";
 import { AccountPicker, Podium, SwitchOverlay, type PodiumIdentity } from "./ui/Podium";
@@ -32,18 +32,17 @@ import { useRestartClient } from "./restartClient";
 
 const Champions = lazy(() => import("./Champions"));
 const PatchNotes = lazy(() => import("./PatchNotes"));
-const LiveGame = lazy(() => import("./LiveGame"));
 const MatchDetail = lazy(() => import("./MatchDetail"));
 const PlayerPage = lazy(() => import('./PlayerPage'));
 type MatchLocation = `Match:${number}` | `Match:${number}:${string}`;
-type Page = "Dashboard" | "Live Game" | "Tier list & Builds" | "Matchups" | "Patch notes" | MatchLocation | `Player:${string}`;
+type Page = "Dashboard" | "Tier list & Builds" | "Matchups" | "Patch notes" | MatchLocation | `Player:${string}`;
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
 const appViews: Record<AppPage, View> = { Accounts: "accounts", "Champion select": "runes", Settings: "settings" };
 const appPageOf = (view: View): AppPage => view === "runes" ? "Champion select" : view === "settings" ? "Settings" : "Accounts";
 const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
-  { label: "Overview", items: [["Dashboard", DashboardIcon], ["Live Game", LiveGameIcon]] },
+  { label: "Overview", items: [["Dashboard", DashboardIcon]] },
   { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["Patch notes", PatchNotesIcon], ["Champion select", DraftIcon]] },
   { label: "Swapper", items: [["Accounts", AccountsIcon], ["Settings", SettingsIcon]] },
 ];
@@ -70,6 +69,7 @@ function App() {
   // Where champion select interrupted the user; restored when it ends.
   const returnTo = useRef<Location | null>(null);
   const go = useCallback((target: Location) => {
+    target = draftRoute(target) as Location;
     if (target in appViews) { setPage("app"); setRequest({ view: appViews[target as AppPage] }); }
     else setPage(target as Page);
   }, []);
@@ -80,7 +80,7 @@ function App() {
     scroller?.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   };
 
-  // A running game switches to Live Game; its end restores the earlier page.
+  // A running game switches to Draft's live view; its end restores the earlier page.
   const inGame = useInGame();
   const liveReturn = useRef<Location | null>(null);
   // Where a finished game left the user; its match opens once League files it, unless they moved on.
@@ -125,9 +125,9 @@ function App() {
     onRestart: () => restartFn.current(),
     Accounts: AccountCards,
     Settings: SettingsPage,
-    Runes: ChampionSelect,
+    Runes: DraftPage,
     onViewChange: setAppView,
-    onChampSelectChange: active => {
+    onChampSelectChange: (active, phase) => {
       setInChampSelect(active);
       if (active) {
         // App switches itself to its champion select view.
@@ -135,6 +135,7 @@ function App() {
         setPage("app");
         return;
       }
+      if (draftStage(phase) === "live") return;
       const back = returnTo.current;
       returnTo.current = null;
       if (back && currentRef.current === "Champion select") go(back === "Champion select" ? "Accounts" : back);
@@ -200,7 +201,7 @@ function App() {
       if (lastPhase.current !== payload.phase) { lastPhase.current = payload.phase; setPhase(payload.phase); void refresh(); }
     }) : Promise.resolve(() => {});
     // Tray menu destinations (Add Account, Settings, ...) are App views.
-    const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => setPage(payload === "live" ? LIVE_PAGE : "app")) : Promise.resolve(() => {});
+    const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => payload === "live" || payload === "Live Game" ? go(DRAFT_PAGE) : setPage("app")) : Promise.resolve(() => {});
     const switches = isTauri() ? Promise.all([
       // Switching onto the signed-in account is a client restart.
       listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching({ ...payload, restart: payload.id === activeIdRef.current && !clientClosed.current }); }),
@@ -285,7 +286,7 @@ function App() {
       trail={locationTrail(current, { champion: locationChampion?.name, matchPlayer, match: selectedMatch ? {
         champion: snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? 'Match', win: selectedMatch.win,
       } : null })} onPickLocation={target => { setFocus({ champion: null }); go(target as Location); }}
-      onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages.filter(p => showInNav(p, inGame))}
+      onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} snapshot={snapshot}
       onPickPlayer={riotId => go(`Player:${riotId}`)} onRestart={() => void restartClient()} closed={clientHealth === "closed"} />
     <div className="dashboard-shell">
@@ -300,11 +301,11 @@ function App() {
         </Popover.Root>
         <nav aria-label="Swapper pages">
           {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
-            {group.items.filter(([label]) => showInNav(label, inGame)).map(([label, Icon]) => <button key={label} aria-current={current === label ? "page" : undefined} onClick={() => sidebarGo(label)}>
+            {group.items.map(([label, Icon]) => <button key={label} aria-label={pageLabel(label)} aria-current={current === label ? "page" : undefined} onClick={() => sidebarGo(label)}>
               <Icon size={19} aria-hidden />{pageLabel(label)}
               {label === "Tier list & Builds" && patch && <span className="nav-badge patch" data-label={`PATCH ${patch}`} title={`Patch ${patch}`} />}
               {label === "Patch notes" && notesPatch && seenPatch !== notesPatch && current !== label && <span className="nav-badge new" title={`Patch ${notesPatch} notes are out`}>NEW!</span>}
-              {label === "Champion select" && inChampSelect && <span className="nav-badge live"><i aria-hidden />LIVE</span>}
+              {label === "Champion select" && (inChampSelect || inGame) && <span className="nav-badge live"><i aria-hidden />LIVE</span>}
             </button>)}
           </div>)}
         </nav>
@@ -324,7 +325,7 @@ function App() {
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "Dashboard"
-          ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} justEnded={ended} onOpenLive={() => go(LIVE_PAGE)}
+          ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} justEnded={ended} onOpenLive={() => go(DRAFT_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
               onOpenMatch={game => { const target = `Match:${game.id}` as const; visitedMatches.current.set(target, game); go(target); }} />
             : loading ? <DashboardSkeleton />
@@ -333,7 +334,6 @@ function App() {
               names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => travel(-1)} onOpenPlayer={riotId => go(`Player:${riotId}`)}
               onOpenMatch={game => { const target = `Match:${game.id}:${encodeURIComponent(playerId)}` as const; visitedMatches.current.set(target, game); go(target); }} /></Suspense>
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} onOpenPlayer={riotId => go(`Player:${riotId}`)} /></Suspense>
-          : page === "Live Game" ? <Suspense fallback={<Skeleton label="Loading Live Game" rows={5} height={56} />}><LiveGame championNames={championNames} /></Suspense>
           : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page} matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion ? null : focus} onSelectionChange={setLocationChampion} />

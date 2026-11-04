@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import ts from "typescript";
 import * as runeTypes from "../runes/types.ts";
 import * as model from "./champ-select-model.ts";
+import * as liveGameModel from "./LiveGameModel.ts";
 import * as buildLogic from "./buildLogic.ts";
 import * as championsModel from "./championsModel.ts";
 import * as format from "./ui/format.ts";
@@ -59,6 +60,7 @@ function harness(file, exportName, commands = {}, visibility = "visible", enviro
     react: hooks, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke, isTauri: () => true },
     "./AmbientArt": { useAmbientChampion: () => {} },
+    "./LiveGameModel": liveGameModel,
     "./Picker": { ROLES: [["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] },
     "./cooldownModel": cooldownModel,
     "radix-ui": { HoverCard: { Root: "hover-root", Trigger: "hover-trigger", Portal: "hover-portal", Content: "hover-content" } },
@@ -243,6 +245,32 @@ test("draft events update taken picks during planning without a local view chang
   assert.ok(suggestions.props.taken.has(11));
   assert.equal(buildReads, before, "enemy reveals must not reload and reset the source build");
 });
+test("unsupported draft shows a note instead of players, including after unclassified pushes", async () => {
+  const draft = { ...fixtureDraft("planning"), supported: false };
+  const h = harness("./ChampionSelect.tsx", "ChampionSelect", { full_app_draft: draft });
+  h.render({ view: fixtureView("planning"), championApi: { list: async () => [], tierList: async () => ({ rows: [] }) } });
+  await h.flush();
+  assert.equal(textOf(h.tree()), liveGameModel.UNSUPPORTED_GAME);
+  assert.equal(nodes(h.tree()).some(n => n.props?.draft), false);
+  await h.emit("draft_changed", fixtureDraft("planning"));
+  assert.equal(textOf(h.tree()), liveGameModel.UNSUPPORTED_GAME);
+});
+
+test("unsupported live and compact views show the same note without player rows", async () => {
+  const view = { supported: false, players: [{ key: "example", isSelf: true }], gameId: 1 };
+  const full = harness("./LiveGame.tsx", "LiveGameContent");
+  full.render({ view, error: "", loaded: true, championNames: new Map() });
+  assert.equal(textOf(full.tree()), liveGameModel.UNSUPPORTED_GAME);
+  assert.equal(nodes(full.tree()).some(n => n.props?.className === "lg-row"), false);
+  const compact = harness("./LiveGameCompact.tsx", "LiveGameCompact", {}, "visible", {
+    modules: { "./LiveGameData": { useInGame: () => true, useLiveGame: () => ({ view }) } },
+  });
+  compact.render();
+  const card = compact.tree().type(compact.tree().props);
+  assert.equal(textOf(card), liveGameModel.UNSUPPORTED_GAME);
+  assert.equal(nodes(card).some(n => n.type === "li"), false);
+});
+
 test("draft events update enemy build context without reloading the source build", async () => {
   const view = fixtureView("locked"), draft = fixtureDraft("locked");
   let buildReads = 0;

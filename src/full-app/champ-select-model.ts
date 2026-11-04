@@ -3,7 +3,7 @@ import type { RecommendedPick } from "./types";
 import { assignRoles, ROLES, roleShares } from "./championsModel.ts";
 
 export type DraftMember = { championId: number; position: string; local: boolean; locked: boolean };
-export type Draft = { allies: DraftMember[]; enemies: DraftMember[]; bans: number[]; allyBans?: number[]; enemyBans?: number[]; canLock?: boolean; /** On your ban turn: the champion hovered to ban, 0 for none yet. */ banTurn?: number; pickable?: number[]; timer: { phase: string; remainingMs: number } | null };
+export type Draft = { supported?: boolean | null; allies: DraftMember[]; enemies: DraftMember[]; bans: number[]; allyBans?: number[]; enemyBans?: number[]; canLock?: boolean; /** On your ban turn: the champion hovered to ban, 0 for none yet. */ banTurn?: number; pickable?: number[]; timer: { phase: string; remainingMs: number } | null };
 export type PageMode = "idle" | "planning" | "build";
 export type SuggestionTab = "all" | "recommended" | "counters";
 export type Suggestion = { championId: number; name: string; winPct: number; games: number; flex?: boolean };

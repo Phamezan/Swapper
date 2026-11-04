@@ -132,11 +132,12 @@ async function shell() {
   for (const label of ["Dashboard", "Tierlist", "Matchups", "Draft", "Accounts", "Settings"]) {
     await page.text('nav[aria-label="Swapper pages"] button', label);
   }
-  await page.visible(".ui-page-header h1");
+  assert.equal(await page.evaluate("[...document.querySelectorAll('nav[aria-label=\"Swapper pages\"] button')].filter(b => b.textContent.includes('Live game')).length"), 0);
+  if (!await page.evaluate("document.querySelector('nav[aria-label=\"Swapper pages\"] [aria-current=\"page\"]')?.textContent.includes('Draft')")) await page.visible(".ui-page-header h1");
 }
 
 async function nav(label, selector) {
-  await page.click('nav[aria-label="Swapper pages"] button', label);
+  await page.click(`nav[aria-label="Swapper pages"] button[aria-label="${label}"]`);
   await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', label);
   if (label !== "Draft") await page.text(".ui-page-header h1", label);
   await page.visible(selector);
@@ -1393,11 +1394,42 @@ async function main() {
         await page.text(".ui-page-actions", "Updated 2h ago");
       }
       if (query === "live=1") {
-        await nav("Live game", ".lg-team");
+        await nav("Draft", ".lg-team");
         assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 10);
       }
     });
   }
+
+  await check("Draft follows champ select, loading, live, reconnect and game end", async () => {
+    await navigate(fullApp, ".nav-group");
+    await nav("Draft", ".fa-draft-empty");
+    await page.evaluate("window.previewGamePhase('ChampSelect')");
+    await page.visible(".cs-band");
+    for (const phase of ["GameStart", "InProgress", "Reconnect"]) {
+      await page.evaluate(`window.previewGamePhase('${phase}')`);
+      await page.visible(".lg-team");
+      await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Draft");
+      assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 10);
+    }
+    await nav("Dashboard", ".match-row");
+    await page.evaluate("window.previewNavigate('live')");
+    await page.visible(".lg-team");
+    await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Draft");
+    await page.evaluate("window.previewGamePhase('EndOfGame')");
+    await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Dashboard");
+    await nav("Draft", ".fa-draft-empty");
+    await shell();
+  });
+
+  await check("Unsupported draft and live games show the SR note without players", async () => {
+    await navigate(fullApp, ".nav-group");
+    await page.evaluate("window.previewGamePhase('ChampSelect', false)");
+    await page.text(".fa-draft-page", "Swapper's draft and live game work for Summoner's Rift games.");
+    assert.equal(await page.evaluate("document.querySelectorAll('.cs-slot').length"), 0);
+    await page.evaluate("window.previewGamePhase('GameStart', false)");
+    await page.text(".lg-empty", "Swapper's draft and live game work for Summoner's Rift games.");
+    assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 0);
+  });
 
   const draftGeometry = () => page.evaluate(`(() => {
     const selectors = ['.cs-band', '.cs-band-head', '.cs-band-phase', '.cs-band-side', '.cs-bans', '.cs-bans > span', '.cs-teams', '.cs-team', '.cs-slot', '.cs-slot-role', '.cs-draft-clock', '.cs-draft-clock > *', '.cs-workspace'];

@@ -517,14 +517,17 @@ export function useAppController(fullApp?: FullAppBridge) {
     if (isGamePhase(lastPhase.current) && !inGame) setRuneSession((id) => id + 1);
     setInChampSelect(payload.phase === "ChampSelect");
     if ((payload.phase === "ChampSelect") !== (lastPhase.current === "ChampSelect")) {
-      onChampSelectChange.current?.(payload.phase === "ChampSelect");
+      onChampSelectChange.current?.(payload.phase === "ChampSelect", payload.phase);
     }
     if (payload.phase === "ChampSelect") {
       if (runeChampion.current !== payload.championId) runePosition.current = undefined;
       if (lastPhase.current !== "ChampSelect") setView("runes");
       void loadRunes();
     } else {
-      setView((current) => (current === "runes" ? "accounts" : current));
+      runeRequest.current++;
+      setRunesLoading(false);
+      setRunes(current => current ? { ...current, phase: payload.phase } : current);
+      if (!fullApp) setView((current) => (current === "runes" ? "accounts" : current));
     }
     lastPhase.current = payload.phase;
   }
