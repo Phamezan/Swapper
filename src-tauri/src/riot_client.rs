@@ -15,6 +15,8 @@ const LAUNCH_LEAGUE_PATH: &str = "/product-launcher/v1/products/league_of_legend
 /// How long a switch waits for Riot sign-in, patch readiness, and League startup.
 const LAUNCH_WAIT: Duration = Duration::from_secs(60);
 const LAUNCH_POLL: Duration = Duration::from_secs(2);
+const LAUNCH_RETRY_GRACE: Duration = Duration::from_secs(15);
+const PATCH_WAIT: Duration = Duration::from_secs(5 * 60);
 
 struct Endpoint {
     port: u16,
@@ -172,13 +174,16 @@ pub async fn detect() -> RiotProbe {
 /// Confirms League actually starts; an accepted POST alone is not success.
 /// Superseded launches stop silently; all other failures reach the caller.
 pub async fn launch_league_when_signed_in(cancelled: impl Fn() -> bool) -> Result<(), String> {
-    wait_for_league(&cancelled, LAUNCH_WAIT, LAUNCH_POLL, || {
-        poll_launch(&cancelled)
+    wait_for_league(&cancelled, LAUNCH_WAIT, LAUNCH_POLL, |can_request| {
+        poll_launch(&cancelled, can_request)
     }).await
 }
 
+#[derive(Debug)]
 enum LaunchPoll {
     Waiting,
+    Accepted,
+    Updating,
     Running,
 }
 
@@ -189,23 +194,31 @@ async fn wait_for_league<F, Fut>(
     mut poll: F,
 ) -> Result<(), String>
 where
-    F: FnMut() -> Fut,
+    F: FnMut(bool) -> Fut,
     Fut: std::future::Future<Output = Result<LaunchPoll, String>>,
 {
-    let started = std::time::Instant::now();
+    let started = tokio::time::Instant::now();
     let mut last_refusal = None;
-    while started.elapsed() < wait && !cancelled() {
-        let observation = poll().await;
+    let mut deadline = wait;
+    let mut retry_at = Duration::ZERO;
+    while started.elapsed() < deadline && !cancelled() {
+        let observation = poll(started.elapsed() >= retry_at).await;
         if cancelled() {
             return Ok(());
         }
         match observation {
             Ok(LaunchPoll::Running) => return Ok(()),
             Ok(LaunchPoll::Waiting) => {}
+            Ok(LaunchPoll::Accepted) => retry_at = started.elapsed() + LAUNCH_RETRY_GRACE,
+            Ok(LaunchPoll::Updating) => {
+                // The patch budget is measured from launch start, never reset by another 424.
+                deadline = deadline.max(PATCH_WAIT);
+                last_refusal = Some("Riot Client reported that League is not up to date (HTTP 424).".into());
+            }
             // Riot can refuse while its agreement and patch status are still loading.
             Err(reason) => last_refusal = Some(reason),
         }
-        tokio::time::sleep(interval.min(wait.saturating_sub(started.elapsed()))).await;
+        tokio::time::sleep(interval.min(deadline.saturating_sub(started.elapsed()))).await;
     }
     if cancelled() {
         return Ok(());
@@ -214,7 +227,7 @@ where
     Err(format!("League did not start.{reason} Open Riot Client to finish any updates or sign-in prompts, then press Play again."))
 }
 
-async fn poll_launch(cancelled: &impl Fn() -> bool) -> Result<LaunchPoll, String> {
+async fn poll_launch(cancelled: &impl Fn() -> bool, can_request: bool) -> Result<LaunchPoll, String> {
     let league_up = tokio::task::spawn_blocking(|| {
         crate::windows::process::any_running(&["LeagueClient.exe", "LeagueClientUx.exe"])
     })
@@ -224,7 +237,7 @@ async fn poll_launch(cancelled: &impl Fn() -> bool) -> Result<LaunchPoll, String
     if league_up {
         return Ok(LaunchPoll::Running);
     }
-    if cancelled() || !matches!(detect().await, RiotProbe::Identified(_)) {
+    if !can_request || cancelled() || !matches!(detect().await, RiotProbe::Identified(_)) {
         return Ok(LaunchPoll::Waiting);
     }
     let endpoint = tokio::task::spawn_blocking(discover)
@@ -240,15 +253,14 @@ async fn poll_launch(cancelled: &impl Fn() -> bool) -> Result<LaunchPoll, String
     };
     let response = request.send().await
         .map_err(|_| "Riot Client did not answer the League launch request.".to_string())?;
-    launch_response(response.status().as_u16())?;
-    Ok(LaunchPoll::Waiting)
+    launch_response(response.status().as_u16())
 }
 
-fn launch_response(status: u16) -> Result<(), String> {
+fn launch_response(status: u16) -> Result<LaunchPoll, String> {
     match status {
-        200..=299 => Ok(()),
+        200..=299 => Ok(LaunchPoll::Accepted),
         464 => Err("Riot Client reported that League's agreement status is not ready (HTTP 464).".into()),
-        424 => Err("Riot Client reported that League is not up to date (HTTP 424).".into()),
+        424 => Ok(LaunchPoll::Updating),
         _ => Err(format!("Riot Client refused to launch League (HTTP {status}).")),
     }
 }
@@ -262,79 +274,113 @@ mod tests {
         assert!(launch_response(200).is_ok());
         assert!(launch_response(202).is_ok());
         assert!(launch_response(464).unwrap_err().contains("not ready (HTTP 464)"));
-        assert!(launch_response(424).unwrap_err().contains("not up to date (HTTP 424)"));
+        assert!(matches!(launch_response(424), Ok(LaunchPoll::Updating)));
         assert!(launch_response(503).unwrap_err().contains("HTTP 503"));
     }
 
-    #[tokio::test]
+    #[tokio::test(start_paused = true)]
     async fn transient_launch_refusals_retry_until_league_runs() {
         let mut statuses = [464, 424, 503, 202].into_iter();
         let mut polls = 0;
-        wait_for_league(&|| false, Duration::from_secs(1), Duration::ZERO, || {
+        wait_for_league(&|| false, Duration::from_secs(1), Duration::ZERO, |_| {
             polls += 1;
             std::future::ready(match statuses.next() {
-                Some(status) => launch_response(status).map(|()| LaunchPoll::Waiting),
+                Some(status) => launch_response(status),
                 None => Ok(LaunchPoll::Running),
             })
         }).await.expect("Startup refusals must not stop a launch that later succeeds");
         assert_eq!(polls, 5);
     }
 
-    #[tokio::test]
+    #[tokio::test(start_paused = true)]
     async fn persistent_refusal_reports_last_reason_only_at_deadline() {
         let mut polls = 0;
-        let wait = Duration::from_millis(20);
-        let started = std::time::Instant::now();
-        let error = wait_for_league(&|| false, wait, Duration::ZERO, || {
+        let wait = LAUNCH_WAIT;
+        let started = tokio::time::Instant::now();
+        let error = wait_for_league(&|| false, wait, LAUNCH_POLL, |_| {
             polls += 1;
-            std::future::ready(launch_response(if polls == 1 { 464 } else { 424 })
-                .map(|()| LaunchPoll::Waiting))
+            std::future::ready(launch_response(if polls == 1 { 464 } else { 424 }))
         }).await.unwrap_err();
         assert!(polls > 1, "An early refusal must be retried");
-        assert!(started.elapsed() >= wait, "Only the deadline may end retries");
+        assert_eq!(started.elapsed(), PATCH_WAIT, "Repeated 424s must not reset the five-minute cap");
         assert!(error.contains("424"), "Report the last refusal: {error}");
         assert!(!error.contains("464"), "Do not report an obsolete refusal: {error}");
         assert!(error.contains("Play again"));
     }
 
-    #[tokio::test]
+    #[tokio::test(start_paused = true)]
     async fn accepted_request_does_not_erase_last_refusal_before_deadline() {
         let mut statuses = [464, 424].into_iter();
-        let error = wait_for_league(&|| false, Duration::from_millis(20), Duration::ZERO, || {
-            std::future::ready(launch_response(statuses.next().unwrap_or(202))
-                .map(|()| LaunchPoll::Waiting))
+        let started = tokio::time::Instant::now();
+        let error = wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |can_request| {
+            std::future::ready(if can_request {
+                launch_response(statuses.next().unwrap_or(202))
+            } else {
+                Ok(LaunchPoll::Waiting)
+            })
         }).await.unwrap_err();
+        assert_eq!(started.elapsed(), PATCH_WAIT);
         assert!(error.contains("424"), "An accepted POST does not confirm startup: {error}");
         assert!(!error.contains("464"));
     }
 
-    #[tokio::test]
-    async fn accepted_launch_keeps_retrying_until_league_runs() {
-        let mut polls = 0;
-        let mut requests = 0;
-        wait_for_league(&|| false, Duration::from_secs(1), Duration::ZERO, || {
-            polls += 1;
-            let result = if polls < 3 {
-                requests += 1;
-                launch_response(202).map(|()| LaunchPoll::Waiting)
+    #[tokio::test(start_paused = true)]
+    async fn accepted_launch_is_not_resent_within_grace() {
+        let started = tokio::time::Instant::now();
+        let mut requests = Vec::new();
+        wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |can_request| {
+            let elapsed = started.elapsed();
+            let result = if elapsed >= Duration::from_secs(20) {
+                LaunchPoll::Running
+            } else if can_request {
+                requests.push(elapsed);
+                LaunchPoll::Accepted
             } else {
-                Ok(LaunchPoll::Running)
+                LaunchPoll::Waiting
             };
-            std::future::ready(result)
+            std::future::ready(Ok(result))
         }).await.unwrap();
-        assert_eq!(polls, 3, "An accepted POST is not a running League client");
-        assert_eq!(requests, 2, "Re-POST while League is not running");
+        assert_eq!(requests.len(), 2, "Only resend after the grace expires");
+        assert!(requests.windows(2).all(|pair| pair[1] - pair[0] >= LAUNCH_RETRY_GRACE));
     }
 
-    #[tokio::test]
+    #[tokio::test(start_paused = true)]
+    async fn patch_refusal_extends_deadline_past_normal_launch_wait() {
+        let started = tokio::time::Instant::now();
+        let mut polls = 0;
+        wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |_| {
+            polls += 1;
+            std::future::ready(if polls == 1 {
+                launch_response(424)
+            } else if started.elapsed() > LAUNCH_WAIT + Duration::from_secs(10) {
+                Ok(LaunchPoll::Running)
+            } else {
+                Ok(LaunchPoll::Waiting)
+            })
+        }).await.expect("An update may outlast the normal 60-second wait");
+        assert!(started.elapsed() > LAUNCH_WAIT);
+        assert!(started.elapsed() < PATCH_WAIT);
+    }
+
+    #[tokio::test(start_paused = true)]
     async fn launch_deadline_reports_failure() {
-        let error = wait_for_league(&|| false, Duration::ZERO, Duration::ZERO, || {
+        let error = wait_for_league(&|| false, Duration::ZERO, Duration::ZERO, |_| {
             std::future::ready(Ok(LaunchPoll::Waiting))
         }).await.expect_err("A launch that never starts must report an error");
         assert!(error.contains("Play again"));
     }
 
-    #[tokio::test]
+    #[tokio::test(start_paused = true)]
+    async fn launch_without_patch_refusal_keeps_sixty_second_deadline() {
+        let started = tokio::time::Instant::now();
+        let error = wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |_| {
+            std::future::ready(launch_response(503))
+        }).await.unwrap_err();
+        assert_eq!(started.elapsed(), LAUNCH_WAIT);
+        assert!(error.contains("503"));
+    }
+
+    #[tokio::test(start_paused = true)]
     async fn switch_during_launch_cancels_stale_result_and_next_play_works() {
         let guard = crate::SwitchGuard::new();
         let first = guard.acquire().unwrap();
@@ -342,7 +388,7 @@ mod tests {
         drop(first);
         let mut switch = None;
         let result = wait_for_league(&|| guard.epoch() != old_epoch,
-            Duration::from_secs(1), Duration::ZERO, || {
+            Duration::from_secs(1), Duration::ZERO, |_| {
                 switch = Some(guard.acquire().unwrap());
                 std::future::ready(Err("Old Riot request failed during the switch".into()))
             }).await;
@@ -354,7 +400,7 @@ mod tests {
         let mut requests = 0;
         let mut polls = 0;
         wait_for_league(&|| guard.epoch() != new_epoch,
-            Duration::from_secs(1), Duration::ZERO, || {
+            Duration::from_secs(1), Duration::ZERO, |_| {
                 polls += 1;
                 let result = if polls > 1 { LaunchPoll::Running } else {
                     requests += 1;
