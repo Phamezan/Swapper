@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react';
-import { Maximize, Minimize, PanelRightOpen, SkipBack, SkipForward, X } from 'lucide-react';
+import { Maximize, PanelRightOpen, SkipBack, SkipForward, X } from 'lucide-react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { isTauri } from '@tauri-apps/api/core';
 import type { MatchupVod } from './matchupGuide';
-import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, idleTimer, playerKeyAction, segmentOf, vodUrl } from './matchupVodModel';
+import { adjacentMoment, currentMomentIndex, formatVodTime, groupMarkers, playerKeyAction, segmentOf, vodUrl } from './matchupVodModel';
 import { VodMomentArt } from './VodMomentArt';
-import { VodPlayer } from './VodPlayer';
 import { GuideSourceButton } from './GuideSourceButton';
 import type { ChampionOption } from '../runes/types';
 import { embedUrl, playerMessage, YOUTUBE_ORIGIN, type PlayerInfo } from './youtubePlayer';
@@ -18,10 +17,6 @@ const PLAYING = 1;
 const TICK_SPACING_PX = 16;
 // After the browser leaves element fullscreen on Esc, the same key must not also close the VOD.
 const ESC_GRACE_MS = 500;
-// Fullscreen playback hides our chrome after this long without mouse or keyboard input.
-const HUD_IDLE_MS = 3000;
-// Mouse moves over the cross-origin YouTube picture never reach this document; the rest of the screen and keys do.
-const ACTIVITY_EVENTS = ['pointermove', 'pointerdown', 'pointerover', 'keydown', 'wheel'] as const;
 // Closing the key-moment sidebar is a preference: it stays closed for every VOD, also after a restart.
 const SIDEBAR_HIDDEN_KEY = 'swapper.vodMomentsHidden';
 const sidebarHidden = () => { try { return localStorage.getItem(SIDEBAR_HIDDEN_KEY) === '1' || (localStorage.getItem(SIDEBAR_HIDDEN_KEY) === null && window.innerWidth < 1400); } catch { return window.innerWidth < 1400; } };
@@ -85,7 +80,6 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const [failed, setFailed] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [fullscreenError, setFullscreenError] = useState('');
-  const [idle, setIdle] = useState(false);
   const [collapsed, setCollapsed] = useState(sidebarHidden);
   const [segmentDone, setSegmentDone] = useState(false);
   const [released, setReleased] = useState(false);
@@ -125,7 +119,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   };
   const applyFullscreen = async (on: boolean) => {
     fullscreenNow.current = on;
-    setFullscreen(on);
+    if (on) setFullscreen(true);
     setFullscreenError('');
     if (on && isTauri()) {
       try { await nativeFullscreen(true); }
@@ -145,6 +139,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
       try { await nativeFullscreen(false); }
       catch (error) { setFullscreenError(`Could not leave window fullscreen: ${String(error)}`); }
     }
+    if (!on) setFullscreen(false);
   };
   useEffect(() => {
     if (!vodUrl(vod)) return;
@@ -168,7 +163,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   useEffect(() => {
     const time = info.currentTime;
     if (time === undefined || !hasSegment || released) return;
-    if (vod.endSec !== undefined && time >= segEnd) { if (!segmentDone || playing) command('pauseVideo'); setSegmentDone(true); }
+    if (vod.endSec !== undefined && time >= segEnd) { if (!segmentDone || playing) command('pauseVideo'); setSegmentDone(true); if (fullscreenNow.current) void changeFullscreen(false); }
     else if (time < segStart - 1) seekTo(segStart);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [info.currentTime, hasSegment, segStart, segEnd, vod.endSec, released, playing]);
@@ -186,17 +181,6 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   }, [fullscreen]);
   useEffect(() => { if (mini && fullscreen) void changeFullscreen(false); }, [mini, fullscreen]);
   useEffect(() => () => { if (fullscreenNow.current) void nativeFullscreen(false).catch(() => {}); }, []);
-  useEffect(() => {
-    setIdle(false);
-    if (!fullscreen || !playing) return;
-    const timer = idleTimer(HUD_IDLE_MS, next => {
-      // Hidden controls cannot hold focus; the player root keeps the shortcuts working.
-      if (next && root.current?.contains(document.activeElement)) root.current.focus({ preventScroll: true });
-      setIdle(next);
-    }, window);
-    ACTIVITY_EVENTS.forEach(name => document.addEventListener(name, timer.activity, { capture: true, passive: true }));
-    return () => { timer.stop(); ACTIVITY_EVENTS.forEach(name => document.removeEventListener(name, timer.activity, { capture: true })); };
-  }, [fullscreen, playing]);
   const previous = adjacentMoment(vod.moments, current, -1), next = adjacentMoment(vod.moments, current, 1);
   // Keys reach us only while focus is on our UI; when the video has focus, YouTube handles its own.
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -217,31 +201,31 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const url = vodUrl(vod);
   const notice = failed ? 'Video unavailable or slow to load.' : fullscreenError;
   // The rail needs the API connection; a failed embed gets the notice instead.
-  const hasMoments = !mini && vod.moments.length > 0, hasRail = hasMoments && !failed;
+  const hasMoments = !fullscreen && !mini && vod.moments.length > 0, hasRail = hasMoments && !failed;
   const showSidebar = hasMoments && !!children && !collapsed;
   const toggleSidebar = () => {
     try { localStorage.setItem(SIDEBAR_HIDDEN_KEY, collapsed ? '0' : '1'); } catch { /* Private storage only loses the preference. */ }
     setCollapsed(!collapsed);
   };
   // One bar under the picture, like a media player's control strip: key moments on the left, fullscreen bottom right.
-  const showBar = !mini && !!url;
+  const showBar = !fullscreen && !mini && !!url;
   const fullscreenButton = <IconButton label={fullscreen ? 'Exit full screen' : 'Full screen'} shortcut="f" className="mv-icon-button mv-strong" onClick={() => void changeFullscreen(!fullscreen)}>
-    {fullscreen ? <Minimize size={16} /> : <Maximize size={16} />}</IconButton>;
+    <Maximize size={16} /></IconButton>;
   return <div ref={root} popover="manual" tabIndex={-1} onKeyDown={onKeyDown}
-    className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}${fullscreen && idle ? ' is-idle' : ''}`}
-    style={{ '--mv-bars': fullscreen ? 0 : Number(showBar) + Number(!!notice) } as CSSProperties}>
+    className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}`}
+    style={{ '--mv-bars': fullscreen ? 0 : Number(showBar) + Number(!!notice) + Number(segmentDone && !released) } as CSSProperties}>
     {!mini && !fullscreen && <header className="mv-watch-header">{header}</header>}
     <div className="mv-stage"><div className="mv-screen">
       {url ? <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title} src={src}
         allow="autoplay; encrypted-media; picture-in-picture"
         onLoad={() => { setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
         : <div className="mv-frame mv-preview-frame"><span className="mv-preview">Preview, no video</span><p>Preview only · no video linked</p></div>}
-      {segmentDone && !released && <div className="mv-game-over" role="status"><strong>Game over</strong>{onNextGame && <button onClick={onNextGame}>Next game</button>}<button onClick={() => { setReleased(true); setSegmentDone(false); command('playVideo'); }}>Keep watching</button></div>}
-      {notice && <div className="mv-notice" role="status"><span>{notice}</span>
+      {!fullscreen && segmentDone && !released && <div className="mv-game-over" role="status"><strong>Game over</strong>{onNextGame && <button onClick={onNextGame}>Next game</button>}<button onClick={() => { setReleased(true); setSegmentDone(false); command('playVideo'); }}>Keep watching</button></div>}
+      {!fullscreen && notice && <div className="mv-notice" role="status"><span>{notice}</span>
         {failed && url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}</div>}
       {showBar && <div className="mv-rail-row" role="group" aria-label="Video tools">
         {hasRail ? <MomentRail moments={vod.moments} current={current} duration={segDuration || duration} start={segStart} disabled={!ready} onJump={jump} champions={champions} /> : <span className="mv-rail-spacer" />}
-        <span className="mv-bar-end">{fullscreen && <small>Esc to return</small>}
+        <span className="mv-bar-end">
           {hasMoments && collapsed && <IconButton label="Show key moments" className="mv-show-moments" onClick={toggleSidebar}><PanelRightOpen size={15} aria-hidden />Key moments</IconButton>}
           {fullscreenButton}
         </span>
@@ -249,8 +233,6 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     </div></div>
     {showSidebar && <div className="mv-side">
       <span className="mv-side-close"><IconButton label="Hide key moments" onClick={toggleSidebar}><X size={15} /></IconButton></span>
-      {fullscreen && <div className="mv-side-top"><VodPlayer vod={vod} />
-        {url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}</div>}
       {children}
     </div>}
   </div>;

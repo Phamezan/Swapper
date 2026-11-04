@@ -207,35 +207,35 @@ test('keyboard shortcuts drive the player and fullscreen covers the window until
   assert.equal(h.messages.length, sent, 'keys typed into a field are left alone');
 
   press('f');
-  await h.flush();
+  tree = await h.flush();
   assert.deepEqual(h.fullscreen.splice(0), ['window on', 'element on']);
   assert.match(tree.props.className, /is-fullscreen/);
-  assert.equal(control(tree, 'Exit full screen').props.shortcut, 'f');
+  assert.equal(control(tree, 'Exit full screen'), undefined);
   assert.deepEqual(press('Escape'), { prevented: true, stopped: true }, 'Esc leaves fullscreen, not the VOD');
-  await h.flush();
+  tree = await h.flush();
   assert.deepEqual(h.fullscreen.splice(0), ['element off', 'window off']);
   assert.doesNotMatch(tree.props.className, /is-fullscreen/);
   assert.deepEqual(press('Escape'), { prevented: false, stopped: false }, 'a later Esc closes the VOD as before');
 
   press('f');
-  await h.flush();
+  tree = await h.flush();
   h.fullscreen.splice(0);
   h.fakeDocument.fullscreenElement = null;
   h.documentListeners.get('fullscreenchange')();
-  await h.flush();
+  tree = await h.flush();
   tree = h.render();
   assert.deepEqual(h.fullscreen.splice(0), ['window off'], 'the browser leaving element fullscreen also restores the window');
   assert.doesNotMatch(tree.props.className, /is-fullscreen/);
   assert.deepEqual(press('Escape'), { prevented: true, stopped: true }, 'the Esc that made the browser leave fullscreen does not also close the VOD');
 
   press('f');
-  await h.flush();
+  tree = await h.flush();
   h.fullscreen.splice(0);
   tree = h.render({ vod: realVod, seek: null, mini: true });
-  await h.flush();
+  tree = await h.flush();
   assert.deepEqual(h.fullscreen.splice(0), ['element off', 'window off'], 'switching to the mini player leaves fullscreen');
   press('f');
-  await h.flush();
+  tree = await h.flush();
   assert.deepEqual(h.fullscreen, [], 'the mini player ignores the fullscreen key');
 });
 
@@ -252,12 +252,12 @@ test('element fullscreen waits for the native resize and native errors stay visi
   tree = await h.flush();
   assert.deepEqual(h.fullscreen, ['element on']);
   h.tauriWindow.setFullscreen = async () => { throw new Error('permission denied'); };
-  control(tree, 'Exit full screen').props.onClick();
+  tree.props.onKeyDown({ key: 'Escape', preventDefault() {}, stopPropagation() {} });
   tree = await h.flush();
   assert.match(text(tree), /Could not leave window fullscreen: Error: permission denied/);
   control(tree, 'Full screen').props.onClick();
   tree = await h.flush();
-  assert.match(text(tree), /Window fullscreen unavailable: Error: permission denied/);
+  assert.doesNotMatch(text(tree), /Window fullscreen unavailable/);
 });
 
 test('player receives trusted progress, jumps to moments and shows a failed embed with a way out', () => {
@@ -292,7 +292,7 @@ test('player receives trusted progress, jumps to moments and shows a failed embe
   assert.equal(h.timers.size, 0);
 });
 
-test('a VOD without moments gets no rail and no sidebar; one with moments gets both, and fullscreen can hide the sidebar', async () => {
+test('a VOD without moments gets no rail and no sidebar; one with moments gets both, and fullscreen renders video only', async () => {
   const sidebar = 'key-moments';
   const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
   let tree = h.render({ vod: { ...realVod, moments: [] }, seek: null, header: 'header', children: sidebar });
@@ -308,19 +308,13 @@ test('a VOD without moments gets no rail and no sidebar; one with moments gets b
   control(tree, 'Full screen').props.onClick();
   tree = await h.flush();
   assert.equal(nodes(tree).some(node => node.type === 'header'), false, 'fullscreen drops the page header');
-  assert.match(text(nodes(tree).find(node => node.props.className === 'mv-bar-end')), /Esc to return/);
+  assert.equal(nodes(tree).some(node => ['mv-rail-row', 'mv-side', 'mv-notice'].includes(node.props.className)), false);
+  assert.equal(timeline(tree), undefined);
   assert.equal(tree.props.style['--mv-bars'], 0);
-  control(tree, 'Hide key moments').props.onClick();
-  tree = h.render();
-  assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false);
-  control(tree, 'Exit full screen').props.onClick();
+  tree.props.onKeyDown({ key: 'Escape', preventDefault() {}, stopPropagation() {} });
   tree = await h.flush();
-  assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false, 'a closed sidebar stays closed outside fullscreen too');
-  assert.ok(control(tree, 'Show key moments'), 'the bar under the picture reopens it');
-  control(tree, 'Full screen').props.onClick();
-  tree = await h.flush();
-  assert.ok(control(tree, 'Show key moments'), 'the collapsed sidebar is remembered');
-  assert.equal(nodes(tree).some(node => node.props.className === 'mv-side'), false);
+  assert.ok(timeline(tree));
+  assert.ok(nodes(tree).some(node => node.props.className === 'mv-side'));
   h.render({ vod: realVod, seek: null, mini: true, header: 'header', children: sidebar });
   tree = await h.flush();
   assert.deepEqual([timeline(tree), nodes(tree).some(node => node.type === 'header' || node.props.className === 'mv-side')], [undefined, false], 'the mini player is just the video');
@@ -448,36 +442,19 @@ test("a VOD from another matchup keeps its moments but cannot open this matchup'
   assert.ok(nodes(player).some(node => node.props.className === "mv-section-link"));
 });
 
-test("fullscreen playback hides everything but the moment rail when idle and wakes on activity", async () => {
-  const h = harness("./YoutubeVodPlayer.tsx", "YoutubeVodPlayer");
-  const progress = playerState => h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 100, duration: 1746, playerState } }) });
-  let tree = h.render({ vod: realVod, seek: null });
-  progress(1);
-  control(h.render(), "Full screen").props.onClick();
+test("segment end leaves fullscreen before showing actions below the video", async () => {
+  const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
+  let tree = h.render({ vod: { ...realVod, startSec: 100, endSec: 900 }, seek: null, children: 'moments' });
+  control(tree, 'Full screen').props.onClick();
   tree = await h.flush();
-  assert.match(tree.props.className, /is-fullscreen/);
-  assert.doesNotMatch(tree.props.className, /is-idle/);
-  h.timers.get("timeout")();
-  tree = h.render();
-  assert.match(tree.props.className, /is-idle/);
-  assert.ok(timeline(tree), "the rail stays, so a mouse move outside the video can wake the HUD");
-  h.documentListeners.get("pointermove")();
-  assert.doesNotMatch(h.render().props.className, /is-idle/, "moving the mouse brings the HUD back");
-  h.timers.get("timeout")();
-  assert.match(h.render().props.className, /is-idle/, "the countdown restarted after the activity");
-  h.documentListeners.get("keydown")();
-  assert.doesNotMatch(h.render().props.className, /is-idle/, "a key brings the HUD back");
-  progress(2);
-  tree = h.render();
-  await h.flush();
-  assert.equal(h.documentListeners.has("pointermove"), false, "paused playback keeps the HUD up");
-  assert.equal(h.timers.has("timeout"), false);
-  progress(1);
+  assert.equal(nodes(tree).some(n => n.type === 'button' || n.props.className === 'mv-side'), false);
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: { event: 'infoDelivery', info: { currentTime: 901, playerState: 1 } } });
   h.render();
-  control(h.render(), "Exit full screen").props.onClick();
   tree = await h.flush();
-  assert.equal(h.documentListeners.has("pointermove"), false, "leaving fullscreen stops watching activity");
-  assert.doesNotMatch(tree.props.className, /is-idle/);
+  assert.doesNotMatch(tree.props.className, /is-fullscreen/);
+  assert.ok(h.messages.some(m => m.data.func === 'pauseVideo'));
+  assert.match(text(tree), /Game over/);
+  assert.equal(nodes(nodes(tree).find(n => n.props.className === 'mv-frame mv-embed')).some(n => n.props.className === 'mv-game-over'), false);
 });
 
 test("a maximized window is restored before fullscreen and maximized again after it", async () => {
@@ -487,12 +464,12 @@ test("a maximized window is restored before fullscreen and maximized again after
   control(tree, "Full screen").props.onClick();
   tree = await h.flush();
   assert.deepEqual(h.fullscreen.splice(0), ["unmaximize", "window on", "element on"], "a maximized borderless window would keep its taskbar-high gap");
-  control(tree, "Exit full screen").props.onClick();
+  tree.props.onKeyDown({ key: 'Escape', preventDefault() {}, stopPropagation() {} });
   tree = await h.flush();
   assert.deepEqual(h.fullscreen.splice(0), ["element off", "window off", "maximize"]);
   control(tree, "Full screen").props.onClick();
   tree = await h.flush();
-  control(tree, "Exit full screen").props.onClick();
+  tree.props.onKeyDown({ key: 'Escape', preventDefault() {}, stopPropagation() {} });
   await h.flush();
   assert.deepEqual(h.fullscreen.splice(0), ["unmaximize", "window on", "element on", "element off", "window off", "maximize"]);
   h.tauriWindow.maximized = false;
@@ -743,7 +720,7 @@ test('narrow default collapses moments while an explicit open preference wins', 
   } finally { globalThis.localStorage = storage; }
 });
 
-test('segment overlay offers the supplied next game action', () => {
+test('segment actions offer the supplied next game action', () => {
   let next = 0;
   const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
   h.render({vod:{...ahriVsZedVods[0],videoId:'A_b-cD12345',fixture:false,startSec:100,endSec:900},seek:null,onNextGame:()=>next++});
