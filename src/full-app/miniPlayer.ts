@@ -14,3 +14,17 @@ export function parseMini(raw: string | null): MiniPlacement | null {
   try { const value = JSON.parse(raw ?? 'null'); return value && ['x', 'y', 'width'].every(key => typeof value[key] === 'number' && Number.isFinite(value[key])) && value.width > 0 ? value : null; } catch { return null; }
 }
 export function serializeMini(value: MiniPlacement | null): string { return JSON.stringify(value); }
+
+export type MiniCorner = 'nw' | 'ne' | 'sw' | 'se';
+export function resizeMini(rect: MiniPlacement, corner: MiniCorner, dx: number, dy: number, bounds: MiniBounds): MiniPlacement {
+  const west = corner.includes('w'), north = corner.includes('n'), ratio = 9 / 16;
+  const anchorX = west ? rect.x + rect.width : rect.x;
+  const anchorY = north ? rect.y + rect.width * ratio + MINI_HEADER : rect.y;
+  // Project the pointer onto the aspect-ratio diagonal so either axis can resize.
+  const delta = ((west ? -dx : dx) + (north ? -dy : dy) * ratio) / (1 + ratio * ratio);
+  const availableWidth = west ? anchorX - bounds.left : bounds.right - anchorX;
+  const availableHeight = north ? anchorY - bounds.top : bounds.bottom - anchorY;
+  const max = Math.max(0, Math.min(clampMini({ ...rect, width: Infinity }, bounds).width, availableWidth, (availableHeight - MINI_HEADER) / ratio));
+  const width = Math.max(Math.min(280, max), Math.min(rect.width + delta, max));
+  return { width, x: west ? anchorX - width : anchorX, y: north ? anchorY - width * ratio - MINI_HEADER : anchorY };
+}

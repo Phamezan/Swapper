@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { clampMini, parseMini, serializeMini, MINI_HEADER } from './miniPlayer.ts';
+import { clampMini, resizeMini, parseMini, serializeMini, MINI_HEADER } from './miniPlayer.ts';
 const bounds = { left: 180, top: 40, right: 1280, bottom: 820 };
 test('mini placement clamps position and size within app bounds', () => {
   const rect = clampMini({ x: -900, y: 9000, width: 9000 }, bounds);
@@ -20,3 +20,20 @@ test('mini placement persists, rejects invalid storage and resets to bottom righ
   assert.equal(reset.width, 360); assert.equal(reset.x + reset.width, bounds.right - 24);
   assert.equal(reset.y + reset.width * 9 / 16 + MINI_HEADER, bounds.bottom - 24);
 });
+
+for (const corner of ['nw', 'ne', 'sw', 'se']) {
+  test(`mini resize from ${corner} preserves opposite corner and clamps size`, () => {
+    const rect = { x: 480, y: 280, width: 360 };
+    const anchor = value => [corner.includes('w') ? value.x + value.width : value.x,
+      corner.includes('n') ? value.y + value.width * 9 / 16 + MINI_HEADER : value.y];
+    for (const amount of [60, -60, 10000, -10000]) {
+      const resized = resizeMini(rect, corner, (corner.includes('w') ? -1 : 1) * amount, (corner.includes('n') ? -1 : 1) * amount * 9 / 16, bounds);
+      assert.deepEqual(anchor(resized), anchor(rect));
+      assert.ok(resized.width >= 280 && resized.width <= 660);
+      assert.ok(resized.x >= bounds.left && resized.y >= bounds.top);
+      assert.ok(resized.x + resized.width <= bounds.right && resized.y + resized.width * 9 / 16 + MINI_HEADER <= bounds.bottom);
+      if (amount === 60) assert.equal(resized.width, 420);
+      if (amount === -60) assert.equal(resized.width, 300);
+    }
+  });
+}

@@ -962,7 +962,7 @@ async function main() {
       await page.click(`.mv-mini-actions button[aria-label="${label}"]`);
       await page.wait(`window.__commands.includes(${JSON.stringify(command + ':')})`, `mini sends ${command}`);
     }
-    const miniBox = () => page.evaluate("(() => {const r=document.querySelector('.is-mini .mv-video-player').getBoundingClientRect();return {x:r.x,y:r.y,width:r.width};})()");
+    const miniBox = () => page.evaluate("(() => {const r=document.querySelector('.is-mini .mv-video-player').getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})()");
     const originalMini = await miniBox();
     const dragMini = async (x,y,dx,dy) => {
       await page.cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',clickCount:1});
@@ -973,11 +973,25 @@ async function main() {
     await dragMini(originalMini.x+35,originalMini.y+25,-100,-80);
     const movedMini = await miniBox();
     assert.ok(movedMini.x < originalMini.x-50 && movedMini.y < originalMini.y-50, 'drag moves mini');
-    await dragMini(movedMini.x+4,movedMini.y+4,-80,-45);
+    for (const corner of ['nw','ne','sw','se']) {
+      const before = await miniBox();
+      const west = corner.includes('w'), north = corner.includes('n');
+      const handle = await page.evaluate(`(() => {const h=document.querySelector('.mv-mini-resize[data-corner="${corner}"]'),r=h.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2,cursor:getComputedStyle(h).cursor};})()`);
+      assert.equal(handle.cursor, ['nw','se'].includes(corner) ? 'nwse-resize' : 'nesw-resize');
+      assert.ok(await page.evaluate(`(() => {const h=document.querySelector('.mv-mini-resize[data-corner="${corner}"]').getBoundingClientRect(),v=document.querySelector('.is-mini iframe').getBoundingClientRect();return h.right<=v.left || h.left>=v.right || h.bottom<=v.top || h.top>=v.bottom;})()`), `${corner} handle stays outside picture`);
+      await dragMini(handle.x,handle.y,west ? -40 : 40,north ? -22.5 : 22.5);
+      const after = await miniBox();
+      assert.ok(after.width > before.width+30, `${corner} resizes mini`);
+      assert.ok(Math.abs((west ? after.x+after.width : after.x)-(west ? before.x+before.width : before.x))<1, `${corner} anchors opposite x`);
+      assert.ok(Math.abs((north ? after.y+after.height : after.y)-(north ? before.y+before.height : before.y))<1, `${corner} anchors opposite y`);
+      assert.ok(await page.evaluate("(() => {const r=document.querySelector('.is-mini iframe').getBoundingClientRect();return Math.abs(r.width/r.height-16/9)<.01;})()"), `${corner} preserves aspect`);
+      if (corner !== 'se') {
+        const handleAfter = await page.evaluate(`(() => {const r=document.querySelector('.mv-mini-resize[data-corner="${corner}"]').getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);
+        await dragMini(handleAfter.x,handleAfter.y,west ? 40 : -40,north ? 22.5 : -22.5);
+      }
+    }
     const resizedMini = await miniBox();
     assert.ok(await page.evaluate("JSON.parse(localStorage.getItem('swapper.vodMiniPlacement')).width > 360"), 'size and position are saved');
-    assert.ok(resizedMini.width > movedMini.width+50, 'resize changes width');
-    assert.ok(await page.evaluate("(() => {const r=document.querySelector('.is-mini iframe').getBoundingClientRect();return Math.abs(r.width/r.height-16/9)<.01;})()"), 'resize preserves aspect');
     for (const type of ['mousePressed','mouseReleased']) await page.cdp.send('Input.dispatchMouseEvent',{type,x:resizedMini.x+35,y:resizedMini.y+25,button:'left',clickCount:2});
     await page.settle();
     const resetMini = await miniBox();

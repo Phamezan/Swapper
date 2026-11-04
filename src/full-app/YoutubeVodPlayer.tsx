@@ -9,7 +9,7 @@ import { GuideSourceButton } from './GuideSourceButton';
 import type { ChampionOption } from '../runes/types';
 import { embedUrl, playerMessage, YOUTUBE_ORIGIN, type PlayerInfo } from './youtubePlayer';
 
-import { clampMini, parseMini, serializeMini, MINI_KEY, type MiniPlacement } from './miniPlayer';
+import { clampMini, resizeMini, parseMini, serializeMini, MINI_KEY, type MiniPlacement, type MiniCorner } from './miniPlayer';
 
 type Moment = MatchupVod['moments'][number];
 export type VodSeek = { moment: Moment; serial: number };
@@ -72,7 +72,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
 }) {
   const [placement, setPlacement] = useState<MiniPlacement | null>(() => { try { return parseMini(localStorage.getItem(MINI_KEY)); } catch { return null; } });
   const [miniRect, setMiniRect] = useState<MiniPlacement | null>(null);
-  const gesture = useRef<{ x: number; y: number; rect: MiniPlacement; resize: boolean } | null>(null);
+  const gesture = useRef<{ x: number; y: number; rect: MiniPlacement; corner?: MiniCorner } | null>(null);
   const bounds = () => {
     const area = root.current?.closest('.dashboard-main')?.getBoundingClientRect();
     return { left: Math.max(0, area?.left ?? 0), top: Math.max(0, area?.top ?? 0), right: Math.min(window.innerWidth, area?.right ?? window.innerWidth), bottom: window.innerHeight };
@@ -87,18 +87,17 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     resize(); window.addEventListener('resize', resize);
     return () => window.removeEventListener('resize', resize);
   }, [mini, placement]);
-  const startGesture = (event: PointerEvent<HTMLElement>, resize = false) => {
-    if (event.button !== 0 || (!resize && (event.target as HTMLElement).closest('button'))) return;
+  const startGesture = (event: PointerEvent<HTMLElement>, corner?: MiniCorner) => {
+    if (event.button !== 0 || (!corner && (event.target as HTMLElement).closest('button'))) return;
     const rect = miniRect ?? clampMini(placement, bounds());
-    gesture.current = { x: event.clientX, y: event.clientY, rect, resize };
+    gesture.current = { x: event.clientX, y: event.clientY, rect, corner };
     event.currentTarget.setPointerCapture(event.pointerId); event.preventDefault();
   };
   const moveGesture = (event: PointerEvent<HTMLElement>) => {
     const drag = gesture.current; if (!drag) return;
     const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
-    const width = clampMini({ ...drag.rect, width: drag.rect.width - dx }, bounds()).width;
-    const next = drag.resize ? { width, x: drag.rect.x + drag.rect.width - width, y: drag.rect.y + (drag.rect.width - width) * 9 / 16 } : { ...drag.rect, x: drag.rect.x + dx, y: drag.rect.y + dy };
-    const clamped = clampMini(next, bounds()); setMiniRect(clamped); savePlacement(clamped);
+    const clamped = drag.corner ? resizeMini(drag.rect, drag.corner, dx, dy, bounds())
+      : clampMini({ ...drag.rect, x: drag.rect.x + dx, y: drag.rect.y + dy }, bounds()); setMiniRect(clamped); savePlacement(clamped);
   };
   const endGesture = () => { gesture.current = null; };
   const frame = useRef<HTMLIFrameElement>(null);
@@ -256,7 +255,8 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
       <IconButton label="Reopen VOD" onClick={onReopen}><ArrowUpRight size={16} /></IconButton>
       <IconButton label="Close mini player" onClick={onClose}><X size={16} /></IconButton>
     </header>}
-    {mini && <span className="mv-mini-resize" onPointerDown={event => startGesture(event, true)} title="Resize mini player" />}
+    {mini && (['nw', 'ne', 'sw', 'se'] as const).map(corner => <span key={corner} className={`mv-mini-resize is-${corner}`} data-corner={corner}
+      onPointerDown={event => startGesture(event, corner)} title="Resize mini player" />)}
     {!mini && !fullscreen && <header className="mv-watch-header">{header}</header>}
     <div className="mv-stage"><div className="mv-screen">
       {url ? <div className="mv-frame mv-embed" onClick={mini ? onReopen : undefined}><iframe ref={frame} title={vod.title} src={src}

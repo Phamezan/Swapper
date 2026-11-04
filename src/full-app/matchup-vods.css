@@ -268,10 +268,14 @@ html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscree
 .mv-mini-name { flex: 1; min-width: 0; display: grid; }
 .mv-mini-name strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .is-mini .mv-mini-actions button { flex: none; padding: 3px; }
-.mv-mini-resize { position: absolute; left: 0; top: 0; width: 12px; height: 12px; z-index: 2; cursor: nwse-resize; touch-action: none; border-top: 2px solid var(--ui-text-3); border-left: 2px solid var(--ui-text-3); }
+.mv-mini-resize { position: absolute; width: 10px; height: 10px; z-index: 2; touch-action: none; border-color: var(--ui-text-3); border-style: solid; border-width: 0; }
+.mv-mini-resize.is-nw { left: -10px; top: -10px; border-top-width: 2px; border-left-width: 2px; cursor: nwse-resize; }
+.mv-mini-resize.is-ne { right: -10px; top: -10px; border-top-width: 2px; border-right-width: 2px; cursor: nesw-resize; }
+.mv-mini-resize.is-sw { left: -10px; bottom: -10px; border-bottom-width: 2px; border-left-width: 2px; cursor: nesw-resize; }
+.mv-mini-resize.is-se { right: -10px; bottom: -10px; border-bottom-width: 2px; border-right-width: 2px; cursor: nwse-resize; }
 .is-mini .mv-embed { cursor: pointer; }
 
 .mv-player-view.is-mini { border: 0; background: transparent; box-shadow: none; overflow: visible; }
-.is-mini .mv-video-player { box-sizing: border-box; }
+.is-mini .mv-video-player { box-sizing: border-box; overflow: visible; }
 
 .is-mini :is(.mv-notice, .mv-game-over) { display: none; }
