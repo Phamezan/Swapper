@@ -24,7 +24,7 @@ const HUD_IDLE_MS = 3000;
 const ACTIVITY_EVENTS = ['pointermove', 'pointerdown', 'pointerover', 'keydown', 'wheel'] as const;
 // Closing the key-moment sidebar is a preference: it stays closed for every VOD, also after a restart.
 const SIDEBAR_HIDDEN_KEY = 'swapper.vodMomentsHidden';
-const sidebarHidden = () => { try { return localStorage.getItem(SIDEBAR_HIDDEN_KEY) === '1'; } catch { return false; } };
+const sidebarHidden = () => { try { return localStorage.getItem(SIDEBAR_HIDDEN_KEY) === '1' || (localStorage.getItem(SIDEBAR_HIDDEN_KEY) === null && window.innerWidth < 1400); } catch { return window.innerWidth < 1400; } };
 
 function IconButton({ label, shortcut, children, ...props }: { label: string; shortcut?: string } & ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" className="mv-icon-button" aria-label={label} aria-keyshortcuts={shortcut} title={shortcut ? `${label} (${shortcut})` : label} {...props}>{children}</button>;
@@ -69,9 +69,9 @@ function MomentRail({ moments, current, duration, start = 0, disabled, onJump, c
 }
 
 /** YouTube's embed with its own controls, sized 16:9 to the space, plus the League-specific parts: header, moment rail and key-moment sidebar (`children`). */
-export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMomentChange, header, children }: {
+export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMomentChange, header, children, onNextGame }: {
   champions?: readonly ChampionOption[]; vod: MatchupVod; seek: VodSeek | null; mini?: boolean; onMomentChange?: (index: number) => void;
-  header?: ReactNode; children?: ReactNode;
+  onNextGame?: () => void; header?: ReactNode; children?: ReactNode;
 }) {
   const frame = useRef<HTMLIFrameElement>(null);
   const root = useRef<HTMLDivElement>(null);
@@ -87,9 +87,11 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const [fullscreenError, setFullscreenError] = useState('');
   const [idle, setIdle] = useState(false);
   const [collapsed, setCollapsed] = useState(sidebarHidden);
+  const [segmentDone, setSegmentDone] = useState(false);
+  const [released, setReleased] = useState(false);
   const segment = segmentOf(vod);
   const hasSegment = vod.startSec !== undefined || vod.endSec !== undefined;
-  const src = embedUrl(vod.videoId, location.origin, hasSegment ? segment : undefined);
+  const src = embedUrl(vod.videoId, location.origin, hasSegment ? { start: segment.start } : undefined);
   fullscreenNow.current = fullscreen;
   const playing = info.playerState === PLAYING;
   const duration = info.duration || vod.durationSec;
@@ -100,7 +102,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const command = (func: string, args: unknown[] = []) => send({ event: 'command', func, args });
   // Seek optimistically: YouTube reports progress a few times a second, so the rail would lag behind the click.
   const seekTo = (sec: number) => {
-    const to = Math.max(segStart, Math.min(sec, segEnd));
+    const to = released ? Math.max(0, Math.min(sec, duration)) : Math.max(segStart, Math.min(sec, segEnd));
     command('seekTo', [to, true]);
     setInfo(previous => ({ ...previous, currentTime: to }));
   };
@@ -165,11 +167,11 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   useEffect(() => { if (ready && seek) jump(seek.moment.atSec); }, [ready, seek]);
   useEffect(() => {
     const time = info.currentTime;
-    if (time === undefined || !hasSegment) return;
-    if (vod.endSec !== undefined && time >= segEnd) command('pauseVideo');
+    if (time === undefined || !hasSegment || released) return;
+    if (vod.endSec !== undefined && time >= segEnd) { if (!segmentDone || playing) command('pauseVideo'); setSegmentDone(true); }
     else if (time < segStart - 1) seekTo(segStart);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [info.currentTime, hasSegment, segStart, segEnd, vod.endSec]);
+  }, [info.currentTime, hasSegment, segStart, segEnd, vod.endSec, released, playing]);
   useEffect(() => { onMomentChange?.(momentIndex); }, [momentIndex, onMomentChange]);
   useEffect(() => {
     if (!fullscreen) return;
@@ -234,11 +236,12 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
         allow="autoplay; encrypted-media; picture-in-picture"
         onLoad={() => { setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
         : <div className="mv-frame mv-preview-frame"><span className="mv-preview">Preview, no video</span><p>Preview only · no video linked</p></div>}
+      {segmentDone && !released && <div className="mv-game-over" role="status"><strong>Game over</strong>{onNextGame && <button onClick={onNextGame}>Next game</button>}<button onClick={() => { setReleased(true); setSegmentDone(false); command('playVideo'); }}>Keep watching</button></div>}
       {notice && <div className="mv-notice" role="status"><span>{notice}</span>
         {failed && url && <GuideSourceButton url={url} className="mv-youtube-link" label="Open on YouTube">Open on YouTube ↗</GuideSourceButton>}</div>}
       {showBar && <div className="mv-rail-row" role="group" aria-label="Video tools">
         {hasRail ? <MomentRail moments={vod.moments} current={current} duration={segDuration || duration} start={segStart} disabled={!ready} onJump={jump} champions={champions} /> : <span className="mv-rail-spacer" />}
-        <span className="mv-bar-end">
+        <span className="mv-bar-end">{fullscreen && collapsed && <small>Esc to return</small>}
           {hasMoments && collapsed && <IconButton label="Show key moments" className="mv-show-moments" onClick={toggleSidebar}><PanelRightOpen size={15} aria-hidden />Key moments</IconButton>}
           {fullscreenButton}
         </span>
