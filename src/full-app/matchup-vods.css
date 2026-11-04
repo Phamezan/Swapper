@@ -222,7 +222,7 @@
   .mv-screen { width: 100%; }
   .mv-side { width: auto; min-height: 240px; margin: 16px 0 0; }
   .mv-moments { overflow: visible; }
-  .mv-facts { display: none; }
+
 }
 
 @media (prefers-reduced-motion: reduce) { .mv-player-view *, .mv-library * { transition: none !important; scroll-behavior: auto !important; } }
@@ -279,3 +279,25 @@ html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscree
 .is-mini .mv-video-player { box-sizing: border-box; overflow: visible; }
 
 .is-mini :is(.mv-notice, .mv-game-over) { display: none; }
+
+/* Header facts wrap as groups, above the video at every window width. */
+.mv-watch-header { flex-wrap: wrap; gap: 12px 16px; font-size: 14px; }
+.mv-watch-header :is(.mv-back, .mv-youtube-link, .mv-facts, .mv-affiliation, .mv-stream-tag, .mv-perspective-label) { font-size: 14px; }
+.mv-game-info { flex: 1; flex-wrap: wrap; overflow: visible; gap: 10px 16px; }
+.mv-header-game, .mv-header-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; min-width: 0; }
+.mv-header-game > * + *, .mv-header-meta > * + * { border-left: 1px solid var(--ui-line-3); padding-left: 12px; }
+.mv-header-matchup { gap: 8px; font-size: 14px; }
+.mv-header-matchup strong { font-size: 17px; font-weight: 600; }
+.mv-header-matchup :is(.champion-icon, .champion-icon-fallback) { width: 30px; height: 30px; border-radius: var(--ui-radius-sm); }
+.mv-header-rank { display: inline-flex; align-items: center; gap: 6px; }
+.mv-watch-header .mv-player { flex-wrap: wrap; }
+.mv-watch-header .mv-player-name { font-size: 16px; }
+.mv-watch-header .mv-avatar { width: 30px; height: 30px; flex-basis: 30px; font-size: 14px; }
+.mv-watch-header .mv-facts { flex-wrap: wrap; }
+@container matchup-vods (max-width: 1100px) {
+  .mv-watch-header .mv-game-info { flex-basis: calc(100% - 150px); }
+  .mv-header-meta { flex-basis: 100%; }
+}
+@container matchup-vods (max-width: 600px) {
+  .mv-game-info { flex-basis: 100%; padding-left: 0; border-left: 0; }
+}

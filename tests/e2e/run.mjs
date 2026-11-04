@@ -868,8 +868,14 @@ async function main() {
     await page.click('.mv-vod-row[data-vod-id="A_b-cD12345@0"]');
     await page.visible('.mv-embed iframe');
     assert.ok(await page.evaluate("new URL(document.querySelector('.mv-embed iframe').src).searchParams.get('controls') === '1' && !document.querySelector('.mv-quality-button, .mv-track, .mv-speed-button, .mv-time, .mv-control-row')"), "YouTube's own controls, with no second transport of ours");
-    assert.ok(await page.evaluate("(() => { const h = document.querySelector('.mv-watch-header').getBoundingClientRect(); return h.height <= 44 && h.bottom <= document.querySelector('.mv-embed').getBoundingClientRect().top; })()"), 'one header line above the picture');
+    assert.ok(await page.evaluate("(() => { const h = document.querySelector('.mv-watch-header').getBoundingClientRect(); return h.bottom <= document.querySelector('.mv-embed').getBoundingClientRect().top; })()"), 'header stays above the picture');
     assert.ok(await page.evaluate("!document.querySelector('.mv-watch-header').textContent.includes('?')"), 'unknown pilot player is never displayed as a question mark');
+    await page.text('.mv-header-matchup', 'Ahri');
+    await page.text('.mv-header-matchup', 'vs');
+    for (const [width, height] of [[1920, 1080], [1000, 700]]) {
+      await screenshot('vod-header', width, height);
+      assert.ok(await page.evaluate("(() => { const h = document.querySelector('.mv-watch-header'); return h.scrollWidth <= h.clientWidth && h.getBoundingClientRect().bottom <= document.querySelector('.mv-embed').getBoundingClientRect().top; })()"), 'header wraps without overflow above video');
+    }
     // What YouTube sizes quality from: the iframe box and the viewport its document reports.
     const frameSize = "(() => { const f = document.querySelector('.mv-embed iframe'), r = f.getBoundingClientRect(); return { box: `${Math.round(r.width)}x${Math.round(r.height)}`, transform: getComputedStyle(f).transform, peer: window.__peer && `${window.__peer.width}x${window.__peer.height}@${window.__peer.dpr}x` }; })()";
     // Exactly 16:9, rail flush under the picture at its width, everything inside the window without nested scrolling.
@@ -1025,7 +1031,8 @@ async function main() {
     await page.settle();
     const plain = await page.evaluate("(() => { const f = document.querySelector('.mv-embed iframe').getBoundingClientRect(), stage = document.querySelector('.mv-stage').getBoundingClientRect(); return { none: !document.querySelector('.mv-side, .mv-rail, .mv-chapters') && document.querySelectorAll('.mv-rail-row button').length === 1, filled: Math.abs(f.width - stage.width) <= 1 || Math.abs(f.height + 32 - stage.height) <= 1, facts: document.querySelector('.mv-facts').textContent }; })()");
     assert.ok(plain.none && plain.filled, `no moments: no sidebar or rail, only fullscreen below, and the picture fills its space (${JSON.stringify(plain)})`);
-    assert.ok(/KR Master/.test(plain.facts) && /Loss/.test(plain.facts) && /Jan 5, 2026/.test(plain.facts), `header facts: rank and region, result and upload date (${plain.facts})`);
+    assert.ok(/Patch 26.22/.test(plain.facts) && /Jan 5, 2026/.test(plain.facts), `header facts: patch and upload date (${plain.facts})`);
+    await page.text('.mv-header-rank', 'Master');
     fitted(await page.evaluate(layout), 'no moments');
     const plainFrame = await page.evaluate(frameSize);
     await screenshot('vod-player-no-moments', 1920, 1080);

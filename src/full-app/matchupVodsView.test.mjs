@@ -329,7 +329,7 @@ test('the player header shows the facts once and the sidebar only exists with mo
   rows(tree)[0].props.onClick();
   tree = h.render();
   const facts = nodes(tree).find(node => node.type?.name === 'VodFacts');
-  assert.equal(text(facts.type(facts.props)), `EUW ChallengerPatch ${vod.patch}Win29:06Mar 4, 2020`);
+  assert.equal(text(facts.type(facts.props)), `Patch ${vod.patch}Mar 4, 2020`);
   assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-chapters').props.children[0]), `Key moments${vod.moments.length} · [ ] jump · F fullscreen`, 'the count appears once, in the sidebar header');
   assert.doesNotMatch(text(tree), /Match room|Match story|Match timeline/);
   nodes(tree).find(node => node.props.className === 'mv-back').props.onClick();
@@ -760,4 +760,19 @@ test("wide rows lead with both matchup portraits, lane and the full spoken label
  assert.equal(nodes(matchup).filter(n => n.type === 'champion-icon').length, 2);
  assert.match(text(matchup), /Ahri vs ZedMid/);
  assert.match(row.props['aria-label'], /Ahri vs Zed, Mid\./);
+});
+
+test("unknown opponents use the helmet in rows and the header, with segment length first", async () => {
+  const vod = {...ahriVsZedVods[0], champion: 103, enemy: undefined, lane: "mid", startSec: 100, endSec: 1872};
+  const h = harness('./MatchupVods.tsx', 'MatchupVods', [vod], [vod]);
+  h.render({...props, enemy: undefined});
+  let tree = await h.flush();
+  assert.ok(nodes(rows(tree)[0]).some(n => n.type === 'champion-icon' && n.props.id === -1));
+  rows(tree)[0].props.onClick();
+  tree = h.render();
+  const matchup = nodes(tree).find(n => n.props.className === 'mv-header-matchup');
+  assert.equal(matchup.props['aria-label'], 'Ahri vs unknown opponent');
+  assert.match(text(matchup), /Ahrivs\?/);
+  assert.ok(nodes(matchup).some(n => n.type === 'champion-icon' && n.props.id === -1));
+  assert.equal(text(nodes(tree).find(n => n.props.className === 'mv-header-length')), '29:32');
 });
