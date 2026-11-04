@@ -83,7 +83,7 @@ function App() {
     if (target in appViews) { setPage("app"); setRequest({ view: appViews[target as AppPage] }); }
     else setPage(target as Page);
   }, []);
-  const openVods = (request: VodRequest) => { setVodRequest(request); setPage("VODs"); };
+  const openVods = (request: VodRequest) => { if (request.champion && request.enemy && request.lane) setFocus({ champion: request.champion, matchup: { enemy: request.enemy.id, lane: request.lane } }); setVodRequest(request); setPage("VODs"); };
   const sidebarGo = (target: Location) => {
     if (target !== currentRef.current) { setFocus(null); go(target); return; }
     const scroller = document.querySelector<HTMLElement>(".dashboard-main")

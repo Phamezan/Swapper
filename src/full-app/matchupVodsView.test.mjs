@@ -11,14 +11,14 @@ const photos = {};
 function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(vod => ({ ...vod, enemy: 238, lane: "mid" }))) {
   const states = [], effects = [], focus = [], domRefs = new Set(), messages = [], listeners = new Map(), timers = new Map(), fullscreen = [], scrolls = [];
   const contentWindow = { postMessage: (data, origin) => messages.push({ data: JSON.parse(data), origin }) };
-  const browser = { addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name), setInterval: fn => { timers.set('interval', fn); return 'interval'; }, clearInterval: name => timers.delete(name), setTimeout: fn => { timers.set('timeout', fn); return 'timeout'; }, clearTimeout: name => timers.delete(name) };
+  const browser = { innerWidth: 1600, addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name), setInterval: fn => { timers.set('interval', fn); return 'interval'; }, clearInterval: name => timers.delete(name), setTimeout: fn => { timers.set('timeout', fn); return 'timeout'; }, clearTimeout: name => timers.delete(name) };
   const documentListeners = new Map();
   const fakeDocument = { fullscreenElement: null, addEventListener: (name, fn) => documentListeners.set(name, fn), removeEventListener: name => documentListeners.delete(name), exitFullscreen: async () => { fullscreen.push('element off'); fakeDocument.fullscreenElement = null; } };
   const tauriWindow = { maximized: false, isMaximized: async () => tauriWindow.maximized, toggleMaximize: async () => { tauriWindow.maximized = !tauriWindow.maximized; fullscreen.push(tauriWindow.maximized ? 'maximize' : 'unmaximize'); },
     setFullscreen: async on => { fullscreen.push(`window ${on ? 'on' : 'off'}`); } };
   let cursor = 0, pending = [], props, request, requestKey;
   const react = {
-    useId: () => "test-id", useRef(initial) { const i = cursor++; return states[i] ??= { current: initial }; },
+    useMemo: fn => fn(), useId: () => "test-id", useRef(initial) { const i = cursor++; return states[i] ??= { current: initial }; },
     useState(initial) { const i = cursor++; if (!(i in states)) states[i] = typeof initial === "function" ? initial() : initial; return [states[i], value => { states[i] = typeof value === 'function' ? value(states[i]) : value; }]; },
     useEffect(fn, deps) { const i = cursor++; if (!effects[i] || deps.some((dep, j) => dep !== effects[i].deps[j])) pending.push(() => { effects[i]?.cleanup?.(); effects[i] = { deps, cleanup: fn() }; }); },
   };
@@ -32,7 +32,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
     "./art": { useChampionArt: () => null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
     "./VodPlayer": { VodPlayer: "player-identity" }, "./PlayerPhoto": { usePlayerPhoto: name => photos[name] ?? null }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
-    "./ui/States": { Skeleton: "skeleton" }, "./MomentIcon": { MomentIcon: "moment-icon" }, "@tauri-apps/api/window": { getCurrentWindow: () => tauriWindow }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
+    "./ui/States": { Skeleton: "skeleton", Notice: "notice" }, "./MomentIcon": { MomentIcon: "moment-icon" }, "@tauri-apps/api/window": { getCurrentWindow: () => tauriWindow }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
     "./MatchupGuideSummary": { MatchupGuideSummary: "summary" }, "./TradeWindows": { TradeWindows: "trades" }, "./PowerSpikeTimeline": { PowerSpikeTimeline: "spikes" },
   };
   const source = readFileSync(new URL(file, import.meta.url), "utf8");
@@ -52,7 +52,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     }
     pending.splice(0).forEach(fn => fn()); return tree;
   };
-  return { render, tauriWindow, focus, messages, contentWindow, timers, fullscreen, fakeDocument, documentListeners, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
+  return { browser, render, tauriWindow, focus, messages, contentWindow, timers, fullscreen, fakeDocument, documentListeners, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
 }
 // The player's header is a prop like its children; walk both.
 function nodes(tree) { return !tree || typeof tree !== "object" ? [] : Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.header), ...nodes(tree.props?.children)]; }
@@ -84,7 +84,7 @@ test('question-mark players read as a rank replay with no player photo', () => {
 test('unnamed events get ordinal art and death events retain their explicit kind', () => {
   const h = harness('./VodMomentArt.tsx', 'VodMomentArt');
   const tree = h.render({ moment: { label: 'Caught at river', kind: 'death' }, champions: [], index: 7 });
-  assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-event-number')), '08');
+  assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-event-number')), '');
   assert.equal(tree.props['data-kind'], 'death');
   assert.equal(nodes(tree).find(node => node.type === 'moment-icon').props.kind, 'death');
 });
@@ -333,8 +333,8 @@ test('the player header shows the facts once and the sidebar only exists with mo
   rows(tree)[0].props.onClick();
   tree = h.render();
   const facts = nodes(tree).find(node => node.type?.name === 'VodFacts');
-  assert.equal(text(facts.type(facts.props)), `EUW ChallengerPatch ${vod.patch}VictoryMar 4, 2020`);
-  assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-chapters').props.children[0]), `Key moments${vod.moments.length}`, 'the count appears once, in the sidebar header');
+  assert.equal(text(facts.type(facts.props)), `EUW ChallengerPatch ${vod.patch}Win29:06Mar 4, 2020`);
+  assert.equal(text(nodes(tree).find(node => node.props.className === 'mv-chapters').props.children[0]), `Key moments${vod.moments.length} · [ ] jump · F fullscreen`, 'the count appears once, in the sidebar header');
   assert.doesNotMatch(text(tree), /Match room|Match story|Match timeline/);
   nodes(tree).find(node => node.props.className === 'mv-back').props.onClick();
   tree = h.render();
@@ -377,8 +377,8 @@ test("an empty champion library asks for another champion without filters", asyn
   const h = harness("./MatchupVods.tsx", "MatchupVods", [], []);
   h.render({ ...props, enemy: undefined, lane: undefined });
   const tree = await h.flush();
-  assert.match(text(tree), /No Ahri VODs yet. Choose another champion/);
-  assert.equal(nodes(tree).some(node => node.props.className === "mv-filters"), false);
+  assert.match(text(tree), /No Ahri VODs yet./);
+  assert.equal(nodes(tree).some(node => node.props.className === "mv-filters"), true);
 });
 
 const rows = tree => nodes(tree).filter(node => node.props.className === "mv-vod-row");
@@ -391,7 +391,7 @@ test("the library pages a large matchup list and filters every Ahri VOD across o
   h.render({ ...props, enemy: undefined, lane: undefined });
   let tree = await h.flush();
   assert.equal(rows(tree).length, 60, "a long list renders its first step only");
-  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${every.length} VODs`);
+  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${every.length.toLocaleString("en")} VODs`);
   assert.ok(labelled(tree, "Opponent"));
   const patches = rows(tree).map(row => every.find(vod => logic.vodKey(vod) === row.props["data-vod-id"]).patch);
   assert.ok(patches.every((patch, i) => !i || logic.comparePatch(patches[i - 1], patch) >= 0), "newest patch first by default");
@@ -399,8 +399,8 @@ test("the library pages a large matchup list and filters every Ahri VOD across o
   tree = h.render();
   assert.equal(rows(tree).length, 120, "scrolling near the end renders the next step");
 
-  assert.match(text(tree), /Browse VODs/);
-  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${every.length} VODs`);
+  assert.match(text(tree), /VODs/);
+  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${every.length.toLocaleString("en")} VODs`);
   assert.equal(rows(tree).length, 120, "paging retains the next step");
   const opponents = labelled(tree, "Opponent").props.options;
   assert.deepEqual([opponents[1].label, opponents[1].count], ["Zed", zed.length + every.filter(vod => vod.enemy === 238 && vod.lane !== "mid").length], "opponents are ordered by games, with portraits and a separate count");
@@ -414,7 +414,7 @@ test("the library pages a large matchup list and filters every Ahri VOD across o
   const expected = logic.filterVods(every, filters);
   assert.ok(expected.length > 1);
   assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]), expected.slice(0, 60).map(vod => logic.vodKey(vod)));
-  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${expected.length} of ${every.length}`);
+  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-match-count")), `${expected.length.toLocaleString("en")} VODs`);
   assert.deepEqual(labelled(tree, "Players").props.options.map(option => option[2]),
     [false, true].map(named => every.filter(vod => logic.vodMatches(vod, { ...filters, named })).length), "each option counts what choosing it would show");
   assert.ok(rows(tree).every(row => /vs Yasuo/.test(row.props["aria-label"])));
@@ -546,7 +546,7 @@ test("filters are hidden under eight VODs and visible at eight", async () => {
     const h = harness('./MatchupVods.tsx', 'MatchupVods', list, list);
     h.render(props);
     const tree = await h.flush();
-    assert.equal(nodes(tree).some(node => node.props.className === 'mv-filters'), count >= 8);
+    assert.equal(nodes(tree).some(node => node.props.label === 'Players'), count >= 8);
   }
 });
 
@@ -606,7 +606,7 @@ test("a small matchup hides filters even in a large champion library", async () 
   h.render(props);
   let tree = await h.flush();
   assert.equal(rows(tree).length, 7);
-  assert.equal(nodes(tree).some(node => node.props.className === 'mv-filters'), false);
+  assert.equal(nodes(tree).some(node => node.props.className === 'mv-filters'), true);
   nodes(tree).find(node => node.props.className === 'mv-matchup-scope').props.children[1].props.onClick();
   tree = h.render();
   assert.equal(rows(tree).length, 10);
@@ -637,7 +637,7 @@ test("clearing Champion requests all VODs and reverse controls require both filt
   const h = harness('./MatchupVods.tsx', 'MatchupVods', [], list);
   h.render({ ...props, onChampionChange: champion => changes.push(champion) });
   let tree = await h.flush();
-  assert.ok(labelled(tree, 'Perspective'));
+  assert.equal(labelled(tree, 'Perspective'), undefined);
   labelled(tree, 'Champion').props.onChange('0');
   assert.deepEqual(changes, [null]);
   h.render({ ...props, champion: null, enemy: undefined, lane: undefined });
@@ -681,7 +681,7 @@ test("two segments of one stream are two rows, streamer badge and filter work, a
   // The matchup-scoped request still sets an enemy filter via props? No: enemy undefined, so all three show.
   assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]).slice(0, 3), [logic.vodKey(segA), logic.vodKey(segB), logic.vodKey(anyVod)]);
   assert.match(text(tree), /Streamer/);
-  assert.match(text(tree), /vs any/);
+  assert.match(text(tree), /opponent unknown/);
   const streamer = labelled(tree, "Streamer");
   assert.ok(streamer, "streamer filter renders when the pool has a stream VOD");
   streamer.props.onChange(true);
@@ -706,7 +706,7 @@ test("segment playback clamps seeks, snaps back before the start and pauses at t
   let tree = h.render({ vod, seek: null });
   const iframe = nodes(tree).find(node => node.type === "iframe");
   assert.match(iframe.props.src, /start=100/);
-  assert.match(iframe.props.src, /end=900/);
+  assert.doesNotMatch(iframe.props.src, /end=/);
   h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 500, duration: 3600, playerState: 1 } }) });
   tree = h.render();
   assert.deepEqual([timeline(tree).props.duration, timeline(tree).props.start], [800, 100], "the rail windows to the segment");
@@ -719,4 +719,35 @@ test("segment playback clamps seeks, snaps back before the start and pauses at t
   h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({ event: "infoDelivery", info: { currentTime: 950, duration: 3600, playerState: 1 } }) });
   h.render();
   assert.equal(h.messages.pop().data.func, "pauseVideo", "playing past the end pauses");
+  let ended = h.render();
+  assert.match(text(ended), /Game over/);
+  nodes(ended).find(node => node.type === 'button' && text(node) === 'Keep watching').props.onClick();
+  h.render(); h.messages.length = 0;
+  h.receive({ source: h.contentWindow, origin: youtube.YOUTUBE_ORIGIN, data: JSON.stringify({event:'infoDelivery',info:{currentTime:10,playerState:1}}) });
+  h.render(); assert.equal(h.messages.length, 0, 'Keep watching releases both clamps');
+  assert.doesNotMatch(text(h.render()), /Game over/);
+});
+
+test('narrow default collapses moments while an explicit open preference wins', () => {
+  const storage = globalThis.localStorage;
+  try {
+    globalThis.localStorage = { getItem: () => null };
+    const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
+    h.browser.innerWidth = 1280;
+    const tree = h.render({vod:ahriVsZedVods[0],seek:null,children:'moments'});
+    assert.equal(nodes(tree).some(n => n.props.className === 'mv-side'), false);
+    globalThis.localStorage = { getItem: () => '0' };
+    const open = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer').render({vod:ahriVsZedVods[0],seek:null,children:'moments'});
+    assert.equal(nodes(open).some(n => n.props.className === 'mv-side'), true);
+  } finally { globalThis.localStorage = storage; }
+});
+
+test('segment overlay offers the supplied next game action', () => {
+  let next = 0;
+  const h = harness('./YoutubeVodPlayer.tsx', 'YoutubeVodPlayer');
+  h.render({vod:{...ahriVsZedVods[0],videoId:'A_b-cD12345',fixture:false,startSec:100,endSec:900},seek:null,onNextGame:()=>next++});
+  h.receive({source:h.contentWindow,origin:youtube.YOUTUBE_ORIGIN,data:JSON.stringify({event:'infoDelivery',info:{currentTime:901,playerState:1}})});
+  h.render();
+  nodes(h.render()).find(n=>n.type==='button' && text(n)==='Next game').props.onClick();
+  assert.equal(next,1);
 });

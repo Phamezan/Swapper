@@ -89,7 +89,7 @@
 .mv-rail-played { position: absolute; inset: 0 auto 0 0; background: color-mix(in srgb, var(--ui-brand) 55%, transparent); }
 .mv-tick { position: absolute; top: 0; bottom: 0; width: 14px; padding: 0; transform: translateX(-50%); border: 0; border-radius: var(--ui-radius-xs); background: none; cursor: pointer; }
 .mv-tick::before { content: ""; position: absolute; top: 50%; left: 50%; width: 3px; height: 12px; transform: translate(-50%, -50%); border-radius: 2px; background: var(--ui-text-2); transition: height .12s, background .12s; }
-.mv-tick.is-past::before { background: var(--ui-text-3); }
+
 .mv-tick:is(:hover, :focus-visible)::before { height: 18px; background: var(--ui-text-1); }
 .mv-tick.is-current::before { width: 4px; height: 18px; background: var(--ui-brand); }
 .mv-tick:disabled { cursor: default; opacity: .5; }
@@ -193,3 +193,20 @@ html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscree
 .mv-perspective-label { color: var(--ui-text-3); font-size: 12px; }
 
 .mv-more > div { height: 1px; }
+
+.mv-vod-list > li { content-visibility: auto; contain-intrinsic-size: auto 46px; }
+.mv-table.is-wide { --mv-cols: 26px minmax(0, 1fr) minmax(0, 220px) 92px 44px 52px; }
+.fa-frame .dashboard-main:has(> .mv-mini-host:not(:empty)) { padding-bottom: calc(min(360px, 100vw - 48px) * 9 / 16 + 76px); }
+.mv-screen { position: relative; }
+.mv-game-over { position: absolute; inset: 0 0 38px; display: flex; align-items: center; justify-content: center; gap: 16px; background: #111e; z-index: 2; }
+.mv-game-over button { color: var(--ui-brand); background: var(--ui-surface-2); padding: 10px; border: 1px solid var(--ui-line-2); cursor: pointer; }
+.mv-header-matchup { color: var(--ui-text-1); font-size: 12px; }
+.mv-tick[data-kind="death"]::before { background: var(--ui-loss); }
+.mv-tick:is([data-kind="kill"],[data-kind="trade"])::before { background: var(--ui-win); }
+.mv-tick.is-past { opacity: .55; }
+.mv-tick.is-current::before { background: var(--ui-brand); }
+@container matchup-vods (max-width: 780px) { .mv-side-close { top: 0; right: 0; } }
+
+.mv-header-matchup { display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+.mv-header-matchup .champion-icon, .mv-header-matchup img { width: 20px; height: 20px; flex-shrink: 0; }
+.mv-filters { flex-wrap: wrap; }

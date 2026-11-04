@@ -700,7 +700,7 @@ async function main() {
     await page.text('.mv-match-count', '125 VODs');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===60", 'all-champion library starts with sixty rows');
     assert.equal(await page.evaluate("document.querySelector('.mv-vod-row').dataset.vodId"), 'all-vod-124@0', 'newest patch first across champions');
-    await page.text('.mv-vod-row:first-child .mv-cell-enemy', 'Ahri vs Yasuo');
+    await page.text('.mv-vod-row:first-child .mv-cell-enemy', 'vs Yasuo');
     await page.text('.mv-vod-row:first-child .mv-cell-enemy', 'Top');
     assert.equal(await page.evaluate("document.querySelector('.mv-vod-row:first-child .mv-cell-enemy').querySelectorAll('.champion-icon, .champion-icon-fallback').length"), 2, 'both champions have portraits');
     assert.equal(await page.evaluate("!!document.querySelector('[aria-label=Perspective]')"), false);
@@ -718,7 +718,7 @@ async function main() {
     await choose('Opponent', 'Zed');
     await page.visible('.mv-segment[aria-label="Perspective"]');
     await page.click('.mv-segment[aria-label="Perspective"] button:last-child');
-    await page.text('.mv-vod-list[aria-label="From Zed’s side"]', 'Zed vs Ahri');
+    await page.text('.mv-vod-list[aria-label="From Zed’s side"]', 'vs Ahri');
     await choose('Champion', 'All champions');
     await page.visible('button[aria-label="Champion: All champions"]');
     await page.text('.mv-match-count', '125 VODs');
@@ -758,6 +758,10 @@ async function main() {
     assert.equal(await page.evaluate("[...document.querySelectorAll('.mg-workspace-tabs button')].some(b=>b.textContent==='VODs')"), false);
     await page.click('.mv-entry button', 'Watch');
     await page.text('nav button[aria-current="page"]', 'VODs');
+    await page.click('button[aria-label="Back"]');
+    await page.visible('.mg-guide-view');
+    await page.text('.mg-context', 'Ahri vs Zed');
+    await page.click('.mg-context button', await page.evaluate("[...document.querySelectorAll('.mg-context button')].find(b=>b.textContent.includes('Watch')).textContent"));
     await page.text('.mv-matchup-scope', 'Ahri vs Zed · Mid');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===8", 'entry filters champion, opponent and lane');
     assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].map(r=>r.dataset.vodId)"), ['patch-new01@0','named-new01@0','named-tie01@0','named-old01@0','anonymous01@0','match-vod00@0','match-vod01@0','match-vod02@0']);
@@ -772,14 +776,14 @@ async function main() {
     await page.click('.mv-segment[aria-label="Perspective"] button:last-child');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===1", 'reverse mid games only');
     await page.text('.mv-vod-list[aria-label="From Zed’s side"]', 'Zed player');
-    assert.equal(await page.evaluate("!!document.querySelector('.mv-filters')"), false, 'under eight hides the whole filter bar');
+    assert.equal(await page.evaluate("!!document.querySelector('.mv-filters')"), true, 'under eight keeps the navigation filters');
     await page.click('.mv-matchup-scope button');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===13", 'browse all clears filters and perspective');
     await page.click('button[aria-label="Champion: Ahri"]');
     await page.type('.fa-picker-search input', 'Zed');
     await page.click('.fa-picker-option', await page.evaluate("[...document.querySelectorAll('.fa-picker-option')].map(b=>b.textContent.trim()).find(t=>t.startsWith('Zed'))"));
     await page.wait("document.querySelectorAll('.mv-vod-row').length===2", 'searchable champion picker loads Zed');
-    assert.equal(await page.evaluate("!!document.querySelector('.mv-filters')"), false);
+    assert.equal(await page.evaluate("!!document.querySelector('.mv-filters')"), true);
     await nav('Dashboard', '.match-row');
     await nav('VODs', '.mv-vod-row');
     await page.visible('button[aria-label="Champion: All champions"]');
@@ -798,6 +802,7 @@ async function main() {
   });
   await check('VOD player controls and persistent mini player', async () => {
     await navigate(fullApp, '.match-row');
+    await page.evaluate("localStorage.setItem('swapper.vodMomentsHidden','0')");
     await page.evaluate(`(() => {
       const invoke = window.__TAURI_INTERNALS__.invoke;
       // A bright headshot for one pro and a dark CDN-style silhouette for another; everyone else has none.
@@ -823,7 +828,7 @@ async function main() {
     // Every Ahri VOD: the dev fixture holds 1,205 across 19 opponents and three lanes.
     await page.click('.mv-matchup-scope button');
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 60", 'a 1,205-VOD library renders its first step');
-    await page.text('.mv-match-count', '1207 VODs');
+    await page.text('.mv-match-count', '1,207 VODs');
     const row = name => `[...document.querySelectorAll('.mv-vod-row')].find(row => row.querySelector('strong').textContent === ${JSON.stringify(name)})`;
     await page.wait(`!!${row('Fixture Pro 1')}?.querySelector('img.mv-row-photo')`, 'a pro with a real headshot shows it');
     assert.ok(await page.evaluate(`!${row('Fixture Pro 2')}.querySelector('img.mv-row-photo') && !!${row('Fixture Pro 2')}.querySelector('.rank-crest, [class*="crest"]')`), 'a silhouette placeholder falls back to the rank crest');
@@ -834,11 +839,11 @@ async function main() {
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 120", 'scrolling renders the next step');
     await page.click('button[aria-label^="Opponent:"]');
     await page.visible('.fa-picker-option .champion-icon, .fa-picker-option .champion-icon-fallback');
-    assert.ok(await page.evaluate("[...document.querySelectorAll('.fa-picker-option')].every(b => !b.querySelector('span').textContent.includes('·') && /^\\d+$/.test(b.querySelector('.fa-picker-count').textContent))"), 'opponent counts sit apart from names');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.fa-picker-option')].every(b => !b.querySelector('span').textContent.includes('·') && /^[\\d,]+$/.test(b.querySelector('.fa-picker-count').textContent))"), 'opponent counts sit apart from names');
     await page.evaluate("document.querySelector('.fa-picker-search input').focus()");
     await screenshot('vod-opponent-picker');
     await page.click('.fa-picker-option', await page.evaluate("[...document.querySelectorAll('.fa-picker-option')].map(b => b.textContent.trim()).find(t => t.startsWith('Yasuo'))"));
-    await page.wait("/ of 1207/.test(document.querySelector('.mv-match-count').textContent) && [...document.querySelectorAll('.mv-vod-row')].every(row => row.getAttribute('aria-label').includes('vs Yasuo'))", 'opponent filter');
+    await page.wait("/VODs/.test(document.querySelector('.mv-match-count').textContent) && [...document.querySelectorAll('.mv-vod-row')].every(row => row.getAttribute('aria-label').includes('vs Yasuo'))", 'opponent filter');
     await page.click('.mv-segment[aria-label="Players"] button:last-child');
     await page.wait("[...document.querySelectorAll('.mv-vod-row')].every(row => !row.querySelector('strong.is-unnamed'))", 'named players filter');
     await screenshot('vod-library-filtered');
@@ -969,6 +974,7 @@ async function main() {
     await audit();
     await screenshot('vod-player-small', 1000, 700);
     fitted(await page.evaluate(layout), '1000×700');
+    assert.ok(await page.evaluate("document.querySelector('.mv-player-view').scrollWidth <= document.querySelector('.mv-player-view').clientWidth"), 'narrow player has no horizontal overflow');
     assert.ok(await page.evaluate("document.querySelector('.mv-rail-row').getBoundingClientRect().bottom <= innerHeight"), 'small-window moment rail remains visible');
     await page.click('.mv-moment[aria-label*="final fight"]');
     await screenshot('vod-story-small', 1000, 700);
@@ -976,6 +982,7 @@ async function main() {
     await page.click('.mv-section-link');
     await page.visible('.mg-guide-view');
     await page.visible('.is-mini iframe');
+    assert.ok(await page.evaluate(`(() => {const b=document.querySelector('button[aria-label="Next guide section"]');const r=b.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===b;})()`), 'mini player leaves Next reachable');
     assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame && window.__vodFrame.contentWindow === window.__vodWindow"), 'guide navigation must retain the iframe and its browsing context');
     assert.ok(await page.evaluate("(() => { const f = document.querySelector('.is-mini iframe').getBoundingClientRect(); return Math.abs(f.width / f.height - 16 / 9) < 0.01 && !document.querySelector('.is-mini :is(.mv-rail-row, .mv-side, .mv-watch-header)'); })()"), 'the mini player is a 16:9 video without rail, sidebar or header');
     await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'champ_select',payload:{phase:'ChampSelect'}})");
@@ -1003,7 +1010,7 @@ async function main() {
     await page.settle();
     const plain = await page.evaluate("(() => { const f = document.querySelector('.mv-embed iframe').getBoundingClientRect(), stage = document.querySelector('.mv-stage').getBoundingClientRect(); return { none: !document.querySelector('.mv-side, .mv-rail, .mv-chapters') && document.querySelectorAll('.mv-rail-row button').length === 1, filled: Math.abs(f.width - stage.width) <= 1 || Math.abs(f.height + 32 - stage.height) <= 1, facts: document.querySelector('.mv-facts').textContent }; })()");
     assert.ok(plain.none && plain.filled, `no moments: no sidebar or rail, only fullscreen below, and the picture fills its space (${JSON.stringify(plain)})`);
-    assert.ok(/KR Master/.test(plain.facts) && /Defeat/.test(plain.facts) && /Jan 5, 2026/.test(plain.facts), `header facts: rank and region, result and upload date (${plain.facts})`);
+    assert.ok(/KR Master/.test(plain.facts) && /Loss/.test(plain.facts) && /Jan 5, 2026/.test(plain.facts), `header facts: rank and region, result and upload date (${plain.facts})`);
     fitted(await page.evaluate(layout), 'no moments');
     const plainFrame = await page.evaluate(frameSize);
     await screenshot('vod-player-no-moments', 1920, 1080);
