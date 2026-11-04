@@ -1,3 +1,4 @@
+import { displayPatch } from "../patchDisplay";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
@@ -303,8 +304,8 @@ function App() {
           {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
             {group.items.map(([label, Icon]) => <button key={label} aria-label={pageLabel(label)} aria-current={current === label ? "page" : undefined} onClick={() => sidebarGo(label)}>
               <Icon size={19} aria-hidden />{pageLabel(label)}
-              {label === "Tier list & Builds" && patch && <span className="nav-badge patch" data-label={`PATCH ${patch}`} title={`Patch ${patch}`} />}
-              {label === "Patch notes" && notesPatch && seenPatch !== notesPatch && current !== label && <span className="nav-badge new" title={`Patch ${notesPatch} notes are out`}>NEW!</span>}
+              {label === "Tier list & Builds" && patch && <span className="nav-badge patch" data-label={`PATCH ${displayPatch(patch)}`} title={`Patch ${displayPatch(patch)}`} />}
+              {label === "Patch notes" && notesPatch && seenPatch !== notesPatch && current !== label && <span className="nav-badge new" title={`Patch ${displayPatch(notesPatch)} notes are out`}>NEW!</span>}
               {label === "Champion select" && (inChampSelect || inGame) && <span className="nav-badge live"><i aria-hidden />LIVE</span>}
             </button>)}
           </div>)}

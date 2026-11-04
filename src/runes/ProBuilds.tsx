@@ -1,3 +1,4 @@
+import { displayPatch } from "../patchDisplay";
 import { Fragment, useEffect, useState } from "react";
 import { SkillGrid } from "./SkillGrid";
 import { ItemIcon } from "./ItemIcon";
@@ -116,7 +117,7 @@ function ProBuildCard({
           <span className="pro-card-dot" />
           <span>{build.playedAgo}</span>
           <span className="pro-card-dot" />
-          <span>Patch {build.patch}</span>
+          <span>Patch {displayPatch(build.patch)}</span>
           <span className="pro-card-dot" />
           <span className="pro-card-role">
             <RoleIcon role={build.role || build.roleLabel} size={13} mode={mode} />

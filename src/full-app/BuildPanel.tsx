@@ -1,3 +1,4 @@
+import { displayPatch } from "../patchDisplay";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
@@ -255,7 +256,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       </>}
     </aside>
     <div className="cs-build-content">
-    <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s ${proPart === "runes" ? "runes" : proPart === "build" ? "items" : "build"}` : chosen.label}</strong><small>{pro ? proPart === "all" ? `${pro.team} · ${pro.playedAgo} · Patch ${pro.patch}` : `with ${base.label} ${proPart === "runes" ? "items" : "runes"}` : `${name} · ${lane}${build.fromTier ? ` · from ${TIER_OPTIONS.find(option => option.value === build.fromTier)?.label ?? build.fromTier} games` : ""}`}</small>
+    <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s ${proPart === "runes" ? "runes" : proPart === "build" ? "items" : "build"}` : chosen.label}</strong><small>{pro ? proPart === "all" ? `${pro.team} · ${pro.playedAgo} · Patch ${displayPatch(pro.patch)}` : `with ${base.label} ${proPart === "runes" ? "items" : "runes"}` : `${name} · ${lane}${build.fromTier ? ` · from ${TIER_OPTIONS.find(option => option.value === build.fromTier)?.label ?? build.fromTier} games` : ""}`}</small>
       {pro && <div className="fa-seg cs-pro-part" role="group" aria-label="Use from this pro build"><small>Use</small>{([["all", "Everything"], ["runes", "Runes only"], ["build", "Items only"]] as const).map(([value, label]) => <button key={value} aria-pressed={proPart === value} disabled={!!busy} onClick={() => { setProPart(value); setCustom(null); }}>{label}</button>)}</div>}</div>
     {!preview && <><div className="cs-apply-bar" aria-label="Apply to League Client">
       {autoApply && <label className="cs-auto-apply">Auto-apply<Switch aria-label="Auto-apply runes" checked={autoApply.checked} disabled={autoApply.disabled} onCheckedChange={autoApply.onChange} /></label>}

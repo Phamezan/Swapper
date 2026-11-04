@@ -526,11 +526,16 @@ async function main() {
     await matchPreview();
   });
   // ---- end matchdetail missing data ----
-  await check("Sidebar Tierlist", () => nav("Tierlist", ".tier-table tbody tr"));
+  await check("Sidebar Tierlist", async () => {
+    await nav("Tierlist", ".tier-table tbody tr");
+    assert.equal(await page.evaluate('document.querySelector(".nav-badge.patch").dataset.label'), "PATCH 26.21");
+    assert.equal(await page.evaluate('document.querySelector(".nav-badge.patch").title'), "Patch 26.21");
+  });
   await check("Shared search pill focuses its rounded container", searchPillFocus);
   await check("Tierlist champion overview and build", async () => {
     await page.click(".tier-champ", "Aatrox");
     await page.text(".champion-hero h2", "Aatrox");
+    await page.text(".champion-hero .fa-eyebrow", "Patch 26.21");
     await page.text('.location-trail button', 'Tierlist');
     await page.text('.location-trail [aria-current="page"]', 'Aatrox');
     await page.visible(".fa-build-section");
