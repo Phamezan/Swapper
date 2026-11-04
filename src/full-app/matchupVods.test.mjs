@@ -206,9 +206,9 @@ test("the server region is read next to the rank, from the claim first and then 
 test("list rows lead with the player, or rank and region, and leave out an unknown result and zero moments", () => {
   const base = { videoId: "A_b-cD12345", title: "(Peng) Ahri Mid vs Akali - EUW Challenger Patch 26.19", rankClaim: "Challenger", patch: "26.19", durationSec: 1700 };
   assert.deepEqual(vodRow({ ...base, player: "Peng", team: "MKOI", result: "W", moments: [{ atSec: 1, label: "a" }, { atSec: 2, label: "b" }] }),
-    { primary: "Peng", named: true, details: ["EUW Challenger", "Patch 26.19"], result: "win", moments: 2 });
+    { rank: "Challenger", region: "EUW", crest: "challenger", patch: "26.19", segment: null, primary: "Peng", named: true, details: ["EUW Challenger", "Patch 26.19"], result: "win", moments: 2 });
   assert.deepEqual(vodRow({ ...base, title: "Ahri Mid vs Akali - KR Master Patch 26.19", rankClaim: "MASTER", player: "?", moments: [] }),
-    { primary: "KR Master", named: false, details: ["Patch 26.19"], result: null, moments: null });
+    { rank: "Master", region: "KR", crest: "master", patch: "26.19", segment: null, primary: "KR Master", named: false, details: ["Patch 26.19"], result: null, moments: null });
   assert.equal(vodRow({ ...base, result: "L", moments: [] }).result, "loss");
   assert.deepEqual(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: "KR Diamond 1", moments: [] }).primary, "KR Diamond 1", "an unknown tier keeps its own words without repeating the region");
   assert.deepEqual(vodRow({ ...base, title: "Ahri vs Zed", rankClaim: " ", player: "Faker", moments: [] }).details, ["Patch 26.19"]);

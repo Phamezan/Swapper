@@ -127,7 +127,7 @@ export function vodRegion(vod: Pick<MatchupVod, "title" | "rankClaim" | "region"
   return match ? match[1].toUpperCase() : null;
 }
 
-export type VodRow = { primary: string; named: boolean; details: string[]; result: "win" | "loss" | null; moments: number | null };
+export type VodRow = { primary: string; named: boolean; details: string[]; result: "win" | "loss" | null; moments: number | null; rank: string; region: string | null; crest: string | null; patch: string; segment: { start: number; end: number } | null };
 
 /** List row text: the player leads, or rank and region when nobody is named; empty result and moments are left out. */
 export function vodRow(vod: MatchupVod): VodRow {
@@ -135,6 +135,8 @@ export function vodRow(vod: MatchupVod): VodRow {
   const rank = tier === "other" ? vod.rankClaim.replace(REGION_BEFORE_RANK, "").trim() : RANK_TIERS.find(([id]) => id === tier)![1];
   const standing = [region, rank].filter(Boolean).join(" ");
   return {
+    rank, region, crest: crestTier(vod.rankClaim), patch: `${vod.patchEstimated ? "~" : ""}${vod.patch}`,
+    segment: vod.startSec !== undefined || vod.endSec !== undefined ? segmentOf(vod) : null,
     primary: name ?? (standing || "Ranked game"), named: !!name,
     details: [...(name && standing ? [standing] : []), `Patch ${vod.patchEstimated ? "~" : ""}${vod.patch}`],
     result: vod.result === "W" ? "win" : vod.result === "L" ? "loss" : null,
@@ -229,4 +231,17 @@ export function facetCounts(pool: readonly MatchupVod[], filters: VodFilters) {
     });
   }
   return { ...counts, total };
+}
+
+export function playerInitials(name: string): string {
+  return name.trim().split(/\s+/).slice(0, 2).map(word => Array.from(word)[0] ?? "").join("").toUpperCase() || "?";
+}
+export function vodThumbnail(vod: Pick<MatchupVod, "videoId" | "fixture" | "startSec">): string | null {
+  return vodUrl(vod) ? `https://i.ytimg.com/vi/${vod.videoId}/mqdefault.jpg` : null;
+}
+export function vodLabel(vod: MatchupVod, names: { champion: string; enemy: string | null; lane: string | null }, now: Date): string {
+  const row = vodRow(vod), seg = segmentOf(vod);
+  const tags = [vod.team, vod.format === "stream" ? `streamer${vod.cam ? " with facecam" : ""}` : null].filter(Boolean);
+  const facts = [[row.region, row.rank].filter(Boolean).join(" "), row.patch ? `patch ${row.patch}${vod.patchEstimated ? " (estimated)" : ""}` : null, uploadAge(vod.uploaded, now)].filter(Boolean).join(", ");
+  return [`Watch ${vodPlayerName(vod.player) ?? "Ranked replay"}${tags.length ? ` (${tags.join(", ")})` : ""}, ${names.champion} vs ${names.enemy ?? "any opponent"}${names.lane ? `, ${names.lane}` : ""}`, facts, row.moments ? `${row.moments} key moment${row.moments === 1 ? "" : "s"}` : null, row.result ? row.result === "win" ? "Win" : "Loss" : null, `Length ${formatVodTime(seg.end - seg.start)}${row.segment ? " (game segment)" : ""}`].filter(Boolean).join(". ") + ".";
 }
