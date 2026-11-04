@@ -139,6 +139,9 @@ export function useAppController(fullApp?: FullAppBridge) {
         setRepairableId(payload.repairable ? payload.id : null);
         invoke<AppState>("get_state").then(sync).catch(() => {});
       }),
+      listen<{ id: string; error: string }>("launch_failed", ({ payload }) => {
+        showError(payload.error);
+      }),
       listen<{ id: string; name: string; mismatch: boolean }>("session_expired", ({ payload }) => {
         // A background watch decided the switched-in session was dead on
         // arrival; offer the same Repair Account action as a failed switch.
@@ -631,7 +634,7 @@ export function useAppController(fullApp?: FullAppBridge) {
       setError("Account actions are available in the Windows tray app. Start it with npm run tauri dev.");
       return;
     }
-    if (isSwitching) return;
+    if (isSwitching) { setError("Another account action is in progress. Try again when it finishes."); return; }
     // The flyout's signed-in row restarts the client; the full app asks via its own shared check.
     if (!fullApp && id === data.activeId) {
       const plan = await invoke<string>("restart_plan").catch(() => "ask");

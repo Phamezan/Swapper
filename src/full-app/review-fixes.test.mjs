@@ -136,6 +136,34 @@ test("tray controller imports the full item build", async () => {
   assert.deepEqual(h.calls, [{ name: "import_full_item_build", args: { championId: 266, championName: "Aatrox", build: chosen } }]);
 });
 
+test("switch during launch keeps launch errors visible and allows the next Play", async () => {
+  const environment = { effects: false };
+  const commands = { restart_plan: "save", client_health: "closed", detect_account_identity: { state: "notRunning" } };
+  const h = harness("../app/useAppController.ts", "useAppController", commands, "visible", environment);
+  h.render();
+  const state = { ...h.tree().data, activeId: "smurf", accounts: [{ id: "smurf" }, { id: "main" }] };
+  commands.get_state = state;
+  environment.effects = true;
+  h.render(); await h.flush();
+
+  await h.tree().switchToAccount("smurf");
+  await h.emit("switch_done", { id: "smurf", view: state });
+  // The backend released the switch lease, but League is still launching.
+  await h.tree().switchToAccount("main");
+  await h.emit("switch_started", { id: "main", name: "Main" });
+  await h.tree().switchToAccount("main"); await h.flush();
+  assert.match(h.tree().error, /account action is in progress/);
+  const selected = { ...state, activeId: "main" };
+  commands.get_state = selected;
+  await h.emit("switch_done", { id: "main", view: selected });
+  await h.emit("launch_failed", { id: "main", error: "League needs an update. Open Riot Client, then press Play again." });
+  assert.match(h.tree().error, /League needs an update/);
+  assert.equal(h.tree().data.activeId, "main");
+  assert.equal(h.tree().switchingAccountId, null);
+  await h.tree().switchToAccount("main");
+  assert.deepEqual(h.calls.filter(c => c.name === "switch_account").map(c => c.args.id), ["smurf", "main", "main"]);
+});
+
 for (const mode of ["desktop", "remote"]) test(`${mode} pro import preserves starter stacks and completed items`, async () => {
   const calls = [], chosen = proBuild();
   const h = harness("../runes/RunesPanel.tsx", "RunesPanel");

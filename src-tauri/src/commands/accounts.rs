@@ -31,6 +31,12 @@ struct SwitchFailedPayload {
     repairable: bool,
 }
 
+#[derive(Clone, Serialize)]
+struct LaunchFailedPayload {
+    id: Uuid,
+    error: String,
+}
+
 /// The installed Riot Client's icon for the "Open Riot Client" button, or none.
 #[tauri::command]
 pub(crate) async fn riot_client_icon(
@@ -266,9 +272,17 @@ pub(crate) fn start_switch(
                 );
                 if let Some(app_state) = app.try_state::<AppState>() {
                     let epoch = app_state.switch_guard.epoch_handle();
-                    tauri::async_runtime::spawn(crate::riot_client::launch_league_when_signed_in(
-                        move || epoch.load(Ordering::SeqCst) != watch_epoch,
-                    ));
+                    let launch_app = app.clone();
+                    tauri::async_runtime::spawn(async move {
+                        let cancelled = || epoch.load(Ordering::SeqCst) != watch_epoch;
+                        if let Err(error) = crate::riot_client::launch_league_when_signed_in(&cancelled).await {
+                            if !cancelled() {
+                                eprintln!("League launch failed: {error}");
+                                notify::restart_skipped(&launch_app, &error);
+                                let _ = launch_app.emit("launch_failed", LaunchFailedPayload { id, error });
+                            }
+                        }
+                    });
                 }
                 // Watch in the background for a session that was dead on
                 // arrival; the watch cancels itself when any other account

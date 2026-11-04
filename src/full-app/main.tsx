@@ -206,6 +206,7 @@ function App() {
       listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching({ ...payload, restart: payload.id === activeIdRef.current && !clientClosed.current }); }),
       listen("switch_done", () => { setSwitching(null); void refresh(); }),
       listen("switch_failed", () => setSwitching(null)),
+      listen<{ error: string }>("launch_failed", ({ payload }) => setError(payload.error)),
     ]) : Promise.resolve([]);
     const health = isTauri() ? listen<string>("client_health", ({ payload }) => setClientHealth(payload)) : Promise.resolve(() => {});
     // A saved account's icon was refreshed: the picker shows it.
