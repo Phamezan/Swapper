@@ -956,6 +956,33 @@ async function main() {
     await page.visible('.mg-guide-view');
     await page.visible('.is-mini iframe');
     assert.ok(await page.evaluate(noOverlap), 'mini controls stay outside the iframe');
+    assert.equal(await page.evaluate("getComputedStyle(document.querySelector('.is-mini iframe')).pointerEvents"), 'none');
+    for (const [label, command] of [['Pause video','pauseVideo'],['Play video','playVideo'],['Mute video','mute'],['Unmute video','unMute']]) {
+      await page.evaluate("window.__commands = []");
+      await page.click(`.mv-mini-actions button[aria-label="${label}"]`);
+      await page.wait(`window.__commands.includes(${JSON.stringify(command + ':')})`, `mini sends ${command}`);
+    }
+    const miniBox = () => page.evaluate("(() => {const r=document.querySelector('.is-mini .mv-video-player').getBoundingClientRect();return {x:r.x,y:r.y,width:r.width};})()");
+    const originalMini = await miniBox();
+    const dragMini = async (x,y,dx,dy) => {
+      await page.cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',clickCount:1});
+      await page.cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:x+dx,y:y+dy,button:'left',buttons:1});
+      await page.cdp.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:x+dx,y:y+dy,button:'left',clickCount:1});
+      await page.settle();
+    };
+    await dragMini(originalMini.x+35,originalMini.y+25,-100,-80);
+    const movedMini = await miniBox();
+    assert.ok(movedMini.x < originalMini.x-50 && movedMini.y < originalMini.y-50, 'drag moves mini');
+    await dragMini(movedMini.x+4,movedMini.y+4,-80,-45);
+    const resizedMini = await miniBox();
+    assert.ok(await page.evaluate("JSON.parse(localStorage.getItem('swapper.vodMiniPlacement')).width > 360"), 'size and position are saved');
+    assert.ok(resizedMini.width > movedMini.width+50, 'resize changes width');
+    assert.ok(await page.evaluate("(() => {const r=document.querySelector('.is-mini iframe').getBoundingClientRect();return Math.abs(r.width/r.height-16/9)<.01;})()"), 'resize preserves aspect');
+    for (const type of ['mousePressed','mouseReleased']) await page.cdp.send('Input.dispatchMouseEvent',{type,x:resizedMini.x+35,y:resizedMini.y+25,button:'left',clickCount:2});
+    await page.settle();
+    const resetMini = await miniBox();
+    assert.ok(Math.abs(resetMini.x-originalMini.x)<2 && Math.abs(resetMini.width-originalMini.width)<2, 'header double click resets placement');
+
     assert.ok(await page.evaluate(`(() => {const b=document.querySelector('button[aria-label="Next guide section"]');const r=b.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===b;})()`), 'mini player leaves Next reachable');
     assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame && window.__vodFrame.contentWindow === window.__vodWindow"), 'guide navigation must retain the iframe and its browsing context');
     assert.ok(await page.evaluate("(() => { const f = document.querySelector('.is-mini iframe').getBoundingClientRect(); return Math.abs(f.width / f.height - 16 / 9) < 0.01 && !document.querySelector('.is-mini :is(.mv-rail-row, .mv-side, .mv-watch-header)'); })()"), 'the mini player is a 16:9 video without rail, sidebar or header');
@@ -968,7 +995,7 @@ async function main() {
     assert.ok(await page.evaluate("window.__vodFrame.isConnected"), 'starting a game must not stop the VOD');
     await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:false})");
     await screenshot('vod-mini-player');
-    await page.click('.mv-mini-actions button[aria-label="Reopen VOD"]');
+    await page.click('.is-mini .mv-embed');
     await page.visible('.mv-player-view:not(.is-mini) iframe');
     assert.ok(await page.evaluate("document.querySelector('.mv-embed iframe') === window.__vodFrame"));
     await nav('Settings', '.full-app-embed');

@@ -1,6 +1,6 @@
 import { PageHeader } from "./ui/PageHeader";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, Play, Scissors, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, Play, Scissors } from "lucide-react";
 import { invoke } from "@tauri-apps/api/core";
 import { VodMomentArt } from "./VodMomentArt";
 import type { VodRequest } from "./MatchupVodEntry";
@@ -190,8 +190,8 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
     event.preventDefault(); event.stopPropagation(); close();
   }}>
     {active && <h1 className="sr-only">VOD player</h1>}
-    <div className="mv-mini-actions"><button type="button" onClick={onReopen} aria-label="Reopen VOD"><span className="mv-eyebrow">Now watching</span><strong>{vodPlayerName(selected.player) ?? `${selected.rankClaim} replay`}</strong><ArrowUpRight size={16} /></button><button type="button" aria-label="Close mini player" onClick={close}><X size={16} /></button></div>
-    <YoutubeVodPlayer key={vodKey(selected)} vod={selected} seek={seek} mini={!active} onNextGame={(() => { const next = (all ?? []).filter(v => v.videoId === selected.videoId && (v.startSec ?? 0) > (selected.startSec ?? 0)).sort((a,b) => (a.startSec ?? 0) - (b.startSec ?? 0))[0]; return next ? () => { setSelection({ ...selection!, vod: next }); setSeek(null); } : undefined; })()} champions={champions} onMomentChange={setActiveMoment}
+
+    <YoutubeVodPlayer key={vodKey(selected)} vod={selected} seek={seek} mini={!active} miniName={vodPlayerName(selected.player) ?? `${selected.rankClaim} replay`} onReopen={onReopen} onClose={close} onNextGame={(() => { const next = (all ?? []).filter(v => v.videoId === selected.videoId && (v.startSec ?? 0) > (selected.startSec ?? 0)).sort((a,b) => (a.startSec ?? 0) - (b.startSec ?? 0))[0]; return next ? () => { setSelection({ ...selection!, vod: next }); setSeek(null); } : undefined; })()} champions={champions} onMomentChange={setActiveMoment}
       header={<>
         <button type="button" className="mv-back" ref={backButton} onClick={close}><ArrowLeft size={15} aria-hidden />Back to VODs</button>
         <span className="mv-game-info" title={selected.title}><VodPlayer key={vodKey(selected)} vod={selected} /><span className="mv-header-matchup"><ChampionIcon id={selected.champion ?? 0} name="" mode="desktop" />{selected.enemy && <ChampionIcon id={selected.enemy} name="" mode="desktop" />}{champions.find(c => c.id === selected.champion)?.name ?? 'Champion'}{selected.enemy ? ` vs ${champions.find(c => c.id === selected.enemy)?.name ?? 'Opponent'}` : ' · opponent unknown'} · {LANES[selected.lane ?? '']}</span>{selection?.fromOtherSide && <span className="mv-perspective-label">From {champions.find(c => c.id === selected.champion)?.name ?? "opponent"}’s side</span>}<VodFacts vod={selected} /></span>

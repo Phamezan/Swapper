@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react';
-import { Maximize, PanelRightOpen, SkipBack, SkipForward, X } from 'lucide-react';
+import { useEffect, useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type KeyboardEvent, type ReactNode, type PointerEvent } from 'react';
+import { ArrowUpRight, Pause, Play, Volume2, VolumeX, Maximize, PanelRightOpen, SkipBack, SkipForward, X } from 'lucide-react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { isTauri } from '@tauri-apps/api/core';
 import type { MatchupVod } from './matchupGuide';
@@ -8,6 +8,8 @@ import { VodMomentArt } from './VodMomentArt';
 import { GuideSourceButton } from './GuideSourceButton';
 import type { ChampionOption } from '../runes/types';
 import { embedUrl, playerMessage, YOUTUBE_ORIGIN, type PlayerInfo } from './youtubePlayer';
+
+import { clampMini, parseMini, serializeMini, MINI_KEY, type MiniPlacement } from './miniPlayer';
 
 type Moment = MatchupVod['moments'][number];
 export type VodSeek = { moment: Moment; serial: number };
@@ -64,10 +66,41 @@ function MomentRail({ moments, current, duration, start = 0, disabled, onJump, c
 }
 
 /** YouTube's embed with its own controls, sized 16:9 to the space, plus the League-specific parts: header, moment rail and key-moment sidebar (`children`). */
-export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMomentChange, header, children, onNextGame }: {
+export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMomentChange, header, children, onNextGame, miniName, onReopen, onClose }: {
   champions?: readonly ChampionOption[]; vod: MatchupVod; seek: VodSeek | null; mini?: boolean; onMomentChange?: (index: number) => void;
-  onNextGame?: () => void; header?: ReactNode; children?: ReactNode;
+  miniName?: string; onReopen?: () => void; onClose?: () => void; onNextGame?: () => void; header?: ReactNode; children?: ReactNode;
 }) {
+  const [placement, setPlacement] = useState<MiniPlacement | null>(() => { try { return parseMini(localStorage.getItem(MINI_KEY)); } catch { return null; } });
+  const [miniRect, setMiniRect] = useState<MiniPlacement | null>(null);
+  const gesture = useRef<{ x: number; y: number; rect: MiniPlacement; resize: boolean } | null>(null);
+  const bounds = () => {
+    const area = root.current?.closest('.dashboard-main')?.getBoundingClientRect();
+    return { left: Math.max(0, area?.left ?? 0), top: Math.max(0, area?.top ?? 0), right: Math.min(window.innerWidth, area?.right ?? window.innerWidth), bottom: window.innerHeight };
+  };
+  const savePlacement = (value: MiniPlacement | null) => {
+    setPlacement(value);
+    try { localStorage.setItem(MINI_KEY, serializeMini(value)); } catch { /* Storage may be unavailable. */ }
+  };
+  useEffect(() => {
+    if (!mini) return;
+    const resize = () => setMiniRect(clampMini(placement, bounds()));
+    resize(); window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
+  }, [mini, placement]);
+  const startGesture = (event: PointerEvent<HTMLElement>, resize = false) => {
+    if (event.button !== 0 || (!resize && (event.target as HTMLElement).closest('button'))) return;
+    const rect = miniRect ?? clampMini(placement, bounds());
+    gesture.current = { x: event.clientX, y: event.clientY, rect, resize };
+    event.currentTarget.setPointerCapture(event.pointerId); event.preventDefault();
+  };
+  const moveGesture = (event: PointerEvent<HTMLElement>) => {
+    const drag = gesture.current; if (!drag) return;
+    const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
+    const width = clampMini({ ...drag.rect, width: drag.rect.width - dx }, bounds()).width;
+    const next = drag.resize ? { width, x: drag.rect.x + drag.rect.width - width, y: drag.rect.y + (drag.rect.width - width) * 9 / 16 } : { ...drag.rect, x: drag.rect.x + dx, y: drag.rect.y + dy };
+    const clamped = clampMini(next, bounds()); setMiniRect(clamped); savePlacement(clamped);
+  };
+  const endGesture = () => { gesture.current = null; };
   const frame = useRef<HTMLIFrameElement>(null);
   const root = useRef<HTMLDivElement>(null);
   const fullscreenNow = useRef(false);
@@ -212,11 +245,22 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
   const fullscreenButton = <IconButton label={fullscreen ? 'Exit full screen' : 'Full screen'} shortcut="f" className="mv-icon-button mv-strong" onClick={() => void changeFullscreen(!fullscreen)}>
     <Maximize size={16} /></IconButton>;
   return <div ref={root} popover="manual" tabIndex={-1} onKeyDown={onKeyDown}
+    data-default-mini={mini && !placement || undefined}
+    onPointerMove={mini ? moveGesture : undefined} onPointerUp={endGesture} onPointerCancel={endGesture}
     className={`mv-video-player${fullscreen ? ' is-fullscreen' : ''}`}
-    style={{ '--mv-bars': fullscreen ? 0 : Number(showBar) + Number(!!notice) + Number(segmentDone && !released) } as CSSProperties}>
+    style={{ ...(mini && miniRect ? { position: 'fixed', left: miniRect.x, top: miniRect.y, width: miniRect.width } : {}), '--mv-bars': fullscreen ? 0 : Number(showBar) + Number(!!notice) + Number(segmentDone && !released) } as CSSProperties}>
+    {mini && <header className="mv-mini-actions" onPointerDown={event => startGesture(event)} onDoubleClick={event => { if (!(event.target as HTMLElement).closest('button')) { savePlacement(null); setMiniRect(clampMini(null, bounds())); } }}>
+      <span className="mv-mini-name"><span className="mv-eyebrow">Now watching</span><strong>{miniName}</strong></span>
+      <IconButton label={playing ? 'Pause video' : 'Play video'} onClick={() => command(playing ? 'pauseVideo' : 'playVideo')}>{playing ? <Pause size={16} /> : <Play size={16} />}</IconButton>
+      <IconButton label={info.muted ? 'Unmute video' : 'Mute video'} onClick={() => command(info.muted ? 'unMute' : 'mute')}>{info.muted ? <VolumeX size={16} /> : <Volume2 size={16} />}</IconButton>
+      <IconButton label="Reopen VOD" onClick={onReopen}><ArrowUpRight size={16} /></IconButton>
+      <IconButton label="Close mini player" onClick={onClose}><X size={16} /></IconButton>
+    </header>}
+    {mini && <span className="mv-mini-resize" onPointerDown={event => startGesture(event, true)} title="Resize mini player" />}
     {!mini && !fullscreen && <header className="mv-watch-header">{header}</header>}
     <div className="mv-stage"><div className="mv-screen">
-      {url ? <div className="mv-frame mv-embed"><iframe ref={frame} title={vod.title} src={src}
+      {url ? <div className="mv-frame mv-embed" onClick={mini ? onReopen : undefined}><iframe ref={frame} title={vod.title} src={src}
+        tabIndex={mini ? -1 : undefined} style={mini ? { pointerEvents: 'none' } : undefined}
         allow="autoplay; encrypted-media; picture-in-picture"
         onLoad={() => { setFailed(false); send({ event: 'listening', id: 1 }); }} /></div>
         : <div className="mv-frame mv-preview-frame"><span className="mv-preview">Preview, no video</span><p>Preview only · no video linked</p></div>}

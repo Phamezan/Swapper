@@ -5,13 +5,14 @@ import ts from "typescript";
 import * as logic from "./matchupVodModel.ts";
 import * as guide from "./matchupGuide.ts";
 import * as youtube from './youtubePlayer.ts';
+import * as miniPlayer from './miniPlayer.ts';
 import { ahriVsZedVods } from "./fixtures/ahriVsZedVods.ts";
 
 const photos = {};
 function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(vod => ({ ...vod, enemy: 238, lane: "mid" }))) {
   const states = [], effects = [], focus = [], domRefs = new Set(), messages = [], listeners = new Map(), timers = new Map(), fullscreen = [], scrolls = [];
   const contentWindow = { postMessage: (data, origin) => messages.push({ data: JSON.parse(data), origin }) };
-  const browser = { innerWidth: 1600, addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name), setInterval: fn => { timers.set('interval', fn); return 'interval'; }, clearInterval: name => timers.delete(name), setTimeout: fn => { timers.set('timeout', fn); return 'timeout'; }, clearTimeout: name => timers.delete(name) };
+  const browser = { innerWidth: 1600, innerHeight: 900, addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name), setInterval: fn => { timers.set('interval', fn); return 'interval'; }, clearInterval: name => timers.delete(name), setTimeout: fn => { timers.set('timeout', fn); return 'timeout'; }, clearTimeout: name => timers.delete(name) };
   const documentListeners = new Map();
   const fakeDocument = { fullscreenElement: null, addEventListener: (name, fn) => documentListeners.set(name, fn), removeEventListener: name => documentListeners.delete(name), exitFullscreen: async () => { fullscreen.push('element off'); fakeDocument.fullscreenElement = null; } };
   const tauriWindow = { maximized: false, isMaximized: async () => tauriWindow.maximized, toggleMaximize: async () => { tauriWindow.maximized = !tauriWindow.maximized; fullscreen.push(tauriWindow.maximized ? 'maximize' : 'unmaximize'); },
@@ -29,7 +30,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", ChevronRight: "chevron", ArrowLeft: "back-icon" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods, loadChampionVods: async () => championVods, loadAllVods: async () => championVods.map(vod => ({ ...vod, champion: vod.champion ?? (vod.enemy === 103 ? 238 : 103) })) },
     "./Picker": { ChampionPicker: "champion-picker", Picker: "picker", ROLES: [["mid", "Mid"], ["top", "Top"]] }, "./NearViewport": { NearEnd: "near-end" },
-    './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
+    './miniPlayer': miniPlayer, './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
     "./art": { useChampionArt: () => null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
     "./VodPlayer": { VodPlayer: "player-identity" }, "./PlayerPhoto": { usePlayerPhoto: name => photos[name] ?? null }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
     "./ui/States": { Skeleton: "skeleton", Notice: "notice" }, "./MomentIcon": { MomentIcon: "moment-icon" }, "@tauri-apps/api/window": { getCurrentWindow: () => tauriWindow }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
@@ -47,7 +48,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     const tree = exports[component](component === 'MatchupVods' ? { ...props, request } : props);
     for (const ref of domRefs) ref.current = null;
     for (const node of nodes(tree)) if (node.props.ref && typeof node.props.ref === "object") {
-      const ref = node.props.ref; domRefs.add(ref); ref.current = { contentWindow, querySelector: () => null, contains: () => false, focus: () => focus.push(node.props["data-vod-id"] ?? node.props.className), children: [], scrollHeight: 0, clientHeight: 0,
+      const ref = node.props.ref; domRefs.add(ref); ref.current = { closest: () => null, contentWindow, querySelector: () => null, contains: () => false, focus: () => focus.push(node.props["data-vod-id"] ?? node.props.className), children: [], scrollHeight: 0, clientHeight: 0,
         requestFullscreen: async () => { fullscreen.push('element on'); fakeDocument.fullscreenElement = ref.current; } };
     }
     pending.splice(0).forEach(fn => fn()); return tree;
@@ -153,9 +154,9 @@ test('moment clicks seek repeatedly and the mini player can reopen or close', as
   player = nodes(tree).find(node => node.type === 'youtube-player');
   assert.equal(player.props.seek.serial, 2);
   assert.equal(player.props.mini, true, 'the mini player drops fullscreen and the bigger controls');
-  nodes(tree).find(node => node.props['aria-label'] === 'Reopen VOD').props.onClick();
+  player.props.onReopen();
   assert.equal(reopened, 1);
-  nodes(tree).find(node => node.props['aria-label'] === 'Close mini player').props.onClick();
+  player.props.onClose();
   assert.equal(h.render(), null);
 });
 
@@ -317,7 +318,7 @@ test('a VOD without moments gets no rail and no sidebar; one with moments gets b
   assert.ok(nodes(tree).some(node => node.props.className === 'mv-side'));
   h.render({ vod: realVod, seek: null, mini: true, header: 'header', children: sidebar });
   tree = await h.flush();
-  assert.deepEqual([timeline(tree), nodes(tree).some(node => node.type === 'header' || node.props.className === 'mv-side')], [undefined, false], 'the mini player is just the video');
+  assert.deepEqual([timeline(tree), nodes(tree).some(node => node.props.className === 'mv-watch-header' || node.props.className === 'mv-side')], [undefined, false], 'the mini player is just the video');
 });
 
 test('the player header shows the facts once and the sidebar only exists with moments', async () => {
