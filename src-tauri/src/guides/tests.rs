@@ -399,6 +399,54 @@ fn general() -> Value {
     value
 }
 
+#[tokio::test]
+async fn lookup_requires_a_fresh_verified_catalog_and_matching_complete_champion() {
+    let server = Server::start().await;
+    let client = reqwest::Client::new();
+    let now = 100_000;
+    server.publish(champion_bytes(vec![guide()]));
+    let mut cache = GuideCache::open(None, server.base.clone(), &[]);
+    let bytes = cache.content(&client, 103, now).await;
+    assert_eq!(cache.lookup(103, 238, Lane::Mid, &bytes, now), GuideLookup::Exact);
+    assert_eq!(cache.lookup(103, 157, Lane::Mid, &bytes, now), GuideLookup::Absent);
+    assert_eq!(cache.lookup(238, 103, Lane::Mid, &[], now), GuideLookup::Absent);
+    assert_eq!(cache.lookup(103, 157, Lane::Mid, &bytes, now - 1), GuideLookup::Unknown);
+    server.state.files.lock().unwrap().clear();
+    let later = now + REFRESH_SECONDS;
+    let bytes = cache.content(&client, 103, later).await;
+    assert_eq!(cache.lookup(103, 157, Lane::Mid, &bytes, later), GuideLookup::Unknown);
+    assert_eq!(cache.lookup(103, 238, Lane::Mid, &bytes, later), GuideLookup::Exact);
+    // A successful new manifest cannot certify old bytes after a failed/hash-mismatched download.
+    let changed: Value = serde_json::from_str(&guide().to_string().replace("238", "157")).unwrap();
+    server.publish(champion_bytes(vec![changed]));
+    server.state.files.lock().unwrap().insert("/champions/103.json".into(), b"corrupt".to_vec());
+    let later = later + REFRESH_SECONDS;
+    let bytes = cache.content(&client, 103, later).await;
+    assert_eq!(cache.lookup(103, 157, Lane::Mid, &bytes, later), GuideLookup::Unknown);
+    assert_eq!(cache.lookup(103, 238, Lane::Mid, &bytes, later), GuideLookup::Exact);
+    assert_eq!(cache.lookup(103, 157, Lane::Mid, b"corrupt", later), GuideLookup::Unknown);
+}
+
+#[tokio::test]
+async fn lookup_persists_success_age_and_source_arrival_replaces_absence() {
+    let root = std::env::temp_dir().join(format!("swapper-lookup-{}", uuid::Uuid::new_v4()));
+    let server = Server::start().await;
+    let client = reqwest::Client::new();
+    server.publish(champion_bytes(vec![guide()]));
+    let mut cache = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    let bytes = cache.content(&client, 103, 100_000).await;
+    let reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    assert_eq!(reopened.lookup(103, 157, Lane::Mid, &bytes, 100_001), GuideLookup::Absent);
+    let changed: Value = serde_json::from_str(&guide().to_string().replace("238", "157")).unwrap();
+    server.publish(champion_bytes(vec![changed]));
+    let bytes = cache.content(&client, 103, 100_000 + REFRESH_SECONDS).await;
+    assert_eq!(cache.lookup(103, 157, Lane::Mid, &bytes, 100_000 + REFRESH_SECONDS), GuideLookup::Exact);
+    std::fs::write(root.join("index.json"), b"{}").unwrap();
+    let reopened = GuideCache::open(Some(root.clone()), server.base.clone(), &[]);
+    assert_eq!(reopened.lookup(103, 238, Lane::Mid, &bytes, 100_001), GuideLookup::Unknown);
+    std::fs::remove_dir_all(root).unwrap();
+}
+
 fn with_general(guides: Vec<Value>, general: Vec<Value>) -> Vec<u8> {
     let mut file: Value = serde_json::from_slice(&champion_bytes(guides)).unwrap();
     file["general"] = json!(general);
