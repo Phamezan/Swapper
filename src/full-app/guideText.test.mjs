@@ -2,6 +2,17 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseGuideText, liveCooldown } from "./guideText.ts";
 
+test("ability names match longest whole phrases without changing cooldown tokens", () => {
+  const short = { champion: 1, key: "Q", name: "Trap", icon: null };
+  const long = { champion: 240, key: "Q", name: "Bear Trap on a Rope", icon: "q.png" };
+  const punctuated = { champion: 240, key: "R", name: "Chaaaaaaaarge!!!", icon: null };
+  assert.deepEqual(parseGuideText("Dodge Bear Trap on a Rope; Trap, Trapper, trap, éTrap. {cd:240:Q} Chaaaaaaaarge!!!", [short, long, punctuated]), [
+    { text: "Dodge " }, long, { text: "; " }, short,
+    { text: ", Trapper, trap, éTrap. " }, { champion: 240, key: "Q" }, { text: " " }, punctuated,
+  ]);
+  assert.deepEqual(parseGuideText("Dodge Bear Trap on a Rope"), [{ text: "Dodge Bear Trap on a Rope" }]);
+});
+
 test("cooldown tokens preserve prose and identify each champion and ability", () => {
   assert.deepEqual(parseGuideText("W: {cd:238:W}; E: {cd:103:E}."), [
     { text: "W: " }, { champion: 238, key: "W" }, { text: "; E: " }, { champion: 103, key: "E" }, { text: "." },

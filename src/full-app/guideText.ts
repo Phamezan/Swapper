@@ -1,8 +1,9 @@
 import { perRank, type Ability } from "./cooldownModel.ts";
 
-export type GuideTextPart = { text: string } | { champion: number; key: string };
+export type GuideNamedAbility = { champion: number; key: string; name: string; icon: string | null };
+export type GuideTextPart = { text: string } | { champion: number; key: string } | GuideNamedAbility;
 
-export function parseGuideText(text: string): GuideTextPart[] {
+export function parseGuideText(text: string, abilities: GuideNamedAbility[] = []): GuideTextPart[] {
   const parts: GuideTextPart[] = [];
   let end = 0;
   for (const match of text.matchAll(/\{cd:([1-9]\d*):([QWER])\}/g)) {
@@ -12,7 +13,21 @@ export function parseGuideText(text: string): GuideTextPart[] {
     end = match.index + match[0].length;
   }
   if (end < text.length) parts.push({ text: text.slice(end) });
-  return parts;
+  const names = [...abilities].filter(ability => ability.name).sort((a, b) => b.name.length - a.name.length);
+  if (!names.length) return parts;
+  const pattern = new RegExp(`(?<![\\p{L}\\p{N}_])(?:${names.map(ability => ability.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\p{L}\\p{N}_])`, "gu");
+  return parts.flatMap(part => {
+    if (!("text" in part)) return [part];
+    const matched: GuideTextPart[] = [];
+    let end = 0;
+    for (const match of part.text.matchAll(pattern)) {
+      if (match.index > end) matched.push({ text: part.text.slice(end, match.index) });
+      matched.push(names.find(ability => ability.name === match[0])!);
+      end = match.index + match[0].length;
+    }
+    if (end < part.text.length) matched.push({ text: part.text.slice(end) });
+    return matched;
+  });
 }
 
 export function liveCooldown(ability: Pick<Ability, "name" | "cooldowns" | "charges" | "recharge"> | undefined, fallbackName: string): string {

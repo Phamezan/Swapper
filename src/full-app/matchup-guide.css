@@ -58,6 +58,9 @@
 .mg-references .fa-ability-trigger { display: inline-flex; align-items: center; gap: 6px; color: var(--ui-text-2); font-size: 13px; }
 .mg-references img { width: 27px; height: 27px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); }
 .mg-live-cooldown { border-bottom: 1px dotted var(--ui-line-3); font-variant-numeric: tabular-nums; }
+.mg-inline-ability .fa-ability-trigger { align-items: center; gap: 3px; vertical-align: middle; }
+.mg-inline-ability img { width: 1.2em; height: 1.2em; border-radius: var(--ui-radius-xs); }
+.mg-inline-ability kbd { font-family: inherit; font-size: .75em; font-weight: 650; line-height: 1; color: var(--ui-text-2); }
 .fa-frame .mg-tips .ui-notice { margin-top: 12px; background: var(--ui-surface-2); font-size: 14px; }
 .mg-alternatives { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
 .fa-frame .mg-deck .mg-alternatives > section { padding: 20px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-surface-2); }

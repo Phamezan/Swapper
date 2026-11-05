@@ -21,7 +21,7 @@ export function GuideTips({ tips, sources, abilities = {} }: { tips: GuideTip[];
         <span className="mg-tip-author-name">{source.author}</span><span className="mg-tip-author-initials" aria-hidden>{source.author.trim().split(/\s+/).slice(0, 2).map(part => part.slice(0, 1)).join("").toUpperCase()}</span>
       </GuideSourceButton>)}</div>
     <span className="mg-tip-number" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
-    <div className="mg-tip-content">{tip.heading && <h3 className="mg-tip-heading">{tip.heading}</h3>}<p><GuideTipText text={tip.text} abilities={abilities} /></p>
+    <div className="mg-tip-content">{tip.heading && <h3 className="mg-tip-heading">{tip.heading}</h3>}<p><GuideTipText text={tip.text} abilities={abilities} abilityKeys={tip.abilityKeys} /></p>
       {tip.patch && <div className="mg-tip-meta"><span>Written {tip.patch}</span></div>}
       {(tip.abilityKeys?.length || tip.itemIds?.length) ? <div className="mg-references">
         {tip.abilityKeys?.map(ref => {
