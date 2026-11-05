@@ -97,31 +97,6 @@ fn ranks(champion_id: i64, key: &str) -> usize {
     }
 }
 
-pub(crate) fn numeric_facts(sheet: &mut Abilities) {
-    for spell in &mut sheet.spells {
-        let count = ranks(sheet.champion_id, &spell.key);
-        let valid = |values: &[f64]| values.len() == count && values.iter().all(|n| n.is_finite() && *n > 0.0);
-        if !valid(&spell.cooldowns) { spell.cooldowns.clear(); }
-        if !valid(&spell.recharge) { spell.recharge.clear(); }
-        if !valid(&spell.ranges) || !spell.ranges.iter().all(|n| (MIN_RANGE..GLOBAL_RANGE).contains(n)) { spell.ranges.clear(); }
-        if spell.charges > 100 { spell.charges = 0; spell.recharge.clear(); }
-        // A single-cast cooldown does not describe an ammo spell's recharge.
-        if spell.charges > 0 { spell.cooldowns.clear(); }
-        spell.name = plain(&Value::String(spell.name.clone()));
-        spell.tooltip = None;
-    }
-    sheet.spells.retain(|s| matches!(s.key.as_str(), "Q" | "W" | "E" | "R") && !s.name.trim().is_empty()
-        && (!s.cooldowns.is_empty() || !s.recharge.is_empty() || !s.ranges.is_empty() || s.charges > 0));
-}
-
-pub(crate) async fn for_patch(champion: i64, patch: &str) -> Option<(Abilities, String, i64)> {
-    let (value, url, at) = crate::runes::game_data::champion_for_patch(champion, patch).await.ok()?;
-    if value.get("id").and_then(Value::as_i64) != Some(champion) { return None; }
-    let mut sheet = parse(champion, &value);
-    numeric_facts(&mut sheet);
-    Some((sheet, url, at))
-}
-
 fn icon_path(value: &Value) -> Option<String> {
     let path = value["abilityIconPath"].as_str()?;
     valid_asset(path).then(|| path.to_string())
@@ -326,24 +301,6 @@ pub async fn ability_icon(path: String) -> Result<String, String> {
 
 #[cfg(test)]
 mod tests {
-    #[test]
-    fn card_facts_require_actual_rank_counts_and_hide_invalid_numeric_fields() {
-        let mut sheet = champion(103);
-        sheet.spells[0].cooldowns = vec![5.0];
-        sheet.spells[0].ranges.clear();
-        sheet.spells[1].cooldowns[0] = f64::NAN;
-        sheet.spells[1].ranges = vec![25000.0;5];
-        sheet.spells[2].name.clear();
-        numeric_facts(&mut sheet);
-        assert_eq!(sheet.spells.len(), 1);
-        assert_eq!(sheet.spells[0].key, "R");
-        let mut jhin = champion(202);
-        numeric_facts(&mut jhin);
-        let e = jhin.spells.iter().find(|s| s.key == "E").unwrap();
-        assert!(e.cooldowns.is_empty());
-        assert_eq!(e.charges, 2);
-        assert_eq!(e.recharge.len(), 5);
-    }
     #[tokio::test]
     async fn pending_tooltips_return_base_data_and_share_one_enrichment() {
         let mut base = champion(103);

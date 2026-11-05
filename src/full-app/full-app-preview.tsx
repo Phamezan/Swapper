@@ -372,22 +372,10 @@ mockIPC(async (cmd, args) => {
     // The VOD player's native fullscreen; the browser page has no window to resize.
     case "plugin:window|is_maximized": return false;
     case "plugin:window|set_fullscreen": case "plugin:window|toggle_maximize": return null;
-    // Synthetic data-card evidence: ?data-card, optionally with &draft-guide.
-    case "get_matchup_data_card": {
-      if (!params.has("data-card")) return null;
-      const sheet = guideAbilities(a.enemyChampionId, `${DD}/${VERSION}`);
-      if (!sheet) return null;
-      return { kind: "data-based", championId: a.championId, enemyChampionId: a.enemyChampionId, lane: a.position, tier: a.tier,
-        stats: { wins: 460, games: 1000, patch: "16.21", dataVersion: "1.5.0", region: "world", queue: "ranked_solo_5x5", tier: a.tier, provider: "ugg",
-          endpointUrl: "https://stats2.u.gg/lol/1.5/matchups/16_21/ranked_solo_5x5/103/1.5.0.json", schemaId: "ugg-matchups-v1:opponent-wins", fetchedAt: now, stale: false },
-        enemyKit: { sheet: { ...sheet, tooltipsReady: false }, version: "16.21", fetchedAt: now,
-          assetUrl: `https://raw.communitydragon.org/16.21/plugins/rcp-be-lol-game-data/global/default/v1/champions/${a.enemyChampionId}.json` } };
-    }
     case "get_matchup_guide":
       if (params.has("guide-missing-command")) throw new Error("Unknown command get_matchup_guide");
       if (params.has("guide-null")) return null;
-      if (params.has("data-card")) return { guide: null, record: { wins: 5, losses: 20 }, lookup: "absent", lookupExpiresAt: now + 6 * 3600e3 };
-      return { lookup: a.championId === 103 && a.enemyChampionId === 238 && a.position === "mid" ? "exact" : "absent", lookupExpiresAt: now + 6 * 3600e3, guide: a.championId === 103 && a.enemyChampionId === 238 && a.position === "mid" ? ahriVsZed : null,
+      return { guide: a.championId === 103 && a.enemyChampionId === 238 && a.position === "mid" ? ahriVsZed : null,
         record: { wins: a.championId === 103 && a.enemyChampionId === 238 ? 5 : 0, losses: a.championId === 103 && a.enemyChampionId === 238 ? 20 : 0 } };
     case "get_champion_overview":
       if (a.championId === 103) return { championId: 103, position: a.position, unavailable: false, damage: null,

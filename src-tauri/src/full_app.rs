@@ -3,7 +3,6 @@
 //! No window or data task exists until it is opened; closing hides it (low
 //! memory mode destroys it instead).
 pub mod abilities;
-pub(crate) mod data_card;
 pub mod art;
 pub mod champ_select;
 pub(crate) mod bench;

@@ -87,12 +87,8 @@ impl GuideCache {
         let fresh = self.refresh.verified_index.as_ref().is_some_and(|v| now >= v.at && now - v.at < REFRESH_SECONDS);
         let Some(index) = self.index.as_ref().filter(|_| fresh) else { return GuideLookup::Unknown };
         let Some(entry) = index.champions.get(&champion.to_string()) else { return GuideLookup::Absent };
-        let raw_count = serde_json::from_slice::<serde_json::Value>(bytes).ok().and_then(|file| {
-            Some(file["guides"].as_array()?.len() + match file.get("general") { Some(v) => v.as_array()?.len(), None => 0 })
-        });
         // Dropped invalid/duplicate guide rows cannot prove absence, even with a valid file hash.
         if verified_champion(bytes, &entry.sha256, champion).is_some()
-            && raw_count == Some(guides.len())
             && guides.iter().filter(|g| g.enemy.is_some()).count() == entry.guides
             && guides.iter().filter(|g| g.enemy.is_none()).count() == entry.general.unwrap_or(0) {
             GuideLookup::Absent
@@ -283,18 +279,13 @@ async fn champion_content(champion: i64) -> Option<Vec<u8>> {
     Some(guide_cache().content(&client, champion, now).await)
 }
 
-async fn guide(champion: i64, enemy: i64, position: Lane) -> (Option<Guide>, GuideLookup, Option<u64>) {
+async fn guide(champion: i64, enemy: i64, position: Lane) -> (Option<Guide>, GuideLookup) {
     let bytes = champion_content(champion).await.unwrap_or_default();
     let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
-    let (lookup, expires) = {
-        let data = guide_cache().data.lock().await;
-        let lookup = data.lookup(champion, enemy, position.clone(), &bytes, now);
-        let expires = (lookup == GuideLookup::Absent).then(|| data.refresh.verified_index.as_ref().map(|v| (v.at + REFRESH_SECONDS) * 1000)).flatten();
-        (lookup, expires)
-    };
+    let lookup = guide_cache().data.lock().await.lookup(champion, enemy, position.clone(), &bytes, now);
     let mut guide = select_guide(parse_champion(&bytes, champion).unwrap_or_default(), enemy, position);
     if let Some(guide) = guide.as_mut() { mark_outdated(guide).await; }
-    (guide, lookup, expires)
+    (guide, lookup)
 }
 
 fn select_guide(guides: Vec<Guide>, enemy: i64, position: Lane) -> Option<Guide> {
@@ -332,16 +323,15 @@ async fn mark_outdated(guide: &mut Guide) {
 }
 
 #[derive(Serialize)]
-#[serde(rename_all = "camelCase")]
-pub(crate) struct MatchupGuideResult { guide: Option<Guide>, record: Option<crate::matchup_records::Record>, lookup: GuideLookup, lookup_expires_at: Option<u64> }
+pub(crate) struct MatchupGuideResult { guide: Option<Guide>, record: Option<crate::matchup_records::Record>, lookup: GuideLookup }
 
 #[tauri::command]
 pub(crate) async fn get_matchup_guide(app: tauri::AppHandle, champion_id: i64, enemy_champion_id: i64, position: String) -> Result<MatchupGuideResult, String> {
     if champion_id <= 0 || enemy_champion_id <= 0 || champion_id > i32::MAX as i64 || enemy_champion_id > i32::MAX as i64 { return Err("Unknown champion.".into()); }
     let lane = lane(&position).ok_or("Unknown position.")?;
-    let ((guide, lookup, lookup_expires_at), record) = tokio::join!(guide(champion_id, enemy_champion_id, lane),
+    let ((guide, lookup), record) = tokio::join!(guide(champion_id, enemy_champion_id, lane),
         tokio::task::spawn_blocking(move || crate::matchup_records::record(&app, champion_id, enemy_champion_id, &position)));
-    Ok(MatchupGuideResult { guide, record: record.unwrap_or(None), lookup, lookup_expires_at })
+    Ok(MatchupGuideResult { guide, record: record.unwrap_or(None), lookup })
 }
 
 #[tauri::command]

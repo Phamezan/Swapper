@@ -135,15 +135,3 @@ test("cooldown sheets render base cooldowns with tooltips still pending", async 
   assert.deepEqual(h.calls[0].args, { championId: 103, spellIds: [4, 12] });
   h.unmount();
 });
-
-test("supplied pinned sheet renders its plain facts without fetching or polling current data", async () => {
-  const pinned = sheet(238, false);
-  pinned.spells[0].description = "Pinned patch effect <script> remains plain text.";
-  const h = harness("AbilityHover", () => { throw Error("must not fetch latest"); });
-  h.render({ championId: 238, abilityKey: "Q", sheet: pinned, children: "W" });
-  await h.open(); await h.tick();
-  assert.match(details(h), /Pinned patch effect <script> remains plain text/);
-  assert.equal(h.calls.length, 0);
-  assert.equal(h.timers.size, 0);
-  h.unmount();
-});

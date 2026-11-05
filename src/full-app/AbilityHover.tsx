@@ -40,10 +40,9 @@ export function useAbilitySheet(championId: number, open: boolean) {
 }
 
 /** Hovering (or focusing) `children` shows the ability's card: name, key, description, cooldown, cost and range per rank. */
-export function AbilityHover({ championId, abilityKey, icon, children, sheet: supplied }: { championId: number; abilityKey: string; icon?: string | null; children: ReactNode; sheet?: Abilities }) {
+export function AbilityHover({ championId, abilityKey, icon, children }: { championId: number; abilityKey: string; icon?: string | null; children: ReactNode }) {
   const [open, setOpen] = useState(false);
-  const { sheet: loaded } = useAbilitySheet(championId, open && supplied === undefined);
-  const sheet = supplied ?? loaded;
+  const { sheet } = useAbilitySheet(championId, open);
   const name = abilityName(sheet, abilityKey);
   return <HoverCard.Root open={open} onOpenChange={setOpen} openDelay={120} closeDelay={60}>
     <HoverCard.Trigger asChild>
@@ -89,7 +88,7 @@ function AbilityDetails({ sheet, abilityKey }: { sheet: Abilities | null; abilit
   const ability = abilityKey === "P" ? null : sheet?.spells.find(spell => spell.key === abilityKey);
   const text = abilityKey === "P" ? sheet?.passive.tooltip || sheet?.passive.description : ability?.tooltip || ability?.description;
   const rows: [string, string][] = ability ? ([
-    [ability.charges > 0 ? "Recharge" : "Cooldown", perRank(ability.charges > 0 ? ability.recharge : ability.cooldowns) && `${perRank(ability.charges > 0 ? ability.recharge : ability.cooldowns)} s`],
+    ["Cooldown", perRank(ability.charges > 0 ? ability.recharge : ability.cooldowns) && `${perRank(ability.charges > 0 ? ability.recharge : ability.cooldowns)} s`],
     ["Charges", ability.charges > 0 ? String(ability.charges) : ""],
     ["Cost", perRank(ability.costs)],
     ["Range", perRank(ability.ranges)],

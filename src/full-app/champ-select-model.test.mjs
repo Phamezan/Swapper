@@ -1,16 +1,7 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { applyStatus, counterPicks, defaultTab, enemyLaners, sameRoleEnemy, maxOrder, allChampions, pageMode, recommendedSuggestions, secondsLeft, skillGrid, takenIds } from "./champ-select-model.ts";
+import { applyStatus, counterPicks, defaultTab, enemyLaners, maxOrder, allChampions, pageMode, recommendedSuggestions, secondsLeft, skillGrid, takenIds } from "./champ-select-model.ts";
 import { fixtureDraft, fixtureView } from "./champ-select-fixtures.ts";
-
-test("data cards require confirmed ADC vs ADC and support vs support, never an inferred champion role", () => {
-  const draft = { enemies: [{ championId: 51, position: "bottom" }, { championId: 89, position: "utility" }] };
-  assert.equal(sameRoleEnemy(draft, "adc"), 51);
-  assert.equal(sameRoleEnemy(draft, "support"), 89);
-  assert.equal(sameRoleEnemy(draft, "mid"), 0);
-  assert.equal(sameRoleEnemy({ enemies: [{ championId: 51, position: "" }] }, "adc"), 0);
-  assert.equal(sameRoleEnemy(null, "adc"), 0);
-});
 
 test("the page plans until the pick is locked and builds after", () => {
   assert.equal(pageMode(null), "idle");
