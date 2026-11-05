@@ -16,16 +16,7 @@ include!(concat!(env!("OUT_DIR"), "/bundled_guides.rs"));
 struct RefreshState {
     index: Option<u64>,
     champions: BTreeMap<i64, u64>,
-    #[serde(default)] verified_index: Option<IndexVerification>,
 }
-
-#[derive(Clone, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-struct IndexVerification { at: u64, sha256: String }
-
-#[derive(Debug, PartialEq, Eq, Serialize)]
-#[serde(rename_all = "lowercase")]
-pub(crate) enum GuideLookup { Exact, Absent, Unknown }
 
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -64,35 +55,10 @@ fn due(previous: Option<u64>, now: u64) -> bool {
 
 impl GuideCache {
     fn open(root: Option<PathBuf>, base: String, offline: &'static [(&'static str, &'static [u8])]) -> Self {
-        let bytes = root.as_ref().and_then(|p| read_limited(&p.join("index.json"), MAX_INDEX_BYTES));
-        let index = bytes.as_deref().and_then(parse_index);
-        let mut refresh: RefreshState = root.as_ref().and_then(|p| read_limited(&p.join("refresh.json"), MAX_INDEX_BYTES))
+        let index = root.as_ref().and_then(|p| read_limited(&p.join("index.json"), MAX_INDEX_BYTES)).and_then(|b| parse_index(&b));
+        let refresh = root.as_ref().and_then(|p| read_limited(&p.join("refresh.json"), MAX_INDEX_BYTES))
             .and_then(|b| serde_json::from_slice(&b).ok()).unwrap_or_default();
-        if !refresh.verified_index.as_ref().is_some_and(|v| bytes.as_ref().is_some_and(|b| digest(b) == v.sha256)) {
-            refresh.verified_index = None;
-        }
         Self { root, index, refresh, champions: BTreeMap::new(), base, offline }
-    }
-
-    fn install_index(&mut self, bytes: &[u8], index: GuideIndex, now: u64) {
-        if let Some(root) = &self.root { write_atomic(&root.join("index.json"), bytes); }
-        self.index = Some(index);
-        self.refresh.verified_index = Some(IndexVerification { at: now, sha256: digest(bytes) });
-        self.persist_refresh();
-    }
-
-    fn lookup(&self, champion: i64, enemy: i64, position: Lane, bytes: &[u8], now: u64) -> GuideLookup {
-        let guides = parse_champion(bytes, champion).unwrap_or_default();
-        if guides.iter().any(|g| g.enemy == Some(enemy) && g.lane == position) { return GuideLookup::Exact; }
-        let fresh = self.refresh.verified_index.as_ref().is_some_and(|v| now >= v.at && now - v.at < REFRESH_SECONDS);
-        let Some(index) = self.index.as_ref().filter(|_| fresh) else { return GuideLookup::Unknown };
-        let Some(entry) = index.champions.get(&champion.to_string()) else { return GuideLookup::Absent };
-        // Dropped invalid/duplicate guide rows cannot prove absence, even with a valid file hash.
-        if verified_champion(bytes, &entry.sha256, champion).is_some()
-            && guides.iter().filter(|g| g.enemy.is_some()).count() == entry.guides
-            && guides.iter().filter(|g| g.enemy.is_none()).count() == entry.general.unwrap_or(0) {
-            GuideLookup::Absent
-        } else { GuideLookup::Unknown }
     }
 
     fn bundled(&self, name: &str) -> Option<&'static [u8]> {
@@ -122,7 +88,8 @@ impl GuideCache {
             self.persist_refresh();
             if let Some((bytes, index)) = fetch(client, &format!("{}/index.json", self.base), MAX_INDEX_BYTES).await
                 .and_then(|b| parse_index(&b).map(|i| (b, i))) {
-                self.install_index(&bytes, index, now);
+                if let Some(root) = &self.root { write_atomic(&root.join("index.json"), &bytes); }
+                self.index = Some(index);
             }
         }
     }
@@ -192,7 +159,8 @@ impl SharedGuideCache {
         if let Some((bytes, index)) = fetch(client, &format!("{base}/index.json"), MAX_INDEX_BYTES).await
             .and_then(|b| parse_index(&b).map(|i| (b, i))) {
             let mut data = self.data.lock().await;
-            data.install_index(&bytes, index, now);
+            if let Some(root) = &data.root { write_atomic(&root.join("index.json"), &bytes); }
+            data.index = Some(index);
         }
     }
 
@@ -206,7 +174,7 @@ impl SharedGuideCache {
             let pending = GuideCache {
                 root: None, index: data.index.clone(), base: data.base.clone(), offline: data.offline,
                 refresh: RefreshState { index: Some(now), champions: data.refresh.champions.get(&champion)
-                    .map(|at| (champion, *at)).into_iter().collect(), verified_index: data.refresh.verified_index.clone() },
+                    .map(|at| (champion, *at)).into_iter().collect() },
                 champions: data.champions.get(&champion).cloned().map(|c| (champion, c)).into_iter().collect(),
             };
             // Record attempts before I/O so cancellation retains retry throttling.
@@ -279,13 +247,10 @@ async fn champion_content(champion: i64) -> Option<Vec<u8>> {
     Some(guide_cache().content(&client, champion, now).await)
 }
 
-async fn guide(champion: i64, enemy: i64, position: Lane) -> (Option<Guide>, GuideLookup) {
-    let bytes = champion_content(champion).await.unwrap_or_default();
-    let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
-    let lookup = guide_cache().data.lock().await.lookup(champion, enemy, position.clone(), &bytes, now);
-    let mut guide = select_guide(parse_champion(&bytes, champion).unwrap_or_default(), enemy, position);
-    if let Some(guide) = guide.as_mut() { mark_outdated(guide).await; }
-    (guide, lookup)
+async fn guide(champion: i64, enemy: i64, position: Lane) -> Option<Guide> {
+    let mut guide = select_guide(parse_champion(&champion_content(champion).await?, champion)?, enemy, position)?;
+    mark_outdated(&mut guide).await;
+    Some(guide)
 }
 
 fn select_guide(guides: Vec<Guide>, enemy: i64, position: Lane) -> Option<Guide> {
@@ -323,15 +288,15 @@ async fn mark_outdated(guide: &mut Guide) {
 }
 
 #[derive(Serialize)]
-pub(crate) struct MatchupGuideResult { guide: Option<Guide>, record: Option<crate::matchup_records::Record>, lookup: GuideLookup }
+pub(crate) struct MatchupGuideResult { guide: Option<Guide>, record: Option<crate::matchup_records::Record> }
 
 #[tauri::command]
 pub(crate) async fn get_matchup_guide(app: tauri::AppHandle, champion_id: i64, enemy_champion_id: i64, position: String) -> Result<MatchupGuideResult, String> {
     if champion_id <= 0 || enemy_champion_id <= 0 || champion_id > i32::MAX as i64 || enemy_champion_id > i32::MAX as i64 { return Err("Unknown champion.".into()); }
     let lane = lane(&position).ok_or("Unknown position.")?;
-    let ((guide, lookup), record) = tokio::join!(guide(champion_id, enemy_champion_id, lane),
+    let (guide, record) = tokio::join!(guide(champion_id, enemy_champion_id, lane),
         tokio::task::spawn_blocking(move || crate::matchup_records::record(&app, champion_id, enemy_champion_id, &position)));
-    Ok(MatchupGuideResult { guide, record: record.unwrap_or(None), lookup })
+    Ok(MatchupGuideResult { guide, record: record.unwrap_or(None) })
 }
 
 #[tauri::command]
