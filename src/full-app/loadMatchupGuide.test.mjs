@@ -25,14 +25,14 @@ function harness(dev, response, fails = false) {
 
 for (const fails of [false, true]) test(`development falls back for Ahri mid vs Zed on ${fails ? "IPC failure" : "null"}`, async () => {
   const h = harness(true, null, fails);
-  assert.deepEqual(await h.load(103, 238, "mid"), { guide: fixture, record: { wins: 5, losses: 20 } });
+  assert.deepEqual(await h.load(103, 238, "mid"), { guide: fixture, record: { wins: 5, losses: 20 }, lookup: "exact" });
   assert.equal(h.fixtureLoads(), 1);
   assert.deepEqual(h.calls, [{ command: "get_matchup_guide", args: { championId: 103, enemyChampionId: 238, position: "mid" } }]);
 });
 
 test("development fills a missing guide while preserving the player's actual record", async () => {
   const h = harness(true, { guide: null, record: { wins: 0, losses: 0 } });
-  assert.deepEqual(await h.load(103, 238, "mid"), { guide: fixture, record: { wins: 0, losses: 0 } });
+  assert.deepEqual(await h.load(103, 238, "mid"), { guide: fixture, record: { wins: 0, losses: 0 }, lookup: "exact" });
 });
 
 test("other champions, opponents, lanes and the reverse pair never load the fallback", async () => {
@@ -63,6 +63,13 @@ test("production never imports the fixture on missing, failed or fixture-tagged 
 
 test("a general guide takes precedence over the development fixture", async () => {
   const response = { guide: { champion: 103, lane: "mid", reviewed: true }, record: null };
+  const h = harness(true, response);
+  assert.equal(await h.load(103, 238, "mid"), response);
+  assert.equal(h.fixtureLoads(), 0);
+});
+
+test("confirmed absence never gets masked by the development authored fixture", async () => {
+  const response = { guide: null, record: null, lookup: "absent", lookupExpiresAt: Date.now() + 1000 };
   const h = harness(true, response);
   assert.equal(await h.load(103, 238, "mid"), response);
   assert.equal(h.fixtureLoads(), 0);

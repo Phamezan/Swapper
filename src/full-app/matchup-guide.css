@@ -105,3 +105,14 @@
   .mg-summary-outlook { padding: 0 0 18px; border-right: 0; border-bottom: 1px solid var(--ui-line-2); }
 }
 @media (prefers-reduced-motion: reduce) { .mg-slide { animation: none; } .mg-tabs button { transition: none; } }
+.mg-data-label { display: inline-flex; padding: 3px 8px; border: 1px solid var(--ui-line-2); border-radius: 5px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.mg-data-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.mg-data-overview, .mg-data-abilities { max-width: 760px; line-height: 1.6; }
+.mg-data-subline, .mg-data-provenance { color: var(--ui-text-3); }
+.mg-data-provenance { margin-top: 24px; font-size: 12px; overflow-wrap: anywhere; }
+.mg-data-provenance p { margin: 4px 0; }
+.mg-data-spell { padding: 16px 0; border-bottom: 1px solid var(--ui-line-2); }
+.mg-data-spell .fa-ability-trigger { display: inline-flex; align-items: center; gap: 8px; }
+.mg-data-spell p { margin: 8px 0 0; }
+.mg-data-uncertainty summary { cursor: pointer; }
+.mg-data-spell .fa-ability-trigger:focus-visible, .mg-data-uncertainty summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }

@@ -12,7 +12,7 @@ import { BuildPanel } from "./BuildPanel";
 import { ChampionSelectMatchup } from "./ChampionSelectMatchup";
 import { DraftBand } from "./ChampionSelectDraft";
 import { PickSuggestions } from "./ChampionSelectPicks";
-import { enemyLaners, pageMode, roleSlug, takenIds, type Draft } from "./champ-select-model";
+import { enemyLaners, pageMode, roleSlug, sameRoleEnemy, takenIds, type Draft } from "./champ-select-model";
 import { mainRoles, ROLES } from "./championsModel";
 import { Picker, RankPicker, ROLES as ROLE_OPTIONS } from "./Picker";
 import { Notice } from "./ui/States";
@@ -132,7 +132,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
           {(["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
         </div>
         {enemyId > 0 && view.championId > 0 && <ChampionSelectMatchup key={`${view.championId}-${enemyId}-${role}`}
-          champion={{ id: view.championId, name: championName }} enemyId={enemyId} enemyName={names.get(enemyId) ?? view.enemyChampionName ?? "opponent"} lane={role} onOpenMatchupGuide={props.onOpenMatchupGuide} />}
+          champion={{ id: view.championId, name: championName }} enemyId={enemyId} enemyName={names.get(enemyId) ?? view.enemyChampionName ?? "opponent"} lane={role} tier={view.tier} allowData={sameRoleEnemy(draft?.value ?? null, role) === enemyId} onOpenMatchupGuide={props.onOpenMatchupGuide} />}
         <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} loading={!overview && !error} liveView={view} matchups={matchups} proPageSize={3}
           autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
       </>}

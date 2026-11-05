@@ -23,6 +23,7 @@ use super::tierlist::{self, TierList, TierRow};
 use super::RuneError;
 
 mod merge;
+pub(crate) mod data_card;
 
 use merge::merge_datasets;
 

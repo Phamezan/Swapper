@@ -48,7 +48,8 @@ export type GeneralGuide = Omit<MatchupGuide, "enemy" | "difficulty" | "favoredW
 };
 export type AuthoredGuide = MatchupGuide | GeneralGuide;
 // Player history belongs to the response, never the authored guide.
-export type MatchupGuideResult = { guide: AuthoredGuide | null; record: { wins: number; losses: number } | null };
+export type GuideLookup = "exact" | "absent" | "unknown";
+export type MatchupGuideResult = { guide: AuthoredGuide | null; record: { wins: number; losses: number } | null; lookup: GuideLookup; lookupExpiresAt?: number | null };
 
 // Mirrors MOMENT_KINDS in the guides repo; the app drops kinds it does not know.
 export type MomentKind = "kill" | "death" | "teamfight" | "dragon" | "baron" | "herald" | "grubs" | "tower" | "trade" | "roam" | "other";
@@ -79,8 +80,7 @@ export type MatchupVod = {
   lane?: MatchupGuide["lane"];
 };
 
-export function guideStep(index: number, key: string): number | null {
-  const count = GUIDE_SECTIONS.length;
+export function guideStep(index: number, key: string, count: number = GUIDE_SECTIONS.length): number | null {
   if (key === "Home") return 0;
   if (key === "End") return count - 1;
   if (key === "ArrowLeft") return (index + count - 1) % count;

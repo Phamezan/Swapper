@@ -4,6 +4,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { RefreshCw } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
+import { DataCardLabel } from "./MatchupDataCardView";
 import { MatchupGuideCarousel } from "./MatchupGuideCarousel";
 import { MatchupVodEntry, type VodRequest } from "./MatchupVodEntry";
 import type { GuideSectionId } from "./matchupGuide";
@@ -62,7 +63,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
   const hasEnemy = enemy > 0;
   const [matchupTab, setMatchupTab] = useState<MatchupTab>(initialMatchup ? "guide" : "build");
   const [guideSection, setGuideSection] = useState<GuideSectionId | undefined>(initialMatchup?.section);
-  const guideState = useMatchupGuide(matchups ? selected?.id ?? 0 : 0, matchups ? enemy : 0, role);
+  const guideState = useMatchupGuide(matchups ? selected?.id ?? 0 : 0, matchups ? enemy : 0, role, tier);
   const pairKey = `${selected?.id}-${enemy}-${role}`;
   const previousPair = useRef(pairKey);
   useEffect(() => {
@@ -231,6 +232,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
   if (matchups && selected && !picking && matchupTab !== "build") return <div className={`champion-tools runes-panel is-matchup-workspace is-matchup-${matchupTab}`} onKeyDown={onKeyDown}>
     {viewTabs}
       <header className="mg-context"><strong>{selected.name} vs {champions.find(c => c.id === enemy)?.name ?? detail?.enemyName ?? "Opponent"}</strong><span>{laneLabel(role)}</span>
+        {guideState.content?.kind === "data-based" && <DataCardLabel />}
         {guideState.guide && <>{guideState.guide.enemy !== undefined && <span>{guideState.guide.difficulty}</span>}<span>Patch {guideState.guide.patch}</span>{guideState.guide.fixture && <span className="mg-fixture">Fixture content</span>}<GuideSourcesPopover sources={guideState.guide.sources} /></>}
         {vodEntry}
       </header>

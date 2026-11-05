@@ -61,6 +61,37 @@ pub(crate) async fn json<T: DeserializeOwned>(path: &str) -> Result<T, RuneError
     serde_json::from_str(&text).map_err(|_| RuneError::unavailable("Game data was unexpected."))
 }
 
+fn pinned_asset(champion: i64, patch: &str) -> Option<(String, String)> {
+    if champion <= 0 || champion > i32::MAX as i64 || super::patch::patch_name(patch).as_deref() != Some(patch) { return None; }
+    let relative = relative(&format!("{LCU_PREFIX}v1/champions/{champion}.json"))?;
+    Some((format!("patch-{patch}/{relative}"), format!("https://raw.communitydragon.org/{patch}/plugins/rcp-be-lol-game-data/global/default/{relative}")))
+}
+
+/// Immutable patch-qualified bytes; neither the client nor `latest` can satisfy this read.
+pub(crate) async fn champion_for_patch(champion: i64, patch: &str) -> Result<(serde_json::Value, String, i64), RuneError> {
+    let (key, url) = pinned_asset(champion, patch).ok_or_else(|| RuneError::not_found("Unknown patch or champion."))?;
+    sweep_once();
+    let disk_key = key.clone();
+    let disk = tokio::task::spawn_blocking(move || {
+        let dir = dir()?;
+        let bytes = load(&dir, &disk_key)?;
+        let at = std::fs::metadata(dir.join(file_name(&disk_key))).ok()?.modified().ok()?
+            .duration_since(std::time::UNIX_EPOCH).ok()?.as_millis();
+        Some((bytes, i64::try_from(at).ok()?))
+    }).await.ok().flatten();
+    let (bytes, at) = match disk {
+        Some(found) => found,
+        None => {
+            let bytes = cdn_url(&key, &url).await?;
+            let at = super::provider::now_ms();
+            write(Some(key), bytes.clone());
+            (bytes, at)
+        }
+    };
+    let value = serde_json::from_slice(&bytes).map_err(|_| RuneError::unavailable("Game data was unexpected."))?;
+    Ok((value, url, at))
+}
+
 /// A game-data JSON file as text: client, disk, then CommunityDragon.
 pub(crate) async fn text(path: &str) -> Result<String, RuneError> {
     sweep_once();
@@ -227,13 +258,17 @@ fn cdn_client() -> Result<&'static reqwest::Client, RuneError> {
 
 async fn cdn(relative: Option<String>) -> Result<Vec<u8>, RuneError> {
     let relative = relative.ok_or_else(|| RuneError::not_found("That game asset is unavailable."))?;
+    cdn_url(&relative, &format!("{CDRAGON_BASE}/{relative}")).await
+}
+
+async fn cdn_url(relative: &str, url: &str) -> Result<Vec<u8>, RuneError> {
     let _permit = CDN_FETCHES
         .acquire()
         .await
         .map_err(|_| RuneError::unavailable("Could not reach CommunityDragon."))?;
     let unavailable = || RuneError::unavailable("Could not reach CommunityDragon.");
     let mut response = cdn_client()?
-        .get(format!("{CDRAGON_BASE}/{relative}"))
+        .get(url)
         .send()
         .await
         .map_err(|_| unavailable())?;
@@ -316,6 +351,21 @@ mod tests {
     use super::*;
 
     const PNG: &[u8] = b"\x89PNG\r\n\x1a\nrest";
+
+    #[test]
+    fn pinned_champion_paths_cannot_alias_latest_or_another_patch() {
+        let (key, url) = pinned_asset(238, "16.22").unwrap();
+        assert_eq!(url, "https://raw.communitydragon.org/16.22/plugins/rcp-be-lol-game-data/global/default/v1/champions/238.json");
+        assert_ne!(file_name(&key), file_name("v1/champions/238.json"));
+        assert_ne!(key, pinned_asset(238, "16.21").unwrap().0);
+        for patch in ["latest", "16.22.1", "../16.22", "16.22/x"] { assert!(pinned_asset(238, patch).is_none()); }
+        let dir = temp_dir("pinned");
+        store(&dir, "v1/champions/238.json", b"{}");
+        assert!(load(&dir, &key).is_none(), "a latest disk entry cannot satisfy a pinned miss");
+        store(&dir, &key, b"{\"id\":238}");
+        assert!(load(&dir, &key).is_some());
+        std::fs::remove_dir_all(dir).unwrap();
+    }
 
     fn temp_dir(tag: &str) -> PathBuf {
         std::env::temp_dir().join(format!("swapper-game-data-{tag}-{}", uuid::Uuid::new_v4()))

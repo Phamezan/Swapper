@@ -447,6 +447,24 @@ async fn lookup_persists_success_age_and_source_arrival_replaces_absence() {
     std::fs::remove_dir_all(root).unwrap();
 }
 
+#[tokio::test]
+async fn a_general_guide_can_have_confirmed_absence_but_dropped_invalid_rows_cannot() {
+    let server = Server::start().await;
+    let client = reqwest::Client::new();
+    let bytes = with_general(vec![], vec![general()]);
+    server.publish(bytes.clone());
+    let index = json!({"schema":1,"generatedAt":"2026-11-01T00:00:00Z","champions":{"103":{"sha256":digest(&bytes),"guides":0,"general":1}}});
+    server.state.files.lock().unwrap().insert("/index.json".into(), serde_json::to_vec(&index).unwrap());
+    let shared = SharedGuideCache::new(GuideCache::open(None, server.base.clone(), &[]));
+    let bytes = shared.content(&client, 103, 100_000).await;
+    assert!(select_guide(parse_champion(&bytes, 103).unwrap(), 157, Lane::Mid).unwrap().enemy.is_none());
+    assert_eq!(shared.data.lock().await.lookup(103, 157, Lane::Mid, &bytes, 100_000), GuideLookup::Absent);
+    server.publish(champion_bytes(vec![guide(), json!({"enemy":157,"lane":"mid"})]));
+    let bytes = shared.content(&client, 103, 100_000 + REFRESH_SECONDS).await;
+    assert_eq!(parse_champion(&bytes, 103).unwrap().len(), 1);
+    assert_eq!(shared.data.lock().await.lookup(103, 157, Lane::Mid, &bytes, 100_000 + REFRESH_SECONDS), GuideLookup::Unknown);
+}
+
 fn with_general(guides: Vec<Value>, general: Vec<Value>) -> Vec<u8> {
     let mut file: Value = serde_json::from_slice(&champion_bytes(guides)).unwrap();
     file["general"] = json!(general);

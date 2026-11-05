@@ -381,6 +381,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 korean_font::open_ltk_website,
                 commands::guide::open_guide_source,
                 guides::get_matchup_guide,
+                full_app::data_card::get_matchup_data_card,
                 guides::get_matchup_vods,
                 guides::get_champion_vods,
                 guides::get_all_vods,

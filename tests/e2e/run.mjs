@@ -1915,6 +1915,23 @@ async function main() {
     await page.text('.mg-context', 'Mid');
     await screenshot('draft-open-full-guide');
   });
+  await check("Data-based card renders in Draft and the Guide carousel without strategy visuals", async () => {
+    await navigate(`${fullApp}?draft-guide&data-card`, 'nav[aria-label="Swapper pages"]');
+    await nav('Draft', '.cs-matchup-guide .mg-data-label');
+    await page.text('.cs-matchup-guide > summary', 'Data-based');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-guide-difficulty, .cs-guide-outlook')"), false);
+    await page.click('.cs-matchup-guide > summary');
+    await page.text('.cs-guide-reading', 'Ahri won 46.0% of 1,000 games against Zed in mid.');
+    await page.click('.cs-guide-footer button', 'Open full guide');
+    await page.text('.mg-context .mg-data-label', 'Data-based');
+    await page.text('.mg-slide:not([hidden])', 'Game win rate');
+    assert.equal(await page.evaluate("document.querySelectorAll('.mg-tabs [role=tab]').length"), 2);
+    assert.equal(await page.evaluate("!!document.querySelector('.mg-visual, .mg-summary-outlook, .mg-sources-trigger')"), false);
+    await page.click('.mg-tabs [role="tab"]', 'Enemy abilities');
+    await page.text('.mg-slide:not([hidden])', 'Enemy Zed W has a base cooldown of 20/18.5/17/15.5/14 seconds by rank.');
+    await page.text('.mg-slide:not([hidden])', 'Base values exclude ability haste.');
+    await screenshot('matchup-data-card');
+  });
   await check("General guide fallback renders in Draft and the Matchups carousel", async () => {
     await navigate(`${fullApp}?draft-guide`, 'nav[aria-label="Swapper pages"]');
     await page.evaluate(`(() => {

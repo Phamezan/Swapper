@@ -23,6 +23,12 @@ const LCU_ROLES: Record<string, string> = { top: "top", jungle: "jungle", middle
 /** LCU `assignedPosition` ("middle", "utility") to Swapper's role slug ("mid", "support"). */
 export const roleSlug = (position: string) => LCU_ROLES[position.trim().toLowerCase()] ?? "";
 
+/** Aggregate matchup facts require an explicitly assigned same-role opponent. */
+export function sameRoleEnemy(draft: Draft | null, role: string): number {
+  const matches = (draft?.enemies ?? []).filter(m => m.championId > 0 && roleSlug(m.position) === role);
+  return matches.length === 1 ? matches[0].championId : 0;
+}
+
 /** Below this share of a role's games a champion does not play it (as `FLEX_MIN_PICK_PCT` in blind.rs). */
 const MIN_ROLE_PICK_PCT = 1;
 
