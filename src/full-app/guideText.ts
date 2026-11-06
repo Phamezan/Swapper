@@ -1,9 +1,18 @@
 import { perRank, type Ability } from "./cooldownModel.ts";
 
-export type GuideNamedAbility = { champion: number; key: string; name: string; icon: string | null };
-export type GuideTextPart = { text: string } | { champion: number; key: string } | GuideNamedAbility;
+export type GuideNamedAbility = { kind: "ability"; champion: number; key: string; name: string; icon: string | null };
+export type GuideNamedReference = GuideNamedAbility | { kind: "item" | "rune"; id: number; name: string };
+export type GuideTextPart = { text: string } | { champion: number; key: string } | GuideNamedReference;
 
-export function parseGuideText(text: string, abilities: GuideNamedAbility[] = []): GuideTextPart[] {
+// These names also describe ordinary actions, attributes or people in guide prose.
+export const IGNORED_RUNE_NAMES = new Set(["Triumph", "Guardian", "Conditioning", "Overgrowth", "Revitalize", "Unflinching", "Demolish", "Precision", "Domination", "Resolve", "Inspiration"]);
+
+export function guideReferences(abilities: GuideNamedAbility[], items: GuideNamedReference[], runes: GuideNamedReference[]): GuideNamedReference[] {
+  const named = [...abilities, ...items];
+  return [...named, ...runes.filter(rune => !IGNORED_RUNE_NAMES.has(rune.name) && !named.some(ref => ref.name === rune.name))];
+}
+
+export function parseGuideText(text: string, references: GuideNamedReference[] = []): GuideTextPart[] {
   const parts: GuideTextPart[] = [];
   let end = 0;
   for (const match of text.matchAll(/\{cd:([1-9]\d*):([QWER])\}/g)) {
@@ -13,7 +22,7 @@ export function parseGuideText(text: string, abilities: GuideNamedAbility[] = []
     end = match.index + match[0].length;
   }
   if (end < text.length) parts.push({ text: text.slice(end) });
-  const names = [...abilities].filter(ability => ability.name).sort((a, b) => b.name.length - a.name.length);
+  const names = [...references].filter(ref => ref.name).sort((a, b) => b.name.length - a.name.length || (a.kind === "ability" ? 0 : 1) - (b.kind === "ability" ? 0 : 1));
   if (!names.length) return parts;
   const pattern = new RegExp(`(?<![\\p{L}\\p{N}_])(?:${names.map(ability => ability.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\p{L}\\p{N}_])`, "gu");
   return parts.flatMap(part => {

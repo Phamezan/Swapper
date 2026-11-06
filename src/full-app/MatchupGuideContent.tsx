@@ -40,7 +40,7 @@ export function GuideTips({ tips, sources, abilities = {} }: { tips: GuideTip[];
     <span className="mg-tip-number" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
     <div className="mg-tip-content">{authors.length > 1 && <span className="mg-tip-credits">{guideAuthors(tip.sourceIds?.flatMap(id => sources.filter(source => source.id === id)) ?? []).map(source =>
       <span key={source.id} className="mg-author-dot" role="img" aria-label={source.author} title={source.author} style={{ backgroundColor: authorColor(authors.findIndex(author => author.author === source.author)) }} />)}</span>}
-      {tip.heading && <h3 className="mg-tip-heading">{tip.heading}</h3>}<p><GuideTipText text={tip.text} abilities={abilities} abilityKeys={tip.abilityKeys} /></p>
+      {tip.heading && <h3 className="mg-tip-heading">{tip.heading}</h3>}<p><GuideTipText text={tip.text} abilities={abilities} abilityKeys={tip.abilityKeys} itemIds={tip.itemIds} /></p>
       {tip.patch && <div className="mg-tip-meta"><span>Written {tip.patch}</span></div>}
       {(tip.abilityKeys?.length || tip.itemIds?.length) ? <div className="mg-references">
         {tip.abilityKeys?.map(ref => {

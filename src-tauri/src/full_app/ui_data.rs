@@ -58,6 +58,12 @@ pub struct RuneCatalog {
 }
 
 #[tauri::command]
+pub async fn full_app_item_names() -> Result<std::collections::HashMap<i64, String>, String> {
+    let catalog = crate::runes::items::catalog().await.map_err(|e| e.to_string())?;
+    Ok((*catalog.names()).clone())
+}
+
+#[tauri::command]
 pub async fn full_app_rune_catalog() -> Result<RuneCatalog, String> {
     let catalog = crate::runes::data::catalog()
         .await

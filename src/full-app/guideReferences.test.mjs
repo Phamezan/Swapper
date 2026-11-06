@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
+import { parseGuideText, liveCooldown, guideReferences } from "./guideText.ts";
 
 function harness(file, name, command, cached = new Map()) {
   const states = [], effects = [], calls = [];
@@ -33,6 +34,8 @@ function harness(file, name, command, cached = new Map()) {
     "./ui/Slot": { Slot: "slot" }, "./ui/States": { Notice: "notice" },
     "./GuideSourceButton": { GuideSourceButton: "source-button" }, "./GuideItem": { GuideItem: "guide-item" },
     "./GuideTipText": { GuideTipText: "guide-text" }, "./AbilityHover": { AbilityHover: "ability" },
+    "./guideText": { parseGuideText, liveCooldown, guideReferences },
+    "../runes/ItemIcon": { ItemIcon: "item-icon" }, "../runes/RuneIcon": { RuneIcon: "rune-icon" },
     "./MatchupGuideContent": { GuideAuthorCredit: "source-credit" },
     "../runes/RankCrest": { RankCrest: "rank-crest" },
     "radix-ui": { Popover: { Root: "popover-root", Trigger: "popover-trigger", Portal: "popover-portal", Content: "popover-content" } },
@@ -45,6 +48,33 @@ function harness(file, name, command, cached = new Map()) {
   const render = value => { props = value ?? props; cursor = 0; tree = exports[name](props); pending.splice(0).forEach(fn => fn()); return tree; };
   return { render, calls, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
 }
+
+test("inline item and rune icons use catalogs, retain names and ignore unlisted items", async () => {
+  const h = harness("./GuideTipText.tsx", "GuideTipText", name => {
+    if (name === "full_app_item_names") return { 3071: "Black Cleaver", 6692: "Eclipse" };
+    if (name === "full_app_rune_catalog") return { trees: [{ id: 8000, name: "Precision", keystones: [{ id: 8010, name: "Conqueror" }], rows: [{ runes: [{ id: 9101, name: "Absorb Life" }, { id: 9111, name: "Triumph" }] }] }] };
+    throw new Error(name);
+  });
+  const props = { text: "Black Cleaver, Eclipse, Conqueror, Absorb Life, Triumph.", itemIds: [3071] };
+  assert.equal(text(h.render(props)), props.text);
+  const tree = await h.flush();
+  assert.equal(text(tree), props.text);
+  assert.deepEqual(nodes(tree).filter(n => n.type === "item-icon").map(n => n.props.id), [3071]);
+  assert.deepEqual(nodes(tree).filter(n => n.type === "rune-icon").map(n => n.props.id), [8010, 9101]);
+  h.render(props);
+  await h.flush();
+  assert.equal(h.calls.filter(call => call.name === "full_app_rune_catalog").length, 1);
+  assert.equal(h.calls.filter(call => call.name === "full_app_item_names").length, 1);
+});
+
+test("unavailable catalogs leave all item and rune prose intact", async () => {
+  const h = harness("./GuideTipText.tsx", "GuideTipText", () => { throw new Error("unavailable"); });
+  const props = { text: "Black Cleaver with Conqueror.", itemIds: [3071] };
+  h.render(props);
+  const tree = await h.flush();
+  assert.equal(text(tree), props.text);
+  assert.equal(nodes(tree).filter(n => n.type === "item-icon" || n.type === "rune-icon").length, 0);
+});
 function nodes(tree) {
   if (!tree || typeof tree !== "object") return [];
   return Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.children)];

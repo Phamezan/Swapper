@@ -1,11 +1,37 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseGuideText, liveCooldown } from "./guideText.ts";
+import { parseGuideText, liveCooldown, guideReferences } from "./guideText.ts";
+
+test("items and runes share longest-first matching with abilities and cooldowns", () => {
+  const ability = { kind: "ability", champion: 89, key: "W", name: "Eclipse", icon: null };
+  const item = { kind: "item", id: 6692, name: "Eclipse" };
+  const blade = { kind: "item", id: 3071, name: "Black Cleaver" };
+  const rune = { kind: "rune", id: 8010, name: "Conqueror" };
+  const short = { kind: "ability", champion: 1, key: "Q", name: "Cleaver", icon: null };
+  const refs = guideReferences([ability, short], [item, blade], [rune]);
+  assert.deepEqual(parseGuideText("Eclipse, Black Cleaver and Conqueror. {cd:89:W}", refs), [
+    ability, { text: ", " }, blade, { text: " and " }, rune, { text: ". " }, { champion: 89, key: "W" },
+  ]);
+  assert.deepEqual(parseGuideText("Eclipse", [item, ability]), [ability]);
+  assert.deepEqual(parseGuideText("Eclipse Conquerors conqueror éConqueror", [rune]), [
+    { text: "Eclipse Conquerors conqueror éConqueror" },
+  ]); // Unlisted items remain plain text.
+  assert.deepEqual(parseGuideText("Conqueror"), [{ text: "Conqueror" }]);
+});
+
+test("ambiguous runes and rune names colliding with tip abilities or items are skipped", () => {
+  const ability = { kind: "ability", champion: 1, key: "Q", name: "Aftershock", icon: null };
+  const item = { kind: "item", id: 1, name: "Conqueror" };
+  assert.deepEqual(guideReferences([ability], [item], [
+    { kind: "rune", id: 2, name: "Aftershock" }, { kind: "rune", id: 3, name: "Conqueror" },
+    { kind: "rune", id: 4, name: "Guardian" }, { kind: "rune", id: 5, name: "Resolve" },
+  ]), [ability, item]);
+});
 
 test("ability names match longest whole phrases without changing cooldown tokens", () => {
-  const short = { champion: 1, key: "Q", name: "Trap", icon: null };
-  const long = { champion: 240, key: "Q", name: "Bear Trap on a Rope", icon: "q.png" };
-  const punctuated = { champion: 240, key: "R", name: "Chaaaaaaaarge!!!", icon: null };
+  const short = { kind: "ability", champion: 1, key: "Q", name: "Trap", icon: null };
+  const long = { kind: "ability", champion: 240, key: "Q", name: "Bear Trap on a Rope", icon: "q.png" };
+  const punctuated = { kind: "ability", champion: 240, key: "R", name: "Chaaaaaaaarge!!!", icon: null };
   assert.deepEqual(parseGuideText("Dodge Bear Trap on a Rope; Trap, Trapper, trap, éTrap. {cd:240:Q} Chaaaaaaaarge!!!", [short, long, punctuated]), [
     { text: "Dodge " }, long, { text: "; " }, short,
     { text: ", Trapper, trap, éTrap. " }, { champion: 240, key: "Q" }, { text: " " }, punctuated,

@@ -392,6 +392,7 @@ mockIPC(async (cmd, args) => {
         preset: { index: 0, title: "Electrocute", ...ahriRunes(), winPct: 48.2, play: 3150, spells: [4, 3] }, build: ahriBuild(true) };
       return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Darius", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...runePage(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: buildOf([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
     case "full_app_rune_catalog": await catalogReady; if (runeCatalog) return runeCatalog; throw new Error("Rune catalog unavailable");
+    case "full_app_item_names": return Object.fromEntries(Object.entries(ITEM_NAMES).map(([id, name]) => [id, name.replace(/’/g, "'")]));
     case "champion_abilities":
       if (!params.has("patch-abilities-offline") && guideAbilities(a.championId, `${DD}/${VERSION}`)) return guideAbilities(a.championId, `${DD}/${VERSION}`);
       if (params.has("patch-abilities-offline")) throw new Error("Preview abilities unavailable");

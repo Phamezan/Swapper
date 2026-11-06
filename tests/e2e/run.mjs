@@ -1943,6 +1943,30 @@ async function main() {
     await page.click('.mg-tabs [role="tab"]', 'Win condition');
     await page.text('.mg-slide:not([hidden])', 'General Ahri advice.');
   });
+  await check("Guide tips inline listed items and rune names without changing reference chips", async () => {
+    await navigate(`${fullApp}?draft-guide`, 'nav[aria-label="Swapper pages"]');
+    await page.evaluate(`(() => {
+      const invoke = window.__TAURI_INTERNALS__.invoke;
+      const tip = { scope: "champion", text: "Take Conqueror or Second Wind. Open Black Cleaver; Eclipse and Triumph stay plain.", itemIds: [3071] };
+      const guide = { champion: 103, lane: "mid", patch: "26.20", reviewed: true,
+        keyTips: [tip, tip, tip], itemization: [], sources: [],
+        sections: Object.fromEntries(["overview", "early-lane", "mid-lane", "win-condition"].map(id => [id, { tips: [tip] }])) };
+      window.__TAURI_INTERNALS__.invoke = (cmd, args, options) => cmd === "get_matchup_guide"
+        ? Promise.resolve({ guide, record: null }) : invoke(cmd, args, options);
+    })()`);
+    await nav('Draft', '.cs-matchup-guide');
+    await page.click('.cs-matchup-guide > summary');
+    await page.wait("document.querySelectorAll('.cs-guide-reading .mg-tips li:first-child .mg-inline-reference img').length === 3", 'inline item, keystone and minor rune icons');
+    const inline = await page.evaluate(`(() => {
+      const tip = document.querySelector('.cs-guide-reading .mg-tips li');
+      return { names: [...tip.querySelectorAll('.mg-inline-reference')].map(el => el.textContent),
+        sizes: [...tip.querySelectorAll('.mg-inline-reference img')].map(el => el.getBoundingClientRect().width / parseFloat(getComputedStyle(el.parentElement).fontSize)),
+        chips: tip.querySelectorAll('.mg-references .ui-slot.is-item').length };
+    })()`);
+    assert.deepEqual(inline.names, ['Conqueror', 'Second Wind', 'Black Cleaver']);
+    assert.ok(inline.sizes.every(size => Math.abs(size - 1.2) < .01), JSON.stringify(inline.sizes));
+    assert.equal(inline.chips, 1);
+  });
   await check("Draft lock busy state and errors", async () => {
     await navigate(`${draft}?fixture=planning&lock-delay&lock-fail`, '.cs-pick');
     await page.type('input[aria-label="Search champion"]', 'Aatrox');

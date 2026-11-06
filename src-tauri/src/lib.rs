@@ -323,6 +323,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 full_app::art::champion_art,
                 full_app::art::ambient_background,
                 full_app::ui_data::full_app_rune_catalog,
+                full_app::ui_data::full_app_item_names,
                 full_app::ui_data::full_app_draft,
                 full_app::champ_select::full_app_hover_champion,
                 full_app::champ_select::full_app_lock_in,
