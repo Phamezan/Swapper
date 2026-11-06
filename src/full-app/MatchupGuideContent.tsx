@@ -13,13 +13,15 @@ const SOURCE_KINDS = { mobafire: "MOBAFire guide", sheet: "Matchup sheet", youtu
 const guideAuthors = (sources: GuideSource[]) => sources.filter((source, i) => sources.findIndex(other => other.author === source.author) === i);
 const authorColor = (index: number) => AUTHOR_COLORS[index] ?? `hsl(${index * 137.508 % 360} 65% 70%)`;
 
-export function GuideAuthorCredit({ source, color = authorColor(0) }: { source: GuideSource; color?: string }) {
+export function GuideAuthorCredit({ source, color }: { source: GuideSource; color?: string }) {
   const main = source.rankClaim.match(/\b[\p{L}\p{N}]+(?: [\p{L}\p{N}]+)? (?:main|OTP)\b/u)?.[0];
+  const rank = source.rank ? `${source.peak ? "Peak " : ""}${source.rank[0].toUpperCase() + source.rank.slice(1)}` : null;
   return <div className="mg-author-credit">
-    <span className="mg-avatar" style={{ backgroundColor: color }} aria-hidden>{source.author.trim().split(/\s+/).slice(0, 2).map(part => part.slice(0, 1)).join("").toUpperCase()}</span>
-    <div className="mg-author-details"><div className="mg-author-heading"><strong>{source.author}</strong>
-      {source.rank && <span className="mg-author-rank"><RankCrest tier={source.rank} size={24} mode="desktop" />{source.peak ? "Peak " : ""}{source.rank[0].toUpperCase() + source.rank.slice(1)}</span>}
-    </div><small title={source.rankClaim}>{[source.rank ? main : source.rankClaim, SOURCE_KINDS[source.kind]].filter(Boolean).join(" · ")}</small></div>
+    {source.rank && <RankCrest className="mg-author-crest" tier={source.rank} size={28} mode="desktop" />}
+    <div className="mg-author-details"><div className="mg-author-heading">
+      {color && <span className="mg-author-dot" style={{ backgroundColor: color }} aria-hidden />}
+      <strong>{source.author}</strong>
+    </div><small title={source.rankClaim}>{[rank, source.rank ? main : source.rankClaim, SOURCE_KINDS[source.kind]].filter(Boolean).join(" · ")}</small></div>
     <GuideSourceButton className="mg-original-link" url={source.url} label={`Read original by ${source.author}`}><span className="mg-original-label">Read original </span><span aria-hidden>↗</span></GuideSourceButton>
   </div>;
 }
@@ -28,7 +30,7 @@ export function GuideAuthorCredits({ sources }: { sources: GuideSource[] }) {
   const authors = guideAuthors(sources);
   if (!authors.length) return null;
   return <div className={`mg-author-credits${authors.length > 1 ? " is-multi-author" : ""}`} aria-label="Guide authors">
-    {authors.map((source, i) => <GuideAuthorCredit key={source.id} source={source} color={authorColor(i)} />)}
+    {authors.map((source, i) => <GuideAuthorCredit key={source.id} source={source} color={authors.length > 1 ? authorColor(i) : undefined} />)}
   </div>;
 }
 

@@ -114,8 +114,13 @@ test("single-author guide credits once above tips, with a real crest and no dots
   const tree = h.render({ guide: section([authors[0]]), section: "early-lane", abilities: {} });
   const credits = nodes(tree).filter(n => n.props.className === "mg-author-credit");
   assert.equal(credits.length, 1);
-  assert.match(text(credits[0]), /Lane Lab.*Master.*Ahri main · MOBAFire guide.*Read original/);
-  assert.equal(nodes(credits[0]).find(n => n.type === "rank-crest").props.tier, "master");
+  assert.equal(text(nodes(credits[0]).find(n => n.type === "small")), "Master · Ahri main · MOBAFire guide");
+  const crest = credits[0].props.children[0];
+  assert.equal(crest.type, "rank-crest");
+  assert.equal(crest.props.tier, "master");
+  assert.equal(crest.props.size, 28);
+  assert.equal(crest.props.mode, "desktop");
+  assert.equal(nodes(credits[0]).filter(n => n.props.className === "mg-avatar" || n.props.className === "mg-author-dot").length, 0);
   const link = nodes(credits[0]).find(n => n.type === "source-button");
   assert.equal(link.props.url, authors[0].url);
   assert.equal(link.props.label, "Read original by Lane Lab");
@@ -131,9 +136,12 @@ test("multi-author guide has compact credit lines and matching accessible tip do
   assert.ok(nodes(tree).some(n => n.props.className === "mg-author-credits is-multi-author"));
   const credits = nodes(tree).filter(n => n.props.className === "mg-author-credit");
   assert.equal(credits.length, 2);
-  assert.match(text(credits[1]), /Peak Diamond/);
-  assert.deepEqual(nodes(credits).filter(n => n.props.className === "mg-avatar").map(text), ["LL", "NT"]);
-  const colors = nodes(credits).filter(n => n.props.className === "mg-avatar").map(n => n.props.style.backgroundColor);
+  assert.equal(text(nodes(credits[1]).find(n => n.type === "small")), "Peak Diamond · Ahri main · Matchup sheet");
+  assert.equal(nodes(credits).filter(n => n.props.className === "mg-avatar").length, 0);
+  const headings = credits.map(credit => nodes(credit).find(n => n.props.className === "mg-author-heading"));
+  assert.deepEqual(headings.map(heading => heading.props.children[0].props.className), ["mg-author-dot", "mg-author-dot"]);
+  assert.deepEqual(headings.map(heading => text(heading.props.children[1])), ["Lane Lab", "Nine Tails"]);
+  const colors = nodes(headings).filter(n => n.props.className === "mg-author-dot").map(n => n.props.style.backgroundColor);
   assert.notEqual(colors[0], colors[1]);
   const rows = nodes(tree).filter(n => n.type === "li");
   const dots = nodes(rows[0]).filter(n => n.props.className === "mg-author-dot");
@@ -152,10 +160,19 @@ test("legacy author claims stay readable without a crest and repeated sources cr
   const tree = h.render({ sources: [legacy, { ...legacy, id: "another-source" }] });
   assert.match(text(tree), /Master · Ahri main/);
   assert.equal(nodes(tree).filter(n => n.type === "rank-crest").length, 0);
+  const credit = nodes(tree).find(n => n.props.className === "mg-author-credit");
+  assert.equal(nodes(tree).filter(n => n.props.className === "mg-avatar").length, 0);
+  assert.equal(credit.props.children.filter(Boolean)[0].props.className, "mg-author-details");
   assert.equal(nodes(tree).filter(n => n.props.className === "mg-author-credit").length, 1);
   assert.equal(h.render({ sources: [] }), null);
   const tips = harness("./MatchupGuideContent.tsx", "GuideTips", () => null).render({ tips: [{ text: "Tip", sourceIds: ["a"] }], sources: [legacy, { ...legacy, id: "another-source" }] });
   assert.equal(nodes(tips).filter(n => n.props.className === "mg-author-dot").length, 0);
+});
+
+test("rank-only author credits keep the tier before the source kind", () => {
+  const h = harness("./MatchupGuideContent.tsx", "GuideAuthorCredit", () => null);
+  const tree = h.render({ source: { ...authors[0], rank: "diamond", rankClaim: "Diamond" } });
+  assert.equal(text(nodes(tree).find(n => n.type === "small")), "Diamond · MOBAFire guide");
 });
 
 test("header sources popover counts and lists credited authors with the author credit cards", () => {

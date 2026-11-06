@@ -67,11 +67,10 @@
 .mg-summary > .mg-author-credits { grid-column: 1 / -1; margin-bottom: -12px; }
 .mg-author-credit { display: flex; flex: 1 1 260px; min-width: 0; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: var(--ui-surface-1); color: var(--ui-text-1); }
 .mg-author-details { flex: 1; min-width: 0; }
-.mg-author-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+.mg-author-heading { display: flex; align-items: center; gap: 6px; }
 .mg-author-heading strong { font-size: 14px; font-weight: 650; overflow-wrap: anywhere; }
 .mg-author-details small { display: block; color: var(--ui-text-2); font-size: 12px; overflow-wrap: anywhere; }
-.mg-author-rank { display: inline-flex; align-items: center; gap: 4px; color: var(--ui-text-2); font-size: 12px; }
-.mg-avatar { display: grid; place-items: center; flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; color: var(--ui-surface-1); font-size: 12px; font-weight: 650; }
+.mg-author-crest { flex-shrink: 0; }
 .mg-original-link { flex-shrink: 0; padding: 4px 0; border: 0; background: none; color: var(--ui-text-2); font: inherit; font-size: 12px; cursor: pointer; }
 .mg-original-link:hover { color: var(--ui-text-1); }
 .mg-original-link:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 3px; }
