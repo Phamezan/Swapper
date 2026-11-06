@@ -8,8 +8,7 @@
 .mg-pickers { display: flex; align-items: center; gap: 8px; }
 .mg-context { display: flex; flex-wrap: wrap; align-items: center; flex-shrink: 0; gap: 8px 14px; margin-bottom: 12px; color: var(--ui-text-2); font-size: 14px; }
 .mg-context strong { color: var(--ui-text-1); font-size: 18px; font-weight: 650; }
-.mg-sources-trigger { margin-left: auto; padding: 4px 9px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-xs); background: var(--ui-surface-3); color: var(--ui-text-2); font: inherit; font-size: 13px; cursor: pointer; }
-.mg-sources-trigger:hover { border-color: var(--ui-line-3); color: var(--ui-text-1); }
+.mg-sources-trigger { margin-left: auto; }
 .mg-sources-trigger:focus-visible, .mg-sources-popover button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 3px; }
 .mg-sources-popover { display: grid; gap: 8px; width: min(360px, calc(100vw - 24px)); max-height: var(--radix-popover-content-available-height); overflow-y: auto; background: var(--ui-surface-2); }
 .mg-sources-popover .mg-author-credit { width: 100%; }

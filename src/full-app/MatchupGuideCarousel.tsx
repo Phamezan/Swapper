@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, TriangleAlert } from "lucide-react";
 import type { ChampionOption, MatchupView } from "../runes/types";
 import { Skeleton } from "./ui/States";
 import { GuideSectionContent } from "./MatchupGuideContent";
@@ -48,7 +48,9 @@ export function MatchupGuideCarousel({ guide, loading, abilities, champion, enem
       <button type="button" className="mg-visual-toggle" aria-label={`${collapsed ? "Expand" : "Collapse"} guide`} aria-expanded={!collapsed} aria-controls={`${id}-content`} onClick={toggle}><ChevronDown size={16} aria-hidden /></button>
     </header>
     <div id={`${id}-content`} className="mg-deck-content" hidden={collapsed}>
-    {guide && guide.enemy === undefined && <p className="mg-no-written-guide">General {champion.name} guide · no {enemy.name} matchup guide yet</p>}
+    {guide && guide.enemy === undefined && <div className="ui-notice is-warn" role="status">
+      <TriangleAlert size={16} aria-hidden /><span>No {champion.name} vs {enemy.name} guide yet. Showing the general {champion.name} guide, so tips aren't specific to this matchup.</span>
+    </div>}
     <div ref={tabs} className="mg-tabs" role="tablist" aria-label="Guide sections">{GUIDE_SECTIONS.map(([key, label], i) =>
       <button key={key} id={`${id}-tab-${key}`} role="tab" aria-selected={i === index} aria-controls={`${id}-panel-${key}`} tabIndex={i === index ? 0 : -1} onClick={() => setIndex(i)}>{label}</button>)}
     </div>

@@ -22,6 +22,8 @@ function harness(file, name, command, cached = new Map()) {
   };
   const jsx = (type, props) => typeof type === "function" ? type(props) : ({ type, props });
   const modules = {
+    "../components/ui/button": { Button: "shared-button" },
+    "lucide-react": { BookOpen: "book-open" },
     react: hooks, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke: async (name, args) => { calls.push({ name, args }); return command(name, args); } },
     "../runes/iconLoader": {
@@ -212,7 +214,13 @@ test("header sources popover counts and lists credited authors with the author c
   ];
   const h = harness("./GuideSourcesPopover.tsx", "GuideSourcesPopover", () => null);
   const tree = h.render({ sources });
-  assert.equal(text(nodes(tree).find(node => node.type === "popover-trigger")), "Sources (2)");
+  const trigger = nodes(tree).find(node => node.type === "popover-trigger");
+  assert.equal(trigger.props.asChild, true);
+  const button = nodes(trigger).find(node => node.type === "shared-button");
+  assert.equal(button.props.variant, "secondary");
+  assert.equal(text(button), "Sources (2)");
+  assert.equal(text(nodes(button).find(node => node.type === "b")), "2");
+  assert.equal(nodes(button).find(node => node.type === "book-open").props["aria-hidden"], true);
   assert.equal(nodes(tree).find(node => node.type === "popover-content").props["aria-label"], "Guide sources");
   assert.deepEqual(nodes(tree).filter(node => node.type === "source-credit").map(node => node.props.source), sources);
   assert.equal(h.render({ sources: [] }), null);

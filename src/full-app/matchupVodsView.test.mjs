@@ -25,9 +25,10 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
   };
   const jsx = (type, props) => ({ type, props });
   const modules = {
+    "../components/ui/button": { Button: "shared-button" },
     "@tauri-apps/api/core": { isTauri: () => true, invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }, { id: 157, name: "Yasuo" }] },
     "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
-    react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", Flag: "flag", ChevronRight: "chevron", ArrowLeft: "back-icon" },
+    react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", Flag: "flag", ChevronRight: "chevron", ArrowLeft: "back-icon", TriangleAlert: "triangle-alert" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods, loadChampionVods: async () => championVods, loadAllVods: async () => championVods.map(vod => ({ ...vod, champion: vod.champion ?? (vod.enemy === 103 ? 238 : 103) })) },
     "./Picker": { ChampionPicker: "champion-picker", Picker: "picker", ROLES: [["mid", "Mid"], ["top", "Top"]] }, "./NearViewport": { NearEnd: "near-end" },
     './miniPlayer': miniPlayer, './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
@@ -486,13 +487,35 @@ test("opening a guide from a VOD starts on the requested slide", () => {
   assert.equal(nodes(tree).filter(node => node.props.role === "tabpanel" && !node.props.hidden).length, 1);
 });
 
-test("general fallback is labelled above the existing carousel sections", () => {
+test("general fallback warns that tips are not specific to the selected matchup", () => {
   const guide = { champion: 103, lane: "mid", keyTips: [] };
   const h = harness("./MatchupGuideCarousel.tsx", "MatchupGuideCarousel");
   const tree = h.render({ ...props, guide, loading: false, abilities: {}, tier: "emerald_plus", matchup: null });
-  assert.match(text(tree), /General Ahri guide \u00b7 no Zed matchup guide yet/);
+  const banner = nodes(tree).find(n => n.props.role === "status");
+  assert.equal(text(banner), "No Ahri vs Zed guide yet. Showing the general Ahri guide, so tips aren't specific to this matchup.");
+  assert.match(banner.props.className, /ui-notice is-warn/);
+  assert.equal(nodes(banner).find(n => n.type === "triangle-alert").props["aria-hidden"], true);
+  assert.equal(nodes(banner).some(n => n.type === "button"), false);
   assert.equal(nodes(tree).find(n => n.type === "summary").props.guide, guide);
   assert.equal(nodes(tree).filter(n => n.type === "guide-content").length, 3);
+  for (const guide of [{ champion: 103, enemy: 238, keyTips: [] }, null]) {
+    const tree = h.render({ ...props, guide, loading: false, abilities: {}, tier: "emerald_plus", matchup: null });
+    assert.equal(nodes(tree).some(n => n.props.role === "status"), false);
+  }
+});
+
+test("compact VOD action uses the primary shared button and emphasizes the count", async () => {
+  const opened = [];
+  const h = harness("./MatchupVodEntry.tsx", "MatchupVodEntry");
+  h.render({ ...props, compact: true, onWatch: request => opened.push(request) });
+  const tree = await h.flush();
+  const button = nodes(tree).find(n => n.type === "shared-button");
+  assert.equal(button.props.variant, "default");
+  assert.equal(text(button), `Watch ${ahriVsZedVods.length} VODs`);
+  assert.equal(text(nodes(button).find(n => n.type === "b")), String(ahriVsZedVods.length));
+  assert.equal(nodes(button).find(n => n.type === "play").props["aria-hidden"], true);
+  button.props.onClick();
+  assert.deepEqual(opened, [{ champion: props.champion, enemy: props.enemy, lane: props.lane }]);
 });
 
 test("library rows show the player or rank and region, a result badge and moments only when known", async () => {

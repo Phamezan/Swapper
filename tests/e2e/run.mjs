@@ -1988,6 +1988,23 @@ async function main() {
     await page.text('.mg-context strong', 'Ahri vs Zed');
     await page.text('.mg-context', 'Mid');
     await screenshot('draft-open-full-guide');
+    assert.equal(await page.evaluate("!!document.querySelector('.mg-deck .ui-notice.is-warn')"), false, 'a matchup-specific guide has no general-guide banner');
+    await page.visible('.mg-context button[data-variant="default"]');
+    const actions = await page.evaluate(`Array.from(document.querySelectorAll('.mg-context button[data-slot="button"]'), button => {
+      const style = getComputedStyle(button);
+      return { variant: button.dataset.variant, height: button.getBoundingClientRect().height, radius: style.borderRadius,
+        padding: style.padding, background: style.backgroundColor, icon: button.querySelector('svg')?.getAttribute('aria-hidden'), count: button.querySelector('b')?.textContent };
+    })`);
+    assert.deepEqual(actions.map(action => action.variant), ['secondary', 'default']);
+    assert.equal(actions[0].height, actions[1].height);
+    assert.equal(actions[0].radius, actions[1].radius);
+    assert.equal(actions[0].padding, actions[1].padding);
+    assert.notEqual(actions[0].background, actions[1].background);
+    assert.ok(actions.every(action => action.icon === 'true' && Number(action.count) > 0));
+    await page.click('.mg-sources-trigger');
+    await page.visible('[aria-label="Guide sources"]');
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
   });
   await check("General guide fallback renders in Draft and the Matchups carousel", async () => {
     await navigate(`${fullApp}?draft-guide`, 'nav[aria-label="Swapper pages"]');
@@ -2007,7 +2024,8 @@ async function main() {
     await page.text('.cs-guide-reading', 'General Ahri advice.');
     assert.equal(await page.evaluate("!!document.querySelector('.cs-guide-reading .mg-summary-outlook')"), false);
     await page.click('.cs-guide-footer button', 'Open full guide');
-    await page.text('.mg-deck', 'General Ahri guide · no Zed matchup guide yet');
+    await page.text('.mg-deck .ui-notice[role="status"]', "No Ahri vs Zed guide yet. Showing the general Ahri guide, so tips aren't specific to this matchup.");
+    assert.equal(await page.evaluate("document.querySelector('.mg-deck .ui-notice svg').getAttribute('aria-hidden')"), 'true');
     await page.text('.mg-slide:not([hidden])', 'General Ahri advice.');
     assert.equal(await page.evaluate("!!document.querySelector('.mg-summary-outlook, .mg-context .mg-difficulty')"), false);
     await page.click('.mg-tabs [role="tab"]', 'Win condition');
