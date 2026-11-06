@@ -510,7 +510,7 @@ test("compact VOD action uses the primary shared button and emphasizes the count
   h.render({ ...props, compact: true, onWatch: request => opened.push(request) });
   const tree = await h.flush();
   const button = nodes(tree).find(n => n.type === "shared-button");
-  assert.equal(button.props.variant, "default");
+  assert.equal(button.props.variant, "secondary");
   assert.equal(text(button), `Watch ${ahriVsZedVods.length} VODs`);
   assert.equal(text(nodes(button).find(n => n.type === "b")), String(ahriVsZedVods.length));
   assert.equal(nodes(button).find(n => n.type === "play").props["aria-hidden"], true);
