@@ -239,3 +239,11 @@ test("a backend outdated flag renders a readable warning", () => {
   const tree = h.render({ tips: [{ text: "Hold Charm.", scope: "pair", outdated: true }], sources: [] });
   assert.match(text(tree), /May be outdated: a champion changed after this tip's patch\./);
 });
+
+test("overview details omit a tip already shown verbatim as the matchup outlook", () => {
+  const h = harness("./MatchupGuideContent.tsx", "GuideSectionContent", () => null);
+  const guide = { favoredWhen: "Hold Charm.", sources: [], sections: { overview: { tips: [{ text: "Hold Charm." }, { text: "Watch the wave." }] } } };
+  const rows = tree => nodes(tree).filter(node => node.type === "li");
+  assert.equal(rows(h.render({ guide, section: "overview", abilities: {}, showAuthors: false })).length, 1);
+  assert.equal(rows(h.render({ guide, section: "overview", abilities: {} })).length, 2, "standalone sections retain the outlook tip");
+});

@@ -72,9 +72,12 @@ function GuideTipContent({ tip, sources, authors, abilities }: { tip: GuideTip; 
 
 export function GuideSectionContent({ guide, section, abilities, showAuthors = true }: { guide: AuthoredGuide; section: GuideSectionId; abilities: GuideAbilities; showAuthors?: boolean }) {
   const content = guide.sections[section];
+  const tips = [...content.tips, ...(guide.enemyTips?.[section] ?? [])];
+  const visibleTips = section === "overview" && !showAuthors
+    ? tips.filter(tip => tip.text.trim() !== guide.favoredWhen?.trim()) : tips;
   return <div className="mg-section-content">
     {showAuthors && <GuideAuthorCredits sources={guide.sources} />}
-    <GuideTips tips={[...content.tips, ...(guide.enemyTips?.[section] ?? [])]} sources={guide.sources} abilities={abilities} />
+    <GuideTips tips={visibleTips} sources={guide.sources} abilities={abilities} />
     {content.alternatives && <div className="mg-alternatives">{content.alternatives.map(style => {
       return <section className="ui-well" key={style.title}>
       <h3>{style.title}</h3>
