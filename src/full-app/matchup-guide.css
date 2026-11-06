@@ -106,3 +106,11 @@
   .mg-summary-outlook { padding: 0 0 18px; border-right: 0; border-bottom: 1px solid var(--ui-line-2); }
 }
 @media (prefers-reduced-motion: reduce) { .mg-slide { animation: none; } .mg-tabs button { transition: none; } }
+
+.mg-card-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 12px; }
+.mg-card-header h2 { margin: 0; font-size: 18px; }
+.mg-deck.is-collapsed { flex: 0 0 auto; }
+.mg-deck.is-collapsed .mg-card-header { padding-bottom: 0; }
+.mg-deck.is-collapsed .mg-visual-toggle svg { transform: rotate(-90deg); }
+.mg-deck-content { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.mg-deck-content[hidden] { display: none; }

@@ -1979,12 +1979,24 @@ async function main() {
     assert.equal(await page.evaluate("!!document.querySelector('.mg-summary-outlook, .mg-context .mg-difficulty')"), false);
     await page.click('.mg-tabs [role="tab"]', 'Win condition');
     await page.text('.mg-slide:not([hidden])', 'General Ahri advice.');
+    await page.evaluate("document.querySelector('button[aria-label=\"Collapse guide\"]').focus()");
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', text: '\r', windowsVirtualKeyCode: 13 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+    await page.visible('button[aria-label="Expand guide"][aria-expanded="false"]');
+    assert.ok(await page.evaluate("document.querySelector('.mg-deck-content').hidden"));
+    assert.ok(await page.evaluate("document.querySelector('.mg-deck').getBoundingClientRect().height >= document.querySelector('.mg-card-header').getBoundingClientRect().height"), 'collapsed card keeps its header height');
+    assert.equal(await page.evaluate("localStorage.getItem('swapper.guideHidden')"), '1');
+    await nav('Draft', '.cs-matchup-guide');
+    await page.click('.cs-guide-footer button', 'Open full guide');
+    await page.visible('button[aria-label="Expand guide"][aria-expanded="false"]');
+    await page.click('button[aria-label="Expand guide"]');
+    await page.visible('.mg-tabs');
   });
   await check("Guide tips inline listed items and rune names without changing reference chips", async () => {
     await navigate(`${fullApp}?draft-guide`, 'nav[aria-label="Swapper pages"]');
     await page.evaluate(`(() => {
       const invoke = window.__TAURI_INTERNALS__.invoke;
-      const tip = { scope: "champion", text: "Take Conqueror or Second Wind. Open Black Cleaver; Eclipse and Triumph stay plain.", itemIds: [3071] };
+      const tip = { scope: "champion", text: "Take Conqueror or Second Wind. Open Black Cleaver with Triumph, Alacrity and Haste; ability haste and Eclipse stay plain.", itemIds: [3071] };
       const guide = { champion: 103, lane: "mid", patch: "26.20", reviewed: true,
         keyTips: [tip, tip, tip], itemization: [], sources: [],
         sections: Object.fromEntries(["overview", "early-lane", "mid-lane", "win-condition"].map(id => [id, { tips: [tip] }])) };
@@ -1993,14 +2005,14 @@ async function main() {
     })()`);
     await nav('Draft', '.cs-matchup-guide');
     await page.click('.cs-matchup-guide > summary');
-    await page.wait("document.querySelectorAll('.cs-guide-reading .mg-tips li:first-child .mg-inline-reference img').length === 3", 'inline item, keystone and minor rune icons');
+    await page.wait("document.querySelectorAll('.cs-guide-reading .mg-tips li:first-child .mg-inline-reference img').length === 6", 'inline item, utility runes and short aliases');
     const inline = await page.evaluate(`(() => {
       const tip = document.querySelector('.cs-guide-reading .mg-tips li');
       return { names: [...tip.querySelectorAll('.mg-inline-reference')].map(el => el.textContent),
         sizes: [...tip.querySelectorAll('.mg-inline-reference img')].map(el => el.getBoundingClientRect().width / parseFloat(getComputedStyle(el.parentElement).fontSize)),
         chips: tip.querySelectorAll('.mg-references .ui-slot.is-item').length };
     })()`);
-    assert.deepEqual(inline.names, ['Conqueror', 'Second Wind', 'Black Cleaver']);
+    assert.deepEqual(inline.names, ['Conqueror', 'Second Wind', 'Black Cleaver', 'Triumph', 'Alacrity', 'Haste']);
     assert.ok(inline.sizes.every(size => Math.abs(size - 1.2) < .01), JSON.stringify(inline.sizes));
     assert.equal(inline.chips, 1);
   });

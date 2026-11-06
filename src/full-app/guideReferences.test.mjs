@@ -60,7 +60,7 @@ test("inline item and rune icons use catalogs, retain names and ignore unlisted 
   const tree = await h.flush();
   assert.equal(text(tree), props.text);
   assert.deepEqual(nodes(tree).filter(n => n.type === "item-icon").map(n => n.props.id), [3071]);
-  assert.deepEqual(nodes(tree).filter(n => n.type === "rune-icon").map(n => n.props.id), [8010, 9101]);
+  assert.deepEqual(nodes(tree).filter(n => n.type === "rune-icon").map(n => n.props.id), [8010, 9101, 9111]);
   h.render(props);
   await h.flush();
   assert.equal(h.calls.filter(call => call.name === "full_app_rune_catalog").length, 1);

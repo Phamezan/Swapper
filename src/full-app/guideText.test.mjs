@@ -25,7 +25,7 @@ test("ambiguous runes and rune names colliding with tip abilities or items are s
   assert.deepEqual(guideReferences([ability], [item], [
     { kind: "rune", id: 2, name: "Aftershock" }, { kind: "rune", id: 3, name: "Conqueror" },
     { kind: "rune", id: 4, name: "Guardian" }, { kind: "rune", id: 5, name: "Resolve" },
-  ]), [ability, item]);
+  ]), [ability, item, { kind: "rune", id: 4, name: "Guardian" }]);
 });
 
 test("ability names match longest whole phrases without changing cooldown tokens", () => {
@@ -59,5 +59,32 @@ test("unavailable or invalid cooldowns show only the ability name", () => {
   assert.equal(liveCooldown(undefined, "Living Shadow"), "Living Shadow");
   for (const cooldowns of [[], [0, 0], [NaN], [Infinity], [-1]]) {
     assert.equal(liveCooldown({ name: "Charm", cooldowns, charges: 0, recharge: [] }, "E"), "Charm");
+  }
+});
+
+
+test("capitalized utility runes match while all five tree names stay plain", () => {
+  const names = ["Triumph", "Revitalize", "Conditioning", "Overgrowth", "Unflinching", "Demolish", "Guardian"];
+  const runes = names.map((name, id) => ({ kind: "rune", id, name }));
+  const trees = ["Precision", "Domination", "Resolve", "Inspiration", "Sorcery"].map((name, id) => ({ kind: "rune", id: id + 100, name }));
+  assert.deepEqual(guideReferences([], [], [...runes, ...trees]), runes);
+  for (const rune of runes) {
+    assert.deepEqual(parseGuideText(rune.name, runes), [rune]);
+    assert.deepEqual(parseGuideText(rune.name.toLowerCase(), runes), [{ text: rune.name.toLowerCase() }]);
+  }
+});
+
+test("catalog prefixes also match capitalized bare aliases and preserve whole words", () => {
+  for (const name of ["Legend: Alacrity", "Legend: Haste", "Legend: Bloodline", "Future: Focus"] ) {
+    const rune = { kind: "rune", id: 9104, name };
+    const alias = name.split(": ")[1];
+    const refs = guideReferences([], [], [rune]);
+    assert.deepEqual(parseGuideText(name, refs), [rune]);
+    assert.deepEqual(parseGuideText(alias, refs), [{ ...rune, name: alias }]);
+    for (const text of [alias.toLowerCase(), `ability ${alias.toLowerCase()}`, `${alias}ful`, `é${alias}`]) {
+      assert.deepEqual(parseGuideText(text, refs), [{ text }]);
+    }
+    const item = { kind: "item", id: 1, name: alias };
+    assert.deepEqual(guideReferences([], [item], [rune]), [item]);
   }
 });

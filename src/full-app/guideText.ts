@@ -4,12 +4,17 @@ export type GuideNamedAbility = { kind: "ability"; champion: number; key: string
 export type GuideNamedReference = GuideNamedAbility | { kind: "item" | "rune"; id: number; name: string };
 export type GuideTextPart = { text: string } | { champion: number; key: string } | GuideNamedReference;
 
-// These names also describe ordinary actions, attributes or people in guide prose.
-export const IGNORED_RUNE_NAMES = new Set(["Triumph", "Guardian", "Conditioning", "Overgrowth", "Revitalize", "Unflinching", "Demolish", "Precision", "Domination", "Resolve", "Inspiration"]);
+// Tree names are ordinary prose rather than individual rune references.
+export const IGNORED_RUNE_NAMES = new Set(["Precision", "Domination", "Resolve", "Inspiration", "Sorcery"]);
 
 export function guideReferences(abilities: GuideNamedAbility[], items: GuideNamedReference[], runes: GuideNamedReference[]): GuideNamedReference[] {
   const named = [...abilities, ...items];
-  return [...named, ...runes.filter(rune => !IGNORED_RUNE_NAMES.has(rune.name) && !named.some(ref => ref.name === rune.name))];
+  return [...named, ...runes.flatMap(rune => {
+    const alias = rune.name.match(/^[^:]+: ([A-Z].*)$/)?.[1];
+    const names = alias ? [rune.name, alias] : [rune.name];
+    if (IGNORED_RUNE_NAMES.has(rune.name) || named.some(ref => names.includes(ref.name))) return [];
+    return names.map(name => ({ ...rune, name }));
+  })];
 }
 
 export function parseGuideText(text: string, references: GuideNamedReference[] = []): GuideTextPart[] {

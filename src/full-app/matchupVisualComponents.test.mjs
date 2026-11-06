@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import ts from "typescript";
 import * as visuals from "./matchupVisuals.ts";
+import * as guideModel from "./matchupGuide.ts";
 import { perRank } from "./cooldownModel.ts";
 
 function harness(file, component, command, sheets = {}, storage = { getItem: () => null, setItem() {} }) {
@@ -10,6 +11,7 @@ function harness(file, component, command, sheets = {}, storage = { getItem: () 
   let cursor = 0, pending = [], props, tree;
   const react = {
     useId: () => "visual-content",
+    useRef: () => ({ current: null }),
     useState(initial) { const i = cursor++; if (!(i in states)) states[i] = typeof initial === "function" ? initial() : initial; return [states[i], value => { states[i] = value; }]; },
     useEffect(fn, deps) {
       const i = cursor++;
@@ -20,6 +22,7 @@ function harness(file, component, command, sheets = {}, storage = { getItem: () 
   const modules = {
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke: async (name, args) => { calls.push({ name, args }); return command(name, args); } },
+    "./matchupGuide": guideModel,
     "./matchupVisuals": visuals, "./cooldownModel": { perRank },
     "./GuideItem": { GuideItem: "item" }, "./CooldownSheet": { AbilityIcon: "ability-icon" },
     "./GuideVisual": { GuideVisual: "visual" }, "lucide-react": { ChevronDown: "chevron" },
@@ -92,4 +95,34 @@ test("both visual preferences default expanded, persist independently, and survi
     assert.equal(nodes(denied.render()).find(node => node.type === "button").props["aria-expanded"], false);
   }
   assert.equal(values.size, 2);
+});
+
+
+test("guide card collapse hides all content, persists, and survives unavailable storage", () => {
+  const values = new Map();
+  const storage = { getItem: key => values.get(key) ?? null, setItem: (key, value) => values.set(key, value) };
+  const create = access => harness("./MatchupGuideCarousel.tsx", "MatchupGuideCarousel", () => null, {}, access);
+  const input = { ...props, guide: null, loading: false, abilities: {} };
+  const previousWindow = globalThis.window;
+  globalThis.window = { addEventListener() {}, removeEventListener() {} };
+  try {
+    const h = create(storage);
+    const toggle = () => nodes(h.render(input)).find(n => n.type === "button" && n.props["aria-expanded"] !== undefined);
+    assert.ok(toggle(), "guide header has a collapse button");
+    assert.equal(toggle().props["aria-expanded"], true);
+    assert.equal(toggle().props.type, "button", "native button supports Enter and Space");
+    const id = toggle().props["aria-controls"];
+    assert.ok(id);
+    toggle().props.onClick();
+    assert.equal(toggle().props["aria-expanded"], false);
+    assert.equal(nodes(h.render()).find(n => n.props.id === id).props.hidden, true);
+    assert.equal(nodes(create(storage).render(input)).find(n => n.props["aria-controls"] === id).props["aria-expanded"], false);
+    toggle().props.onClick();
+    assert.equal(toggle().props["aria-expanded"], true);
+    const denied = create({ getItem() { throw Error("denied"); }, setItem() { throw Error("denied"); } });
+    const button = nodes(denied.render(input)).find(n => n.props["aria-controls"] === id);
+    assert.equal(button.props["aria-expanded"], true);
+    assert.doesNotThrow(() => button.props.onClick());
+    assert.equal(nodes(denied.render()).find(n => n.props.id === id).props.hidden, true);
+  } finally { globalThis.window = previousWindow; }
 });

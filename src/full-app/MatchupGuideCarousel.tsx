@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import type { ChampionOption, MatchupView } from "../runes/types";
 import { Skeleton } from "./ui/States";
 import { GuideSectionContent } from "./MatchupGuideContent";
@@ -14,6 +14,13 @@ export function MatchupGuideCarousel({ guide, loading, abilities, champion, enem
   champion: ChampionOption; enemy: ChampionOption; lane: string; tier: string; matchup: MatchupView | null;
   initialSection?: GuideSectionId;
 }) {
+  const [collapsed, setCollapsed] = useState(() => {
+    try { return localStorage.getItem("swapper.guideHidden") === "1"; } catch { return false; }
+  });
+  const toggle = () => {
+    setCollapsed(!collapsed);
+    try { localStorage.setItem("swapper.guideHidden", collapsed ? "0" : "1"); } catch { /* preference only */ }
+  };
   const [index, setIndex] = useState(() => Math.max(0, GUIDE_SECTIONS.findIndex(([section]) => section === initialSection)));
   const tabs = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -21,7 +28,7 @@ export function MatchupGuideCarousel({ guide, loading, abilities, champion, enem
   useEffect(() => { if (initialSection) tabs.current?.querySelector<HTMLButtonElement>('[aria-selected="true"]')?.focus({ preventScroll: true }); }, [initialSection]);
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      if (collapsed || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
       const target = event.target instanceof HTMLElement ? event.target : null;
       if (target?.closest('input, textarea, select, [contenteditable="true"], [role="slider"], [role="combobox"], [data-radix-popper-content-wrapper]')) return;
       const otherTabs = target?.closest('[role="tablist"]');
@@ -33,10 +40,14 @@ export function MatchupGuideCarousel({ guide, loading, abilities, champion, enem
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [index]);
+  }, [index, collapsed]);
   useEffect(() => { tabs.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: "nearest", inline: "nearest" }); }, [index]);
   const count = GUIDE_SECTIONS.length;
-  return <section className="mg-deck" aria-label="Matchup guide">
+  return <section className={`mg-deck${collapsed ? " is-collapsed" : ""}`} aria-label="Matchup guide">
+    <header className="mg-card-header"><h2>Guide</h2>
+      <button type="button" className="mg-visual-toggle" aria-label={`${collapsed ? "Expand" : "Collapse"} guide`} aria-expanded={!collapsed} aria-controls={`${id}-content`} onClick={toggle}><ChevronDown size={16} aria-hidden /></button>
+    </header>
+    <div id={`${id}-content`} className="mg-deck-content" hidden={collapsed}>
     {guide && guide.enemy === undefined && <p className="mg-no-written-guide">General {champion.name} guide · no {enemy.name} matchup guide yet</p>}
     <div ref={tabs} className="mg-tabs" role="tablist" aria-label="Guide sections">{GUIDE_SECTIONS.map(([key, label], i) =>
       <button key={key} id={`${id}-tab-${key}`} role="tab" aria-selected={i === index} aria-controls={`${id}-panel-${key}`} tabIndex={i === index ? 0 : -1} onClick={() => setIndex(i)}>{label}</button>)}
@@ -56,6 +67,7 @@ export function MatchupGuideCarousel({ guide, loading, abilities, champion, enem
       <div className="mg-progress"><div className="mg-dots" aria-label="Guide progress">{GUIDE_SECTIONS.map(([key, label], i) => <button key={key} aria-label={`Go to ${label}`} aria-current={i === index ? "step" : undefined} onClick={() => setIndex(i)} />)}</div>
         <small aria-live="polite">{index + 1} of {count} · {GUIDE_SECTIONS[index][1]}</small></div>
       <button aria-label="Next guide section" onClick={() => setIndex(guideStep(index, "ArrowRight")!)}><span>Next</span><ChevronRight size={17} /></button>
+    </div>
     </div>
   </section>;
 }
