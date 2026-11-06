@@ -1,3 +1,4 @@
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { useEffect, useRef, useState } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Info, LoaderCircle, Play, RefreshCw } from "lucide-react";
@@ -130,14 +131,13 @@ export function SwapperDoctor({ remoteTransport }: { remoteTransport: "lan" | "t
             {running ? <LoaderCircle className="spin" size={15} /> : <Play size={14} />}
             {running ? "Running…" : "Run checks"}
           </Button>
-          <Button
+          <Tooltip label={state.phase === "done" ? "Copy diagnostic results" : "Run checks first to generate diagnostics"}><Button
             variant="outline"
             disabled={state.phase !== "done"}
-            title={state.phase === "done" ? "Copy diagnostic results" : "Run checks first to generate diagnostics"}
             onClick={() => void copyReport()}
           >
             {copied ? "Copied" : "Copy diagnostics"}
-          </Button>
+          </Button></Tooltip>
         </div>
       </div>
 

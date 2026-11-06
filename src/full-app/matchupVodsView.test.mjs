@@ -34,7 +34,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     './miniPlayer': miniPlayer, './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
     "./art": { useChampionArt: (id, kind) => id ? `/art/${kind}-${id}.jpg` : null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
     "./VodPlayer": { VodPlayer: "player-identity" }, "./PlayerPhoto": { usePlayerPhoto: name => photos[name] ?? null }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
-    "./ui/States": { Skeleton: "skeleton", Notice: "notice" }, "./MomentIcon": { MomentIcon: "moment-icon" }, "@tauri-apps/api/window": { getCurrentWindow: () => tauriWindow }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
+    "./ui/States": { Skeleton: "skeleton", Notice: "notice" }, "./ui/Tooltip": { Tooltip: "tooltip" }, "./MomentIcon": { MomentIcon: "moment-icon" }, "@tauri-apps/api/window": { getCurrentWindow: () => tauriWindow }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
     "./MatchupGuideSummary": { MatchupGuideSummary: "summary" }, "./TradeWindows": { TradeWindows: "trades" }, "./PowerSpikeTimeline": { PowerSpikeTimeline: "spikes" },
   };
   const source = readFileSync(new URL(file, import.meta.url), "utf8");
@@ -100,7 +100,11 @@ test("VODs start as a five-game list and Back restores focus to the opened row",
   assert.doesNotMatch(text(tree), /Played as/);
   nodes(tree).filter(node => node.props.className === "mv-vod-row")[2].props.onClick();
   tree = h.render();
-  assert.equal(nodes(tree).find(node => node.props.className === "mv-game-info").props.title, ahriVsZedVods[2].title, "the YouTube title is a tooltip, not a second heading");
+  {
+    const info = nodes(tree).find(node => node.props.className === "mv-game-info");
+    const wrapper = nodes(tree).find(node => node.props.children === info);
+    assert.equal(wrapper.props.label, ahriVsZedVods[2].title, "the YouTube title is a tooltip, not a second heading");
+  }
   assert.equal(h.focus[h.focus.length - 1], "mv-back");
   nodes(tree).find(node => node.props.className === "mv-back").props.onClick();
   tree = h.render();
@@ -529,7 +533,7 @@ test("library rows show the player or rank and region, a result badge and moment
   const tree = await h.flush();
   const [first, second] = rows(tree);
   assert.equal(text(nodes(tree).find(node => node.props.className === "mv-vod-head").props.children.at(-1)), "Result");
-  assert.equal(first.props.title, named.title, "the full title stays available as a tooltip");
+  assert.equal(nodes(tree).find(node => node.props.children === first).props.label, named.title, "the full title stays available as a tooltip");
   assert.equal(first.props["data-result"], "win");
   assert.match(first.props["aria-label"], /^Watch Peng \(MKOI\), Ahri vs Zed, Mid\. EUW Challenger, patch /);
   assert.equal(text(nodes(first).find(node => node.type === "strong")), "Peng");
@@ -587,7 +591,7 @@ test("estimated patch tooltip and upload age are visible on the row", async () =
   h.render(props);
   const tree = await h.flush();
   assert.match(text(rows(tree)[0]), /~26.21.*Mar 4, 2020/);
-  assert.ok(nodes(tree).some(node => node.props.title === 'Patch estimated from the upload date'));
+  assert.ok(nodes(tree).some(node => node.type === 'tooltip' && node.props.label === 'Patch estimated from the upload date'));
 });
 
 test("champion picker hands the selected champion to the section", async () => {

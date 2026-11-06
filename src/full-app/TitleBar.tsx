@@ -15,6 +15,7 @@ import { fmtAgo } from '../runes/types';
 import type { LocationSegment } from './locationTrail';
 import './search.css';
 import { UpdatePill } from '../settings/UpdateSection';
+import { Tooltip } from './ui/Tooltip';
 
 type Props = {
   trail: LocationSegment[];
@@ -72,19 +73,19 @@ export function TitleBar(props: Props) {
   return <header className="title-bar" data-tauri-drag-region>
     <div className="title-brand" data-tauri-drag-region><SwitchIcon size={30} /><span>Swapper</span>{version && <small className="title-version">v{version}</small>}</div>
     <div className="title-nav">
-      <button className="title-icon" aria-label="Back" title="Back (Alt+←)" disabled={!props.canBack} onClick={props.onBack}><BackIcon size={16} /></button>
-      <button className="title-icon" aria-label="Forward" title="Forward (Alt+→)" disabled={!props.canForward} onClick={props.onForward}><ForwardIcon size={16} /></button>
+      <Tooltip label="Back (Alt+←)"><button className="title-icon" aria-label="Back" disabled={!props.canBack} onClick={props.onBack}><BackIcon size={16} /></button></Tooltip>
+      <Tooltip label="Forward (Alt+→)"><button className="title-icon" aria-label="Forward" disabled={!props.canForward} onClick={props.onForward}><ForwardIcon size={16} /></button></Tooltip>
     </div>
     <nav className={`title-location${open ? ' is-searching' : ''}`} aria-label="Location">
-      {open ? <Palette {...props} onClose={closeSearch} /> : <div className="location-view" title={props.trail.map(segment => segment.label).join(' › ')}>
+      {open ? <Palette {...props} onClose={closeSearch} /> : <Tooltip label={props.trail.map(segment => segment.label).join(' › ')}><div className="location-view">
         <button ref={searchButton} className="location-search-button" onClick={() => setOpen(true)} aria-label="Search (Ctrl+K)" aria-keyshortcuts="Control+k Meta+k"><kbd>Ctrl K</kbd></button>
         <ol className="location-trail">{props.trail.map((segment, index) => <li key={`${index}-${segment.label}`}>
           {index > 0 && <span className="location-separator" aria-hidden>›</span>}
           {segment.page ? <button className="location-segment" onClick={() => props.onPickLocation(segment.page!)}>{segment.label}</button>
             : <span className="location-segment" aria-current="page">{segment.label}</span>}
         </li>)}</ol>
-        <button className="title-icon location-refresh" aria-label="Refresh stats" title="Refresh stats" disabled={props.refreshing} onClick={props.onRefresh}><RefreshIcon size={14} className={props.refreshing ? "spin" : undefined} /></button>
-      </div>}
+        <Tooltip label="Refresh stats"><button className="title-icon location-refresh" aria-label="Refresh stats" disabled={props.refreshing} onClick={props.onRefresh}><RefreshIcon size={14} className={props.refreshing ? "spin" : undefined} /></button></Tooltip>
+      </div></Tooltip>}
     </nav>
     <div className="title-spacer" data-tauri-drag-region />
     <UpdatePill />

@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import type { ChampionOption, ChampionOverviewView, ItemView, MatchupView } from "../runes/types";
 import { GuideItem } from "./GuideItem";
 import { GuideVisual } from "./GuideVisual";
+import { Tooltip } from "./ui/Tooltip";
 import { spikeMarkers } from "./matchupVisuals";
 import "./matchup-visuals.css";
 
@@ -31,7 +32,7 @@ export function PowerSpikeTimeline({ champion, enemy, lane, tier, matchup }: {
         <div className="mg-spike-identity"><strong>{side.champion.name}</strong><small>{side.source}</small></div>
         {side.markers.map(marker => marker.kind === "level"
           ? <div className="mg-spike-marker is-level" key={`level-${marker.level}`}><b>R{marker.rank}</b></div>
-          : <div className={`mg-spike-marker is-item${marker.order === 1 ? " is-first-item" : ""}`} key={`item-${marker.order}`} title={marker.item.name}><GuideItem id={marker.item.id} size={32} label={marker.item.name} /><small>{marker.item.name}</small></div>)}
+          : <Tooltip key={`item-${marker.order}`} label={marker.item.name}><div className={`mg-spike-marker is-item${marker.order === 1 ? " is-first-item" : ""}`}><GuideItem id={marker.item.id} size={32} label={marker.item.name} /><small>{marker.item.name}</small></div></Tooltip>)}
       </div>)}
     </div>
     <p className="mg-visual-caption">Typical R checkpoints · item columns show purchase order, not minute timings</p>

@@ -7,6 +7,7 @@ import { RoleIcon } from "./RoleIcon";
 import { SpellIcon } from "./SpellIcon";
 import { TeamLogo } from "./TeamLogo";
 import { CachedBadge } from "./CachedBadge";
+import { Tooltip } from "../full-app/ui/Tooltip";
 import {
   fmtBuildMinute,
   isTrinketItem,
@@ -93,13 +94,14 @@ function ProBuildCard({
             <span className="pro-card-name">
               <strong>{build.proName || "Pro player"}</strong>
               {build.region && (
-                <span
-                  className="pro-card-region"
-                  data-region={build.region}
-                  title={build.league || undefined}
-                >
-                  {build.region}
-                </span>
+                <Tooltip label={build.league || undefined}>
+                  <span
+                    className="pro-card-region"
+                    data-region={build.region}
+                  >
+                    {build.region}
+                  </span>
+                </Tooltip>
               )}
             </span>
             {build.otp ? (
@@ -124,7 +126,7 @@ function ProBuildCard({
             {build.roleLabel}
           </span>
         </span>
-        <span className="pro-card-icons" title="This game's rune page" aria-hidden>
+        <Tooltip label="This game's rune page"><span className="pro-card-icons" aria-hidden>
           <RuneIcon id={build.primaryPageId} mode={mode} className="pro-card-tree" />
           {build.primaryRunes.map((id) => (
             <RuneIcon key={`p${id}`} id={id} mode={mode} />
@@ -146,7 +148,7 @@ function ProBuildCard({
               ))}
             </>
           )}
-        </span>
+        </span></Tooltip>
         {build.finalItems.length > 0 && (
           <>
             <span className="pro-card-items-label">Final items</span>

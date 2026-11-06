@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { Popover } from "radix-ui";
 import { CheckIcon, ForwardIcon, RefreshIcon, SearchIcon, SettingsIcon, SwitchIcon } from "./icons";
+import { Tooltip } from "./Tooltip";
 import type { Account } from "../../App";
 import { BrandIcon } from "../../components/BrandIcon";
 import { RankCrest } from "../../runes/RankCrest";
@@ -28,7 +29,7 @@ export function Podium({ who, connected, open, crest, disabled, trouble, onResta
   const label = `${who.name}${who.tag ? `#${who.tag}` : ""}${rank ? `, ${rankLabel(rank)}, ${rank.lp} LP` : ""}. ${connected ? "League Client connected." : "League Client not connected."}`;
   return <section className="profile-podium" aria-label={label}>
     <span className="podium-hero" aria-hidden />
-    <button type="button" className="podium-band" onClick={onOpenProfile} disabled={!onOpenProfile} title="Open your profile">
+    <Tooltip label="Open your profile"><button type="button" className="podium-band" onClick={onOpenProfile} disabled={!onOpenProfile}>
       <span className="podium-portrait">
         {who.icon ? <img src={who.icon} alt="" /> : <BrandIcon size={40} />}
         {who.level != null && <span className="podium-level">Lv {who.level}</span>}
@@ -37,7 +38,7 @@ export function Podium({ who, connected, open, crest, disabled, trouble, onResta
       <span className="podium-copy">
         <strong>{who.name}{who.tag && <span className="podium-tagpart">#{who.tag}</span>}</strong>
       </span>
-    </button>
+    </button></Tooltip>
     <span className="podium-standing">
       <span className="podium-rank">
         {rank && crest && <RankCrest tier={crest} size={40} mode="desktop" />}

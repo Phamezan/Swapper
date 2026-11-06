@@ -3,6 +3,7 @@ import { Clock3 } from "lucide-react";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { ChampionAbilitiesHover } from "./AbilityHover";
 import { ChampionSlot } from "./ChampionSlot";
+import { Tooltip } from "./ui/Tooltip";
 import { roleSlug, secondsLeft, type Draft, type DraftMember } from "./champ-select-model";
 import { assignRoles, ROLES } from "./championsModel";
 import type { TierRow } from "../runes/types";
@@ -47,7 +48,9 @@ export function DraftBand({ draft, readAt, names, enemyIds, roleLists }: { draft
 function Bans({ ids, names, label }: { ids: number[]; names: Map<number, string>; label: string }) {
   return <div className="cs-bans" role="list" aria-label={label}>{Array.from({ length: 5 }, (_, index) => {
     const id = ids[index];
-    return <span key={index} role="listitem" className={id ? "" : "is-empty"} aria-label={id ? `Banned: ${names.get(id) ?? "Champion"}` : "Empty ban slot"} title={id ? `Banned: ${names.get(id) ?? "Champion"}` : undefined}>{id > 0 && <ChampionIcon id={id} name={names.get(id)} mode="desktop" />}</span>;
+    return <Tooltip key={index} label={id ? `Banned: ${names.get(id) ?? "Champion"}` : undefined}>
+      <span role="listitem" className={id ? "" : "is-empty"} aria-label={id ? `Banned: ${names.get(id) ?? "Champion"}` : "Empty ban slot"}>{id > 0 && <ChampionIcon id={id} mode="desktop" />}</span>
+    </Tooltip>;
   })}</div>;
 }
 

@@ -33,6 +33,7 @@ import { AmbientArt, AmbientArtContext, useAmbientArt } from './AmbientArt';
 import { contextualChampion, sidebarChampion, type AmbientChampions } from './lookModel';
 import { EmptyState, Notice, Skeleton } from "./ui/States";
 import { useRestartClient } from "./restartClient";
+import { Tooltip, TooltipProvider } from "./ui/Tooltip";
 
 const Champions = lazy(() => import("./Champions"));
 const PatchNotes = lazy(() => import("./PatchNotes"));
@@ -296,7 +297,7 @@ function App() {
     return Boolean(id);
   });
   restartFn.current = () => void restartClient();
-  return <AmbientArtContext.Provider value={publishAmbient}><div className="fa-frame" data-look="glass-context" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
+  return <TooltipProvider><AmbientArtContext.Provider value={publishAmbient}><div className="fa-frame" data-look="glass-context" style={ambient ? { "--ambient-art": `url("${ambient}")` } as CSSProperties : undefined}>
     <TitleBar canBack={history.index > 0} canForward={history.index < history.stack.length - 1} onBack={() => travel(-1)} onForward={() => travel(1)}
       trail={locationTrail(current, { champion: locationChampion?.name, matchPlayer, match: selectedMatch ? {
         champion: snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? 'Match', win: selectedMatch.win,
@@ -318,8 +319,8 @@ function App() {
           {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
             {group.items.map(([label, Icon]) => <button key={label} aria-label={pageLabel(label)} aria-current={current === label ? "page" : undefined} onClick={() => sidebarGo(label)}>
               <Icon size={19} aria-hidden />{pageLabel(label)}
-              {label === "Tier list & Builds" && patch && <span className="nav-badge patch" data-label={`PATCH ${displayPatch(patch)}`} title={`Patch ${displayPatch(patch)}`} />}
-              {label === "Patch notes" && notesPatch && seenPatch !== notesPatch && current !== label && <span className="nav-badge new" title={`Patch ${displayPatch(notesPatch)} notes are out`}>NEW!</span>}
+              {label === "Tier list & Builds" && patch && <Tooltip label={`Patch ${displayPatch(patch)}`}><span className="nav-badge patch" data-label={`PATCH ${displayPatch(patch)}`} /></Tooltip>}
+              {label === "Patch notes" && notesPatch && seenPatch !== notesPatch && current !== label && <Tooltip label={`Patch ${displayPatch(notesPatch)} notes are out`}><span className="nav-badge new">NEW!</span></Tooltip>}
               {label === "Champion select" && (inChampSelect || inGame) && <span className="nav-badge live"><i aria-hidden />LIVE</span>}
             </button>)}
           </div>)}
@@ -365,7 +366,7 @@ function App() {
         </div>
       </main>
     </div>
-  </div></AmbientArtContext.Provider>;
+  </div></AmbientArtContext.Provider></TooltipProvider>;
 }
 
 function fmtAgoShort(at: number) {

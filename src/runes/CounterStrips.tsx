@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChampionIcon } from "./ChampionIcon";
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { fmtDelta, fmtGames, fmtPct } from "./types";
 import type { CounterRow, MatchupView } from "./types";
 
@@ -69,19 +70,19 @@ export function CardStrip({ title, subtitle, tone, rows, loading, mode, tier, ch
               <span key={index} className="counter-card-skeleton" aria-hidden />
             ))
           : (rows ?? []).slice(0, MAX_CARDS).map((row) => (
-              <button
-                key={row.championId}
-                type="button"
-                className={`counter-card ${row.lowSample ? "is-low" : ""}`}
-                aria-expanded={open === row.championId}
-                title={row.lowSample ? `${row.name}: low sample, treat with care` : row.name}
-                onClick={() => toggle(row)}
-              >
-                <ChampionIcon id={row.championId} name={row.name} mode={mode} />
-                <span className="counter-card-name">{row.name}</span>
-                <span className={`counter-card-rate is-${tone}`}>{fmtPct(row.winPct)}</span>
-                <small>{row.games.toLocaleString()} matches</small>
-              </button>
+              <Tooltip key={row.championId} label={row.lowSample ? `${row.name}: low sample, treat with care` : row.name}>
+                <button
+                  type="button"
+                  className={`counter-card ${row.lowSample ? "is-low" : ""}`}
+                  aria-expanded={open === row.championId}
+                  onClick={() => toggle(row)}
+                >
+                  <ChampionIcon id={row.championId} mode={mode} />
+                  <span className="counter-card-name">{row.name}</span>
+                  <span className={`counter-card-rate is-${tone}`}>{fmtPct(row.winPct)}</span>
+                  <small>{row.games.toLocaleString()} matches</small>
+                </button>
+              </Tooltip>
             ))}
       </div>
       {!loading && rows && rows.length === 0 && <p className="runes-note">TBD</p>}

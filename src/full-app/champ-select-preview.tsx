@@ -1,3 +1,4 @@
+import { TooltipProvider } from "./ui/Tooltip";
 // Dev-only preview of the champion select page from fixtures, with a mocked
 // Tauri IPC: `npm run dev`, then open /src/full-app/champ-select-preview.html
 // (?fixture=planning|hover|locked|locked-blind|locked-guide; add &rune-fail to make Apply fail). Never part of the app build.
@@ -38,4 +39,4 @@ function Preview() {
   </div>;
 }
 
-createRoot(document.getElementById("root")!).render(<Preview />);
+createRoot(document.getElementById("root")!).render(<TooltipProvider><Preview /></TooltipProvider>);

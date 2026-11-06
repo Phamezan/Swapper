@@ -2,6 +2,7 @@ import { ChampionIcon } from "../runes/ChampionIcon";
 import { RankCrest } from "../runes/RankCrest";
 import { useInGame, useLiveGame } from "./LiveGameData";
 import { crestSlug, rankLabel, splitRiotId, type Rank } from "./LiveGameModel";
+import { Tooltip } from "./ui/Tooltip";
 import "./live-game-compact.css";
 import { UNSUPPORTED_GAME } from "./LiveGameModel";
 
@@ -24,11 +25,11 @@ function Card() {
         <ol>
           {view.players.filter(p => p.side === side).map(p => {
             const [name] = splitRiotId(p.riotId || p.championName);
-            return <li key={p.key} className={p.isSelf ? "is-self" : undefined} title={`${p.riotId} · ${rankLabel(p.solo)}`}>
-              <ChampionIcon id={p.championId} name={p.championName} mode="desktop" />
+            return <Tooltip key={p.key} label={`${p.riotId} · ${rankLabel(p.solo)}`}><li className={p.isSelf ? "is-self" : undefined}>
+              <ChampionIcon id={p.championId} mode="desktop" />
               <span className="lgc-name">{name}{p.isSelf && <em>You</em>}</span>
               {p.status === "pending" ? <small aria-label="Loading rank">…</small> : <span className={`lgc-rank${p.solo ? "" : " is-unranked"}`} aria-label={rankLabel(p.solo)}>{p.solo && <RankCrest tier={crestSlug(p.solo.tier)} size={20} mode="desktop" />}<small>{shortRank(p.solo)}</small></span>}
-            </li>;
+            </li></Tooltip>;
           })}
         </ol>
       </section>)}

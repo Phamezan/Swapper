@@ -1,3 +1,4 @@
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { invoke } from "@tauri-apps/api/core";
 import { ArrowRight, ChevronRight, LoaderCircle, Pencil, Trash2, X } from "lucide-react";
 import { AddAccountIcon, AddIcon, CheckIcon, RefreshIcon, SettingsIcon, WarningIcon } from "../full-app/ui/icons";
@@ -24,7 +25,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
           <>
             {fullApp ? <PageHeader title="Accounts" /> : <div className="panel-heading">
               <div><p className="eyebrow">{data.accounts.length === 0 ? "Get started" : "Ready to play"}</p><h1>Accounts</h1></div>
-              <button className="icon-button" aria-label="Settings" title="Settings" disabled={isBusy} onClick={() => navigate("settings")}><SettingsIcon size={19} /></button>
+              <Tooltip label="Settings"><button className="icon-button" aria-label="Settings" disabled={isBusy} onClick={() => navigate("settings")}><SettingsIcon size={19} /></button></Tooltip>
             </div>}
             {data.remote.lanReconnectNeeded && (
               <div className="reconnect-banner" role="status">

@@ -5,6 +5,7 @@ import type { MatchDetailTeam } from "../types";
 import { ObjectiveIcon } from "../ObjectiveIcon";
 import { fmtCompact } from "../ui/format";
 import { time } from "./GraphEvents";
+import { Tooltip } from "../ui/Tooltip";
 
 const ROLES = ["top", "jungle", "mid", "adc", "support"];
 const byRole = (a: MatchPlayer, b: MatchPlayer) => (ROLES.indexOf(a.role) + 1 || 9) - (ROLES.indexOf(b.role) + 1 || 9);
@@ -71,7 +72,7 @@ export function Recap({ players, teams, timeline, duration, name }: {
               <polygon points={`0,50 ${line} 100,50`} clipPath="url(#md-recap-red)" className="md-recap-area is-red" />
             </svg>
             <div className="md-recap-markers" aria-hidden>{chart.events.filter(e => MARKED.has(e.label)).map((e, i) =>
-              <span key={i} style={{ left: `${e.x}%` }} title={`${e.teamId === 100 ? "Blue" : "Red"} ${e.label.toLowerCase()} · ${time(e.timestamp)}`}><ObjectiveIcon label={OBJECTIVE_ICON[e.label]} side={e.teamId} /></span>)}</div>
+              <Tooltip key={i} label={`${e.teamId === 100 ? "Blue" : "Red"} ${e.label.toLowerCase()} · ${time(e.timestamp)}`}><span style={{ left: `${e.x}%` }}><ObjectiveIcon label={OBJECTIVE_ICON[e.label]} side={e.teamId} /></span></Tooltip>)}</div>
           </div>
         </div>}
       </div>

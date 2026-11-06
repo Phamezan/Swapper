@@ -5,6 +5,7 @@ import { BackIcon } from './ui/icons';
 import { ProfileIcon } from './ProfileIcon';
 import { queueLabels, RoleStrip, splitRiotId, titleCase } from './Dashboard';
 import { EmptyState, Notice, Skeleton } from './ui/States';
+import { Tooltip } from './ui/Tooltip';
 import { RankCrest } from '../runes/RankCrest';
 import { ChampionIcon } from '../runes/ChampionIcon';
 import { crestForTier } from './buildLogic';
@@ -58,7 +59,7 @@ function Ranks({ profile, loading, mmr }: { profile: PlayerProfile | null; loadi
     </div>
     {rank && <div className="player-rank-progress">
       {rank.division && <><div className="player-lp-caption"><span>Division progress</span><span>{rank.lp} / 100 LP</span></div><meter min={0} max={100} value={Math.min(100, rank.lp)} aria-label="LP toward next division" /></>}
-      {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div>{rank.recordSource === 'ugg' && <small className="player-record-source" title={profile?.source === 'ugg' ? 'League Client is closed, so this rank comes from u.gg.' : "Your League Client didn't return this player's season record."}>via u.gg</small>}<RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
+      {record ? <><div className="player-rank-record"><span><b className="up">{rank.wins}W</b> · <b className="down">{rank.losses}L</b></span><b>{rate(rank.wins, rank.wins + rank.losses)} <small>win rate</small></b></div>{rank.recordSource === 'ugg' && <Tooltip label={profile?.source === 'ugg' ? 'League Client is closed, so this rank comes from u.gg.' : "Your League Client didn't return this player's season record."}><small className="player-record-source">via u.gg</small></Tooltip>}<RecordBar wins={rank.wins} games={rank.wins + rank.losses} /></>
         : <p className="player-record-unavailable">Season record unavailable</p>}
     </div>}
     {mmr && <div className="player-rank-mmr"><MmrLine mmr={mmr} explain={`Swapper's estimate, not Riot's: the average current Solo/Duo rank of the other players in this player's last ${mmr.games} ranked ${mmr.games === 1 ? "game" : "games"}.`} /></div>}
@@ -187,9 +188,9 @@ export default function PlayerPage({ riotId, snapshot, names, onBack, onOpenMatc
             <span className="player-metric-icon"><Icon size={19} aria-hidden="true" /></span>
             <span className="player-metric-label">{label}</span><strong>{metric.average == null ? '–' : metric.average.toFixed(digits)}<small>{metric.average == null ? '' : unit}</small></strong>
             <Trend points={metric.points} average={metric.average} />
-            <span className="player-metric-delta" title={`Recent five loaded games versus the ${metric.samples}-game observed average`}>
+            <Tooltip label={`Recent five loaded games versus the ${metric.samples}-game observed average`}><span className="player-metric-delta">
               {delta != null ? <><Arrow size={16} aria-hidden="true" />{delta > 0 ? '+' : ''}{delta.toFixed(digits)}{unit} <small>vs avg</small></> : 'Unavailable in these games'}
-            </span><small className="player-coverage">Last 5 · {metric.samples}/{stats.games} observed</small>
+            </span></Tooltip><small className="player-coverage">Last 5 · {metric.samples}/{stats.games} observed</small>
           </div>;
         })}</div>
       </section>
@@ -249,6 +250,6 @@ function LevelFrame({ player }: { player: { riotId: string; icon: string | null;
   return <span className={`player-level-frame${border ? ' has-border' : ''}`}>
     {border && <img className="player-level-border" src={border} alt="" draggable={false} />}
     <ProfileIcon player={player} size={82} />
-    {player.level ? <b className="player-level-plate" title={`Level ${player.level}`}>{player.level}</b> : null}
+    {player.level ? <Tooltip label={`Level ${player.level}`}><b className="player-level-plate">{player.level}</b></Tooltip> : null}
   </span>;
 }

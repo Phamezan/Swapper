@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { cachedIcon, loadIcon } from "./iconLoader";
+import { Tooltip } from "../full-app/ui/Tooltip";
 
 type Props = {
   id: number;
@@ -49,21 +50,23 @@ export function ItemIcon({ id, name, mode, className }: Props) {
   if (id <= 0) return <span className={`item-icon-fallback ${className ?? ""}`} aria-hidden />;
   if (!src) {
     return (
-      <span
-        className={`item-icon-fallback ${className ?? ""}`}
-        aria-hidden
-        title={label}
-      />
+      <Tooltip label={label}>
+        <span
+          className={`item-icon-fallback ${className ?? ""}`}
+          role="img" aria-label={label}
+        />
+      </Tooltip>
     );
   }
   return (
-    <img
-      className={`item-icon ${className ?? ""}`}
-      src={src}
-      alt=""
-      title={label}
-      loading="lazy"
-      draggable={false}
-    />
+    <Tooltip label={label}>
+      <img
+        className={`item-icon ${className ?? ""}`}
+        src={src}
+        alt={label}
+        loading="lazy"
+        draggable={false}
+      />
+    </Tooltip>
   );
 }

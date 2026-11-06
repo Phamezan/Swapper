@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { cachedIcon, loadIcon } from "./iconLoader";
+import { Tooltip } from "../full-app/ui/Tooltip";
 
 type Props = {
   id: number;
@@ -48,6 +49,6 @@ export function ChampionIcon({ id, name, mode }: Props) {
   }, [id, key, mode]);
 
   if (id === -1) return <img className="champion-icon" src={unknownIcon} alt={name ?? ""} loading="lazy" draggable={false} />;
-  if (!src) return <span className="champion-icon-fallback" aria-hidden title={name} />;
-  return <img className="champion-icon" src={src} alt="" title={name} loading="lazy" draggable={false} />;
+  if (!src) return <Tooltip label={name}><span className="champion-icon-fallback" role={name ? "img" : undefined} aria-label={name} aria-hidden={!name} /></Tooltip>;
+  return <Tooltip label={name}><img className="champion-icon" src={src} alt={name ?? ""} loading="lazy" draggable={false} /></Tooltip>;
 }

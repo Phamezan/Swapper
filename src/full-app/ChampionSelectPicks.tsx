@@ -8,6 +8,7 @@ import { ChampionArt } from "./MatchupStrip";
 import { NearViewport } from "./NearViewport";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
+import { Tooltip } from "./ui/Tooltip";
 import { allChampions, counterPicks, defaultTab, recommendedSuggestions, searchChampions, type Suggestion, type SuggestionTab } from "./champ-select-model";
 
 type Loaded = { key: string; picks: Suggestion[] | null; message: string; patchNote: string };
@@ -97,16 +98,17 @@ export function PickSuggestions({ role, tier, enemyIds, taken, names, hovered: p
     {/* Role and rank left, one Lock in centre (for the selected champion, wherever its card moves), search and tabs right. */}
     <div className="fa-section-heading cs-picks-head">
       <div className="cs-picks-tools is-left">{controls}</div>
+      <Tooltip label={lockable ? `${action} ${names.get(hovered) ?? "this champion"}` : banning ? "Select a champion to ban" : canLock ? "Select a champion to lock in" : "Wait for your pick turn"}>
       <button type="button" className={`cs-lock-in${banning ? " is-ban" : ""}`} disabled={!lockable || !!pending || !!locking} aria-busy={!!locking}
-        title={lockable ? `${action} ${names.get(hovered) ?? "this champion"}` : banning ? "Select a champion to ban" : canLock ? "Select a champion to lock in" : "Wait for your pick turn"}
         onClick={() => void lock(hovered)}>
         {banning ? <Ban size={16} aria-hidden /> : <LockKeyhole size={16} aria-hidden />}<span>{locking ? (banning ? "Banning…" : "Locking…") : action}</span>
       </button>
-      <div className="cs-picks-tools" title={subtitle}>
+      </Tooltip>
+      <Tooltip label={subtitle}><div className="cs-picks-tools">
         <label className="cs-search"><SearchIcon size={15} aria-hidden /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search champion" aria-label="Search champion" />
           {query && <button aria-label="Clear search" onClick={() => setQuery("")}><X size={14} /></button>}</label>
         <div className="fa-seg" role="group" aria-label="Suggestions">{TABS.map(([value, label]) => <button key={value} aria-pressed={tab === value && !query} onClick={() => { setChosenTab(value); setQuery(""); }}>{label}</button>)}</div>
-      </div>
+      </div></Tooltip>
     </div>
     {notice && <Notice tone="error">{notice}</Notice>}
     {tab === "recommended" && !query.trim() && loaded?.key === key && loaded.patchNote && <small className="fa-muted">{loaded.patchNote}</small>}
@@ -125,12 +127,14 @@ type Card = Partial<Suggestion> & { championId: number; name: string };
 function PickCard({ pick, hovered, pending, locking, onHover }: { pick: Card; hovered: number; pending: number; locking: number; onHover: (id: number) => void }) {
   const stats = pick.winPct != null && !Number.isNaN(pick.winPct) && !!pick.games;
   return <article className={`cs-pick${pick.championId === hovered ? " is-hovered" : ""}${pick.championId === locking ? " is-locking" : ""}`}>
+    <Tooltip label={[stats ? `${pick.name}: ${fmtPct(pick.winPct!)} over ${fmtCount(pick.games!)} games` : pick.name, pick.reason].filter(Boolean).join("\n")}>
     <button type="button" className="cs-pick-select" aria-label={`Select ${pick.name}`} aria-pressed={pick.championId === hovered} disabled={!!pending || !!locking} onClick={() => onHover(pick.championId)}
-    aria-description={pick.reason} title={[stats ? `${pick.name}: ${fmtPct(pick.winPct!)} over ${fmtCount(pick.games!)} games` : pick.name, pick.reason].filter(Boolean).join("\n")}>
+    aria-description={pick.reason}>
     <NearViewport className="cs-pick-art"><ChampionArt id={pick.championId} name={pick.name} kind="loading" /></NearViewport>
     <span className="cs-pick-copy"><strong>{pick.name}</strong>{stats && <><b>{fmtPct(pick.winPct!)} <small>WR</small></b><small>{fmtCount(pick.games!)} games</small></>}{pick.flex && <span className="cs-flex">Flex</span>}</span>
     {pick.championId === pending && <span className="cs-pick-state">Hovering…</span>}
     {pick.championId === hovered && pending !== pick.championId && <span className="cs-pick-state">Hovered</span>}
     </button>
+    </Tooltip>
   </article>;
 }

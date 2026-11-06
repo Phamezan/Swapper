@@ -3,6 +3,7 @@ import type { ChampionOption } from "../runes/types";
 import { useAbilitySheet } from "./AbilityHover";
 import { AbilityIcon } from "./CooldownSheet";
 import { GuideVisual } from "./GuideVisual";
+import { Tooltip } from "./ui/Tooltip";
 import { perRank } from "./cooldownModel";
 import { cooldownRows, cooldownTicks, windowAbility } from "./matchupVisuals";
 import "./matchup-visuals.css";
@@ -20,7 +21,7 @@ export function TradeWindows({ champion, enemy }: { champion: ChampionOption; en
   const renderRow = (row: typeof rows[number], scale: number) => {
     const last = row.ranks[row.ranks.length - 1].seconds;
     return <div key={`${row.side}-${row.key}`} className={`mg-trade-row is-${row.side}${row.side === "enemy" && row.key === tradeWindow?.key ? " is-window" : ""}`} style={{ "--bar": `${row.seconds / scale * 100}%` } as CSSProperties}>
-      <span className="mg-trade-ability" title={`${row.champion} · ${row.name}`} aria-label={`${row.champion} ${row.key}, ${row.name}`}><AbilityIcon path={row.iconPath} letter={row.key} /></span>
+      <Tooltip label={`${row.champion} · ${row.name}`}><span className="mg-trade-ability" aria-label={`${row.champion} ${row.key}, ${row.name}`}><AbilityIcon path={row.iconPath} letter={row.key} /></span></Tooltip>
       <span className="mg-trade-track"><i className="mg-trade-fill" aria-hidden />
         {cooldownTicks(row.ranks, scale).map(tick => <span key={tick.ranks.join("-")} className="mg-trade-tick" role="img" tabIndex={0} style={{ left: `${tick.percent}%` }} aria-label={`${row.champion} ${row.key}: ${tick.ranks.map(rank => `Rank ${rank}: ${perRank([tick.seconds])}s${row.recharge ? " recharge" : ""}`).join("; ")}`}>
           <span className="mg-trade-tick-tooltip" aria-hidden>{tick.ranks.map(rank => <span key={rank}>Rank {rank}: {perRank([tick.seconds])}s{row.recharge ? " recharge" : ""}</span>)}</span>

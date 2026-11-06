@@ -19,6 +19,7 @@ import { YoutubeVodPlayer, type VodSeek } from "./YoutubeVodPlayer";
 import { usePlayerPhoto } from "./PlayerPhoto";
 import { useChampionArt } from "./art";
 import { Skeleton, Notice } from "./ui/States";
+import { Tooltip } from "./ui/Tooltip";
 import "./matchup-vods.css";
 // Rows render in steps as the list scrolls, so a 1,000-VOD library opens as fast as a short one.
 const ROW_STEP = 60;
@@ -42,14 +43,14 @@ function RowThumb({ vod, row }: { vod: MatchupVod; row: VodRow }) {
     </>}
     <span className="mv-thumb-play"><Play size={12} fill="currentColor" /></span>
     {row.moments && <span className="mv-thumb-moments"><Flag size={10} />{row.moments}</span>}
-    <span className="mv-cell-length" title={row.segment ? `Game from ${formatVodTime(row.segment.start)} to ${formatVodTime(row.segment.end)} of the stream` : undefined}>{row.segment && <Scissors size={10} aria-hidden />}{formatVodTime(seg.end - seg.start)}</span>
+    <Tooltip label={row.segment ? `Game from ${formatVodTime(row.segment.start)} to ${formatVodTime(row.segment.end)} of the stream` : undefined}><span className="mv-cell-length">{row.segment && <Scissors size={10} aria-hidden />}{formatVodTime(seg.end - seg.start)}</span></Tooltip>
   </span>;
 }
 /** Patch and upload date follow the player identity in the header. */
 function VodFacts({ vod }: { vod: MatchupVod }) {
   const age = uploadAge(vod.uploaded, new Date());
-  return <span className="mv-facts"><span title={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}>Patch {vodRow(vod).patch}</span>
-    {age && <span title={vod.uploaded}>{age}</span>}
+  return <span className="mv-facts"><Tooltip label={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}><span>Patch {vodRow(vod).patch}</span></Tooltip>
+    {age && <Tooltip label={vod.uploaded}><span>{age}</span></Tooltip>}
   </span>;
 }
 
@@ -173,16 +174,16 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
           {(pool.length > 0 || filters.enemy || filters.lane) && <button type="button" className="mv-text-button" onClick={clear}>Clear filters</button>}</div>
           : <div className={`mv-table${wide ? " is-wide" : ""}`}><div className="mv-vod-head" aria-hidden><span />{wide && <span>Matchup</span>}<span>Player</span><span>Rank</span><span>Patch</span><span className="is-end">Result</span></div><ul className="mv-vod-list" aria-label={fromOtherSide ? `From ${enemyName(filters.enemy ?? undefined)}’s side` : champion ? `Every ${champion.name} VOD` : "All champion VODs"}>{shown.slice(0, limit).map(vod => {
             const row = vodRow(vod), age = uploadAge(vod.uploaded, now), rowKey = `${vod.champion}-${vodKey(vod)}`;
-            return <li key={rowKey}><button type="button" className="mv-vod-row" data-vod-id={vodKey(vod)} data-result={row.result ?? undefined} data-recent={rowKey === lastOpened.current || undefined}
-              ref={rowKey === lastOpened.current ? sourceRow : undefined} title={vod.title} aria-label={vodLabel(vod, { champion: championName(vod.champion), enemy: vod.enemy ? enemyName(vod.enemy) : null, lane: LANES[vod.lane ?? ""] ?? null }, now)}
+            return <li key={rowKey}><Tooltip label={vod.title}><button type="button" className="mv-vod-row" data-vod-id={vodKey(vod)} data-result={row.result ?? undefined} data-recent={rowKey === lastOpened.current || undefined}
+              ref={rowKey === lastOpened.current ? sourceRow : undefined} aria-label={vodLabel(vod, { champion: championName(vod.champion), enemy: vod.enemy ? enemyName(vod.enemy) : null, lane: LANES[vod.lane ?? ""] ?? null }, now)}
               onClick={() => { lastOpened.current = rowKey; setSelection({ vod, fromOtherSide, watch: request }); setActiveMoment(-1); }}>
               <RowThumb vod={vod} row={row} />
               {wide && <span className="mv-cell-matchup"><span className="mv-pair" aria-hidden><ChampionIcon id={vod.champion ?? 0} name="" mode="desktop" /><span className="mv-vs">vs</span><ChampionIcon id={vod.enemy ?? -1} name={vod.enemy ? "" : "Unknown opponent"} mode="desktop" /></span><span className="mv-lines"><strong>{championName(vod.champion)} <span className="mv-vs-word">vs</span> {vod.enemy ? enemyName(vod.enemy) : <span className="is-any">any</span>}</strong>{vod.lane && <small>{LANES[vod.lane]}</small>}</span></span>}
-              <span className="mv-cell-who"><RowAvatar vod={vod} /><span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.named ? row.primary : "Ranked replay"}</strong>{vod.team && <span className="mv-team-tag" title={teamName(vod.team)}><TeamLogo team={teamName(vod.team)} size={16} mode="desktop" />{vod.team}</span>}{vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <span className="mv-cam-dot" role="img" aria-label="Facecam" title="Facecam" />}</span>}</span></span>
-              <span className="mv-cell-rank" title={[row.rank, row.region].filter(Boolean).join(" · ")}>{row.crest ? <RankCrest tier={row.crest} size={26} mode="desktop" /> : <span />}<span className="mv-lines"><span className="mv-rank-tier">{row.rank}</span>{row.region && <small>{row.region}</small>}</span></span>
-              <span className="mv-cell-patch"><span className={vod.patchEstimated ? "is-estimated" : undefined} title={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}>{row.patch}</span>{age && <small title={vod.uploaded}>{age}</small>}</span>
+              <span className="mv-cell-who"><RowAvatar vod={vod} /><span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.named ? row.primary : "Ranked replay"}</strong>{vod.team && <Tooltip label={teamName(vod.team)}><span className="mv-team-tag"><TeamLogo team={teamName(vod.team)} size={16} mode="desktop" />{vod.team}</span></Tooltip>}{vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <Tooltip label="Facecam"><span className="mv-cam-dot" role="img" aria-label="Facecam" /></Tooltip>}</span>}</span></span>
+              <Tooltip label={[row.rank, row.region].filter(Boolean).join(" · ")}><span className="mv-cell-rank">{row.crest ? <RankCrest tier={row.crest} size={26} mode="desktop" /> : <span />}<span className="mv-lines"><span className="mv-rank-tier">{row.rank}</span>{row.region && <small>{row.region}</small>}</span></span></Tooltip>
+              <span className="mv-cell-patch"><Tooltip label={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}><span className={vod.patchEstimated ? "is-estimated" : undefined}>{row.patch}</span></Tooltip>{age && <Tooltip label={vod.uploaded}><small>{age}</small></Tooltip>}</span>
               <span className="mv-cell-chips">{row.result && <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span>}</span>
-            </button></li>;
+            </button></Tooltip></li>;
           })}{limit < shown.length && <li className="mv-more"><NearEnd onNear={() => setLimit(current => current + ROW_STEP)} /></li>}</ul></div>}
       </>}
     </div>;
@@ -200,7 +201,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
     <YoutubeVodPlayer key={vodKey(selected)} vod={selected} seek={seek} mini={!active} miniName={vodPlayerName(selected.player) ?? `${selected.rankClaim} replay`} onReopen={onReopen} onClose={close} onNextGame={(() => { const next = (all ?? []).filter(v => v.videoId === selected.videoId && (v.startSec ?? 0) > (selected.startSec ?? 0)).sort((a,b) => (a.startSec ?? 0) - (b.startSec ?? 0))[0]; return next ? () => { setSelection({ ...selection!, vod: next }); setSeek(null); } : undefined; })()} champions={champions} onMomentChange={setActiveMoment}
       header={<>
         <button type="button" className="mv-back" ref={backButton} onClick={close}><ArrowLeft size={15} aria-hidden />Back to VODs</button>
-        <span className="mv-game-info" title={selected.title}>
+        <Tooltip label={selected.title}><span className="mv-game-info">
           <span className="mv-header-game">
             <span className="mv-header-length" aria-label="Video length">{formatVodTime(segmentOf(selected).end - segmentOf(selected).start)}</span>
             <span className="mv-header-matchup" role="group" aria-label={`${champions.find(c => c.id === selected.champion)?.name ?? 'Champion'} vs ${selected.enemy ? champions.find(c => c.id === selected.enemy)?.name ?? 'Opponent' : 'unknown opponent'}`}>
@@ -211,7 +212,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
             <span className="mv-header-rank">{vodRow(selected).crest && <RankCrest tier={vodRow(selected).crest!} size={30} mode="desktop" />}{vodRow(selected).rank}</span>
           </span>
           <span className="mv-header-meta"><VodPlayer key={vodKey(selected)} vod={selected} />{selection?.fromOtherSide && <span className="mv-perspective-label">From {champions.find(c => c.id === selected.champion)?.name ?? "opponent"}’s side</span>}<VodFacts vod={selected} /></span>
-        </span>
+        </span></Tooltip>
         {vodUrl(selected) && <GuideSourceButton url={vodUrl(selected)!} className="mv-youtube-link" label="Open on YouTube">Open on YouTube<ArrowUpRight size={14} /></GuideSourceButton>}
       </>}>
       {selected.moments.length > 0 && <section className="mv-chapters" aria-label="Key moments"><header><h3>Key moments</h3><small>{selected.moments.length} · [ ] jump · F fullscreen</small></header>

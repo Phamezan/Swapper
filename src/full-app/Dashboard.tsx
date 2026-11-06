@@ -12,6 +12,7 @@ import { fmtAgo } from "../runes/types";
 import { benchKey, defaultQueue, deltaText, formatStat, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, tierLabel, tiles, today, tone } from "./dashboardModel";
 import type { AccountCard, Bench, Game, LpPoint, Mmr, RoleRecord, Snapshot } from "./types";
 import { Slot } from "./ui/Slot";
+import { Tooltip } from "./ui/Tooltip";
 import { EmptyState, Skeleton } from "./ui/States";
 import { fmtCompact } from "./ui/format";
 export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
@@ -55,11 +56,11 @@ export function RoleStrip({ roles }: { roles: RoleRecord[] }) {
   return <div className="role-strip" aria-label="Win rate by role (estimated from spells, items and lane)">
     {Object.entries(roleLabels).map(([role, label]) => {
       const r = roles.find(r => r.role === role) ?? { role, games: 0, wins: 0 };
-      return <div key={role} className={r.games ? "" : "is-empty"} title={`${label}: ${r.wins}W ${r.games - r.wins}L`}>
+      return <Tooltip key={role} label={`${label}: ${r.wins}W ${r.games - r.wins}L`}><div className={r.games ? "" : "is-empty"}>
         <RoleIcon role={role} size={18} mode="desktop" />
         <b className={!r.games ? "" : pct(r.wins, r.games) >= 50 ? "up" : "down"}>{r.games ? `${pct(r.wins, r.games)}%` : "–"}</b>
         <small>{r.games} {r.games === 1 ? "game" : "games"}</small>
-      </div>;
+      </div></Tooltip>;
     })}
   </div>;
 }
@@ -117,11 +118,11 @@ export function Dashboard(props: Props) {
         {!summary.champions.length ? <p className="panel-empty">Play a game in this queue to see champions.</p> : <ul className="champ-perf">
           {summary.champions.map(c => {
             const total = c.wins + c.losses;
-            return <li key={c.id}><button className="ui-row" onClick={() => onOpenChampion(c.id, name(c.id))} title={`Open ${name(c.id)} build`}>
-              <ChampionIcon id={c.id} name={name(c.id)} mode="desktop" />
+            return <li key={c.id}><Tooltip label={`Open ${name(c.id)} build`}><button className="ui-row" onClick={() => onOpenChampion(c.id, name(c.id))}>
+              <ChampionIcon id={c.id} mode="desktop" />
               <span className="champ-perf-copy"><strong>{name(c.id)}</strong><small>{c.kda.toFixed(2)} KDA · {total} {total === 1 ? "game" : "games"}</small></span>
               <span className="champ-perf-rate"><b className={pct(c.wins, total) >= 50 ? "up" : "down"}>{pct(c.wins, total)}%</b><small>{c.wins}W {c.losses}L</small><i style={{ "--rate": `${pct(c.wins, total)}%` } as CSSProperties} aria-hidden /></span>
-            </button></li>;
+            </button></Tooltip></li>;
           })}
         </ul>}
         <RoleStrip roles={summary.roles} />
@@ -158,8 +159,8 @@ function TodayCard({ games, rank, history, mmr, live, onOpenLive }: { games: Gam
     <dl className="today-stats">
       <div><dt>{day.games === 1 ? "game" : "games"}</dt><dd>{day.games}</dd></div>
       <div><dt>wins–losses</dt><dd>{none ? "–" : <><span className="up">{day.wins}</span>–<span className="down">{day.losses}</span></>}</dd></div>
-      <div title={day.lp == null ? "No Solo/Duo LP change could be worked out for today" : "Ranked Solo/Duo only, from your recorded LP"}>
-        <dt>{day.lp != null && day.lp < 0 ? "LP lost" : "LP gained"}</dt><dd className={day.lp == null ? "" : day.lp >= 0 ? "up" : "down"}>{day.lp == null ? "–" : `${day.lp >= 0 ? "+" : "−"}${Math.abs(day.lp)}`}</dd></div>
+      <Tooltip label={day.lp == null ? "No Solo/Duo LP change could be worked out for today" : "Ranked Solo/Duo only, from your recorded LP"}><div>
+        <dt>{day.lp != null && day.lp < 0 ? "LP lost" : "LP gained"}</dt><dd className={day.lp == null ? "" : day.lp >= 0 ? "up" : "down"}>{day.lp == null ? "–" : `${day.lp >= 0 ? "+" : "−"}${Math.abs(day.lp)}`}</dd></div></Tooltip>
       <div><dt>played</dt><dd>{none ? "–" : playTime(day.seconds)}</dd></div>
     </dl>
     {mmr && <MmrLine mmr={mmr} explain={`Swapper's estimate, not Riot's: the average Solo/Duo rank of the other players in your last ${mmr.games} ranked ${mmr.games === 1 ? "game" : "games"}, as recorded when each game started (current ranks for games before Swapper recorded them).`} />}
@@ -222,20 +223,21 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
         {Object.entries(queueLabels).map(([value, label]) => <button key={value} aria-pressed={queue === value} onClick={() => onQueue(value)}>{label}</button>)}
       </div>
       <div className="wl-strip" aria-label={`${wins} wins, ${games.length - wins} losses, newest first`}>
-        {games.map(g => <span key={g.id} className={g.win ? "is-win" : "is-loss"} title={`${g.win ? "Win" : "Loss"} · ${name(g.championId)} · ${g.kills}/${g.deaths}/${g.assists} · ${fmtAgo(g.createdAt)}`}>
-          <ChampionIcon id={g.championId} name={name(g.championId)} mode="desktop" /></span>)}
+        {games.map(g => <Tooltip key={g.id} label={`${g.win ? "Win" : "Loss"} · ${name(g.championId)} · ${g.kills}/${g.deaths}/${g.assists} · ${fmtAgo(g.createdAt)}`}><span className={g.win ? "is-win" : "is-loss"}>
+          <ChampionIcon id={g.championId} mode="desktop" /></span></Tooltip>)}
         <small>{wins}W {games.length - wins}L</small>
       </div>
     </div>
     <div className="tiles">{rows.map(tile => {
       const versus = tile.value != null ? tile.versus : null;
-      return <article key={tile.key} className={`tile tone-${versus ? tone(tile.value!, versus.value) : "none"}`}
-        title={versus ? `You ${formatStat(tile.value!, tile.digits, tile.unit)} vs ${versus.label} ${formatStat(versus.value, tile.digits, tile.unit)} over the same ${versus.games} games` : undefined}>
+      return <Tooltip key={tile.key} label={versus ? `You ${formatStat(tile.value!, tile.digits, tile.unit)} vs ${versus.label} ${formatStat(versus.value, tile.digits, tile.unit)} over the same ${versus.games} games` : undefined}>
+      <article className={`tile tone-${versus ? tone(tile.value!, versus.value) : "none"}`}>
         <small className="tile-label">{tile.label}</small>
         <strong className="tile-value">{tile.value == null ? "–" : big(tile.value, tile.digits, tile.unit)}</strong>
         <p className="tile-foot">{versus ? deltaText({ ...tile, versus }) : tile.value == null ? `Needs ${MIN_COMPARED} games`
           : games.length < MIN_COMPARED ? `Needs ${MIN_COMPARED} games to compare` : "Not enough comparable games"}</p>
-      </article>;
+      </article>
+      </Tooltip>;
     })}</div>
   </section>;
 }
@@ -248,10 +250,10 @@ export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id
   const opp = opponent(game);
   const csDiff = opp ? game.cs - opp.cs : null;
   return <li ref={row} className={`match-row ${game.win ? "is-win" : "is-loss"}${isLast ? " is-last" : ""}`} onClick={onOpen}>
-    <button className="match-champ" onClick={event => { event.stopPropagation(); onOpen(); }} title={`Open ${name(game.championId)} match details`}>
-      <ChampionIcon id={game.championId} name={name(game.championId)} mode="desktop" />
+    <Tooltip label={`Open ${name(game.championId)} match details`}><button className="match-champ" onClick={event => { event.stopPropagation(); onOpen(); }} aria-label={`Open ${name(game.championId)} match details`}>
+      <ChampionIcon id={game.championId} mode="desktop" />
       {game.level > 0 && <b>{game.level}</b>}
-    </button>
+    </button></Tooltip>
     <div className="match-result">
       <p><strong>{game.win ? "Victory" : "Defeat"}</strong>{game.lpChange != null &&
         <b className={game.lpChange >= 0 ? "up" : "down"}>{game.lpChange >= 0 ? "+" : "−"}{Math.abs(game.lpChange)} LP</b>}</p>
@@ -267,16 +269,16 @@ export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id
       {seen && game.keystone > 0 && <RuneIcon id={game.keystone} mode="desktop" className="match-keystone" />}
     </div>
     <div className="match-cs"><strong>{game.cs || "–"} CS</strong><small>{game.metrics[2] == null ? "per game" : `${game.metrics[2].toFixed(1)} / min`}</small></div>
-    <div className="match-opp" title={opp ? `Lane opponent: ${name(opp.championId)}` : "Lane opponent unclear"}>
-      {opp ? <>{seen && <ChampionIcon id={opp.championId} name={name(opp.championId)} mode="desktop" />}<span><small>vs {name(opp.championId)}</small><b className={csDiff! >= 0 ? "up" : "down"}>{csDiff! >= 0 ? "+" : "−"}{Math.abs(csDiff!)} CS</b></span></> : <small>–</small>}
-    </div>
+    <Tooltip label={opp ? `Lane opponent: ${name(opp.championId)}` : "Lane opponent unclear"}><div className="match-opp">
+      {opp ? <>{seen && <ChampionIcon id={opp.championId} mode="desktop" />}<span><small>vs {name(opp.championId)}</small><b className={csDiff! >= 0 ? "up" : "down"}>{csDiff! >= 0 ? "+" : "−"}{Math.abs(csDiff!)} CS</b></span></> : <small>–</small>}
+    </div></Tooltip>
     <div className="match-items" aria-label="Items">
       {!game.items.length ? <small>Refresh to load items</small>
         : Array.from({ length: ITEM_SLOTS }, (_, i) => <Slot key={i} kind="item" id={game.items[i] ?? 0} pending={!seen} className={i === ITEM_SLOTS - 1 ? "is-trinket" : undefined} />)}
     </div>
-    <div className={`placement${game.placement === 1 ? " is-mvp" : ""}`} title="Rank among all 10 players by KDA, damage, CS and vision">
+    <Tooltip label="Rank among all 10 players by KDA, damage, CS and vision"><div className={`placement${game.placement === 1 ? " is-mvp" : ""}`}>
       {game.placement ? <><b>#{game.placement}</b><small>{game.placement === 1 ? "MVP" : "place"}</small></> : <small>–</small>}
-    </div>
+    </div></Tooltip>
     <ChevronRight className="match-chevron" size={18} aria-hidden />
   </li>;
 }

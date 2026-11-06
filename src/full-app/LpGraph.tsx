@@ -3,6 +3,7 @@ import { RankCrest } from "../runes/RankCrest";
 import { crestForTier as crestSlug } from "./buildLogic";
 import { lpGraph } from "./dashboardModel";
 import type { LpPoint } from "./types";
+import { Tooltip } from "./ui/Tooltip";
 import "./lp-graph.css";
 
 const W = 400, H = 210;
@@ -41,15 +42,15 @@ export function LpGraph({ history }: { history: LpPoint[] | undefined }) {
   };
   const at = (p: { x: number; y: number }) => ({ left: `${100 * p.x / W}%`, top: `${100 * p.y / H}%` });
   return <figure className="lp-graph" aria-label={`Solo/Duo LP over the last 30 days. Peak ${peak.tier} ${peak.division} ${peak.lp} LP.`}>
-    <figcaption className="lp-graph-gains" title="Changes in the LP Swapper recorded. Recording gaps may cover multiple games.">
+    <Tooltip label="Changes in the LP Swapper recorded. Recording gaps may cover multiple games."><figcaption className="lp-graph-gains">
       <span>Last 30d {graph.month == null ? "–" : signedLp(graph.month)}</span>
       <span>Last 7d {graph.week == null ? "–" : signedLp(graph.week)}</span>
-    </figcaption>
+    </figcaption></Tooltip>
     <div className="lp-graph-plot" tabIndex={0} role="group" aria-label="Recorded LP history. Use Left and Right arrows to explore, Home and End to jump, Escape to dismiss."
       onPointerMove={pick} onPointerLeave={() => setHover(null)} onFocus={() => setHover(points.length - 1)} onBlur={() => setHover(null)} onKeyDown={move}>
-      {graph.guides.map(guide => <span key={guide.y} className={`lp-graph-guide${guide.tier ? " is-tier" : ""}`} style={{ top: `${100 * guide.y / H}%` }} title={guide.tier ? `${guide.tier} IV · 0 LP` : guide.label} aria-hidden>
+      {graph.guides.map(guide => <Tooltip key={guide.y} label={guide.tier ? `${guide.tier} IV · 0 LP` : guide.label}><span className={`lp-graph-guide${guide.tier ? " is-tier" : ""}`} style={{ top: `${100 * guide.y / H}%` }} aria-hidden>
         {guide.tier ? <RankCrest tier={crestSlug(guide.tier)} size={26} mode="desktop" /> : <i>{guide.label}</i>}
-      </span>)}
+      </span></Tooltip>)}
       <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden>
         <defs>
           {/* Hard stops at tier lines: the line takes the color of the tier it is in. */}

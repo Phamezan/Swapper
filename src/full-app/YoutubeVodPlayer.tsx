@@ -10,6 +10,7 @@ import type { ChampionOption } from '../runes/types';
 import { embedUrl, playerMessage, YOUTUBE_ORIGIN, type PlayerInfo } from './youtubePlayer';
 
 import { clampMini, resizeMini, parseMini, serializeMini, MINI_KEY, type MiniPlacement, type MiniCorner } from './miniPlayer';
+import { Tooltip } from './ui/Tooltip';
 
 type Moment = MatchupVod['moments'][number];
 export type VodSeek = { moment: Moment; serial: number };
@@ -24,7 +25,7 @@ const SIDEBAR_HIDDEN_KEY = 'swapper.vodMomentsHidden';
 const sidebarHidden = () => { try { return localStorage.getItem(SIDEBAR_HIDDEN_KEY) === '1' || (localStorage.getItem(SIDEBAR_HIDDEN_KEY) === null && window.innerWidth < 1400); } catch { return window.innerWidth < 1400; } };
 
 function IconButton({ label, shortcut, children, ...props }: { label: string; shortcut?: string } & ButtonHTMLAttributes<HTMLButtonElement>) {
-  return <button type="button" className="mv-icon-button" aria-label={label} aria-keyshortcuts={shortcut} title={shortcut ? `${label} (${shortcut})` : label} {...props}>{children}</button>;
+  return <Tooltip label={shortcut ? `${label} (${shortcut})` : label}><button type="button" className="mv-icon-button" aria-label={label} aria-keyshortcuts={shortcut} {...props}>{children}</button></Tooltip>;
 }
 
 /** Key moments along the video's length: ticks to jump to, not a scrubber (YouTube's own bar scrubs). */
@@ -255,8 +256,8 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
       <IconButton label="Reopen VOD" onClick={onReopen}><ArrowUpRight size={16} /></IconButton>
       <IconButton label="Close mini player" onClick={onClose}><X size={16} /></IconButton>
     </header>}
-    {mini && (['nw', 'ne', 'sw', 'se'] as const).map(corner => <span key={corner} className={`mv-mini-resize is-${corner}`} data-corner={corner}
-      onPointerDown={event => startGesture(event, corner)} title="Resize mini player" />)}
+    {mini && (['nw', 'ne', 'sw', 'se'] as const).map(corner => <Tooltip key={corner} label="Resize mini player"><span className={`mv-mini-resize is-${corner}`} data-corner={corner}
+      aria-label="Resize mini player" onPointerDown={event => startGesture(event, corner)} /></Tooltip>)}
     {!mini && !fullscreen && <header className="mv-watch-header">{header}</header>}
     <div className="mv-stage"><div className="mv-screen">
       {url ? <div className="mv-frame mv-embed" onClick={mini ? onReopen : undefined}><iframe ref={frame} title={vod.title} src={src}

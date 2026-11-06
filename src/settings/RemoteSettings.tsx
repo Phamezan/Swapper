@@ -1,3 +1,4 @@
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { QRCodeSVG } from "qrcode.react";
@@ -172,7 +173,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
               <p className="remote-transport-message">{remote.lanMessage ?? "LAN needs an active Ethernet or Wi-Fi network."}</p>
               <div className="remote-network-help">
                 <span>For a trusted network, set its Windows profile to Private.</span>
-                <Button variant="outline" className="remote-settings-button" aria-label="Open Windows network settings" title="Open Windows network settings" onClick={() => void invoke("open_windows_network_settings").catch(onError)}><Settings2 size={14} /></Button>
+                <Tooltip label="Open Windows network settings"><Button variant="outline" className="remote-settings-button" aria-label="Open Windows network settings" onClick={() => void invoke("open_windows_network_settings").catch(onError)}><Settings2 size={14} /></Button></Tooltip>
               </div>
             </>}
           </>

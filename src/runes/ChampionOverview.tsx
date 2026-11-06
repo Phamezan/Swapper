@@ -4,6 +4,7 @@ import { ItemIcon } from "./ItemIcon";
 import { RuneIcon } from "./RuneIcon";
 import { SpellIcon } from "./SpellIcon";
 import { Stat } from "./TierList";
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { fmtExactGames, fmtPct, tierClass, wrTone } from "./types";
 import type { ChampionBuild, ChampionOverviewView } from "./types";
 
@@ -55,16 +56,17 @@ export function ChampionOverview({ mode, championId, name, view, loading }: Prop
         )}
       </div>
       {damage && (
-        <div
-          className="damage-bar"
-          role="img"
-          aria-label={`Damage: ${damage.physical.toFixed(0)}% physical, ${damage.magic.toFixed(0)}% magic, ${damage.trueDamage.toFixed(0)}% true`}
-          title={`Physical ${damage.physical.toFixed(0)}% · Magic ${damage.magic.toFixed(0)}% · True ${damage.trueDamage.toFixed(0)}%`}
-        >
-          <span className="is-physical" style={{ width: `${damage.physical}%` }} />
-          <span className="is-magic" style={{ width: `${damage.magic}%` }} />
-          <span className="is-true" style={{ width: `${damage.trueDamage}%` }} />
-        </div>
+        <Tooltip label={`Physical ${damage.physical.toFixed(0)}% · Magic ${damage.magic.toFixed(0)}% · True ${damage.trueDamage.toFixed(0)}%`}>
+          <div
+            className="damage-bar"
+            role="img"
+            aria-label={`Damage: ${damage.physical.toFixed(0)}% physical, ${damage.magic.toFixed(0)}% magic, ${damage.trueDamage.toFixed(0)}% true`}
+          >
+            <span className="is-physical" style={{ width: `${damage.physical}%` }} />
+            <span className="is-magic" style={{ width: `${damage.magic}%` }} />
+            <span className="is-true" style={{ width: `${damage.trueDamage}%` }} />
+          </div>
+        </Tooltip>
       )}
       <button
         type="button"

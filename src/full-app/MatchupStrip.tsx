@@ -8,6 +8,7 @@ import { useChampionArt } from "./art";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
 import { artWindow, stripRows, MIN_STRIP_GAMES } from "./buildLogic";
+import { Tooltip } from "./ui/Tooltip";
 
 export function ChampionArt({ id, name, kind = "tile" }: { id: number; name: string; kind?: "tile" | "loading" }) {
   const art = useChampionArt(id, kind);
@@ -95,7 +96,7 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
 
   return <section className="fa-card fa-matchups">
     <div className="fa-section-heading">
-      <div><h3>Matchups as {name}</h3><p title={`${laneName(lane)} opponents with ${MIN_STRIP_GAMES}+ games, by win rate compared with ${name}’s average`}>{counters ? `${reliable.length} opponents · ` : ""}{toughest ? "Toughest" : "Best"} first</p></div>
+      <div><h3>Matchups as {name}</h3><Tooltip label={`${laneName(lane)} opponents with ${MIN_STRIP_GAMES}+ games, by win rate compared with ${name}’s average`}><p>{counters ? `${reliable.length} opponents · ` : ""}{toughest ? "Toughest" : "Best"} first</p></Tooltip></div>
       <div className="fa-actions">
         {tab === "matchups" && <div className="fa-seg" role="group" aria-label="Order"><button aria-pressed={!toughest} onClick={() => setToughest(false)}>Best</button><button aria-pressed={toughest} onClick={() => setToughest(true)}>Toughest</button></div>}
         {tab === "matchups" && <label className="fa-strip-search"><SearchIcon size={14} aria-hidden /><input aria-label="Find opponent" placeholder="Find opponent" value={query} onChange={event => setQuery(event.target.value)} /></label>}
@@ -108,11 +109,12 @@ export function MatchupStrip({ counters, championId, name, lane, tier, onPick }:
       <button className="fa-strip-arrow is-right" aria-label="Scroll matchups right" tabIndex={-1} onClick={() => slide(1)}><ForwardIcon size={20} /></button>
       <div ref={strip} className="fa-matchup-strip" role="list" aria-label={`Matchups as ${name}, ${toughest ? "toughest" : "best"} first. Use the arrow keys to move between opponents.`} onKeyDown={onKey}>
         {rows.map((row, index) => <div role="listitem" className={`fa-matchup-slot${index === flip && index > 0 ? " is-flip" : ""}${index === noisy && index > 0 ? " is-noisy" : ""}`} data-label={index === noisy && index > 0 ? "Small sample" : undefined} key={row.championId}>
-          <button className={`fa-matchup-card${row.lowSample ? " is-low-sample" : ""} ${row.delta >= 0 ? "is-good" : "is-bad"}`} onClick={() => onPick(row.championId)}
-            title={`${row.name}: ${fmtPct(row.winPct)} win rate over ${fmtCount(row.games)} games this patch${row.prevGames ? ` and ${fmtCount(row.prevGames)} last patch` : ""}${row.lowSample ? " (small sample)" : ""}`}>
+          <Tooltip label={`${row.name}: ${fmtPct(row.winPct)} win rate over ${fmtCount(row.games)} games this patch${row.prevGames ? ` and ${fmtCount(row.prevGames)} last patch` : ""}${row.lowSample ? " (small sample)" : ""}`}>
+          <button className={`fa-matchup-card${row.lowSample ? " is-low-sample" : ""} ${row.delta >= 0 ? "is-good" : "is-bad"}`} onClick={() => onPick(row.championId)}>
             <span className="fa-art-wrap">{near && index >= range[0] && index <= range[1] && <ChampionArt id={row.championId} name={row.name} />}</span>
             <span className="fa-matchup-copy"><strong>{row.name}</strong><b className={row.delta >= 0 ? "up" : "down"}>{fmtDelta(row.delta)}<i>%</i></b><small>{fmtCount(row.games + (row.prevGames ?? 0))} games</small><span className="fa-lane-tag"><RoleIcon role={lane} size={12} mode="desktop" />{row.lowSample ? "Low sample" : laneName(lane)}</span></span>
           </button>
+          </Tooltip>
         </div>)}
       </div>
       </div>

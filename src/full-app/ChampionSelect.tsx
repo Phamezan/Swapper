@@ -18,6 +18,7 @@ import { Picker, RankPicker, ROLES as ROLE_OPTIONS } from "./Picker";
 import { Notice } from "./ui/States";
 import { UNSUPPORTED_GAME } from "./LiveGameModel";
 import { fmtCount } from "./ui/format";
+import { Tooltip } from "./ui/Tooltip";
 import "./champ-select.css";
 
 /** Pick suggestions until lock-in, then the build workspace. */
@@ -116,8 +117,8 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   const championName = view?.championName || names.get(view?.championId ?? 0) || "";
 
   // Five one-click role buttons (icons, like the client's role filter), then the rank picker.
-  const pickers = <><div className="fa-seg role-tabs cs-role-buttons" role="group" aria-label="Role">{ROLE_OPTIONS.map(([value, label]) => <button key={value} type="button"
-    aria-pressed={role === value} aria-label={label} title={label} onClick={() => changeRole(value)}><RoleIcon role={value} size={18} mode="desktop" /></button>)}</div>
+  const pickers = <><div className="fa-seg role-tabs cs-role-buttons" role="group" aria-label="Role">{ROLE_OPTIONS.map(([value, label]) => <Tooltip key={value} label={label}><button type="button"
+    aria-pressed={role === value} aria-label={label} onClick={() => changeRole(value)}><RoleIcon role={value} size={18} mode="desktop" /></button></Tooltip>)}</div>
     <RankPicker value={view?.tier ?? ""} onChange={props.onTierChange} /></>;
   const notices = <>{props.error && <Notice tone="error">{props.error}</Notice>}{error && <Notice tone="error">{error}</Notice>}</>;
   if (mode !== "idle" && supported === false) return <div className="fa-draft-page dash-scope"><Notice>{UNSUPPORTED_GAME}</Notice></div>;
@@ -131,7 +132,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
       </div> : <>
         <div className="fa-draft-controls cs-toolbar">
           <h2>{championName}{enemyNames && <small> vs {enemyNames}</small>}</h2>
-          {enemyId > 0 && matchups[0]?.stats && <span className="cs-matchup-chip" title={`${fmtCount(matchups[0].stats.games)} games`}>{fmtPct(matchups[0].stats.winPct)} in this lane</span>}
+          {enemyId > 0 && matchups[0]?.stats && <Tooltip label={`${fmtCount(matchups[0].stats.games)} games`}><span className="cs-matchup-chip">{fmtPct(matchups[0].stats.winPct)} in this lane</span></Tooltip>}
           {pickers}
           {(["d", "f"] as const).map((slot, i) => <Picker key={slot} label={`Summoner ${slot.toUpperCase()}`} value={String(i ? view.spells.spell2Id : view.spells.spell1Id)} options={view.spells.available.map(spell => ({ value: String(spell.id), label: spell.name, icon: <SpellIcon id={spell.id} mode="desktop" /> }))} disabled={props.busy} onChange={value => props.onPickSpell(slot, Number(value))} />)}
         </div>

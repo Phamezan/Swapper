@@ -535,10 +535,10 @@ async function main() {
     await page.click('.match-champ');
     await page.click('#md-tab-Scoreboard');
     await page.text('.md-context', 'Flex');
-    const ranks = await page.evaluate("[...document.querySelectorAll('.md-rank')].map(el => ({label: el.textContent, title: el.title}))");
-    assert.equal(ranks[0].title, 'Current Flex rank');
+    const ranks = await page.evaluate("[...document.querySelectorAll('.md-rank')].map(el => ({label: el.textContent, tooltip: el.dataset.tooltip}))");
+    assert.equal(ranks[0].tooltip, 'Current Flex rank');
     assert.equal(ranks[1].label, 'Unranked');
-    assert.equal(ranks[2].title, 'Current Solo/Duo rank');
+    assert.equal(ranks[2].tooltip, 'Current Solo/Duo rank');
     assert.equal(ranks[2].label, 'Diamond II 45 LP');
     assert.ok(!ranks[3].label.includes('LP'), 'missing LP stays missing');
     await page.click('.location-trail button', 'Dashboard');
@@ -557,7 +557,7 @@ async function main() {
   await check("Sidebar Tierlist", async () => {
     await nav("Tierlist", ".tier-table tbody tr");
     assert.equal(await page.evaluate('document.querySelector(".nav-badge.patch").dataset.label'), "PATCH 26.21");
-    assert.equal(await page.evaluate('document.querySelector(".nav-badge.patch").title'), "Patch 26.21");
+    assert.equal(await page.evaluate('document.querySelector(".nav-badge.patch").dataset.tooltip'), "Patch 26.21");
   });
   await check("Shared search pill focuses its rounded container", searchPillFocus);
   await check("Tierlist champion overview and build", async () => {
@@ -772,7 +772,7 @@ async function main() {
     await page.text('.mv-matchup-scope', 'Ahri vs Zed · Mid');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===8", 'entry filters champion, opponent and lane');
     assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].map(r=>r.dataset.vodId)"), ['patch-new01@0','named-new01@0','named-tie01@0','named-old01@0','anonymous01@0','match-vod00@0','match-vod01@0','match-vod02@0']);
-    await page.text('[title="Patch estimated from the upload date"]', '~26.21');
+    await page.text('[data-tooltip="Patch estimated from the upload date"]', '~26.21');
     await page.text('.mv-vod-row[data-vod-id="anonymous01@0"] strong', 'Ranked replay');
     await page.click('.mv-segment[aria-label="Players"] button:last-child');
     await page.wait("document.querySelectorAll('.mv-vod-row').length===3", 'named players include people without teams');
@@ -1139,7 +1139,7 @@ async function main() {
     await page.click('button[aria-label^="Opponent:"]');
     await page.click(".fa-picker-option", "Darius");
     await page.text('[aria-label="Matchup"]', "Darius");
-    await page.click('.fa-matchup-card[title^="Jax:"]');
+    await page.click('.fa-matchup-card[data-tooltip^="Jax:"]');
     await page.text('[aria-label="Matchup"]', "Jax");
     await searchPillFocus('.fa-strip-search');
     await page.evaluate("document.activeElement.blur()");
@@ -1525,7 +1525,7 @@ async function main() {
     await page.text('.player-champions', '12 loaded games');
     await page.text('.player-together', '12 games');
     assert.equal(await page.evaluate("document.querySelectorAll('.player-roles .role-strip > div').length"), 5);
-    assert.equal(await page.evaluate("document.querySelector('.player-roles [title=\"Jungle: 7W 5L\"] b').textContent"), '58%');
+    assert.equal(await page.evaluate("document.querySelector('.player-roles [data-tooltip=\"Jungle: 7W 5L\"] b').textContent"), '58%');
     assert.equal(await page.evaluate("document.querySelectorAll('.player-roles .is-empty').length"), 4);
     assert.equal(await page.evaluate("document.querySelectorAll('.player-together img.search-profile-icon').length"), 4);
     assert.equal(await page.evaluate("document.querySelectorAll('.player-champion-art').length"), 3);
@@ -1582,7 +1582,7 @@ async function main() {
       await cdp.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
       const trail = await page.evaluate(`(() => {
         const view = document.querySelector('.location-view'), middle = view.querySelector('li:nth-child(2) button');
-        return { tooltip: view.title, label: middle.textContent, clipped: middle.scrollWidth > middle.clientWidth,
+        return { tooltip: view.dataset.tooltip, label: middle.textContent, clipped: middle.scrollWidth > middle.clientWidth,
           ellipsis: getComputedStyle(middle).textOverflow,
           fits: view.querySelector('ol').getBoundingClientRect().right < view.querySelector('kbd').getBoundingClientRect().left };
       })()`);
@@ -1634,11 +1634,11 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelectorAll('.player-rank-record').length"), 0);
     assert.equal(await page.evaluate("document.querySelector('.player-ranks').textContent.includes('win rate')"), false);
     assert.equal(await page.evaluate("document.querySelectorAll('.player-roles .is-empty').length"), 5);
-    assert.equal(await page.evaluate("document.querySelector('.player-roles [title=\"Jungle: 0W 0L\"] b').textContent"), '–');
+    assert.equal(await page.evaluate("document.querySelector('.player-roles [data-tooltip=\"Jungle: 0W 0L\"] b').textContent"), '–');
     assert.equal(await page.evaluate("document.querySelectorAll('.player-roles meter').length"), 0);
     await page.click('.player-back');
     assert.equal(await page.evaluate("document.querySelectorAll('.role-strip > div').length"), 5);
-    assert.equal(await page.evaluate("document.querySelector('.role-strip [title=\"Top: 7W 3L\"] b').textContent"), '70%');
+    assert.equal(await page.evaluate("document.querySelector('.role-strip [data-tooltip=\"Top: 7W 3L\"] b').textContent"), '70%');
   });
   // ---- end profile2 missing data checks ----
   // ---- record: u.gg season-record fallback (mock resolves it) ----
@@ -1650,7 +1650,7 @@ async function main() {
     await page.visible('.player-games .match-row');
     await page.text('.player-ranks', 'win rate');
     await page.text('.player-record-source', 'via u.gg');
-    assert.equal(await page.evaluate("document.querySelector('.player-record-source').title"), "Your League Client didn't return this player's season record.");
+    assert.equal(await page.evaluate("document.querySelector('.player-record-source').dataset.tooltip"), "Your League Client didn't return this player's season record.");
   });
   // ---- end record checks ----
 
@@ -1877,7 +1877,7 @@ async function main() {
     await nav('Draft', '.cs-build-row');
     await page.text('.cs-list-tabs', 'Builds · Top');
     await page.visible('button[aria-label="Top"][aria-pressed="true"]');
-    await page.visible('.cs-inferred-lane[title]');
+    await page.visible('.cs-inferred-lane[data-tooltip]');
     await page.visible('button[aria-label="More main runes: Choose"]');
     assert.equal(await page.evaluate("window.__draftBuildCalls.some(c=>c.cmd==='get_runes' && c.args?.position==='mid')"), false);
     await page.click('button[aria-label="More main runes: Choose"]');
@@ -1901,7 +1901,7 @@ async function main() {
     await page.click('.cs-picks button[aria-label="Top"]');
     await page.click('.cs-picks .fa-seg button', 'Recommended');
     await page.wait("document.querySelectorAll('.cs-pick').length === 10", "ten curated recommendations");
-    assert.equal(await page.evaluate("[...document.querySelectorAll('.cs-pick-select')].every(button => button.title.includes(button.getAttribute('aria-description')) && !!button.getAttribute('aria-description'))"), true, "curated reasons are available on hover and to assistive technology");
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.cs-pick-select')].every(button => button.dataset.tooltip.includes(button.getAttribute('aria-description')) && !!button.getAttribute('aria-description'))"), true, "curated reasons are available on hover and to assistive technology");
     assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollHeight <= document.querySelector('.dashboard-main').clientHeight + 1"), true, "ten curated cards fit in the scrollable grid");
     assert.equal(await page.evaluate("document.querySelector('.cs-bans').firstElementChild.getAttribute('aria-label')"), 'Banned: Yasuo');
     await page.click('.cs-picks .fa-seg button', 'All');
@@ -1919,7 +1919,7 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').disabled"), true, "Lock in stays inactive until a champion is selected");
     await page.click(".cs-pick-select");
     await page.visible(".cs-lock-in:not(:disabled)");
-    assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').title"), "Lock in Aatrox", "the button locks the selected champion");
+    assert.equal(await page.evaluate("document.querySelector('.cs-lock-in').dataset.tooltip"), "Lock in Aatrox", "the button locks the selected champion");
   });
   await check("Draft one click locks and preserves the complete top layout", async () => {
     await page.click(".cs-lock-in");

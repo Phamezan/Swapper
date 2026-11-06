@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { RuneIcon } from "./RuneIcon";
+import { Tooltip } from "../full-app/ui/Tooltip";
 import {
   Rune,
   RuneRow,
@@ -59,25 +60,26 @@ function RuneOrb({
   const hasWin = showStats && rune.winPct !== null && rune.play > 0;
   const hasDetail = showStats && rune.pickPct !== null && rune.play > 0;
   return (
-    <button
-      type="button"
-      className={`rune-orb ${selected ? "is-on" : ""} ${keystone ? "rune-orb-keystone" : ""}`}
-      disabled={disabled}
-      onClick={onClick}
-      title={statTitle(rune)}
-      aria-pressed={selected}
-      aria-label={`${rune.name}, ${selected ? "selected" : "not selected"}`}
-    >
-      <span className="rune-orb-art">
-        <RuneIcon id={rune.id} mode={mode} className="rune-orb-icon" />
-      </span>
-      {hasWin && <span className="rune-orb-win">{fmtPct(rune.winPct)}</span>}
-      {hasDetail && (
-        <span className="rune-orb-meta">
-          {fmtPct(rune.pickPct)} · {fmtGames(rune.play)}
+    <Tooltip label={statTitle(rune)}>
+      <button
+        type="button"
+        className={`rune-orb ${selected ? "is-on" : ""} ${keystone ? "rune-orb-keystone" : ""}`}
+        disabled={disabled}
+        onClick={onClick}
+        aria-pressed={selected}
+        aria-label={`${rune.name}, ${selected ? "selected" : "not selected"}`}
+      >
+        <span className="rune-orb-art">
+          <RuneIcon id={rune.id} mode={mode} className="rune-orb-icon" />
         </span>
-      )}
-    </button>
+        {hasWin && <span className="rune-orb-win">{fmtPct(rune.winPct)}</span>}
+        {hasDetail && (
+          <span className="rune-orb-meta">
+            {fmtPct(rune.pickPct)} · {fmtGames(rune.play)}
+          </span>
+        )}
+      </button>
+    </Tooltip>
   );
 }
 
@@ -108,21 +110,23 @@ function TreeHeader({
         <strong>{tree.name}</strong>
       </div>
       <div className="rune-head-trees" role="group" aria-label={`Switch ${label.toLowerCase()} tree`}>
-        <span className="rune-head-big" title={tree.name}>
-          <RuneIcon id={tree.id} mode={mode} />
-        </span>
+        <Tooltip label={tree.name}>
+          <span className="rune-head-big">
+            <RuneIcon id={tree.id} mode={mode} />
+          </span>
+        </Tooltip>
         {options.map((entry) => (
-          <button
-            type="button"
-            key={entry.id}
-            className="rune-head-option"
-            title={entry.name}
-            aria-label={`Use ${entry.name}`}
-            disabled={busy}
-            onClick={() => onPick(entry)}
-          >
-            <RuneIcon id={entry.id} mode={mode} />
-          </button>
+          <Tooltip key={entry.id} label={entry.name}>
+            <button
+              type="button"
+              className="rune-head-option"
+              aria-label={`Use ${entry.name}`}
+              disabled={busy}
+              onClick={() => onPick(entry)}
+            >
+              <RuneIcon id={entry.id} mode={mode} />
+            </button>
+          </Tooltip>
         ))}
       </div>
     </div>

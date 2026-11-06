@@ -3,6 +3,7 @@ import { ChampionIcon } from "../../runes/ChampionIcon";
 import { buildStatGroups, filterStatGroups, type MatchPlayer, type StatRow, type StatValue } from "../MatchDetailModel";
 import { SearchIcon } from "../ui/icons";
 import { fmtCount } from "../ui/format";
+import { Tooltip } from "../ui/Tooltip";
 
 function format(value: StatValue, kind: StatRow["format"]) {
   if (value == null) return "–";
@@ -35,9 +36,9 @@ export function Stats({ players, name }: { players: MatchPlayer[]; name: (id: nu
             const size = columns.filter(p => p.teamId === id).length;
             return size ? <th scope="colgroup" colSpan={size} key={id} className={id === 100 ? "is-blue" : "is-red"}>{id === 100 ? "Blue" : "Red"} team</th> : null;
           })}</tr>
-          <tr className="md-stats-portraits"><th scope="col">{columns.length} players <small>Compare the whole match</small></th>{columns.map((p, i) => <th scope="col" key={p.participantId} className={`${p.me ? "is-me" : ""} ${i > 0 && p.teamId !== columns[i - 1].teamId ? "md-side-start" : ""}`} title={`${name(p.championId)}${p.me ? " · You" : ""}`}>
-            <ChampionIcon id={p.championId} name={name(p.championId)} mode="desktop" /><span>{name(p.championId)}</span><small>{p.me ? "You" : p.role === "adc" ? "Bot" : p.role.charAt(0).toUpperCase() + p.role.slice(1)}</small>
-          </th>)}</tr>
+          <tr className="md-stats-portraits"><th scope="col">{columns.length} players <small>Compare the whole match</small></th>{columns.map((p, i) => <Tooltip key={p.participantId} label={`${name(p.championId)}${p.me ? " · You" : ""}`}><th scope="col" className={`${p.me ? "is-me" : ""} ${i > 0 && p.teamId !== columns[i - 1].teamId ? "md-side-start" : ""}`}>
+            <ChampionIcon id={p.championId} mode="desktop" /><span>{name(p.championId)}</span><small>{p.me ? "You" : p.role === "adc" ? "Bot" : p.role.charAt(0).toUpperCase() + p.role.slice(1)}</small>
+          </th></Tooltip>)}</tr>
         </thead>
         {filtered.map(group => {
           const open = !!search.trim() || !collapsed.has(group.label);
@@ -45,7 +46,7 @@ export function Stats({ players, name }: { players: MatchPlayer[]; name: (id: nu
           return <Fragment key={group.label}><tbody className="md-stats-group"><tr><th colSpan={columns.length + 1}>
             <button onClick={() => toggle(group.label)} aria-expanded={open} aria-controls={id} disabled={!!search.trim()}><span aria-hidden>{open ? "−" : "+"}</span>{group.label}<small>{group.rows.length}</small></button>
           </th></tr></tbody><tbody id={id} hidden={!open}>{group.rows.map(row => <tr key={row.key}>
-            <th scope="row" title={row.key}>{row.label}</th>{row.values.map((v, i) => <td key={columns[i].participantId} className={`${columns[i].me ? "is-me" : ""} ${row.leaders.includes(i) ? "is-best" : ""} ${i > 0 && columns[i].teamId !== columns[i - 1].teamId ? "md-side-start" : ""}`}>
+            <Tooltip label={row.key}><th scope="row">{row.label}</th></Tooltip>{row.values.map((v, i) => <td key={columns[i].participantId} className={`${columns[i].me ? "is-me" : ""} ${row.leaders.includes(i) ? "is-best" : ""} ${i > 0 && columns[i].teamId !== columns[i - 1].teamId ? "md-side-start" : ""}`}>
               {format(v, row.format)}{row.leaders.includes(i) && <span className="md-sr-only"> (row leader)</span>}
             </td>)}
           </tr>)}</tbody></Fragment>;

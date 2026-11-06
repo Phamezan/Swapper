@@ -15,6 +15,7 @@ import { Stats } from "./match/Stats";
 import { Timeline } from "./match/Timeline";
 import { Facts } from "./match/Facts";
 import { Slot } from "./ui/Slot";
+import { Tooltip } from "./ui/Tooltip";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCompact, fmtCount } from "./ui/format";
 import "./MatchDetail.css";
@@ -98,7 +99,7 @@ export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { gam
       <ChampionIcon id={match.championId} name={name(match.championId)} mode="desktop" />
       <strong>{name(match.championId)}</strong><b className={match.win ? "is-win" : "is-loss"}>{match.win ? "Victory" : "Defeat"}</b>
       <span>{queueLabels[match.queue] ?? match.queue}</span><span>{duration}</span>
-      <time dateTime={new Date(match.createdAt).toISOString()} title={new Date(match.createdAt).toLocaleString()}>{new Date(match.createdAt).toLocaleDateString()}</time>
+      <Tooltip label={new Date(match.createdAt).toLocaleString()}><time dateTime={new Date(match.createdAt).toISOString()}>{new Date(match.createdAt).toLocaleDateString()}</time></Tooltip>
     </header>
     {error ? <Notice tone="error" action={<button className="fa-text-button" onClick={() => setAttempt(n => n + 1)}>Retry</button>}>{error}</Notice>
       : !detail ? <Skeleton label="Loading match details and player ranks" rows={5} height={66} /> : <>
@@ -115,7 +116,7 @@ export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { gam
           return <section className={`md-team ${team.teamId === 100 ? "is-blue" : "is-red"} ${team.win === true ? "is-win" : team.win === false ? "is-loss" : ""}`} key={team.teamId} aria-label={`${team.teamId === 100 ? "Blue" : "Red"} team`}>
             <header><strong>{team.win == null ? "Result unavailable" : team.win ? "Victory" : "Defeat"}</strong><span>{team.teamId === 100 ? "Blue side" : "Red side"}</span>
               <div className="md-objectives">{team.objectives.map(o => {
-                return <span key={o.label} title={o.label} aria-label={`${o.kills} ${o.label}`}><ObjectiveIcon label={o.label} side={team.teamId} /><b>{o.kills}</b></span>;
+                return <Tooltip key={o.label} label={o.label}><span aria-label={`${o.kills} ${o.label}`}><ObjectiveIcon label={o.label} side={team.teamId} /><b>{o.kills}</b></span></Tooltip>;
               })}</div>
               <span className="md-team-total"><b>{stat(total.kills)} / {stat(total.deaths)} / {stat(total.assists)}</b> KDA <b>{compact(total.gold)}</b> gold</span>
             </header>
@@ -125,13 +126,13 @@ export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { gam
               {tab === "Scoreboard" && <Placement label={placementLabel(p.placement, team.win, p === best)} />}
               <div className="md-champion"><ChampionIcon id={p.championId} name={name(p.championId)} mode="desktop" />{p.level != null && <b>{p.level}</b>}</div>
               {tab === "Scoreboard" && <><div className="md-spells">{p.spells.map((id, i) => <SpellIcon id={id} key={i} mode="desktop" />)}</div><div className="md-perks">{[p.keystone, p.secondaryStyle].filter((id): id is number => !!id).map((id, i) => <Slot kind="rune" id={id} key={i} size={20} />)}</div></>}
-              <div className="md-identity"><strong title={p.riotId || name(p.championId)}>{p.riotId ? <button className="md-name" onClick={() => onOpenPlayer(p.riotId)}><Identity value={p.riotId} /></button> : name(p.championId)}{p.me && <small className="md-you">You</small>}</strong><small><Rank player={p} />{name(p.championId)}</small></div>
+              <div className="md-identity"><Tooltip label={p.riotId || name(p.championId)}><strong>{p.riotId ? <button className="md-name" onClick={() => onOpenPlayer(p.riotId)}><Identity value={p.riotId} /></button> : name(p.championId)}{p.me && <small className="md-you">You</small>}</strong></Tooltip><small><Rank player={p} />{name(p.championId)}</small></div>
               {tab === "Scoreboard" ? <>
                 <Items ids={p.items} />
                 <div className="md-kda"><strong>{stat(p.kills)} / <em>{stat(p.deaths)}</em> / {stat(p.assists)}</strong><small>{stat(kda(p), 2)} KDA · {stat(participation(p, total.kills))}% KP</small></div>
                 <div className="md-farm"><strong>{p.role === "support" ? stat(p.vision) : stat(p.cs != null && minutes > 0 ? p.cs / minutes : null, 1)}</strong><small>{p.role === "support" ? "vision" : `${stat(p.cs)} CS`}</small></div>
                 <div className="md-damage"><span><b>{compact(p.damage)}</b> dmg</span>
-                  <i style={{ "--damage": `${barWidth(p.damage, maxDamage)}%`, "--average": average == null ? undefined : `${barWidth(average, maxDamage)}%` } as CSSProperties} title={average == null ? undefined : `Team average ${compact(average)}`} /></div>
+                  <Tooltip label={average == null ? undefined : `Team average ${compact(average)}`}><i style={{ "--damage": `${barWidth(p.damage, maxDamage)}%`, "--average": average == null ? undefined : `${barWidth(average, maxDamage)}%` } as CSSProperties} /></Tooltip></div>
                 <Score value={p.score} />
               </> : <>
                 <div className="md-spells is-row" aria-label="Summoner spells">{p.spells.map((id, i) => <Slot kind="spell" id={id} key={i} size={26} />)}</div>
@@ -148,7 +149,7 @@ function Identity({ value }: { value: string }) { const [name, tag] = splitRiotI
 function Rank({ player }: { player: Player }) {
   const label = rankLabel(player.rank, player.rankLoaded);
   const current = player.rank ? `Current ${player.rank.queue ?? "Solo/Duo"} rank` : "Current rank";
-  return <span className="md-rank" title={current} aria-label={`${current}: ${label}`}>{player.rank && <RankCrest tier={crestSlug(player.rank.tier)} size={20} mode="desktop" />}{label}</span>;
+  return <Tooltip label={current}><span className="md-rank" aria-label={`${current}: ${label}`}>{player.rank && <RankCrest tier={crestSlug(player.rank.tier)} size={20} mode="desktop" />}{label}</span></Tooltip>;
 }
 /** Best performer of a team by placement, the MVP (winners) or ACE (losers). */
 function bestOf(players: Player[]) {
@@ -170,7 +171,7 @@ function Runes({ player }: { player: Player }) {
   </div>;
 }
 function Score({ value }: { value: number | null }) {
-  return <span className={`md-score is-${scoreTone(value)}`} title="Performance score relative to the match" aria-label={`Performance score ${value == null ? "unavailable" : `${Math.round(value)} out of 100`}`}>
+  return <Tooltip label="Performance score relative to the match"><span className={`md-score is-${scoreTone(value)}`} aria-label={`Performance score ${value == null ? "unavailable" : `${Math.round(value)} out of 100`}`}>
     <svg viewBox="0 0 40 40" aria-hidden><circle cx="20" cy="20" r="17" /><circle cx="20" cy="20" r="17" pathLength="100" strokeDasharray={`${value ?? 0} 100`} /></svg><b>{value == null ? "–" : Math.round(value)}</b>
-  </span>;
+  </span></Tooltip>;
 }

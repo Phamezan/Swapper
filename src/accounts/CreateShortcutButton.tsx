@@ -1,3 +1,4 @@
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { useState } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Check, Link2, LoaderCircle } from "lucide-react";
@@ -31,14 +32,13 @@ export function CreateShortcutButton({ accountId, accountName, disabled, onError
   }
 
   return (
-    <button
+    <Tooltip label="Create desktop shortcut"><button
       className="icon-button"
       aria-label={`Create a desktop shortcut for ${accountName}`}
-      title="Create desktop shortcut"
       disabled={disabled || phase === "busy"}
       onClick={() => void create()}
     >
       {phase === "busy" ? <LoaderCircle className="spin" size={16} /> : phase === "done" ? <Check size={16} /> : <Link2 size={16} />}
-    </button>
+    </button></Tooltip>
   );
 }

@@ -9,6 +9,7 @@ import { useChampionArt } from "./art";
 import type { Abilities } from "./cooldownModel";
 import { RefreshIcon, WrenchIcon } from "./ui/icons";
 import { EmptyState, Notice, Skeleton } from "./ui/States";
+import { Tooltip } from "./ui/Tooltip";
 import {
   abilityHeading, bugfixLines, championIdFor, championIdInText, changeSegments, classifyChange, formatPatchDate, patchCounts, riftSections, sectionId,
   type ChangeKind, type PatchAbility, type PatchEntry, type PatchNotes as Notes,
@@ -82,9 +83,9 @@ export default function PatchNotes() {
         </p>
       </div>
       <div className="pn-header-actions">
-        <button type="button" className="pn-refresh" aria-label="Refresh patch notes" title="Refresh patch notes" onClick={() => void load(true, notes.patch)} disabled={refreshing}>
+        <Tooltip label="Refresh patch notes"><button type="button" className="pn-refresh" aria-label="Refresh patch notes" onClick={() => void load(true, notes.patch)} disabled={refreshing}>
           <RefreshIcon size={16} aria-hidden />
-        </button>
+        </button></Tooltip>
       </div>
     </header>
     <div className="pn-patch-switch" role="group" aria-label="Patch version">
@@ -205,13 +206,13 @@ function ScrollRail({ checkpoints }: { checkpoints: Checkpoint[] }) {
     <p className="pn-rail-heading">In this patch</p>
     <div className="pn-rail-viewport"><div className="pn-rail-track">
       <span ref={marker} className="pn-rail-marker" aria-hidden />
-      {checkpoints.map((point, i) => <button key={point.id} type="button" className={`pn-checkpoint${i === active ? " is-current" : ""}`}
+      {checkpoints.map((point, i) => <Tooltip key={point.id} label={point.label}><button type="button" className={`pn-checkpoint${i === active ? " is-current" : ""}`}
         aria-label={`Read ${point.label} changes`} aria-controls={point.id} aria-current={i === active ? "location" : undefined}
-        title={point.label} onClick={event => jump(point, event.detail === 0)}>
+        onClick={event => jump(point, event.detail === 0)}>
         <CheckpointArt point={point} />
         <span className="pn-checkpoint-name">{point.label}</span>
         <i className={`pn-checkpoint-tick${point.kind ? ` is-${point.kind}` : ""}`} aria-hidden />
-      </button>)}
+      </button></Tooltip>)}
     </div></div>
     <p className="pn-rail-position"><span>{String(active + 1).padStart(2, "0")}</span> / {String(checkpoints.length).padStart(2, "0")}</p>
   </nav>;
@@ -273,7 +274,7 @@ function EntryCard({ id, entry, championId, itemId }: { id: string; entry: Patch
               {line.before != null && <span className="pn-before"><span className="pn-sr">Before: </span>{line.before}</span>}
               {line.before != null && line.after != null && <span className="pn-arrow" aria-hidden>→</span>}
               {line.after != null && <strong className="pn-after"><span className="pn-sr">After: </span>{changeSegments(line).map((part, i) =>
-                <span key={i} className={`pn-number is-${part.tone}`} title={part.tone === "buff" ? "Better" : part.tone === "nerf" ? "Worse" : undefined}>{part.text}</span>
+                <Tooltip key={i} label={part.tone === "buff" ? "Better" : part.tone === "nerf" ? "Worse" : undefined}><span className={`pn-number is-${part.tone}`}>{part.text}</span></Tooltip>
               )}</strong>}
             </span> : <span className="pn-line-text">{line.text}</span>}
           </li>)}</ul>

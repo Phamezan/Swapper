@@ -7,6 +7,7 @@ import { ChampionOverview } from "./ChampionOverview";
 import { RankPicker } from "./RankPicker";
 import { TierList } from "./TierList";
 import { Button } from "@/components/ui/button";
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { TIER_OPTIONS } from "./types";
 import type {
   ChampionApi,
@@ -255,17 +256,17 @@ export function ChampionTab({
 
       <div className="runes-role-picker" role="group" aria-label="Choose lane">
         {LANES.map((option) => (
-          <button
-            key={option.value}
-            type="button"
-            className={activeLane === option.value ? "is-active" : ""}
-            aria-pressed={activeLane === option.value}
-            aria-label={option.label}
-            title={option.label}
-            onClick={() => setLane(option.value)}
-          >
-            <RoleIcon role={option.value} size={17} mode={mode} />
-          </button>
+          <Tooltip key={option.value} label={option.label}>
+            <button
+              type="button"
+              className={activeLane === option.value ? "is-active" : ""}
+              aria-pressed={activeLane === option.value}
+              aria-label={option.label}
+              onClick={() => setLane(option.value)}
+            >
+              <RoleIcon role={option.value} size={17} mode={mode} />
+            </button>
+          </Tooltip>
         ))}
       </div>
 

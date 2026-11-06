@@ -1,3 +1,4 @@
+import { TooltipProvider } from "./full-app/ui/Tooltip";
 // Dev-only preview of the tray flyout (App) with mocked Tauri IPC: `npm run dev`, then open
 // /src/flyout-preview.html at a 400x640 window. ?fixture=planning|hover|locked picks the champion select
 // state; ?error makes a toggle and a switch fail (error banner). Never part of the app build. Fixture data only.
@@ -48,4 +49,4 @@ if (params.has("error")) {
 }
 
 if (params.get("fixture")) setTimeout(() => void emit("champ_select", champSelect), 600);
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(<TooltipProvider><App /></TooltipProvider>);

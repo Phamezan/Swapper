@@ -9,6 +9,7 @@ import { useLiveGame } from "./LiveGameData";
 import { EyeOff } from "lucide-react";
 import { clock, crestSlug, hasRecord, isHidden, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary, type LiveGameView } from "./LiveGameModel";
 import { LiveGamePlayer } from "./LiveGamePlayer";
+import { Tooltip } from "./ui/Tooltip";
 import "./live-game.css";
 import { UNSUPPORTED_GAME } from "./LiveGameModel";
 
@@ -39,7 +40,7 @@ export function LiveGameContent({ view, error, loaded, championNames, readOnly =
   return <div className="lg">
     <div className="lg-bar">
       <span className="lg-queue">{view.queue || "Custom game"}</span>
-      {view.gameTime !== null && <span className="lg-clock" title="Game time">{clock(view.gameTime)}</span>}
+      {view.gameTime !== null && <Tooltip label="Game time"><span className="lg-clock">{clock(view.gameTime)}</span></Tooltip>}
       <small>{readOnly ? 'Live roster via u.gg · Rank and form from League Client' : fetched < view.players.length ? `Loading players ${fetched}/${view.players.length}…` : "Rank and form: latest 20 Rift games"}</small>
     </div>
     {(["blue", "red"] as const).map(side => <Team key={side} side={side} summary={view[side]}
@@ -59,11 +60,11 @@ function Team({ side, summary, players, live, onOpen }: {
         <small>{players.some(p => p.isSelf) ? "Your team · " : ""}{players.length} {players.length === 1 ? "player" : "players"}</small>
       </div>
       {live && <span className="lg-team-score"><b className="lg-team-kills">{kills}</b><small>Kills</small></span>}
-      <span className="lg-avg" title="Average Solo/Duo rank of the ranked players">
+      <Tooltip label="Average Solo/Duo rank of the ranked players"><span className="lg-avg">
         {summary.averageTier && <RankCrest tier={crestSlug(summary.averageTier)} size={32} mode="desktop" />}
         <span><small>Average Solo/Duo · {summary.ranked}/{players.length} ranked</small>
           <strong>{summary.averageTier ? `${titleCase(summary.averageTier)} ${summary.averageDivision}`.trim() : "Unranked"}</strong></span>
-      </span>
+      </span></Tooltip>
       <DamageBar physical={summary.physical} />
     </header>
     <div className="lg-cols" aria-hidden>
@@ -75,10 +76,10 @@ function Team({ side, summary, players, live, onOpen }: {
 
 function DamageBar({ physical }: { physical: number | null }) {
   if (physical === null) return <span className="lg-dmg is-empty"><small>Damage profile</small><span>Waiting for champions</span></span>;
-  return <span className="lg-dmg" title={`About ${physical}% physical and ${100 - physical}% magic damage dealers (champion damage types)`}>
+  return <Tooltip label={`About ${physical}% physical and ${100 - physical}% magic damage dealers (champion damage types)`}><span className="lg-dmg">
     <span className="lg-dmg-labels"><small>AD <b>{physical}%</b></small><small>AP <b>{100 - physical}%</b></small></span>
     <i style={{ "--ad": `${physical}%` } as CSSProperties} aria-hidden />
-  </span>;
+  </span></Tooltip>;
 }
 
 function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpen: () => void }) {
@@ -88,12 +89,13 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
   const assigned = roleOf(p.position);
   const hidden = isHidden(p);
   return <li>
-    <button className={`lg-row${p.isSelf ? " is-self" : ""}${hidden ? " is-hidden" : ""}${p.live?.dead ? " is-dead" : ""}`} onClick={onOpen} title={hidden ? "Streamer mode hides this player" : `Open ${name}'s profile`} aria-haspopup="dialog">
+    <Tooltip label={hidden ? "Streamer mode hides this player" : `Open ${name}'s profile`}>
+    <button className={`lg-row${p.isSelf ? " is-self" : ""}${hidden ? " is-hidden" : ""}${p.live?.dead ? " is-dead" : ""}`} onClick={onOpen} aria-haspopup="dialog">
       <span className="lg-identity">
         <span className="lg-champ">
           <span className="lg-portrait">
             <ChampionIcon id={p.championId} name={p.championName} mode="desktop" />
-            {p.live && <b title="Level">{p.live.level}</b>}
+            {p.live && <Tooltip label="Level"><b>{p.live.level}</b></Tooltip>}
           </span>
           <span className="lg-stack">{p.spells.map((id, i) => <SpellIcon key={i} id={id} mode="desktop" />)}</span>
           <span className="lg-stack lg-runes">
@@ -105,13 +107,15 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
           {hidden ? <strong className="lg-hidden-name"><EyeOff size={14} aria-hidden />Hidden player</strong>
             : <strong><span className="riot-name">{name}</span><span className="riot-tag">{tag}</span>{p.isSelf && <em className="lg-you">You</em>}</strong>}
           <span className="lg-player-meta"><small>{p.championName}{p.summonerLevel ? ` · Lv ${p.summonerLevel}` : ""}</small>
-            <span className="lg-role" title={h?.mainRole ? `Usually ${roleNames[h.mainRole[0]]} (${h.mainRole[1]} of ${h.form.games}, estimated)${assigned ? `; playing ${roleNames[assigned]}` : ""}` : assigned ? `Playing ${roleNames[assigned]}` : undefined}>
-              {h?.mainRole ? <><RoleIcon role={h.mainRole[0]} size={14} mode="desktop" /><small>{h.mainRole[1]}/{h.form.games}</small></> : assigned ? <RoleIcon role={assigned} size={14} mode="desktop" /> : null}
-            </span>
+            <Tooltip label={h?.mainRole ? `Usually ${roleNames[h.mainRole[0]]} (${h.mainRole[1]} of ${h.form.games}, estimated)${assigned ? `; playing ${roleNames[assigned]}` : ""}` : assigned ? `Playing ${roleNames[assigned]}` : undefined}>
+              <span className="lg-role">
+                {h?.mainRole ? <><RoleIcon role={h.mainRole[0]} size={14} mode="desktop" /><small>{h.mainRole[1]}/{h.form.games}</small></> : assigned ? <RoleIcon role={assigned} size={14} mode="desktop" /> : null}
+              </span>
+            </Tooltip>
           </span>
           {(p.isBot || loading || p.badges.length > 0) && <span className="lg-badges">
             {p.isBot ? <span className="lg-badge">Bot</span> : loading ? <small className="lg-skel">Loading…</small>
-              : p.badges.map(b => <span key={b.kind} className={`lg-badge is-${b.kind}`} title={b.detail}>{b.label}</span>)}
+              : p.badges.map(b => <Tooltip key={b.kind} label={b.detail}><span className={`lg-badge is-${b.kind}`}>{b.label}</span></Tooltip>)}
           </span>}
         </span>
       </span>
@@ -139,5 +143,6 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
         <span className="lg-kda"><strong aria-label={`${p.live.kills} kills, ${p.live.deaths} deaths, ${p.live.assists} assists`}>{p.live.kills} <i>/</i> <em>{p.live.deaths}</em> <i>/</i> {p.live.assists}</strong><small>{p.live.cs} CS{p.live.dead && <em className="lg-dead"> · Dead</em>}</small></span>
       </> :<small className="lg-no-data">Waiting for live stats</small>}</span>}
     </button>
+    </Tooltip>
   </li>;
 }

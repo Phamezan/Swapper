@@ -1,3 +1,4 @@
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { useEffect, useState } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
@@ -168,11 +169,11 @@ export function UpdatePill() {
   }
 
   return (
-    <button className="update-pill" disabled={installing} onClick={() => void install()}
-      title={snapshot.notes ? `${snapshot.notes}\nUpdating restarts Swapper.` : "Updating restarts Swapper."}>
+    <Tooltip label={snapshot.notes ? `${snapshot.notes}\nUpdating restarts Swapper.` : "Updating restarts Swapper."}>
+    <button className="update-pill" disabled={installing} onClick={() => void install()}>
       {installing ? <LoaderCircle className="spin" size={14} /> : <Download size={14} />}
       <span>{installing ? "Updating…" : `Update to v${snapshot.availableVersion}`}</span>
-    </button>
+    </button></Tooltip>
   );
 }
 

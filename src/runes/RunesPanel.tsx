@@ -10,6 +10,7 @@ import { CachedBadge } from "./CachedBadge";
 import { RuneEditor } from "./RuneEditor";
 import { RankPicker } from "./RankPicker";
 import { proVariant } from "../full-app/champ-select-pro";
+import { Tooltip } from "../full-app/ui/Tooltip";
 import {
   ProBuild,
   ProBuildsView,
@@ -377,18 +378,18 @@ export function RunesPanel({
       {(["d", "f"] as const).map((slot) => {
         const id = slot === "d" ? data.spells.spell1Id : data.spells.spell2Id;
         return (
-          <button
-            key={slot}
-            type="button"
-            className="rune-spell-slot"
-            disabled={busy || data.spells.available.length === 0}
-            onClick={() => setPickerSlot(slot)}
-            title={spellName(id)}
-            aria-label={`Change summoner spell ${slot.toUpperCase()}${id > 0 ? ` (${spellName(id)})` : ""}`}
-          >
-            <SpellIcon id={id} mode={mode} />
-            <span className="rune-spell-key">{slot.toUpperCase()}</span>
-          </button>
+          <Tooltip key={slot} label={spellName(id)}>
+            <button
+              type="button"
+              className="rune-spell-slot"
+              disabled={busy || data.spells.available.length === 0}
+              onClick={() => setPickerSlot(slot)}
+              aria-label={`Change summoner spell ${slot.toUpperCase()}${id > 0 ? ` (${spellName(id)})` : ""}`}
+            >
+              <SpellIcon id={id} mode={mode} />
+              <span className="rune-spell-key">{slot.toUpperCase()}</span>
+            </button>
+          </Tooltip>
         );
       })}
     </div>
@@ -437,9 +438,11 @@ export function RunesPanel({
         <button type="button" aria-pressed={screen === "champion"} className={screen === "champion" ? "is-active" : ""} onClick={() => pickTab("champion")}>Champion</button>
         <button type="button" aria-pressed={screen === "editor"} className={screen === "editor" ? "is-active" : ""} onClick={startEditor}>Editor</button>
         {view.source === "lcu" && (
-          <span className="runes-source is-fallback" title="op.gg had no data for this champion and role (or could not be reached); showing the League client's own recommendations.">
-            League fallback
-          </span>
+          <Tooltip label="op.gg had no data for this champion and role (or could not be reached); showing the League client's own recommendations.">
+            <span className="runes-source is-fallback">
+              League fallback
+            </span>
+          </Tooltip>
         )}
         {view.stale && <CachedBadge stale updatedAt={view.updatedAt} />}
       </div>
@@ -447,10 +450,9 @@ export function RunesPanel({
       {view.mode === "ranked" && screen !== "champion" && (
         <div className="runes-role-picker" role="group" aria-label="Choose rune role">
           {runeRoles.map((role) => (
+            <Tooltip key={role.value} label={role.label}>
             <button
-              key={role.value}
               type="button"
-              title={role.label}
               aria-label={`${role.label} runes`}
               aria-pressed={view.position === role.value}
               className={view.position === role.value ? "is-active" : ""}
@@ -462,6 +464,7 @@ export function RunesPanel({
             >
               <RoleIcon role={role.value} size={20} mode={mode} />
             </button>
+            </Tooltip>
           ))}
         </div>
       )}
@@ -480,36 +483,42 @@ export function RunesPanel({
                 onChange={onTierChange}
               />
             )}
-            <label className="runes-auto" title="Apply the recommended runes when your champion locks in">
-              <input
-                type="checkbox"
-                role="switch"
-                checked={view.autoApply}
-                disabled={busy}
-                onChange={(event) => onToggleAutoApply(event.target.checked)}
-              />
-              <span>Auto-apply recommended runes</span>
-            </label>
-            <label className="runes-auto" title="Also set the recommended summoner spells when applying a page">
-              <input
-                type="checkbox"
-                role="switch"
-                checked={view.spells.applyWithRunes}
-                disabled={busy}
-                onChange={(event) => onToggleSpellsWithRunes(event.target.checked)}
-              />
-              <span>Apply summoner spells with runes</span>
-            </label>
-            <label className="runes-auto" title="Also add the preset's item build to the League shop when applying it; Swapper removes it after the game">
-              <input
-                type="checkbox"
-                role="switch"
-                checked={view.importItems}
-                disabled={busy}
-                onChange={(event) => onToggleImportItems(event.target.checked)}
-              />
-              <span>Import item build</span>
-            </label>
+            <Tooltip label="Apply the recommended runes when your champion locks in">
+              <label className="runes-auto">
+                <input
+                  type="checkbox"
+                  role="switch"
+                  checked={view.autoApply}
+                  disabled={busy}
+                  onChange={(event) => onToggleAutoApply(event.target.checked)}
+                />
+                <span>Auto-apply recommended runes</span>
+              </label>
+            </Tooltip>
+            <Tooltip label="Also set the recommended summoner spells when applying a page">
+              <label className="runes-auto">
+                <input
+                  type="checkbox"
+                  role="switch"
+                  checked={view.spells.applyWithRunes}
+                  disabled={busy}
+                  onChange={(event) => onToggleSpellsWithRunes(event.target.checked)}
+                />
+                <span>Apply summoner spells with runes</span>
+              </label>
+            </Tooltip>
+            <Tooltip label="Also add the preset's item build to the League shop when applying it; Swapper removes it after the game">
+              <label className="runes-auto">
+                <input
+                  type="checkbox"
+                  role="switch"
+                  checked={view.importItems}
+                  disabled={busy}
+                  onChange={(event) => onToggleImportItems(event.target.checked)}
+                />
+                <span>Import item build</span>
+              </label>
+            </Tooltip>
           </div>
         )}
 
@@ -560,12 +569,13 @@ export function RunesPanel({
               <div className="runes-tabs preset-build-tabs" role="group" aria-label="Preset builds">
                 <button type="button" aria-pressed={!winActive} className={!winActive ? "is-active" : ""}
                   onClick={() => setPresetTab("pick")}><CrowdIcon />Most played <em>{view.presets.length}</em></button>
-                <button type="button" aria-pressed={winActive} className={winActive ? "is-active" : ""}
-                  aria-disabled={winPresets.length === 0}
-                  title={winPresets.length === 0 ? emptyWinTooltip : undefined}
-                  onClick={() => { if (winPresets.length > 0) setPresetTab("win"); }}>
-                  <TrophyIcon />Highest win rate <em>{winPresets.length}</em>
-                </button>
+                <Tooltip label={winPresets.length === 0 ? emptyWinTooltip : undefined}>
+                  <button type="button" aria-pressed={winActive} className={winActive ? "is-active" : ""}
+                    aria-disabled={winPresets.length === 0}
+                    onClick={() => { if (winPresets.length > 0) setPresetTab("win"); }}>
+                    <TrophyIcon />Highest win rate <em>{winPresets.length}</em>
+                  </button>
+                </Tooltip>
               </div>
             )}
             {view.tierEmpty ? (
@@ -654,7 +664,7 @@ export function RunesPanel({
                       <small className="rune-preset-games">
                         <SwordsIcon />
                         {games === null ? "–" : games > 0 ? fmtExactGames(games) : "–"}
-                        {lowSample && <span className="rune-low" title={`Under ${LOW_SAMPLE_GAMES} games`}>small sample</span>}
+                        {lowSample && <Tooltip label={`Under ${LOW_SAMPLE_GAMES} games`}><span className="rune-low">small sample</span></Tooltip>}
                       </small>
                     </span>
                     {winPct !== null && winPct > 0 && <b className={`rune-preset-wr wr-${wrTone(winPct)}`}>{fmtPct(winPct)}</b>}
@@ -736,20 +746,20 @@ export function RunesPanel({
               {view.spells.available.map((spell) => {
                 const currentId = pickerSlot === "d" ? view.spells.spell1Id : view.spells.spell2Id;
                 return (
-                  <button
-                    key={spell.id}
-                    type="button"
-                    className={`rune-spell-option ${spell.id === currentId ? "is-active" : ""}`}
-                    onClick={() => {
-                      onPickSpell(pickerSlot, spell.id);
-                      setPickerSlot(null);
-                    }}
-                    title={spell.name}
-                    aria-label={spell.name}
-                  >
-                    <SpellIcon id={spell.id} mode={mode} />
-                    <span>{spell.name}</span>
-                  </button>
+                  <Tooltip key={spell.id} label={spell.name}>
+                    <button
+                      type="button"
+                      className={`rune-spell-option ${spell.id === currentId ? "is-active" : ""}`}
+                      onClick={() => {
+                        onPickSpell(pickerSlot, spell.id);
+                        setPickerSlot(null);
+                      }}
+                      aria-label={spell.name}
+                    >
+                      <SpellIcon id={spell.id} mode={mode} />
+                      <span>{spell.name}</span>
+                    </button>
+                  </Tooltip>
                 );
               })}
             </div>

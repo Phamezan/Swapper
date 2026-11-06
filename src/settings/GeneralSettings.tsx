@@ -1,3 +1,4 @@
+import { Tooltip } from "../full-app/ui/Tooltip";
 import { useState, type ReactNode } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { CircleHelp, Info } from "lucide-react";
@@ -99,7 +100,7 @@ export function GeneralSettings({
         <div className="setting-copy">
           <label htmlFor={ltkInstalled ? "korean-font-switch" : undefined}>Korean font</label>
           {!ltkInstalled && (
-            <button className="info-button" aria-label="What is LTK Manager?" title="What is LTK Manager?" onClick={() => void invoke("open_ltk_website")}><CircleHelp size={13} /></button>
+            <Tooltip label="What is LTK Manager?"><button className="info-button" aria-label="What is LTK Manager?" onClick={() => void invoke("open_ltk_website")}><CircleHelp size={13} /></button></Tooltip>
           )}
           {ltkInstalled ? (
             <p>Use at your own risk: changes League's game files while it runs.</p>

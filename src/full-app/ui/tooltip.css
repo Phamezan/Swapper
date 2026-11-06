@@ -1,0 +1,12 @@
+/* Shared tooltip: dark surface, matches .fa-ability-card. Only one instance renders at a time (portal). */
+.ui-tooltip {
+  pointer-events: none; z-index: 70; max-width: 280px; padding: 6px 10px; border: 1px solid; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2);
+  border-radius: var(--ui-radius-sm); background: var(--ui-popover); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur);
+  box-shadow: var(--ui-elev-2); color: var(--ui-text-1); font: 500 12.5px/1.4 "Outfit", sans-serif; text-wrap: pretty; white-space: pre-line; overflow-wrap: anywhere;
+  transform-origin: var(--radix-tooltip-content-transform-origin); animation: ui-tooltip-in var(--ui-fast) var(--ui-ease);
+}
+/* Radix positions content in a wrapper; that surface must also let clicks through. */
+[data-radix-popper-content-wrapper]:has(> .ui-tooltip) { pointer-events: none; }
+.ui-tooltip-arrow { fill: var(--ui-popover); }
+@keyframes ui-tooltip-in { from { opacity: 0; transform: scale(.96); } }
+@media (prefers-reduced-motion: reduce) { .ui-tooltip { animation: none; } }

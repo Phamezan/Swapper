@@ -22,6 +22,7 @@ async function render(result) {
     '@tauri-apps/api/core': { invoke: async command => { assert.equal(command, 'recommended_picks'); return result; } },
     './champ-select-model': model,
     './ui/format': { fmtCount: String },
+    './ui/Tooltip': { Tooltip: props => ({ type: 'tooltip', props }) },
     '../runes/types': { fmtPct: value => `${value}%` },
   };
   const code = ts.transpileModule(readFileSync(new URL('./ChampionSelectPicks.tsx', import.meta.url), 'utf8'), {
@@ -53,9 +54,11 @@ function text(tree) {
 test('all ten curated picks retain accessible reasons and show an older-list note', async () => {
   const picks = Array.from({ length: 10 }, (_, i) => ({ championId: i + 1, winRate: i ? 50 : 0, games: i ? 100 : 0, flex: false, reason: `Safe farming ${i + 1}.` }));
   const tree = await render({ picks, curatedPatch: '26.22', currentPatch: '26.23', status: 'ready' });
-  const buttons = nodes(tree).filter(n => n.props.className === 'cs-pick-select');
+  const all = nodes(tree);
+  const buttons = all.filter(n => n.props.className === 'cs-pick-select');
   assert.equal(buttons.length, 10);
-  assert.match(buttons[0].props.title, /Safe farming 1/);
+  const tooltip = all.find(n => n.type === 'tooltip' && n.props.children === buttons[0]);
+  assert.match(tooltip.props.label, /Safe farming 1/);
   assert.equal(buttons[0].props['aria-description'], 'Safe farming 1.');
   assert.match(text(tree), /List from patch 26.22/);
   assert.doesNotMatch(text(await render({ picks, curatedPatch: '26.22', currentPatch: '26.22', status: 'ready' })), /List from patch/);

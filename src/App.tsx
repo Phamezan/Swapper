@@ -1,3 +1,4 @@
+import { Tooltip } from "./full-app/ui/Tooltip";
 import { DeceiveRestartNotice } from "./settings/DeceiveRestartNotice";
 import { invoke } from "@tauri-apps/api/core";
 import { Wrench, X } from "lucide-react";
@@ -38,7 +39,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
   return (
     <div className={`shell dark${fullApp ? " full-app-embedded" : " flyout-topbar"}${themed ? " flyout-themed" : ""}`}>
       {!fullApp && <header className="topbar">
-        <button type="button" className={`brand-button mode-${brandMode}`} aria-label={switchLabel} title={switchLabel} onClick={() => {
+        <Tooltip label={switchLabel}><button type="button" className={`brand-button mode-${brandMode}`} aria-label={switchLabel} onClick={() => {
           setModeSpin((spin) => spin + 180);
           navigate(otherMode);
         }}>
@@ -55,7 +56,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
             <strong>{brandMode === "accounts" ? "Swapper" : "Champions"}{toolsOpen && inChampSelect && <i className="brand-live-dot" aria-label="Live champion select" />}</strong>
             <span>⇄ <span className={`mode-${toolsOpen ? "accounts" : "champions"}`}>{modeName(toolsOpen ? "accounts" : "champions")}</span></span>
           </span>
-        </button>
+        </button></Tooltip>
         <button className="icon-button close-button" aria-label="Hide Swapper" onClick={() => { if (native) void invoke("hide_flyout"); }}> <X size={16} /> </button>
       </header>}
 

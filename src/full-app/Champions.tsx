@@ -29,6 +29,7 @@ import { autoRows, championPool, mainRoles, mostPlayed, ROLES, type AutoRow } fr
 import type { DashboardView } from "./types";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
+import { Tooltip } from "./ui/Tooltip";
 import "../runes/runes.css";
 import "./champions.css";
 
@@ -191,7 +192,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
   const pickOpponent = () => { setEnemy(0); setQuery(""); setShowAll(false); };
   const filters = <>
     <div className="fa-seg role-tabs" role="group" aria-label="Role">
-      {!inHeader && <button aria-pressed={lane === "auto"} onClick={() => pickLane("auto")} title="Auto: each champion at its most played role"><RoleIcon role="auto" size={16} mode="desktop" />Auto</button>}
+      {!inHeader && <Tooltip label="Auto: each champion at its most played role"><button aria-pressed={lane === "auto"} onClick={() => pickLane("auto")}><RoleIcon role="auto" size={16} mode="desktop" />Auto</button></Tooltip>}
       {lanes.map(([value, label]) => <button key={value} aria-pressed={(inHeader ? role : lane) === value} onClick={() => inHeader ? setRole(value) : pickLane(value)}><RoleIcon role={value} size={16} mode="desktop" />{label}</button>)}
       {!matchups && !inHeader && <button aria-pressed={lane === "duos"} onClick={() => pickLane("duos")}>Duos</button>}
     </div>
@@ -258,7 +259,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
         <div className="fa-versus-stat">
           {detail.stats ? <><small>{selected.name} win rate</small><strong className={detail.stats.winPct >= 50 ? "up" : "down"}>{fmtPct(detail.stats.winPct)}</strong>
             <span className="fa-versus-bar" role="img" aria-label={`${selected.name} ${fmtPct(detail.stats.winPct)}, ${detail.enemyName} ${fmtPct(100 - detail.stats.winPct)}`}><i style={{ width: `${detail.stats.winPct}%` }} /></span>
-            <span>{fmtCount(detail.stats.games)} games{isLowSample(detail.stats.games) && <> · <em className="fa-low-sample" title="Under 100 games in this matchup: the win rate is a rough read, and the build below is the general one.">Low sample</em></>} · {laneLabel(role)} · <b className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} vs avg</b></span></>
+            <span>{fmtCount(detail.stats.games)} games{isLowSample(detail.stats.games) && <> · <Tooltip label="Under 100 games in this matchup: the win rate is a rough read, and the build below is the general one."><em className="fa-low-sample">Low sample</em></Tooltip></>} · {laneLabel(role)} · <b className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} vs avg</b></span></>
             : <><small>{laneLabel(role)} · {tierLabel(tier)}</small><span>Too few games.</span></>}
         </div>
         <VersusSide id={enemy} name={detail.enemyName} label="Opponent" end />
@@ -327,7 +328,7 @@ function TierLine({ row, rank, lane, average, peak, onOpen, onIntent }: { row: T
     <td><button className="tier-champ" onClick={event => { event.stopPropagation(); onOpen(); }}><NearViewport className="fa-tier-portrait"><ChampionIcon id={row.championId} name={row.name} mode="desktop" /></NearViewport><strong>{row.name}</strong></button></td>
     <td className="col-role"><RoleIcon role={lane} size={18} mode="desktop" /></td>
     <td><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span></td>
-    <td className="col-wr"><strong>{fmtPct(row.winPct)}</strong><small className={delta >= 0 ? "up" : "down"} title="Compared with this role’s average">{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></td>
+    <td className="col-wr"><strong>{fmtPct(row.winPct)}</strong><Tooltip label="Compared with this role’s average"><small className={delta >= 0 ? "up" : "down"}>{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></Tooltip></td>
     <td className="col-num"><RateBar value={row.pickPct} peak={peak.pick} /></td>
     <td className="col-num ban"><RateBar value={row.banPct} peak={peak.ban} /></td>
     <td className="col-num muted">{fmtCount(row.games)}</td>

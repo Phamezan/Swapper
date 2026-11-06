@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { ItemIcon } from "./ItemIcon";
 import { CachedBadge } from "./CachedBadge";
+import { Tooltip } from "../full-app/ui/Tooltip";
 import type { KeystoneBuildView } from "./types";
 
 /** How many placeholder tiles the loading skeleton shows. */
@@ -39,7 +40,7 @@ export function PresetBuild({ mode, build, loading, matchupOnly = false }: Props
   return (
     <div className="preset-build-row">
       <span className="preset-build" aria-label="Starting items, then core items from LoLalytics">
-        {build.starters.map((item) => <span key={item.id} title={`${item.name}${item.count > 1 ? ` ×${item.count}` : ""}`}><ItemIcon id={item.id} name={item.name} mode={mode} />{item.count > 1 && <small>×{item.count}</small>}</span>)}
+        {build.starters.map((item) => <Tooltip key={item.id} label={item.count > 1 ? `${item.name} ×${item.count}` : item.name}><span><ItemIcon id={item.id} mode={mode} />{item.count > 1 && <small>×{item.count}</small>}</span></Tooltip>)}
         {build.starters.length > 0 && build.items.length > 0 && <span aria-hidden>›</span>}
         {build.items.map((item, index) => (
           <Fragment key={item.id}>
@@ -50,18 +51,19 @@ export function PresetBuild({ mode, build, loading, matchupOnly = false }: Props
         <CachedBadge stale={build.stale} updatedAt={build.updatedAt} className="preset-build-cached" />
       </span>
       {build.skillPriority && (
-        <span
-          className="preset-skill-priority"
-          title={build.skillOrder ? `Skill order: ${build.skillOrder.split("").join(" ")}` : "Ability max order"}
-          aria-label={`Skill priority: ${build.skillPriority.split("").join(", then ")}`}
-        >
-          {build.skillPriority.split("").map((key, index) => (
-            <Fragment key={key}>
-              {index > 0 && <span className="preset-skill-sep">›</span>}
-              <span className="preset-skill-key">{key}</span>
-            </Fragment>
-          ))}
-        </span>
+        <Tooltip label={build.skillOrder ? `Skill order: ${build.skillOrder.split("").join(" ")}` : "Ability max order"}>
+          <span
+            className="preset-skill-priority"
+            aria-label={`Skill priority: ${build.skillPriority.split("").join(", then ")}`}
+          >
+            {build.skillPriority.split("").map((key, index) => (
+              <Fragment key={key}>
+                {index > 0 && <span className="preset-skill-sep">›</span>}
+                <span className="preset-skill-key">{key}</span>
+              </Fragment>
+            ))}
+          </span>
+        </Tooltip>
       )}
     </div>
   );

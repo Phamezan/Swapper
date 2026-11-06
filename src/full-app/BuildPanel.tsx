@@ -21,6 +21,7 @@ import { AbilityHover } from "./AbilityHover";
 import { Picker } from "./Picker";
 import { isBoots, mergeProPage, mixPro, proVariant, type ProPart, type BuildVariant as Variant } from "./champ-select-pro";
 import { Slot } from "./ui/Slot";
+import { Tooltip } from "./ui/Tooltip";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
 import "./champ-select.css";
@@ -249,13 +250,13 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         <button aria-pressed={listTab === "builds"} onClick={() => setListTab("builds")}>Builds · {positionLabels[lane] ?? lane}</button>
         <button aria-pressed={listTab === "presets"} onClick={() => setListTab("presets")}>My presets{presets.length > 0 && <small>{presets.length}</small>}</button>
       </div>}
-      {!preview && laneInferred && <small className="cs-inferred-lane" title={`No assigned position; using ${name}’s main lane.`}>Inferred lane</small>}
+      {!preview && laneInferred && <Tooltip label={`No assigned position; using ${name}’s main lane.`}><small className="cs-inferred-lane">Inferred lane</small></Tooltip>}
       {/* Each row is followed by its delete button: the list's grid puts them side by side. */}
       {listTab === "presets" && !preview ? presets.length ? <div className="cs-build-entries is-presets">{presets.map(preset => <Fragment key={preset.name}><button className="cs-build-row" disabled={!!busy} aria-pressed={shownPreset?.name === preset.name} onClick={() => { setPro(null); setCustom(preset.selection); setPresetName(preset.name); setNotice(""); setFailed(null); }}>
         <span className="cs-row-text"><strong>{preset.name}</strong><small>Rune page</small></span>
         <BuildIcons keystone={preset.selection.keystone} secondary={preset.selection.secondaryPageId} items={[]} />
       </button>
-      <button className="cs-preset-delete" disabled={!!busy} aria-label={`Delete preset ${preset.name}`} title="Delete preset" onClick={() => { if (shownPreset?.name === preset.name) setCustom(null); void deletePreset(preset.name); }}><Trash2 size={15} aria-hidden /></button></Fragment>)}</div> :<p>No presets for {name} yet. Change a rune, then choose Save as preset.</p> : <>
+      <Tooltip label="Delete preset"><button className="cs-preset-delete" disabled={!!busy} aria-label={`Delete preset ${preset.name}`} onClick={() => { if (shownPreset?.name === preset.name) setCustom(null); void deletePreset(preset.name); }}><Trash2 size={15} aria-hidden /></button></Tooltip></Fragment>)}</div> :<p>No presets for {name} yet. Change a rune, then choose Save as preset.</p> : <>
       {preview && <h3>Builds</h3>}<div className="cs-build-entries">{variants.map((variant, index) => <button className={`cs-build-row${variant.enemyId ? " is-matchup" : ""}`} disabled={!!busy} key={variant.label} aria-pressed={!pro && !shownPreset && index === variantIndex} onClick={() => showTab(variant.label)}>
         {variant.enemyId ? <span className="cs-row-logo"><ChampionIcon id={variant.enemyId} name={variant.label.slice(3)} mode="desktop" /></span> : null}
         <span className="cs-row-text"><strong>{variant.label}</strong><small>{fmtCount(variant.games)} games</small></span>
@@ -266,13 +267,12 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         disabled={!!busy || extraLoading} onChange={value => void loadKeystone(value)} options={moreKeystones.map(preset => ({ value: String(preset.keystone), label: runeName(preset), icon: <RuneIcon id={preset.keystone} mode="desktop" />, count: preset.play }))} />}
       {extraLoading && <small role="status">Loading main rune build…</small>}
       <h3>Pro builds <small>Recent matches</small></h3>
-      <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { extraRequest.current++; setExtraLoading(false); setPro(match); setProPart("all"); setCustom(null); setNotice(""); setFailed(null); }}
-        title={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}>
+      <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <Tooltip key={match.matchId} label={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}><button className="cs-build-row is-pro" disabled={!!busy} aria-pressed={pro?.matchId === match.matchId} onClick={() => { extraRequest.current++; setExtraLoading(false); setPro(match); setProPart("all"); setCustom(null); setNotice(""); setFailed(null); }}>
         <TeamLogo team={match.team} size={30} mode="desktop" className="cs-row-logo" />
         <span className="cs-row-text"><strong>{match.proName}</strong><small>{match.playedAgo}</small></span>
         <BuildIcons keystone={match.keystone} secondary={match.secondaryPageId} items={proVariant(match).items.items} />
         <b className={`cs-row-chip ${match.win ? "up" : "down"}`}>{match.win ? "W" : "L"}</b>
-      </button>)}</div>
+      </button></Tooltip>)}</div>
       {pros?.stale && <CachedBadge stale updatedAt={pros.updatedAt} />}
       {proError && <p role="alert">{proError}</p>}
       {proLoading && (!pros || !proPageSize) ? <Skeleton label="Loading pro builds" rows={proPageSize ?? 4} height={46} /> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
@@ -317,7 +317,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         {boots.length > 0 && <section><h5>Boots</h5><div className="fa-item-line">{boots.map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={40} />)}</div></section>}
         <section><h5>Core path {pro ? <small>Played in this match</small> : chosen.items.coreGames > 0 && <small>{fmtPct(chosen.items.coreWinPct)} · {fmtCount(chosen.items.coreGames)} games</small>}</h5><div className="fa-item-path">{chosen.items.items.slice(0, chosen.items.coreLen || 3).filter(item => !boots.includes(item)).map((item, index) => <span key={`${item.id}-${index}`}>{index > 0 && <ArrowRight size={14} />}<Slot kind="item" id={item.id} label={item.name} size={40} /></span>)}</div></section>
         {later.length > 0 && <section><h5>Later <small>{pro ? "Completed in this match" : "Popular for each slot"}</small></h5><div className="fa-item-line">{later.map(item => <Slot kind="item" key={item.id} id={item.id} label={item.name} size={40} />)}</div></section>}
-        {chosen.items.options.length > 0 && <section><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <span key={`${item.id}-${item.slot}`} title={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${fmtCount(item.games)} games`}><Slot kind="item" id={item.id} size={40} /></span>)}</div></section>}
+        {chosen.items.options.length > 0 && <section><h5>Situational</h5><div className="fa-item-line">{chosen.items.options.slice(0, 7).map(item => <Tooltip key={`${item.id}-${item.slot}`} label={`${item.name} · slot ${item.slot} · ${fmtPct(item.winPct)} · ${fmtCount(item.games)} games`}><span><Slot kind="item" id={item.id} size={40} /></span></Tooltip>)}</div></section>}
       </div>{chosen.items.stale && <CachedBadge stale updatedAt={chosen.items.updatedAt} />}</div>
     </section>
     </div>
@@ -331,7 +331,7 @@ function AbilityBadge({ championId, ability, skill }: { championId: number; abil
 function SkillOrderGrid({ order, abilities }: { order: string; abilities: Ability[] }) {
   return <div className="cs-skill-grid" role="table" aria-label={`Skill order by level: ${order.split("").join(" ")}`}>
     {skillGrid(order).map(row => <div className="cs-skill-row" role="row" key={row.skill}>
-      <span role="rowheader" className={row.skill === "R" ? "is-ultimate" : ""} title={abilities.find(ability => ability.key === row.skill)?.name}>{row.skill}</span>
+      <Tooltip label={abilities.find(ability => ability.key === row.skill)?.name}><span role="rowheader" className={row.skill === "R" ? "is-ultimate" : ""}>{row.skill}</span></Tooltip>
       {row.cells.map((level, index) => <b role="cell" key={index} className={level ? `is-filled${row.skill === "R" ? " is-ultimate" : ""}` : ""}>{level ?? ""}</b>)}
     </div>)}
   </div>;
@@ -352,7 +352,7 @@ export function RunePage({ catalog, selection, onChange }: { catalog: RuneCatalo
   })}</div>;
 }
 function RuneRowDisplay({ row, selected, onPick }: { row: RuneRow["runes"]; selected: number[]; onPick?: (id: number) => void }) {
-  return <div className="fa-rune-row">{row.map(rune => <button type="button" disabled={!onPick} key={rune.id} className={selected.includes(rune.id) ? "is-chosen" : ""} title={rune.name} aria-label={rune.name} aria-pressed={selected.includes(rune.id)} onClick={() => onPick?.(rune.id)}><NearViewport><RuneIcon id={rune.id} mode="desktop" /></NearViewport></button>)}</div>;
+  return <div className="fa-rune-row">{row.map(rune => <Tooltip key={rune.id} label={rune.name}><button type="button" disabled={!onPick} className={selected.includes(rune.id) ? "is-chosen" : ""} aria-label={rune.name} aria-pressed={selected.includes(rune.id)} onClick={() => onPick?.(rune.id)}><NearViewport><RuneIcon id={rune.id} mode="desktop" /></NearViewport></button></Tooltip>)}</div>;
 }
 
 /** Keystone with its secondary tree, then the first two core items, like a pro build card. */

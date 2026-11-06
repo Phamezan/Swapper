@@ -1,4 +1,5 @@
 import { fmtAgo } from "./types";
+import { Tooltip } from "../full-app/ui/Tooltip";
 
 type Props = {
   /** Whether the panel is showing the last successful result. */
@@ -17,11 +18,10 @@ type Props = {
 export function CachedBadge({ stale, updatedAt, className }: Props) {
   if (!stale) return null;
   return (
-    <span
-      className={`cached-badge${className ? ` ${className}` : ""}`}
-      title="The live source could not be reached; showing the last successful result."
-    >
-      Cached · updated {fmtAgo(updatedAt)}
-    </span>
+    <Tooltip label="The live source could not be reached; showing the last successful result.">
+      <span className={`cached-badge${className ? ` ${className}` : ""}`}>
+        Cached · updated {fmtAgo(updatedAt)}
+      </span>
+    </Tooltip>
   );
 }

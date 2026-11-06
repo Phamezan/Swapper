@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { ChampionIcon } from "../../runes/ChampionIcon";
 import { mapPosition, personalKill, type MatchPlayer, type TimelineKill } from "../MatchDetailModel";
 import { eventLabel, side, time } from "./GraphEvents";
+import { Tooltip } from "../ui/Tooltip";
 
 let minimap: Promise<string> | undefined;
 export type InspectEvent = (events: TimelineKill[], target: HTMLElement) => void;
@@ -34,12 +35,14 @@ export function KillMap({ kills, total, minute, pinned, onUnpin, players, select
     <div className="md-map-filter-heading"><span>Filter kills by player</span><button aria-pressed={selected == null} onClick={() => onSelect(null)}>All players</button></div>
     {[100, 200].map(teamId => <div className={`md-champion-filters ${side(teamId)}`} key={teamId} role="group" aria-label={`${teamId === 100 ? "Blue" : "Red"} team players`}>
       <span>{teamId === 100 ? "Blue" : "Red"}</span>
-      {players.filter(player => player.teamId === teamId).map(player => <button key={player.participantId}
+      {players.filter(player => player.teamId === teamId).map(player => <Tooltip key={player.participantId} label={`${name(player.championId)}${player.me ? " · You" : ""}`}>
+      <button
         className={player.me ? "is-me" : ""} aria-pressed={selected === player.participantId}
-        aria-label={`Filter kills involving ${name(player.championId)}${player.me ? " (you)" : ""}`} title={`${name(player.championId)}${player.me ? " · You" : ""}`}
+        aria-label={`Filter kills involving ${name(player.championId)}${player.me ? " (you)" : ""}`}
         onClick={() => onSelect(selected === player.participantId ? null : player.participantId)}>
-        <ChampionIcon id={player.championId} name={name(player.championId)} mode="desktop" />
-      </button>)}
+        <ChampionIcon id={player.championId} mode="desktop" />
+      </button>
+      </Tooltip>)}
     </div>)}
     <p className="md-map-note">Dots show the killing team. Ringed dots involve you. Hover the graph to see one minute; click it to keep that minute. Selection also filters the event lanes.</p>
   </aside>;
