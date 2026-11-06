@@ -12,9 +12,10 @@ import { SpellIcon } from "../runes/SpellIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
 import { TIER_OPTIONS, fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen } from "../runes/types";
-import type { ChampionBuild, HighestWinView, ItemsImported, MatchupView, PresetBuildView, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
+import type { ChampionBuild, HighestWinView, ItemsImported, MatchupView, PresetBuildView, Preset, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
 import { overviewSelection, spellLayout, type FlashKey } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
+import { positionLabels } from "../runes/runesPanelModel";
 import { NearViewport } from "./NearViewport";
 import { AbilityHover } from "./AbilityHover";
 import { Picker } from "./Picker";
@@ -36,7 +37,7 @@ const PRO_STEP = 6;
 /** The auto-apply setting, shown inline on the champion select page. */
 export type AutoApply = { checked: boolean; disabled: boolean; onChange: (enabled: boolean) => void };
 
-export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply, preview, proPageSize, loading }: {
+export function BuildPanel({ championId, name, lane, tier, build, liveView, matchups = [], preferMatchup, autoApply, preview, proPageSize, loading, laneInferred = false }: {
   championId: number; name: string; lane: string; tier: string; build: ChampionBuild | null; liveView?: RunesView | null;
   /** The lane matchup, or each possible one; adds a "vs <enemy>" tab for each with its own build. */
   matchups?: MatchupView[]; autoApply?: AutoApply;
@@ -44,6 +45,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   preview?: boolean;
   /** Draft pages through pro builds to fit the window without a scrolling list. */
   proPageSize?: number;
+  laneInferred?: boolean;
   /** Open on the matchup build instead of the most played one, when there is one. */
   preferMatchup?: boolean;
   /** The build is still being fetched: show a skeleton instead of "unavailable". */
@@ -53,6 +55,9 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const [details, setDetails] = useState<PresetBuildView | null>(null);
   // A common build on another keystone than Most played and Highest WR.
   const [other, setOther] = useState<HighestWinView | null>(null);
+  const [extra, setExtra] = useState<Variant | null>(null);
+  const [extraLoading, setExtraLoading] = useState(false);
+  const extraRequest = useRef(0);
   const [abilities, setAbilities] = useState<Ability[]>([]);
   // Label of the clicked tab; null until then, so the default follows what loaded. Labels are unique, indexes shift as tabs load.
   const [chosenLabel, setChosenLabel] = useState<string | null>(null);
@@ -107,6 +112,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const selection = overviewSelection(build, catalog?.trees ?? []);
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
+    extraRequest.current++; setExtra(null); setExtraLoading(false);
     setDetails(null); setOther(null); setChosenLabel(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setProOffset(0); setNotice(""); setFailed(null); setCustom(null);
     proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
     setImported(null);
@@ -127,7 +133,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     return () => { live = false; };
   }, [championId, lane, tier, sourceKey, details]);
   useEffect(() => { void loadPros(1); }, [championId, lane, tier, sourceKey]);
-  useEffect(() => () => { proRequest.current++; }, []);
+  useEffect(() => () => { proRequest.current++; extraRequest.current++; }, []);
   // With auto-apply on, switching to another build (or editing its runes) applies it; set each render below.
   const autoRun = useRef<() => void>(() => {});
   const pickKey = JSON.stringify([chosenLabel, pro?.matchId ?? null, proPart, custom]);
@@ -164,6 +170,28 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   for (const matchup of matchups) {
     if (matchup.preset && matchup.build && !matchup.fallback) variants.push({ label: `vs ${matchup.enemyName}`, enemyId: matchup.enemyChampionId, selection: selectionFromPreset(matchup.preset), items: matchup.build, spells: matchup.preset.spells, order: matchup.build.skillOrder ?? null, winPct: matchup.stats?.winPct ?? matchup.build.coreWinPct, games: matchup.stats?.games ?? matchup.build.coreGames });
   }
+  if (extra) variants.push(extra);
+  const shownKeystones = new Set(variants.map(variant => variant.selection?.keystone));
+  const moreKeystones = [...(liveView?.keystonePresets ?? liveView?.presets ?? [])]
+    .sort((a, b) => b.play - a.play)
+    .filter((preset, index, presets) => !shownKeystones.has(preset.keystone) && presets.findIndex(other => other.keystone === preset.keystone) === index);
+  const runeName = (preset: Preset) => catalog?.trees.flatMap(tree => tree.keystones).find(rune => rune.id === preset.keystone)?.name || preset.title;
+  const loadKeystone = async (value: string) => {
+    const preset = moreKeystones.find(preset => preset.keystone === Number(value));
+    if (!preset) return;
+    const request = ++extraRequest.current;
+    setExtraLoading(true); setNotice("");
+    try {
+      const selection = selectionFromPreset(preset);
+      const items = await invoke<PresetBuildView | null>("get_keystone_build", { championId, position: lane, tier, keystone: preset.keystone, mostPlayed: selection });
+      if (request !== extraRequest.current) return;
+      if (!items) throw new Error("Build unavailable for this main rune. Try another.");
+      const label = runeName(preset);
+      setExtra({ label, selection, items, spells: preset.spells, order: items.skillOrder ?? build.skillOrder, winPct: items.coreWinPct, games: items.coreGames });
+      setPro(null); setCustom(null); setChosenLabel(label); setFailed(null);
+    } catch (error) { if (request === extraRequest.current) setNotice(String(error).replace(/^Error: /, "")); }
+    finally { if (request === extraRequest.current) setExtraLoading(false); }
+  };
   const matchupIndex = variants.findIndex(variant => variant.label.startsWith("vs "));
   const labelIndex = chosenLabel === null ? -1 : variants.findIndex(variant => variant.label === chosenLabel);
   const variantIndex = labelIndex >= 0 ? labelIndex : preferMatchup && matchupIndex > 0 ? matchupIndex : 0;
@@ -182,7 +210,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const boots = chosen.items.items.filter(isBoots);
   const later = chosen.items.items.slice(chosen.items.coreLen || 3).filter(item => !isBoots(item));
   const order = maxOrder(chosen.order, chosen.items.skillPriority);
-  const showTab = (label: string) => { setPro(null); setChosenLabel(label); setCustom(null); setNotice(""); setFailed(null); };
+  const showTab = (label: string) => { extraRequest.current++; setExtraLoading(false); setPro(null); setChosenLabel(label); setCustom(null); setNotice(""); setFailed(null); };
   const savePreset = async (name: string) => {
     if (!custom) return;
     try { setPresets(await invoke<SavedRunes[]>("save_rune_preset", { championId, name, selection: custom })); setPresetName(name.trim()); setNaming(null); setNotice(""); }
@@ -218,9 +246,10 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   return <div className="fa-build-section cs-build-browser">
     <aside className="cs-build-list" aria-label="Browse builds">
       {!preview && <div className="cs-list-tabs" role="group" aria-label="Build list">
-        <button aria-pressed={listTab === "builds"} onClick={() => setListTab("builds")}>Builds</button>
+        <button aria-pressed={listTab === "builds"} onClick={() => setListTab("builds")}>Builds · {positionLabels[lane] ?? lane}</button>
         <button aria-pressed={listTab === "presets"} onClick={() => setListTab("presets")}>My presets{presets.length > 0 && <small>{presets.length}</small>}</button>
       </div>}
+      {!preview && laneInferred && <small className="cs-inferred-lane" title={`No assigned position; using ${name}’s main lane.`}>Inferred lane</small>}
       {/* Each row is followed by its delete button: the list's grid puts them side by side. */}
       {listTab === "presets" && !preview ? presets.length ? <div className="cs-build-entries is-presets">{presets.map(preset => <Fragment key={preset.name}><button className="cs-build-row" disabled={!!busy} aria-pressed={shownPreset?.name === preset.name} onClick={() => { setPro(null); setCustom(preset.selection); setPresetName(preset.name); setNotice(""); setFailed(null); }}>
         <span className="cs-row-text"><strong>{preset.name}</strong><small>Rune page</small></span>
@@ -233,8 +262,11 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
         <BuildIcons keystone={variant.selection?.keystone} secondary={variant.selection?.secondaryPageId} items={variant.items.items} />
         <b className="cs-row-chip">{fmtPct(variant.winPct)}</b>
       </button>)}</div>
+      {!preview && moreKeystones.length > 0 && <Picker label="More main runes" value={extra ? String(extra.selection?.keystone) : ""}
+        disabled={!!busy || extraLoading} onChange={value => void loadKeystone(value)} options={moreKeystones.map(preset => ({ value: String(preset.keystone), label: runeName(preset), icon: <RuneIcon id={preset.keystone} mode="desktop" />, count: preset.play }))} />}
+      {extraLoading && <small role="status">Loading main rune build…</small>}
       <h3>Pro builds <small>Recent matches</small></h3>
-      <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { setPro(match); setProPart("all"); setCustom(null); setNotice(""); setFailed(null); }}
+      <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <button className="cs-build-row is-pro" disabled={!!busy} key={match.matchId} aria-pressed={pro?.matchId === match.matchId} onClick={() => { extraRequest.current++; setExtraLoading(false); setPro(match); setProPart("all"); setCustom(null); setNotice(""); setFailed(null); }}
         title={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}>
         <TeamLogo team={match.team} size={30} mode="desktop" className="cs-row-logo" />
         <span className="cs-row-text"><strong>{match.proName}</strong><small>{match.playedAgo}</small></span>

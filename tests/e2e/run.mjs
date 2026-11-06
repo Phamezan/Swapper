@@ -1856,6 +1856,39 @@ async function main() {
     })]));
   })()`);
   let draftLayout;
+  await check("Roleless draft keeps its main lane and loads other main runes", async () => {
+    await navigate(`${fullApp}?draft-guide`, '.match-row');
+    await page.evaluate(`(async () => {
+      localStorage.setItem('cs-role', 'mid');
+      const invoke = window.__TAURI_INTERNALS__.invoke;
+      const base = await invoke('get_runes');
+      const extra = {index:1,title:'Conqueror',primaryPageId:8000,secondaryPageId:8300,keystone:8010,
+        primaryRunes:[9111,9104,8299],secondaryRunes:[8304,8347],shards:[5005,5008,5001],play:250,winPct:52,spells:[4,12]};
+      const view = {...base,championId:126,championName:'Jayce',position:'top',applied:null,enemyChampionId:0,enemies:[],keystonePresets:[...base.presets,extra]};
+      window.__draftBuildCalls=[];
+      window.__TAURI_INTERNALS__.invoke=(cmd,args,options)=> {
+        if(['get_runes','get_keystone_build','apply_rune_page'].includes(cmd)) window.__draftBuildCalls.push({cmd,args});
+        if(cmd==='get_runes') return Promise.resolve(view);
+        if(cmd==='full_app_draft') return Promise.resolve({supported:true,allies:[{championId:126,position:'',local:true,locked:true}],enemies:[],bans:[],timer:null});
+        if(cmd==='get_other_build') return Promise.resolve(null);
+        return invoke(cmd,args,options);
+      };
+    })()`);
+    await nav('Draft', '.cs-build-row');
+    await page.text('.cs-list-tabs', 'Builds · Top');
+    await page.visible('button[aria-label="Top"][aria-pressed="true"]');
+    await page.visible('.cs-inferred-lane[title]');
+    await page.visible('button[aria-label="More main runes: Choose"]');
+    assert.equal(await page.evaluate("window.__draftBuildCalls.some(c=>c.cmd==='get_runes' && c.args?.position==='mid')"), false);
+    await page.click('button[aria-label="More main runes: Choose"]');
+    await page.text('.fa-picker-option', 'Conqueror');
+    await page.click('.fa-picker-option');
+    await page.text('.cs-build-selected', 'Conqueror');
+    assert.ok(await page.evaluate("window.__draftBuildCalls.some(c=>c.cmd==='get_keystone_build' && c.args?.championId===126 && c.args.position==='top' && c.args.keystone===8010)"));
+    assert.equal(await page.evaluate("!!document.querySelector('button[aria-label^=\"More main runes:\"]')"), false);
+    await page.click('.cs-apply-bar .fa-primary');
+    await page.wait("window.__draftBuildCalls.some(c=>c.cmd==='apply_rune_page' && c.args.selection.keystone===8010)", 'chosen main rune applies');
+  });
   await check("Draft planning fits the viewport", async () => {
     await navigate(`${draft}?fixture=planning`, ".cs-pick");
     assert.equal(await page.evaluate("!!document.querySelector('.fa-draft-page :is(.ui-page-header, .cs-preview, .cs-band-foot)')"), false);

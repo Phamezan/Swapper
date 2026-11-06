@@ -500,13 +500,24 @@ async fn position_for(
     } else {
         None
     };
-    roleless_position(lane)
+    let overview_lane = if lane.is_none() && context.champion_id > 0 {
+        let names = data::champion_names().await.unwrap_or_default();
+        match names.get(&context.champion_id).and_then(|name| lolalytics::champion_slug(name)) {
+            Some(slug) => overview::load(&slug, context.champion_id, None, tier).await
+                .ok().flatten().map(|found| found.value.lane),
+            None => None,
+        }
+    } else {
+        None
+    };
+    roleless_position(lane, overview_lane.as_deref())
 }
 
 /// The op.gg position for a champion's main lane, or jungle when it is unknown.
-fn roleless_position(main_lane: Option<&str>) -> &'static str {
+fn roleless_position(main_lane: Option<&str>, overview_lane: Option<&str>) -> &'static str {
     main_lane
         .and_then(session::position_from_request)
+        .or_else(|| overview_lane.and_then(session::position_from_request))
         .unwrap_or("jungle")
 }
 
@@ -631,11 +642,19 @@ mod tests {
 
     #[test]
     fn a_roleless_context_uses_the_main_lane_and_falls_back_to_jungle() {
-        assert_eq!(roleless_position(Some("middle")), "mid");
-        assert_eq!(roleless_position(Some("bottom")), "adc");
-        assert_eq!(roleless_position(Some("support")), "support");
-        assert_eq!(roleless_position(None), "jungle");
-        assert_eq!(roleless_position(Some("nonsense")), "jungle");
+        assert_eq!(roleless_position(Some("middle"), None), "mid");
+        assert_eq!(roleless_position(Some("bottom"), None), "adc");
+        assert_eq!(roleless_position(Some("support"), None), "support");
+        assert_eq!(roleless_position(None, None), "jungle");
+        assert_eq!(roleless_position(Some("nonsense"), None), "jungle");
+    }
+
+    #[test]
+    fn roleless_lane_uses_the_overview_lane_when_the_ranking_is_missing() {
+        assert_eq!(roleless_position(None, Some("top")), "top");
+        assert_eq!(roleless_position(None, Some("middle")), "mid");
+        assert_eq!(roleless_position(Some("bottom"), Some("top")), "adc");
+        assert_eq!(roleless_position(Some("invalid"), Some("top")), "top");
     }
 
     #[test]

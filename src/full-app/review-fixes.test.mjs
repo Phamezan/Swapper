@@ -67,7 +67,7 @@ function harness(file, exportName, commands = {}, visibility = "visible", enviro
     "@tauri-apps/api/event": { listen: async (name, fn) => { handlers.set(name, fn); return () => handlers.delete(name); } },
     "../runes/types": runeTypes, "./champ-select-model": model, "./buildLogic": buildLogic, "./championsModel": championsModel, "./ui/format": format,
     "./types": runeTypes, "../full-app/champ-select-pro": proBuilds, "./champ-select-pro": proBuilds,
-    "./runesPanelModel": runesPanelModel,
+    "./runesPanelModel": runesPanelModel, "../runes/runesPanelModel": runesPanelModel,
     "../settingsEvents": { useSettingsVersion: () => 0 },
     ...environment.modules,
   };
@@ -377,4 +377,69 @@ test("BuildPanel shows a skeleton, not 'unavailable', while the build loads", as
   assert.ok(!textOf(h.tree()).includes("Build unavailable"));
   h.render({ ...props, loading: false });
   assert.ok(textOf(h.tree()).includes("Build unavailable"));
+});
+
+
+test("locked roleless draft keeps the champion main lane instead of the saved planning lane", async () => {
+  const changes = [];
+  const view = { ...fixtureView("locked"), championId: 126, championName: "Jayce", position: "top" };
+  const draft = { ...fixtureDraft("locked"), allies: [{ championId: 126, position: "", local: true, locked: true }] };
+  const h = harness("./ChampionSelect.tsx", "ChampionSelect", { full_app_draft: draft }, "visible", {
+    globals: { localStorage: { getItem: () => "mid", setItem() {} } },
+    modules: { "./BuildPanel": { BuildPanel: "build-panel" } },
+  });
+  const props = { view: { ...view, locked: false }, championApi: { list: async () => [], overview: async () => null, tierList: async () => ({ rows: [] }) },
+    onPositionChange: role => changes.push(role), onLoadBuild: async () => null, onLoadMatchup: async () => null };
+  h.render(props); await h.flush();
+  assert.deepEqual(changes, [], "planning must not overwrite the inferred backend lane");
+  h.render({ ...props, view }); await h.flush();
+  assert.deepEqual(changes, [], "saved Mid must not replace Jayce Top");
+  assert.equal(nodes(h.tree()).find(n => n.props["aria-label"] === "Top").props["aria-pressed"], true);
+  assert.equal(nodes(h.tree()).find(n => n.type === "build-panel").props.laneInferred, true);
+  nodes(h.tree()).find(n => n.props["aria-label"] === "Mid").props.onClick();
+  await h.flush();
+  assert.equal(changes.at(-1), "mid", "manual lane still wins");
+  assert.equal(nodes(h.tree()).find(n => n.type === "build-panel").props.laneInferred, false);
+});
+
+test("draft more main runes excludes shown keystones and loads a chosen full build", async () => {
+  const preset = { ...fixtureView("locked").presets[0], keystone: 8128, title: "Dark Harvest", primaryPageId: 8100, play: 250 };
+  const liveView = { ...fixtureView("locked"), keystonePresets: [build().runes, preset, { ...preset, play: 10 }] };
+  const chosenItems = { ...itemBuild(), coreWinPct: 59 };
+  const { h } = panel({ liveView, laneInferred: true }, { get_keystone_build: ({ keystone }) => keystone === 8128 ? chosenItems : null });
+  await h.flush();
+  const picker = nodes(h.tree()).find(n => n.props.label === "More main runes");
+  assert.ok(picker);
+  assert.deepEqual(picker.props.options.map(option => option.value), ["8128"]);
+  assert.match(textOf(h.tree()), /Builds · Top/);
+  assert.match(textOf(h.tree()), /Inferred/);
+  await picker.props.onChange("8128"); await h.flush();
+  assert.deepEqual(h.calls.findLast(c => c.name === "get_keystone_build").args, {
+    championId: 266, position: "top", tier: "diamond_plus", keystone: 8128, mostPlayed: runeTypes.selectionFromPreset(preset),
+  });
+  assert.ok(nodes(h.tree()).some(n => n.props.className === "cs-build-selected" && /Dark Harvest/.test(textOf(n))));
+  assert.ok(!nodes(h.tree()).some(n => n.props.label === "More main runes"), "hide when no other keystones remain");
+  button(h, "Apply all").props.onClick(); await h.flush();
+  assert.equal(h.calls.find(c => c.name === "apply_rune_page").args.selection.keystone, 8128);
+});
+
+
+test("other main rune failures preserve the current build and stale responses cannot change lanes", async () => {
+  const preset = { ...build().runes, keystone: 8128, title: "Dark Harvest" };
+  const liveView = { ...fixtureView("locked"), keystonePresets: [preset] };
+  const failed = panel({ liveView }, { get_keystone_build: () => null });
+  await failed.h.flush();
+  nodes(failed.h.tree()).find(n => n.props.label === "More main runes").props.onChange("8128");
+  await failed.h.flush();
+  assert.match(textOf(failed.h.tree()), /Build unavailable for this main rune/);
+  assert.match(textOf(nodes(failed.h.tree()).find(n => n.props.className === "cs-build-selected")), /Most played/);
+  let finish;
+  const waiting = new Promise(resolve => { finish = resolve; });
+  const { h, props } = panel({ liveView }, { get_keystone_build: ({ keystone }) => keystone === 8128 ? waiting : null });
+  await h.flush();
+  nodes(h.tree()).find(n => n.props.label === "More main runes").props.onChange("8128");
+  h.render({ ...props, lane: "mid" }); await h.flush();
+  finish(itemBuild()); await h.flush();
+  assert.match(textOf(nodes(h.tree()).find(n => n.props.className === "cs-build-selected")), /Most played/);
+  assert.equal(nodes(h.tree()).some(n => n.props.className === "cs-build-row" && /Dark Harvest/.test(textOf(n))), false);
 });

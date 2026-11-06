@@ -296,6 +296,8 @@ export type RunesView = {
   sourceLabel: string;
   message: string | null;
   presets: Preset[];
+  /** Most played page for each observed keystone at this champion/lane/tier. */
+  keystonePresets?: Preset[];
   trees: RuneTree[];
   shards: RuneRow[];
   applied: Applied | null;

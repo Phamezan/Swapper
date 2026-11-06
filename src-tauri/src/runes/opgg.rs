@@ -406,6 +406,21 @@ pub fn presets(groups: &[RunePageGroup]) -> Vec<Preset> {
         .collect()
 }
 
+/// Best observed page for every keystone, including alternatives within one tree pair.
+pub fn keystone_presets(groups: &[RunePageGroup]) -> Vec<Preset> {
+    let mut builds: Vec<_> = groups.iter().flat_map(|group| &group.builds).collect();
+    builds.sort_by(|a, b| b.weight().total_cmp(&a.weight()).then_with(|| b.win.cmp(&a.win)));
+    let mut choices: Vec<Preset> = Vec::new();
+    for build in builds {
+        if let Some(preset) = Preset::from_build(choices.len(), build) {
+            if !choices.iter().any(|choice| choice.keystone == preset.keystone) {
+                choices.push(preset);
+            }
+        }
+    }
+    choices
+}
+
 pub struct OpggClient {
     client: reqwest::Client,
     base_url: String,
@@ -529,6 +544,26 @@ mod tests {
         // Second preset uses the Sorcery keystone.
         assert_eq!(presets[1].keystone, 8992);
         assert_eq!(presets[2].keystone, 8214);
+    }
+
+    #[test]
+    fn keystone_choices_include_alternatives_inside_one_group_and_deduplicate() {
+        let mut groups = parse(FIXTURE).unwrap();
+        let mut alternative = groups[0].builds[0].clone();
+        alternative.primary_rune_ids[0] = 8128;
+        alternative.play = 17;
+        alternative.win = 9;
+        alternative.blend = None;
+        groups[0].builds.push(alternative.clone());
+        alternative.play = 8;
+        groups[1].builds.push(alternative);
+        let choices = keystone_presets(&groups);
+        let harvest: Vec<_> = choices.iter().filter(|preset| preset.keystone == 8128).collect();
+        assert_eq!(harvest.len(), 1);
+        assert_eq!(harvest[0].play, 17);
+        assert_eq!(harvest[0].primary_runes, groups[0].builds[0].primary_rune_ids[1..]);
+        assert!(choices.windows(2).all(|pair| pair[0].play >= pair[1].play));
+        assert!(keystone_presets(&[]).is_empty());
     }
 
     #[test]

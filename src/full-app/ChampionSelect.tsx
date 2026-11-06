@@ -69,14 +69,13 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
   }, [draft?.value.canLock, !draft]);
   const [lastRole, setLastRole] = useState(() => { try { return localStorage.getItem("cs-role") || "mid"; } catch { return "mid"; } });
   const assigned = roleSlug(draft?.value.allies.find(member => member.local)?.position ?? "");
-  // The role picked in this draft wins; otherwise League's assigned role (a role swap clears the pick so the list
-  // follows it), otherwise the saved role. Never the backend's roleless guess, so hovering cannot swap the list.
+  // Keep the saved role while planning; a locked roleless pick follows its inferred main lane.
   const [picked, setPicked] = useState<string | null>(null);
   useEffect(() => setPicked(null), [assigned]);
-  const role = picked || assigned || lastRole;
+  const role = picked || assigned || (mode === "build" ? view?.position : "") || lastRole;
   useEffect(() => {
-    if (view?.championId && view.position && view.position !== role) props.onPositionChange(role);
-  }, [view?.championId, view?.position, role]);
+    if ((picked || assigned) && view?.championId && view.position && view.position !== role) props.onPositionChange(role);
+  }, [view?.championId, view?.position, role, picked, assigned]);
   const changeRole = (next: string) => {
     setPicked(next);
     setLastRole(next);
@@ -138,7 +137,7 @@ export function ChampionSelect(props: ComponentProps<typeof RunesPanel>) {
         </div>
         {enemyId > 0 && view.championId > 0 && <ChampionSelectMatchup key={`${view.championId}-${enemyId}-${role}`}
           champion={{ id: view.championId, name: championName }} enemyId={enemyId} enemyName={names.get(enemyId) ?? view.enemyChampionName ?? "opponent"} lane={role} onOpenMatchupGuide={props.onOpenMatchupGuide} />}
-        <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} loading={!overview && !error} liveView={view} matchups={matchups} proPageSize={3}
+        <BuildPanel championId={view.championId} name={championName} lane={view.position} tier={view.tier} build={build} loading={!overview && !error} liveView={view} matchups={matchups} proPageSize={3} laneInferred={!picked && !assigned}
           autoApply={{ checked: view.autoApply, disabled: props.busy, onChange: props.onToggleAutoApply }} />
       </>}
       {props.shopNotice && !props.shopNotice.ok && <Notice>{props.shopNotice.message}</Notice>}

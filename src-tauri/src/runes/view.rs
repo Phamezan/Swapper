@@ -312,6 +312,7 @@ pub struct RunesView {
     pub source_label: String,
     pub message: Option<String>,
     pub presets: Vec<PresetView>,
+    pub keystone_presets: Vec<PresetView>,
     pub trees: Vec<RuneTreeView>,
     pub shards: Vec<RuneRowView>,
     pub applied: Option<AppliedView>,
@@ -369,6 +370,7 @@ impl RunesView {
             source_label: "Unavailable".into(),
             message: Some(message.into()),
             presets: Vec::new(),
+            keystone_presets: Vec::new(),
             trees: Vec::new(),
             shards: Vec::new(),
             applied: None,
@@ -617,6 +619,25 @@ pub async fn view(
             spells: preset_spells.clone(),
         })
         .collect();
+    let keystone_presets = if loaded.groups.is_empty() {
+        presets.clone()
+    } else {
+        super::opgg::keystone_presets(&loaded.groups).into_iter()
+            .filter(|preset| catalog.keystones(preset.primary_page_id).contains(&preset.keystone))
+            .map(|preset| PresetView {
+                index: preset.index,
+                title: catalog.name(preset.keystone).unwrap_or("Main rune").to_string(),
+                primary_page_id: preset.primary_page_id,
+                secondary_page_id: preset.secondary_page_id,
+                keystone: preset.keystone,
+                primary_runes: preset.primary_runes,
+                secondary_runes: preset.secondary_runes,
+                shards: preset.shards,
+                win_pct: preset.win_pct,
+                play: preset.play,
+                spells: preset_spells.clone(),
+            }).collect()
+    };
     let position = position.to_string();
     let mode = context.mode().to_string();
     let applied = super::shared()
@@ -667,6 +688,7 @@ pub async fn view(
         source_label: source_label(loaded.source, loaded.provider).to_string(),
         message,
         presets,
+        keystone_presets,
         trees: build_trees(&catalog, &aggregates),
         shards: build_shards(&catalog, &aggregates),
         applied,
