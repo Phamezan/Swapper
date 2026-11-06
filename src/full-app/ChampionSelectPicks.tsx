@@ -3,14 +3,14 @@ import { invoke } from "@tauri-apps/api/core";
 import { LockKeyhole, X, Ban } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { fmtPct, type ChampionCountersView, type TierListView } from "../runes/types";
-import type { RecommendedPick } from "./types";
+import type { RecommendedPicks } from "./types";
 import { ChampionArt } from "./MatchupStrip";
 import { NearViewport } from "./NearViewport";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
 import { allChampions, counterPicks, defaultTab, recommendedSuggestions, searchChampions, type Suggestion, type SuggestionTab } from "./champ-select-model";
 
-type Loaded = { key: string; picks: Suggestion[] | null; message: string };
+type Loaded = { key: string; picks: Suggestion[] | null; message: string; patchNote: string };
 const TABS: [SuggestionTab, string][] = [["all", "All"], ["recommended", "Recommended"], ["counters", "Counters"]];
 
 /** A card click declares intent; its separate Lock in button selects and locks. */
@@ -39,8 +39,8 @@ export function PickSuggestions({ role, tier, enemyIds, taken, names, hovered: p
     const cached = cache.current.get(key);
     if (cached) { setLoaded(cached); return; }
     let live = true;
-    const done = (picks: Suggestion[] | null, message = "") => {
-      const value = { key, picks, message };
+    const done = (picks: Suggestion[] | null, message = "", patchNote = "") => {
+      const value = { key, picks, message, patchNote };
       if (picks) cache.current.set(key, value);
       if (live) setLoaded(value);
     };
@@ -49,8 +49,11 @@ export function PickSuggestions({ role, tier, enemyIds, taken, names, hovered: p
     else if (tab === "counters" && !enemyId) done(null, "Waiting for your lane opponent.");
     else if (tab === "counters") void invoke<ChampionCountersView>("full_app_matchups", { championId: enemyId, position: role, tier })
       .then(view => done(counterPicks(view.beats, new Set(), 24))).catch(reason => done(null, String(reason)));
-    else if (tab === "recommended") void invoke<RecommendedPick[]>("recommended_picks", { role, tier })
-      .then(picks => done(recommendedSuggestions(picks, names, new Set()))).catch(reason => done(null, String(reason)));
+    else if (tab === "recommended") void invoke<RecommendedPicks>("recommended_picks", { role, tier })
+      .then(result => done(recommendedSuggestions(result.picks, names, new Set()),
+        result.status === "no_curated_list" ? "No curated list available for this role and patch." : "",
+        result.curatedPatch && result.curatedPatch !== result.currentPatch ? `List from patch ${result.curatedPatch}` : ""))
+      .catch(reason => done(null, String(reason)));
     else void tierList(role, tier).then(view => done(allChampions(names, view.rows, new Set()))).catch(() => done(allChampions(names, [], new Set())));
     return () => { live = false; };
   }, [key]);
@@ -61,7 +64,7 @@ export function PickSuggestions({ role, tier, enemyIds, taken, names, hovered: p
   const banning = banTurn !== undefined;
   const hovered = banning ? banTurn : pickHover;
   const ownedOrFree = (id: number) => banning || !pickable.size || pickable.has(id);
-  const picks = (loaded?.key === key ? loaded.picks ?? [] : []).filter(pick => !taken.has(pick.championId) && ownedOrFree(pick.championId)).slice(0, tab === "all" ? undefined : 8)
+  const picks = (loaded?.key === key ? loaded.picks ?? [] : []).filter(pick => !taken.has(pick.championId) && ownedOrFree(pick.championId)).slice(0, tab === "all" ? undefined : tab === "recommended" ? 10 : 8)
     .map(pick => ({ ...pick, name: names.get(pick.championId) ?? pick.name }));
   // Typing searches every champion; win rates show when the current tab has them.
   const known = new Map((loaded?.key === key ? loaded.picks ?? [] : []).map(pick => [pick.championId, pick]));
@@ -106,6 +109,7 @@ export function PickSuggestions({ role, tier, enemyIds, taken, names, hovered: p
       </div>
     </div>
     {notice && <Notice tone="error">{notice}</Notice>}
+    {tab === "recommended" && !query.trim() && loaded?.key === key && loaded.patchNote && <small className="fa-muted">{loaded.patchNote}</small>}
     {tab === "counters" && !query.trim() && enemyIds.length > 1 && <div className="fa-seg cs-laner-pick" role="group" aria-label="Possible lane opponent">
       <small>Counters for</small>{enemyIds.map(id => <button key={id} aria-pressed={id === enemyId} onClick={() => setChosenEnemy(id)}>{names.get(id) ?? "Unknown"}</button>)}</div>}
     {query.trim() ? !found.length ? <p className="fa-panel-empty">No champion matches "{query.trim()}".</p>
@@ -122,7 +126,7 @@ function PickCard({ pick, hovered, pending, locking, onHover }: { pick: Card; ho
   const stats = pick.winPct != null && !Number.isNaN(pick.winPct) && !!pick.games;
   return <article className={`cs-pick${pick.championId === hovered ? " is-hovered" : ""}${pick.championId === locking ? " is-locking" : ""}`}>
     <button type="button" className="cs-pick-select" aria-label={`Select ${pick.name}`} aria-pressed={pick.championId === hovered} disabled={!!pending || !!locking} onClick={() => onHover(pick.championId)}
-    title={stats ? `${pick.name}: ${fmtPct(pick.winPct!)} over ${fmtCount(pick.games!)} games` : pick.name}>
+    aria-description={pick.reason} title={[stats ? `${pick.name}: ${fmtPct(pick.winPct!)} over ${fmtCount(pick.games!)} games` : pick.name, pick.reason].filter(Boolean).join("\n")}>
     <NearViewport className="cs-pick-art"><ChampionArt id={pick.championId} name={pick.name} kind="loading" /></NearViewport>
     <span className="cs-pick-copy"><strong>{pick.name}</strong>{stats && <><b>{fmtPct(pick.winPct!)} <small>WR</small></b><small>{fmtCount(pick.games!)} games</small></>}{pick.flex && <span className="cs-flex">Flex</span>}</span>
     {pick.championId === pending && <span className="cs-pick-state">Hovering…</span>}

@@ -19,6 +19,14 @@ test("offline sync preserves exact compiled bytes and rejects mismatches before 
     assert.equal(await syncGuides(source, destination), 1);
     assert.deepEqual(await readFile(join(destination, "champions", "103.json")), bytes);
     const originalIndex = await readFile(join(destination, "index.json"));
+    const blind = Buffer.from('{"schema":1,"lists":[]}\r\n');
+    await writeFile(join(source, "blind-picks.json"), blind);
+    assert.equal(await syncGuides(source, destination), 1);
+    assert.deepEqual(await readFile(join(destination, "blind-picks.json")), blind);
+    await writeFile(join(source, "blind-picks.json"), '{"schema":2,"lists":[]}');
+    await assert.rejects(syncGuides(source, destination), /Invalid blind picks/);
+    assert.deepEqual(await readFile(join(destination, "blind-picks.json")), blind);
+    await writeFile(join(source, "blind-picks.json"), blind);
     index.champions["103"].sha256 = "0".repeat(64);
     await writeFile(indexPath, JSON.stringify(index));
     await assert.rejects(syncGuides(source, destination), /SHA-256/);

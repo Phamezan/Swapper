@@ -44,7 +44,8 @@ export type LpPoint = { at: number; tier: string; division: string; lp: number; 
 export type AccountCard = { rank: Snapshot["rank"]; wins: number; losses: number; lastPlayed: number; updatedAt: number };
 export type DashboardView = { snapshot: Snapshot | null; cards: Record<string, AccountCard>; stale: boolean; message: string | null };
 /** One blind pick from the `recommended_picks` command, best first. */
-export type RecommendedPick = { championId: number; winRate: number; games: number; flex: boolean };
+export type RecommendedPick = { championId: number; winRate: number; games: number; flex: boolean; reason?: string };
+export type RecommendedPicks = { picks: RecommendedPick[]; curatedPatch: string | null; currentPatch: string; status: "ready" | "no_curated_list" };
 
 export type MatchDetailPlayer = {
   participantId: number; teamId: number; championId: number; riotId: string; me: boolean; role: string;

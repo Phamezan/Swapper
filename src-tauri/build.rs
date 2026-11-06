@@ -3,6 +3,9 @@ fn main() {
     let root = std::path::PathBuf::from(std::env::var_os("CARGO_MANIFEST_DIR").unwrap()).join("resources/guides");
     println!("cargo:rerun-if-changed={}", root.display());
     let mut files = vec![("index.json".to_string(), root.join("index.json"))];
+    if root.join("blind-picks.json").is_file() {
+        files.push(("blind-picks.json".to_string(), root.join("blind-picks.json")));
+    }
     if let Ok(entries) = std::fs::read_dir(root.join("champions")) {
         for path in entries.flatten().map(|e| e.path()) {
             let Some(name) = path.file_name().and_then(|s| s.to_str()) else { continue };

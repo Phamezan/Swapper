@@ -6,6 +6,7 @@ import type { RuneTree, RunesView } from "../runes/types";
 import { fixtureDraft, fixtureView, type FixtureName } from "./champ-select-fixtures";
 import { takenIds } from "./champ-select-model";
 import { guideAbilities } from "./fixtures/guideAbilities";
+import blindPicks from "../../src-tauri/resources/guides/blind-picks.json";
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
 const VERSION = "16.21.1";
@@ -16,6 +17,7 @@ const CHAMPIONS: Record<number, [string, string]> = {
   67: ["Vayne", "Vayne"], 133: ["Quinn", "Quinn"], 17: ["Teemo", "Teemo"], 85: ["Kennen", "Kennen"], 150: ["Gnar", "Gnar"], 126: ["Jayce", "Jayce"],
   10: ["Kayle", "Kayle"], 54: ["Malphite", "Malphite"], 2: ["Olaf", "Olaf"], 86: ["Garen", "Garen"], 24: ["Jax", "Jax"], 58: ["Renekton", "Renekton"],
   164: ["Camille", "Camille"], 82: ["Mordekaiser", "Mordekaiser"], 516: ["Ornn", "Ornn"], 897: ["K'Sante", "KSante"], 98: ["Shen", "Shen"],
+  79: ["Gragas", "Gragas"], 68: ["Rumble", "Rumble"], 799: ["Ambessa", "Ambessa"], 114: ["Fiora", "Fiora"],
 };
 const ITEMS: Record<number, string> = { 1055: "Doran's Blade", 2003: "Health Potion", 3047: "Plated Steelcaps", 3111: "Mercury's Treads", 6692: "Eclipse", 3053: "Sterak's Gage", 3071: "Black Cleaver", 6333: "Death's Dance", 3156: "Maw of Malmortius", 3065: "Spirit Visage", 3026: "Guardian Angel", 6610: "Sundered Sky", 3074: "Ravenous Hydra" };
 Object.assign(ITEMS, { 3118: "Malignance", 4628: "Horizon Focus", 3020: "Sorcerer's Shoes", 3089: "Rabadon's Deathcap", 3135: "Void Staff", 3157: "Zhonya's Hourglass", 2420: "Seeker's Armguard" });
@@ -90,7 +92,14 @@ mockIPC(async (cmd, args) => {
     case "get_matchup": return { enemyChampionId: a.enemyChampionId, enemyName: CHAMPIONS[a.enemyChampionId]?.[0] ?? "Opponent", fallback: false, stats: { winPct: 47.6, avgWinPct: 50.4, delta: -2.8, games: 3150, patch: "16.21" }, preset: { index: 0, title: "Conqueror", ...page(8000, 8010, [9111, 9105, 8299], 8400, [8444, 8242], [5005, 5008, 5011]), winPct: 47.6, play: 3150, spells: [4, 12] }, build: build([6692, 3111, 3053, 3071, 3065, 3026], 48.9, 3150, "QEQWQRQEQERWEEWRWW") };
     case "full_app_matchups": return { championId: a.championId, championName: "Darius", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null, beats: counters.map(([id, winPct, games]) => ({ championId: id, name: CHAMPIONS[id][0], winPct, delta: winPct - 50.4, games, lowSample: false })) };
     case "get_tier_list": return { unavailable: false, stale: false, updatedAt: null, rows: tiers.map(([id, tier, winPct]) => ({ championId: id, name: CHAMPIONS[id as number][0], tier, winPct, pickPct: 6, banPct: 3, games: 20000 })) };
-    case "recommended_picks": return tiers.slice(0, 8).map(([championId, , winRate]) => ({ championId, winRate, games: 20000, flex: championId === 875 }));
+    case "recommended_picks": {
+      const role = (a.role ?? "top") as keyof typeof blindPicks.lists[0]["lanes"];
+      const list = blindPicks.lists[0];
+      return { status: "ready", curatedPatch: list.patch, currentPatch: list.patch,
+        picks: (list.lanes[role] ?? []).map(pick => ({ championId: pick.champion, reason: pick.reason,
+          winRate: tiers.find(([id]) => id === pick.champion)?.[2] ?? 0,
+          games: tiers.some(([id]) => id === pick.champion) ? 20000 : 0, flex: false })) };
+    }
     case "get_pro_builds": {
       if (new URLSearchParams(location.search).has("pro-error")) throw new Error("Preview: pro provider unavailable");
       const proPage = a.page ?? 1;

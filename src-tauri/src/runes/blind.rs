@@ -1,26 +1,9 @@
 //! Recommended blind picks: champions that are safe to pick before the enemy
 //! laner is known, for the Champion select page's "Recommended" tab.
 //!
-//! Every champion above [`MIN_PICK_PCT`] in the role's tier list is scored from
-//! its lane matchups in lolalytics' `build-full` JSON over the last
-//! [`MATCHUP_WINDOW_DAYS`] days (the current patch alone has a few thousand
-//! games on its first day):
-//! - expected win rate: the champion's role win rate plus each opponent's
-//!   matchup gap (matchup minus the table's own average, shrunk by
-//!   [`MATCHUP_PRIOR_GAMES`]), weighted by that opponent's games in the role
-//!   and bracket. Gaps are relative to the same table, so an offset between
-//!   the tier list and the matchup file cannot fake a counter;
-//! - safety: the share of those opponent games with a gap below
-//!   -[`HARD_COUNTER_GAP`], subtracted with the heavy [`SAFETY_WEIGHT`];
-//! - popularity ([`POP_WEIGHT`] × ln pick %): what players already pick
-//!   blind is revealed to be comfortable blind;
-//! - a small bonus when the champion is also played in another role (flex), and
-//!   optional team comp v1 adjustments (damage balance, bot lane duo synergy).
-//!
-//! Trimmed tables are cached on disk per patch: a cold role costs one ~110 KB
-//! request (~34 KB gzipped) per candidate, once per patch. [`preload`] warms
-//! the user's main role, then the second one, in the background, one champion
-//! every [`PRELOAD_GAP`], only while the Fullsized App is on and no game runs.
+//! Candidates come exclusively from owner-approved guide research. Matchup stats,
+//! popularity, flex and team composition only order those curated candidates.
+//! Missing stats leave a champion at the end in the authored order.
 
 use std::collections::{HashMap, HashSet};
 use std::sync::atomic::{AtomicBool, Ordering};
@@ -31,6 +14,7 @@ use futures_util::stream::{self, StreamExt};
 use serde::{Deserialize, Serialize};
 
 use super::cache::{self, LastGoodCache};
+use crate::guides::blind_picks::{self, CuratedList, CuratedPick};
 use super::data;
 use super::duos::{self, Duo};
 use super::lolalytics::{self, LolalyticsClient};
@@ -38,8 +22,7 @@ use super::patch;
 use super::provider::DataKind;
 use super::tierlist::{self, TierRow};
 
-/// Candidates need at least this pick rate in the role: rarer picks are
-/// situational, and every candidate costs a request.
+/// Popularity score floor; curated candidates are never filtered by pick rate.
 pub const MIN_PICK_PCT: f64 = 1.0;
 /// Games of "candidate's average matchup" each matchup is blended with. True
 /// lane matchup spreads are ~3-4 points (variance ~12) and one game's variance
@@ -65,7 +48,7 @@ const DUO_PRIOR_GAMES: f64 = 1000.0;
 /// Cap on the duo synergy bonus either way, in win-rate points.
 const MAX_DUO_BONUS: f64 = 2.0;
 /// Picks returned, best first.
-const LIST_LEN: usize = 8;
+const LIST_LEN: usize = 10;
 /// Team comp adjustments only re-sort this many of the best base scores, so
 /// the local damage-type lookups stay few.
 const SHORTLIST_LEN: usize = 16;
@@ -91,6 +74,16 @@ pub struct RecommendedPick {
     pub games: u64,
     /// Also meaningfully played in another role.
     pub flex: bool,
+    pub reason: String,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RecommendedPicks {
+    picks: Vec<RecommendedPick>,
+    curated_patch: Option<String>,
+    current_patch: String,
+    status: &'static str,
 }
 
 /// One trimmed matchup row: (opponent, the candidate's win %, games).
@@ -106,13 +99,18 @@ pub async fn recommended_picks(
     tier: String,
     allies: Option<Vec<i64>>,
     partner: Option<i64>,
-) -> Result<Vec<RecommendedPick>, String> {
+) -> Result<RecommendedPicks, String> {
     let lane = lolalytics::lane(&role).ok_or("Unknown role.")?;
-    let pools = lane_pools(&tier).await;
-    let pool = pools.get(lane).ok_or("The tier list is unavailable.")?;
     let patch = current_patch().await;
+    let curated_role = match lane { "middle" => "mid", "bottom" => "adc", other => other };
+    let curated = blind_picks::load(&patch, curated_role).await;
+    let Some(curated) = curated else { return Ok(recommendations(None, &patch, vec![], |_| 0.0)) };
+    let pools = lane_pools(&tier).await;
+    let pool = pools.get(lane).map(Vec::as_slice).unwrap_or_default();
     let names = data::champion_names().await.unwrap_or_default();
-    let ids: Vec<i64> = candidates(pool).map(|row| row.champion_id).collect();
+    let ids: Vec<i64> = curated.picks.iter()
+        .filter(|pick| pool.iter().any(|row| row.champion_id == pick.champion && row.games > 0))
+        .map(|pick| pick.champion).collect();
     let tables: HashMap<i64, Vec<Matchup>> = stream::iter(ids)
         .map(|id| {
             let (patch, tier, names) = (&patch, &tier, &names);
@@ -125,10 +123,7 @@ pub async fn recommended_picks(
         .filter_map(|found| async move { found })
         .collect()
         .await;
-    if tables.is_empty() {
-        return Err("Matchup data is unavailable.".into());
-    }
-    let list = ranked(pool, &tables, &flex_ids(lane, &pools));
+    let list = ranked(pool, &tables, &flex_ids(lane, &pools), &curated.picks);
     let shortlist: Vec<i64> = list
         .iter()
         .take(SHORTLIST_LEN)
@@ -145,7 +140,7 @@ pub async fn recommended_picks(
             *bonus.entry(id).or_default() += value;
         }
     }
-    Ok(finish(list, |id| bonus.get(&id).copied().unwrap_or(0.0)))
+    Ok(recommendations(Some(&curated), &patch, list, |id| bonus.get(&id).copied().unwrap_or(0.0)))
 }
 
 // ---------------------------------------------------------------------------
@@ -157,6 +152,7 @@ fn shrink(rate: f64, games: u64, toward: f64, prior_games: f64) -> f64 {
     (rate * games + toward * prior_games) / (games + prior_games)
 }
 
+#[cfg(test)]
 fn candidates(pool: &[TierRow]) -> impl Iterator<Item = &TierRow> {
     pool.iter().filter(|row| row.pick_pct >= MIN_PICK_PCT)
 }
@@ -221,6 +217,7 @@ fn ranked(
     pool: &[TierRow],
     tables: &HashMap<i64, Vec<Matchup>>,
     flex: &HashSet<i64>,
+    curated: &[CuratedPick],
 ) -> Vec<(RecommendedPick, f64)> {
     let games: f64 = pool.iter().map(|row| row.games as f64).sum();
     let lane_avg = if games > 0.0 {
@@ -231,8 +228,10 @@ fn ranked(
     } else {
         50.0
     };
-    let mut list: Vec<(RecommendedPick, f64)> = candidates(pool)
-        .filter_map(|row| {
+    let mut list: Vec<(RecommendedPick, f64)> = curated.iter()
+        .filter_map(|curated| {
+            let row = pool.iter().find(|row| row.champion_id == curated.champion && row.games > 0)?;
+            if tables.get(&row.champion_id)?.is_empty() { return None; }
             let scored = score(row, pool, tables.get(&row.champion_id)?, lane_avg);
             let flex = flex.contains(&row.champion_id);
             let pick = RecommendedPick {
@@ -240,6 +239,7 @@ fn ranked(
                 win_rate: (scored.expected * 100.0).round() / 100.0,
                 games: row.games,
                 flex,
+                reason: curated.reason.clone(),
             };
             Some((pick, scored.value + if flex { FLEX_BONUS } else { 0.0 }))
         })
@@ -261,6 +261,24 @@ fn finish(
         .take(LIST_LEN)
         .map(|(pick, _)| pick)
         .collect()
+}
+
+fn recommendations(
+    curated: Option<&CuratedList>, current: &str, list: Vec<(RecommendedPick, f64)>,
+    bonus: impl Fn(i64) -> f64,
+) -> RecommendedPicks {
+    let mut picks = if curated.is_some() { finish(list, bonus) } else { vec![] };
+    if let Some(curated) = curated {
+        for pick in &curated.picks {
+            if !picks.iter().any(|p| p.champion_id == pick.champion) {
+                picks.push(RecommendedPick { champion_id: pick.champion, win_rate: 0.0,
+                    games: 0, flex: false, reason: pick.reason.clone() });
+            }
+        }
+    }
+    picks.truncate(LIST_LEN);
+    RecommendedPicks { picks, curated_patch: curated.map(|c| c.patch.clone()),
+        current_patch: blind_picks::report_patch(current), status: if curated.is_some() { "ready" } else { "no_curated_list" } }
 }
 
 /// Champions meaningfully played in a lane other than `lane`.
@@ -565,7 +583,9 @@ pub fn preload(app: &tauri::AppHandle, snapshot: &crate::full_app::model::Snapsh
             let Ok(Some(pool)) = tierlist::load(lane, tier).await else {
                 continue;
             };
-            for row in candidates(&pool.value.rows) {
+            let role = match lane { "middle" => "mid", "bottom" => "adc", other => other };
+            let Some(curated) = blind_picks::load(&patch, role).await else { continue };
+            for pick in &curated.picks {
                 if !preload_allowed(&app) {
                     break 'lanes;
                 }
@@ -573,7 +593,7 @@ pub fn preload(app: &tauri::AppHandle, snapshot: &crate::full_app::model::Snapsh
                     &patch,
                     lane,
                     tier,
-                    row.champion_id,
+                    pick.champion,
                     &pool.value.rows,
                     &names,
                 )
@@ -591,6 +611,63 @@ pub fn preload(app: &tauri::AppHandle, snapshot: &crate::full_app::model::Snapsh
 mod tests {
     use super::*;
     use std::collections::BTreeMap;
+
+    fn curated(ids: &[i64]) -> CuratedList {
+        CuratedList { patch: "26.22".into(), picks: ids.iter().map(|id|
+            serde_json::from_value(serde_json::json!({"champion":id,"reason":format!("Reason for {id}."),"sources":[]})).unwrap()).collect() }
+    }
+
+    #[test]
+    fn curated_candidates_ignore_pick_floor_and_stats_only_order_them() {
+        let curated = curated(&[1, 2]);
+        let pool = vec![tier_row(99, 99.0, 20.0, 10000), tier_row(1, 48.0, 0.01, 10000), tier_row(2, 52.0, 0.01, 10000)];
+        let tables = HashMap::from([(99, vec![Matchup(1, 50.0, 1000)]), (1, vec![Matchup(2, 50.0, 1000)]), (2, vec![Matchup(1, 50.0, 1000)])]);
+        let list = ranked(&pool, &tables, &HashSet::new(), &curated.picks);
+        let result = recommendations(Some(&curated), "16.22", list.clone(), |_| 0.0);
+        assert_eq!(result.picks.iter().map(|p| p.champion_id).collect::<Vec<_>>(), [2, 1]);
+        assert_eq!(result.picks[0].reason, "Reason for 2.");
+        assert_eq!(result.current_patch, "26.22");
+        let boosted = recommendations(Some(&curated), "16.22", list, |id| if id == 1 { 20.0 } else { 0.0 });
+        assert_eq!(boosted.picks[0].champion_id, 1);
+    }
+
+    #[test]
+    fn failed_missing_or_empty_tables_and_missing_stats_follow_scored_in_curated_order() {
+        let curated = curated(&[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        let pool = vec![tier_row(1, 60.0, 5.0, 10000), tier_row(2, 50.0, 5.0, 10000), tier_row(3, 50.0, 5.0, 10000)];
+        let tables = HashMap::from([(2, vec![]), (3, vec![Matchup(1, 50.0, 1000)])]);
+        let list = ranked(&pool, &tables, &HashSet::new(), &curated.picks);
+        let result = recommendations(Some(&curated), "26.23", list, |_| 0.0);
+        assert_eq!(result.picks.iter().map(|p| p.champion_id).collect::<Vec<_>>(), [3, 1, 2, 4, 5, 6, 7, 8, 9, 10]);
+        assert_eq!(result.curated_patch.as_deref(), Some("26.22"));
+        assert!(result.picks.iter().skip(1).all(|p| p.games == 0 && !p.reason.is_empty()));
+        let all_failed = recommendations(Some(&curated), "26.22", vec![], |_| 0.0);
+        assert_eq!(all_failed.picks.iter().map(|p| p.champion_id).collect::<Vec<_>>(), (1..=10).collect::<Vec<_>>());
+        assert_eq!(all_failed.status, "ready");
+    }
+
+    #[test]
+    fn no_curated_list_is_explicit_and_never_returns_stat_candidates() {
+        let result = recommendations(None, "16.22", vec![], |_| 0.0);
+        assert!(result.picks.is_empty());
+        assert_eq!(result.status, "no_curated_list");
+        assert!(result.curated_patch.is_none());
+    }
+
+    #[test]
+    fn tied_scores_keep_curated_order() {
+        let curated = curated(&[2, 1]);
+        let pool = vec![tier_row(1, 50.0, 5.0, 10000), tier_row(2, 50.0, 5.0, 10000)];
+        let tables = HashMap::from([(1, vec![Matchup(2, 50.0, 1000)]), (2, vec![Matchup(1, 50.0, 1000)])]);
+        let list = ranked(&pool, &tables, &HashSet::new(), &curated.picks);
+        assert_eq!(recommendations(Some(&curated), "26.22", list, |_| 0.0).picks[0].champion_id, 2);
+    }
+
+    fn test_curated(pool: &[TierRow]) -> Vec<CuratedPick> {
+        candidates(pool).map(|row| serde_json::from_value(serde_json::json!({
+            "champion":row.champion_id,"reason":"Safe farming.","sources":[]
+        })).unwrap()).collect()
+    }
 
     fn tier_row(champion_id: i64, win_pct: f64, pick_pct: f64, games: u64) -> TierRow {
         TierRow {
@@ -660,10 +737,10 @@ mod tests {
             (3, vec![Matchup(1, 50.0, 5000), Matchup(2, 55.0, 5000)]),
             (4, vec![Matchup(1, 50.0, 5000)]),
         ]);
-        let list = ranked(&pool, &tables, &HashSet::new());
+        let list = ranked(&pool, &tables, &HashSet::new(), &test_curated(&pool));
         let ids: Vec<i64> = list.iter().map(|(pick, _)| pick.champion_id).collect();
         assert_eq!(ids, vec![1, 3, 2], "4 is under the pick rate floor");
-        let flexed = ranked(&pool, &tables, &HashSet::from([3]));
+        let flexed = ranked(&pool, &tables, &HashSet::from([3]), &test_curated(&pool));
         assert!(
             flexed
                 .iter()
@@ -682,6 +759,7 @@ mod tests {
             win_rate: 50.0,
             games: 1,
             flex: false,
+            reason: String::new(),
         };
         let list: Vec<_> = (1..=10).map(|id| (pick(id), 10.0 - id as f64)).collect();
         let out = finish(list, |id| if id == 9 { 20.0 } else { 0.0 });
@@ -807,7 +885,7 @@ mod tests {
             .iter()
             .map(|(id, table)| (*id, table.clone()))
             .collect();
-        ranked(&pools[lane], &tables, &flex_ids(lane, &pools))
+        ranked(&pools[lane], &tables, &flex_ids(lane, &pools), &test_curated(&pools[lane]))
     }
 
     const FIXTURE: &str = include_str!("../../tests/fixtures/blind-diamond-plus.json");

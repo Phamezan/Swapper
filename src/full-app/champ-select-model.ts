@@ -6,7 +6,7 @@ export type DraftMember = { championId: number; position: string; local: boolean
 export type Draft = { supported?: boolean | null; allies: DraftMember[]; enemies: DraftMember[]; bans: number[]; allyBans?: number[]; enemyBans?: number[]; canLock?: boolean; /** On your ban turn: the champion hovered to ban, 0 for none yet. */ banTurn?: number; pickable?: number[]; timer: { phase: string; remainingMs: number } | null };
 export type PageMode = "idle" | "planning" | "build";
 export type SuggestionTab = "all" | "recommended" | "counters";
-export type Suggestion = { championId: number; name: string; winPct: number; games: number; flex?: boolean };
+export type Suggestion = { championId: number; name: string; winPct: number; games: number; flex?: boolean; reason?: string };
 export type ApplyStatus = { runes: boolean; spells: boolean; items: boolean };
 type Skill = "Q" | "W" | "E" | "R";
 
@@ -72,7 +72,7 @@ export function allChampions(names: Map<number, string>, rows: TierRow[], taken:
 
 export function recommendedSuggestions(picks: RecommendedPick[], names: Map<number, string>, taken: Set<number>): Suggestion[] {
   return picks.filter(pick => !taken.has(pick.championId))
-    .map(pick => ({ championId: pick.championId, name: names.get(pick.championId) ?? `Champion ${pick.championId}`, winPct: pick.winRate, games: pick.games, flex: pick.flex }));
+    .map(pick => ({ championId: pick.championId, name: names.get(pick.championId) ?? `Champion ${pick.championId}`, winPct: pick.winRate, games: pick.games, flex: pick.flex, ...(pick.reason && { reason: pick.reason }) }));
 }
 
 const sameSet = (a: number[], b: number[]) => a.length === b.length && a.every(id => b.includes(id));

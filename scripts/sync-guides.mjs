@@ -14,6 +14,14 @@ export async function syncGuides(source, destination = bundled) {
   if (index.schema !== 1 || typeof index.generatedAt !== "string" || !index.champions || Array.isArray(index.champions)
     || typeof index.champions !== "object" || Object.keys(index.champions).length > 2048) throw new Error("Invalid guide index.");
   const files = [];
+  let blindBytes;
+  try { blindBytes = await readFile(resolve(source, "blind-picks.json")); }
+  catch (error) { if (error.code !== "ENOENT") throw error; }
+  if (blindBytes) {
+    if (blindBytes.length > 256 * 1024) throw new Error("Blind picks exceed 256 KB.");
+    const data = JSON.parse(blindBytes);
+    if (data.schema !== 1 || !Array.isArray(data.lists)) throw new Error("Invalid blind picks.");
+  }
   for (const [id, entry] of Object.entries(index.champions)) {
     if (!/^[1-9]\d*$/.test(id) || Number(id) > 2147483647 || !/^[a-fA-F0-9]{64}$/.test(entry.sha256)
       || !Number.isInteger(entry.guides) || entry.guides < 0 || entry.guides > 2048
@@ -35,6 +43,7 @@ export async function syncGuides(source, destination = bundled) {
   // Validate the entire snapshot before changing the bundled copy; preserve hash-exact bytes.
   await mkdir(resolve(destination, "champions"), { recursive: true });
   for (const [id, bytes] of files) await writeFile(resolve(destination, "champions", `${id}.json`), bytes);
+  if (blindBytes) await writeFile(resolve(destination, "blind-picks.json"), blindBytes);
   await writeFile(resolve(destination, "index.json"), indexBytes);
   return files.length;
 }

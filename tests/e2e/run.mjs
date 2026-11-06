@@ -1898,6 +1898,11 @@ async function main() {
     assert.equal(await page.evaluate("!!document.querySelector('.cs-workspace > .cs-planning')"), true, "picks occupy the shared workspace below the draft band");
     await page.evaluate("Promise.all(document.querySelector('.fa-draft-page').getAnimations().map(animation => animation.finished)).then(() => true)");
     draftLayout = await draftGeometry();
+    await page.click('.cs-picks button[aria-label="Top"]');
+    await page.click('.cs-picks .fa-seg button', 'Recommended');
+    await page.wait("document.querySelectorAll('.cs-pick').length === 10", "ten curated recommendations");
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.cs-pick-select')].every(button => button.title.includes(button.getAttribute('aria-description')) && !!button.getAttribute('aria-description'))"), true, "curated reasons are available on hover and to assistive technology");
+    assert.equal(await page.evaluate("document.querySelector('.dashboard-main').scrollHeight <= document.querySelector('.dashboard-main').clientHeight + 1"), true, "ten curated cards fit in the scrollable grid");
     assert.equal(await page.evaluate("document.querySelector('.cs-bans').firstElementChild.getAttribute('aria-label')"), 'Banned: Yasuo');
     await page.click('.cs-picks .fa-seg button', 'All');
     await page.wait("document.querySelectorAll('.cs-pick').length > 8", "all champions to load");
