@@ -11,7 +11,7 @@ pub(crate) fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
             Some("mobafire.com" | "www.mobafire.com" | "docs.google.com"
                 | "youtube.com" | "www.youtube.com" | "youtu.be"
                 | "reddit.com" | "www.reddit.com" | "old.reddit.com" | "lolmatchups.gg"
-                | "www.inven.co.kr" | "talk.op.gg" | "mobalytics.gg")
+                | "www.inven.co.kr" | "talk.op.gg" | "mobalytics.gg" | "riven.saltyy.at")
         )
     {
         return Err("Guide sources must use HTTPS on an allowed host without credentials.".to_string());
@@ -56,6 +56,7 @@ mod tests {
             "https://mobalytics.gg/lol/champions/ahri/counters",
             "https://www.inven.co.kr/board/lol/2778",
             "https://talk.op.gg/s/lol/free/1",
+            "https://riven.saltyy.at/",
         ] {
             assert!(validate_guide_source_url(raw).is_ok(), "{raw}");
         }
@@ -68,6 +69,7 @@ mod tests {
             "https://docs.google.com.evil.io/guide",
             "https://mobalytics.gg.evil.io/guide",
             "https://evil.reddit.com/r/example",
+            "https://riven.saltyy.at.evil.io/",
             "file:///C:/Windows/System32/calc.exe",
             "javascript:alert(1)",
             "https://user:password@mobafire.com/guide",
