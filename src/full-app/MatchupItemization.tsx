@@ -1,5 +1,5 @@
 import type { ChampionBuild, MatchupView } from "../runes/types";
-import { GuideTips, type GuideAbilities } from "./MatchupGuideContent";
+import { GuideAuthorCredits, GuideTips, type GuideAbilities } from "./MatchupGuideContent";
 import { itemChanges, type AuthoredGuide } from "./matchupGuide";
 import { fmtCount } from "./ui/format";
 
@@ -15,6 +15,6 @@ export function MatchupItemization({ detail, usual, guide, abilities }: {
         : changes.length ? changes.join(" · ") : "No item order changes in the available matchup data."}</p>
       {detail?.stats && <small>{fmtCount(detail.stats.games)} matchup games · Data patch {detail.stats.patch}</small>}
     </div>
-    {guide && <GuideTips tips={guide.itemization} sources={guide.sources} abilities={abilities} />}
+    {guide && <><GuideAuthorCredits sources={guide.sources} /><GuideTips tips={guide.itemization} sources={guide.sources} abilities={abilities} /></>}
   </section>;
 }

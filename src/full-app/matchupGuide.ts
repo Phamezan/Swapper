@@ -23,6 +23,8 @@ export type GuideSource = {
   id: string;
   author: string;
   rankClaim: string;
+  rank?: "iron" | "bronze" | "silver" | "gold" | "platinum" | "emerald" | "diamond" | "master" | "grandmaster" | "challenger";
+  peak?: boolean;
   url: string;
   kind: "mobafire" | "sheet" | "youtube" | "web";
 };

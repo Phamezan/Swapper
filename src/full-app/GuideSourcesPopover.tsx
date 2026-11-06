@@ -1,5 +1,5 @@
 import { Popover } from "radix-ui";
-import { GuideSourceChip } from "./MatchupGuideContent";
+import { GuideAuthorCredit } from "./MatchupGuideContent";
 import type { GuideSource } from "./matchupGuide";
 
 export function GuideSourcesPopover({ sources }: { sources: GuideSource[] }) {
@@ -7,7 +7,7 @@ export function GuideSourcesPopover({ sources }: { sources: GuideSource[] }) {
   return <Popover.Root>
     <Popover.Trigger type="button" className="mg-sources-trigger">Sources ({sources.length})</Popover.Trigger>
     <Popover.Portal><Popover.Content className="fa-picker-popover mg-sources-popover" align="end" sideOffset={8} collisionPadding={12} aria-label="Guide sources">
-      {sources.map(source => <GuideSourceChip key={source.id} source={source} />)}
+      {sources.map(source => <GuideAuthorCredit key={source.id} source={source} />)}
     </Popover.Content></Popover.Portal>
   </Popover.Root>;
 }

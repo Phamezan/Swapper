@@ -217,6 +217,29 @@ fn champion_bytes(guides: Vec<Value>) -> Vec<u8> {
 }
 
 #[test]
+fn author_rank_and_peak_survive_parsing_while_legacy_sources_remain_optional() {
+    let parse = |value| parse_champion(&champion_bytes(vec![value]), 103).unwrap();
+    let legacy = serde_json::to_value(&parse(guide())[0]).unwrap();
+    assert!(legacy["sources"][0].get("rank").is_none());
+    assert!(legacy["sources"][0].get("peak").is_none());
+    for rank in ["iron", "bronze", "silver", "gold", "platinum", "emerald", "diamond", "master", "grandmaster", "challenger"] {
+        let mut ranked = guide();
+        ranked["sources"][0]["rank"] = json!(rank);
+        ranked["sources"][0]["peak"] = json!(true);
+        let parsed = parse(ranked);
+        assert_eq!(parsed.len(), 1, "{rank}");
+        let wire = serde_json::to_value(&parsed[0]).unwrap();
+        assert_eq!(wire["sources"][0]["rank"], json!(rank));
+        assert_eq!(wire["sources"][0]["peak"], json!(true));
+    }
+    for (field, value) in [("rank", json!("unranked")), ("rank", json!("Master")), ("rank", json!(1)), ("peak", json!("true")), ("peak", json!(false))] {
+        let mut invalid = guide();
+        invalid["sources"][0][field] = value;
+        assert!(parse(invalid).is_empty(), "{field}");
+    }
+}
+
+#[test]
 fn untrusted_guides_are_validated_whole_and_invalid_siblings_are_dropped() {
     let good = guide();
     assert_eq!(parse_champion(&champion_bytes(vec![good.clone()]), 103).unwrap().len(), 1);

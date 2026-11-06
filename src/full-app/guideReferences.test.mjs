@@ -19,7 +19,7 @@ function harness(file, name, command, cached = new Map()) {
       });
     },
   };
-  const jsx = (type, props) => ({ type, props });
+  const jsx = (type, props) => typeof type === "function" ? type(props) : ({ type, props });
   const modules = {
     react: hooks, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke: async (name, args) => { calls.push({ name, args }); return command(name, args); } },
@@ -33,7 +33,8 @@ function harness(file, name, command, cached = new Map()) {
     "./ui/Slot": { Slot: "slot" }, "./ui/States": { Notice: "notice" },
     "./GuideSourceButton": { GuideSourceButton: "source-button" }, "./GuideItem": { GuideItem: "guide-item" },
     "./GuideTipText": { GuideTipText: "guide-text" }, "./AbilityHover": { AbilityHover: "ability" },
-    "./MatchupGuideContent": { GuideSourceChip: "source-chip" },
+    "./MatchupGuideContent": { GuideAuthorCredit: "source-credit" },
+    "../runes/RankCrest": { RankCrest: "rank-crest" },
     "radix-ui": { Popover: { Root: "popover-root", Trigger: "popover-trigger", Portal: "popover-portal", Content: "popover-content" } },
   };
   const code = ts.transpileModule(readFileSync(new URL(file, import.meta.url), "utf8"), {
@@ -97,45 +98,67 @@ test("cached guide items render immediately and invalid ids do not request art",
   assert.deepEqual(invalid.calls, []);
 });
 
-test("tip authors precede the numbering in a separate gutter and keep the source action", () => {
-  const source = { id: "author", author: "Author", rankClaim: "Master", url: "https://www.mobafire.com/league-of-legends/ahri-guide" };
-  const tips = harness("./MatchupGuideContent.tsx", "GuideTips", () => null);
-  const tree = tips.render({ tips: [{ text: "A tip", scope: "enemy", sourceIds: ["author"] }], sources: [source] });
-  assert.doesNotMatch(text(tree), /Against this enemy|This pair/);
-  const row = nodes(tree).find(node => node.type === "li");
-  const [gutter, number, content] = row.props.children;
-  assert.equal(gutter.props.className, "mg-tip-authors");
-  assert.equal(number.props.className, "mg-tip-number");
-  assert.equal(text(number), "01");
-  assert.equal(content.props.className, "mg-tip-content");
-  assert.equal(nodes(content).some(node => node.type === "source-button"), false);
-  const credit = nodes(gutter).find(node => node.type === "source-button");
-  assert.equal(credit.props.url, source.url);
-  assert.equal(credit.props.label, source.author);
-  const chips = harness("./MatchupGuideContent.tsx", "GuideSourceChip", () => null);
-  const chip = chips.render({ source });
-  assert.equal(chip.type, "source-button");
-  assert.equal(chip.props.url, source.url);
-});
-
-test("tip gutters stack several sources in credit order and stay empty when no source resolves", () => {
-  const sources = [
-    { id: "a", author: "Lane Lab", url: "https://www.mobafire.com/a" },
-    { id: "b", author: "Nine Tails", url: "https://www.mobafire.com/b" },
-  ];
-  const h = harness("./MatchupGuideContent.tsx", "GuideTips", () => null);
-  const tree = h.render({ tips: [
+const authors = [
+  { id: "a", author: "Lane Lab", rankClaim: "Master · Ahri main", rank: "master", kind: "mobafire", url: "https://www.mobafire.com/a" },
+  { id: "b", author: "Nine Tails", rankClaim: "Former Diamond · Ahri main", rank: "diamond", peak: true, kind: "sheet", url: "https://docs.google.com/spreadsheets/d/b" },
+];
+function section(sources) {
+  return { sources, sections: { "early-lane": { tips: [
     { text: "Several", sourceIds: ["b", "missing", "a"], patch: "26.21" },
-    { text: "None" }, { text: "Unresolved", sourceIds: ["missing"] },
-  ], sources });
-  const rows = nodes(tree).filter(node => node.type === "li");
-  assert.deepEqual(nodes(rows[0].props.children[0]).filter(node => node.type === "source-button").map(node => node.props.label), ["Nine Tails", "Lane Lab"]);
-  assert.deepEqual(nodes(rows[0]).filter(node => node.props.className === "mg-tip-author-initials").map(text), ["NT", "LL"]);
-  assert.equal(text(nodes(rows[0]).find(node => node.props.className === "mg-tip-meta")), "Written 26.21");
-  for (const row of rows.slice(1)) assert.equal(text(row.props.children[0]), "");
+    { text: "Again", sourceIds: ["a"] }, { text: "Unresolved", sourceIds: ["missing"] },
+  ] } } };
+}
+
+test("single-author guide credits once above tips, with a real crest and no dots or per-tip links", () => {
+  const h = harness("./MatchupGuideContent.tsx", "GuideSectionContent", () => null);
+  const tree = h.render({ guide: section([authors[0]]), section: "early-lane", abilities: {} });
+  const credits = nodes(tree).filter(n => n.props.className === "mg-author-credit");
+  assert.equal(credits.length, 1);
+  assert.match(text(credits[0]), /Lane Lab.*Master.*Ahri main · MOBAFire guide.*Read original/);
+  assert.equal(nodes(credits[0]).find(n => n.type === "rank-crest").props.tier, "master");
+  const link = nodes(credits[0]).find(n => n.type === "source-button");
+  assert.equal(link.props.url, authors[0].url);
+  assert.equal(link.props.label, "Read original by Lane Lab");
+  const rows = nodes(tree).filter(n => n.type === "li");
+  assert.equal(rows.length, 3);
+  assert.equal(nodes(rows).filter(n => n.props.className === "mg-author-dot" || n.type === "source-button").length, 0);
+  assert.equal(text(nodes(rows[0]).find(n => n.props.className === "mg-tip-number")), "01");
 });
 
-test("header sources popover counts and lists credited authors with the existing source chips", () => {
+test("multi-author guide has compact credit lines and matching accessible tip dots in source order", () => {
+  const h = harness("./MatchupGuideContent.tsx", "GuideSectionContent", () => null);
+  const tree = h.render({ guide: section(authors), section: "early-lane", abilities: {} });
+  assert.ok(nodes(tree).some(n => n.props.className === "mg-author-credits is-multi-author"));
+  const credits = nodes(tree).filter(n => n.props.className === "mg-author-credit");
+  assert.equal(credits.length, 2);
+  assert.match(text(credits[1]), /Peak Diamond/);
+  assert.deepEqual(nodes(credits).filter(n => n.props.className === "mg-avatar").map(text), ["LL", "NT"]);
+  const colors = nodes(credits).filter(n => n.props.className === "mg-avatar").map(n => n.props.style.backgroundColor);
+  assert.notEqual(colors[0], colors[1]);
+  const rows = nodes(tree).filter(n => n.type === "li");
+  const dots = nodes(rows[0]).filter(n => n.props.className === "mg-author-dot");
+  assert.deepEqual(dots.map(n => n.props["aria-label"]), ["Nine Tails", "Lane Lab"]);
+  assert.deepEqual(dots.map(n => n.props.title), ["Nine Tails", "Lane Lab"]);
+  assert.deepEqual(dots.map(n => n.props.style.backgroundColor), [colors[1], colors[0]]);
+  assert.ok(dots.every(n => n.props.role === "img"));
+  assert.equal(nodes(rows[2]).filter(n => n.props.className === "mg-author-dot").length, 0);
+  assert.equal(nodes(rows).filter(n => n.type === "source-button").length, 0);
+  assert.equal(text(nodes(rows[0]).find(n => n.props.className === "mg-tip-meta")), "Written 26.21");
+});
+
+test("legacy author claims stay readable without a crest and repeated sources credit an author once", () => {
+  const legacy = { ...authors[0], rank: undefined };
+  const h = harness("./MatchupGuideContent.tsx", "GuideAuthorCredits", () => null);
+  const tree = h.render({ sources: [legacy, { ...legacy, id: "another-source" }] });
+  assert.match(text(tree), /Master · Ahri main/);
+  assert.equal(nodes(tree).filter(n => n.type === "rank-crest").length, 0);
+  assert.equal(nodes(tree).filter(n => n.props.className === "mg-author-credit").length, 1);
+  assert.equal(h.render({ sources: [] }), null);
+  const tips = harness("./MatchupGuideContent.tsx", "GuideTips", () => null).render({ tips: [{ text: "Tip", sourceIds: ["a"] }], sources: [legacy, { ...legacy, id: "another-source" }] });
+  assert.equal(nodes(tips).filter(n => n.props.className === "mg-author-dot").length, 0);
+});
+
+test("header sources popover counts and lists credited authors with the author credit cards", () => {
   const sources = [
     { id: "a", author: "Author A", rankClaim: "Master", url: "https://www.mobafire.com/guide" },
     { id: "b", author: "Author B", rankClaim: "Grandmaster", url: "https://docs.google.com/spreadsheets/d/example" },
@@ -144,7 +167,7 @@ test("header sources popover counts and lists credited authors with the existing
   const tree = h.render({ sources });
   assert.equal(text(nodes(tree).find(node => node.type === "popover-trigger")), "Sources (2)");
   assert.equal(nodes(tree).find(node => node.type === "popover-content").props["aria-label"], "Guide sources");
-  assert.deepEqual(nodes(tree).filter(node => node.type === "source-chip").map(node => node.props.source), sources);
+  assert.deepEqual(nodes(tree).filter(node => node.type === "source-credit").map(node => node.props.source), sources);
   assert.equal(h.render({ sources: [] }), null);
 });
 

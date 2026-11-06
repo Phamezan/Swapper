@@ -1889,7 +1889,7 @@ async function main() {
     await page.click('.cs-matchup-guide > summary');
     await page.visible('.cs-matchup-guide .mg-summary');
     assert.equal(await page.evaluate("document.querySelectorAll('.cs-matchup-guide .mg-tips > li').length"), 3);
-    await page.text('.cs-matchup-guide .mg-tip-author-name', 'Peng04');
+    await page.text('.cs-matchup-guide .mg-author-heading strong', 'Peng04');
     await page.text('.cs-matchup-guide .mg-live-cooldown', '20/18.5/17/15.5/14s');
     assert.equal(await page.evaluate("!!document.querySelector('.cs-matchup-guide .mg-deck, .cs-matchup-guide .mg-sources-trigger, .cs-matchup-guide .mg-visual')"), false);
     await screenshot('draft-matchup-guide-expanded');

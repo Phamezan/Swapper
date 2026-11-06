@@ -84,8 +84,16 @@ pub(super) enum SourceKind {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub(super) enum AuthorRank { Iron, Bronze, Silver, Gold, Platinum, Emerald, Diamond, Master, Grandmaster, Challenger }
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
-pub(super) struct Source { id: String, author: String, rank_claim: String, url: String, kind: SourceKind }
+pub(super) struct Source {
+    id: String, author: String, rank_claim: String, url: String, kind: SourceKind,
+    #[serde(skip_serializing_if = "Option::is_none")] rank: Option<AuthorRank>,
+    #[serde(skip_serializing_if = "Option::is_none")] peak: Option<bool>,
+}
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub(super) enum Difficulty { Easy, Medium, Hard, #[serde(rename = "Skill matchup")] SkillMatchup }
@@ -133,7 +141,7 @@ impl Guide {
                 else { self.enemy.is_some() && self.difficulty.is_some() && self.favored_when.as_deref().is_some_and(prose) && self.enemy_tips.is_some() }
             && patch_number(&self.patch).is_some()
             && self.sources.len() == sources.len()
-            && self.sources.iter().all(|s| !s.id.is_empty() && s.id.len() <= 128 && prose(&s.author) && prose(&s.rank_claim)
+            && self.sources.iter().all(|s| !s.id.is_empty() && s.id.len() <= 128 && prose(&s.author) && prose(&s.rank_claim) && s.peak != Some(false)
                 && s.url.len() <= 2048 && crate::commands::guide::validate_guide_source_url(&s.url).is_ok())
             && self.sections.len() == 4
             && self.key_tips.iter().all(tip) && self.itemization.iter().all(tip)
