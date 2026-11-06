@@ -2048,7 +2048,7 @@ async function main() {
     await page.click('button[aria-label="Expand guide"]');
     await page.visible('.mg-tabs');
   });
-  await check("Guide tips inline listed items and rune names without changing reference chips", async () => {
+  await check("Guide tips inline listed items and rune names without duplicate reference chips", async () => {
     await navigate(`${fullApp}?draft-guide`, 'nav[aria-label="Swapper pages"]');
     await page.evaluate(`(() => {
       const invoke = window.__TAURI_INTERNALS__.invoke;
@@ -2066,11 +2066,13 @@ async function main() {
       const tip = document.querySelector('.cs-guide-reading .mg-tips li');
       return { names: [...tip.querySelectorAll('.mg-inline-reference')].map(el => el.textContent),
         sizes: [...tip.querySelectorAll('.mg-inline-reference img')].map(el => el.getBoundingClientRect().width / parseFloat(getComputedStyle(el.parentElement).fontSize)),
-        chips: tip.querySelectorAll('.mg-references .ui-slot.is-item').length };
+        chips: tip.querySelectorAll('.mg-references .ui-slot.is-item').length,
+        rows: tip.querySelectorAll('.mg-references').length };
     })()`);
     assert.deepEqual(inline.names, ['Conqueror', 'Second Wind', 'Black Cleaver', 'Triumph', 'Alacrity', 'Haste']);
     assert.ok(inline.sizes.every(size => Math.abs(size - 1.2) < .01), JSON.stringify(inline.sizes));
-    assert.equal(inline.chips, 1);
+    assert.equal(inline.chips, 0);
+    assert.equal(inline.rows, 0);
   });
   await check("Draft lock busy state and errors", async () => {
     await navigate(`${draft}?fixture=planning&lock-delay&lock-fail`, '.cs-pick');

@@ -9,7 +9,8 @@ export const IGNORED_RUNE_NAMES = new Set(["Precision", "Domination", "Resolve",
 
 export function guideReferences(abilities: GuideNamedAbility[], items: GuideNamedReference[], runes: GuideNamedReference[]): GuideNamedReference[] {
   const named = [...abilities, ...items];
-  return [...named, ...runes.flatMap(rune => {
+  return [...named.flatMap((ref): GuideNamedReference[] => ref.kind === "ability"
+    ? [...new Set([ref.name, ...ref.name.split(" / ")])].map(name => ({ ...ref, name })) : [ref]), ...runes.flatMap(rune => {
     const alias = rune.name.match(/^[^:]+: ([A-Z].*)$/)?.[1];
     const names = alias ? [rune.name, alias] : [rune.name];
     if (IGNORED_RUNE_NAMES.has(rune.name) || named.some(ref => names.includes(ref.name))) return [];
@@ -29,14 +30,15 @@ export function parseGuideText(text: string, references: GuideNamedReference[] =
   if (end < text.length) parts.push({ text: text.slice(end) });
   const names = [...references].filter(ref => ref.name).sort((a, b) => b.name.length - a.name.length || (a.kind === "ability" ? 0 : 1) - (b.kind === "ability" ? 0 : 1));
   if (!names.length) return parts;
-  const pattern = new RegExp(`(?<![\\p{L}\\p{N}_])(?:${names.map(ability => ability.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\p{L}\\p{N}_])`, "gu");
+  const normalize = (value: string) => value.replace(/[’']/g, "'");
+  const pattern = new RegExp(`(?<![\\p{L}\\p{N}_])(?:${names.map(ability => normalize(ability.name).replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/'/g, "['’]")).join("|")})(?![\\p{L}\\p{N}_])`, "gu");
   return parts.flatMap(part => {
     if (!("text" in part)) return [part];
     const matched: GuideTextPart[] = [];
     let end = 0;
     for (const match of part.text.matchAll(pattern)) {
       if (match.index > end) matched.push({ text: part.text.slice(end, match.index) });
-      matched.push(names.find(ability => ability.name === match[0])!);
+      matched.push({ ...names.find(ability => normalize(ability.name) === normalize(match[0]))!, name: match[0] });
       end = match.index + match[0].length;
     }
     if (end < part.text.length) matched.push({ text: part.text.slice(end) });

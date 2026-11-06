@@ -19,6 +19,17 @@ test("items and runes share longest-first matching with abilities and cooldowns"
   assert.deepEqual(parseGuideText("Conqueror"), [{ text: "Conqueror" }]);
 });
 
+test("split ability names and typographic apostrophes keep their reference identity", () => {
+  const ability = { kind: "ability", champion: 150, key: "Q", name: "Boomerang Throw / Boulder Toss", icon: null };
+  const item = { kind: "item", id: 1056, name: "Doran's Ring" };
+  const refs = guideReferences([ability], [item], []);
+  assert.deepEqual(parseGuideText("Dodge Boulder Toss, then Boomerang Throw. Buy Doran’s Ring.", refs), [
+    { text: "Dodge " }, { ...ability, name: "Boulder Toss" }, { text: ", then " },
+    { ...ability, name: "Boomerang Throw" }, { text: ". Buy " },
+    { ...item, name: "Doran’s Ring" }, { text: "." },
+  ]);
+});
+
 test("ambiguous runes and rune names colliding with tip abilities or items are skipped", () => {
   const ability = { kind: "ability", champion: 1, key: "Q", name: "Aftershock", icon: null };
   const item = { kind: "item", id: 1, name: "Conqueror" };

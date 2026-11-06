@@ -3,7 +3,8 @@ import { GuideItem } from "./GuideItem";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { RankCrest } from "../runes/RankCrest";
 import { Notice } from "./ui/States";
-import { GuideTipText } from "./GuideTipText";
+import { GuideTipText, useGuideReferences } from "./GuideTipText";
+import { parseGuideText } from "./guideText";
 import type { GuideSource, GuideTip, GuideSectionId, AuthoredGuide } from "./matchupGuide";
 
 export type GuideAbilities = Record<number, { key: string; name: string; icon: string | null }[]>;
@@ -38,28 +39,41 @@ export function GuideTips({ tips, sources, abilities = {} }: { tips: GuideTip[];
   const authors = guideAuthors(sources);
   return <ol className="mg-tips">{tips.map((tip, i) => <li key={i}>
     <span className="mg-tip-number" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
-    <div className="mg-tip-content">{authors.length > 1 && <span className="mg-tip-credits">{guideAuthors(tip.sourceIds?.flatMap(id => sources.filter(source => source.id === id)) ?? []).map(source =>
-      <span key={source.id} className="mg-author-dot" role="img" aria-label={source.author} title={source.author} style={{ backgroundColor: authorColor(authors.findIndex(author => author.author === source.author)) }} />)}</span>}
-      {tip.heading && <h3 className="mg-tip-heading">{tip.heading}</h3>}<p><GuideTipText text={tip.text} abilities={abilities} abilityKeys={tip.abilityKeys} itemIds={tip.itemIds} /></p>
+    <GuideTipContent tip={tip} sources={sources} authors={authors} abilities={abilities} />
+  </li>)}</ol>;
+}
+
+function GuideTipContent({ tip, sources, authors, abilities }: { tip: GuideTip; sources: GuideSource[]; authors: GuideSource[]; abilities: GuideAbilities }) {
+  const references = useGuideReferences(abilities, tip.abilityKeys ?? [], tip.itemIds ?? []);
+  const parts = parseGuideText(tip.text, references);
+  const heading = tip.heading ? parseGuideText(tip.heading, references) : [];
+  const inline = [...parts, ...heading].filter(part => !("text" in part));
+  const abilityKeys = tip.abilityKeys?.filter(ref => !inline.some(part => "champion" in part && part.champion === ref.champion && part.key === ref.key)) ?? [];
+  const itemIds = tip.itemIds?.filter(id => !inline.some(part => "kind" in part && part.kind === "item" && part.id === id)) ?? [];
+  const credited = authors.length > 1 ? guideAuthors(tip.sourceIds?.flatMap(id => sources.filter(source => source.id === id)) ?? []) : [];
+  const credits = credited.length > 0 && <span className="mg-tip-credits">{credited.map(source =>
+    <span key={source.id} className="mg-author-dot" role="img" aria-label={source.author} title={source.author} style={{ backgroundColor: authorColor(authors.findIndex(author => author.author === source.author)) }} />)}</span>;
+  return <div className="mg-tip-content">
+      {tip.heading && <h3 className="mg-tip-heading"><GuideTipText parts={heading} abilities={abilities} />{credits}</h3>}
+      <p><GuideTipText parts={parts} abilities={abilities} />{!tip.heading && credits}</p>
       {tip.patch && <div className="mg-tip-meta"><span>Written {tip.patch}</span></div>}
-      {(tip.abilityKeys?.length || tip.itemIds?.length) ? <div className="mg-references">
-        {tip.abilityKeys?.map(ref => {
+      {(abilityKeys.length || itemIds.length) ? <div className="mg-references">
+        {abilityKeys.map(ref => {
           const ability = abilities[ref.champion]?.find(ability => ability.key === ref.key);
           return <AbilityHover key={`${ref.champion}-${ref.key}`} championId={ref.champion} abilityKey={ref.key} icon={ability?.icon}>
             {ability?.icon && <img src={ability.icon} alt="" />}<span>{ref.key}{ability?.name ? ` · ${ability.name}` : ""}</span>
           </AbilityHover>;
         })}
-        {tip.itemIds?.map(id => <GuideItem key={id} id={id} />)}
+        {itemIds.map(id => <GuideItem key={id} id={id} />)}
       </div> : null}
       {tip.outdated && <Notice tone="warn">May be outdated: {tip.outdated === true ? "a champion changed after this tip's patch." : tip.outdated}</Notice>}
-    </div>
-  </li>)}</ol>;
+    </div>;
 }
 
-export function GuideSectionContent({ guide, section, abilities }: { guide: AuthoredGuide; section: GuideSectionId; abilities: GuideAbilities }) {
+export function GuideSectionContent({ guide, section, abilities, showAuthors = true }: { guide: AuthoredGuide; section: GuideSectionId; abilities: GuideAbilities; showAuthors?: boolean }) {
   const content = guide.sections[section];
   return <div className="mg-section-content">
-    <GuideAuthorCredits sources={guide.sources} />
+    {showAuthors && <GuideAuthorCredits sources={guide.sources} />}
     <GuideTips tips={[...content.tips, ...(guide.enemyTips?.[section] ?? [])]} sources={guide.sources} abilities={abilities} />
     {content.alternatives && <div className="mg-alternatives">{content.alternatives.map(style => {
       return <section className="ui-well" key={style.title}>

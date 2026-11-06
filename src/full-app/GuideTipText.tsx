@@ -3,7 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { ItemIcon } from "../runes/ItemIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { AbilityHover, useAbilitySheet } from "./AbilityHover";
-import { parseGuideText, liveCooldown, guideReferences, type GuideNamedReference } from "./guideText";
+import { liveCooldown, guideReferences, type GuideNamedReference, type GuideTextPart } from "./guideText";
 import type { RuneCatalog } from "./BuildPanel";
 import type { GuideAbilities } from "./MatchupGuideContent";
 import type { GuideTip } from "./matchupGuide";
@@ -11,7 +11,7 @@ import type { GuideTip } from "./matchupGuide";
 let itemsRequest: Promise<Record<number, string>> | undefined;
 let runesRequest: Promise<GuideNamedReference[]> | undefined;
 
-export function GuideTipText({ text, abilities = {}, abilityKeys = [], itemIds = [] }: { text: string; abilities?: GuideAbilities; abilityKeys?: GuideTip["abilityKeys"]; itemIds?: number[] }) {
+export function useGuideReferences(abilities: GuideAbilities, abilityKeys: NonNullable<GuideTip["abilityKeys"]>, itemIds: number[]) {
   const [items, setItems] = useState<Record<number, string>>({});
   const [runes, setRunes] = useState<GuideNamedReference[]>([]);
   const hasItems = itemIds.length > 0;
@@ -31,8 +31,11 @@ export function GuideTipText({ text, abilities = {}, abilityKeys = [], itemIds =
     const ability = abilities[ref.champion]?.find(ability => ability.key === ref.key);
     return ability?.name ? [{ ...ability, kind: "ability" as const, champion: ref.champion }] : [];
   });
-  const references = guideReferences(names, itemIds.flatMap(id => items[id] ? [{ kind: "item" as const, id, name: items[id] }] : []), runes);
-  return <>{parseGuideText(text, references).map((part, i) => "text" in part ? part.text
+  return guideReferences(names, itemIds.flatMap(id => items[id] ? [{ kind: "item" as const, id, name: items[id] }] : []), runes);
+}
+
+export function GuideTipText({ parts, abilities }: { parts: GuideTextPart[]; abilities: GuideAbilities }) {
+  return <>{parts.map((part, i) => "text" in part ? part.text
     : "kind" in part ? part.kind === "ability" ? <span className="mg-inline-ability" key={i}>
       <AbilityHover championId={part.champion} abilityKey={part.key} icon={part.icon}>
         {part.icon && <img src={part.icon} alt="" />}<kbd>{part.key}</kbd>
