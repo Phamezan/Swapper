@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TeamLogo } from "../runes/TeamLogo";
 import { RankCrest } from "../runes/RankCrest";
 import type { MatchupVod } from "./matchupGuide";
-import { vodPlayerName, crestTier, playerInitials } from "./matchupVodModel";
+import { vodPlayerName, crestTier, playerInitials, teamName } from "./matchupVodModel";
 import { usePlayerPhoto } from "./PlayerPhoto";
 
 /** One-line identity: photo, initials or rank crest, the name and a pro's team. Rank and region sit in the facts beside it. */
@@ -16,7 +16,7 @@ export function VodPlayer({ vod }: { vod: MatchupVod }) {
     <span className="mv-avatar" aria-hidden>{image && image !== failedImage
       ? <img src={image} alt="" onError={() => setFailedImage(image)} /> : name ? initials : crestTier(vod.rankClaim) ? <RankCrest tier={crestTier(vod.rankClaim)!} size={26} mode="desktop" /> : null}</span>
     <strong className="mv-player-name" title={player}>{player}</strong>
-    {vod.team && <span className="mv-affiliation"><TeamLogo key={vod.team} team={vod.team} size={16} mode="desktop" /><span>{vod.team}</span></span>}
+    {vod.team && <span className="mv-affiliation"><TeamLogo key={vod.team} team={teamName(vod.team)} size={16} mode="desktop" /><span>{vod.team}</span></span>}
     {vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <span className="mv-cam-dot" role="img" aria-label="Facecam" title="Facecam" />}</span>}
   </span>;
 }

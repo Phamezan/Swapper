@@ -245,3 +245,14 @@ export function vodLabel(vod: MatchupVod, names: { champion: string; enemy: stri
   const facts = [[row.region, row.rank].filter(Boolean).join(" "), row.patch ? `patch ${row.patch}${vod.patchEstimated ? " (estimated)" : ""}` : null, uploadAge(vod.uploaded, now)].filter(Boolean).join(", ");
   return [`Watch ${vodPlayerName(vod.player) ?? "Ranked replay"}${tags.length ? ` (${tags.join(", ")})` : ""}, ${names.champion} vs ${names.enemy ?? "any opponent"}${names.lane ? `, ${names.lane}` : ""}`, facts, row.moments ? `${row.moments} key moment${row.moments === 1 ? "" : "s"}` : null, row.result ? row.result === "win" ? "Win" : "Loss" : null, `Length ${formatVodTime(seg.end - seg.start)}${row.segment ? " (game segment)" : ""}`].filter(Boolean).join(". ") + ".";
 }
+
+/** VOD data stores team tags; the logo CDN is keyed by the full team name. Unknown tags pass through. */
+const TEAM_NAMES: Record<string, string> = {
+  HLE: "Hanwha Life Esports", DK: "Dplus KIA", GEN: "Gen.G Esports", "Gen.G": "Gen.G Esports", BLG: "Bilibili Gaming",
+  KT: "KT Rolster", JDG: "JD Gaming", G2: "G2 Esports", KC: "Karmine Corp", NS: "Nongshim RedForce", FNC: "Fnatic",
+  AL: "Anyone's Legend", LNG: "LNG Esports", WBG: "Weibo Gaming", IG: "Invictus Gaming", BRO: "OKSavingsBank BRION",
+  BFX: "BNK FEARX", EDG: "EDward Gaming", TES: "Top Esports", WE: "Team WE", C9: "Cloud9", FLY: "FlyQuest",
+};
+export function teamName(tag: string): string {
+  return TEAM_NAMES[tag] ?? tag;
+}

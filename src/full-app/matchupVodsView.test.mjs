@@ -826,3 +826,12 @@ test("unknown opponents use the helmet in rows and the header, with segment leng
   assert.ok(nodes(matchup).some(n => n.type === 'champion-icon' && n.props.id === -1));
   assert.equal(text(nodes(tree).find(n => n.props.className === 'mv-header-length')), '29:32');
 });
+
+test("teamName maps VOD team tags to the logo CDN's full names and passes unknown tags through", async () => {
+  const { teamName } = await import("./matchupVodModel.ts");
+  assert.equal(teamName("HLE"), "Hanwha Life Esports");
+  assert.equal(teamName("GEN"), "Gen.G Esports");
+  assert.equal(teamName("Gen.G"), "Gen.G Esports");
+  assert.equal(teamName("T1"), "T1");
+  assert.equal(teamName("NIP"), "NIP");
+});

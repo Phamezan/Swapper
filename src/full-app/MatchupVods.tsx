@@ -7,10 +7,11 @@ import type { VodRequest } from "./MatchupVodEntry";
 import type { ChampionOption } from "../runes/types";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { RankCrest } from "../runes/RankCrest";
+import { TeamLogo } from "../runes/TeamLogo";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { loadAllVods, loadChampionVods } from "./loadMatchupVods";
 import { GUIDE_SECTIONS, type GuideSectionId, type MatchupVod } from "./matchupGuide";
-import { ANY_VOD, facetCounts, playerInitials, vodLabel, vodThumbnail, type VodRow, comparePatch, filterVods, formatVodTime, RANK_TIERS, segmentOf, uploadAge, vodKey, vodMatches, vodPlayerName, vodRow, vodUrl, type RankTier, type VodFilters } from "./matchupVodModel";
+import { ANY_VOD, facetCounts, playerInitials, vodLabel, vodThumbnail, type VodRow, comparePatch, filterVods, formatVodTime, RANK_TIERS, segmentOf, uploadAge, vodKey, vodMatches, vodPlayerName, vodRow, vodUrl, type RankTier, type VodFilters, teamName } from "./matchupVodModel";
 import { NearEnd } from "./NearViewport";
 import { Picker, ROLES } from "./Picker";
 import { VodPlayer } from "./VodPlayer";
@@ -177,7 +178,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
               onClick={() => { lastOpened.current = rowKey; setSelection({ vod, fromOtherSide, watch: request }); setActiveMoment(-1); }}>
               <RowThumb vod={vod} row={row} />
               {wide && <span className="mv-cell-matchup"><span className="mv-pair" aria-hidden><ChampionIcon id={vod.champion ?? 0} name="" mode="desktop" /><span className="mv-vs">vs</span><ChampionIcon id={vod.enemy ?? -1} name={vod.enemy ? "" : "Unknown opponent"} mode="desktop" /></span><span className="mv-lines"><strong>{championName(vod.champion)} <span className="mv-vs-word">vs</span> {vod.enemy ? enemyName(vod.enemy) : <span className="is-any">any</span>}</strong>{vod.lane && <small>{LANES[vod.lane]}</small>}</span></span>}
-              <span className="mv-cell-who"><RowAvatar vod={vod} /><span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.named ? row.primary : "Ranked replay"}</strong>{vod.team && <span className="mv-team-tag">{vod.team}</span>}{vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <span className="mv-cam-dot" role="img" aria-label="Facecam" title="Facecam" />}</span>}</span></span>
+              <span className="mv-cell-who"><RowAvatar vod={vod} /><span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.named ? row.primary : "Ranked replay"}</strong>{vod.team && <span className="mv-team-tag" title={teamName(vod.team)}><TeamLogo team={teamName(vod.team)} size={14} mode="desktop" />{vod.team}</span>}{vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <span className="mv-cam-dot" role="img" aria-label="Facecam" title="Facecam" />}</span>}</span></span>
               <span className="mv-cell-rank" title={[row.rank, row.region].filter(Boolean).join(" · ")}>{row.crest ? <RankCrest tier={row.crest} size={22} mode="desktop" /> : <span />}<span className="mv-lines"><span className="mv-rank-tier">{row.rank}</span>{row.region && <small>{row.region}</small>}</span></span>
               <span className="mv-cell-patch"><span className={vod.patchEstimated ? "is-estimated" : undefined} title={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}>{row.patch}</span>{age && <small title={vod.uploaded}>{age}</small>}</span>
               <span className="mv-cell-chips">{row.result && <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span>}</span>
