@@ -32,13 +32,16 @@
 
 /* Thumbnail: 16:9, length badge bottom right like every video site, play glyph on hover/focus. */
 .mv-thumb { position: relative; display: grid; place-items: center; width: var(--mv-thumb); aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--ui-radius-xs); background: linear-gradient(135deg, var(--ui-surface-3), var(--ui-surface-2)); box-shadow: inset 0 0 0 1px var(--ui-line-2); }
-.mv-thumb > img:not(.champion-icon) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.mv-thumb > .champion-icon { width: 26px; height: 26px; border-radius: 6px; opacity: .7; }
+.mv-thumb > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mv-thumb > .mv-thumb-splash { object-position: 72% 22%; }
+.mv-thumb-shade { position: absolute; inset: 0; background: linear-gradient(to right, rgb(0 0 0 / .08), rgb(0 0 0 / .45)); }
 .mv-thumb-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(0 0 0 / .35); color: #fff; opacity: 0; transition: opacity var(--ui-fast); }
 .mv-thumb-play > svg { width: 26px; height: 26px; padding: 7px 6px 7px 8px; border-radius: 50%; background: rgb(0 0 0 / .6); }
 .mv-vod-row:is(:hover, :focus-visible, .is-hover, .is-focus) .mv-thumb-play { opacity: 1; }
 .mv-vod-row[data-recent] .mv-thumb { box-shadow: 0 0 0 2px var(--ui-brand); }
-.mv-cell-length { position: absolute; right: 3px; bottom: 3px; display: inline-flex; align-items: center; gap: 3px; padding: 0 4px; border-radius: 4px; background: rgb(0 0 0 / .78); color: #fff; font-size: 11px; font-weight: 600; line-height: 16px; font-variant-numeric: tabular-nums; }
+.mv-cell-length, .mv-thumb-moments { position: absolute; bottom: 3px; display: inline-flex; align-items: center; gap: 3px; padding: 0 4px; border-radius: 4px; background: rgb(0 0 0 / .78); color: #fff; font-size: 11px; font-weight: 600; line-height: 16px; font-variant-numeric: tabular-nums; }
+.mv-cell-length { right: 3px; }
+.mv-thumb-moments { left: 3px; }
 
 /* Matchup: own champion, "vs", opponent (or a dashed "any" slot), then names over lane. */
 .mv-cell-matchup { display: flex; align-items: center; gap: 10px; }
@@ -72,10 +75,8 @@
 .mv-cell-patch > span { color: var(--ui-text-2); font-variant-numeric: tabular-nums; }
 .mv-cell-patch .is-estimated { color: var(--ui-text-3); text-decoration: underline dotted var(--ui-line-3); text-underline-offset: 3px; }
 
-/* Chips: moments and result, right-aligned so the row ends on a clean edge. */
-.mv-cell-chips { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
-.mv-chip { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 8px; border: 1px solid var(--ui-line-2); border-radius: 999px; background: rgb(255 255 255 / .03); color: var(--ui-text-2); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.mv-chip > svg { color: var(--ui-text-3); }
+/* Result, right-aligned so the row ends on a clean edge. */
+.mv-cell-chips { display: flex; align-items: center; justify-content: flex-end; }
 .mv-result-badge { display: inline-grid; place-items: center; min-width: 40px; height: 22px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
 .mv-result-badge.is-win { background: color-mix(in srgb, var(--ui-win) 14%, transparent); color: var(--ui-win); }
 .mv-result-badge.is-loss { background: color-mix(in srgb, var(--ui-loss) 14%, transparent); color: var(--ui-loss); }
@@ -85,7 +86,6 @@
   .mv-table { --mv-thumb: 80px; --mv-cols: var(--mv-thumb) minmax(190px, 1.3fr) minmax(160px, 1.2fr) 76px 76px 120px; }
   .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(190px, 1.4fr) 76px 76px 120px; }
   .mv-cell-rank .mv-rank-tier { display: none; }
-  .mv-hide-tight { display: none; }
 }
 @container matchup-vods (max-width: 760px) {
   .mv-table { --mv-thumb: 72px; --mv-gap: 12px; --mv-cols: var(--mv-thumb) minmax(0, 1.25fr) minmax(0, 1fr) 40px 72px 86px; }

@@ -16,6 +16,7 @@ import { Picker, ROLES } from "./Picker";
 import { VodPlayer } from "./VodPlayer";
 import { YoutubeVodPlayer, type VodSeek } from "./YoutubeVodPlayer";
 import { usePlayerPhoto } from "./PlayerPhoto";
+import { useChampionArt } from "./art";
 import { Skeleton, Notice } from "./ui/States";
 import "./matchup-vods.css";
 // Rows render in steps as the list scrolls, so a 1,000-VOD library opens as fast as a short one.
@@ -32,9 +33,14 @@ function RowAvatar({ vod }: { vod: MatchupVod }) {
 function RowThumb({ vod, row }: { vod: MatchupVod; row: VodRow }) {
   const [failed, setFailed] = useState(false);
   const src = vodThumbnail(vod), seg = segmentOf(vod);
+  const splash = useChampionArt(!src || failed ? vod.enemy || vod.champion : null, "splash");
   return <span className="mv-thumb" aria-hidden>
-    {src && !failed ? <img src={src} alt="" loading="lazy" decoding="async" draggable={false} width={320} height={180} onError={() => setFailed(true)} onLoad={event => { if (event.currentTarget.naturalWidth <= 120) setFailed(true); }} /> : <ChampionIcon id={vod.champion ?? 0} name="" mode="desktop" />}
+    {src && !failed ? <img src={src} alt="" loading="lazy" decoding="async" draggable={false} width={320} height={180} onError={() => setFailed(true)} onLoad={event => { if (event.currentTarget.naturalWidth <= 120) setFailed(true); }} /> : <>
+      {splash && <img className="mv-thumb-splash" src={splash} alt="" loading="lazy" decoding="async" draggable={false} width={320} height={180} />}
+      <span className="mv-thumb-shade" />
+    </>}
     <span className="mv-thumb-play"><Play size={12} fill="currentColor" /></span>
+    {row.moments && <span className="mv-thumb-moments"><Flag size={10} />{row.moments}</span>}
     <span className="mv-cell-length" title={row.segment ? `Game from ${formatVodTime(row.segment.start)} to ${formatVodTime(row.segment.end)} of the stream` : undefined}>{row.segment && <Scissors size={10} aria-hidden />}{formatVodTime(seg.end - seg.start)}</span>
   </span>;
 }
@@ -164,7 +170,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
         {!shown.length ? <div className="mv-empty"><p>{!library.length && !fromOtherSide ? (champion ? `No ${champion.name} VODs yet.` : "No VODs available yet. Try again later.") : fromOtherSide ? `No VODs from ${enemyName(filters.enemy ?? undefined)}’s side match these filters` : "No VODs match these filters"}</p>
           {!library.length && champion && <button className="mv-text-button" onClick={() => onChampionChange?.(null)}>Browse all champions</button>}
           {(pool.length > 0 || filters.enemy || filters.lane) && <button type="button" className="mv-text-button" onClick={clear}>Clear filters</button>}</div>
-          : <div className={`mv-table${wide ? " is-wide" : ""}`}><div className="mv-vod-head" aria-hidden><span />{wide && <span>Matchup</span>}<span>Player</span><span>Rank</span><span>Patch</span><span className="is-end"><span className="mv-hide-tight">Moments · </span>Result</span></div><ul className="mv-vod-list" aria-label={fromOtherSide ? `From ${enemyName(filters.enemy ?? undefined)}’s side` : champion ? `Every ${champion.name} VOD` : "All champion VODs"}>{shown.slice(0, limit).map(vod => {
+          : <div className={`mv-table${wide ? " is-wide" : ""}`}><div className="mv-vod-head" aria-hidden><span />{wide && <span>Matchup</span>}<span>Player</span><span>Rank</span><span>Patch</span><span className="is-end">Result</span></div><ul className="mv-vod-list" aria-label={fromOtherSide ? `From ${enemyName(filters.enemy ?? undefined)}’s side` : champion ? `Every ${champion.name} VOD` : "All champion VODs"}>{shown.slice(0, limit).map(vod => {
             const row = vodRow(vod), age = uploadAge(vod.uploaded, now), rowKey = `${vod.champion}-${vodKey(vod)}`;
             return <li key={rowKey}><button type="button" className="mv-vod-row" data-vod-id={vodKey(vod)} data-result={row.result ?? undefined} data-recent={rowKey === lastOpened.current || undefined}
               ref={rowKey === lastOpened.current ? sourceRow : undefined} title={vod.title} aria-label={vodLabel(vod, { champion: championName(vod.champion), enemy: vod.enemy ? enemyName(vod.enemy) : null, lane: LANES[vod.lane ?? ""] ?? null }, now)}
@@ -174,7 +180,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
               <span className="mv-cell-who"><RowAvatar vod={vod} /><span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.named ? row.primary : "Ranked replay"}</strong>{vod.team && <span className="mv-team-tag">{vod.team}</span>}{vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <span className="mv-cam-dot" role="img" aria-label="Facecam" title="Facecam" />}</span>}</span></span>
               <span className="mv-cell-rank" title={[row.rank, row.region].filter(Boolean).join(" · ")}>{row.crest ? <RankCrest tier={row.crest} size={22} mode="desktop" /> : <span />}<span className="mv-lines"><span className="mv-rank-tier">{row.rank}</span>{row.region && <small>{row.region}</small>}</span></span>
               <span className="mv-cell-patch"><span className={vod.patchEstimated ? "is-estimated" : undefined} title={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}>{row.patch}</span>{age && <small title={vod.uploaded}>{age}</small>}</span>
-              <span className="mv-cell-chips">{row.moments && <span className="mv-chip mv-moments"><Flag size={12} aria-hidden />{row.moments}<span className="mv-hide-tight">{row.moments === 1 ? " moment" : " moments"}</span></span>}{row.result && <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span>}</span>
+              <span className="mv-cell-chips">{row.result && <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span>}</span>
             </button></li>;
           })}{limit < shown.length && <li className="mv-more"><NearEnd onNear={() => setLimit(current => current + ROW_STEP)} /></li>}</ul></div>}
       </>}

@@ -836,7 +836,11 @@ async function main() {
     await screenshot('vod-library-photos', 1920, 1080);
     assert.ok(await page.evaluate("(() => { const row = document.querySelector('.mv-vod-row'), cells = [...row.children].map(c => c.getBoundingClientRect()); return Math.max(...cells.slice(1).map((c,i) => c.left - cells[i].right)) < row.getBoundingClientRect().width * .4; })()"), 'no dead column gap');
     assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-thumb')].every(t => Math.abs(t.getBoundingClientRect().width / t.getBoundingClientRect().height - 16/9) < .02)"), 'thumbnail tiles keep 16:9');
-    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].filter(r => r.dataset.vodId.startsWith('fixture-')).every(r => !r.querySelector('.mv-thumb > img:not(.champion-icon)'))"), 'fixture thumbnails use portraits');
+    await page.wait("[...document.querySelectorAll('.mv-vod-row')].filter(r => r.dataset.vodId.startsWith('fixture-')).every(r => r.querySelector('.mv-thumb > .mv-thumb-splash'))", 'fixture thumbnails use champion splash art');
+    assert.deepEqual(await page.evaluate(`(() => { const thumb = ${row('Fixture Pro 1')}.querySelector('.mv-thumb'); return { hidden: thumb.getAttribute('aria-hidden'), count: thumb.querySelector('.mv-thumb-moments').textContent, flag: !!thumb.querySelector('.mv-thumb-moments svg') }; })()`), { hidden: 'true', count: '4', flag: true }, 'moments count and flag sit inside the hidden thumbnail');
+    assert.ok(await page.evaluate(`!${row('Fixture Pro 3')}.querySelector('.mv-thumb-moments')`), 'zero moments hides the thumbnail badge');
+    assert.equal(await page.evaluate("document.querySelector('.mv-vod-head .is-end').textContent"), 'Result');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-cell-chips')].every(cell => !cell.querySelector('.mv-moments, .mv-chip'))"), 'the right column contains only the result');
 
     assert.ok(await page.evaluate("![...document.querySelectorAll('.mv-filters .fa-picker')].some(b => /Sort|patch first|Shortest|Longest/.test(b.getAttribute('aria-label')))"), 'no sort picker');
     assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.getBoundingClientRect().height <= 64)"), 'one dense row per VOD');

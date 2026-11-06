@@ -27,11 +27,11 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
   const modules = {
     "@tauri-apps/api/core": { isTauri: () => true, invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }, { id: 157, name: "Yasuo" }] },
     "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
-    react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", ChevronRight: "chevron", ArrowLeft: "back-icon" },
+    react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", Flag: "flag", ChevronRight: "chevron", ArrowLeft: "back-icon" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods, loadChampionVods: async () => championVods, loadAllVods: async () => championVods.map(vod => ({ ...vod, champion: vod.champion ?? (vod.enemy === 103 ? 238 : 103) })) },
     "./Picker": { ChampionPicker: "champion-picker", Picker: "picker", ROLES: [["mid", "Mid"], ["top", "Top"]] }, "./NearViewport": { NearEnd: "near-end" },
     './miniPlayer': miniPlayer, './youtubePlayer': youtube, './YoutubeVodPlayer': { YoutubeVodPlayer: 'youtube-player' },
-    "./art": { useChampionArt: () => null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
+    "./art": { useChampionArt: (id, kind) => id ? `/art/${kind}-${id}.jpg` : null }, "./GuideSourceButton": { GuideSourceButton: "source-button" },
     "./VodPlayer": { VodPlayer: "player-identity" }, "./PlayerPhoto": { usePlayerPhoto: name => photos[name] ?? null }, "../runes/TeamLogo": { TeamLogo: "team-logo" }, "../runes/RankCrest": { RankCrest: "rank-crest" },
     "./ui/States": { Skeleton: "skeleton", Notice: "notice" }, "./MomentIcon": { MomentIcon: "moment-icon" }, "@tauri-apps/api/window": { getCurrentWindow: () => tauriWindow }, "./MatchupGuideContent": { GuideSectionContent: "guide-content" },
     "./MatchupGuideSummary": { MatchupGuideSummary: "summary" }, "./TradeWindows": { TradeWindows: "trades" }, "./PowerSpikeTimeline": { PowerSpikeTimeline: "spikes" },
@@ -500,7 +500,9 @@ test("library rows show the player or rank and region, a result badge and moment
   const unnamed = { ...ahriVsZedVods[0], videoId: "plain-row-1", title: "Ahri Mid vs Zed - KR Master Patch 26.18", player: "?", team: undefined, result: undefined, rankClaim: "Master", patch: "26.18", moments: [] };
   const h = harness("./MatchupVods.tsx", "MatchupVods", [named, unnamed]);
   h.render(props);
-  const [first, second] = rows(await h.flush());
+  const tree = await h.flush();
+  const [first, second] = rows(tree);
+  assert.equal(text(nodes(tree).find(node => node.props.className === "mv-vod-head").props.children.at(-1)), "Result");
   assert.equal(first.props.title, named.title, "the full title stays available as a tooltip");
   assert.equal(first.props["data-result"], "win");
   assert.match(first.props["aria-label"], /^Watch Peng \(MKOI\), Ahri vs Zed, Mid\. EUW Challenger, patch /);
@@ -508,13 +510,18 @@ test("library rows show the player or rank and region, a result badge and moment
   assert.equal(text(nodes(first).find(node => node.props.className === "mv-team-tag")), "MKOI");
   assert.equal(text(nodes(first).find(node => node.props.className === "mv-cell-rank")), "ChallengerEUW");
   assert.equal(text(nodes(first).find(node => node.props.className === "mv-result-badge is-win")), "Win");
-  assert.match(text(nodes(first).find(node => node.props.className === "mv-chip mv-moments")), new RegExp(`^${named.moments.length} moments$`));
+  const thumbnail = nodes(first).find(node => node.type?.name === "RowThumb");
+  const thumbTree = harness('./MatchupVods.tsx', 'RowThumb').render(thumbnail.props);
+  assert.equal(text(nodes(thumbTree).find(node => node.props.className === "mv-thumb-moments")), String(named.moments.length));
+  assert.ok(first.props["aria-label"].includes(`${named.moments.length} key moments`));
+  assert.equal(text(nodes(first).find(node => node.props.className === "mv-cell-chips")), "Win");
   assert.equal(text(nodes(second).find(node => node.type === "strong")), "Ranked replay", "an unknown player is labelled as a replay");
   assert.equal(nodes(second).find(node => node.type === "strong").props.className, "is-unnamed");
   assert.equal(text(nodes(second).find(node => node.props.className === "mv-cell-rank")), "MasterKR");
   assert.equal(second.props["data-result"], undefined);
   assert.equal(nodes(second).some(node => String(node.props.className).startsWith("mv-result-badge")), false, "no result shows nothing, not a dash");
-  assert.equal(text(nodes(second).find(node => node.props.className === "mv-chip mv-moments")), "", "zero moments shows nothing");
+  const emptyThumb = nodes(second).find(node => node.type?.name === "RowThumb");
+  assert.equal(nodes(harness('./MatchupVods.tsx', 'RowThumb').render(emptyThumb.props)).some(node => node.props.className === "mv-thumb-moments"), false, "zero moments shows nothing");
   assert.doesNotMatch(text(second), /Unlisted|–/);
 });
 
@@ -740,15 +747,35 @@ test("spoken label includes segment, facecam, estimated patch and singular momen
  const label = logic.vodLabel(vod, {champion: "Ahri", enemy: null, lane: "Mid"}, new Date());
  for (const part of ["streamer with facecam", "vs any opponent", "patch ~26.21 (estimated)", "1 key moment.", "(game segment)"]) assert.ok(label.includes(part));
 });
-test("thumbnail falls back for fixtures and YouTube placeholder stills", () => {
- const vod = {...ahriVsZedVods[0], videoId: "A_b-cD12345", fixture: false};
- const h = harness('./MatchupVods.tsx', 'RowThumb');
- let tree = h.render({vod, row: logic.vodRow(vod)});
- nodes(tree).find(n => n.type === 'img').props.onLoad({currentTarget: {naturalWidth: 120}});
- tree = h.render(); assert.equal(nodes(tree).some(n => n.type === 'img'), false);
- const fixture = harness('./MatchupVods.tsx', 'RowThumb').render({vod: {...vod, fixture: true}, row: logic.vodRow(vod)});
- assert.equal(nodes(fixture).some(n => n.type === 'img'), false);
- assert.ok(nodes(fixture).some(n => n.type === 'champion-icon'));
+test("thumbnail uses enemy splash for missing, failed and placeholder stills, with moments on every thumbnail", () => {
+ const vod = {...ahriVsZedVods[0], champion: 103, enemy: 238, videoId: "A_b-cD12345", fixture: false};
+ const assertBadge = tree => {
+   assert.equal(tree.props['aria-hidden'], true);
+   const badge = nodes(tree).find(n => n.props.className === 'mv-thumb-moments');
+   assert.equal(text(badge), String(vod.moments.length));
+   assert.ok(nodes(badge).some(n => n.type === 'flag'));
+   assert.ok(nodes(tree).some(n => n.props.className === 'mv-thumb-play'));
+   assert.ok(nodes(tree).some(n => n.props.className === 'mv-cell-length'));
+ };
+ for (const failure of ['placeholder', 'error']) {
+   const h = harness('./MatchupVods.tsx', 'RowThumb');
+   let tree = h.render({vod, row: logic.vodRow(vod)});
+   const img = nodes(tree).find(n => n.type === 'img');
+   assert.equal(img.props.src, logic.vodThumbnail(vod));
+   img.props.onLoad({currentTarget: {naturalWidth: 320}});
+   assert.equal(nodes(h.render()).find(n => n.type === 'img').props.src, logic.vodThumbnail(vod));
+   assertBadge(tree);
+   if (failure === 'placeholder') img.props.onLoad({currentTarget: {naturalWidth: 120}});
+   else img.props.onError();
+   tree = h.render();
+   assert.equal(nodes(tree).find(n => n.type === 'img').props.src, '/art/splash-238.jpg');
+   assertBadge(tree);
+ }
+ for (const enemy of [238, undefined, 0]) {
+   const fixture = harness('./MatchupVods.tsx', 'RowThumb').render({vod: {...vod, enemy, fixture: true}, row: logic.vodRow(vod)});
+   assert.equal(nodes(fixture).find(n => n.type === 'img').props.src, `/art/splash-${enemy || 103}.jpg`);
+   assertBadge(fixture);
+ }
 });
 
 test("wide rows lead with both matchup portraits, lane and the full spoken label", async () => {
