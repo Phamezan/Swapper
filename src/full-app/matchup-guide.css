@@ -33,6 +33,11 @@
 .mg-slide-heading small { font-size: 13px; color: var(--ui-text-3); }
 .mg-workspace-tabs button:focus-visible, .mg-deck :is(button, a, [tabindex]):focus-visible, .mg-summary :is(a, [tabindex]):focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 3px; }
 .mg-summary { display: grid; grid-template-columns: minmax(210px, .8fr) minmax(0, 1.5fr); gap: 32px; background: var(--ui-surface-2); font-size: 16px; line-height: 1.55; }
+.mg-written-timeline { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 18px; overflow-wrap: anywhere; }
+.mg-written-timeline caption { text-align: left; font-weight: 650; margin-bottom: 10px; }
+.mg-written-timeline :is(th, td) { padding: 10px; border-bottom: 1px solid var(--ui-line-2); text-align: left; vertical-align: top; }
+.mg-written-timeline th { font-weight: 650; }
+.mg-written-timeline th:first-child { width: 20%; }
 .mg-summary:not(:has(.mg-summary-outlook)) { grid-template-columns: minmax(0, 1fr); }
 .mg-summary > div { min-width: 0; }
 .fa-frame .champion-tools :is(.mg-deck, .mg-itemization) h3 { font-size: 20px; font-weight: 650; line-height: 1.3; }

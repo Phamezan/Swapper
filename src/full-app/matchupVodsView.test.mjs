@@ -497,7 +497,10 @@ test("general fallback warns that tips are not specific to the selected matchup"
   assert.equal(nodes(banner).find(n => n.type === "triangle-alert").props["aria-hidden"], true);
   assert.equal(nodes(banner).some(n => n.type === "button"), false);
   assert.equal(nodes(tree).find(n => n.type === "summary").props.guide, guide);
-  assert.equal(nodes(tree).filter(n => n.type === "guide-content").length, 3);
+  const content = nodes(tree).filter(n => n.type === "guide-content");
+  assert.equal(content.length, 4);
+  assert.equal(content[0].props.section, "overview");
+  assert.equal(content[0].props.showAuthors, false, "the summary already credits the authors");
   for (const guide of [{ champion: 103, enemy: 238, keyTips: [] }, null]) {
     const tree = h.render({ ...props, guide, loading: false, abilities: {}, tier: "emerald_plus", matchup: null });
     assert.equal(nodes(tree).some(n => n.props.role === "status"), false);

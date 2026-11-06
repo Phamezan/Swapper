@@ -34,8 +34,9 @@ function harness(file, name, command, cached = new Map()) {
       },
     },
     "./ui/Slot": { Slot: "slot" }, "./ui/States": { Notice: "notice" },
+    "./ui/Tooltip": { Tooltip: "tooltip" },
     "./GuideSourceButton": { GuideSourceButton: "source-button" }, "./GuideItem": { GuideItem: "guide-item" },
-    "./GuideTipText": { GuideTipText: "guide-text" }, "./AbilityHover": { AbilityHover: "ability" },
+    "./GuideTipText": { GuideTipText: "guide-text", useGuideReferences: () => [] }, "./AbilityHover": { AbilityHover: "ability" },
     "./guideText": { parseGuideText, liveCooldown, guideReferences },
     "../runes/ItemIcon": { ItemIcon: "item-icon" }, "../runes/RuneIcon": { RuneIcon: "rune-icon" },
     "./MatchupGuideContent": { GuideAuthorCredit: "source-credit" },
@@ -47,7 +48,14 @@ function harness(file, name, command, cached = new Map()) {
   }).outputText;
   const exports = {};
   new Function("require", "exports", code)(key => modules[key] ?? {}, exports);
-  const render = value => { props = value ?? props; cursor = 0; tree = exports[name](props); pending.splice(0).forEach(fn => fn()); return tree; };
+  const render = value => {
+    props = value ?? props; cursor = 0;
+    tree = name === "GuideTipText" ? exports.GuideTipText({
+      parts: parseGuideText(props.text, exports.useGuideReferences(props.abilities ?? {}, props.abilityKeys ?? [], props.itemIds ?? [])),
+      abilities: props.abilities ?? {},
+    }) : exports[name](props);
+    pending.splice(0).forEach(fn => fn()); return tree;
+  };
   return { render, calls, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
 }
 
@@ -93,7 +101,7 @@ test("source activation uses the Tauri command through a keyboard-accessible but
   const button = nodes(tree).find(node => node.type === "button");
   assert.equal(button.props.type, "button");
   assert.equal(button.props["aria-label"], "Author Name");
-  assert.equal(button.props.title, "Author Name");
+  assert.equal(nodes(tree).find(node => node.type === "tooltip")?.props.label ?? button.props.title, "Author Name");
   await button.props.onClick();
   assert.deepEqual(h.calls, [{ name: "open_guide_source", args: { url: "https://www.mobafire.com/league-of-legends/ahri-guide" } }]);
 });

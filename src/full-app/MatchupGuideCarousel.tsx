@@ -60,7 +60,7 @@ export function MatchupGuideCarousel({ guide, loading, abilities, champion, enem
       {key === "mid-lane" && <PowerSpikeTimeline champion={champion} enemy={enemy} lane={lane} tier={tier} matchup={matchup} />}
       <div className="mg-slide-reading" tabIndex={key === "early-lane" || key === "mid-lane" ? 0 : undefined} aria-label={`${label} tips`}>
       {loading ? <Skeleton label="Loading guide" rows={3} height={50} /> : guide
-        ? key === "overview" ? <MatchupGuideSummary guide={guide} abilities={abilities} /> : <GuideSectionContent guide={guide} section={key} abilities={abilities} />
+        ? key === "overview" ? <><MatchupGuideSummary guide={guide} abilities={abilities} /><GuideSectionContent guide={guide} section={key} abilities={abilities} showAuthors={false} /></> : <GuideSectionContent guide={guide} section={key} abilities={abilities} />
         : <p className="mg-no-written-guide">No written guide yet.</p>}
       </div>
     </div>)}</div>

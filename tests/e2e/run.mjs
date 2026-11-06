@@ -2074,6 +2074,7 @@ async function main() {
     assert.equal(inline.chips, 0);
     assert.equal(inline.rows, 0);
   });
+  await (await import('./guide-layout.mjs')).guideLayoutChecks({ check, navigate, fullApp, page, nav, cdp: page.cdp });
   await check("Draft lock busy state and errors", async () => {
     await navigate(`${draft}?fixture=planning&lock-delay&lock-fail`, '.cs-pick');
     await page.type('input[aria-label="Search champion"]', 'Aatrox');

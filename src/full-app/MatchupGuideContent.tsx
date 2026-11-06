@@ -80,5 +80,10 @@ export function GuideSectionContent({ guide, section, abilities, showAuthors = t
       <h3>{style.title}</h3>
       <GuideTips tips={style.tips} sources={guide.sources} abilities={abilities} />
     </section>; })}</div>}
+    {content.timeline && content.timeline.length > 0 && <table className="mg-written-timeline">
+      <caption>Lane timeline</caption>
+      <thead><tr><th scope="col">Timing</th><th scope="col">You</th><th scope="col">Opponent</th></tr></thead>
+      <tbody>{content.timeline.map((row, i) => <tr key={i}><th scope="row">{row.at}</th><td>{row.champion}</td><td>{row.enemy}</td></tr>)}</tbody>
+    </table>}
   </div>;
 }
