@@ -1,3 +1,4 @@
+import { displayPatch } from "../patchDisplay";
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ChampionIcon } from "../runes/ChampionIcon";
@@ -73,7 +74,7 @@ export default function PatchNotes() {
   return <div ref={page} className="pn-page">
     <header className="pn-header">
       <div className="pn-header-copy">
-        <div className="pn-patch-line"><h2>Patch {notes.patch}</h2>{date && <time className="pn-edition" dateTime={notes.date ?? undefined}>{date}</time>}</div>
+        <div className="pn-patch-line"><h2>Patch {displayPatch(notes.patch)}</h2>{date && <time className="pn-edition" dateTime={notes.date ?? undefined}>{date}</time>}</div>
         <p className="pn-summary">
           {counts && <span className="pn-summary-counts">
             <span className="is-buff">{counts.buffs} buffs</span><span className="is-nerf">{counts.nerfs} nerfs</span><span>{counts.adjusts} adjustments</span>
@@ -136,9 +137,9 @@ function PatchCard({ version, current, selected, disabled, onSelect }: { version
   return <div className="pn-patch-option">
     <span className={`pn-patch-label${selected ? " is-selected" : ""}`} aria-hidden>{current ? "Current" : "Previous"}</span>
     <button type="button" className={`pn-patch-card${art ? " has-art" : ""}`} aria-pressed={selected} disabled={disabled} onClick={onSelect}
-      aria-label={`Patch ${version}, ${current ? "Current" : "Previous"}`} style={art ? { "--pn-art": `url("${art}")` } as CSSProperties : undefined}>
+      aria-label={`Patch ${displayPatch(version)}, ${current ? "Current" : "Previous"}`} style={art ? { "--pn-art": `url("${art}")` } as CSSProperties : undefined}>
       {art && <span className="pn-patch-art" aria-hidden />}
-      <strong>{version}</strong>
+      <strong>{displayPatch(version)}</strong>
     </button>
   </div>;
 }

@@ -601,7 +601,7 @@ mod tests {
             scoreboard: Some(Bounds { x: 100, y: 100, width: 771, height: 310 }),
             objectives: super::super::model::objectives(&data),
             skill: Some('R'),
-            arrow: Some([600, 600, 20, 8]),
+            arrow: Some([600, 600, 32, 32]),
             pulse: 0,
         };
         let bounds = Bounds {

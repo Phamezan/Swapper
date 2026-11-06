@@ -112,8 +112,11 @@ fn win_view_dedupes_against_the_displayed_preset_and_omits_invalid_runes() {
 
 #[test]
 fn formats_patches_from_the_api_version_string() {
-    assert_eq!(patch_label("16_19"), "16.19");
+    assert_eq!(patch_label("16_19"), "26.19");
     assert_eq!(patch_label(""), "–");
+    for (input, expected) in [("15.24", "25.24"), ("16.1", "26.1"), ("16.22.1", "26.22"), ("26.22", "26.22"), ("garbage", "garbage"), ("14.24", "14.24"), ("19.1", "29.1"), ("20.1", "20.1"), ("16.22.bad", "16.22.bad")] {
+        assert_eq!(patch_label(input), expected);
+    }
 }
 
 #[test]

@@ -1,6 +1,6 @@
 [package]
 name = "swapper"
-version = "1.0.10"
+version = "1.0.14"
 license = "MIT"
 description = "Tiny Riot account switcher for the Windows tray"
 authors = ["Phamezan"]
@@ -69,6 +69,9 @@ camino = "1"
 # MIT. Verifies the LTK Manager installer Swapper downloads and runs, at the
 # version tauri-plugin-updater already locks.
 minisign-verify = "0.2"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["test-util"] }
 
 
 # Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration

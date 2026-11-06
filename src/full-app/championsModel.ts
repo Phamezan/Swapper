@@ -19,6 +19,39 @@ export function mainRoles(lists: Record<string, TierRow[]>): Map<number, string>
   return new Map([...best].map(([id, { role }]) => [id, role]));
 }
 
+/** The share of a champion's games played in each of `ROLES`; zeros when it is in no list. */
+export function roleShares(championId: number, lists: Record<string, TierRow[]>): number[] {
+  const games = ROLES.map(role => (lists[role] ?? []).find(row => row.championId === championId)?.games ?? 0);
+  const total = games.reduce((a, b) => a + b, 0);
+  return games.map(count => total ? count / total : 0);
+}
+
+/** One role per team member, each role at most once: the most likely assignment, from each
+ *  champion's share of its games per role (Karthus + Shyvana is Karthus bot, Shyvana jungle).
+ *  A member's `role` (a position the client reported) is kept; members without a champion or
+ *  data fill whatever is left. Empty when more than five members or reported roles clash. */
+export function assignRoles(members: { championId: number; role: string }[], lists: Record<string, TierRow[]>): string[] {
+  // A role it is never listed in is unlikely, not impossible.
+  const shares = members.map(({ championId }) => {
+    const shares = roleShares(championId, lists);
+    const known = shares.some(Boolean);
+    return shares.map(share => Math.log(known ? Math.max(share, 1e-4) : 1 / ROLES.length));
+  });
+  let best: { score: number; roles: string[] } = { score: -Infinity, roles: [] };
+  const search = (index: number, roles: string[], score: number) => {
+    if (index === members.length) {
+      if (score > best.score) best = { score, roles };
+      return;
+    }
+    ROLES.forEach((role, r) => {
+      if (roles.includes(role) || (members[index].role && members[index].role !== role)) return;
+      search(index + 1, [...roles, role], score + shares[index][r]);
+    });
+  };
+  if (members.length <= ROLES.length) search(0, [], 0);
+  return best.roles;
+}
+
 /** One row per champion at its main role, strongest tier first, then win rate. */
 export function autoRows(lists: Record<string, TierRow[]>): AutoRow[] {
   const roles = mainRoles(lists);

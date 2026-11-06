@@ -10,6 +10,7 @@ import { EyeOff } from "lucide-react";
 import { clock, crestSlug, hasRecord, isHidden, kda, pct, rankLabel, roleOf, splitRiotId, titleCase, type Player, type TeamSummary, type LiveGameView } from "./LiveGameModel";
 import { LiveGamePlayer } from "./LiveGamePlayer";
 import "./live-game.css";
+import { UNSUPPORTED_GAME } from "./LiveGameModel";
 
 const roleNames: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 
@@ -27,6 +28,7 @@ export function LiveGameContent({ view, error, loaded, championNames, readOnly =
   const player = view?.players.find(p => p.key === selected) ?? null;
   const selfSide = view?.players.find(p => p.isSelf)?.side;
   const fetched = view?.players.filter(p => p.status !== "pending").length ?? 0;
+  if (view?.supported === false) return <section className="empty lg-empty"><p>{UNSUPPORTED_GAME}</p></section>;
   if (!view) {
     return <section className="empty lg-empty">
       <BrandIcon size={52} />

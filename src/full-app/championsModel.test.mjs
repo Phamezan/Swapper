@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { autoRows, mainRoles, mostPlayed } from "./championsModel.ts";
+import { assignRoles, autoRows, mainRoles, mostPlayed } from "./championsModel.ts";
 
 const row = (championId, tier, winPct, games) => ({ championId, name: `C${championId}`, tier, winPct, games, pickPct: 1, banPct: 1 });
 const lists = {
@@ -43,4 +43,21 @@ test('the champion pool puts recent picks first, then mastery by last played, wi
   const mastery = [{ championId: 2, lastPlayed: 5 }, { championId: 1, lastPlayed: 9 }, { championId: 3, lastPlayed: 7 }];
   assert.deepEqual(championPool(recent, mastery), [{ championId: 1, role: 'top' }, { championId: 3, role: 'auto' }, { championId: 2, role: 'auto' }]);
   assert.equal(championPool(recent, mastery, 2).length, 2);
+});
+
+test("draft roles: Karthus with Shyvana is the bot laner, not a second jungler", () => {
+  const lists = {
+    top: [row(102, "C", 48, 3000)],
+    jungle: [row(30, "A", 51, 30000), row(102, "S", 52, 60000)],
+    mid: [row(30, "B", 49, 4000)],
+    adc: [row(30, "B", 50, 8000)],
+  };
+  const team = (...ids) => ids.map(championId => ({ championId, role: "" }));
+  assert.deepEqual(assignRoles(team(30, 102), lists), ["adc", "jungle"]);
+  // Reported positions are kept; unpicked members and unknown champions fill what is left.
+  assert.deepEqual(assignRoles([{ championId: 30, role: "jungle" }, { championId: 102, role: "" }], lists), ["jungle", "top"]);
+  assert.deepEqual(new Set(assignRoles(team(30, 102, 0, 0, 999), lists)), new Set(["top", "jungle", "mid", "adc", "support"]));
+  // Clashing positions or a sixth member cannot be placed.
+  assert.deepEqual(assignRoles([{ championId: 30, role: "mid" }, { championId: 102, role: "mid" }], lists), []);
+  assert.deepEqual(assignRoles(team(1, 2, 3, 4, 5, 6), lists), []);
 });

@@ -135,11 +135,12 @@ async function shell() {
   for (const label of ["Dashboard", "Tierlist", "Matchups", "Draft", "Accounts", "Settings"]) {
     await page.text('nav[aria-label="Swapper pages"] button', label);
   }
-  await page.visible(".ui-page-header h1");
+  assert.equal(await page.evaluate("[...document.querySelectorAll('nav[aria-label=\"Swapper pages\"] button')].filter(b => b.textContent.includes('Live game')).length"), 0);
+  if (!await page.evaluate("document.querySelector('nav[aria-label=\"Swapper pages\"] [aria-current=\"page\"]')?.textContent.includes('Draft')")) await page.visible(".ui-page-header h1");
 }
 
 async function nav(label, selector) {
-  await page.click('nav[aria-label="Swapper pages"] button', label);
+  await page.click(`nav[aria-label="Swapper pages"] button[aria-label="${label}"]`);
   await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', label);
   if (label !== "Draft") await page.text(".ui-page-header h1", label);
   await page.visible(selector);
@@ -277,7 +278,7 @@ async function main() {
   await check("Dashboard preview", async () => { await navigate(fullApp, ".match-row"); await shell(); });
   await check('Location bar shows Dashboard and keeps empty title space draggable', async () => {
     await page.text('nav[aria-label="Location"] [aria-current="page"]', 'Dashboard');
-    await page.text('.title-version', 'v1.0.10');
+    await page.text('.title-version', 'v1.0.14');
     assert.equal(await page.evaluate("document.querySelector('.title-location').hasAttribute('data-tauri-drag-region')"), false);
     assert.equal(await page.evaluate("document.querySelector('.title-spacer').hasAttribute('data-tauri-drag-region')"), true);
     assert.ok(await page.evaluate("document.querySelector('.title-spacer').getBoundingClientRect().width >= 32"));
@@ -553,11 +554,16 @@ async function main() {
     await matchPreview();
   });
   // ---- end matchdetail missing data ----
-  await check("Sidebar Tierlist", () => nav("Tierlist", ".tier-table tbody tr"));
+  await check("Sidebar Tierlist", async () => {
+    await nav("Tierlist", ".tier-table tbody tr");
+    assert.equal(await page.evaluate('document.querySelector(".nav-badge.patch").dataset.label'), "PATCH 26.21");
+    assert.equal(await page.evaluate('document.querySelector(".nav-badge.patch").title'), "Patch 26.21");
+  });
   await check("Shared search pill focuses its rounded container", searchPillFocus);
   await check("Tierlist champion overview and build", async () => {
     await page.click(".tier-champ", "Aatrox");
     await page.text(".champion-hero h2", "Aatrox");
+    await page.text(".champion-hero .fa-eyebrow", "Patch 26.21");
     await page.text('.location-trail button', 'Tierlist');
     await page.text('.location-trail [aria-current="page"]', 'Aatrox');
     await page.visible(".fa-build-section");
@@ -1014,10 +1020,10 @@ async function main() {
     await page.settle();
     assert.ok(await page.evaluate("window.__vodFrame.isConnected"), 'entering draft must not stop the VOD');
     await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'champ_select',payload:{phase:'None'}})");
-    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:true})");
-    await page.wait("Array.from(document.querySelectorAll('nav button')).some(button => button.textContent === 'Live game')", 'game start reached the shell');
+    await page.evaluate("window.previewGamePhase('InProgress')");
+    await page.wait("Array.from(document.querySelectorAll('nav button')).some(button => button.getAttribute('aria-label') === 'Draft' && button.querySelector('.nav-badge.live'))", 'combined draft route stays available during playback');
     assert.ok(await page.evaluate("window.__vodFrame.isConnected"), 'starting a game must not stop the VOD');
-    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:false})");
+    await page.evaluate("window.previewGamePhase('None')");
     await screenshot('vod-mini-player');
     await page.click('.is-mini .mv-embed');
     await page.visible('.mv-player-view:not(.is-mini) iframe');
@@ -1050,11 +1056,11 @@ async function main() {
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
     await page.click('.mv-back');
     await page.visible('.mv-vod-row');
-    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:true})");
-    await page.text('nav button[aria-current="page"]', 'Live game');
+    await page.evaluate("window.previewGamePhase('InProgress')");
+    await page.text('nav button[aria-current="page"]', 'Draft');
     // The lazy Live Game page must commit before the game ends; otherwise the matchup page never unmounts and the next check inherits it.
     await page.visible(':is(.lg, .lg-empty)');
-    await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', {event:'live_game_state',payload:false})");
+    await page.evaluate("window.previewGamePhase('None')");
   });
   await check("Matchups champion grid fills the page at desktop widths", async () => {
     await navigate(fullApp, ".match-row");
@@ -1803,11 +1809,42 @@ async function main() {
         await page.text(".ui-page-actions", "Updated 2h ago");
       }
       if (query === "live=1") {
-        await nav("Live game", ".lg-team");
+        await nav("Draft", ".lg-team");
         assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 10);
       }
     });
   }
+
+  await check("Draft follows champ select, loading, live, reconnect and game end", async () => {
+    await navigate(fullApp, ".nav-group");
+    await nav("Draft", ".fa-draft-empty");
+    await page.evaluate("window.previewGamePhase('ChampSelect')");
+    await page.visible(".cs-band");
+    for (const phase of ["GameStart", "InProgress", "Reconnect"]) {
+      await page.evaluate(`window.previewGamePhase('${phase}')`);
+      await page.visible(".lg-team");
+      await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Draft");
+      assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 10);
+    }
+    await nav("Dashboard", ".match-row");
+    await page.evaluate("window.previewNavigate('live')");
+    await page.visible(".lg-team");
+    await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Draft");
+    await page.evaluate("window.previewGamePhase('EndOfGame')");
+    await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Dashboard");
+    await nav("Draft", ".fa-draft-empty");
+    await shell();
+  });
+
+  await check("Unsupported draft and live games show the SR note without players", async () => {
+    await navigate(fullApp, ".nav-group");
+    await page.evaluate("window.previewGamePhase('ChampSelect', false)");
+    await page.text(".fa-draft-page", "Swapper's draft and live game work for Summoner's Rift games.");
+    assert.equal(await page.evaluate("document.querySelectorAll('.cs-slot').length"), 0);
+    await page.evaluate("window.previewGamePhase('GameStart', false)");
+    await page.text(".lg-empty", "Swapper's draft and live game work for Summoner's Rift games.");
+    assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 0);
+  });
 
   const draftGeometry = () => page.evaluate(`(() => {
     const selectors = ['.cs-band', '.cs-band-head', '.cs-band-phase', '.cs-band-side', '.cs-bans', '.cs-bans > span', '.cs-teams', '.cs-team', '.cs-slot', '.cs-slot-role', '.cs-draft-clock', '.cs-draft-clock > *', '.cs-workspace'];

@@ -25,7 +25,7 @@ const kda = (p: Player) => p.kills == null || p.deaths == null || p.assists == n
 const ITEM_SLOTS = 7;
 const participation = (p: Player, total: number | null) => percent(p.kills != null && p.assists != null ? p.kills + p.assists : null, total);
 
-export default function MatchDetail({ game, names, riotId }: { game: Game; names: Snapshot["championNames"]; riotId?: string }) {
+export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { game: Game; names: Snapshot["championNames"]; riotId?: string; onOpenPlayer: (riotId: string) => void }) {
   const [detail, setDetail] = useState<MatchView | null>(null);
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
@@ -125,7 +125,7 @@ export default function MatchDetail({ game, names, riotId }: { game: Game; names
               {tab === "Scoreboard" && <Placement label={placementLabel(p.placement, team.win, p === best)} />}
               <div className="md-champion"><ChampionIcon id={p.championId} name={name(p.championId)} mode="desktop" />{p.level != null && <b>{p.level}</b>}</div>
               {tab === "Scoreboard" && <><div className="md-spells">{p.spells.map((id, i) => <SpellIcon id={id} key={i} mode="desktop" />)}</div><div className="md-perks">{[p.keystone, p.secondaryStyle].filter((id): id is number => !!id).map((id, i) => <Slot kind="rune" id={id} key={i} size={20} />)}</div></>}
-              <div className="md-identity"><strong title={p.riotId || name(p.championId)}><Identity value={p.riotId || name(p.championId)} />{p.me && <small className="md-you">You</small>}</strong><small><Rank player={p} />{name(p.championId)}</small></div>
+              <div className="md-identity"><strong title={p.riotId || name(p.championId)}>{p.riotId ? <button className="md-name" onClick={() => onOpenPlayer(p.riotId)}><Identity value={p.riotId} /></button> : name(p.championId)}{p.me && <small className="md-you">You</small>}</strong><small><Rank player={p} />{name(p.championId)}</small></div>
               {tab === "Scoreboard" ? <>
                 <Items ids={p.items} />
                 <div className="md-kda"><strong>{stat(p.kills)} / <em>{stat(p.deaths)}</em> / {stat(p.assists)}</strong><small>{stat(kda(p), 2)} KDA · {stat(participation(p, total.kills))}% KP</small></div>

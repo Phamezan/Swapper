@@ -106,8 +106,8 @@ export function PickSuggestions({ role, tier, enemyIds, taken, names, hovered: p
       </div>
     </div>
     {notice && <Notice tone="error">{notice}</Notice>}
-    {tab === "counters" && !query.trim() && enemyIds.length > 1 && <div className="fa-seg cs-laner-pick" role="group" aria-label="Likely lane opponent">
-      <small>Likely laner</small>{enemyIds.map(id => <button key={id} aria-pressed={id === enemyId} onClick={() => setChosenEnemy(id)}>{names.get(id) ?? "Unknown"}</button>)}</div>}
+    {tab === "counters" && !query.trim() && enemyIds.length > 1 && <div className="fa-seg cs-laner-pick" role="group" aria-label="Possible lane opponent">
+      <small>Counters for</small>{enemyIds.map(id => <button key={id} aria-pressed={id === enemyId} onClick={() => setChosenEnemy(id)}>{names.get(id) ?? "Unknown"}</button>)}</div>}
     {query.trim() ? !found.length ? <p className="fa-panel-empty">No champion matches "{query.trim()}".</p>
       : <div className="cs-pick-grid" role="group" aria-label="Champion suggestions" tabIndex={0}>{found.map(pick => <PickCard key={pick.championId} pick={pick} hovered={hovered} pending={pending} locking={locking} onHover={hover} />)}</div>
       : !loaded || loaded.key !== key ? <Skeleton label="Loading suggestions" rows={3} height={64} />

@@ -35,6 +35,36 @@ fn session_view() -> View {
     model_view(&b)
 }
 
+#[test]
+fn unsupported_games_never_expose_or_merge_players() {
+    let mut b = bundle();
+    b["session"]["gameData"]["queue"]["id"] = json!(900);
+    let mut view = model_view(&b);
+    assert!(!view.supported);
+    assert!(view.players.is_empty());
+    merge_live(&mut view, &b["allgamedata"], &ids());
+    assert!(view.players.is_empty(), "a CLASSIC Live Client read cannot override an URF queue");
+
+    let mut view = session_view();
+    b["allgamedata"]["gameData"]["gameMode"] = json!("CHERRY");
+    merge_live(&mut view, &b["allgamedata"], &ids());
+    assert!(!view.supported);
+    assert!(view.players.is_empty());
+    assert_eq!(view.blue, TeamSummary::default());
+}
+
+#[test]
+fn late_mode_metadata_clears_cached_players_and_unsupported_games_need_no_roster() {
+    let mut view = session_view();
+    view.check_mode(&json!({"gameData":{"queue":{"id":870}}}));
+    assert!(!view.supported);
+    assert!(view.players.is_empty());
+    let view = from_session(&json!({"gameData":{"queue":{"gameMode":"TFT"}}}), "", &names()).unwrap();
+    assert!(!view.supported);
+    assert!(view.players.is_empty());
+    assert!(from_session(&json!({}), "", &names()).is_none());
+}
+
 fn model_view(b: &Value) -> View {
     from_session(&b["session"], b["selfPuuid"].as_str().unwrap(), &names()).unwrap()
 }
@@ -68,6 +98,7 @@ fn session_lists_both_teams_with_spells_and_self() {
     let view = session_view();
     assert_eq!(view.game_id, 7000000001);
     assert_eq!(view.queue_id, 420);
+    assert!(view.supported);
     assert_eq!(view.players.len(), 10);
     assert!(view.players[..5].iter().all(|p| p.side == Side::Blue));
     assert!(view.players[5..].iter().all(|p| p.side == Side::Red));

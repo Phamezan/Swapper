@@ -215,7 +215,7 @@ pub(super) fn parse_spells(pick: &Value) -> Option<[i64; 2]> {
 }
 
 /// The level 1-15 order from a digit id (`1`=Q, `2`=W, `3`=E, `4`=R).
-pub(super) fn parse_skill_order(pick: &Value) -> Option<String> {
+pub(crate) fn parse_skill_order(pick: &Value) -> Option<String> {
     let id = pick.get("skillorder")?.get("id")?;
     let digits = id
         .as_u64()

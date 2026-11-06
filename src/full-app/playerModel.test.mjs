@@ -67,6 +67,14 @@ test('missing metrics stay absent, trends preserve chronology and duplicate game
   assert.deepEqual(profileStats([]).playedWith, []);
 });
 
+test('played-with keeps only the five most frequent teammates', () => {
+  const games = Array.from({ length: 14 }, (_, i) => ({ ...sample(i + 1, 145, true),
+    players: [{ riotId: 'Target#TEST', me: true, ally: true }, { riotId: `Mate${i % 7}#TEST`, ally: true }] }));
+  const stats = profileStats(games);
+  assert.equal(stats.playedWith.length, 5);
+  assert.ok(stats.playedWith.every(p => p.games === 2));
+});
+
 test('played-with icons come from the profile cache without inventing missing icons', () => {
   const stats = profileStats([sample(1, 145, true), sample(2, 145, false)], { 'friend#test': 'data:image/jpeg;base64,AA==' });
   assert.equal(stats.playedWith[0].icon, 'data:image/jpeg;base64,AA==');

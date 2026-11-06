@@ -35,34 +35,31 @@ pub struct UggRank {
     pub queue: String,
     #[serde(default)]
     pub tier: String,
+    /// Division ("IV"); u.gg also says "I" for apex tiers.
+    #[serde(rename = "rank", default)]
+    pub division: String,
     #[serde(default)]
     pub lp: u64,
     pub wins: u64,
     pub losses: u64,
 }
 
+/// (League Client region, u.gg region id) pairs.
+const REGIONS: [(&str, &str); 17] = [
+    ("EUW", "euw1"), ("NA", "na1"), ("EUNE", "eun1"), ("KR", "kr"), ("BR", "br1"), ("LAN", "la1"),
+    ("LAS", "la2"), ("OCE", "oc1"), ("TR", "tr1"), ("RU", "ru"), ("JP", "jp1"), ("PH", "ph2"),
+    ("SG", "sg2"), ("TH", "th2"), ("TW", "tw2"), ("VN", "vn2"), ("ME", "me1"),
+];
+
 /// The League Client's region code (`/riotclient/region-locale`) as u.gg's region id.
 pub fn region_id(client_region: &str) -> Option<&'static str> {
-    Some(match client_region.trim().to_ascii_uppercase().as_str() {
-        "EUW" | "EUW1" => "euw1",
-        "NA" | "NA1" => "na1",
-        "EUNE" | "EUN1" => "eun1",
-        "KR" => "kr",
-        "BR" | "BR1" => "br1",
-        "LAN" | "LA1" => "la1",
-        "LAS" | "LA2" => "la2",
-        "OCE" | "OC1" => "oc1",
-        "TR" | "TR1" => "tr1",
-        "RU" => "ru",
-        "JP" | "JP1" => "jp1",
-        "PH" | "PH2" => "ph2",
-        "SG" | "SG2" => "sg2",
-        "TH" | "TH2" => "th2",
-        "TW" | "TW2" => "tw2",
-        "VN" | "VN2" => "vn2",
-        "ME" | "ME1" => "me1",
-        _ => return None,
-    })
+    let region = client_region.trim().to_ascii_uppercase();
+    REGIONS.iter().find(|(client, id)| *client == region || id.eq_ignore_ascii_case(&region)).map(|(_, id)| *id)
+}
+
+/// u.gg's region id as the League Client's region code.
+pub fn client_region(region_id: &str) -> Option<&'static str> {
+    REGIONS.iter().find(|(_, id)| id.eq_ignore_ascii_case(region_id.trim())).map(|(client, _)| *client)
 }
 
 /// Ranked entries u.gg knows. A player u.gg has never seen is `Ok(vec![])`;
@@ -136,13 +133,18 @@ async fn fetch(name: &str, tag: &str, region_id: &str) -> Result<Vec<UggRank>, P
 }
 
 /// The player's u.gg Solo/Duo (wins, losses) when it agrees with `client_tier`.
-/// Failures are not cached, so a later view may retry; one request per view.
 pub async fn lookup_solo(
     name: &str,
     tag: &str,
     client_region: &str,
     client_tier: &str,
 ) -> Option<(u64, u64)> {
+    solo_record(&lookup(name, tag, client_region).await?, client_tier)
+}
+
+/// Every ranked entry u.gg has for the player this season. Failures are not
+/// cached, so a later view may retry; one request per view.
+pub async fn lookup(name: &str, tag: &str, client_region: &str) -> Option<Vec<UggRank>> {
     let region = region_id(client_region)?;
     let key = format!("{region}|{}#{}", name.to_lowercase(), tag.to_lowercase());
     let ranks = match cached(&key, Instant::now()) {
@@ -155,7 +157,7 @@ pub async fn lookup_solo(
             ranks
         }
     };
-    solo_record(&ranks, client_tier)
+    Some(ranks)
 }
 
 #[cfg(test)]
@@ -163,7 +165,7 @@ mod tests {
     use super::*;
 
     fn rank(queue: &str, tier: &str, wins: u64, losses: u64) -> UggRank {
-        UggRank { queue: queue.into(), tier: tier.into(), lp: 22, wins, losses }
+        UggRank { queue: queue.into(), tier: tier.into(), division: "IV".into(), lp: 22, wins, losses }
     }
 
     #[test]
@@ -190,6 +192,9 @@ mod tests {
         assert_eq!(region_id("EUNE"), Some("eun1"));
         assert_eq!(region_id("KR"), Some("kr"));
         assert_eq!(region_id("Mars"), None);
+        assert_eq!(region_id("euw1"), Some("euw1"));
+        assert_eq!(client_region("EUW1"), Some("EUW"));
+        assert_eq!(client_region("mars"), None);
     }
 
     #[test]

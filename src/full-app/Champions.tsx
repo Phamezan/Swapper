@@ -1,3 +1,4 @@
+import { displayPatch } from "../patchDisplay";
 import { AbilityHover } from "./AbilityHover";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type KeyboardEvent } from "react";
 import { invoke } from "@tauri-apps/api/core";
@@ -396,7 +397,7 @@ function ChampionHeader({ champion, lane, tier, patch, onBack, backLabel, childr
     {splash && <img className="hero-art" src={splash} alt="" draggable={false} />}
     <button className="back-to-list" onClick={onBack}>← {backLabel}</button>
     <div className="champion-hero-title"><ChampionIcon id={champion.id} name={champion.name} mode="desktop" /><div>
-      <p className="fa-eyebrow"><RoleIcon role={lane} size={14} mode="desktop" /> {laneLabel(lane)} · {tierLabel(tier)}{patch ? ` · Patch ${patch}` : ""}</p>
+      <p className="fa-eyebrow"><RoleIcon role={lane} size={14} mode="desktop" /> {laneLabel(lane)} · {tierLabel(tier)}{patch ? ` · Patch ${displayPatch(patch)}` : ""}</p>
       <h2>{champion.name}</h2>
       <p className="fa-hero-sub">Build, runes, counters</p>
       {abilities.length > 0 && <div className="fa-hero-abilities">{abilities.map(ability => <AbilityHover key={ability.key} championId={champion.id} abilityKey={ability.key} icon={ability.icon}><span>{ability.icon && <img src={ability.icon} alt="" />}<kbd>{ability.key}</kbd></span></AbilityHover>)}</div>}

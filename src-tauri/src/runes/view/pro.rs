@@ -2,13 +2,23 @@
 
 use super::*;
 
-/// `"16_19"` -> `"16.19"`, the patch label players recognise.
+/// Riot public patch label, used only by the pro-build view.
 pub(super) fn patch_label(version: &str) -> String {
     let version = version.trim();
     if version.is_empty() {
         "–".to_string()
     } else {
-        version.replace('_', ".")
+        let normalized = version.replace('_', ".");
+        let parts: Vec<_> = normalized.split('.').collect();
+        if parts.len() < 2 || parts.iter().any(|part| part.is_empty() || !part.bytes().all(|b| b.is_ascii_digit())) {
+            return normalized;
+        }
+        let major = parts[0].parse::<u32>().unwrap_or(0);
+        if (15..=19).contains(&major) {
+            format!("{}.{}", major + 10, parts[1])
+        } else {
+            format!("{}.{}", parts[0], parts[1])
+        }
     }
 }
 

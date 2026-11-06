@@ -283,9 +283,7 @@ fn skill_ranks(data: &Value) -> Option<(u64, [u64; 4])> {
 }
 
 fn session_scope(session: &Value) -> Option<bool> {
-    session["map"]["id"].as_u64().filter(|id| *id > 0)?;
-    // Custom games such as practice tool report queue id -1.
-    session["gameData"]["queue"]["id"].as_i64()?;
+    if session["map"].is_null() && session["gameData"]["queue"].is_null() { return None; }
     Some(model::supported_session(session))
 }
 
@@ -299,8 +297,9 @@ async fn run(
     let mut fast_until = Instant::now();
     let mut pids = Vec::new();
     let mut fetch: Option<tokio::task::JoinHandle<Result<Value, String>>> = None;
-    let mut scope: Option<tokio::task::JoinHandle<Option<bool>>> = None;
+    let mut scope: Option<tokio::task::JoinHandle<Option<(bool, bool)>>> = None;
     let mut allowed = false;
+    let mut players_supported = false;
     let mut checked_scope = false;
     let mut ended = false;
     let mut data = None;
@@ -309,6 +308,10 @@ async fn run(
     let mut lookup: Option<tokio::task::JoinHandle<Option<String>>> = None;
     let mut arrow: Option<[i32; 4]> = None;
     let mut arrow_for = None;
+    let mut seen: Option<(arrows::Arrow, f32)> = None;
+    // Slot pitch measured from the spacing of two or more arrows, per client size: a lone
+    // arrow must match it, so gold elsewhere cannot pass for one.
+    let mut slot_pitch: Option<((i32, i32), f32)> = None;
     let mut next_scan = Instant::now();
     let mut scoreboard = scoreboard::Tracker::default();
     let started = Instant::now();
@@ -393,14 +396,15 @@ async fn run(
                 crate::runes::overlay_game_session()
                     .await
                     .ok()
-                    .and_then(|session| session_scope(&session))
+                    .and_then(|session| session_scope(&session).map(|allowed| (allowed, crate::game_mode::supports_rift(&session))))
             }));
         }
         if scope.as_ref().is_some_and(|task| task.is_finished()) {
             let supported = scope.take().unwrap().await.ok().flatten();
-            allowed = supported == Some(true);
+            allowed = supported.is_some_and(|(allowed, _)| allowed);
+            players_supported = supported.is_some_and(|(_, players)| players);
             checked_scope = supported.is_some();
-            if supported == Some(false) {
+            if supported.is_some_and(|(allowed, _)| !allowed) {
                 fast_until = now;
             }
             // Fail closed, but retry a client that was still loading.
@@ -480,6 +484,7 @@ async fn run(
         if let (Some(bounds), Some(data)) = (bounds, data.as_ref()) {
             if dirty {
                 prepared = display(data, settings, priority.as_deref(), true);
+                if !players_supported || !crate::game_mode::supports_rift(data) { prepared.gold = None; }
                 dirty = false;
             }
             let mut visible = prepared.clone();
@@ -487,22 +492,37 @@ async fn run(
             if frame.is_none() {
                 visible.gold = None;
             }
-            // Find the game's own level-up arrows while a skill point is waiting, and
-            // keep the first match until the point is spent or the window changes:
-            // the game's arrow pulses, so rescanning would make the hint jump or blink.
+            // Find the game's own level-up arrows while a skill point is waiting. A failed
+            // rescan keeps the last match so the hint never blinks; matches merge, as the
+            // pulse lights a different part of the arrow each time.
             let pending = visible.skill.and_then(|skill| Some((skill, skill_ranks(data)?, bounds.width, bounds.height)));
             if pending != arrow_for {
                 arrow_for = pending;
+                seen = None;
                 arrow = None;
             }
-            if let (Some((skill, (level, ranks), _, _)), None) = (pending, arrow) {
+            if let Some((skill, (level, ranks), _, _)) = pending {
                 if now >= next_scan {
                     next_scan = now + Duration::from_millis(400);
                     let shown = model::levelable(level, ranks);
-                    let keys: Vec<char> = ['Q', 'W', 'E', 'R'].into_iter().zip(shown).filter(|(_, on)| *on).map(|(key, _)| key).collect();
-                    let found = arrows::find(bounds, keys.len());
-                    arrow = keys.iter().position(|key| *key == skill).and_then(|i| found.get(i)).map(|a| [a.x, a.y, a.width, a.height]);
+                    let slots: Vec<usize> = (0..4).filter(|&i| shown[i]).collect();
+                    let slot = ['Q', 'W', 'E', 'R'].iter().position(|key| *key == skill);
+                    let size = (bounds.width, bounds.height);
+                    let known = slot_pitch.filter(|(at, _)| *at == size).map(|(_, pitch)| pitch);
+                    let found = arrows::find(bounds, &slots, known);
+                    if let Some((_, pitch)) = found.as_ref().filter(|(row, _)| row.len() > 1) {
+                        slot_pitch = Some((size, *pitch));
+                    }
+                    let next = found.and_then(|(found, pitch)| {
+                        Some((*slots.iter().position(|s| Some(*s) == slot).and_then(|i| found.get(i))?, pitch))
+                    });
+                    if let Some((next, pitch)) = next {
+                        seen = Some((seen.map_or(next, |(old, _)| arrows::merge(old, next, pitch)), pitch));
+                    }
+                    arrow = seen.map(|(a, pitch)| arrows::level_box(a, pitch));
                 }
+            } else {
+                arrow = None;
             }
             visible.arrow = arrow;
             // Redraws at the 20 Hz tick only while the hint shows, to animate its diamonds.
@@ -545,14 +565,14 @@ mod tests {
     fn loading_scope_retries_but_known_unsupported_games_do_not() {
         use serde_json::json;
         assert_eq!(session_scope(&json!({})), None);
-        assert_eq!(session_scope(&json!({"map":{"id":11}})), None);
+        assert_eq!(session_scope(&json!({"map":{"id":11}})), Some(true));
         assert_eq!(
             session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":420}}})),
             Some(true)
         );
         assert_eq!(
             session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":0}}})),
-            Some(false)
+            Some(true)
         );
         assert_eq!(
             session_scope(&json!({"map":{"id":12},"gameData":{"queue":{"id":450}}})),

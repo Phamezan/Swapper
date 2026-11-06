@@ -140,11 +140,11 @@ impl Surface {
 
     /// Covers the game's level-up arrow for the recommended skill with a graphite
     /// box and a green double chevron, with three diamonds above
-    /// lighting up in a rising wave. Sized from the detected arrow, so it
-    /// follows the HUD scale.
+    /// lighting up in a rising wave. `rect` is the game's level-up box, sized
+    /// from the ability slots, so the hint follows resolution and HUD scale.
     pub(super) fn arrow(&self, rect: RectF, pulse: u8) -> Result<(), String> {
-        let unit = rect.Width.max(rect.Height * 2.0);
-        let side = unit * 1.3;
+        let side = rect.Width.max(rect.Height);
+        let unit = side / 1.3;
         let (cx, cy) = (rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0);
         let frame = RectF {
             X: cx - side / 2.0,
@@ -289,7 +289,7 @@ mod tests {
                 },
             ],
             skill: Some('R'),
-            arrow: Some([60, 120, 20, 8]),
+            arrow: Some([60, 120, 32, 32]),
             pulse: 0,
         }
     }

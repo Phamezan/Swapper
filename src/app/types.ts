@@ -102,6 +102,6 @@ export type FullAppBridge = {
   /** Restart the client behind the shared safety check; Accounts falls back to a plain switch without it. */
   onRestart?: () => void;
   onViewChange: (view: View) => void;
-  onChampSelectChange: (active: boolean) => void;
+  onChampSelectChange: (active: boolean, phase: string) => void;
 };
 

@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import ts from "typescript";
 import * as runeTypes from "../runes/types.ts";
 import * as model from "./champ-select-model.ts";
+import * as liveGameModel from "./LiveGameModel.ts";
 import * as buildLogic from "./buildLogic.ts";
 import * as championsModel from "./championsModel.ts";
 import * as format from "./ui/format.ts";
@@ -59,6 +60,7 @@ function harness(file, exportName, commands = {}, visibility = "visible", enviro
     react: hooks, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" },
     "@tauri-apps/api/core": { invoke, isTauri: () => true },
     "./AmbientArt": { useAmbientChampion: () => {} },
+    "./LiveGameModel": liveGameModel,
     "./Picker": { ROLES: [["top", "Top"], ["jungle", "Jungle"], ["mid", "Mid"], ["adc", "Bot"], ["support", "Support"]] },
     "./cooldownModel": cooldownModel,
     "radix-ui": { HoverCard: { Root: "hover-root", Trigger: "hover-trigger", Portal: "hover-portal", Content: "hover-content" } },
@@ -134,6 +136,34 @@ test("tray controller imports the full item build", async () => {
   const chosen = itemBuild();
   await h.tree().importItemBuild(266, "Aatrox", chosen);
   assert.deepEqual(h.calls, [{ name: "import_full_item_build", args: { championId: 266, championName: "Aatrox", build: chosen } }]);
+});
+
+test("switch during launch keeps launch errors visible and allows the next Play", async () => {
+  const environment = { effects: false };
+  const commands = { restart_plan: "save", client_health: "closed", detect_account_identity: { state: "notRunning" } };
+  const h = harness("../app/useAppController.ts", "useAppController", commands, "visible", environment);
+  h.render();
+  const state = { ...h.tree().data, activeId: "smurf", accounts: [{ id: "smurf" }, { id: "main" }] };
+  commands.get_state = state;
+  environment.effects = true;
+  h.render(); await h.flush();
+
+  await h.tree().switchToAccount("smurf");
+  await h.emit("switch_done", { id: "smurf", view: state });
+  // The backend released the switch lease, but League is still launching.
+  await h.tree().switchToAccount("main");
+  await h.emit("switch_started", { id: "main", name: "Main" });
+  await h.tree().switchToAccount("main"); await h.flush();
+  assert.match(h.tree().error, /account action is in progress/);
+  const selected = { ...state, activeId: "main" };
+  commands.get_state = selected;
+  await h.emit("switch_done", { id: "main", view: selected });
+  await h.emit("launch_failed", { id: "main", error: "League needs an update. Open Riot Client, then press Play again." });
+  assert.match(h.tree().error, /League needs an update/);
+  assert.equal(h.tree().data.activeId, "main");
+  assert.equal(h.tree().switchingAccountId, null);
+  await h.tree().switchToAccount("main");
+  assert.deepEqual(h.calls.filter(c => c.name === "switch_account").map(c => c.args.id), ["smurf", "main", "main"]);
 });
 
 for (const mode of ["desktop", "remote"]) test(`${mode} pro import preserves starter stacks and completed items`, async () => {
@@ -215,6 +245,32 @@ test("draft events update taken picks during planning without a local view chang
   assert.ok(suggestions.props.taken.has(11));
   assert.equal(buildReads, before, "enemy reveals must not reload and reset the source build");
 });
+test("unsupported draft shows a note instead of players, including after unclassified pushes", async () => {
+  const draft = { ...fixtureDraft("planning"), supported: false };
+  const h = harness("./ChampionSelect.tsx", "ChampionSelect", { full_app_draft: draft });
+  h.render({ view: fixtureView("planning"), championApi: { list: async () => [], tierList: async () => ({ rows: [] }) } });
+  await h.flush();
+  assert.equal(textOf(h.tree()), liveGameModel.UNSUPPORTED_GAME);
+  assert.equal(nodes(h.tree()).some(n => n.props?.draft), false);
+  await h.emit("draft_changed", fixtureDraft("planning"));
+  assert.equal(textOf(h.tree()), liveGameModel.UNSUPPORTED_GAME);
+});
+
+test("unsupported live and compact views show the same note without player rows", async () => {
+  const view = { supported: false, players: [{ key: "example", isSelf: true }], gameId: 1 };
+  const full = harness("./LiveGame.tsx", "LiveGameContent");
+  full.render({ view, error: "", loaded: true, championNames: new Map() });
+  assert.equal(textOf(full.tree()), liveGameModel.UNSUPPORTED_GAME);
+  assert.equal(nodes(full.tree()).some(n => n.props?.className === "lg-row"), false);
+  const compact = harness("./LiveGameCompact.tsx", "LiveGameCompact", {}, "visible", {
+    modules: { "./LiveGameData": { useInGame: () => true, useLiveGame: () => ({ view }) } },
+  });
+  compact.render();
+  const card = compact.tree().type(compact.tree().props);
+  assert.equal(textOf(card), liveGameModel.UNSUPPORTED_GAME);
+  assert.equal(nodes(card).some(n => n.type === "li"), false);
+});
+
 test("draft events update enemy build context without reloading the source build", async () => {
   const view = fixtureView("locked"), draft = fixtureDraft("locked");
   let buildReads = 0;

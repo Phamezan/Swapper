@@ -164,8 +164,12 @@ pub async fn live_game_view(app: tauri::AppHandle) -> Result<Option<View>, Strin
         return Ok(None);
     }
     let game_id = session["gameData"]["gameId"].as_u64().unwrap_or(0);
-    if let Some(view) = lock(&rt.view).as_ref().filter(|v| v.game_id == game_id) {
-        return Ok(Some(view.clone()));
+    {
+        let mut cached = lock(&rt.view);
+        if let Some(view) = cached.as_mut().filter(|v| v.game_id == game_id) {
+            view.check_mode(&session);
+            return Ok(Some(view.clone()));
+        }
     }
     let self_puuid = source::self_puuid().await;
     let Some(view) = model::from_session(&session, &self_puuid, &champion_names().await) else {

@@ -95,6 +95,7 @@ pub struct DraftTimer {
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Draft {
+    pub supported: Option<bool>,
     allies: Vec<DraftMember>,
     enemies: Vec<DraftMember>,
     bans: Vec<i64>,
@@ -177,6 +178,7 @@ pub(crate) fn draft_from(value: &Value) -> Draft {
             .max(0),
     });
     Draft {
+        supported: None,
         allies: members("myTeam"),
         enemies: members("theirTeam"),
         bans,
@@ -189,6 +191,22 @@ pub(crate) fn draft_from(value: &Value) -> Draft {
     }
 }
 
+impl Draft {
+    pub(crate) fn set_supported(&mut self, supported: Option<bool>) {
+        self.supported = supported;
+        if supported == Some(false) {
+            self.allies.clear();
+            self.enemies.clear();
+            self.bans.clear();
+            self.ally_bans.clear();
+            self.enemy_bans.clear();
+            self.can_lock = false;
+            self.ban_turn = None;
+            self.pickable = None;
+        }
+    }
+}
+
 #[tauri::command]
 pub async fn full_app_draft() -> Result<Draft, String> {
     let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
@@ -198,6 +216,9 @@ pub async fn full_app_draft() -> Result<Draft, String> {
     let mut draft = draft_from(&session);
     draft.pickable = crate::runes::lcu_get(&client, "/lol-champ-select/v1/pickable-champion-ids")
         .await.ok();
+    if let Ok(gameflow) = crate::runes::lcu_get::<Value>(&client, "/lol-gameflow/v1/session").await {
+        draft.set_supported(Some(crate::game_mode::supports_rift(&gameflow)));
+    }
     Ok(draft)
 }
 
