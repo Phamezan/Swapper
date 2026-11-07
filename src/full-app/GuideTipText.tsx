@@ -7,6 +7,7 @@ import { liveCooldown, guideReferences, type GuideNamedReference, type GuideText
 import type { RuneCatalog } from "./BuildPanel";
 import type { GuideAbilities } from "./MatchupGuideContent";
 import type { GuideTip } from "./matchupGuide";
+import { Tooltip } from "./ui/Tooltip";
 
 let itemsRequest: Promise<Record<number, string>> | undefined;
 let runesRequest: Promise<GuideNamedReference[]> | undefined;
@@ -41,9 +42,9 @@ export function GuideTipText({ parts, abilities }: { parts: GuideTextPart[]; abi
         {part.icon && <img src={part.icon} alt="" />}<kbd>{part.key}</kbd>
       </AbilityHover>{" "}{part.name}
     </span>
-    : <span className="mg-inline-reference" key={i} title={part.name}>
-      {part.kind === "item" ? <ItemIcon id={part.id} name={part.name} mode="desktop" /> : <RuneIcon id={part.id} mode="desktop" />}{part.name}
-    </span>
+    : <Tooltip key={i} label={part.name}><span className="mg-inline-reference" aria-label={part.name}>
+      {part.kind === "item" ? <ItemIcon id={part.id} mode="desktop" /> : <RuneIcon id={part.id} mode="desktop" />}{part.name}
+    </span></Tooltip>
     : <LiveCooldown key={i} champion={part.champion} abilityKey={part.key} abilities={abilities} />)}</>;
 }
 
@@ -53,6 +54,6 @@ function LiveCooldown({ champion, abilityKey, abilities }: { champion: number; a
   const metadata = abilities[champion]?.find(spell => spell.key === abilityKey);
   const name = ability?.name || metadata?.name || abilityKey;
   return <AbilityHover championId={champion} abilityKey={abilityKey} icon={metadata?.icon}>
-    <span className="mg-live-cooldown" title={`${name} · base cooldown before ability haste`}>{liveCooldown(ability, name)}</span>
+    <Tooltip label={`${name} · base cooldown before ability haste`}><span className="mg-live-cooldown" aria-label={`${name} · base cooldown before ability haste`}>{liveCooldown(ability, name)}</span></Tooltip>
   </AbilityHover>;
 }

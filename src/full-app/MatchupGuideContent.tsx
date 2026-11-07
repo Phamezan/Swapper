@@ -3,6 +3,7 @@ import { GuideItem } from "./GuideItem";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { RankCrest } from "../runes/RankCrest";
 import { Notice } from "./ui/States";
+import { Tooltip } from "./ui/Tooltip";
 import { GuideTipText, useGuideReferences } from "./GuideTipText";
 import { parseGuideText } from "./guideText";
 import type { GuideSource, GuideTip, GuideSectionId, AuthoredGuide } from "./matchupGuide";
@@ -22,7 +23,7 @@ export function GuideAuthorCredit({ source, color }: { source: GuideSource; colo
     <div className="mg-author-details"><div className="mg-author-heading">
       {color && <span className="mg-author-dot" style={{ backgroundColor: color }} aria-hidden />}
       <strong>{source.author}</strong>
-    </div><small title={source.rankClaim}>{[rank, source.rank ? main : source.rankClaim, SOURCE_KINDS[source.kind]].filter(Boolean).join(" · ")}</small></div>
+    </div><Tooltip label={source.rankClaim}><small aria-label={source.rankClaim}>{[rank, source.rank ? main : source.rankClaim, SOURCE_KINDS[source.kind]].filter(Boolean).join(" · ")}</small></Tooltip></div>
     <GuideSourceButton className="mg-original-link" url={source.url} label={`Read original by ${source.author}`}><span className="mg-original-label">Read original </span><span aria-hidden>↗</span></GuideSourceButton>
   </div>;
 }
@@ -52,7 +53,7 @@ function GuideTipContent({ tip, sources, authors, abilities }: { tip: GuideTip; 
   const itemIds = tip.itemIds?.filter(id => !inline.some(part => "kind" in part && part.kind === "item" && part.id === id)) ?? [];
   const credited = authors.length > 1 ? guideAuthors(tip.sourceIds?.flatMap(id => sources.filter(source => source.id === id)) ?? []) : [];
   const credits = credited.length > 0 && <span className="mg-tip-credits">{credited.map(source =>
-    <span key={source.id} className="mg-author-dot" role="img" aria-label={source.author} title={source.author} style={{ backgroundColor: authorColor(authors.findIndex(author => author.author === source.author)) }} />)}</span>;
+    <Tooltip key={source.id} label={source.author}><span className="mg-author-dot" role="img" aria-label={source.author} style={{ backgroundColor: authorColor(authors.findIndex(author => author.author === source.author)) }} /></Tooltip>)}</span>;
   return <div className="mg-tip-content">
       {tip.heading && <h3 className="mg-tip-heading"><GuideTipText parts={heading} abilities={abilities} />{credits}</h3>}
       <p><GuideTipText parts={parts} abilities={abilities} />{!tip.heading && credits}</p>

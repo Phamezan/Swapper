@@ -186,7 +186,8 @@ test("multi-author guide has compact credit lines and matching accessible tip do
   const rows = nodes(tree).filter(n => n.type === "li");
   const dots = nodes(rows[0]).filter(n => n.props.className === "mg-author-dot");
   assert.deepEqual(dots.map(n => n.props["aria-label"]), ["Nine Tails", "Lane Lab"]);
-  assert.deepEqual(dots.map(n => n.props.title), ["Nine Tails", "Lane Lab"]);
+  assert.deepEqual(nodes(rows[0]).filter(n => n.type === "tooltip").map(n => n.props.label), ["Nine Tails", "Lane Lab"]);
+  assert.ok(dots.every(n => n.props.title === undefined));
   assert.deepEqual(dots.map(n => n.props.style.backgroundColor), [colors[1], colors[0]]);
   assert.ok(dots.every(n => n.props.role === "img"));
   assert.equal(nodes(rows[2]).filter(n => n.props.className === "mg-author-dot").length, 0);
