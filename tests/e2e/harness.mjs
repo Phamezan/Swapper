@@ -104,16 +104,24 @@ export class Page {
   }
 
   async click(selector, text = null) {
-    const position = await poll(`clickable ${selector}${text ? ` (${text})` : ""}`, () => this.evaluate(`(() => {
+    const position = await poll(`clickable ${selector}${text ? ` (${text})` : ""}`, () => this.evaluate(`(async () => {
       const el = Array.from(document.querySelectorAll(${JSON.stringify(selector)})).find(el =>
         el.checkVisibility() && !el.disabled && (${JSON.stringify(text)} === null || el.textContent.trim() === ${JSON.stringify(text)}));
       if (!el) return null;
       el.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+      // Scrolling, entrance animations and late layout can move a visible target.
+      // Measure across frames before sending real input at its coordinates.
+      await document.fonts.ready;
+      const before = el.getBoundingClientRect();
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      if (!el.isConnected) return null;
       const r = el.getBoundingClientRect();
+      if (['x', 'y', 'width', 'height'].some(key => Math.abs(r[key] - before[key]) > .1)) return null;
       const x = r.x + r.width / 2, y = r.y + r.height / 2;
       const hit = document.elementFromPoint(x, y);
       return r.width && r.height && (hit === el || el.contains(hit)) ? { x, y } : null;
     })()`));
+    await this.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", ...position });
     await this.cdp.send("Input.dispatchMouseEvent", { type: "mousePressed", ...position, button: "left", clickCount: 1 });
     await this.cdp.send("Input.dispatchMouseEvent", { type: "mouseReleased", ...position, button: "left", clickCount: 1 });
   }

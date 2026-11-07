@@ -80,9 +80,9 @@ for (const signal of ["SIGINT", "SIGTERM"]) process.once(signal, () => {
   void cleanup().finally(() => process.exit(signal === "SIGINT" ? 130 : 143));
 });
 const watchdog = setTimeout(() => {
-  console.error(`FAIL suite exceeded 120 seconds during ${current}`);
+  console.error(`FAIL suite exceeded 180 seconds during ${current}`);
   void cleanup().finally(() => process.exit(1));
-}, 120_000);
+}, 180_000);
 
 async function audit() {
   await page.settle();
@@ -1994,7 +1994,7 @@ async function main() {
     await page.text('.mg-context', 'Mid');
     await screenshot('draft-open-full-guide');
     assert.equal(await page.evaluate("!!document.querySelector('.mg-deck .ui-notice.is-warn')"), false, 'a matchup-specific guide has no general-guide banner');
-    await page.visible('.mg-context button[data-variant="secondary"]');
+    await page.wait("document.querySelectorAll('.mg-context button[data-slot=\"button\"]').length === 2", 'guide sources and VOD actions to load');
     const actions = await page.evaluate(`Array.from(document.querySelectorAll('.mg-context button[data-slot="button"]'), button => {
       const style = getComputedStyle(button);
       return { variant: button.dataset.variant, height: button.getBoundingClientRect().height, radius: style.borderRadius,
